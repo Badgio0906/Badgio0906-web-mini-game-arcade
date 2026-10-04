@@ -63,9 +63,13 @@ Rootの初回配信記録は、各経路の新しいcontextで実HTTP応答をUR
 ```sh
 GAME015_MODEL_DEPTH=5000 node tests/game015/review-model.mjs
 node tests/game015/review-practice.mjs
-GAME015_URL=http://127.0.0.1:5181/ node tests/game015/probe.mjs
+GAME015_PROBE_MODE=native GAME015_URL=http://127.0.0.1:5181/ node tests/game015/probe.mjs
 GAME015_STATIC_URLS=http://127.0.0.1:4193/,http://127.0.0.1:4194/repo/ node tests/game015/probe-production-geometry.mjs
 ELEVEN_STATIC_URLS=http://127.0.0.1:4193/,http://127.0.0.1:4194/repo/ ELEVEN_STATIC_GAME_NUMBERS=0,1,2,3,4,5,6,7,8,9,10,11,15 ELEVEN_EXPECTED_CATALOG_COUNT=15 ELEVEN_STATIC_REPORT=docs/game015/QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json node tests/eleven-game/probe-production.mjs
 ```
 
 ローカルの実行ログは`/workspace/game015-native-final.log`、`/workspace/game015-production-geometry.log`。持ち出せるJSONと実結果5画像は本ディレクトリに保存した。物理スマートフォン、音を聴いての評価、実機FPS、長時間の端末発熱、面白さ・リトライ意欲は[人間プレイテスト](../HUMAN_PLAYTEST.md)で確認する。
+
+## 公開先確認
+
+Rootの公開先13経路も全件成功。[PUBLIC_AUDIT.json](./PUBLIC_AUDIT.json)、[GitHub Actions成功](./GITHUB_ACTIONS_PUBLICATION.json)、[175件CI要約](./CI_TEST_BUILD_SUMMARY.txt)、[実配信SHA-256照合](./PUBLISHED_BUILD_HASHES.json)。実装コミット `b8ba287aacf5fe5c25699abdbd77ffe9f7f1f1f2`、公開run37216230347。人間による面白さの承認は未実施。

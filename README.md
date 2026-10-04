@@ -50,6 +50,8 @@ npm run preview
 
 公開中の試作版：**[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)**。
 
+15本版：[落下キング](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game015.html)を追加済み。[公開run 37216230347](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37216230347)で175単体テスト・ビルド・Pages公開が成功し、公開先13ページの検証も成功しました。[015検証記録](docs/game015/IMPLEMENTATION_REPORT.md)を参照してください。
+
 14本版の[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)で`npm ci`、155単体テスト、ビルド、Pages公開が成功しました。公開先で旧3作品の6件の実入力・配信検証と、ポータル＋001〜011の12ページ検証が成功しています。[14本版のQA](docs/fourteen-game/QA/README.md)、[今回の変更](docs/migration/IMPLEMENTATION_REPORT.md)を参照してください。
 
 更新する場合：
