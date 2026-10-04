@@ -1,6 +1,6 @@
 # 落下キング 改訂01
 
-実装・独立Game Feel・最終QA合格。初版の公開結果と区別して記録する。
+実装・独立Game Feel・最終QA・GitHub Pages公開後確認が合格。初版の公開結果と区別して記録する。
 
 ## 変更
 
@@ -16,7 +16,7 @@
 
 初回QAで320px画面の長押し終了が結果画面のタイトルクリックへ変換される不具合を発見し、実際のpointerdown/up/click記録で特定した。入力を開始した画面と現在の画面を照合し、画面遷移をまたいだ古いクリックを受け付けない修正を入れた。修正後の実操作8ケースは成功し、新しいタップ、Enter、タイトル操作を確認した。5種類の画面サイズで練習・トゲの安全着地／実接触・ポーズ・自然な結果・リトライを確認。鳥の長い失敗説明も、実際に獲得した結果を320×568・844×390へ回転／縮小して44px操作とクリッピングを確認した。ルート／サブパスの1440×900・390×844、公開用ビルド4ケースも成功。初回の失敗と修正前のソース記録は保持する。
 
-[最終QA記録](QA_REPORT.md)、[8ケースの実入力](QA_REPORT.json)、[4ケースの公開用ビルド](PRODUCTION_SMOKE.json)に記録する。最終ソースは [SOURCE_FREEZE.json](SOURCE_FREEZE.json)、集約SHA-256 `11c3032d3804a960690abbf19cbb94ddca5a531ed82fa98cccd13ae74aea71f2`。独立Feel後の変更は実画面サムネイルと結果操作の持ち越し対策だけで、モデル・描画・フォントは同じ。共有26経路（ポータル＋001〜011＋015、ルート／サブパス）の配信も全件成功。[配信記録](PRODUCTION_ROOT_SUBPATH_AUDIT.json)。015の実際の初回JS合計は81366 bytes、画像0 bytes、フォント158248 bytes。専用JSに加え共通chunkを含む。公開先確認は次工程。人間の面白さ・実機タッチ・音の体感は別途評価する。
+[最終QA記録](QA_REPORT.md)、[8ケースの実入力](QA_REPORT.json)、[4ケースの公開用ビルド](PRODUCTION_SMOKE.json)に記録する。最終ソースは [SOURCE_FREEZE.json](SOURCE_FREEZE.json)、集約SHA-256 `11c3032d3804a960690abbf19cbb94ddca5a531ed82fa98cccd13ae74aea71f2`。独立Feel後の変更は実画面サムネイルと結果操作の持ち越し対策だけで、モデル・描画・フォントは同じ。共有26経路（ポータル＋001〜011＋015、ルート／サブパス）の配信も全件成功。[配信記録](PRODUCTION_ROOT_SUBPATH_AUDIT.json)。015の実際の初回JS合計は81366 bytes、画像0 bytes、フォント158248 bytes。専用JSに加え共通chunkを含む。GitHub Actions [run 37242131395](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37242131395)で181件・ビルド・公開が成功した。公開コミットは `4956ae958371d2ae37dd564e6a514bbb51891826`。[公開先の13ページ実操作・配信検証](PUBLIC_AUDIT.json)も全件成功し、[HTML・JS・CSS・フォント・サムネイル11ファイル](PUBLISHED_BUILD_HASHES.json)が最終ローカルビルドと一致した。[CIの実ログ抜粋](CI_VALIDATION_SUMMARY.json)、[公開ジョブ記録](GITHUB_ACTIONS_PUBLICATION.json)を保持する。人間の面白さ・実機タッチ・音の体感は別途評価する。
 
 ## 人間に確認してほしい点
 
