@@ -1,8 +1,9 @@
 export const WORLD_WIDTH = 256;
 export const WORLD_HEIGHT = 448;
 export const PIXELS_PER_METER = 16;
-export const PLAYER_WIDTH = 12;
-export const PLAYER_HEIGHT = 22;
+export const PLAYER_WIDTH = 18;
+export const PLAYER_WALL_MARGIN = 12;
+export const PLAYER_HEIGHT = 33;
 export const GRAVITY = 180;
 export const TERMINAL_VELOCITY = 145;
 export const MAX_HORIZONTAL_SPEED = 90;
@@ -27,6 +28,20 @@ export interface FallPlatform extends PlatformSeed {
   id: number; originX: number; height: number; route: boolean; pattern: string;
   amplitude: number; period: number; phase: number; crumbleAge: number | null; gone: boolean;
 }
+export type HazardKind = 'spikes' | 'wall_needle' | 'bird';
+export type HazardState = 'idle' | 'warning' | 'active' | 'cooldown';
+export interface HazardSeed {
+  id?: string; kind: HazardKind; x: number; y: number; width: number; height: number;
+  side?: -1 | 0 | 1; amplitude?: number; period?: number; phase?: number;
+}
+export interface FallHazard extends HazardSeed {
+  id: string; originX: number; side: -1 | 0 | 1; amplitude: number; period: number; phase: number;
+  state: HazardState; age: number; warningRemaining: number; anchorPlatformId: number | null;
+}
+export const BIRD_WARNING_SECONDS = 1;
+export const NEEDLE_WARNING_SECONDS = 0.9;
+export const NEEDLE_ACTIVE_SECONDS = 0.65;
+export const NEEDLE_COOLDOWN_SECONDS = 1.25;
 export interface FallPlayer {
   x: number; y: number; vx: number; vy: number;
   grounded: boolean; platformId: number | null; stunRemaining: number;
@@ -38,7 +53,7 @@ export interface FallSnapshot {
   alive: boolean; time: number; depth: number; score: number; fallDistance: number;
   niceDrops: number; cameraY: number; horizontal: HorizontalInput;
   phase: 'grounded' | 'falling' | 'stunned' | 'ended';
-  player: FallPlayer; platforms: FallPlatform[]; lastLanding: LandingReport | null;
+  player: FallPlayer; platforms: FallPlatform[]; hazards: FallHazard[]; lastLanding: LandingReport | null;
   danger: 'safe' | 'danger' | 'fatal';
 }
 export interface FallInspection extends FallSnapshot {
@@ -47,7 +62,7 @@ export interface FallInspection extends FallSnapshot {
 }
 export interface FallResult {
   depth: number; score: number; time: number; niceDrops: number;
-  outcome: 'impact'; reason: string; fallDistance: number; platformType: PlatformType | null;
+  outcome: 'impact' | 'spike' | 'needle' | 'bird'; reason: string; fallDistance: number; platformType: PlatformType | null;
 }
 export type FallEvent =
   | { type: 'drop'; platformId: number; depth: number }
@@ -55,6 +70,8 @@ export type FallEvent =
   | { type: 'nice_drop'; count: number; landing: LandingReport }
   | { type: 'crumble'; platformId: number }
   | { type: 'milestone'; depth: 1000; message: string }
+  | { type: 'hazard_warning'; hazardId: string; kind: HazardKind; seconds: number }
+  | { type: 'hazard_active'; hazardId: string; kind: HazardKind }
   | { type: 'end'; result: FallResult };
 export interface FallHooks {
   onUpdate: (snapshot: FallSnapshot) => void; onEvent: (event: FallEvent) => void; onEnd: (result: FallResult) => void;
@@ -65,4 +82,4 @@ export interface FallController {
   snapshot: () => FallSnapshot; inspection: () => FallInspection; destroy: () => void;
 }
 /** Authored courses are useful for the independent practice and geometry tests; no live state mutation. */
-export interface FallOptions { course?: readonly PlatformSeed[]; endless?: boolean }
+export interface FallOptions { course?: readonly PlatformSeed[]; hazards?: readonly HazardSeed[]; endless?: boolean }

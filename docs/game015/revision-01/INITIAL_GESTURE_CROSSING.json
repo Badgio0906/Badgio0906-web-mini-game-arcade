@@ -1,0 +1,68 @@
+{
+  "status": "confirmed-runtime-failure",
+  "candidate": "bac81d37ab5ea71139461a44c7520226e4a48e1b7303b0ae6f50512587c95672",
+  "viewport": [
+    320,
+    568
+  ],
+  "mechanism": "Native held steering pointer released after RESULT; click retargets TITLE despite originating at right-button during PLAYING. No synthetic DOM events or position/state/time writes.",
+  "events": [
+    {
+      "name": "pointerdown",
+      "target": "right-button",
+      "path": [
+        "right-button",
+        "game-canvas",
+        "stage",
+        "app"
+      ],
+      "pointerId": 17,
+      "detail": 0,
+      "state": "playing",
+      "time": 12283.800000011921
+    },
+    {
+      "name": "pointerup",
+      "target": "right-button",
+      "path": [
+        "right-button",
+        "game-canvas",
+        "stage",
+        "app"
+      ],
+      "pointerId": 17,
+      "detail": 0,
+      "state": "result",
+      "time": 13399.90000000596
+    },
+    {
+      "name": "click",
+      "target": "title-button",
+      "path": [
+        "title-button",
+        "overlay",
+        "app"
+      ],
+      "pointerId": 17,
+      "detail": 1,
+      "state": "result",
+      "time": 13400.90000000596
+    }
+  ],
+  "result": {
+    "name": "run_end",
+    "at": "2026-10-04T22:47:57.049Z",
+    "data": {
+      "game": "game015",
+      "runId": "game015-1791154073580-wvvxwi",
+      "outcome": "over",
+      "score": 7,
+      "time": 2.951399999999991,
+      "reason": "spike",
+      "game_id": "game015"
+    }
+  },
+  "afterReleaseState": "title",
+  "rawEvidence": "TOUCH_RELEASE_DIAGNOSTIC-320x568-FAIL-1791154077570.json",
+  "browserClosed": true
+}

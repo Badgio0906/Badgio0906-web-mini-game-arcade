@@ -12,11 +12,55 @@ const app = $('app'), overlay = $('overlay'), abort = new AbortController();
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game015:');
 const telemetry = new TelemetryService(storage, 'game015'), audio = new FallAudio(storage);
 const onboarding = createOnboarding({ gameId: 'game015', storage, telemetry, practicePaint: paintFallPractice });
+let screenEpoch = 0;
 let state: Screen = 'title', best = storage.readNumber('best', 0), runId = '', ended = true, disposed = false, newBest = false;
-let milestoneUntil = 0, milestoneMessage = '';
+let milestoneUntil = 0, milestoneMessage = '', hazardNoticeUntil = 0, hazardMessage = '';
 let result: FallResult | null = null, timer: ReturnType<typeof window.setTimeout> | undefined;
 const text = (id: string, value: string): void => { const e = $(id); if (e && e.textContent !== value) e.textContent = value; };
 const button = (id: string, label: string, primary = false): string => `<button id="${id}" type="button" class="${primary ? 'primary' : 'secondary'}">${label}</button>`;
+
+// Keep gesture origin through pointerup: touch clicks can be retargeted after the menu appears.
+interface GestureOrigin { epoch: number; releasedAt: number | null }
+const gestures = new Map<number, GestureOrigin>();
+let lastReleased: { id: number; origin: GestureOrigin } | undefined;
+let gestureCleanup: ReturnType<typeof window.setTimeout> | undefined;
+const pruneGestures = (): void => {
+  const now = performance.now();
+  for (const [id, origin] of gestures) if (origin.releasedAt !== null && now - origin.releasedAt > 5000) gestures.delete(id);
+  if (lastReleased && lastReleased.origin.releasedAt !== null && now - lastReleased.origin.releasedAt > 5000) lastReleased = undefined;
+};
+function scheduleGestureCleanup(): void {
+  if (gestureCleanup !== undefined) return;
+  gestureCleanup = window.setTimeout(() => { gestureCleanup = undefined; pruneGestures(); if ([...gestures.values()].some(origin => origin.releasedAt !== null)) scheduleGestureCleanup(); }, 5100);
+}
+document.addEventListener('pointerdown', e => {
+  if (!(e.target instanceof Node) || !app.contains(e.target)) return;
+  pruneGestures();
+  // Native touch has few simultaneous contacts; keep a bounded record without discarding its origin on release.
+  if (!gestures.has(e.pointerId) && gestures.size >= 32) {
+    const released = [...gestures].find(([, origin]) => origin.releasedAt !== null);
+    gestures.delete(released?.[0] ?? gestures.keys().next().value!);
+  }
+  gestures.set(e.pointerId, { epoch: screenEpoch, releasedAt: null });
+}, { capture: true, signal: abort.signal });
+const releaseGesture = (e: PointerEvent): void => {
+  const origin = gestures.get(e.pointerId); if (!origin) return;
+  origin.releasedAt = performance.now(); lastReleased = { id: e.pointerId, origin }; scheduleGestureCleanup();
+};
+document.addEventListener('pointerup', releaseGesture, { capture: true, signal: abort.signal });
+document.addEventListener('pointercancel', releaseGesture, { capture: true, signal: abort.signal });
+app.addEventListener('click', e => {
+  pruneGestures();
+  const pointer = e as MouseEvent & { pointerId?: number; pointerType?: string };
+  const id = typeof pointer.pointerId === 'number' && pointer.pointerId >= 0 ? pointer.pointerId : undefined;
+  // Keyboard/assistive clicks have detail0 and no pointer origin. Compatibility MouseEvent uses the latest release.
+  const keyedOrigin = id !== undefined ? gestures.get(id) : undefined;
+  const origin = keyedOrigin ?? (e.detail > 0 ? lastReleased?.origin : undefined);
+  const originId = keyedOrigin ? id : e.detail > 0 ? lastReleased?.id : undefined;
+  if (originId !== undefined) gestures.delete(originId);
+  if (origin && lastReleased?.origin === origin) lastReleased = undefined;
+  if (origin && origin.epoch !== screenEpoch) { e.preventDefault(); e.stopImmediatePropagation(); }
+}, { capture: true, signal: abort.signal });
 function comment(depth: number): string {
   return depth >= 5000 ? '落下に人生を捧げています。' : depth >= 2000 ? '何を目指しているのでしょうか。' : depth >= 1000 ? 'まだ底はありません。' : depth >= 700 ? 'そろそろ電波が入りません。' : depth >= 300 ? '戻る気はありますか？' : depth >= 100 ? 'だいぶ下がってきました。' : 'まだ地上が見えています。';
 }
@@ -27,21 +71,23 @@ function sync(): void {
   $<HTMLButtonElement>('brand-button').disabled = state === 'ending';
 }
 function screen(next: Screen): void {
-  state = next; sync(); overlay.hidden = next === 'playing' || next === 'ending';
+  screenEpoch++; state = next; sync(); overlay.hidden = next === 'playing' || next === 'ending';
   if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
-  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>足場からDROP。左右で空中移動。<br />落ちすぎると、着地に耐えられません。</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
+  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>足場からDROP。左右で空中移動。<br />針と鳥を避け、動きを待ってDROP。</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
   if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div></article>`;
   if (next === 'result' && result) {
-    overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'impact' ? 'SPLAT!' : 'LOST!'}</span><h2>落ちすぎました。</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
+    overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'impact' ? 'SPLAT!' : result.outcome === 'spike' ? 'SPIKES!' : result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'}</span><h2>${result.outcome === 'impact' ? '落ちすぎました。' : result.outcome === 'spike' ? '針に当たりました。' : result.outcome === 'needle' ? '壁の針に当たりました。' : '鳥に当たりました。'}</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
     overlay.querySelector<HTMLButtonElement>('#retry-button')?.focus({ preventScroll: true });
   }
 }
 function update(s: FallSnapshot): void {
   if (state !== 'title') { text('score-value', String(s.score)); text('nice-value', String(s.niceDrops)); }
   app.dataset.phase = s.phase;
-  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.phase === 'grounded' ? 'DROP ↓ · 下の足場を見て降りよう' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
+  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.time < hazardNoticeUntil ? hazardMessage : s.phase === 'grounded' ? '針と鳥を見て、タイミングよく DROP ↓' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
 }
 function event(e: FallEvent): void {
+  if (e.type === 'hazard_warning') { hazardMessage = e.kind === 'bird' ? '鳥の動きを待って、タイミングよく DROP。' : '壁の針の予兆！ 壁から離れよう。'; hazardNoticeUntil = controller.snapshot().time + e.seconds; audio.tone(720, 520, .07, .02); }
+  if (e.type === 'hazard_active' && e.kind === 'wall_needle') audio.tone(150, 85, .08, .018, 'sawtooth');
   if (e.type === 'drop') audio.tone(520, 160, .085);
   if (e.type === 'landing') {
     const l = e.landing; telemetry.trackEvent('fall_distance', { runId, meters: l.fallDistance }); telemetry.trackEvent('landing_type', { runId, kind: l.kind }); telemetry.trackEvent('platform_type', { runId, type: l.platformType });
@@ -61,7 +107,7 @@ const controller = createFallGame($('game-canvas'), { onUpdate: update, onEvent:
 function start(retry = false): void {
   if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
-  void audio.unlock(); runId = `game015-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = false; milestoneUntil = 0; milestoneMessage = '';
+  void audio.unlock(); runId = `game015-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = false; milestoneUntil = hazardNoticeUntil = 0; milestoneMessage = hazardMessage = '';
   if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start(); audio.setPlaying(true);
 }
 function pause(): void {
@@ -84,4 +130,4 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && sta
 window.addEventListener('pagehide', e => { if (e.persisted) { if (state === 'playing') pause(); } else { quit(); audio.setPlaying(false); } }, { signal: abort.signal });
 telemetry.trackEvent('game_open'); screen('title');
 if (import.meta.env.DEV) (window as unknown as { __arcadeDebug: unknown }).__arcadeDebug = Object.freeze({ gameId: 'game015', snapshot: () => controller.snapshot(), inspection: () => controller.inspection(), state: () => state, telemetry: () => telemetry.getEvents() });
-if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; if (timer !== undefined) clearTimeout(timer); abort.abort(); controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });
+if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; if (timer !== undefined) clearTimeout(timer); abort.abort(); if (gestureCleanup !== undefined) clearTimeout(gestureCleanup); gestures.clear(); lastReleased = undefined; controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });

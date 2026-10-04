@@ -1,5 +1,5 @@
 import { FallRun } from './FallRun';
-import { drawBackdrop, drawBitmapText, drawKing, drawPlatform, PALETTE } from './art';
+import { drawBackdrop, drawBitmapText, drawKing, drawPlatform, drawSpikeFloor, drawWallNeedle, drawBird, PALETTE, KING_ANCHOR } from './art';
 import { WORLD_WIDTH, WORLD_HEIGHT, type FallController, type FallEvent, type FallHooks, type FallSnapshot, type HorizontalInput } from './types';
 import type { PracticeSnapshot } from '../../arcade/PracticeSession';
 
@@ -11,9 +11,18 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
   const shock = reduceMotion ? 0 : s.phase === 'stunned' ? Math.floor(seconds * 35) % 3 - 1 : s.phase === 'ended' && seconds < feedbackUntil ? Math.floor(seconds * 30) % 3 - 1 : 0;
   c.save(); c.translate(shock, 0);
   for (const p of s.platforms) { const y = Math.floor(p.y - s.cameraY); if (!p.gone && y > -16 && y < WORLD_HEIGHT) drawPlatform(c, { x: Math.round(p.x), y, width: Math.round(p.width), height: p.height, type: p.type, phase: p.crumbleAge === null ? 0 : Math.min(2, Math.floor(p.crumbleAge * 2.4)) }); }
+  for (const h of s.hazards) {
+    const y = Math.round(h.y - s.cameraY); if (y + h.height < 58 || y > WORLD_HEIGHT) continue;
+    if (h.kind === 'spikes') drawSpikeFloor(c, { x: h.x, y, width: h.width, height: h.height });
+    else if (h.kind === 'wall_needle') drawWallNeedle(c, { x: h.x, y, width: h.width, height: h.height, side: h.side < 0 ? 'left' : 'right', state: h.state === 'active' ? 'active' : h.state === 'warning' ? 'warning' : 'idle', reach: h.width, frame: Math.floor(s.time * 6) });
+    else {
+      drawBird(c, { x: h.x, y, width: h.width, height: h.height, frame: Math.floor(s.time * 8), facing: !h.amplitude || Math.cos(s.time * Math.PI * 2 / Math.max(.01, h.period) + h.phase) >= 0 ? 1 : -1 });
+      if (h.state === 'warning') { drawBitmapText(c, '!', Math.round(h.x + h.width / 2), y - 10, { color: PALETTE['7'], align: 'center' }); }
+    }
+  }
   const p = s.player;
   const state = !s.alive ? 'death' : seconds < dropUntil ? 'drop' : p.stunRemaining > 0 ? 'hard' : !p.grounded ? Math.abs(p.vx) > 12 ? p.vx < 0 ? 'left' : 'right' : 'falling' : s.lastLanding && seconds < feedbackUntil ? 'landing' : 'idle';
-  drawKing(c, Math.round(p.x) - 8, Math.round(p.y - s.cameraY) - 24, { state, frame: Math.floor(seconds * 8), facing: p.vx < 0 ? -1 : 1 });
+  drawKing(c, Math.round(p.x) - KING_ANCHOR.x, Math.round(p.y - s.cameraY) - KING_ANCHOR.y, { state, frame: Math.floor(seconds * 8), facing: p.vx < 0 ? -1 : 1 });
   if (p.grounded && s.lastLanding && seconds < feedbackUntil) { c.fillStyle = PALETTE['7']; for (let i = 0; i < 4; i++) c.fillRect(Math.round(p.x - 16 + i * 10), Math.round(p.y - s.cameraY) - (i % 2 ? 3 : 1), 3, 2); }
   c.restore();
   c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 51);
@@ -29,10 +38,10 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
 export function paintFallPractice(canvas: HTMLCanvasElement, snapshot: PracticeSnapshot): void {
   const s = snapshot.fall; if (!s) return; const c = canvas.getContext('2d')!; c.imageSmoothingEnabled = false;
   drawBackdrop(c, 'tower', { scrollY: 0 });
-  drawPlatform(c, { x: s.step === 1 ? 48 : 66, y: 100, width: s.step === 1 ? 88 : 124, type: 'normal' });
+  drawPlatform(c, { x: s.step === 1 ? 48 : 66, y: 112, width: s.step === 1 ? 88 : 124, type: 'normal' });
   drawPlatform(c, { ...s.target, type: 'normal' });
   c.save(); c.globalAlpha = s.ghost ? .6 : 1;
-  drawKing(c, Math.round(s.x) - 8, Math.round(s.y) - 24, { state: s.phase === 'splat' ? 'death' : s.grounded ? 'idle' : s.vx > 5 ? 'right' : s.vx < -5 ? 'left' : 'falling', frame: Math.floor(snapshot.elapsed * 8) }); c.restore();
+  drawKing(c, Math.round(s.x) - KING_ANCHOR.x, Math.round(s.y) - KING_ANCHOR.y, { state: s.phase === 'splat' ? 'death' : s.grounded ? 'idle' : s.vx > 5 ? 'right' : s.vx < -5 ? 'left' : 'falling', frame: Math.floor(snapshot.elapsed * 8) }); c.restore();
   c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 63);
   drawBitmapText(c, `PRACTICE ${Math.min(4, s.step + 1)}/4`, 14, 12, { color: PALETTE['5'], scale: 2 });
   const distanceColor = s.fallDistance >= 9 ? PALETTE.b : PALETTE.f;
@@ -47,6 +56,7 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
   const abort = new AbortController(), options = { signal: abort.signal }; let active = false, paused = false, frame = 0, previous = performance.now(), clock = 0, ended = false;
   let feedback = '', feedbackUntil = 0, dropUntil = 0, preview = true; const keys = new Map<string, HorizontalInput>(); const pointers = new Map<number, HorizontalInput>();
   const run = new FallRun((event: FallEvent) => {
+    if (event.type === 'end') { feedback = event.result.outcome === 'impact' ? 'SPLAT!' : event.result.outcome === 'spike' ? 'SPIKES!' : event.result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'; feedbackUntil = clock + .65; }
     if (event.type === 'drop') dropUntil = clock + .15;
     if (event.type === 'landing') { feedback = event.landing.kind === 'fatal' ? 'SPLAT!' : event.landing.nice ? 'NICE DROP!' : event.landing.kind === 'hard' ? 'HARD LANDING' : 'LANDED'; feedbackUntil = clock + .65; }
     if (event.type === 'milestone') { feedback = '1000M! STILL NO BOTTOM'; feedbackUntil = clock + 2; }

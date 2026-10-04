@@ -1,0 +1,115 @@
+{
+  "audit": "Game015 revision-01 source pixel module audit",
+  "at": "2026-10-04T22:33:38.633Z",
+  "source": {
+    "path": "src/games/game015/art.ts",
+    "sha256": "fdbdf5bd2b7c76082a61e9f137084587c41fc4ffc22d5b23cad9aa0cc67e1bb8",
+    "bytes": 30829
+  },
+  "native": [
+    256,
+    448
+  ],
+  "king": {
+    "render": [
+      24,
+      36
+    ],
+    "anchor": {
+      "x": 12,
+      "y": 36
+    },
+    "states": {
+      "idle": {
+        "frames": 2,
+        "width": 24,
+        "height": 36
+      },
+      "drop": {
+        "frames": 2,
+        "width": 24,
+        "height": 36
+      },
+      "falling": {
+        "frames": 4,
+        "width": 24,
+        "height": 36
+      },
+      "left": {
+        "frames": 2,
+        "width": 24,
+        "height": 36
+      },
+      "right": {
+        "frames": 2,
+        "width": 24,
+        "height": 36
+      },
+      "landing": {
+        "frames": 3,
+        "width": 24,
+        "height": 36
+      },
+      "hard": {
+        "frames": 3,
+        "width": 24,
+        "height": 36
+      },
+      "death": {
+        "frames": 4,
+        "width": 24,
+        "height": 36
+      }
+    },
+    "wallCentersTested": [
+      12,
+      244
+    ],
+    "wallOrFootBoundFailures": []
+  },
+  "bird": {
+    "sourceFrames": 3,
+    "sourceDimensions": [
+      24,
+      16
+    ],
+    "renderEnvelopeTested": [
+      18,
+      10
+    ],
+    "bothFacings": true,
+    "boundFailures": []
+  },
+  "hazardShapes": {
+    "spikes": [
+      70,
+      8
+    ],
+    "needle": [
+      18,
+      40
+    ],
+    "needleStates": [
+      "idle",
+      "warning",
+      "active"
+    ],
+    "needleSides": [
+      "left",
+      "right"
+    ],
+    "permanentSocket": true
+  },
+  "drawAudit": {
+    "recordedRectangles": 5851,
+    "nonIntegerRectangles": 0,
+    "colorsOutside16Palette": 0
+  },
+  "pass": true,
+  "limits": [
+    "Source module imported and draw routines executed against an integer-rectangle recording context.",
+    "Wall sockets and warning marks are decorative telegraphs outside the active collider. Spike and active needle clipping is performed by the browser Canvas clip API.",
+    "No browser, screenshots, live collision, touch, viewport or gameplay fairness claim is made by this audit.",
+    "Gameplay hazard integration and independent browser review are pending."
+  ]
+}

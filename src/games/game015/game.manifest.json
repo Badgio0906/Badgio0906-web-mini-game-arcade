@@ -22,7 +22,8 @@
   "skill_axes": [
     "spatial-estimation",
     "momentum-control",
-    "risk-management"
+    "risk-management",
+    "drop-timing"
   ],
   "escalation_mechanic": "endless-depth",
   "score_type": "depth-meters",
@@ -53,10 +54,26 @@
     "moving"
   ],
   "milestone_meters": 1000,
-  "generation": "authored patterns with physically tested safe routes and periodic full-width hard catch ledges",
+  "generation": "authored safe landing bays with early paired spike floors; no full-width safe catches",
   "expected_run_seconds": {
     "beginner": 60,
     "experienced": 180
   },
-  "duration_note": "Design hypothesis only; human run-duration observations pending. Endless play has no time limit."
+  "duration_note": "Design hypothesis only; human run-duration observations pending. Endless play has no time limit.",
+  "character_dimensions": {
+    "sprite": [
+      24,
+      36
+    ],
+    "collision": [
+      18,
+      33
+    ],
+    "scale_from_initial": 1.5
+  },
+  "hazards": [
+    "spiked-floor",
+    "telegraphed-proximity-wall-needle",
+    "oscillating-bird"
+  ]
 }

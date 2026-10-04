@@ -44,7 +44,7 @@ npm run preview
 
 011は画像10問、文章10問、選んだ言葉を答え続けるFinalです。通算1〜20問は2秒・100点、21〜50問は1.5秒・200点、51問以降は0.5秒・500点。文章を読む時間・Finalの選択時間は無制限です。左右配置は毎問独立してランダム、画像・文章は各20問から重複なしで10問です。得点基準変更前のBESTは別記録として保持します。
 
-015は連続落下距離による着地衝撃と空中の慣性を扱う、無限下降のピクセルアートアクションです。独立Game FeelはPASS、Visualは84点、175単体テスト・ビルド・実入力6ケース・公開用表示10ケース・共有経路26件の配信確認が成功しました。[015実装・検証報告](docs/game015/IMPLEMENTATION_REPORT.md)に記録しています。[仕様](docs/game015/IMPLEMENTATION_SPEC.md)と[人間プレイテスト](docs/game015/HUMAN_PLAYTEST.md)を参照してください。
+015は連続落下距離による着地衝撃と空中の慣性を扱う、無限下降のピクセルアートアクションです。キャラ1.5倍・早期のトゲ床・予兆のある壁の針・揺れる鳥の追加は[改訂01](docs/game015/revision-01/IMPLEMENTATION_REPORT.md)に記録しています。改訂01は181単体テスト・ビルド・独立Game Feel・実入力8ケース・公開用ビルド4ケースが成功しました。初版のVisual84点などの結果は初版報告に保持しています。[015実装・検証報告](docs/game015/IMPLEMENTATION_REPORT.md)に記録しています。[仕様](docs/game015/IMPLEMENTATION_SPEC.md)と[人間プレイテスト](docs/game015/HUMAN_PLAYTEST.md)を参照してください。
 
 ## GitHub Pagesへの公開
 

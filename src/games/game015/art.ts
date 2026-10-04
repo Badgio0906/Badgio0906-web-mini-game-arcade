@@ -2,9 +2,9 @@
 export const NATIVE_WIDTH = 256;
 export const NATIVE_HEIGHT = 448;
 export const TILE_SIZE = 16;
-export const KING_WIDTH = 16;
-export const KING_HEIGHT = 24;
-export const KING_ANCHOR = { x: 8, y: 24 } as const;
+export const KING_WIDTH = 24;
+export const KING_HEIGHT = 36;
+export const KING_ANCHOR = { x: 12, y: 36 } as const;
 
 /** One transparent token plus sixteen deliberately limited opaque colors. */
 export const PALETTE = {
@@ -88,7 +88,7 @@ const DEATH = grid([
 ].map(row => row.padEnd(16, '.')), 16, 24);
 
 /** Every variant is a deliberate row edit; integer-frame animation only. */
-export const KING_FRAMES: Readonly<Record<KingState, readonly Pixels[]>> = {
+const KING_SOURCE_FRAMES: Readonly<Record<KingState, readonly Pixels[]>> = {
   idle: [IDLE, variant(IDLE, { 7: '....065555560...', 14: '...06699996bc0..', 15: '....0a9999cc0...' })],
   drop: [DROP, variant(DROP, { 18: '...066aaaa660...', 19: '....06000060....', 20: '...0660..0660...', 21: '...0880..0880...', 22: '...0000..0000...' })],
   falling: [FALL, variant(FALL, { 10: '.060..60006.060.', 11: '..060b9999b060..', 12: '...0bb9999bb0...', 18: '.....060060.....', 19: '....06600660....', 20: '....08800880....', 21: '....00000000....' }), FALL, variant(FALL, { 12: '..0bbb9999bbb0..', 13: '...0bc9999cb0...', 19: '..0660....0660..', 20: '..0880....0880..', 21: '..0000....0000..' })],
@@ -98,6 +98,10 @@ export const KING_FRAMES: Readonly<Record<KingState, readonly Pixels[]>> = {
   hard: [HARD, variant(HARD, { 13: '...065555560....', 17: '...0bb9999bb0...', 18: '..06669999b660..' }), HARD],
   death: [LAND, HARD, DEATH, variant(DEATH, { 7: '..7.........7...', 8: '.777.......777..', 9: '..7.........7...', 10: '.....7..7..7....', 11: '.....8777778....', 20: '..06655055660...' })],
 };
+
+/** Explicit nearest 3:2 mapping produces only whole native pixels, never an antialiased transform. */
+function enlargedKingFrames(state: KingState): readonly Pixels[] { return KING_SOURCE_FRAMES[state].map(frame => grid(Array.from({ length: KING_HEIGHT }, (_, row) => Array.from({ length: KING_WIDTH }, (_, col) => frame[Math.floor(row / 1.5)][Math.floor(col / 1.5)]).join('')), KING_WIDTH, KING_HEIGHT)); }
+export const KING_FRAMES: Readonly<Record<KingState, readonly Pixels[]>> = { idle: enlargedKingFrames('idle'), drop: enlargedKingFrames('drop'), falling: enlargedKingFrames('falling'), left: enlargedKingFrames('left'), right: enlargedKingFrames('right'), landing: enlargedKingFrames('landing'), hard: enlargedKingFrames('hard'), death: enlargedKingFrames('death') };
 
 const TILES = {
   brick: [
@@ -316,4 +320,78 @@ export function drawBitmapText(ctx: CanvasRenderingContext2D, text: string, x: n
     px+=6*scale;
   }
   ctx.restore();
+}
+
+/** Floor teeth are contained by the model's actual hazardous rectangle. */
+export function drawSpikeFloor(ctx: CanvasRenderingContext2D, options: { x: number; y: number; width: number; height: number }): void {
+  const x = Math.round(options.x), y = Math.round(options.y), width = Math.max(1, Math.round(options.width)), height = Math.max(1, Math.round(options.height));
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, width, height); ctx.clip();
+  ctx.fillStyle = PALETTE['0']; ctx.fillRect(x, y + height - 3, width, 3);
+  ctx.fillStyle = PALETTE.b; ctx.fillRect(x, y + height - 2, width, 2);
+  const tooth = 10;
+  for (let dx = 0; dx < width; dx += tooth) {
+    for (let row = 0; row < height - 2; row++) {
+      const half = Math.min(4, Math.floor(row * 5 / Math.max(1, height - 2)));
+      ctx.fillStyle = PALETTE['0']; ctx.fillRect(x + dx + 4 - half, y + row, half * 2 + 3, 1);
+      ctx.fillStyle = row < 2 ? PALETTE['5'] : PALETTE.b; ctx.fillRect(x + dx + 5 - half, y + row, half * 2 + 1, 1);
+    }
+  }
+  ctx.restore();
+}
+
+/** A permanently visible socket precedes the model's warning and active needle. */
+export function drawWallNeedle(ctx: CanvasRenderingContext2D, options: { x: number; y: number; width: number; height: number; side: 'left' | 'right'; state: 'idle' | 'warning' | 'active'; reach: number; frame?: number }): void {
+  const x = Math.round(options.x), y = Math.round(options.y), width = Math.round(options.width), height = Math.round(options.height), left = options.side === 'left';
+  const socketX = left ? 0 : NATIVE_WIDTH - 8;
+  ctx.fillStyle = PALETTE['0']; ctx.fillRect(socketX, y - 3, 8, height + 6);
+  ctx.fillStyle = PALETTE['3']; ctx.fillRect(socketX + 1, y - 2, 6, height + 4);
+  ctx.fillStyle = PALETTE['0']; ctx.fillRect(socketX + 2, y, 4, height);
+  const warning = options.state === 'warning';
+  ctx.fillStyle = warning ? (Math.floor(options.frame ?? 0) % 2 ? PALETTE['5'] : PALETTE['7']) : options.state === 'active' ? PALETTE.b : PALETTE['4'];
+  ctx.fillRect(socketX + 2, y - 2, 4, 2); ctx.fillRect(socketX + 2, y + height, 4, 2);
+  if (warning) {
+    const mid = y + Math.floor(height / 2);
+    ctx.fillStyle = PALETTE['7'];
+    for (let d = 10; d < options.reach; d += 6) ctx.fillRect(left ? d : NATIVE_WIDTH - d - 3, mid, 3, 1);
+    // An angular caution marker stays beside the socket, away from the king's safe bay.
+    ctx.fillRect(left ? 10 : NATIVE_WIDTH - 12, y - 7, 2, 3);
+    ctx.fillRect(left ? 10 : NATIVE_WIDTH - 12, y - 3, 2, 1);
+  }
+  if (options.state !== 'active' || width <= 0) return;
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, width, height); ctx.clip();
+  // Four outward-facing teeth fill the tall collision envelope; no hidden empty shaft.
+  const count = Math.max(1, Math.round(height / 11)), toothHeight = Math.floor(height / count);
+  for (let i = 0; i < count; i++) {
+    const mid = y + i * toothHeight + Math.floor(toothHeight / 2);
+    for (let distance = 0; distance < width; distance++) {
+      const half = Math.max(0, Math.floor((1 - distance / Math.max(1, width - 1)) * toothHeight / 2));
+      const column = left ? x + distance : x + width - distance - 1;
+      ctx.fillStyle = PALETTE['0']; ctx.fillRect(column, mid - half, 1, half * 2 + 1);
+      ctx.fillStyle = PALETTE.b; if (half) ctx.fillRect(column, mid - half + 1, 1, half * 2 - 1);
+      ctx.fillStyle = PALETTE['5']; ctx.fillRect(column, mid - half, 1, 1);
+    }
+  }
+  ctx.restore();
+}
+
+const BIRD_BASE = grid([
+  '........................', '........................', '.....0............0.....', '....0b0..........0b0....',
+  '...0bb0..........0bb0...', '..0bbb0..........0bbb0..', '.0bbbb00........00bbbb0.', '..0bbbb0000000000bbbb0..',
+  '...0bbbbbbbbbb5bbbbbb0..', '....0bbbbbbbbb05bbb0....', '.....0bbbbbbbbb7770.....', '......0bbbbbbbb770......',
+  '.......0000000000.......', '.........0....0.........', '..........0..0..........', '........................',
+], 24, 16);
+export const BIRD_FRAMES: readonly Pixels[] = [BIRD_BASE,
+  variant(BIRD_BASE, { 2: '........................', 3: '........................', 4: '........................', 5: '........................', 6: '........................', 7: '...000000000000000000...', 8: '..0bbbbbbbbbbb5bbbbbb0..', 9: '.0bbbbbbbbbbbb05bbbbbb0.', 10: '..0bbbbbbbbbbbb777bbb0..', 11: '...000bbbbbbbbb770000...', 12: '......00000000000.......' }),
+  variant(BIRD_BASE, { 2: '........................', 3: '........................', 4: '........................', 5: '........................', 6: '........................', 7: '.....00000000000000.....', 8: '....0bbbbbbbbb5bbbb0....', 9: '...0bbbbbbbbbb05bbbb0...', 10: '..0bbbbbbbbbbbb777bbb0..', 11: '.0bbbb0bbbbbbbb770bbbb0.', 12: '..0bbb0000000000bbb0....', 13: '...0bb0..0....0..0bb0...', 14: '....0b0...0..0...0b0....', 15: '.....0............0.....' }),
+];
+const birdPixels = new Map<string, Pixels>();
+export function drawBird(ctx: CanvasRenderingContext2D, options: { x: number; y: number; width: number; height: number; frame: number; facing: -1 | 1 }): void {
+  const source = BIRD_FRAMES[Math.floor(options.frame) % BIRD_FRAMES.length];
+  const frame = options.facing === -1 ? mirror(source) : source;
+  const width = Math.max(1, Math.round(options.width)), height = Math.max(1, Math.round(options.height));
+  // Authored pixels are nearest-mapped into the exact model envelope, not rotated or stretched with smoothing.
+  const key = `${width}/${height}/${Math.floor(options.frame) % BIRD_FRAMES.length}/${options.facing}`;
+  let pixels = birdPixels.get(key);
+  if (!pixels) { pixels = grid(Array.from({ length: height }, (_, row) => Array.from({ length: width }, (_, col) => frame[Math.floor(row * 16 / height)][Math.floor(col * 24 / width)]).join('')), width, height); birdPixels.set(key, pixels); }
+  paint(ctx, pixels, options.x, options.y);
 }

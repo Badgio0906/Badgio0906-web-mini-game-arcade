@@ -1,8 +1,8 @@
-import { AIR_ACCELERATION, AIR_DRAG, GRAVITY, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_WIDTH, SAFE_FALL_METERS, TERMINAL_VELOCITY, WORLD_WIDTH } from './types';
-import type { FallPlatform, PlatformSeed } from './types';
+import { AIR_ACCELERATION, AIR_DRAG, GRAVITY, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_HEIGHT, PLAYER_WIDTH, SAFE_FALL_METERS, TERMINAL_VELOCITY, WORLD_WIDTH } from './types';
+import type { FallHazard, FallPlatform, HazardSeed, PlatformSeed } from './types';
 
 export interface GenerationCursor { y: number; center: number; nextId: number; chunks: number }
-export interface GeneratedChunk { platforms: FallPlatform[]; cursor: GenerationCursor }
+export interface GeneratedChunk { platforms: FallPlatform[]; hazards: FallHazard[]; cursor: GenerationCursor }
 export const START_Y = 112;
 export const INITIAL_PLATFORM: PlatformSeed = Object.freeze({ x: 48, y: START_Y, width: 160, type: 'normal', route: true, pattern: 'start' });
 export const AUTHORED_PATTERNS = Object.freeze([
@@ -20,6 +20,14 @@ export function platformFromSeed(seed: PlatformSeed, id: number): FallPlatform {
 }
 export function platformX(platform: FallPlatform, time: number): number {
   return platform.originX + (platform.type === 'moving' ? platform.amplitude * Math.sin(time * Math.PI * 2 / platform.period + platform.phase) : 0);
+}
+export function hazardFromSeed(seed: HazardSeed, id: string, anchorPlatformId: number | null = null): FallHazard {
+  return { ...seed, id, originX: seed.x, side: seed.side ?? 0, amplitude: seed.amplitude ?? 0,
+    period: seed.period ?? 6, phase: seed.phase ?? 0, state: seed.kind === 'spikes' ? 'active' : seed.kind === 'bird' ? 'warning' : 'idle',
+    age: seed.kind === 'bird' ? -1 : 0, warningRemaining: seed.kind === 'bird' ? 1 : 0, anchorPlatformId };
+}
+export function hazardX(hazard: FallHazard, time: number): number {
+  return hazard.originX + (hazard.kind === 'bird' ? hazard.amplitude * Math.sin(time * Math.PI * 2 / hazard.period + hazard.phase) : 0);
 }
 /** Continuous gravity flight time from rest, including the bounded vertical speed. */
 export function flightTime(distancePixels: number): number {
@@ -46,32 +54,43 @@ export function safeLinkIssues(previous: FallPlatform, next: FallPlatform): stri
   return issues;
 }
 
-/** Only choose an authored shape; no random coordinates. Every fourth row is a real full-width hard catch. */
+/** Only choose an authored shape; no random coordinates. Paired spike floors leave honest full-body landing bays; no full-width safe catch. */
 export function generateChunk(cursor: GenerationCursor, random: () => number): GeneratedChunk {
   const depth = (cursor.y - START_Y) / PIXELS_PER_METER;
   const choice = Math.min(AUTHORED_PATTERNS.length - 1, Math.max(0, Math.floor(random() * AUTHORED_PATTERNS.length)));
+  const intro = cursor.chunks === 0;
   const earlyBend = cursor.chunks === 1;
   const pattern = earlyBend ? { id: 'early-bend', offsets: [0, 0, 0, 0], gaps: [4.4, 4.4, 4.2, 4.2] } : depth < 20 ? AUTHORED_PATTERNS[0] : AUTHORED_PATTERNS[choice];
-  const width = earlyBend ? 104 : depth < 100 ? 120 : depth < 300 ? 92 : depth < 600 ? 76 : depth < 1000 ? 64 : 56;
+  const width = intro || earlyBend ? 104 : depth < 100 ? 120 : depth < 300 ? 92 : depth < 600 ? 76 : depth < 1000 ? 64 : 56;
   const step = depth < 100 ? 16 : depth < 300 ? 32 : 40;
   let y = cursor.y, center = cursor.center, nextId = cursor.nextId;
-  const platforms: FallPlatform[] = [];
+  const platforms: FallPlatform[] = [], hazards: FallHazard[] = [];
+  const fromY = cursor.y;
   for (let i = 0; i < 4; i++) {
     y += pattern.gaps[i] * PIXELS_PER_METER;
-    const catchRow = i === 3;
-    const moving = !catchRow && depth >= 600 && i === 1 && pattern.id === 'stairs';
+    const bayRow = i === 3;
+    const moving = !bayRow && depth >= 600 && i === 1 && pattern.id === 'stairs';
     const amplitude = moving ? 8 : 0;
-    const proposed = earlyBend ? [96, 188, 156, 128][i] : center + pattern.offsets[i] * step;
-    center = catchRow ? WORLD_WIDTH / 2 : Math.max(width / 2 + amplitude + 8, Math.min(WORLD_WIDTH - width / 2 - amplitude - 8, proposed));
-    const type = catchRow ? 'normal' : moving ? 'moving' : depth >= 300 && i === 2 && pattern.id === 'zigzag' ? 'crumble' : 'normal';
-    platforms.push(platformFromSeed({ x: catchRow ? 0 : center - width / 2, y, width: catchRow ? WORLD_WIDTH : width,
+    const proposed = intro ? [128, 104, 164, 176][i] : earlyBend ? [96, 188, 156, 128][i] : center + pattern.offsets[i] * step;
+    center = Math.max(width / 2 + amplitude + 8, Math.min(WORLD_WIDTH - width / 2 - amplitude - 8, proposed));
+    const type = bayRow ? 'normal' : moving ? 'moving' : depth >= 100 && i === 2 && pattern.id === 'soft-route' ? 'soft' : depth >= 300 && i === 2 && pattern.id === 'zigzag' ? 'crumble' : 'normal';
+    platforms.push(platformFromSeed({ x: center - width / 2, y, width,
       type, route: true, pattern: pattern.id, amplitude, period: 8, phase: nextId * 0.7 }, nextId++));
   }
-  if (depth >= 100 && pattern.id === 'soft-route') {
-    const beside = platforms[2], softWidth = 48;
-    const softX = beside.originX + beside.width / 2 >= WORLD_WIDTH / 2 ? 8 : WORLD_WIDTH - softWidth - 8;
-    if (softX + softWidth + 8 <= beside.originX || softX >= beside.originX + beside.width + 8)
-      platforms.push(platformFromSeed({ x: softX, y: beside.y, width: softWidth, type: 'soft', route: false, pattern: 'soft-long-drop' }, nextId++));
+  for (let i = 0; i < platforms.length; i++) {
+    const p = platforms[i];
+    const paired = i === 3 || (pattern.id === 'soft-route' ? i === 2 : i === 1 && p.type !== 'moving');
+    if (paired) {
+      hazards.push(hazardFromSeed({ kind: 'spikes', x: 0, y: p.y - 8, width: p.x, height: 8, side: -1 }, `spike-${p.id}-L`, p.id));
+      hazards.push(hazardFromSeed({ kind: 'spikes', x: p.x + p.width, y: p.y - 8, width: WORLD_WIDTH - p.x - p.width, height: 8, side: 1 }, `spike-${p.id}-R`, p.id));
+    }
+    for (const side of [-1, 1] as const) hazards.push(hazardFromSeed({ kind: 'wall_needle', x: side === -1 ? 0 : WORLD_WIDTH - 18,
+      y: p.y - 36, width: 18, height: 44, side }, `needle-${p.id}-${side}`, p.id));
   }
-  return { platforms, cursor: { y, center, nextId, chunks: cursor.chunks + 1 } };
+  if (!intro) {
+    const first = platforms[0], gap = first.y - fromY;
+    hazards.push(hazardFromSeed({ kind: 'bird', x: (WORLD_WIDTH - 18) / 2, y: fromY + (gap - PLAYER_HEIGHT - 10) / 2,
+      width: 18, height: 10, amplitude: 88, period: 6, phase: cursor.chunks * 0.9 }, `bird-${first.id}`, first.id));
+  }
+  return { platforms, hazards, cursor: { y, center, nextId, chunks: cursor.chunks + 1 } };
 }
