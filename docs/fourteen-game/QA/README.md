@@ -61,3 +61,9 @@ QAの第2対象再実行後、Rootが同じ4件を重複実行し、立花PC/タ
 新14本版の[素材監査](ASSET_AUDIT.json)は92 WebP、[ゲームモデル保護](GAMEPLAY_AUDIT.json)は19ファイル一致です。11本版の元監査は履歴として保持しています。
 
 Root実行の[現行11本＋ポータルのroot/subpath配信監査](MODERN_ROOT_SUBPATH_AUDIT.json)は24 fresh contexts成功。HTTP/画像/ローカルフォント、prod診断フックなし、保存CREDIT0で起動・ポーズ・再読み込み・14カードへの復帰を確認。既存のJS容量上限を維持しています。[実行ログ](MODERN_ROOT_SUBPATH.log)。
+
+## 実際のGitHub Pages公開版
+
+公開コミット`f71297794a5618c27134c972c86f4a51ea1dad6b`、[CI run37210140560](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)はnpm ci/test/build/deploy成功。公開先でも移行3ゲームの通常PC入力・得点/失敗/リトライ・再読み込み・14カードへの復帰3件と、実際のWASM/PCK/audio配信3件の計6件が成功（3.4分）。[生ログとJSON/画面](LIVE/)。続けて[現行11本＋ポータル12 fresh contexts](MODERN_LIVE_AUDIT.json)も成功し、HTTP/runtimeエラー0、production診断フックなし、相対経路・画像・フォント・CREDIT0の操作を確認しました。
+
+旧3サイトの停止は権限403で未完了です。接続APIとrepo GitHub Actions/pages:writeの両方で拒否され、管理者のPages設定操作が必要です。[公開停止監査](../../migration/PAGES_RETIREMENT_AUDIT.json)。川俣さんの元コミットとPages設定は保持しています。

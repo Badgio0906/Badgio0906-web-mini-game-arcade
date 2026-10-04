@@ -42,4 +42,4 @@
 
 旧3サイトの停止は、ゲームセンターの新公開版で3ゲームの起動・操作・再読み込み・一覧への戻りを確認した後に実行します。GitHubリポジトリの削除は行いません。川俣さんの公開設定とソースは保持します。
 
-公開・旧サイト停止の結果は実行後の監査に追記します。
+14本版は[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)へ公開済みです。[公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)成功後、公開先の移行3作品6ケースと001〜011＋一覧12 fresh contextsが成功しました。旧3サイトの削除はAPIとrepository GitHub Actionsの双方で403になり未完了です。管理者によるPages設定の「Unpublish site」が必要です。一時retirement workflowは除去し、既存のタスク天国・指ハート配信workflowは無効化。川俣さんの元コミットとPages設定は維持しています。[監査](PAGES_RETIREMENT_AUDIT.json)。

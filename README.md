@@ -47,7 +47,7 @@ npm run preview
 
 公開中の試作版：**[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)**。
 
-[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37205351046)で`npm ci`、153単体テスト、ビルド、Pagesへの公開が成功しました。公開URLでも一覧＋11ゲームの12ページを直接開き、画像・フォント・保存CREDIT0からのPLAY・ポーズ・再読み込み・一覧への戻りを確認済みです。[実配信監査](docs/eleven-game/QA/GITHUB_PUBLICATION_AUDIT.json)と[12ページの実測](docs/eleven-game/QA/GITHUB_PAGES_REMOTE_AUDIT.json)へ記録しています。
+[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)で`npm ci`、155単体テスト、ビルド、Pages公開が成功しました。公開先で旧3作品の6件の実入力・配信検証と、ポータル＋001〜011の12ページ検証が成功しています。[14本版のQA](docs/fourteen-game/QA/README.md)、[今回の変更](docs/migration/IMPLEMENTATION_REPORT.md)を参照してください。
 
 更新する場合：
 
@@ -101,3 +101,11 @@ Chromiumが未導入なら`npx playwright install chromium`。この環境では
 - `docs/migration/`：回答時間・得点改修、既存3ゲーム統合と旧サイト停止の記録。
 
 既存10本の純粋ゲームモデルを維持し、007/008の情報表示、010の実画像前景を改善しました。汎用ゲームSDKや同じ結果UIへの統一はしていません。共通化する範囲は[次期仕様草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)とゲーム別LESSONSで検討します。
+
+## 旧3サイトの公開停止
+
+3ゲームの移行・公開・実配信での操作確認は完了しました。元リポジトリは保持しています。旧GitHub Pages削除は接続APIとGitHub Actionsの両方で403となり、管理者による「Unpublish site」が必要です。自動停止用に追加した一時workflowは削除し、タスク天国と指ハートの旧配信workflowは無効化しました。川俣さんのゲームと公開設定は未変更です。[実行監査](docs/migration/PAGES_RETIREMENT_AUDIT.json)。
+
+- [横取りデイズのPages設定](https://github.com/Badgio0906/yokodori-days/settings/pages)
+- [タスク天国のPages設定](https://github.com/Badgio0906/tachibana-task-heaven/settings/pages)
+- [指ハートのPages設定](https://github.com/Badgio0906/finger-heart-challenge/settings/pages)
