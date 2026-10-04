@@ -1,0 +1,59 @@
+{
+  "status": "INDEPENDENT_GAME_FEEL_PASS",
+  "candidateSha256": "230dfbf61da2165cd400675badd00e27fe94bc5b5d3df15ffa60fe9007a90980",
+  "reviewerImplementedRuntime": false,
+  "exclusiveBrowsersClosed": true,
+  "humanPlaytest": "PENDING_A_TO_I",
+  "readOnlyOracleForDeepRoute": true,
+  "noStateTimeScoreInjection": true,
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "practiceSeconds": 8.527699999997028,
+    "live1000": {
+      "depth": 1000.0617389593746,
+      "gameSeconds": 266.4936999999709,
+      "state": "playing"
+    },
+    "continuation": {
+      "depth": 1010.43194835,
+      "gameSeconds": 268.94359999996715,
+      "state": "playing",
+      "segmentWallMs": 261336
+    },
+    "terminal": {
+      "depth": 1036.1999999999998,
+      "fallDistance": 16.5
+    },
+    "retryWallMs": 47,
+    "pageErrors": []
+  },
+  "phone": {
+    "viewport": [
+      390,
+      844
+    ],
+    "practiceSeconds": 8.661999999997054,
+    "correctedNativeTwoTouchProof": "mobile-CORRECTED_POINTER_DIAGNOSTIC.json",
+    "originalHarnessFailureRetained": "mobile-INITIAL_PRACTICE_TIMEOUT.json",
+    "terminal": {
+      "depth": 49.600000000000016,
+      "fallDistance": 16.80000000000001
+    },
+    "retryWallMs": 62,
+    "pageErrors": []
+  },
+  "artAcceptance": "SEPARATE_ART_DIRECTOR_GATE",
+  "finalQAAcceptance": "SEPARATE_QA_GATE",
+  "actualCanvas": "../QA/game015-actual-fall.png",
+  "limits": [
+    "No human fun/novice-difficulty/ad-desire validation",
+    "No physical handset timing/audio validation",
+    "No independent actual soft landing branch",
+    "No independent reload BEST-value assertion",
+    "Other viewport/production regression assigned QA",
+    "Thumbnail integration deliberately pending during review"
+  ]
+}

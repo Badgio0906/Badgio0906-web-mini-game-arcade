@@ -3,7 +3,7 @@ import { PracticeSession, type PracticeAction, type PracticeSnapshot } from './P
 import type { StorageService } from '../core/StorageService';
 import type { TelemetryService } from '../core/TelemetryService';
 import { arcadeConfig } from './config';
-interface Options { gameId: string; storage: StorageService; telemetry: TelemetryService; }
+interface Options { gameId: string; storage: StorageService; telemetry: TelemetryService; practicePaint?: (canvas: HTMLCanvasElement, snapshot: PracticeSnapshot) => void; }
 const lessons: Record<string, [string, string, string]> = {
   game001: ['タップで軌道をズラせ！', '赤い障害を避けて、長く回り続けよう。Space・Enter・タップで内側と外側を切り替えます。', '赤い障害は内側。タイミングを見て、外側へ。'],
   game002: ['前を見て、左右へひょいっ。', '前から来る人を避けて進もう。← → / A D、画面の左・右をタップすると1レーン動きます。', '真ん中に人が来ます。左右へ動いて、2人かわそう。'],
@@ -15,13 +15,14 @@ const lessons: Record<string, [string, string, string]> = {
   game008: ['水面を見て、小さく補正。', 'コーヒーをこぼさず運ぼう。左へ傾いたら右、右へ傾いたら左。← → / A D / 左右ボタンを短く押す・離す。', '左の水面が高くなっています。右→で中央へ戻そう。'],
   game009: ['探している印鑑を、見つけよう。', '依頼の色と形を見て、机の中から選ぼう。PCはクリック、スマホはタップ。今回は赤い印鑑だけ探します。', '探すもの：赤い印鑑。机の物を見比べて選ぼう。'],
   game010: ['聞くふりをして、こっそり内職。', 'Space・タップでLISTENとSIDE WORKを切り替えます。内職中は得点。上司が質問しそうなら、聞く姿勢へ戻ろう。', '内職を始めよう。「ところで…」が聞こえたらLISTENへ。'],
+  game015: ['上を目指すな。うまく落ちろ。', 'DROPで足場を通り抜け、下へ降りよう。← → / A Dで空中移動、↓ / S / SpaceでDROP。長く落ちすぎると、着地衝撃に耐えられません。', '1 / 4 · DROPして、下の大きな足場へ。'],
   game011: ['ウンコ？ ウコン？ 文字を見て選ぼう。', '画像を見て、同じ名前のボタンを選びます。← → / A D または左右のボタン。ボタンの位置は毎回変わります。', '時間制限なしの練習。これはどちら？'],
 };
 const asset = (path: string): string => `${import.meta.env.BASE_URL}assets/${path}`;
 const imageCache = new Map<string, HTMLImageElement>();
 function image(path: string): HTMLImageElement { let i = imageCache.get(path); if (!i) { i = new Image(); i.src = asset(path); imageCache.set(path, i); } return i; }
 
-export function createOnboarding({ gameId, storage, telemetry }: Options): { intercept: (start: () => void) => boolean; practiceAgain: () => void; destroy: () => void } {
+export function createOnboarding({ gameId, storage, telemetry, practicePaint }: Options): { intercept: (start: () => void) => boolean; practiceAgain: () => void; destroy: () => void } {
   const listeners = new AbortController(); const options = { signal: listeners.signal };
   const dialog = document.createElement('dialog'); dialog.id = 'arcade-training'; dialog.dataset.game = gameId;
   dialog.setAttribute('aria-labelledby', 'tutorial-heading'); document.body.append(dialog);
@@ -30,9 +31,13 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
   let callback: (() => void) | undefined; let session: PracticeSession | undefined;
   let frame = 0, previous = 0, reportedStep = 0, active = false;
   let returnFocus: HTMLElement | null = null;
+  const fallPointers = new Map<number, -1 | 1>(); const fallKeys = new Map<string, -1 | 1>();
+  const fallInput = (): void => { const directions = [...fallPointers.values(), ...fallKeys.values()]; session?.setInput(directions.includes(-1) === directions.includes(1) ? 0 : directions.includes(1) ? 1 : -1); };
+  const clearFallInput = (): void => { fallPointers.clear(); fallKeys.clear(); session?.setInput(0); };
+  let fallStep = -1;
   const english = (): boolean => gameId === 'game005' && document.documentElement.lang === 'en';
   const labels = (ja: string, en: string): string => english() ? en : ja;
-  const close = (): void => { active = false; cancelAnimationFrame(frame); session?.setInput(0); dialog.close(); callback = undefined; returnFocus?.focus({ preventScroll: true }); };
+  const close = (): void => { active = false; cancelAnimationFrame(frame); session?.setInput(0); clearFallInput(); dialog.close(); callback = undefined; returnFocus?.focus({ preventScroll: true }); };
   const head = (): string => `<div class="training-head"><span>${labels('操作練習', 'PRACTICE')} / ${gameId.slice(4)}</span><button type="button" class="training-close" id="tutorial-close-button" aria-label="${labels('タイトルへ戻る', 'Return to title')}">×</button></div>`;
   function explanation(start?: () => void): void {
     if (active) return;
@@ -53,21 +58,22 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
       case 'game006': return button('action', s.step === 0 ? '角度を決める · Space' : '強さを決める · Space');
       case 'game007': return button('reject', '← 見送る · A') + button('board', '乗せる → · D');
       case 'game008': return button('left', '← 左へ · 押す／離す') + button('right', '右へ → · 押す／離す');
+      case 'game015': return button('left', '← 左 · 押す／離す') + button('action', 'DROP ↓') + button('right', '右 → · 押す／離す');
       case 'game010': return button('action', 'LISTEN ⇄ SIDE WORK · Space');
       case 'game011': return button(s.choiceLeft, s.choiceLeft === 'unko' ? 'ウンコ' : 'ウコン') + button(s.choiceLeft === 'unko' ? 'ukon' : 'unko', s.choiceLeft === 'unko' ? 'ウコン' : 'ウンコ');
       default: return '';
     }
   }
   function practice(): void {
-    session = new PracticeSession(gameId); reportedStep = 0; previous = performance.now();
+    clearFallInput(); fallStep = -1; session = new PracticeSession(gameId); reportedStep = 0; previous = performance.now();
     dialog.dataset.phase = 'practice';
     const s = session.snapshot();
     const board = gameId === 'game004'
       ? `<div class="practice-grid">${Array.from({ length: 9 }, (_, i) => `<button type="button" data-practice-action="cell-${i}" aria-label="${i + 1}">${i + 1}</button>`).join('')}</div>`
       : gameId === 'game009'
         ? `<div class="practice-desk">${['desk-paper', 'stamp-round-red', 'desk-pen', 'stamp-square-blue', 'desk-stapler', 'stamp-round-blue'].map((name, i) => `<button type="button" data-practice-action="${i === 1 ? 'stamp-red' : 'stamp-other'}" aria-label="${['書類', '赤い丸印鑑', 'ペン', '青い角印鑑', 'ホチキス', '青い丸印鑑'][i]}"><img src="${asset(`game009/${name}.webp`)}" alt="${['書類', '赤い丸印鑑', 'ペン', '青い角印鑑', 'ホチキス', '青い丸印鑑'][i]}"></button>`).join('')}</div>`
-        : '<canvas width="1200" height="640" id="tutorial-canvas" tabindex="0" aria-label="練習のゲーム画面"></canvas>';
-    dialog.innerHTML = `${head()}<h2 id="tutorial-heading">${labels('まずは、やってみよう。', 'Let’s try it.')}</h2><p id="practice-prompt">${english() ? 'Practice rule: ROUND → LEFT, ANGULAR → RIGHT.' : lessons[gameId][2]}</p><div class="practice-window">${gameId === 'game008' ? '<div class="practice-hud"><span>運んだ距離 <strong>0 m</strong></span><span id="practice-tilt">左 ← 傾き</span><span>残り <strong>100%</strong></span></div>' : ''}${board}</div><div class="practice-controls" style="--control-cols:${['game001', 'game003', 'game006', 'game010'].includes(gameId) ? 1 : 2}">${controls(s)}</div><p class="practice-feedback" id="practice-feedback" role="status" aria-live="polite">${labels('まちがえても練習は続けられます。', 'Take your time. Mistakes are OK.')}</p><small class="training-input-note">${labels('練習の得点は記録されません。', 'Practice does not affect your score or BEST.')}</small>`;
+        : `<canvas width="${gameId === 'game015' ? 256 : 1200}" height="${gameId === 'game015' ? 448 : 640}" id="tutorial-canvas" tabindex="0" aria-label="練習のゲーム画面"></canvas>`;
+    dialog.innerHTML = `${head()}<h2 id="tutorial-heading">${labels('まずは、やってみよう。', 'Let’s try it.')}</h2><p id="practice-prompt">${english() ? 'Practice rule: ROUND → LEFT, ANGULAR → RIGHT.' : lessons[gameId][2]}</p><div class="practice-window">${gameId === 'game008' ? '<div class="practice-hud"><span>運んだ距離 <strong>0 m</strong></span><span id="practice-tilt">左 ← 傾き</span><span>残り <strong>100%</strong></span></div>' : ''}${board}</div><div class="practice-controls" style="--control-cols:${['game001', 'game003', 'game006', 'game010'].includes(gameId) ? 1 : gameId === 'game015' ? 3 : 2}">${controls(s)}</div><p class="practice-feedback" id="practice-feedback" role="status" aria-live="polite">${labels('まちがえても練習は続けられます。', 'Take your time. Mistakes are OK.')}</p><small class="training-input-note">${labels('練習の得点は記録されません。', 'Practice does not affect your score or BEST.')}</small>`;
     dialog.querySelector<HTMLCanvasElement>('canvas')?.focus({ preventScroll: true });
     if (!dialog.querySelector('canvas')) dialog.querySelector<HTMLButtonElement>('[data-practice-action]')?.focus();
     draw(); frame = requestAnimationFrame(tick);
@@ -91,12 +97,20 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
     if (gameId === 'game006') dialog.querySelector<HTMLButtonElement>('[data-practice-action]')!.textContent = s.step === 0 ? '角度を決める · Space' : s.step === 1 ? '強さを決める · Space' : '駐車中…';
     if (gameId === 'game007') dialog.querySelector<HTMLElement>('#practice-prompt')!.textContent = s.step === 0 ? lessons[gameId][2] : s.phase === 'boarding' ? '乗せました！ 200 + 60 = 260 kg。' : '410 kg乗車中。NEXTは80 kg。乗せると490 kg、40 kg超過！';
     if (gameId === 'game008') dialog.querySelector<HTMLElement>('#practice-tilt')!.textContent = `${s.tilt > .055 ? '← 左に傾き ／ 右→で戻す' : s.tilt < -.055 ? '右に傾き → ／ ←左で戻す' : '中央'} ${Math.round(Math.abs(s.tilt) * 180 / Math.PI)}°`;
-    paintPractice(dialog.querySelector<HTMLCanvasElement>('canvas'), s, session.phaseSeconds());
+    if (gameId === 'game015') {
+      if (fallStep !== s.step) { clearFallInput(); fallStep = s.step; }
+      dialog.dataset.step = String(s.step);
+      const prompt = dialog.querySelector<HTMLElement>('#practice-prompt')!;
+      const copy = ['1 / 4 · DROPで下の足場へ。', '2 / 4 · DROPして右へ。離すと慣性、左でブレーキ。', '3 / 4 · FALL 5.2 m以内で、安全に着地。', '4 / 4 · ゴーストが長く落ちると…'];
+      if (prompt.textContent !== copy[s.step]) prompt.textContent = copy[s.step];
+      dialog.querySelectorAll<HTMLButtonElement>('[data-practice-action]').forEach(b => { b.disabled = s.step === 3 || b.dataset.practiceAction === 'action' && s.fall?.phase !== 'grounded'; });
+      const canvas = dialog.querySelector<HTMLCanvasElement>('canvas'); if (canvas && practicePaint) practicePaint(canvas, s);
+    } else paintPractice(dialog.querySelector<HTMLCanvasElement>('canvas'), s, session.phaseSeconds());
   }
   function success(): void {
     if (dialog.dataset.phase === 'success') return;
     cancelAnimationFrame(frame); session?.setInput(0); dialog.dataset.phase = 'success';
-    const message = gameId === 'game006' ? '入りました。本番はもう少し狭いです。' : gameId === 'game005' ? labels('できました。途中でルールが変わります。', 'Ready! The rule changes during the real run.') : labels('これで操作はOK。次は本番で試そう。', 'You know the controls. Try the real run.');
+    const message = gameId === 'game015' ? '操作はOK！ なるべく深くまで落ちてください。' : gameId === 'game006' ? '入りました。本番はもう少し狭いです。' : gameId === 'game005' ? labels('できました。途中でルールが変わります。', 'Ready! The rule changes during the real run.') : labels('これで操作はOK。次は本番で試そう。', 'You know the controls. Try the real run.');
     dialog.innerHTML = `${head()}<div class="training-success"><strong id="tutorial-heading">${labels('できました！', 'Ready!')}</strong><p>${message}</p><small>${labels('練習のスコアは自己ベストに含まれません。', 'Practice does not affect your BEST.')}</small></div><button class="training-primary" id="tutorial-start-button" type="button">${callback ? labels('本番へ', 'Start real run') : labels('タイトルへ戻る', 'Back to title')}</button>`;
     dialog.querySelector<HTMLButtonElement>('#tutorial-start-button')!.focus({ preventScroll: true });
   }
@@ -110,17 +124,23 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
       const start = callback; close(); start?.();
     } else if (b.dataset.practiceAction) {
       if (gameId === 'game008') { session?.setInput(0); return; }
+      if (gameId === 'game015' && (e.detail > 0 || b.dataset.practiceAction !== 'action')) return;
       action(b.dataset.practiceAction as PracticeAction);
     }
   }, options);
   dialog.addEventListener('pointerdown', e => {
-    if (!e.isPrimary || e.button !== 0 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || dialog.dataset.phase !== 'practice') return;
+    if ((!e.isPrimary && !(gameId === 'game015' && e.pointerType === 'touch')) || e.button !== 0 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || dialog.dataset.phase !== 'practice') return;
     const surface = (e.target as Element).closest<HTMLCanvasElement>('canvas');
     if (surface && gameId !== 'game011') {
       e.preventDefault(); const bounds = surface.getBoundingClientRect();
       const side = e.clientX < bounds.left + bounds.width / 2 ? 'left' : 'right';
-      if (gameId === 'game008') { session?.setInput(side === 'right' ? 1 : -1); try { surface.setPointerCapture(e.pointerId); } catch { /* global release */ } }
+      if (gameId === 'game008' || gameId === 'game015') { if (gameId === 'game015') { fallPointers.set(e.pointerId, side === 'right' ? 1 : -1); fallInput(); } else session?.setInput(side === 'right' ? 1 : -1); try { surface.setPointerCapture(e.pointerId); } catch { /* global release */ } }
       else action(['game002', 'game005'].includes(gameId) ? side : 'action');
+      return;
+    }
+    if (gameId === 'game015') {
+      const b = (e.target as Element).closest<HTMLButtonElement>('[data-practice-action]');
+      if (b && !b.disabled) { e.preventDefault(); if (b.dataset.practiceAction === 'action') action('action'); else { fallPointers.set(e.pointerId, b.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); try { b.setPointerCapture(e.pointerId); } catch { /* release globally */ } } }
       return;
     }
     if (gameId !== 'game008') return;
@@ -128,8 +148,9 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
     if (b) { e.preventDefault(); session?.setInput(b.dataset.practiceAction === 'right' ? 1 : -1); try { b.setPointerCapture(e.pointerId); } catch { /* global release */ } }
   }, options);
   const release = (): void => { session?.setInput(0); };
-  window.addEventListener('pointerup', release, options); window.addEventListener('pointercancel', release, options); window.addEventListener('blur', release, options);
-  document.addEventListener('keyup', e => { if (active) { e.stopImmediatePropagation(); release(); } }, { capture: true, ...options });
+  const releasePointer = (e: PointerEvent): void => { if (gameId === 'game015') { fallPointers.delete(e.pointerId); fallInput(); } else release(); };
+  window.addEventListener('pointerup', releasePointer, options); window.addEventListener('pointercancel', releasePointer, options); dialog.addEventListener('lostpointercapture', releasePointer, options); window.addEventListener('blur', () => { release(); clearFallInput(); }, options);
+  document.addEventListener('keyup', e => { if (active) { e.stopImmediatePropagation(); if (gameId === 'game015' && [' ', 'Enter', 'ArrowDown', 's', 'S'].includes(e.key)) e.preventDefault(); if (gameId === 'game015') { fallKeys.delete(e.key.toLowerCase()); fallInput(); } else release(); } }, { capture: true, ...options });
   document.addEventListener('keydown', e => {
     if (!active) return;
     e.stopImmediatePropagation();
@@ -138,7 +159,13 @@ export function createOnboarding({ gameId, storage, telemetry }: Options): { int
     if (e.repeat || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) { if (e.key === ' ' || e.key === 'Enter') e.preventDefault(); return; }
     if (!session || dialog.dataset.phase !== 'practice') return;
     const key = e.key.toLowerCase(); const left = key === 'arrowleft' || key === 'a', right = key === 'arrowright' || key === 'd';
-    if (gameId === 'game008' && (left || right)) { e.preventDefault(); session.setInput(right ? 1 : -1); return; }
+    if ((gameId === 'game008' || gameId === 'game015') && (left || right)) { e.preventDefault(); if (gameId === 'game015') { fallKeys.set(key, right ? 1 : -1); fallInput(); } else session.setInput(right ? 1 : -1); return; }
+    if (gameId === 'game015' && [' ', 'enter', 'arrowdown', 's'].includes(key)) {
+      const native = (e.target as Element).closest('button'); if (native && !native.hasAttribute('data-practice-action')) return;
+      e.preventDefault(); const target = (e.target as Element).closest<HTMLButtonElement>('[data-practice-action]');
+      if (target?.dataset.practiceAction === 'left' || target?.dataset.practiceAction === 'right') { fallKeys.set(key, target.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); }
+      else action('action'); return;
+    }
     if (gameId === 'game004' && /^[1-9]$/.test(key)) { e.preventDefault(); action(`cell-${Number(key) - 1}`); return; }
     if (left || right) {
       e.preventDefault();

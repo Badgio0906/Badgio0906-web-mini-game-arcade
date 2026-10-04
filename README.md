@@ -1,8 +1,8 @@
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-14本のブラウザゲームを選んで遊べる、静的Webゲームセンターです。トップは一覧画面、ゲーム本体は個別ページです。001〜011は初回に「説明 → 実操作の練習 → 成功 → 本番」、以後はすぐ本番へ進めます。012〜014は既存のGodot Web版を、そのままのUI・操作で移行しています。
+15本のブラウザゲームを選んで遊べる、静的Webゲームセンターです。トップは一覧画面、ゲーム本体は個別ページです。001〜011・015は初回に「説明 → 実操作の練習 → 成功 → 本番」、以後はすぐ本番へ進めます。012〜014は既存のGodot Web版を、そのままのUI・操作で移行しています。
 
-試作版は無制限プレイです。広告・CREDIT減算・補充Stubは表示・実行しません。人間による面白さの最終評価は未実施です。[今回の仕様](docs/eleven-game/IMPLEMENTATION_SPEC.md)、[実装・検証報告](docs/eleven-game/IMPLEMENTATION_REPORT.md)、[人間プレイテストフォーム](docs/eleven-game/HUMAN_PLAYTEST.md)を参照してください。
+試作版は無制限プレイです。広告・CREDIT減算・補充Stubは表示・実行しません。人間による面白さの最終評価は未実施です。[ポータル仕様](docs/eleven-game/IMPLEMENTATION_SPEC.md)、[実装・検証報告](docs/eleven-game/IMPLEMENTATION_REPORT.md)、[人間プレイテストフォーム](docs/eleven-game/HUMAN_PLAYTEST.md)を参照してください。
 
 ## 起動・ビルド
 
@@ -17,7 +17,7 @@ npm run build
 npm run preview
 ```
 
-`dist/`にポータル、001〜011の個別HTML、012〜014の静的Godot Web出力、画像・ローカルフォントを出力します。サーバー、オンラインランキング、ログイン、本番広告は不要です。
+`dist/`にポータル、001〜011・015の個別HTML、012〜014の静的Godot Web出力、画像・ローカルフォントを出力します。サーバー、オンラインランキング、ログイン、本番広告は不要です。
 
 ## ゲームと操作
 
@@ -38,16 +38,19 @@ npm run preview
 | 012 澤野さんの横取りデイズ | `games/yokodori-days/` | Enter / 画面タップ |
 | 013 立花さんのタスク天国 | `games/tachibana-task-heaven/` | 1〜4 / 4色の画面タップ。スマートフォンは横向き |
 | 014 畑島さんの指ハートチャレンジ | `games/finger-heart-challenge/` | Enter / Space / クリック / タップ |
+| 015 落下キング ～FALL KING～ | `game015.html` | ← → / A Dで移動、↓ / S / SpaceでDROP。ジャンプなし |
 
-001〜011でポーズ・音声切替、全14ゲームで一覧へ戻る操作ができます。012〜014の機能・UIは元ゲームを保持します。練習は本番モデルから独立し、スコア・BEST・CREDIT・run_start/run_endに影響しません。`tutorialCompleted`はゲームごとの保存領域に記録します。秘密の後半モードは練習で紹介しません。
+001〜011・015でポーズ・音声切替、全15ゲームで一覧へ戻る操作ができます。012〜014の機能・UIは元ゲームを保持します。練習は本番モデルから独立し、スコア・BEST・CREDIT・run_start/run_endに影響しません。`tutorialCompleted`はゲームごとの保存領域に記録します。秘密の後半モードは練習で紹介しません。
 
 011は画像10問、文章10問、選んだ言葉を答え続けるFinalです。通算1〜20問は2秒・100点、21〜50問は1.5秒・200点、51問以降は0.5秒・500点。文章を読む時間・Finalの選択時間は無制限です。左右配置は毎問独立してランダム、画像・文章は各20問から重複なしで10問です。得点基準変更前のBESTは別記録として保持します。
+
+015は連続落下距離による着地衝撃と空中の慣性を扱う、無限下降のピクセルアートアクションです。独立Game FeelはPASS、Visualは84点、175単体テスト・ビルド・実入力6ケース・公開用表示10ケース・共有経路26件の配信確認が成功しました。[015実装・検証報告](docs/game015/IMPLEMENTATION_REPORT.md)に記録しています。[仕様](docs/game015/IMPLEMENTATION_SPEC.md)と[人間プレイテスト](docs/game015/HUMAN_PLAYTEST.md)を参照してください。
 
 ## GitHub Pagesへの公開
 
 公開中の試作版：**[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)**。
 
-[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)で`npm ci`、155単体テスト、ビルド、Pages公開が成功しました。公開先で旧3作品の6件の実入力・配信検証と、ポータル＋001〜011の12ページ検証が成功しています。[14本版のQA](docs/fourteen-game/QA/README.md)、[今回の変更](docs/migration/IMPLEMENTATION_REPORT.md)を参照してください。
+14本版の[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37210140560)で`npm ci`、155単体テスト、ビルド、Pages公開が成功しました。公開先で旧3作品の6件の実入力・配信検証と、ポータル＋001〜011の12ページ検証が成功しています。[14本版のQA](docs/fourteen-game/QA/README.md)、[今回の変更](docs/migration/IMPLEMENTATION_REPORT.md)を参照してください。
 
 更新する場合：
 

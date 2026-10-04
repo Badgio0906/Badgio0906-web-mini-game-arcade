@@ -2,6 +2,7 @@ import type { StorageService } from './StorageService';
 
 export type EventName = 'game_open' | 'run_start' | 'run_end' | 'score' | 'credit_used' | 'credit_zero' |
   'reward_offer_shown' | 'reward_requested' | 'reward_granted' | 'reward_failed' | 'retry' | 'quit' | 'pause' | 'resume' |
+  'depth_reached' | 'fall_distance' | 'landing_type' | 'nice_drop' | 'platform_type' |
   'run_duration' | 'distance_reached' | 'office_clear' | 'tower_height' | 'perfect_count' |
   'memory_level' | 'sequence_length' | 'sorted_count' | 'rule_change_count' |
   'milestone_reached' | 'escalation_offered' | 'escalation_accepted' | 'safe_exit' |

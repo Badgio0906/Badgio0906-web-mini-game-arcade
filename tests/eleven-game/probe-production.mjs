@@ -9,7 +9,7 @@ const reportPath=process.env.ELEVEN_STATIC_REPORT??'docs/eleven-game/QA/PRODUCTI
 const remote=mounts.some(mount=>!['127.0.0.1','localhost','[::1]'].includes(new URL(mount).hostname));
 const sessionProxy=remote?(process.env.HTTPS_PROXY??process.env.HTTP_PROXY):undefined;
 const numbers=process.env.ELEVEN_STATIC_GAME_NUMBERS?process.env.ELEVEN_STATIC_GAME_NUMBERS.split(',').map(Number):Array.from({length:12},(_,i)=>i);
-assert.ok(numbers.length>0&&numbers.every(n=>Number.isInteger(n)&&n>=0&&n<=11),'explicit valid route numbers');
+assert.ok(numbers.length>0&&numbers.every(n=>Number.isInteger(n)&&((n>=0&&n<=11)||n===15)),'explicit valid route numbers');
 const expectedCatalog=Number(process.env.ELEVEN_EXPECTED_CATALOG_COUNT??14);
 assert.ok(Number.isInteger(expectedCatalog)&&expectedCatalog>=11,'expected real catalog count');
 const records=[],browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox'],...(sessionProxy?{proxy:{server:sessionProxy}}:{})});

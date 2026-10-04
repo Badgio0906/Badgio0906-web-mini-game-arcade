@@ -33,4 +33,4 @@ const legacyGames: readonly GameCatalogEntry[] = [
   { id: 'game014', titleJa: '畑島さんの指ハートチャレンジ', titleEn: 'FINGER HEART CHALLENGE', tagline: '指ハートの瞬間でストップ。全5段階、25回成功を目指せ。', thumbnail: './assets/portal/game014.webp', route: './games/finger-heart-challenge/index.html', releaseOrder: 14 },
 ];
 
-export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames].map(game => Object.freeze(game)));
+export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames, { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 }].map(game => Object.freeze(game)));

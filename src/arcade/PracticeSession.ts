@@ -1,27 +1,32 @@
+import { FallPractice, type FallPracticeSnapshot } from './FallPractice';
 export type PracticeAction = 'left' | 'right' | 'action' | 'board' | 'reject' | 'stamp-red' | 'stamp-other' | 'unko' | 'ukon' | `cell-${number}`;
 export interface PracticeSnapshot {
   gameId: string; step: number; elapsed: number; complete: boolean; feedback: string;
   lane: number; enemyLane: number; angle: number; x: number; moving: boolean; light: number; phase: string;
-  tilt: number; input: number; mode: string; practicePoints: number; power: number; choiceLeft: 'unko' | 'ukon';
+  tilt: number; input: number; mode: string; practicePoints: number; power: number; choiceLeft: 'unko' | 'ukon'; fall?: FallPracticeSnapshot;
 }
 /** Independent, forgiving training simulations: no production run, score, credit or BEST access. */
 export class PracticeSession {
   private s: PracticeSnapshot;
   private phaseTime = 0;
+  private fall?: FallPractice;
   constructor(gameId: string, random = Math.random) {
     this.s = { gameId, step: 0, elapsed: 0, complete: false, feedback: '', lane: 1, enemyLane: 1,
       angle: -Math.PI / 2, x: 150, moving: false, light: -1, phase: 'practice', tilt: .35,
       input: 0, mode: 'listen', practicePoints: 0, power: .75, choiceLeft: random() < .5 ? 'unko' : 'ukon' };
     if (gameId === 'game004') this.s.phase = 'watch';
     if (gameId === 'game006') this.s.angle = 0;
+    if (gameId === 'game015') { this.fall = new FallPractice(); this.syncFall(); }
   }
-  snapshot(): PracticeSnapshot { return { ...this.s }; }
-  setInput(input: -1 | 0 | 1): void { this.s.input = input; }
+  snapshot(): PracticeSnapshot { return { ...this.s, ...(this.fall ? { fall: this.fall.snapshot() } : {}) }; }
+  setInput(input: -1 | 0 | 1): void { this.s.input = input; this.fall?.setInput(input); }
+  private syncFall(): void { if (!this.fall) return; const f = this.fall.snapshot(); this.s.fall = f; this.s.step = f.step; this.s.phase = f.phase; this.s.complete = f.complete; this.s.feedback = f.feedback; }
   private done(): void { this.s.complete = true; this.s.phase = 'success'; this.s.feedback = 'できました！ この操作で、本番も遊べます。'; }
   private next(message: string): void { this.s.step++; this.phaseTime = 0; this.s.feedback = message; }
   action(action: PracticeAction): void {
     const s = this.s;
     if (s.complete) return;
+    if (this.fall) { if (action === 'action') this.fall.drop(); this.syncFall(); return; }
     s.feedback = '';
     switch (s.gameId) {
       case 'game001': if (action === 'action') s.lane = s.lane === 1 ? 0 : 1; break;
@@ -77,6 +82,7 @@ export class PracticeSession {
     if (!Number.isFinite(seconds) || seconds <= 0 || this.s.complete) return;
     const dt = Math.min(seconds, .1), s = this.s;
     s.elapsed += dt; this.phaseTime += dt;
+    if (this.fall) { this.fall.update(dt); this.syncFall(); return; }
     switch (s.gameId) {
       case 'game001':
         s.angle += dt * .8;

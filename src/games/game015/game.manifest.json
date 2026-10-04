@@ -1,0 +1,62 @@
+{
+  "id": "game015",
+  "title": "落下キング ～FALL KING～",
+  "titleJa": "落下キング",
+  "titleEn": "FALL KING",
+  "subtitle": "上を目指すな。うまく落ちろ。",
+  "genre": [
+    "precision-action",
+    "vertical-descent",
+    "arcade"
+  ],
+  "core_mechanic": [
+    "controlled-falling",
+    "platform-landing",
+    "momentum"
+  ],
+  "primary_input": [
+    "left",
+    "right",
+    "drop"
+  ],
+  "skill_axes": [
+    "spatial-estimation",
+    "momentum-control",
+    "risk-management"
+  ],
+  "escalation_mechanic": "endless-depth",
+  "score_type": "depth-meters",
+  "primary_score": "maximum depth in meters",
+  "secondary_score": "nice-drop-count",
+  "prototype": {
+    "unlimited_play": true,
+    "advertising": false
+  },
+  "tutorial": "isolated drop, air steering, safe fall-distance practice and ghost fatal-landing demonstration",
+  "human_playtest_status": "pending",
+  "fall_thresholds_m": {
+    "normal_safe_max": 6,
+    "normal_fatal_min": 9,
+    "soft_safe_max": 9,
+    "soft_fatal_min": 12,
+    "nice_fraction_of_survival_ceiling": 0.85
+  },
+  "native_resolution": [
+    256,
+    448
+  ],
+  "pixel_scale_per_meter": 16,
+  "platform_types": [
+    "normal",
+    "soft",
+    "crumble",
+    "moving"
+  ],
+  "milestone_meters": 1000,
+  "generation": "authored patterns with physically tested safe routes and periodic full-width hard catch ledges",
+  "expected_run_seconds": {
+    "beginner": 60,
+    "experienced": 180
+  },
+  "duration_note": "Design hypothesis only; human run-duration observations pending. Endless play has no time limit."
+}
