@@ -2,19 +2,48 @@
   "id": "game011",
   "title": "ウンコかウコンかゲーム ～UNKO or UKON～",
   "subtitle": "絶対わかる。0.5秒になるまでは。",
-  "genre": ["two-choice", "reaction", "knowledge", "absurd"],
-  "core_mechanic": ["classify a generated icon", "read before a short two-choice answer", "choose one target word for endless reaction rounds"],
-  "primary_input": ["left/right arrows", "A/D", "individual native buttons"],
-  "skill_axes": ["visual-identification", "reading-comprehension", "attention", "reaction"],
-  "expected_run_seconds": { "beginner": 25, "experienced": 80 },
+  "genre": [
+    "two-choice",
+    "reaction",
+    "knowledge",
+    "absurd"
+  ],
+  "core_mechanic": [
+    "classify a generated icon",
+    "read before a short two-choice answer",
+    "choose one target word for endless reaction rounds"
+  ],
+  "primary_input": [
+    "left/right arrows",
+    "A/D",
+    "individual native buttons"
+  ],
+  "skill_axes": [
+    "visual-identification",
+    "reading-comprehension",
+    "attention",
+    "reaction"
+  ],
+  "expected_run_seconds": {
+    "beginner": 25,
+    "experienced": 80
+  },
   "duration_note": "numeric design hypotheses; human first failure, reading time and0.5-second skill are unmeasured; reading and transition choices have no deadline",
-  "primary_score": "image100 each, text150 each, final250 each; no hidden reaction bonus",
+  "primary_score": "questions1–20:100 each /21–50:200 each /51+:500 each; no hidden reaction bonus",
   "secondary_score": "final streak with an independent local best",
   "ranking_metric": "final_streak",
-  "escalation_mechanic": "Image first5s then paused warning before1s rounds; text reads without limit then0.8s after readiness release; twenty correct opens an optional0.5s endless chosen-word mode.",
+  "escalation_mechanic": "Cumulative questions1–20 get2s,21–50 get1.5s,51+ get0.5s. Ten images, ten untimed reads with READY release, then chosen-word endless final mode.",
   "risk_reward": "One mistake or timeout ends immediately. Every answer layout is independently random; no colored-choice hints or forced left-right alternation.",
   "visual_identity": "twenty actual pop clean generated icons, warm cream two-choice stage, equal-looking native answer buttons",
-  "image_assets": { "count": 20, "bytes": 224332, "directory": "assets/game011/icons/" },
-  "prototype": { "unlimited_play": true, "advertising": false },
-  "tutorial": "one generated image without a deadline, one correct native choice before the real run"
+  "image_assets": {
+    "count": 20,
+    "bytes": 224332,
+    "directory": "assets/game011/icons/"
+  },
+  "prototype": {
+    "unlimited_play": true,
+    "advertising": false
+  },
+  "tutorial": "one generated image without a deadline, one correct native choice before the real run",
+  "score_version": 2
 }

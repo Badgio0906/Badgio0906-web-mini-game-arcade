@@ -1,9 +1,9 @@
 import type { QuizAnswer, QuizImage, QuizPhase, QuizQuestion, QuizSide, QuizText, UnkoEvent, UnkoInspection, UnkoResult, UnkoSnapshot } from './contracts';
 
-export const IMAGE_FIRST_SECONDS = 5;
-export const IMAGE_SECONDS = 1;
-export const TEXT_SECONDS = 0.8;
-export const FINAL_SECONDS = 0.5;
+export const SCORE_VERSION = 2;
+/** One-based ordinal across image, text and endless final questions. */
+export const deadlineForQuestion = (questionNumber: number): 2 | 1.5 | 0.5 => questionNumber <= 20 ? 2 : questionNumber <= 50 ? 1.5 : 0.5;
+export const pointsForQuestion = (questionNumber: number): 100 | 200 | 500 => questionNumber <= 20 ? 100 : questionNumber <= 50 ? 200 : 500;
 export const IMAGE_POOL: readonly QuizImage[] = Object.freeze((['unko', 'ukon'] as const).flatMap(answer => Array.from({ length: 10 }, (_, i) => Object.freeze({
   id: `${answer}-${String(i + 1).padStart(2, '0')}`, answer, asset: `assets/game011/icons/${answer}-${String(i + 1).padStart(2, '0')}.webp`,
 }))));
@@ -64,13 +64,12 @@ export class UnkoRun {
     if (!this.alive || !isTimed(this.phase) || !this.choices || expectedRoundId !== this.roundId || (side !== 'left' && side !== 'right')) return false;
     const actual = this.choices[side === 'left' ? 0 : 1];
     if (actual !== this.question!.answer) { this.finish('wrong', actual); return true; }
-    const kind = this.question!.kind; const points = kind === 'image' ? 100 : kind === 'text' ? 150 : 250;
+    const kind = this.question!.kind; const points = pointsForQuestion(this.questionNumber());
     this.score += points;
     if (kind === 'image') this.imageCorrect++; else if (kind === 'text') this.textCorrect++; else this.finalStreak++;
     this.emit({ type: 'correct', kind, points, score: this.score });
     if (kind === 'image') {
-      if (this.imageCorrect === 1) this.untimed('speed_warning');
-      else if (this.imageCorrect === 10) this.untimed('text_intro');
+      if (this.imageCorrect === 10) this.untimed('text_intro');
       else this.imageQuestion();
     } else if (kind === 'text') {
       if (this.textCorrect === 10) { this.question = null; this.untimed('final_choice'); }
@@ -80,13 +79,12 @@ export class UnkoRun {
   }
   advance(): boolean {
     if (!this.alive) return false;
-    if (this.phase === 'speed_warning') { this.imageQuestion(); return true; }
     if (this.phase === 'text_intro') { this.textQuestion(); return true; }
     return false;
   }
   ready(): boolean {
     if (!this.alive || this.phase !== 'text_read') return false;
-    this.timed('text_answer', TEXT_SECONDS); this.emit({ type: 'ready', roundId: this.roundId }); return true;
+    this.timed('text_answer'); this.emit({ type: 'ready', roundId: this.roundId }); return true;
   }
   chooseFinal(mode: QuizAnswer): boolean {
     if (!this.alive || this.phase !== 'final_choice' || (mode !== 'unko' && mode !== 'ukon')) return false;
@@ -105,15 +103,16 @@ export class UnkoRun {
     return result;
   }
   private positions(): [QuizAnswer, QuizAnswer] { return this.random() < 0.5 ? ['unko', 'ukon'] : ['ukon', 'unko']; }
-  private timed(phase: QuizPhase, seconds: number): void {
-    this.phase = phase; this.deadline = seconds; this.answerElapsed = 0; this.choices = this.positions(); this.roundId++; this.emit({ type: 'phase', phase });
+  private questionNumber(): number { return this.imageCorrect + this.textCorrect + this.finalStreak + 1; }
+  private timed(phase: QuizPhase): void {
+    this.phase = phase; this.deadline = deadlineForQuestion(this.questionNumber()); this.answerElapsed = 0; this.choices = this.positions(); this.roundId++; this.emit({ type: 'phase', phase });
   }
   private untimed(phase: QuizPhase): void {
     this.phase = phase; this.deadline = null; this.answerElapsed = 0; this.choices = null; this.roundId++; this.emit({ type: 'phase', phase });
   }
   private imageQuestion(): void {
     const image = this.images[this.imageCorrect]; this.question = { id: image.id, kind: 'image', answer: image.answer, image: image.asset, text: 'ウンコ？ ウコン？' };
-    this.timed('image_answer', this.imageCorrect === 0 ? IMAGE_FIRST_SECONDS : IMAGE_SECONDS);
+    this.timed('image_answer');
   }
   private textQuestion(): void {
     const text = this.texts[this.textCorrect]; this.question = { id: text.id, kind: 'text', answer: text.answer, image: null, text: text.text };
@@ -121,7 +120,7 @@ export class UnkoRun {
   }
   private finalQuestion(): void {
     this.question = { id: `final-${this.finalStreak + 1}`, kind: 'final', answer: this.finalMode!, image: null, text: `いつも ${answerLabel(this.finalMode!)} を押す！` };
-    this.timed('final_answer', FINAL_SECONDS);
+    this.timed('final_answer');
   }
   private finish(outcome: UnkoResult['outcome'], actual: QuizAnswer | null): void {
     if (!this.alive || !this.question) return;
@@ -133,7 +132,7 @@ export class UnkoRun {
   snapshot(): UnkoSnapshot {
     return { alive: this.alive, phase: this.phase, roundId: this.roundId, time: this.time, score: this.score, imageCorrect: this.imageCorrect, textCorrect: this.textCorrect,
       finalMode: this.finalMode, finalStreak: this.finalStreak, question: this.question ? { ...this.question } : null, choices: this.choices ? [...this.choices] : null,
-      deadline: this.deadline, remaining: isTimed(this.phase) && this.deadline !== null ? Math.max(0, this.deadline - this.answerElapsed) : null, answerElapsed: this.answerElapsed };
+      questionNumber: this.questionNumber(), pointsPerCorrect: pointsForQuestion(this.questionNumber()), deadline: this.deadline, remaining: isTimed(this.phase) && this.deadline !== null ? Math.max(0, this.deadline - this.answerElapsed) : null, answerElapsed: this.answerElapsed };
   }
   inspection(): UnkoInspection {
     return { ...this.snapshot(), answerSide: this.choices && this.question ? this.choices[0] === this.question.answer ? 'left' : 'right' : null,

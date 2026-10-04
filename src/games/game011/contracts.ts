@@ -1,6 +1,6 @@
 export type QuizAnswer = 'unko' | 'ukon';
 export type QuizSide = 'left' | 'right';
-export type QuizPhase = 'image_answer' | 'speed_warning' | 'text_intro' | 'text_read' | 'text_answer' | 'final_choice' | 'final_answer' | 'ended';
+export type QuizPhase = 'image_answer' | 'text_intro' | 'text_read' | 'text_answer' | 'final_choice' | 'final_answer' | 'ended';
 export interface QuizImage { id: string; answer: QuizAnswer; asset: string }
 export interface QuizText { id: string; answer: QuizAnswer; text: string }
 export interface QuizQuestion {
@@ -10,6 +10,7 @@ export interface UnkoSnapshot {
   alive: boolean; phase: QuizPhase; roundId: number; time: number; score: number;
   imageCorrect: number; textCorrect: number; finalMode: QuizAnswer | null; finalStreak: number;
   question: QuizQuestion | null; choices: [QuizAnswer, QuizAnswer] | null;
+  questionNumber: number; pointsPerCorrect: 100 | 200 | 500;
   deadline: number | null; remaining: number | null; answerElapsed: number;
 }
 export interface UnkoResult {
@@ -18,7 +19,7 @@ export interface UnkoResult {
   reason: string; question: QuizQuestion; expected: QuizAnswer; actual: QuizAnswer | null;
 }
 export type UnkoEvent =
-  | { type: 'correct'; kind: QuizQuestion['kind']; points: 100 | 150 | 250; score: number }
+  | { type: 'correct'; kind: QuizQuestion['kind']; points: 100 | 200 | 500; score: number }
   | { type: 'phase'; phase: QuizPhase }
   | { type: 'ready'; roundId: number }
   | { type: 'final_mode'; mode: QuizAnswer }

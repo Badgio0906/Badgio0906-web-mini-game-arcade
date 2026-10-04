@@ -1,6 +1,6 @@
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-11本の短いブラウザゲームを選んで遊べる、静的Webゲームセンターです。トップは一覧画面、ゲーム本体は個別のHTMLです。初回は「説明 → 実操作の練習 → 成功 → 本番」、以後はすぐ本番へ進めます。タイトルの「もう一度練習」から復習できます。
+14本のブラウザゲームを選んで遊べる、静的Webゲームセンターです。トップは一覧画面、ゲーム本体は個別ページです。001〜011は初回に「説明 → 実操作の練習 → 成功 → 本番」、以後はすぐ本番へ進めます。012〜014は既存のGodot Web版を、そのままのUI・操作で移行しています。
 
 試作版は無制限プレイです。広告・CREDIT減算・補充Stubは表示・実行しません。人間による面白さの最終評価は未実施です。[今回の仕様](docs/eleven-game/IMPLEMENTATION_SPEC.md)、[実装・検証報告](docs/eleven-game/IMPLEMENTATION_REPORT.md)、[人間プレイテストフォーム](docs/eleven-game/HUMAN_PLAYTEST.md)を参照してください。
 
@@ -17,7 +17,7 @@ npm run build
 npm run preview
 ```
 
-`dist/`にポータル1ページ、ゲーム11ページ、最適化画像・ローカルフォントを出力します。サーバー、オンラインランキング、ログイン、本番広告は不要です。
+`dist/`にポータル、001〜011の個別HTML、012〜014の静的Godot Web出力、画像・ローカルフォントを出力します。サーバー、オンラインランキング、ログイン、本番広告は不要です。
 
 ## ゲームと操作
 
@@ -35,10 +35,13 @@ npm run preview
 | 009 印鑑どこですか ～STAMP HUNT～ | `game009.html` | 依頼に合う机の物をクリック / タップ |
 | 010 会議、聞いてます？ ～MEETING SURVIVAL～ | `game010.html` | Space / タップで聞く・内職を切替 |
 | 011 ウンコかウコンかゲーム ～UNKO or UKON～ | `game011.html` | ← → / A D / 同じ見た目の左右ボタン |
+| 012 澤野さんの横取りデイズ | `games/yokodori-days/` | Enter / 画面タップ |
+| 013 立花さんのタスク天国 | `games/tachibana-task-heaven/` | 1〜4 / 4色の画面タップ。スマートフォンは横向き |
+| 014 畑島さんの指ハートチャレンジ | `games/finger-heart-challenge/` | Enter / Space / クリック / タップ |
 
-全ゲームでポーズ、音声切替、一覧へ戻る操作ができます。練習は本番モデルから独立し、スコア・BEST・CREDIT・run_start/run_endに影響しません。`tutorialCompleted`はゲームごとの保存領域に記録します。秘密の後半モードは練習で紹介しません。
+001〜011でポーズ・音声切替、全14ゲームで一覧へ戻る操作ができます。012〜014の機能・UIは元ゲームを保持します。練習は本番モデルから独立し、スコア・BEST・CREDIT・run_start/run_endに影響しません。`tutorialCompleted`はゲームごとの保存領域に記録します。秘密の後半モードは練習で紹介しません。
 
-011は画像10問（最初5秒、正解後の明示的な警告を経て1秒）、文章10問（読む時間は無制限、準備OKを離した後0.8秒）、選んだ言葉を答え続けるFinal（0.5秒）です。左右配置は毎問独立してランダム、画像・文章は各20問から重複なしで10問です。
+011は画像10問、文章10問、選んだ言葉を答え続けるFinalです。通算1〜20問は2秒・100点、21〜50問は1.5秒・200点、51問以降は0.5秒・500点。文章を読む時間・Finalの選択時間は無制限です。左右配置は毎問独立してランダム、画像・文章は各20問から重複なしで10問です。得点基準変更前のBESTは別記録として保持します。
 
 ## GitHub Pagesへの公開
 
@@ -66,7 +69,7 @@ node tests/eleven-game/audit-art.mjs --dist --final
 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts
 ```
 
-Chromiumが未導入なら`npx playwright install chromium`。この環境では`/usr/bin/chromium`を使用します。実行したケース・失敗後の修正・PC/スマホ実画面・`/repo/`での配信確認は[今回のQA](docs/eleven-game/QA)へ記録します。旧`test:e2e`・`test:production`は10本時代の仕様を含む履歴です。今回の公開判定には11本版のテストを使います。
+Chromiumが未導入なら`npx playwright install chromium`。この環境では`/usr/bin/chromium`を使用します。実行したケース・失敗後の修正・PC/スマホ実画面・`/repo/`での配信確認は[今回のQA](docs/eleven-game/QA)へ記録します。旧`test:e2e`・`test:production`は10本時代の仕様を含む履歴です。001〜011の回帰確認には11本版のテストを使い、012〜014は移行専用の検証を行います。
 
 ## ゲーム追加・サムネイル更新
 
@@ -74,7 +77,7 @@ Chromiumが未導入なら`npx playwright install chromium`。この環境では
 
 サムネイルは実ゲームの`#stage`を撮影した画像から作ります。実装にない演出の広告画像にはしません。`public/assets/portal/gameNNN.webp`を更新し、原本・矩形・hash・採用状態を`assets/portal/thumbnails/asset-index.json`へ記録します。[素材パイプライン](docs/eleven-game/art/ASSET_PIPELINE_DECISIONS.md)を参照してください。
 
-配信する画像は採用したWebPだけです。ImageGen原本・atlas・生成ログ・ライセンスは`assets/`と`docs/`に保存します。011の20アイコン、010のLISTEN/WORK前景2枚は実際にImageGenで生成しました。フォントは同梱のM PLUS Rounded 1c由来subsetで、OFLを同梱しています。通常のnpmビルドにPythonは不要です。
+001〜011とポータルの配信画像は採用したWebPです。012〜014は元ゲームのPNG・WASM・PCK・音声をそのまま同梱します。ImageGen原本・atlas・生成ログ・ライセンスは`assets/`と`docs/`に保存します。011の20アイコン、010のLISTEN/WORK前景2枚は実際にImageGenで生成しました。フォントは同梱のM PLUS Rounded 1c由来subsetで、OFLを同梱しています。通常のnpmビルドにPythonは不要です。
 
 ## CREDIT・保存・接続境界
 
@@ -82,9 +85,9 @@ Chromiumが未導入なら`npx playwright install chromium`。この環境では
 
 将来ONへ戻す場合は`creditsEnabled: true`にして、`CreditService.requestRewardedCredit(adapter)`へ実広告SDKを接続します。3CREDIT・失敗時の1減算・補充の重複防止は既存サービスと有効モードの回帰テストに残しています。011の広告UI接続もその段階で追加してください。本番広告の接続前に試作版のフラグをONにしないでください。
 
-保存名前空間は001の`orbit-shift:v1:`を保持し、002〜011は`web-mini-arcade:v1:gameNNN:`です。BEST、音、練習完了をゲーム別に保存し、保存拒否時はページ内メモリで継続します。自己ベストはこのブラウザ内の記録です。
+保存名前空間は001の`orbit-shift:v1:`を保持し、002〜011は`web-mini-arcade:v1:gameNNN:`です。BEST、音、練習完了をゲーム別に保存し、保存拒否時はページ内メモリで継続します。自己ベストはこのブラウザ内の記録です。011の新配点BESTは`best:v2`、旧配点は従来の`best`に保持します。012〜014の保存は各Godotゲームの既存仕様を保持します。
 
-`TelemetryService.trackEvent()`を通してgame_open、run_start/end、score、retry、quit等を記録します。練習はtutorial_start/step_complete/complete/skip、一覧はportal_open/game_card_click/game_launch/return_to_portalです。現在のadapterはconsoleと最大200件のメモリ履歴で、ゲームIDを付与します。オンラインサービスへの置換はこの境界で行います。
+001〜011では`TelemetryService.trackEvent()`を通してgame_open、run_start/end、score、retry、quit等を記録します。練習はtutorial_start/step_complete/complete/skip、一覧はportal_open/game_card_click/game_launch/return_to_portalです。現在のadapterはconsoleと最大200件のメモリ履歴で、ゲームIDを付与します。オンラインサービスへの置換はこの境界で行います。
 
 ## 構造と学び
 
@@ -93,6 +96,8 @@ Chromiumが未導入なら`npx playwright install chromium`。この環境では
 - `src/portal/` / `src/data/`：一覧と登録データ。
 - `src/game/`：001の固有モデルとPhaser。
 - `src/games/game002/`〜`game011/`：ゲームごとの固有ルール・描画・UI。
-- `docs/eleven-game/`：今回の仕様・実装報告・独立レビュー・QA・人間評価。
+- `public/games/`：012〜014の既存Godot Web出力。独立した相対パスで配信します。
+- `docs/eleven-game/`：11本版の仕様・実装報告・独立レビュー・QA・人間評価。
+- `docs/migration/`：回答時間・得点改修、既存3ゲーム統合と旧サイト停止の記録。
 
 既存10本の純粋ゲームモデルを維持し、007/008の情報表示、010の実画像前景を改善しました。汎用ゲームSDKや同じ結果UIへの統一はしていません。共通化する範囲は[次期仕様草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)とゲーム別LESSONSで検討します。

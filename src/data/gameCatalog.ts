@@ -22,7 +22,15 @@ const entries = [
   ['ウンコかウコンかゲーム', 'UNKO or UKON', '絶対わかる。0.5秒になるまでは。'],
 ] as const;
 
-export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(entries.map(([titleJa, titleEn, tagline], index) => {
+const originalGames = entries.map(([titleJa, titleEn, tagline], index) => {
   const id = `game${String(index + 1).padStart(3, '0')}`;
   return Object.freeze({ id, titleJa, titleEn, tagline, thumbnail: `./assets/portal/${id}.webp`, route: `./${id}.html`, releaseOrder: index + 1 });
-}));
+});
+
+const legacyGames: readonly GameCatalogEntry[] = [
+  { id: 'game012', titleJa: '澤野さんの横取りデイズ', titleEn: 'YOKODORI DAYS', tagline: '「今だ！」の瞬間に、同僚の仕事とバナナを横取り。', thumbnail: './assets/portal/game012.webp', route: './games/yokodori-days/index.html', releaseOrder: 12 },
+  { id: 'game013', titleJa: '立花さんのタスク天国', titleEn: 'TASK HEAVEN', tagline: '上司のお手本を覚えて、1〜4キーで仕事を奏でよう。', thumbnail: './assets/portal/game013.webp', route: './games/tachibana-task-heaven/index.html', releaseOrder: 13 },
+  { id: 'game014', titleJa: '畑島さんの指ハートチャレンジ', titleEn: 'FINGER HEART CHALLENGE', tagline: '指ハートの瞬間でストップ。全5段階、25回成功を目指せ。', thumbnail: './assets/portal/game014.webp', route: './games/finger-heart-challenge/index.html', releaseOrder: 14 },
+];
+
+export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames].map(game => Object.freeze(game)));

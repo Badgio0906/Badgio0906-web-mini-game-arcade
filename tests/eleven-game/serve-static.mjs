@@ -7,7 +7,7 @@ import { gzipSync } from 'node:zlib';
 const root=resolve(process.env.ARCADE_STATIC_DIR??'dist');
 const port=Number(process.env.ARCADE_STATIC_PORT??4191);
 const mount=`/${(process.env.ARCADE_STATIC_MOUNT??'').replace(/^\/+|\/+$/g,'')}`.replace(/\/?$/,'/');
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.ico':'image/x-icon'};
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.ico':'image/x-icon','.wasm':'application/wasm','.pck':'application/octet-stream','.wav':'audio/wav','.ogg':'audio/ogg'};
 createServer(async(req,res)=>{
   try{
     const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);

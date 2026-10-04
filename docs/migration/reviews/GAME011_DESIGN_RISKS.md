@@ -1,0 +1,11 @@
+# Game011 cumulative-tier independent design review
+
+Initial source-only preparation; actual final candidate native review has now passed in ../GAME011_REVIEW.md. No implementation edits by this reviewer.
+
+The one-based ordinal uses imageCorrect+textCorrect+finalStreak+1, so the first twenty image/text answers receive2s/100 points. Q21 is the first final answer, with1.5s/200; clearing Q50 gives8000 points/finalStreak30; Q51 changes to0.5s/500. This does not reset the thresholds at the image/text/final phase boundaries. Untimed text reading and release-approved READY remain intact. The initial speed-warning intermission is removed rather than accidentally shortening the first two-second image.
+
+Q2–10 now allow2s instead of the previous1s; text selections now allow2s instead of0.8s. Q1 is faster than its previous5s introductory allowance (now2s), so first-use recognition still needs human confirmation after the untimed practice. The chosen final word still creates a different side-location task, with1.5s for its first thirty answers. Q51 intentionally introduces a sharp3× reduction in reaction time for2.5× reward. Source title/final-choice copy states both thresholds, and timed status states cumulative question number and reward; actual legibility and a clearly understood transition require browser/human review. No automatic oracle success will certify human fairness or fun.
+
+Keep previous overlay/final-choice contained-focus cleanup, READY release latches, decode-before-clock and native round guards. The fresh native review must show unpaused final-choice→firstArrow acceptance, question20/21/50/51 deadline and score deltas, an actual timeout reason and ordinary retry. Scores are now written to best:v2 and old best is labelled old配点; migration fixtures belong to QA, while this review starts naturally in a fresh context.
+
+Potential human risk: people may overlook the small Q51 ordinal/reward line and perceive the abrupt timer drop as unexplained even after reading the title. If observed in a human playtest, a concise transition cue could help; no extra grace or pause is implied by this source note. Human learning, timing comfort, score motivation and retry appeal remain pending.

@@ -4,7 +4,7 @@ import { TelemetryService } from '../../core/TelemetryService';
 import { AudioService } from '../../core/AudioService';
 import { createOnboarding } from '../../arcade/onboarding';
 import { createUnkoGame } from './UnkoBoard';
-import { answerLabel } from './UnkoRun';
+import { answerLabel, SCORE_VERSION } from './UnkoRun';
 import { resultComment } from './resultFlavor';
 import type { UnkoEvent, UnkoResult, UnkoSnapshot } from './contracts';
 
@@ -15,7 +15,8 @@ const storage = new StorageService(undefined, 'web-mini-arcade:v1:game011:');
 const telemetry = new TelemetryService(storage, 'game011'); const audio = new AudioService(storage);
 const onboarding = createOnboarding({ gameId: 'game011', storage, telemetry });
 let state: Screen = 'title'; let runId = ''; let ended = true; let disposed = false; let result: UnkoResult | null = null;
-let best = storage.readNumber('best', 0); let bestFinal = storage.readNumber('bestFinalStreak', 0); let newBest = false; let newFinal = false;
+const legacyBest = storage.readNumber('best', 0);
+let best = storage.readNumber('best:v2', 0); let bestFinal = storage.readNumber('bestFinalStreak', 0); let newBest = false; let newFinal = false;
 let resultTimer: ReturnType<typeof window.setTimeout> | undefined;
 const text = (id: string, value: string): void => { const e = $(id); if (e && e.textContent !== value) e.textContent = value; };
 const primary = (id: string, label: string) => `<button id="${id}" type="button" class="primary">${label} <span aria-hidden="true">→</span></button>`;
@@ -39,7 +40,7 @@ function screen(next: Screen): void {
   if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
   if (next === 'title') {
     text('score-value', '0'); app.dataset.phase = 'title';
-    overlay.innerHTML = `<article class="title-ticket"><div><span class="eyebrow">たった二択。なのに。</span><h1>ウンコかウコンか。</h1><p>出てきたものを、左右で答えるだけ。<br />間違い・時間切れで終了です。</p></div><div class="ticket-actions">${primary('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる')}<small>← → / A D / クリック / タップ<br />無料・回数制限なし</small></div></article>`;
+    overlay.innerHTML = `<article class="title-ticket"><div><span class="eyebrow">たった二択。なのに。</span><h1>ウンコかウコンか。</h1><p>出てきたものを、左右で答えるだけ。<br />間違い・時間切れで終了です。</p></div><div class="ticket-actions">${primary('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる')}<small>← → / A D / クリック / タップ<br />無料・回数制限なし${legacyBest ? `<br />旧BEST ${legacyBest}（旧配点）` : ''}</small></div></article>`;
   } else if (next === 'paused') {
     overlay.innerHTML = `<article class="pause-ticket"><div><span class="eyebrow">PAUSE</span><h2>ひと息。</h2><p>問題と時計を止めています。</p></div><div class="paired-actions">${primary('resume-button', '続きから')}${titleButton}</div></article>`;
   } else if (next === 'result' && result) {
@@ -52,9 +53,9 @@ const controller = createUnkoGame($('game-canvas'), {
   onEnd(value) {
     if (ended || disposed || state !== 'playing') return;
     ended = true; result = value; newBest = value.score > best; newFinal = value.finalStreak > bestFinal;
-    best = Math.max(best, value.score); bestFinal = Math.max(bestFinal, value.finalStreak); storage.writeNumber('best', best); storage.writeNumber('bestFinalStreak', bestFinal);
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: value.score, time: value.time, image_correct: value.imageCorrect, text_correct: value.textCorrect, final_mode: value.finalMode ?? 'none', final_streak: value.finalStreak, reason: value.outcome });
-    telemetry.trackEvent('score', { runId, score: value.score, best, newBest, final_streak: value.finalStreak, best_final: bestFinal }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over' });
+    best = Math.max(best, value.score); bestFinal = Math.max(bestFinal, value.finalStreak); storage.writeNumber('best:v2', best); storage.writeNumber('bestFinalStreak', bestFinal);
+    telemetry.trackEvent('run_end', { runId, score_version: SCORE_VERSION, outcome: 'over', score: value.score, time: value.time, image_correct: value.imageCorrect, text_correct: value.textCorrect, final_mode: value.finalMode ?? 'none', final_streak: value.finalStreak, reason: value.outcome });
+    telemetry.trackEvent('score', { runId, score_version: SCORE_VERSION, score: value.score, best, newBest, final_streak: value.finalStreak, best_final: bestFinal }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over' });
     screen('ending'); resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'ending') screen('result'); }, 200);
   },
 });
@@ -62,7 +63,7 @@ function start(retry = false): void {
   if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
   void audio.unlock(); runId = `game011-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = newFinal = false;
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, score_version: SCORE_VERSION }); screen('playing'); controller.start();
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); if (ended) return; telemetry.trackEvent('pause', { runId }); screen('paused'); }
@@ -72,7 +73,7 @@ function recordQuit(): void {
   if (ended || state !== 'playing' && state !== 'paused') return;
   // Settle the real deadline before allowing navigation to classify an already-expired answer as quit.
   if (state === 'playing') controller.pause(true); if (ended) return;
-  ended = true; const s = controller.snapshot(); telemetry.trackEvent('quit', { runId, score: s.score, time: s.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: s.score, time: s.time }); telemetry.trackEvent('run_duration', { runId, seconds: s.time, reason: 'quit' });
+  ended = true; const s = controller.snapshot(); telemetry.trackEvent('quit', { runId, score: s.score, time: s.time }); telemetry.trackEvent('run_end', { runId, score_version: SCORE_VERSION, outcome: 'quit', score: s.score, time: s.time }); telemetry.trackEvent('run_duration', { runId, seconds: s.time, reason: 'quit' });
 }
 function title(): void { if (state === 'ending') return; recordQuit(); if (resultTimer !== undefined) return; controller.title(); result = null; screen('title'); }
 app.addEventListener('click', event => {

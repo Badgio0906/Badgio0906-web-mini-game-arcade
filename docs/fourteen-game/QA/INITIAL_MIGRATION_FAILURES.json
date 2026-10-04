@@ -1,0 +1,39 @@
+{
+  "initialActualCounts": {
+    "passed": 9,
+    "failed": 4,
+    "skippedDuplicate": 3
+  },
+  "cases": [
+    {
+      "case": "legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 4"
+      ],
+      "rawTrace": "artifacts/fourteen-game-migration-initial/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop/trace.zip"
+    },
+    {
+      "case": "legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop",
+      "errors": [
+        "TimeoutError: frame.waitForFunction: Timeout 5000ms exceeded.",
+        "Timeout 5000ms exceeded."
+      ],
+      "rawTrace": "artifacts/fourteen-game-migration-initial/legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop/trace.zip"
+    },
+    {
+      "case": "legacy-migration-Original--30f59-d-reloads-with-preserved-UI-legacy-mobile-landscape",
+      "errors": [
+        "Error: expect(received).toMatch(expected)\n\nExpected pattern: /GAME\\s*OVER/i\nReceived string:  \"DAF pYD¥BAD 4 AIC·\nEBSNTLE DE·\nah·\nSHOAII·\n000000·\nA\\\\-f AIP : 000000·\nDLF py DTS·\nEnter.\n\""
+      ],
+      "rawTrace": "artifacts/fourteen-game-migration-initial/legacy-migration-Original--30f59-d-reloads-with-preserved-UI-legacy-mobile-landscape/trace.zip"
+    },
+    {
+      "case": "legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape",
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"practice_result\"\nReceived: \"playing\"",
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 6"
+      ],
+      "rawTrace": "artifacts/fourteen-game-migration-initial/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape/trace.zip"
+    }
+  ]
+}

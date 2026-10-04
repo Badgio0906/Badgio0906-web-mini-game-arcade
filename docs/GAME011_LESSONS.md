@@ -1,5 +1,29 @@
 # Game011 開発メモ — ウンコかウコンかゲーム ～UNKO or UKON～
 
+## 現行 v2 — 通算問題数で制限時間と配点を変更
+
+2026-10-04の追加指示を実装。画像10問→文章10問→FINAL無限の構成を維持し、回答期限と1問の正解点を通算正解数+1で決める。
+
+| 問題番号 | 回答期限 | 正解点 |
+|---|---:|---:|
+| 1〜20 | 2秒 | 100 |
+| 21〜50 | 1.5秒 | 200 |
+| 51以降 | 0.5秒 | 500 |
+
+最初の画像だけ5秒・画像2問目へ進む前のspeed_warningは廃止。画像10問すべて2秒、文章は無制限に読んでREADYを離した瞬間から2秒。FINALの選択時間は無制限で、最初のFINALは通算21問目なので1.5秒、FINAL30正解で通算51問目へ入り0.5秒となる。読み取り・text_intro・MODE選択・ポーズを回答時間に数えない。run_durationは従来どおりポーズを除いた実経過時間。20問時点2000点、50問時点8000点、51問正解で8500点。速い段階の点数を過去の得点へかけ直さない。
+
+snapshotにquestionNumberとpointsPerCorrect、モデルにdeadlineForQuestion/pointsForQuestionを追加。通算問題番号・現在の正解点を回答欄に出し、残り時間を同じ時計で表示、タイトルの説明とMODE開始前にも配点・期限の変化を明示した。独立50:50配置、生成画像decode完了まで時計停止、READYのrelease、新旧ラウンドのepoch、キー保持拒否、実経過の入力直前同期、overlay/FINAL MODE欄の非表示フォーカスblurは維持した。
+
+旧配点は比較不能なのでStorageの既存bestを変更せず、現行BESTは同じGame011名前空間のbest:v2へ保存し、score/run_startイベントへscore_version:2を付ける。旧記録があるタイトルには「旧BEST（旧配点）」を別表示し、現行BESTへ移行・換算しない。BEST FINAL STREAKは得点ではなく連続数として既存キーを維持する。FINALの期限条件が変わった履歴は、このメモに残す。
+
+現行モデル11/11 unit PASS（最終テスト1.298秒/runner1.61秒）、TypeScript check PASS。公開入力だけで20/21/50/51の境界、100→200→500のイベント、得点2000/8000/8500、各期限の実消費、深いコピーとreset・入力epoch・各段階5100配置を検証した。旧単体・E2Eの期待値を現行仕様へ更新し、E2Eへ通算51問到達と旧best保持/新best:v2保存の確認を追加した。現行E2Eは18 configuredを実行し、8 distinct PASS・重複9 skip・PC1件は候補更新で中断して無効（58.2秒）。PCの通算51問/100→200→500点・旧best保持/新best:v2保存、2秒の壁時計timeout、8サイズのpause/自然wrong結果、RESUME/MODE直後の最初の回答と保持repeatは成功。phoneでは両MODE4400点/FINAL12、READY長押しrelease、RESUME/MODE直後の回答が成功した。
+
+PC両MODEケースのUNKO4400/12は成功したが、2回目のuntimed final_choiceで13:59:48.113 UTCに新しいgame_openとなり、snapshotが2000点/round32から0点/round0へ戻った。保存traceにはその時刻に新しいVite接続・ページ再読み込みがある。Mainが13:59:45からの共通font/export更新を確認したため、これは候補が変化した検証でありゲームのtimeout不具合とは扱わない。期待値やモデルを変更して通していない。初回PNG/traceはその実行時に確認したが、再実行でPlaywright標準outputDirが整理され、元ファイルは残っていない。別の出力先へ退避しなかった証拠保存の不備を明記する。元traceから読んだ新しいVite接続/game_openの時刻、初回failure出力とMainの更新確認はツール・会話の実行記録に残る。
+
+全体runtime/assetsの251ファイルをSHA-256 `18c59d96802fce36c79f1c5ec999953cd7753e5646e0571fa39aefe3bc08d69a` で凍結した後、未成立PCケースだけを同じDEV5181で再実行し、14.6秒（実行全体15.4秒）でPASS。画像10/文章10・両FINAL MODE4400点/FINAL12、READY保持・release、新BEST/reload・8サイズのFINAL結果が成立した。前回の影響されていない8PASSと合わせ、現行Game011は9 distinct native PASS・重複9 skip。全contextを閉じて専用枠を返した。これは複数実行の集計で、一回の18configured全件成功とは表現しない。v2のproduction配信・独立Feel/Visual・人間評価はまだ保留。以下に残すv1のQA51件/Visual合格を、v2のブラウザ合格として流用しない。
+
+## 以下は v1 の開発・検証履歴
+
 2026-10-04。実装・独立QA記録。Game011の純粋モデル9/9成功（初回テスト1.310秒/runner1.62秒）、統合153 unitと全体build成功。今回の11ゲーム向け開発ブラウザQAは重複を除く51実行が成功し、Game011の本番各段階・入力・結果も確認済み。ローカルproductionのroot/subpath再検証24件は成功。独立Feel/Visualは最終合格。リモートGitHub Pagesの公開と12ページ実確認も成功。人間プレイテストは未実施。今回の試作版は無制限、広告なし。
 
 ## 三段階を明確に分ける

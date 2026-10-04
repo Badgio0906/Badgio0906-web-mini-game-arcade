@@ -1,0 +1,111 @@
+
+Running 6 tests using 1 worker
+
+(node:156278) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:27:1 › Original Yokodori Enter/tap starts, fails naturally while coworker works, retries and reloads with preserved UI (20.3s)
+  ✘  2 [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact (1.1m)
+(node:156512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:70:1 › Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload (16.1s)
+(node:156669) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [legacy-mobile-landscape] › tests/e2e/legacy-migration.spec.ts:27:1 › Original Yokodori Enter/tap starts, fails naturally while coworker works, retries and reloads with preserved UI (16.6s)
+  ✘  5 [legacy-mobile-landscape] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact (1.0m)
+(node:156895) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 [legacy-mobile-landscape] › tests/e2e/legacy-migration.spec.ts:70:1 › Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload (13.9s)
+
+
+  1) [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact 
+
+    Error: frame.evaluate: Frame was detached
+
+      65 |   await page.reload();frame=await loaded(page);await expect.poll(async()=>(await status()).state).toBe('title');
+      66 |   await tapBoard(page,frame,230,489,isMobile);await expect.poll(async()=>(await status()).state).toBe('playing');expect((await status()).stage).toBe(1);
+    > 67 |   await returnPortal(page,isMobile);expect(errors).toEqual([]);writeFileSync(info.outputPath('tachibana-native.json'),JSON.stringify({input:isMobile?'native task-panel touch':'native1–4/Escape',practice,failed,inputs:await frame.evaluate(()=>(window as any).__migrationInputs??[]),errors},null,2));
+         |                                                                                                                                                                                                                                      ^
+      68 | });
+      69 |
+      70 | test('Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload',async({page,isMobile},info)=>{
+        at /workspace/orbit-shift/tests/e2e/legacy-migration.spec.ts:67:230
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:70:1 › Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      75 |   const status=()=>frame.evaluate(()=>(window as any).__fingerHeart);await expect.poll(async()=>(await status())?.state).toBe(0);
+      76 |   await frame.waitForFunction(()=>(window as any).__fingerHeart?.state===0&&(window as any).__fingerHeart.hand===0,null,{polling:'raf',timeout:10_000});
+    > 77 |   await action(page,frame,isMobile,'Space');await expect.poll(async()=>(await status()).score).toBe(1);expect((await status()).state).toBe(1);
+         |                                                                                                ^
+      78 |   // Cache focus outside the subsecond JUDGING input check.
+      79 |   if(isMobile){const r=(await frame.locator('#canvas').boundingBox())!;await page.touchscreen.tap(r.x+r.width*.5,r.y+r.height*.5);}else await page.keyboard.press('Space');expect((await status()).score).toBe(1);
+      80 |   await frame.waitForFunction(()=>(window as any).__fingerHeart?.state===0&&(window as any).__fingerHeart.hand!==0,null,{polling:'raf',timeout:5000});
+        at /workspace/orbit-shift/tests/e2e/legacy-migration.spec.ts:77:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/fourteen-game-migration/legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/fourteen-game-migration/legacy-migration-Original--b57cb-uccess-failure-retry-reload-legacy-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [legacy-mobile-landscape] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact 
+
+    Error: frame.evaluate: Frame was detached
+
+      65 |   await page.reload();frame=await loaded(page);await expect.poll(async()=>(await status()).state).toBe('title');
+      66 |   await tapBoard(page,frame,230,489,isMobile);await expect.poll(async()=>(await status()).state).toBe('playing');expect((await status()).stage).toBe(1);
+    > 67 |   await returnPortal(page,isMobile);expect(errors).toEqual([]);writeFileSync(info.outputPath('tachibana-native.json'),JSON.stringify({input:isMobile?'native task-panel touch':'native1–4/Escape',practice,failed,inputs:await frame.evaluate(()=>(window as any).__migrationInputs??[]),errors},null,2));
+         |                                                                                                                                                                                                                                      ^
+      68 | });
+      69 |
+      70 | test('Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload',async({page,isMobile},info)=>{
+        at /workspace/orbit-shift/tests/e2e/legacy-migration.spec.ts:67:230
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/fourteen-game-migration/legacy-migration-Original--8da9d--native-retry-remain-intact-legacy-mobile-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact 
+    [legacy-desktop] › tests/e2e/legacy-migration.spec.ts:70:1 › Original Finger Heart normal URL remains uninstrumented; existing readonly QA observations prove native success/failure/retry/reload 
+    [legacy-mobile-landscape] › tests/e2e/legacy-migration.spec.ts:42:1 › Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact 
+  3 passed (3.4m)

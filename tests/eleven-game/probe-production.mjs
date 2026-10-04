@@ -10,6 +10,8 @@ const remote=mounts.some(mount=>!['127.0.0.1','localhost','[::1]'].includes(new 
 const sessionProxy=remote?(process.env.HTTPS_PROXY??process.env.HTTP_PROXY):undefined;
 const numbers=process.env.ELEVEN_STATIC_GAME_NUMBERS?process.env.ELEVEN_STATIC_GAME_NUMBERS.split(',').map(Number):Array.from({length:12},(_,i)=>i);
 assert.ok(numbers.length>0&&numbers.every(n=>Number.isInteger(n)&&n>=0&&n<=11),'explicit valid route numbers');
+const expectedCatalog=Number(process.env.ELEVEN_EXPECTED_CATALOG_COUNT??14);
+assert.ok(Number.isInteger(expectedCatalog)&&expectedCatalog>=11,'expected real catalog count');
 const records=[],browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox'],...(sessionProxy?{proxy:{server:sessionProxy}}:{})});
 try{
   for(const mount of mounts)for(const number of numbers){
@@ -29,7 +31,7 @@ try{
       const response=await page.goto(new URL(route,mount).href);assert.equal(response.status(),200,`${id} direct HTTP`);
       if(number)await page.locator('#play-button').waitFor({state:'visible'});
       else{
-        assert.equal(await page.locator('.game-card').count(),11);
+        assert.equal(await page.locator('.game-card').count(),expectedCatalog);
         for(const image of await page.locator('.game-card img').all())await image.scrollIntoViewIfNeeded();
       }
       await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(i=>i.decode().catch(()=>undefined)));});await page.waitForLoadState('networkidle');
@@ -55,11 +57,11 @@ try{
         await page.reload();await page.locator('#play-button').waitFor({state:'visible'});
         await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle');await Promise.all(jobs);
         const back=page.locator('.arcade-portal-back');assert.ok([basePath,`${basePath}index.html`].includes(new URL(await back.getAttribute('href'),page.url()).pathname));await back.click();await page.locator('.game-card').first().waitFor({state:'visible'});
-        assert.equal(await page.locator('.game-card').count(),11);
+        assert.equal(await page.locator('.game-card').count(),expectedCatalog);
         await page.waitForLoadState('networkidle');await Promise.all(jobs);assert.deepEqual(errors,[],`${id} refresh/return errors`);
       }
       records.push({mount,id,route,phaser,totals,unique,...observed,errors:[...errors]});console.log(`${mount}${route}: ${totals.script.bodyBytes} JS / ${totals.image.bodyBytes} images / ${totals.font.bodyBytes} fonts; PASS`);
     }finally{await context.close();}
   }
-  await mkdir(dirname(reportPath),{recursive:true});await writeFile(reportPath,JSON.stringify({checkedUtc:new Date().toISOString(),mounts,numbers,records},null,2)+'\n');
+  await mkdir(dirname(reportPath),{recursive:true});await writeFile(reportPath,JSON.stringify({checkedUtc:new Date().toISOString(),mounts,numbers,expectedCatalog,records},null,2)+'\n');
 }finally{await browser.close();}

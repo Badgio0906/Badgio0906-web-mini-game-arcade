@@ -2,9 +2,9 @@ import { expect, test } from '@playwright/test';
 import { gameCatalog } from '../../src/data/gameCatalog';
 import { errorsOn, nativeButton } from './helpers/eleven-arcade';
 
-test('portal exposes eleven real illustrated cards, PC/mobile columns and complete titles without fabricated rankings',async({page,isMobile},info)=>{
+test('portal exposes all real illustrated cards, PC/mobile columns and complete titles without fabricated rankings',async({page,isMobile},info)=>{
   test.skip(info.project.name==='mobile-landscape');const errors=errorsOn(page);await page.goto('./');
-  await expect(page.locator('#game-count')).toHaveText('11');await expect(page.locator('.game-card')).toHaveCount(11);
+  await expect(page.locator('#game-count')).toHaveText(String(gameCatalog.length));await expect(page.locator('.game-card')).toHaveCount(gameCatalog.length);
   const cards=[];
   for(const game of gameCatalog){
     const card=page.locator(`.game-card[data-game-id="${game.id}"]`);await card.scrollIntoViewIfNeeded();
@@ -14,9 +14,9 @@ test('portal exposes eleven real illustrated cards, PC/mobile columns and comple
     await expect.poll(()=>card.locator('img').evaluate((i:HTMLImageElement)=>i.complete&&i.naturalWidth>0)).toBe(true);
     cards.push(await card.evaluate(e=>{const r=e.getBoundingClientRect();return{id:(e as HTMLElement).dataset.gameId,x:r.x,width:r.width,height:r.height,top:r.top+scrollY};}));
   }
-  expect(new Set(cards.map(c=>c.id)).size).toBe(11);
+  expect(new Set(cards.map(c=>c.id)).size).toBe(gameCatalog.length);
   const firstTop=cards[0].top;const columns=cards.filter(c=>Math.abs(c.top-firstTop)<2).length;
-  expect(columns).toBeGreaterThanOrEqual(isMobile?1:3);expect(columns).toBeLessThanOrEqual(isMobile?2:4);
+  const viewport=page.viewportSize()!.width;const expectedColumns=viewport<=540?1:viewport<=900?2:viewport<=1350?3:4;expect(columns).toBe(expectedColumns);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width+1);
   for(const card of cards){expect(card.width).toBeGreaterThan(44);expect(card.height).toBeGreaterThan(44);expect(card.x).toBeGreaterThanOrEqual(-1);expect(card.x+card.width).toBeLessThanOrEqual(page.viewportSize()!.width+1);}
   await expect(page.locator('.game-card[data-game-id="game001"] h2')).toHaveText('軌道をズラせ！');
@@ -25,20 +25,28 @@ test('portal exposes eleven real illustrated cards, PC/mobile columns and comple
 });
 
 test('each whole card launches its direct route; refresh and native return link keep the portal and base prefix intact',async({page,isMobile},info)=>{
-  test.skip(info.project.name==='mobile-landscape');test.setTimeout(120_000);const errors=errorsOn(page),routes=[];
+  test.skip(info.project.name==='mobile-landscape');test.setTimeout(360_000);const errors=errorsOn(page),routes=[];
   await page.goto('./');const portal=new URL(page.url());
   for(const game of gameCatalog){
     const card=page.locator(`.game-card[data-game-id="${game.id}"]`);
+    const legacy=game.route.includes('/games/');
+    const gameReady=async()=>{
+      if(!legacy){await expect(page.locator('#play-button')).toBeVisible();return;}
+      const frame=page.frameLocator('#legacy-game-frame');await expect(frame.locator('#canvas')).toBeVisible();
+      await expect(frame.locator('#status')).toHaveCount(0,{timeout:90_000});
+      const drawn=await frame.locator('#canvas').evaluate((canvas:HTMLCanvasElement)=>({width:canvas.width,height:canvas.height}));
+      expect(drawn.width).toBeGreaterThan(0);expect(drawn.height).toBeGreaterThan(0);
+    };
     // Click the thumbnail region rather than only the PLAY text: the complete card is a launch target.
     await nativeButton(page,`.game-card[data-game-id="${game.id}"] .game-image`,isMobile);
-    await expect(page).toHaveURL(new RegExp(`/${game.id}\\.html$`));await expect(page.locator('#play-button')).toBeVisible();
+    await expect(page).toHaveURL(new URL(game.route,portal).href);await gameReady();
     expect(new URL(page.url()).pathname.startsWith(portal.pathname.replace(/index\.html$/,''))).toBe(true);
-    await page.reload();await expect(page.locator('#play-button')).toBeVisible();
-    const back=page.locator('.arcade-portal-back');await expect(back).toBeVisible();
+    await page.reload();await gameReady();
+    const selector=legacy?'#legacy-portal-return':'.arcade-portal-back';const back=page.locator(selector);await expect(back).toBeVisible();
     const box=await back.boundingBox();expect(box!.width).toBeGreaterThanOrEqual(43.5);expect(box!.height).toBeGreaterThanOrEqual(43.5);
     const href=await back.getAttribute('href'),base=portal.pathname.replace(/index\.html$/,'');
     expect([base,`${base}index.html`]).toContain(new URL(href!,page.url()).pathname);
-    await nativeButton(page,'.arcade-portal-back',isMobile);await expect(page.locator('.game-card')).toHaveCount(11);
+    await nativeButton(page,selector,isMobile);await expect(page.locator('.game-card')).toHaveCount(gameCatalog.length);
     routes.push({id:game.id,back:href});await card.waitFor({state:'visible'});
   }
   expect(errors).toEqual([]);await info.attach('actual-direct-route-refresh-return',{body:JSON.stringify({base:portal.href,routes,errors}),contentType:'application/json'});

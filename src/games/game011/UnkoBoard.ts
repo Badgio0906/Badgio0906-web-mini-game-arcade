@@ -48,7 +48,7 @@ export function createUnkoGame(parent: HTMLElement, hooks: UnkoHooks): UnkoContr
   }
   function nextAction(): Action | null {
     const phase = run.snapshot().phase;
-    return phase === 'speed_warning' || phase === 'text_intro' ? 'advance' : phase === 'text_read' ? 'ready' : null;
+    return phase === 'text_intro' ? 'advance' : phase === 'text_read' ? 'ready' : null;
   }
   function approval(action: Action): Approval { const s = run.snapshot(); return { action, roundId: s.roundId, phase: s.phase }; }
   function draw(): void {
@@ -56,23 +56,23 @@ export function createUnkoGame(parent: HTMLElement, hooks: UnkoHooks): UnkoContr
     if (key !== signature) {
       signature = key; root.dataset.phase = title ? 'title' : s.phase; root.dataset.paused = String(paused); root.dataset.roundId = String(s.roundId);
       root.dataset.loading = String(loading);
-      choices.hidden = title || !timed(s.phase); actions.hidden = title || !['speed_warning', 'text_intro', 'text_read'].includes(s.phase); finalChoices.hidden = title || s.phase !== 'final_choice';
+      choices.hidden = title || !timed(s.phase); actions.hidden = title || !['text_intro', 'text_read'].includes(s.phase); finalChoices.hidden = title || s.phase !== 'final_choice';
       if (finalChoices.hidden && document.activeElement instanceof HTMLElement && finalChoices.contains(document.activeElement)) document.activeElement.blur();
-      continueButton.hidden = s.phase !== 'speed_warning' && s.phase !== 'text_intro'; readyButton.hidden = s.phase !== 'text_read';
+      continueButton.hidden = s.phase !== 'text_intro'; readyButton.hidden = s.phase !== 'text_read';
       spot.hidden = !title && s.question?.kind !== 'image';
       phaseLabel.textContent = title ? '二択。たった二択。' : s.finalMode ? `FINAL · ${answerLabel(s.finalMode)}MODE` : s.phase === 'final_choice' ? '20問 CLEAR · 次は？' : s.imageCorrect < 10 ? 'PHASE 1 · 画像' : 'PHASE 2 · 文章';
       progress.textContent = title ? 'UNKO or UKON' : s.finalMode ? `${s.finalStreak}連続` : s.phase === 'final_choice' ? '10 + 10' : s.imageCorrect < 10 ? `${Math.min(10, s.imageCorrect + 1)} / 10` : `${Math.min(10, s.textCorrect + 1)} / 10`;
       const asset = title ? IMAGE_POOL[0].asset : s.question?.image;
       if (asset && image.dataset.asset !== asset) { image.dataset.asset = asset; image.src = import.meta.env.BASE_URL + asset; image.alt = title ? 'ポップなウンコのゲームアイコン' : `${answerLabel(s.question!.answer)}のゲームアイコン`; fallback.hidden = true; }
       kicker.textContent = title ? '見ればわかる。' : s.phase === 'text_read' ? 'まずは読む · 時間制限なし' : s.phase === 'text_answer' ? 'さあ、どっち？' : s.phase === 'final_answer' ? '選んだ言葉を、ずっと。' : '';
-      question.textContent = title ? 'ウンコ？ ウコン？' : s.phase === 'speed_warning' ? '正解です。' : s.phase === 'text_intro' ? '画像では余裕でしたね。' : s.phase === 'final_choice' ? '20問正解。' : s.question?.text ?? '';
-      description.textContent = title ? '出てきたものを、左右で答えるだけ。' : s.phase === 'speed_warning' ? 'ここから先は1秒です。考えている暇はありません。' : s.phase === 'text_intro' ? 'では、文章でいきます。読んでから「準備OK」。' : s.phase === 'final_choice' ? 'もうウンコとウコンを見間違えることはないでしょう。たぶん。' : s.phase === 'text_read' ? '読み終えたら準備OK。選択肢が出てから0.8秒。' : '';
+      question.textContent = title ? 'ウンコ？ ウコン？' : s.phase === 'text_intro' ? '画像では余裕でしたね。' : s.phase === 'final_choice' ? '20問正解。' : s.question?.text ?? '';
+      description.textContent = title ? '1〜20問：2秒・100点 / 21〜50問：1.5秒・200点 / 51問〜：0.5秒・500点' : s.phase === 'text_intro' ? 'では、文章でいきます。読んでから「準備OK」。' : s.phase === 'final_choice' ? 'もうウンコとウコンを見間違えることはないでしょう。たぶん。' : s.phase === 'text_read' ? '読み終えたら準備OK。選択肢が出てから2秒・正解100点。' : '';
       if (s.choices) { left.querySelector('strong')!.textContent = answerLabel(s.choices[0]); right.querySelector('strong')!.textContent = answerLabel(s.choices[1]); }
-      status.textContent = title ? 'クリック / タップ / ← → / A D' : loading ? '画像の準備中…時計はまだ動きません。' : paused ? 'PAUSE · 時計停止' : s.phase === 'ended' ? `${run.result()?.reason} 正解は「${answerLabel(run.result()!.expected)}」` : s.phase === 'text_read' ? '読む時間は、たっぷり。' : s.phase === 'final_choice' ? '選ぶ時間は無制限。開始すると0.5秒。' : timed(s.phase) ? '左右の位置は毎回ランダム。' : '押して離すと、次へ。';
+      status.textContent = title ? 'クリック / タップ / ← → / A D' : loading ? '画像の準備中…時計はまだ動きません。' : paused ? 'PAUSE · 時計停止' : s.phase === 'ended' ? `${run.result()?.reason} 正解は「${answerLabel(run.result()!.expected)}」` : s.phase === 'text_read' ? '読む時間は、たっぷり。' : s.phase === 'final_choice' ? '21問目から1.5秒・200点。51問目から0.5秒・500点。' : timed(s.phase) ? `第${s.questionNumber}問 · 正解 +${s.pointsPerCorrect}点 · 左右ランダム` : '押して離すと、次へ。';
     }
     const disabled = !available(); for (const b of [left, right, continueButton, readyButton, unkoButton, ukonButton]) if (b.disabled !== disabled) b.disabled = disabled;
     const remaining = s.remaining; const percent = !title && remaining !== null && s.deadline ? remaining / s.deadline * 100 : 0;
-    const text = title ? '最初は5秒' : loading ? 'LOADING' : paused ? 'PAUSE' : s.phase === 'ended' ? 'END' : remaining === null ? '時間制限なし' : `${remaining.toFixed(2)} s`;
+    const text = title ? '最初は2秒' : loading ? 'LOADING' : paused ? 'PAUSE' : s.phase === 'ended' ? 'END' : remaining === null ? '時間制限なし' : `${remaining.toFixed(2)} s`;
     const meterKey = percent.toFixed(2) + text;
     if (meterKey !== timerSignature) { timerSignature = meterKey; fill.style.width = `${percent}%`; seconds.textContent = text; }
   }
