@@ -6,9 +6,13 @@ import { dirname } from 'node:path';
 // Execute only after final build + exclusive browser release. Relative dist is tested at both mounts.
 const mounts=(process.env.ELEVEN_STATIC_URLS??'http://127.0.0.1:4191/,http://127.0.0.1:4192/repo/').split(',').map(s=>s.trim().replace(/\/?$/,'/'));
 const reportPath=process.env.ELEVEN_STATIC_REPORT??'docs/eleven-game/QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json';
-const records=[],browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const remote=mounts.some(mount=>!['127.0.0.1','localhost','[::1]'].includes(new URL(mount).hostname));
+const sessionProxy=remote?(process.env.HTTPS_PROXY??process.env.HTTP_PROXY):undefined;
+const numbers=process.env.ELEVEN_STATIC_GAME_NUMBERS?process.env.ELEVEN_STATIC_GAME_NUMBERS.split(',').map(Number):Array.from({length:12},(_,i)=>i);
+assert.ok(numbers.length>0&&numbers.every(n=>Number.isInteger(n)&&n>=0&&n<=11),'explicit valid route numbers');
+const records=[],browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox'],...(sessionProxy?{proxy:{server:sessionProxy}}:{})});
 try{
-  for(const mount of mounts)for(let number=0;number<=11;number++){
+  for(const mount of mounts)for(const number of numbers){
     const id=number?`game${String(number).padStart(3,'0')}`:'portal',route=number?`${id}.html`:'index.html';
     const context=await browser.newContext({viewport:{width:1440,height:900}}),page=await context.newPage();
     const errors=[],jobs=[];
@@ -53,5 +57,5 @@ try{
       records.push({mount,id,route,phaser,totals,unique,...observed,errors:[...errors]});console.log(`${mount}${route}: ${totals.script.bodyBytes} JS / ${totals.image.bodyBytes} images / ${totals.font.bodyBytes} fonts; PASS`);
     }finally{await context.close();}
   }
-  await mkdir(dirname(reportPath),{recursive:true});await writeFile(reportPath,JSON.stringify({checkedUtc:new Date().toISOString(),mounts,records},null,2)+'\n');
+  await mkdir(dirname(reportPath),{recursive:true});await writeFile(reportPath,JSON.stringify({checkedUtc:new Date().toISOString(),mounts,numbers,records},null,2)+'\n');
 }finally{await browser.close();}

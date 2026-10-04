@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "runtime_source_fingerprint": "ca8c62219c2840d1b87c99f8f001bebb83ef229f3b6e7a1fc2ec6d7c9d143683",
+  "method": "Independent actual native Chromium input; read-only planning oracle; no seeded state, model mutation, fast-forward or forced result.",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "inputs": [
+        "mouse",
+        "keyboard"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "inputs": [
+        "native Chromium emulated touch"
+      ]
+    }
+  ],
+  "all_reviewer_browser_contexts_closed": true,
+  "feel_gate": "PASS",
+  "visual_gate": "PASS",
+  "visual_scores": {
+    "game001": 84,
+    "game002": 88,
+    "game003": 88,
+    "game004": 87,
+    "game005": 89,
+    "game006": 82,
+    "game007": 87,
+    "game008": 85,
+    "game009": 87,
+    "game010": 86,
+    "game011": 86,
+    "portal": 88
+  },
+  "readability_and_production_all_at_least_12": true,
+  "human_A_to_N": "pending; no recognition, physical-phone latency, novice duration or fun certification",
+  "reports": [
+    "docs/eleven-game/reviews/ONBOARDING_FEEL.md",
+    "docs/eleven-game/reviews/GAME007_008_READABILITY.md",
+    "docs/eleven-game/reviews/GAME010_VISUAL.md",
+    "docs/eleven-game/reviews/GAME011_FEEL.md",
+    "docs/eleven-game/reviews/GAME011_VISUAL.md",
+    "docs/eleven-game/reviews/PORTAL_VISUAL.md",
+    "docs/eleven-game/reviews/FINAL_VISUAL_SCORECARD.md"
+  ],
+  "native_records": [
+    {
+      "path": "docs/eleven-game/screenshots/desktop-PRACTICE_RECORD-initial-001-008-harness-selector-failure.json",
+      "sha256": "2fcd82d5454a0e63f66dd680cd5b8b8d0a7eabae2ff4d46d1724b95f662bb4b2"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/desktop-PRACTICE_RECORD-resume-009-011.json",
+      "sha256": "cd412f03418335717e85ebc14809990fecc5864d2f0a9bef6e2d77119ffc6871"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/mobile-PRACTICE_RECORD.json",
+      "sha256": "e0ff225e8c8198341616d4ede6665634aef2bd94cf6f2b0c18f6a082e642481e"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game005/independent-desktop-EN_RECORD.json",
+      "sha256": "d5df2840b2180cf712d124ce70010e04016dd4578b5ecc1c06c33477de73146b"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game005/independent-mobile-EN_RECORD.json",
+      "sha256": "3188869df14de794c38d4c420858fdfefbdbd59f4d4b2710766007b0c6c134c4"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game007/independent-desktop-MAIN_RECORD.json",
+      "sha256": "48874843ba4dfea408cbe1badc0fb9396a2aa1edcad3889d01e0e94603625675"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game007/independent-mobile-MAIN_RECORD.json",
+      "sha256": "03efc52c9341689f00e67373eec30aed62920c15c3dbedecc8ee34c4f969db73"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game008/independent-desktop-MAIN_RECORD.json",
+      "sha256": "b9f91ac3c625882544208b543d4568a8584431ebbbb9ad4fe9a3876a76b6957f"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game008/independent-mobile-MAIN_RECORD.json",
+      "sha256": "656504e5fd0725a01c12692099f57ef08885b7563cd3fe377777e9147c726c0c"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game010/independent-desktop-MAIN_RECORD.json",
+      "sha256": "8bb6e5a8e747dfd6564cf326306d9c533dba894e7d47375a795cefff7108896a"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game010/independent-mobile-MAIN_RECORD.json",
+      "sha256": "88723efa58158860e230802dc3d6e281a76725466d0733e3116a362b040567e1"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game011/independent-desktop-TIMING_RECORD.json",
+      "sha256": "cfb74dd4d54147c21b912c83d37ec7dbaed1e594a13eb542f0113164db3107f4"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game011/independent-mobile-TIMING_RECORD.json",
+      "sha256": "db068e7e332508148d0f54378ff494b1383dd31a9cabb54e00056872d2bfb492"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game011/independent-desktop-MODE_RELEASE-TIMING_RECORD.json",
+      "sha256": "ce783409f7d216588e6f1be2885fc0491cba52f3227ef48d266182ba82df3047"
+    },
+    {
+      "path": "docs/eleven-game/screenshots/game008/independent-mobile-FINAL_TIME_COPY-MAIN_RECORD.json",
+      "sha256": "01ffc2a48e46df614ddf7471cf54238e99d9f1452215b05762fa22c65777fd8f"
+    }
+  ],
+  "history": [
+    "Desktop practice stopped at Game009 strict selector after completed001–008; resumed009–011 only.",
+    "Initial hidden RESUME focus ignored first Arrow and earned3500/final4; repaired overlay retake3750/final5.",
+    "Unpaused final-mode first Arrow reproduced hidden-mode focus; final mode-contained blur retake+9.4ms BODY/+250 and3750/final5.",
+    "Game008 inactive combined TIME/CREDIT retained in initial natural results; final TIME-only copy actual211m result confirmed.",
+    "Brief DOM Game010 desktop result/phone startup overlap excluded from performance claims."
+  ],
+  "scope_limits": [
+    "Unchanged001–006/009 native practice and fresh-main presentation; no redundant long-run milestone replay.",
+    "Eight-size clipping, pause/result matrices, protected-model and root/subpath production results attributed to QA owners.",
+    "Portal thumbnails are actual integrated game images, not poster substitutes."
+  ]
+}

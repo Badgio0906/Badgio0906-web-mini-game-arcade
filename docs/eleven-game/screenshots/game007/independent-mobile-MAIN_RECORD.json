@@ -1,0 +1,2273 @@
+[
+  {
+    "kind": "candidate",
+    "base": "http://127.0.0.1:5181",
+    "device": "mobile",
+    "game": "game007",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "nativeInput": true,
+    "readonlyOracle": true,
+    "humanFunOrSkillEvidence": false
+  },
+  {
+    "kind": "capture",
+    "name": "fresh-main",
+    "path": "docs/eleven-game/screenshots/game007/independent-mobile-fresh-main.png",
+    "state": "playing",
+    "inspection": {
+      "floor": 1,
+      "score": 0,
+      "time": 0.11660000000000013,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 0,
+      "capacity": 450,
+      "currentParty": {
+        "id": 1,
+        "floor": 1,
+        "destination": 4,
+        "label": "会社員",
+        "kg": 65,
+        "value": 100,
+        "items": [
+          {
+            "kind": "office",
+            "label": "会社員",
+            "kg": 65,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 2,
+        "floor": 2,
+        "destination": 6,
+        "label": "来客",
+        "kg": 90,
+        "value": 110,
+        "items": [
+          {
+            "kind": "visitor",
+            "label": "来客",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 110
+          }
+        ]
+      },
+      "aboard": [],
+      "nextUnload": null,
+      "deliveredPeople": 0,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 0,
+      "occupiedFloors": 0,
+      "decisionRemaining": 6.8834,
+      "decisionSeconds": 7,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [],
+      "excessKg": 0,
+      "phaseTime": 0.11660000000000013,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量0/ 450 kgあと 450 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？会社員65 kg行先 4F届けると 100点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection",
+        "text": "乗せると0＋65＝65/ 450 kg-385 kgオーバー！",
+        "dataset": {
+          "prospective": "true"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "ordinaryBoard",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 1,
+        "score": 0,
+        "time": 0.11660000000000013,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 0,
+        "capacity": 450,
+        "currentParty": {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "aboard": [],
+        "nextUnload": null,
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 0,
+        "occupiedFloors": 0,
+        "decisionRemaining": 6.8834,
+        "decisionSeconds": 7,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.11660000000000013,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量0/ 450 kgあと 450 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "行き先の階で降ります",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？会社員65 kg行先 4F届けると 100点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "乗せると0＋65＝65/ 450 kg-385 kgオーバー！",
+          "dataset": {
+            "prospective": "true"
+          }
+        }
+      ]
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 1,
+        "score": 0,
+        "time": 0.1999000000000003,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 65,
+        "capacity": 450,
+        "currentParty": {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 0,
+        "occupiedFloors": 0,
+        "decisionRemaining": 0,
+        "decisionSeconds": 7,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量65/ 450 kgあと 385 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "乗車完了。次の階へ。",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？会社員65 kg行先 4F届けると 100点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "現在の荷重65＋65＝65/ 450 kg-385 kgオーバー！",
+          "dataset": {
+            "prospective": "false"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "capture",
+    "name": "actual-65-plus90",
+    "path": "docs/eleven-game/screenshots/game007/independent-mobile-actual-65-plus90.png",
+    "state": "playing",
+    "inspection": {
+      "floor": 2,
+      "score": 13,
+      "time": 2.249900000000006,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 65,
+      "capacity": 450,
+      "currentParty": {
+        "id": 2,
+        "floor": 2,
+        "destination": 6,
+        "label": "来客",
+        "kg": 90,
+        "value": 110,
+        "items": [
+          {
+            "kind": "visitor",
+            "label": "来客",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 110
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 3,
+        "floor": 3,
+        "destination": 9,
+        "label": "段ボール台車",
+        "kg": 240,
+        "value": 160,
+        "items": [
+          {
+            "kind": "boxes",
+            "label": "段ボール台車",
+            "kg": 240,
+            "people": 0,
+            "cargo": 4,
+            "value": 160
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "nextUnload": {
+        "floor": 4,
+        "kg": 65,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 0,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 14.444444444444443,
+      "occupiedFloors": 1,
+      "decisionRemaining": 6.903333333333333,
+      "decisionSeconds": 6.945,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [],
+      "excessKg": 0,
+      "phaseTime": 0.04166666666666667,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量65/ 450 kgあと 385 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？来客90 kg行先 6F届けると 110点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection",
+        "text": "乗せると65＋90＝155/ 450 kg-295 kgオーバー！",
+        "dataset": {
+          "prospective": "true"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "ordinaryBoard",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 2,
+        "score": 13,
+        "time": 2.249900000000006,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 65,
+        "capacity": 450,
+        "currentParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 14.444444444444443,
+        "occupiedFloors": 1,
+        "decisionRemaining": 6.903333333333333,
+        "decisionSeconds": 6.945,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.04166666666666667,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量65/ 450 kgあと 385 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "行き先の階で降ります",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？来客90 kg行先 6F届けると 110点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "乗せると65＋90＝155/ 450 kg-295 kgオーバー！",
+          "dataset": {
+            "prospective": "true"
+          }
+        }
+      ]
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 2,
+        "score": 13,
+        "time": 2.299900000000008,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 155,
+        "capacity": 450,
+        "currentParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 14.444444444444443,
+        "occupiedFloors": 1,
+        "decisionRemaining": 0,
+        "decisionSeconds": 6.945,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量155/ 450 kgあと 295 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "乗車完了。次の階へ。",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？来客90 kg行先 6F届けると 110点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "現在の荷重155＋90＝155/ 450 kg-295 kgオーバー！",
+          "dataset": {
+            "prospective": "false"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "ordinaryBoard",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 3,
+        "score": 30,
+        "time": 4.3165000000000635,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 155,
+        "capacity": 450,
+        "currentParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 24.444444444444443,
+        "occupiedFloors": 2,
+        "decisionRemaining": 6.8858,
+        "decisionSeconds": 6.89,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.004199999999999821,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量155/ 450 kgあと 295 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "行き先の階で降ります",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？段ボール台車240 kg行先 9F届けると 160点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "乗せると155＋240＝395/ 450 kg-55 kgオーバー！",
+          "dataset": {
+            "prospective": "true"
+          }
+        }
+      ]
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 3,
+        "score": 30,
+        "time": 4.3665000000000616,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 395,
+        "capacity": 450,
+        "currentParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          },
+          {
+            "id": 3,
+            "floor": 3,
+            "destination": 9,
+            "label": "段ボール台車",
+            "kg": 240,
+            "value": 160,
+            "items": [
+              {
+                "kind": "boxes",
+                "label": "段ボール台車",
+                "kg": 240,
+                "people": 0,
+                "cargo": 4,
+                "value": 160
+              }
+            ],
+            "boardedFloor": 3
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 24.444444444444443,
+        "occupiedFloors": 2,
+        "decisionRemaining": 0,
+        "decisionSeconds": 6.89,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量395/ 450 kgあと 55 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "乗車完了。次の階へ。",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？段ボール台車240 kg行先 9F届けると 160点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection",
+          "text": "現在の荷重395＋240＝395/ 450 kg-55 kgオーバー！",
+          "dataset": {
+            "prospective": "false"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "capture",
+    "name": "actual-unload65-and-overload185",
+    "path": "docs/eleven-game/screenshots/game007/independent-mobile-actual-unload65-and-overload185.png",
+    "state": "playing",
+    "inspection": {
+      "floor": 4,
+      "score": 158,
+      "time": 6.416399999999975,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 330,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 70,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 70,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        },
+        {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ],
+          "boardedFloor": 3
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 90,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 45.55555555555556,
+      "occupiedFloors": 3,
+      "decisionRemaining": 6.7975,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "excessKg": 0,
+      "phaseTime": 0.037500000000000006,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量330/ 450 kgあと 120 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "4F · 1人降りました\n−65 kg · お届け完了",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection is-over",
+        "text": "乗せると330＋305＝635/ 450 kg185 kgオーバー！",
+        "dataset": {
+          "prospective": "true"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "capture",
+    "name": "actual-overload-warning",
+    "path": "docs/eleven-game/screenshots/game007/independent-mobile-actual-overload-warning.png",
+    "state": "ending",
+    "inspection": {
+      "floor": 4,
+      "score": 158,
+      "time": 6.4663999999999735,
+      "alive": false,
+      "phase": "overload",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 635,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 70,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 70,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        },
+        {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ],
+          "boardedFloor": 3
+        },
+        {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ],
+          "boardedFloor": 4
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 395,
+        "people": 2,
+        "cargo": 1
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 45.55555555555556,
+      "occupiedFloors": 3,
+      "decisionRemaining": 0,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": "accept",
+      "lastUnloaded": [],
+      "excessKg": 185,
+      "phaseTime": 0,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量635/ 450 kgあと 0 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection is-over",
+        "text": "現在の荷重635＋305＝635/ 450 kg185 kgオーバー！",
+        "dataset": {
+          "prospective": "false"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "naturalOverload",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 4,
+        "score": 158,
+        "time": 6.416399999999975,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 330,
+        "capacity": 450,
+        "currentParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 5,
+          "floor": 5,
+          "destination": 10,
+          "label": "配達員",
+          "kg": 70,
+          "value": 100,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 70,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          },
+          {
+            "id": 3,
+            "floor": 3,
+            "destination": 9,
+            "label": "段ボール台車",
+            "kg": 240,
+            "value": 160,
+            "items": [
+              {
+                "kind": "boxes",
+                "label": "段ボール台車",
+                "kg": 240,
+                "people": 0,
+                "cargo": 4,
+                "value": 160
+              }
+            ],
+            "boardedFloor": 3
+          }
+        ],
+        "nextUnload": {
+          "floor": 6,
+          "kg": 90,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 1,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 45.55555555555556,
+        "occupiedFloors": 3,
+        "decisionRemaining": 6.7975,
+        "decisionSeconds": 6.835,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          }
+        ],
+        "excessKg": 0,
+        "phaseTime": 0.037500000000000006,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量330/ 450 kgあと 120 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "4F · 1人降りました\n−65 kg · お届け完了",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection is-over",
+          "text": "乗せると330＋305＝635/ 450 kg185 kgオーバー！",
+          "dataset": {
+            "prospective": "true"
+          }
+        }
+      ]
+    },
+    "after": {
+      "state": "ending",
+      "inspection": {
+        "floor": 4,
+        "score": 158,
+        "time": 6.4663999999999735,
+        "alive": false,
+        "phase": "overload",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 635,
+        "capacity": 450,
+        "currentParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 5,
+          "floor": 5,
+          "destination": 10,
+          "label": "配達員",
+          "kg": 70,
+          "value": 100,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 70,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          },
+          {
+            "id": 3,
+            "floor": 3,
+            "destination": 9,
+            "label": "段ボール台車",
+            "kg": 240,
+            "value": 160,
+            "items": [
+              {
+                "kind": "boxes",
+                "label": "段ボール台車",
+                "kg": 240,
+                "people": 0,
+                "cargo": 4,
+                "value": 160
+              }
+            ],
+            "boardedFloor": 3
+          },
+          {
+            "id": 4,
+            "floor": 4,
+            "destination": 6,
+            "label": "配達員＋巨大な観葉植物",
+            "kg": 305,
+            "value": 400,
+            "items": [
+              {
+                "kind": "courier",
+                "label": "配達員",
+                "kg": 85,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              },
+              {
+                "kind": "plant",
+                "label": "巨大な観葉植物",
+                "kg": 220,
+                "people": 0,
+                "cargo": 1,
+                "value": 300
+              }
+            ],
+            "boardedFloor": 4
+          }
+        ],
+        "nextUnload": {
+          "floor": 6,
+          "kg": 395,
+          "people": 2,
+          "cargo": 1
+        },
+        "deliveredPeople": 1,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 45.55555555555556,
+        "occupiedFloors": 3,
+        "decisionRemaining": 0,
+        "decisionSeconds": 6.835,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 185,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      },
+      "hud": [
+        {
+          "class": "load-readout",
+          "text": "現在の重量635/ 450 kgあと 0 kg",
+          "dataset": {}
+        },
+        {
+          "class": "unload-note",
+          "text": "行き先の階で降ります",
+          "dataset": {}
+        },
+        {
+          "class": "party-current",
+          "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+          "dataset": {}
+        },
+        {
+          "class": "weight-projection is-over",
+          "text": "現在の荷重635＋305＝635/ 450 kg185 kgオーバー！",
+          "dataset": {
+            "prospective": "false"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "capture",
+    "name": "natural-result",
+    "path": "docs/eleven-game/screenshots/game007/independent-mobile-natural-result.png",
+    "state": "result",
+    "inspection": {
+      "floor": 4,
+      "score": 158,
+      "time": 6.4663999999999735,
+      "alive": false,
+      "phase": "overload",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 635,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 70,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 70,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        },
+        {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ],
+          "boardedFloor": 3
+        },
+        {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ],
+          "boardedFloor": 4
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 395,
+        "people": 2,
+        "cargo": 1
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 45.55555555555556,
+      "occupiedFloors": 3,
+      "decisionRemaining": 0,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": "accept",
+      "lastUnloaded": [],
+      "excessKg": 185,
+      "phaseTime": 0,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量635/ 450 kgあと 0 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection is-over",
+        "text": "現在の荷重635＋305＝635/ 450 kg185 kgオーバー！",
+        "dataset": {
+          "prospective": "false"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "naturalResult",
+    "text": "まだ乗れます\nELEVATOR OVERLOAD\n重量オーバー！\n\n635 / 450 kg\n185 kg 超過 · 配達員＋巨大な観葉植物\n\n158\nSCORE\nNEW BEST\nBEST\n158\n到達階\n4 F\n人のお届け\n1 人\n荷物のお届け\n0 個\nTIME\n6.5 s\n積載効率 46% · 今回の称号\nエレベーター見習い\nRETRY · もう1回\nタイトル\n次は、もうひと組届けよう。",
+    "state": "result",
+    "inspection": {
+      "floor": 4,
+      "score": 158,
+      "time": 6.4663999999999735,
+      "alive": false,
+      "phase": "overload",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 635,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 70,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 70,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        },
+        {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ],
+          "boardedFloor": 3
+        },
+        {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ],
+          "boardedFloor": 4
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 395,
+        "people": 2,
+        "cargo": 1
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 45.55555555555556,
+      "occupiedFloors": 3,
+      "decisionRemaining": 0,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": "accept",
+      "lastUnloaded": [],
+      "excessKg": 185,
+      "phaseTime": 0,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量635/ 450 kgあと 0 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？配達員＋巨大な観葉植物305 kg行先 6F届けると 400点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection is-over",
+        "text": "現在の荷重635＋305＝635/ 450 kg185 kgオーバー！",
+        "dataset": {
+          "prospective": "false"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "ordinaryUnlimitedRetry",
+    "wallMs": 50,
+    "training": {
+      "active": false,
+      "phase": "success",
+      "completed": true,
+      "practice": {
+        "gameId": "game007",
+        "step": 2,
+        "elapsed": 1.2637999999985094,
+        "complete": true,
+        "feedback": "できました！ この操作で、本番も遊べます。",
+        "lane": 1,
+        "enemyLane": 1,
+        "angle": -1.5707963267948966,
+        "x": 150,
+        "moving": false,
+        "light": -1,
+        "phase": "success",
+        "tilt": 0.35,
+        "input": 0,
+        "mode": "listen",
+        "practicePoints": 0,
+        "power": 0.75,
+        "choiceLeft": "ukon"
+      }
+    },
+    "state": "playing",
+    "inspection": {
+      "floor": 1,
+      "score": 0,
+      "time": 0,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 0,
+      "capacity": 450,
+      "currentParty": {
+        "id": 1,
+        "floor": 1,
+        "destination": 4,
+        "label": "会社員",
+        "kg": 65,
+        "value": 100,
+        "items": [
+          {
+            "kind": "office",
+            "label": "会社員",
+            "kg": 65,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 2,
+        "floor": 2,
+        "destination": 6,
+        "label": "来客",
+        "kg": 90,
+        "value": 110,
+        "items": [
+          {
+            "kind": "visitor",
+            "label": "来客",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 110
+          }
+        ]
+      },
+      "aboard": [],
+      "nextUnload": null,
+      "deliveredPeople": 0,
+      "deliveredCargo": 0,
+      "refused": 0,
+      "timedOut": 0,
+      "utilization": 0,
+      "occupiedFloors": 0,
+      "decisionRemaining": 7,
+      "decisionSeconds": 7,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [],
+      "excessKg": 0,
+      "phaseTime": 0,
+      "doorOpen": 1,
+      "travelProgress": 0
+    },
+    "hud": [
+      {
+        "class": "load-readout",
+        "text": "現在の重量0/ 450 kgあと 450 kg",
+        "dataset": {}
+      },
+      {
+        "class": "unload-note",
+        "text": "行き先の階で降ります",
+        "dataset": {}
+      },
+      {
+        "class": "party-current",
+        "text": "今回、乗せる？会社員65 kg行先 4F届けると 100点 ＋積載効率",
+        "dataset": {}
+      },
+      {
+        "class": "weight-projection",
+        "text": "乗せると0＋65＝65/ 450 kg-385 kgオーバー！",
+        "dataset": {
+          "prospective": "true"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "finalDiagnostics",
+    "errors": [],
+    "events": [
+      {
+        "name": "game_open",
+        "at": "2026-10-04T12:57:54.993Z",
+        "data": {
+          "game": "game007",
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "tutorial_start",
+        "at": "2026-10-04T12:57:55.223Z",
+        "data": {
+          "game": "game007",
+          "practiceAgain": false,
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "tutorial_step_complete",
+        "at": "2026-10-04T12:57:55.337Z",
+        "data": {
+          "game": "game007",
+          "step": 1,
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "tutorial_step_complete",
+        "at": "2026-10-04T12:57:56.540Z",
+        "data": {
+          "game": "game007",
+          "step": 2,
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "tutorial_complete",
+        "at": "2026-10-04T12:57:56.600Z",
+        "data": {
+          "game": "game007",
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-04T12:57:56.649Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118676649-ob8f0u",
+          "credits": 3,
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "run_end",
+        "at": "2026-10-04T12:58:03.086Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118676649-ob8f0u",
+          "outcome": "over",
+          "score": 158,
+          "time": 6.4663999999999735,
+          "floor": 4,
+          "deliveredPeople": 1,
+          "deliveredCargo": 0,
+          "utilization": 45.55555555555556,
+          "mode": "normal",
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "score",
+        "at": "2026-10-04T12:58:03.087Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118676649-ob8f0u",
+          "score": 158,
+          "best": 158,
+          "newBest": true,
+          "floor": 4,
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "run_duration",
+        "at": "2026-10-04T12:58:03.087Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118676649-ob8f0u",
+          "seconds": 6.4663999999999735,
+          "reason": "over",
+          "failure_reason": "overload",
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "retry",
+        "at": "2026-10-04T12:58:03.850Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118683850-6zkuow",
+          "game_id": "game007"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-04T12:58:03.850Z",
+        "data": {
+          "game": "game007",
+          "runId": "game007-1791118683850-6zkuow",
+          "credits": 3,
+          "game_id": "game007"
+        }
+      }
+    ]
+  }
+]

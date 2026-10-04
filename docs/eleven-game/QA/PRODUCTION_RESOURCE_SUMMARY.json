@@ -82,12 +82,13 @@
     },
     {
       "id": "game008",
-      "scriptBodyBytes": 57119,
-      "scriptEncodedBytes": 22435,
+      "scriptBodyBytes": 57159,
+      "scriptEncodedBytes": 22454,
       "images": 1,
       "imageBodyBytes": 67398,
       "fontBodyBytes": 154856,
-      "bothMountsPass": true
+      "bothMountsPass": true,
+      "priorModeScriptBodyBytes": 57119
     },
     {
       "id": "game009",
@@ -109,14 +110,19 @@
     },
     {
       "id": "game011",
-      "scriptBodyBytes": 47930,
-      "scriptEncodedBytes": 18681,
+      "scriptBodyBytes": 48178,
+      "scriptEncodedBytes": 18728,
       "images": 20,
       "imageBodyBytes": 224332,
       "fontBodyBytes": 154856,
-      "bothMountsPass": true
+      "bothMountsPass": true,
+      "historicalPriorFocusScriptBodyBytes": 47930,
+      "priorModeScriptBodyBytes": 48053
     }
   ],
   "limits": "Actual unique HTTP script bodies:2,000,000 bytes for001/002/003/006;300,000 bytes for portal and native games. Encoded= gzip HTTP bodies; WebP/woff2 are already compressed. First-load data excludes reload/return assets.",
-  "legacyGame001Font": "Legacy game001 currently loads system fonts and no generated image assets; all other routes load154856B local Arcade Rounded."
+  "legacyGame001Font": "Legacy game001 currently loads system fonts and no generated image assets; all other routes load154856B local Arcade Rounded.",
+  "latestAffectedCheckedUtc": "2026-10-04T13:10:08.402Z",
+  "latestAffectedAudit": "PRODUCTION_MODE_RETARGET_AUDIT.json",
+  "finalCandidateSourceBridge": "MODE_REPAIR_SOURCE_BRIDGE.json"
 }

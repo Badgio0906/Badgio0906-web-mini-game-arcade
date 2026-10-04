@@ -78,6 +78,14 @@ for(const id of arcadeGames){
       await naturalFailure(page,id);const ended=await runtime(page);endings.push(ended.snapshot);
       expect(ended.snapshot.alive).toBe(false);assertNoWalletEvents(ended.events);
       if(id==='game003')expect(['fall','collapse']).toContain(ended.snapshot.outcome);
+      if(id==='game008'){
+        const timing=page.locator('.result-details>div').filter({has:page.locator('dt',{hasText:/^TIME$/})});
+        await expect(timing.locator('dt')).toHaveText('TIME');await expect(timing.locator('dd')).toHaveText(/^\d+\.\d s$/);
+        expect(await page.locator('.result-note').textContent()).not.toMatch(/CREDIT|\d\/3/);
+        const proof=info.outputPath(`actual-coffee-credit-free-result-${i+1}.json`);
+        writeFileSync(proof,JSON.stringify({ended,text:await page.locator('.result-note').textContent(),timing:await timing.textContent()},null,2));
+        await info.attach(`actual-coffee-credit-free-result-${i+1}`,{path:proof,contentType:'application/json'});
+      }
       expect(ended.events.filter(e=>e.name==='run_end')).toHaveLength(i+1);expect(ended.events.filter(e=>e.name==='run_start')).toHaveLength(i+1);
       await expect(page.locator('#reward-button')).not.toBeVisible();
       for(const label of await page.locator('.credit-label,.credits').all())await expect(label).not.toBeVisible();

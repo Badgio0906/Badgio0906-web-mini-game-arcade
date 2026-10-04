@@ -1,6 +1,6 @@
 # Eleven-game integration — QA ledger
 
-Status: **47 distinct valid native cases PASS across source-bridged slices;352 clipping-aware title/training and176 actual pause/result observations PASS.24 fresh local root/subpath production contexts PASS /zero errors /zero production diagnostic hooks. All QA browsers are closed. Independent final review, remote delivery and human playtest remain separate.** Baseline `ffa433c3bd3e475235f3cc235bf9bf29292e7aaf`. Prior115-unit /90-case ten-game reports remain historical; their enabled-CREDIT and root-Game001 assumptions are not the new prototype contract.
+Status: **Final technical QA PASS:51 distinct native cases across source-bridged slices;352 clipping-aware title/training and176 unique actual pause/result observations.24 distinct local root/subpath production routes PASS with final affected-page retargets; errors0/hooks0. AllQA browsers closed for independent review. Human/remote acceptance remains separate.** Baseline `ffa433c3bd3e475235f3cc235bf9bf29292e7aaf`. Prior115-unit /90-case ten-game reports remain historical; their enabled-CREDIT and root-Game001 assumptions are not the new prototype contract.
 
 ## Protected scope
 
@@ -50,13 +50,13 @@ All candidates freeze before browsers. Root expressly released the initial integ
 6. Game010: actual generated LISTEN/WORK foregounds and state difference, same art quality and clean image load / bounded resources; no model change.
 7. Game011: ordinary keyboard/touch clears ten image /ten text questions to both final modes, real ready-key release guard, independent choices/same styling, no held/burst future input, actual deadlines/pause/background, truthful wrong/timeout, scores/BEST/reload, unrestricted retries, result fields and8 viewport layouts.
 
-The complete47-case acceptance set is established through the source-bridged slices and affected-case retests recorded below; it is not one uninterrupted clean full run. The earlier initial13 PASS remain historical candidate evidence:
+The original47-case acceptance set is established through the source-bridged slices and affected-case retests recorded below; it is not one uninterrupted clean full run. The earlier initial13 PASS remain historical candidate evidence:
 
 ```sh
 ELEVEN_ARCADE_URL=http://127.0.0.1:PORT npx playwright test --config tests/eleven-game/eleven.playwright.config.ts
 ```
 
-The discovery-only `--list` command parses99 project cases across five files (47 planned active cases,52 intentional project duplicates). It opens no browser and establishes no functional PASS. Prepared cases cover22 desktop/phone first-practice integrations,11 stored-zero three-ending/retry contracts, portal cards/routes, actual weight/unloading and in-game liquid HUD, generated foreground resource loads, both quiz final modes and native ready/repeat/deadline handling. One dedicated geometry case checks352 title/explanation/practice/success observations. The11 unlimited-retry cases additionally check176 actual paused/first-natural-result observations at eight sizes; explicit primary/navigation targets remain44px. Phone Coffee practice uses native Chromium touchStart/held touchEnd with a delivered primary-touch assertion; desktop uses held ArrowRight. A separate native-Enter auto-repeat case protects the newly focused real-start button after practice success.
+The discovery-only `--list` command parses99 project cases across five files (47 original active cases,52 original intentional project duplicates; the final two focus regressions bring discovery to102 project cases/49 active/53 distinct duplicates). It opens no browser and establishes no functional PASS. Prepared cases cover22 desktop/phone first-practice integrations,11 stored-zero three-ending/retry contracts, portal cards/routes, actual weight/unloading and in-game liquid HUD, generated foreground resource loads, both quiz final modes and native ready/repeat/deadline handling. One dedicated geometry case checks352 title/explanation/practice/success observations. The11 unlimited-retry cases additionally check176 actual paused/first-natural-result observations at eight sizes; explicit primary/navigation targets remain44px. Phone Coffee practice uses native Chromium touchStart/held touchEnd with a delivered primary-touch assertion; desktop uses held ArrowRight. A separate native-Enter auto-repeat case protects the newly focused real-start button after practice success.
 
 ## Actual development checkpoints and findings
 
@@ -98,9 +98,27 @@ Root final build12 HTML/check/art89 has passed. Final24 fresh local contexts PAS
 |game005|51463|20094|54490 (2)|154856|
 |game006|1266773|355096|52134 (3)|154856|
 |game007|55768|21405|10526 (1)|154856|
-|game008|57119|22435|67398 (1)|154856|
+|game008|57159|22454|67398 (1)|154856|
 |game009|50514|19857|105962 (7)|154856|
 |game010|53234|20622|160720 (8)|154856|
-|game011|47930|18681|224332 (20)|154856|
+|game011|48178|18728|224332 (20)|154856|
 
 Values match for root and `/repo/`.001 uses its retained system-font/procedural renderer; other routes load154856B local font. Phaser script bodies appear only on001/002/003/006; every native/portal route is below300KB and requests no Phaser engine. Script/image/font numbers are first-load unique HTTP bodies, not cumulative refresh/return traffic. Existing performance ceilings and meaningful assertions must not be weakened to accommodate a failure. Rendering-only fixtures, seeded storage fixtures, model simulations, ordinary browser play and human A–N remain separately attributed. Human playtest / physical-phone FPS / enjoyment / public-release acceptance is unperformed.
+
+
+## Final independent finding and scoped retarget
+
+Independent native review found a real first-input focus race: immediately after RESUME, the hidden resume button retained focus and swallowed the first Arrow. The subsequent Arrow worked; this is an input defect, not an answer-timing grace requirement. Gameplay changed only one line in Game011 `screen(next)`: synchronously blur an active HTMLElement contained in an overlay that is becoming hidden. Run/deadline/Board approval guards/core/CSS/assets are unchanged. [Final one-file source bridge](FOCUS_REPAIR_SOURCE_BRIDGE.json) compares both197-file runtime manifests.
+
+All six affected Game011 active cases passed in44.7s (six configured duplicate skips). This repeats both ordinary desktop/phone5500 phase runs, native READY/held guards, exact1-second timeout/late-input assertions and actual pause/result layouts. Two new native regressions cache coordinates/key/CDP before ordinary RESUME and send the first Arrow immediately with no intervening wait or diagnostic call. Desktop click→Arrow8.6ms and phone touch→Arrow3.1ms both target BODY, accept100 points exactly once and ignore auto-repeat. [Desktop raw proof](ACTUAL_QUIZ_RESUME_DESKTOP.json) and [phone raw proof](ACTUAL_QUIZ_RESUME_PHONE.json) preserve timestamps, target/path, model copies and events.
+
+This completes49 distinct native cases;53 distinct configured skips were exercised, with63 skip executions including repeated retarget skips. Previous historical47-case evidence remains separate. Four fresh affected production contexts—portal and011 at both mounts—also PASS at12:53:36 UTC, with errors/hooks0. [Scoped production audit](PRODUCTION_FOCUS_RETARGET_AUDIT.json) preserves these final responses. The other20 static routes retain their full24 audit through the one-file source bridge; final coverage is24 distinct routes, not28.011 first-load JS is now48053B; images224332B/font154856B are unchanged. All QA browser contexts closed before independent review resumed. No technical failure remains open in QA evidence; independent review, remote delivery and human acceptance remain distinct gates.
+
+
+## Final MODE focus and credit-free result-copy retarget
+
+The independent reviewer then found the adjacent MODE→first Arrow race: the newly hidden final-mode button retained focus and ignored an immediate correct answer. A one-line Game011 Board draw fix synchronously blurs focus contained in newly hidden finalChoices. Root also conditionally removes the Coffee TIME / CREDIT label and wallet fraction while prototype credits are disabled; source inspection preserves the enabled future branch. [Two-file source bridge](MODE_REPAIR_SOURCE_BRIDGE.json) verifies197 files and confines the delta to those authorized regions. No models/clocks/core/CSS/assets changed.
+
+Nine affected native cases pass in2.0m (nine configured duplicate skips): all eight Game011 cases plus Coffee's actual three-empty-ending/two-retry contract and eight-size pause/result controls. Two new MODE regressions first earn all20 prerequisites ordinarily, then focus and click/touch each UNKO/UKON choice. The newly shuffled answer side is read once and native Arrow follows without any wait, artificial input grace or model write. Desktop UNKO12.3ms /UKON6.2ms and phone UNKO9.2ms /UKON7.0ms all earn +250 exactly once (2750/streak1); auto-repeat earns nothing further and .5s deadlines remain. [Desktop MODE proof](ACTUAL_QUIZ_MODE_DESKTOP.json) and [phone MODE proof](ACTUAL_QUIZ_MODE_PHONE.json) preserve the four actual branches. Coffee [first](ACTUAL_COFFEE_CREDIT_FREE_RESULT_1.json), [second](ACTUAL_COFFEE_CREDIT_FREE_RESULT_2.json) and [third natural receipt](ACTUAL_COFFEE_CREDIT_FREE_RESULT_3.json) each show TIME/time-only and no CREDIT/fraction, with stored0/no wallet or reward activity.
+
+Final coverage is51 distinct native cases (42 unaffected source-bridged cases +nine latest executions),54 distinct configured skips and72 skip executions across retargets. The initial full24 delivery audit retains18 unaffected routes; [six final portal/008/011root/subpath contexts](PRODUCTION_MODE_RETARGET_AUDIT.json) complete24 distinct production routes with errors0/hooks0. Latest008 JS57159B and01148178B remain well below300KB; image/font bytes are unchanged. No full-model/unit rerun was required for focus/copy-only changes; root's153-unit model proof and final19byte/0contract audit remain explicitly attributed. AllQA contexts closed for independent review. Initial genuine input/layout findings and harness-failure records remain historical evidence, never relabelled as passed runs.

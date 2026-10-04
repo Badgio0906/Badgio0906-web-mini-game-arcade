@@ -36,6 +36,7 @@ function sync(): void {
 function update(snapshot: UnkoSnapshot): void { text('score-value', String(snapshot.score)); app.dataset.phase = snapshot.phase; app.dataset.scoreDigits = String(Math.min(9, Math.max(String(best).length, String(snapshot.score).length))); }
 function screen(next: Screen): void {
   state = next; sync(); overlay.hidden = next === 'playing' || next === 'ending';
+  if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
   if (next === 'title') {
     text('score-value', '0'); app.dataset.phase = 'title';
     overlay.innerHTML = `<article class="title-ticket"><div><span class="eyebrow">たった二択。なのに。</span><h1>ウンコかウコンか。</h1><p>出てきたものを、左右で答えるだけ。<br />間違い・時間切れで終了です。</p></div><div class="ticket-actions">${primary('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる')}<small>← → / A D / クリック / タップ<br />無料・回数制限なし</small></div></article>`;

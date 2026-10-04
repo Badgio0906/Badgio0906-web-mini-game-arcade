@@ -55,10 +55,18 @@ Portalはcatalog一箇所のid/邦題/英題/tagline/actual thumbnail/route/rele
 
 旧ten-game K〜N（発見/選択/追加の面白さ/笑い）を新項目へ改名して結果を流用しない。[人間フォーム](HUMAN_PLAYTEST.md)に両者を区別して保存する。
 
-現checkpointはRoot報告の153unit/候補build/check PASS、QA45/47 distinct valid native PASS。Desktop/portrait全11practice分離/保存/再訪/再練習、全11保存0から3回終了/retry、両011 FINAL到達を含む。明示source bridgeで別sliceを保持した結果で、52 duplicate skipsや自動plannerの成功を人間の理解へ加算しない。176 actual pause/result観測はPASS。Clip-aware352 matrixは009practice320幅の隠しwindow内clip修正、011終了時`remaining:null` harnessは厳密なtimeout/late-answer再検証が未完了。Production24context・独立Feel/Visualはこれから。
+実装・QA・独立受入完了：153unitモデルcheckpoint、最終check1.89秒/build5.35秒、51distinct native（42retained＋最新9）、352clip-aware title/training、176actual pause/result、24distinct local root/subpath production（18retained＋最新6）PASS/error0/hooks0。Desktop/portrait全11practice分離/保存/再訪/再練習、保存0から3回終了/retry、両011 FINALを含む。明示source bridgeとaffected retargetで閉鎖し、1回のclean全実行やduplicate skips/答えoracle成功を人間の理解へ加算しない。最終197file fingerprint`ca8c62219c2840d1b87c99f8f001bebb83ef229f3b6e7a1fc2ec6d7c9d143683`、保護19byte一致/contract変更0、asset89WebPもPASS。
 
-[元の64FAIL観測](QA/INITIAL_ONBOARDING_LAYOUT_AUDIT.json)は保存する。viewport外へ出ないだけでは、overflow hiddenの祖先で実操作対象が切れない保証にならない。Practice gridの実clip境界まで確かめ、誤ったexpected値のharness修正と実layout修正を分ける。これらはQAの教訓であり、whole SDK抽出やart iterationの追加理由ではない。素材audit89WebP PASSと最終11actual thumbの採用は、UI判読/独立Visual合格を意味しない。
+[独立Feel](reviews/ONBOARDING_FEEL.md)と[final Visual](reviews/FINAL_VISUAL_SCORECARD.md)は全11PASS、Visual82〜89/Portal88/FH各12以上。全22PC/phone practice実行を確認したが、既知操作でのmechanical成功時間を初見の5〜20秒学習目安の達成証拠にはしない。人間が新K〜Nを評価するまでは、このDRAFTを安定仕様へ昇格させない。
 
-公開先repositoryは[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、予定URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。Rootが接続後のremote README更新とActions Pages設定を確認済みだが、Arcade統合source push/deploy/remote動作確認はQA/Feel gate後でまだ未実施。全11の人間評価・実機FPS・楽しさ・共通仕様の安定採用も未確認。
+[元の64FAIL観測](QA/INITIAL_ONBOARDING_LAYOUT_AUDIT.json)と009実clip/011 ended-null harnessの失敗は保存する。viewport外へ出ないだけでは、overflow hiddenの祖先で実操作対象が切れない保証にならない。Practice gridの実clip境界まで確かめ、誤ったexpected値のharness修正と実layout修正を分けた。[最終352観測](QA/FINAL_ONBOARDING_LAYOUT_AUDIT.json)と[厳密deadline実証](QA/ACTUAL_QUIZ_DEADLINE_AUDIT.json)は別の修正後証拠である。
+
+[production24contexts](QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json)はerror0/hooks0で完了。戻りportalのresponse-body collectorとcontext closeが競合した[初回race](QA/INITIAL_PRODUCTION_COLLECTOR_SHUTDOWN_AUDIT.json)を保持し、network idle/job drainだけを直して再検証した。runtimeを変えず、観測終了前にerrors配列を凍結/成功扱いしない教訓。これらはQAの教訓であり、whole SDK抽出やart iterationの追加理由ではない。素材auditとlayout/native/production PASSを、独立Visualや人間の新K〜N合格へ拡張しない。
+
+追加の入力教訓：非表示の祖先内buttonへfocusが残ると、遷移直後の最初のArrowを失う。011RESUMEとMODEで別々に実不具合を保存し、隠す対象に含まれるfocusだけを同期blurした。締切/guard猶予を伸ばさず、最初のnative入力がBODYへ届き得点が一度だけ進むことを確認。[final unpaused MODEの独立実証](reviews/GAME011_FEEL.md)は9.4ms/+250から3750/final5まで普通に進む。Practice成功から本番へ、pauseから再開へ等のfocus境界は共通化候補だが、quizのdeadline/RNG/FINAL自体は固有のまま。
+
+Feature flagはmodel消費を止めるだけでなく、結果のinactive wallet caption/3/3表示も整理する。008はOFF時だけTIME/timeを出し、将来enabled分岐を保持した。[自然phone結果](reviews/GAME007_008_READABILITY.md)とQA3receiptで実確認。無料prototypeにinactive CREDITを読ませないのは表示境界の教訓で、既存serviceを削除する方針ではない。
+
+公開先repositoryは[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、予定URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。remote README/Actions設定と初期review-source e76転送は完了、最終main反映/deploy/remote動作確認はまだ未実施。Local root/subpath PASSをremote配信合格にしない。全11の人間評価・実機FPS・楽しさ・共通仕様の安定採用も未確認。
 
 [実装途中報告](IMPLEMENTATION_REPORT.md)、[QA ledger](QA/README.md)、[実行checkpoint](QA/EXECUTION_LEDGER.json)、[事前risk](reviews/DESIGN_RISK_REVIEW.md)を出典とし、Rootの実証後に更新する。

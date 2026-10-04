@@ -54,7 +54,7 @@ async function practice(id){
       await until(async()=>(await training()).phase==='success');
       if(touch){await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await cdp.detach();}else await page.mouse.up();break;
     }
-    case 'game009': await action('stamp-other');await capture(id,'practice-forgiving-mistake');await action('stamp-red');break;
+    case 'game009': await button('[data-practice-action="stamp-other"][aria-label="書類"]');await capture(id,'practice-forgiving-mistake');await action('stamp-red');break;
     case 'game010': await action('action');await until(async()=>(await training()).practice.practicePoints>=19);await capture(id,'practice-work-and-cue');await action('action');break;
     case 'game011': await action('ukon');await capture(id,'practice-forgiving-mistake');await action('unko');break;
     default:throw Error(`Unknown game ${id}`);
@@ -68,7 +68,7 @@ try{
   records.push({kind:'actualPortalCatalog',entries:portalEntries});
   for(let i=0;i<portalEntries.length;i++){await page.locator('.game-card').nth(i).scrollIntoViewIfNeeded();await page.waitForFunction(i=>{const image=document.querySelectorAll('.game-card img')[i];return image?.complete&&image.naturalWidth>0;},i);}
   for(const [name,index] of [['top',0],['middle',5],['last',10]]){
-    await page.locator('.game-card').nth(index).scrollIntoViewIfNeeded();await page.waitForTimeout(180);const path=`${out}/portal-${device}-${name}.png`;await page.screenshot({path});records.push({kind:'portalCapture',name,path});
+    await page.locator('.game-card').nth(index).scrollIntoViewIfNeeded();if(name==='top')await page.keyboard.press('Control+Home');await page.waitForTimeout(180);const path=`${out}/portal-${device}-${name}.png`;await page.screenshot({path});records.push({kind:'portalCapture',name,path});
   }
   const portalPath=`${out}/portal-${device}-full.png`;await page.screenshot({path:portalPath,fullPage:true});records.push({kind:'portalFullCapture',path:portalPath});
   for(const id of games){

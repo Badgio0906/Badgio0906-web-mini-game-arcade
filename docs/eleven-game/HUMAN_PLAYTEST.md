@@ -93,6 +93,6 @@ J：
 判定：合格 / 要改善 / 再テスト
 ```
 
-人間による楽しさ・初見理解と実機FPSは全11未確認。最新の技術checkpointは[実装途中報告](IMPLEMENTATION_REPORT.md)と[QA ledger](QA/README.md)へ分離した。153unit/候補build/check、45/47 distinct nativeと176pause/result観測PASS、89画像audit/11final actual thumbの採用も、本人のA〜J・新K〜N合格ではない。009practice clipと011終了時harnessの再検証・独立Feel/Visual・productionは未完了。
+人間による楽しさ・初見理解と実機FPSは全11未確認。技術QAは[実装報告](IMPLEMENTATION_REPORT.md)と[QA ledger](QA/README.md)へ分離した。153unitモデルcheckpoint/最終build/check、51distinct native、352clip-aware title/training、176actual pause/result、24distinct local root/subpath productionはPASS。保護19byte一致/contract変更0、197runtime freeze一致、89画像audit/11final actual thumbも確認済み。[独立Feel](reviews/ONBOARDING_FEEL.md)は全11PASS、[Visual](reviews/FINAL_VISUAL_SCORECARD.md)は全11 82〜89/Portal88/FH各12以上。これらは本人のA〜J・新K〜N合格ではない。既知操作のmechanical練習成功時間は初見の平均学習時間でなく、remote配信確認も未実施。
 
-公開先はユーザー作成の[public repository](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、予定URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。接続後のremote README更新とActions Pages設定はRoot確認済みだが、QA/Feel gate後のArcade統合source push/deployはまだ行っていない。人間テストにはRootが指定する稼働確認済みPreview URLと版を記録し、この予定URLを公開済みとして渡さない。この空フォームの作成で公開合格とはしない。
+公開先はユーザー作成の[public repository](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、予定URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。remote README/Actions設定と初期review-source転送はRoot確認済み。最終mainへのArcade反映/deployはまだ行っていない。人間テストにはRootが指定する稼働確認済みPreview URLと版を記録し、この予定URLを公開済みとして渡さない。この空フォームの作成で公開合格とはしない。

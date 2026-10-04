@@ -1,0 +1,9 @@
+# Independent portal Visual and native-route review
+
+Actual frozen DEV5181 PC1440×900 and phone390×844; all eleven card images were scrolled into view and confirmed loaded before capture. Each card actually navigated to its game; each game's native return link actually returned to the portal. No concept images or HTML mockups replace these actual integrated screens. Source/build/subpath production auditing belongs to QA and is linked separately by root.
+
+Visual **PASS88**: A14/15, B13/15, C7/10, D10/10, E10/10, F14/15, G6/10, H14/15. Viewed [PC top](../screenshots/portal-desktop-top.png), middle/last and full capture; [phone top](../screenshots/portal-mobile-top.png), middle/last and [full catalog](../screenshots/portal-mobile-full.png).
+
+The Japanese title, English subtitle, short joke/objective and actual-game screenshot allow comparison before clicking. Four columns on PC and one large card per row on phone keep consistent reading order; the ordinal badge and PLAY footer make the whole-card affordance clear. The portal retains distinct game imagery instead of reusing one generic poster. PC has enough spacing to distinguish adjacent cards and the phone's full-card native target is generous. The paper/navy/orange identity is coherent with the newer games and the FREE PLAY prototype label is visible. The narrow phone FREE PLAY decoration runs vertically, and finely detailed screenshot UI cannot be read at thumbnail size; neither carries an essential instruction. Hover/navigation motion is limited, so G6.
+
+All eleven original routes, main-entry practice flows and back routes were observed. This review does not certify public publication, human browsing preference, physical phone performance or click-through rates. It confirms the integrated current presentation and native route behavior within the tested viewport scope.

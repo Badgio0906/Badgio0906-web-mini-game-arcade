@@ -1,0 +1,19 @@
+# Independent revised Game007 / Game008 Game Feel review
+
+Actual frozen DEV5181, normal native inputs, readonly inspection for planning, PC1440×900 and phone390×844. No model or score mutation. This phase evaluates operation/readability; the separate numeric art assessment is FINAL_VISUAL_SCORECARD.md.
+
+## Game007: PASS
+
+On both devices native boarding at F1/F2/F3 built the actual load; the ordinary F4 arrival unloaded65kg. The UI then showed **330/450kg**, **120kg remaining**, new party **305kg**, **330+305=635**, and **185kg over**. The previous unloading note, NEXT party and next unload retained distinct headings. Actual sprites and cargo identify the roster while the figures carry the decision. A native board command on that visible overload caused the warning and natural result. The cause was readable rather than requiring inspection to explain it. Retry reset floor/load immediately (PC40ms, phone50ms in this harness; not physical-device latency).
+
+This supports the requested current/max/remaining/projected information design. It does not establish that a novice learns capacity reservation or finds the game fun. No new20F fast-mode run was needed for this presentation-only change. [PC journal](../screenshots/game007/independent-desktop-MAIN_RECORD.json) / [phone journal](../screenshots/game007/independent-mobile-MAIN_RECORD.json). Errors empty; actual result score158, F4.
+
+## Game008: PASS after final copy retarget
+
+Ordinary LEFT then RIGHT held input actually changed body/liquid state; the HUD displayed a named cup and its real surface direction rather than an average. The high-left practice liquid correctly requests RIGHT to return toward the center. In main the liquid responds with inertia; opposite input does not promise immediate monotonic recentering. The large in-window walking distance, left/right labels and remaining percentages are legible on both devices.
+
+The PC readonly body-feedback planner used only native Arrow key down/up to earn500m and1000m, then native accepted second/third cups. The actual three-cup screen named the selected liquid owner and preserved separate remaining meters; opposite cup tilts cannot silently cancel into a misleading average. Intentional held-right input subsequently produced a natural empty at **1227m, score1705, game time110.160s**. The result named the empty chairman cup, displayed0%, preserved surviving cups and gave ordinary retry (60ms). The phone native held-input route ended naturally at **211m, score211,20.708s**, HUD0%; retry88ms. These are oracle reachability/readability observations, not human balance-skill or voluntary risk-choice evidence. [PC journal](../screenshots/game008/independent-desktop-MAIN_RECORD.json) / [phone journal](../screenshots/game008/independent-mobile-MAIN_RECORD.json), errors empty.
+
+A nonblocking legacy combined `TIME / CREDIT` field showed the inactive3/3 count even though play was unrestricted. Root authorized a presentation-only TIME label/value cleanup after all contexts closed. Final candidate `ca8c622…` changes only two result-template conditionals: disabled credits show TIME/time alone; the future enabled branch is retained. Independent fresh phone native correction/held-input run again ended naturally at211m/score211/time20.7s, with real HUD0%. The result actually showed **TIME20.7s and no CREDIT/count**; native retry84ms, errors empty. [Final copy native journal](../screenshots/game008/independent-mobile-FINAL_TIME_COPY-MAIN_RECORD.json) and [independently viewed final actual result](../screenshots/game008/independent-mobile-FINAL_TIME_COPY-natural-result.png). No repeat of the earned1000m route is warranted because physics/score/input/cup logic are unchanged.
+
+Human comprehension of cup attribution, recovery, multi-cup risk, replay appeal and touch comfort remains pending. Only Chromium touch emulation was used.

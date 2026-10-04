@@ -1,6 +1,6 @@
 # Game011 開発メモ — ウンコかウコンかゲーム ～UNKO or UKON～
 
-2026-10-04。実装・独立QA記録。Game011の純粋モデル9/9成功（初回テスト1.310秒/runner1.62秒）、統合153 unitと全体build成功。今回の11ゲーム向け開発ブラウザQAは重複を除く47実行が成功し、Game011の本番各段階・入力・結果も確認済み。独立Feel/Visual、production再収集、リモート公開先の確認は未完了。人間プレイテストは未実施。今回の試作版は無制限、広告なし。
+2026-10-04。実装・独立QA記録。Game011の純粋モデル9/9成功（初回テスト1.310秒/runner1.62秒）、統合153 unitと全体build成功。今回の11ゲーム向け開発ブラウザQAは重複を除く51実行が成功し、Game011の本番各段階・入力・結果も確認済み。ローカルproductionのroot/subpath再検証24件は成功。独立Feel/Visualは最終合格。リモート公開先の確認は未完了。人間プレイテストは未実施。今回の試作版は無制限、広告なし。
 
 ## 三段階を明確に分ける
 
@@ -36,7 +36,7 @@ Native DOMでPhaser依存を追加しない。Gameplay EngineerがGame011の全�
 
 実image_genで作りArt Directorが原本全20体と最適化sampleを実見して採用した、20枚256×256 RGBA、中心128/最大208pxのcontent、総224,332bytes。清潔な茶色の巻きと、植物として明確な黄色/橙の節付き根茎。実contact sheetも実装担当が確認した。画像の印象をボタン色へ対応させず、ウンコ/ウコンの回答は同じ色・形・寸法・font・focus/press仕様。コードの静かなクリーム舞台、台詞・時計・段階・進行・結果と統合する。
 
-20画像を初期に読み込みdecodeし、cold-startでは画像準備表示の間、モデル時計と入力を止める。読み込み後に完全な5秒を開始する。遅い完了がタイトル/破棄後に本番を起動しないようepochを確認する。画像エラー時はその問題だけカテゴリ文字による代替を表示し、見えない対象でタイムアウトさせない。実ブラウザで生成アイコンを使って画像10問からFINALまで進めた。cold decode・サブパス配信の完了判定は最終production記録に従い、現時点では未完了とする。
+20画像を初期に読み込みdecodeし、cold-startでは画像準備表示の間、モデル時計と入力を止める。読み込み後に完全な5秒を開始する。遅い完了がタイトル/破棄後に本番を起動しないようepochを確認する。画像エラー時はその問題だけカテゴリ文字による代替を表示し、見えない対象でタイムアウトさせない。実ブラウザで生成アイコンを使って画像10問からFINALまで進めた。ローカルproductionのroot/subpath配信は最終24件の再検証で成功した。実際のcold-startで利用できる回答時間と認識品質は独立レビューの観察と区別する。
 
 本番開始前にMain所有のcreateOnboarding.interceptを呼ぶ。初回は共通説明→実生成アイコンの時間制限なし二択→成功→本番。練習中は本番モデル、得点/BEST、本番run_startに触れない。tutorialCompletedはGame011のStorage名前空間。2回目は直行でき、共通の再練習ボタンも使える。練習では後半の文章/FINALの秘密を先に説明しない。
 
@@ -52,7 +52,23 @@ Native DOMでPhaser依存を追加しない。Gameplay EngineerがGame011の全�
 
 遅い回答のテストでは、終了後のsnapshot.remainingを数値として扱うハーネスの仮定を修正した。モデル契約は終了時remaining:nullであり、実装や期限を変更して期待に合わせていない。以前保存したCREDIT 0からも本番・再挑戦を妨げる制限や広告ゲートがないことを、試作版のQAで確認した。
 
-統合153 unit・全体buildは成功し、既存の19保護対象ファイル（10 Runモデルと9得点・結果・翻訳helper）のbytesは変更前と同一。開発ブラウザQAの47件は11ゲーム向け統合確認全体のdistinct実行数で、Game011だけの件数ではない。凍結候補の複数sliceと影響ケースの再検証を、ソースの差分証拠でつないだ集計であり、一回の連続47件実行とは表現しない。productionの初回24件は成功したが、ネットワーク収集器を閉じる順序のraceがあり、証拠を取り直している。従ってproduction最終PASS、独立Feel/Visual、リモート公開先の確認は保留する。最小画面の認識品質、物理端末のFPS、認識・操作の楽しさは未評価で、人間A〜Nもすべて未実施。
+統合153 unit・全体buildは成功し、既存の19保護対象ファイル（10 Runモデルと9得点・結果・翻訳helper）のbytesは変更前と同一。開発ブラウザQAは初回47 distinct、overlayフォーカス修正後49 distinct、FINAL MODE修正後の最終51 distinctへ更新された。11ゲーム向け統合確認全体の実行数で、Game011だけの件数ではない。凍結候補の複数sliceと影響ケースの再検証を、ソースの差分証拠でつないだ集計であり、一回の連続実行とは表現しない。production初回ではネットワーク収集器を閉じる順序のraceを保存し、修正したハーネスで再収集した。最終ローカルroot/subpath24件は2026-10-04 12:39:57 UTCまでに全contextを閉じて成功し、[最終production監査](eleven-game/QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json)の24記録すべてでerrors 0・開発hooks 0、native script 300KB/Phaser 2MBのresource上限も成功した。独立Feel/Visualは後述の最終修正を含め合格した。リモート公開先、物理端末のFPS、人間による認識・操作の楽しさは未評価で、人間A〜Nもすべて未実施。
+
+独立実画面レビューで、RESUMEを押した直後も非表示のresume-buttonにフォーカスが残り、最初のArrowがゲーム側の「メニュー操作を回答に使わない」判定に入って無視される不具合が見つかった。初回記録は得点3500・FINAL 4で保存した。修正はmain.tsのscreen(next)でoverlay.hiddenを設定した直後、非表示overlay内にactiveElementがある場合だけ同期blurする1行。回答期限・得点・モデル・入力release判定や、見えているヘッダー操作を除外する規則は変更しない。
+
+修正後の独立QAは影響ケースと新しいnativeケース6件が44.7秒で成功。PCの最初のArrowは8.6ms、phoneは3.1msで対象BODYとなり、100点を一度だけ加算した。集計49 distinctへ更新し、productionは影響4件を再実行して成功、保持した20件と合わせて24 distinctを維持した。errors/hooksは0。[フォーカス修正のソース接続記録](eleven-game/QA/FOCUS_REPAIR_SOURCE_BRIDGE.json)と[production再確認](eleven-game/QA/PRODUCTION_FOCUS_RETARGET_AUDIT.json)に出典を残す。
+
+独立レビュー担当の修正後PC再プレイは得点3750・FINAL 5、RESUME後7.4msの最初のArrowがBODYを対象にround34→35へ進み、errors 0だった。[初回失敗の記録](eleven-game/screenshots/game011/independent-desktop-TIMING_RECORD-initial-hidden-resume-focus.json)と[修正後の記録](eleven-game/screenshots/game011/independent-desktop-TIMING_RECORD.json)を分けて保存した。これは以前のQA両MODE5500・streak12とは別の実行証拠であり、混ぜて連続数を主張しない。この時点ではFINAL MODE直後の未ポーズ入力をまだ確認しておらず、次の追試で別のフォーカス不具合を検出した。
+
+overlay修正時の[凍結記録](eleven-game/QA/FINAL_FOCUS_RUNTIME_SOURCE_FREEZE.json)は197ファイル、SHA-256 `d227b99da2a06e06baf5c3e2ec199f0bf6298cc7f57e25ceda325edd5dc57d40`。これは次のFINAL MODE修正前の歴史的候補として保持する。
+
+続く独立の未ポーズ追試では、MODEクリック6919.1ms→最初のArrow +9.2msが非表示unko-mode-buttonを対象にして無視され、2500点のままだった。[初回MODE失敗記録](eleven-game/screenshots/game011/independent-desktop-MODE_RELEASE-TIMING_RECORD-initial-hidden-final-choice-focus.json)を保存した。修正はUnkoBoard.draw()のfinalChoices.hidden設定直後、その非表示欄に含まれるactiveElementだけをblurする1行。READYのrelease、0.5秒期限、ラウンドepochやヘッダーの入力除外を緩めていない。
+
+[独立の修正後MODE記録](eleven-game/screenshots/game011/independent-desktop-MODE_RELEASE-TIMING_RECORD.json)では、ポーズを挟まずMODEクリック→最初のArrow +9.4msがBODYを対象にround34→35・+250、5回答後3750点・FINAL 5、自然timeout、errors 0を確認した。QAは新規/影響9ケースを約2分で成功させ、両MODEの最初の回答はPC +12.3/+6.2ms、phone +9.2/+7.0msで各+250を一度だけ加算した。[PC実入力](eleven-game/QA/ACTUAL_QUIZ_MODE_DESKTOP.json)・[phone実入力](eleven-game/QA/ACTUAL_QUIZ_MODE_PHONE.json)・[MODE修正のソース接続](eleven-game/QA/MODE_REPAIR_SOURCE_BRIDGE.json)を残す。最終QA集計は51 distinct。productionは最新影響6件と保持した18件で24 distinct成功し、[最終再確認](eleven-game/QA/PRODUCTION_MODE_RETARGET_AUDIT.json)へ記録した。
+
+同じ最終候補でGame008の広告なし試作結果をTIME表記だけに整理し、自然失敗3回のreceiptで確認した。これは結果コピーの変更で、CoffeeRunや残量・得点・期限を変更していない。[最終197ファイル凍結記録](eleven-game/QA/FINAL_MODE_RUNTIME_SOURCE_FREEZE.json)のSHA-256は `ca8c62219c2840d1b87c99f8f001bebb83ef229f3b6e7a1fc2ec6d7c9d143683`。TypeScript check 1.89秒・build 5.35秒成功、既存19保護ファイルのbytes一致、既存contracts変更0、89配信素材のart監査成功。
+
+最終の[Game011 Feel](eleven-game/reviews/GAME011_FEEL.md)はPASS、[Game011 Visual](eleven-game/reviews/GAME011_VISUAL.md)は86/100、可読性F14/15・production H14/15。全11ゲームの独立FeelもPASS、[全体Visual scorecard](eleven-game/reviews/FINAL_VISUAL_SCORECARD.md)は各ゲーム82〜89点・Portal88点、全F/Hが12/15以上。実画像とnative操作による評価であり、生成素材の原本採用やソース確認だけで合格していない。すべてのレビューcontextを閉じた。リモートGitHub PagesはMainが別途確認予定で、人間A〜N・実機FPS・人間の認識や楽しさは引き続き未実施。
 
 出典は独立QAの[統合実行記録](eleven-game/QA/README.md)・[実行台帳](eleven-game/QA/EXECUTION_LEDGER.json)、[実際の期限と終了イベント](eleven-game/QA/ACTUAL_QUIZ_DEADLINE_AUDIT.json)、[8サイズのPAUSE/結果監査](eleven-game/QA/ACTUAL_PAUSE_RESULT_LAYOUT_AUDIT.json)。production収集の初回raceは[保存した監査](eleven-game/QA/INITIAL_PRODUCTION_COLLECTOR_SHUTDOWN_AUDIT.json)へ分けて残す。
 

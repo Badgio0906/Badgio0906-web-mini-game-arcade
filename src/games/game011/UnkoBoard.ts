@@ -57,6 +57,7 @@ export function createUnkoGame(parent: HTMLElement, hooks: UnkoHooks): UnkoContr
       signature = key; root.dataset.phase = title ? 'title' : s.phase; root.dataset.paused = String(paused); root.dataset.roundId = String(s.roundId);
       root.dataset.loading = String(loading);
       choices.hidden = title || !timed(s.phase); actions.hidden = title || !['speed_warning', 'text_intro', 'text_read'].includes(s.phase); finalChoices.hidden = title || s.phase !== 'final_choice';
+      if (finalChoices.hidden && document.activeElement instanceof HTMLElement && finalChoices.contains(document.activeElement)) document.activeElement.blur();
       continueButton.hidden = s.phase !== 'speed_warning' && s.phase !== 'text_intro'; readyButton.hidden = s.phase !== 'text_read';
       spot.hidden = !title && s.question?.kind !== 'image';
       phaseLabel.textContent = title ? '二択。たった二択。' : s.finalMode ? `FINAL · ${answerLabel(s.finalMode)}MODE` : s.phase === 'final_choice' ? '20問 CLEAR · 次は？' : s.imageCorrect < 10 ? 'PHASE 1 · 画像' : 'PHASE 2 · 文章';

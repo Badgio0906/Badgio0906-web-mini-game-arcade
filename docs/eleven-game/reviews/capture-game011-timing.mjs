@@ -26,7 +26,9 @@ async function answer({opposite=false,pointer=false}={}){
   const before=await read();let side=before.inspection.answerSide;if(!side)throw Error('Question has no readonly answer side');
   if(opposite)side=side==='left'?'right':'left';
   if(pointer||touch)await native(`#${side}-button`);else await page.keyboard.press(side==='left'?'ArrowLeft':'ArrowRight');
-  records.push({kind:'ordinaryAnswer',before,side,opposite,input:pointer||touch?'native button':'native arrow',after:await read()});
+  const after=await read();records.push({kind:'ordinaryAnswer',before,side,opposite,input:pointer||touch?'native button':'native arrow',after});
+  if(!opposite){const points=before.inspection.question.kind==='image'?100:before.inspection.question.kind==='text'?150:250;if(after.inspection.score!==before.inspection.score+points)throw Error('Correct native answer did not advance the real score');}
+  else if(after.inspection.phase!=='ended')throw Error('Natural wrong answer did not end the run');
 }
 try{
   await page.goto(`${base}/game011.html`);await native('#play-button');await native('#tutorial-practice-button');await native('[data-practice-action="unko"]');await native('#tutorial-start-button');
@@ -68,6 +70,7 @@ try{
   }
   // Let a genuine half-second deadline expire, rather than forcing Game Over.
   await page.waitForFunction(()=>window.__arcadeDebug.state()==='result');await shot('earned-final-timeout-result');records.push({kind:'earnedTerminal',text:await page.locator('.result-ticket').innerText(),...await read()});
+  const terminal=await read();if(terminal.inspection.imageCorrect!==10||terminal.inspection.textCorrect!==10||terminal.inspection.finalStreak!==5||terminal.inspection.score!==3750)throw Error('Expected ten images/ten texts/five genuinely earned final answers');
   const began=Date.now();await native('#retry-button');await page.waitForFunction(()=>window.__arcadeDebug.inspection().phase==='image_answer'&&window.__arcadeDebug.inspection().alive);records.push({kind:'nativeRetryReset',wallMs:Date.now()-began,...await read()});
   await answer({opposite:true,pointer:touch});await page.waitForFunction(()=>window.__arcadeDebug.state()==='result');await shot('earned-wrong-result');
   records.push({kind:'earnedWrong',text:await page.locator('.result-ticket').innerText(),...await read()});

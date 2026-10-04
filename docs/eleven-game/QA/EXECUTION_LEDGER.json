@@ -1,6 +1,6 @@
 {
   "baselineCommit": "ffa433c3bd3e475235f3cc235bf9bf29292e7aaf",
-  "status": "Technical QA complete:47 distinct native PASS across attributed source-bridged slices;352 clipping-aware onboarding/title and176 actual pause/result observations PASS;24 fresh root/subpath production contexts PASS. All QA browsers closed; independent reviewer has exclusive slot.",
+  "status": "Final technical QA PASS:51 distinct native cases with explicit source bridges;352 clipping-aware training/title and176 unique actual pause/result observations retain coverage with affected008/011 retargets.24 distinct production routes covered by initial24 and final6affectedcontexts. AllQA browsers closed for independent review.",
   "executed": [
     {
       "name": "Existing pure gameplay/source audit",
@@ -165,6 +165,96 @@
         "GAMEPLAY_AUDIT.json",
         "RETAINED_NATIVE_SOURCE_BRIDGE.json"
       ]
+    },
+    {
+      "name": "Independent finding: immediate native RESUME focus regression and all affected011 cases",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts game011.spec.ts",
+      "result": "6 active PASS /6 configured duplicate skips",
+      "runnerReportedDuration": "44.7s",
+      "sourceFreeze": "FINAL_FOCUS_RUNTIME_SOURCE_FREEZE.json",
+      "sourceBridge": "FOCUS_REPAIR_SOURCE_BRIDGE.json",
+      "scope": "Both ordinary image/text/final5500 runs, READYhold guards, exact1s timeout and lateinput, actual8size pause/wrong/finalresults, immediate focus test desktop/phone",
+      "newDistinctCases": 2,
+      "immediateResumeMilliseconds": [
+        8.6,
+        3.1
+      ],
+      "evidence": [
+        "ACTUAL_QUIZ_RESUME_DESKTOP.json",
+        "ACTUAL_QUIZ_RESUME_PHONE.json"
+      ]
+    },
+    {
+      "name": "Final one-file focus repair scoped production retarget",
+      "command": "ELEVEN_STATIC_GAME_NUMBERS=0,11 ELEVEN_STATIC_REPORT=docs/eleven-game/QA/PRODUCTION_FOCUS_RETARGET_AUDIT.json node tests/eleven-game/probe-production.mjs",
+      "result": "4 fresh contexts PASS",
+      "checkedUtc": "2026-10-04T12:53:36.274Z",
+      "contexts": 4,
+      "errors": 0,
+      "productionHooks": 0,
+      "evidence": "PRODUCTION_FOCUS_RETARGET_AUDIT.json",
+      "scope": "Portal+011 root and/repo;other20 routes retained via source bridge;24distinct total, not28"
+    },
+    {
+      "name": "Final MODE first native Arrow and Coffee credit-free receipt retarget",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts game011.spec.ts arcade-unlimited.spec.ts --grep 'Quiz|game008: saved zero'",
+      "result": "9 active PASS/9 configured duplicate skips",
+      "runnerReportedDuration": "2.0m",
+      "sourceFreeze": "FINAL_MODE_RUNTIME_SOURCE_FREEZE.json",
+      "sourceBridge": "MODE_REPAIR_SOURCE_BRIDGE.json",
+      "newDistinctCases": 2,
+      "scope": "Eight011cases (bothfinal modes/read/READY/repeat/exactdeadline/eight-size results/immediateRESUME/MODE) plus actualCoffee3genuineempty/endings/retries/eight-size pause/results/TIME-only receipt",
+      "immediateModeMilliseconds": [
+        {
+          "project": "desktop",
+          "mode": "unko",
+          "modeToFirstArrowMilliseconds": 12.299999997019768,
+          "score": 2750,
+          "streak": 1,
+          "evidence": "ACTUAL_QUIZ_MODE_DESKTOP.json"
+        },
+        {
+          "project": "desktop",
+          "mode": "ukon",
+          "modeToFirstArrowMilliseconds": 6.199999995529652,
+          "score": 2750,
+          "streak": 1,
+          "evidence": "ACTUAL_QUIZ_MODE_DESKTOP.json"
+        },
+        {
+          "project": "phone",
+          "mode": "unko",
+          "modeToFirstArrowMilliseconds": 9.200000002980232,
+          "score": 2750,
+          "streak": 1,
+          "evidence": "ACTUAL_QUIZ_MODE_PHONE.json"
+        },
+        {
+          "project": "phone",
+          "mode": "ukon",
+          "modeToFirstArrowMilliseconds": 7,
+          "score": 2750,
+          "streak": 1,
+          "evidence": "ACTUAL_QUIZ_MODE_PHONE.json"
+        }
+      ],
+      "evidence": [
+        "ACTUAL_QUIZ_MODE_DESKTOP.json",
+        "ACTUAL_QUIZ_MODE_PHONE.json",
+        "ACTUAL_COFFEE_CREDIT_FREE_RESULT_1.json",
+        "ACTUAL_COFFEE_CREDIT_FREE_RESULT_2.json",
+        "ACTUAL_COFFEE_CREDIT_FREE_RESULT_3.json"
+      ]
+    },
+    {
+      "name": "Final MODE/Coffee scoped static retarget",
+      "command": "ELEVEN_STATIC_GAME_NUMBERS=0,8,11 ELEVEN_STATIC_REPORT=docs/eleven-game/QA/PRODUCTION_MODE_RETARGET_AUDIT.json node tests/eleven-game/probe-production.mjs",
+      "result": "6 fresh contexts PASS",
+      "checkedUtc": "2026-10-04T13:10:08.402Z",
+      "errors": 0,
+      "productionHooks": 0,
+      "evidence": "PRODUCTION_MODE_RETARGET_AUDIT.json",
+      "scope": "Portal+008+011root and/repo;18otherroutecontexts retained from full24;24distincttotal"
     }
   ],
   "historicalCurrentTaskCheckpoints": [
@@ -206,41 +296,45 @@
     }
   ],
   "pending": [
-    "Independent final Feel/numeric actual-image Visual assessment (exclusive reviewer slot released)",
+    "Independent final Feel/numeric actual-image Visual completion after source repairs (reviewer exclusive slot released)",
     "Remote GitHub Pages route/assets verification (Root, after deployment)",
     "Human A–N/play enjoyment/physical phone testing"
   ],
   "evidenceAttribution": {
     "pureModel": "public inputs/seeded simulations, never actual DOM play",
-    "native": "47 distinct valid cases across source-bridged slices; not one uninterrupted clean full run.52 distinct configured duplicate skips,57 duplicate executions including final5 retarget skips.",
-    "production": "24 fresh local contexts on physical static root and/repo;startup script/image/font body+encoded/decoded data and actual PLAY/pause/refresh/portal return. Remote GitHub Pages is separate.",
+    "native": "51 distinctactualcases: previous49 plus two new immediateMODE desktop/phone regressions. Eight current011 and Coffee3-ending case retested;42 others retained via source bridges.54distinctconfiguredduplicates,72skip executions across retargets. Not one uninterrupted clean full-run.",
+    "production": "24 distinctphysicalroot/subpathroutes:18otherinitialcontexts retained plus6latest portal/008/011retarget; earlier4focus retarget kept historical. No counting execution duplicates as extra routes.",
     "renderOnly": "not yet used",
     "human": "not yet performed"
   },
   "preparedFinalObservations": {
-    "activeCases": 47,
-    "projectCases": 99,
-    "duplicateSkips": 52,
+    "activeCases": 51,
+    "projectCases": 105,
+    "duplicateSkips": 54,
     "titleAndTrainingObservations": 352,
     "actualPauseAndNaturalResultObservations": 176,
     "localRootAndSubpathFreshContexts": 24,
     "mobileCoffeeInput": "Native CDP primary held touch; not a keyboard-labelled touch case"
   },
   "currentAggregate": {
-    "distinctValidNativeCases": 47,
+    "distinctValidNativeCases": 51,
     "pendingDistinctCases": 0,
-    "intentionalProjectSkipsExecuted": 52,
+    "intentionalProjectSkipsExecuted": 54,
     "actualPauseResultObservations": 176,
     "clipAwareOnboardingObservations": 352,
     "clipAwareOnboardingFailedObservations": 0,
-    "retainedFunctionalCaseBridge": "RETAINED_NATIVE_SOURCE_BRIDGE.json",
-    "duplicateSkipExecutions": 57,
-    "finalSourceFreeze": "FINAL_GRID_RUNTIME_SOURCE_FREEZE.json",
+    "retainedFunctionalCaseBridge": "MODE_REPAIR_SOURCE_BRIDGE.json",
+    "duplicateSkipExecutions": 72,
+    "finalSourceFreeze": "FINAL_MODE_RUNTIME_SOURCE_FREEZE.json",
     "finalRuntimeHashMatches": 197,
     "localProductionContexts": 24,
     "productionErrors": 0,
     "productionHooks": 0,
     "titleAndTrainingObservations": 352,
-    "technicalGate": "PASS; independent reviewer/humans separate"
+    "technicalGate": "PASS; independent reviewer/humans separate",
+    "productionRetargetContexts": 6,
+    "productionDistinctRoutes": 24,
+    "finalGame011ScriptBodyBytes": 48178,
+    "finalGame008ScriptBodyBytes": 57159
   }
 }

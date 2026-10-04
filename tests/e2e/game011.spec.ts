@@ -101,3 +101,104 @@ test('Quiz actual initial question, pause and earned wrong-result retain full re
   for(const[width,height]of arcadeSizes){await page.setViewportSize({width,height});records.push({phase:'natural-result',width,height,geometry:await geometry(page,['.result-ticket','#result-score','.result-details','.result-comment','#retry-button','#title-button'],['#retry-button','#title-button'])});}
   expect(errors).toEqual([]);await info.attach('actual-quiz-responsive',{body:JSON.stringify({records,paused,ended:await runtime(page),errors}),contentType:'application/json'});
 });
+
+
+test('Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once',async({page,isMobile},info)=>{
+  test.skip(info.project.name==='mobile-landscape');
+  const errors=errorsOn(page);await seedStoredZero(page,'game011',true);await page.goto('./game011.html');
+  await page.locator('#play-button').click();await expect(page.locator('#left-button')).toBeEnabled();
+  const initial=(await runtime(page)).inspection;expect(initial).toMatchObject({phase:'image_answer',deadline:5,score:0});
+  await page.locator('#pause-button').click();const paused=(await runtime(page)).inspection;
+  const resume=page.locator('#resume-button');await resume.focus();await expect(resume).toBeFocused();
+  const box=(await resume.boundingBox())!,x=box.x+box.width/2,y=box.y+box.height/2;
+  const key=initial.answerSide==='left'?'ArrowLeft':'ArrowRight',virtualKey=key==='ArrowLeft'?37:39;
+  // A capture-only observer records real browser input. It never changes focus, the model or the clock.
+  await page.evaluate(()=>{
+    const rows:unknown[]=[];(window as unknown as {__qaResumeEvents:unknown[]}).__qaResumeEvents=rows;
+    for(const type of ['click','keydown'])document.addEventListener(type,event=>{
+      if(type==='keydown'&&!(event as KeyboardEvent).key.startsWith('Arrow'))return;
+      const target=event.target as HTMLElement;
+      rows.push({type,time:performance.now(),target:target.id||target.tagName,key:(event as KeyboardEvent).key??null,
+        focus:(document.activeElement as HTMLElement)?.id||document.activeElement?.tagName,
+        path:event.composedPath().filter(node=>node instanceof HTMLElement).map(node=>(node as HTMLElement).id||(node as HTMLElement).tagName)});
+    },true);
+  });
+  const cdp=await page.context().newCDPSession(page);
+  try{
+    // Coordinates/session/key are all cached before RESUME. No wait or diagnostic roundtrip between resume and answer.
+    if(isMobile){
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:1}]});
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    }else{
+      await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',clickCount:1});
+      await cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button:'left',clickCount:1});
+    }
+    await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey});
+    await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey,autoRepeat:true});
+    await cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey});
+  }finally{await cdp.detach();}
+  const after=await runtime(page),rows=await page.evaluate(()=>(window as unknown as {__qaResumeEvents:any[]}).__qaResumeEvents);
+  expect(after.state).toBe('playing');expect(after.inspection).toMatchObject({alive:true,phase:'speed_warning',imageCorrect:1,score:100});
+  const clicked=rows.find(row=>row.type==='click'&&row.path.includes('resume-button'));
+  const answered=rows.find(row=>row.type==='keydown');expect(clicked).toBeTruthy();expect(answered).toBeTruthy();
+  expect(answered.time-clicked.time,'first answer is immediate, without an added post-resume grace period').toBeGreaterThanOrEqual(0);
+  expect(answered.time-clicked.time).toBeLessThan(16);expect(answered.path).not.toContain('resume-button');expect(answered.focus).not.toBe('resume-button');
+  expect(after.events.filter(event=>event.name==='resume')).toHaveLength(1);expect(after.events.filter(event=>event.name==='run_end')).toHaveLength(0);
+  assertNoWalletEvents(after.events);expect(errors).toEqual([]);
+  const proof=info.outputPath('actual-quiz-immediate-resume-focus.json');
+  writeFileSync(proof,JSON.stringify({input:isMobile?'native touch RESUME plus immediate native Arrow':'native mouse RESUME plus immediate native Arrow',initial,paused,after,rows,errors},null,2));
+  await info.attach('actual-quiz-immediate-resume-focus',{path:proof,contentType:'application/json'});
+});
+
+
+test('Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once',async({page,isMobile},info)=>{
+  test.skip(info.project.name==='mobile-landscape');test.setTimeout(90_000);
+  const errors=errorsOn(page),records=[];await seedStoredZero(page,'game011',true);await page.goto('./game011.html');
+  await page.locator('#play-button').click();await expect(page.locator('#left-button')).toBeEnabled();
+  for(const mode of ['unko','ukon']){
+    await correct(page,isMobile);await nativeButton(page,'#continue-button',isMobile);
+    for(let i=1;i<10;i++)await correct(page,isMobile);
+    await nativeButton(page,'#continue-button',isMobile);
+    for(let i=0;i<10;i++){await nativeButton(page,'#ready-button',isMobile);await correct(page,isMobile);}
+    const before=await runtime(page);expect(before.inspection).toMatchObject({phase:'final_choice',score:2500,remaining:null});
+    const button=page.locator(`#${mode}-mode-button`);await button.focus();await expect(button).toBeFocused();
+    const box=(await button.boundingBox())!,x=box.x+box.width/2,y=box.y+box.height/2;
+    await page.evaluate(()=>{
+      const rows:unknown[]=[];(window as unknown as {__qaModeEvents:unknown[]}).__qaModeEvents=rows;
+      for(const type of ['click','keydown'])document.addEventListener(type,event=>{
+        if(type==='keydown'&&!(event as KeyboardEvent).key.startsWith('Arrow'))return;
+        const target=event.target as HTMLElement;
+        rows.push({type,time:performance.now(),target:target.id||target.tagName,key:(event as KeyboardEvent).key??null,
+          focus:(document.activeElement as HTMLElement)?.id||document.activeElement?.tagName,
+          path:event.composedPath().filter(node=>node instanceof HTMLElement).map(node=>(node as HTMLElement).id||(node as HTMLElement).tagName)});
+      },true);
+    });
+    const cdp=await page.context().newCDPSession(page);
+    try{
+      if(isMobile){
+        await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:1}]});
+        await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      }else{
+        await cdp.send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',clickCount:1});
+        await cdp.send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button:'left',clickCount:1});
+      }
+      // Newly shuffled answer is read once. No waits, focus repair, model writes or input grace.
+      const side=await page.evaluate(()=>(window as unknown as {__arcadeDebug:{inspection:()=>{answerSide:string}}}).__arcadeDebug.inspection().answerSide);
+      const key=side==='left'?'ArrowLeft':'ArrowRight',virtualKey=side==='left'?37:39;
+      await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey});
+      await cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey,autoRepeat:true});
+      await cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key,code:key,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey});
+    }finally{await cdp.detach();}
+    const after=await runtime(page),rows=await page.evaluate(()=>(window as unknown as {__qaModeEvents:any[]}).__qaModeEvents);
+    expect(after.inspection).toMatchObject({alive:true,phase:'final_answer',finalMode:mode,score:2750,finalStreak:1,deadline:.5});
+    const clicked=rows.find(row=>row.type==='click'&&row.path.includes(`${mode}-mode-button`)),answered=rows.find(row=>row.type==='keydown');
+    expect(clicked).toBeTruthy();expect(answered).toBeTruthy();expect(answered.time-clicked.time).toBeGreaterThanOrEqual(0);expect(answered.time-clicked.time).toBeLessThan(16);
+    expect(answered.path).not.toContain(`${mode}-mode-button`);expect(answered.focus).not.toBe(`${mode}-mode-button`);
+    records.push({mode,before,after,rows,modeToFirstArrowMilliseconds:answered.time-clicked.time});
+    await nativeButton(page,after.inspection.answerSide==='left'?'#right-button':'#left-button',isMobile);
+    await expect(page.locator('#retry-button')).toBeVisible();if(mode==='unko')await nativeButton(page,'#retry-button',isMobile);
+  }
+  const events=(await runtime(page)).events;expect(events.filter(event=>event.name==='run_start')).toHaveLength(2);expect(events.filter(event=>event.name==='run_end')).toHaveLength(2);assertNoWalletEvents(events);expect(errors).toEqual([]);
+  const proof=info.outputPath('actual-quiz-immediate-mode-focus.json');writeFileSync(proof,JSON.stringify({input:isMobile?'native touch MODE plus immediate native Arrow':'native mouse MODE plus immediate native Arrow',records,events,errors},null,2));
+  await info.attach('actual-quiz-immediate-mode-focus',{path:proof,contentType:'application/json'});
+});
