@@ -42,16 +42,18 @@ npm run preview
 
 ## GitHub Pagesへの公開
 
-公開先の想定は `Badgio0906/Badgio0906-web-mini-game-arcade` です。ユーザー作成の既存リポジトリへ反映します。実配信の状態は[実装報告](docs/eleven-game/IMPLEMENTATION_REPORT.md)を確認してください。配信完了の確認前に公開済みとは扱いません。
+公開中の試作版：**[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)**。
 
-1. GitHubリポジトリにこのソースを置き、既定ブランチを`main`にします。
-2. Settings → Pages → Build and deploymentのSourceを **GitHub Actions** にします。
+[GitHub Actionsの公開run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37205351046)で`npm ci`、153単体テスト、ビルド、Pagesへの公開が成功しました。公開URLでも一覧＋11ゲームの12ページを直接開き、画像・フォント・保存CREDIT0からのPLAY・ポーズ・再読み込み・一覧への戻りを確認済みです。[実配信監査](docs/eleven-game/QA/GITHUB_PUBLICATION_AUDIT.json)と[12ページの実測](docs/eleven-game/QA/GITHUB_PAGES_REMOTE_AUDIT.json)へ記録しています。
+
+更新する場合：
+
+1. このリポジトリの`main`へ変更を反映します。
+2. Settings → Pages → Build and deploymentのSourceは **GitHub Actions** にします（設定済み）。
 3. `main`へのpush、またはActionsの **Build and deploy arcade** を手動実行します。
 4. CIは`npm ci` → 単体テスト → ビルド → `dist/`のPages artifact → 公開を実行します。
 
-構成は[.github/workflows/pages.yml](.github/workflows/pages.yml)。サイトURLは `https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/` を想定しています。まだ実配信確認前の想定URLです。
-
-Viteの`base: './'`、相対リンク、同じ階層にある個別HTMLで、リポジトリ名が変わっても動きます。JS/CSS/画像/フォントがリポジトリ配下から読み込まれ、ゲームのURLを直接更新しても実在するHTMLを開きます。SPAの404用リダイレクトは不要です。
+構成は[.github/workflows/pages.yml](.github/workflows/pages.yml)。Viteの`base: './'`、相対リンク、同じ階層にある個別HTMLでリポジトリ配下からJS/CSS/画像/フォントを読み込みます。ゲームのURLを直接更新しても実在するHTMLを開きます。SPAの404用リダイレクトは不要です。
 
 ## 検証
 

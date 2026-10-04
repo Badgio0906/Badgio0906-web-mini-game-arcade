@@ -1,6 +1,6 @@
 # Eleven-game Implementation Report — 実装・QA・独立レビュー受入済み
 
-2026-10-04 / baseline `ffa433c3bd3e475235f3cc235bf9bf29292e7aaf`。[実装指示書](IMPLEMENTATION_SPEC.md)0〜119に対する現状整理。**実装・技術QA・独立Feel/Visual受入済み：51 distinct native、352clip-aware title/training、176actual pause/result、24distinct local root/subpath production PASS。独立Visual全11本82〜89、Portal88、F/H各12以上。全browser閉鎖済み。main/Pages実公開・人間評価は未完了**。
+2026-10-04 / baseline `ffa433c3bd3e475235f3cc235bf9bf29292e7aaf`。[実装指示書](IMPLEMENTATION_SPEC.md)0〜119に対する現状整理。**実装・技術QA・独立Feel/Visual受入済み：51 distinct native、352clip-aware title/training、176actual pause/result、24distinct local root/subpath production PASS。独立Visual全11本82〜89、Portal88、F/H各12以上。全browser閉鎖済み。main/Pages実公開・公開URL12ページの検証もPASS。人間評価は未実施**。
 
 ## 目的と現状
 
@@ -58,13 +58,13 @@ Rootが取得した[portal-first-desktop.png](screenshots/portal-first-desktop.p
 
 MPAでportalは`index.html`、ゲームは`game001.html`〜`game011.html`。Vite `base:'./'`で12物理HTML entryをbuild対象にし、直接Refresh可能な構成を選んだ。catalogは`src/data/gameCatalog.ts`の一箇所。リンク/画像/font等はBASE_URL/相対pathでrepository subpathへ対応する方針。機能の存在と実配信検証は別である。
 
-公開先はユーザー作成のpublic repository [Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)。予定公開URLは[https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。RootがPagesの`build_type:workflow`（GitHub Actions設定）を確認した。
+公開先はユーザー作成のpublic repository [Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)。公開URLは[https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。RootがPagesの`build_type:workflow`（GitHub Actions設定）を確認した。
 
 GitHub接続後、RootはリポジトリREADMEの更新成功を報告した（remote commit `5fdaa861…`）。ユーザーが見たpublic/mainの初期README画面は、GitHub repositoryの正常な初期表示であり、ゲームサイトが配信された画面ではない。READMEの反映とArcade配信を分ける。
 
 GitHub RESTによる初期review-source転送は完了、commit `e76f28a896da02d73f77fa7de54560c7c1f16da0` / tree `31429e51369d036aabdc1ed420428bd2a98cba21`。[remote tree audit](QA/GITHUB_REVIEW_SOURCE_AUDIT.json)で1252files/12HTML/89publicWebP/workflowとnot-truncatedを確認した。これは後述の独立レビュー最終focus/copy修正前のreview snapshotで、最終freezeと同一だとは扱わない。
 
-**mainへの最終Arcade反映/deploy・remote実URL確認はまだ行っていない**。review用source準備とmain/Pages配信を分ける。独立gateは完了したが、公開先・README更新・review branch・Pages設定をURLの稼働/配信PASSと混同しない。local root/subpath24distinct routesは下記の通り完了。
+**mainへ最終ソースを反映し、GitHub Pages公開と実URL検証が完了した**。配信ソースcommitは`96a8e50736cb80d4aeb772202625dc42af96febb`、treeは`fc42cd3fb243e9b0b3e5b2cf1db68a2d0a308954`でlocal最終sourceと一致。[Actions run](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37205351046)はnpm ci・153tests/18files・build5.28秒・deployすべてsuccess。[公開監査](QA/GITHUB_PUBLICATION_AUDIT.json)と[実URLの12fresh contexts](QA/GITHUB_PAGES_REMOTE_AUDIT.json)でHTTP/runtime error0、debug hooks0、直接アクセス/PLAY/pause/refresh/portal帰還・fonts/images・既存resource限度を確認した。人間の面白さ・新K〜N・実機FPSは未実施。
 
 ## QA・独立評価と未完了項目
 
@@ -120,7 +120,7 @@ Gmotionは007/008が6、009が5、011背景Cが6など、静的な探索・控�
 |Final gate|今回の最終結果|
 |---|---|
 |Source freeze / protected models / asset audit|最終19strict match/契約変更0、freeze197一致、asset89-dist PASS。[native source bridge](QA/RETAINED_NATIVE_SOURCE_BRIDGE.json)保持|
-|npm install / build / 全unit regression|153unitモデルcheckpoint保持、最終focus/copy後check1.89秒/build5.35秒 PASS|
+|npm install / build / 全unit regression|最終sourceのGitHub CI npm ci/153unit18files/build5.28秒 PASS。local check1.89秒/build5.35秒も保持|
 |全11説明・実practice・成功・本番・再訪・再練習|desktop/portrait各11とaffected009再検証PASS|
 |全11CREDIT-off・既存BEST・入力/telemetry分離|全11practice分離/stored-zero三回終了・自由retry PASS。local production22game contexts PASS|
 |Portal11画像/route/戻る/refresh/root/subpath|11actual画像採用、native往復、local root/subpath24contexts PASS|
@@ -128,13 +128,17 @@ Gmotionは007/008が6、009が5、011背景Cが6など、静的な探索・控�
 |Desktop/mobile独立Feel/Visual（80以上、F/H各12以上）|全11Feel PASS、Visual82〜89、Portal88/FH各12以上 PASS|
 |各viewport title/explanation/practice/success/result等|352clip-aware title/training＋176actual pause/result PASS。初回64FAIL/clip1件等保持|
 |Production first-load / resource / error / no debug hooks|24fresh local root/subpath PASS、error0/hooks0、resource限度内。collector race原本保持|
-|GitHub Pages公開先・実公開確認|repository/URL/Actions設定＋README/初期review-source e76転送済み。最終main/deployとremote配信確認は未実施|
+|GitHub Pages公開先・実公開確認|main96a8e507反映、Actions37205351046 success、公開URL12fresh contexts PASS/error0/hooks0|
 |人間A〜J・新K〜N・実機FPS・楽しさ・公開判断|全11未実施|
 
-Art iterationと限定CSS/文字/入力の技術修正checkpointは別に記録し、元の不具合証拠を保存する。最終数値は独立reportが揃ってから追記する。[人間フォーム](HUMAN_PLAYTEST.md)、[次期仕様候補](COMMON_SPEC_NEXT_DRAFT.md)は実測待ちの資料であり、採用済みの全genre SDKではない。
+Art iterationと限定CSS/文字/入力の技術修正checkpointは別に記録し、元の不具合証拠を保存する。最終数値は実行済みの独立reportに基づく。[人間フォーム](HUMAN_PLAYTEST.md)、[次期仕様候補](COMMON_SPEC_NEXT_DRAFT.md)は実測待ちの資料であり、採用済みの全genre SDKではない。
 
 ## 最終受入時に記録する内容
 
-51distinct QAの閉鎖・source bridges、24distinct local production routes、独立Feel/numeric Visual、最終build/source/asset監査は上記へ追記済み。残る最終main commit/Actions run/実URL応答を実証リンク付きでRootが追記する。Local24が成功してもremote Pages配信とは別欄。実機FPSと初見の新K〜N/面白さは自動結果と別欄の未実施を維持する。
+51distinct QAの閉鎖・source bridges、24distinct local production routes、独立Feel/numeric Visual、最終build/source/asset監査は上記へ追記済み。最終main commit/Actions run/実URL応答も上記と公開監査へ追記済み。Local24が成功してもremote Pages配信とは別欄。実機FPSと初見の新K〜N/面白さは自動結果と別欄の未実施を維持する。
 
 技術的なplaytest候補の受入と、人間の楽しさによる公開合格を分ける。未実施を「問題なし」に変更せず、公開URLだけ提示して全11人間合格を暗示しない。011固有の時計/gesture/decode/RNGの学びは[GAME011_LESSONS](../GAME011_LESSONS.md)、全gameのpractice/情報配置の学びは次期草案へ反映する。
+
+## Remote collectorの記録
+
+初回の公開URL検証では、再読み込みのcached fontと初回集計後のPLAY-only画像について、Chromium CDPのresponse.body取得が失敗した。HTTP/ゲーム実行のエラーとは分け、3つの元journalをQA内に保存した。初回URL本文の一度だけの取得・navigation前のjob drain・初回snapshot後のbody集計終了を行い、HTTP/runtime監視は全通信で維持した。QAが集計範囲をread-onlyでレビューし、初回font/byte/Phaser/hook条件を保持すると確認。修正後の公開12ページの一括実行はPASS。ゲーム本体/配信assetは変更していない。

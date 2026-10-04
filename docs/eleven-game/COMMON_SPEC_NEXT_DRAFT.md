@@ -67,6 +67,6 @@ Portalはcatalog一箇所のid/邦題/英題/tagline/actual thumbnail/route/rele
 
 Feature flagはmodel消費を止めるだけでなく、結果のinactive wallet caption/3/3表示も整理する。008はOFF時だけTIME/timeを出し、将来enabled分岐を保持した。[自然phone結果](reviews/GAME007_008_READABILITY.md)とQA3receiptで実確認。無料prototypeにinactive CREDITを読ませないのは表示境界の教訓で、既存serviceを削除する方針ではない。
 
-公開先repositoryは[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、予定URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。remote README/Actions設定と初期review-source e76転送は完了、最終main反映/deploy/remote動作確認はまだ未実施。Local root/subpath PASSをremote配信合格にしない。全11の人間評価・実機FPS・楽しさ・共通仕様の安定採用も未確認。
+公開先repositoryは[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)、公開URLは[GitHub Pages](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。最終main反映・GitHub ActionsのCI/deploy・公開12ページ実検証まで[公開監査](QA/GITHUB_PUBLICATION_AUDIT.json)で確認済み。Local root/subpathの証拠とremote実検証を分ける。全11の人間評価・実機FPS・楽しさ・共通仕様の安定採用も未確認。
 
 [実装途中報告](IMPLEMENTATION_REPORT.md)、[QA ledger](QA/README.md)、[実行checkpoint](QA/EXECUTION_LEDGER.json)、[事前risk](reviews/DESIGN_RISK_REVIEW.md)を出典とし、Rootの実証後に更新する。

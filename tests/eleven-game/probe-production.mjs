@@ -15,13 +15,14 @@ try{
   for(const mount of mounts)for(const number of numbers){
     const id=number?`game${String(number).padStart(3,'0')}`:'portal',route=number?`${id}.html`:'index.html';
     const context=await browser.newContext({viewport:{width:1440,height:900}}),page=await context.newPage();
-    const errors=[],jobs=[];
+    const errors=[],jobs=[],bodyUrls=new Set();let collectingBodies=true;
     page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('requestfailed',r=>errors.push(`${r.url()} ${r.failure()?.errorText}`));
     page.on('response',r=>{
       if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`);if(!/^https?:/.test(r.url()))return;
       const requested=r.request().resourceType(),mime=r.headers()['content-type']??'';
       const kind=requested==='script'?'script':requested==='font'||/^font\//.test(mime)||/\.woff2?(?:\?|$)/.test(r.url())?'font':requested==='image'||/^image\//.test(mime)||/\.webp(?:\?|$)/.test(r.url())?'image':null;
-      if(kind)jobs.push(r.body().then(body=>({url:r.url(),kind,status:r.status(),bodyBytes:body.length,phaser:kind==='script'&&/WebGLRenderer|__PHASER__|Phaser v|Phaser\.Game/.test(body.toString('utf8'))})).catch(e=>{errors.push(`${r.url()} ${e}`);return null;}));
+      // First-load accounting reads each URL once. Cached reload responses may have no CDP body.
+      if(kind&&collectingBodies&&!bodyUrls.has(r.url())){bodyUrls.add(r.url());jobs.push(r.body().then(body=>({url:r.url(),kind,status:r.status(),bodyBytes:body.length,phaser:kind==='script'&&/WebGLRenderer|__PHASER__|Phaser v|Phaser\.Game/.test(body.toString('utf8'))})).catch(e=>{errors.push(`${r.url()} ${e}`);return null;}));}
     });
     try{
       if(number)await page.addInitScript(id=>{const prefix=id==='game001'?'orbit-shift:v1:':`web-mini-arcade:v1:${id}:`;localStorage.setItem(prefix+'credits','0');localStorage.setItem(prefix+'tutorialCompleted','true');},id);
@@ -39,6 +40,7 @@ try{
         images:[...document.images].map(i=>({src:i.currentSrc,complete:i.complete,width:i.naturalWidth,height:i.naturalHeight})),
       }));
       const unique=[...new Map((await Promise.all(jobs)).filter(Boolean).map(r=>[r.url,r])).values()];
+      collectingBodies=false; // Keep HTTP/runtime checks active; later gameplay/reload traffic is not first-load accounting.
       const totals=Object.fromEntries(['script','image','font'].map(kind=>{const entries=unique.filter(r=>r.kind===kind),timing=observed.resources.filter(r=>entries.some(e=>e.url===r.url));return[kind,{count:entries.length,bodyBytes:entries.reduce((s,r)=>s+r.bodyBytes,0),encodedBytes:timing.reduce((s,r)=>s+r.encoded,0),decodedBytes:timing.reduce((s,r)=>s+r.decoded,0),transferBytes:timing.reduce((s,r)=>s+r.transfer,0)}];}));
       const phaser=[1,2,3,6].includes(number);assert.equal(observed.hooks,false,`${id} no production diagnostics`);assert.deepEqual(errors,[],`${id} HTTP/runtime errors`);
       assert.ok(totals.script.count>0);assert.ok(totals.script.bodyBytes<=(phaser?2_000_000:300_000),`${id} unchanged script ceiling`);assert.equal(unique.some(r=>r.phaser),phaser,`${id} actual engine body`);
@@ -49,7 +51,9 @@ try{
       if(number){
         await page.locator('#play-button').click();await page.locator('#pause-button:not(:disabled)').waitFor({state:'visible'});await page.locator('#pause-button').click();await page.locator('#resume-button').waitFor({state:'visible'});
         assert.equal(await page.locator('#arcade-training').isVisible(),false,`${id} completed tutorial immediate real PLAY`);assert.equal(await page.locator('#reward-button').isVisible(),false,`${id} stored zero has no reward gate`);
+        await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle');await Promise.all(jobs);
         await page.reload();await page.locator('#play-button').waitFor({state:'visible'});
+        await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle');await Promise.all(jobs);
         const back=page.locator('.arcade-portal-back');assert.ok([basePath,`${basePath}index.html`].includes(new URL(await back.getAttribute('href'),page.url()).pathname));await back.click();await page.locator('.game-card').first().waitFor({state:'visible'});
         assert.equal(await page.locator('.game-card').count(),11);
         await page.waitForLoadState('networkidle');await Promise.all(jobs);assert.deepEqual(errors,[],`${id} refresh/return errors`);

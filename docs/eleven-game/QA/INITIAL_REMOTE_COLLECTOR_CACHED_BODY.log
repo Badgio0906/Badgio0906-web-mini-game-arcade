@@ -1,0 +1,32 @@
+https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/index.html: 3842 JS / 143896 images / 154856 fonts; PASS
+https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game001.html: 1260597 JS / 0 images / 0 fonts; PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: game002 refresh/return errors
++ actual - expected
+
++ [
++   'https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/fonts/arcade-rounded-jp.woff2 Error: response.body: Protocol error (Network.getResponseBody): No data found for resource with given identifier\n' +
++     'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
++   'https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/fonts/arcade-rounded-jp.woff2 Error: response.body: Protocol error (Network.getResponseBody): No data found for resource with given identifier\n' +
++     'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
++ ]
+- []
+
+    at file:///workspace/orbit-shift/tests/eleven-game/probe-production.mjs:57:83 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/fonts/arcade-rounded-jp.woff2 Error: response.body: Protocol error (Network.getResponseBody): No data found for resource with given identifier\n' +
+      'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
+    'https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/fonts/arcade-rounded-jp.woff2 Error: response.body: Protocol error (Network.getResponseBody): No data found for resource with given identifier\n' +
+      'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

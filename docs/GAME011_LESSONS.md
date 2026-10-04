@@ -1,6 +1,6 @@
 # Game011 開発メモ — ウンコかウコンかゲーム ～UNKO or UKON～
 
-2026-10-04。実装・独立QA記録。Game011の純粋モデル9/9成功（初回テスト1.310秒/runner1.62秒）、統合153 unitと全体build成功。今回の11ゲーム向け開発ブラウザQAは重複を除く51実行が成功し、Game011の本番各段階・入力・結果も確認済み。ローカルproductionのroot/subpath再検証24件は成功。独立Feel/Visualは最終合格。リモート公開先の確認は未完了。人間プレイテストは未実施。今回の試作版は無制限、広告なし。
+2026-10-04。実装・独立QA記録。Game011の純粋モデル9/9成功（初回テスト1.310秒/runner1.62秒）、統合153 unitと全体build成功。今回の11ゲーム向け開発ブラウザQAは重複を除く51実行が成功し、Game011の本番各段階・入力・結果も確認済み。ローカルproductionのroot/subpath再検証24件は成功。独立Feel/Visualは最終合格。リモートGitHub Pagesの公開と12ページ実確認も成功。人間プレイテストは未実施。今回の試作版は無制限、広告なし。
 
 ## 三段階を明確に分ける
 
@@ -52,7 +52,7 @@ Native DOMでPhaser依存を追加しない。Gameplay EngineerがGame011の全�
 
 遅い回答のテストでは、終了後のsnapshot.remainingを数値として扱うハーネスの仮定を修正した。モデル契約は終了時remaining:nullであり、実装や期限を変更して期待に合わせていない。以前保存したCREDIT 0からも本番・再挑戦を妨げる制限や広告ゲートがないことを、試作版のQAで確認した。
 
-統合153 unit・全体buildは成功し、既存の19保護対象ファイル（10 Runモデルと9得点・結果・翻訳helper）のbytesは変更前と同一。開発ブラウザQAは初回47 distinct、overlayフォーカス修正後49 distinct、FINAL MODE修正後の最終51 distinctへ更新された。11ゲーム向け統合確認全体の実行数で、Game011だけの件数ではない。凍結候補の複数sliceと影響ケースの再検証を、ソースの差分証拠でつないだ集計であり、一回の連続実行とは表現しない。production初回ではネットワーク収集器を閉じる順序のraceを保存し、修正したハーネスで再収集した。最終ローカルroot/subpath24件は2026-10-04 12:39:57 UTCまでに全contextを閉じて成功し、[最終production監査](eleven-game/QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json)の24記録すべてでerrors 0・開発hooks 0、native script 300KB/Phaser 2MBのresource上限も成功した。独立Feel/Visualは後述の最終修正を含め合格した。リモート公開先、物理端末のFPS、人間による認識・操作の楽しさは未評価で、人間A〜Nもすべて未実施。
+統合153 unit・全体buildは成功し、既存の19保護対象ファイル（10 Runモデルと9得点・結果・翻訳helper）のbytesは変更前と同一。開発ブラウザQAは初回47 distinct、overlayフォーカス修正後49 distinct、FINAL MODE修正後の最終51 distinctへ更新された。11ゲーム向け統合確認全体の実行数で、Game011だけの件数ではない。凍結候補の複数sliceと影響ケースの再検証を、ソースの差分証拠でつないだ集計であり、一回の連続実行とは表現しない。production初回ではネットワーク収集器を閉じる順序のraceを保存し、修正したハーネスで再収集した。最終ローカルroot/subpath24件は2026-10-04 12:39:57 UTCまでに全contextを閉じて成功し、[最終production監査](eleven-game/QA/PRODUCTION_ROOT_SUBPATH_AUDIT.json)の24記録すべてでerrors 0・開発hooks 0、native script 300KB/Phaser 2MBのresource上限も成功した。独立Feel/Visualは後述の最終修正を含め合格した。リモート公開先は確認済み。物理端末のFPS、人間による認識・操作の楽しさは未評価で、人間A〜Nもすべて未実施。
 
 独立実画面レビューで、RESUMEを押した直後も非表示のresume-buttonにフォーカスが残り、最初のArrowがゲーム側の「メニュー操作を回答に使わない」判定に入って無視される不具合が見つかった。初回記録は得点3500・FINAL 4で保存した。修正はmain.tsのscreen(next)でoverlay.hiddenを設定した直後、非表示overlay内にactiveElementがある場合だけ同期blurする1行。回答期限・得点・モデル・入力release判定や、見えているヘッダー操作を除外する規則は変更しない。
 
@@ -68,7 +68,7 @@ overlay修正時の[凍結記録](eleven-game/QA/FINAL_FOCUS_RUNTIME_SOURCE_FREE
 
 同じ最終候補でGame008の広告なし試作結果をTIME表記だけに整理し、自然失敗3回のreceiptで確認した。これは結果コピーの変更で、CoffeeRunや残量・得点・期限を変更していない。[最終197ファイル凍結記録](eleven-game/QA/FINAL_MODE_RUNTIME_SOURCE_FREEZE.json)のSHA-256は `ca8c62219c2840d1b87c99f8f001bebb83ef229f3b6e7a1fc2ec6d7c9d143683`。TypeScript check 1.89秒・build 5.35秒成功、既存19保護ファイルのbytes一致、既存contracts変更0、89配信素材のart監査成功。
 
-最終の[Game011 Feel](eleven-game/reviews/GAME011_FEEL.md)はPASS、[Game011 Visual](eleven-game/reviews/GAME011_VISUAL.md)は86/100、可読性F14/15・production H14/15。全11ゲームの独立FeelもPASS、[全体Visual scorecard](eleven-game/reviews/FINAL_VISUAL_SCORECARD.md)は各ゲーム82〜89点・Portal88点、全F/Hが12/15以上。実画像とnative操作による評価であり、生成素材の原本採用やソース確認だけで合格していない。すべてのレビューcontextを閉じた。リモートGitHub PagesはMainが別途確認予定で、人間A〜N・実機FPS・人間の認識や楽しさは引き続き未実施。
+最終の[Game011 Feel](eleven-game/reviews/GAME011_FEEL.md)はPASS、[Game011 Visual](eleven-game/reviews/GAME011_VISUAL.md)は86/100、可読性F14/15・production H14/15。全11ゲームの独立FeelもPASS、[全体Visual scorecard](eleven-game/reviews/FINAL_VISUAL_SCORECARD.md)は各ゲーム82〜89点・Portal88点、全F/Hが12/15以上。実画像とnative操作による評価であり、生成素材の原本採用やソース確認だけで合格していない。すべてのレビューcontextを閉じた。[リモートGitHub Pages](eleven-game/QA/GITHUB_PUBLICATION_AUDIT.json)は公開・12ページ実確認が完了。CI153unit/build/deployも成功した。人間A〜N・実機FPS・人間の認識や楽しさは引き続き未実施。
 
 出典は独立QAの[統合実行記録](eleven-game/QA/README.md)・[実行台帳](eleven-game/QA/EXECUTION_LEDGER.json)、[実際の期限と終了イベント](eleven-game/QA/ACTUAL_QUIZ_DEADLINE_AUDIT.json)、[8サイズのPAUSE/結果監査](eleven-game/QA/ACTUAL_PAUSE_RESULT_LAYOUT_AUDIT.json)。production収集の初回raceは[保存した監査](eleven-game/QA/INITIAL_PRODUCTION_COLLECTOR_SHUTDOWN_AUDIT.json)へ分けて残す。
 
