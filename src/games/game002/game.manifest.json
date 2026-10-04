@@ -1,0 +1,41 @@
+{
+  "id": "game002",
+  "title": "ゆううつな月曜日 ～WORKDAY DODGE～",
+  "subtitle": "ぶつからず出社せよ！",
+  "genre": [
+    "arcade",
+    "dodge",
+    "runner"
+  ],
+  "core_mechanic": [
+    "three-lane movement",
+    "prediction",
+    "commute-to-infinite-journey"
+  ],
+  "primary_input": [
+    "left",
+    "right"
+  ],
+  "skill_axes": [
+    "reaction",
+    "prediction",
+    "lane-selection"
+  ],
+  "expected_run_seconds": {
+    "beginner": 45,
+    "experienced": 96
+  },
+  "goal": {
+    "company_choice_meters": 1000,
+    "bike_choice_meters": 2000,
+    "journey_distance_limit": null
+  },
+  "escalation_mechanic": "At 1000m enter the company or pass it for a journey; at 2000m end safely, continue walking, or ride at 200% speed indefinitely.",
+  "risk_reward": "Office clear and the 2000m safe exit preserve CREDIT; continuing risks collision for uncapped distance and NICE DODGE score.",
+  "visual_identity": "warm ink comic commuters and illustrated four-district Japanese streets",
+  "primary_score": "floor(distance_meters * stepped_nice_dodge_bonus_percent / 100)",
+  "secondary_score": [
+    "distance_meters",
+    "nice_dodge_count"
+  ]
+}

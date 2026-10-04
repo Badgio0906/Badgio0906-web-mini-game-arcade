@@ -1,0 +1,1226 @@
+[
+  {
+    "type": "ordinaryNativeDecision",
+    "floor": 1,
+    "button": "right-button",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 1,
+        "score": 0,
+        "time": 0.04989999999999997,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 0,
+        "capacity": 450,
+        "currentParty": {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "aboard": [],
+        "nextUnload": null,
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 0,
+        "occupiedFloors": 0,
+        "decisionRemaining": 6.9501,
+        "decisionSeconds": 7,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.04989999999999997,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 1,
+        "score": 0,
+        "time": 0.14990000000000003,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 65,
+        "capacity": 450,
+        "currentParty": {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 0,
+        "occupiedFloors": 0,
+        "decisionRemaining": 0,
+        "decisionSeconds": 7,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    }
+  },
+  {
+    "type": "ordinaryNativeDecision",
+    "floor": 2,
+    "button": "right-button",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 2,
+        "score": 13,
+        "time": 2.166500000000001,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 65,
+        "capacity": 450,
+        "currentParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 14.444444444444443,
+        "occupiedFloors": 1,
+        "decisionRemaining": 6.936633333333333,
+        "decisionSeconds": 6.945,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.008366666666666942,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 2,
+        "score": 13,
+        "time": 2.216500000000003,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 155,
+        "capacity": 450,
+        "currentParty": {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 14.444444444444443,
+        "occupiedFloors": 1,
+        "decisionRemaining": 0,
+        "decisionSeconds": 6.945,
+        "travelSeconds": 1.15,
+        "lastSide": "accept",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    }
+  },
+  {
+    "type": "ordinaryNativeDecision",
+    "floor": 3,
+    "button": "left-button",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "floor": 3,
+        "score": 30,
+        "time": 4.233100000000065,
+        "alive": true,
+        "phase": "boarding",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 155,
+        "capacity": 450,
+        "currentParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 0,
+        "timedOut": 0,
+        "utilization": 24.444444444444443,
+        "occupiedFloors": 2,
+        "decisionRemaining": 6.881633333333333,
+        "decisionSeconds": 6.89,
+        "travelSeconds": 1.15,
+        "lastSide": null,
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0.008366666666666488,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "floor": 3,
+        "score": 30,
+        "time": 4.283100000000063,
+        "alive": true,
+        "phase": "departing",
+        "pending": null,
+        "mode": "normal",
+        "scoreMultiplier": 1,
+        "load": 155,
+        "capacity": 450,
+        "currentParty": {
+          "id": 3,
+          "floor": 3,
+          "destination": 9,
+          "label": "段ボール台車",
+          "kg": 240,
+          "value": 160,
+          "items": [
+            {
+              "kind": "boxes",
+              "label": "段ボール台車",
+              "kg": 240,
+              "people": 0,
+              "cargo": 4,
+              "value": 160
+            }
+          ]
+        },
+        "nextParty": {
+          "id": 4,
+          "floor": 4,
+          "destination": 6,
+          "label": "配達員＋巨大な観葉植物",
+          "kg": 305,
+          "value": 400,
+          "items": [
+            {
+              "kind": "courier",
+              "label": "配達員",
+              "kg": 85,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            },
+            {
+              "kind": "plant",
+              "label": "巨大な観葉植物",
+              "kg": 220,
+              "people": 0,
+              "cargo": 1,
+              "value": 300
+            }
+          ]
+        },
+        "aboard": [
+          {
+            "id": 1,
+            "floor": 1,
+            "destination": 4,
+            "label": "会社員",
+            "kg": 65,
+            "value": 100,
+            "items": [
+              {
+                "kind": "office",
+                "label": "会社員",
+                "kg": 65,
+                "people": 1,
+                "cargo": 0,
+                "value": 100
+              }
+            ],
+            "boardedFloor": 1
+          },
+          {
+            "id": 2,
+            "floor": 2,
+            "destination": 6,
+            "label": "来客",
+            "kg": 90,
+            "value": 110,
+            "items": [
+              {
+                "kind": "visitor",
+                "label": "来客",
+                "kg": 90,
+                "people": 1,
+                "cargo": 0,
+                "value": 110
+              }
+            ],
+            "boardedFloor": 2
+          }
+        ],
+        "nextUnload": {
+          "floor": 4,
+          "kg": 65,
+          "people": 1,
+          "cargo": 0
+        },
+        "deliveredPeople": 0,
+        "deliveredCargo": 0,
+        "refused": 1,
+        "timedOut": 0,
+        "utilization": 24.444444444444443,
+        "occupiedFloors": 2,
+        "decisionRemaining": 0,
+        "decisionSeconds": 6.89,
+        "travelSeconds": 1.15,
+        "lastSide": "refuse",
+        "lastUnloaded": [],
+        "excessKg": 0,
+        "phaseTime": 0,
+        "doorOpen": 1,
+        "travelProgress": 0
+      }
+    }
+  },
+  {
+    "type": "actual305kgLayout",
+    "width": 390,
+    "height": 844,
+    "layout": {
+      "text": "305 kg",
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "box": {
+        "x": 271.375,
+        "y": 220.703125,
+        "width": 93.625,
+        "height": 28.59375
+      },
+      "card": {
+        "x": 14,
+        "y": 186,
+        "width": 362,
+        "height": 98
+      },
+      "lines": [
+        {
+          "x": 271.375,
+          "y": 219.703125,
+          "width": 93.625,
+          "height": 30
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "floor": 4,
+      "score": 147,
+      "time": 6.36639999999998,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 90,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 90,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 90,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 1,
+      "timedOut": 0,
+      "utilization": 27.77777777777778,
+      "occupiedFloors": 3,
+      "decisionRemaining": 6.7641,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "excessKg": 0,
+      "phaseTime": 0.07089999999999964,
+      "doorOpen": 1,
+      "travelProgress": 0
+    }
+  },
+  {
+    "type": "actual305kgLayout",
+    "width": 320,
+    "height": 568,
+    "layout": {
+      "text": "305 kg",
+      "documentWidth": 320,
+      "documentHeight": 568,
+      "box": {
+        "x": 219.171875,
+        "y": 197.34375,
+        "width": 82.828125,
+        "height": 25.296875
+      },
+      "card": {
+        "x": 10,
+        "y": 163,
+        "width": 300,
+        "height": 94
+      },
+      "lines": [
+        {
+          "x": 219.171875,
+          "y": 196.34375,
+          "width": 82.828125,
+          "height": 26
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "floor": 4,
+      "score": 147,
+      "time": 6.499699999999974,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 90,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 90,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 90,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 1,
+      "timedOut": 0,
+      "utilization": 27.77777777777778,
+      "occupiedFloors": 3,
+      "decisionRemaining": 6.6308,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "excessKg": 0,
+      "phaseTime": 0.20420000000000005,
+      "doorOpen": 1,
+      "travelProgress": 0
+    }
+  },
+  {
+    "type": "actual305kgLayout",
+    "width": 844,
+    "height": 390,
+    "layout": {
+      "text": "305 kg",
+      "documentWidth": 844,
+      "documentHeight": 402,
+      "box": {
+        "x": 463.171875,
+        "y": 122.34375,
+        "width": 82.828125,
+        "height": 25.296875
+      },
+      "card": {
+        "x": 135,
+        "y": 97,
+        "width": 417,
+        "height": 76
+      },
+      "lines": [
+        {
+          "x": 463.171875,
+          "y": 121.34375,
+          "width": 82.828125,
+          "height": 26
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "floor": 4,
+      "score": 147,
+      "time": 6.61629999999997,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 90,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 90,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 90,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 1,
+      "timedOut": 0,
+      "utilization": 27.77777777777778,
+      "occupiedFloors": 3,
+      "decisionRemaining": 6.5142,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "excessKg": 0,
+      "phaseTime": 0.32080000000000036,
+      "doorOpen": 1,
+      "travelProgress": 0
+    }
+  },
+  {
+    "type": "actual305kgLayout",
+    "width": 568,
+    "height": 320,
+    "layout": {
+      "text": "305 kg",
+      "documentWidth": 568,
+      "documentHeight": 330,
+      "box": {
+        "x": 159,
+        "y": 114.59375,
+        "width": 156,
+        "height": 20.890625
+      },
+      "card": {
+        "x": 107,
+        "y": 92,
+        "width": 213,
+        "height": 68
+      },
+      "lines": [
+        {
+          "x": 159,
+          "y": 113.59375,
+          "width": 68.421875,
+          "height": 22
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "floor": 4,
+      "score": 147,
+      "time": 6.749599999999964,
+      "alive": true,
+      "phase": "boarding",
+      "pending": null,
+      "mode": "normal",
+      "scoreMultiplier": 1,
+      "load": 90,
+      "capacity": 450,
+      "currentParty": {
+        "id": 4,
+        "floor": 4,
+        "destination": 6,
+        "label": "配達員＋巨大な観葉植物",
+        "kg": 305,
+        "value": 400,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 85,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          },
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 220,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ]
+      },
+      "nextParty": {
+        "id": 5,
+        "floor": 5,
+        "destination": 10,
+        "label": "配達員",
+        "kg": 90,
+        "value": 100,
+        "items": [
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 90,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ]
+      },
+      "aboard": [
+        {
+          "id": 2,
+          "floor": 2,
+          "destination": 6,
+          "label": "来客",
+          "kg": 90,
+          "value": 110,
+          "items": [
+            {
+              "kind": "visitor",
+              "label": "来客",
+              "kg": 90,
+              "people": 1,
+              "cargo": 0,
+              "value": 110
+            }
+          ],
+          "boardedFloor": 2
+        }
+      ],
+      "nextUnload": {
+        "floor": 6,
+        "kg": 90,
+        "people": 1,
+        "cargo": 0
+      },
+      "deliveredPeople": 1,
+      "deliveredCargo": 0,
+      "refused": 1,
+      "timedOut": 0,
+      "utilization": 27.77777777777778,
+      "occupiedFloors": 3,
+      "decisionRemaining": 6.3809000000000005,
+      "decisionSeconds": 6.835,
+      "travelSeconds": 1.15,
+      "lastSide": null,
+      "lastUnloaded": [
+        {
+          "id": 1,
+          "floor": 1,
+          "destination": 4,
+          "label": "会社員",
+          "kg": 65,
+          "value": 100,
+          "items": [
+            {
+              "kind": "office",
+              "label": "会社員",
+              "kg": 65,
+              "people": 1,
+              "cargo": 0,
+              "value": 100
+            }
+          ],
+          "boardedFloor": 1
+        }
+      ],
+      "excessKg": 0,
+      "phaseTime": 0.4540999999999993,
+      "doorOpen": 1,
+      "travelProgress": 0
+    }
+  },
+  {
+    "type": "final",
+    "normalInputOnly": true,
+    "readonlyInspection": true,
+    "modelMutated": false,
+    "errors": []
+  }
+]

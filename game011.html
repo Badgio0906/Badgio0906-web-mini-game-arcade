@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fbf4e4" />
+    <meta name="description" content="ウンコかウコンか、二択で答えるポップな無料ブラウザゲーム。画像から文章、そして超高速の連続挑戦へ。" />
+    <title>ウンコかウコンかゲーム ～UNKO or UKON～</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23fbf4e4'/%3E%3Cpath d='M22 14h20v36H22z' fill='%232d3d4a'/%3E%3Cpath d='M30 22h4v14h-4zM30 41h4v4h-4z' fill='%23fbf4e4'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="app" data-state="title">
+      <header class="quiz-header">
+        <button id="brand-button" type="button" aria-label="タイトルに戻る"><span class="brand-mark">?</span><span>ウンコかウコンかゲーム<small>UNKO or UKON</small></span></button>
+        <nav><a id="portal-link" href="./">← ゲームセンターへ</a><button id="mute-button" type="button">音 ON</button></nav>
+      </header>
+      <main class="quiz-main">
+        <div class="quiz-ledger"><div><span>SCORE</span><strong id="score-value">0</strong></div><div><span>BEST</span><strong id="best-value">0</strong></div><div class="streak-record"><span>BEST FINAL</span><strong id="best-final-value">0</strong></div><span class="prototype-label">FREE PLAY</span><button id="pause-button" type="button" aria-label="一時停止" disabled>Ⅱ</button></div>
+        <section id="stage" aria-label="ウンコかウコンかゲーム"><div id="game-canvas"></div></section>
+        <div id="overlay" aria-live="polite"></div>
+        <footer class="quiz-footer"><span>絶対わかる。0.5秒になるまでは。</span><span>WEB MINI GAME ARCADE · 011</span></footer>
+      </main>
+    </div>
+    <script type="module" src="/src/games/game011/main.ts"></script>
+  </body>
+</html>

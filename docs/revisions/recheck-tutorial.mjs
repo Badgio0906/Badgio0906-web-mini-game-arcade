@@ -1,0 +1,13 @@
+import { chromium } from '@playwright/test';
+import { writeFile } from 'node:fs/promises';
+const browser = await chromium.launch({ executablePath:'/usr/bin/chromium', args:['--no-sandbox'] });
+const context = await browser.newContext({ viewport:{width:390,height:844}, hasTouch:true, isMobile:true });
+const page = await context.newPage();
+await page.goto('http://127.0.0.1:5173/game005.html');
+await page.locator('#play-button').tap();
+await page.waitForTimeout(1000);
+const data = await page.evaluate(()=>({state:window.__arcadeDebug.state(),images:[...document.querySelectorAll('.example-parcel')].map(e=>({class:e.className,background:getComputedStyle(e).backgroundImage,box:e.getBoundingClientRect().toJSON()})),controls:[...document.querySelectorAll('.tutorial-card button')].map(e=>({id:e.id,box:e.getBoundingClientRect().toJSON()})),document:{width:document.documentElement.scrollWidth,height:document.documentElement.scrollHeight}}));
+await page.screenshot({path:'docs/revisions/after/game005-mobile-tutorial-settled.png'});
+await writeFile('docs/revisions/after/game005-tutorial-settled.json',JSON.stringify(data,null,2)+'\n');
+await context.close();await browser.close();
+console.log(JSON.stringify(data));

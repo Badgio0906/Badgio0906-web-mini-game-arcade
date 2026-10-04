@@ -1,0 +1,246 @@
+{
+  "baselineCommit": "ffa433c3bd3e475235f3cc235bf9bf29292e7aaf",
+  "status": "Technical QA complete:47 distinct native PASS across attributed source-bridged slices;352 clipping-aware onboarding/title and176 actual pause/result observations PASS;24 fresh root/subpath production contexts PASS. All QA browsers closed; independent reviewer has exclusive slot.",
+  "executed": [
+    {
+      "name": "Existing pure gameplay/source audit",
+      "command": "node tests/eleven-game/audit-gameplay.mjs",
+      "result": "PASS",
+      "byteStrictMatches": 19,
+      "changedContracts": 0,
+      "evidence": "GAMEPLAY_AUDIT.json"
+    },
+    {
+      "name": "Game011 pure phases/deadlines/choice statistics",
+      "command": "npx vitest run tests/unit/game011.test.ts",
+      "result": "PASS",
+      "passed": 9,
+      "checkedUtc": "2026-10-04T10:32:11Z",
+      "testMilliseconds": 1310,
+      "runnerMilliseconds": 1620
+    },
+    {
+      "name": "Future-enabled and disabled CREDIT boundaries",
+      "command": "npx vitest run tests/unit/services.test.ts tests/unit/arcade-credits.test.ts",
+      "result": "PASS",
+      "passed": 22,
+      "enabledLegacyCases": 17,
+      "disabledCases": 5,
+      "checkedUtc": "2026-10-04T10:33:26Z",
+      "testMilliseconds": 40,
+      "runnerMilliseconds": 322
+    },
+    {
+      "name": "Independent practice scenarios after directional/boarding repair",
+      "command": "npx vitest run tests/unit/arcade-practice.test.ts",
+      "result": "PASS",
+      "passed": 24,
+      "checkedUtc": "2026-10-04T10:43:24Z",
+      "testMilliseconds": 13,
+      "runnerMilliseconds": 283
+    },
+    {
+      "name": "Game002 preserved model/future-enabled isolated wallet",
+      "command": "npx vitest run tests/unit/game002.test.ts",
+      "result": "PASS",
+      "passed": 8,
+      "checkedUtc": "2026-10-04T10:48:38Z",
+      "testMilliseconds": 608,
+      "runnerMilliseconds": 928
+    },
+    {
+      "name": "Prepared browser test syntax/discovery",
+      "command": "npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --list",
+      "result": "PARSED ONLY; no browser PASS",
+      "projectCases": 99,
+      "plannedActiveCases": 47,
+      "plannedDuplicateSkips": 52
+    },
+    {
+      "name": "Root final integrated unit checkpoint",
+      "command": "npm test",
+      "result": "PASS (parent-reported)",
+      "passed": 153,
+      "attribution": "Root fresh full153/153 in18 files,11:41:15 UTC/7.32s; subsequent CSS-only builds/checks recorded separately. Pure source TS unchanged."
+    },
+    {
+      "name": "Frozen DEV desktop onboarding /held gestures",
+      "result": "13 distinct PASS across retained slices",
+      "server": "http://127.0.0.1:5181",
+      "cases": "all11 independent first-practice /saved completion /repeat +arrow-held and native Enter-repeat guards"
+    },
+    {
+      "name": "Actual title/modal responsive observation matrix",
+      "result": "FAIL retained",
+      "observations": 352,
+      "failedObservations": 64,
+      "errors": 0,
+      "phaseFailures": {
+        "active-title": 34,
+        "practice": 24,
+        "explanation": 3,
+        "success": 3
+      },
+      "evidence": "INITIAL_ONBOARDING_LAYOUT_AUDIT.json"
+    },
+    {
+      "name": "Fresh repaired candidate development first slice",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --max-failures=1",
+      "result": "16 PASS /1 actual layout FAIL; 82 project cases not run",
+      "runnerReportedDuration": "4.6m",
+      "passedCases": "11 desktop practice/isolation/reload/repeat +2 held-input guards +352-observation matrix +2 desktop portal cases",
+      "sourceFreeze": "REPAIRED_RUNTIME_SOURCE_FREEZE.json",
+      "responsiveObservations": 352,
+      "responsiveFailedObservations": 0,
+      "responsiveErrors": 0,
+      "evidence": "VIEWPORT_ONLY_ONBOARDING_LAYOUT_AUDIT.json",
+      "failure": "findings/GAME007_PAUSED_OVERFLOW.json",
+      "candidateDeltaBridge": "RETAINED_NATIVE_SOURCE_BRIDGE.json;352 viewport-only evidence retired by fresh clipping-aware matrix"
+    },
+    {
+      "name": "Clip-aware desktop diagnostic slice",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --project desktop --grep 'all eleven explanation|Elevator native|Coffee actual|Meeting uses|saved zero credits|Quiz'",
+      "result": "16 PASS /2 FAIL retained",
+      "runnerReportedDuration": "8.1m",
+      "sourceFreeze": "FINAL_RUNTIME_SOURCE_FREEZE.json",
+      "failures": [
+        "Actual shared Stamp practice320 clipping:INITIAL_CLIP_ONBOARDING_LAYOUT_AUDIT.json",
+        "Quiz remaining=0 harness mismatch: corrected remaining:null/deadline1/answerElapsed1/timeout/late-input retarget PASS"
+      ],
+      "verified": "All11 genuine3-ending/unlimited-retry contracts,176 actual clip-aware paused/result observations,3 revised UX,ordinary Quiz both final modes5500 +8-sizeactual results,initialwrong Quiz result8sizes"
+    },
+    {
+      "name": "Portrait actual native practice/portal/quiz",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --project mobile-portrait",
+      "result": "PASS",
+      "passed": 14,
+      "intentionalSkipped": 19,
+      "runnerReportedDuration": "2.8m",
+      "mobileCoffeeInput": "Verified native primary held touch",
+      "mobileQuizInput": "Native touch READY hold/release and all image/text/final answer taps; both modes verified"
+    },
+    {
+      "name": "Landscape configured duplicates",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --project mobile-landscape",
+      "result": "33 intentional skips; no landscape native gameplay evidence",
+      "skipped": 33
+    },
+    {
+      "name": "Final shared Stamp grid/Quiz contract native retarget",
+      "command": "ELEVEN_ARCADE_URL=http://127.0.0.1:5181 npx playwright test --config tests/eleven-game/eleven.playwright.config.ts --grep 'game009: first real practice|all eleven explanation|Quiz native held'",
+      "result": "4 PASS /5 repeated intentional duplicate skips",
+      "runnerReportedDuration": "2.2m",
+      "sourceFreeze": "FINAL_GRID_RUNTIME_SOURCE_FREEZE.json",
+      "evidence": [
+        "FINAL_ONBOARDING_LAYOUT_AUDIT.json",
+        "ACTUAL_GAME009_DESKTOP_PRACTICE.json",
+        "ACTUAL_GAME009_PHONE_PRACTICE.json",
+        "ACTUAL_QUIZ_DEADLINE_AUDIT.json"
+      ],
+      "freshObservations": 352,
+      "failedObservations": 0,
+      "runtimeErrors": 0
+    },
+    {
+      "name": "Final local root/subpath static production delivery",
+      "command": "node tests/eleven-game/probe-production.mjs",
+      "result": "24 fresh contexts PASS",
+      "checkedUtc": "2026-10-04T12:39:57.953Z",
+      "contexts": 24,
+      "errors": 0,
+      "productionHooks": 0,
+      "evidence": [
+        "PRODUCTION_ROOT_SUBPATH_AUDIT.json",
+        "PRODUCTION_RESOURCE_SUMMARY.json"
+      ],
+      "storedZeroPlayPauseRefreshReturn": 22,
+      "portalContexts": 2,
+      "limits": "2MB Phaser /300KB native body ceilings retained;actual script bodies prove native routes do not load Phaser"
+    },
+    {
+      "name": "Final pure gameplay and frozen runtime source verification",
+      "command": "node tests/eleven-game/audit-gameplay.mjs + SHA256 comparison against FINAL_GRID_RUNTIME_SOURCE_FREEZE.json",
+      "result": "19 protected files match /0 changed contracts /197 final runtime matches",
+      "evidence": [
+        "GAMEPLAY_AUDIT.json",
+        "RETAINED_NATIVE_SOURCE_BRIDGE.json"
+      ]
+    }
+  ],
+  "historicalCurrentTaskCheckpoints": [
+    {
+      "name": "Initial independent practice scenarios",
+      "result": "23/23 PASS before root second-hazard and boarding refinements",
+      "runnerMilliseconds": 275
+    },
+    {
+      "name": "Root first full153-unit run",
+      "result": "152PASS/1 future-enabled fixture failure; corrected explicit enabled flag and targeted8PASS followed",
+      "fullSuccessNotInferred": true
+    },
+    {
+      "name": "Game001 score formatting harness",
+      "result": "FAIL trace retained; preserved00000 display corrected to unchanged initial text"
+    },
+    {
+      "name": "Native modal inactive title-underlay height harness",
+      "result": "FAIL trace retained; modal controls assessed independently, title flow separately at88observations"
+    },
+    {
+      "name": "Echo idle reached-LEVEL1 harness",
+      "result": "FAIL trace retained; immutable initial primary display is retained without assuming numeric0"
+    },
+    {
+      "name": "Stamp wrong-action ambiguous selector harness",
+      "result": "FAIL trace retained; concreteblue-square wrong stamp selected and every geometry selector unique"
+    },
+    {
+      "name": "Quiz ended countdown harness",
+      "result": "InitialFAIL expected remaining0 but ended phase intentionally null. Corrected strict deadline1/answerElapsed1, single timeout end, score100 and late-key rejection actually PASS; unchanged model."
+    },
+    {
+      "name": "Production response-body collector shutdown race",
+      "result": "Initial24 functional routes reached PASS, but returned-portal pending response.body promises mutated one errors array after context.close. Final collector drains network/jobs before assertion/close; fresh24 retarget PASS. Runtime unchanged.",
+      "evidence": "INITIAL_PRODUCTION_COLLECTOR_SHUTDOWN_AUDIT.json",
+      "runtimeChanged": false
+    }
+  ],
+  "pending": [
+    "Independent final Feel/numeric actual-image Visual assessment (exclusive reviewer slot released)",
+    "Remote GitHub Pages route/assets verification (Root, after deployment)",
+    "Human A–N/play enjoyment/physical phone testing"
+  ],
+  "evidenceAttribution": {
+    "pureModel": "public inputs/seeded simulations, never actual DOM play",
+    "native": "47 distinct valid cases across source-bridged slices; not one uninterrupted clean full run.52 distinct configured duplicate skips,57 duplicate executions including final5 retarget skips.",
+    "production": "24 fresh local contexts on physical static root and/repo;startup script/image/font body+encoded/decoded data and actual PLAY/pause/refresh/portal return. Remote GitHub Pages is separate.",
+    "renderOnly": "not yet used",
+    "human": "not yet performed"
+  },
+  "preparedFinalObservations": {
+    "activeCases": 47,
+    "projectCases": 99,
+    "duplicateSkips": 52,
+    "titleAndTrainingObservations": 352,
+    "actualPauseAndNaturalResultObservations": 176,
+    "localRootAndSubpathFreshContexts": 24,
+    "mobileCoffeeInput": "Native CDP primary held touch; not a keyboard-labelled touch case"
+  },
+  "currentAggregate": {
+    "distinctValidNativeCases": 47,
+    "pendingDistinctCases": 0,
+    "intentionalProjectSkipsExecuted": 52,
+    "actualPauseResultObservations": 176,
+    "clipAwareOnboardingObservations": 352,
+    "clipAwareOnboardingFailedObservations": 0,
+    "retainedFunctionalCaseBridge": "RETAINED_NATIVE_SOURCE_BRIDGE.json",
+    "duplicateSkipExecutions": 57,
+    "finalSourceFreeze": "FINAL_GRID_RUNTIME_SOURCE_FREEZE.json",
+    "finalRuntimeHashMatches": 197,
+    "localProductionContexts": 24,
+    "productionErrors": 0,
+    "productionHooks": 0,
+    "titleAndTrainingObservations": 352,
+    "technicalGate": "PASS; independent reviewer/humans separate"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "checkedUtc": "2026-10-04T09:23:26.250Z",
+  "scope": "Final technical QA; human Game002-010 pending; no public release",
+  "units": {
+    "passed": 115,
+    "files": 15,
+    "runnerSeconds": 6.0,
+    "executedBy": "root after Coffee precision repair; no later model change"
+  },
+  "developmentDistinctCases": 90,
+  "existingDistinct": 63,
+  "newGames": {
+    "game006": {
+      "pure": 8,
+      "nativeDistinct": 5,
+      "visual": 82,
+      "note": "separate accepted actual+render/reset composite; original whole long FAIL retained"
+    },
+    "game007": {
+      "pure": 7,
+      "nativeDistinct": 6,
+      "zeroMenuFixtures": 8,
+      "visual": 85
+    },
+    "game008": {
+      "pure": 9,
+      "nativeDistinct": 5,
+      "resultDOMFixtures": 16,
+      "zeroMenuFixtures": 8,
+      "visual": 83
+    },
+    "game009": {
+      "pure": 7,
+      "nativeDistinct": 6,
+      "zeroMenuFixtures": 8,
+      "visual": 85
+    },
+    "game010": {
+      "pure": 7,
+      "nativeDistinct": 5,
+      "zeroMenuFixtures": 8,
+      "visual": 83
+    }
+  },
+  "finalBuild": {
+    "modules": 71,
+    "seconds": 5.25,
+    "executedBy": "root latest final strictTS+Vite"
+  },
+  "production": {
+    "command": "npm run test:production",
+    "passed": 10,
+    "runner": "1.7m",
+    "failed": 0
+  },
+  "firstLoad": {
+    "command": "node tests/ten-game/probe-production-first-load.mjs",
+    "passed": 10,
+    "failed": 0,
+    "file": "PRODUCTION_FIRST_LOAD_AUDIT.json",
+    "initialClassificationIssue": "Phaser images were represented by local blob decode responses; corrected HTTP MIME classification preserves initial script/font PASS and excludes blob duplicates",
+    "initialFile": "PRODUCTION_INITIAL_RESOURCE_CLASSIFICATION_FINDING.json",
+    "budgets": {
+      "phaserDecodedBody": 2000000,
+      "nativeDecodedBody": 300000
+    }
+  },
+  "sourceProtection": {
+    "protectedFiles": 24,
+    "exact": 23,
+    "exception": "Telemetry EventName type-union only, authorized",
+    "executedBy": "root final audit"
+  },
+  "cleanup": "All QA browser contexts and QA-owned4173 preview stopped; no runtime/source/deploy/commit mutation by QA",
+  "human": "A-N pending; no enjoyment/physical-FPS claim"
+}

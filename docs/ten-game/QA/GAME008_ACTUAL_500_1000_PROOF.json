@@ -1,0 +1,1040 @@
+{
+  "second": {
+    "distance": 500,
+    "score": 500,
+    "time": 47.656433333342726,
+    "alive": true,
+    "phase": "choice",
+    "bodyLean": 0.005897354283431287,
+    "bodyVelocity": -0.029180412356927626,
+    "input": 0,
+    "cups": [
+      {
+        "id": 0,
+        "name": "あなたの分",
+        "remaining": 100,
+        "liquidAngle": 0.011926944825995748,
+        "liquidVelocity": -0.020003294390671993,
+        "surfaceTilt": 0.006029590542564461,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 4.2,
+        "damping": 0.52
+      }
+    ],
+    "cupCount": 1,
+    "minRemaining": 100,
+    "pending": "second_cup",
+    "multiplier": 1,
+    "preview": null,
+    "activeEvent": null,
+    "hazards": [
+      {
+        "id": 6,
+        "type": "step",
+        "name": "足元に段差",
+        "side": 1,
+        "onsetTime": 51,
+        "warningStart": 49.6,
+        "duration": 0.6
+      },
+      {
+        "id": 7,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 58,
+        "warningStart": 56.6,
+        "duration": 1
+      }
+    ],
+    "bodyAcceleration": 0.11217999842857235,
+    "tapRemaining": 0
+  },
+  "third": {
+    "distance": 1000,
+    "score": 1250,
+    "time": 91.16446666666855,
+    "alive": true,
+    "phase": "choice",
+    "bodyLean": 0.0070254825516265305,
+    "bodyVelocity": 0.014632261442680386,
+    "input": 0,
+    "cups": [
+      {
+        "id": 0,
+        "name": "あなたの分",
+        "remaining": 100,
+        "liquidAngle": -0.00179912689767422,
+        "liquidVelocity": 0.003744958109225935,
+        "surfaceTilt": -0.00882460944930075,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 4.2,
+        "damping": 0.52
+      },
+      {
+        "id": 1,
+        "name": "部長の分",
+        "remaining": 99.57665819598253,
+        "liquidAngle": 0.0069529188117026415,
+        "liquidVelocity": -0.05177441425464901,
+        "surfaceTilt": -0.00007256373992388897,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 3.4,
+        "damping": 0.28
+      }
+    ],
+    "cupCount": 2,
+    "minRemaining": 99.57665819598253,
+    "pending": "third_cup",
+    "multiplier": 1.5,
+    "preview": {
+      "id": 13,
+      "type": "door",
+      "name": "ドアを通ります",
+      "side": -1,
+      "onsetTime": 92.5,
+      "warningStart": 91.1,
+      "duration": 1.2
+    },
+    "activeEvent": null,
+    "hazards": [
+      {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      {
+        "id": 14,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 98,
+        "warningStart": 96.6,
+        "duration": 2.4
+      },
+      {
+        "id": 15,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": 1,
+        "onsetTime": 103.5,
+        "warningStart": 102.1,
+        "duration": 1.5
+      }
+    ],
+    "bodyAcceleration": 0.06543314994272839,
+    "tapRemaining": 0
+  },
+  "chosen": {
+    "distance": 1000,
+    "score": 1250,
+    "time": 91.16446666666855,
+    "alive": true,
+    "phase": "walking",
+    "bodyLean": 0.0070254825516265305,
+    "bodyVelocity": 0.014632261442680386,
+    "input": 0,
+    "cups": [
+      {
+        "id": 0,
+        "name": "あなたの分",
+        "remaining": 100,
+        "liquidAngle": -0.00179912689767422,
+        "liquidVelocity": 0.003744958109225935,
+        "surfaceTilt": -0.00882460944930075,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 4.2,
+        "damping": 0.52
+      },
+      {
+        "id": 1,
+        "name": "部長の分",
+        "remaining": 99.57665819598253,
+        "liquidAngle": 0.0069529188117026415,
+        "liquidVelocity": -0.05177441425464901,
+        "surfaceTilt": -0.00007256373992388897,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 3.4,
+        "damping": 0.28
+      },
+      {
+        "id": 2,
+        "name": "会長の分",
+        "remaining": 100,
+        "liquidAngle": 0,
+        "liquidVelocity": 0,
+        "surfaceTilt": -0.0070254825516265305,
+        "spilling": false,
+        "spillRate": 0,
+        "frequency": 5.3,
+        "damping": 0.12
+      }
+    ],
+    "cupCount": 3,
+    "minRemaining": 99.57665819598253,
+    "pending": null,
+    "multiplier": 2,
+    "preview": {
+      "id": 13,
+      "type": "door",
+      "name": "ドアを通ります",
+      "side": -1,
+      "onsetTime": 92.5,
+      "warningStart": 91.1,
+      "duration": 1.2
+    },
+    "activeEvent": null,
+    "hazards": [
+      {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      {
+        "id": 14,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 98,
+        "warningStart": 96.6,
+        "duration": 2.4
+      },
+      {
+        "id": 15,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": 1,
+        "onsetTime": 103.5,
+        "warningStart": 102.1,
+        "duration": 1.5
+      }
+    ],
+    "bodyAcceleration": 0.06543314994272839,
+    "tapRemaining": 0
+  },
+  "ended": {
+    "distance": 1172,
+    "score": 1594,
+    "time": 105.50559999999291,
+    "alive": false,
+    "phase": "ended",
+    "bodyLean": 0.95,
+    "bodyVelocity": 0,
+    "input": 0,
+    "cups": [
+      {
+        "id": 0,
+        "name": "あなたの分",
+        "remaining": 6.295371036021633,
+        "liquidAngle": 0.00022458662492929967,
+        "liquidVelocity": -0.01182706916957357,
+        "surfaceTilt": -0.9497754133750707,
+        "spilling": true,
+        "spillRate": 2.1449284257825196,
+        "frequency": 4.2,
+        "damping": 0.52
+      },
+      {
+        "id": 1,
+        "name": "部長の分",
+        "remaining": 4.789999623304147,
+        "liquidAngle": -0.009634941842295734,
+        "liquidVelocity": -0.07469401753703674,
+        "surfaceTilt": -0.9596349418422957,
+        "spilling": true,
+        "spillRate": 2.350745027851606,
+        "frequency": 3.4,
+        "damping": 0.28
+      },
+      {
+        "id": 2,
+        "name": "会長の分",
+        "remaining": 0,
+        "liquidAngle": 0.000718594445100504,
+        "liquidVelocity": 0.11487155724550276,
+        "surfaceTilt": -0.9492814055548995,
+        "spilling": true,
+        "spillRate": 1.1143488769474708,
+        "frequency": 5.3,
+        "damping": 0.12
+      }
+    ],
+    "cupCount": 3,
+    "minRemaining": 0,
+    "pending": null,
+    "multiplier": 2,
+    "preview": null,
+    "activeEvent": null,
+    "hazards": [
+      {
+        "id": 16,
+        "type": "step",
+        "name": "足元に段差",
+        "side": -1,
+        "onsetTime": 109,
+        "warningStart": 107.6,
+        "duration": 0.6
+      },
+      {
+        "id": 17,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 113.8,
+        "warningStart": 112.39999999999999,
+        "duration": 1
+      },
+      {
+        "id": 18,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": 1,
+        "onsetTime": 118.6,
+        "warningStart": 117.19999999999999,
+        "duration": 1.2
+      }
+    ],
+    "bodyAcceleration": 0,
+    "tapRemaining": 0,
+    "terminalMeterProof": {
+      "emptyCupId": 2,
+      "emptyCupName": "会長の分",
+      "cups": [
+        {
+          "cupId": 0,
+          "name": "あなたの分",
+          "remaining": 6.295371036021633,
+          "text": "7%",
+          "empty": false
+        },
+        {
+          "cupId": 1,
+          "name": "部長の分",
+          "remaining": 4.789999623304147,
+          "text": "5%",
+          "empty": false
+        },
+        {
+          "cupId": 2,
+          "name": "会長の分",
+          "remaining": 0,
+          "text": "0%",
+          "empty": true
+        }
+      ]
+    }
+  },
+  "layouts": [
+    {
+      "milestone": "second",
+      "width": 1920,
+      "height": 1080,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1445,
+          "y": 189,
+          "width": 250,
+          "height": 458.859375
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1464,
+          "y": 490.265625,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1573,
+          "y": 490.265625,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1464,
+          "y": 542.265625,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 1440,
+      "height": 900,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1154,
+          "y": 189,
+          "width": 250,
+          "height": 458.859375
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1173,
+          "y": 490.265625,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1282,
+          "y": 490.265625,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1173,
+          "y": 542.265625,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 1280,
+      "height": 720,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1018,
+          "y": 145,
+          "width": 235,
+          "height": 423.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1033,
+          "y": 422.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1138.5,
+          "y": 422.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1033,
+          "y": 474.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 1024,
+      "height": 768,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 762,
+          "y": 145,
+          "width": 235,
+          "height": 423.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 777,
+          "y": 422.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 882.5,
+          "y": 422.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 777,
+          "y": 474.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 390,
+      "height": 844,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "#decline-button",
+          "x": 33,
+          "y": 591.765625,
+          "width": 159,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 198,
+          "y": 591.765625,
+          "width": 159,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 320,
+      "height": 568,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 10,
+          "y": 309,
+          "width": 300,
+          "height": 235.109375
+        },
+        {
+          "selector": "#decline-button",
+          "x": 21,
+          "y": 465.734375,
+          "width": 88.625,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 115.625,
+          "y": 465.734375,
+          "width": 88.625,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 211.265625,
+          "y": 460.734375,
+          "width": 87.734375,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 844,
+      "height": 390,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 603,
+          "y": 103,
+          "width": 226,
+          "height": 250.6875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 614,
+          "y": 280.6875,
+          "width": 63.828125,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 683.828125,
+          "y": 280.6875,
+          "width": 63.84375,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 753.6875,
+          "y": 276.6875,
+          "width": 64.3125,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "milestone": "second",
+      "width": 568,
+      "height": 320,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 340,
+          "y": 99,
+          "width": 218,
+          "height": 213.171875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 349,
+          "y": 244.171875,
+          "width": 63.5,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 416.5,
+          "y": 244.171875,
+          "width": 63.5,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 486,
+          "y": 241.171875,
+          "width": 63,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 1920,
+      "height": 1080,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1445,
+          "y": 189,
+          "width": 250,
+          "height": 437.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1464,
+          "y": 469.375,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1573,
+          "y": 469.375,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1464,
+          "y": 521.375,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 1440,
+      "height": 900,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1154,
+          "y": 189,
+          "width": 250,
+          "height": 437.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1173,
+          "y": 469.375,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1282,
+          "y": 469.375,
+          "width": 103,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1173,
+          "y": 521.375,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 1280,
+      "height": 720,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 1018,
+          "y": 145,
+          "width": 235,
+          "height": 424.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 1033,
+          "y": 423.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 1138.5,
+          "y": 423.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 1033,
+          "y": 475.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 1024,
+      "height": 768,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 762,
+          "y": 145,
+          "width": 235,
+          "height": 424.96875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 777,
+          "y": 423.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#accept-button",
+          "x": 882.5,
+          "y": 423.78125,
+          "width": 99.5,
+          "height": 46
+        },
+        {
+          "selector": "#title-button",
+          "x": 777,
+          "y": 475.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 390,
+      "height": 844,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "#decline-button",
+          "x": 33,
+          "y": 591.765625,
+          "width": 159,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 198,
+          "y": 591.765625,
+          "width": 159,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 320,
+      "height": 568,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 10,
+          "y": 309,
+          "width": 300,
+          "height": 235.109375
+        },
+        {
+          "selector": "#decline-button",
+          "x": 21,
+          "y": 465.734375,
+          "width": 88.625,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 115.625,
+          "y": 465.734375,
+          "width": 88.625,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 211.265625,
+          "y": 460.734375,
+          "width": 87.734375,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 844,
+      "height": 390,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 603,
+          "y": 103,
+          "width": 226,
+          "height": 226.890625
+        },
+        {
+          "selector": "#decline-button",
+          "x": 614,
+          "y": 256.890625,
+          "width": 63.828125,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 683.828125,
+          "y": 256.890625,
+          "width": 63.84375,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 753.6875,
+          "y": 252.890625,
+          "width": 64.3125,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "milestone": "third",
+      "width": 568,
+      "height": 320,
+      "boxes": [
+        {
+          "selector": ".choice-note",
+          "x": 340,
+          "y": 99,
+          "width": 218,
+          "height": 192.171875
+        },
+        {
+          "selector": "#decline-button",
+          "x": 349,
+          "y": 223.171875,
+          "width": 63.5,
+          "height": 44
+        },
+        {
+          "selector": "#accept-button",
+          "x": 416.5,
+          "y": 223.171875,
+          "width": 63.5,
+          "height": 44
+        },
+        {
+          "selector": "#title-button",
+          "x": 486,
+          "y": 220.171875,
+          "width": 63,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "name": "game_open",
+      "at": "2026-10-04T08:16:55.844Z",
+      "data": {
+        "game": "game008",
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-04T08:16:56.173Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "credits": 3,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "milestone_reached",
+      "at": "2026-10-04T08:17:43.794Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "second_cup",
+        "distance": 500,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "escalation_offered",
+      "at": "2026-10-04T08:17:43.795Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "second_cup",
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "escalation_accepted",
+      "at": "2026-10-04T08:17:45.670Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "second_cup",
+        "choice": "accept",
+        "cupCount": 2,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "milestone_reached",
+      "at": "2026-10-04T08:18:29.187Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "third_cup",
+        "distance": 1000,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "escalation_offered",
+      "at": "2026-10-04T08:18:29.187Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "third_cup",
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "escalation_accepted",
+      "at": "2026-10-04T08:18:31.088Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "milestone": "third_cup",
+        "choice": "accept",
+        "cupCount": 3,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "credit_used",
+      "at": "2026-10-04T08:18:45.436Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "credits": 2,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-04T08:18:45.437Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "outcome": "over",
+        "score": 1594,
+        "time": 105.50559999999291,
+        "distance": 1172,
+        "cupCount": 3,
+        "multiplier": 2,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "score",
+      "at": "2026-10-04T08:18:45.437Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "score": 1594,
+        "best": 1594,
+        "newBest": true,
+        "distance": 1172,
+        "cupCount": 3,
+        "game_id": "game008"
+      }
+    },
+    {
+      "name": "run_duration",
+      "at": "2026-10-04T08:18:45.437Z",
+      "data": {
+        "game": "game008",
+        "runId": "game008-1791101816172-26ox86",
+        "seconds": 105.50559999999291,
+        "reason": "over",
+        "failure_reason": "empty",
+        "game_id": "game008"
+      }
+    }
+  ],
+  "errors": []
+}

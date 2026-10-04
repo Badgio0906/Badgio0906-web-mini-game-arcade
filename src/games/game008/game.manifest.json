@@ -1,0 +1,14 @@
+{
+  "id": "game008", "title": "コーヒーこぼすな ～COFFEE WALK～", "subtitle": "右へ動くと、コーヒーは左へ。",
+  "genre": ["balance", "physics", "survival"],
+  "core_mechanic": ["continuous body balance", "acceleration-opposite liquid inertia", "gradual rim overflow"],
+  "primary_input": ["left-right hold", "touch hold or tap"],
+  "skill_axes": ["balance-control", "inertia-prediction", "multi-object-attention", "risk-management"],
+  "expected_run_seconds": {"beginner": 50, "experienced": 140},
+  "duration_note": "numeric design hypotheses; human natural failure and timing unmeasured",
+  "primary_score": "future-only weighted walking distance",
+  "secondary_score": "distance and independent cup remainders",
+  "escalation_mechanic": "Frozen500m offer adds boss's cup with150% future distance points; only two-cup runs receive1000m offer to add chairman's cup for200% future points.",
+  "risk_reward": "Additional cups have independent frequency, damping and phase. The first emptied cup ends the run; previously earned points remain unchanged.",
+  "visual_identity": "first-person illustrated morning street, live clipped coffee surfaces and warm cafe receipt UI"
+}

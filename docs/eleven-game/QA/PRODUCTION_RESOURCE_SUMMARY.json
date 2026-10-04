@@ -1,0 +1,122 @@
+{
+  "checkedUtc": "2026-10-04T12:39:57.953Z",
+  "contexts": 24,
+  "errors": 0,
+  "productionHooks": 0,
+  "mounts": [
+    "http://127.0.0.1:4191/",
+    "http://127.0.0.1:4192/repo/"
+  ],
+  "routes": [
+    {
+      "id": "portal",
+      "scriptBodyBytes": 3842,
+      "scriptEncodedBytes": 2207,
+      "images": 11,
+      "imageBodyBytes": 143896,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game001",
+      "scriptBodyBytes": 1260597,
+      "scriptEncodedBytes": 352968,
+      "images": 0,
+      "imageBodyBytes": 0,
+      "fontBodyBytes": 0,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game002",
+      "scriptBodyBytes": 1269304,
+      "scriptEncodedBytes": 355705,
+      "images": 17,
+      "imageBodyBytes": 294484,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game003",
+      "scriptBodyBytes": 1266864,
+      "scriptEncodedBytes": 355109,
+      "images": 6,
+      "imageBodyBytes": 57098,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game004",
+      "scriptBodyBytes": 44107,
+      "scriptEncodedBytes": 17448,
+      "images": 0,
+      "imageBodyBytes": 0,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game005",
+      "scriptBodyBytes": 51463,
+      "scriptEncodedBytes": 20094,
+      "images": 2,
+      "imageBodyBytes": 54490,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game006",
+      "scriptBodyBytes": 1266773,
+      "scriptEncodedBytes": 355096,
+      "images": 3,
+      "imageBodyBytes": 52134,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game007",
+      "scriptBodyBytes": 55768,
+      "scriptEncodedBytes": 21405,
+      "images": 1,
+      "imageBodyBytes": 10526,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game008",
+      "scriptBodyBytes": 57119,
+      "scriptEncodedBytes": 22435,
+      "images": 1,
+      "imageBodyBytes": 67398,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game009",
+      "scriptBodyBytes": 50514,
+      "scriptEncodedBytes": 19857,
+      "images": 7,
+      "imageBodyBytes": 105962,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game010",
+      "scriptBodyBytes": 53234,
+      "scriptEncodedBytes": 20622,
+      "images": 8,
+      "imageBodyBytes": 160720,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    },
+    {
+      "id": "game011",
+      "scriptBodyBytes": 47930,
+      "scriptEncodedBytes": 18681,
+      "images": 20,
+      "imageBodyBytes": 224332,
+      "fontBodyBytes": 154856,
+      "bothMountsPass": true
+    }
+  ],
+  "limits": "Actual unique HTTP script bodies:2,000,000 bytes for001/002/003/006;300,000 bytes for portal and native games. Encoded= gzip HTTP bodies; WebP/woff2 are already compressed. First-load data excludes reload/return assets.",
+  "legacyGame001Font": "Legacy game001 currently loads system fonts and no generated image assets; all other routes load154856B local Arcade Rounded."
+}

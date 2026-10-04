@@ -1,0 +1,2051 @@
+[
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-title",
+    "path": "docs/revisions/after/game002-desktop-title.png",
+    "inspection": {
+      "distance": 0,
+      "time": 0,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": false,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [],
+      "waves": []
+    }
+  },
+  {
+    "game": "game002",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "type": "playingGeometry",
+    "boxes": {
+      "#stage": {
+        "x": 560,
+        "y": 185.59375,
+        "width": 800,
+        "height": 800
+      },
+      "canvas": {
+        "x": 562,
+        "y": 187.59375,
+        "width": 796,
+        "height": 796
+      },
+      ".echo-grid": null,
+      ".conveyor": null,
+      ".parcel": null,
+      "#app": {
+        "x": 210,
+        "y": 0,
+        "width": 1500,
+        "height": 1039.59375
+      }
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-early-safe",
+    "path": "docs/revisions/after/game002-desktop-early-safe.png",
+    "inspection": {
+      "distance": 91,
+      "time": 10.039186666666422,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 636.2886358974024,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 211.827097435864,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -212.6344410256744,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "desktop",
+    "type": "earlyAvoidance",
+    "inspection": {
+      "distance": 86,
+      "time": 9.425866666666458,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 552.3109743589458,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 127.84943589740737,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -296.6121025641311,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-first-nice",
+    "path": "docs/revisions/after/game002-desktop-first-nice.png",
+    "inspection": {
+      "distance": 89,
+      "time": 9.836279999999777,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 608.5060307692002,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 184.04449230766176,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": -240.41704615387664,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "desktop",
+    "type": "lateAvoidance",
+    "inspection": {
+      "distance": 84,
+      "time": 9.282949999999806,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 532.7423846153581,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 108.28084615381965,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-60m",
+    "path": "docs/revisions/after/game002-desktop-60m.png",
+    "inspection": {
+      "distance": 95,
+      "time": 10.487889999999743,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 273.2649384615032,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": -151.19660000003512,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-B-warning",
+    "path": "docs/revisions/after/game002-desktop-B-warning.png",
+    "inspection": {
+      "distance": 236,
+      "time": 25.26397999999889,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 3,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "EASY",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 5,
+          "waveId": 5,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 598.6064923075401,
+          "encounterTime": 24.500000000000004,
+          "warningStart": 22.000000000000004,
+          "changeStart": 22.600000000000005,
+          "changeEnd": 23.300000000000004,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 6,
+          "waveId": 6,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 0,
+          "x": 300,
+          "y": 208.37572307677067,
+          "encounterTime": 27.350000000000005,
+          "warningStart": 24.650000000000006,
+          "changeStart": 25.850000000000005,
+          "changeEnd": 26.090000000000003,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -181.85504615399873,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": -181.85504615399873,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 5,
+          "type": "A",
+          "encounterTime": 24.500000000000004,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 6,
+          "type": "B",
+          "encounterTime": 27.350000000000005,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 7,
+          "type": "D",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            1,
+            2
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-two-people",
+    "path": "docs/revisions/after/game002-desktop-two-people.png",
+    "inspection": {
+      "distance": 264,
+      "time": 28.12885999999873,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": true,
+      "outcome": null,
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 6,
+          "waveId": 6,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 0,
+          "x": 180,
+          "y": 600.6439076921333,
+          "encounterTime": 27.350000000000005,
+          "warningStart": 24.650000000000006,
+          "changeStart": 25.850000000000005,
+          "changeEnd": 26.090000000000003,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 210.41313846136387,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 210.41313846136387,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": -179.817630769405,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 6,
+          "type": "B",
+          "encounterTime": 27.350000000000005,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 7,
+          "type": "D",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            1,
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 8,
+          "type": "A",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "",
+    "path": "docs/revisions/after/game002-desktop.png",
+    "inspection": {
+      "distance": 281,
+      "time": 29.867149999998638,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": true,
+      "outcome": null,
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 448.4251538459665,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 448.4251538459665,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 58.19438461519758,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 7,
+          "type": "D",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            1,
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 8,
+          "type": "A",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "suffix": "-over",
+    "path": "docs/revisions/after/game002-desktop-over.png",
+    "inspection": {
+      "distance": 282,
+      "time": 29.9696366666653,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": false,
+      "outcome": "collision",
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 462.4579435895554,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 461.88743076904257,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 71.65666153827368,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 7,
+          "type": "D",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            1,
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 8,
+          "type": "A",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "desktop",
+    "type": "earnedResult",
+    "text": "ゆううつな月曜日\nWORKDAY DODGE\n出勤失敗……\n\nぶつかりおじさんに、ぶつかっちゃった。\n\nNEW BEST!\n310\nSCORE\n到達距離\n282 m\nNICE DODGE\n4 回\nボーナス\n110%\nBEST SCORE\n310\nBEST m\n282 m\nTIME\n30.0 s\nCREDIT\n2 / 3\nRETRY · もう一度\nTITLE\n次こそ、すいすい出社。",
+    "inspection": {
+      "distance": 282,
+      "time": 29.9696366666653,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": false,
+      "outcome": "collision",
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 462.4579435895554,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 7,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 461.88743076904257,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 71.65666153827368,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 7,
+          "type": "D",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            1,
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 8,
+          "type": "A",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "desktop",
+    "errors": [],
+    "wallMs": 21475,
+    "normalInputOnly": true,
+    "readonlyOracle": true
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-title",
+    "path": "docs/revisions/after/game002-mobile-title.png",
+    "inspection": {
+      "distance": 0,
+      "time": 0,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": false,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [],
+      "waves": []
+    }
+  },
+  {
+    "game": "game002",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "type": "playingGeometry",
+    "boxes": {
+      "#stage": {
+        "x": 16,
+        "y": 233.578125,
+        "width": 358,
+        "height": 358
+      },
+      "canvas": {
+        "x": 18,
+        "y": 235.578125,
+        "width": 354,
+        "height": 354
+      },
+      ".echo-grid": null,
+      ".conveyor": null,
+      ".parcel": null,
+      "#app": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 700.578125
+      }
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-early-safe",
+    "path": "docs/revisions/after/game002-mobile-early-safe.png",
+    "inspection": {
+      "distance": 88,
+      "time": 9.652683333333094,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 583.3674102563775,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 158.90587179483907,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -265.5556666666994,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "mobile",
+    "type": "earlyAvoidance",
+    "inspection": {
+      "distance": 85,
+      "time": 9.409363333333113,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 0,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 550.0512871794571,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 125.58974871791855,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -298.87178974361984,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-first-nice",
+    "path": "docs/revisions/after/game002-mobile-first-nice.png",
+    "inspection": {
+      "distance": 87,
+      "time": 9.542969999999789,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 568.3451230768942,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 143.8835846153558,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -280.5779538461826,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "mobile",
+    "type": "lateAvoidance",
+    "inspection": {
+      "distance": 84,
+      "time": 9.264649999999806,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 530.2366923076657,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 105.7751538461273,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-60m",
+    "path": "docs/revisions/after/game002-mobile-60m.png",
+    "inspection": {
+      "distance": 90,
+      "time": 9.88797999999977,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 1,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "TUTORIAL",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 0,
+          "waveId": 0,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": 615.5849538461223,
+          "encounterTime": 9,
+          "warningStart": 6.5,
+          "changeStart": 7.1,
+          "changeEnd": 7.8,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 1,
+          "waveId": 1,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 191.1234153845839,
+          "encounterTime": 12.1,
+          "warningStart": 9.6,
+          "changeStart": 10.2,
+          "changeEnd": 10.9,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 2,
+          "waveId": 2,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -233.3381230769545,
+          "encounterTime": 15.2,
+          "warningStart": 12.7,
+          "changeStart": 13.299999999999999,
+          "changeEnd": 14,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 0,
+          "type": "A",
+          "encounterTime": 9,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        },
+        {
+          "id": 1,
+          "type": "A",
+          "encounterTime": 12.1,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 2,
+          "type": "A",
+          "encounterTime": 15.2,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-B-warning",
+    "path": "docs/revisions/after/game002-mobile-B-warning.png",
+    "inspection": {
+      "distance": 205,
+      "time": 22.100829999998997,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": true,
+      "outcome": null,
+      "district": "住宅街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 4,
+          "waveId": 4,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 589.9597999998623,
+          "encounterTime": 21.400000000000002,
+          "warningStart": 18.900000000000002,
+          "changeStart": 19.500000000000004,
+          "changeEnd": 20.200000000000003,
+          "feintDirection": 1,
+          "passed": true
+        },
+        {
+          "id": 5,
+          "waveId": 5,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 2,
+          "x": 300,
+          "y": 165.49826153832362,
+          "encounterTime": 24.500000000000004,
+          "warningStart": 21.800000000000004,
+          "changeStart": 23.000000000000004,
+          "changeEnd": 23.240000000000002,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 6,
+          "waveId": 6,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 0,
+          "x": 300,
+          "y": -224.73250769244578,
+          "encounterTime": 27.350000000000005,
+          "warningStart": 24.650000000000006,
+          "changeStart": 25.850000000000005,
+          "changeEnd": 26.090000000000003,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 4,
+          "type": "A",
+          "encounterTime": 21.400000000000002,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 5,
+          "type": "B",
+          "encounterTime": 24.500000000000004,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 6,
+          "type": "B",
+          "encounterTime": 27.350000000000005,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "",
+    "path": "docs/revisions/after/game002-mobile.png",
+    "inspection": {
+      "distance": 278,
+      "time": 29.553819999998552,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": true,
+      "outcome": null,
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 405.52304615364704,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 8,
+          "waveId": 8,
+          "type": "D",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 15.292276922878102,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 15.292276922878102,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 7,
+          "type": "A",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 8,
+          "type": "D",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            0,
+            2
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-two-people",
+    "path": "docs/revisions/after/game002-mobile-two-people.png",
+    "inspection": {
+      "distance": 290,
+      "time": 30.760439999998486,
+      "lane": 1,
+      "targetLane": 1,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 4,
+      "alive": true,
+      "outcome": null,
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 300,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 7,
+          "waveId": 7,
+          "type": "A",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 570.737169230561,
+          "encounterTime": 30.200000000000006,
+          "warningStart": 27.700000000000006,
+          "changeStart": 28.300000000000008,
+          "changeEnd": 29.000000000000007,
+          "feintDirection": -1,
+          "passed": true
+        },
+        {
+          "id": 8,
+          "waveId": 8,
+          "type": "D",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 180.50639999979205,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 9,
+          "waveId": 8,
+          "type": "D",
+          "fromLane": 2,
+          "finalLane": 2,
+          "x": 420,
+          "y": 180.50639999979205,
+          "encounterTime": 33.050000000000004,
+          "warningStart": 30.550000000000004,
+          "changeStart": 31.150000000000006,
+          "changeEnd": 31.850000000000005,
+          "feintDirection": -1,
+          "passed": false
+        },
+        {
+          "id": 10,
+          "waveId": 9,
+          "type": "A",
+          "fromLane": 1,
+          "finalLane": 1,
+          "x": 300,
+          "y": -209.72436923097735,
+          "encounterTime": 35.900000000000006,
+          "warningStart": 33.400000000000006,
+          "changeStart": 34.00000000000001,
+          "changeEnd": 34.7,
+          "feintDirection": 1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 7,
+          "type": "A",
+          "encounterTime": 30.200000000000006,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 8,
+          "type": "D",
+          "encounterTime": 33.050000000000004,
+          "blockedLanes": [
+            0,
+            2
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 9,
+          "type": "A",
+          "encounterTime": 35.900000000000006,
+          "blockedLanes": [
+            1
+          ],
+          "safeLane": 0
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "suffix": "-over",
+    "path": "docs/revisions/after/game002-mobile-over.png",
+    "inspection": {
+      "distance": 396,
+      "time": 41.367526666672035,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 5,
+      "alive": false,
+      "outcome": "collision",
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 12,
+          "waveId": 11,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 462.16903589816974,
+          "encounterTime": 41.60000000000001,
+          "warningStart": 39.10000000000001,
+          "changeStart": 39.70000000000001,
+          "changeEnd": 40.400000000000006,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 13,
+          "waveId": 12,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 2,
+          "x": 300,
+          "y": 71.36775384688701,
+          "encounterTime": 44.45000000000001,
+          "warningStart": 41.75000000000001,
+          "changeStart": 42.95000000000001,
+          "changeEnd": 43.19000000000001,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 11,
+          "type": "A",
+          "encounterTime": 41.60000000000001,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 12,
+          "type": "B",
+          "encounterTime": 44.45000000000001,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "device": "mobile",
+    "type": "earnedResult",
+    "text": "ゆううつな月曜日\nWORKDAY DODGE\n出勤失敗……\nNEW BEST!\n435\nSCORE\n到達距離\n396 m\nNICE DODGE\n5 回\nボーナス\n110%\nBEST SCORE\n435\nBEST m\n396 m\nTIME\n41.4 s\nCREDIT\n2 / 3\nRETRY · もう一度\nTITLE\n次こそ、すいすい出社。",
+    "inspection": {
+      "distance": 396,
+      "time": 41.367526666672035,
+      "lane": 0,
+      "targetLane": 0,
+      "moving": false,
+      "queuedDirection": null,
+      "dodges": 5,
+      "alive": false,
+      "outcome": "collision",
+      "district": "商店街",
+      "difficulty": "EASY",
+      "playerX": 180,
+      "playerY": 494,
+      "enemies": [
+        {
+          "id": 12,
+          "waveId": 11,
+          "type": "A",
+          "fromLane": 0,
+          "finalLane": 0,
+          "x": 180,
+          "y": 462.16903589816974,
+          "encounterTime": 41.60000000000001,
+          "warningStart": 39.10000000000001,
+          "changeStart": 39.70000000000001,
+          "changeEnd": 40.400000000000006,
+          "feintDirection": 1,
+          "passed": false
+        },
+        {
+          "id": 13,
+          "waveId": 12,
+          "type": "B",
+          "fromLane": 1,
+          "finalLane": 2,
+          "x": 300,
+          "y": 71.36775384688701,
+          "encounterTime": 44.45000000000001,
+          "warningStart": 41.75000000000001,
+          "changeStart": 42.95000000000001,
+          "changeEnd": 43.19000000000001,
+          "feintDirection": -1,
+          "passed": false
+        }
+      ],
+      "waves": [
+        {
+          "id": 11,
+          "type": "A",
+          "encounterTime": 41.60000000000001,
+          "blockedLanes": [
+            0
+          ],
+          "safeLane": 1
+        },
+        {
+          "id": 12,
+          "type": "B",
+          "encounterTime": 44.45000000000001,
+          "blockedLanes": [
+            2
+          ],
+          "safeLane": 1
+        }
+      ]
+    }
+  },
+  {
+    "game": "game002",
+    "iteration": "1",
+    "device": "mobile",
+    "errors": [],
+    "wallMs": 32914,
+    "normalInputOnly": true,
+    "readonlyOracle": true
+  }
+]

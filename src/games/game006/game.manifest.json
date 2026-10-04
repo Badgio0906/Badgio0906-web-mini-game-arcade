@@ -1,0 +1,17 @@
+{
+  "id": "game006",
+  "title": "ギリギリ駐車 ～PARK IT!～",
+  "subtitle": "角度よし、強さよし……たぶん。",
+  "genre": ["timing", "physics", "arcade"],
+  "core_mechanic": ["lock steering curvature", "lock driving distance", "whole-rectangle parking"],
+  "primary_input": ["single-action", "two-stage timing"],
+  "skill_axes": ["timing", "angle-estimation", "spatial-estimation", "power-estimation"],
+  "expected_run_seconds": {"beginner": 60, "experienced": 190},
+  "duration_note": "design hypothesis; beginner human unmeasured; oracle timing bounds separate",
+  "oracle_timing_seconds": {"ten_parks": [84, 106], "twenty_parks": [145, 237]},
+  "primary_score": "accuracy points with capped perfect-streak multiplier",
+  "secondary_score": "successfully parked cars",
+  "escalation_mechanic": "After ten successes, one frozen choice offers permanently narrow forbidden spaces or ordinary parking.",
+  "risk_reward": "Forbidden slots are 50x82 for a 42x70 car and award twice the future parking points; previous points stay unchanged.",
+  "visual_identity": "generated top-down Japanese daily cars, code-exact parking bays, warm asphalt, thin driver console"
+}

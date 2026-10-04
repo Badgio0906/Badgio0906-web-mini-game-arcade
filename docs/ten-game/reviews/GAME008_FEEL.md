@@ -1,0 +1,62 @@
+# Game008 — independent Game Feel Review
+
+**Independent Feel PASS, including final responsive/menu confirmation and separately attributed native QA exact-score closure. Human A–N remain unperformed.** Phase1 is independent from QA and the separate numeric image assessment in `GAME008_VISUAL.md`. Readonly balance feedback plus ordinary inputs proves reachable flows, not human inertia prediction or enjoyment.
+
+## Actual runtime and opening
+
+Immutable DEV5178, `/workspace/scratch/ten008-frozen`, Chromium1920×1080 native arrows and390×844 native stage-half/button taps. `capture-coffee-review.mjs`, `recheck-coffee-empty-meter.mjs` and `../screenshots/game008/` contain actual screenshots and journals. No seeded credits, forced end, score, time or physics mutation. Short-landscape/portrait observations resized genuinely earned frozen choices; they are supplemental reviewer observations, not QA case declarations.
+
+The first ten seconds establish balance rather than dodging a lane or recalling a sequence. The title explains LEFT/RIGHT, delayed liquid motion and0% termination. A real desktop right input at2.017s moved the body from0.0209 to0.0721rad, while the liquid angle moved from−0.0030 to−0.0219rad. Releasing did not immediately stop body/liquid motion. Native phone left/right stage taps independently exposed input−1/+1; subsequent ordinary button taps performed corrections. Phone opening motion already had residual leftward velocity, so it is not a controlled right-input-only experiment.
+
+The first person encounter is announced at7.6s for9s onset, with side/countdown and a simple approaching figure. Step, stop, door and train warnings were all actually seen before their events. There is time to learn small corrections before a hazard; spilling depletes a meter rather than instantly ending a run. A pause at about160m froze the complete inspection over650wall ms. These observations support legible cause/recovery, not a measured first-time human success rate.
+
+The first train was observed with normal controls neutral around its onset. Desktop announced left and body moved0.00078→−0.00670rad across the recorded event interval; phone announced right and moved0.02772→0.04125rad. The actual viewed liquid-motion pair and return lobe make this a sway rather than a single permanent push. Residual velocity/liquid and later alternating force mean this is observational evidence, not an isolated force measurement. Separate model/QA checks own exact force-sign assertions.
+
+## Earned choices, independent liquids and results
+
+Desktop reached500m at47.6564game seconds, score500. The second-cup choice froze the whole inspection over1.1wall seconds, including after ordinary directional input; CREDIT stayed3. Native acceptance added a full cup and future×1.5. At1000m/91.1661s the recorded score was1249; native acceptance added the third cup and future×2. Already-earned score was not retrospectively multiplied; subsequent resumed frames may increase it. Phone independently reached both choices at about47.658/91.166s, kept CREDIT3, and observed the same frozen terms and future multipliers.
+
+Each cup retains its own label, percentage and actual liquid window. Recorded two-cup liquid angles at509m were−0.00058/+0.00316rad and changed differently; after three cups, the recorded next pair likewise had distinct liquid states. They share body lean but differ in response/phase. This is an actual additional balancing/attention state, rather than three identical bars draining faster. The readonly policy minimized body lean and velocity; it did not establish whether an unaided person finds the three-cup challenge manageable or satisfying.
+
+After1080m, ordinary right input deliberately continued until a cup genuinely emptied. Desktop ended1263m/1777points/three cups/113.1643game seconds/CREDIT2, with『部長の分が0%』and its name in the reason. Native Retry62wall ms returned to one full cup/×1/score0 and retained BEST1777. Phone ended1280m/1810/three cups/114.4994s/CREDIT2; Retry83ms reset the same run state. Phone then deliberately emptied two additional one-cup runs at18.4694/16.6711s, genuinely consuming3→0. A native Rewarded Ad Stub request showed a locked pending state, restored3 and retained BEST1810. These intentional bad-input times are not novice averages or physical-phone latency benchmarks. No page errors.
+
+The long-run journal proves actual milestones, future scoring, result, CREDIT and retry. All choices accepted cups; declining a request is not claimed as independently played here and remains separate QA/model coverage. Distance, cup count, remaining coffee, title and multiplier form plausible improvement/discovery targets as agent judgment. Human replay/ad desire is unknown.
+
+## Concrete findings and targeted closure
+
+The original earned500m choice clipped its full freeze note/card bottom at844×390 (397.688px against390), with documents412px high;320×568 and568×320 spilled caption/footer to593/330px. A scoped CSS action-row/spacing repair preserved text, fonts,44px actions and physics. Final phone-earned500m and1000m choices were resized to eight viewports and independently viewed. Cards/terms/actions fit;568×320 first-choice document321px is within the established1px rounding tolerance, with card bottom312.172 and full note inside. Other document bounds fit the viewport. No duplicate desktop long route was used.
+
+The initial phone locator tap read playing just before500m, then auto-waited30s on the newly disabled choice-covered balance button. This is retained in `INITIAL_MOBILE_MILESTONE_LOCATOR_WAIT.json`; it is a capture-harness boundary failure, not a missing player action or runtime bug. The corrected capture cached ordinary native touch coordinates and completed the full route.
+
+A genuine initial desktop terminal screenshot showed the empty cup still at1% while inspection/result said0. The draw cache rounded remaining to one decimal, allowing the last positive value and exact zero to share a signature. After the narrow display-only repair, a fresh native held-ArrowRight run naturally ended192m/18.9075s/CREDIT2. `EMPTY_METER_NATIVE_RECHECK.json` and `desktop-final-native-empty-meter.png` prove exact0%, `is-empty`, red text and no errors. The long-run physics/input/score/CREDIT proofs remain separate and unchanged. Initial terminal image is retained as a failure; no artificial result or another three-cup route was required.
+
+## Human A–N — all pending
+
+|Field|Game008 question|
+|---|---|
+|A|Understand small LEFT/RIGHT corrections and liquid lag in the opening?|
+|B|Record an unaided first natural empty-cup distance/time.|
+|C|Explain which cup emptied and what correction caused the spill.|
+|D|Do tap/hold, release, liquid lag and recovery feel responsive?|
+|E|Are person/step/stop/door/train side warnings fair?|
+|F|Want to improve distance, score or remaining coffee?|
+|G|Want three more runs after3CREDIT?|
+|H|Would a real rewarded ad be worthwhile? Refill currently uses a Stub.|
+|I|PC arrows/A-D, pause, retry and sound comfort.|
+|J|Real-phone cup surfaces/meters, stage taps/buttons and orientation.|
+|K|Want to discover500m/1000m and later hazards?|
+|L|Enjoy declining or accepting another person's cup?|
+|M|Do distinct cup inertia/phase and future multipliers add meaningful challenge?|
+|N|Are boss/chairman requests and earned titles amusing without distracting?|
+
+Separate actual-image numeric Visual83 acceptance completed after the final native empty-meter image was viewed. All reviewer contexts closed before direct QA008 handoff. Human or public approval is not inferred.
+
+Subsequent independent QA found a genuine43px-wide TITLE action in an earned320px zero-credit result; the required minimum is44px. The width repair was followed by a stricter fixture finding: document612px/viewport568px, with footer outside. Both were treated as real technical issues. Final `qa-render-only-earned192-zero-320-result.png` and `QA/GAME008_REPAIRED_ZERO_LAYOUT_FIXTURE.json` were independently viewed, confirming TITLE44×46, document568, cardbottom517.578 and complete caption/footer. The155px cup window and meters remain; only the already-disabled RESULT steering row is hidden on this narrow portrait. This is explicitly DOM result-control geometry: its idle live board still shows100%, and it is not another earned empty-run proof. The retained actual QA three-death192/zero result and the reviewer's genuine0%/red run are separate domain evidence. Full QA's500m/1000m route was interrupted/not yet executed at this responsive checkpoint and was authorized to resume only after the independent final-image confirmation; earlier reviewer long-route proofs remain valid, distinct from QA status. No art-score tuning or duplicate long reviewer route was used.
+
+The resumed actual result check subsequently exposed568×320 card bottom326.5625, after the other seven sizes passed. Its first scoped result-spacing repair fit the card but still left the caption/document331px. A full16-case diagnostic additionally found the retained actual1810/three-cup result's320px footer572px,844px SCORE caption outside its column, and568px card/caption331/344px. These failures are retained; none is relabelled PASS.
+
+After the final narrow layout repair, the whole16-case matrix passed for both actual retained outcomes:192/one-cup/zero/NEWBEST and1810/three-cup/CREDIT2/NEWBEST across eight sizes. Final `qa-render-only-earned{192-zero,1810-threecups}-{320x568,844x390,568x320}-result.png` images and `QA/GAME008_REPAIRED_ZERO_LAYOUT_FIXTURE.json` were independently viewed. All document bounds fit; all navigation actions are≥44px. Final568 card/caption bottom315.563;1810 is one Range text line inside its78px score column with a separate contained SCORE caption and no metric overlap. The essential caption sits in the spare left landscape area; the decorative footer is absent in short landscape. At320 the whole1280 number remains one line while its m unit wraps below, legibly, a minor limitation. The fixture remains explicitly render-only with an idle live cup100%; actual liquid/cup-count gameplay is proven separately. Final responsive closure/unchanged Visual83 was confirmed before original full QA resume. No duplicate500m/1000m reviewer route, physics change, or art retuning was required; QA's subsequent native status remains separately reported.
+
+Subsequent QA independently reproduced a real scoring error: at exact1000m after the500m future×1.5 choice, accumulated floating increments floor to1249 instead of the required500+500×1.5=1250. The reviewer recorded1249 but did not elevate that boundary mismatch; it should have been flagged. The earlier1777/1810/1249 values remain historical candidate facts, not rewritten corrected results. A narrowly authorized exact-distance scoring-anchor repair leaves body/liquid/input/dt/RNG/events unchanged. Fresh normal-input QA now proves500m/47.6564s/score500→1000m/91.1645s/strict1250, native three-cup acceptance preserves that1250 and all pre-existing liquid states, then a genuine chairman-cup empty result1172m/1594/105.506s/CREDIT2 and normal retry/reset. `QA/GAME008_ACTUAL_500_1000_PROOF.json` was independently read; this is QA's new actual execution, not a rewritten reviewer run or a unit-only inference. Other cups retained positive coffee and the empty HUD was0%/red, with no errors. The nine public model tests include variable-frame exact scoring, declines, future×2/reset and fractional-terminal scoring; these support but do not replace the new native evidence. Artwork83 and final16 layout evidence remain separately valid under unchanged geometry.
+
+QA's five actual mechanics cases subsequently passed, but the final supplemental persisted-zero TITLE probe found568×320 start-note bottom342.89 with Stub text clipped (the first seven menu/pending pairs passed). After a scoped two-column zero-title repair, all eight persisted-zero title/native-Stub-pending probes passed. Final `qa-storage-zero-568x320-title.png`/`-pending.png` and `QA/GAME008_ZERO_MENU_LAYOUTS.json` were independently viewed: full instructions/Stub explanation/refill action fit, navigation locks during pending, one reward event per request, idle model/no run side effects/errors. Persisted-zero fixtures are not counted as three earned deaths; the reviewer's genuine3→0→3 remains separate. Final independent menu/unchanged83 confirmation and all reviewer-browser closure preceded Game009. No additional long domain route or artwork tuning was required.

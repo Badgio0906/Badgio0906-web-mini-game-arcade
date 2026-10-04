@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff3df" />
+    <meta name="description" content="左右にひょいっと、ぶつからず出社せよ！3レーンの街を歩いて1000m先のオフィスを目指す、無料ブラウザゲーム WORKDAY DODGE。PC・スマートフォン対応。" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2334594b'/%3E%3Crect x='13' y='26' width='38' height='26' rx='4' fill='%23f4c678'/%3E%3Cpath d='M24 26v-8h16v8' fill='none' stroke='%23f4c678' stroke-width='5'/%3E%3Cpath d='M13 37h38' stroke='%2334594b' stroke-width='3'/%3E%3C/svg%3E" />
+    <title>ゆううつな月曜日 ～WORKDAY DODGE～</title>
+  </head>
+  <body>
+    <div id="app" data-state="title">
+      <header class="topbar">
+        <button class="brand" id="brand-button" type="button" aria-label="ゆううつな月曜日 タイトルに戻る"><span class="brand-case" aria-hidden="true">▰</span><span class="brand-title">ゆううつな月曜日<small>WORKDAY DODGE</small></span></button>
+        <div class="top-actions"><span class="credit-label">CREDIT <strong id="credit-count">3</strong><span id="credit-dots" aria-hidden="true">● ● ●</span></span><button id="mute-button" type="button" aria-label="音声をミュート" title="音声">音 ON</button></div>
+      </header>
+      <main class="layout">
+        <aside class="intro">
+          <span class="eyebrow">THE MORNING COMMUTE / 通勤日報</span>
+          <h1>ゆううつな月曜日<small>WORKDAY DODGE</small></h1>
+          <p class="lede">いつもの道が、<br />今日はちょっと手強い。</p>
+          <p class="intro-copy">前から来る人をよく見て、左右へひょいっ。<br />1000 m 先のオフィスを目指そう。</p>
+          <div class="route-card"><span class="route-heading">本日の通勤ルート <b>1000 m</b></span><ol class="route-stops"><li><i></i><strong>住宅街</strong><small>HOME</small></li><li><i></i><strong>商店街</strong><small>SHOPS</small></li><li><i></i><strong>駅周辺</strong><small>STATION</small></li><li><i></i><strong>オフィス街</strong><small>OFFICE</small></li></ol></div>
+          <div class="controls-note"><kbd>←</kbd><kbd>→</kbd><span>または A / D</span><p>スマホは画面の左・右をタップ</p></div>
+          <p class="research-note">無料で、もうひと通勤。<br />Game002 / Prediction & Lane Selection</p>
+        </aside>
+        <section class="arcade" aria-label="ゆううつな月曜日 ゲーム">
+          <div class="scorebar"><div><span>歩いた距離</span><strong><b id="score-value">0</b> <small>m</small></strong></div><div class="nice-stat"><span>NICE DODGE</span><strong id="nice-value">0</strong></div><div class="best-stat"><span>BEST</span><strong><b id="best-value">0</b> <small>m</small></strong></div><button id="pause-button" type="button" aria-label="一時停止" disabled>Ⅱ</button></div>
+          <div class="bonus-hud"><em id="travel-mode">通勤 · 徒歩</em> SCORE <b id="score-total-value">0</b><span>ボーナス <b id="bonus-value">100%</b></span></div><div class="journey"><span id="district-label">住宅街</span><div role="progressbar" id="progress" aria-label="オフィスへの進捗" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0"><i id="progress-fill"></i></div><span id="journey-target">弊社 1000 m</span></div>
+          <div class="playfield"><div id="stage" aria-label="通勤道路。左側をタップで左へ、右側をタップで右へ移動" tabindex="0"><div id="game-canvas"></div></div><div id="overlay" class="overlay"></div></div>
+          <div class="game-footer"><span id="hint">← → / A D ・ 左右をタップ</span><button id="how-button" type="button">遊び方</button></div>
+        </section>
+      </main>
+      <footer class="site-footer"><span>WORKDAY DODGE</span><span>ひと通勤、約 1〜2 分。</span><a href="/">ORBIT SHIFT →</a></footer>
+    </div>
+    <dialog id="how-dialog"><button id="close-how-button" class="dialog-close" type="button" aria-label="説明を閉じる">×</button><span class="eyebrow">HOW TO COMMUTE</span><h2>前を見て、ひょいっと。</h2><p><b>← → / A D</b> または <b>画面の左・右をタップ</b>で、1 レーンずつ移動。</p><p>前から来る人を避けよう。<b>黄色い矢印</b>は、相手の次の動き。2 人組にも、必ず通れる道がある。</p><p>1000 m で <b>出勤するか、旅に出るか</b>を選択。<br />旅の2000 mでは、安全に終了・徒歩・バイクを選べます。<b>バイクは2倍速。</b><br />ぶつかると CREDIT を 1 消費。0 になったら開発版 Reward Stub で +3 CREDIT。</p><button id="how-ok-button" class="primary" type="button">わかった！</button></dialog>
+    <script type="module" src="/src/games/game002/main.ts"></script>
+  </body>
+</html>

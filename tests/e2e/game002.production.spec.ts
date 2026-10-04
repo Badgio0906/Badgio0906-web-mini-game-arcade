@@ -1,0 +1,30 @@
+import { expect, test } from '@playwright/test';
+
+test('built Workday static entry runs and persists its own score without a development hook', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await page.goto('/game002.html');
+  await expect(page.locator('#play-button')).toBeVisible();
+  expect(await page.evaluate(() => '__arcadeDebug' in window || '__orbitDebug' in window)).toBe(false);
+  await expect(page.locator('#credit-count')).toHaveText('3');
+  await page.locator('#play-button').click();
+  await page.locator('#stage').focus();
+  await page.keyboard.press('ArrowLeft');
+  await page.waitForTimeout(200);
+  await page.keyboard.press('d');
+  await page.locator('#pause-button').click();
+  await expect(page.locator('#resume-button')).toBeVisible();
+  await page.locator('#resume-button').click();
+  await expect(page.locator('#retry-button')).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator('#credit-count')).toHaveText('2');
+  const best = await page.locator('#best-value').textContent();
+  expect(Number(best?.replace(/,/g, ''))).toBeGreaterThan(0);
+  await page.reload();
+  await expect(page.locator('#credit-count')).toHaveText('2');
+  await expect(page.locator('#best-value')).toHaveText(best!);
+  await page.goto('/');
+  await expect(page.locator('#credit-count')).toHaveText('3');
+  await expect(page.locator('#best-value')).toHaveText('0');
+  expect(errors).toEqual([]);
+});

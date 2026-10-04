@@ -1,0 +1,18 @@
+{
+  "kind": "Retained native harness failure, not established runtime defect",
+  "initialCommand": "npx playwright test --config tests/ten-game/game009.playwright.config.ts",
+  "initialResult": "5 passed / 1 failed / 6 duplicate project skips; 1.0m",
+  "error": "TypeError reading width from null boundingBox after ResizeObserver replaced target node during resize",
+  "actualBeforeFailure": {
+    "correct": 45,
+    "round": 46,
+    "score": 13327,
+    "multiplier": 1,
+    "clutterLevel": 18,
+    "objectCount": 18,
+    "time": 22.68273333332077
+  },
+  "trace": "Ignored artifacts/ten-game009-initial/game009-Stamp-ordinary-mat-db650-duplicate-safe-bounded-desk-desktop/trace.zip",
+  "correction": "Read-only atomic inspection IDs plus DOM rectangles after two animation frames. Target minimum sizes, containment, visibility and pair nonoverlap assertions retained. No runtime change.",
+  "retargetResult": "1 passed,28.4s /29.4s runner"
+}

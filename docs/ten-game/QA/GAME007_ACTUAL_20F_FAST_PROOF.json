@@ -1,0 +1,508 @@
+{
+  "frozen": {
+    "floor": 20,
+    "score": 19,
+    "time": 46.323133333341815,
+    "alive": true,
+    "phase": "choice",
+    "pending": "floor20",
+    "mode": "normal",
+    "scoreMultiplier": 1,
+    "load": 210,
+    "capacity": 450,
+    "currentParty": {
+      "id": 20,
+      "floor": 20,
+      "destination": 25,
+      "label": "配達員",
+      "kg": 80,
+      "value": 100,
+      "items": [
+        {
+          "kind": "courier",
+          "label": "配達員",
+          "kg": 80,
+          "people": 1,
+          "cargo": 0,
+          "value": 100
+        }
+      ]
+    },
+    "nextParty": {
+      "id": 21,
+      "floor": 21,
+      "destination": 25,
+      "label": "巨大な観葉植物",
+      "kg": 190,
+      "value": 300,
+      "items": [
+        {
+          "kind": "plant",
+          "label": "巨大な観葉植物",
+          "kg": 190,
+          "people": 0,
+          "cargo": 1,
+          "value": 300
+        }
+      ]
+    },
+    "aboard": [
+      {
+        "id": 19,
+        "floor": 19,
+        "destination": 25,
+        "label": "巨大な観葉植物",
+        "kg": 210,
+        "value": 300,
+        "items": [
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 210,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ],
+        "boardedFloor": 19
+      }
+    ],
+    "nextUnload": {
+      "floor": 25,
+      "kg": 210,
+      "people": 0,
+      "cargo": 1
+    },
+    "deliveredPeople": 0,
+    "deliveredCargo": 0,
+    "refused": 18,
+    "timedOut": 0,
+    "utilization": 46.666666666666664,
+    "occupiedFloors": 1,
+    "decisionRemaining": 0,
+    "decisionSeconds": 5.955,
+    "travelSeconds": 1.15,
+    "lastSide": "accept",
+    "lastUnloaded": [],
+    "excessKg": 0,
+    "phaseTime": 0,
+    "doorOpen": 1,
+    "travelProgress": 0
+  },
+  "delivery": {
+    "floor": 25,
+    "score": 614,
+    "time": 55.92713333335273,
+    "alive": true,
+    "phase": "unloading",
+    "pending": null,
+    "mode": "fast",
+    "scoreMultiplier": 1.5,
+    "load": 0,
+    "capacity": 450,
+    "currentParty": {
+      "id": 25,
+      "floor": 25,
+      "destination": 29,
+      "label": "配達員",
+      "kg": 100,
+      "value": 100,
+      "items": [
+        {
+          "kind": "courier",
+          "label": "配達員",
+          "kg": 100,
+          "people": 1,
+          "cargo": 0,
+          "value": 100
+        }
+      ]
+    },
+    "nextParty": {
+      "id": 26,
+      "floor": 26,
+      "destination": 28,
+      "label": "配達員",
+      "kg": 100,
+      "value": 100,
+      "items": [
+        {
+          "kind": "courier",
+          "label": "配達員",
+          "kg": 100,
+          "people": 1,
+          "cargo": 0,
+          "value": 100
+        }
+      ]
+    },
+    "aboard": [],
+    "nextUnload": null,
+    "deliveredPeople": 0,
+    "deliveredCargo": 1,
+    "refused": 23,
+    "timedOut": 0,
+    "utilization": 46.666666666666664,
+    "occupiedFloors": 6,
+    "decisionRemaining": 0,
+    "decisionSeconds": 3.0250000000000004,
+    "travelSeconds": 0.58,
+    "lastSide": "refuse",
+    "lastUnloaded": [
+      {
+        "id": 19,
+        "floor": 19,
+        "destination": 25,
+        "label": "巨大な観葉植物",
+        "kg": 210,
+        "value": 300,
+        "items": [
+          {
+            "kind": "plant",
+            "label": "巨大な観葉植物",
+            "kg": 210,
+            "people": 0,
+            "cargo": 1,
+            "value": 300
+          }
+        ],
+        "boardedFloor": 19
+      }
+    ],
+    "excessKg": 0,
+    "phaseTime": 0.04583333333333334,
+    "doorOpen": 0.10185185185185186,
+    "travelProgress": 0
+  },
+  "final": {
+    "floor": 29,
+    "score": 1027,
+    "time": 64.5768333333578,
+    "alive": false,
+    "phase": "overload",
+    "pending": null,
+    "mode": "fast",
+    "scoreMultiplier": 1.5,
+    "load": 455,
+    "capacity": 450,
+    "currentParty": {
+      "id": 29,
+      "floor": 29,
+      "destination": 35,
+      "label": "なぜか冷蔵庫＋配達員",
+      "kg": 335,
+      "value": 500,
+      "items": [
+        {
+          "kind": "fridge",
+          "label": "なぜか冷蔵庫",
+          "kg": 260,
+          "people": 0,
+          "cargo": 1,
+          "value": 400
+        },
+        {
+          "kind": "courier",
+          "label": "配達員",
+          "kg": 75,
+          "people": 1,
+          "cargo": 0,
+          "value": 100
+        }
+      ]
+    },
+    "nextParty": {
+      "id": 30,
+      "floor": 30,
+      "destination": 36,
+      "label": "配達員",
+      "kg": 100,
+      "value": 100,
+      "items": [
+        {
+          "kind": "courier",
+          "label": "配達員",
+          "kg": 100,
+          "people": 1,
+          "cargo": 0,
+          "value": 100
+        }
+      ]
+    },
+    "aboard": [
+      {
+        "id": 27,
+        "floor": 27,
+        "destination": 33,
+        "label": "会社員",
+        "kg": 60,
+        "value": 100,
+        "items": [
+          {
+            "kind": "office",
+            "label": "会社員",
+            "kg": 60,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ],
+        "boardedFloor": 27
+      },
+      {
+        "id": 28,
+        "floor": 28,
+        "destination": 30,
+        "label": "会社員",
+        "kg": 60,
+        "value": 100,
+        "items": [
+          {
+            "kind": "office",
+            "label": "会社員",
+            "kg": 60,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ],
+        "boardedFloor": 28
+      },
+      {
+        "id": 29,
+        "floor": 29,
+        "destination": 35,
+        "label": "なぜか冷蔵庫＋配達員",
+        "kg": 335,
+        "value": 500,
+        "items": [
+          {
+            "kind": "fridge",
+            "label": "なぜか冷蔵庫",
+            "kg": 260,
+            "people": 0,
+            "cargo": 1,
+            "value": 400
+          },
+          {
+            "kind": "courier",
+            "label": "配達員",
+            "kg": 75,
+            "people": 1,
+            "cargo": 0,
+            "value": 100
+          }
+        ],
+        "boardedFloor": 29
+      }
+    ],
+    "nextUnload": {
+      "floor": 30,
+      "kg": 60,
+      "people": 1,
+      "cargo": 0
+    },
+    "deliveredPeople": 2,
+    "deliveredCargo": 1,
+    "refused": 23,
+    "timedOut": 0,
+    "utilization": 45.33333333333333,
+    "occupiedFloors": 10,
+    "decisionRemaining": 0,
+    "decisionSeconds": 2.8850000000000002,
+    "travelSeconds": 0.58,
+    "lastSide": "accept",
+    "lastUnloaded": [],
+    "excessKg": 5,
+    "phaseTime": 0,
+    "doorOpen": 1,
+    "travelProgress": 0
+  },
+  "layouts": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "card": {
+        "x": 1360,
+        "y": 278.15625,
+        "width": 275,
+        "height": 492.671875
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "card": {
+        "x": 1120,
+        "y": 230.65625,
+        "width": 275,
+        "height": 492.671875
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "card": {
+        "x": 1007,
+        "y": 129.484375,
+        "width": 245,
+        "height": 490.03125
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 751,
+        "y": 153.484375,
+        "width": 245,
+        "height": 490.03125
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "card": {
+        "x": 45,
+        "y": 265,
+        "width": 300,
+        "height": 334.859375
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 19,
+        "y": 245,
+        "width": 282,
+        "height": 305.765625
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "card": {
+        "x": 574,
+        "y": 65.109375,
+        "width": 255,
+        "height": 306.578125
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 336,
+        "y": 51,
+        "width": 222,
+        "height": 267.75
+      }
+    }
+  ],
+  "journal": [
+    {
+      "name": "game_open",
+      "at": "2026-10-04T07:16:07.230Z",
+      "data": {
+        "game": "game007",
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-04T07:16:07.472Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "credits": 3,
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "milestone_reached",
+      "at": "2026-10-04T07:16:53.801Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "milestone": "floor20",
+        "floor": 20,
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "escalation_offered",
+      "at": "2026-10-04T07:16:53.801Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "milestone": "floor20",
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "escalation_accepted",
+      "at": "2026-10-04T07:16:55.279Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "milestone": "floor20",
+        "choice": "fast",
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "credit_used",
+      "at": "2026-10-04T07:17:13.537Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "credits": 2,
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-04T07:17:13.537Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "outcome": "over",
+        "score": 1027,
+        "time": 64.5768333333578,
+        "floor": 29,
+        "deliveredPeople": 2,
+        "deliveredCargo": 1,
+        "utilization": 45.33333333333333,
+        "mode": "fast",
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "score",
+      "at": "2026-10-04T07:17:13.537Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "score": 1027,
+        "best": 1027,
+        "newBest": true,
+        "floor": 29,
+        "game_id": "game007"
+      }
+    },
+    {
+      "name": "run_duration",
+      "at": "2026-10-04T07:17:13.537Z",
+      "data": {
+        "game": "game007",
+        "runId": "game007-1791098167472-kuot0d",
+        "seconds": 64.5768333333578,
+        "reason": "over",
+        "failure_reason": "overload",
+        "game_id": "game007"
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,7886 @@
+[
+  {
+    "type": "runtime",
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "baseUrl": "http://127.0.0.1:5178",
+    "normalInputOnly": true,
+    "readonlyOracle": true,
+    "humanSkillEvidence": false
+  },
+  {
+    "type": "capture",
+    "name": "title",
+    "path": "docs/ten-game/screenshots/game008/mobile-title.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 296
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "play-button",
+          "x": 231,
+          "y": 525,
+          "width": 126,
+          "height": 46
+        }
+      ]
+    },
+    "state": "title",
+    "inspection": {
+      "distance": 0,
+      "score": 0,
+      "time": 0,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": 0,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "ordinaryLeftStageCorrection",
+    "state": "playing",
+    "inspection": {
+      "distance": 12,
+      "score": 12,
+      "time": 1.2498999999999962,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.026703331587206895,
+      "bodyVelocity": 0.021643025838190673,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0020985467876915207,
+          "liquidVelocity": 0.0010399255459044338,
+          "surfaceTilt": -0.024604784799515375,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        },
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": -0.05503591025980337,
+      "tapRemaining": 0.18
+    },
+    "credit": "3"
+  },
+  {
+    "type": "ordinaryRightStageInput",
+    "state": "playing",
+    "inspection": {
+      "distance": 22,
+      "score": 22,
+      "time": 2.1999000000000017,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.0016965629809448525,
+      "bodyVelocity": 0.1508675780597085,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.002933067563923036,
+          "liquidVelocity": -0.1237295124281068,
+          "surfaceTilt": -0.004629630544867889,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        },
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": 1.9571786883986866,
+      "tapRemaining": 0.18
+    },
+    "credit": "3"
+  },
+  {
+    "type": "actualInertiaInput",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "distance": 21,
+        "score": 21,
+        "time": 2.1497999999999995,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": -0.003496869317285771,
+        "bodyVelocity": 0.04536471263011004,
+        "input": 1,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.002143041025599338,
+            "liquidVelocity": -0.07005814744236885,
+            "surfaceTilt": 0.005639910342885109,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 0,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 9,
+            "warningStart": 7.6,
+            "duration": 1.5
+          },
+          {
+            "id": 1,
+            "type": "step",
+            "name": "足元に段差",
+            "side": -1,
+            "onsetTime": 16,
+            "warningStart": 14.6,
+            "duration": 0.6
+          }
+        ],
+        "bodyAcceleration": 2.262493553147544,
+        "tapRemaining": 0.07999999999999981
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "distance": 23,
+        "score": 23,
+        "time": 2.349900000000008,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.04437526570705707,
+        "bodyVelocity": 0.3959006911782371,
+        "input": 1,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.026129427438916566,
+            "liquidVelocity": -0.15900762914930405,
+            "surfaceTilt": -0.07050469314597363,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 0,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 9,
+            "warningStart": 7.6,
+            "duration": 1.5
+          },
+          {
+            "id": 1,
+            "type": "step",
+            "name": "足元に段差",
+            "side": -1,
+            "onsetTime": 16,
+            "warningStart": 14.6,
+            "duration": 0.6
+          }
+        ],
+        "bodyAcceleration": 1.3385889292827027,
+        "tapRemaining": 0.02999999999999984
+      },
+      "credit": "3"
+    }
+  },
+  {
+    "type": "capture",
+    "name": "first-motion",
+    "path": "docs/ten-game/screenshots/game008/mobile-first-motion.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 24,
+      "score": 24,
+      "time": 2.4165000000000103,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.07192999201660863,
+      "bodyVelocity": 0.39287649802151314,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.03480278075481278,
+          "liquidVelocity": -0.08102530004961732,
+          "surfaceTilt": -0.1067327727714214,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        },
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": -1.0175003804135032,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 77,
+      "score": 77,
+      "time": 7.716399999999921,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.024058839451216056,
+      "bodyVelocity": -0.058542142162484934,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016901817173775409,
+          "liquidVelocity": 0.0809484395807939,
+          "surfaceTilt": -0.025749021168593598,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 0,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": -1,
+        "onsetTime": 9,
+        "warningStart": 7.6,
+        "duration": 1.5
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        },
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": -2.1176744697100527,
+      "tapRemaining": 0.0798999999999995
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "warning-people",
+    "path": "docs/ten-game/screenshots/game008/mobile-warning-people.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 78,
+      "score": 78,
+      "time": 7.799599999999918,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.012055637616497002,
+      "bodyVelocity": -0.20730005389604214,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.008420571732169148,
+          "liquidVelocity": 0.14167449745978958,
+          "surfaceTilt": -0.003635065884327854,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 0,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": -1,
+        "onsetTime": 9,
+        "warningStart": 7.6,
+        "duration": 1.5
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        },
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": 0.689033905952027,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 149,
+      "score": 149,
+      "time": 14.699399999999764,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.03980127653536357,
+      "bodyVelocity": -0.054810024694315215,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0017437875391416618,
+          "liquidVelocity": 0.08085169634482639,
+          "surfaceTilt": -0.04154506407450523,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 1,
+        "type": "step",
+        "name": "足元に段差",
+        "side": -1,
+        "onsetTime": 16,
+        "warningStart": 14.6,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": 1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.1174864455116422,
+      "tapRemaining": 0.07999999999999986
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "warning-step",
+    "path": "docs/ten-game/screenshots/game008/mobile-warning-step.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 446.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 149,
+      "score": 149,
+      "time": 14.765999999999764,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.031431817465528776,
+      "bodyVelocity": -0.18454998050965332,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0059757391713865385,
+          "liquidVelocity": 0.14009368413072612,
+          "surfaceTilt": -0.02545607829414224,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 1,
+        "type": "step",
+        "name": "足元に段差",
+        "side": -1,
+        "onsetTime": 16,
+        "warningStart": 14.6,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": 1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -1.7882366122709303,
+      "tapRemaining": 0.013399999999999496
+    },
+    "credit": "3"
+  },
+  {
+    "type": "pauseFreeze",
+    "before": {
+      "state": "paused",
+      "inspection": {
+        "distance": 161,
+        "score": 161,
+        "time": 15.882699999999739,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": -0.01963189560345563,
+        "bodyVelocity": 0.21478071887428665,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.011127649673130107,
+            "liquidVelocity": -0.1218917546471091,
+            "surfaceTilt": 0.008504245930325522,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 1,
+            "type": "step",
+            "name": "足元に段差",
+            "side": -1,
+            "onsetTime": 16,
+            "warningStart": 14.6,
+            "duration": 0.6
+          },
+          {
+            "id": 2,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": 1,
+            "onsetTime": 23,
+            "warningStart": 21.6,
+            "duration": 1
+          },
+          {
+            "id": 3,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": 1,
+            "onsetTime": 30,
+            "warningStart": 28.6,
+            "duration": 1.2
+          }
+        ],
+        "bodyAcceleration": -0.6912915759284117,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "paused",
+      "inspection": {
+        "distance": 161,
+        "score": 161,
+        "time": 15.882699999999739,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": -0.01963189560345563,
+        "bodyVelocity": 0.21478071887428665,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.011127649673130107,
+            "liquidVelocity": -0.1218917546471091,
+            "surfaceTilt": 0.008504245930325522,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 1,
+            "type": "step",
+            "name": "足元に段差",
+            "side": -1,
+            "onsetTime": 16,
+            "warningStart": 14.6,
+            "duration": 0.6
+          },
+          {
+            "id": 2,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": 1,
+            "onsetTime": 23,
+            "warningStart": 21.6,
+            "duration": 1
+          },
+          {
+            "id": 3,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": 1,
+            "onsetTime": 30,
+            "warningStart": 28.6,
+            "duration": 1.2
+          }
+        ],
+        "bodyAcceleration": -0.6912915759284117,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "same": true
+  },
+  {
+    "type": "capture",
+    "name": "gameplay",
+    "path": "docs/ten-game/screenshots/game008/mobile-gameplay.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 162,
+      "score": 162,
+      "time": 15.959299999995268,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.0051575913641867775,
+      "bodyVelocity": 0.1676160652928296,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0171860735572986,
+          "liquidVelocity": -0.04465706026072567,
+          "surfaceTilt": -0.012028482193111822,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 1,
+        "type": "step",
+        "name": "足元に段差",
+        "side": -1,
+        "onsetTime": 16,
+        "warningStart": 14.6,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": 1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": -0.5385759666283457,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 221,
+      "score": 221,
+      "time": 21.692399999994944,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.006895388881669869,
+      "bodyVelocity": 0.109815316165745,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0027185123880799685,
+          "liquidVelocity": -0.07782456987821154,
+          "surfaceTilt": -0.0041768764935899,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 2,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": 1,
+        "onsetTime": 23,
+        "warningStart": 21.6,
+        "duration": 1
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": 1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 2.2242852728797513,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "warning-stop",
+    "path": "docs/ten-game/screenshots/game008/mobile-warning-stop.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 446.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 222,
+      "score": 222,
+      "time": 21.75909999999494,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.019122560716321686,
+      "bodyVelocity": 0.24423314233263574,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.004800825225424478,
+          "liquidVelocity": -0.13671923182658605,
+          "surfaceTilt": -0.023923385941746166,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 2,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": 1,
+        "onsetTime": 23,
+        "warningStart": 21.6,
+        "duration": 1
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": 1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 1.8215380952683191,
+      "tapRemaining": 0.01329999999999912
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 294,
+      "score": 294,
+      "time": 28.65879999999455,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.0059957632107506915,
+      "bodyVelocity": -0.05458582868161163,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.002509880446501878,
+          "liquidVelocity": 0.09008159214772758,
+          "surfaceTilt": 0.0034858827642488136,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 3,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": 1,
+        "onsetTime": 30,
+        "warningStart": 28.6,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        },
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        }
+      ],
+      "bodyAcceleration": -2.1475337360268925,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "warning-door",
+    "path": "docs/ten-game/screenshots/game008/mobile-warning-door.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 295,
+      "score": 295,
+      "time": 28.742099999994544,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.01779444156852053,
+      "bodyVelocity": -0.2057784958013919,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.008344346006390061,
+          "liquidVelocity": 0.14993387566249855,
+          "surfaceTilt": 0.02613878757491059,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 3,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": 1,
+        "onsetTime": 30,
+        "warningStart": 28.6,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        },
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        }
+      ],
+      "bodyAcceleration": 0.6653276894885344,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 369,
+      "score": 369,
+      "time": 35.69179999999686,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.01527790166581339,
+      "bodyVelocity": -0.06554734260973911,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.001325018277279245,
+          "liquidVelocity": 0.08056228183005648,
+          "surfaceTilt": 0.013952883388534145,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 4,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 37,
+        "warningStart": 35.6,
+        "duration": 2.4
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        {
+          "id": 5,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 44,
+          "warningStart": 42.6,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": -2.153657530218349,
+      "tapRemaining": 0.0800999999999984
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "warning-train",
+    "path": "docs/ten-game/screenshots/game008/mobile-warning-train.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 446.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 370,
+      "score": 370,
+      "time": 35.7584999999969,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.024410927996980865,
+      "bodyVelocity": -0.19626971029726376,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.006387204951157169,
+          "liquidVelocity": 0.1397987369162813,
+          "surfaceTilt": 0.030798132948138032,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 4,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 37,
+        "warningStart": 35.6,
+        "duration": 2.4
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        {
+          "id": 5,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 44,
+          "warningStart": 42.6,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": -1.799892453650681,
+      "tapRemaining": 0.013400000000001307
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "train-motion-1",
+    "path": "docs/ten-game/screenshots/game008/mobile-train-motion-1.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 385,
+      "score": 385,
+      "time": 37.10839999999781,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.028850877370339346,
+      "bodyVelocity": 0.015754870858386855,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.001559368733293272,
+          "liquidVelocity": 0.034594463036270735,
+          "surfaceTilt": -0.030410246103632618,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": {
+        "id": 4,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 37,
+        "warningStart": 35.6,
+        "duration": 2.4
+      },
+      "hazards": [
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        {
+          "id": 5,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 44,
+          "warningStart": 42.6,
+          "duration": 1.5
+        },
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": -0.026733003616409318,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "train-motion-2",
+    "path": "docs/ten-game/screenshots/game008/mobile-train-motion-2.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 389,
+      "score": 389,
+      "time": 37.5417999999981,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.04052975170853551,
+      "bodyVelocity": 0.043280344130018425,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.06615215429100375,
+          "liquidVelocity": 0.18044901384622503,
+          "surfaceTilt": 0.025622402582468243,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": {
+        "id": 4,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 37,
+        "warningStart": 35.6,
+        "duration": 2.4
+      },
+      "hazards": [
+        {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        {
+          "id": 5,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 44,
+          "warningStart": 42.6,
+          "duration": 1.5
+        },
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": 0.03675616548769306,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "actualTrainDirection",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "distance": 384,
+        "score": 384,
+        "time": 37.041799999997764,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.02771860803270347,
+        "bodyVelocity": 0.018929453787861608,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.003497117164869906,
+            "liquidVelocity": 0.025522869422774944,
+            "surfaceTilt": -0.031215725197573378,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        "hazards": [
+          {
+            "id": 4,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": 1,
+            "onsetTime": 37,
+            "warningStart": 35.6,
+            "duration": 2.4
+          },
+          {
+            "id": 5,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 44,
+            "warningStart": 42.6,
+            "duration": 1.5
+          },
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          }
+        ],
+        "bodyAcceleration": -0.0702134504098947,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "distance": 390,
+        "score": 390,
+        "time": 37.55839999999811,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.04125356680011417,
+        "bodyVelocity": 0.043772023512622986,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.0689367565792142,
+            "liquidVelocity": 0.15969865361932187,
+            "surfaceTilt": 0.02768318977910004,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": {
+          "id": 4,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 37,
+          "warningStart": 35.6,
+          "duration": 2.4
+        },
+        "hazards": [
+          {
+            "id": 4,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": 1,
+            "onsetTime": 37,
+            "warningStart": 35.6,
+            "duration": 2.4
+          },
+          {
+            "id": 5,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 44,
+            "warningStart": 42.6,
+            "duration": 1.5
+          },
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          }
+        ],
+        "bodyAcceleration": 0.025066876817911452,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    }
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 444,
+      "score": 444,
+      "time": 42.62490000000151,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.011192981687852306,
+      "bodyVelocity": -0.2953360474989109,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.015516358745404487,
+          "liquidVelocity": 0.1617232986615018,
+          "surfaceTilt": 0.0043233770575521815,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": {
+        "id": 5,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": -1,
+        "onsetTime": 44,
+        "warningStart": 42.6,
+        "duration": 1.5
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 5,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 44,
+          "warningStart": 42.6,
+          "duration": 1.5
+        },
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": -1.4625681052987445,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "500m-choice",
+    "path": "docs/ten-game/screenshots/game008/mobile-500m-choice.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 261
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-1920x1080",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-1920x1080.png",
+    "layout": {
+      "width": 1920,
+      "height": 1080,
+      "documentWidth": 1920,
+      "documentHeight": 1080,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 225,
+          "y": 171,
+          "width": 1192,
+          "height": 803
+        },
+        {
+          "selector": "left-button",
+          "x": 225,
+          "y": 922,
+          "width": 590,
+          "height": 52
+        },
+        {
+          "selector": "right-button",
+          "x": 827,
+          "y": 922,
+          "width": 590,
+          "height": 52
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1445,
+          "y": 189,
+          "width": 250,
+          "height": 458.859375
+        },
+        {
+          "selector": "title-button",
+          "x": 1464,
+          "y": 542.265625,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-1440x900",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-1440x900.png",
+    "layout": {
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 36,
+          "y": 171,
+          "width": 1090,
+          "height": 623
+        },
+        {
+          "selector": "left-button",
+          "x": 36,
+          "y": 742,
+          "width": 539,
+          "height": 52
+        },
+        {
+          "selector": "right-button",
+          "x": 587,
+          "y": 742,
+          "width": 539,
+          "height": 52
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1154,
+          "y": 189,
+          "width": 250,
+          "height": 458.859375
+        },
+        {
+          "selector": "title-button",
+          "x": 1173,
+          "y": 542.265625,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-1280x720",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-1280x720.png",
+    "layout": {
+      "width": 1280,
+      "height": 720,
+      "documentWidth": 1280,
+      "documentHeight": 720,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 27,
+          "y": 137,
+          "width": 969,
+          "height": 474
+        },
+        {
+          "selector": "left-button",
+          "x": 27,
+          "y": 564,
+          "width": 479.5,
+          "height": 47
+        },
+        {
+          "selector": "right-button",
+          "x": 516.5,
+          "y": 564,
+          "width": 479.5,
+          "height": 47
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1018,
+          "y": 145,
+          "width": 235,
+          "height": 423.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 1033,
+          "y": 474.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-1024x768",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-1024x768.png",
+    "layout": {
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 27,
+          "y": 137,
+          "width": 713,
+          "height": 522
+        },
+        {
+          "selector": "left-button",
+          "x": 27,
+          "y": 612,
+          "width": 351.5,
+          "height": 47
+        },
+        {
+          "selector": "right-button",
+          "x": 388.5,
+          "y": 612,
+          "width": 351.5,
+          "height": 47
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 762,
+          "y": 145,
+          "width": 235,
+          "height": 423.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 777,
+          "y": 474.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-390x844",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-390x844.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 261
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-320x568",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-320x568.png",
+    "layout": {
+      "width": 320,
+      "height": 568,
+      "documentWidth": 320,
+      "documentHeight": 568,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 10,
+          "y": 117,
+          "width": 300,
+          "height": 188
+        },
+        {
+          "selector": "left-button",
+          "x": 10,
+          "y": 261,
+          "width": 147,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 163,
+          "y": 261,
+          "width": 147,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 10,
+          "y": 309,
+          "width": 300,
+          "height": 235.109375
+        },
+        {
+          "selector": "title-button",
+          "x": 211.265625,
+          "y": 460.734375,
+          "width": 87.734375,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-844x390",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-844x390.png",
+    "layout": {
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "documentHeight": 390,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 15,
+          "y": 103,
+          "width": 574,
+          "height": 254
+        },
+        {
+          "selector": "left-button",
+          "x": 15,
+          "y": 313,
+          "width": 283.5,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 305.5,
+          "y": 313,
+          "width": 283.5,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 603,
+          "y": 103,
+          "width": 226,
+          "height": 250.6875
+        },
+        {
+          "selector": "title-button",
+          "x": 753.6875,
+          "y": 276.6875,
+          "width": 64.3125,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-second-cup-choice-568x320",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-second-cup-choice-568x320.png",
+    "layout": {
+      "width": 568,
+      "height": 320,
+      "documentWidth": 568,
+      "documentHeight": 321,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 10,
+          "y": 99,
+          "width": 320,
+          "height": 184
+        },
+        {
+          "selector": "left-button",
+          "x": 10,
+          "y": 239,
+          "width": 157.5,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 172.5,
+          "y": 239,
+          "width": 157.5,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 340,
+          "y": 99,
+          "width": 218,
+          "height": 213.171875
+        },
+        {
+          "selector": "title-button",
+          "x": 486,
+          "y": 241.171875,
+          "width": 63,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "finalEarnedOfferViewportObservations",
+    "label": "second-cup-choice",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 500,
+        "score": 500,
+        "time": 47.65800000000487,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.004536216455954953,
+        "bodyVelocity": 0.00768957222602446,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0016791262155026576,
+            "liquidVelocity": 0.032086432825515175,
+            "surfaceTilt": -0.0062153426714576104,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": "second_cup",
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -2.421567973573464,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 500,
+        "score": 500,
+        "time": 47.65800000000487,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.004536216455954953,
+        "bodyVelocity": 0.00768957222602446,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0016791262155026576,
+            "liquidVelocity": 0.032086432825515175,
+            "surfaceTilt": -0.0062153426714576104,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": "second_cup",
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -2.421567973573464,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "qaCasePassClaim": false
+  },
+  {
+    "type": "choiceFreeze",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 500,
+        "score": 500,
+        "time": 47.65800000000487,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.004536216455954953,
+        "bodyVelocity": 0.00768957222602446,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0016791262155026576,
+            "liquidVelocity": 0.032086432825515175,
+            "surfaceTilt": -0.0062153426714576104,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": "second_cup",
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -2.421567973573464,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 500,
+        "score": 500,
+        "time": 47.65800000000487,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.004536216455954953,
+        "bodyVelocity": 0.00768957222602446,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0016791262155026576,
+            "liquidVelocity": 0.032086432825515175,
+            "surfaceTilt": -0.0062153426714576104,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": "second_cup",
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -2.421567973573464,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "same": true
+  },
+  {
+    "type": "choiceAccepted",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 500,
+        "score": 500,
+        "time": 47.65800000000487,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.004536216455954953,
+        "bodyVelocity": 0.00768957222602446,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0016791262155026576,
+            "liquidVelocity": 0.032086432825515175,
+            "surfaceTilt": -0.0062153426714576104,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          }
+        ],
+        "cupCount": 1,
+        "minRemaining": 100,
+        "pending": "second_cup",
+        "multiplier": 1,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -2.421567973573464,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65800000000487,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.004536216455954953,
+      "bodyVelocity": 0.00768957222602446,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0016791262155026576,
+          "liquidVelocity": 0.032086432825515175,
+          "surfaceTilt": -0.0062153426714576104,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": -0.004536216455954953,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -2.421567973573464,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "2-cups",
+    "path": "docs/ten-game/screenshots/game008/mobile-2-cups.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 507,
+      "score": 510,
+      "time": 48.317700000005296,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.0027481361159266983,
+      "bodyVelocity": -0.017437085687760076,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0013923465874460912,
+          "liquidVelocity": -0.009752688340949495,
+          "surfaceTilt": -0.0013557895284806072,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": -0.00023688552683843162,
+          "liquidVelocity": 0.007489906109059288,
+          "surfaceTilt": -0.0029850216427651298,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": -0.037059435591965305,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "2-cups-motion",
+    "path": "docs/ten-game/screenshots/game008/mobile-2-cups-motion.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 510,
+      "score": 516,
+      "time": 48.63430000000551,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.0039022024338760514,
+      "bodyVelocity": -0.021881006903650333,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0014564334611763363,
+          "liquidVelocity": -0.007000187288016132,
+          "surfaceTilt": 0.002445768972699715,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": 0.002536101868641686,
+          "liquidVelocity": 0.007705303917337167,
+          "surfaceTilt": 0.006438304302517737,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": 0.011472044799388004,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "independentLiquids",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "distance": 507,
+        "score": 511,
+        "time": 48.334300000005314,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.0024524003804947806,
+        "bodyVelocity": -0.018038239320568045,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.0012295311986663033,
+            "liquidVelocity": -0.00983704347420434,
+            "surfaceTilt": -0.0012228691818284773,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 100,
+            "liquidAngle": -0.00010892304100367748,
+            "liquidVelocity": 0.007835818756409369,
+            "surfaceTilt": -0.002561323421498458,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1.5,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": -0.035458629014741005,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "distance": 510,
+        "score": 516,
+        "time": 48.63430000000551,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": -0.0039022024338760514,
+        "bodyVelocity": -0.021881006903650333,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": -0.0014564334611763363,
+            "liquidVelocity": -0.007000187288016132,
+            "surfaceTilt": 0.002445768972699715,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 100,
+            "liquidAngle": 0.002536101868641686,
+            "liquidVelocity": 0.007705303917337167,
+            "surfaceTilt": 0.006438304302517737,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 100,
+        "pending": null,
+        "multiplier": 1.5,
+        "preview": null,
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 6,
+            "type": "step",
+            "name": "足元に段差",
+            "side": 1,
+            "onsetTime": 51,
+            "warningStart": 49.6,
+            "duration": 0.6
+          },
+          {
+            "id": 7,
+            "type": "stop",
+            "name": "急停止に注意",
+            "side": -1,
+            "onsetTime": 58,
+            "warningStart": 56.6,
+            "duration": 1
+          }
+        ],
+        "bodyAcceleration": 0.011472044799388004,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    }
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 522,
+      "score": 533,
+      "time": 49.68420000000625,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.0004172881834185906,
+      "bodyVelocity": 0.0285138013095255,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0005957896170037362,
+          "liquidVelocity": 0.006082031149285439,
+          "surfaceTilt": 0.0010130778004223268,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": -0.004743707651500624,
+          "liquidVelocity": -0.00847797981703725,
+          "surfaceTilt": -0.004326419468082034,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 6,
+        "type": "step",
+        "name": "足元に段差",
+        "side": 1,
+        "onsetTime": 51,
+        "warningStart": 49.6,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": 0.01278412658308858,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 600,
+      "score": 650,
+      "time": 56.70070000001094,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.004738752329180128,
+      "bodyVelocity": -0.1021983654293556,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0000514460692293407,
+          "liquidVelocity": 0.0930662576240442,
+          "surfaceTilt": 0.004687306259950788,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": -0.004284386207915425,
+          "liquidVelocity": 0.10717396703639065,
+          "surfaceTilt": 0.00045436612126470346,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 7,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 58,
+        "warningStart": 56.6,
+        "duration": 1
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        },
+        {
+          "id": 8,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 65,
+          "warningStart": 63.6,
+          "duration": 1.2
+        },
+        {
+          "id": 9,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 70.5,
+          "warningStart": 69.1,
+          "duration": 2.4
+        }
+      ],
+      "bodyAcceleration": -2.030238647900675,
+      "tapRemaining": 0.06330000000000276
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 678,
+      "score": 767,
+      "time": 63.6338000000156,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.010991109146719379,
+      "bodyVelocity": -0.12213142065888813,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0022251689064856466,
+          "liquidVelocity": 0.09302730959443052,
+          "surfaceTilt": -0.008765940240233732,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": 0.00322666155196886,
+          "liquidVelocity": 0.1071103999560803,
+          "surfaceTilt": -0.007764447594750519,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 8,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": 1,
+        "onsetTime": 65,
+        "warningStart": 63.6,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 8,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 65,
+          "warningStart": 63.6,
+          "duration": 1.2
+        },
+        {
+          "id": 9,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 70.5,
+          "warningStart": 69.1,
+          "duration": 2.4
+        },
+        {
+          "id": 10,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 76,
+          "warningStart": 74.6,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": -1.9562226517775152,
+      "tapRemaining": 0.06319999999999695
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 742,
+      "score": 863,
+      "time": 69.20010000001261,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.009745767093492395,
+      "bodyVelocity": 0.1808532843275723,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0026210102407740925,
+          "liquidVelocity": -0.2216472250547325,
+          "surfaceTilt": 0.012366777334266488,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 100,
+          "liquidAngle": 0.016214713139813108,
+          "liquidVelocity": -0.2775969042391755,
+          "surfaceTilt": 0.0259604802333055,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 9,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": 1,
+        "onsetTime": 70.5,
+        "warningStart": 69.1,
+        "duration": 2.4
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 9,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 70.5,
+          "warningStart": 69.1,
+          "duration": 2.4
+        },
+        {
+          "id": 10,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 76,
+          "warningStart": 74.6,
+          "duration": 1.5
+        },
+        {
+          "id": 11,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 81.5,
+          "warningStart": 80.1,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": 1.8200449372519818,
+      "tapRemaining": 0.08009999999999112
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 805,
+      "score": 958,
+      "time": 74.70000000000917,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.017484699757170406,
+      "bodyVelocity": 0.12373701275574518,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0035860857134807776,
+          "liquidVelocity": -0.0959752680043992,
+          "surfaceTilt": 0.013898614043689628,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": 0.02665814266462252,
+          "liquidVelocity": -0.3231900817142908,
+          "surfaceTilt": 0.04414284242179292,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 10,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": -1,
+        "onsetTime": 76,
+        "warningStart": 74.6,
+        "duration": 1.5
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 10,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 76,
+          "warningStart": 74.6,
+          "duration": 1.5
+        },
+        {
+          "id": 11,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 81.5,
+          "warningStart": 80.1,
+          "duration": 0.6
+        },
+        {
+          "id": 12,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 87,
+          "warningStart": 85.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": 2.1131242840412265,
+      "tapRemaining": 0.06330000000000276
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 869,
+      "score": 1054,
+      "time": 80.18310000000575,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.012311971407759737,
+      "bodyVelocity": 0.12286531411321214,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.002958034547416188,
+          "liquidVelocity": -0.0725452851112922,
+          "surfaceTilt": -0.00935393686034355,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": 0.002661191766877012,
+          "liquidVelocity": -0.12124352156065704,
+          "surfaceTilt": -0.009650779640882725,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 11,
+        "type": "step",
+        "name": "足元に段差",
+        "side": 1,
+        "onsetTime": 81.5,
+        "warningStart": 80.1,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 11,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 81.5,
+          "warningStart": 80.1,
+          "duration": 0.6
+        },
+        {
+          "id": 12,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 87,
+          "warningStart": 85.6,
+          "duration": 1
+        },
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 2.103378589368307,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 934,
+      "score": 1152,
+      "time": 85.71620000000229,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.013456474593203756,
+      "bodyVelocity": -0.1274087372861744,
+      "input": -1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.0009114211435087516,
+          "liquidVelocity": 0.07431886446884017,
+          "surfaceTilt": -0.012545053449695006,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": 0.010723256824794369,
+          "liquidVelocity": 0.16299217474618552,
+          "surfaceTilt": -0.002733217768409388,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 1.5,
+      "preview": {
+        "id": 12,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 87,
+        "warningStart": 85.6,
+        "duration": 1
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 12,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 87,
+          "warningStart": 85.6,
+          "duration": 1
+        },
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        }
+      ],
+      "bodyAcceleration": -2.109150990938014,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "1000m-choice",
+    "path": "docs/ten-game/screenshots/game008/mobile-1000m-choice.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 261
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-1920x1080",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-1920x1080.png",
+    "layout": {
+      "width": 1920,
+      "height": 1080,
+      "documentWidth": 1920,
+      "documentHeight": 1080,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 225,
+          "y": 171,
+          "width": 1192,
+          "height": 803
+        },
+        {
+          "selector": "left-button",
+          "x": 225,
+          "y": 922,
+          "width": 590,
+          "height": 52
+        },
+        {
+          "selector": "right-button",
+          "x": 827,
+          "y": 922,
+          "width": 590,
+          "height": 52
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1445,
+          "y": 189,
+          "width": 250,
+          "height": 437.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 1464,
+          "y": 521.375,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-1440x900",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-1440x900.png",
+    "layout": {
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 36,
+          "y": 171,
+          "width": 1090,
+          "height": 623
+        },
+        {
+          "selector": "left-button",
+          "x": 36,
+          "y": 742,
+          "width": 539,
+          "height": 52
+        },
+        {
+          "selector": "right-button",
+          "x": 587,
+          "y": 742,
+          "width": 539,
+          "height": 52
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1154,
+          "y": 189,
+          "width": 250,
+          "height": 437.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 1173,
+          "y": 521.375,
+          "width": 212,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-1280x720",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-1280x720.png",
+    "layout": {
+      "width": 1280,
+      "height": 720,
+      "documentWidth": 1280,
+      "documentHeight": 720,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 27,
+          "y": 137,
+          "width": 969,
+          "height": 474
+        },
+        {
+          "selector": "left-button",
+          "x": 27,
+          "y": 564,
+          "width": 479.5,
+          "height": 47
+        },
+        {
+          "selector": "right-button",
+          "x": 516.5,
+          "y": 564,
+          "width": 479.5,
+          "height": 47
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 1018,
+          "y": 145,
+          "width": 235,
+          "height": 424.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 1033,
+          "y": 475.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-1024x768",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-1024x768.png",
+    "layout": {
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 27,
+          "y": 137,
+          "width": 713,
+          "height": 522
+        },
+        {
+          "selector": "left-button",
+          "x": 27,
+          "y": 612,
+          "width": 351.5,
+          "height": 47
+        },
+        {
+          "selector": "right-button",
+          "x": 388.5,
+          "y": 612,
+          "width": 351.5,
+          "height": 47
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 762,
+          "y": 145,
+          "width": 235,
+          "height": 424.96875
+        },
+        {
+          "selector": "title-button",
+          "x": 777,
+          "y": 475.78125,
+          "width": 205,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-390x844",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-390x844.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 261
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 348,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 18,
+          "y": 408,
+          "width": 354,
+          "height": 325.953125
+        },
+        {
+          "selector": "title-button",
+          "x": 33,
+          "y": 641.765625,
+          "width": 324,
+          "height": 46
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-320x568",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-320x568.png",
+    "layout": {
+      "width": 320,
+      "height": 568,
+      "documentWidth": 320,
+      "documentHeight": 568,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 10,
+          "y": 117,
+          "width": 300,
+          "height": 188
+        },
+        {
+          "selector": "left-button",
+          "x": 10,
+          "y": 261,
+          "width": 147,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 163,
+          "y": 261,
+          "width": 147,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 10,
+          "y": 309,
+          "width": 300,
+          "height": 235.109375
+        },
+        {
+          "selector": "title-button",
+          "x": 211.265625,
+          "y": 460.734375,
+          "width": 87.734375,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-844x390",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-844x390.png",
+    "layout": {
+      "width": 844,
+      "height": 390,
+      "documentWidth": 844,
+      "documentHeight": 390,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 15,
+          "y": 103,
+          "width": 574,
+          "height": 254
+        },
+        {
+          "selector": "left-button",
+          "x": 15,
+          "y": 313,
+          "width": 283.5,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 305.5,
+          "y": 313,
+          "width": 283.5,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 603,
+          "y": 103,
+          "width": 226,
+          "height": 226.890625
+        },
+        {
+          "selector": "title-button",
+          "x": 753.6875,
+          "y": 252.890625,
+          "width": 64.3125,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "final-earned-third-cup-choice-568x320",
+    "path": "docs/ten-game/screenshots/game008/mobile-final-earned-third-cup-choice-568x320.png",
+    "layout": {
+      "width": 568,
+      "height": 320,
+      "documentWidth": 568,
+      "documentHeight": 320,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 10,
+          "y": 99,
+          "width": 320,
+          "height": 184
+        },
+        {
+          "selector": "left-button",
+          "x": 10,
+          "y": 239,
+          "width": 157.5,
+          "height": 44
+        },
+        {
+          "selector": "right-button",
+          "x": 172.5,
+          "y": 239,
+          "width": 157.5,
+          "height": 44
+        },
+        {
+          "selector": "receipt choice-note",
+          "x": 340,
+          "y": 99,
+          "width": 218,
+          "height": 192.171875
+        },
+        {
+          "selector": "title-button",
+          "x": 486,
+          "y": 220.171875,
+          "width": 63,
+          "height": 44
+        }
+      ]
+    },
+    "state": "milestone",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.58499483378232,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "finalEarnedOfferViewportObservations",
+    "label": "third-cup-choice",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 1000,
+        "score": 1249,
+        "time": 91.16596666666555,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.008197593879159068,
+        "bodyVelocity": 0.14744529563007128,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.001904125764053325,
+            "liquidVelocity": -0.03705486587363196,
+            "surfaceTilt": -0.006293468115105743,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": -0.000676525321533503,
+            "liquidVelocity": -0.06577719109143233,
+            "surfaceTilt": -0.008874119200692572,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 99.58499483378232,
+        "pending": "third_cup",
+        "multiplier": 1.5,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": 2.1180895175910663,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 1000,
+        "score": 1249,
+        "time": 91.16596666666555,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.008197593879159068,
+        "bodyVelocity": 0.14744529563007128,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.001904125764053325,
+            "liquidVelocity": -0.03705486587363196,
+            "surfaceTilt": -0.006293468115105743,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": -0.000676525321533503,
+            "liquidVelocity": -0.06577719109143233,
+            "surfaceTilt": -0.008874119200692572,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 99.58499483378232,
+        "pending": "third_cup",
+        "multiplier": 1.5,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": 2.1180895175910663,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "qaCasePassClaim": false
+  },
+  {
+    "type": "choiceFreeze",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 1000,
+        "score": 1249,
+        "time": 91.16596666666555,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.008197593879159068,
+        "bodyVelocity": 0.14744529563007128,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.001904125764053325,
+            "liquidVelocity": -0.03705486587363196,
+            "surfaceTilt": -0.006293468115105743,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": -0.000676525321533503,
+            "liquidVelocity": -0.06577719109143233,
+            "surfaceTilt": -0.008874119200692572,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 99.58499483378232,
+        "pending": "third_cup",
+        "multiplier": 1.5,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": 2.1180895175910663,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 1000,
+        "score": 1249,
+        "time": 91.16596666666555,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.008197593879159068,
+        "bodyVelocity": 0.14744529563007128,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.001904125764053325,
+            "liquidVelocity": -0.03705486587363196,
+            "surfaceTilt": -0.006293468115105743,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": -0.000676525321533503,
+            "liquidVelocity": -0.06577719109143233,
+            "surfaceTilt": -0.008874119200692572,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 99.58499483378232,
+        "pending": "third_cup",
+        "multiplier": 1.5,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": 2.1180895175910663,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "same": true
+  },
+  {
+    "type": "choiceAccepted",
+    "before": {
+      "state": "milestone",
+      "inspection": {
+        "distance": 1000,
+        "score": 1249,
+        "time": 91.16596666666555,
+        "alive": true,
+        "phase": "choice",
+        "bodyLean": 0.008197593879159068,
+        "bodyVelocity": 0.14744529563007128,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.001904125764053325,
+            "liquidVelocity": -0.03705486587363196,
+            "surfaceTilt": -0.006293468115105743,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": -0.000676525321533503,
+            "liquidVelocity": -0.06577719109143233,
+            "surfaceTilt": -0.008874119200692572,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          }
+        ],
+        "cupCount": 2,
+        "minRemaining": 99.58499483378232,
+        "pending": "third_cup",
+        "multiplier": 1.5,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": 2.1180895175910663,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": -0.008197593879159068,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16596666666555,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.008197593879159068,
+      "bodyVelocity": 0.14744529563007128,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.001904125764053325,
+          "liquidVelocity": -0.03705486587363196,
+          "surfaceTilt": -0.006293468115105743,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.000676525321533503,
+          "liquidVelocity": -0.06577719109143233,
+          "surfaceTilt": -0.008874119200692572,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": -0.008197593879159068,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 2.1180895175910663,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "3-cups",
+    "path": "docs/ten-game/screenshots/game008/mobile-3-cups.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 1008,
+      "score": 1266,
+      "time": 91.84206666666364,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.06904076697752932,
+      "bodyVelocity": 0.05582719498249792,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.006261134339279643,
+          "liquidVelocity": 0.002508200038050327,
+          "surfaceTilt": -0.06277963263824968,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": 0.005508855364402608,
+          "liquidVelocity": 0.021533727764877705,
+          "surfaceTilt": -0.06353191161312671,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 100,
+          "liquidAngle": 0.0040129635834544285,
+          "liquidVelocity": -0.026452785772158826,
+          "surfaceTilt": -0.06502780339407489,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": -0.0783831921591783,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "3-cups-motion",
+    "path": "docs/ten-game/screenshots/game008/mobile-3-cups-motion.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 357.5
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 444.5,
+          "width": 177,
+          "height": 46
+        }
+      ]
+    },
+    "state": "playing",
+    "inspection": {
+      "distance": 1011,
+      "score": 1273,
+      "time": 92.15866666666345,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.08262993565482993,
+      "bodyVelocity": 0.03028240408467049,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.004798172447543325,
+          "liquidVelocity": -0.009501981340239496,
+          "surfaceTilt": -0.0778317632072866,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": 0.008455284196124029,
+          "liquidVelocity": -0.0018386008119624293,
+          "surfaceTilt": -0.0741746514587059,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 100,
+          "liquidAngle": -0.0011459757455363707,
+          "liquidVelocity": 0.0018996980908641842,
+          "surfaceTilt": -0.0837759114003663,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": -1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": -0.08000676875944543,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "independentLiquids",
+    "before": {
+      "state": "playing",
+      "inspection": {
+        "distance": 1008,
+        "score": 1266,
+        "time": 91.84206666666364,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.06904076697752932,
+        "bodyVelocity": 0.05582719498249792,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.006261134339279643,
+            "liquidVelocity": 0.002508200038050327,
+            "surfaceTilt": -0.06277963263824968,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": 0.005508855364402608,
+            "liquidVelocity": 0.021533727764877705,
+            "surfaceTilt": -0.06353191161312671,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          },
+          {
+            "id": 2,
+            "name": "会長の分",
+            "remaining": 100,
+            "liquidAngle": 0.0040129635834544285,
+            "liquidVelocity": -0.026452785772158826,
+            "surfaceTilt": -0.06502780339407489,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 5.3,
+            "damping": 0.12
+          }
+        ],
+        "cupCount": 3,
+        "minRemaining": 99.58499483378232,
+        "pending": null,
+        "multiplier": 2,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": -0.0783831921591783,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    },
+    "after": {
+      "state": "playing",
+      "inspection": {
+        "distance": 1011,
+        "score": 1273,
+        "time": 92.15866666666345,
+        "alive": true,
+        "phase": "walking",
+        "bodyLean": 0.08262993565482993,
+        "bodyVelocity": 0.03028240408467049,
+        "input": 0,
+        "cups": [
+          {
+            "id": 0,
+            "name": "あなたの分",
+            "remaining": 100,
+            "liquidAngle": 0.004798172447543325,
+            "liquidVelocity": -0.009501981340239496,
+            "surfaceTilt": -0.0778317632072866,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 4.2,
+            "damping": 0.52
+          },
+          {
+            "id": 1,
+            "name": "部長の分",
+            "remaining": 99.58499483378232,
+            "liquidAngle": 0.008455284196124029,
+            "liquidVelocity": -0.0018386008119624293,
+            "surfaceTilt": -0.0741746514587059,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 3.4,
+            "damping": 0.28
+          },
+          {
+            "id": 2,
+            "name": "会長の分",
+            "remaining": 100,
+            "liquidAngle": -0.0011459757455363707,
+            "liquidVelocity": 0.0018996980908641842,
+            "surfaceTilt": -0.0837759114003663,
+            "spilling": false,
+            "spillRate": 0,
+            "frequency": 5.3,
+            "damping": 0.12
+          }
+        ],
+        "cupCount": 3,
+        "minRemaining": 99.58499483378232,
+        "pending": null,
+        "multiplier": 2,
+        "preview": {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        "activeEvent": null,
+        "hazards": [
+          {
+            "id": 13,
+            "type": "door",
+            "name": "ドアを通ります",
+            "side": -1,
+            "onsetTime": 92.5,
+            "warningStart": 91.1,
+            "duration": 1.2
+          },
+          {
+            "id": 14,
+            "type": "train",
+            "name": "電車が揺れます",
+            "side": -1,
+            "onsetTime": 98,
+            "warningStart": 96.6,
+            "duration": 2.4
+          },
+          {
+            "id": 15,
+            "type": "people",
+            "name": "人とすれ違う",
+            "side": -1,
+            "onsetTime": 103.5,
+            "warningStart": 102.1,
+            "duration": 1.5
+          }
+        ],
+        "bodyAcceleration": -0.08000676875944543,
+        "tapRemaining": 0
+      },
+      "credit": "3"
+    }
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 1066,
+      "score": 1382,
+      "time": 96.69176666666061,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": -0.014403402954277552,
+      "bodyVelocity": 0.1255933638872401,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.0005615925635442166,
+          "liquidVelocity": -0.09924082842060494,
+          "surfaceTilt": 0.013841810390733336,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.58499483378232,
+          "liquidAngle": -0.007788277126700724,
+          "liquidVelocity": -0.18135788887679585,
+          "surfaceTilt": 0.006615125827576828,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 100,
+          "liquidAngle": 0.013390190330144634,
+          "liquidVelocity": -0.11134299839540454,
+          "surfaceTilt": 0.027793593284422186,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 99.58499483378232,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 14,
+        "type": "train",
+        "name": "電車が揺れます",
+        "side": -1,
+        "onsetTime": 98,
+        "warningStart": 96.6,
+        "duration": 2.4
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        },
+        {
+          "id": 16,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 109,
+          "warningStart": 107.6,
+          "duration": 0.6
+        }
+      ],
+      "bodyAcceleration": 2.0430592181791627,
+      "tapRemaining": 0.06330000000000278
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 1132,
+      "score": 1515,
+      "time": 102.20826666665717,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 59.6954528105998,
+          "liquidAngle": -0.0011418629041387229,
+          "liquidVelocity": 0.0019096134112645878,
+          "surfaceTilt": -0.9511418629041387,
+          "spilling": true,
+          "spillRate": 10.748717461256053,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 59.74526878739896,
+          "liquidAngle": -0.005601114901834625,
+          "liquidVelocity": 0.111022683087192,
+          "surfaceTilt": -0.9556011149018346,
+          "spilling": true,
+          "spillRate": 10.957881586568941,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 57.72282521525105,
+          "liquidAngle": -0.09730419758609042,
+          "liquidVelocity": 0.26451510485151375,
+          "surfaceTilt": -1.0473041975860904,
+          "spilling": true,
+          "spillRate": 15.434174169625496,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 57.72282521525105,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 15,
+        "type": "people",
+        "name": "人とすれ違う",
+        "side": -1,
+        "onsetTime": 103.5,
+        "warningStart": 102.1,
+        "duration": 1.5
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        },
+        {
+          "id": 16,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 109,
+          "warningStart": 107.6,
+          "duration": 0.6
+        },
+        {
+          "id": 17,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 113.8,
+          "warningStart": 112.39999999999999,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0.0634000000000086
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 1197,
+      "score": 1645,
+      "time": 107.65806666665377,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 19.964248920805005,
+          "liquidAngle": 0.0023620585959606235,
+          "liquidVelocity": 0.005743038794280231,
+          "surfaceTilt": -0.9476379414040393,
+          "spilling": true,
+          "spillRate": 4.2353566880567906,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 19.784912439603332,
+          "liquidAngle": 0.00930140850627114,
+          "liquidVelocity": -0.01185765245587368,
+          "surfaceTilt": -0.9406985914937288,
+          "spilling": true,
+          "spillRate": 3.901502522523712,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 19.475466835948556,
+          "liquidAngle": 0.0017760602404995071,
+          "liquidVelocity": -0.017491395490275313,
+          "surfaceTilt": -0.9482239397595005,
+          "spilling": true,
+          "spillRate": 4.183190246311597,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 19.475466835948556,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 16,
+        "type": "step",
+        "name": "足元に段差",
+        "side": 1,
+        "onsetTime": 109,
+        "warningStart": 107.6,
+        "duration": 0.6
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 16,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 109,
+          "warningStart": 107.6,
+          "duration": 0.6
+        },
+        {
+          "id": 17,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 113.8,
+          "warningStart": 112.39999999999999,
+          "duration": 1
+        },
+        {
+          "id": 18,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 118.6,
+          "warningStart": 117.19999999999999,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0.06330000000000276
+    },
+    "credit": "3"
+  },
+  {
+    "type": "hazardWarning",
+    "state": "playing",
+    "inspection": {
+      "distance": 1255,
+      "score": 1760,
+      "time": 112.42456666665079,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 1,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 6.815187581306801,
+          "liquidAngle": 0.002554637978958009,
+          "liquidVelocity": 0.004598146963215255,
+          "surfaceTilt": -0.9474453620210419,
+          "spilling": true,
+          "spillRate": 2.1229475677191756,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 6.117195482254771,
+          "liquidAngle": -0.006612616573715316,
+          "liquidVelocity": -0.044587240501768606,
+          "surfaceTilt": -0.9566126165737153,
+          "spilling": true,
+          "spillRate": 2.4233347715580544,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 5.717047517302027,
+          "liquidAngle": -0.017452892761630482,
+          "liquidVelocity": -0.08557543023878514,
+          "surfaceTilt": -0.9674528927616305,
+          "spilling": true,
+          "spillRate": 2.860626458455431,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 5.717047517302027,
+      "pending": null,
+      "multiplier": 2,
+      "preview": {
+        "id": 17,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 113.8,
+        "warningStart": 112.39999999999999,
+        "duration": 1
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 17,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 113.8,
+          "warningStart": 112.39999999999999,
+          "duration": 1
+        },
+        {
+          "id": 18,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 118.6,
+          "warningStart": 117.19999999999999,
+          "duration": 1.2
+        },
+        {
+          "id": 19,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 123.39999999999999,
+          "warningStart": 121.99999999999999,
+          "duration": 2.4
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0.07999999999999985
+    },
+    "credit": "3"
+  },
+  {
+    "type": "capture",
+    "name": "result",
+    "path": "docs/ten-game/screenshots/game008/mobile-result.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 296
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt result-note",
+          "x": 18,
+          "y": 443,
+          "width": 354,
+          "height": 235.875
+        },
+        {
+          "selector": "retry-button",
+          "x": 201,
+          "y": 599.28125,
+          "width": 100,
+          "height": 46
+        },
+        {
+          "selector": "title-button",
+          "x": 307,
+          "y": 599.28125,
+          "width": 50,
+          "height": 46
+        }
+      ]
+    },
+    "state": "result",
+    "inspection": {
+      "distance": 1280,
+      "score": 1810,
+      "time": 114.49939999998283,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 1.3269897803313477,
+          "liquidAngle": -0.11668725156273027,
+          "liquidVelocity": -0.1642421041040722,
+          "surfaceTilt": -1.0666872515627301,
+          "spilling": true,
+          "spillRate": 7.6296279734529415,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 0,
+          "liquidAngle": -0.17779198623011294,
+          "liquidVelocity": -0.39140803425015896,
+          "surfaceTilt": -1.127791986230113,
+          "spilling": true,
+          "spillRate": 11.878190466018053,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 0.2734252487916392,
+          "liquidAngle": -0.12344807011717517,
+          "liquidVelocity": -0.11119066907519354,
+          "surfaceTilt": -1.0734480701171751,
+          "spilling": true,
+          "spillRate": 7.904875813743102,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 2,
+      "preview": null,
+      "activeEvent": {
+        "id": 17,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 113.8,
+        "warningStart": 112.39999999999999,
+        "duration": 1
+      },
+      "hazards": [
+        {
+          "id": 17,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 113.8,
+          "warningStart": 112.39999999999999,
+          "duration": 1
+        },
+        {
+          "id": 18,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 118.6,
+          "warningStart": 117.19999999999999,
+          "duration": 1.2
+        },
+        {
+          "id": 19,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 123.39999999999999,
+          "warningStart": 121.99999999999999,
+          "duration": 2.4
+        },
+        {
+          "id": 20,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 128.2,
+          "warningStart": 126.79999999999998,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "2"
+  },
+  {
+    "type": "earnedResult",
+    "text": "コーヒーこぼすな\nCOFFEE WALK\nあっ、空っぽ。\n\n部長の分が0%。\n部長の分のコーヒーが空になりました。\n\n1810\nSCORE\nNEW BEST\nBEST\n1810\n歩いた距離\n1280 m\nカップ\n3 杯\nTIME / CREDIT\n114.5 s · 2/3\n今回の称号 · ×2\n会長も部長も任せろ\nあなたの分 1%\n部長の分 0%\n会長の分 0%\nRETRY · もう1回\n→\nタイトル\n次は、もう少し遠くまで。",
+    "state": "result",
+    "inspection": {
+      "distance": 1280,
+      "score": 1810,
+      "time": 114.49939999998283,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 1.3269897803313477,
+          "liquidAngle": -0.11668725156273027,
+          "liquidVelocity": -0.1642421041040722,
+          "surfaceTilt": -1.0666872515627301,
+          "spilling": true,
+          "spillRate": 7.6296279734529415,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 0,
+          "liquidAngle": -0.17779198623011294,
+          "liquidVelocity": -0.39140803425015896,
+          "surfaceTilt": -1.127791986230113,
+          "spilling": true,
+          "spillRate": 11.878190466018053,
+          "frequency": 3.4,
+          "damping": 0.28
+        },
+        {
+          "id": 2,
+          "name": "会長の分",
+          "remaining": 0.2734252487916392,
+          "liquidAngle": -0.12344807011717517,
+          "liquidVelocity": -0.11119066907519354,
+          "surfaceTilt": -1.0734480701171751,
+          "spilling": true,
+          "spillRate": 7.904875813743102,
+          "frequency": 5.3,
+          "damping": 0.12
+        }
+      ],
+      "cupCount": 3,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 2,
+      "preview": null,
+      "activeEvent": {
+        "id": 17,
+        "type": "stop",
+        "name": "急停止に注意",
+        "side": -1,
+        "onsetTime": 113.8,
+        "warningStart": 112.39999999999999,
+        "duration": 1
+      },
+      "hazards": [
+        {
+          "id": 17,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 113.8,
+          "warningStart": 112.39999999999999,
+          "duration": 1
+        },
+        {
+          "id": 18,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 118.6,
+          "warningStart": 117.19999999999999,
+          "duration": 1.2
+        },
+        {
+          "id": 19,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": -1,
+          "onsetTime": 123.39999999999999,
+          "warningStart": 121.99999999999999,
+          "duration": 2.4
+        },
+        {
+          "id": 20,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 128.2,
+          "warningStart": 126.79999999999998,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "2"
+  },
+  {
+    "type": "retryReset",
+    "wallMs": 83,
+    "state": "playing",
+    "inspection": {
+      "distance": 0,
+      "score": 0,
+      "time": 0.007599999998506974,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 5.794611498676656e-7,
+      "bodyVelocity": 0.00010240688699182312,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -3.738357477021657e-7,
+          "liquidVelocity": -0.00006527075151356004,
+          "surfaceTilt": -9.532968975698314e-7,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 0.013898879385117068,
+      "tapRemaining": 0
+    },
+    "credit": "2"
+  },
+  {
+    "type": "additionalNaturalEmpty",
+    "state": "ending",
+    "inspection": {
+      "distance": 188,
+      "score": 188,
+      "time": 18.46939999999796,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 0,
+          "liquidAngle": -0.0012228676821886596,
+          "liquidVelocity": 0.000021995235952374117,
+          "surfaceTilt": -0.9512228676821887,
+          "spilling": true,
+          "spillRate": 1.2013017495043732,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "1"
+  },
+  {
+    "type": "retryReset",
+    "wallMs": 80,
+    "state": "playing",
+    "inspection": {
+      "distance": 0,
+      "score": 0,
+      "time": 0,
+      "alive": true,
+      "phase": "walking",
+      "bodyLean": 0,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": 0,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 0,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 9,
+          "warningStart": 7.6,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "1"
+  },
+  {
+    "type": "additionalNaturalEmpty",
+    "state": "ending",
+    "inspection": {
+      "distance": 169,
+      "score": 169,
+      "time": 16.671099999993647,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 0,
+          "liquidAngle": -0.08826891823823226,
+          "liquidVelocity": 0.08185096763952371,
+          "surfaceTilt": -1.0382689182382323,
+          "spilling": true,
+          "spillRate": 5.663074414162952,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "0"
+  },
+  {
+    "type": "capture",
+    "name": "no-credit",
+    "path": "docs/ten-game/screenshots/game008/mobile-no-credit.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 296
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "receipt result-note",
+          "x": 18,
+          "y": 443,
+          "width": 354,
+          "height": 235.875
+        },
+        {
+          "selector": "reward-button",
+          "x": 201,
+          "y": 599.28125,
+          "width": 100,
+          "height": 46
+        },
+        {
+          "selector": "title-button",
+          "x": 307,
+          "y": 599.28125,
+          "width": 50,
+          "height": 46
+        }
+      ]
+    },
+    "state": "result",
+    "inspection": {
+      "distance": 169,
+      "score": 169,
+      "time": 16.671099999993647,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 0,
+          "liquidAngle": -0.08826891823823226,
+          "liquidVelocity": 0.08185096763952371,
+          "surfaceTilt": -1.0382689182382323,
+          "spilling": true,
+          "spillRate": 5.663074414162952,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "0"
+  },
+  {
+    "type": "capture",
+    "name": "reward-pending",
+    "path": "docs/ten-game/screenshots/game008/mobile-reward-pending.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 296
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "reward-button",
+          "x": 192,
+          "y": 480.59375,
+          "width": 106,
+          "height": 46
+        },
+        {
+          "selector": "title-button",
+          "x": 304,
+          "y": 480.59375,
+          "width": 53,
+          "height": 46
+        }
+      ]
+    },
+    "state": "reward",
+    "inspection": {
+      "distance": 169,
+      "score": 169,
+      "time": 16.671099999993647,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.95,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 0,
+          "liquidAngle": -0.08826891823823226,
+          "liquidVelocity": 0.08185096763952371,
+          "surfaceTilt": -1.0382689182382323,
+          "spilling": true,
+          "spillRate": 5.663074414162952,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 0,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 1,
+          "type": "step",
+          "name": "足元に段差",
+          "side": -1,
+          "onsetTime": 16,
+          "warningStart": 14.6,
+          "duration": 0.6
+        },
+        {
+          "id": 2,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 23,
+          "warningStart": 21.6,
+          "duration": 1
+        },
+        {
+          "id": 3,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": -1,
+          "onsetTime": 30,
+          "warningStart": 28.6,
+          "duration": 1.2
+        }
+      ],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "0"
+  },
+  {
+    "type": "capture",
+    "name": "refilled",
+    "path": "docs/ten-game/screenshots/game008/mobile-refilled.png",
+    "layout": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "documentHeight": 844,
+      "boxes": [
+        {
+          "selector": "stage",
+          "x": 14,
+          "y": 133,
+          "width": 362,
+          "height": 296
+        },
+        {
+          "selector": "left-button",
+          "x": 14,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "right-button",
+          "x": 199,
+          "y": 383,
+          "width": 177,
+          "height": 46
+        },
+        {
+          "selector": "play-button",
+          "x": 231,
+          "y": 525,
+          "width": 126,
+          "height": 46
+        }
+      ]
+    },
+    "state": "title",
+    "inspection": {
+      "distance": 0,
+      "score": 0,
+      "time": 0,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0,
+      "bodyVelocity": 0,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0,
+          "liquidVelocity": 0,
+          "surfaceTilt": 0,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [],
+      "bodyAcceleration": 0,
+      "tapRemaining": 0
+    },
+    "credit": "3"
+  },
+  {
+    "type": "complete",
+    "wallMs": 158952
+  },
+  {
+    "type": "finalEvents",
+    "errors": [],
+    "events": [
+      {
+        "name": "game_open",
+        "at": "2026-10-04T07:31:23.343Z",
+        "data": {
+          "game": "game008",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-04T07:31:24.069Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "credits": 3,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "pause",
+        "at": "2026-10-04T07:31:39.922Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "resume",
+        "at": "2026-10-04T07:31:40.654Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "milestone_reached",
+        "at": "2026-10-04T07:32:12.431Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "second_cup",
+          "distance": 500,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "escalation_offered",
+        "at": "2026-10-04T07:32:12.431Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "second_cup",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "escalation_accepted",
+        "at": "2026-10-04T07:32:15.187Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "second_cup",
+          "choice": "accept",
+          "cupCount": 2,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "milestone_reached",
+        "at": "2026-10-04T07:32:58.696Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "third_cup",
+          "distance": 1000,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "escalation_offered",
+        "at": "2026-10-04T07:32:58.696Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "third_cup",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "escalation_accepted",
+        "at": "2026-10-04T07:33:01.402Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "milestone": "third_cup",
+          "choice": "accept",
+          "cupCount": 3,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "credit_used",
+        "at": "2026-10-04T07:33:24.745Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "credits": 2,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_end",
+        "at": "2026-10-04T07:33:24.745Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "outcome": "over",
+          "score": 1810,
+          "time": 114.49939999998283,
+          "distance": 1280,
+          "cupCount": 3,
+          "multiplier": 2,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "score",
+        "at": "2026-10-04T07:33:24.745Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "score": 1810,
+          "best": 1810,
+          "newBest": true,
+          "distance": 1280,
+          "cupCount": 3,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_duration",
+        "at": "2026-10-04T07:33:24.746Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099084069-kwg341",
+          "seconds": 114.49939999998283,
+          "reason": "over",
+          "failure_reason": "empty",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "retry",
+        "at": "2026-10-04T07:33:25.568Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-04T07:33:25.568Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "credits": 2,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "credit_used",
+        "at": "2026-10-04T07:33:44.044Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "credits": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_end",
+        "at": "2026-10-04T07:33:44.044Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "outcome": "over",
+          "score": 188,
+          "time": 18.46939999999796,
+          "distance": 188,
+          "cupCount": 1,
+          "multiplier": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "score",
+        "at": "2026-10-04T07:33:44.044Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "score": 188,
+          "best": 1810,
+          "newBest": false,
+          "distance": 188,
+          "cupCount": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_duration",
+        "at": "2026-10-04T07:33:44.044Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099205568-wd1y2k",
+          "seconds": 18.46939999999796,
+          "reason": "over",
+          "failure_reason": "empty",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "retry",
+        "at": "2026-10-04T07:33:44.432Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-04T07:33:44.432Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "credits": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "credit_used",
+        "at": "2026-10-04T07:34:01.110Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "credits": 0,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "credit_zero",
+        "at": "2026-10-04T07:34:01.110Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_end",
+        "at": "2026-10-04T07:34:01.110Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "outcome": "over",
+          "score": 169,
+          "time": 16.671099999993647,
+          "distance": 169,
+          "cupCount": 1,
+          "multiplier": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "score",
+        "at": "2026-10-04T07:34:01.110Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "score": 169,
+          "best": 1810,
+          "newBest": false,
+          "distance": 169,
+          "cupCount": 1,
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "run_duration",
+        "at": "2026-10-04T07:34:01.110Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "seconds": 16.671099999993647,
+          "reason": "over",
+          "failure_reason": "empty",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "reward_offer_shown",
+        "at": "2026-10-04T07:34:01.413Z",
+        "data": {
+          "game": "game008",
+          "runId": "game008-1791099224432-jn7dnx",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "reward_requested",
+        "at": "2026-10-04T07:34:01.916Z",
+        "data": {
+          "game": "game008",
+          "game_id": "game008"
+        }
+      },
+      {
+        "name": "reward_granted",
+        "at": "2026-10-04T07:34:02.817Z",
+        "data": {
+          "game": "game008",
+          "credits": 3,
+          "game_id": "game008"
+        }
+      }
+    ]
+  }
+]

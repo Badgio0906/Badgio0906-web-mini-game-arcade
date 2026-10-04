@@ -1,0 +1,180 @@
+{
+  "kind": "Actual native-input scoring FAIL at exact1000 offer, before precision-only repair",
+  "offers": [
+    {
+      "distance": 500,
+      "score": 500,
+      "time": 47.65643333334268,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": 0.0021636829022702356,
+      "bodyVelocity": -0.054343920715782965,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": 0.011154021335309627,
+          "liquidVelocity": -0.010353827706725306,
+          "surfaceTilt": 0.008990338433039391,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": "second_cup",
+      "multiplier": 1,
+      "preview": null,
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 6,
+          "type": "step",
+          "name": "足元に段差",
+          "side": 1,
+          "onsetTime": 51,
+          "warningStart": 49.6,
+          "duration": 0.6
+        },
+        {
+          "id": 7,
+          "type": "stop",
+          "name": "急停止に注意",
+          "side": -1,
+          "onsetTime": 58,
+          "warningStart": 56.6,
+          "duration": 1
+        }
+      ],
+      "bodyAcceleration": 0.18108295442404665,
+      "tapRemaining": 0
+    },
+    {
+      "distance": 1000,
+      "score": 1249,
+      "time": 91.16636666666851,
+      "alive": true,
+      "phase": "choice",
+      "bodyLean": -0.009603487014852254,
+      "bodyVelocity": 0.010327272604431389,
+      "input": 0,
+      "cups": [
+        {
+          "id": 0,
+          "name": "あなたの分",
+          "remaining": 100,
+          "liquidAngle": -0.001991784979185367,
+          "liquidVelocity": 0.007074874343394074,
+          "surfaceTilt": 0.0076117020356668876,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 4.2,
+          "damping": 0.52
+        },
+        {
+          "id": 1,
+          "name": "部長の分",
+          "remaining": 99.45175174701667,
+          "liquidAngle": -0.010303845147034243,
+          "liquidVelocity": 0.022261967110567688,
+          "surfaceTilt": -0.0007003581321819892,
+          "spilling": false,
+          "spillRate": 0,
+          "frequency": 3.4,
+          "damping": 0.28
+        }
+      ],
+      "cupCount": 2,
+      "minRemaining": 99.45175174701667,
+      "pending": "third_cup",
+      "multiplier": 1.5,
+      "preview": {
+        "id": 13,
+        "type": "door",
+        "name": "ドアを通ります",
+        "side": 1,
+        "onsetTime": 92.5,
+        "warningStart": 91.1,
+        "duration": 1.2
+      },
+      "activeEvent": null,
+      "hazards": [
+        {
+          "id": 13,
+          "type": "door",
+          "name": "ドアを通ります",
+          "side": 1,
+          "onsetTime": 92.5,
+          "warningStart": 91.1,
+          "duration": 1.2
+        },
+        {
+          "id": 14,
+          "type": "train",
+          "name": "電車が揺れます",
+          "side": 1,
+          "onsetTime": 98,
+          "warningStart": 96.6,
+          "duration": 2.4
+        },
+        {
+          "id": 15,
+          "type": "people",
+          "name": "人とすれ違う",
+          "side": -1,
+          "onsetTime": 103.5,
+          "warningStart": 102.1,
+          "duration": 1.5
+        }
+      ],
+      "bodyAcceleration": 0.06693911494716195,
+      "tapRemaining": 0
+    }
+  ],
+  "failure": {
+    "distance": 1000,
+    "cupCount": 2,
+    "multiplier": 1.5,
+    "actualScore": 1249,
+    "requiredScore": 1250
+  },
+  "variableFramePublicInputReproducer": {
+    "frames": [
+      [
+        0.016666666666666666
+      ],
+      [
+        0.013,
+        0.021,
+        0.0167
+      ],
+      [
+        0.05,
+        0.011,
+        0.027
+      ]
+    ],
+    "preRepairScores": [
+      1250,
+      1249,
+      1249
+    ],
+    "assertionUnchanged": [
+      1250,
+      1250,
+      1250
+    ]
+  },
+  "passedBeforeFailure": [
+    "actual500 withscore500",
+    "exact old-liquid preservation on native accept to2cups",
+    "8earned500choice layouts/input+clockfreeze"
+  ],
+  "rawTrace": "artifacts/ten-game008-desktop-final/game008-Coffee-native-bala-88261-vely-scores-additional-cups-desktop/trace.zip",
+  "screenshot": "../screenshots/game008/qa-initial-actual1000-score1249.png",
+  "caveat": "Full1000choice layouts/thirdcup/end/reset assertions not reached; this whole execution remains FAIL."
+}
