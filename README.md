@@ -1,9 +1,9 @@
 <!-- Current release evidence is linked first; older sections below retain historical QA. -->
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-次のタスクは[CURRENT_STATUS](docs/CURRENT_STATUS.md)と[統合改修報告](docs/integration-2026-10-05/IMPLEMENTATION_REPORT.md)から再開してください。正式URLはhttps://game100garage.com/。019の追加、落下キングの距離選択／連続降下、靴とばその少年と回転、全ゲーム開始3択、タグと端末内記録を最終検証中です。AdSense所有確認は独立PRでscriptだけを追加します。
+次のタスクは[CURRENT_STATUS](docs/CURRENT_STATUS.md)と[統合改修報告](docs/integration-2026-10-05/IMPLEMENTATION_REPORT.md)から再開してください。正式URLはhttps://game100garage.com/。019の追加、落下キングの距離選択／連続降下、靴とばその少年と回転、全ゲーム開始3択、タグと端末内記録を公開済みです（2026-10-06日本時間）。AdSense所有確認scriptは独立PRで追加済み、Google側の確認／審査は未確認です。
 
-短時間で遊べる異なる体験を集めた静的Webゲームセンターです。nativeゲームと元UIを保持した旧Godot3本を収録。公開済み18本と最新019統合候補の検証範囲は、上記の報告を参照してください。
+短時間で遊べる異なる体験を集めた静的Webゲームセンターです。nativeゲームと元UIを保持した旧Godot3本を収録。公開済み19本の検証範囲は、上記の報告を参照してください。
 
 **[ゲームセンターを遊ぶ](https://game100garage.com/)** ／ [負けじゃんけん](https://game100garage.com/game016.html) ／ [落下キング](https://game100garage.com/game015.html) ／ [蛙ゲーム](https://game100garage.com/game019.html)
 

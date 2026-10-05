@@ -22,10 +22,16 @@ TypeScript・build成功。旧Godot source／distの各42file監査、意図し�
 
 ## 公開
 
-A/B統合は最終横画面とroot/subpathの検証後に公開する。Cは別commit・PRで指定所有確認scriptのみ。デプロイ・公開URLの記録は完了後に追記する。AdSenseの外部loader実配信はCloudのnetwork policy許可対象外なので、HTML配置とinert loaderによるlayout確認を区別する。コード設置は所有確認／審査承認の成立を示さない。
+A/B統合は [PR #2](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/2) でmainへマージ。release `c7b0ffdbfbc94cb8bc771b162f8cbb375e05c30b`、[Pages run37329630773](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37329630773) のunit／build／deploy成功。公開HTML・JS・CSS・フォント・015/018/019画像・013pckの27fileがlocal production buildとSHA256一致：[asset audit](QA/public-ab/asset-hashes.json)。Cは [独立PR #1](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/1)、専用task／worktree／commit `0286e7d712f40b75a3e978cff525bc21d976a1ce`でroot headの指定2行だけ。最終runtime release `d6f6f6b9b193562a933e1cc728b739e770c478ed`、[Pages run37330051749](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37330051749) のunit284／build／deploy成功。正式URL **https://game100garage.com/** に全19本を公開（2026-10-06日本時間）。
+
+公開PC／phoneは全19route・19画像・76タグ・開始3択・端末JSON export・019実操作・診断UI不在、所有確認scriptのhead内1回／async／client／crossoriginをPASS：[最終summary](QA/public-final/FINAL_SUMMARY.json)。初回PCのgame004.htmlが一度HTTP503となった原本を残し、phoneとPC全19route再実行、単独HTTP200を確認。HTML／JS／CSS／フォント／新画像／013pckの27fileは最終buildと全SHA256一致：[hashes](QA/public-final/asset-hashes.json)。C以外のruntimeはA/Bと同一。遅れて起動した重複Pages runは既存concurrencyによりcancelされた。
+
+PRをCodex chatへ添付するtoolは応答が得られず終了したため、上記のGitHub URLを引き継ぎの正本とする。AdSenseの外部loader実配信はCloudのnetwork policy許可対象外なので、HTML配置とinert loaderによるlayout確認を区別する。コード設置は所有確認／審査承認の成立を示さない。
 
 ## 人間評価と継承
 
 [019人間テスト](../game019/HUMAN_PLAYTEST.md)は未実施。面白さ、初見の理解、実機の親指同時操作、音、FPS、酔いは自動入力と静止画から合格にしない。320px練習の蛙／足場は小さく、初見の判読性を試遊で確認する。CREDIT OFF、Reward開発stub、旧保存namespaceと旧Godotの音／engineは保持。
+
+公開file一致再実行：`python tests/integration-2026-10-05/public-hashes.py <report-directory>`。公開PC／phone：`ARCADE_BASES=https://game100garage.com/ ARCADE_ADS=1 node tests/integration-2026-10-05/production.mjs`（Google loaderはinert stub）。
 
 root/subpath再実行：[production.mjs](../../tests/integration-2026-10-05/production.mjs)。019実操作：[review.mjs](../../tests/game019/review.mjs)。015：[probe-risk.mjs](../../tests/game015/probe-risk.mjs)。タグ／profile再出力：`node tools/export-jev-data.mjs`。Jev実ユーザー統計は生成せず、synthetic provenanceを保持する。

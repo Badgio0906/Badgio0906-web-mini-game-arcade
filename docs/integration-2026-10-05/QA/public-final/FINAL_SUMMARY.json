@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "release": "d6f6f6b9b193562a933e1cc728b739e770c478ed",
+  "confirmedProfiles": [
+    {
+      "name": "desktop",
+      "routes": 19,
+      "evidence": "../public-final-desktop-retry/report.json"
+    },
+    {
+      "name": "phone",
+      "routes": 19,
+      "evidence": "report.json"
+    }
+  ],
+  "initialFailure": "One desktop game004.html navigation returned HTTP503; original failure retained in report.json. Phone, desktop rerun and direct HTTP200 recheck passed.",
+  "adsVerification": "Exact head tag with publisher/crossorigin/async; inert external loader for layout. Google ownership review and live loader not verified.",
+  "assetAudit": "asset-hashes.json: 27/27 identical to production build"
+}

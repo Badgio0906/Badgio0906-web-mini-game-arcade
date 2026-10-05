@@ -4,7 +4,7 @@ import {mkdir,writeFile,readFile} from 'node:fs/promises';
 const bases=(process.env.ARCADE_BASES??'http://127.0.0.1:4191/,http://127.0.0.1:4192/repo/arcade/').split(',');
 const out=process.env.ARCADE_REPORT_DIR??'docs/integration-2026-10-05/QA/production';
 const ads=process.env.ARCADE_ADS==='1';
-const profiles=[{name:'desktop',width:1440,height:900,touch:false},{name:'phone',width:390,height:844,touch:true}];
+const profiles=[{name:'desktop',width:1440,height:900,touch:false},{name:'phone',width:390,height:844,touch:true}].filter(p=>!process.env.ARCADE_PROFILES || process.env.ARCADE_PROFILES.split(',').includes(p.name));
 const routes=[...Array.from({length:11},(_,i)=>`game${String(i+1).padStart(3,'0')}.html`),...[15,16,17,18,19].map(i=>`game${String(i).padStart(3,'0')}.html`),...['yokodori-days','tachibana-task-heaven','finger-heart-challenge'].map(s=>`games/${s}/index.html`)];
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),records=[];
