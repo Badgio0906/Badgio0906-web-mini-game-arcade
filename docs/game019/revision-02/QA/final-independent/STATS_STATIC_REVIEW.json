@@ -1,0 +1,103 @@
+{
+  "changedExistingFiles": [
+    "src/games/game019/main.ts"
+  ],
+  "addedRuntimeFile": "src/games/game019/stats.ts",
+  "statsHash": "d17cc4d34a6f3cc42db2a45a745f99c2346e1ba62bca452d5f0914950409aea1",
+  "mainChangeIsExactlyStatsImportAndTwoCallsites": true,
+  "unchangedPhysicsInputBoardMapHtmlCssFonts": true,
+  "currentHashes": {
+    "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+    "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+    "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+    "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+    "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+    "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+    "src/games/game019/main.ts": "ac7b34ad6c2a39a074f14f45bf057658c080cf273c4a8d5e90534db7814833be",
+    "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+    "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+    "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+    "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+    "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+    "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+    "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+    "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+  },
+  "status": "PASS — persistence blocker closed by independent static review and root focused retest evidence",
+  "persistenceClosure": {
+    "status": "PASS — persistence blocker closed by independent static review and root focused retest evidence",
+    "reviewedAt": "2026-10-05T22:51:13.678131+00:00",
+    "nativeProof": "../production-root-retest/report.json",
+    "nativeRunStarted": "2026-10-05T22:46:23.541Z",
+    "nativeRunFinished": "2026-10-05T22:47:01.793Z",
+    "profiles": [
+      {
+        "profile": "desktop",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 90,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 90,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "phone",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "narrow",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "landscape",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      }
+    ],
+    "unitProof": "../all-unit-final.log",
+    "unitCases": "../../../../../tests/unit/game019-stats.test.ts",
+    "unitResult": "actual StorageService backend reload/accumulation/faster-only replacement/corruption/old BEST mute — 3 PASS; full294/32files PASS",
+    "buildProof": "../build-final.log",
+    "typecheckProof": "../check-final.log",
+    "clearTimeBoundary": "Fractional clear seconds verified through actual StorageService units, not an injected browser clear or a repeated compiled200m run.",
+    "provenance": "Root executed focused compiled native input and units; independent reviewer inspected artifacts/source. No runtime/source mutation by reviewer."
+  }
+}

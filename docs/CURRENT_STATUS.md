@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-06（日本時間）：**Game019改訂02はlocal技術検証完了、公開候補。** [最新報告](game019/revision-02/IMPLEMENTATION_REPORT.md)／[公開記録](game019/revision-02/PUBLICATION.json)。溜めて離すジャンプ、空中操作0、井戸12＋空12の手作り区間、地形による落下復帰、固定予告風、7練習へ再設計。294単体／check／build、4画面200m、compiled root／subpath各4画面20m PASS。他18本と共通303fileは不変。旧版の方向×小中大や旧試作記録を現行仕様へ流用しない。人間評価は未実施。以下は前回公開版と歴史記録。
+
 2026-10-06（日本時間）：**019を含む全19本を正式HTTPSへ公開済み。** 最新作業の正本は[統合報告](integration-2026-10-05/IMPLEMENTATION_REPORT.md)。今回は015改訂03、018少年／回転表示、全19本の開始3択とタグ、端末内400件JSON記録、019「井の中の蛙、大海を目指す」を追加。最終runtimeは`d6f6f6b9b193562a933e1cc728b739e770c478ed`、Pages run37330051749の284unit／build／deploy成功。公開PC／phone各19routeと27配信file hash一致。初回PCの単発503は全route再実行とHTTP200で復旧を確認。AdSenseは[独立PR #1](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/1)、root headのscript2行だけで公開済み。Google側の所有確認／審査と実機の人間試遊は未確認。
 
 新しい継承境界：019は `game019.html`／[仕様](game019/IMPLEMENTATION_SPEC.md)、方向×小中大、転落復帰、100m海／鳥→風の空→200m宇宙。CREDIT未接続、位置saveなし、BESTだけ0.1m単位。012〜014は元engine／保存／説明を保ち、任意のshell補助練習を追加。013の強制help解除はgdc1resource。データの正本は[タグ／profile／端末内記録](data/JEV_PREPARATION.md)、外部Jev送信なし。

@@ -1,0 +1,5642 @@
+{
+  "started": "2026-10-05T22:22:02.749Z",
+  "base": "http://127.0.0.1:5196/",
+  "sourceBefore": {
+    "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+    "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+    "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+    "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+    "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+    "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+    "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+    "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+    "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+    "src/games/game019/style.css": "930486e2f53a051ccc098a1df72f6fd477899d595d12b19153b79b775c525c28",
+    "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+    "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+    "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+    "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+    "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+  },
+  "limits": "Native input/readonly diagnostics. No human fun, physical-device feel, sound listening or FPS evaluation.",
+  "rawReport": {
+    "path": "report.json.gz",
+    "compression": "gzip; lossless original JSON bytes",
+    "uncompressedBytes": 16808006,
+    "sha256": "a11db43c7b4afd48ce70bd955c47501e9467d6dc7782649bbbf90a83b6d62cbe",
+    "compressedBytes": 1495261
+  },
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: multi-section fall\n    at file:///workspace/Badgio0906-web-mini-game-arcade/tests/game019/review-charge.mjs:72:551",
+      "geometry": [
+        [
+          {
+            "selector": "#play-button",
+            "x": 905,
+            "y": 511.90625,
+            "w": 296,
+            "h": 44,
+            "right": 1201,
+            "bottom": 555.90625,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-explain-button",
+            "x": 905,
+            "y": 562.90625,
+            "w": 296,
+            "h": 44,
+            "right": 1201,
+            "bottom": 606.90625,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-again-button",
+            "x": 905,
+            "y": 613.90625,
+            "w": 296,
+            "h": 44,
+            "right": 1201,
+            "bottom": 657.90625,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 579,
+            "right": 1070,
+            "bottom": 716,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 727,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 727,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 791,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 367,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 717,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 723,
+            "y": 844,
+            "w": 350,
+            "h": 44,
+            "right": 1073,
+            "bottom": 888,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 370,
+            "y": 137,
+            "w": 700,
+            "h": 624,
+            "right": 1070,
+            "bottom": 761,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 367,
+            "y": 772,
+            "w": 159.25,
+            "h": 64,
+            "right": 526.25,
+            "bottom": 836,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 533.25,
+            "y": 772,
+            "w": 300.5,
+            "h": 64,
+            "right": 833.75,
+            "bottom": 836,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 840.75,
+            "y": 772,
+            "w": 159.25,
+            "h": 64,
+            "right": 1000,
+            "bottom": 836,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#peek-button",
+            "x": 1007,
+            "y": 772,
+            "w": 66,
+            "h": 64,
+            "right": 1073,
+            "bottom": 836,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#pause-button",
+            "x": 1254,
+            "y": 15,
+            "w": 44,
+            "h": 44,
+            "right": 1298,
+            "bottom": 59,
+            "vw": 1440,
+            "vh": 900,
+            "docHeight": 900,
+            "docWidth": 1440,
+            "clipped": false,
+            "hit": true
+          }
+        ]
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "practiceStages": [
+        {
+          "stage": 0,
+          "preparation": false,
+          "chargeMs": 80,
+          "direction": 0,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 1,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 0,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 2,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": 0,
+          "height": 7.599999999999999,
+          "landing": "target"
+        },
+        {
+          "stage": 3,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 4,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 5,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 6,
+          "preparation": true,
+          "chargeMs": 80,
+          "direction": 1,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 6,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": -1,
+          "height": 6.099999999999999,
+          "landing": "target"
+        }
+      ],
+      "observedEventCount": 432,
+      "climb": [
+        {
+          "target": "first",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "first",
+          "lastLanding": {
+            "id": "first",
+            "height": 3.6,
+            "drop": 0.6199028815733691,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 7.2,
+          "landing": "brick",
+          "lastLanding": {
+            "id": "brick",
+            "height": 7.2,
+            "drop": 2.094182444196158,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "under-beam",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.9874825727652503,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 66.67,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.5269459793598603,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.2406874406118256,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.2406874406118256,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-preparation",
+          "requested": 80,
+          "actualChargeMs": 83.33,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 0.6471838611418939,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-top",
+          "requested": 675,
+          "actualChargeMs": 683.33,
+          "direction": -1,
+          "height": 20,
+          "landing": "root-top",
+          "lastLanding": {
+            "id": "root-top",
+            "height": 20,
+            "drop": 2.607876118804537,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick-narrow",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 22.8,
+          "landing": "brick-narrow",
+          "lastLanding": {
+            "id": "brick-narrow",
+            "height": 22.8,
+            "drop": 2.1406874406117957,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-25",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": 0,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.48716480539172835,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "cracked-step",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": -1,
+          "height": 29.399999999999995,
+          "landing": "cracked-step",
+          "lastLanding": {
+            "id": "cracked-step",
+            "height": 29.399999999999995,
+            "drop": 0.2562975523850781,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 83.33333333333333,
+          "actualChargeMs": 83.33,
+          "direction": -1,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.6471838611418903,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 50,
+          "direction": 1,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.41872497468794023,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "cracked-step",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": -1,
+          "height": 29.399999999999995,
+          "landing": "cracked-step",
+          "lastLanding": {
+            "id": "cracked-step",
+            "height": 29.399999999999995,
+            "drop": 2.2784410761535234,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-low",
+          "requested": 625,
+          "actualChargeMs": 616.67,
+          "direction": 1,
+          "height": 34.8,
+          "landing": "moss-low",
+          "lastLanding": {
+            "id": "moss-low",
+            "height": 34.8,
+            "drop": 2.1690661554354946,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-turn",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 38,
+          "landing": "moss-turn",
+          "lastLanding": {
+            "id": "moss-turn",
+            "height": 38,
+            "drop": 1.7406874406117865,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-long",
+          "requested": 525,
+          "actualChargeMs": 533.33,
+          "direction": 1,
+          "height": 42.9,
+          "landing": "timber-long",
+          "lastLanding": {
+            "id": "timber-long",
+            "height": 42.9,
+            "drop": 1.3136686699593128,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-short",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 45.20000000000001,
+          "landing": "timber-short",
+          "lastLanding": {
+            "id": "timber-short",
+            "height": 45.20000000000001,
+            "drop": 0.5871648053917085,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-nub",
+          "requested": 150,
+          "actualChargeMs": 150,
+          "direction": -1,
+          "height": 46.29999999999999,
+          "landing": "timber-nub",
+          "lastLanding": {
+            "id": "timber-nub",
+            "height": 46.29999999999999,
+            "drop": 0.11825279166106384,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rest-edge",
+          "requested": 200,
+          "actualChargeMs": 200,
+          "direction": -1,
+          "height": 47.79999999999999,
+          "landing": "rest-edge",
+          "lastLanding": {
+            "id": "rest-edge",
+            "height": 47.79999999999999,
+            "drop": 0.22319620150386044,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-50",
+          "requested": 350,
+          "actualChargeMs": 350,
+          "direction": 1,
+          "height": 50,
+          "landing": "catch-50",
+          "lastLanding": {
+            "id": "catch-50",
+            "height": 50,
+            "drop": 1.3345107556875675,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-gap-top",
+          "requested": 600,
+          "actualChargeMs": 600,
+          "direction": 1,
+          "height": 57.20000000000001,
+          "landing": "root-gap-top",
+          "lastLanding": {
+            "id": "root-gap-top",
+            "height": 57.20000000000001,
+            "drop": 0.09169559824871953,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-approach",
+          "requested": 500,
+          "actualChargeMs": 483.33,
+          "direction": -1,
+          "height": 60.70000000000001,
+          "landing": "bucket-approach",
+          "lastLanding": {
+            "id": "bucket-approach",
+            "height": 60.70000000000001,
+            "drop": 1.9394402655768772,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "old-bucket",
+          "requested": 350,
+          "actualChargeMs": 350,
+          "direction": -1,
+          "height": 64.2,
+          "landing": "old-bucket",
+          "lastLanding": {
+            "id": "old-bucket",
+            "height": 64.2,
+            "drop": 0.034510755687577443,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-return",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 68,
+          "landing": "bucket-return",
+          "lastLanding": {
+            "id": "bucket-return",
+            "height": 68,
+            "drop": 1.8941824441962183,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-start",
+          "requested": 250,
+          "actualChargeMs": 266.67,
+          "direction": 0,
+          "height": 70,
+          "landing": "fork-start",
+          "lastLanding": {
+            "id": "fork-start",
+            "height": 70,
+            "drop": 0.4787262464443245,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-risk",
+          "requested": 625,
+          "actualChargeMs": 633.33,
+          "direction": -1,
+          "height": 77.5,
+          "landing": "fork-risk",
+          "lastLanding": {
+            "id": "fork-risk",
+            "height": 77.5,
+            "drop": 0.34941989834409526,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-join",
+          "requested": 550,
+          "actualChargeMs": 533.33,
+          "direction": 1,
+          "height": 82.2,
+          "landing": "fork-join",
+          "lastLanding": {
+            "id": "fork-join",
+            "height": 82.2,
+            "drop": 1.513668669959344,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "upper-moss",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 85.8,
+          "landing": "upper-moss",
+          "lastLanding": {
+            "id": "upper-moss",
+            "height": 85.8,
+            "drop": 1.3406874406118163,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-crack",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": 1,
+          "height": 89.09999999999998,
+          "landing": "last-crack",
+          "lastLanding": {
+            "id": "last-crack",
+            "height": 89.09999999999998,
+            "drop": 2.139440265576752,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "light-root",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 93.7,
+          "landing": "light-root",
+          "lastLanding": {
+            "id": "light-root",
+            "height": 93.7,
+            "drop": 1.094182444196207,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "exit-stone",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 97.40000000000002,
+          "landing": "exit-stone",
+          "lastLanding": {
+            "id": "exit-stone",
+            "height": 97.40000000000002,
+            "drop": 1.9941824441962126,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-start",
+          "requested": 300,
+          "actualChargeMs": 283.33,
+          "direction": -1,
+          "height": 100,
+          "landing": null,
+          "lastLanding": null
+        },
+        {
+          "target": "cloud-left",
+          "requested": 400,
+          "actualChargeMs": 416.67,
+          "direction": -1,
+          "height": 108.2,
+          "landing": "cloud-left",
+          "lastLanding": {
+            "id": "cloud-left",
+            "height": 108.2,
+            "drop": 0.25629755238513496,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "flag-east",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": 1,
+          "height": 113,
+          "landing": "flag-east",
+          "lastLanding": {
+            "id": "flag-east",
+            "height": 113,
+            "drop": 1.1521070711616517,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "east-cloud",
+          "requested": 475,
+          "actualChargeMs": 466.67,
+          "direction": -1,
+          "height": 117.2,
+          "landing": "east-cloud",
+          "lastLanding": {
+            "id": "east-cloud",
+            "height": 117.2,
+            "drop": 0.9881385540354586,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-base",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 121.2,
+          "landing": "rising-base",
+          "lastLanding": {
+            "id": "rising-base",
+            "height": 121.2,
+            "drop": 0.9406874406118106,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-top",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 127.40000000000002,
+          "landing": "rising-top",
+          "lastLanding": {
+            "id": "rising-top",
+            "height": 127.40000000000002,
+            "drop": 0.4125865292409685,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-flag-cloud",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 131.5,
+          "landing": "west-flag-cloud",
+          "lastLanding": {
+            "id": "west-flag-cloud",
+            "height": 131.5,
+            "drop": 1.3542611572182466,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-cloud",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 135,
+          "landing": "west-cloud",
+          "lastLanding": {
+            "id": "west-cloud",
+            "height": 135,
+            "drop": 1.4406874406118106,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-base",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 139.2,
+          "landing": "heavy-base",
+          "lastLanding": {
+            "id": "heavy-base",
+            "height": 139.2,
+            "drop": 2.278441076153456,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-top",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": -1,
+          "height": 143.1,
+          "landing": "heavy-top",
+          "lastLanding": {
+            "id": "heavy-top",
+            "height": 143.1,
+            "drop": 1.3908720780854935,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-catch",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 147,
+          "landing": "sky-catch",
+          "lastLanding": {
+            "id": "sky-catch",
+            "height": 147,
+            "drop": 0.2747521722190811,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-rest-top",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 151,
+          "landing": "sky-rest-top",
+          "lastLanding": {
+            "id": "sky-rest-top",
+            "height": 151,
+            "drop": 0.21990288157346072,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-base",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": -1,
+          "height": 155,
+          "landing": "strong-east-base",
+          "lastLanding": {
+            "id": "strong-east-base",
+            "height": 155,
+            "drop": 1.9521070711616346,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-top",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 159,
+          "landing": "strong-east-top",
+          "lastLanding": {
+            "id": "strong-east-top",
+            "height": 159,
+            "drop": 0.21990288157346072,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-perch",
+          "requested": 625,
+          "actualChargeMs": 633.33,
+          "direction": -1,
+          "height": 163,
+          "landing": "bird-perch",
+          "lastLanding": {
+            "id": "bird-perch",
+            "height": 163,
+            "drop": 3.8494198983441095,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-high",
+          "requested": 550,
+          "actualChargeMs": 566.67,
+          "direction": 1,
+          "height": 167.1,
+          "landing": "bird-high",
+          "lastLanding": {
+            "id": "bird-high",
+            "height": 167.1,
+            "drop": 2.6461871564073647,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-base",
+          "requested": 450,
+          "actualChargeMs": 433.33,
+          "direction": -1,
+          "height": 171.1,
+          "landing": "ice-rise-base",
+          "lastLanding": {
+            "id": "ice-rise-base",
+            "height": 171.1,
+            "drop": 0.696702425644645,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-top",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": 1,
+          "height": 177.69999999999996,
+          "landing": "ice-rise-top",
+          "lastLanding": {
+            "id": "ice-rise-top",
+            "height": 177.69999999999996,
+            "drop": 0.3936520097034588,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-heavy-step",
+          "requested": 575,
+          "actualChargeMs": 566.67,
+          "direction": -1,
+          "height": 181,
+          "landing": "ice-heavy-step",
+          "lastLanding": {
+            "id": "ice-heavy-step",
+            "height": 181,
+            "drop": 2.2830480629356487,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-catch",
+          "requested": 375,
+          "actualChargeMs": 366.67,
+          "direction": 1,
+          "height": 184,
+          "landing": "star-catch",
+          "lastLanding": {
+            "id": "star-catch",
+            "height": 184,
+            "drop": 0.11077659185841071,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-west",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": -1,
+          "height": 188.1,
+          "landing": "star-west",
+          "lastLanding": {
+            "id": "star-west",
+            "height": 188.1,
+            "drop": 0.1199028815734664,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star-base",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 192.19999999999996,
+          "landing": "last-star-base",
+          "lastLanding": {
+            "id": "last-star-base",
+            "height": 192.19999999999996,
+            "drop": 2.3784410761534787,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 196.4,
+          "landing": "last-star",
+          "lastLanding": {
+            "id": "last-star",
+            "height": 196.4,
+            "drop": 1.18984368544767,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "space-goal",
+          "requested": 400,
+          "actualChargeMs": 416.67,
+          "direction": 1,
+          "height": 200,
+          "landing": "space-goal",
+          "lastLanding": {
+            "id": "space-goal",
+            "height": 200,
+            "drop": 1.2614849012377078,
+            "loss": 0,
+            "success": true
+          }
+        }
+      ],
+      "intentionalFalls": [
+        {
+          "kind": "multi-section",
+          "requested": 100,
+          "direction": -1,
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 0.6471838611418939,
+            "loss": 0,
+            "success": true
+          },
+          "alive": true
+        },
+        {
+          "kind": "short-loss",
+          "requested": 116.66666666666667,
+          "direction": -1,
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 4.616138686642641,
+            "loss": 3.700000000000001,
+            "success": false
+          },
+          "alive": true
+        },
+        {
+          "kind": "catch",
+          "requested": 250,
+          "direction": 1,
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 6.678726246444327,
+            "loss": 4.199999999999996,
+            "success": false
+          },
+          "alive": true
+        }
+      ],
+      "final": {
+        "alive": false,
+        "clear": true,
+        "levelId": "authored-well-and-sky",
+        "goal": 200,
+        "time": 88.50833333334984,
+        "height": 200,
+        "maxHeight": 200,
+        "player": {
+          "x": 219.81412729634906,
+          "y": 4800,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "ledgeId": "space-goal",
+          "facing": 1,
+          "landTime": 0.16,
+          "slipTime": 0
+        },
+        "phase": "clear",
+        "chargeMs": 0,
+        "chargeBand": "short",
+        "direction": 0,
+        "chapter": "space",
+        "seaProgress": 1,
+        "wellCleared": true,
+        "section": {
+          "id": "space-door",
+          "from": 192,
+          "to": 201,
+          "name": "宇宙への一跳び",
+          "motif": "stars",
+          "purpose": "最後の星に着地してクリア"
+        },
+        "wind": {
+          "id": "rise-weak",
+          "from": 192,
+          "to": 201,
+          "x": 0,
+          "y": 60,
+          "direction": "up",
+          "strength": "weak",
+          "label": "↑ 弱"
+        },
+        "nextWind": null,
+        "totalFall": 76.30238313229205,
+        "falls": 2,
+        "biggestFall": 6.678726246444327,
+        "jumps": 59,
+        "feedback": "宇宙だ！",
+        "lastLanding": {
+          "id": "space-goal",
+          "height": 200,
+          "drop": 1.2614849012377078,
+          "loss": 0,
+          "success": true
+        }
+      },
+      "lastState": "result",
+      "boundaries": {
+        "cases": [
+          {
+            "mode": "old-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 834,
+            "finalBest": 834
+          },
+          {
+            "mode": "denied-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 0,
+            "finalBest": 36
+          },
+          {
+            "mode": "corrupt-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 0,
+            "finalBest": 37
+          }
+        ]
+      }
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "status": "PASS",
+      "geometry": [
+        [
+          {
+            "selector": "#play-button",
+            "x": 26,
+            "y": 607.6875,
+            "w": 338,
+            "h": 44,
+            "right": 364,
+            "bottom": 651.6875,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-explain-button",
+            "x": 26,
+            "y": 657.6875,
+            "w": 166,
+            "h": 44,
+            "right": 192,
+            "bottom": 701.6875,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-again-button",
+            "x": 198,
+            "y": 657.6875,
+            "w": 166,
+            "h": 44,
+            "right": 364,
+            "bottom": 701.6875,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 511.5,
+            "right": 377,
+            "bottom": 656.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 666.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 724.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 666.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 724.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 666.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 724.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 526.5,
+            "right": 377,
+            "bottom": 671.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 681.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 681.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 739.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 192,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 198,
+            "y": 790,
+            "w": 182,
+            "h": 44,
+            "right": 380,
+            "bottom": 834,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 364,
+            "h": 571.5,
+            "right": 377,
+            "bottom": 716.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 726.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 88.75,
+            "bottom": 784.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 93.75,
+            "y": 726.5,
+            "w": 145.5,
+            "h": 58,
+            "right": 239.25,
+            "bottom": 784.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 244.25,
+            "y": 726.5,
+            "w": 78.75,
+            "h": 58,
+            "right": 323,
+            "bottom": 784.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#peek-button",
+            "x": 328,
+            "y": 726.5,
+            "w": 52,
+            "h": 58,
+            "right": 380,
+            "bottom": 784.5,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#pause-button",
+            "x": 336,
+            "y": 47,
+            "w": 44,
+            "h": 44,
+            "right": 380,
+            "bottom": 91,
+            "vw": 390,
+            "vh": 844,
+            "docHeight": 844,
+            "docWidth": 390,
+            "clipped": false,
+            "hit": true
+          }
+        ]
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "windKinds": [
+        "none",
+        "left",
+        "right",
+        "up",
+        "down"
+      ],
+      "windStrengths": [
+        "none",
+        "weak",
+        "medium",
+        "strong"
+      ],
+      "saved": {
+        "best": 2000,
+        "mute": "音 ON"
+      },
+      "practiceStages": [
+        {
+          "stage": 0,
+          "preparation": false,
+          "chargeMs": 80,
+          "direction": 0,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 1,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 0,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 2,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": 0,
+          "height": 7.599999999999999,
+          "landing": "target"
+        },
+        {
+          "stage": 3,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 4,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 5,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 6,
+          "preparation": true,
+          "chargeMs": 80,
+          "direction": 1,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 6,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": -1,
+          "height": 6.099999999999999,
+          "landing": "target"
+        }
+      ],
+      "observedEventCount": 479,
+      "climb": [
+        {
+          "target": "first",
+          "requested": 400,
+          "actualChargeMs": 408.33,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "first",
+          "lastLanding": {
+            "id": "first",
+            "height": 3.6,
+            "drop": 0.7375393813207425,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick",
+          "requested": 500,
+          "actualChargeMs": 516.67,
+          "direction": 1,
+          "height": 7.2,
+          "landing": "brick",
+          "lastLanding": {
+            "id": "brick",
+            "height": 7.2,
+            "drop": 2.3521070711616305,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "under-beam",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.9874825727652503,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 66.67,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.5269459793598603,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.2406874406118256,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "first",
+          "requested": 700,
+          "actualChargeMs": 700,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "first",
+          "lastLanding": {
+            "id": "first",
+            "height": 3.6,
+            "drop": 5.399997559864483,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": 1,
+          "height": 7.2,
+          "landing": "brick",
+          "lastLanding": {
+            "id": "brick",
+            "height": 7.2,
+            "drop": 0.8562975523850769,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "under-beam",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.9874825727652503,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 66.67,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.5269459793598603,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 475,
+          "actualChargeMs": 466.67,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.4881385540353946,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.2406874406118256,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-preparation",
+          "requested": 80,
+          "actualChargeMs": 83.33,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 0.6471838611418939,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-top",
+          "requested": 675,
+          "actualChargeMs": 666.67,
+          "direction": -1,
+          "height": 20,
+          "landing": "root-top",
+          "lastLanding": {
+            "id": "root-top",
+            "height": 20,
+            "drop": 2.3189647072554145,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick-narrow",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 22.8,
+          "landing": "brick-narrow",
+          "lastLanding": {
+            "id": "brick-narrow",
+            "height": 22.8,
+            "drop": 1.8967024256447687,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-25",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": 0,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.48716480539172835,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "cracked-step",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": -1,
+          "height": 29.399999999999995,
+          "landing": "cracked-step",
+          "lastLanding": {
+            "id": "cracked-step",
+            "height": 29.399999999999995,
+            "drop": 0.2562975523850781,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 66.67,
+          "direction": -1,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.5269459793598656,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 58.333333333333336,
+          "actualChargeMs": 50,
+          "direction": 1,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.41872497468794023,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "cracked-step",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 29.399999999999995,
+          "landing": "cracked-step",
+          "lastLanding": {
+            "id": "cracked-step",
+            "height": 29.399999999999995,
+            "drop": 1.4941824441961487,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-low",
+          "requested": 600,
+          "actualChargeMs": 600,
+          "direction": 1,
+          "height": 34.8,
+          "landing": "moss-low",
+          "lastLanding": {
+            "id": "moss-low",
+            "height": 34.8,
+            "drop": 1.8916955982486456,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-turn",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": -1,
+          "height": 38,
+          "landing": "moss-turn",
+          "lastLanding": {
+            "id": "moss-turn",
+            "height": 38,
+            "drop": 2.2394402655768744,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-long",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": 1,
+          "height": 42.9,
+          "landing": "timber-long",
+          "lastLanding": {
+            "id": "timber-long",
+            "height": 42.9,
+            "drop": 1.0521070711616431,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-short",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 45.20000000000001,
+          "landing": "timber-short",
+          "lastLanding": {
+            "id": "timber-short",
+            "height": 45.20000000000001,
+            "drop": 0.5871648053917085,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-nub",
+          "requested": 150,
+          "actualChargeMs": 150,
+          "direction": -1,
+          "height": 46.29999999999999,
+          "landing": "timber-nub",
+          "lastLanding": {
+            "id": "timber-nub",
+            "height": 46.29999999999999,
+            "drop": 0.11825279166106384,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rest-edge",
+          "requested": 200,
+          "actualChargeMs": 200,
+          "direction": -1,
+          "height": 47.79999999999999,
+          "landing": "rest-edge",
+          "lastLanding": {
+            "id": "rest-edge",
+            "height": 47.79999999999999,
+            "drop": 0.22319620150386044,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-50",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": 1,
+          "height": 50,
+          "landing": "catch-50",
+          "lastLanding": {
+            "id": "catch-50",
+            "height": 50,
+            "drop": 1.7874825727651853,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-gap-top",
+          "requested": 600,
+          "actualChargeMs": 600,
+          "direction": 1,
+          "height": 57.20000000000001,
+          "landing": "root-gap-top",
+          "lastLanding": {
+            "id": "root-gap-top",
+            "height": 57.20000000000001,
+            "drop": 0.09169559824871953,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-approach",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 60.70000000000001,
+          "landing": "bucket-approach",
+          "lastLanding": {
+            "id": "bucket-approach",
+            "height": 60.70000000000001,
+            "drop": 2.1941824441962083,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "old-bucket",
+          "requested": 375,
+          "actualChargeMs": 366.67,
+          "direction": -1,
+          "height": 64.2,
+          "landing": "old-bucket",
+          "lastLanding": {
+            "id": "old-bucket",
+            "height": 64.2,
+            "drop": 0.2589735768966648,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-return",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": 1,
+          "height": 68,
+          "landing": "bucket-return",
+          "lastLanding": {
+            "id": "bucket-return",
+            "height": 68,
+            "drop": 1.63944026557688,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-start",
+          "requested": 250,
+          "actualChargeMs": 250,
+          "direction": 0,
+          "height": 70,
+          "landing": "fork-start",
+          "lastLanding": {
+            "id": "fork-start",
+            "height": 70,
+            "drop": 0.2818675495293661,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-safe-low",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": 1,
+          "height": 72.4,
+          "landing": "fork-safe-low",
+          "lastLanding": {
+            "id": "fork-safe-low",
+            "height": 72.4,
+            "drop": 0.48716480539171414,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-75",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 75.2,
+          "landing": "catch-75",
+          "lastLanding": {
+            "id": "catch-75",
+            "height": 75.2,
+            "drop": 0.08716480539172267,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-safe-high",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": -1,
+          "height": 78.1,
+          "landing": "fork-safe-high",
+          "lastLanding": {
+            "id": "fork-safe-high",
+            "height": 78.1,
+            "drop": 1.3199028815733556,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-join",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 82.2,
+          "landing": "fork-join",
+          "lastLanding": {
+            "id": "fork-join",
+            "height": 82.2,
+            "drop": 0.1199028815733243,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "upper-moss",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 85.8,
+          "landing": "upper-moss",
+          "lastLanding": {
+            "id": "upper-moss",
+            "height": 85.8,
+            "drop": 1.3406874406118163,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-crack",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 89.09999999999998,
+          "landing": "last-crack",
+          "lastLanding": {
+            "id": "last-crack",
+            "height": 89.09999999999998,
+            "drop": 2.3941824441962325,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "light-root",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 93.7,
+          "landing": "light-root",
+          "lastLanding": {
+            "id": "light-root",
+            "height": 93.7,
+            "drop": 1.094182444196207,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "exit-stone",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 97.40000000000002,
+          "landing": "exit-stone",
+          "lastLanding": {
+            "id": "exit-stone",
+            "height": 97.40000000000002,
+            "drop": 1.9941824441962126,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-start",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 100,
+          "landing": null,
+          "lastLanding": null
+        },
+        {
+          "target": "cloud-left",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": -1,
+          "height": 108.2,
+          "landing": "cloud-left",
+          "lastLanding": {
+            "id": "cloud-left",
+            "height": 108.2,
+            "drop": 0.019902881573443665,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "flag-east",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 113,
+          "landing": "flag-east",
+          "lastLanding": {
+            "id": "flag-east",
+            "height": 113,
+            "drop": 0.8941824441962325,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "east-cloud",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 117.2,
+          "landing": "east-cloud",
+          "lastLanding": {
+            "id": "east-cloud",
+            "height": 117.2,
+            "drop": 1.4941824441962126,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-base",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 121.2,
+          "landing": "rising-base",
+          "lastLanding": {
+            "id": "rising-base",
+            "height": 121.2,
+            "drop": 0.9406874406118106,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-top",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 127.40000000000002,
+          "landing": "rising-top",
+          "lastLanding": {
+            "id": "rising-top",
+            "height": 127.40000000000002,
+            "drop": 0.4125865292409685,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-flag-cloud",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": 1,
+          "height": 131.5,
+          "landing": "west-flag-cloud",
+          "lastLanding": {
+            "id": "west-flag-cloud",
+            "height": 131.5,
+            "drop": 1.075255029911233,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-cloud",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": -1,
+          "height": 135,
+          "landing": "west-cloud",
+          "lastLanding": {
+            "id": "west-cloud",
+            "height": 135,
+            "drop": 1.196702425644645,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-base",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 139.2,
+          "landing": "heavy-base",
+          "lastLanding": {
+            "id": "heavy-base",
+            "height": 139.2,
+            "drop": 2.278441076153456,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-top",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": -1,
+          "height": 143.1,
+          "landing": "heavy-top",
+          "lastLanding": {
+            "id": "heavy-top",
+            "height": 143.1,
+            "drop": 1.3908720780854935,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-catch",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 147,
+          "landing": "sky-catch",
+          "lastLanding": {
+            "id": "sky-catch",
+            "height": 147,
+            "drop": 0.2747521722190811,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-rest-top",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 151,
+          "landing": "sky-rest-top",
+          "lastLanding": {
+            "id": "sky-rest-top",
+            "height": 151,
+            "drop": 0.21990288157346072,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-base",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": -1,
+          "height": 155,
+          "landing": "strong-east-base",
+          "lastLanding": {
+            "id": "strong-east-base",
+            "height": 155,
+            "drop": 1.9521070711616346,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-top",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 159,
+          "landing": "strong-east-top",
+          "lastLanding": {
+            "id": "strong-east-top",
+            "height": 159,
+            "drop": 0.21990288157346072,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-perch",
+          "requested": 625,
+          "actualChargeMs": 633.33,
+          "direction": -1,
+          "height": 163,
+          "landing": "bird-perch",
+          "lastLanding": {
+            "id": "bird-perch",
+            "height": 163,
+            "drop": 3.8494198983441095,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-high",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 167.1,
+          "landing": "bird-high",
+          "lastLanding": {
+            "id": "bird-high",
+            "height": 167.1,
+            "drop": 2.3784410761534502,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-base",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 171.1,
+          "landing": "ice-rise-base",
+          "lastLanding": {
+            "id": "ice-rise-base",
+            "height": 171.1,
+            "drop": 0.9406874406119243,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-top",
+          "requested": 475,
+          "actualChargeMs": 466.67,
+          "direction": 1,
+          "height": 177.69999999999996,
+          "landing": "ice-rise-top",
+          "lastLanding": {
+            "id": "ice-rise-top",
+            "height": 177.69999999999996,
+            "drop": 0.07065084886016848,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-heavy-step",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": -1,
+          "height": 181,
+          "landing": "ice-heavy-step",
+          "lastLanding": {
+            "id": "ice-heavy-step",
+            "height": 181,
+            "drop": 1.201616887980748,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-catch",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 184,
+          "landing": "star-catch",
+          "lastLanding": {
+            "id": "star-catch",
+            "height": 184,
+            "drop": 0.4923067265806651,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-west",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": -1,
+          "height": 188.1,
+          "landing": "star-west",
+          "lastLanding": {
+            "id": "star-west",
+            "height": 188.1,
+            "drop": 0.5967024256446507,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star-base",
+          "requested": 575,
+          "actualChargeMs": 566.67,
+          "direction": 1,
+          "height": 192.19999999999996,
+          "landing": "last-star-base",
+          "lastLanding": {
+            "id": "last-star-base",
+            "height": 192.19999999999996,
+            "drop": 2.6461871564076773,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 196.4,
+          "landing": "last-star",
+          "lastLanding": {
+            "id": "last-star",
+            "height": 196.4,
+            "drop": 1.18984368544767,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "space-goal",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 200,
+          "landing": "space-goal",
+          "lastLanding": {
+            "id": "space-goal",
+            "height": 200,
+            "drop": 1.5236394484223013,
+            "loss": 0,
+            "success": true
+          }
+        }
+      ],
+      "intentionalFalls": [
+        {
+          "kind": "multi-section",
+          "requested": 116.66666666666667,
+          "direction": -1,
+          "lastLanding": {
+            "id": "bottom",
+            "height": 0,
+            "drop": 14.81613868664264,
+            "loss": 13.9,
+            "success": false
+          },
+          "alive": true
+        },
+        {
+          "kind": "short-loss",
+          "requested": 250,
+          "direction": -1,
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 5.981867549529344,
+            "loss": 3.700000000000001,
+            "success": false
+          },
+          "alive": true
+        },
+        {
+          "kind": "catch",
+          "requested": 250,
+          "direction": 1,
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 6.481867549529362,
+            "loss": 4.199999999999996,
+            "success": false
+          },
+          "alive": true
+        }
+      ],
+      "final": {
+        "alive": false,
+        "clear": true,
+        "levelId": "authored-well-and-sky",
+        "goal": 200,
+        "time": 102.94166666669466,
+        "height": 200,
+        "maxHeight": 200,
+        "player": {
+          "x": 223.48668108355108,
+          "y": 4800,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "ledgeId": "space-goal",
+          "facing": 1,
+          "landTime": 0.16,
+          "slipTime": 0
+        },
+        "phase": "clear",
+        "chargeMs": 0,
+        "chargeBand": "short",
+        "direction": 0,
+        "chapter": "space",
+        "seaProgress": 1,
+        "wellCleared": true,
+        "section": {
+          "id": "space-door",
+          "from": 192,
+          "to": 201,
+          "name": "宇宙への一跳び",
+          "motif": "stars",
+          "purpose": "最後の星に着地してクリア"
+        },
+        "wind": {
+          "id": "rise-weak",
+          "from": 192,
+          "to": 201,
+          "x": 0,
+          "y": 60,
+          "direction": "up",
+          "strength": "weak",
+          "label": "↑ 弱"
+        },
+        "nextWind": null,
+        "totalFall": 100.13219447848724,
+        "falls": 3,
+        "biggestFall": 14.81613868664264,
+        "jumps": 66,
+        "feedback": "宇宙だ！",
+        "lastLanding": {
+          "id": "space-goal",
+          "height": 200,
+          "drop": 1.5236394484223013,
+          "loss": 0,
+          "success": true
+        }
+      },
+      "lastState": null,
+      "boundaries": {
+        "cases": [
+          {
+            "mode": "old-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 834,
+            "finalBest": 834
+          },
+          {
+            "mode": "denied-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 0,
+            "finalBest": 41
+          },
+          {
+            "mode": "corrupt-storage",
+            "status": "PASS",
+            "error": null,
+            "errors": [],
+            "initialBest": 0,
+            "finalBest": 42
+          }
+        ]
+      }
+    },
+    {
+      "profile": {
+        "name": "narrow",
+        "width": 320,
+        "height": 568,
+        "touch": true
+      },
+      "status": "PASS",
+      "geometry": [
+        [
+          {
+            "selector": "#play-button",
+            "x": 26,
+            "y": 465.375,
+            "w": 268,
+            "h": 44,
+            "right": 294,
+            "bottom": 509.375,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 628,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-explain-button",
+            "x": 26,
+            "y": 515.375,
+            "w": 131,
+            "h": 44,
+            "right": 157,
+            "bottom": 559.375,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 628,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#tutorial-again-button",
+            "x": 163,
+            "y": 515.375,
+            "w": 131,
+            "h": 44,
+            "right": 294,
+            "bottom": 559.375,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 628,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 250.5,
+            "right": 307,
+            "bottom": 395.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 405.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 405.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 463.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#next-practice-button",
+            "x": 10,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 157,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#skip-practice-button",
+            "x": 163,
+            "y": 514,
+            "w": 147,
+            "h": 44,
+            "right": 310,
+            "bottom": 558,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ],
+        [
+          {
+            "selector": "#frog-canvas",
+            "x": 13,
+            "y": 145,
+            "w": 294,
+            "h": 295.5,
+            "right": 307,
+            "bottom": 440.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#left-button",
+            "x": 10,
+            "y": 450.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 71.25,
+            "bottom": 508.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#jump-button",
+            "x": 76.25,
+            "y": 450.5,
+            "w": 110.5,
+            "h": 58,
+            "right": 186.75,
+            "bottom": 508.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#right-button",
+            "x": 191.75,
+            "y": 450.5,
+            "w": 61.25,
+            "h": 58,
+            "right": 253,
+            "bottom": 508.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#peek-button",
+            "x": 258,
+            "y": 450.5,
+            "w": 52,
+            "h": 58,
+            "right": 310,
+            "bottom": 508.5,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          },
+          {
+            "selector": "#pause-button",
+            "x": 266,
+            "y": 47,
+            "w": 44,
+            "h": 44,
+            "right": 310,
+            "bottom": 91,
+            "vw": 320,
+            "vh": 568,
+            "docHeight": 568,
+            "docWidth": 320,
+            "clipped": false,
+            "hit": true
+          }
+        ]
+      ],
+      "errors": [],
+      "httpErrors": [],
+      "windKinds": [
+        "none",
+        "left",
+        "right",
+        "up",
+        "down"
+      ],
+      "windStrengths": [
+        "none",
+        "weak",
+        "medium",
+        "strong"
+      ],
+      "saved": {
+        "best": 2000,
+        "mute": "音 ON"
+      },
+      "practiceStages": [
+        {
+          "stage": 0,
+          "preparation": false,
+          "chargeMs": 80,
+          "direction": 0,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 1,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 0,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 2,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": 0,
+          "height": 7.599999999999999,
+          "landing": "target"
+        },
+        {
+          "stage": 3,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 4,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": 1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 5,
+          "preparation": false,
+          "chargeMs": 450,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "target"
+        },
+        {
+          "stage": 6,
+          "preparation": true,
+          "chargeMs": 80,
+          "direction": 1,
+          "height": 0,
+          "landing": "base"
+        },
+        {
+          "stage": 6,
+          "preparation": false,
+          "chargeMs": 700,
+          "direction": -1,
+          "height": 6.099999999999999,
+          "landing": "target"
+        }
+      ],
+      "observedEventCount": 393,
+      "climb": [
+        {
+          "target": "first",
+          "requested": 400,
+          "actualChargeMs": 416.67,
+          "direction": -1,
+          "height": 3.6,
+          "landing": "first",
+          "lastLanding": {
+            "id": "first",
+            "height": 3.6,
+            "drop": 0.8562975523850782,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick",
+          "requested": 525,
+          "actualChargeMs": 533.33,
+          "direction": 1,
+          "height": 7.2,
+          "landing": "brick",
+          "lastLanding": {
+            "id": "brick",
+            "height": 7.2,
+            "drop": 2.613668669959309,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "under-beam",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.9874825727652503,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "position-preparation",
+          "requested": 83.33333333333333,
+          "actualChargeMs": 83.33,
+          "direction": -1,
+          "height": 10.2,
+          "landing": "under-beam",
+          "lastLanding": {
+            "id": "under-beam",
+            "height": 10.2,
+            "drop": 0.6471838611418939,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "takeoff",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 1.2406874406118256,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-preparation",
+          "requested": 80,
+          "actualChargeMs": 83.33,
+          "direction": 1,
+          "height": 13.9,
+          "landing": "takeoff",
+          "lastLanding": {
+            "id": "takeoff",
+            "height": 13.9,
+            "drop": 0.6471838611418939,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-top",
+          "requested": 675,
+          "actualChargeMs": 683.33,
+          "direction": -1,
+          "height": 20,
+          "landing": "root-top",
+          "lastLanding": {
+            "id": "root-top",
+            "height": 20,
+            "drop": 2.607876118804537,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "brick-narrow",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 22.8,
+          "landing": "brick-narrow",
+          "lastLanding": {
+            "id": "brick-narrow",
+            "height": 22.8,
+            "drop": 2.1406874406117957,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-25",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": 0,
+          "height": 25.2,
+          "landing": "catch-25",
+          "lastLanding": {
+            "id": "catch-25",
+            "height": 25.2,
+            "drop": 0.48716480539172835,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "cracked-step",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": -1,
+          "height": 29.399999999999995,
+          "landing": "cracked-step",
+          "lastLanding": {
+            "id": "cracked-step",
+            "height": 29.399999999999995,
+            "drop": 0.2562975523850781,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-low",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 34.8,
+          "landing": "moss-low",
+          "lastLanding": {
+            "id": "moss-low",
+            "height": 34.8,
+            "drop": 1.078441076153517,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "moss-turn",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": -1,
+          "height": 38,
+          "landing": "moss-turn",
+          "lastLanding": {
+            "id": "moss-turn",
+            "height": 38,
+            "drop": 2.2394402655768744,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-long",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 42.9,
+          "landing": "timber-long",
+          "lastLanding": {
+            "id": "timber-long",
+            "height": 42.9,
+            "drop": 1.5784410761535597,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-short",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 45.20000000000001,
+          "landing": "timber-short",
+          "lastLanding": {
+            "id": "timber-short",
+            "height": 45.20000000000001,
+            "drop": 0.5871648053917085,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "timber-nub",
+          "requested": 150,
+          "actualChargeMs": 150,
+          "direction": -1,
+          "height": 46.29999999999999,
+          "landing": "timber-nub",
+          "lastLanding": {
+            "id": "timber-nub",
+            "height": 46.29999999999999,
+            "drop": 0.11825279166106384,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rest-edge",
+          "requested": 200,
+          "actualChargeMs": 200,
+          "direction": -1,
+          "height": 47.79999999999999,
+          "landing": "rest-edge",
+          "lastLanding": {
+            "id": "rest-edge",
+            "height": 47.79999999999999,
+            "drop": 0.22319620150386044,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-50",
+          "requested": 375,
+          "actualChargeMs": 366.67,
+          "direction": 1,
+          "height": 50,
+          "landing": "catch-50",
+          "lastLanding": {
+            "id": "catch-50",
+            "height": 50,
+            "drop": 1.5589735768966548,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "root-gap-top",
+          "requested": 600,
+          "actualChargeMs": 600,
+          "direction": 1,
+          "height": 57.20000000000001,
+          "landing": "root-gap-top",
+          "lastLanding": {
+            "id": "root-gap-top",
+            "height": 57.20000000000001,
+            "drop": 0.09169559824871953,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-approach",
+          "requested": 525,
+          "actualChargeMs": 533.33,
+          "direction": -1,
+          "height": 60.70000000000001,
+          "landing": "bucket-approach",
+          "lastLanding": {
+            "id": "bucket-approach",
+            "height": 60.70000000000001,
+            "drop": 2.713668669959347,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "old-bucket",
+          "requested": 350,
+          "actualChargeMs": 350,
+          "direction": -1,
+          "height": 64.2,
+          "landing": "old-bucket",
+          "lastLanding": {
+            "id": "old-bucket",
+            "height": 64.2,
+            "drop": 0.034510755687577443,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bucket-return",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 68,
+          "landing": "bucket-return",
+          "lastLanding": {
+            "id": "bucket-return",
+            "height": 68,
+            "drop": 1.8941824441962183,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-start",
+          "requested": 250,
+          "actualChargeMs": 250,
+          "direction": 0,
+          "height": 70,
+          "landing": "fork-start",
+          "lastLanding": {
+            "id": "fork-start",
+            "height": 70,
+            "drop": 0.2818675495293661,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-safe-low",
+          "requested": 350,
+          "actualChargeMs": 350,
+          "direction": 1,
+          "height": 72.4,
+          "landing": "fork-safe-low",
+          "lastLanding": {
+            "id": "fork-safe-low",
+            "height": 72.4,
+            "drop": 1.1345107556875718,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "catch-75",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 75.2,
+          "landing": "catch-75",
+          "lastLanding": {
+            "id": "catch-75",
+            "height": 75.2,
+            "drop": 0.08716480539172267,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-safe-high",
+          "requested": 375,
+          "actualChargeMs": 383.33,
+          "direction": -1,
+          "height": 78.1,
+          "landing": "fork-safe-high",
+          "lastLanding": {
+            "id": "fork-safe-high",
+            "height": 78.1,
+            "drop": 1.0874825727652109,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "fork-join",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": 1,
+          "height": 82.2,
+          "landing": "fork-join",
+          "lastLanding": {
+            "id": "fork-join",
+            "height": 82.2,
+            "drop": 0.3562975523851293,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "upper-moss",
+          "requested": 475,
+          "actualChargeMs": 466.67,
+          "direction": -1,
+          "height": 85.8,
+          "landing": "upper-moss",
+          "lastLanding": {
+            "id": "upper-moss",
+            "height": 85.8,
+            "drop": 1.5881385540354813,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-crack",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": 1,
+          "height": 89.09999999999998,
+          "landing": "last-crack",
+          "lastLanding": {
+            "id": "last-crack",
+            "height": 89.09999999999998,
+            "drop": 2.139440265576752,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "light-root",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 93.7,
+          "landing": "light-root",
+          "lastLanding": {
+            "id": "light-root",
+            "height": 93.7,
+            "drop": 1.094182444196207,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "exit-stone",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 97.40000000000002,
+          "landing": "exit-stone",
+          "lastLanding": {
+            "id": "exit-stone",
+            "height": 97.40000000000002,
+            "drop": 1.9941824441962126,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-start",
+          "requested": 300,
+          "actualChargeMs": 300,
+          "direction": -1,
+          "height": 100,
+          "landing": null,
+          "lastLanding": null
+        },
+        {
+          "target": "cloud-left",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": -1,
+          "height": 108.2,
+          "landing": "cloud-left",
+          "lastLanding": {
+            "id": "cloud-left",
+            "height": 108.2,
+            "drop": 0.019902881573443665,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "flag-east",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": 1,
+          "height": 113,
+          "landing": "flag-east",
+          "lastLanding": {
+            "id": "flag-east",
+            "height": 113,
+            "drop": 0.8941824441962325,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "east-cloud",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 117.2,
+          "landing": "east-cloud",
+          "lastLanding": {
+            "id": "east-cloud",
+            "height": 117.2,
+            "drop": 1.4941824441962126,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-base",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": 1,
+          "height": 121.2,
+          "landing": "rising-base",
+          "lastLanding": {
+            "id": "rising-base",
+            "height": 121.2,
+            "drop": 0.9406874406118106,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "rising-top",
+          "requested": 500,
+          "actualChargeMs": 500,
+          "direction": -1,
+          "height": 127.40000000000002,
+          "landing": "rising-top",
+          "lastLanding": {
+            "id": "rising-top",
+            "height": 127.40000000000002,
+            "drop": 0.4125865292409685,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-flag-cloud",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 131.5,
+          "landing": "west-flag-cloud",
+          "lastLanding": {
+            "id": "west-flag-cloud",
+            "height": 131.5,
+            "drop": 1.3542611572182466,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "west-cloud",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 135,
+          "landing": "west-cloud",
+          "lastLanding": {
+            "id": "west-cloud",
+            "height": 135,
+            "drop": 1.4406874406118106,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-base",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": 1,
+          "height": 139.2,
+          "landing": "heavy-base",
+          "lastLanding": {
+            "id": "heavy-base",
+            "height": 139.2,
+            "drop": 2.278441076153456,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "heavy-top",
+          "requested": 525,
+          "actualChargeMs": 516.67,
+          "direction": -1,
+          "height": 143.1,
+          "landing": "heavy-top",
+          "lastLanding": {
+            "id": "heavy-top",
+            "height": 143.1,
+            "drop": 1.3908720780854935,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-catch",
+          "requested": 425,
+          "actualChargeMs": 416.67,
+          "direction": 1,
+          "height": 147,
+          "landing": "sky-catch",
+          "lastLanding": {
+            "id": "sky-catch",
+            "height": 147,
+            "drop": 0.06128441853851996,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "sky-rest-top",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": 1,
+          "height": 151,
+          "landing": "sky-rest-top",
+          "lastLanding": {
+            "id": "sky-rest-top",
+            "height": 151,
+            "drop": 0.696702425644645,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-base",
+          "requested": 550,
+          "actualChargeMs": 550,
+          "direction": -1,
+          "height": 155,
+          "landing": "strong-east-base",
+          "lastLanding": {
+            "id": "strong-east-base",
+            "height": 155,
+            "drop": 2.4784410761534446,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "strong-east-top",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 159,
+          "landing": "strong-east-top",
+          "lastLanding": {
+            "id": "strong-east-top",
+            "height": 159,
+            "drop": 0.21990288157346072,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-perch",
+          "requested": 625,
+          "actualChargeMs": 633.33,
+          "direction": -1,
+          "height": 163,
+          "landing": "bird-perch",
+          "lastLanding": {
+            "id": "bird-perch",
+            "height": 163,
+            "drop": 3.8494198983441095,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "bird-high",
+          "requested": 575,
+          "actualChargeMs": 566.67,
+          "direction": 1,
+          "height": 167.1,
+          "landing": "bird-high",
+          "lastLanding": {
+            "id": "bird-high",
+            "height": 167.1,
+            "drop": 2.6461871564073647,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-base",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 171.1,
+          "landing": "ice-rise-base",
+          "lastLanding": {
+            "id": "ice-rise-base",
+            "height": 171.1,
+            "drop": 0.9406874406119243,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-rise-top",
+          "requested": 475,
+          "actualChargeMs": 466.67,
+          "direction": 1,
+          "height": 177.69999999999996,
+          "landing": "ice-rise-top",
+          "lastLanding": {
+            "id": "ice-rise-top",
+            "height": 177.69999999999996,
+            "drop": 0.07065084886016848,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "ice-heavy-step",
+          "requested": 475,
+          "actualChargeMs": 483.33,
+          "direction": -1,
+          "height": 181,
+          "landing": "ice-heavy-step",
+          "lastLanding": {
+            "id": "ice-heavy-step",
+            "height": 181,
+            "drop": 1.201616887980748,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-catch",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 184,
+          "landing": "star-catch",
+          "lastLanding": {
+            "id": "star-catch",
+            "height": 184,
+            "drop": 0.4923067265806651,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "star-west",
+          "requested": 425,
+          "actualChargeMs": 433.33,
+          "direction": -1,
+          "height": 188.1,
+          "landing": "star-west",
+          "lastLanding": {
+            "id": "star-west",
+            "height": 188.1,
+            "drop": 0.5967024256446507,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star-base",
+          "requested": 575,
+          "actualChargeMs": 566.67,
+          "direction": 1,
+          "height": 192.19999999999996,
+          "landing": "last-star-base",
+          "lastLanding": {
+            "id": "last-star-base",
+            "height": 192.19999999999996,
+            "drop": 2.6461871564076773,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "last-star",
+          "requested": 450,
+          "actualChargeMs": 450,
+          "direction": -1,
+          "height": 196.4,
+          "landing": "last-star",
+          "lastLanding": {
+            "id": "last-star",
+            "height": 196.4,
+            "drop": 1.18984368544767,
+            "loss": 0,
+            "success": true
+          }
+        },
+        {
+          "target": "space-goal",
+          "requested": 400,
+          "actualChargeMs": 400,
+          "direction": 1,
+          "height": 200,
+          "landing": "space-goal",
+          "lastLanding": {
+            "id": "space-goal",
+            "height": 200,
+            "drop": 1.0034890441962432,
+            "loss": 0,
+            "success": true
+          }
+        }
+      ],
+      "intentionalFalls": [],
+      "final": {
+        "alive": false,
+        "clear": true,
+        "levelId": "authored-well-and-sky",
+        "goal": 200,
+        "time": 82.8083333333453,
+        "height": 200,
+        "maxHeight": 200,
+        "player": {
+          "x": 208.30867140008255,
+          "y": 4800,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "ledgeId": "space-goal",
+          "facing": 1,
+          "landTime": 0.16,
+          "slipTime": 0
+        },
+        "phase": "clear",
+        "chargeMs": 0,
+        "chargeBand": "short",
+        "direction": 0,
+        "chapter": "space",
+        "seaProgress": 1,
+        "wellCleared": true,
+        "section": {
+          "id": "space-door",
+          "from": 192,
+          "to": 201,
+          "name": "宇宙への一跳び",
+          "motif": "stars",
+          "purpose": "最後の星に着地してクリア"
+        },
+        "wind": {
+          "id": "rise-weak",
+          "from": 192,
+          "to": 201,
+          "x": 0,
+          "y": 60,
+          "direction": "up",
+          "strength": "weak",
+          "label": "↑ 弱"
+        },
+        "nextWind": null,
+        "totalFall": 62.68498964467009,
+        "falls": 0,
+        "biggestFall": 3.8494198983441095,
+        "jumps": 54,
+        "feedback": "宇宙だ！",
+        "lastLanding": {
+          "id": "space-goal",
+          "height": 200,
+          "drop": 1.0034890441962432,
+          "loss": 0,
+          "success": true
+        }
+      },
+      "lastState": null,
+      "boundaries": {
+        "cases": []
+      }
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: viewport #tutorial-again-button\n    at geometry (file:///workspace/Badgio0906-web-mini-game-arcade/tests/game019/review-charge.mjs:17:64)\n    at async file:///workspace/Badgio0906-web-mini-game-arcade/tests/game019/review-charge.mjs:59:122",
+      "geometry": [],
+      "errors": [],
+      "httpErrors": [],
+      "practiceStages": [],
+      "observedEventCount": 0,
+      "climb": [],
+      "intentionalFalls": [],
+      "final": {
+        "alive": true,
+        "clear": false,
+        "levelId": "authored-well-and-sky",
+        "goal": 200,
+        "time": 0,
+        "height": 0,
+        "maxHeight": 0,
+        "player": {
+          "x": 180,
+          "y": 0,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "ledgeId": "bottom",
+          "facing": 1,
+          "landTime": 0,
+          "slipTime": 0
+        },
+        "phase": "grounded",
+        "chargeMs": 0,
+        "chargeBand": "short",
+        "direction": 0,
+        "chapter": "well",
+        "seaProgress": 0,
+        "wellCleared": false,
+        "section": {
+          "id": "water",
+          "from": 0,
+          "to": 8,
+          "name": "水面の石",
+          "motif": "water",
+          "purpose": "広い石で中チャージを覚える"
+        },
+        "wind": null,
+        "nextWind": {
+          "id": "west-weak",
+          "from": 104,
+          "to": 112,
+          "x": -20,
+          "y": 0,
+          "direction": "left",
+          "strength": "weak",
+          "label": "← 弱"
+        },
+        "totalFall": 0,
+        "falls": 0,
+        "biggestFall": 0,
+        "jumps": 0,
+        "feedback": "溜めて、離して、跳ぶ。",
+        "lastLanding": null
+      },
+      "lastState": "title",
+      "boundaries": {
+        "cases": []
+      }
+    }
+  ]
+}

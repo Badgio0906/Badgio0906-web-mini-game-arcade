@@ -3,17 +3,45 @@
   "title": "井の中の蛙、大海を目指す ～WELL TO SPACE～",
   "titleEn": "WELL TO SPACE",
   "tagline": "井戸を出たら、今度は宇宙でした。",
-  "genre": "precise ascent / planned jumps",
-  "coreMechanic": "Choose left/straight/right and small/medium/large on a platform; commit the jump, recover falls, read wind after reaching the sea",
-  "skillAxes": ["landing judgment", "direction and size choice", "wind reading", "fall recovery"],
-  "runSecondsDesignTarget": [180, 600],
-  "height": { "wellMeters": 100, "spaceMeters": 200 },
-  "inputs": { "direction": "arrows / A D W, or three direction buttons", "size": "Z X C / 1 2 3, or small medium large buttons", "space": "repeat selected jump size" },
-  "practice": "Four separate physics lessons; no best, score, credits or run events",
+  "genre": "charge precision ascent / learned geography",
+  "coreMechanic": "Hold JUMP to charge continuously, decide left/up/right before release, commit flight without midair steering; learn authored well, recover variable falls, read fixed takeoff wind in the sky",
+  "skillAxes": [
+    "charge timing",
+    "launch position",
+    "direction judgment",
+    "section memory",
+    "visible fall risk",
+    "wind compensation"
+  ],
+  "runSecondsDesignTarget": [
+    180,
+    600
+  ],
+  "height": {
+    "wellMeters": 100,
+    "spaceMeters": 200
+  },
+  "inputs": {
+    "direction": "hold arrows / A D, or hold left/right touch buttons; neither means straight up",
+    "jump": "hold Space / central JUMP, release to launch; max charge holds until release",
+    "peek": "hold Down / S / 下を見る",
+    "pause": "Esc / pause button"
+  },
+  "practice": "Seven isolated charge/flight/landing lessons, including no-air correction and short preparation; no production BEST, score, chapters, credits or run records",
   "storagePrefix": "web-mini-arcade:v1:game019:",
   "bestStorage": "maximum height in integer decimeters; no checkpoint or position persistence",
   "creditMode": "free",
   "ads": "none in game logic",
-  "jev": "offline schema and observed events only",
-  "humanReview": "pending physical device and subjective experience"
+  "jev": "offline profile/schema and observed records only; no evaluation API invoked",
+  "humanReview": "pending physical device and subjective experience",
+  "revision": 2,
+  "level": {
+    "generation": "fixed original handcrafted",
+    "wellSections": 12,
+    "skySections": 12,
+    "catchLedges": "physical terrain near25,50,75m; not saved checkpoints",
+    "airControl": "none",
+    "wind": "fixed visible height zones; sampled at takeoff and locked until landing"
+  },
+  "telemetry": "local bounded shared events with Game019 charge/landing/fall/section/wind/chapter details; no external transmission"
 }

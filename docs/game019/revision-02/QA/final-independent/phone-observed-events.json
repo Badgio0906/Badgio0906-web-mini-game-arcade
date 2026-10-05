@@ -1,0 +1,6416 @@
+{
+  "provenance": "QA native input local observations; automated controller with readonly diagnostics, not human fun",
+  "sourceReport": "report.json.gz",
+  "sourceHashes": {
+    "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+    "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+    "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+    "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+    "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+    "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+    "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+    "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+    "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+    "src/games/game019/style.css": "930486e2f53a051ccc098a1df72f6fd477899d595d12b19153b79b775c525c28",
+    "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+    "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+    "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+    "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+    "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+  },
+  "retention": {
+    "availableObservedEvents": 479,
+    "sampleMaximum": 400,
+    "windowLimited": true
+  },
+  "events": [
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:17.575Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 6,
+        "fall_start_height": 14.81613868664264,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:17.958Z",
+      "data": {
+        "event": "wall_bump",
+        "run_id": 2,
+        "obstacle_id": "low-beam",
+        "height": 12.6747217166066,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:18.575Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 6,
+        "fall_start_height": 14.81613868664264,
+        "fall_end_height": 0,
+        "fall_distance": 14.81613868664264,
+        "progress_lost": 13.9,
+        "total_fall": 20.66090113186195,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:18.576Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 6,
+        "jump_start_height": 13.9,
+        "jump_end_height": 0,
+        "landing_success": false,
+        "landing_id": "bottom",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:18.576Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "bottom",
+        "height": 0,
+        "surface": "stone",
+        "drop": 14.81613868664264,
+        "loss": 13.9,
+        "success": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:18.843Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 0,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:19.543Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 7,
+        "jump_charge_ms": 700,
+        "jump_power_normalized": 1,
+        "jump_band": "long",
+        "jump_direction": -1,
+        "jump_start_height": 0,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "water",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:20.325Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 7,
+        "fall_start_height": 8.999997559864482,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:20.928Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 7,
+        "fall_start_height": 8.999997559864482,
+        "fall_end_height": 3.6,
+        "fall_distance": 5.399997559864483,
+        "progress_lost": 0,
+        "total_fall": 26.060898691726425,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:20.929Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 7,
+        "jump_start_height": 0,
+        "jump_end_height": 3.6,
+        "landing_success": true,
+        "landing_id": "first",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:20.930Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "first",
+        "height": 3.6,
+        "surface": "stone",
+        "drop": 5.399997559864483,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:21.126Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 3.6,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:21.544Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 8,
+        "jump_charge_ms": 416.67,
+        "jump_power_normalized": 0.5952380952380949,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 3.6,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "water",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.091Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 8,
+        "fall_start_height": 8.056297552385077,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.341Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 8,
+        "fall_start_height": 8.056297552385077,
+        "fall_end_height": 7.2,
+        "fall_distance": 0.8562975523850769,
+        "progress_lost": 0,
+        "total_fall": 26.9171962441115,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.342Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 8,
+        "jump_start_height": 3.6,
+        "jump_end_height": 7.2,
+        "landing_success": true,
+        "landing_id": "brick",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.343Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "brick",
+        "height": 7.2,
+        "surface": "stone",
+        "drop": 0.8562975523850769,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.510Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 7.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:22.893Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 9,
+        "jump_charge_ms": 383.33,
+        "jump_power_normalized": 0.5476190476190473,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 7.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "water",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.411Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 9,
+        "fall_start_height": 11.18748257276525,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.675Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 9,
+        "fall_start_height": 11.18748257276525,
+        "fall_end_height": 10.2,
+        "fall_distance": 0.9874825727652503,
+        "progress_lost": 0,
+        "total_fall": 27.904678816876753,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.676Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 9,
+        "jump_start_height": 7.2,
+        "jump_end_height": 10.2,
+        "landing_success": true,
+        "landing_id": "under-beam",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.677Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "under-beam",
+        "height": 10.2,
+        "surface": "wood",
+        "drop": 0.9874825727652503,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.876Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 10.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:23.945Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 10,
+        "jump_charge_ms": 66.67,
+        "jump_power_normalized": 0.09523809523809525,
+        "jump_band": "short",
+        "jump_direction": -1,
+        "jump_start_height": 10.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.141Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 10,
+        "fall_start_height": 10.72694597935986,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.325Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 10,
+        "fall_start_height": 10.72694597935986,
+        "fall_end_height": 10.2,
+        "fall_distance": 0.5269459793598603,
+        "progress_lost": 0,
+        "total_fall": 28.431624796236616,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.326Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 10,
+        "jump_start_height": 10.2,
+        "jump_end_height": 10.2,
+        "landing_success": true,
+        "landing_id": "under-beam",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.326Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "under-beam",
+        "height": 10.2,
+        "surface": "wood",
+        "drop": 0.5269459793598603,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.526Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 10.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:24.993Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 11,
+        "jump_charge_ms": 466.67,
+        "jump_power_normalized": 0.6666666666666661,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 10.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:25.591Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 11,
+        "fall_start_height": 15.388138554035395,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:25.908Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 11,
+        "fall_start_height": 15.388138554035395,
+        "fall_end_height": 13.9,
+        "fall_distance": 1.4881385540353946,
+        "progress_lost": 0,
+        "total_fall": 29.91976335027201,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:25.909Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 11,
+        "jump_start_height": 10.2,
+        "jump_end_height": 13.9,
+        "landing_success": true,
+        "landing_id": "takeoff",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:25.910Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "takeoff",
+        "height": 13.9,
+        "surface": "wood",
+        "drop": 1.4881385540353946,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:26.076Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 13.9,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:26.326Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 12,
+        "jump_charge_ms": 250,
+        "jump_power_normalized": 0.3571428571428573,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 13.9,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:26.726Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 12,
+        "fall_start_height": 16.181867549529343,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:27.358Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 12,
+        "fall_start_height": 16.181867549529343,
+        "fall_end_height": 10.2,
+        "fall_distance": 5.981867549529344,
+        "progress_lost": 3.700000000000001,
+        "total_fall": 35.90163089980135,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:27.359Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 12,
+        "jump_start_height": 13.9,
+        "jump_end_height": 10.2,
+        "landing_success": false,
+        "landing_id": "under-beam",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:27.360Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "under-beam",
+        "height": 10.2,
+        "surface": "wood",
+        "drop": 5.981867549529344,
+        "loss": 3.700000000000001,
+        "success": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:27.626Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 10.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:28.077Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 13,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571423,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 10.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:28.658Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 13,
+        "fall_start_height": 15.140687440611826,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:28.941Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 13,
+        "fall_start_height": 15.140687440611826,
+        "fall_end_height": 13.9,
+        "fall_distance": 1.2406874406118256,
+        "progress_lost": 0,
+        "total_fall": 37.14231834041317,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:28.942Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 13,
+        "jump_start_height": 10.2,
+        "jump_end_height": 13.9,
+        "landing_success": true,
+        "landing_id": "takeoff",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:28.945Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "takeoff",
+        "height": 13.9,
+        "surface": "wood",
+        "drop": 1.2406874406118256,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.127Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 13.9,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.210Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 14,
+        "jump_charge_ms": 83.33,
+        "jump_power_normalized": 0.11904761904761904,
+        "jump_band": "short",
+        "jump_direction": 1,
+        "jump_start_height": 13.9,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.425Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 14,
+        "fall_start_height": 14.547183861141894,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.625Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 14,
+        "fall_start_height": 14.547183861141894,
+        "fall_end_height": 13.9,
+        "fall_distance": 0.6471838611418939,
+        "progress_lost": 0,
+        "total_fall": 37.78950220155506,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.626Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 14,
+        "jump_start_height": 13.9,
+        "jump_end_height": 13.9,
+        "landing_success": true,
+        "landing_id": "takeoff",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.627Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "takeoff",
+        "height": 13.9,
+        "surface": "wood",
+        "drop": 0.6471838611418939,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:29.826Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 13.9,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:30.494Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 15,
+        "jump_charge_ms": 666.67,
+        "jump_power_normalized": 0.9523809523809527,
+        "jump_band": "long",
+        "jump_direction": -1,
+        "jump_start_height": 13.9,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "beam",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:31.241Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 15,
+        "fall_start_height": 22.318964707255414,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:31.641Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 15,
+        "fall_start_height": 22.318964707255414,
+        "fall_end_height": 20,
+        "fall_distance": 2.3189647072554145,
+        "progress_lost": 0,
+        "total_fall": 40.10846690881048,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:31.642Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 15,
+        "jump_start_height": 13.9,
+        "jump_end_height": 20,
+        "landing_success": true,
+        "landing_id": "root-top",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:31.643Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "root-top",
+        "height": 20,
+        "surface": "moss",
+        "drop": 2.3189647072554145,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:31.943Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 20,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:32.376Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 16,
+        "jump_charge_ms": 433.33,
+        "jump_power_normalized": 0.6190476190476186,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 20,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "roots",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:32.608Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "broken-brick",
+        "section_name": "割れたレンガ",
+        "height": 23.017700977498635,
+        "section_from": 23,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:32.941Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 16,
+        "fall_start_height": 24.69670242564477,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:33.291Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 16,
+        "fall_start_height": 24.69670242564477,
+        "fall_end_height": 22.8,
+        "fall_distance": 1.8967024256447687,
+        "progress_lost": 0,
+        "total_fall": 42.005169334455246,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:33.292Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 16,
+        "jump_start_height": 20,
+        "jump_end_height": 22.8,
+        "landing_success": true,
+        "landing_id": "brick-narrow",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:33.293Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "brick-narrow",
+        "height": 22.8,
+        "surface": "stone",
+        "drop": 1.8967024256447687,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:33.493Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 22.8,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:33.793Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 17,
+        "jump_charge_ms": 300,
+        "jump_power_normalized": 0.42857142857142855,
+        "jump_band": "medium",
+        "jump_direction": 0,
+        "jump_start_height": 22.8,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "roots",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:34.241Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 17,
+        "fall_start_height": 25.687164805391728,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:34.425Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 17,
+        "fall_start_height": 25.687164805391728,
+        "fall_end_height": 25.2,
+        "fall_distance": 0.48716480539172835,
+        "progress_lost": 0,
+        "total_fall": 42.492334139846974,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:34.426Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 17,
+        "jump_start_height": 22.8,
+        "jump_end_height": 25.2,
+        "landing_success": true,
+        "landing_id": "catch-25",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:34.427Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-25",
+        "height": 25.2,
+        "surface": "stone",
+        "drop": 0.48716480539172835,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:34.760Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 25.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:35.177Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 18,
+        "jump_charge_ms": 416.67,
+        "jump_power_normalized": 0.5952380952380949,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 25.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:35.724Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 18,
+        "fall_start_height": 29.656297552385073,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:35.867Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 18,
+        "fall_start_height": 29.656297552385073,
+        "fall_end_height": 29.399999999999995,
+        "fall_distance": 0.2562975523850781,
+        "progress_lost": 0,
+        "total_fall": 42.74863169223205,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:35.868Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 18,
+        "jump_start_height": 25.2,
+        "jump_end_height": 29.399999999999995,
+        "landing_success": true,
+        "landing_id": "cracked-step",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:35.869Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "cracked-step",
+        "height": 29.399999999999995,
+        "surface": "crumble",
+        "drop": 0.2562975523850781,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:36.093Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 29.399999999999995,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:36.343Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 19,
+        "jump_charge_ms": 250,
+        "jump_power_normalized": 0.3571428571428573,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 29.399999999999995,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:36.524Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "moss-wall",
+        "section_name": "苔の壁",
+        "height": 31.041024881339982,
+        "section_from": 31,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:36.741Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 19,
+        "fall_start_height": 31.68186754952936,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.399Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 19,
+        "fall_start_height": 31.68186754952936,
+        "fall_end_height": 25.2,
+        "fall_distance": 6.481867549529362,
+        "progress_lost": 4.199999999999996,
+        "total_fall": 49.230499241761414,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.400Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 19,
+        "jump_start_height": 29.399999999999995,
+        "jump_end_height": 25.2,
+        "landing_success": false,
+        "landing_id": "catch-25",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.401Z",
+      "data": {
+        "event": "catch_ledge_used",
+        "run_id": 2,
+        "ledge_id": "catch-25",
+        "height": 25.2,
+        "fall_distance": 6.481867549529362,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.410Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-25",
+        "height": 25.2,
+        "surface": "stone",
+        "drop": 6.481867549529362,
+        "loss": 4.199999999999996,
+        "success": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.776Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 25.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:37.845Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 20,
+        "jump_charge_ms": 66.67,
+        "jump_power_normalized": 0.09523809523809525,
+        "jump_band": "short",
+        "jump_direction": -1,
+        "jump_start_height": 25.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.041Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 20,
+        "fall_start_height": 25.726945979359865,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.224Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 20,
+        "fall_start_height": 25.726945979359865,
+        "fall_end_height": 25.2,
+        "fall_distance": 0.5269459793598656,
+        "progress_lost": 0,
+        "total_fall": 49.75744522112128,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.225Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 20,
+        "jump_start_height": 25.2,
+        "jump_end_height": 25.2,
+        "landing_success": true,
+        "landing_id": "catch-25",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.226Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-25",
+        "height": 25.2,
+        "surface": "stone",
+        "drop": 0.5269459793598656,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.476Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 25.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.527Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 21,
+        "jump_charge_ms": 50,
+        "jump_power_normalized": 0.07142857142857144,
+        "jump_band": "short",
+        "jump_direction": 1,
+        "jump_start_height": 25.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.710Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 21,
+        "fall_start_height": 25.61872497468794,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.874Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 21,
+        "fall_start_height": 25.61872497468794,
+        "fall_end_height": 25.2,
+        "fall_distance": 0.41872497468794023,
+        "progress_lost": 0,
+        "total_fall": 50.17617019580922,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.876Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 21,
+        "jump_start_height": 25.2,
+        "jump_end_height": 25.2,
+        "landing_success": true,
+        "landing_id": "catch-25",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:38.877Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-25",
+        "height": 25.2,
+        "surface": "stone",
+        "drop": 0.41872497468794023,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:39.112Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 25.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:39.609Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 22,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 25.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:40.237Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 22,
+        "fall_start_height": 30.894182444196144,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:40.541Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 22,
+        "fall_start_height": 30.894182444196144,
+        "fall_end_height": 29.399999999999995,
+        "fall_distance": 1.4941824441961487,
+        "progress_lost": 0,
+        "total_fall": 51.67035264000536,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:40.543Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 22,
+        "jump_start_height": 25.2,
+        "jump_end_height": 29.399999999999995,
+        "landing_success": true,
+        "landing_id": "cracked-step",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:40.544Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "cracked-step",
+        "height": 29.399999999999995,
+        "surface": "crumble",
+        "drop": 1.4941824441961487,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:40.776Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 29.399999999999995,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:41.376Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 23,
+        "jump_charge_ms": 600,
+        "jump_power_normalized": 0.857142857142857,
+        "jump_band": "long",
+        "jump_direction": 1,
+        "jump_start_height": 29.399999999999995,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "broken-brick",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:42.074Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 23,
+        "fall_start_height": 36.69169559824864,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:42.441Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 23,
+        "fall_start_height": 36.69169559824864,
+        "fall_end_height": 34.8,
+        "fall_distance": 1.8916955982486456,
+        "progress_lost": 0,
+        "total_fall": 53.562048238254015,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:42.442Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 23,
+        "jump_start_height": 29.399999999999995,
+        "jump_end_height": 34.8,
+        "landing_success": true,
+        "landing_id": "moss-low",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:42.443Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "moss-low",
+        "height": 34.8,
+        "surface": "moss",
+        "drop": 1.8916955982486456,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:42.743Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 34.8,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:43.226Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 24,
+        "jump_charge_ms": 483.33,
+        "jump_power_normalized": 0.6904761904761899,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 34.8,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "moss-wall",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:43.707Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "old-timber",
+        "section_name": "古い板の折り返し",
+        "height": 40.02760465838137,
+        "section_from": 40,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:43.841Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 24,
+        "fall_start_height": 40.239440265576874,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:44.235Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 24,
+        "fall_start_height": 40.239440265576874,
+        "fall_end_height": 38,
+        "fall_distance": 2.2394402655768744,
+        "progress_lost": 0,
+        "total_fall": 55.80148850383088,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:44.237Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 24,
+        "jump_start_height": 34.8,
+        "jump_end_height": 38,
+        "landing_success": true,
+        "landing_id": "moss-turn",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:44.238Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "moss-turn",
+        "height": 38,
+        "surface": "stone",
+        "drop": 2.2394402655768744,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:44.526Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 38,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:45.043Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 25,
+        "jump_charge_ms": 516.67,
+        "jump_power_normalized": 0.7380952380952374,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 38,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "moss-wall",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:45.674Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 25,
+        "fall_start_height": 43.95210707116164,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:45.941Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 25,
+        "fall_start_height": 43.95210707116164,
+        "fall_end_height": 42.9,
+        "fall_distance": 1.0521070711616431,
+        "progress_lost": 0,
+        "total_fall": 56.85359557499253,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:45.942Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 25,
+        "jump_start_height": 38,
+        "jump_end_height": 42.9,
+        "landing_success": true,
+        "landing_id": "timber-long",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:45.943Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "timber-long",
+        "height": 42.9,
+        "surface": "wood",
+        "drop": 1.0521070711616431,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:46.210Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 42.9,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:46.509Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 26,
+        "jump_charge_ms": 300,
+        "jump_power_normalized": 0.42857142857142855,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 42.9,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "old-timber",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:46.957Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 26,
+        "fall_start_height": 45.78716480539172,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.157Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 26,
+        "fall_start_height": 45.78716480539172,
+        "fall_end_height": 45.20000000000001,
+        "fall_distance": 0.5871648053917085,
+        "progress_lost": 0,
+        "total_fall": 57.44076038038425,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.159Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 26,
+        "jump_start_height": 42.9,
+        "jump_end_height": 45.20000000000001,
+        "landing_success": true,
+        "landing_id": "timber-short",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.160Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "timber-short",
+        "height": 45.20000000000001,
+        "surface": "wood",
+        "drop": 0.5871648053917085,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.393Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 45.20000000000001,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.543Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 27,
+        "jump_charge_ms": 150,
+        "jump_power_normalized": 0.21428571428571427,
+        "jump_band": "short",
+        "jump_direction": -1,
+        "jump_start_height": 45.20000000000001,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "old-timber",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.676Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "rest-shelf",
+        "section_name": "半分の休み棚",
+        "height": 46.034339466909294,
+        "section_from": 46,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.841Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 27,
+        "fall_start_height": 46.418252791661054,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.926Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 27,
+        "fall_start_height": 46.418252791661054,
+        "fall_end_height": 46.29999999999999,
+        "fall_distance": 0.11825279166106384,
+        "progress_lost": 0,
+        "total_fall": 57.55901317204532,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.928Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 27,
+        "jump_start_height": 45.20000000000001,
+        "jump_end_height": 46.29999999999999,
+        "landing_success": true,
+        "landing_id": "timber-nub",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:47.929Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "timber-nub",
+        "height": 46.29999999999999,
+        "surface": "wood",
+        "drop": 0.11825279166106384,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.193Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 46.29999999999999,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.392Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 28,
+        "jump_charge_ms": 200,
+        "jump_power_normalized": 0.2857142857142858,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 46.29999999999999,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "rest-shelf",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.741Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 28,
+        "fall_start_height": 48.02319620150385,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.857Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 28,
+        "fall_start_height": 48.02319620150385,
+        "fall_end_height": 47.79999999999999,
+        "fall_distance": 0.22319620150386044,
+        "progress_lost": 0,
+        "total_fall": 57.78220937354918,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.859Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 28,
+        "jump_start_height": 46.29999999999999,
+        "jump_end_height": 47.79999999999999,
+        "landing_success": true,
+        "landing_id": "rest-edge",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:48.860Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "rest-edge",
+        "height": 47.79999999999999,
+        "surface": "stone",
+        "drop": 0.22319620150386044,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:49.092Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 47.79999999999999,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:49.476Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 29,
+        "jump_charge_ms": 383.33,
+        "jump_power_normalized": 0.5476190476190473,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 47.79999999999999,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "rest-shelf",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:49.657Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "root-gap",
+        "section_name": "根の大きな切れ目",
+        "height": 50.131579837647855,
+        "section_from": 50.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:49.990Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 29,
+        "fall_start_height": 51.787482572765185,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:50.340Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 29,
+        "fall_start_height": 51.787482572765185,
+        "fall_end_height": 50,
+        "fall_distance": 1.7874825727651853,
+        "progress_lost": 0,
+        "total_fall": 59.56969194631436,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:50.342Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 29,
+        "jump_start_height": 47.79999999999999,
+        "jump_end_height": 50,
+        "landing_success": true,
+        "landing_id": "catch-50",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:50.343Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-50",
+        "height": 50,
+        "surface": "stone",
+        "drop": 1.7874825727651853,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:50.676Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 50,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:51.276Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 30,
+        "jump_charge_ms": 600,
+        "jump_power_normalized": 0.857142857142857,
+        "jump_band": "long",
+        "jump_direction": 1,
+        "jump_start_height": 50,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "rest-shelf",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:51.974Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 30,
+        "fall_start_height": 57.29169559824873,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:52.065Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 30,
+        "fall_start_height": 57.29169559824873,
+        "fall_end_height": 57.20000000000001,
+        "fall_distance": 0.09169559824871953,
+        "progress_lost": 0,
+        "total_fall": 59.66138754456307,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:52.066Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 30,
+        "jump_start_height": 50,
+        "jump_end_height": 57.20000000000001,
+        "landing_success": true,
+        "landing_id": "root-gap-top",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:52.067Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "root-gap-top",
+        "height": 57.20000000000001,
+        "surface": "stone",
+        "drop": 0.09169559824871953,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:52.343Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 57.20000000000001,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:52.843Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 31,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 57.20000000000001,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "root-gap",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:53.028Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "bucket",
+        "section_name": "古いバケツ",
+        "height": 60.08453171764393,
+        "section_from": 60,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:53.457Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 31,
+        "fall_start_height": 62.89418244419622,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:53.852Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 31,
+        "fall_start_height": 62.89418244419622,
+        "fall_end_height": 60.70000000000001,
+        "fall_distance": 2.1941824441962083,
+        "progress_lost": 0,
+        "total_fall": 61.85556998875928,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:53.853Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 31,
+        "jump_start_height": 57.20000000000001,
+        "jump_end_height": 60.70000000000001,
+        "landing_success": true,
+        "landing_id": "bucket-approach",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:53.854Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "bucket-approach",
+        "height": 60.70000000000001,
+        "surface": "wood",
+        "drop": 2.1941824441962083,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:54.126Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 60.70000000000001,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:54.493Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 32,
+        "jump_charge_ms": 366.67,
+        "jump_power_normalized": 0.5238095238095236,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 60.70000000000001,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "bucket",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.007Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 32,
+        "fall_start_height": 64.45897357689667,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.124Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 32,
+        "fall_start_height": 64.45897357689667,
+        "fall_end_height": 64.2,
+        "fall_distance": 0.2589735768966648,
+        "progress_lost": 0,
+        "total_fall": 62.11454356565594,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.125Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 32,
+        "jump_start_height": 60.70000000000001,
+        "jump_end_height": 64.2,
+        "landing_success": true,
+        "landing_id": "old-bucket",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.126Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "old-bucket",
+        "height": 64.2,
+        "surface": "bucket",
+        "drop": 0.2589735768966648,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.475Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 64.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:55.959Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 33,
+        "jump_charge_ms": 483.33,
+        "jump_power_normalized": 0.6904761904761899,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 64.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "bucket",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:56.573Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 33,
+        "fall_start_height": 69.63944026557688,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:56.890Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 33,
+        "fall_start_height": 69.63944026557688,
+        "fall_end_height": 68,
+        "fall_distance": 1.63944026557688,
+        "progress_lost": 0,
+        "total_fall": 63.75398383123283,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:56.891Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 33,
+        "jump_start_height": 64.2,
+        "jump_end_height": 68,
+        "landing_success": true,
+        "landing_id": "bucket-return",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:56.892Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "bucket-return",
+        "height": 68,
+        "surface": "wood",
+        "drop": 1.63944026557688,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.092Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 68,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.342Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 34,
+        "jump_charge_ms": 250,
+        "jump_power_normalized": 0.3571428571428573,
+        "jump_band": "medium",
+        "jump_direction": 0,
+        "jump_start_height": 68,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "bucket",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.607Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "fork",
+        "section_name": "二つの帰り道",
+        "height": 70.02172824188817,
+        "section_from": 70,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.740Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 34,
+        "fall_start_height": 70.28186754952937,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.876Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 34,
+        "fall_start_height": 70.28186754952937,
+        "fall_end_height": 70,
+        "fall_distance": 0.2818675495293661,
+        "progress_lost": 0,
+        "total_fall": 64.0358513807622,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.878Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 34,
+        "jump_start_height": 68,
+        "jump_end_height": 70,
+        "landing_success": true,
+        "landing_id": "fork-start",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:57.880Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "fork-start",
+        "height": 70,
+        "surface": "wood",
+        "drop": 0.2818675495293661,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:58.176Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 70,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:58.475Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 35,
+        "jump_charge_ms": 300,
+        "jump_power_normalized": 0.42857142857142855,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 70,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "fork",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:58.924Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 35,
+        "fall_start_height": 72.88716480539172,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:59.107Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 35,
+        "fall_start_height": 72.88716480539172,
+        "fall_end_height": 72.4,
+        "fall_distance": 0.48716480539171414,
+        "progress_lost": 0,
+        "total_fall": 64.52301618615391,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:59.108Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 35,
+        "jump_start_height": 70,
+        "jump_end_height": 72.4,
+        "landing_success": true,
+        "landing_id": "fork-safe-low",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:59.110Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "fork-safe-low",
+        "height": 72.4,
+        "surface": "stone",
+        "drop": 0.48716480539171414,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:59.342Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 72.4,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:24:59.642Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 36,
+        "jump_charge_ms": 300,
+        "jump_power_normalized": 0.42857142857142855,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 72.4,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "fork",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.090Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 36,
+        "fall_start_height": 75.28716480539173,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.157Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 36,
+        "fall_start_height": 75.28716480539173,
+        "fall_end_height": 75.2,
+        "fall_distance": 0.08716480539172267,
+        "progress_lost": 0,
+        "total_fall": 64.61018099154562,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.158Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 36,
+        "jump_start_height": 72.4,
+        "jump_end_height": 75.2,
+        "landing_success": true,
+        "landing_id": "catch-75",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.160Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "catch-75",
+        "height": 75.2,
+        "surface": "stone",
+        "drop": 0.08716480539172267,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.426Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 75.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:00.825Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 37,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 75.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "fork",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:01.357Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 37,
+        "fall_start_height": 79.41990288157335,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:01.657Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 37,
+        "fall_start_height": 79.41990288157335,
+        "fall_end_height": 78.1,
+        "fall_distance": 1.3199028815733556,
+        "progress_lost": 0,
+        "total_fall": 65.93008387311899,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:01.658Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 37,
+        "jump_start_height": 75.2,
+        "jump_end_height": 78.1,
+        "landing_success": true,
+        "landing_id": "fork-safe-high",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:01.660Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "fork-safe-high",
+        "height": 78.1,
+        "surface": "wood",
+        "drop": 1.3199028815733556,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:02.025Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 78.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:02.425Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 38,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 78.1,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "fork",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:02.573Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "upper-moss",
+        "section_name": "光る苔とひび石",
+        "height": 80.05320336958458,
+        "section_from": 80,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:02.956Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 38,
+        "fall_start_height": 82.31990288157333,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:03.056Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 38,
+        "fall_start_height": 82.31990288157333,
+        "fall_end_height": 82.2,
+        "fall_distance": 0.1199028815733243,
+        "progress_lost": 0,
+        "total_fall": 66.04998675469233,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:03.058Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 38,
+        "jump_start_height": 78.1,
+        "jump_end_height": 82.2,
+        "landing_success": true,
+        "landing_id": "fork-join",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:03.059Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "fork-join",
+        "height": 82.2,
+        "surface": "stone",
+        "drop": 0.1199028815733243,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:03.291Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 82.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:03.741Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 39,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571423,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 82.2,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "upper-moss",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:04.323Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 39,
+        "fall_start_height": 87.14068744061181,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:04.623Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 39,
+        "fall_start_height": 87.14068744061181,
+        "fall_end_height": 85.8,
+        "fall_distance": 1.3406874406118163,
+        "progress_lost": 0,
+        "total_fall": 67.39067419530414,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:04.625Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 39,
+        "jump_start_height": 82.2,
+        "jump_end_height": 85.8,
+        "landing_success": true,
+        "landing_id": "upper-moss",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:04.626Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "upper-moss",
+        "height": 85.8,
+        "surface": "moss",
+        "drop": 1.3406874406118163,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:04.858Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 85.8,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:05.359Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 40,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 85.8,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "upper-moss",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:05.673Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "sunlight",
+        "section_name": "井戸の出口",
+        "height": 90.07313288876476,
+        "section_from": 90,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:05.973Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 40,
+        "fall_start_height": 91.49418244419621,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:06.373Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 40,
+        "fall_start_height": 91.49418244419621,
+        "fall_end_height": 89.09999999999998,
+        "fall_distance": 2.3941824441962325,
+        "progress_lost": 0,
+        "total_fall": 69.78485663950036,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:06.375Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 40,
+        "jump_start_height": 85.8,
+        "jump_end_height": 89.09999999999998,
+        "landing_success": true,
+        "landing_id": "last-crack",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:06.376Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "last-crack",
+        "height": 89.09999999999998,
+        "surface": "crumble",
+        "drop": 2.3941824441962325,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:06.625Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 89.09999999999998,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:07.126Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 41,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 89.09999999999998,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "upper-moss",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:07.740Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 41,
+        "fall_start_height": 94.79418244419621,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:08.023Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 41,
+        "fall_start_height": 94.79418244419621,
+        "fall_end_height": 93.7,
+        "fall_distance": 1.094182444196207,
+        "progress_lost": 0,
+        "total_fall": 70.87903908369655,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:08.025Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 41,
+        "jump_start_height": 89.09999999999998,
+        "jump_end_height": 93.7,
+        "landing_success": true,
+        "landing_id": "light-root",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:08.026Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "light-root",
+        "height": 93.7,
+        "surface": "wood",
+        "drop": 1.094182444196207,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:08.308Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 93.7,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:08.808Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 42,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 93.7,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "sunlight",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:09.437Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 42,
+        "fall_start_height": 99.39418244419623,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:09.790Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 42,
+        "fall_start_height": 99.39418244419623,
+        "fall_end_height": 97.40000000000002,
+        "fall_distance": 1.9941824441962126,
+        "progress_lost": 0,
+        "total_fall": 72.87322152789277,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:09.791Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 42,
+        "jump_start_height": 93.7,
+        "jump_end_height": 97.40000000000002,
+        "landing_success": true,
+        "landing_id": "exit-stone",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:09.792Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "exit-stone",
+        "height": 97.40000000000002,
+        "surface": "stone",
+        "drop": 1.9941824441962126,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:10.041Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 97.40000000000002,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:10.341Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 43,
+        "jump_charge_ms": 300,
+        "jump_power_normalized": 0.42857142857142855,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 97.40000000000002,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "sunlight",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:10.656Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "first-cloud",
+        "section_name": "鳥の置き土産",
+        "height": 100.03223454967606,
+        "section_from": 100,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:10.658Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 43,
+        "jump_start_height": 97.40000000000002,
+        "jump_end_height": 100,
+        "landing_success": true,
+        "outcome": "well_clear",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:10.660Z",
+      "data": {
+        "event": "well_clear",
+        "run_id": 2,
+        "height": 100,
+        "seconds": 63.349999999997046,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T22:25:10.661Z",
+      "data": {
+        "phase": "shore",
+        "height": 100,
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:13.057Z",
+      "data": {
+        "event": "chapter_reached",
+        "run_id": 2,
+        "chapter": "sky",
+        "height": 104,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T22:25:13.059Z",
+      "data": {
+        "phase": "sky",
+        "height": 104,
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:13.375Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 104,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:13.775Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 44,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 104,
+        "wind_direction": "left",
+        "wind_strength": "weak",
+        "section_id": "first-cloud",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:14.306Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 44,
+        "fall_start_height": 108.21990288157345,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:14.356Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 44,
+        "fall_start_height": 108.21990288157345,
+        "fall_end_height": 108.2,
+        "fall_distance": 0.019902881573443665,
+        "progress_lost": 0,
+        "total_fall": 72.89312440946621,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:14.358Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 44,
+        "jump_start_height": 104,
+        "jump_end_height": 108.2,
+        "landing_success": true,
+        "landing_id": "cloud-left",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:14.360Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "cloud-left",
+        "height": 108.2,
+        "surface": "cloud",
+        "drop": 0.019902881573443665,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:14.625Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 108.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.125Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 45,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 108.2,
+        "wind_direction": "left",
+        "wind_strength": "weak",
+        "section_id": "first-cloud",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.399Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "east-flag",
+        "section_name": "右向きの旗",
+        "height": 112.06234916505782,
+        "section_from": 112,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.749Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 45,
+        "fall_start_height": 113.89418244419623,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.989Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 45,
+        "fall_start_height": 113.89418244419623,
+        "fall_end_height": 113,
+        "fall_distance": 0.8941824441962325,
+        "progress_lost": 0,
+        "total_fall": 73.78730685366244,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.991Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 45,
+        "jump_start_height": 108.2,
+        "jump_end_height": 113,
+        "landing_success": true,
+        "landing_id": "flag-east",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:15.992Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "flag-east",
+        "height": 113,
+        "surface": "cloud",
+        "drop": 0.8941824441962325,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:16.241Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 113,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:16.741Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 46,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 113,
+        "wind_direction": "right",
+        "wind_strength": "medium",
+        "section_id": "east-flag",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:17.356Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 46,
+        "fall_start_height": 118.69418244419622,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:17.684Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 46,
+        "fall_start_height": 118.69418244419622,
+        "fall_end_height": 117.2,
+        "fall_distance": 1.4941824441962126,
+        "progress_lost": 0,
+        "total_fall": 75.28148929785864,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:17.686Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 46,
+        "jump_start_height": 113,
+        "jump_end_height": 117.2,
+        "landing_success": true,
+        "landing_id": "east-cloud",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:17.687Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "east-cloud",
+        "height": 117.2,
+        "surface": "cloud",
+        "drop": 1.4941824441962126,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:17.941Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 117.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:18.391Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 47,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571423,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 117.2,
+        "wind_direction": "right",
+        "wind_strength": "medium",
+        "section_id": "east-flag",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:18.591Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "rising-cloud",
+        "section_name": "湧き上がる雲",
+        "height": 120.04349997934325,
+        "section_from": 120,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:18.981Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 47,
+        "fall_start_height": 122.14068744061181,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:19.223Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 47,
+        "fall_start_height": 122.14068744061181,
+        "fall_end_height": 121.2,
+        "fall_distance": 0.9406874406118106,
+        "progress_lost": 0,
+        "total_fall": 76.22217673847044,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:19.226Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 47,
+        "jump_start_height": 117.2,
+        "jump_end_height": 121.2,
+        "landing_success": true,
+        "landing_id": "rising-base",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:19.230Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "rising-base",
+        "height": 121.2,
+        "surface": "cloud",
+        "drop": 0.9406874406118106,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:19.474Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 121.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:19.975Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 48,
+        "jump_charge_ms": 500,
+        "jump_power_normalized": 0.7142857142857136,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 121.2,
+        "wind_direction": "up",
+        "wind_strength": "medium",
+        "section_id": "rising-cloud",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:20.692Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 48,
+        "fall_start_height": 127.81258652924099,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:20.873Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 48,
+        "fall_start_height": 127.81258652924099,
+        "fall_end_height": 127.40000000000002,
+        "fall_distance": 0.4125865292409685,
+        "progress_lost": 0,
+        "total_fall": 76.6347632677114,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:20.874Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 48,
+        "jump_start_height": 121.2,
+        "jump_end_height": 127.40000000000002,
+        "landing_success": true,
+        "landing_id": "rising-top",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:20.875Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "rising-top",
+        "height": 127.40000000000002,
+        "surface": "cloud",
+        "drop": 0.4125865292409685,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:21.141Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 127.40000000000002,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:21.558Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 49,
+        "jump_charge_ms": 416.67,
+        "jump_power_normalized": 0.5952380952380949,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 127.40000000000002,
+        "wind_direction": "up",
+        "wind_strength": "medium",
+        "section_id": "rising-cloud",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:21.609Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "west-flag",
+        "section_name": "左向きの旗",
+        "height": 128.0589090175624,
+        "section_from": 128,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:22.194Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 49,
+        "fall_start_height": 132.57525502991123,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:22.503Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 49,
+        "fall_start_height": 132.57525502991123,
+        "fall_end_height": 131.5,
+        "fall_distance": 1.075255029911233,
+        "progress_lost": 0,
+        "total_fall": 77.71001829762264,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:22.504Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 49,
+        "jump_start_height": 127.40000000000002,
+        "jump_end_height": 131.5,
+        "landing_success": true,
+        "landing_id": "west-flag-cloud",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:22.506Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "west-flag-cloud",
+        "height": 131.5,
+        "surface": "cloud",
+        "drop": 1.075255029911233,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:22.774Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 131.5,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:23.207Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 50,
+        "jump_charge_ms": 433.33,
+        "jump_power_normalized": 0.6190476190476186,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 131.5,
+        "wind_direction": "left",
+        "wind_strength": "medium",
+        "section_id": "west-flag",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:23.656Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "heavy-air",
+        "section_name": "重たい空気",
+        "height": 136.01665195499717,
+        "section_from": 136,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:23.772Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 50,
+        "fall_start_height": 136.19670242564465,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:24.056Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 50,
+        "fall_start_height": 136.19670242564465,
+        "fall_end_height": 135,
+        "fall_distance": 1.196702425644645,
+        "progress_lost": 0,
+        "total_fall": 78.90672072326728,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:24.058Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 50,
+        "jump_start_height": 131.5,
+        "jump_end_height": 135,
+        "landing_success": true,
+        "landing_id": "west-cloud",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:24.059Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "west-cloud",
+        "height": 135,
+        "surface": "cloud",
+        "drop": 1.196702425644645,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:24.308Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 135,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:24.857Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 51,
+        "jump_charge_ms": 550,
+        "jump_power_normalized": 0.7857142857142853,
+        "jump_band": "long",
+        "jump_direction": 1,
+        "jump_start_height": 135,
+        "wind_direction": "left",
+        "wind_strength": "medium",
+        "section_id": "west-flag",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:25.524Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 51,
+        "fall_start_height": 141.47844107615344,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:25.906Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 51,
+        "fall_start_height": 141.47844107615344,
+        "fall_end_height": 139.2,
+        "fall_distance": 2.278441076153456,
+        "progress_lost": 0,
+        "total_fall": 81.18516179942074,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:25.907Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 51,
+        "jump_start_height": 135,
+        "jump_end_height": 139.2,
+        "landing_success": true,
+        "landing_id": "heavy-base",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:25.909Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "heavy-base",
+        "height": 139.2,
+        "surface": "cloud",
+        "drop": 2.278441076153456,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:26.141Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 139.2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:26.658Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 52,
+        "jump_charge_ms": 516.67,
+        "jump_power_normalized": 0.7380952380952374,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 139.2,
+        "wind_direction": "down",
+        "wind_strength": "weak",
+        "section_id": "heavy-air",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.060Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "sky-rest",
+        "section_name": "雲の休み棚",
+        "height": 144.01306977865698,
+        "section_from": 144,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.231Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 52,
+        "fall_start_height": 144.4908720780855,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.506Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 52,
+        "fall_start_height": 144.4908720780855,
+        "fall_end_height": 143.1,
+        "fall_distance": 1.3908720780854935,
+        "progress_lost": 0,
+        "total_fall": 82.57603387750625,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.508Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 52,
+        "jump_start_height": 139.2,
+        "jump_end_height": 143.1,
+        "landing_success": true,
+        "landing_id": "heavy-top",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.509Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "heavy-top",
+        "height": 143.1,
+        "surface": "cloud",
+        "drop": 1.3908720780854935,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:27.791Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 143.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:28.224Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 53,
+        "jump_charge_ms": 433.33,
+        "jump_power_normalized": 0.6190476190476186,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 143.1,
+        "wind_direction": "down",
+        "wind_strength": "weak",
+        "section_id": "heavy-air",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:28.730Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 53,
+        "fall_start_height": 147.27475217221908,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:28.857Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 53,
+        "fall_start_height": 147.27475217221908,
+        "fall_end_height": 147,
+        "fall_distance": 0.2747521722190811,
+        "progress_lost": 0,
+        "total_fall": 82.85078604972531,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:28.860Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 53,
+        "jump_start_height": 143.1,
+        "jump_end_height": 147,
+        "landing_success": true,
+        "landing_id": "sky-catch",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:28.861Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "sky-catch",
+        "height": 147,
+        "surface": "cloud",
+        "drop": 0.2747521722190811,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:29.157Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 147,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:29.557Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 54,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 147,
+        "wind_direction": "right",
+        "wind_strength": "weak",
+        "section_id": "sky-rest",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:30.090Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 54,
+        "fall_start_height": 151.21990288157346,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:30.222Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 54,
+        "fall_start_height": 151.21990288157346,
+        "fall_end_height": 151,
+        "fall_distance": 0.21990288157346072,
+        "progress_lost": 0,
+        "total_fall": 83.07068893129876,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:30.224Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 54,
+        "jump_start_height": 147,
+        "jump_end_height": 151,
+        "landing_success": true,
+        "landing_id": "sky-rest-top",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:30.226Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "sky-rest-top",
+        "height": 151,
+        "surface": "cloud",
+        "drop": 0.21990288157346072,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:30.574Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 151,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:31.091Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 55,
+        "jump_charge_ms": 516.67,
+        "jump_power_normalized": 0.7380952380952374,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 151,
+        "wind_direction": "right",
+        "wind_strength": "weak",
+        "section_id": "sky-rest",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:31.156Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "strong-east",
+        "section_name": "長い風の旗",
+        "height": 152.0513453881333,
+        "section_from": 152,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:31.722Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 55,
+        "fall_start_height": 156.95210707116163,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:32.089Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 55,
+        "fall_start_height": 156.95210707116163,
+        "fall_end_height": 155,
+        "fall_distance": 1.9521070711616346,
+        "progress_lost": 0,
+        "total_fall": 85.02279600246041,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:32.091Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 55,
+        "jump_start_height": 151,
+        "jump_end_height": 155,
+        "landing_success": true,
+        "landing_id": "strong-east-base",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:32.092Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "strong-east-base",
+        "height": 155,
+        "surface": "cloud",
+        "drop": 1.9521070711616346,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:32.340Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 155,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:32.741Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 56,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 155,
+        "wind_direction": "right",
+        "wind_strength": "strong",
+        "section_id": "strong-east",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:33.277Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 56,
+        "fall_start_height": 159.21990288157346,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:33.405Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 56,
+        "fall_start_height": 159.21990288157346,
+        "fall_end_height": 159,
+        "fall_distance": 0.21990288157346072,
+        "progress_lost": 0,
+        "total_fall": 85.24269888403386,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:33.407Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 56,
+        "jump_start_height": 155,
+        "jump_end_height": 159,
+        "landing_success": true,
+        "landing_id": "strong-east-top",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:33.409Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "strong-east-top",
+        "height": 159,
+        "surface": "cloud",
+        "drop": 0.21990288157346072,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:33.707Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 159,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:34.340Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 57,
+        "jump_charge_ms": 633.33,
+        "jump_power_normalized": 0.9047619047619048,
+        "jump_band": "long",
+        "jump_direction": -1,
+        "jump_start_height": 159,
+        "wind_direction": "right",
+        "wind_strength": "strong",
+        "section_id": "strong-east",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:34.389Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "bird-path",
+        "section_name": "鳥の通り道",
+        "height": 160.0475893033341,
+        "section_from": 160,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:35.072Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 57,
+        "fall_start_height": 166.8494198983441,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:35.572Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 57,
+        "fall_start_height": 166.8494198983441,
+        "fall_end_height": 163,
+        "fall_distance": 3.8494198983441095,
+        "progress_lost": 0,
+        "total_fall": 89.09211878237795,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:35.576Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 57,
+        "jump_start_height": 159,
+        "jump_end_height": 163,
+        "landing_success": true,
+        "landing_id": "bird-perch",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:35.578Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "bird-perch",
+        "height": 163,
+        "surface": "thin",
+        "drop": 3.8494198983441095,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:35.841Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 163,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:36.395Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 58,
+        "jump_charge_ms": 550,
+        "jump_power_normalized": 0.7857142857142853,
+        "jump_band": "long",
+        "jump_direction": 1,
+        "jump_start_height": 163,
+        "wind_direction": "left",
+        "wind_strength": "strong",
+        "section_id": "bird-path",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:36.747Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "ice-rise",
+        "section_name": "持ち上がる氷晶",
+        "height": 168.06298449618285,
+        "section_from": 168,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:37.057Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 58,
+        "fall_start_height": 169.47844107615344,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:37.462Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 58,
+        "fall_start_height": 169.47844107615344,
+        "fall_end_height": 167.1,
+        "fall_distance": 2.3784410761534502,
+        "progress_lost": 0,
+        "total_fall": 91.4705598585314,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:37.465Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 58,
+        "jump_start_height": 163,
+        "jump_end_height": 167.1,
+        "landing_success": true,
+        "landing_id": "bird-high",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:37.467Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "bird-high",
+        "height": 167.1,
+        "surface": "thin",
+        "drop": 2.3784410761534502,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:37.757Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 167.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:38.207Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 59,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571423,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 167.1,
+        "wind_direction": "left",
+        "wind_strength": "strong",
+        "section_id": "bird-path",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:38.789Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 59,
+        "fall_start_height": 172.04068744061192,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:39.039Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 59,
+        "fall_start_height": 172.04068744061192,
+        "fall_end_height": 171.1,
+        "fall_distance": 0.9406874406119243,
+        "progress_lost": 0,
+        "total_fall": 92.41124729914334,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:39.041Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 59,
+        "jump_start_height": 167.1,
+        "jump_end_height": 171.1,
+        "landing_success": true,
+        "landing_id": "ice-rise-base",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:39.042Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "ice-rise-base",
+        "height": 171.1,
+        "surface": "star",
+        "drop": 0.9406874406119243,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:39.324Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 171.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:39.790Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 60,
+        "jump_charge_ms": 466.67,
+        "jump_power_normalized": 0.6666666666666661,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 171.1,
+        "wind_direction": "up",
+        "wind_strength": "strong",
+        "section_id": "ice-rise",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.155Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "ice-weight",
+        "section_name": "沈む氷晶",
+        "height": 176.00083260417003,
+        "section_from": 176,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.556Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 60,
+        "fall_start_height": 177.77065084886013,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.638Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 60,
+        "fall_start_height": 177.77065084886013,
+        "fall_end_height": 177.69999999999996,
+        "fall_distance": 0.07065084886016848,
+        "progress_lost": 0,
+        "total_fall": 92.48189814800351,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.640Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 60,
+        "jump_start_height": 171.1,
+        "jump_end_height": 177.69999999999996,
+        "landing_success": true,
+        "landing_id": "ice-rise-top",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.642Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "ice-rise-top",
+        "height": 177.69999999999996,
+        "surface": "star",
+        "drop": 0.07065084886016848,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:40.957Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 177.69999999999996,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:41.440Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 61,
+        "jump_charge_ms": 483.33,
+        "jump_power_normalized": 0.6904761904761899,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 177.69999999999996,
+        "wind_direction": "down",
+        "wind_strength": "strong",
+        "section_id": "ice-weight",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:41.938Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 61,
+        "fall_start_height": 182.20161688798075,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:42.212Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 61,
+        "fall_start_height": 182.20161688798075,
+        "fall_end_height": 181,
+        "fall_distance": 1.201616887980748,
+        "progress_lost": 0,
+        "total_fall": 93.68351503598426,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:42.215Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 61,
+        "jump_start_height": 177.69999999999996,
+        "jump_end_height": 181,
+        "landing_success": true,
+        "landing_id": "ice-heavy-step",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:42.217Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "ice-heavy-step",
+        "height": 181,
+        "surface": "star",
+        "drop": 1.201616887980748,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:42.474Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 181,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:42.873Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 62,
+        "jump_charge_ms": 400,
+        "jump_power_normalized": 0.5714285714285711,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 181,
+        "wind_direction": "down",
+        "wind_strength": "strong",
+        "section_id": "ice-weight",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.155Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "star-crossing",
+        "section_name": "星の渡り道",
+        "height": 184.00518429831126,
+        "section_from": 184,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.329Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 62,
+        "fall_start_height": 184.49230672658067,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.489Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 62,
+        "fall_start_height": 184.49230672658067,
+        "fall_end_height": 184,
+        "fall_distance": 0.4923067265806651,
+        "progress_lost": 0,
+        "total_fall": 94.17582176256492,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.491Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 62,
+        "jump_start_height": 181,
+        "jump_end_height": 184,
+        "landing_success": true,
+        "landing_id": "star-catch",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.494Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "star-catch",
+        "height": 184,
+        "surface": "star",
+        "drop": 0.4923067265806651,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:43.807Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 184,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:44.240Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 63,
+        "jump_charge_ms": 433.33,
+        "jump_power_normalized": 0.6190476190476186,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 184,
+        "wind_direction": "left",
+        "wind_strength": "weak",
+        "section_id": "star-crossing",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:44.805Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 63,
+        "fall_start_height": 188.69670242564465,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:45.005Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 63,
+        "fall_start_height": 188.69670242564465,
+        "fall_end_height": 188.1,
+        "fall_distance": 0.5967024256446507,
+        "progress_lost": 0,
+        "total_fall": 94.77252418820959,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:45.007Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 63,
+        "jump_start_height": 184,
+        "jump_end_height": 188.1,
+        "landing_success": true,
+        "landing_id": "star-west",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:45.008Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "star-west",
+        "height": 188.1,
+        "surface": "star",
+        "drop": 0.5967024256446507,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:45.274Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 188.1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:45.840Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 64,
+        "jump_charge_ms": 566.67,
+        "jump_power_normalized": 0.8095238095238091,
+        "jump_band": "long",
+        "jump_direction": 1,
+        "jump_start_height": 188.1,
+        "wind_direction": "left",
+        "wind_strength": "weak",
+        "section_id": "star-crossing",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:46.089Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 2,
+        "section_id": "space-door",
+        "section_name": "宇宙への一跳び",
+        "height": 192.0861178441978,
+        "section_from": 192,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:46.522Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 64,
+        "fall_start_height": 194.84618715640764,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:46.939Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 64,
+        "fall_start_height": 194.84618715640764,
+        "fall_end_height": 192.19999999999996,
+        "fall_distance": 2.6461871564076773,
+        "progress_lost": 0,
+        "total_fall": 97.41871134461726,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:46.942Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 64,
+        "jump_start_height": 188.1,
+        "jump_end_height": 192.19999999999996,
+        "landing_success": true,
+        "landing_id": "last-star-base",
+        "jump_band": "long",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:46.944Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "last-star-base",
+        "height": 192.19999999999996,
+        "surface": "star",
+        "drop": 2.6461871564076773,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:47.224Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 192.19999999999996,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:47.673Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 65,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571423,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 192.19999999999996,
+        "wind_direction": "up",
+        "wind_strength": "weak",
+        "section_id": "space-door",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:48.309Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 65,
+        "fall_start_height": 197.58984368544768,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:48.606Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 65,
+        "fall_start_height": 197.58984368544768,
+        "fall_end_height": 196.4,
+        "fall_distance": 1.18984368544767,
+        "progress_lost": 0,
+        "total_fall": 98.60855503006492,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:48.608Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 65,
+        "jump_start_height": 192.19999999999996,
+        "jump_end_height": 196.4,
+        "landing_success": true,
+        "landing_id": "last-star",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:48.609Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "last-star",
+        "height": 196.4,
+        "surface": "star",
+        "drop": 1.18984368544767,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:48.856Z",
+      "data": {
+        "event": "charge_start",
+        "run_id": 2,
+        "height": 196.4,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:49.290Z",
+      "data": {
+        "event": "jump",
+        "run_id": 2,
+        "attempt_id": 66,
+        "jump_charge_ms": 433.33,
+        "jump_power_normalized": 0.6190476190476186,
+        "jump_band": "medium",
+        "jump_direction": 1,
+        "jump_start_height": 196.4,
+        "wind_direction": "up",
+        "wind_strength": "weak",
+        "section_id": "space-door",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:49.910Z",
+      "data": {
+        "event": "fall_start",
+        "run_id": 2,
+        "attempt_id": 66,
+        "fall_start_height": 201.5236394484223,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:50.244Z",
+      "data": {
+        "event": "fall_end",
+        "run_id": 2,
+        "attempt_id": 66,
+        "fall_start_height": 201.5236394484223,
+        "fall_end_height": 200,
+        "fall_distance": 1.5236394484223013,
+        "progress_lost": 0,
+        "total_fall": 100.13219447848724,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:50.247Z",
+      "data": {
+        "event": "jump_end",
+        "run_id": 2,
+        "attempt_id": 66,
+        "jump_start_height": 196.4,
+        "jump_end_height": 200,
+        "landing_success": true,
+        "landing_id": "space-goal",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:50.248Z",
+      "data": {
+        "event": "land",
+        "run_id": 2,
+        "ledge_id": "space-goal",
+        "height": 200,
+        "surface": "star",
+        "drop": 1.5236394484223013,
+        "loss": 0,
+        "success": true,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:50.250Z",
+      "data": {
+        "event": "clear",
+        "run_id": 2,
+        "height": 200,
+        "seconds": 102.94166666669466,
+        "total_fall": 100.13219447848724,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:50.251Z",
+      "data": {
+        "event": "space_clear",
+        "run_id": 2,
+        "height": 200,
+        "seconds": 102.94166666669466,
+        "total_fall": 100.13219447848724,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T22:25:50.253Z",
+      "data": {
+        "phase": "space",
+        "height": 200,
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "score",
+      "at": "2026-10-05T22:25:50.254Z",
+      "data": {
+        "score": 200,
+        "unit": "meters",
+        "newBest": true,
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "best_update",
+      "at": "2026-10-05T22:25:50.256Z",
+      "data": {
+        "score": 200,
+        "best": 200,
+        "unit": "meters",
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-05T22:25:50.258Z",
+      "data": {
+        "outcome": "clear",
+        "score": 200,
+        "seconds": 102.94,
+        "falls": 3,
+        "total_fall": 100.13219447848724,
+        "biggest_fall": 14.81613868664264,
+        "jumps": 66,
+        "phase": "space",
+        "run_id": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtgzj1-worpt0ek"
+      }
+    },
+    {
+      "name": "game_open",
+      "at": "2026-10-05T22:25:50.881Z",
+      "data": {
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    },
+    {
+      "name": "practice_start",
+      "at": "2026-10-05T22:25:51.076Z",
+      "data": {
+        "source": "menu",
+        "version": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    },
+    {
+      "name": "tutorial_skip",
+      "at": "2026-10-05T22:25:51.158Z",
+      "data": {
+        "source": "practice",
+        "step": 1,
+        "version": 2,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-05T22:25:51.161Z",
+      "data": {
+        "source": "practice_skip",
+        "run_id": 1,
+        "level": "authored-v2",
+        "air_control": "none",
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T22:25:51.164Z",
+      "data": {
+        "phase": "well",
+        "height": 0,
+        "run_id": 1,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:25:51.172Z",
+      "data": {
+        "event": "section_reached",
+        "run_id": 1,
+        "section_id": "water",
+        "section_name": "水面の石",
+        "height": 0,
+        "section_from": 0,
+        "game": "game019",
+        "game_id": "game019",
+        "session_id": "muvtjifw-hfz7wteg"
+      }
+    }
+  ]
+}

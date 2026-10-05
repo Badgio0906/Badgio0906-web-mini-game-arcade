@@ -1,0 +1,561 @@
+{
+  "gameplayGate": "PASS — independent technical/design proxy, not human fun",
+  "releaseQaGate": "PASS — local technical QA; persistence blocker resolved. Public deployment and human fun are separate.",
+  "browserClosed": true,
+  "sourceScope": {
+    "initial": {
+      "started": "2026-10-05T22:22:02.749Z",
+      "finished": "2026-10-05T22:27:39.261Z",
+      "before": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "930486e2f53a051ccc098a1df72f6fd477899d595d12b19153b79b775c525c28",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "after": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "930486e2f53a051ccc098a1df72f6fd477899d595d12b19153b79b775c525c28",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "stable": true,
+      "browserClosed": true
+    },
+    "controlled": {
+      "started": "2026-10-05T22:29:35.390Z",
+      "finished": "2026-10-05T22:34:09.828Z",
+      "before": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "after": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "stable": true,
+      "browserClosed": true
+    },
+    "finalDesktop": {
+      "started": "2026-10-05T22:35:43.285Z",
+      "finished": "2026-10-05T22:37:38.375Z",
+      "before": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "after": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "2687abc2b9edca6fc279b44a1bedabbca6032526ddd7ac420adb7fd4b5ba8ef4",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "stable": true,
+      "browserClosed": true
+    },
+    "changedInitialToFixed": [
+      "src/games/game019/style.css"
+    ],
+    "controlledToFinalDesktopChanged": [],
+    "finalAggregateSha256": "af7ece4ac7767936faa2cb291ebe3ba2459909c5bbf290a7c7acefd9913d5c8c",
+    "postStatsCorrection": {
+      "existingRuntimeChanges": [
+        "src/games/game019/main.ts"
+      ],
+      "addedRuntimeFile": "src/games/game019/stats.ts",
+      "statsHash": "d17cc4d34a6f3cc42db2a45a745f99c2346e1ba62bca452d5f0914950409aea1",
+      "currentHashes": {
+        "game019.html": "7550a1450dd7d09e5ba12cff55ccb5e9554c24d048468ac1e479574cd3c4e9e4",
+        "src/games/game019/ChargeBoard.ts": "1eda54b202c3b86c2ff6068d0f34680bdaa526c2f12c98a73e887bb828d4bb57",
+        "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+        "src/games/game019/ChargeMusic.ts": "b17dc6531426ca7ed3597b2fa185257d9d48864b066429cb714bd5d46edf42c4",
+        "src/games/game019/ChargePractice.ts": "5037c0a1a18dcbba6b6455c0cbd9a0eb73178c986adfe94bc350fd627385b03c",
+        "src/games/game019/ChargeRun.ts": "75a1f98cd6f13872ae6e3fe5ea41566341b509e8bd51af9faa2cd8dfe08f082b",
+        "src/games/game019/authoredLevel.ts": "019758962ff3532a78b89b1472a45669e2144dade5bd5aa04bfacf6d7f8dd206",
+        "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+        "src/games/game019/frogPixels.ts": "abe172dc46078f1a2ea3f17a1faa0a639bce83c94f8b372291ac6c7039c47354",
+        "src/games/game019/game.manifest.json": "1b777758e8b19d3072574583bf6c09c8f573a952b2198dc09accf0cd6835b2ca",
+        "src/games/game019/main.ts": "ac7b34ad6c2a39a074f14f45bf057658c080cf273c4a8d5e90534db7814833be",
+        "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+        "src/games/game019/prototypeMain.ts": "48b2981f48faa11458ec9e29257ce51f031213f4080b718ed63bed79c61d5268",
+        "src/games/game019/style.css": "796adf4ca96028efac56d070a342501d95419a987bb3dc99a4438e00c52f2afc",
+        "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c",
+        "src/core/StorageService.ts": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+        "public/fonts/arcade-rounded-jp.woff2": "99ea4ef41724c609547b88da8f0fc7f28208118f7be5909be8e3ca0ba468ff6a",
+        "public/assets/game019/charge-rounded-jp.woff2": "862c42c320daf32452bebc9ce5ecec93f456132a8d0b1d39ba0d85f406dff7a2",
+        "assets/game019/font-index.json": "0115ee93e13e54ff2e510c417ef961991772f6fc4f1d946e25af2e7e938ae538"
+      },
+      "scopeAudit": "STATS_STATIC_REVIEW.json",
+      "unchangedGameplayInputLayoutArt": true
+    }
+  },
+  "profiles": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "technicalGameplay": "PASS",
+      "sourceRun": "final-desktop",
+      "collectorStatus": "FAIL",
+      "collectorError": "AssertionError [ERR_ASSERTION]: multi-section fall\n    at file:///workspace/Badgio0906-web-mini-game-arcade/tests/game019/review-charge.mjs:73:551",
+      "height": 200,
+      "clear": true,
+      "jumps": 59,
+      "totalFallMeters": 97.18117597042423,
+      "practiceLessonsPassed": 7,
+      "jumpBandUsage": {
+        "medium": 38,
+        "long": 16,
+        "short": 5
+      },
+      "windDirections": [
+        "down",
+        "left",
+        "none",
+        "right",
+        "up"
+      ],
+      "windStrengths": [
+        "medium",
+        "none",
+        "strong",
+        "weak"
+      ],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "bestMuteReload": null,
+      "geometryChecks": 9
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "technicalGameplay": "PASS",
+      "sourceRun": "initial",
+      "collectorStatus": "PASS",
+      "collectorError": null,
+      "height": 200,
+      "clear": true,
+      "jumps": 66,
+      "totalFallMeters": 100.13219447848724,
+      "practiceLessonsPassed": 7,
+      "jumpBandUsage": {
+        "medium": 51,
+        "short": 7,
+        "long": 8
+      },
+      "windDirections": [
+        "down",
+        "left",
+        "none",
+        "right",
+        "up"
+      ],
+      "windStrengths": [
+        "medium",
+        "none",
+        "strong",
+        "weak"
+      ],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "bestMuteReload": {
+        "best": 2000,
+        "mute": "音 ON"
+      },
+      "geometryChecks": 9
+    },
+    {
+      "profile": {
+        "name": "narrow",
+        "width": 320,
+        "height": 568,
+        "touch": true
+      },
+      "technicalGameplay": "PASS",
+      "sourceRun": "initial",
+      "collectorStatus": "PASS",
+      "collectorError": null,
+      "height": 200,
+      "clear": true,
+      "jumps": 54,
+      "totalFallMeters": 62.68498964467009,
+      "practiceLessonsPassed": 7,
+      "jumpBandUsage": {
+        "medium": 40,
+        "long": 11,
+        "short": 3
+      },
+      "windDirections": [
+        "down",
+        "left",
+        "none",
+        "right",
+        "up"
+      ],
+      "windStrengths": [
+        "medium",
+        "none",
+        "strong",
+        "weak"
+      ],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "bestMuteReload": {
+        "best": 2000,
+        "mute": "音 ON"
+      },
+      "geometryChecks": 9
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "technicalGameplay": "PASS",
+      "sourceRun": "controlled",
+      "collectorStatus": "PASS",
+      "collectorError": null,
+      "height": 200,
+      "clear": true,
+      "jumps": 54,
+      "totalFallMeters": 56.53865296508469,
+      "practiceLessonsPassed": 7,
+      "jumpBandUsage": {
+        "medium": 43,
+        "short": 3,
+        "long": 8
+      },
+      "windDirections": [
+        "down",
+        "left",
+        "none",
+        "right",
+        "up"
+      ],
+      "windStrengths": [
+        "medium",
+        "none",
+        "strong",
+        "weak"
+      ],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "bestMuteReload": {
+        "best": 2000,
+        "mute": "音 ON"
+      },
+      "geometryChecks": 9
+    }
+  ],
+  "actualFallCoverage": [
+    {
+      "source": "initial",
+      "profile": "desktop",
+      "kind": "multi-section",
+      "progressLost": 0,
+      "actualDrop": 0.6471838611418939,
+      "landing": "takeoff",
+      "alive": true
+    },
+    {
+      "source": "initial",
+      "profile": "desktop",
+      "kind": "short-loss",
+      "progressLost": 3.700000000000001,
+      "actualDrop": 4.616138686642641,
+      "landing": "under-beam",
+      "alive": true
+    },
+    {
+      "source": "initial",
+      "profile": "desktop",
+      "kind": "catch",
+      "progressLost": 4.199999999999996,
+      "actualDrop": 6.678726246444327,
+      "landing": "catch-25",
+      "alive": true
+    },
+    {
+      "source": "initial",
+      "profile": "phone",
+      "kind": "multi-section",
+      "progressLost": 13.9,
+      "actualDrop": 14.81613868664264,
+      "landing": "bottom",
+      "alive": true
+    },
+    {
+      "source": "initial",
+      "profile": "phone",
+      "kind": "short-loss",
+      "progressLost": 3.700000000000001,
+      "actualDrop": 5.981867549529344,
+      "landing": "under-beam",
+      "alive": true
+    },
+    {
+      "source": "initial",
+      "profile": "phone",
+      "kind": "catch",
+      "progressLost": 4.199999999999996,
+      "actualDrop": 6.481867549529362,
+      "landing": "catch-25",
+      "alive": true
+    },
+    {
+      "source": "controlled",
+      "profile": "desktop",
+      "kind": "short-loss",
+      "progressLost": 3.700000000000001,
+      "actualDrop": 6.587164805391755,
+      "landing": "under-beam",
+      "alive": true
+    },
+    {
+      "source": "controlled",
+      "profile": "desktop",
+      "kind": "catch",
+      "progressLost": 4.199999999999996,
+      "actualDrop": 7.087164805391719,
+      "landing": "catch-25",
+      "alive": true
+    },
+    {
+      "source": "controlled",
+      "profile": "desktop",
+      "kind": "multi-section",
+      "progressLost": 27.5,
+      "actualDrop": 36.4999975598645,
+      "landing": "catch-50",
+      "alive": true
+    },
+    {
+      "source": "final-desktop",
+      "profile": "desktop",
+      "kind": "short-loss",
+      "progressLost": 3.700000000000001,
+      "actualDrop": 5.981867549529344,
+      "landing": "under-beam",
+      "alive": true
+    },
+    {
+      "source": "final-desktop",
+      "profile": "desktop",
+      "kind": "catch",
+      "progressLost": 4.199999999999996,
+      "actualDrop": 7.087164805391719,
+      "landing": "catch-25",
+      "alive": true
+    }
+  ],
+  "failures": [
+    {
+      "kind": "TEST_HARNESS",
+      "source": "initial desktop",
+      "reason": "planned100ms deep fall had actual83ms and returned to own shelf; full200m reached"
+    },
+    {
+      "kind": "PRODUCT_BUG",
+      "source": "initial landscape",
+      "reason": "practice start choice clipped on initial title; landscape-only CSS fixed and full landscape54-jump200m PASS"
+    },
+    {
+      "kind": "TEST_HARNESS",
+      "source": "controlled desktop",
+      "reason": "valid55m fall155→sea-shore100, collector omitted physical shore in route fallback and oscillated until170 attempts; product RUN remained alive"
+    },
+    {
+      "kind": "TEST_HARNESS",
+      "source": "final desktop",
+      "reason": "deep candidate was not selected at actual takeoff state; full200m reached. Actual27.5m deep fall and same-RUN re-climb already measured in controlled source."
+    },
+    {
+      "kind": "PRODUCT_BUG_RESOLVED",
+      "source": "main.ts numeric stats",
+      "reason": "fractional bestClearSeconds/lifetimeFallMeters are rejected on reread by integer-only readNumber",
+      "resolution": "Integer bestClearMs/lifetimeFallDm helper; static exact scope audit, actual StorageService3unit and compiled4profile native fallDm reload PASS."
+    }
+  ],
+  "limits": [
+    "Human fun/replay desire/subjective learning and physical-device thumbs/audio/FPS not tested.",
+    "Desktop primary collector stopped before post-clear retry/reload assertions; phone,narrow,landscape perform them on the same storage/input source. Desktop old834dm/mute/bad/denied storage boundary cases PASS.",
+    "Visibility was an explicit document lifecycle environment injection; physics and charge input were native keyboard/CDP touch.",
+    "Maximum-only112-run38-state model is finite (3px state merging,12 jumps), not a mathematical proof.",
+    "After isolated stats fix, compiled4-profile20m native routes and integer fallDm reload were root-tested; clear-time fractional persistence is covered by real StorageService unit tests. No repeat full200m required since physics/input/map/art/layout hashes stayed identical."
+  ],
+  "statsCorrection": {
+    "status": "PASS — persistence blocker closed by independent static review and root focused retest evidence",
+    "reviewedAt": "2026-10-05T22:51:13.678131+00:00",
+    "nativeProof": "../production-root-retest/report.json",
+    "nativeRunStarted": "2026-10-05T22:46:23.541Z",
+    "nativeRunFinished": "2026-10-05T22:47:01.793Z",
+    "profiles": [
+      {
+        "profile": "desktop",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 90,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 90,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "phone",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "narrow",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      },
+      {
+        "profile": "landscape",
+        "status": "PASS",
+        "persisted": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "reloaded": {
+          "fallDm": 101,
+          "bestDm": 226
+        },
+        "errors": [],
+        "httpErrors": []
+      }
+    ],
+    "unitProof": "../all-unit-final.log",
+    "unitCases": "../../../../../tests/unit/game019-stats.test.ts",
+    "unitResult": "actual StorageService backend reload/accumulation/faster-only replacement/corruption/old BEST mute — 3 PASS; full294/32files PASS",
+    "buildProof": "../build-final.log",
+    "typecheckProof": "../check-final.log",
+    "clearTimeBoundary": "Fractional clear seconds verified through actual StorageService units, not an injected browser clear or a repeated compiled200m run.",
+    "provenance": "Root executed focused compiled native input and units; independent reviewer inspected artifacts/source. No runtime/source mutation by reviewer."
+  }
+}

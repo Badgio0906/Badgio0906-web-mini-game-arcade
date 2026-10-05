@@ -1,0 +1,33 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game019-charge.test.ts (7 tests | 1 failed) 17ms
+   ✓ Game019 continuous charge prototype > holds without launching even at maximum, then launches only on release 3ms
+   × Game019 continuous charge prototype > has continuous power, a useful short displacement, and distinct medium/maximum heights 8ms
+     → expected 8.942893178653812 to be close to 9, received difference is 0.0571068213461885, but expected 0.005
+   ✓ Game019 continuous charge prototype > cancels instead of launching on pause/cancel and cannot pre-charge in air 1ms
+   ✓ Game019 continuous charge prototype > commits direction at release and ignores air direction in the first candidate 0ms
+   ✓ Game019 continuous charge prototype > compares a measurable weak correction without shipping it as the default 1ms
+   ✓ Game019 continuous charge prototype > retries from the actual floor in the same run and records descent separately from progress lost 1ms
+   ✓ Game019 continuous charge prototype > forecast has no source state/event/time side effects 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game019-charge.test.ts > Game019 continuous charge prototype > has continuous power, a useful short displacement, and distinct medium/maximum heights
+AssertionError: expected 8.942893178653812 to be close to 9, received difference is 0.0571068213461885, but expected 0.005
+ ❯ tests/unit/game019-charge.test.ts:15:141
+     13|     const peaks: number[] = [];
+     14|     for (const ms of [90, 360, 450, 720]) { const r = new ChargeRun(cr…
+     15|     expect(peaks[0]).toBeLessThan(1); expect(peaks[1]).toBeGreaterThan…
+       |                                                                                                                                             ^
+     16|     const r = new ChargeRun(createFlatPrototype()); r.setDirection(1);…
+     17|     expect(jumpFor(400).height).not.toBe(jumpFor(410).height);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  21:49:02
+   Duration  361ms (transform 73ms, setup 0ms, collect 75ms, tests 17ms, environment 0ms, prepare 74ms)
+

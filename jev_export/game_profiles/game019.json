@@ -39,9 +39,9 @@
       "label": "風"
     }
   ],
-  "genre": "precise ascent / planned jumps",
+  "genre": "charge precision ascent / learned geography",
   "controls": {
-    "summary": "左右方向＋小 / 中 / 大ジャンプ（キー・画面ボタン）",
+    "summary": "左右を押しながらSpace / JUMPを溜め、離して跳ぶ。空中修正なし",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": [
@@ -53,14 +53,14 @@
     "label": "高難度",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "小で位置調整し、中・大で登り、100m以降は風を読んで宇宙を目指す",
-  "description": "小で位置調整し、中・大で登り、100m以降は風を読んで宇宙を目指す",
-  "failureModes": "着地を外して下へ戻る / 崩れる足場 / 風に流される",
+  "mainMechanics": "短い跳躍で位置を整え、溜め量と方向を覚えて手作り井戸100mから予測可能な風の空200mへ登る",
+  "description": "短い跳躍で位置を整え、溜め量と方向を覚えて手作り井戸100mから予測可能な風の空200mへ登る",
+  "failureModes": "溜め不足・過剰・壁や梁で失敗し地形に応じて後退。同じRUNで再登りできる",
   "route": "./game019.html",
   "thumbnail": "./assets/portal/game019.webp",
   "design": {
-    "thumbnailDescription": "井の中の蛙、大海を目指す ～WELL TO SPACE～の実プレイ画面。緑の太い輪郭のカエル、苔の石壁、上空の雲と宇宙",
-    "majorVisuals": "緑の太い輪郭のカエル、苔の石壁、上空の雲と宇宙",
+    "thumbnailDescription": "井の中の蛙、大海を目指す ～WELL TO SPACE～の実プレイ画面。緑の大きな目のカエルと3チャージ姿勢、井戸のランドマーク、旗の風、海・鳥・宇宙",
+    "majorVisuals": "緑の大きな目のカエルと3チャージ姿勢、井戸のランドマーク、旗の風、海・鳥・宇宙",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
     "referenceImageUse": "User green pixel frog reference: recognizable green silhouette and cream belly; authored game sprite states.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
@@ -77,13 +77,15 @@
     "title": "井の中の蛙、大海を目指す ～WELL TO SPACE～",
     "titleEn": "WELL TO SPACE",
     "tagline": "井戸を出たら、今度は宇宙でした。",
-    "genre": "precise ascent / planned jumps",
-    "coreMechanic": "Choose left/straight/right and small/medium/large on a platform; commit the jump, recover falls, read wind after reaching the sea",
+    "genre": "charge precision ascent / learned geography",
+    "coreMechanic": "Hold JUMP to charge continuously, decide left/up/right before release, commit flight without midair steering; learn authored well, recover variable falls, read fixed takeoff wind in the sky",
     "skillAxes": [
-      "landing judgment",
-      "direction and size choice",
-      "wind reading",
-      "fall recovery"
+      "charge timing",
+      "launch position",
+      "direction judgment",
+      "section memory",
+      "visible fall risk",
+      "wind compensation"
     ],
     "runSecondsDesignTarget": [
       180,
@@ -94,16 +96,27 @@
       "spaceMeters": 200
     },
     "inputs": {
-      "direction": "arrows / A D W, or three direction buttons",
-      "size": "Z X C / 1 2 3, or small medium large buttons",
-      "space": "repeat selected jump size"
+      "direction": "hold arrows / A D, or hold left/right touch buttons; neither means straight up",
+      "jump": "hold Space / central JUMP, release to launch; max charge holds until release",
+      "peek": "hold Down / S / 下を見る",
+      "pause": "Esc / pause button"
     },
-    "practice": "Four separate physics lessons; no best, score, credits or run events",
+    "practice": "Seven isolated charge/flight/landing lessons, including no-air correction and short preparation; no production BEST, score, chapters, credits or run records",
     "storagePrefix": "web-mini-arcade:v1:game019:",
     "bestStorage": "maximum height in integer decimeters; no checkpoint or position persistence",
     "creditMode": "free",
     "ads": "none in game logic",
-    "jev": "offline schema and observed events only",
-    "humanReview": "pending physical device and subjective experience"
+    "jev": "offline profile/schema and observed records only; no evaluation API invoked",
+    "humanReview": "pending physical device and subjective experience",
+    "revision": 2,
+    "level": {
+      "generation": "fixed original handcrafted",
+      "wellSections": 12,
+      "skySections": 12,
+      "catchLedges": "physical terrain near25,50,75m; not saved checkpoints",
+      "airControl": "none",
+      "wind": "fixed visible height zones; sampled at takeoff and locked until landing"
+    },
+    "telemetry": "local bounded shared events with Game019 charge/landing/fall/section/wind/chapter details; no external transmission"
   }
 }

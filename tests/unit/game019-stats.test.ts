@@ -1,0 +1,10 @@
+import { describe,it,expect } from 'vitest';
+import { StorageService } from '../../src/core/StorageService';
+import { recordClearStats,recordFallStats } from '../../src/games/game019/stats';
+class Memory implements Storage { values=new Map<string,string>();get length(){return this.values.size;}clear(){this.values.clear();}getItem(k:string){return this.values.get(k)??null;}key(i:number){return [...this.values.keys()][i]??null;}removeItem(k:string){this.values.delete(k);}setItem(k:string,v:string){this.values.set(k,v);} }
+const prefix='web-mini-arcade:v1:game019:';
+describe('Game019 integer-unit persistent statistics',()=>{
+ it('retains and accumulates fractional fall meters across real StorageService reloads',()=>{const backend=new Memory();recordFallStats(new StorageService(backend,prefix),12.37);recordFallStats(new StorageService(backend,prefix),8.24);expect(new StorageService(backend,prefix).readNumber('lifetimeFallDm',0)).toBe(206);expect(backend.getItem(prefix+'lifetimeFallDm')).toBe('206');});
+ it('retains fractional clear times and only replaces them with faster times after reload',()=>{const backend=new Memory();recordClearStats(new StorageService(backend,prefix),123.4567);recordClearStats(new StorageService(backend,prefix),150.2);expect(new StorageService(backend,prefix).readNumber('bestClearMs',0)).toBe(123457);recordClearStats(new StorageService(backend,prefix),100.1234);const s=new StorageService(backend,prefix);expect(s.readNumber('bestClearMs',0)).toBe(100123);expect(s.readBoolean('spaceReached',false)).toBe(true);});
+ it('does not change existing BEST/mute, rejects invalid measurements and recovers corrupt optional stats',()=>{const backend=new Memory();backend.setItem(prefix+'bestHeightDm','834');backend.setItem(prefix+'muted','true');backend.setItem(prefix+'lifetimeFallDm','1.5');const s=new StorageService(backend,prefix);recordFallStats(s,NaN);recordClearStats(s,-1);expect(s.readNumber('lifetimeFallDm',0)).toBe(0);recordFallStats(s,5.5);expect(s.readNumber('lifetimeFallDm',0)).toBe(55);expect(s.readNumber('bestHeightDm',0)).toBe(834);expect(s.readBoolean('muted',false)).toBe(true);});
+});

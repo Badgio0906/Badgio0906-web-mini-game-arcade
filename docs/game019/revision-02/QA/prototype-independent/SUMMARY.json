@@ -1,0 +1,118 @@
+{
+  "gate": "PASS — technical/design prototype gate only",
+  "airAssistAdopted": 0,
+  "humanFun": "not performed",
+  "physicalDevice": "not performed",
+  "browserClosed": true,
+  "scope": "flat and handcrafted-20m only, not full well/sky",
+  "started": "2026-10-05T22:01:07.027Z",
+  "finished": "2026-10-05T22:07:37.144Z",
+  "sourceFiles": [
+    "src/games/game019/ChargeRun.ts",
+    "src/games/game019/chargeTypes.ts",
+    "src/games/game019/ChargeInput.ts",
+    "src/games/game019/ChargeBoard.ts",
+    "src/games/game019/prototypeLevel.ts",
+    "src/games/game019/prototypeMain.ts",
+    "tests/game019/prototype.html",
+    "src/games/game019/frogPixels.ts"
+  ],
+  "sourceHashes": {
+    "src/games/game019/ChargeRun.ts": "683aea8308cd77dd70b5a930cf3666db2ce8fa02f1ef1a66cf395840669991c2",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeBoard.ts": "2dacdd5527b638fbfc91b05dbe3047cc9e3ef1d3dacd55792132d2f7d06f2e99",
+    "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+    "src/games/game019/prototypeMain.ts": "d8d6597a28264b887e94936b6c5eec91bf9d89638440766bd68fc4cbc93201ac",
+    "tests/game019/prototype.html": "6b80fc55e2b9efcdd337a226379b8960c91a2c06c2a769dd285882d02182674c",
+    "src/games/game019/frogPixels.ts": "ff19c27bd0d242589159f0d45b777041d3918ca565299b3dcfaa2f3b4906aa50"
+  },
+  "sourceAggregateSha256": "90a2518ca1ced5b9716c415f71bfe39e62b5251a597107a06b64e442ae67bddd",
+  "sourceStable": true,
+  "profiles": [
+    {
+      "name": "desktop",
+      "technicalStatus": "PASS",
+      "collectorStatus": "FAIL",
+      "collectorError": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'Failed to load resource: the server responded with a status of 404 (Not Found)'\n+ ]\n- []\n\n    at file:///workspace/Badgio0906-web-mini-game-arcade/docs/game019/revision-02/QA/prototype-independent/probe.mjs:51:9",
+      "routeCharges": [
+        441.67,
+        450,
+        383.33,
+        450,
+        83.33,
+        700
+      ],
+      "routeLandingHeights": [
+        3.6,
+        7.2,
+        10.2,
+        13.9,
+        13.9,
+        20
+      ],
+      "flatPeaks": [
+        0.711007542954217,
+        4.219902881573369,
+        8.999997559864482
+      ],
+      "failureProgressLosses": [
+        0,
+        0,
+        10.3,
+        3.700000000000001
+      ],
+      "catchStatus": "PASS",
+      "catchHeight": 7.2,
+      "catchProgressLost": 2.999999999999999,
+      "recoveryHeight": 10.2,
+      "recoveryWithoutRestart": true
+    },
+    {
+      "name": "phone",
+      "technicalStatus": "PASS",
+      "collectorStatus": "PASS",
+      "collectorError": null,
+      "routeCharges": [
+        450,
+        450,
+        366.67,
+        450,
+        83.33,
+        700
+      ],
+      "routeLandingHeights": [
+        3.6,
+        7.2,
+        10.2,
+        13.9,
+        13.9,
+        20
+      ],
+      "flatPeaks": [
+        0.5857769766713606,
+        4.219902881573369,
+        8.999997559864482
+      ],
+      "failureProgressLosses": [
+        0,
+        0,
+        10.3,
+        3.700000000000001
+      ],
+      "catchStatus": "PASS",
+      "catchHeight": 7.2,
+      "catchProgressLost": 2.999999999999999,
+      "recoveryHeight": 10.2,
+      "recoveryWithoutRestart": true
+    }
+  ],
+  "maxOnlyModel": {
+    "tested": 112,
+    "states": 38,
+    "clearPaths": 0,
+    "maximumPeak": 19.199997559864478,
+    "limitations": "3px state merging and 12-jump finite exploration; not a mathematical completeness proof"
+  },
+  "collectorClassification": "Desktop report collector FAIL only on favicon 404, identified explicitly by extra-report. All physics assertions before it passed. Phone collector PASS. Supplemental PC/phone catch and same-run recovery PASS."
+}
