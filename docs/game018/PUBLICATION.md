@@ -26,3 +26,8 @@ Node24.19.0でnpm ci、TypeScript check、248/248単体、build成功。freeze�
 ## 2026-10-05 最新公開依頼の再開
 
 018候補482e458を採用し、012〜014の改名・015改訂02と同時公開する。正式domainへのHTTPS200、Pages custom domain／https_enforcedを直接確認。公開前game018.htmlは404。今回の環境で018のroot/subpath×PC/phone4productionを再実行し4PASS、固有runtimeソースは候補から不変。[改訂02統合報告](../game015/revision-02/IMPLEMENTATION_REPORT.md)にCIと公開DOM／asset照合を追記する。過去のfreeze301の全一致は今回の015・共通練習・フォント・改名の変更後には適用しない。018固有ソース保持と今回全体のbuild hashを区別する。
+
+
+### 公開完了
+
+Runtime803a884、[Pages run37315859362](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37315859362)build/deploy成功。正式[靴とばそ](https://game100garage.com/game018.html)は公開前404→200。[公開PC/phone](publication-qa/release-803a884/GAME018_PUBLIC.json)各初回4練習→本番→Result→Retry→保存→Portal再起動PASS、18cardsとthumb640×360、font読込・consoleエラー0。[build hash](publication-qa/release-803a884/BUILD_HASH_MATCH.json)全一致。広告・CREDIT・DNS維持。人間評価は未実施。

@@ -1,7 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-05（日本時間）。3つの情報源を統合した新タスク向け正本は[統合引き継ぎ書](handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)。①開発・Jev、②公開タスクの添付引き継ぎとRepository記録、③ユーザー提供GAME100 GARAGE運営メモを照合済み。今回の変更は文書のみ、code／DNS／AdSense／公開／Jev APIは操作していない。
-
+2026-10-05（日本時間）。**018を含む18本を正式HTTPSへ公開済み。** 012〜014改名、015縦スクロール改訂02を同時反映。[最新の実装・公開報告](game015/revision-02/IMPLEMENTATION_REPORT.md)を再開地点とする。以前の[統合引き継ぎ書](handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)は今回作業前の状態を記録した資料。
 
 ## 2026-10-05 改名・落下キング改訂02・018公開作業
 
@@ -9,7 +8,7 @@
 
 015は中央を含む6種のランダム足場、到達可能な安全なルート、自動縦スクロール18→36px/s、遅れると上端死亡、王冠／白ひげ／紫衣装／赤マントの新nativeドット絵、タイトル・練習・実playサムネイル。[改訂02仕様](game015/revision-02/IMPLEMENTATION_SPEC.md)／[報告](game015/revision-02/IMPLEMENTATION_REPORT.md)。初動約2.85秒、停止しても進む。旧改訂01の待機・練習仕様は現行に適用しない。
 
-check・全単体・build PASS、015モデル22／練習8、native PC／phone／320／横画面4PASS。独立モデル追加32seed各500m PASS。公開／最終productionの結果は改訂02報告へ追記する。正式HTTPS、Pages custom domainとhttps_enforcedを直接確認済み。DNS・AdSense・CREDITは変更しない。
+check・全単体・build PASS、015モデル22／練習8、native PC／phone／320／横画面4PASS。独立モデル追加32seed各500m PASS。Runtime release803a884、Pages run37315859362 build/deploy成功。018・015公開PC/phone各2PASS、18card・新名・公開assetのbuild hash一致。最終production015／018各4、既存native26経路、旧Godot6lifecycleもPASS。詳細は改訂02報告。正式HTTPS、Pages custom domainとhttps_enforcedを直接確認済み。DNS・AdSense・CREDITは変更しない。
 
 以下は今回作業前の引き継ぎ状態を保存した記録。最新状態は上記改訂02報告を優先する。
 

@@ -1,9 +1,9 @@
 <!-- Current release evidence is linked first; older sections below retain historical QA. -->
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-次のCloudタスクは[3チャット統合引き継ぎ書](docs/handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)を最初に読んでください。正式URLはhttps://game100garage.com、Cloudflare／Pages／HTTPS設定済み（ユーザー提供記録）。018の公開と012〜014改名・015改訂02を準備済み。最新状態は[CURRENT_STATUS](docs/CURRENT_STATUS.md)を確認してください。AdSenseは登録開始・サイトリンク未完了。公開残工程・Cloud許可・開発・Jevをまとめています。
+次のCloudタスクは[3チャット統合引き継ぎ書](docs/handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)を最初に読んでください。正式URLはhttps://game100garage.com、Cloudflare／Pages／HTTPS設定済み（ユーザー提供記録）。018を含む18本を公開済み、012〜014改名・015改訂02を反映。最新状態は[CURRENT_STATUS](docs/CURRENT_STATUS.md)を確認してください。AdSenseは登録開始・サイトリンク未完了。公開残工程・Cloud許可・開発・Jevをまとめています。
 
-短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。017までmain反映・Pagesデプロイ済み、018を含む18本の公開前候補の技術検証を完了しました（[RAINSHIFT公開記録](docs/game017/PUBLICATION.md)／[018引き継ぎ](docs/game018/PUBLICATION_HANDOFF.md)）。今回の環境で正式HTTPSへの接続を確認し、018を含む公開作業を進めています。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
+短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。018を含む18本をmain反映・Pagesデプロイ済み、公開PC／スマホ確認を完了しました（[RAINSHIFT公開記録](docs/game017/PUBLICATION.md)／[018引き継ぎ](docs/game018/PUBLICATION_HANDOFF.md)）。公開結果と改名／落下キング改訂02の根拠は[最新報告](docs/game015/revision-02/IMPLEMENTATION_REPORT.md)に保存しています。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
 
 **[ゲームセンターを遊ぶ](https://game100garage.com/)** ／ [負けじゃんけん](https://game100garage.com/game016.html) ／ [落下キング](https://game100garage.com/game015.html)
 

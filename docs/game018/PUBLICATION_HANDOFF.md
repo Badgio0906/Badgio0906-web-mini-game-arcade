@@ -1,3 +1,5 @@
+> 2026-10-05更新：018は公開済み。Runtime803a884、Pages37315859362成功、公開PC/phone2PASS・asset一致。[現在の公開記録](PUBLICATION.md)／[統合修正報告](../game015/revision-02/IMPLEMENTATION_REPORT.md)を優先。以下は公開前の履歴として保持する。
+
 # Game018公開 — 次のCloudタスクへの引き継ぎ
 
 2026-10-05（日本時間）。目的は実装・検証済みの018をmainへ反映し、公開Portalの18カードと017／018のPC・phoneプレイを確認すること。公開依頼は継続して有効。このタスクでは引き継ぎを保存し、mainへの反映は行わない。

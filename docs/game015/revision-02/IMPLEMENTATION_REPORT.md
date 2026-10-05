@@ -33,3 +33,18 @@
 [既存native配信回帰](QA/EXISTING_PRODUCTION.json)：001〜011・015・016のroot/subpath26経路、読込・font・音保存reload・CREDIT OFF・Portal帰還PASS。これは全ゲームの楽しさ評価ではない。
 
 公開直前の正式018URLはHTTP404。GitHub Pagesへの反映と公開URLの再検証結果を追記する。
+
+
+## 公開結果（2026-10-05 日本時間）
+
+Runtime release commit **803a88423a6024923e7061fbd9436e6c4d405ede** をorigin/mainへfast-forward push。直前再fetchでmain1ab4fcfが候補祖先であることを確認し、forceなし。
+
+GitHub Pages [run37315859362](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37315859362)：build／deployともsuccess。CI npm ci／npm test／build各step successをAPIで確認。[API原本](QA/PAGES_DEPLOYMENT.json)。raw logsのdownload先results-receiver.actions.githubusercontent.comはこの環境の許可範囲外で取得できず、全文logを取得したとは記録しない。
+
+正式[game100garage.com](https://game100garage.com/)に18本を配信。[公開015／portal PC・phone](QA/public/report.json)2PASS、初回実練習→本番→pause→scroll死亡→retry→音保存reload→帰還まで操作し、PC61／phone46件の読込resourceがlocal release buildとSHA256一致。旧タイトルなし、新3名称・新thumb・production診断hookなし・page/console error0。
+
+[公開asset照合](QA/PUBLIC_ASSET_HASHES.json)：旧3GodotのHTML／gameHTML／PCK、新thumb012/014/015/018、font、015/018HTMLの16対象HTTP200・build SHA256一致。公開018HTMLは公開前404から200へ。配信されたPCKはタイトル改訂・元resource保持監査を通した同一成果。
+
+[018公開PC／phone](../../game018/publication-qa/release-803a884/GAME018_PUBLIC.json)2PASS：Portal card→direct reload→4実練習→5靴→ANGLE/SPIN/POWER→飛行→Result→Retry→音／BEST reload→Portal再起動。HTTP／console／font・script・thumb問題0、CREDIT OFF、Jev API呼出しなし。[018読込resourceのbuild照合](../../game018/publication-qa/release-803a884/BUILD_HASH_MATCH.json)も全一致。
+
+公開済み。人間の面白さ・実機操作／音／FPSは未評価で、今回の通常入力・Visual／Feel判定と分けて残す。DNS／独自ドメイン／広告は変更していない。公開後の記録commitは文書・QAのみで、runtime release803a884と区別する。
