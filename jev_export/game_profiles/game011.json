@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "game011",
+  "title": "ウンコかウコンかゲーム",
+  "titleJa": "ウンコかウコンかゲーム",
+  "titleEn": "UNKO or UKON",
+  "tagline": "絶対わかる。0.5秒になるまでは。",
+  "tags": [
+    {
+      "id": "quiz",
+      "label": "クイズ"
+    },
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    }
+  ],
+  "genre": [
+    "two-choice",
+    "reaction",
+    "knowledge",
+    "absurd"
+  ],
+  "controls": {
+    "summary": "左右キー / 二択ボタン",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 25,
+    "experienced": 80
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "じわじわ難化",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "絵と文字を区別し、速くなる二択へ進む",
+  "description": "絵と文字を区別し、速くなる二択へ進む",
+  "failureModes": "選び間違いまたは時間切れ",
+  "route": "./game011.html",
+  "thumbnail": "./assets/portal/game011.webp",
+  "design": {
+    "thumbnailDescription": "ウンコかウコンかゲームの実プレイ画面。20枚のアイコンと対等な二択ボタン",
+    "majorVisuals": "20枚のアイコンと対等な二択ボタン",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game011/game.manifest.json",
+    "details": "src/games/game011/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game011",
+    "title": "ウンコかウコンかゲーム ～UNKO or UKON～",
+    "subtitle": "絶対わかる。0.5秒になるまでは。",
+    "genre": [
+      "two-choice",
+      "reaction",
+      "knowledge",
+      "absurd"
+    ],
+    "core_mechanic": [
+      "classify a generated icon",
+      "read before a short two-choice answer",
+      "choose one target word for endless reaction rounds"
+    ],
+    "primary_input": [
+      "left/right arrows",
+      "A/D",
+      "individual native buttons"
+    ],
+    "skill_axes": [
+      "visual-identification",
+      "reading-comprehension",
+      "attention",
+      "reaction"
+    ],
+    "expected_run_seconds": {
+      "beginner": 25,
+      "experienced": 80
+    },
+    "duration_note": "numeric design hypotheses; human first failure, reading time and0.5-second skill are unmeasured; reading and transition choices have no deadline",
+    "primary_score": "questions1–20:100 each /21–50:200 each /51+:500 each; no hidden reaction bonus",
+    "secondary_score": "final streak with an independent local best",
+    "ranking_metric": "final_streak",
+    "escalation_mechanic": "Cumulative questions1–20 get2s,21–50 get1.5s,51+ get0.5s. Ten images, ten untimed reads with READY release, then chosen-word endless final mode.",
+    "risk_reward": "One mistake or timeout ends immediately. Every answer layout is independently random; no colored-choice hints or forced left-right alternation.",
+    "visual_identity": "twenty actual pop clean generated icons, warm cream two-choice stage, equal-looking native answer buttons",
+    "image_assets": {
+      "count": 20,
+      "bytes": 224332,
+      "directory": "assets/game011/icons/"
+    },
+    "prototype": {
+      "unlimited_play": true,
+      "advertising": false
+    },
+    "tutorial": "one generated image without a deadline, one correct native choice before the real run",
+    "score_version": 2
+  }
+}

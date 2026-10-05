@@ -20,6 +20,7 @@ export class PracticeSession {
   }
   snapshot(): PracticeSnapshot { return { ...this.s, ...(this.fall ? { fall: this.fall.snapshot() } : {}) }; }
   setInput(input: -1 | 0 | 1): void { this.s.input = input; this.fall?.setInput(input); }
+  setDropHeld(held: boolean): void { this.fall?.setDropHeld(held); this.syncFall(); }
   private syncFall(): void { if (!this.fall) return; const f = this.fall.snapshot(); this.s.fall = f; this.s.step = f.step; this.s.phase = f.phase; this.s.complete = f.complete; this.s.feedback = f.feedback; }
   private done(): void { this.s.complete = true; this.s.phase = 'success'; this.s.feedback = 'できました！ この操作で、本番も遊べます。'; }
   private next(message: string): void { this.s.step++; this.phaseTime = 0; this.s.feedback = message; }

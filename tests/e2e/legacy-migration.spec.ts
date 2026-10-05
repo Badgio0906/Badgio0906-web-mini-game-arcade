@@ -6,6 +6,7 @@ import { gameCatalog } from '../../src/data/gameCatalog';
 const legacy=['yokodori-days','tachibana-task-heaven','finger-heart-challenge'] as const;
 const route=(id:string)=>`./games/${id}/index.html`;
 async function loaded(page:Page):Promise<Frame>{
+  const start=page.locator('#play-button');if(await start.isVisible()) await start.click();
   const handle=await page.locator('#legacy-game-frame').elementHandle(),frame=await handle!.contentFrame();expect(frame).not.toBeNull();
   await expect(frame!.locator('#canvas')).toBeVisible();await expect(frame!.locator('#status')).toHaveCount(0,{timeout:90_000});
   await frame!.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));return frame!;
@@ -43,7 +44,7 @@ test('Original Yokodori Enter/tap starts, fails naturally while coworker works, 
 test('Original Tachibana keyboard/touch rhythm practice, scoring, pause, genuine misses and native retry remain intact',async({page,isMobile},info)=>{
   const errors=observedErrors(page);await page.goto(route('tachibana-task-heaven'));let frame=await loaded(page);
   const status=()=>frame.evaluate(()=>(window as any).TaskHeavenStatus);await expect.poll(async()=>(await status()).state).toBe('title');
-  await tapBoard(page,frame,230,489,isMobile);await expect.poll(async()=>(await status()).state).toBe('help');
+  await tapBoard(page,frame,230,562,isMobile);await expect.poll(async()=>(await status()).state).toBe('help');
   await tapBoard(page,frame,295,597,isMobile);await expect.poll(async()=>(await status()).state).toBe('playing');
   expect((await status()).stage).toBe(0);
   if(!isMobile)await frame.locator('#canvas').focus();

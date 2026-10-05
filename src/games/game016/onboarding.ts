@@ -12,13 +12,13 @@ export function createLoseOnboarding(storage: StorageService, telemetry: Telemet
   let phase: LosePracticeSnapshot['phase'] = 'closed', step = 0, feedback = '';
   return {
     needed: (): boolean => !storage.readBoolean('tutorialCompleted', false),
-    explain(): void { phase = 'explanation'; step = 0; feedback = ''; telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) }); },
-    practice(): void { phase = 'practice'; step = 0; feedback = '相手に負ける手を選ぼう。時間制限なし。'; },
+    explain(): void { phase = 'explanation'; step = 0; feedback = ''; telemetry.trackEvent('tutorial_view'); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) }); },
+    practice(): void { telemetry.trackEvent('practice_start'); phase = 'practice'; step = 0; feedback = '相手に負ける手を選ぼう。時間制限なし。'; },
     answer(hand: Hand): boolean {
       if (phase !== 'practice') return false;
       if (hand !== answers[step]) { feedback = hand === opponents[step] ? 'あいこです。練習は続きます。負ける手を選ぼう。' : '勝ってしまいました！ もう一度、負ける手を。'; return false; }
       step++; telemetry.trackEvent('tutorial_step_complete', { step });
-      if (step === 3) { phase = 'complete'; feedback = 'OK！ 勝ったら負けです。負ければ正解です。'; }
+      if (step === 3) { telemetry.trackEvent('practice_complete'); phase = 'complete'; feedback = 'OK！ 勝ったら負けです。負ければ正解です。'; }
       else feedback = '正解、負け！ 次の相手にも負けてみよう。';
       return true;
     },

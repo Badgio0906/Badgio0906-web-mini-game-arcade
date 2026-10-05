@@ -11,13 +11,13 @@ for (const id of arcadeGames) {
     await expect(page.locator('#play-button')).toBeVisible();
     const initial=await runtime(page), initialWallet=await wallet(page,id), initialBest=await page.locator('#best-value').textContent(), initialScore=await page.locator('#score-value').textContent();
     expect(initial.snapshot.time).toBe(0);expect(Number.isFinite(Number(initialScore))).toBe(true);
-    await nativeButton(page,'#play-button',isMobile);
+    await nativeButton(page,'#tutorial-explain-button',isMobile);
     await expect(page.locator('#arcade-training')).toHaveAttribute('data-phase','explanation');
     expect((await training(page)).completed).toBe(false);
     expect((await runtime(page)).events.filter(e=>e.name==='run_start')).toHaveLength(0);
     await nativeButton(page,'#tutorial-close-button',isMobile);
     expect((await training(page)).completed).toBe(false);
-    await nativeButton(page,'#play-button',isMobile);await nativeButton(page,'#tutorial-practice-button',isMobile);
+    await nativeButton(page,'#tutorial-explain-button',isMobile);await nativeButton(page,'#tutorial-practice-button',isMobile);
     await page.waitForTimeout(400);
     expect((await training(page)).phase).toBe('practice');expect((await runtime(page)).snapshot.time).toBe(0);
     await expect(page.locator('#score-value')).toHaveText(initialScore!);await expect(page.locator('#best-value')).toHaveText(initialBest!);
@@ -33,13 +33,14 @@ for (const id of arcadeGames) {
     await geometry(page,['#arcade-training','#tutorial-start-button'],['#tutorial-start-button']);
     await page.waitForTimeout(300);expect((await runtime(page)).state).toBe('title');
     await nativeButton(page,'#tutorial-start-button',isMobile);
+    await nativeButton(page,'#play-button',isMobile);
     await expect.poll(async()=>(await runtime(page)).state).toBe('playing');
     const begun=await runtime(page);expect(begun.events.filter(e=>e.name==='run_start')).toHaveLength(1);
     expect(begun.events.filter(e=>e.name==='tutorial_complete')).toHaveLength(1);assertNoWalletEvents(begun.events);
     expect((await wallet(page,id))[`${storagePrefix(id)}tutorialCompleted`]).toBe('true');
     expect((await wallet(page,id))[`${storagePrefix(id)}credits`]).toBe('0');
     await page.reload();await expect(page.locator('#play-button')).toBeVisible();
-    await nativeButton(page,'#tutorial-again-button',isMobile);await nativeButton(page,'#tutorial-practice-button',isMobile);
+    await nativeButton(page,'#tutorial-again-button',isMobile);
     await finishPractice(page,id,isMobile);await nativeButton(page,'#tutorial-start-button',isMobile);
     await expect(page.locator('#play-button')).toBeVisible();expect((await runtime(page)).events.filter(e=>e.name==='run_start')).toHaveLength(0);
     await expect(page.locator('#best-value')).toHaveText(initialBest!);
@@ -55,7 +56,7 @@ for (const id of arcadeGames) {
 
 test('held practice input cannot automatically activate the newly focused real-start button',async({page},info)=>{
   test.skip(info.project.name!=='desktop');const errors=errorsOn(page);
-  await seedStoredZero(page,'game011');await page.goto('./game011.html');await page.locator('#play-button').click();await page.locator('#tutorial-practice-button').click();
+  await seedStoredZero(page,'game011');await page.goto('./game011.html');await page.locator('#tutorial-again-button').click();
   const left=(await training(page)).practice.choiceLeft;
   await page.keyboard.down(left==='unko'?'ArrowLeft':'ArrowRight');
   await expect(page.locator('#arcade-training')).toHaveAttribute('data-phase','success');
@@ -67,7 +68,7 @@ test('held practice input cannot automatically activate the newly focused real-s
 
 test('native Enter auto-repeat during successful practice cannot click the new real-start control',async({page},info)=>{
   test.skip(info.project.name!=='desktop');const errors=errorsOn(page);
-  await seedStoredZero(page,'game011');await page.goto('./game011.html');await page.locator('#play-button').click();await page.locator('#tutorial-practice-button').click();
+  await seedStoredZero(page,'game011');await page.goto('./game011.html');await page.locator('#tutorial-again-button').click();
   await page.locator('[data-practice-action="unko"]').focus();await page.keyboard.down('Enter');
   await expect(page.locator('#arcade-training')).toHaveAttribute('data-phase','success');
   await page.keyboard.down('Enter');await page.keyboard.down('Enter');await page.keyboard.up('Enter');
@@ -84,8 +85,8 @@ test('all eleven explanation, practice and success controls fit the eight viewpo
   };
   for(const id of arcadeGames){
     await seedStoredZero(page,id);await page.goto(`./${id}.html`);
-    for(const[width,height]of arcadeSizes){await page.setViewportSize({width,height});await collect(id,'active-title',width,height,['#play-button','#tutorial-again-button','.arcade-portal-back'],['#play-button','#tutorial-again-button','.arcade-portal-back']);}
-    await page.setViewportSize({width:1440,height:900});await page.locator('#play-button').click();
+    for(const[width,height]of arcadeSizes){await page.setViewportSize({width,height});await collect(id,'active-title',width,height,['#play-button','#tutorial-explain-button','#tutorial-again-button','.arcade-portal-back'],['#play-button','#tutorial-explain-button','#tutorial-again-button','.arcade-portal-back']);}
+    await page.setViewportSize({width:1440,height:900});await page.locator('#tutorial-explain-button').click();
     for(const[width,height]of arcadeSizes){await page.setViewportSize({width,height});await collect(id,'explanation',width,height,['#arcade-training','#tutorial-heading','#tutorial-practice-button','#tutorial-close-button'],['#tutorial-practice-button','#tutorial-close-button']);}
     await page.setViewportSize({width:1440,height:900});await page.locator('#tutorial-practice-button').click();
     // Practice layout is measured before inputs; scenario progress is earned afterward.

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "game007",
+  "title": "まだ乗れます",
+  "titleJa": "まだ乗れます",
+  "titleEn": "ELEVATOR OVERLOAD",
+  "tagline": "あと82kg。乗せる？見送る？責任はあなたです。",
+  "tags": [
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "puzzle",
+      "label": "パズル"
+    },
+    {
+      "id": "weight",
+      "label": "重量管理"
+    }
+  ],
+  "genre": [
+    "strategy",
+    "timing",
+    "arcade"
+  ],
+  "controls": {
+    "summary": "左右キー / 乗せる・見送るボタン",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 55,
+    "experienced": 120
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "次の荷物と降りる階を見ながら容量を予約する",
+  "description": "次の荷物と降りる階を見ながら容量を予約する",
+  "failureModes": "過積載などの運搬失敗",
+  "route": "./game007.html",
+  "thumbnail": "./assets/portal/game007.webp",
+  "design": {
+    "thumbnailDescription": "まだ乗れますの実プレイ画面。真鍮枠とワイン色のオフィスエレベーター",
+    "majorVisuals": "真鍮枠とワイン色のオフィスエレベーター",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game007/game.manifest.json",
+    "details": "src/games/game007/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game007",
+    "title": "まだ乗れます ～ELEVATOR OVERLOAD～",
+    "subtitle": "その観葉植物、何階まで？",
+    "genre": [
+      "strategy",
+      "timing",
+      "arcade"
+    ],
+    "core_mechanic": [
+      "admit or refuse",
+      "capacity planning with visible next party",
+      "destination unloading"
+    ],
+    "primary_input": [
+      "two-choice",
+      "left-right"
+    ],
+    "skill_axes": [
+      "mental-arithmetic",
+      "resource-management",
+      "opportunity-cost",
+      "risk-management"
+    ],
+    "expected_run_seconds": {
+      "beginner": 55,
+      "experienced": 120
+    },
+    "duration_note": "numeric design hypotheses; human natural failure and timing unmeasured",
+    "primary_score": "actually delivered people and cargo plus occupied travel and utilization",
+    "secondary_score": "reached floor and delivered counts",
+    "escalation_mechanic": "At20F a frozen once-per-run choice offers commercial fast mode: shorter decision time, faster travel, 150% future points.",
+    "risk_reward": "Refuse a fitting long-haul party to reserve room for the visible next valuable delivery; fast mode rewards future deliveries but demands faster decisions.",
+    "visual_identity": "warm retro office elevator, wine doors, brass frames and seven generated daily passengers and cargo"
+  }
+}

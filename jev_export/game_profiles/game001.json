@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "game001",
+  "title": "軌道をズラせ！",
+  "titleJa": "軌道をズラせ！",
+  "titleEn": "ORBIT SHIFT",
+  "tagline": "押すのは一回。間違うのは一瞬。",
+  "tags": [
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    },
+    {
+      "id": "dodge",
+      "label": "回避"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    },
+    {
+      "id": "short",
+      "label": "短時間"
+    }
+  ],
+  "genre": "スコアアタック",
+  "controls": {
+    "summary": "Space / クリック / タップで軌道を切り替える",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "unknown; not inferred from QA or other games",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "障害物を一回の入力で避け、連続回避を狙う",
+  "description": "障害物を一回の入力で避け、連続回避を狙う",
+  "failureModes": "軌道の切り替えと障害物への接触",
+  "route": "./game001.html",
+  "thumbnail": "./assets/portal/game001.webp",
+  "design": {
+    "thumbnailDescription": "軌道をズラせ！の実プレイ画面。軌道と障害物を明快に描いた宇宙アーケード",
+    "majorVisuals": "軌道と障害物を明快に描いた宇宙アーケード",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": null,
+    "details": "src/game and src/main.ts"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": null
+}

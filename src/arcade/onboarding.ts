@@ -15,7 +15,7 @@ const lessons: Record<string, [string, string, string]> = {
   game008: ['水面を見て、小さく補正。', 'コーヒーをこぼさず運ぼう。左へ傾いたら右、右へ傾いたら左。← → / A D / 左右ボタンを短く押す・離す。', '左の水面が高くなっています。右→で中央へ戻そう。'],
   game009: ['探している印鑑を、見つけよう。', '依頼の色と形を見て、机の中から選ぼう。PCはクリック、スマホはタップ。今回は赤い印鑑だけ探します。', '探すもの：赤い印鑑。机の物を見比べて選ぼう。'],
   game010: ['聞くふりをして、こっそり内職。', 'Space・タップでLISTENとSIDE WORKを切り替えます。内職中は得点。上司が質問しそうなら、聞く姿勢へ戻ろう。', '内職を始めよう。「ところで…」が聞こえたらLISTENへ。'],
-  game015: ['止まるな、王様。下へ急げ！', '足場は上へ流れていきます。待ちすぎると画面上端でゲームオーバー！ ← → / A Dで移動、↓ / S / SpaceまたはDROPボタンで下へ。中央にもトゲが出るので、左右の安全な足場を選ぼう。長く落ちすぎると着地衝撃も危険です。', '1 / 4 · DROPして、下の大きな足場へ。'],
+  game015: ['止まるな、王様。下へ急げ！', '足場は上へ流れていきます。待ちすぎると画面上端でゲームオーバー！ ← → / A Dで移動、↓ / S / SpaceまたはDROPボタンで下へ。中央にもトゲが出るので、左右の安全な足場を選ぼう。↓ / S / Space または DROP を押し続けると連続降下。普通の床は通過し、やわらかい床で衝撃を受け止める。離して刻むか、ホールドで欲張るか。普通の床は9m、やわらかい床は12m以上で着地失敗。待ちすぎると天井に追いつかれる。', '1 / 6 · DROPして、下の大きな足場へ。'],
   game011: ['ウンコ？ ウコン？ 文字を見て選ぼう。', '画像を見て、同じ名前のボタンを選びます。← → / A D または左右のボタン。ボタンの位置は毎回変わります。', '時間制限なしの練習。これはどちら？'],
 };
 const asset = (path: string): string => `${import.meta.env.BASE_URL}assets/${path}`;
@@ -33,8 +33,10 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
   let returnFocus: HTMLElement | null = null;
   const fallPointers = new Map<number, -1 | 1>(); const fallKeys = new Map<string, -1 | 1>();
   const fallInput = (): void => { const directions = [...fallPointers.values(), ...fallKeys.values()]; session?.setInput(directions.includes(-1) === directions.includes(1) ? 0 : directions.includes(1) ? 1 : -1); };
-  const clearFallInput = (): void => { fallPointers.clear(); fallKeys.clear(); session?.setInput(0); };
+  const clearFallInput = (): void => { fallPointers.clear(); fallKeys.clear(); session?.setInput(0); dropPointers.clear(); dropKeys.clear(); session?.setDropHeld(false); };
   let fallStep = -1;
+  const dropPointers = new Set<number>(), dropKeys = new Set<string>();
+  const dropInput = (): void => { session?.setDropHeld(dropPointers.size > 0 || dropKeys.size > 0); };
   const english = (): boolean => gameId === 'game005' && document.documentElement.lang === 'en';
   const labels = (ja: string, en: string): string => english() ? en : ja;
   const close = (): void => { active = false; cancelAnimationFrame(frame); session?.setInput(0); clearFallInput(); dialog.close(); callback = undefined; returnFocus?.focus({ preventScroll: true }); };
@@ -45,7 +47,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     dialog.dataset.phase = 'explanation';
     const [title, text] = lessons[gameId];
     dialog.innerHTML = `${head()}<h2 id="tutorial-heading">${english() ? 'Use the rule. Left or right?' : title}</h2><p>${english() ? 'Read the parcel and the rule above. Round goes LEFT, angular goes RIGHT. Use ← → / A D or tap either side. The rule changes during the real run.' : text}</p><p class="training-input-note">${labels('まずは短い練習。まちがえても大丈夫です。', 'Try a short practice. Mistakes are OK.')}</p><button class="training-primary" type="button" id="tutorial-practice-button">${labels('操作を練習する', 'Try the controls')}</button>`;
-    dialog.showModal(); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) });
+    dialog.showModal(); telemetry.trackEvent('tutorial_view'); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) });
     dialog.querySelector<HTMLButtonElement>('#tutorial-practice-button')!.focus();
   }
   function controls(s: PracticeSnapshot): string {
@@ -65,6 +67,8 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     }
   }
   function practice(): void {
+    if (!active) { active = true; callback = undefined; returnFocus = document.activeElement as HTMLElement; }
+    telemetry.trackEvent('practice_start');
     clearFallInput(); fallStep = -1; session = new PracticeSession(gameId); reportedStep = 0; previous = performance.now();
     dialog.dataset.phase = 'practice';
     const s = session.snapshot();
@@ -74,6 +78,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
         ? `<div class="practice-desk">${['desk-paper', 'stamp-round-red', 'desk-pen', 'stamp-square-blue', 'desk-stapler', 'stamp-round-blue'].map((name, i) => `<button type="button" data-practice-action="${i === 1 ? 'stamp-red' : 'stamp-other'}" aria-label="${['書類', '赤い丸印鑑', 'ペン', '青い角印鑑', 'ホチキス', '青い丸印鑑'][i]}"><img src="${asset(`game009/${name}.webp`)}" alt="${['書類', '赤い丸印鑑', 'ペン', '青い角印鑑', 'ホチキス', '青い丸印鑑'][i]}"></button>`).join('')}</div>`
         : `<canvas width="${gameId === 'game015' ? 256 : 1200}" height="${gameId === 'game015' ? 448 : 640}" id="tutorial-canvas" tabindex="0" aria-label="練習のゲーム画面"></canvas>`;
     dialog.innerHTML = `${head()}<h2 id="tutorial-heading">${labels('まずは、やってみよう。', 'Let’s try it.')}</h2><p id="practice-prompt">${english() ? 'Practice rule: ROUND → LEFT, ANGULAR → RIGHT.' : lessons[gameId][2]}</p><div class="practice-window">${gameId === 'game008' ? '<div class="practice-hud"><span>運んだ距離 <strong>0 m</strong></span><span id="practice-tilt">左 ← 傾き</span><span>残り <strong>100%</strong></span></div>' : ''}${board}</div><div class="practice-controls" style="--control-cols:${['game001', 'game003', 'game006', 'game010'].includes(gameId) ? 1 : gameId === 'game015' ? 3 : 2}">${controls(s)}</div><p class="practice-feedback" id="practice-feedback" role="status" aria-live="polite">${labels('まちがえても練習は続けられます。', 'Take your time. Mistakes are OK.')}</p><small class="training-input-note">${labels('練習の得点は記録されません。', 'Practice does not affect your score or BEST.')}</small>`;
+    if (!dialog.open) dialog.showModal();
     dialog.querySelector<HTMLCanvasElement>('canvas')?.focus({ preventScroll: true });
     if (!dialog.querySelector('canvas')) dialog.querySelector<HTMLButtonElement>('[data-practice-action]')?.focus();
     draw(); frame = requestAnimationFrame(tick);
@@ -101,15 +106,15 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
       if (fallStep !== s.step) { clearFallInput(); fallStep = s.step; }
       dialog.dataset.step = String(s.step);
       const prompt = dialog.querySelector<HTMLElement>('#practice-prompt')!;
-      const copy = ['1 / 4 · DROPで下の足場へ。', '2 / 4 · 中央にトゲ！ DROPして右→へ。', '3 / 4 · 今度は左←へ。トゲを避けてDROP。', '4 / 4 · 待ちすぎると上端に追いつかれます。'];
+      const copy = ['1 / 6 · DROPで下の足場へ。', '2 / 6 · 中央にトゲ！ DROPして右→へ。', '3 / 6 · 今度は左←へ。トゲを避けてDROP。', '4 / 6 · DROPを押し続けて連続降下。やわらかい床で止まろう。', '5 / 6 · 高すぎる落下は着地失敗！ 距離と床の色を見よう。', '6 / 6 · 待ちすぎると天井に追いつかれます。'];
       if (prompt.textContent !== copy[s.step]) prompt.textContent = copy[s.step];
-      dialog.querySelectorAll<HTMLButtonElement>('[data-practice-action]').forEach(b => { b.disabled = s.step === 3 || b.dataset.practiceAction === 'action' && s.fall?.phase !== 'grounded'; });
+      dialog.querySelectorAll<HTMLButtonElement>('[data-practice-action]').forEach(b => { b.disabled = s.step >= 4 || b.dataset.practiceAction === 'action' && s.step !== 3 && s.fall?.phase !== 'grounded'; });
       const canvas = dialog.querySelector<HTMLCanvasElement>('canvas'); if (canvas && practicePaint) practicePaint(canvas, s);
     } else paintPractice(dialog.querySelector<HTMLCanvasElement>('canvas'), s, session.phaseSeconds());
   }
   function success(): void {
     if (dialog.dataset.phase === 'success') return;
-    cancelAnimationFrame(frame); session?.setInput(0); dialog.dataset.phase = 'success';
+    cancelAnimationFrame(frame); clearFallInput(); dialog.dataset.phase = 'success'; telemetry.trackEvent('practice_complete');
     const message = gameId === 'game015' ? '操作はOK！ 中央のトゲにも注意。上端に追いつかれる前に、安全な足場へDROPし続けよう。' : gameId === 'game006' ? '入りました。本番はもう少し狭いです。' : gameId === 'game005' ? labels('できました。途中でルールが変わります。', 'Ready! The rule changes during the real run.') : labels('これで操作はOK。次は本番で試そう。', 'You know the controls. Try the real run.');
     dialog.innerHTML = `${head()}<div class="training-success"><strong id="tutorial-heading">${labels('できました！', 'Ready!')}</strong><p>${message}</p><small>${labels('練習のスコアは自己ベストに含まれません。', 'Practice does not affect your BEST.')}</small></div><button class="training-primary" id="tutorial-start-button" type="button">${callback ? labels('本番へ', 'Start real run') : labels('タイトルへ戻る', 'Back to title')}</button>`;
     dialog.querySelector<HTMLButtonElement>('#tutorial-start-button')!.focus({ preventScroll: true });
@@ -140,7 +145,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     }
     if (gameId === 'game015') {
       const b = (e.target as Element).closest<HTMLButtonElement>('[data-practice-action]');
-      if (b && !b.disabled) { e.preventDefault(); if (b.dataset.practiceAction === 'action') action('action'); else { fallPointers.set(e.pointerId, b.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); try { b.setPointerCapture(e.pointerId); } catch { /* release globally */ } } }
+      if (b && !b.disabled) { e.preventDefault(); if (b.dataset.practiceAction === 'action') { dropPointers.add(e.pointerId); dropInput(); try { b.setPointerCapture(e.pointerId); } catch { /* global release */ } } else { fallPointers.set(e.pointerId, b.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); try { b.setPointerCapture(e.pointerId); } catch { /* release globally */ } } }
       return;
     }
     if (gameId !== 'game008') return;
@@ -148,9 +153,9 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     if (b) { e.preventDefault(); session?.setInput(b.dataset.practiceAction === 'right' ? 1 : -1); try { b.setPointerCapture(e.pointerId); } catch { /* global release */ } }
   }, options);
   const release = (): void => { session?.setInput(0); };
-  const releasePointer = (e: PointerEvent): void => { if (gameId === 'game015') { fallPointers.delete(e.pointerId); fallInput(); } else release(); };
+  const releasePointer = (e: PointerEvent): void => { if (gameId === 'game015') { fallPointers.delete(e.pointerId); dropPointers.delete(e.pointerId); dropInput(); fallInput(); } else release(); };
   window.addEventListener('pointerup', releasePointer, options); window.addEventListener('pointercancel', releasePointer, options); dialog.addEventListener('lostpointercapture', releasePointer, options); window.addEventListener('blur', () => { release(); clearFallInput(); }, options);
-  document.addEventListener('keyup', e => { if (active) { e.stopImmediatePropagation(); if (gameId === 'game015' && [' ', 'Enter', 'ArrowDown', 's', 'S'].includes(e.key)) e.preventDefault(); if (gameId === 'game015') { fallKeys.delete(e.key.toLowerCase()); fallInput(); } else release(); } }, { capture: true, ...options });
+  document.addEventListener('keyup', e => { if (active) { e.stopImmediatePropagation(); if (gameId === 'game015' && [' ', 'Enter', 'ArrowDown', 's', 'S'].includes(e.key)) e.preventDefault(); if (gameId === 'game015') { fallKeys.delete(e.key.toLowerCase()); dropKeys.delete(e.key.toLowerCase()); dropInput(); fallInput(); } else release(); } }, { capture: true, ...options });
   document.addEventListener('keydown', e => {
     if (!active) return;
     e.stopImmediatePropagation();
@@ -164,7 +169,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
       const native = (e.target as Element).closest('button'); if (native && !native.hasAttribute('data-practice-action')) return;
       e.preventDefault(); const target = (e.target as Element).closest<HTMLButtonElement>('[data-practice-action]');
       if (target?.dataset.practiceAction === 'left' || target?.dataset.practiceAction === 'right') { fallKeys.set(key, target.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); }
-      else action('action'); return;
+      else { dropKeys.add(key); dropInput(); } return;
     }
     if (gameId === 'game004' && /^[1-9]$/.test(key)) { e.preventDefault(); action(`cell-${Number(key) - 1}`); return; }
     if (left || right) {
@@ -189,13 +194,22 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     back.dataset.arcadeNavInstalled = 'true'; back.addEventListener('click', () => telemetry.trackEvent('return_to_portal'), options); header.prepend(back);
   }
   if (!arcadeConfig.creditsEnabled) document.body.classList.add('arcade-unlimited');
-  const again = document.createElement('button'); again.id = 'tutorial-again-button'; again.className = 'arcade-practice-again'; again.type = 'button'; again.textContent = labels('もう一度練習', 'Practice again'); again.addEventListener('click', () => explanation());
+  const choices = document.createElement('div'); choices.className = 'arcade-start-options';
+  const again = document.createElement('button'); again.id = 'tutorial-again-button'; again.className = 'arcade-practice-again'; again.type = 'button';
+  again.addEventListener('click', () => practice(), options);
+  const explain = document.createElement('button'); explain.id = 'tutorial-explain-button'; explain.className = 'arcade-practice-again'; explain.type = 'button';
+  explain.addEventListener('click', () => explanation(), options);
   const updateChrome = (): void => {
     installNavigation();
-    const againText = labels('もう一度練習', 'Practice again'); if (again.textContent !== againText) again.textContent = againText;
-    const play = app.querySelector('#play-button');
-    if (app.dataset.state === 'title' && play) { if (again.parentElement !== play.parentElement) play.after(again); }
-    else again.remove();
+    const againText = labels('練習する', 'Practice'); if (again.textContent !== againText) again.textContent = againText;
+    const explainText = labels('説明を見る', 'Instructions'); if (explain.textContent !== explainText) explain.textContent = explainText;
+    const play = app.querySelector<HTMLButtonElement>('#play-button');
+    if (app.dataset.state === 'title' && play && !play.closest('[hidden]')) {
+      const label = labels('すぐ遊ぶ', 'Play now');
+      if (play.textContent !== label) play.textContent = label;
+      if (choices.parentElement !== play.parentElement) play.after(choices);
+      if (explain.parentElement !== choices) choices.append(explain, again);
+    } else choices.remove();
     if (!arcadeConfig.creditsEnabled) {
       app.querySelectorAll('dt').forEach(dt => { if (dt.textContent?.trim() === 'CREDIT') (dt.parentElement as HTMLElement).dataset.creditInfo = ''; });
       app.querySelectorAll<HTMLElement>('.start-hint,.stub-note,p.result-note,small.result-note,.manual-credit').forEach(p => { if (/CREDIT|Reward|広告/.test(p.textContent ?? '')) p.dataset.creditInfo = ''; });
@@ -205,7 +219,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
   observer.observe(app, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-state'] });
   updateChrome();
   if (import.meta.env.DEV) (window as unknown as { __tutorialDebug: unknown }).__tutorialDebug = Object.freeze({ snapshot: () => Object.freeze({ active, phase: dialog.dataset.phase, completed: storage.readBoolean('tutorialCompleted', false), practice: session?.snapshot() }) });
-  return { intercept(start) { if (active) return true; if (storage.readBoolean('tutorialCompleted', false)) return false; explanation(start); return true; }, practiceAgain() { explanation(); }, destroy() { active = false; cancelAnimationFrame(frame); listeners.abort(); observer.disconnect(); dialog.remove(); again.remove(); const nav = app.querySelector<HTMLElement>('.arcade-portal-back'); if (nav?.id === 'portal-link') delete nav.dataset.arcadeNavInstalled; else nav?.remove(); } };
+  return { intercept(_start) { if (active) return true; if (app.dataset.state === 'title') telemetry.trackEvent('tutorial_skip', { completedBefore: storage.readBoolean('tutorialCompleted', false), startMethod: 'immediate' }); return false; }, practiceAgain() { practice(); }, destroy() { active = false; cancelAnimationFrame(frame); listeners.abort(); observer.disconnect(); dialog.remove(); choices.remove(); const nav = app.querySelector<HTMLElement>('.arcade-portal-back'); if (nav?.id === 'portal-link') delete nav.dataset.arcadeNavInstalled; else nav?.remove(); } };
 }
 
 function paintPractice(canvas: HTMLCanvasElement | null, s: PracticeSnapshot, phaseTime: number): void {

@@ -1,5 +1,5 @@
 {
-  "description": "Pinned Godot 4.5.1 exports with authorized title-only changes. Engine/WASM/audio and every unrelated packed resource retain source bytes.",
+  "description": "Pinned Godot4.5.1 exports with authorized title revisions and Game013 optional first-play practice; engine/audio/unrelated resources preserved.",
   "schemaVersion": 2,
   "godotVersion": "4.5.1",
   "threadsEnabled": false,
@@ -21,7 +21,7 @@
           "sourceSha256": "3c9825c464306dd422b9a1e72ef74507c4501fb54f247e1096b86ed575cabc6d",
           "sha256": "1ebb9de8f888d1a4b01d2df6b9529a73c47944d35ec84fc75d5dd1e98c5c7bea",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "build/web/index.js",
@@ -38,7 +38,7 @@
           "sourceSha256": "98d9716f32121d9f4f370615ac4708067d670ed218ad60af44691d4300a9f6af",
           "sha256": "90822e65cb9496923ecb7ef17a9055a520b7aecb69cb81482d47c58f39a7ae63",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "build/web/index.wasm",
@@ -100,8 +100,8 @@
       "shellFiles": [
         {
           "path": "public/games/yokodori-days/index.html",
-          "bytes": 760,
-          "sha256": "965047a5f40f4eb8b0c49abedb53a72e82a1d5dc3d8d0d94ce655e9b395a8f2f"
+          "bytes": 9586,
+          "sha256": "a16dd7139a6d9ef9c0a3eeb29a5625978110b3a3daade4e4c51737873efa1c1c"
         },
         {
           "path": "public/games/yokodori-days/portal-return.css",
@@ -151,9 +151,9 @@
           "path": "public/games/tachibana-task-heaven/game.html",
           "bytes": 5796,
           "sourceSha256": "c667f5262621ec2916ffbab8a2d2b2697cb8415e971fc6c3cd889f93b114ebcd",
-          "sha256": "b5ec34493d4d98ca12e042909c452197b0ef7552208d66c0e88d0f6aef44eb3a",
+          "sha256": "990a3975d2a3016afa344c26a79505b3cfc6e7fa55bba881b7ea745c2b2e8f96",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "docs/index.js",
@@ -166,11 +166,11 @@
         {
           "source": "docs/index.pck",
           "path": "public/games/tachibana-task-heaven/index.pck",
-          "bytes": 5815488,
+          "bytes": 5815344,
           "sourceSha256": "e4b1b02a397748f45faa1061c7cb073c1d79c03c5a963ced448eb891e3de626a",
-          "sha256": "6c51a2b4508672f555d58ba152f149df9bcf992085dd8290b0ea1c1b2b45587a",
+          "sha256": "ff66ea36f195e6a352a94084c3d8b2d51d5b61ce5dd7dfaa9a06aa2bfd2a253b",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "docs/index.wasm",
@@ -352,8 +352,8 @@
       "shellFiles": [
         {
           "path": "public/games/tachibana-task-heaven/index.html",
-          "bytes": 730,
-          "sha256": "776090fd53967f63e7ed4f6eeb2c82d9099d40394297357b187ca9b26b45e7f6"
+          "bytes": 9556,
+          "sha256": "92697c8ca7abf365ff92ae63ab45ee09662007e041cf44397431653df9b6ca46"
         },
         {
           "path": "public/games/tachibana-task-heaven/portal-return.css",
@@ -361,7 +361,7 @@
           "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
         }
       ],
-      "runtimeBytes": 52450584,
+      "runtimeBytes": 52450440,
       "titleRevision": {
         "compiler": "4.5.1.stable.official.f62fdbde1",
         "patches": [
@@ -380,6 +380,19 @@
           }
         ],
         "unchangedPackedResourceCount": 81
+      },
+      "startChoicesRevision": {
+        "compiler": "4.5.1.stable.official.f62fdbde1",
+        "scope": "Remove Game013 forced first-play help/practice gate only; native practice/help/save unchanged",
+        "changedResources": [
+          {
+            "path": "scripts/game_manager.gdc",
+            "previousSha256": "70a7fdb8873434eb3fc0d13f6432df576b15cd3d6c904a212420d09dfe1ed277",
+            "sha256": "d828fb94229373c599621d281dd5c89de54629c924dedc75a589798e9b5e2b96"
+          }
+        ],
+        "unchangedResourceCount": 82,
+        "packageSha256": "ff66ea36f195e6a352a94084c3d8b2d51d5b61ce5dd7dfaa9a06aa2bfd2a253b"
       }
     },
     {
@@ -399,7 +412,7 @@
           "sourceSha256": "24e659b3030f40199d8b871852d2c85a7cd6d4017206b56ba1d4d216ab747805",
           "sha256": "e0104c6f11ff3eb127eac45dbdb809ae77702023693c32adf00d8e879f3fa5b5",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "web/index.js",
@@ -416,7 +429,7 @@
           "sourceSha256": "2b8242d2a67e32490dd8a1133c71ba646a2cd87d24713968149bcff617323ad9",
           "sha256": "e4c6791c03800df3a1686d2f41f0da4bc83e83127bc867b24276936f4fe82a81",
           "byteIdentical": false,
-          "transformation": "Authorized display-title revision; original source hash retained"
+          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
         },
         {
           "source": "web/index.wasm",
@@ -478,8 +491,8 @@
       "shellFiles": [
         {
           "path": "public/games/finger-heart-challenge/index.html",
-          "bytes": 754,
-          "sha256": "351675bd9afad947aac2f625b1b8c16975ae5466179e8b3076e07b14aba2c0f7"
+          "bytes": 9580,
+          "sha256": "3ce9cb2e2255ac8cbbf599028fa6b48b12b7bddeac214bf8a9275706ac4c1773"
         },
         {
           "path": "public/games/finger-heart-challenge/portal-return.css",
@@ -517,5 +530,5 @@
     "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
     "byteIdentical": true
   },
-  "totalRuntimeBytes": 141422176
+  "totalRuntimeBytes": 141422032
 }

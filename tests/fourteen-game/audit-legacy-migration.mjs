@@ -12,7 +12,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const manifest=JSON.parse(await readFile('public/games/export-manifest.json','utf8'));
 const titleResources={
   'yokodori-days':['project.binary','scripts/hud.gdc','scripts/title_screen.gdc'],
-  'tachibana-task-heaven':['project.binary','scripts/office_view.gdc'],
+  'tachibana-task-heaven':['project.binary','scripts/office_view.gdc','scripts/game_manager.gdc'],
   'finger-heart-challenge':['project.binary','scripts/main.gdc'],
 };
 function packed(data){
@@ -47,7 +47,7 @@ for(const entry of entries){
         for(const [path,digest] of original)if(revised.get(path)!==digest)changed.push(path);
         record.changedPackedResources=changed.sort();
         record.authorizedTitleRevision&&=JSON.stringify(changed.sort())===JSON.stringify(titleResources[entry.id].slice().sort());
-        for(const resource of game.titleRevision.changedPackedResources){
+        for(const resource of [...game.titleRevision.changedPackedResources,...(game.startChoicesRevision?.changedResources??[]).map(r=>({...r,sourceSha256:r.previousSha256}))]){
           record.authorizedTitleRevision&&=original.get(resource.path)===resource.sourceSha256&&revised.get(resource.path)===resource.sha256;
         }
       }
@@ -57,6 +57,6 @@ for(const entry of entries){
   records.push({...entry,target,assets,excludedMetadata,totalBytes:assets.reduce((n,r)=>n+r.bytes,0)});
 }
 await mkdir('docs/fourteen-game/QA',{recursive:true});
-await writeFile(process.env.LEGACY_BINARY_REPORT??`docs/legacy-games/title-revision/QA/${dist?'LEGACY_DIST_BINARY_AUDIT':'LEGACY_BINARY_AUDIT'}.json`,JSON.stringify({checkedUtc:new Date().toISOString(),scope:'Engine/WASM/audio/worklets/icons remain byte-exact. Authorized title-only HTML/PCK differences match the current manifest; changed PCK resources are restricted to title scripts/project metadata and all unrelated resources remain byte-exact. Unused editor and original hosting markers are excluded.',records,issues},null,2)+'\n');
+await writeFile(process.env.LEGACY_BINARY_REPORT??`docs/legacy-games/title-revision/QA/${dist?'LEGACY_DIST_BINARY_AUDIT':'LEGACY_BINARY_AUDIT'}.json`,JSON.stringify({checkedUtc:new Date().toISOString(),scope:'Engine/WASM/audio/worklets/icons remain byte-exact. Authorized title and start-choice HTML/PCK differences match the current manifest; changed PCK resources are restricted to title scripts/project metadata and Game013 first-play gate and all unrelated resources remain byte-exact. Unused editor and original hosting markers are excluded.',records,issues},null,2)+'\n');
 console.log(`${records.length} exports /${records.reduce((n,r)=>n+r.assets.length,0)} original files;${issues.length} issues`);
 if(issues.length){console.error(issues.join('\n'));process.exitCode=1;}

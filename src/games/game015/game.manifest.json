@@ -12,7 +12,9 @@
   "core_mechanic": [
     "controlled-falling",
     "platform-landing",
-    "momentum"
+    "momentum",
+    "hold-drop-through-ordinary-platforms",
+    "short-safe-steps-vs-deep-soft-catch"
   ],
   "primary_input": [
     "left",
@@ -33,7 +35,7 @@
     "unlimited_play": true,
     "advertising": false
   },
-  "tutorial": "isolated DROP, right/left air steering around central spikes, stationary ghost swept away by scrolling",
+  "tutorial": "isolated DROP, right/left hazard steering, held continuous fall, excessive-impact ghost, pursuing-ceiling ghost",
   "human_playtest_status": "pending",
   "fall_thresholds_m": {
     "normal_safe_max": 6,
@@ -54,7 +56,7 @@
     "moving"
   ],
   "milestone_meters": 1000,
-  "generation": "six randomized lane patterns, varied widths, central spike banks, protected reachable landing bay on every row",
+  "generation": "six patterns with 2.1–5.8m safe gaps, 10.6–10.8m diagonal soft-catch shortcuts, central spikes and forced final stone choice",
   "expected_run_seconds": {
     "beginner": 60,
     "experienced": 180
@@ -80,5 +82,11 @@
     "start": 18,
     "maximum": 36,
     "acceleration": 0.22
+  },
+  "revision": "03",
+  "hold_drop": {
+    "normal_and_moving": "bypass without resetting fall distance",
+    "soft_and_crumble": "brief catch, honest impact, automatic resumption",
+    "hazards": "remain active"
   }
 }

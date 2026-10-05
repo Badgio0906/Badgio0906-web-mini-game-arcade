@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "game012",
+  "title": "お前の仕事は俺の仕事",
+  "titleJa": "お前の仕事は俺の仕事",
+  "titleEn": "YOUR WORK IS MY WORK",
+  "tagline": "「今だ！」の瞬間に、同僚の仕事とバナナを横取り。",
+  "tags": [
+    {
+      "id": "timing",
+      "label": "タイミング"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    },
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    }
+  ],
+  "genre": "タイミング",
+  "controls": {
+    "summary": "ゲーム内の横取り操作。詳細は既存Godotの説明画面が正本",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "unknown; not inferred from QA or other games",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "同僚の仕事とバナナを今だの瞬間に横取りする",
+  "description": "同僚の仕事とバナナを今だの瞬間に横取りする",
+  "failureModes": "横取りタイミングの失敗",
+  "route": "./games/yokodori-days/index.html",
+  "thumbnail": "./assets/portal/game012.webp",
+  "design": {
+    "thumbnailDescription": "お前の仕事は俺の仕事の実プレイ画面。移行済みGodotのオフィス画面",
+    "majorVisuals": "移行済みGodotのオフィス画面",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "legacy shell only; native Godot game loop does not report runs, scores or deaths",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": null,
+    "details": "./games/yokodori-days/index.html"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": null
+}

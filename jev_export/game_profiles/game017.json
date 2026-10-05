@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "game017",
+  "title": "雨って避けたら濡れないよね ～RAINSHIFT～",
+  "titleJa": "雨って避けたら濡れないよね",
+  "titleEn": "RAINSHIFT",
+  "tagline": "雨？ 当たらなければ晴れです。",
+  "tags": [
+    {
+      "id": "dodge",
+      "label": "回避"
+    },
+    {
+      "id": "weather",
+      "label": "天気"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    },
+    {
+      "id": "endless",
+      "label": "エンドレス"
+    }
+  ],
+  "genre": [
+    "route-planning",
+    "arcade",
+    "endless"
+  ],
+  "controls": {
+    "summary": "クリック / タップ / ドラッグで経路を描く",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": [
+    20,
+    120
+  ],
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "じわじわ難化",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "止まった時間で雨の予報を見て避ける道を描く",
+  "description": "止まった時間で雨の予報を見て避ける道を描く",
+  "failureModes": "雨に触れるまたは経路計画の失敗",
+  "route": "./game017.html",
+  "thumbnail": "./assets/portal/game017.webp",
+  "design": {
+    "thumbnailDescription": "雨って避けたら濡れないよね ～RAINSHIFT～の実プレイ画面。雨予報と上からの計画、ダッシュ視点",
+    "majorVisuals": "雨予報と上からの計画、ダッシュ視点",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game017/game.manifest.json",
+    "details": "src/games/game017/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game017",
+    "title": "雨って避けたら濡れないよね ～RAINSHIFT～",
+    "titleJa": "雨って避けたら濡れないよね ～RAINSHIFT～",
+    "titleEn": "RAINSHIFT",
+    "subtitle": "雨？ 当たらなければ晴れです。",
+    "genre": [
+      "route-planning",
+      "arcade",
+      "endless"
+    ],
+    "core_mechanic": [
+      "time-stop",
+      "continuous-freehand-route",
+      "projected-xyz-camera"
+    ],
+    "primary_input": [
+      "click",
+      "tap",
+      "pointer-drag"
+    ],
+    "planning_seconds": 5,
+    "camera_transition_seconds": 0.55,
+    "dash_seconds": 1.4,
+    "collision_policy": "continuous-swept-circle against displayed forecast footprints of rain arriving during this dash",
+    "difficulty": "bounded rain density, visible wind from round 4, large drops from round 6; validated safe route with 12 world-unit margin",
+    "credit_policy": "consume-once-at-run-start-when-enabled",
+    "prototype": {
+      "unlimited_play": true,
+      "advertising": false
+    },
+    "tutorial": "five observed phases, recoverable failure, separate score and completion",
+    "human_playtest_status": "pending",
+    "jev_mode": "development-only-shadow",
+    "skill_axes": [
+      "spatial-planning",
+      "continuous-route-control",
+      "risk-recognition"
+    ],
+    "expected_run_seconds": [
+      20,
+      120
+    ],
+    "expected_run_seconds_note": "design target, not human measured"
+  }
+}

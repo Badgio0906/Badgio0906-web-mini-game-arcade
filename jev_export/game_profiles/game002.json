@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "game002",
+  "title": "ゆううつな月曜日",
+  "titleJa": "ゆううつな月曜日",
+  "titleEn": "WORKDAY DODGE",
+  "tagline": "弊社まで1000m。出勤するか、人生を変えるか。",
+  "tags": [
+    {
+      "id": "dodge",
+      "label": "回避"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "commute",
+      "label": "通勤"
+    },
+    {
+      "id": "endless",
+      "label": "エンドレス"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    }
+  ],
+  "genre": [
+    "arcade",
+    "dodge",
+    "runner"
+  ],
+  "controls": {
+    "summary": "左右キー / 左右タップで車線移動",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 45,
+    "experienced": 96
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "3車線を読み、出社か続行かを選ぶ",
+  "description": "3車線を読み、出社か続行かを選ぶ",
+  "failureModes": "障害物への接触",
+  "route": "./game002.html",
+  "thumbnail": "./assets/portal/game002.webp",
+  "design": {
+    "thumbnailDescription": "ゆううつな月曜日の実プレイ画面。漫画風の通勤者と4地区の街",
+    "majorVisuals": "漫画風の通勤者と4地区の街",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game002/game.manifest.json",
+    "details": "src/games/game002/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game002",
+    "title": "ゆううつな月曜日 ～WORKDAY DODGE～",
+    "subtitle": "ぶつからず出社せよ！",
+    "genre": [
+      "arcade",
+      "dodge",
+      "runner"
+    ],
+    "core_mechanic": [
+      "three-lane movement",
+      "prediction",
+      "commute-to-infinite-journey"
+    ],
+    "primary_input": [
+      "left",
+      "right"
+    ],
+    "skill_axes": [
+      "reaction",
+      "prediction",
+      "lane-selection"
+    ],
+    "expected_run_seconds": {
+      "beginner": 45,
+      "experienced": 96
+    },
+    "goal": {
+      "company_choice_meters": 1000,
+      "bike_choice_meters": 2000,
+      "journey_distance_limit": null
+    },
+    "escalation_mechanic": "At 1000m enter the company or pass it for a journey; at 2000m end safely, continue walking, or ride at 200% speed indefinitely.",
+    "risk_reward": "Office clear and the 2000m safe exit preserve CREDIT; continuing risks collision for uncapped distance and NICE DODGE score.",
+    "visual_identity": "warm ink comic commuters and illustrated four-district Japanese streets",
+    "primary_score": "floor(distance_meters * stepped_nice_dodge_bonus_percent / 100)",
+    "secondary_score": [
+      "distance_meters",
+      "nice_dodge_count"
+    ]
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/Badgio0906-web-mini-game-arcade/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "playwright.start-choices.config.ts",
+      "--grep",
+      "shell practice",
+      "--output=docs/start-choices/QA/legacy-retest",
+      "--reporter=json"
+    ],
+    "configFile": "/workspace/Badgio0906-web-mini-game-arcade/playwright.start-choices.config.ts",
+    "rootDir": "/workspace/Badgio0906-web-mini-game-arcade/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/Badgio0906-web-mini-game-arcade/docs/start-choices/QA/legacy-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "choices-desktop",
+        "name": "choices-desktop",
+        "testDir": "/workspace/Badgio0906-web-mini-game-arcade/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "start-choices.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/workspace/Badgio0906-web-mini-game-arcade/docs/start-choices/QA/legacy-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "choices-mobile",
+        "name": "choices-mobile",
+        "testDir": "/workspace/Badgio0906-web-mini-game-arcade/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "start-choices.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "start-choices.spec.ts",
+      "file": "start-choices.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "yokodori-days: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-desktop",
+              "projectName": "choices-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4293,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:43.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-e99020bde9c19319a1a6",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        },
+        {
+          "title": "tachibana-task-heaven: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-desktop",
+              "projectName": "choices-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 632,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:48.093Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-8fe499d74968d0884a16",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        },
+        {
+          "title": "finger-heart-challenge: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-desktop",
+              "projectName": "choices-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4188,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:48.747Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-cdfcd3ae97e2e451e199",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        },
+        {
+          "title": "yokodori-days: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-mobile",
+              "projectName": "choices-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4215,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:53.373Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-d92d1d3cfdad2ca57efc",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        },
+        {
+          "title": "tachibana-task-heaven: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-mobile",
+              "projectName": "choices-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:57.791Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-4984379f9519b6060687",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        },
+        {
+          "title": "finger-heart-challenge: shell practice never loads or runs production engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "choices-mobile",
+              "projectName": "choices-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4141,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T14:23:58.385Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0ce4d44aa7256510ae0-a0598eca9a33fafaee27",
+          "file": "start-choices.spec.ts",
+          "line": 54,
+          "column": 28
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T14:23:43.192Z",
+    "duration": 19421.305,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

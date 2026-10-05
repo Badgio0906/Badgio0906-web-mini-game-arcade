@@ -5,7 +5,7 @@ import { TelemetryService } from '../../src/core/TelemetryService';
 import { CreditService } from '../../src/core/CreditService';
 import { LoseRun } from '../../src/games/game016/LoseRun';
 
-describe('Game016 isolated mandatorythree-question practice', () => {
+describe('Game016 isolated optional three-question practice', () => {
   it('wrong/draw attempts remain untimed on the samequestion; onlythreecorrect losing hands complete', () => {
     const log=vi.spyOn(console,'debug').mockImplementation(()=>{});
     try{
@@ -33,7 +33,7 @@ describe('Game016 isolated mandatorythree-question practice', () => {
       practice.explain();practice.practice();for(let i=0;i<100;i++)practice.answer('rock');practice.close();
       expect(storage.readBoolean('tutorialCompleted',false)).toBe(false);expect(real.snapshot()).toEqual(before);expect(events).toEqual([]);
       expect(credits.credits).toBe(3);expect(storage.readNumber('bestScore',0)).toBe(1234);
-      expect(telemetry.getEvents().every(e=>e.name.startsWith('tutorial_'))).toBe(true);
+      expect(telemetry.getEvents().every(e=>e.name.startsWith('tutorial_') || e.name.startsWith('practice_'))).toBe(true);
     }finally{log.mockRestore();}
   });
   it('deniedstorage doesnotbreak practice or completion within the currentpage', () => {

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "game006",
+  "title": "ギリギリ駐車",
+  "titleJa": "ギリギリ駐車",
+  "titleEn": "PARK IT!",
+  "tagline": "あと3cm。たぶん入る。たぶん。",
+  "tags": [
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "timing",
+      "label": "タイミング"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    },
+    {
+      "id": "vehicle",
+      "label": "乗り物"
+    }
+  ],
+  "genre": [
+    "timing",
+    "physics",
+    "arcade"
+  ],
+  "controls": {
+    "summary": "Space / タップで角度、次に強さを止める",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 60,
+    "experienced": 190
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "車全体が区画に入る角度と距離を予測する",
+  "description": "車全体が区画に入る角度と距離を予測する",
+  "failureModes": "車体が駐車区画からはみ出す",
+  "route": "./game006.html",
+  "thumbnail": "./assets/portal/game006.webp",
+  "design": {
+    "thumbnailDescription": "ギリギリ駐車の実プレイ画面。俯瞰の車とコードで一致させた駐車枠",
+    "majorVisuals": "俯瞰の車とコードで一致させた駐車枠",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game006/game.manifest.json",
+    "details": "src/games/game006/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game006",
+    "title": "ギリギリ駐車 ～PARK IT!～",
+    "subtitle": "角度よし、強さよし……たぶん。",
+    "genre": [
+      "timing",
+      "physics",
+      "arcade"
+    ],
+    "core_mechanic": [
+      "lock steering curvature",
+      "lock driving distance",
+      "whole-rectangle parking"
+    ],
+    "primary_input": [
+      "single-action",
+      "two-stage timing"
+    ],
+    "skill_axes": [
+      "timing",
+      "angle-estimation",
+      "spatial-estimation",
+      "power-estimation"
+    ],
+    "expected_run_seconds": {
+      "beginner": 60,
+      "experienced": 190
+    },
+    "duration_note": "design hypothesis; beginner human unmeasured; oracle timing bounds separate",
+    "oracle_timing_seconds": {
+      "ten_parks": [
+        84,
+        106
+      ],
+      "twenty_parks": [
+        145,
+        237
+      ]
+    },
+    "primary_score": "accuracy points with capped perfect-streak multiplier",
+    "secondary_score": "successfully parked cars",
+    "escalation_mechanic": "After ten successes, one frozen choice offers permanently narrow forbidden spaces or ordinary parking.",
+    "risk_reward": "Forbidden slots are 50x82 for a 42x70 car and award twice the future parking points; previous points stay unchanged.",
+    "visual_identity": "generated top-down Japanese daily cars, code-exact parking bays, warm asphalt, thin driver console"
+  }
+}

@@ -1,16 +1,16 @@
 # GAME_COMMON_SPEC — 現行の共通境界
 
-2026-10-05、18本候補のコードと記録から整理。完成した100ゲーム用SDKではなく、現在使っている小さな境界を記述する。現状と例外は [CURRENT_STATUS](docs/CURRENT_STATUS.md)、工程は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)。以前の10本DRAFTは [archive](docs/archive/GAME_COMMON_SPEC_2026-10-04.md)、11本の練習候補は[履歴草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)に保持する。
+2026-10-05、019統合候補のコードと記録から整理。最新の公開結果は統合報告を優先する。完成した100ゲーム用SDKではなく、現在使っている小さな境界を記述する。現状と例外は [CURRENT_STATUS](docs/CURRENT_STATUS.md)、工程は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)。以前の10本DRAFTは [archive](docs/archive/GAME_COMMON_SPEC_2026-10-04.md)、11本の練習候補は[履歴草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)に保持する。
 
 ## 適用範囲と固有モデル
 
-001〜011・015〜018のnative gameが保存・音・Telemetry等の共通サービスを使う。CREDIT接続は001〜010・015〜018にあり、011のmainは財布未接続で無料専用。012〜014の旧Godot exportは既存UI・保存・音・操作を保つ。旧exportを共通サービスへ無断接続しない。
+001〜011・015〜019のnative gameが保存・音・Telemetry等の共通サービスを使う。019は無料でCREDIT未接続。CREDIT接続は001〜010・015〜018にあり、011のmainは財布未接続で無料専用。012〜014の旧Godot exportは既存UI・保存・音・操作を保つ。旧exportを共通サービスへ無断接続しない。
 
 固有モデル、描画、入力の採否、難度、得点、結果配置を保つ。Phaser Scene、DOM Board、Canvasを同じ基底classへ変換しない。広告SDK・ランキング・特定サーバーを固有モデルへ入れない。
 
 ## 開始・練習・終了
 
-native gameはtitle、RUN、result、retry、pauseを持つ。初回の説明／練習／成功は本番から独立し、score／BEST／CREDIT／本番run eventsを変えない。ゲーム別tutorialCompletedを完了時に保存し、再訪の即PLAYと再練習を提供する。001〜011・015は[共通onboarding](src/arcade/onboarding.ts)、016は[固有3問練習](src/games/game016/onboarding.ts)。旧Godotへこの導線を強制しない。
+native gameはtitle、RUN、result、retry、pauseを持つ。初回も「すぐ遊ぶ／説明を見る／練習する」を選べる。説明と練習は任意で、本番score／BEST／CREDIT／run eventsを変えない。スキップで完了保存を偽造しない。001〜011・015は[共通onboarding](src/arcade/onboarding.ts)、016〜019は固有の練習。012〜014は帰還shellで3択と隔離した補助練習を提供し、元の説明・練習を保持。013の初回強制helpだけを解除した。[実装境界](docs/start-choices/IMPLEMENTATION_REPORT.md)。
 
 終了一度をUIとモデルで守る。失敗over、成功clear、固有の得点確定退出safe_exit、未確定退出quitを区別する。Best保存、消費、retry先は固有仕様。一般のtitle帰還をsafe_exitへ読み替えない。通常retryはページを再読込しない。
 
@@ -42,9 +42,9 @@ scoreの単位・補助指標を統一しない。002は旧距離BESTを保ちSC
 
 ユーザー操作でAudioをunlockし、muteを保存。音が使えなくても遊べるようにする。oscillator／gain、RAF、listener等をcleanupする。成功／失敗の意味は固有に設計する。
 
-[TelemetryService](src/core/TelemetryService.ts)のtrackEvent()を通す。name、at（UTC ISO）、data.game_idを持ち、consoleと最大200件のメモリ履歴。永続Analytics、実ユーザー統計、Codex使用量の計測ではない。
+[TelemetryService](src/core/TelemetryService.ts)のtrackEvent()を通す。name、at（UTC ISO）、data.game_id/session_idを持ち、最大200件のページ内履歴と400件の端末内保存。ポータルからJSON保存でき、ゲーム／タグ／設計難度別に保存窓の実観測だけを集計。欠測はnull、012〜014はshell-only。外部送信・人口統計・Codex使用量の計測は行わない。[データ境界](docs/data/JEV_PREPARATION.md)。
 
-共通eventはgame_open、run_start／run_end、score、retry、quit、pause／resume、run_duration。CREDIT／Rewardは有効モードの境界。練習はtutorial、一覧はportal_open／game_card_click／game_launch／return_to_portal。固有eventは型とモデル／UIに残し、フレームごとに送らない。
+共通eventはgame_open、run_start／run_end、score、retry、quit、pause／resume、run_duration、tutorial_skip/view、practice_start/complete、best_update、death_reason、specific_game_events。全てのeventを旧ゲームで観測しているとは扱わない。CREDIT／Rewardは有効モードの境界。練習はtutorial、一覧はportal_open／game_card_click／game_launch／return_to_portal。固有eventは型とモデル／UIに残し、フレームごとに送らない。
 
 runIdと終了一度を守る。ゲーム内時間、世界速度、会議時計、読書、pause、壁時計を区別し、意味を報告する。全payloadの完全一致や全ゲーム同じduration定義を仮定しない。
 
@@ -62,4 +62,12 @@ Phaserは001〜003・006だけが必要。他native gameで共有engineを取得
 
 ## 017・018の固有境界
 
-017は固有Canvas／経路描画練習、018は固有Canvas／ANGLE・SPIN・POWERと4段階の実練習。既存Storage／Audio／Telemetry／CREDITサービスを使用。016同様に将来ON時は本番開始時1回消費、現在OFF。018は距離を整数decimeterで保存する。練習のscore／BEST／本番イベントは分離する。018のskyイベントの表示停止は物理得点へ影響しない。[017報告](docs/game017/IMPLEMENTATION_REPORT.md)／[018報告](docs/game018/IMPLEMENTATION_REPORT.md)。mainは017まで反映・deploy成功、018候補の公開前引き継ぎは[手順](docs/game018/PUBLICATION_HANDOFF.md)。
+017は固有Canvas／経路描画練習、018は固有Canvas／ANGLE・SPIN・POWERと4段階の実練習。既存Storage／Audio／Telemetry／CREDITサービスを使用。016同様に将来ON時は本番開始時1回消費、現在OFF。018は距離を整数decimeterで保存する。練習のscore／BEST／本番イベントは分離する。018のskyイベントの表示停止は物理得点へ影響しない。[017報告](docs/game017/IMPLEMENTATION_REPORT.md)／[018報告](docs/game018/IMPLEMENTATION_REPORT.md)。現在の018改修と019統合の公開結果は[統合報告](docs/integration-2026-10-05/IMPLEMENTATION_REPORT.md)を参照。
+
+## 019・タグと所有確認
+
+019は方向×小中大の精密上昇。転落は同じrunで復帰し、死亡扱いしない。100mの海岸床はrun内だけの足場。再開位置の保存はなく、新runは底から開始。BESTは0.1m単位、練習と本番の計測は隔離する。[仕様](docs/game019/IMPLEMENTATION_SPEC.md)。
+
+[Catalog](src/data/gameCatalog.ts)と[tag definitions](src/data/tagCatalog.ts)に全19本の安定ID／日本語タグを持つ。カードは先頭4件、フィルタUIは未実装。Jev用profile／schema／明示的synthetic sampleを[jev_export](jev_export/)に保存。runtimeからJevを呼ばない。
+
+AdSenseの所有確認scriptは別PRでroot HTML headだけへ追加する。広告枠やRewardServiceへ接続しない。所有確認・審査の成立はコード設置の公開とは別に確認する。

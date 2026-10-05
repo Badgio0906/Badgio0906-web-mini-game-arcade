@@ -1,0 +1,32 @@
+{
+  "initialRun": {
+    "baseUrl": "http://127.0.0.1:5173",
+    "cases": 78,
+    "passed": 75,
+    "failed": 3,
+    "failureCause": "Harness second input observed stale success window text before requestAnimationFrame reset; game correctly rejected premature input. No product changes."
+  },
+  "targetedRetest": {
+    "baseUrl": "http://127.0.0.1:5181",
+    "cases": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "finalDistinctCasesPass": 78,
+  "cases": "38 first-title choices,32 immediate native skip,2 held shared practice,6 isolated legacy practice",
+  "viewports": {
+    "desktop": "1440x900",
+    "mobile": "390x844 native Chromium touch emulation"
+  },
+  "sourceHashes": {
+    "src/arcade/onboarding.ts": "2fd41b7df9b2109963d5115bbf0cc2c970113ad378a41c1a362ea1ae84714111",
+    "src/arcade/onboarding.css": "2711052e3f435c778ba1de2150471be8e7d0c541b2ff547179fc4e7d93d987fa",
+    "src/arcade/PracticeSession.ts": "badae138f45ed212825fa6787d1aee266a858ab379b56ea4ce01fbffda0dd46d",
+    "src/games/game016/main.ts": "f7a8f025eb06a48f7eaa50a6618efd17552fe3d12e2b1e8bf83e070cd9b921b5",
+    "src/games/game016/onboarding.ts": "93178e191d83d47fa49e137e0d1c7edc300770ec7af0217cc7a8132d32f95da6",
+    "src/games/game017/main.ts": "32059d80be2dce9842661c20a1e4fb10ab7f3332e868d03f1d264352f709fa00",
+    "public/games/yokodori-days/index.html": "a16dd7139a6d9ef9c0a3eeb29a5625978110b3a3daade4e4c51737873efa1c1c",
+    "public/games/tachibana-task-heaven/index.html": "92697c8ca7abf365ff92ae63ab45ee09662007e041cf44397431653df9b6ca46",
+    "public/games/finger-heart-challenge/index.html": "3ce9cb2e2255ac8cbbf599028fa6b48b12b7bddeac214bf8a9275706ac4c1773"
+  }
+}

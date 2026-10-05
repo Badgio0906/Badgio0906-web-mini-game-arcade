@@ -1,3 +1,4 @@
+import { tagsFor, type GameTag, type TagId } from './tagCatalog.ts';
 export interface GameCatalogEntry {
   readonly id: string;
   readonly titleJa: string;
@@ -6,6 +7,8 @@ export interface GameCatalogEntry {
   readonly thumbnail: string;
   readonly route: string;
   readonly releaseOrder: number;
+  readonly tags: readonly GameTag[];
+  readonly difficulty: 'standard' | 'rising' | 'hard';
 }
 
 const entries = [
@@ -27,15 +30,46 @@ const originalGames = entries.map(([titleJa, titleEn, tagline], index) => {
   return Object.freeze({ id, titleJa, titleEn, tagline, thumbnail: `./assets/portal/${id}.webp`, route: `./${id}.html`, releaseOrder: index + 1 });
 });
 
-const legacyGames: readonly GameCatalogEntry[] = [
+const legacyGames = [
   { id: 'game012', titleJa: 'お前の仕事は俺の仕事', titleEn: 'YOUR WORK IS MY WORK', tagline: '「今だ！」の瞬間に、同僚の仕事とバナナを横取り。', thumbnail: './assets/portal/game012.webp', route: './games/yokodori-days/index.html', releaseOrder: 12 },
   { id: 'game013', titleJa: 'タスク天国', titleEn: 'TASK HEAVEN', tagline: '上司のお手本を覚えて、1〜4キーで仕事を奏でよう。', thumbnail: './assets/portal/game013.webp', route: './games/tachibana-task-heaven/index.html', releaseOrder: 13 },
   { id: 'game014', titleJa: '指ハートチャレンジ', titleEn: 'FINGER HEART CHALLENGE', tagline: '指ハートの瞬間でストップ。全5段階、25回成功を目指せ。', thumbnail: './assets/portal/game014.webp', route: './games/finger-heart-challenge/index.html', releaseOrder: 14 },
 ];
 
+// 012/013 remain bound to their actual titles; the request's numbered examples
+// invert these two IDs, but must never invert existing routes or records.
+const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
+  game001: ['reflex','dodge','score-attack','short'],
+  game002: ['dodge','office','commute','endless','absurd'],
+  game003: ['timing','stacking','architecture','score-attack','absurd'],
+  game004: ['memory','decision','brain-training','short'],
+  game005: ['decision','rule-change','brain-training','office'],
+  game006: ['physics','timing','precision','vehicle'],
+  game007: ['decision','office','puzzle','weight'],
+  game008: ['balance','office','drink','precision'],
+  game009: ['search','office','desk','score-attack'],
+  game010: ['stealth','office','meeting','multitask'],
+  game011: ['quiz','reflex','absurd','decision'],
+  game012: ['timing','office','absurd','reflex'],
+  game013: ['office','rhythm','decision','absurd'],
+  game014: ['timing','pose','absurd','short'],
+  game015: ['fall','precision','pixel-art','retro','hard'],
+  game016: ['reflex','decision','quiz','absurd','short'],
+  game017: ['dodge','weather','absurd','endless'],
+  game018: ['physics','multi-step','distance','absurd'],
+  game019: ['jump','rise','pixel-art','animal','hard','precision','space','wind'],
+};
+
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard'] as const;
+
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
   { id: 'game016', titleJa: '負けじゃんけん ～LOSE TO WIN～', titleEn: 'LOSE TO WIN', tagline: '勝ったら負け。負ければ勝ち。', thumbnail: './assets/portal/game016.webp', route: './game016.html', releaseOrder: 16 },
   { id: 'game017', titleJa: '雨って避けたら濡れないよね ～RAINSHIFT～', titleEn: 'RAINSHIFT', tagline: '雨？ 当たらなければ晴れです。', thumbnail: './assets/portal/game017.webp', route: './game017.html', releaseOrder: 17 },
-  { id: 'game018', titleJa: '靴とばそ ～SHOE FLY HIGH!～', titleEn: 'SHOE FLY HIGH!', tagline: '靴は履くもの？ それ誰が決めた？', thumbnail: './assets/portal/game018.webp', route: './game018.html', releaseOrder: 18 },
-].map(game => Object.freeze(game)));
+  { id: 'game018', titleJa: '靴とばそ ～Shoe fly in the sky～', titleEn: 'Shoe fly in the sky', tagline: '靴は履くもの？ それ誰が決めた？', thumbnail: './assets/portal/game018.webp', route: './game018.html', releaseOrder: 18 },
+  { id: 'game019', titleJa: '井の中の蛙、大海を目指す ～WELL TO SPACE～', titleEn: 'WELL TO SPACE', tagline: '井戸を出たら、今度は宇宙でした。', thumbnail: './assets/portal/game019.webp', route: './game019.html', releaseOrder: 19 },
+].map(game => Object.freeze({ ...game, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+
+export function filterCatalog(tagIds: readonly TagId[] = []): readonly GameCatalogEntry[] {
+  return gameCatalog.filter(game => tagIds.every(id => game.tags.some(tag => tag.id === id)));
+}

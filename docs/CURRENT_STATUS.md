@@ -1,5 +1,11 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-05：**019統合候補の最終QA中。現在の正式公開は下記18本版。** 最新作業の正本は[統合報告](integration-2026-10-05/IMPLEMENTATION_REPORT.md)。今回は015改訂03、018少年／回転表示、全19本の開始3択とタグ、端末内400件JSON記録、019「井の中の蛙、大海を目指す」を追加。ユーザーは全変更の検証後公開を承認済み。AdSenseは[独立PR #1](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/1)、root headのscript2行だけ。
+
+新しい継承境界：019は `game019.html`／[仕様](game019/IMPLEMENTATION_SPEC.md)、方向×小中大、転落復帰、100m海／鳥→風の空→200m宇宙。CREDIT未接続、位置saveなし、BESTだけ0.1m単位。012〜014は元engine／保存／説明を保ち、任意のshell補助練習を追加。013の強制help解除はgdc1resource。データの正本は[タグ／profile／端末内記録](data/JEV_PREPARATION.md)、外部Jev送信なし。
+
+以下は前回の公開18本版と歴史記録。今回の最新状態は上記統合報告を優先する。
+
 2026-10-05（日本時間）。**018を含む18本を正式HTTPSへ公開済み。** 012〜014改名、015縦スクロール改訂02を同時反映。[最新の実装・公開報告](game015/revision-02/IMPLEMENTATION_REPORT.md)を再開地点とする。以前の[統合引き継ぎ書](handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)は今回作業前の状態を記録した資料。
 
 ## 2026-10-05 改名・落下キング改訂02・018公開作業

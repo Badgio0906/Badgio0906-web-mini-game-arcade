@@ -10,7 +10,7 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const shock = reduceMotion ? 0 : s.phase === 'stunned' ? Math.floor(seconds * 35) % 3 - 1 : s.phase === 'ended' && seconds < feedbackUntil ? Math.floor(seconds * 30) % 3 - 1 : 0;
   c.save(); c.translate(shock, 0);
-  for (const p of s.platforms) { const y = Math.floor(p.y - s.cameraY); if (!p.gone && y > -16 && y < WORLD_HEIGHT) drawPlatform(c, { x: Math.round(p.x), y, width: Math.round(p.width), height: p.height, type: p.type, phase: p.crumbleAge === null ? 0 : Math.min(2, Math.floor(p.crumbleAge * 2.4)) }); }
+  for (const p of s.platforms) { const y = Math.floor(p.y - s.cameraY); if (!p.gone && y > -16 && y < WORLD_HEIGHT) { drawPlatform(c, { x: Math.round(p.x), y, width: Math.round(p.width), height: p.height, type: p.type, phase: p.crumbleAge === null ? 0 : Math.min(2, Math.floor(p.crumbleAge * 2.4)) }); if (p.type === 'soft' && y > 84) drawBitmapText(c, 'SOFT CATCH', Math.round(p.x + p.width / 2), y + 14, { color: PALETTE.f, align: 'center' }); } }
   for (const h of s.hazards) {
     const y = Math.round(h.y - s.cameraY); if (y + h.height < 58 || y > WORLD_HEIGHT) continue;
     if (h.kind === 'spikes') drawSpikeFloor(c, { x: h.x, y, width: h.width, height: h.height });
@@ -33,32 +33,35 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
   const danger = s.danger === 'fatal' ? PALETTE.b : s.danger === 'danger' ? PALETTE['7'] : PALETTE.f;
   drawBitmapText(c, 'FALL', 14, 36, { color: danger });
   drawBitmapText(c, `${s.fallDistance.toFixed(1)}M`, 48, 31, { color: danger, scale: 2 });
-  drawBitmapText(c, s.topRemaining < 48 ? 'HURRY!' : `SCROLL ${Math.round(s.scrollSpeed)}`, 242, 36, { color: s.topRemaining < 48 ? PALETTE.b : PALETTE['7'], align: 'right' });
+  drawBitmapText(c, s.topRemaining < 48 ? 'HURRY!' : s.heldDrop ? 'HOLD DROP!'  : `SCROLL ${Math.round(s.scrollSpeed)}`, 242, 36, { color: s.topRemaining < 48 ? PALETTE.b : PALETTE['7'], align: 'right' });
   c.fillStyle = PALETTE['2']; c.fillRect(14, 45, 228, 2); c.fillStyle = danger; c.fillRect(14, 45, Math.round(228 * Math.min(1, s.fallDistance / 9)), 2,);
+  c.fillStyle = PALETTE['0']; c.fillRect(34, 402, 188, 12);
+  drawBitmapText(c, 'STONE 9M / SOFT 12M', 128, 405, { color: PALETTE['4'], align: 'center' });
   if (feedback && seconds < feedbackUntil) { c.fillStyle = PALETTE['0']; c.fillRect(28, 418, 200, 22); drawBitmapText(c, feedback, 128, 426, { color: PALETTE['5'], align: 'center' }); }
 }
 export function paintFallPractice(canvas: HTMLCanvasElement, snapshot: PracticeSnapshot): void {
   const s = snapshot.fall; if (!s) return; const c = canvas.getContext('2d')!; c.imageSmoothingEnabled = false;
   drawBackdrop(c, 'tower', { scrollY: s.cameraY });
   drawPlatform(c, { ...s.startPlatform, y: s.startPlatform.y - s.cameraY, type: 'normal' });
-  drawPlatform(c, { ...s.target, y: s.target.y - s.cameraY, type: 'normal' });
+  drawPlatform(c, { ...s.target, y: s.target.y - s.cameraY, type: s.target.type ?? 'normal' });
+  for (const p of s.platforms) drawPlatform(c, { ...p, height: 6, y: p.y - s.cameraY, type: 'normal' });
   for (const h of s.hazards) drawSpikeFloor(c, { ...h, y: h.y - s.cameraY });
   c.save(); c.translate(0, SCROLL_TOP_LIMIT); c.scale(1, -1); drawSpikeFloor(c, { x: 0, y: 0, width: WORLD_WIDTH, height: 10 }); c.restore();
   c.save(); c.globalAlpha = s.ghost ? .6 : 1;
   drawKing(c, Math.round(s.x) - KING_ANCHOR.x, Math.round(s.y - s.cameraY) - KING_ANCHOR.y, { state: s.phase === 'splat' ? 'death' : s.grounded ? 'idle' : s.vx > 5 ? 'right' : s.vx < -5 ? 'left' : 'falling', frame: Math.floor(snapshot.elapsed * 8) }); c.restore();
   c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 40);
-  drawBitmapText(c, `PRACTICE ${Math.min(4, s.step + 1)}/4`, 14, 12, { color: PALETTE['5'], scale: 2 });
+  drawBitmapText(c, `PRACTICE ${Math.min(6, s.step + 1)}/6`, 14, 12, { color: PALETTE['5'], scale: 2 });
   const distanceColor = s.fallDistance >= 9 ? PALETTE.b : PALETTE.f;
   drawBitmapText(c, 'FALL', 14, 36, { color: distanceColor });
   drawBitmapText(c, `${s.fallDistance.toFixed(1)}M`, 56, 31, { color: distanceColor, scale: 2 });
   drawBitmapText(c, s.fallDistance >= 9 ? 'DANGER' : 'SAFE', 242, 36, { color: distanceColor, align: 'right' });
-  if (s.phase === 'splat') drawBitmapText(c, s.cause === 'scroll' ? 'TOO SLOW!' : 'SPIKES!', 128, 320, { color: PALETTE.b, align: 'center' });
+  if (s.phase === 'splat') drawBitmapText(c, s.cause === 'scroll' ? 'TOO SLOW!' : s.cause === 'impact' ? 'TOO FAR!' : 'SPIKES!', 128, 320, { color: PALETTE.b, align: 'center' });
 }
 export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest = (): number => 0): FallController {
-  parent.innerHTML = `<div class="fall-board"><div class="fall-window"><canvas id="fall-canvas" width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" tabindex="0" aria-label="落下キングのゲーム画面。左右で移動、DROPで下へ。"></canvas></div><div class="fall-controls"><button id="left-button" type="button" aria-label="左へ移動、押している間">← 左</button><button id="drop-button" type="button">DROP ↓</button><button id="right-button" type="button" aria-label="右へ移動、押している間">右 →</button></div></div>`;
+  parent.innerHTML = `<div class="fall-board"><div class="fall-window"><canvas id="fall-canvas" width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" tabindex="0" aria-label="落下キングのゲーム画面。左右で移動、DROPを押し続けて連続降下。"></canvas></div><div class="fall-controls"><button id="left-button" type="button" aria-label="左へ移動、押している間">← 左</button><button id="drop-button" type="button">DROP ↓<small>押し続けて連続降下</small></button><button id="right-button" type="button" aria-label="右へ移動、押している間">右 →</button></div></div>`;
   const canvas = parent.querySelector<HTMLCanvasElement>('canvas')!;
   const abort = new AbortController(), options = { signal: abort.signal }; let active = false, paused = false, frame = 0, previous = performance.now(), clock = 0, ended = false;
-  let feedback = '', feedbackUntil = 0, dropUntil = 0, preview = true; const keys = new Map<string, HorizontalInput>(); const pointers = new Map<number, HorizontalInput>();
+  let feedback = '', feedbackUntil = 0, dropUntil = 0, preview = true; const keys = new Map<string, HorizontalInput>(); const pointers = new Map<number, HorizontalInput>(); const dropKeys = new Set<string>(), dropPointers = new Set<number>();
   const run = new FallRun((event: FallEvent) => {
     if (event.type === 'end') { feedback = event.result.outcome === 'scroll' ? 'TOO SLOW!' : event.result.outcome === 'impact' ? 'SPLAT!' : event.result.outcome === 'spike' ? 'SPIKES!' : event.result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'; feedbackUntil = clock + .65; }
     if (event.type === 'drop') dropUntil = clock + .15;
@@ -67,21 +70,21 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
     hooks.onEvent(event);
     if (event.type === 'end' && !ended) { ended = true; active = false; release(); hooks.onEnd(event.result); }
   });
-  function release(): void { keys.clear(); pointers.clear(); run.setHorizontal(0); }
-  function input(): void { if (!active || paused) return; const directions = [...keys.values(), ...pointers.values()]; const left = directions.includes(-1), right = directions.includes(1); run.setHorizontal(left === right ? 0 : right ? 1 : -1); }
+  function release(): void { keys.clear(); pointers.clear(); dropKeys.clear(); dropPointers.clear(); run.setHorizontal(0); run.setDropHeld(false); }
+  function input(): void { if (!active || paused) return; run.setDropHeld(dropKeys.size > 0 || dropPointers.size > 0); const directions = [...keys.values(), ...pointers.values()]; const left = directions.includes(-1), right = directions.includes(1); run.setHorizontal(left === right ? 0 : right ? 1 : -1); }
   function drop(): boolean { if (!active || paused || document.querySelector('dialog[open]')) return false; return run.drop(); }
   function tick(now: number): void { const dt = Math.min(.05, (now - previous) / 1000); previous = now; if (active && !paused && !document.hidden) { clock += dt; run.step(dt); } else if (ended && !paused && clock < feedbackUntil) clock += dt; const s = run.snapshot(); const display = preview ? { ...s, alive: true, phase: 'grounded' as const } : s; paint(canvas, display, readBest(), clock, feedback, feedbackUntil, dropUntil); hooks.onUpdate(s); frame = requestAnimationFrame(tick); }
   const blocked = (e: KeyboardEvent | PointerEvent | MouseEvent): boolean => e.altKey || e.ctrlKey || e.metaKey || e.shiftKey;
   parent.addEventListener('pointerdown', e => {
     if (!active || paused || (!e.isPrimary && e.pointerType !== 'touch') || e.button !== 0 || blocked(e) || document.querySelector('dialog[open]')) return;
     const target = (e.target as Element).closest<HTMLButtonElement>('button');
-    if (target?.id === 'drop-button') { e.preventDefault(); drop(); return; }
+    if (target?.id === 'drop-button') { e.preventDefault(); dropPointers.add(e.pointerId); input(); try { target.setPointerCapture(e.pointerId); } catch { /* global release */ } return; }
     if (target && target.id !== 'left-button' && target.id !== 'right-button') return;
     const bounds = canvas.getBoundingClientRect(); const direction = target ? target.id === 'right-button' ? 1 : -1 : e.clientX > bounds.left + bounds.width / 2 ? 1 : -1;
     e.preventDefault(); pointers.set(e.pointerId, direction); input(); try { (target ?? canvas).setPointerCapture(e.pointerId); } catch { /* global release */ }
   }, options);
   parent.addEventListener('click', e => { if (e.detail === 0 && !blocked(e) && (e.target as Element).closest('button')?.id === 'drop-button') drop(); }, options);
-  const pointerEnd = (e: PointerEvent): void => { if (pointers.delete(e.pointerId)) input(); };
+  const pointerEnd = (e: PointerEvent): void => { const removed = pointers.delete(e.pointerId); if (dropPointers.delete(e.pointerId) || removed) input(); };
   window.addEventListener('pointerup', pointerEnd, options); window.addEventListener('pointercancel', pointerEnd, options); parent.addEventListener('lostpointercapture', pointerEnd, options);
   document.addEventListener('keydown', e => {
     if (!active || paused || blocked(e) || document.querySelector('dialog[open]')) return;
@@ -89,12 +92,12 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
     // Direction keys remain gameplay controls after pause/resume or mute keeps header focus.
     // Space/Enter on navigation still belong to the focused native control.
     if (['arrowleft', 'arrowright', 'a', 'd'].includes(key)) { e.preventDefault(); if (!e.repeat) { keys.set(key, key === 'arrowright' || key === 'd' ? 1 : -1); input(); } return; }
-    if (key === 'arrowdown' || key === 's') { e.preventDefault(); if (!e.repeat) drop(); return; }
+    if (key === 'arrowdown' || key === 's') { e.preventDefault(); if (!e.repeat) { dropKeys.add(key); input(); } return; }
     if (button && !['left-button', 'right-button', 'drop-button'].includes(button.id)) return;
-    if (key === ' ' || key === 'enter') { e.preventDefault(); if (e.repeat) return; if ((key === ' ' || key === 'enter') && button?.id === 'left-button') { keys.set(key, -1); input(); } else if ((key === ' ' || key === 'enter') && button?.id === 'right-button') { keys.set(key, 1); input(); } else if (key !== 'enter' || button?.id === 'drop-button') drop(); }
+    if (key === ' ' || key === 'enter') { e.preventDefault(); if (e.repeat) return; if ((key === ' ' || key === 'enter') && button?.id === 'left-button') { keys.set(key, -1); input(); } else if ((key === ' ' || key === 'enter') && button?.id === 'right-button') { keys.set(key, 1); input(); } else if (key !== 'enter' || button?.id === 'drop-button') { dropKeys.add(key); input(); } }
   }, options);
-  document.addEventListener('keyup', e => { const key = e.key.toLowerCase(); keys.delete(key); if (key === ' ' || key === 'enter') { if (active && (e.target as Element).closest('.fall-controls')) e.preventDefault(); } input(); }, options);
+  document.addEventListener('keyup', e => { const key = e.key.toLowerCase(); keys.delete(key); dropKeys.delete(key); if (key === ' ' || key === 'enter') { if (active && (e.target as Element).closest('.fall-controls')) e.preventDefault(); } input(); }, options);
   window.addEventListener('blur', release, options);
   frame = requestAnimationFrame(tick);
-  return { start() { release(); preview = false; run.start(); active = true; paused = ended = false; clock = 0; feedback = ''; feedbackUntil = dropUntil = 0; previous = performance.now(); }, title() { preview = true; active = false; paused = false; ended = true; release(); run.reset(); feedback = ''; feedbackUntil = dropUntil = 0; }, pause(value) { release(); paused = value; previous = performance.now(); }, setHorizontal(direction) { if (active && !paused) run.setHorizontal(direction); }, drop, snapshot: () => run.snapshot(), inspection: () => run.inspection(), destroy() { active = false; abort.abort(); cancelAnimationFrame(frame); release(); parent.replaceChildren(); } };
+  return { start() { release(); preview = false; run.start(); active = true; paused = ended = false; clock = 0; feedback = ''; feedbackUntil = dropUntil = 0; previous = performance.now(); }, title() { preview = true; active = false; paused = false; ended = true; release(); run.reset(); feedback = ''; feedbackUntil = dropUntil = 0; }, pause(value) { release(); paused = value; previous = performance.now(); }, setHorizontal(direction) { if (active && !paused) run.setHorizontal(direction); }, setDropHeld(held) { if (active && !paused) run.setDropHeld(held); }, drop, snapshot: () => run.snapshot(), inspection: () => run.inspection(), destroy() { active = false; abort.abort(); cancelAnimationFrame(frame); release(); parent.replaceChildren(); } };
 }
