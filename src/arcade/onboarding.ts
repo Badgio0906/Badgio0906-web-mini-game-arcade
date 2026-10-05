@@ -15,7 +15,7 @@ const lessons: Record<string, [string, string, string]> = {
   game008: ['水面を見て、小さく補正。', 'コーヒーをこぼさず運ぼう。左へ傾いたら右、右へ傾いたら左。← → / A D / 左右ボタンを短く押す・離す。', '左の水面が高くなっています。右→で中央へ戻そう。'],
   game009: ['探している印鑑を、見つけよう。', '依頼の色と形を見て、机の中から選ぼう。PCはクリック、スマホはタップ。今回は赤い印鑑だけ探します。', '探すもの：赤い印鑑。机の物を見比べて選ぼう。'],
   game010: ['聞くふりをして、こっそり内職。', 'Space・タップでLISTENとSIDE WORKを切り替えます。内職中は得点。上司が質問しそうなら、聞く姿勢へ戻ろう。', '内職を始めよう。「ところで…」が聞こえたらLISTENへ。'],
-  game015: ['上を目指すな。うまく落ちろ。', 'DROPで足場を通り抜け、下へ降りよう。← → / A Dで空中移動、↓ / S / SpaceでDROP。長く落ちすぎると着地衝撃に耐えられません。トゲ床は避け、壁の針の予兆と鳥の位置を見てDROP。', '1 / 4 · DROPして、下の大きな足場へ。'],
+  game015: ['止まるな、王様。下へ急げ！', '足場は上へ流れていきます。待ちすぎると画面上端でゲームオーバー！ ← → / A Dで移動、↓ / S / SpaceまたはDROPボタンで下へ。中央にもトゲが出るので、左右の安全な足場を選ぼう。長く落ちすぎると着地衝撃も危険です。', '1 / 4 · DROPして、下の大きな足場へ。'],
   game011: ['ウンコ？ ウコン？ 文字を見て選ぼう。', '画像を見て、同じ名前のボタンを選びます。← → / A D または左右のボタン。ボタンの位置は毎回変わります。', '時間制限なしの練習。これはどちら？'],
 };
 const asset = (path: string): string => `${import.meta.env.BASE_URL}assets/${path}`;
@@ -101,7 +101,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
       if (fallStep !== s.step) { clearFallInput(); fallStep = s.step; }
       dialog.dataset.step = String(s.step);
       const prompt = dialog.querySelector<HTMLElement>('#practice-prompt')!;
-      const copy = ['1 / 4 · DROPで下の足場へ。', '2 / 4 · DROPして右へ。離すと慣性、左でブレーキ。', '3 / 4 · FALL 5.2 m以内で、安全に着地。', '4 / 4 · ゴーストが長く落ちると…'];
+      const copy = ['1 / 4 · DROPで下の足場へ。', '2 / 4 · 中央にトゲ！ DROPして右→へ。', '3 / 4 · 今度は左←へ。トゲを避けてDROP。', '4 / 4 · 待ちすぎると上端に追いつかれます。'];
       if (prompt.textContent !== copy[s.step]) prompt.textContent = copy[s.step];
       dialog.querySelectorAll<HTMLButtonElement>('[data-practice-action]').forEach(b => { b.disabled = s.step === 3 || b.dataset.practiceAction === 'action' && s.fall?.phase !== 'grounded'; });
       const canvas = dialog.querySelector<HTMLCanvasElement>('canvas'); if (canvas && practicePaint) practicePaint(canvas, s);
@@ -110,7 +110,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
   function success(): void {
     if (dialog.dataset.phase === 'success') return;
     cancelAnimationFrame(frame); session?.setInput(0); dialog.dataset.phase = 'success';
-    const message = gameId === 'game015' ? '操作はOK！ なるべく深くまで落ちてください。' : gameId === 'game006' ? '入りました。本番はもう少し狭いです。' : gameId === 'game005' ? labels('できました。途中でルールが変わります。', 'Ready! The rule changes during the real run.') : labels('これで操作はOK。次は本番で試そう。', 'You know the controls. Try the real run.');
+    const message = gameId === 'game015' ? '操作はOK！ 中央のトゲにも注意。上端に追いつかれる前に、安全な足場へDROPし続けよう。' : gameId === 'game006' ? '入りました。本番はもう少し狭いです。' : gameId === 'game005' ? labels('できました。途中でルールが変わります。', 'Ready! The rule changes during the real run.') : labels('これで操作はOK。次は本番で試そう。', 'You know the controls. Try the real run.');
     dialog.innerHTML = `${head()}<div class="training-success"><strong id="tutorial-heading">${labels('できました！', 'Ready!')}</strong><p>${message}</p><small>${labels('練習のスコアは自己ベストに含まれません。', 'Practice does not affect your BEST.')}</small></div><button class="training-primary" id="tutorial-start-button" type="button">${callback ? labels('本番へ', 'Start real run') : labels('タイトルへ戻る', 'Back to title')}</button>`;
     dialog.querySelector<HTMLButtonElement>('#tutorial-start-button')!.focus({ preventScroll: true });
   }

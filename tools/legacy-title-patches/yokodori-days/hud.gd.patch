@@ -1,0 +1,11 @@
+--- a/scripts/hud.gd
++++ b/scripts/hud.gd
+@@ -11,7 +11,7 @@
+ func _draw() -> void:
+ 	draw_rect(Rect2(0, 0, 960, 72), INK)
+ 	draw_rect(Rect2(0, 70, 960, 2), Color("6a8c85"))
+-	text_at("横取りデイズ", Vector2(26, 44), 25, GOLD)
++	text_at("お前の仕事は俺の仕事", Vector2(26, 44), 21, GOLD)
+ 	text_at("SCORE", Vector2(290, 25), 13, MUTED)
+ 	text_at("%06d" % score, Vector2(290, 56), 28)
+ 	text_at("HIGH SCORE", Vector2(470, 25), 13, MUTED)

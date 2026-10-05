@@ -2,6 +2,17 @@
 
 2026-10-05（日本時間）。3つの情報源を統合した新タスク向け正本は[統合引き継ぎ書](handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)。①開発・Jev、②公開タスクの添付引き継ぎとRepository記録、③ユーザー提供GAME100 GARAGE運営メモを照合済み。今回の変更は文書のみ、code／DNS／AdSense／公開／Jev APIは操作していない。
 
+
+## 2026-10-05 改名・落下キング改訂02・018公開作業
+
+今回の最新ユーザー依頼を実施。018候補HEAD482e458を採用し、018固有runtimeは変更しない。012「お前の仕事は俺の仕事」／013「タスク天国」／014「指ハートチャレンジ」へ、Catalog・HTML・Godot内部・必要なサムネイルまで統一。[改名報告](legacy-games/title-revision/IMPLEMENTATION_REPORT.md)。
+
+015は中央を含む6種のランダム足場、到達可能な安全なルート、自動縦スクロール18→36px/s、遅れると上端死亡、王冠／白ひげ／紫衣装／赤マントの新nativeドット絵、タイトル・練習・実playサムネイル。[改訂02仕様](game015/revision-02/IMPLEMENTATION_SPEC.md)／[報告](game015/revision-02/IMPLEMENTATION_REPORT.md)。初動約2.85秒、停止しても進む。旧改訂01の待機・練習仕様は現行に適用しない。
+
+check・全単体・build PASS、015モデル22／練習8、native PC／phone／320／横画面4PASS。独立モデル追加32seed各500m PASS。公開／最終productionの結果は改訂02報告へ追記する。正式HTTPS、Pages custom domainとhttps_enforcedを直接確認済み。DNS・AdSense・CREDITは変更しない。
+
+以下は今回作業前の引き継ぎ状態を保存した記録。最新状態は上記改訂02報告を優先する。
+
 正式公開URLは **https://game100garage.com**。Cloudflare Registrar取得、Pages Custom domain、DNS check successful、HTTPS設定完了（運営メモによる）。AdSenseは登録開始済みだが「サイトをAdSenseにリンク」が未完了。次は画面の「開始」で所有確認method／snippetを取得する。CREDIT OFF・Reward開発stubは維持。GitHub所有確認TXTは削除しない。
 
 mainは017までの17本、`1ab4fcf5a35637b15554d7942d944763e79920c9`。017のPages run37283475701はbuild／deploy成功。018は実装・技術検証済みでmain未反映・未公開、`codex/game018-shoe-fly-high`に保存。統合前の最新HEADは`2426659ddea5a3eddcee77ec201476e66eba946a`（mainより5commit先行）、以後の文書commitも最新remoteから取得する。018は作り直さない。
@@ -23,10 +34,10 @@ mainは017までの17本、`1ab4fcf5a35637b15554d7942d944763e79920c9`。017のPa
 | 009 | 印鑑どこですか ～STAMP HUNT～ | `game009.html` | [仕様](ten-game/IMPLEMENTATION_SPEC.md)／[LESSONS](GAME009_LESSONS.md) |
 | 010 | 会議、聞いてます？ ～MEETING SURVIVAL～ | `game010.html` | [仕様](ten-game/IMPLEMENTATION_SPEC.md)／[前景改善](eleven-game/IMPLEMENTATION_REPORT.md) |
 | 011 | ウンコかウコンかゲーム ～UNKO or UKON～ | `game011.html` | [初版仕様](eleven-game/IMPLEMENTATION_SPEC.md)／[最新時間・配点改修](migration/IMPLEMENTATION_REPORT.md) |
-| 012 | 澤野さんの横取りデイズ | `games/yokodori-days/index.html` | [移行構造](legacy-games/MIGRATION.md)／[移行報告](migration/IMPLEMENTATION_REPORT.md) |
-| 013 | 立花さんのタスク天国 | `games/tachibana-task-heaven/index.html` | 同じ移行資料。元UIの横向き案内を維持 |
-| 014 | 畑島さんの指ハートチャレンジ | `games/finger-heart-challenge/index.html` | 同じ移行資料。元の25回チャレンジを維持 |
-| 015 | 落下キング ～FALL KING～ | `game015.html` | [初版仕様](game015/IMPLEMENTATION_SPEC.md)／[改訂01依頼](game015/revision-01/REQUEST.md)／[最新報告](game015/revision-01/IMPLEMENTATION_REPORT.md) |
+| 012 | お前の仕事は俺の仕事 | `games/yokodori-days/index.html` | [移行構造](legacy-games/MIGRATION.md)／[移行報告](migration/IMPLEMENTATION_REPORT.md) |
+| 013 | タスク天国 | `games/tachibana-task-heaven/index.html` | 同じ移行資料。元UIの横向き案内を維持 |
+| 014 | 指ハートチャレンジ | `games/finger-heart-challenge/index.html` | 同じ移行資料。元の25回チャレンジを維持 |
+| 015 | 落下キング ～FALL KING～ | `game015.html` | [初版仕様](game015/IMPLEMENTATION_SPEC.md)／[改訂01依頼](game015/revision-01/REQUEST.md)／[最新報告](game015/revision-02/IMPLEMENTATION_REPORT.md) |
 | 016 | 負けじゃんけん ～LOSE TO WIN～ | `game016.html` | [仕様](game016/IMPLEMENTATION_SPEC.md)／[実装・公開報告](game016/IMPLEMENTATION_REPORT.md) |
 | 017 | 雨って避けたら濡れないよね ～RAINSHIFT～ | `game017.html` | [報告](game017/IMPLEMENTATION_REPORT.md)／[公開記録](game017/PUBLICATION.md) |
 | 018 | 靴とばそ ～SHOE FLY HIGH!～ | `game018.html` | [報告](game018/IMPLEMENTATION_REPORT.md)／[公開前引き継ぎ](game018/PUBLICATION_HANDOFF.md) |

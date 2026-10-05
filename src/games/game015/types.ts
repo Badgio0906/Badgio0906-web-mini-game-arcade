@@ -17,6 +17,11 @@ export const SOFT_SAFE_METERS = 9;
 export const SOFT_FATAL_METERS = 12;
 export const CRUMBLE_SECONDS = 1.25;
 export const HARD_STUN_SECONDS = 0.32;
+export const SCROLL_START_SPEED = 18;
+export const SCROLL_MAX_SPEED = 36;
+export const SCROLL_ACCELERATION = 0.22;
+/** Logical HUD/ceiling boundary; the king's feet must remain below it. */
+export const SCROLL_TOP_LIMIT = 60;
 export type HorizontalInput = -1 | 0 | 1;
 export type PlatformType = 'normal' | 'soft' | 'crumble' | 'moving';
 export type LandingKind = 'safe' | 'hard' | 'fatal';
@@ -51,7 +56,7 @@ export interface LandingReport {
 }
 export interface FallSnapshot {
   alive: boolean; time: number; depth: number; score: number; fallDistance: number;
-  niceDrops: number; cameraY: number; horizontal: HorizontalInput;
+  niceDrops: number; cameraY: number; scrollSpeed: number; topRemaining: number; horizontal: HorizontalInput;
   phase: 'grounded' | 'falling' | 'stunned' | 'ended';
   player: FallPlayer; platforms: FallPlatform[]; hazards: FallHazard[]; lastLanding: LandingReport | null;
   danger: 'safe' | 'danger' | 'fatal';
@@ -62,7 +67,7 @@ export interface FallInspection extends FallSnapshot {
 }
 export interface FallResult {
   depth: number; score: number; time: number; niceDrops: number;
-  outcome: 'impact' | 'spike' | 'needle' | 'bird'; reason: string; fallDistance: number; platformType: PlatformType | null;
+  outcome: 'impact' | 'spike' | 'needle' | 'bird' | 'scroll'; reason: string; fallDistance: number; platformType: PlatformType | null;
 }
 export type FallEvent =
   | { type: 'drop'; platformId: number; depth: number }
@@ -82,4 +87,4 @@ export interface FallController {
   snapshot: () => FallSnapshot; inspection: () => FallInspection; destroy: () => void;
 }
 /** Authored courses are useful for the independent practice and geometry tests; no live state mutation. */
-export interface FallOptions { course?: readonly PlatformSeed[]; hazards?: readonly HazardSeed[]; endless?: boolean }
+export interface FallOptions { course?: readonly PlatformSeed[]; hazards?: readonly HazardSeed[]; endless?: boolean; scroll?: boolean }

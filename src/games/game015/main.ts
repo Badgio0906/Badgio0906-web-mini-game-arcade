@@ -1,4 +1,5 @@
 import './style.css';
+import { drawKing } from './art';
 import { StorageService } from '../../core/StorageService';
 import { TelemetryService } from '../../core/TelemetryService';
 import { createOnboarding } from '../../arcade/onboarding';
@@ -73,17 +74,18 @@ function sync(): void {
 function screen(next: Screen): void {
   screenEpoch++; state = next; sync(); overlay.hidden = next === 'playing' || next === 'ending';
   if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
-  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>足場からDROP。左右で空中移動。<br />針と鳥を避け、動きを待ってDROP。</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
+  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><canvas id="title-king" width="48" height="72" aria-label="王冠と白ひげ、紫の衣装に赤マントのキング"></canvas><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>迫る天井から逃げ、次の足場へDROP。<br />左右で空中移動。中央のトゲにも注意！</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
+  if (next === 'title') { const c = overlay.querySelector<HTMLCanvasElement>('#title-king')!.getContext('2d')!; c.scale(2, 2); drawKing(c, 0, 0, { state: 'falling' }); }
   if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div></article>`;
   if (next === 'result' && result) {
-    overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'impact' ? 'SPLAT!' : result.outcome === 'spike' ? 'SPIKES!' : result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'}</span><h2>${result.outcome === 'impact' ? '落ちすぎました。' : result.outcome === 'spike' ? '針に当たりました。' : result.outcome === 'needle' ? '壁の針に当たりました。' : '鳥に当たりました。'}</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
+    overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'scroll' ? 'TOO SLOW!' : result.outcome === 'impact' ? 'SPLAT!' : result.outcome === 'spike' ? 'SPIKES!' : result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'}</span><h2>${result.outcome === 'scroll' ? '天井に追いつかれました。' : result.outcome === 'impact' ? '落ちすぎました。' : result.outcome === 'spike' ? '針に当たりました。' : result.outcome === 'needle' ? '壁の針に当たりました。' : '鳥に当たりました。'}</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
     overlay.querySelector<HTMLButtonElement>('#retry-button')?.focus({ preventScroll: true });
   }
 }
 function update(s: FallSnapshot): void {
   if (state !== 'title') { text('score-value', String(s.score)); text('nice-value', String(s.niceDrops)); }
   app.dataset.phase = s.phase;
-  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.time < hazardNoticeUntil ? hazardMessage : s.phase === 'grounded' ? '針と鳥を見て、タイミングよく DROP ↓' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
+  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.time < hazardNoticeUntil ? hazardMessage : s.topRemaining < 48 ? '天井が迫る！ 今すぐ下へ DROP ↓' : s.phase === 'grounded' ? '次の足場はどこ？ 天井が来る前に DROP ↓' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
 }
 function event(e: FallEvent): void {
   if (e.type === 'hazard_warning') { hazardMessage = e.kind === 'bird' ? '鳥の動きを待って、タイミングよく DROP。' : '壁の針の予兆！ 壁から離れよう。'; hazardNoticeUntil = controller.snapshot().time + e.seconds; audio.tone(720, 520, .07, .02); }

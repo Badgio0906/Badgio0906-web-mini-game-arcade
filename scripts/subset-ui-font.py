@@ -9,7 +9,10 @@ text=''.join(p.read_text() for p in inputs)+''.join(chr(i) for i in range(32,127
 font=TTFont(source)
 missing=sorted(set(map(ord,text))-set(font.getBestCmap()))
 options=subset.Options();options.flavor='woff2';options.layout_features=['*'];options.name_IDs=['*'];options.name_legacy=True
-subsetter=subset.Subsetter(options=options);subsetter.populate(text=text);subsetter.subset(font)
+existing=TTFont(root/'public/fonts/arcade-rounded-jp.woff2')
+retained=set(existing.getBestCmap())
+subsetter=subset.Subsetter(options=options);subsetter.populate(text=text,unicodes=retained);subsetter.subset(font)
+assert retained <= set(font.getBestCmap()), 'Existing UI glyph coverage must be preserved'
 for record in font['name'].names:
  if record.nameID in [1,4,6,16]:
   name='ArcadeRounded-Medium' if record.nameID==6 else 'Arcade Rounded'

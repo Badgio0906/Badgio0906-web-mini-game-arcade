@@ -1,6 +1,6 @@
-import { generateChunk, hazardFromSeed, hazardX, INITIAL_PLATFORM, platformFromSeed, platformX, START_Y } from './generation';
+import { generateChunk, hazardFromSeed, hazardX, INITIAL_PLATFORM, platformFromSeed, platformX, scrollSpeedAt, START_Y } from './generation';
 import type { GenerationCursor } from './generation';
-import { AIR_ACCELERATION, AIR_DRAG, BIRD_WARNING_SECONDS, NEEDLE_WARNING_SECONDS, NEEDLE_ACTIVE_SECONDS, NEEDLE_COOLDOWN_SECONDS, PLAYER_HEIGHT, PLAYER_WALL_MARGIN, CRUMBLE_SECONDS, FATAL_FALL_METERS, GRAVITY, GROUND_ACCELERATION, GROUND_DRAG, HARD_STUN_SECONDS, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_WIDTH, SAFE_FALL_METERS, SOFT_FATAL_METERS, SOFT_SAFE_METERS, TERMINAL_VELOCITY, WORLD_HEIGHT, WORLD_WIDTH } from './types';
+import { AIR_ACCELERATION, AIR_DRAG, BIRD_WARNING_SECONDS, NEEDLE_WARNING_SECONDS, NEEDLE_ACTIVE_SECONDS, NEEDLE_COOLDOWN_SECONDS, PLAYER_HEIGHT, PLAYER_WALL_MARGIN, CRUMBLE_SECONDS, FATAL_FALL_METERS, GRAVITY, GROUND_ACCELERATION, GROUND_DRAG, HARD_STUN_SECONDS, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_WIDTH, SAFE_FALL_METERS, SOFT_FATAL_METERS, SOFT_SAFE_METERS, SCROLL_TOP_LIMIT, TERMINAL_VELOCITY, WORLD_HEIGHT, WORLD_WIDTH } from './types';
 import type { FallEvent, FallHazard, FallInspection, FallOptions, FallPlatform, FallPlayer, FallResult, FallSnapshot, HorizontalInput, LandingKind, LandingReport, PlatformType } from './types';
 
 export function classifyLanding(distance: number, type: PlatformType): LandingKind {
@@ -137,7 +137,10 @@ export class FallRun {
     }
     if (!airAdvanced && body.grounded && this.alive && this.hitHazard(tickStart, body, oldTime)) return;
     this.deepestY = Math.max(this.deepestY, body.y);
-    this.cameraY = Math.max(this.cameraY, Math.max(0, Math.floor(body.y - 112)));
+    if (this.options.scroll !== false) {
+      this.cameraY = Math.max(this.cameraY + scrollSpeedAt(oldTime + dt / 2) * dt, body.y - 224);
+      if (body.y <= this.cameraY + SCROLL_TOP_LIMIT && this.alive) { this.finishScroll(); return; }
+    } else this.cameraY = Math.max(this.cameraY, Math.max(0, Math.floor(body.y - 112)));
     if (!this.milestone1000 && this.depth() >= 1000) {
       this.milestone1000 = true; this.emit({ type: 'milestone', depth: 1000, message: '地上から1000m。まだ底は見えません。' });
     }
@@ -196,7 +199,7 @@ export class FallRun {
     this.player.x = from.x + (to.x - from.x) * first.alpha;
     this.player.y = from.y + (to.y - from.y) * first.alpha;
     this.deepestY = Math.max(this.deepestY, this.player.y);
-    this.cameraY = Math.max(this.cameraY, Math.max(0, Math.floor(this.player.y - 112)));
+    this.cameraY = Math.max(this.cameraY, Math.max(0, Math.floor(this.player.y - (this.options.scroll === false ? 112 : 224))));
     const distance = this.player.grounded ? 0 : Math.max(0, (this.player.y - this.fallStartY) / PIXELS_PER_METER);
     const outcome = first.hazard.kind === 'spikes' ? 'spike' : first.hazard.kind === 'wall_needle' ? 'needle' : 'bird';
     const reason = outcome === 'spike' ? '棘に触れました。安全なすき間へ着地しましょう。' : outcome === 'needle' ? '壁の針に刺さりました。予告中に壁から離れましょう。' : '鳥にぶつかりました。動きを見てDROPのタイミングを変えましょう。';
@@ -232,9 +235,16 @@ export class FallRun {
       reason: `落下距離 ${distance.toFixed(1)}m。着地衝撃に耐えられませんでした。`, fallDistance: distance, platformType: type };
     this.emit({ type: 'end', result: { ...this.ending } });
   }
+  private finishScroll(): void {
+    this.alive = false; this.horizontal = 0;
+    this.ending = { depth: this.depth(), score: Math.floor(this.depth()), time: this.time, niceDrops: this.niceDrops,
+      outcome: 'scroll', reason: 'スクロールに置いていかれました。次の足場へ早めに降りましょう。',
+      fallDistance: this.player.grounded ? 0 : Math.max(0, (this.player.y - this.fallStartY) / PIXELS_PER_METER), platformType: null };
+    this.emit({ type: 'end', result: { ...this.ending } });
+  }
   private ensureGenerated(): void {
     if (!(this.options.endless ?? !this.options.course)) return;
-    while (this.cursor.y < this.player.y + WORLD_HEIGHT * 1.6) {
+    while (this.cursor.y < Math.max(this.player.y, this.cameraY) + WORLD_HEIGHT * 1.6) {
       const generated = generateChunk(this.cursor, this.random); this.cursor = generated.cursor; this.platforms.push(...generated.platforms); this.hazards.push(...generated.hazards);
       for (const h of generated.hazards) h.x = hazardX(h, this.time);
     }
@@ -242,7 +252,8 @@ export class FallRun {
   private depth(): number { return Math.max(0, (this.deepestY - this.startY) / PIXELS_PER_METER); }
   snapshot(): FallSnapshot {
     const fallDistance = this.player.grounded ? this.lastLanding?.kind === 'fatal' ? this.lastLanding.fallDistance : 0 : Math.max(0, (this.player.y - this.fallStartY) / PIXELS_PER_METER);
-    return { alive: this.alive, time: this.time, depth: this.depth(), score: Math.floor(this.depth()), fallDistance, niceDrops: this.niceDrops, cameraY: this.cameraY,
+    return { alive: this.alive, time: this.time, depth: this.depth(), score: Math.floor(this.depth()), fallDistance, niceDrops: this.niceDrops, cameraY: this.cameraY, scrollSpeed: this.options.scroll === false ? 0 : scrollSpeedAt(this.time),
+      topRemaining: this.player.y - this.cameraY - SCROLL_TOP_LIMIT,
       horizontal: this.horizontal, phase: !this.alive ? 'ended' : this.player.grounded ? this.player.stunRemaining > 0 ? 'stunned' : 'grounded' : 'falling',
       player: { ...this.player }, platforms: this.platforms.map(copyPlatform), hazards: this.hazards.map(h => ({ ...h })), lastLanding: this.lastLanding ? { ...this.lastLanding } : null,
       danger: fallDistance >= FATAL_FALL_METERS ? 'fatal' : fallDistance > SAFE_FALL_METERS ? 'danger' : 'safe' };

@@ -1,0 +1,19 @@
+--- a/scripts/title_screen.gd
++++ b/scripts/title_screen.gd
+@@ -11,12 +11,12 @@
+ func _draw() -> void:
+ 	draw_rect(Rect2(0, 0, 960, 540), Color(0.04, 0.09, 0.13, 0.65))
+ 	text_at("SAWANO'S OFFICE / SCORE ATTACK", Vector2(54, 51), 16, MINT)
+-	text_at("01  /  YOKODORI DAYS", Vector2(674, 51), 16, MUTED)
++	text_at("01  /  OFFICE SCORE ATTACK", Vector2(674, 51), 16, MUTED)
+ 	panel(Rect2(52, 83, 856, 374), INK, Color("66877f"))
+ 	draw_rect(Rect2(52, 83, 8, 374), GOLD)
+-	text_at("澤野さんの", Vector2(88, 143), 32, PAPER)
+-	text_at("横取りデイズ", Vector2(84, 212), 62, GOLD)
+-	text_at("～お前の仕事は俺の仕事～", Vector2(90, 256), 23, PAPER)
++	text_at("お前の仕事は", Vector2(88, 143), 40, PAPER)
++	text_at("俺の仕事", Vector2(84, 212), 62, GOLD)
++	text_at("～同僚の成果をいただきます～", Vector2(90, 256), 23, PAPER)
+ 	draw_line(Vector2(90, 279), Vector2(588, 279), Color("4c686b"), 2)
+ 	text_at("同僚がよそ見したら", Vector2(92, 314), 22)
+ 	text_at("Enterで仕事を横取り！", Vector2(92, 346), 22)

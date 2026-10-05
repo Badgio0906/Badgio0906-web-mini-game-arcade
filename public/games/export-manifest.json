@@ -1,13 +1,13 @@
 {
-  "description": "Pinned existing Godot 4.5.1 single-threaded web exports. Runtime and original HTML copied byte-for-byte; only a separate navigation wrapper is added.",
-  "schemaVersion": 1,
+  "description": "Pinned Godot 4.5.1 exports with authorized title-only changes. Engine/WASM/audio and every unrelated packed resource retain source bytes.",
+  "schemaVersion": 2,
   "godotVersion": "4.5.1",
   "threadsEnabled": false,
   "games": [
     {
       "id": "game012",
       "slug": "yokodori-days",
-      "titleJa": "澤野さんの横取りデイズ",
+      "titleJa": "お前の仕事は俺の仕事",
       "repository": "https://github.com/Badgio0906/yokodori-days.git",
       "revision": "50a97c339076d3bcadf38ad6be8acade16a8e882",
       "sourceExport": "build/web",
@@ -17,10 +17,11 @@
         {
           "source": "build/web/index.html",
           "path": "public/games/yokodori-days/game.html",
-          "bytes": 5547,
+          "bytes": 5544,
           "sourceSha256": "3c9825c464306dd422b9a1e72ef74507c4501fb54f247e1096b86ed575cabc6d",
-          "sha256": "3c9825c464306dd422b9a1e72ef74507c4501fb54f247e1096b86ed575cabc6d",
-          "byteIdentical": true
+          "sha256": "1ebb9de8f888d1a4b01d2df6b9529a73c47944d35ec84fc75d5dd1e98c5c7bea",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "build/web/index.js",
@@ -35,8 +36,9 @@
           "path": "public/games/yokodori-days/index.pck",
           "bytes": 1133664,
           "sourceSha256": "98d9716f32121d9f4f370615ac4708067d670ed218ad60af44691d4300a9f6af",
-          "sha256": "98d9716f32121d9f4f370615ac4708067d670ed218ad60af44691d4300a9f6af",
-          "byteIdentical": true
+          "sha256": "90822e65cb9496923ecb7ef17a9055a520b7aecb69cb81482d47c58f39a7ae63",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "build/web/index.wasm",
@@ -98,8 +100,8 @@
       "shellFiles": [
         {
           "path": "public/games/yokodori-days/index.html",
-          "bytes": 766,
-          "sha256": "53c2ab4d0433ee0ec6c8305667c522073dadf961016631a88a25c40887815860"
+          "bytes": 760,
+          "sha256": "965047a5f40f4eb8b0c49abedb53a72e82a1d5dc3d8d0d94ce655e9b395a8f2f"
         },
         {
           "path": "public/games/yokodori-days/portal-return.css",
@@ -107,12 +109,37 @@
           "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
         }
       ],
-      "runtimeBytes": 39528044
+      "runtimeBytes": 39528041,
+      "titleRevision": {
+        "compiler": "4.5.1.stable.official.f62fdbde1",
+        "patches": [
+          "tools/legacy-title-patches/yokodori-days/hud.gd.patch",
+          "tools/legacy-title-patches/yokodori-days/title_screen.gd.patch"
+        ],
+        "changedPackedResources": [
+          {
+            "path": "scripts/hud.gdc",
+            "sourceSha256": "c4c9d64ac5260264cf3cd25bad0361d376512dc9fe5f973754876f3339d6b718",
+            "sha256": "5a660728bf387472c94a33513fccee89d4e9c9082798c5301d0fd76cc8c6d11b"
+          },
+          {
+            "path": "scripts/title_screen.gdc",
+            "sourceSha256": "5a6ed30bfc7a1d52d3c0a86842a72c8c0bae7af4a977bb73353bc044a546aa30",
+            "sha256": "709c15abf96b40708843ce62a2d651e758ff307b12fa2a73b2ffb4446abbc32f"
+          },
+          {
+            "path": "project.binary",
+            "sourceSha256": "24ec88640aa0851f012a7695460deb77f44e1efa5112e078716875427a1e89e4",
+            "sha256": "5729f24403e936278b9bbd0b7e6e10e1df7ccbedd477b15d74b8d39c71a5c6f8"
+          }
+        ],
+        "unchangedPackedResourceCount": 115
+      }
     },
     {
       "id": "game013",
       "slug": "tachibana-task-heaven",
-      "titleJa": "立花さんのタスク天国",
+      "titleJa": "タスク天国",
       "repository": "https://github.com/Badgio0906/tachibana-task-heaven.git",
       "revision": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
       "sourceExport": "docs",
@@ -122,10 +149,11 @@
         {
           "source": "docs/index.html",
           "path": "public/games/tachibana-task-heaven/game.html",
-          "bytes": 5826,
+          "bytes": 5796,
           "sourceSha256": "c667f5262621ec2916ffbab8a2d2b2697cb8415e971fc6c3cd889f93b114ebcd",
-          "sha256": "c667f5262621ec2916ffbab8a2d2b2697cb8415e971fc6c3cd889f93b114ebcd",
-          "byteIdentical": true
+          "sha256": "b5ec34493d4d98ca12e042909c452197b0ef7552208d66c0e88d0f6aef44eb3a",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "docs/index.js",
@@ -140,8 +168,9 @@
           "path": "public/games/tachibana-task-heaven/index.pck",
           "bytes": 5815488,
           "sourceSha256": "e4b1b02a397748f45faa1061c7cb073c1d79c03c5a963ced448eb891e3de626a",
-          "sha256": "e4b1b02a397748f45faa1061c7cb073c1d79c03c5a963ced448eb891e3de626a",
-          "byteIdentical": true
+          "sha256": "6c51a2b4508672f555d58ba152f149df9bcf992085dd8290b0ea1c1b2b45587a",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "docs/index.wasm",
@@ -323,8 +352,8 @@
       "shellFiles": [
         {
           "path": "public/games/tachibana-task-heaven/index.html",
-          "bytes": 760,
-          "sha256": "80f8f04420797639336e53e876752752cf1c53bb13c669b607906a05237d6e27"
+          "bytes": 730,
+          "sha256": "776090fd53967f63e7ed4f6eeb2c82d9099d40394297357b187ca9b26b45e7f6"
         },
         {
           "path": "public/games/tachibana-task-heaven/portal-return.css",
@@ -332,12 +361,31 @@
           "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
         }
       ],
-      "runtimeBytes": 52450614
+      "runtimeBytes": 52450584,
+      "titleRevision": {
+        "compiler": "4.5.1.stable.official.f62fdbde1",
+        "patches": [
+          "tools/legacy-title-patches/tachibana-task-heaven/office_view.gd.patch"
+        ],
+        "changedPackedResources": [
+          {
+            "path": "scripts/office_view.gdc",
+            "sourceSha256": "7e86c3b16aa430d88ec114f4d91ef2886fd3dafff387fc7c82fc3fe036507c7b",
+            "sha256": "61448373c8ba509006250fb9762921ab175af5a5902c1bb3cd96b65c95372de1"
+          },
+          {
+            "path": "project.binary",
+            "sourceSha256": "0289c0041d046fc53c6fa213461f6b8e4ff7bd4648f7a06e51d1b23dd224a463",
+            "sha256": "8be088e6ffc7533c519a3989169248b513ba47ff7ef2780937f93a58f7961d30"
+          }
+        ],
+        "unchangedPackedResourceCount": 81
+      }
     },
     {
       "id": "game014",
       "slug": "finger-heart-challenge",
-      "titleJa": "畑島さんの指ハートチャレンジ",
+      "titleJa": "指ハートチャレンジ",
       "repository": "https://github.com/Badgio0906/finger-heart-challenge.git",
       "revision": "36877d55bb44a41087a61bfd38f3ec395040cb3c",
       "sourceExport": "web",
@@ -347,10 +395,11 @@
         {
           "source": "web/index.html",
           "path": "public/games/finger-heart-challenge/game.html",
-          "bytes": 5808,
+          "bytes": 5778,
           "sourceSha256": "24e659b3030f40199d8b871852d2c85a7cd6d4017206b56ba1d4d216ab747805",
-          "sha256": "24e659b3030f40199d8b871852d2c85a7cd6d4017206b56ba1d4d216ab747805",
-          "byteIdentical": true
+          "sha256": "e0104c6f11ff3eb127eac45dbdb809ae77702023693c32adf00d8e879f3fa5b5",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "web/index.js",
@@ -363,10 +412,11 @@
         {
           "source": "web/index.pck",
           "path": "public/games/finger-heart-challenge/index.pck",
-          "bytes": 11055112,
+          "bytes": 11055064,
           "sourceSha256": "2b8242d2a67e32490dd8a1133c71ba646a2cd87d24713968149bcff617323ad9",
-          "sha256": "2b8242d2a67e32490dd8a1133c71ba646a2cd87d24713968149bcff617323ad9",
-          "byteIdentical": true
+          "sha256": "e4c6791c03800df3a1686d2f41f0da4bc83e83127bc867b24276936f4fe82a81",
+          "byteIdentical": false,
+          "transformation": "Authorized display-title revision; original source hash retained"
         },
         {
           "source": "web/index.wasm",
@@ -428,8 +478,8 @@
       "shellFiles": [
         {
           "path": "public/games/finger-heart-challenge/index.html",
-          "bytes": 784,
-          "sha256": "4e990079ce6eddf7d7b2c23591c06799c4536f1f1d591413e096ec56917ebd6e"
+          "bytes": 754,
+          "sha256": "351675bd9afad947aac2f625b1b8c16975ae5466179e8b3076e07b14aba2c0f7"
         },
         {
           "path": "public/games/finger-heart-challenge/portal-return.css",
@@ -437,7 +487,26 @@
           "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
         }
       ],
-      "runtimeBytes": 49443629
+      "runtimeBytes": 49443551,
+      "titleRevision": {
+        "compiler": "4.5.1.stable.official.f62fdbde1",
+        "patches": [
+          "tools/legacy-title-patches/finger-heart-challenge/main.gd.patch"
+        ],
+        "changedPackedResources": [
+          {
+            "path": "scripts/main.gdc",
+            "sourceSha256": "77dd16c89f07c6dd2ec8e42e169d99b93e577ded5c460eb7d6456b89d17a4567",
+            "sha256": "5961e227bd6d18ce9a504dec5d7b92c94c0ffa1ead6d566a24e4c00d1ce2b735"
+          },
+          {
+            "path": "project.binary",
+            "sourceSha256": "6a756e9aa7286510ffedd727c00e82480d65dd90a2def6b7a1670701eb981564",
+            "sha256": "cd93c8038ffedd3744cbe88b94640a77e6e9d3d0e91f3e076206bae1023af194"
+          }
+        ],
+        "unchangedPackedResourceCount": 36
+      }
     }
   ],
   "godotLicense": {
@@ -448,5 +517,5 @@
     "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
     "byteIdentical": true
   },
-  "totalRuntimeBytes": 141422287
+  "totalRuntimeBytes": 141422176
 }

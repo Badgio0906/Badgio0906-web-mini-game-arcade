@@ -21,3 +21,8 @@ Node24.19.0でnpm ci、TypeScript check、248/248単体、build成功。freeze�
 ## 通信再確認（2026-10-05 日本時間）
 
 ユーザーの再確認依頼でGitと公開先を再調査。enforced revision10でもgame100garage.comは許可ホストに含まれず、HTTPSはCONNECT403。mainは1ab4fcf、候補はed8a463でruntime更新なし。GitHub Pages URLの301転送と拒否の[今回の原本](publication-qa/NETWORK_RECHECK_REVISION10.json)を保存。HTTP200先行条件を満たさず、main push／新Pages deploy／公開DOM確認は未実施。
+
+
+## 2026-10-05 最新公開依頼の再開
+
+018候補482e458を採用し、012〜014の改名・015改訂02と同時公開する。正式domainへのHTTPS200、Pages custom domain／https_enforcedを直接確認。公開前game018.htmlは404。今回の環境で018のroot/subpath×PC/phone4productionを再実行し4PASS、固有runtimeソースは候補から不変。[改訂02統合報告](../game015/revision-02/IMPLEMENTATION_REPORT.md)にCIと公開DOM／asset照合を追記する。過去のfreeze301の全一致は今回の015・共通練習・フォント・改名の変更後には適用しない。018固有ソース保持と今回全体のbuild hashを区別する。

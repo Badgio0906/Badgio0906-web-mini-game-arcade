@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { classifyLanding, FallRun, isNiceLanding, sweptHazardHit } from '../../src/games/game015/FallRun';
-import { AUTHORED_PATTERNS, generateChunk, hazardX, INITIAL_PLATFORM, platformFromSeed, platformX, safeLinkIssues, START_Y } from '../../src/games/game015/generation';
-import { AIR_ACCELERATION, AIR_DRAG, GRAVITY, PLAYER_HEIGHT, PLAYER_WALL_MARGIN, CRUMBLE_SECONDS, HARD_STUN_SECONDS, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_WIDTH, TERMINAL_VELOCITY, WORLD_HEIGHT, WORLD_WIDTH } from '../../src/games/game015/types';
+import { AUTHORED_PATTERNS, generateChunk, hazardX, INITIAL_PLATFORM, platformFromSeed, platformX, safeLinkIssues, scrollSpeedAt, START_Y } from '../../src/games/game015/generation';
+import { AIR_ACCELERATION, AIR_DRAG, GRAVITY, PLAYER_HEIGHT, PLAYER_WALL_MARGIN, CRUMBLE_SECONDS, HARD_STUN_SECONDS, MAX_HORIZONTAL_SPEED, PIXELS_PER_METER, PLAYER_WIDTH, TERMINAL_VELOCITY, SCROLL_START_SPEED, SCROLL_MAX_SPEED, SCROLL_ACCELERATION, WORLD_HEIGHT, WORLD_WIDTH } from '../../src/games/game015/types';
 import type { FallEvent, FallSnapshot, FallPlatform, PlatformType } from '../../src/games/game015/types';
 
 const random = (seed: number) => () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
@@ -12,7 +12,7 @@ function until(run: FallRun, predicate: (snapshot: FallSnapshot) => boolean, max
   expect(predicate(s), 'ordinary model progression reaches the requested state').toBe(true); return s;
 }
 function course(distance: number, type: PlatformType = 'normal', emit: (event: FallEvent) => void = () => {}): FallRun {
-  const run = new FallRun(emit, random(1), { course: [{ x: 0, y: START_Y, width: WORLD_WIDTH, type: 'normal' },
+  const run = new FallRun(emit, random(1), { scroll: false, course: [{ x: 0, y: START_Y, width: WORLD_WIDTH, type: 'normal' },
     { x: 0, y: START_Y + distance * PIXELS_PER_METER, width: WORLD_WIDTH, type }] }); run.start(); return run;
 }
 const signControl = (error: number, velocity: number): -1 | 0 | 1 => { const command = error * 5 - velocity * 1.8; return command > 4 ? 1 : command < -4 ? -1 : 0; };
@@ -98,14 +98,14 @@ describe('FALL KING honest impact and inertial control', () => {
     run.setHorizontal(0); advance(run, 2); expect(run.snapshot().player.vy).toBe(TERMINAL_VELOCITY);
   });
   it('walking off starts from support plane; moving support carries player and contributes honest departure momentum', () => {
-    const run = new FallRun(() => {}, random(5), { course: [{ x: 112, y: START_Y, width: 32, type: 'normal' }, { x: 0, y: START_Y + 64, width: 256, type: 'normal' }] });
+    const run = new FallRun(() => {}, random(5), { scroll: false, course: [{ x: 112, y: START_Y, width: 32, type: 'normal' }, { x: 0, y: START_Y + 64, width: 256, type: 'normal' }] });
     run.start(); run.setHorizontal(1); until(run, s => !s.player.grounded); expect(run.inspection().fallStartY).toBe(START_Y); expect(run.snapshot().player.vy).toBeGreaterThan(0);
-    const moving = new FallRun(() => {}, random(1), { course: [{ x: 90, y: START_Y, width: 100, type: 'moving', amplitude: 8, period: 8, phase: 0 }, { x: 0, y: START_Y + 64, width: 256, type: 'normal' }] });
+    const moving = new FallRun(() => {}, random(1), { scroll: false, course: [{ x: 90, y: START_Y, width: 100, type: 'moving', amplitude: 8, period: 8, phase: 0 }, { x: 0, y: START_Y + 64, width: 256, type: 'normal' }] });
     moving.start(); advance(moving, 0.4); const before = moving.snapshot(); expect(before.player.x - 140).toBeCloseTo(before.platforms[0].x - 90, 8);
     moving.drop(); expect(moving.snapshot().player.vx).toBeGreaterThan(0); expect(moving.snapshot().player.grounded).toBe(false);
   });
   it('crumble starts only on actual landing and expires after1.25s; hard stun leaves enough time for a deliberate next DROP', () => {
-    const events: FallEvent[] = [], run = new FallRun(e => events.push(e), random(1), { course: [{ x: 0, y: START_Y, width: 256, type: 'normal' },
+    const events: FallEvent[] = [], run = new FallRun(e => events.push(e), random(1), { scroll: false, course: [{ x: 0, y: START_Y, width: 256, type: 'normal' },
       { x: 0, y: START_Y + 8 * 16, width: 256, type: 'crumble' }, { x: 0, y: START_Y + 12 * 16, width: 256, type: 'normal' }] });
     run.start(); expect(run.snapshot().platforms[1].crumbleAge).toBeNull(); run.drop(); until(run, s => s.lastLanding !== null); advance(run, HARD_STUN_SECONDS + 0.01);
     expect(run.snapshot().platforms[1].gone).toBe(false); expect(run.drop()).toBe(true); until(run, s => s.player.platformId === 3);
@@ -115,7 +115,7 @@ describe('FALL KING honest impact and inertial control', () => {
   it('real incoming momentum plus HARD recovery still permits a crumble-to-moving route across both sides and all moving phases', () => {
     for (const direction of [-1, 1] as const) for (const phase of [0, Math.PI / 2, Math.PI, Math.PI * 1.5]) {
       const events: FallEvent[] = [], crumbleX = direction === 1 ? 146 : 34, movingX = direction === 1 ? 110 : 70;
-      const run = new FallRun(e => events.push(e), random(1), { course: [{ x: 0, y: START_Y, width: 256, type: 'normal' },
+      const run = new FallRun(e => events.push(e), random(1), { scroll: false, course: [{ x: 0, y: START_Y, width: 256, type: 'normal' },
         { x: crumbleX, y: START_Y + 128, width: 76, type: 'crumble' }, { x: movingX, y: START_Y + 192, width: 76, type: 'moving', amplitude: 8, period: 8, phase }] });
       run.start(); run.setHorizontal(direction); advance(run, .22); expect(Math.abs(run.snapshot().player.vx)).toBeGreaterThan(70); run.drop(); run.setHorizontal(0);
       const landed = until(run, s => s.lastLanding !== null); expect(landed.lastLanding).toMatchObject({ kind: 'hard', fallDistance: 8, platformType: 'crumble' });
@@ -136,7 +136,8 @@ describe('FALL KING honest impact and inertial control', () => {
     const events: FallEvent[] = [], run = new FallRun(e => events.push(e), random(7)); run.start(); const first = run.inspection();
     first.player.y = -100; first.platforms[0].width = 0; expect(run.snapshot().player.y).toBe(112); expect(run.snapshot().platforms[0].width).toBe(160);
     const fresh = run.snapshot(); for (const dt of [NaN, Infinity, -1, 0]) run.step(dt); expect(run.snapshot()).toEqual(fresh);
-    run.drop(); let camera = 0;
+    const firstTarget = run.snapshot().platforms.filter(p => p.route)[1];
+    run.setHorizontal(firstTarget.x + firstTarget.width / 2 < 128 ? -1 : 1); run.drop(); let camera = 0;
     until(run, s => { expect(s.cameraY).toBeGreaterThanOrEqual(camera); camera = s.cameraY;
       const visible = s.platforms.filter(p => p.route && !p.gone && p.y > s.player.y && p.y < s.cameraY + WORLD_HEIGHT); expect(visible.length).toBeGreaterThanOrEqual(3);
       return s.lastLanding !== null; });
@@ -157,18 +158,24 @@ describe('authored descending routes and bounded endless generation', () => {
     }
     expect(patterns.size).toBeGreaterThanOrEqual(6); expect([...types].sort()).toEqual(['crumble', 'moving', 'normal', 'soft']);
   });
-  it('guarantees early visible spike bays and wall-hugging ends by an actual hazard, never hidden midair death', () => {
-    const run = new FallRun(() => {}, random(3)); run.start(); const bend = run.snapshot().platforms.filter(p => p.pattern === 'early-bend');
-    expect(bend).toHaveLength(4); expect(bend[1].x).toBeGreaterThan(128 - PLAYER_WIDTH / 2); expect(bend[1].y - START_Y).toBeLessThan(35 * 16);
-    run.setHorizontal(-1); until(run, s => s.player.x === PLAYER_WALL_MARGIN || !s.player.grounded); run.setHorizontal(0);
-    const s = until(run, s => !s.alive); expect(['spike', 'needle']).toContain(run.result()?.outcome); expect(s.depth).toBeLessThan(20); expect(run.result()?.reason).toMatch(/棘|壁の針/);
+  it('randomized early lanes include central spikes and break centered neutral descent', () => {
+    const signatures = new Set<string>();
+    for (let seed = 1; seed <= 25; seed++) {
+      const run = new FallRun(() => {}, random(seed)); run.start();
+      const initial = run.snapshot(); signatures.add(initial.platforms.filter(p => p.route).slice(1, 5).map(p => p.x.toFixed(0)).join(','));
+      expect(initial.hazards.some(h => h.kind === 'spikes' && h.x < 128 && h.x + h.width > 128)).toBe(true);
+      let s = initial;
+      for (let frame = 0; frame < 20 * 120 && s.alive; frame++) { run.drop(); run.step(1 / 120); s = run.snapshot(); }
+      expect(s.alive).toBe(false); expect(s.depth).toBeLessThan(45);
+    }
+    expect(signatures.size).toBeGreaterThan(15);
   });
   it('public steering/braking safely crosses1000m without freezing and continues5000m with bounded arrays and all material types', () => {
     const allTypes = new Set<PlatformType>();
     for (const seed of [1,17,77]) {
       const result = safeDescent(seed, seed === 1 ? 5000 : 1200);
       expect(result.snapshot.alive, `seed${seed} reached${result.snapshot.depth}`).toBe(true); expect(result.snapshot.depth).toBeGreaterThanOrEqual(seed === 1 ? 5000 : 1200);
-      expect(result.maxPlatforms).toBeLessThan(30); expect(result.maxHazards).toBeLessThan(100); expect(result.birdWaits).toBeGreaterThan(0); expect(result.events.filter(e => e.type === 'milestone')).toHaveLength(1);
+      expect(result.maxPlatforms).toBeLessThan(45); expect(result.maxHazards).toBeLessThan(100); expect(result.events.filter(e => e.type === 'milestone')).toHaveLength(1);
       for (const type of result.types) allTypes.add(type);
     }
     expect(allTypes.has('moving')).toBe(true); expect(allTypes.has('crumble')).toBe(true);
@@ -182,10 +189,65 @@ describe('authored descending routes and bounded endless generation', () => {
 });
 
 
+describe('continuous downward pursuit and randomized fair choices', () => {
+  it('standing still scrolls the world and ends once at the visible top boundary, with a generous opening', () => {
+    const events: FallEvent[] = [], run = new FallRun(e => events.push(e), random(1)); run.start();
+    expect(run.snapshot()).toMatchObject({ scrollSpeed: SCROLL_START_SPEED, cameraY: 0, topRemaining: 52 });
+    advance(run, 2.4);
+    expect(run.snapshot().alive).toBe(true); expect(run.snapshot().cameraY).toBeGreaterThan(40);
+    const still = run.snapshot(); expect(still.player.y).toBe(START_Y); expect(still.depth).toBe(0);
+    const ended = until(run, s => !s.alive, 1);
+    expect(ended.time).toBeGreaterThan(2.5); expect(ended.time).toBeLessThan(3);
+    expect(run.result()).toMatchObject({ outcome: 'scroll', depth: 0, fallDistance: 0 });
+    expect(run.result()?.reason).toContain('早めに降り');
+    advance(run, 10); expect(run.snapshot()).toEqual(ended); expect(events.filter(e => e.type === 'end')).toHaveLength(1);
+  });
+  it('speed increases smoothly to a sustainable cap, and only simulation steps consume the pursuit clock', () => {
+    let previous = scrollSpeedAt(0);
+    for (let time = .25; time <= 200; time += .25) {
+      const speed = scrollSpeedAt(time); expect(speed).toBeGreaterThanOrEqual(previous);
+      expect(speed - previous).toBeLessThanOrEqual(SCROLL_ACCELERATION * .25 + 1e-9);
+      expect(speed).toBeLessThanOrEqual(SCROLL_MAX_SPEED); previous = speed;
+    }
+    expect(previous).toBe(SCROLL_MAX_SPEED); expect(SCROLL_MAX_SPEED).toBeLessThan(TERMINAL_VELOCITY / 3);
+    const run = new FallRun(() => {}, random(4)); run.start(); const frozen = run.snapshot();
+    for (let i = 0; i < 120; i++) { run.snapshot(); run.inspection(); run.setHorizontal(0); }
+    expect(run.snapshot()).toEqual(frozen); run.step(.05); expect(run.snapshot().time).toBeCloseTo(.05);
+    expect(run.snapshot().cameraY).toBeCloseTo(SCROLL_START_SPEED * .05 + SCROLL_ACCELERATION * .05 ** 2 / 2);
+  });
+  it('every generated row has a hazard-free landing envelope and a reachable next decision through varied widths/lanes', () => {
+    const widths = new Set<number>(), centers = new Set<string>();
+    for (let seed = 1; seed <= 80; seed++) {
+      let cursor = { y: START_Y, center: 128, nextId: 2, chunks: 0 }, previous = platformFromSeed(INITIAL_PLATFORM, 1);
+      for (let chunkIndex = 0; chunkIndex < 20; chunkIndex++) {
+        const chunk = generateChunk(cursor, random(seed + chunkIndex * 80)); cursor = chunk.cursor;
+        for (const p of chunk.platforms.filter(p => p.route)) {
+          expect(safeLinkIssues(previous, p)).toEqual([]); widths.add(p.width);
+          const center = p.originX + p.width / 2; centers.add(center < 116 ? 'left' : center > 140 ? 'right' : 'center');
+          for (const h of chunk.hazards.filter(h => h.kind === 'spikes' && h.anchorPlatformId === p.id)) {
+            expect(h.x + h.width <= p.originX - p.amplitude - 5 || h.x >= p.originX + p.width + p.amplitude + 5).toBe(true);
+          }
+          previous = p;
+        }
+      }
+    }
+    expect(widths.size).toBeGreaterThanOrEqual(5); expect([...centers].sort()).toEqual(['center', 'left', 'right']);
+  });
+  it('ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds', () => {
+    for (let seed = 1; seed <= 64; seed++) {
+      const result = safeDescent(seed, 350);
+      expect(result.snapshot.alive, `seed ${seed}, reached ${result.snapshot.depth}m`).toBe(true);
+      expect(result.snapshot.depth).toBeGreaterThanOrEqual(350);
+      expect(result.snapshot.topRemaining).toBeGreaterThan(0);
+    }
+  }, 20000);
+});
+
+
 describe('enlarged king and genuine telegraphed revision hazards', () => {
   it('paired spike bays require all18px of body; exact contact edges remain safe and the underside is harmless', () => {
     for (const [x, safe] of [[109,true], [108.99,false], [147,true], [147.01,false]] as const) {
-      const run = new FallRun(() => {}, random(1), { course: [
+      const run = new FallRun(() => {}, random(1), { scroll: false, course: [
         { x: x - 28, y: START_Y, width: 56, type: 'normal' }, { x: 100, y: START_Y + 64, width: 56, type: 'normal' }],
         hazards: [{ kind: 'spikes', x: 0, y: START_Y + 56, width: 100, height: 8 }, { kind: 'spikes', x: 156, y: START_Y + 56, width: 100, height: 8 }] });
       run.start(); run.drop(); const s = until(run, s => !s.alive || s.player.platformId === 2);
@@ -230,7 +292,7 @@ describe('enlarged king and genuine telegraphed revision hazards', () => {
     for (const delay of [1.1,1.5,2,2.5,3,3.5,4,4.5,5]) {
       const stamps:{type:string,time:number}[]=[];
       const run=new FallRun(e=>stamps.push({type:e.type,time:run.snapshot().time}),random(1),{
-        course:[{x:78,y:112,width:100,type:'normal'},{x:78,y:176,width:100,type:'normal'}],
+        scroll:false,course:[{x:78,y:112,width:100,type:'normal'},{x:78,y:176,width:100,type:'normal'}],
         hazards:[{kind:'bird',x:119,y:122.5,width:18,height:10,amplitude:80,period:6,phase:0}] });
       run.start(); advance(run,delay); expect(run.snapshot().alive).toBe(true);
       const warning=stamps.find(e=>e.type==='hazard_warning')!, active=stamps.find(e=>e.type==='hazard_active')!;
@@ -241,18 +303,18 @@ describe('enlarged king and genuine telegraphed revision hazards', () => {
     }
     expect(hit).toBe(true);expect(safe).toBe(true);
   });
-  it('authored bird planes leave both waiting supports clear and spikes stay outside the actual bay; hazard copies and bounds are honest', () => {
+  it('spikes preserve the whole moving bay envelope and copied hazard state cannot alter physics', () => {
     let cursor={y:START_Y,center:128,nextId:2,chunks:0},previousY=START_Y;
     for(let i=0;i<80;i++){
       const chunk=generateChunk(cursor,random(i+1));cursor=chunk.cursor;
       expect(chunk.platforms.every(p=>p.width<WORLD_WIDTH)).toBe(true);
       for(const h of chunk.hazards){
-        if(h.kind==='bird'){const next=chunk.platforms[0];expect(h.y-previousY).toBeGreaterThanOrEqual(6);
+        if(h.kind==='bird'){const next=chunk.platforms.filter(p=>p.route)[0];expect(h.y-previousY).toBeGreaterThanOrEqual(6);
           expect(next.y-PLAYER_HEIGHT-h.y-h.height).toBeGreaterThanOrEqual(6);expect(previousY).toBeGreaterThan(START_Y);}
         if(h.kind==='spikes'){const p=chunk.platforms.find(p=>p.id===h.anchorPlatformId)!;
           expect(h.x+h.width<=p.x||h.x>=p.x+p.width).toBe(true);}
       }
-      previousY=chunk.platforms[3].y;
+      previousY=chunk.platforms.filter(p=>p.route)[3].y;
     }
     const run=new FallRun(()=>{},random(1));run.start();const first=run.snapshot();
     const originalState=first.hazards[0].state;first.hazards[0].state='active';first.hazards[0].x=999;

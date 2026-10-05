@@ -1,6 +1,6 @@
 import { FallRun } from './FallRun';
 import { drawBackdrop, drawBitmapText, drawKing, drawPlatform, drawSpikeFloor, drawWallNeedle, drawBird, PALETTE, KING_ANCHOR } from './art';
-import { WORLD_WIDTH, WORLD_HEIGHT, type FallController, type FallEvent, type FallHooks, type FallSnapshot, type HorizontalInput } from './types';
+import { WORLD_WIDTH, WORLD_HEIGHT, type FallController, type FallEvent, type FallHooks, type FallSnapshot, type HorizontalInput, SCROLL_TOP_LIMIT } from './types';
 import type { PracticeSnapshot } from '../../arcade/PracticeSession';
 
 function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds: number, feedback: string, feedbackUntil: number, dropUntil: number): void {
@@ -21,34 +21,38 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
     }
   }
   const p = s.player;
-  const state = !s.alive ? 'death' : seconds < dropUntil ? 'drop' : p.stunRemaining > 0 ? 'hard' : !p.grounded ? Math.abs(p.vx) > 12 ? p.vx < 0 ? 'left' : 'right' : 'falling' : s.lastLanding && seconds < feedbackUntil ? 'landing' : 'idle';
+  const state = !s.alive ? 'death' : seconds < dropUntil ? 'drop' : p.stunRemaining > 0 ? 'hard' : Math.abs(p.vx) > 12 ? p.vx < 0 ? 'left' : 'right' : !p.grounded ? 'falling' : s.lastLanding && seconds < feedbackUntil ? 'landing' : 'idle';
   drawKing(c, Math.round(p.x) - KING_ANCHOR.x, Math.round(p.y - s.cameraY) - KING_ANCHOR.y, { state, frame: Math.floor(seconds * 8), facing: p.vx < 0 ? -1 : 1 });
   if (p.grounded && s.lastLanding && seconds < feedbackUntil) { c.fillStyle = PALETTE['7']; for (let i = 0; i < 4; i++) c.fillRect(Math.round(p.x - 16 + i * 10), Math.round(p.y - s.cameraY) - (i % 2 ? 3 : 1), 3, 2); }
   c.restore();
-  c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 51);
+  // The screen ceiling pursues the king independently of the camera-follow speed.
+  c.save(); c.translate(0, SCROLL_TOP_LIMIT); c.scale(1, -1); drawSpikeFloor(c, { x: 0, y: 0, width: WORLD_WIDTH, height: 10 }); c.restore();
+  c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 40);
   drawBitmapText(c, `DEPTH ${Math.floor(s.depth)}M`, 14, 13, { color: PALETTE['5'], scale: 2 });
   drawBitmapText(c, `BEST ${best}M`, 242, 16, { color: PALETTE['4'], align: 'right' });
   const danger = s.danger === 'fatal' ? PALETTE.b : s.danger === 'danger' ? PALETTE['7'] : PALETTE.f;
   drawBitmapText(c, 'FALL', 14, 36, { color: danger });
   drawBitmapText(c, `${s.fallDistance.toFixed(1)}M`, 48, 31, { color: danger, scale: 2 });
-  drawBitmapText(c, s.danger === 'safe' ? 'SAFE' : 'DANGER', 242, 36, { color: danger, align: 'right' });
-  c.fillStyle = PALETTE['2']; c.fillRect(14, 52, 228, 3); c.fillStyle = danger; c.fillRect(14, 52, Math.round(228 * Math.min(1, s.fallDistance / 9)), 3,);
+  drawBitmapText(c, s.topRemaining < 48 ? 'HURRY!' : `SCROLL ${Math.round(s.scrollSpeed)}`, 242, 36, { color: s.topRemaining < 48 ? PALETTE.b : PALETTE['7'], align: 'right' });
+  c.fillStyle = PALETTE['2']; c.fillRect(14, 45, 228, 2); c.fillStyle = danger; c.fillRect(14, 45, Math.round(228 * Math.min(1, s.fallDistance / 9)), 2,);
   if (feedback && seconds < feedbackUntil) { c.fillStyle = PALETTE['0']; c.fillRect(28, 418, 200, 22); drawBitmapText(c, feedback, 128, 426, { color: PALETTE['5'], align: 'center' }); }
 }
 export function paintFallPractice(canvas: HTMLCanvasElement, snapshot: PracticeSnapshot): void {
   const s = snapshot.fall; if (!s) return; const c = canvas.getContext('2d')!; c.imageSmoothingEnabled = false;
-  drawBackdrop(c, 'tower', { scrollY: 0 });
-  drawPlatform(c, { x: s.step === 1 ? 48 : 66, y: 112, width: s.step === 1 ? 88 : 124, type: 'normal' });
-  drawPlatform(c, { ...s.target, type: 'normal' });
+  drawBackdrop(c, 'tower', { scrollY: s.cameraY });
+  drawPlatform(c, { ...s.startPlatform, y: s.startPlatform.y - s.cameraY, type: 'normal' });
+  drawPlatform(c, { ...s.target, y: s.target.y - s.cameraY, type: 'normal' });
+  for (const h of s.hazards) drawSpikeFloor(c, { ...h, y: h.y - s.cameraY });
+  c.save(); c.translate(0, SCROLL_TOP_LIMIT); c.scale(1, -1); drawSpikeFloor(c, { x: 0, y: 0, width: WORLD_WIDTH, height: 10 }); c.restore();
   c.save(); c.globalAlpha = s.ghost ? .6 : 1;
-  drawKing(c, Math.round(s.x) - KING_ANCHOR.x, Math.round(s.y) - KING_ANCHOR.y, { state: s.phase === 'splat' ? 'death' : s.grounded ? 'idle' : s.vx > 5 ? 'right' : s.vx < -5 ? 'left' : 'falling', frame: Math.floor(snapshot.elapsed * 8) }); c.restore();
-  c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 63);
+  drawKing(c, Math.round(s.x) - KING_ANCHOR.x, Math.round(s.y - s.cameraY) - KING_ANCHOR.y, { state: s.phase === 'splat' ? 'death' : s.grounded ? 'idle' : s.vx > 5 ? 'right' : s.vx < -5 ? 'left' : 'falling', frame: Math.floor(snapshot.elapsed * 8) }); c.restore();
+  c.fillStyle = PALETTE['0']; c.fillRect(8, 7, 240, 40);
   drawBitmapText(c, `PRACTICE ${Math.min(4, s.step + 1)}/4`, 14, 12, { color: PALETTE['5'], scale: 2 });
   const distanceColor = s.fallDistance >= 9 ? PALETTE.b : PALETTE.f;
-  drawBitmapText(c, 'FALL', 14, 46, { color: distanceColor });
-  drawBitmapText(c, `${s.fallDistance.toFixed(1)}M`, 56, 35, { color: distanceColor, scale: 4 });
-  drawBitmapText(c, s.fallDistance >= 9 ? 'DANGER' : 'SAFE', 242, 46, { color: distanceColor, align: 'right' });
-  if (s.phase === 'splat') drawBitmapText(c, 'GHOST: SPLAT!', 128, 320, { color: PALETTE.b, align: 'center' });
+  drawBitmapText(c, 'FALL', 14, 36, { color: distanceColor });
+  drawBitmapText(c, `${s.fallDistance.toFixed(1)}M`, 56, 31, { color: distanceColor, scale: 2 });
+  drawBitmapText(c, s.fallDistance >= 9 ? 'DANGER' : 'SAFE', 242, 36, { color: distanceColor, align: 'right' });
+  if (s.phase === 'splat') drawBitmapText(c, s.cause === 'scroll' ? 'TOO SLOW!' : 'SPIKES!', 128, 320, { color: PALETTE.b, align: 'center' });
 }
 export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest = (): number => 0): FallController {
   parent.innerHTML = `<div class="fall-board"><div class="fall-window"><canvas id="fall-canvas" width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" tabindex="0" aria-label="落下キングのゲーム画面。左右で移動、DROPで下へ。"></canvas></div><div class="fall-controls"><button id="left-button" type="button" aria-label="左へ移動、押している間">← 左</button><button id="drop-button" type="button">DROP ↓</button><button id="right-button" type="button" aria-label="右へ移動、押している間">右 →</button></div></div>`;
@@ -56,7 +60,7 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
   const abort = new AbortController(), options = { signal: abort.signal }; let active = false, paused = false, frame = 0, previous = performance.now(), clock = 0, ended = false;
   let feedback = '', feedbackUntil = 0, dropUntil = 0, preview = true; const keys = new Map<string, HorizontalInput>(); const pointers = new Map<number, HorizontalInput>();
   const run = new FallRun((event: FallEvent) => {
-    if (event.type === 'end') { feedback = event.result.outcome === 'impact' ? 'SPLAT!' : event.result.outcome === 'spike' ? 'SPIKES!' : event.result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'; feedbackUntil = clock + .65; }
+    if (event.type === 'end') { feedback = event.result.outcome === 'scroll' ? 'TOO SLOW!' : event.result.outcome === 'impact' ? 'SPLAT!' : event.result.outcome === 'spike' ? 'SPIKES!' : event.result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'; feedbackUntil = clock + .65; }
     if (event.type === 'drop') dropUntil = clock + .15;
     if (event.type === 'landing') { feedback = event.landing.kind === 'fatal' ? 'SPLAT!' : event.landing.nice ? 'NICE DROP!' : event.landing.kind === 'hard' ? 'HARD LANDING' : 'LANDED'; feedbackUntil = clock + .65; }
     if (event.type === 'milestone') { feedback = '1000M! STILL NO BOTTOM'; feedbackUntil = clock + 2; }
@@ -66,7 +70,7 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
   function release(): void { keys.clear(); pointers.clear(); run.setHorizontal(0); }
   function input(): void { if (!active || paused) return; const directions = [...keys.values(), ...pointers.values()]; const left = directions.includes(-1), right = directions.includes(1); run.setHorizontal(left === right ? 0 : right ? 1 : -1); }
   function drop(): boolean { if (!active || paused || document.querySelector('dialog[open]')) return false; return run.drop(); }
-  function tick(now: number): void { const dt = Math.min(.05, (now - previous) / 1000); previous = now; if (active && !paused && !document.hidden) { clock += dt; run.step(dt); } else if (ended && !paused && clock < feedbackUntil) clock += dt; const s = run.snapshot(); const display = preview ? { ...s, alive: true, phase: 'grounded' as const, player: { ...s.player, x: 128, y: 112 }, platforms: [{ id: 1, x: 52, y: 112, width: 152, height: 8, type: 'normal' as const, originX: 52, route: true, pattern: 'preview', amplitude: 0, period: 1, phase: 0, crumbleAge: null, gone: false }, { id: 2, x: 78, y: 176, width: 100, height: 8, type: 'normal' as const, originX: 78, route: true, pattern: 'preview', amplitude: 0, period: 1, phase: 0, crumbleAge: null, gone: false }, { id: 3, x: 40, y: 240, width: 100, height: 8, type: 'normal' as const, originX: 40, route: true, pattern: 'preview', amplitude: 0, period: 1, phase: 0, crumbleAge: null, gone: false }] } : s; paint(canvas, display, readBest(), clock, feedback, feedbackUntil, dropUntil); hooks.onUpdate(s); frame = requestAnimationFrame(tick); }
+  function tick(now: number): void { const dt = Math.min(.05, (now - previous) / 1000); previous = now; if (active && !paused && !document.hidden) { clock += dt; run.step(dt); } else if (ended && !paused && clock < feedbackUntil) clock += dt; const s = run.snapshot(); const display = preview ? { ...s, alive: true, phase: 'grounded' as const } : s; paint(canvas, display, readBest(), clock, feedback, feedbackUntil, dropUntil); hooks.onUpdate(s); frame = requestAnimationFrame(tick); }
   const blocked = (e: KeyboardEvent | PointerEvent | MouseEvent): boolean => e.altKey || e.ctrlKey || e.metaKey || e.shiftKey;
   parent.addEventListener('pointerdown', e => {
     if (!active || paused || (!e.isPrimary && e.pointerType !== 'touch') || e.button !== 0 || blocked(e) || document.querySelector('dialog[open]')) return;

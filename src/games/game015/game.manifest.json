@@ -5,7 +5,7 @@
   "titleEn": "FALL KING",
   "subtitle": "上を目指すな。うまく落ちろ。",
   "genre": [
-    "precision-action",
+    "scrolling-action",
     "vertical-descent",
     "arcade"
   ],
@@ -25,7 +25,7 @@
     "risk-management",
     "drop-timing"
   ],
-  "escalation_mechanic": "endless-depth",
+  "escalation_mechanic": "gradually accelerating camera pursuit",
   "score_type": "depth-meters",
   "primary_score": "maximum depth in meters",
   "secondary_score": "nice-drop-count",
@@ -33,7 +33,7 @@
     "unlimited_play": true,
     "advertising": false
   },
-  "tutorial": "isolated drop, air steering, safe fall-distance practice and ghost fatal-landing demonstration",
+  "tutorial": "isolated DROP, right/left air steering around central spikes, stationary ghost swept away by scrolling",
   "human_playtest_status": "pending",
   "fall_thresholds_m": {
     "normal_safe_max": 6,
@@ -54,7 +54,7 @@
     "moving"
   ],
   "milestone_meters": 1000,
-  "generation": "authored safe landing bays with early paired spike floors; no full-width safe catches",
+  "generation": "six randomized lane patterns, varied widths, central spike banks, protected reachable landing bay on every row",
   "expected_run_seconds": {
     "beginner": 60,
     "experienced": 180
@@ -69,11 +69,16 @@
       18,
       33
     ],
-    "scale_from_initial": 1.5
+    "art": "original native pixel frames: crown, white beard, purple robe, red cape, gold trim"
   },
   "hazards": [
-    "spiked-floor",
+    "spiked-floor-including-center",
     "telegraphed-proximity-wall-needle",
-    "oscillating-bird"
-  ]
+    "pursuing-screen-ceiling"
+  ],
+  "scroll_pixels_per_second": {
+    "start": 18,
+    "maximum": 36,
+    "acceleration": 0.22
+  }
 }

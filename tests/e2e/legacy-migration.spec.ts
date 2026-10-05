@@ -1,6 +1,7 @@
 import { expect,test,type Page,type Frame } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { gameCatalog } from '../../src/data/gameCatalog';
 
 const legacy=['yokodori-days','tachibana-task-heaven','finger-heart-challenge'] as const;
 const route=(id:string)=>`./games/${id}/index.html`;
@@ -21,7 +22,7 @@ function observedErrors(page:Page){const errors:string[]=[];page.on('pageerror',
 async function returnPortal(page:Page,touch:boolean){
   const back=page.locator('#legacy-portal-return'),box=(await back.boundingBox())!;expect(box.width).toBeGreaterThanOrEqual(43.5);expect(box.height).toBeGreaterThanOrEqual(43.5);
   const frame=(await page.locator('#legacy-game-frame').boundingBox())!;expect(box.y+box.height).toBeLessThanOrEqual(frame.y+1);
-  if(touch)await back.tap();else await back.click();await expect(page.locator('.game-card')).toHaveCount(14);
+  if(touch)await back.tap();else await back.click();await expect(page.locator('.game-card')).toHaveCount(gameCatalog.length);
 }
 
 test('Original Yokodori Enter/tap starts, fails naturally while coworker works, retries and reloads with preserved UI',async({page,isMobile},info)=>{
