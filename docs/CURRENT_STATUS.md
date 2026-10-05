@@ -1,12 +1,14 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-次タスクは018公開：[最新引き継ぎ書](game018/PUBLICATION_HANDOFF.md)。候補ブランチ`codex/game018-shoe-fly-high`の最新HEADを取得する。mainは017の`1ab4fcf`、018は実装済み・未公開。最終再確認のenforced revision10でも`game100garage.com`が許可ホストに含まれずCONNECT403。新環境で公開先HTTP200を確認後、main反映→Pages成功→実公開PC／phone導線・asset一致を検証する。この引き継ぎ編集はゲームruntimeを変更しない。
+2026-10-05（日本時間）。3つの情報源を統合した新タスク向け正本は[統合引き継ぎ書](handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md)。①開発・Jev、②公開タスクの添付引き継ぎとRepository記録、③ユーザー提供GAME100 GARAGE運営メモを照合済み。今回の変更は文書のみ、code／DNS／AdSense／公開／Jev APIは操作していない。
 
-今回の公開工程（2026-10-05 日本時間）：018候補を新環境へ取得し、freeze301ファイル一致、248/248単体・check・build、018／017各4件のローカルproduction導線を再検証した。GitHub Pages URLは意図したカスタムドメイン `game100garage.com`へ転送される（ユーザー確認済み）。GitHub APIへの通信は成功するが、この転送先は現環境の許可ホストに含まれずCONNECT403。公開URLのHTTP200確認待ちでmainは017のまま。[今回の公開工程と証拠](game018/PUBLICATION.md)。以下の旧環境CONNECT403記述は引き継ぎ時点の記録。
+正式公開URLは **https://game100garage.com**。Cloudflare Registrar取得、Pages Custom domain、DNS check successful、HTTPS設定完了（運営メモによる）。AdSenseは登録開始済みだが「サイトをAdSenseにリンク」が未完了。次は画面の「開始」で所有確認method／snippetを取得する。CREDIT OFF・Reward開発stubは維持。GitHub所有確認TXTは削除しない。
 
-2026-10-05 UTC。mainはGame017を含む17本、commit `1ab4fcf5a35637b15554d7942d944763e79920c9`。Pages Actions run37283475701はbuild／deployとも成功。公開URLは現環境のHTTP CONNECT403で実表示未確認。018を含む18本候補は公開前の技術検証完了で、最終結果は[018報告](game018/IMPLEMENTATION_REPORT.md)と[RELEASE_GATE](game018/QA/RELEASE_GATE.json)が正本。
+mainは017までの17本、`1ab4fcf5a35637b15554d7942d944763e79920c9`。017のPages run37283475701はbuild／deploy成功。018は実装・技術検証済みでmain未反映・未公開、`codex/game018-shoe-fly-high`に保存。統合前の最新HEADは`2426659ddea5a3eddcee77ec201476e66eba946a`（mainより5commit先行）、以後の文書commitも最新remoteから取得する。018は作り直さない。
 
-Repository：[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)。公開Portal：[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/index.html)。mainへのpushで[Pages workflow](../.github/workflows/pages.yml)が起動する。ユーザーの最新指示に従い、018は公開前成果をremote候補ブランチへ保存し、許可が適用された新環境で掲載・起動確認を引き継ぐ。[引き継ぎ書](game018/PUBLICATION_HANDOFF.md)。
+②の公開再検証は248/248単体・check/build、freeze301一致、018／017各4local production PASS。018公開DOM／asset一致／deployは未実施。今回の①Cloud再確認はenforced revision11だがcustom許可はjev-ai.org/openrouter.ai＋package_managersのまま、Pages／domainHTTPSはCONNECT403。DNS／HTTPSの未完了と混同しない。新Cloudでgame100garage.com・www.game100garage.com・badgio0906.github.io・api.github.comの実許可を確認し、正式URLで公開残工程を進める。[個別公開手順](game018/PUBLICATION_HANDOFF.md)。
+
+登録の正本は[gameCatalog](../src/data/gameCatalog.ts)。以下は18本候補の一覧。mainは017まで。
 
 | ID | ゲーム | route | 再開時の固有資料 |
 |---|---|---|---|
@@ -26,7 +28,6 @@ Repository：[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Bad
 | 014 | 畑島さんの指ハートチャレンジ | `games/finger-heart-challenge/index.html` | 同じ移行資料。元の25回チャレンジを維持 |
 | 015 | 落下キング ～FALL KING～ | `game015.html` | [初版仕様](game015/IMPLEMENTATION_SPEC.md)／[改訂01依頼](game015/revision-01/REQUEST.md)／[最新報告](game015/revision-01/IMPLEMENTATION_REPORT.md) |
 | 016 | 負けじゃんけん ～LOSE TO WIN～ | `game016.html` | [仕様](game016/IMPLEMENTATION_SPEC.md)／[実装・公開報告](game016/IMPLEMENTATION_REPORT.md) |
-
 | 017 | 雨って避けたら濡れないよね ～RAINSHIFT～ | `game017.html` | [報告](game017/IMPLEMENTATION_REPORT.md)／[公開記録](game017/PUBLICATION.md) |
 | 018 | 靴とばそ ～SHOE FLY HIGH!～ | `game018.html` | [報告](game018/IMPLEMENTATION_REPORT.md)／[公開前引き継ぎ](game018/PUBLICATION_HANDOFF.md) |
 
