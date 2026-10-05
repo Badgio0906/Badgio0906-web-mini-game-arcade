@@ -48,3 +48,7 @@ git push origin HEAD:refs/heads/main
 PC1440×900／phone390×844でPortalの**18カード**、017／018の正式タイトル・640×360実thumbnail・リンクを確認。各カードから起動し、直接game017.html／game018.htmlへのreload、font／scripts／console／404、CREDIT OFFで練習→本番→Retry→Portal帰還を確認する。017は経路描画、018はANGLE/SPIN/POWERの4段階練習をそれぞれ実入力する。公開assetのhashをローカルbuildまたはActions artifactと比較し、キャッシュと配信差分を分ける。
 
 最新公開記録・Gate・CURRENT_STATUS・READMEを更新し、018公開commit／CI run／実DOM結果／未実施人間評価を分けて報告する。ユーザーへJev結果だけで公開可否を決めたと説明しない。
+
+## ソース採用commit
+
+Game018実装・検証・Jevの採用commitは **`90c8c68c64e36f761c8ad06a575778608b377c98`**。この後のcommitは引き継ぎ文書のcommit記録と入力仕様の改行正規化のみ。runtime freezeは同じ。remote `codex/game018-shoe-fly-high`のHEADに両方を保存する。mainは017の1ab4fcfのまま、018は公開していない。

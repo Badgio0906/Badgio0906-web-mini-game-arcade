@@ -63,3 +63,5 @@ Jevは開発CLI限定Shadow、実測・全choice確率・nouls・Codex比較は[
 人間による初見理解・JUST難度・笑い・靴差・Retry欲求・実機親指/FPS/音/酔いは[HUMAN_PLAYTEST](HUMAN_PLAYTEST.md)の未実施項目。技術試作版としての検証と人間合格を分ける。公開後の確認を新Cloud taskに引き継ぐため[PUBLICATION_HANDOFF](PUBLICATION_HANDOFF.md)を正本とする。
 
 最終技術集計：018 production4／017 production4／既存modern28、合計36PASS。独立Visual85/F13/H13、独立最終Feel9投PASS（2269飛行観測点、10実座標hold）。Jev8call、input8510／output1142／USD0.00035742／平均0.370秒、原因6/8、C7/8、H7/8、R4/8。C<0.45候補3件中、通常レビューが問題を見つけた1件（A）。Release FALSE PASS0件はGT positive1件だけの結果。全条件は[Gate](QA/RELEASE_GATE.json)、人間合格と公開実表示は未完了。
+
+Game018ソース採用commit：`90c8c68c64e36f761c8ad06a575778608b377c98`。remote保存先：`codex/game018-shoe-fly-high`。mainへは未反映。全追加・変更ファイルは `git show --stat 90c8c68c64e36f761c8ad06a575778608b377c98` で確認できる。引き継ぎ記録だけの後続commitもbranchに含む。
