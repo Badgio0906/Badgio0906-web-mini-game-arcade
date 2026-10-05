@@ -6,6 +6,8 @@ export type EventName = 'game_open' | 'run_start' | 'run_end' | 'score' | 'credi
   'run_duration' | 'distance_reached' | 'office_clear' | 'tower_height' | 'perfect_count' |
   'memory_level' | 'sequence_length' | 'sorted_count' | 'rule_change_count' |
   'milestone_reached' | 'escalation_offered' | 'escalation_accepted' | 'safe_exit' |
+  'phase_reached' | 'round_reached' | 'opponent_hand' | 'player_hand' | 'lose_success' |
+  'accidental_win' | 'draw' | 'timeout' | 'response_latency_ms' | 'reflex_streak' |
   'tutorial_start' | 'tutorial_step_complete' | 'tutorial_complete' | 'tutorial_skip' |
   'portal_open' | 'game_card_click' | 'game_launch' | 'return_to_portal';
 export interface TelemetryEvent { name: EventName; at: string; data: Record<string, string | number | boolean>; }

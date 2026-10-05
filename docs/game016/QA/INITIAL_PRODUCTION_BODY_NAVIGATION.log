@@ -1,0 +1,63 @@
+http://127.0.0.1:4193/ keyboard portal→real practice→correct→reload→return PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
++       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
++     url: 'http://127.0.0.1:4193/assets/portal/game014.webp'
++   },
++   {
++     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
++       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
++     url: 'http://127.0.0.1:4193/assets/portal/game015.webp'
++   },
++   {
++     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
++       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
++     url: 'http://127.0.0.1:4193/assets/portal/game013.webp'
++   },
++   {
++     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
++       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',
++     url: 'http://127.0.0.1:4193/assets/portal/game016.webp'
++   }
++ ]
+- []
+
+    at file:///workspace/orbit-shift/tests/game016/probe-production.mjs:30:555 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      url: 'http://127.0.0.1:4193/assets/portal/game014.webp',
+      bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
+        'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
+    },
+    {
+      url: 'http://127.0.0.1:4193/assets/portal/game015.webp',
+      bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
+        'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
+    },
+    {
+      url: 'http://127.0.0.1:4193/assets/portal/game013.webp',
+      bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
+        'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
+    },
+    {
+      url: 'http://127.0.0.1:4193/assets/portal/game016.webp',
+      bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\n' +
+        'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.'
+    }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

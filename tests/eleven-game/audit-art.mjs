@@ -11,12 +11,12 @@ const python=String.raw`
 from pathlib import Path
 from PIL import Image
 import json,hashlib,sys,datetime
-root=Path(sys.argv[1]);flags=set(sys.argv[2:]);errors=[];images=[];check=lambda v,m:errors.append(m) if not v else None
+root=Path(sys.argv[1]);flags=set(sys.argv[3:]);errors=[];images=[];check=lambda v,m:errors.append(m) if not v else None
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 load=lambda p:json.loads((root/p).read_text())
 legacy=load('assets/eleven-game-baseline.json')['images'];expected={r['file']:r for r in legacy}
 sets=[];sources=set()
-for index,count in [('assets/game011/icons/asset-index.json',20),('assets/game010/foreground/asset-index.json',2),('assets/portal/thumbnails/asset-index.json',11 if '--final' in flags else 10)]:
+for index,count in [('assets/game011/icons/asset-index.json',20),('assets/game010/foreground/asset-index.json',2),('assets/game016/asset-index.json',3),('assets/portal/thumbnails/asset-index.json',16 if '--final' in flags else 15)]:
  m=load(index);rows=m['entries'];check(len(rows)>=count,index+': missing expected records');check(m['totalBytes']==sum(r['bytes'] for r in rows),index+': wrong byte total');sets.append({'index':index,'count':len(rows),'bytes':m['totalBytes']})
  for r in rows:
   check(r['path'] not in expected,'Duplicate path '+r['path']);expected[r['path']]={**r,'file':r['path']};src=root/r['source'];check(src.exists(),'Missing source '+r['source']);sources.add(r['source'])
@@ -54,8 +54,8 @@ if '--dist' in flags:
   if p.exists():check(sha(p)==r['sha256'],'Wrong dist bytes '+name);dist['matched']+=1
  paths={str(p.relative_to(root/'dist')) for p in (root/'dist/assets').rglob('*.webp')};check(paths=={p.removeprefix('public/') for p in expected},'Unexpected dist WebPs')
  forbidden=[str(p.relative_to(root/'dist')) for p in (root/'dist/assets').rglob('*') if p.is_file() and (p.suffix.lower()=='.png' or p.name=='asset-index.json' or 'source' in p.name or 'staging' in p.parts)];check(not forbidden,'Unadopted originals/metadata in dist '+str(forbidden));dist['forbidden']=forbidden
-report={'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'FAIL' if errors else 'PASS','command':'node tests/eleven-game/audit-art.mjs '+' '.join(sorted(flags)),'legacy56Preserved':len(legacy),'actualImageGenCalls':3,'sets':sets,'sourceCount':len(sources),'publicWebPCount':len(actual),'publicWebPBytes':sum(r['bytes'] for r in expected.values()),'images':images,'dist':dist,'finalThumbnailGate':'required and checked' if '--final' in flags else 'Game011 and updated007008010 capture pending','errors':errors,'limits':'Checks actual bytes/decoded dimensions/alpha/hash/source rectangles; does not claim gameplay Visual Gate or human playtesting.'}
-out=root/'docs/eleven-game/art/ASSET_AUDIT.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k] for k in ['status','legacy56Preserved','actualImageGenCalls','publicWebPCount','errors']}));sys.exit(1 if errors else 0)
+report={'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'FAIL' if errors else 'PASS','command':'node tests/eleven-game/audit-art.mjs '+' '.join(sorted(flags)),'legacy56Preserved':len(legacy),'historicalElevenGameImageGenCalls':3,'game016ImageGenCalls':load('assets/game016/asset-index.json')['actualCalls'],'sets':sets,'sourceCount':len(sources),'publicWebPCount':len(actual),'publicWebPBytes':sum(r['bytes'] for r in expected.values()),'images':images,'dist':dist,'finalThumbnailGate':'required and checked' if '--final' in flags else 'Game011 and updated007008010 capture pending','errors':errors,'limits':'Checks actual bytes/decoded dimensions/alpha/hash/source rectangles; does not claim gameplay Visual Gate or human playtesting.'}
+out=root/(sys.argv[2] or 'docs/eleven-game/art/ASSET_AUDIT.json');out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:report[k] for k in ['status','legacy56Preserved','historicalElevenGameImageGenCalls','game016ImageGenCalls','publicWebPCount','errors']}));sys.exit(1 if errors else 0)
 `;
-const r=spawnSync('python',['-c',python,root,...flags],{encoding:'utf8',maxBuffer:5*1024*1024});
+const r=spawnSync('python',['-c',python,root,process.env.ARCADE_ASSET_AUDIT_REPORT??'',...flags],{encoding:'utf8',maxBuffer:5*1024*1024});
 process.stdout.write(r.stdout??'');process.stderr.write(r.stderr??'');process.exit(r.status??1);

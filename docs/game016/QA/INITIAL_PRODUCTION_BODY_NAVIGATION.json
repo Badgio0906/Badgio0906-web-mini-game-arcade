@@ -1,0 +1,394 @@
+{
+  "checkedUtc": "2026-10-05T02:17:47.830Z",
+  "status": "failed",
+  "failure": {
+    "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game014.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game015.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game013.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game016.webp'\n+   }\n+ ]\n- []\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game014.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game015.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game013.webp'\n+   },\n+   {\n+     bodyError: 'response.body: Protocol error (Network.getResponseBody): No resource with given identifier found\\n' +\n+       'Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.',\n+     url: 'http://127.0.0.1:4193/assets/portal/game016.webp'\n+   }\n+ ]\n- []\n\n    at file:///workspace/orbit-shift/tests/game016/probe-production.mjs:30:555"
+  },
+  "records": [
+    {
+      "base": "http://127.0.0.1:4193/",
+      "touch": false,
+      "title": {
+        "width": 1440,
+        "height": 900,
+        "docWidth": 1440,
+        "docHeight": 900,
+        "entries": [
+          {
+            "selector": "#play-button",
+            "text": "遊んでみる",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(241, 197, 83)",
+            "visible": true,
+            "x": 568.984375,
+            "y": 603.234375,
+            "width": 118.015625,
+            "height": 47,
+            "clips": [],
+            "textContrast": 7.8136775767788915
+          },
+          {
+            "selector": "#tutorial-again-button",
+            "text": "練習する",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 697,
+            "y": 603.234375,
+            "width": 102.015625,
+            "height": 47,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": "#mute-button",
+            "text": "音 ON",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 1149.65625,
+            "y": 13,
+            "width": 58.34375,
+            "height": 44,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": ".arcade-portal-back",
+            "text": "← ゲームセンターへ",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(245, 237, 219)",
+            "visible": true,
+            "x": 180,
+            "y": 13,
+            "width": 135.328125,
+            "height": 44,
+            "clips": [],
+            "textContrast": 10.95549025155557
+          }
+        ]
+      },
+      "practicePads": {
+        "width": 1440,
+        "height": 900,
+        "docWidth": 1440,
+        "docHeight": 900,
+        "entries": [
+          {
+            "selector": "#rock-button",
+            "text": "グー← / A",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 214,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": "#scissors-button",
+            "text": "チョキ↓ / S / Space",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 556,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": "#paper-button",
+            "text": "パー→ / D",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 898,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          }
+        ]
+      },
+      "playing": {
+        "width": 1440,
+        "height": 900,
+        "docWidth": 1440,
+        "docHeight": 900,
+        "entries": [
+          {
+            "selector": "#rock-button",
+            "text": "グー← / A",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 214,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": "#scissors-button",
+            "text": "チョキ↓ / S / Space",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 556,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          },
+          {
+            "selector": "#paper-button",
+            "text": "パー→ / D",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 898,
+            "y": 752,
+            "width": 328,
+            "height": 100,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          }
+        ]
+      },
+      "paused": {
+        "width": 1440,
+        "height": 900,
+        "docWidth": 1440,
+        "docHeight": 900,
+        "entries": [
+          {
+            "selector": "#resume-button",
+            "text": "続きから",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(241, 197, 83)",
+            "visible": true,
+            "x": 576.984375,
+            "y": 568.5,
+            "width": 102.015625,
+            "height": 47,
+            "clips": [],
+            "textContrast": 7.8136775767788915
+          },
+          {
+            "selector": "#title-button",
+            "text": "タイトル",
+            "color": "rgb(36, 51, 73)",
+            "background": "rgb(255, 248, 232)",
+            "visible": true,
+            "x": 689,
+            "y": 568.5,
+            "width": 102.015625,
+            "height": 47,
+            "clips": [],
+            "textContrast": 12.065162039741088
+          }
+        ]
+      },
+      "opponent": "scissors",
+      "saved": {
+        "completed": "true",
+        "credits": "0"
+      },
+      "hooks": [],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4193/assets/TelemetryService-Bt0UacwE.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 1101,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/index-D-LvzQ1E.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 4025,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game001.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 4282,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game002.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 25264,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game003.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 14918,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game004.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 8386,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/fonts/arcade-rounded-jp.woff2",
+          "type": "font",
+          "status": 200,
+          "bytes": 159448,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game006.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 3014,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game005.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 20238,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game008.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 25360,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game009.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 7000,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game007.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 10048,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game010.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 19214,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game011.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 6172,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game012.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 20408,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game013.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 23236,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game015.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 2128,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game014.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 12022,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/portal/game016.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 12804,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/game016-BFhTigVA.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 28794,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/AudioService-jQ7Mxaav.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 993,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/StorageService-hS6L3DZY.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 922,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/RewardService-DeJpbqGF.js",
+          "type": "script",
+          "status": 200,
+          "bytes": 1379,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/game016/hand-scissors.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 9268,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/game016/hand-rock.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 10030,
+          "phaser": false
+        },
+        {
+          "url": "http://127.0.0.1:4193/assets/game016/hand-paper.webp",
+          "type": "image",
+          "status": 200,
+          "bytes": 10316,
+          "phaser": false
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "limits": "Native inputs and public DOM; no production debug hooks or state writes. Storage credits0 fixture only. Resource bytes are unique URLs across portal+first game load, separate from Root per-route first-load accounting."
+}

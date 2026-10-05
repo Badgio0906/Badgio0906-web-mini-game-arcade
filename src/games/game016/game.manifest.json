@@ -1,0 +1,23 @@
+{
+  "id": "game016",
+  "title": "負けじゃんけん ～LOSE TO WIN～",
+  "titleJa": "負けじゃんけん ～LOSE TO WIN～",
+  "titleEn": "LOSE TO WIN",
+  "subtitle": "勝ったら負け。負ければ勝ち。",
+  "genre": ["cognitive", "reaction", "arcade", "janken"],
+  "core_mechanic": ["reverse-rock-paper-scissors", "response-conversion"],
+  "primary_input": ["left-rock", "down-scissors", "right-paper", "click", "tap"],
+  "skill_axes": ["cognitive-inhibition", "reaction", "rule-conversion"],
+  "escalation_mechanic": "illustration-hiragana-explanation-endless-reflex",
+  "score_type": "correct-loss-points-and-reflex-speed-bonus",
+  "score_by_phase": [100, 150, 250, 300],
+  "reflex_speed_bonus": [{"maximumMs": 300, "points": 200}, {"maximumMs": 500, "points": 100}],
+  "answer_deadline_ms": {"illustration": 2000, "hiragana": 2000, "explanation": 2000, "reflex": 800},
+  "reading_time_limit": null,
+  "fixed_choices": ["rock", "scissors", "paper"],
+  "failure_conditions": ["accidental-win", "draw", "timeout"],
+  "credit_policy": "consume-once-at-run-start-when-enabled",
+  "prototype": {"unlimited_play": true, "advertising": false},
+  "tutorial": "three untimed correct-loss practice questions using the same fixed choice positions",
+  "human_playtest_status": "pending"
+}
