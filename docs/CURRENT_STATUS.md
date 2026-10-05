@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+今回の公開工程（2026-10-05 日本時間）：018候補を新環境へ取得し、freeze301ファイル一致、248/248単体・check・build、018／017各4件のローカルproduction導線を再検証した。GitHub Pages URLは意図したカスタムドメイン `game100garage.com`へ転送される（ユーザー確認済み）。GitHub APIへの通信は成功するが、この転送先は現環境の許可ホストに含まれずCONNECT403。公開URLのHTTP200確認待ちでmainは017のまま。[今回の公開工程と証拠](game018/PUBLICATION.md)。以下の旧環境CONNECT403記述は引き継ぎ時点の記録。
+
 2026-10-05 UTC。mainはGame017を含む17本、commit `1ab4fcf5a35637b15554d7942d944763e79920c9`。Pages Actions run37283475701はbuild／deployとも成功。公開URLは現環境のHTTP CONNECT403で実表示未確認。018を含む18本候補は公開前の技術検証完了で、最終結果は[018報告](game018/IMPLEMENTATION_REPORT.md)と[RELEASE_GATE](game018/QA/RELEASE_GATE.json)が正本。
 
 Repository：[Badgio0906/Badgio0906-web-mini-game-arcade](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade)。公開Portal：[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/index.html)。mainへのpushで[Pages workflow](../.github/workflows/pages.yml)が起動する。ユーザーの最新指示に従い、018は公開前成果をremote候補ブランチへ保存し、許可が適用された新環境で掲載・起動確認を引き継ぐ。[引き継ぎ書](game018/PUBLICATION_HANDOFF.md)。

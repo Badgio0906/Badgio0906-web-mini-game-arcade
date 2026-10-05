@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-05T12:04:16.227162+00:00",
+  "node": "v24.19.0",
+  "source_commit": "90c8c68c64e36f761c8ad06a575778608b377c98",
+  "candidate_commit": "fd852a7ed1e9e8376bae283dc298973b13b932c1",
+  "runtime_source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
+  "source_freeze_files_checked": 301,
+  "source_freeze_mismatches": 0,
+  "npm_ci": "PASS",
+  "typecheck": "PASS",
+  "unit": {
+    "passed": 248,
+    "total": 248,
+    "failed": 0
+  },
+  "build": "PASS",
+  "production": {
+    "018": {
+      "pass": 4,
+      "total": 4,
+      "evidence": "PRODUCTION_ROOT_SUBPATH.json"
+    },
+    "017": {
+      "pass": 4,
+      "total": 4,
+      "evidence": "GAME017_PRODUCTION_RETEST.json"
+    }
+  },
+  "initial_game017_probe": {
+    "status": "HARNESS_FAILURE",
+    "reason": "response.body promise not settled before browser/context close",
+    "evidence": "GAME017_PRODUCTION.log",
+    "game_runtime_changed": false
+  },
+  "human_playtest": "NOT_PERFORMED",
+  "legacy_godot_playtest": "NOT_REPEATED",
+  "public_dom_verified": false,
+  "publication_blocker": "Custom domain game100garage.com is user-confirmed but not in enforced HTTP allowed hosts."
+}

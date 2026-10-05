@@ -1,5 +1,7 @@
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
+公開工程の最新状態：[Game018公開記録](docs/game018/PUBLICATION.md)。新環境で248単体・check・buildと017／018のPC／phone導線を再検証済み。Pagesの転送先 `game100garage.com`は意図したURLですが、転送先へのCloud通信許可待ちで018はまだmainへ反映していません。
+
 短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。017までmain反映・Pagesデプロイ済み、018を含む18本の公開前候補の技術検証を完了しました（[RAINSHIFT公開記録](docs/game017/PUBLICATION.md)／[018引き継ぎ](docs/game018/PUBLICATION_HANDOFF.md)）。公開URLへの通信制限が残り、実表示の最終確認は次環境へ引き継ぎます。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
 
 **[ゲームセンターを遊ぶ](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)** ／ [負けじゃんけん](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game016.html) ／ [落下キング](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game015.html)

@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-05T08:59:00.186378+00:00",
+  "at": "2026-10-05T12:04:16.227162+00:00",
   "source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
   "technical_trial_candidate": "PASS",
   "automatic_publication": false,
@@ -7,7 +7,7 @@
   "game018_deployed": false,
   "public_dom_game017_game018_verified": false,
   "publication_followup_required": true,
-  "reason": "User requests pre-upload handoff when current Cloud access remains blocked; HTTP CONNECT403 under enforced revision8, Git authentication succeeds. Save candidate branch; next environment publishes and verifies actual Portal/game URLs.",
+  "reason": "New cloud task: API/GitHub Pages host accessible; intended Pages custom domain game100garage.com returns proxy CONNECT403 and is absent from enforced allowed hosts. Revalidated unchanged candidate locally; waiting for custom-domain access before main push.",
   "human_acceptance": "PENDING",
   "jev_is_shadow_only": true,
   "ground_truth_release_risk_for_initial_C2": true,
@@ -16,5 +16,8 @@
     "VALIDATION_SUMMARY.json",
     "PUBLICATION_NETWORK_BLOCK.json",
     "../PUBLICATION_HANDOFF.md"
-  ]
+  ],
+  "current_task_prepublication_validation": "../publication-qa/VALIDATION_SUMMARY.json",
+  "public_destination": "https://game100garage.com/",
+  "public_destination_user_confirmed": true
 }

@@ -1,5 +1,7 @@
 # Game018 — 実装・検証報告
 
+後続公開工程：新環境でも248/248単体・check・build、runtime301ファイル一致、018／017のproduction root／subpath・PC／phone各4件を再検証した。意図した公開先は `game100garage.com`（ユーザー確認済み）。転送先への通信許可待ちでmain反映と公開DOM確認は保留。[今回の公開記録](PUBLICATION.md)。以下は実装候補保存時点の記録。
+
 正式タイトル：**靴とばそ ～SHOE FLY HIGH!～**。5種類の靴をANGLE→SPIN→POWERの3回のタイミング入力で蹴り飛ばす、独自Canvasの静的Webゲーム。18本候補のPortal／Viteへ登録済み。公開前引き継ぎ：[PUBLICATION_HANDOFF](PUBLICATION_HANDOFF.md)。公開URL確認は現在のCloud network policyによるHTTP CONNECT403で未実施。017はmain反映・Pages build/deploy成功。
 
 ## 実装とゲームループ
