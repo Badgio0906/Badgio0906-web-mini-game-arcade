@@ -55,6 +55,8 @@ npm run preview
 
 公開中の試作版：**[WEBミニゲーセン](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)**。
 
+[負けじゃんけん](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game016.html)は[公開run37255472509](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37255472509)で196単体テスト・ビルド・Pages公開が成功しました。公開先14ページの起動・ポーズ・再読込・一覧復帰と、15配信ファイルのビルド一致を確認しています。人間による面白さ・実機操作の評価は未実施です。[016公開記録](docs/game016/IMPLEMENTATION_REPORT.md#github-pages公開確認)。
+
 落下キング改訂01：キャラ1.5倍、全幅安全床の廃止、早期トゲ床、予兆付き壁針、左右に飛ぶ鳥を反映。[公開run 37242131395](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37242131395)で181単体テスト・ビルド・Pages公開が成功し、公開先13ページと配信11ファイルの一致を確認しました。[改訂01の記録](docs/game015/revision-01/IMPLEMENTATION_REPORT.md)。
 
 初版15本版：[落下キング](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game015.html)を追加済み。[公開run 37216230347](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37216230347)で175単体テスト・ビルド・Pages公開が成功し、公開先13ページの検証も成功しました。[015検証記録](docs/game015/IMPLEMENTATION_REPORT.md)を参照してください。

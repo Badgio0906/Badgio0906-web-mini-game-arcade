@@ -1,6 +1,6 @@
 # 負けじゃんけん ～LOSE TO WIN～ 実装・検証
 
-Game016を16本目として統合した。公開先の確認は次工程。現在は無制限で遊べる試作版で、人間の面白さ・実機操作の評価は未実施。
+Game016を16本目として統合し、GitHub Pagesへ試作版を公開した。現在は無制限で遊べる試作版で、人間の面白さ・実機操作の評価は未実施。
 
 ## 遊びと実装
 
@@ -38,6 +38,16 @@ Game016を16本目として統合した。公開先の確認は次工程。現�
 テスト側の2つの初回失敗（浮動小数の2000ms差分比較、遷移前に終わらないHTTP200画像body収集）も保存し、runtime不具合と区別した。時刻差の微小な数値誤差だけを許容し、ゲームの絶対期限に猶予を追加していない。収集処理を修正して7／4ケースを再実行した。
 
 最終[280ファイル凍結](SOURCE_FREEZE.json)の集約SHA-256は `6d4a80a454a809537673cd01bf71e8c28f12763b6e5259048c44a547bf9b385a`。独立レビュー後の全コード・公開画像・fontが同じことを再ハッシュで確認する。
+
+## GitHub Pages公開確認
+
+[負けじゃんけんを遊ぶ](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game016.html)／[16ゲームの一覧](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)。runtimeコミットは `c58079cd7cfd0b54f89b6b3710ac73ddb3a4a897`。レビュー対象とGit treeの一致を確認してmainへ反映した。
+
+[公開run37255472509](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37255472509)で196単体テスト・TypeScript・ビルド・Pages公開が成功した。[Actions記録](QA/PUBLIC_ACTIONS_RUN.json)／[コマンド抜粋](QA/PUBLIC_ACTIONS_EXCERPT.log)。
+
+公開URLでPortal＋001〜011＋015＋016の14ページを実ブラウザ確認した。全件HTTP／consoleエラーなし、16件Catalog、直接起動・PLAY・ポーズ・再読込・一覧復帰が成功し、production診断hookなし。Game016は実配信でJS33,189 bytes、手画像29,614 bytes、font159,448 bytes、Phaserなし。[公開14ページの記録](QA/PUBLIC_AUDIT.json)。今回の公開検証で旧Godot3本を再実プレイしたとは扱わない。
+
+indexとgame016 HTML、その参照JS/CSS、3手画像、016サムネイル、fontの計15配信ファイルをローカルdistとbyte単位で照合し、すべて一致した。[配信ファイル照合](QA/PUBLIC_FILE_MATCH.json)。公開確認後の追加コミットは検証記録だけでruntimeは変わらない。
 
 ## 人間プレイテスト
 
