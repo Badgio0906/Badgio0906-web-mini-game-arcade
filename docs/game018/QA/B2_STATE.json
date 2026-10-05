@@ -1,0 +1,17 @@
+{
+  "checkpoint": "B2: initial native selector assertion",
+  "observations": {
+    "viewports": [
+      "1440x900 mouse",
+      "390x844 touch"
+    ],
+    "flow": "title→explanation→4 practice stages→selection",
+    "practice_total_score": 0,
+    "assertion": "document.querySelectorAll(\"[data-shoe]\").length expected5, actual6",
+    "DOM": "5 button.shoe-card elements each data-shoe plus ancestor div#app[data-shoe=sneaker]",
+    "console_error": 0
+  },
+  "requirements": {
+    "shoe_buttons": 5
+  }
+}

@@ -1,10 +1,10 @@
 # GAME_COMMON_SPEC — 現行の共通境界
 
-2026-10-05、16本版のコードと記録から整理。完成した100ゲーム用SDKではなく、現在使っている小さな境界を記述する。現状と例外は [CURRENT_STATUS](docs/CURRENT_STATUS.md)、工程は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)。以前の10本DRAFTは [archive](docs/archive/GAME_COMMON_SPEC_2026-10-04.md)、11本の練習候補は[履歴草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)に保持する。
+2026-10-05、18本候補のコードと記録から整理。完成した100ゲーム用SDKではなく、現在使っている小さな境界を記述する。現状と例外は [CURRENT_STATUS](docs/CURRENT_STATUS.md)、工程は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)。以前の10本DRAFTは [archive](docs/archive/GAME_COMMON_SPEC_2026-10-04.md)、11本の練習候補は[履歴草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)に保持する。
 
 ## 適用範囲と固有モデル
 
-001〜011・015・016のnative gameが保存・音・Telemetry等の共通サービスを使う。CREDIT接続は001〜010・015・016にあり、011のmainは財布未接続で無料専用。012〜014の旧Godot exportは既存UI・保存・音・操作を保つ。旧exportを共通サービスへ無断接続しない。
+001〜011・015〜018のnative gameが保存・音・Telemetry等の共通サービスを使う。CREDIT接続は001〜010・015〜018にあり、011のmainは財布未接続で無料専用。012〜014の旧Godot exportは既存UI・保存・音・操作を保つ。旧exportを共通サービスへ無断接続しない。
 
 固有モデル、描画、入力の採否、難度、得点、結果配置を保つ。Phaser Scene、DOM Board、Canvasを同じ基底classへ変換しない。広告SDK・ランキング・特定サーバーを固有モデルへ入れない。
 
@@ -20,7 +20,7 @@ pause／背景化では時計・物理・締切とheld入力を止める。復�
 
 [arcadeConfig](src/arcade/config.ts)でprototype制限を切り替える。現在の値はCURRENT_STATUS参照。OFF時は保存0でもPLAY／retry可、残高を変更せず、消費・補充・広告adapterを動かさない。本番広告未接続のまま再有効化しない。
 
-将来ON時は[CreditService](src/core/CreditService.ts)のゲーム別初期3、0で新RUN不可、consume(runId)の重複防止を使う。001〜010・015の終了時消費を維持し、成功CLEAR／safe_exitを失敗消費へ変換しない。016だけ[runWallet](src/games/game016/runWallet.ts)で開始時1消費、1 RUN＝1 CREDIT。質問・練習・終了で追加消費せず、途中quitで開始済み消費を取り消さない。011はflagをONにするだけでは財布が接続されないため、別途仕様と実装が必要。
+将来ON時は[CreditService](src/core/CreditService.ts)のゲーム別初期3、0で新RUN不可、consume(runId)の重複防止を使う。001〜010・015の終了時消費を維持し、成功CLEAR／safe_exitを失敗消費へ変換しない。016は[runWallet](src/games/game016/runWallet.ts)で開始時1消費、1 RUN＝1 CREDIT。質問・練習・終了で追加消費せず、途中quitで開始済み消費を取り消さない。011はflagをONにするだけでは財布が接続されないため、別途仕様と実装が必要。
 
 requestRewardedCredit(adapter)は0／非pendingのみ受け付け、granted:trueで+3。拒否・例外で増やさず再要求可、多重要求を防ぐ。[RewardService](src/core/RewardService.ts)は約900msの開発用Stubで、本番広告ではない。011の広告UI等、全ゲームのenabled実UIが完成済みとは扱わない。
 
@@ -60,6 +60,6 @@ Phaserは001〜003・006だけが必要。他native gameで共有engineを取得
 
 単体、通常入力の到達、表示fixture、実画像Visual、独立Feel、人間プレイ、実配信を別に記録する。過去snapshotの合格を変更後のPASSへ流用しない。独立レビューと検証の実施・未実施は対象報告とCURRENT_STATUSが管理する。
 
-## 017追加時の現行例外
+## 017・018の固有境界
 
-ローカル候補は17本。017は固有Canvas／経路描画の練習、既存保存・音・Telemetry・CREDITサービスを使用。016同様に将来ON時は開始1回消費、現在OFF。[実装報告](docs/game017/IMPLEMENTATION_REPORT.md)参照。公開16本とローカル候補を区別する。
+017は固有Canvas／経路描画練習、018は固有Canvas／ANGLE・SPIN・POWERと4段階の実練習。既存Storage／Audio／Telemetry／CREDITサービスを使用。016同様に将来ON時は本番開始時1回消費、現在OFF。018は距離を整数decimeterで保存する。練習のscore／BEST／本番イベントは分離する。018のskyイベントの表示停止は物理得点へ影響しない。[017報告](docs/game017/IMPLEMENTATION_REPORT.md)／[018報告](docs/game018/IMPLEMENTATION_REPORT.md)。mainは017まで反映・deploy成功、018候補の公開前引き継ぎは[手順](docs/game018/PUBLICATION_HANDOFF.md)。

@@ -1,0 +1,30 @@
+{
+  "checkpoint": "B: first model tests at exact timing boundaries",
+  "requirements": {
+    "angle_lock_seconds": 0.3,
+    "max_hold_seconds": 0.38,
+    "kick_seconds": 0.6
+  },
+  "observations": {
+    "test_passed": 21,
+    "test_failed": 3,
+    "samples": [
+      {
+        "input": "start0 stop700 settle999 settle1000ms",
+        "expected": "spin",
+        "actual": "angle-lock"
+      },
+      {
+        "input": "three stops through2362.5 then settle2742.5ms",
+        "expected": "kick",
+        "actual": "max"
+      },
+      {
+        "input": "kick begins2300 then settle2900ms",
+        "expected": "flight",
+        "actual": "kick"
+      }
+    ],
+    "environment": "isolated Vitest model, finite timestamps; no browser"
+  }
+}

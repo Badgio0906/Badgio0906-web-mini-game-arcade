@@ -1,0 +1,51 @@
+{
+  "calls": 8,
+  "http200_available": 8,
+  "total_input_tokens": 8510,
+  "total_output_tokens": 1142,
+  "total_cost_usd": 0.00035742,
+  "mean_latency_seconds": 0.3702915817498251,
+  "requested_model": "typesafe/jev-1.13",
+  "resolved_models": [
+    "typesafe/jev-1.13-20260917"
+  ],
+  "agreement_counts": {
+    "PRIMARY_CAUSE": 6,
+    "CODEX_ACTION_REQUIRED": 7,
+    "HUMAN_ONLY_JUDGMENT_REQUIRED": 7,
+    "RELEASE_RISK_IF_UNRESOLVED": 4
+  },
+  "all_four_agreement": 3,
+  "confusion": {
+    "CODEX_ACTION_REQUIRED": {
+      "threshold": 0.45,
+      "false_positive": 0,
+      "false_negative": 1
+    },
+    "HUMAN_ONLY_JUDGMENT_REQUIRED": {
+      "threshold": 0.5,
+      "false_positive": 1,
+      "false_negative": 0
+    },
+    "RELEASE_RISK_IF_UNRESOLVED": {
+      "threshold": 0.5,
+      "false_positive": 4,
+      "false_negative": 0
+    }
+  },
+  "codex_below_045_count": 3,
+  "codex_below_045_ids": [
+    "A",
+    "D",
+    "E"
+  ],
+  "below_045_followup_issue_count": 1,
+  "below_045_followup_issue_ids": [
+    "A"
+  ],
+  "release_false_pass_count": 0,
+  "release_risk_positive_ground_truth_count": 1,
+  "human_final_judgments": "none; subjective playtest unperformed",
+  "codex_usage_tokens_cost": null,
+  "limitations": "8 development checkpoints, not a representative historical benchmark or threshold optimization. Jev never changes code or publication gates."
+}

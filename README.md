@@ -1,6 +1,6 @@
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。公開版は16本、ローカル候補は17本（[RAINSHIFT報告](docs/game017/IMPLEMENTATION_REPORT.md)）。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
+短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。017までmain反映・Pagesデプロイ済み、018を含む18本の公開前候補の技術検証を完了しました（[RAINSHIFT公開記録](docs/game017/PUBLICATION.md)／[018引き継ぎ](docs/game018/PUBLICATION_HANDOFF.md)）。公開URLへの通信制限が残り、実表示の最終確認は次環境へ引き継ぎます。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
 
 **[ゲームセンターを遊ぶ](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)** ／ [負けじゃんけん](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game016.html) ／ [落下キング](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game015.html)
 
@@ -31,7 +31,7 @@ npm run preview
 
 `dist/`にnativeゲームの物理HTML、画像／ローカルfont、旧Godotの静的exportを出力します。ログイン・ゲーム用サーバー・本番広告は不要です。現在CREDITは無効で、保存残高0でも何度でも遊べます。
 
-検証コマンドは[開発手順](docs/GAME_DEVELOPMENT_RULES.md#検証の選択と証拠)から対象を選びます。古いe2eの期待値やreportの上書き先に注意してください。過去の196単体・公開検証の成績と人間評価の未実施範囲はCURRENT_STATUSへ集約しています。
+検証コマンドは[開発手順](docs/GAME_DEVELOPMENT_RULES.md#検証の選択と証拠)から対象を選びます。古いe2eの期待値やreportの上書き先に注意してください。最新の248単体・公開検証の成績と人間評価の未実施範囲はCURRENT_STATUSへ集約しています。
 
 GitHub Pagesは[workflow](.github/workflows/pages.yml)で`main`へのpush時にnpm ci→test→build→deployします。公開先、最新run、旧3サイト停止の403と再開条件は[現状](docs/CURRENT_STATUS.md)を参照してください。
 

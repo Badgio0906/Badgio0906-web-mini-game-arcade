@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright';
+import { mkdir,writeFile } from 'node:fs/promises';
+import {read,until,input,settlePaint,geometry,sequence,tutorial} from './helpers.mjs';
+const output=process.env.GAME018_REPORT_DIR||'docs/game018/QA/initial-native';await mkdir(output,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const records=[];let failed=false;
+for(const profile of [{name:'desktop',width:1440,height:900,touch:false},{name:'phone',width:390,height:844,touch:true},{name:'narrow',width:320,height:568,touch:true},{name:'landscape',width:844,height:390,touch:true}].filter(p=>!process.env.GAME018_PROFILES||process.env.GAME018_PROFILES.split(',').includes(p.name))) {
+ const context=await browser.newContext({viewport:{width:profile.width,height:profile.height},hasTouch:profile.touch,isMobile:profile.touch});context.setDefaultTimeout(10000);const page=await context.newPage(),errors=[],record={profile,captures:[],checks:[],forcedRuntimeWrites:false};records.push(record);
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ const capture=async name=>{await settlePaint(page);const p=output+'/'+profile.name+'-'+name+'.png';await page.screenshot({path:p});record.captures.push(p);};const check=async name=>record.checks.push({kind:name,geometry:await geometry(page)});
+ try {
+  await page.goto((process.env.GAME018_URL||'http://127.0.0.1:5181/')+'game018.html');await capture('title');await check('title');await tutorial(page,profile.touch,capture,check);await capture('selection');await check('selection');
+  assert.equal(await page.locator('.shoe-card[data-shoe]').count(),5);for(const shoe of ['paper','zori','leather','iron-geta','sneaker']){await input(page,profile.touch,'.shoe-card[data-shoe="'+shoe+'"]');assert.equal(await page.locator('.shoe-card[data-shoe="'+shoe+'"]').getAttribute('aria-pressed'),'true');}
+  await input(page,profile.touch,'#start-button');await capture('angle');await check('angle');
+  await input(page,profile.touch,'#pause-button');const frozen=await read(page);await page.waitForTimeout(230);assert.equal((await read(page)).snapshot.time,frozen.snapshot.time);await capture('pause');await check('pause');await input(page,profile.touch,'#resume-button');
+  await sequence(page,profile.touch,{angle:[40,50],spin:[.7,.9],power:profile.name==='narrow'?[15,25]:[99.5,100]});await capture('kick-or-max');
+  await until(page,r=>r.snapshot.phase==='flight','flight');await capture('flight-start');assert.equal((await read(page)).snapshot.result,null);
+  let boundSamples=0;const flightDeadline=Date.now()+30000;while((await read(page)).snapshot.phase==='flight'){assert.ok(Date.now()<flightDeadline,'flight watchdog');const r=await read(page),p=r.projection;assert.ok(p.shoeX>=-1&&p.shoeX<=p.width+1&&p.shoeY>=-1&&p.shoeY<=p.height+1,'shoe camera center visible');boundSamples++;if(boundSamples===8)await capture('flight-middle');await page.waitForTimeout(120);}
+  await until(page,r=>r.state==='result','land/result');await capture('result');await check('result');const result=await read(page);record.result=result.snapshot.result;record.cameraSamples=boundSamples;
+  assert.ok(result.snapshot.result.distance>0);assert.equal(result.snapshot.position.y,0);assert.equal(result.events.filter(e=>e.name==='run_end'&&e.data.outcome==='clear').length,1);assert.ok(!result.events.some(e=>e.name==='credit_used'));
+  const saved=await page.evaluate(()=>({bestDistance:localStorage.getItem('web-mini-arcade:v1:game018:bestDistanceDecimeters'),bestScore:localStorage.getItem('web-mini-arcade:v1:game018:bestScore'),shoeBest:localStorage.getItem('web-mini-arcade:v1:game018:shoeBestDecimeters:sneaker'),done:localStorage.getItem('web-mini-arcade:v1:game018:tutorialCompleted')}));record.saved=saved;assert.ok(+saved.bestScore>0);
+  await input(page,profile.touch,'#retry-button');assert.equal((await read(page)).snapshot.phase,'angle');assert.equal((await read(page)).snapshot.position.x,0);await input(page,profile.touch,'#pause-button');await input(page,profile.touch,'#title-button');await input(page,profile.touch,'#mute-button');await page.reload();await page.locator('#play-button').waitFor();assert.equal(await page.locator('#mute-button').textContent(),'音 OFF');assert.notEqual(await page.locator('#best-value').textContent(),'0.0 m');
+  await input(page,profile.touch,'#play-button');assert.equal((await read(page)).state,'selection');await input(page,profile.touch,'#portal-link');await page.waitForURL('**/index.html');await untilPortal(page);assert.equal(await page.locator('.game-card').count(),18);record.status='PASS';
+ }catch(e){failed=true;record.status='FAIL';record.error=e.message;console.log('immediate-failure',profile.name,e.message);await Promise.race([capture('FAILURE').catch(()=>{}),new Promise(r=>setTimeout(r,3000))]);}finally{record.errors=errors;if(errors.length){failed=true;record.status='FAIL';}await writeFile(output+'/partial-report.json',JSON.stringify({records},null,2));await context.close();console.log(profile.name,record.status,record.error||'');}
+}
+async function untilPortal(page){await page.locator('.game-card').first().waitFor();}
+await browser.close();await writeFile(output+'/report.json',JSON.stringify({records},null,2));if(failed)process.exitCode=1;

@@ -1,0 +1,27 @@
+{
+  "records": [
+    {
+      "kind": "native-input-lifecycle",
+      "checks": [
+        "secondary and Shift canvas rejected",
+        "held Space cannot carry into next phase; fresh key stops",
+        "header Space toggles native button without stopping gauge",
+        "old pointer release does not change flight",
+        "synthetic blur fixture pauses",
+        "quit once per unfinished run, no best/score"
+      ],
+      "runtimeWrites": false,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "kind": "storage-denied",
+      "checks": [
+        "denied storage retains memory best on retry then reload resets"
+      ],
+      "runtimeWrites": false,
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

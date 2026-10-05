@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-05T08:59:00.186378+00:00",
+  "source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
+  "runtime_public_files": 301,
+  "source_changed": [],
+  "unit": {
+    "total": 248,
+    "passed": 248,
+    "failed": 0,
+    "game018": 29,
+    "evidence": "FINAL_HOLD_UNIT_RESULTS.json"
+  },
+  "typescript": "PASS",
+  "build": "PASS",
+  "native_before_sky_hold": {
+    "profiles": 4,
+    "passed": 4,
+    "evidence": "stable-native/report.json",
+    "source_stage": "3a160370 before final sky hold/caption"
+  },
+  "input_storage_before_sky_hold": {
+    "groups": 2,
+    "passed": 2,
+    "evidence": "INPUT_LIFECYCLE_GUARDS.json"
+  },
+  "final_independent_feel": {
+    "pc_sky_throws": 2,
+    "phone_all_five_shoe_throws": 7,
+    "passed_throws": 9,
+    "flight_samples": 2269,
+    "actual_sky_holds": 10,
+    "runtime_errors": 0,
+    "source_changed_during_play": 0,
+    "evidence": "../review-artifacts/feel-retest/report.json"
+  },
+  "visual": {
+    "score": 85,
+    "F": 13,
+    "H": 13,
+    "finding_C2": "CLOSED via actual images",
+    "evidence": "../VISUAL_REVIEW.md"
+  },
+  "independent_qa": {
+    "new_findings": 0,
+    "source_files_match": 301,
+    "evidence": "INDEPENDENT_SOURCE_REVIEW.json"
+  },
+  "production": {
+    "game018_root_subpath_pc_phone": 4,
+    "game017_root_subpath_pc_phone": 4,
+    "existing_modern_root_subpath_routes": 28,
+    "passed": 36,
+    "game018_and017_no_dev_hook_no_phaser_no_decisions_calls": true
+  },
+  "preservation": {
+    "protected_files": 385,
+    "changed": 0,
+    "evidence": "EXISTING_GAME_PRESERVATION_FINAL.json"
+  },
+  "font": {
+    "glyphs": 1049,
+    "previous": 1029,
+    "lost": 0
+  },
+  "public_game017": {
+    "main_commit": "1ab4fcf5a35637b15554d7942d944763e79920c9",
+    "pages_ci": "success",
+    "actual_dom": "UNVERIFIED due CONNECT403"
+  },
+  "public_game018": "NOT DEPLOYED; remote candidate handoff",
+  "human_fun_real_device_audio_fps": "NOT PERFORMED",
+  "migrated_godot_play_this_round": "NOT PERFORMED"
+}

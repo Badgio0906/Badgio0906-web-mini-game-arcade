@@ -35,14 +35,14 @@ TypeScript、Viteの静的MPA、HTML／CSSが基盤。Phaserは必要なゲー�
 | [src/data/gameCatalog.ts](../src/data/gameCatalog.ts) | ポータルの登録データ。表示名・route・thumbnailの実装上の正本 |
 | [src/portal](../src/portal/) | 一覧の表示・入力 |
 | [src/game](../src/game/)／[src/main.ts](../src/main.ts) | Game001。既存フォルダを改名しない |
-| [src/games](../src/games/) | 002〜011・015〜017の固有モデル・描画・UI・manifest |
+| [src/games](../src/games/) | 002〜011・015〜018の固有モデル・描画・UI・manifest |
 | [public/games](../public/games/) | 012〜014の固定Godot Web出力と帰還shell |
 | [public/assets](../public/assets/) | 採用した配信画像・実画面サムネイル |
 | [assets](../assets/) | 生成原本・採用記録・font／画像の出典とライセンス |
 | [tests](../tests/) | Vitest、Playwright、ゲーム別検証・配信監査 |
 | `docs/gameNNN/`など | 固有仕様・実装報告・レビュー・QA・人間評価 |
 
-001〜003・006はPhaser。004・005・007〜011・015〜017はPhaserを要求しない。012〜014は新規のGodot開発ではなく既存exportの移行であり、UI・操作・保存・音を維持する。[移行構造](legacy-games/MIGRATION.md)。
+001〜003・006はPhaser。004・005・007〜011・015〜018はPhaserを要求しない。012〜014は新規のGodot開発ではなく既存exportの移行であり、UI・操作・保存・音を維持する。[移行構造](legacy-games/MIGRATION.md)。
 
 バックエンド、アカウント、本番広告、オンラインランキングはゲームロジックに接続されていない。Telemetryはゲーム内イベントであり、Codexの料金・使用量を取得する仕組みではない。
 

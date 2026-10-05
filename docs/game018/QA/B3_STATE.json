@@ -1,0 +1,14 @@
+{
+  "checkpoint": "B3: native touch navigation timing",
+  "requirements": {
+    "return_link": "navigate from Game018 to Portal"
+  },
+  "observations": {
+    "desktop_mouse": "URL immediately after locator.click is index.html",
+    "phone_touch": "URL immediately after locator.tap is game018.html; after waitForURL it becomes index.html and18 cards render",
+    "narrow_touch": "same immediate old URL; awaited Portal shows18 cards",
+    "first_collector": "asserted immediate URL then attempted two requestAnimationFrames on failure; stopped while failure capture awaited across navigation",
+    "subsequent_collector": "explicit waitForURL before card checks; desktop/phone/narrow PASS",
+    "runtime_change_in_navigation_handler": "none"
+  }
+}

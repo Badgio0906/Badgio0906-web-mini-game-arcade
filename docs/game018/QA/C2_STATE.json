@@ -1,0 +1,35 @@
+{
+  "checkpoint": "C2: native sky event captures",
+  "requirements": {
+    "sky_events": "shoe visibly penetrates comic airplane and UFO, then continues flight",
+    "camera": "shoe remains easy to see at high speed"
+  },
+  "observations": {
+    "viewport": "1440x900 native mouse",
+    "shoe": "paper",
+    "locked_inputs": {
+      "angle": "81degrees",
+      "spin": ".66",
+      "power": "JUST MAX"
+    },
+    "events": [
+      {
+        "name": "AIRPLANE BREAK",
+        "event_altitude_m": 2200,
+        "capture_altitude_m": 3930,
+        "image": "AIRPLANE BREAK pale caption across top, shoe outline visible through caption; airplane not visible"
+      },
+      {
+        "name": "UFO INCIDENT",
+        "event_altitude_m": 6500,
+        "capture_altitude_m": 6950,
+        "image": "UFO INCIDENT pale caption overlaps tracked shoe; UFO not visible"
+      }
+    ],
+    "render_order": "world/effects/shoe then caption",
+    "caption_bounds": "x85–915, y36*artScale–148*artScale",
+    "shoe_tracking_lower_bound_y": "110*artScale",
+    "physical_metrics_and_scored_result": "actual native locked input matches pure trajectory result",
+    "ground_events": "broken wall and shoe visible in ground captures"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "game_id": "game018",
+  "review_role": "independent source/QA evidence review",
+  "reviewer": "qa_review delegated worker, separate from implementation workers",
+  "timestamp": "2026-10-05T08:49:42.128576+00:00",
+  "source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
+  "source_freeze_record": "docs/game018/SOURCE_FREEZE.json",
+  "initial_freeze_files_checked": 300,
+  "initial_freeze_matched_at_first_read": true,
+  "runtime_changed_during_report_preparation": [
+    "src/games/game018/ShoeBoard.ts",
+    "src/games/game018/style.css"
+  ],
+  "changed_scope_note": "Initial pending UI range has now been reread against finalfreeze. Historical changes retained in review_history; final all301runtime/publicfiles matched at this review.",
+  "reviewed_initial_runtime_sha256": {
+    "game018.html": "fdb407f9fbf11499106d52fbb10b4c0f5cf990d8c753451b17a04a49bd053707",
+    "src/games/game018/ShoeArt.ts": "f3b83764741acfcd5ee4386b57489b9e21b09b45033d1a3e3f848107b9addb57",
+    "src/games/game018/ShoeBoard.ts": "439cdd9e0af9137a2d9275c89f57c2d4ceed1994dec6d0bb6a3a1b58d66062b5",
+    "src/games/game018/ShoeRun.ts": "87103e506a2c5505a0785230e8ace01615d8eeb1755e6e783baca91ef2c02caa",
+    "src/games/game018/game.manifest.json": "a6472464860028781dbef94925b98f6a5e57e6ac50bad8fe309d6d7d50899f23",
+    "src/games/game018/main.ts": "0b12317b234c9da58e06277c9accded0963169806240b7cf32129cc043d7da6a",
+    "src/games/game018/physics.ts": "19211953878900d050b394c70a1129796be7c96a6b5f3408ac933e6fa88514a7",
+    "src/games/game018/shoes.ts": "8d09b05134fc82989bb6328f993e1f0b2486cbbf6e03521b93d8f89abd33617c",
+    "src/games/game018/style.css": "8857a3cf05679dc236a29480d46fafe4393225b2c9850fae2fff254db630866c",
+    "src/games/game018/types.ts": "cc1d3ce87e54e7ad60f5af9dc673f351797cc2e270af14e804d9854fea984957"
+  },
+  "result": "PASS_INDEPENDENT_SOURCE_QA_REVIEW: new sky-hold revision finalfreeze301files match; no new concrete source defect found. New browser Feel/production checks remain independently owned by root and reviewers.",
+  "findings": [],
+  "checks": [
+    {
+      "area": "three timing stops",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "stop() settles at actual finite native timestamp; 300ms lock steps separate stops, ANGLE2.8s/SPIN1.65s/POWER1.36s. JUST MAX threshold99.5 includes100ms plateau, followed by380ms hold and600ms kick. Tests cover boundaries/delayed frames/repeated/stale stops."
+    },
+    {
+      "area": "native input",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "app capture checks primary pointer/button/all modifiers including Shift, records epoch and handled flag; pointerdown action suppresses subsequent click. Phase/menu changes increment epoch. Enter/Space use held/repeat suppression, preventDefault and native menu focus preservation. Control focus clears on menu transition."
+    },
+    {
+      "area": "physics and geometry",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Normalized real launch parameters feed fixed1/30s semi-implicit gravity/drag/weight/spin/lift/paper wind. Full2D segment/slab sweeps detect wall and descending-roof entries and high-speed tunnelling. Replay rescales time, preserving integrated landing coordinate/height/collision outcome. Score sums6published components."
+    },
+    {
+      "area": "five shoe categories",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Immutable five-shoe parameters and tests establish paper altitude/wind/drag with weak penetration; zori spin efficiency/bonus; sneaker balanced distance; leather low-angle penetration; iron ordinary weakness and precision MAX boost requiring restricted angle and spin ranges. Subjective balance/difficulty remains human assessment."
+    },
+    {
+      "area": "future result isolation",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Private precomputed trajectory is not exposed through live result before landing completes. Current sample drives position/velocity/rotation/maxHeight. Breaks/effects/obstacle broken history advance only as replay passes actual effect timestamps. Future local objects remain intact until impacted. Sky specials require eligible actual height crossings; named secret input combos intentionally trigger at launch."
+    },
+    {
+      "area": "practice and save",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Practice stages0/1/2 isolate one stop with neutral other values and repeat/next actions, without scored flight. Stage3 follows real launch/landing and zeros every score component. Practice end exits before real best/score/run events. Real result stores max global distance/score and shoe-specific distance in Game018 namespace, preserving old keys; retry resets."
+    },
+    {
+      "area": "lifecycle",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Pause freezes logical time/gauges/flight; resume excludes wall-clock pause. Blur/hidden clear held keys and pause. Cached pagehide pauses; noncached real pagehide quits once. HMR cancels RAF, aborts listeners, destroys audio/observer and removesDEV hook."
+    },
+    {
+      "area": "Canvas and bounded work",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Canvas consumes current model state, speed-based camera follows and bounds shoe onscreen; artwork is independently enlarged. Initial source uses bounded local obstacle stream24/history64/effects18; simulation<=3600integrationsteps (up to3601samples) rather than whole-world DOM. Per-frame allocation is bounded. Reduced motion removes flash/shake/trails; actual deviceFPS and visual comfort remain unverified."
+    },
+    {
+      "area": "privacy and production boundary",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "DEV hook snapshot/isolated simulate clone cannot mutate actual run. Initial production game018-GONkiUEu.js is47672bytes and static scan finds none of __arcadeDebug, OPENROUTER_API_KEY, openrouter.ai, typesafe/jev, import.meta.hot. No runtime Jev/credential wiring. No key value accessed in this review."
+    },
+    {
+      "area": "final localized presentation and assets",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": "Localized deltas reread and stable-native4PASS plus nativeguard2PASS saved evidence independently inspected. No extra browser/test/API executed."
+    },
+    {
+      "area": "sky encounter replay hold mapping and caption layering",
+      "result": "PASS_SOURCE_AND_TARGETED_SAVED_RECORDS",
+      "evidence": "See sky_hold_revision_review; no future result leakage or physics/score mutation introduced; fresh native Visual/Feel remains separate."
+    }
+  ],
+  "evidence_reviewed": {
+    "unit_record": "docs/game018/QA/INITIAL_UNIT_RESULTS.json",
+    "unit_passed": 244,
+    "unit_failed": 0,
+    "game018_units": 25,
+    "previous_game_units": 219,
+    "model_record": "docs/game018/QA/model/CALIBRATION.json",
+    "grid_checked": 1890,
+    "finite_and_landed": true,
+    "max_samples": 1730,
+    "initial_typecheck": "docs/game018/QA/INITIAL_TYPECHECK.log",
+    "initial_build": "docs/game018/QA/INITIAL_BUILD.log",
+    "stable_native_record": "docs/game018/QA/stable-native/report.json",
+    "stable_native_passed_profiles": [
+      "desktop1440x900",
+      "phone390x844",
+      "narrow320x568",
+      "landscape844x390"
+    ],
+    "native_guard_record": "docs/game018/QA/INPUT_LIFECYCLE_GUARDS.json",
+    "native_guard_records_at_review": 2,
+    "native_guard_statuses": [
+      "PASS",
+      "PASS"
+    ],
+    "final_unit_record": "docs/game018/QA/FINAL_UNIT_RESULTS.json",
+    "final_unit_passed": 244,
+    "final_unit_failed": 0,
+    "post_hold_browser_rerun_status": "pending at this source review; earlier stable-native records are historical3a160370freeze evidence, not repeated against4e491ba.",
+    "post_hold_full_unit_status": "root running; this reviewer inspected29targeted saved results only."
+  },
+  "method": "Read request and model/Canvas/main/art/test source; inspect saved unit/calibration/build records and static bundle. No source/test/public edits, extra test run, browser or API calls.",
+  "not_claimed": [
+    "Human fun/timing/comfort/difficulty, physicalFPS/sound or motion sickness",
+    "ScreenshotVisual score inferred from source",
+    "All17 oldgames replayed",
+    "Initial browser run or final production probe passed",
+    "Publication authorization"
+  ],
+  "human_final_judgment": null,
+  "review_history": [
+    {
+      "source_hash": "efeac0ff0da165d659edebb74a2de72952162e5e9aea68b00cb392738ecdbbd8",
+      "record": "docs/game018/SOURCE_FREEZE_INITIAL.json",
+      "result": "PASS_SOURCE_REVIEW_INITIAL_SCOPE: no new concrete source defect found. Final browser/Visual/Feel/release gates are separate and pending.",
+      "runtime_changed_during_report_preparation": [
+        "src/games/game018/ShoeBoard.ts",
+        "src/games/game018/style.css"
+      ],
+      "timestamp": "2026-10-05T08:12:25.941158+00:00"
+    },
+    {
+      "source_hash": "3a1603705e78bb6ccc5c7e6a227faded2ab170a729756653503e611dec04d397",
+      "timestamp": "2026-10-05T08:33:55.488733+00:00",
+      "result": "PASS_INDEPENDENT_SOURCE_QA_REVIEW: final freeze301files match; no new concrete source defect found. Root saved native checks independently inspected; final production/publication and human subjective evaluation remain separate.",
+      "final_delta_review": {
+        "changed_runtime_public_files": [
+          "public/assets/portal/game018.webp",
+          "public/fonts/arcade-rounded-jp.woff2",
+          "src/games/game018/ShoeBoard.ts",
+          "src/games/game018/main.ts",
+          "src/games/game018/style.css"
+        ],
+        "unchanged_gameplay": [
+          "ShoeRun.ts",
+          "physics.ts",
+          "shoes.ts",
+          "types.ts",
+          "ShoeArt.ts"
+        ],
+        "source_observations": [
+          "Canvas title lettering removed, avoiding duplicated DOM/Canvas title over boy.",
+          "Responsive setup hipX is max(330,200*artScale), giving enlarged left leg room; camera and physical input/trajectory unchanged.",
+          "Early flight origin boy drawn only phaseflight and flightElapsed<.9s, at projected worldx0 and ground. launched=true suppresses kicked shoe on foot; actual live flying shoe rendered once from run position.",
+          "main live-status gives current result/landing messages instead of stale JUST MAX feedback; inputs/score/save unchanged.",
+          "CSS hides board only selection/result narrow or shortlandscape, compacts cards/action rows, presents5cards across shortlandscape; gameplay remains Canvas. Landscape footer allocated36px.",
+          "Index metadata and fallback count18 verified; initial freeze already included these edits.",
+          "Font cmap independently read from baseline Git blob and current asset:1029→1049 glyphs,20added,0lost.",
+          "Actual gameplay screenshot-derived thumbnail capture record read; WebP independently checked640x360,12440bytes, SHA256f552ab7e14e8b12bc412e4beb353376ddb048adb917fd2c4223131eb5d754c6e. Reviewer did not assign image Visual score."
+        ],
+        "known_root_findings": [
+          {
+            "checkpoint": "B",
+            "observation": "model timing exact-boundary delays",
+            "source_fix": "1e-9second comparisons preserve intended transitions",
+            "status": "closed_source_and_saved25unit_record"
+          },
+          {
+            "checkpoint": "B2",
+            "observation": "broad[data-shoe]test selector counted ancestor as6th card",
+            "source_fix": "test selects real.shoe-card; runtime has5choices",
+            "status": "closed_saved_stable_native_records"
+          },
+          {
+            "checkpoint": "C",
+            "observation": "initial Canvas title/boy overlap and selection layout overflow",
+            "source_fix": "remove duplicated Canvas title; compact narrow/landscape selection/result and responsive hip",
+            "status": "closed_technical_source_and_saved_native_geometry; visual impression belongs to separate actual-image review"
+          }
+        ]
+      }
+    }
+  ],
+  "final_freeze_files_checked": 301,
+  "final_freeze_file_matches": true,
+  "reviewed_final_runtime_sha256": {
+    "game018.html": "fdb407f9fbf11499106d52fbb10b4c0f5cf990d8c753451b17a04a49bd053707",
+    "src/games/game018/ShoeArt.ts": "f3b83764741acfcd5ee4386b57489b9e21b09b45033d1a3e3f848107b9addb57",
+    "src/games/game018/ShoeBoard.ts": "e42a7354cbf20726c9a051469e06af9f5cc921a8c70766444601cfd4bd2ae100",
+    "src/games/game018/ShoeRun.ts": "5ec65265c77c9cf1e242ae9c3b69491b95e19ed5ff3fedb7c8b39acc46e0f5a2",
+    "src/games/game018/game.manifest.json": "a6472464860028781dbef94925b98f6a5e57e6ac50bad8fe309d6d7d50899f23",
+    "src/games/game018/main.ts": "f4f8acdc596408319b07b2ab9a16b2f07db4963e88e4ddedf9491ef8bd47c0d5",
+    "src/games/game018/physics.ts": "b6f2cd5c563a242ebacdbafe9b996c86d9cb4f22d34e6a684e958ad8d92d4c85",
+    "src/games/game018/shoes.ts": "8d09b05134fc82989bb6328f993e1f0b2486cbbf6e03521b93d8f89abd33617c",
+    "src/games/game018/style.css": "e1327da336e20c03dee2829c4eae03920c22cdb0da4cc05addef2a113f98352a",
+    "src/games/game018/types.ts": "71778fe1b2d4e477e97f0a100a9733edeb2f302e54d69acc0385c0c135cdd48d"
+  },
+  "final_delta_review": {
+    "changed_runtime_public_files": [
+      "public/assets/portal/game018.webp",
+      "public/fonts/arcade-rounded-jp.woff2",
+      "src/games/game018/ShoeBoard.ts",
+      "src/games/game018/main.ts",
+      "src/games/game018/style.css"
+    ],
+    "unchanged_gameplay": [
+      "ShoeRun.ts",
+      "physics.ts",
+      "shoes.ts",
+      "types.ts",
+      "ShoeArt.ts"
+    ],
+    "source_observations": [
+      "Canvas title lettering removed, avoiding duplicated DOM/Canvas title over boy.",
+      "Responsive setup hipX is max(330,200*artScale), giving enlarged left leg room; camera and physical input/trajectory unchanged.",
+      "Early flight origin boy drawn only phaseflight and flightElapsed<.9s, at projected worldx0 and ground. launched=true suppresses kicked shoe on foot; actual live flying shoe rendered once from run position.",
+      "main live-status gives current result/landing messages instead of stale JUST MAX feedback; inputs/score/save unchanged.",
+      "CSS hides board only selection/result narrow or shortlandscape, compacts cards/action rows, presents5cards across shortlandscape; gameplay remains Canvas. Landscape footer allocated36px.",
+      "Index metadata and fallback count18 verified; initial freeze already included these edits.",
+      "Font cmap independently read from baseline Git blob and current asset:1029→1049 glyphs,20added,0lost.",
+      "Actual gameplay screenshot-derived thumbnail capture record read; WebP independently checked640x360,12440bytes, SHA256f552ab7e14e8b12bc412e4beb353376ddb048adb917fd2c4223131eb5d754c6e. Reviewer did not assign image Visual score."
+    ],
+    "known_root_findings": [
+      {
+        "checkpoint": "B",
+        "observation": "model timing exact-boundary delays",
+        "source_fix": "1e-9second comparisons preserve intended transitions",
+        "status": "closed_source_and_saved25unit_record"
+      },
+      {
+        "checkpoint": "B2",
+        "observation": "broad[data-shoe]test selector counted ancestor as6th card",
+        "source_fix": "test selects real.shoe-card; runtime has5choices",
+        "status": "closed_saved_stable_native_records"
+      },
+      {
+        "checkpoint": "C",
+        "observation": "initial Canvas title/boy overlap and selection layout overflow",
+        "source_fix": "remove duplicated Canvas title; compact narrow/landscape selection/result and responsive hip",
+        "status": "closed_technical_source_and_saved_native_geometry; visual impression belongs to separate actual-image review"
+      }
+    ]
+  },
+  "sky_hold_revision_review": {
+    "source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
+    "files": [
+      "src/games/game018/types.ts",
+      "src/games/game018/physics.ts",
+      "src/games/game018/ShoeRun.ts",
+      "src/games/game018/ShoeBoard.ts"
+    ],
+    "result": "PASS_SOURCE_AND_SAVED_MODEL_EVIDENCE",
+    "reviewed_behavior": [
+      "Each actual eligible AIRPLANE/UFO/ORBITAL event creates a550ms hold at its real physical timestamp and coordinate; up to3holds/1.65seconds. Physical integration and scoring are completed before replay time mapping.",
+      "replayPhysicalTime subtracts completed hold durations, returns exact encounter physicalTime while holding, and resumes original motion time. At final replay duration it returns exact physicalDuration, preserving exact landing y0 and finalx.",
+      "Effects and obstacle notifications use the same forward mapping. The held event starts at hold.start; later events include only earlier hold delays. Existing score/distance/height/breaks and physical samples remain unchanged.",
+      "ShoeRun.activeHold returns only currently activeflight hold with name/remaining/new position copy; snapshot includes that copy. Futureholds and finalresult remain private until reached/landed. Pause freezes run.time/flightElapsed, so holdprogress is preserved.",
+      "Caption height min(86*artScale,18%panelheight), placed below if shoeY<42%height and above otherwise; flyingShoe rendered after caption, preventing banner layer from hiding shoe. Actual visibility/comfort is for native/image Feel review.",
+      "Revisedthumbnail independently checked640x360,11022bytes. Screenshot source remains actual native capture; no Visual score inferred by this source reviewer."
+    ],
+    "model_evidence": {
+      "targeted_record": "docs/game018/QA/model/HOLD_INTEGRATED_RETEST_UNIT.json",
+      "passed": 29,
+      "failed": 0,
+      "comparison_record": "docs/game018/QA/model/HOLD_PHYSICS_PRESERVATION.json",
+      "input_combinations": 1890,
+      "physical_samples_distance_height_breaks_score_unchanged": true,
+      "max_additional_hold_seconds": 1.65
+    },
+    "historical_failure_preserved": "HOLD_AFTER_ISOLATED_UNIT and HOLD_INTEGRATED_UNIT27/29 failed exact endpoint roundoff; endpoint corrected in replayPhysicalTime rather than weakening assertions.",
+    "native_scope": "No browser launched or test rerun by this reviewer. Prior native results belong to earlier freeze; root/Feel reviewer owns new revision rerun.",
+    "thumbnail_sha256": "661268239206534c733f2325b8dda7dbf0be44ae0cebcc3bd14c03339b5e9d01"
+  }
+}

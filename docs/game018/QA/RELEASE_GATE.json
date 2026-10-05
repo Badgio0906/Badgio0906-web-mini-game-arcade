@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-05T08:59:00.186378+00:00",
+  "source_hash": "4e491ba21ec7f5b3bcfc86c1b5656e186d7dffc1f22fc94903afc1d19f27bfbd",
+  "technical_trial_candidate": "PASS",
+  "automatic_publication": false,
+  "main_includes_game018": false,
+  "game018_deployed": false,
+  "public_dom_game017_game018_verified": false,
+  "publication_followup_required": true,
+  "reason": "User requests pre-upload handoff when current Cloud access remains blocked; HTTP CONNECT403 under enforced revision8, Git authentication succeeds. Save candidate branch; next environment publishes and verifies actual Portal/game URLs.",
+  "human_acceptance": "PENDING",
+  "jev_is_shadow_only": true,
+  "ground_truth_release_risk_for_initial_C2": true,
+  "C2_current_status": "resolved and independently retested",
+  "evidence": [
+    "VALIDATION_SUMMARY.json",
+    "PUBLICATION_NETWORK_BLOCK.json",
+    "../PUBLICATION_HANDOFF.md"
+  ]
+}
