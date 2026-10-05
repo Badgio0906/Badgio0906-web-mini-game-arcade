@@ -39,7 +39,7 @@ Call log:
   3  | const legacy = ['yokodori-days', 'tachibana-task-heaven', 'finger-heart-challenge'];
   4  | const paths = [...native.map(id => `./${id}.html`), ...legacy.map(slug => `./games/${slug}/index.html`)];
   5  | async function events(page: import('@playwright/test').Page) { return page.evaluate(() => { const debug = (window as any).__arcadeDebug ?? (window as any).__orbitDebug; return debug?.telemetry?.() ?? (window as any).__game019?.telemetry ?? []; }); }
-  6  | 
+  6  |
   7  | for (const path of paths) test(`${path}: first visit offers three distinct accessible start choices`, async ({ page }) => {
   8  |   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   9  |   await page.goto(path);
@@ -64,7 +64,7 @@ Call log:
   28 |   expect((await events(page)).filter((e: any) => e.name === 'run_start')).toHaveLength(0);
   29 |   expect(errors).toEqual([]);
   30 | });
-  31 | 
+  31 |
   32 | for (const id of native) test(`${id}: immediate first run skips tutorial without inventing completion`, async ({ page }) => {
   33 |   await page.goto(`./${id}.html`); const button = page.locator('#play-button'); await expect(button).toBeEnabled(); await button.click();
   34 |   if (id === 'game018') { await expect(page.locator('#app')).toHaveAttribute('data-state', 'selection'); await page.locator('#start-button').click(); }
@@ -75,7 +75,7 @@ Call log:
   39 |   const log = await events(page); expect(log.filter((e: any) => e.name === 'run_start')).toHaveLength(1);
   40 |   expect(log.some((e: any) => e.name === 'tutorial_skip')).toBe(true);
   41 | });
-  42 | 
+  42 |
   43 | test('explicit shared practice has no production run and held answer cannot start a run', async ({ page }) => {
   44 |   await page.goto('./game011.html'); const best = await page.locator('#best-value').textContent();
   45 |   await page.locator('#tutorial-again-button').click(); await expect(page.locator('#arcade-training')).toHaveAttribute('data-phase', 'practice');
@@ -86,7 +86,7 @@ Call log:
   50 |   await expect(page.locator('#best-value')).toHaveText(best!); await page.locator('#tutorial-start-button').click();
   51 |   await expect(page.locator('#play-button')).toBeVisible(); expect((await events(page)).filter((e: any) => e.name === 'run_start')).toHaveLength(0);
   52 | });
-  53 | 
+  53 |
   54 | for (const slug of legacy) test(`${slug}: shell practice never loads or runs production engine`, async ({ page }) => {
   55 |   await page.goto(`./games/${slug}/index.html`); await page.locator('#tutorial-again-button').click();
   56 |   await expect(page.locator('#practice-sample')).toBeVisible(); await expect(page.locator('#legacy-game-frame')).not.toHaveAttribute('src', /.+/);
@@ -97,5 +97,5 @@ Call log:
      |                                                 ^ Error: expect(locator).toHaveText(expected) failed
   61 |   expect(await page.evaluate(() => Object.keys(localStorage).filter(key => !key.includes('telemetry')))).toEqual([]);
   62 | });
-  63 | 
+  63 |
 ```
