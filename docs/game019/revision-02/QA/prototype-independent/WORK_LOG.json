@@ -1,0 +1,36 @@
+{
+  "id": "game019-r02-prototype-independent-feel",
+  "game_ids": [
+    "game019"
+  ],
+  "stage": "review",
+  "role": "independent prototype/feel reviewer",
+  "started_at": "2026-10-05T21:59:49.909Z",
+  "finished_at": "2026-10-05T22:07:37.144Z",
+  "baseline_commit": "fcc4156a53988fc24aa70967534c5669e279fb38",
+  "commands": [
+    "node docs/game019/revision-02/QA/prototype-independent/probe.mjs",
+    "node docs/game019/revision-02/QA/prototype-independent/extra.mjs",
+    "node docs/game019/revision-02/QA/prototype-independent/max-only.mjs"
+  ],
+  "result": "technical/design gate PASS; no midair assist adopted; human fun and physical-device evaluation unperformed",
+  "fix_classifications": [
+    "test-harness diagnostic polling latency",
+    "test-harness failure-position assumption",
+    "test-harness catch-trajectory assumption",
+    "test-harness floating-point threshold",
+    "prototype favicon absence minor HTML follow-up"
+  ],
+  "runtime_changes": 0,
+  "evidence": [
+    "docs/game019/revision-02/PROTOTYPE_FEEL_REVIEW.md",
+    "docs/game019/revision-02/QA/prototype-independent/SUMMARY.json"
+  ],
+  "model": null,
+  "tokens_input": null,
+  "tokens_cached": null,
+  "tokens_output": null,
+  "cost": null,
+  "usage_source": null,
+  "time_scope": "First browser collector start to final supplemental collector completion; prior document reading and later report writing excluded."
+}

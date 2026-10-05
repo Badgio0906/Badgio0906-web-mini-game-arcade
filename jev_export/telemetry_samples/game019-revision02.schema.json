@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "gameId": "game019",
+  "revision": 2,
+  "envelope": "Existing TelemetryEvent: name, at, primitive data including game_id, session_id, run_id; max40 fields; local ring400",
+  "eventName": "specific_game_events",
+  "eventFields": {
+    "jump": [
+      "attempt_id",
+      "jump_charge_ms",
+      "jump_power_normalized",
+      "jump_band",
+      "jump_direction",
+      "jump_start_height",
+      "wind_direction",
+      "wind_strength",
+      "section_id"
+    ],
+    "jump_end": [
+      "attempt_id",
+      "jump_start_height",
+      "jump_end_height",
+      "landing_success",
+      "landing_id",
+      "jump_band",
+      "ceiling_or_wall_bump",
+      "outcome"
+    ],
+    "fall_start": [
+      "attempt_id",
+      "fall_start_height"
+    ],
+    "fall_end": [
+      "attempt_id",
+      "fall_start_height",
+      "fall_end_height",
+      "fall_distance",
+      "progress_lost",
+      "total_fall"
+    ],
+    "section_reached": [
+      "section_id",
+      "section_name",
+      "height",
+      "section_from"
+    ],
+    "catch_ledge_used": [
+      "ledge_id",
+      "height",
+      "fall_distance"
+    ],
+    "chapter_reached": [
+      "chapter",
+      "height"
+    ],
+    "well_clear": [
+      "height",
+      "seconds"
+    ],
+    "space_clear": [
+      "height",
+      "seconds",
+      "total_fall"
+    ],
+    "charge_start": [
+      "height"
+    ],
+    "charge_cancel": [],
+    "wall_bump": [
+      "height",
+      "obstacle_id"
+    ],
+    "ceiling_bump": [
+      "height",
+      "obstacle_id"
+    ],
+    "land": [
+      "ledge_id",
+      "height",
+      "surface",
+      "drop",
+      "loss",
+      "success"
+    ]
+  },
+  "values": {
+    "jump_charge_ms": [
+      0,
+      700
+    ],
+    "jump_power_normalized": [
+      0,
+      1
+    ],
+    "jump_band": [
+      "short",
+      "medium",
+      "long"
+    ],
+    "jump_direction": [
+      -1,
+      0,
+      1
+    ],
+    "wind_direction": [
+      "none",
+      "left",
+      "right",
+      "up",
+      "down"
+    ],
+    "wind_strength": [
+      "none",
+      "weak",
+      "medium",
+      "strong"
+    ]
+  },
+  "run_endFields": [
+    "outcome",
+    "score",
+    "seconds",
+    "falls",
+    "total_fall",
+    "biggest_fall",
+    "jumps",
+    "phase",
+    "run_id"
+  ],
+  "practice": "Only tutorial/practice envelopes; no production jump/score/BEST/run/chapter metrics",
+  "limitations": [
+    "Not global or external Jev telemetry",
+    "Missing window records remain unknown",
+    "Both run_start and run_end required for reach-rate denominator",
+    "Synthetic and observed samples have separate provenance"
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "startedAt": "2026-10-05T21:53:55.777Z",
+  "before": {
+    "src/games/game019/ChargeRun.ts": "b51a7a5f83f3279a7b08a9c36fa25c400fa60ee32fa87c9d4a4c60e686ff4fa3",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeBoard.ts": "2dacdd5527b638fbfc91b05dbe3047cc9e3ef1d3dacd55792132d2f7d06f2e99",
+    "src/games/game019/prototypeLevel.ts": "ecdc01d9e3683e4b68dc4414ff57db757e03ac23c97768b7c631b0b2352355c8",
+    "src/games/game019/prototypeMain.ts": "db755c7233827af19df5171b6a7d8740d728c4adbdfc81dd57a87b5f410d13b4",
+    "tests/game019/prototype.html": "b897be0b9bef3fba712b2aee26ec1f933950f3c4a6cc1e16887e8b5ddd674a75"
+  },
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        {
+          "name": "short",
+          "peak": 0.9161386866426336,
+          "x": 225.41241452319298,
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 116.67,
+                "jump_power_normalized": 0.16666666666666663,
+                "jump_band": "short",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 0.9161386866426336
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 0.9161386866426336,
+                "fall_end_height": 0,
+                "fall_distance": 0.9161386866426336,
+                "progress_lost": 0,
+                "total_fall": 0.9161386866426339
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "short",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 0.9161386866426336,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "medium",
+          "peak": 5.063986676653223,
+          "x": 180,
+          "events": [
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 458.33,
+                "jump_power_normalized": 0.6547619047619042,
+                "jump_band": "medium",
+                "jump_direction": 0,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.063986676653223
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.063986676653223,
+                "fall_end_height": 0,
+                "fall_distance": 5.063986676653223,
+                "progress_lost": 0,
+                "total_fall": 5.063986676653223
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "medium",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 5.063986676653223,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "max",
+          "peak": 8.999997559864482,
+          "x": 180,
+          "events": [
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 700,
+                "jump_power_normalized": 1,
+                "jump_band": "long",
+                "jump_direction": 0,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482,
+                "fall_end_height": 0,
+                "fall_distance": 8.999997559864482,
+                "progress_lost": 0,
+                "total_fall": 8.999997559864486
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "long",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 8.999997559864482,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cancel-not-launch",
+          "pass": true
+        },
+        {
+          "name": "no-assist",
+          "x": 180,
+          "vx": 0
+        },
+        {
+          "name": "weak-assist",
+          "x": 181.08,
+          "vx": 7.200000000000004
+        }
+      ],
+      "errors": [],
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "short",
+          "peak": 0.9888583495978683,
+          "x": 227.66648491382028,
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 125,
+                "jump_power_normalized": 0.17857142857142852,
+                "jump_band": "short",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 0.9888583495978683
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 0.9888583495978683,
+                "fall_end_height": 0,
+                "fall_distance": 0.9888583495978683,
+                "progress_lost": 0,
+                "total_fall": 0.988858349597868
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "short",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 0.9888583495978683,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "medium",
+          "peak": 5.439440265576855,
+          "x": 180,
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 483.33,
+                "jump_power_normalized": 0.6904761904761899,
+                "jump_band": "medium",
+                "jump_direction": 0,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.439440265576855
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.439440265576855,
+                "fall_end_height": 0,
+                "fall_distance": 5.439440265576855,
+                "progress_lost": 0,
+                "total_fall": 5.439440265576853
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "medium",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 5.439440265576855,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "max",
+          "peak": 8.999997559864482,
+          "x": 180,
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 700,
+                "jump_power_normalized": 1,
+                "jump_band": "long",
+                "jump_direction": 0,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482,
+                "fall_end_height": 0,
+                "fall_distance": 8.999997559864482,
+                "progress_lost": 0,
+                "total_fall": 8.999997559864486
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "long",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 8.999997559864482,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "cancel-not-launch",
+          "pass": true
+        },
+        {
+          "name": "no-assist",
+          "x": 180,
+          "vx": 0
+        },
+        {
+          "name": "weak-assist",
+          "x": 181.20333333333335,
+          "vx": 7.600000000000004
+        }
+      ],
+      "errors": [],
+      "status": "PASS"
+    }
+  ],
+  "evidence": "Ordinary keyboard and native CDP contacts; read-only diagnostics; no human enjoyment assessment",
+  "after": {
+    "src/games/game019/ChargeRun.ts": "b51a7a5f83f3279a7b08a9c36fa25c400fa60ee32fa87c9d4a4c60e686ff4fa3",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeBoard.ts": "2dacdd5527b638fbfc91b05dbe3047cc9e3ef1d3dacd55792132d2f7d06f2e99",
+    "src/games/game019/prototypeLevel.ts": "ecdc01d9e3683e4b68dc4414ff57db757e03ac23c97768b7c631b0b2352355c8",
+    "src/games/game019/prototypeMain.ts": "db755c7233827af19df5171b6a7d8740d728c4adbdfc81dd57a87b5f410d13b4",
+    "tests/game019/prototype.html": "b897be0b9bef3fba712b2aee26ec1f933950f3c4a6cc1e16887e8b5ddd674a75"
+  },
+  "sourceFrozen": true,
+  "endedAt": "2026-10-05T21:54:14.325Z"
+}

@@ -1,0 +1,18 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game019-level.test.ts (7 tests | 1 failed) 126ms
+   ✓ Game019 authored well and sky > preserves the accepted pilot and has 12 named well/12 sky sections with unequal gaps 4ms
+   ✓ Game019 authored well and sky > climbs both physically reachable routes through sea/bird/sky to a real star landing 53ms
+   ✓ Game019 authored well and sky > lands on the moving bucket at four different initial clock phases without position injection 25ms
+   ✓ Game019 authored well and sky > makes a small error, ordinary error, and high risk error lose different progress in the same RUN 15ms
+   × Game019 authored well and sky > physically catches a failed high jump at 50m instead of respawning there 10ms
+     → expected +0 to be close to 7.2, received difference is 7.2, but expected 0.005
+   ✓ Game019 authored well and sky > holds the takeoff wind across a zone boundary and still has no air direction control 12ms
+   ✓ Game019 authored well and sky > cannot bypass the pilot beam with repeated maximum straight jumps 5ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  22:18:53
+   Duration  417ms (transform 84ms, setup 0ms, collect 96ms, tests 126ms, environment 0ms, prepare 54ms)
+

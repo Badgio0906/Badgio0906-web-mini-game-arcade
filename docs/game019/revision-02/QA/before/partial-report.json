@@ -1,0 +1,6245 @@
+{
+  "branch": "codex/game019-charge-redesign",
+  "baseCommit": "fcc4156a53988fc24aa70967534c5669e279fb38",
+  "startedAt": "2026-10-05T21:40:12.228Z",
+  "sourceHashes": {
+    "game019.html": "ff592d6582541c3ca07349e910347d3a04a84ace02882b9e46677fcb049a3b4c",
+    "src/games/game019/main.ts": "744851d1da6f66d4fb6b2f36a2a719b550cf041c27091d418f7af82f55744c47",
+    "src/games/game019/style.css": "dd02e52fd73a69fc4771f81df8eec760dadc882c72f4b7a43cf1e8c485d05c3d",
+    "src/games/game019/FrogRun.ts": "911d1fb6fad448dcec0c61c7e2d97283d0f0f3825a2a4b555a54b90dc146b977",
+    "src/games/game019/generation.ts": "b0d33d1aa8ed46662c19904d1d7f0c05caf457b60a5f7979d5667acd4a80822d",
+    "src/games/game019/types.ts": "97e5f55893975552c065d91bc52a12cb259265cb7e8782bfc8d750bbe71d81d4",
+    "src/games/game019/FrogPractice.ts": "b4f15fa5aa431f1573fa80037176e5f6043bac7d0c16fcee39fd8338e1a3bd14",
+    "src/games/game019/FrogBoard.ts": "ed420bf4adf48fbef403ec429f70c3fa641ea6959a5dc8312921494777f0bb34",
+    "src/games/game019/frogPixels.ts": "ff19c27bd0d242589159f0d45b777041d3918ca565299b3dcfaa2f3b4906aa50",
+    "src/core/TelemetryService.ts": "9fe5a7de2746ec3852fcb5698834cf677b3e0829106e1e0cf830adc00df6715c"
+  },
+  "runtimeMutation": false,
+  "evidence": "ordinary keyboard/touch inputs guided by readonly exact-physics forecasts; not human fun evaluation",
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 930,
+                "y": 551.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 930,
+                "y": 603.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 930,
+                "y": 655.5,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 930,
+                "y": 503.875,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 930,
+                "y": 555.875,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 607.875,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 930,
+                "y": 638.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 930,
+                "y": 690.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 742.5,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1206.453125,
+                "y": 20,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1206.453125,
+                "y": 20,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 930,
+                "y": 570.75,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 622.75,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 930,
+                "y": 674.75,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/revision-02/QA/before/desktop-title.png",
+        "docs/game019/revision-02/QA/before/desktop-pause.png",
+        "docs/game019/revision-02/QA/before/desktop-explanation.png",
+        "docs/game019/revision-02/QA/before/desktop-practice-0.png",
+        "docs/game019/revision-02/QA/before/desktop-practice-1.png",
+        "docs/game019/revision-02/QA/before/desktop-practice-2.png",
+        "docs/game019/revision-02/QA/before/desktop-practice-3.png",
+        "docs/game019/revision-02/QA/before/desktop-practice-complete.png",
+        "docs/game019/revision-02/QA/before/desktop-well-start.png",
+        "docs/game019/revision-02/QA/before/desktop-fall-recovery.png",
+        "docs/game019/revision-02/QA/before/desktop-shore-milestone.png",
+        "docs/game019/revision-02/QA/before/desktop-sky-start.png",
+        "docs/game019/revision-02/QA/before/desktop-upper-sky.png",
+        "docs/game019/revision-02/QA/before/desktop-space-result.png",
+        "docs/game019/revision-02/QA/before/desktop-midair-opposite-input.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "level": {
+        "alive": true,
+        "cleared": false,
+        "time": 0.26666666666666666,
+        "height": 0,
+        "maxHeight": 0,
+        "cameraY": 0,
+        "chapter": "well",
+        "phase": "grounded",
+        "player": {
+          "x": 180,
+          "y": 0,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "facing": 1,
+          "jumpSize": "medium",
+          "landingTimer": 0,
+          "platformId": 0
+        },
+        "platforms": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 0,
+            "width": 312,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 1,
+            "x": 59,
+            "y": 38,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 2,
+            "x": 154,
+            "y": 76,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 3,
+            "x": 229,
+            "y": 114,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 4,
+            "x": 55,
+            "y": 129,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 5,
+            "x": 134,
+            "y": 152,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 6,
+            "x": 44,
+            "y": 190,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 7,
+            "x": 145,
+            "y": 228,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 8,
+            "x": 55,
+            "y": 243,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 9,
+            "x": 224,
+            "y": 266,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 10,
+            "x": 119,
+            "y": 304,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 11,
+            "x": 59,
+            "y": 342,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 12,
+            "x": 267,
+            "y": 357,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 13,
+            "x": 154,
+            "y": 380,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 14,
+            "x": 229,
+            "y": 418,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 15,
+            "x": 140,
+            "y": 456,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 16,
+            "x": 267,
+            "y": 471,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 17,
+            "x": 44,
+            "y": 494,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 18,
+            "x": 139,
+            "y": 532,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": -18,
+            "route": "safe"
+          },
+          {
+            "id": 19,
+            "x": 224,
+            "y": 570,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 20,
+            "x": 55,
+            "y": 585,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 21,
+            "x": 119,
+            "y": 608,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 22,
+            "x": 59,
+            "y": 646,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 23,
+            "x": 160,
+            "y": 684,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 24,
+            "x": 55,
+            "y": 699,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 25,
+            "x": 229,
+            "y": 722,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 26,
+            "x": 134,
+            "y": 760,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 27,
+            "x": 44,
+            "y": 798,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 28,
+            "x": 267,
+            "y": 813,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 29,
+            "x": 139,
+            "y": 836,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 30,
+            "x": 224,
+            "y": 874,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 31,
+            "x": 125,
+            "y": 912,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 32,
+            "x": 267,
+            "y": 927,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 33,
+            "x": 59,
+            "y": 950,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 34,
+            "x": 154,
+            "y": 988,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 35,
+            "x": 94,
+            "y": 1000,
+            "width": 172,
+            "height": 8,
+            "type": "shore",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 36,
+            "x": 56,
+            "y": 1036,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 37,
+            "x": 156,
+            "y": 1072,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 38,
+            "x": 221,
+            "y": 1108,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 39,
+            "x": 126,
+            "y": 1144,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 40,
+            "x": 267,
+            "y": 1160,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 41,
+            "x": 46,
+            "y": 1180,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 42,
+            "x": 149,
+            "y": 1216,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 43,
+            "x": 216,
+            "y": 1252,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 44,
+            "x": 106,
+            "y": 1288,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 45,
+            "x": 267,
+            "y": 1304,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 46,
+            "x": 56,
+            "y": 1324,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 47,
+            "x": 156,
+            "y": 1360,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 48,
+            "x": 221,
+            "y": 1396,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 49,
+            "x": 134,
+            "y": 1432,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 50,
+            "x": 267,
+            "y": 1448,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 51,
+            "x": 46,
+            "y": 1468,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 52,
+            "x": 141,
+            "y": 1504,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 53,
+            "x": 216,
+            "y": 1540,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 54,
+            "x": 106,
+            "y": 1576,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 55,
+            "x": 267,
+            "y": 1592,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 56,
+            "x": 56,
+            "y": 1612,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 57,
+            "x": 164,
+            "y": 1648,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 58,
+            "x": 221,
+            "y": 1684,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 59,
+            "x": 126,
+            "y": 1720,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 60,
+            "x": 267,
+            "y": 1736,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 61,
+            "x": 46,
+            "y": 1756,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 62,
+            "x": 141,
+            "y": 1792,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 63,
+            "x": 216,
+            "y": 1828,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 64,
+            "x": 114,
+            "y": 1864,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 65,
+            "x": 267,
+            "y": 1880,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 66,
+            "x": 56,
+            "y": 1900,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 67,
+            "x": 156,
+            "y": 1936,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 68,
+            "x": 221,
+            "y": 1972,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 69,
+            "x": 85,
+            "y": 2000,
+            "width": 190,
+            "height": 8,
+            "type": "star",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          }
+        ],
+        "obstacles": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 265,
+            "width": 36,
+            "height": 16,
+            "type": "ceiling"
+          },
+          {
+            "id": 1,
+            "x": 306,
+            "y": 490,
+            "width": 30,
+            "height": 28,
+            "type": "wall"
+          },
+          {
+            "id": 2,
+            "x": 24,
+            "y": 720,
+            "width": 35,
+            "height": 14,
+            "type": "ceiling"
+          },
+          {
+            "id": 3,
+            "x": 305,
+            "y": 905,
+            "width": 31,
+            "height": 32,
+            "type": "wall"
+          }
+        ],
+        "wind": [
+          {
+            "id": 0,
+            "yMin": 1000,
+            "yMax": 1100,
+            "x": 42,
+            "y": 0,
+            "label": "右風・強"
+          },
+          {
+            "id": 1,
+            "yMin": 1100,
+            "yMax": 1200,
+            "x": -22,
+            "y": 65,
+            "label": "左風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 2,
+            "yMin": 1200,
+            "yMax": 1300,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 3,
+            "yMin": 1300,
+            "yMax": 1400,
+            "x": -42,
+            "y": -45,
+            "label": "左風・強 ＋吹き下ろし"
+          },
+          {
+            "id": 4,
+            "yMin": 1400,
+            "yMax": 1500,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 5,
+            "yMin": 1500,
+            "yMax": 1600,
+            "x": -22,
+            "y": 65,
+            "label": "左風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 6,
+            "yMin": 1600,
+            "yMax": 1700,
+            "x": 42,
+            "y": 0,
+            "label": "右風・強"
+          },
+          {
+            "id": 7,
+            "yMin": 1700,
+            "yMax": 1800,
+            "x": -22,
+            "y": -45,
+            "label": "左風・弱 ＋吹き下ろし"
+          },
+          {
+            "id": 8,
+            "yMin": 1800,
+            "yMax": 1900,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 9,
+            "yMin": 1900,
+            "yMax": 2000,
+            "x": -42,
+            "y": 65,
+            "label": "左風・強 ＋吹き上げ"
+          }
+        ],
+        "activeWind": null,
+        "feedback": "小で位置調整、中・大で上へ。",
+        "falls": 0,
+        "milestoneSeen": false,
+        "milestoneProgress": 0,
+        "practice": false,
+        "practiceBaseHeight": 0
+      },
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 32,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "holdWithoutRelease": {
+        "heldMs": 180,
+        "height": 1.7999999999999996,
+        "vy": 159.9999999999999,
+        "charging": false
+      },
+      "midairInput": {
+        "initialVx": 104,
+        "afterLeftInputVx": 104,
+        "selectedDirection": -1
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 29,
+                "y": 676.5,
+                "width": 332,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 29,
+                "y": 727.5,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 198.5,
+                "y": 727.5,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 29,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 198.5,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 29,
+                "y": 758,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 29,
+                "y": 605,
+                "width": 332,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 29,
+                "y": 656,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 198.5,
+                "y": 656,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 618,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 667,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 618,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 667,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 636,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 636,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 636,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 685,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 685,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 685,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 601,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 601,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 601,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 650,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 650,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 650,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 682,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 682,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 682,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 731,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 731,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 731,
+                "width": 102.328125,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 276.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 665,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 665,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 665,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 714,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 714,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 714,
+                "width": 102.328125,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 276.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 29,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 198.5,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 29,
+                "y": 758,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/revision-02/QA/before/phone-title.png",
+        "docs/game019/revision-02/QA/before/phone-pause.png",
+        "docs/game019/revision-02/QA/before/phone-explanation.png",
+        "docs/game019/revision-02/QA/before/phone-practice-0.png",
+        "docs/game019/revision-02/QA/before/phone-practice-1.png",
+        "docs/game019/revision-02/QA/before/phone-practice-2.png",
+        "docs/game019/revision-02/QA/before/phone-practice-3.png",
+        "docs/game019/revision-02/QA/before/phone-practice-complete.png",
+        "docs/game019/revision-02/QA/before/phone-well-start.png",
+        "docs/game019/revision-02/QA/before/phone-fall-recovery.png",
+        "docs/game019/revision-02/QA/before/phone-shore-milestone.png",
+        "docs/game019/revision-02/QA/before/phone-sky-start.png",
+        "docs/game019/revision-02/QA/before/phone-upper-sky.png",
+        "docs/game019/revision-02/QA/before/phone-space-result.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 161.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": 1,
+          "startHeight": 161.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "level": {
+        "alive": true,
+        "cleared": false,
+        "time": 0.24999999999999997,
+        "height": 0,
+        "maxHeight": 0,
+        "cameraY": 0,
+        "chapter": "well",
+        "phase": "grounded",
+        "player": {
+          "x": 180,
+          "y": 0,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "facing": 1,
+          "jumpSize": "medium",
+          "landingTimer": 0,
+          "platformId": 0
+        },
+        "platforms": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 0,
+            "width": 312,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 1,
+            "x": 59,
+            "y": 38,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 2,
+            "x": 154,
+            "y": 76,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 3,
+            "x": 229,
+            "y": 114,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 4,
+            "x": 55,
+            "y": 129,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 5,
+            "x": 134,
+            "y": 152,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 6,
+            "x": 44,
+            "y": 190,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 7,
+            "x": 145,
+            "y": 228,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 8,
+            "x": 55,
+            "y": 243,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 9,
+            "x": 224,
+            "y": 266,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 10,
+            "x": 119,
+            "y": 304,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 11,
+            "x": 59,
+            "y": 342,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 12,
+            "x": 267,
+            "y": 357,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 13,
+            "x": 154,
+            "y": 380,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 14,
+            "x": 229,
+            "y": 418,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 15,
+            "x": 140,
+            "y": 456,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 16,
+            "x": 267,
+            "y": 471,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 17,
+            "x": 44,
+            "y": 494,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 18,
+            "x": 139,
+            "y": 532,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": -18,
+            "route": "safe"
+          },
+          {
+            "id": 19,
+            "x": 224,
+            "y": 570,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 20,
+            "x": 55,
+            "y": 585,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 21,
+            "x": 119,
+            "y": 608,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 22,
+            "x": 59,
+            "y": 646,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 23,
+            "x": 160,
+            "y": 684,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 24,
+            "x": 55,
+            "y": 699,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 25,
+            "x": 229,
+            "y": 722,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 26,
+            "x": 134,
+            "y": 760,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 27,
+            "x": 44,
+            "y": 798,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 28,
+            "x": 267,
+            "y": 813,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 29,
+            "x": 139,
+            "y": 836,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 30,
+            "x": 224,
+            "y": 874,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 31,
+            "x": 125,
+            "y": 912,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 32,
+            "x": 267,
+            "y": 927,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 33,
+            "x": 59,
+            "y": 950,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 34,
+            "x": 154,
+            "y": 988,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 35,
+            "x": 94,
+            "y": 1000,
+            "width": 172,
+            "height": 8,
+            "type": "shore",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 36,
+            "x": 56,
+            "y": 1036,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 37,
+            "x": 156,
+            "y": 1072,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 38,
+            "x": 221,
+            "y": 1108,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 39,
+            "x": 126,
+            "y": 1144,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 40,
+            "x": 267,
+            "y": 1160,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 41,
+            "x": 46,
+            "y": 1180,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 42,
+            "x": 149,
+            "y": 1216,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 43,
+            "x": 216,
+            "y": 1252,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 44,
+            "x": 106,
+            "y": 1288,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 45,
+            "x": 267,
+            "y": 1304,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 46,
+            "x": 56,
+            "y": 1324,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 47,
+            "x": 156,
+            "y": 1360,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 48,
+            "x": 221,
+            "y": 1396,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 49,
+            "x": 134,
+            "y": 1432,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 50,
+            "x": 267,
+            "y": 1448,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 51,
+            "x": 46,
+            "y": 1468,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 52,
+            "x": 141,
+            "y": 1504,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 53,
+            "x": 216,
+            "y": 1540,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 54,
+            "x": 106,
+            "y": 1576,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 55,
+            "x": 267,
+            "y": 1592,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 56,
+            "x": 56,
+            "y": 1612,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 57,
+            "x": 164,
+            "y": 1648,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 58,
+            "x": 221,
+            "y": 1684,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 59,
+            "x": 126,
+            "y": 1720,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 60,
+            "x": 267,
+            "y": 1736,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 61,
+            "x": 46,
+            "y": 1756,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 62,
+            "x": 141,
+            "y": 1792,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 63,
+            "x": 216,
+            "y": 1828,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 64,
+            "x": 114,
+            "y": 1864,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 65,
+            "x": 267,
+            "y": 1880,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 66,
+            "x": 56,
+            "y": 1900,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 67,
+            "x": 156,
+            "y": 1936,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 68,
+            "x": 221,
+            "y": 1972,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 69,
+            "x": 85,
+            "y": 2000,
+            "width": 190,
+            "height": 8,
+            "type": "star",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          }
+        ],
+        "obstacles": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 265,
+            "width": 36,
+            "height": 16,
+            "type": "ceiling"
+          },
+          {
+            "id": 1,
+            "x": 306,
+            "y": 490,
+            "width": 30,
+            "height": 28,
+            "type": "wall"
+          },
+          {
+            "id": 2,
+            "x": 24,
+            "y": 720,
+            "width": 35,
+            "height": 14,
+            "type": "ceiling"
+          },
+          {
+            "id": 3,
+            "x": 305,
+            "y": 905,
+            "width": 31,
+            "height": 32,
+            "type": "wall"
+          }
+        ],
+        "wind": [
+          {
+            "id": 0,
+            "yMin": 1000,
+            "yMax": 1100,
+            "x": -42,
+            "y": 0,
+            "label": "左風・強"
+          },
+          {
+            "id": 1,
+            "yMin": 1100,
+            "yMax": 1200,
+            "x": 22,
+            "y": 65,
+            "label": "右風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 2,
+            "yMin": 1200,
+            "yMax": 1300,
+            "x": -22,
+            "y": 0,
+            "label": "左風・弱"
+          },
+          {
+            "id": 3,
+            "yMin": 1300,
+            "yMax": 1400,
+            "x": 42,
+            "y": -45,
+            "label": "右風・強 ＋吹き下ろし"
+          },
+          {
+            "id": 4,
+            "yMin": 1400,
+            "yMax": 1500,
+            "x": -22,
+            "y": 0,
+            "label": "左風・弱"
+          },
+          {
+            "id": 5,
+            "yMin": 1500,
+            "yMax": 1600,
+            "x": 22,
+            "y": 65,
+            "label": "右風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 6,
+            "yMin": 1600,
+            "yMax": 1700,
+            "x": -42,
+            "y": 0,
+            "label": "左風・強"
+          },
+          {
+            "id": 7,
+            "yMin": 1700,
+            "yMax": 1800,
+            "x": 22,
+            "y": -45,
+            "label": "右風・弱 ＋吹き下ろし"
+          },
+          {
+            "id": 8,
+            "yMin": 1800,
+            "yMax": 1900,
+            "x": -22,
+            "y": 0,
+            "label": "左風・弱"
+          },
+          {
+            "id": 9,
+            "yMin": 1900,
+            "yMax": 2000,
+            "x": 42,
+            "y": 65,
+            "label": "右風・強 ＋吹き上げ"
+          }
+        ],
+        "activeWind": null,
+        "feedback": "小で位置調整、中・大で上へ。",
+        "falls": 0,
+        "milestoneSeen": false,
+        "milestoneProgress": 0,
+        "practice": false,
+        "practiceBaseHeight": 0
+      },
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 33,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 515,
+                "y": 322.75,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 515,
+                "y": 372.75,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 515,
+                "y": 422.75,
+                "width": 302,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 515,
+                "y": 221.625,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 515,
+                "y": 271.625,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 515,
+                "y": 321.625,
+                "width": 302,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 517,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 27,
+                "y": 358.5,
+                "width": 790,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 27,
+                "y": 408.5,
+                "width": 790,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 27,
+                "y": 458.5,
+                "width": 790,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "next-practice-button",
+                "x": 531,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 684.5,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "next-practice-button",
+                "x": 531,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 684.5,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "next-practice-button",
+                "x": 531,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 684.5,
+                "y": 277,
+                "width": 146.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "next-practice-button",
+                "x": 531,
+                "y": 294,
+                "width": 146.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 684.5,
+                "y": 294,
+                "width": 146.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 701.453125,
+                "y": 4,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 580,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 666,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 752,
+                "y": 98,
+                "width": 79,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 580,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "medium",
+                "x": 666,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              },
+              {
+                "id": "large",
+                "x": 752,
+                "y": 149.5,
+                "width": 79,
+                "height": 45
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 701.453125,
+                "y": 4,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 515,
+                "y": 294.5,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 515,
+                "y": 344.5,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 515,
+                "y": 394.5,
+                "width": 302,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/revision-02/QA/before/landscape-title.png",
+        "docs/game019/revision-02/QA/before/landscape-pause.png",
+        "docs/game019/revision-02/QA/before/landscape-explanation.png",
+        "docs/game019/revision-02/QA/before/landscape-practice-0.png",
+        "docs/game019/revision-02/QA/before/landscape-practice-1.png",
+        "docs/game019/revision-02/QA/before/landscape-practice-2.png",
+        "docs/game019/revision-02/QA/before/landscape-practice-3.png",
+        "docs/game019/revision-02/QA/before/landscape-practice-complete.png",
+        "docs/game019/revision-02/QA/before/landscape-well-start.png",
+        "docs/game019/revision-02/QA/before/landscape-fall-recovery.png",
+        "docs/game019/revision-02/QA/before/landscape-shore-milestone.png",
+        "docs/game019/revision-02/QA/before/landscape-sky-start.png",
+        "docs/game019/revision-02/QA/before/landscape-upper-sky.png",
+        "docs/game019/revision-02/QA/before/landscape-space-result.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "level": {
+        "alive": true,
+        "cleared": false,
+        "time": 0.22499999999999998,
+        "height": 0,
+        "maxHeight": 0,
+        "cameraY": 0,
+        "chapter": "well",
+        "phase": "grounded",
+        "player": {
+          "x": 180,
+          "y": 0,
+          "vx": 0,
+          "vy": 0,
+          "width": 18,
+          "height": 24,
+          "grounded": true,
+          "facing": 1,
+          "jumpSize": "medium",
+          "landingTimer": 0,
+          "platformId": 0
+        },
+        "platforms": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 0,
+            "width": 312,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 1,
+            "x": 59,
+            "y": 38,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 2,
+            "x": 154,
+            "y": 76,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 3,
+            "x": 229,
+            "y": 114,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 4,
+            "x": 55,
+            "y": 129,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 5,
+            "x": 134,
+            "y": 152,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 6,
+            "x": 44,
+            "y": 190,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 7,
+            "x": 145,
+            "y": 228,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 8,
+            "x": 55,
+            "y": 243,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 9,
+            "x": 224,
+            "y": 266,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 10,
+            "x": 119,
+            "y": 304,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 11,
+            "x": 59,
+            "y": 342,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 12,
+            "x": 267,
+            "y": 357,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 13,
+            "x": 154,
+            "y": 380,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 14,
+            "x": 229,
+            "y": 418,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 15,
+            "x": 140,
+            "y": 456,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 16,
+            "x": 267,
+            "y": 471,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 17,
+            "x": 44,
+            "y": 494,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 18,
+            "x": 139,
+            "y": 532,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": -18,
+            "route": "safe"
+          },
+          {
+            "id": 19,
+            "x": 224,
+            "y": 570,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 20,
+            "x": 55,
+            "y": 585,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 21,
+            "x": 119,
+            "y": 608,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 22,
+            "x": 59,
+            "y": 646,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 23,
+            "x": 160,
+            "y": 684,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 24,
+            "x": 55,
+            "y": 699,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 25,
+            "x": 229,
+            "y": 722,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 26,
+            "x": 134,
+            "y": 760,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 27,
+            "x": 44,
+            "y": 798,
+            "width": 82,
+            "height": 8,
+            "type": "moss",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 18,
+            "route": "safe"
+          },
+          {
+            "id": 28,
+            "x": 267,
+            "y": 813,
+            "width": 38,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 29,
+            "x": 139,
+            "y": 836,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 30,
+            "x": 224,
+            "y": 874,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 31,
+            "x": 125,
+            "y": 912,
+            "width": 70,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 32,
+            "x": 267,
+            "y": 927,
+            "width": 38,
+            "height": 8,
+            "type": "thin",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 33,
+            "x": 59,
+            "y": 950,
+            "width": 82,
+            "height": 8,
+            "type": "wood",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 34,
+            "x": 154,
+            "y": 988,
+            "width": 82,
+            "height": 8,
+            "type": "stone",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 35,
+            "x": 94,
+            "y": 1000,
+            "width": 172,
+            "height": 8,
+            "type": "shore",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          },
+          {
+            "id": 36,
+            "x": 56,
+            "y": 1036,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 37,
+            "x": 156,
+            "y": 1072,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 38,
+            "x": 221,
+            "y": 1108,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 39,
+            "x": 126,
+            "y": 1144,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 40,
+            "x": 267,
+            "y": 1160,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 41,
+            "x": 46,
+            "y": 1180,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 42,
+            "x": 149,
+            "y": 1216,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 43,
+            "x": 216,
+            "y": 1252,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 44,
+            "x": 106,
+            "y": 1288,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 45,
+            "x": 267,
+            "y": 1304,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 46,
+            "x": 56,
+            "y": 1324,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 47,
+            "x": 156,
+            "y": 1360,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 48,
+            "x": 221,
+            "y": 1396,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 49,
+            "x": 134,
+            "y": 1432,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 50,
+            "x": 267,
+            "y": 1448,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 51,
+            "x": 46,
+            "y": 1468,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 52,
+            "x": 141,
+            "y": 1504,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 53,
+            "x": 216,
+            "y": 1540,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 54,
+            "x": 106,
+            "y": 1576,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 55,
+            "x": 267,
+            "y": 1592,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 56,
+            "x": 56,
+            "y": 1612,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 57,
+            "x": 164,
+            "y": 1648,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 58,
+            "x": 221,
+            "y": 1684,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 59,
+            "x": 126,
+            "y": 1720,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 60,
+            "x": 267,
+            "y": 1736,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 61,
+            "x": 46,
+            "y": 1756,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 62,
+            "x": 141,
+            "y": 1792,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 63,
+            "x": 216,
+            "y": 1828,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 64,
+            "x": 114,
+            "y": 1864,
+            "width": 72,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 65,
+            "x": 267,
+            "y": 1880,
+            "width": 36,
+            "height": 8,
+            "type": "crumble",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "risky"
+          },
+          {
+            "id": 66,
+            "x": 56,
+            "y": 1900,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 67,
+            "x": 156,
+            "y": 1936,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 68,
+            "x": 221,
+            "y": 1972,
+            "width": 88,
+            "height": 8,
+            "type": "cloud",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "safe"
+          },
+          {
+            "id": 69,
+            "x": 85,
+            "y": 2000,
+            "width": 190,
+            "height": 8,
+            "type": "star",
+            "active": true,
+            "crumbleTimer": -1,
+            "restoreTimer": 0,
+            "slide": 0,
+            "route": "base"
+          }
+        ],
+        "obstacles": [
+          {
+            "id": 0,
+            "x": 24,
+            "y": 265,
+            "width": 36,
+            "height": 16,
+            "type": "ceiling"
+          },
+          {
+            "id": 1,
+            "x": 306,
+            "y": 490,
+            "width": 30,
+            "height": 28,
+            "type": "wall"
+          },
+          {
+            "id": 2,
+            "x": 24,
+            "y": 720,
+            "width": 35,
+            "height": 14,
+            "type": "ceiling"
+          },
+          {
+            "id": 3,
+            "x": 305,
+            "y": 905,
+            "width": 31,
+            "height": 32,
+            "type": "wall"
+          }
+        ],
+        "wind": [
+          {
+            "id": 0,
+            "yMin": 1000,
+            "yMax": 1100,
+            "x": 42,
+            "y": 0,
+            "label": "右風・強"
+          },
+          {
+            "id": 1,
+            "yMin": 1100,
+            "yMax": 1200,
+            "x": -22,
+            "y": 65,
+            "label": "左風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 2,
+            "yMin": 1200,
+            "yMax": 1300,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 3,
+            "yMin": 1300,
+            "yMax": 1400,
+            "x": -42,
+            "y": -45,
+            "label": "左風・強 ＋吹き下ろし"
+          },
+          {
+            "id": 4,
+            "yMin": 1400,
+            "yMax": 1500,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 5,
+            "yMin": 1500,
+            "yMax": 1600,
+            "x": -22,
+            "y": 65,
+            "label": "左風・弱 ＋吹き上げ"
+          },
+          {
+            "id": 6,
+            "yMin": 1600,
+            "yMax": 1700,
+            "x": 42,
+            "y": 0,
+            "label": "右風・強"
+          },
+          {
+            "id": 7,
+            "yMin": 1700,
+            "yMax": 1800,
+            "x": -22,
+            "y": -45,
+            "label": "左風・弱 ＋吹き下ろし"
+          },
+          {
+            "id": 8,
+            "yMin": 1800,
+            "yMax": 1900,
+            "x": 22,
+            "y": 0,
+            "label": "右風・弱"
+          },
+          {
+            "id": 9,
+            "yMin": 1900,
+            "yMax": 2000,
+            "x": -42,
+            "y": 65,
+            "label": "左風・強 ＋吹き上げ"
+          }
+        ],
+        "activeWind": null,
+        "feedback": "小で位置調整、中・大で上へ。",
+        "falls": 0,
+        "milestoneSeen": false,
+        "milestoneProgress": 0,
+        "practice": false,
+        "practiceBaseHeight": 0
+      },
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 32,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "status": "PASS"
+    }
+  ]
+}

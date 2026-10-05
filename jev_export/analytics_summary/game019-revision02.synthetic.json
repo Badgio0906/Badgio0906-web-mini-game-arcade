@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "gameId": "game019",
+  "provenance": "SYNTHETIC-FIELD-EXAMPLE-NOT-OBSERVED-GAMEPLAY",
+  "scope": "Synthetic schema example only; not observed play or player analytics",
+  "window": {
+    "events": 8,
+    "runsWithStart": 1,
+    "completeObservedRuns": 1,
+    "runsMissingStart": 0,
+    "runsMissingEnd": 0,
+    "completeJumpCoverageRuns": 1
+  },
+  "charge": {
+    "observedJumps": 2,
+    "averageMs": 265,
+    "bandCounts": {
+      "short": 1,
+      "medium": 1,
+      "long": 0
+    },
+    "bandShare": {
+      "short": 0.5,
+      "medium": 0.5,
+      "long": 0
+    }
+  },
+  "landing": {
+    "observed": 2,
+    "failed": 0,
+    "failuresByStartHeight": {}
+  },
+  "falls": {
+    "observed": 2,
+    "recordedDropMeters": 1.96,
+    "progressLostMeters": 0,
+    "heightPairs": [
+      {
+        "attempt": 1,
+        "from": 0.62,
+        "to": 0,
+        "distance": 0.62,
+        "progressLost": 0
+      },
+      {
+        "attempt": 2,
+        "from": 4.94,
+        "to": 3.6,
+        "distance": 1.34,
+        "progressLost": 0
+      }
+    ]
+  },
+  "reachRates": {
+    "height50": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "well100": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "skyChapter": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "space200": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    }
+  },
+  "limitations": [
+    "Reach-rate denominator requires both run_start and run_end within this window; unfinished or truncated runs are excluded and counted separately.",
+    "Charge and fall statistics cover retained observations, not omitted earlier jumps. Jump count coverage is compared to run_end.jumps.",
+    "A failed landing means lost progress or a wall/ceiling bump; normal post-apex descent contributes to TOTAL FALL without necessarily losing progress.",
+    "No player identity, external transmission, human fun judgment or global rate is inferred."
+  ]
+}

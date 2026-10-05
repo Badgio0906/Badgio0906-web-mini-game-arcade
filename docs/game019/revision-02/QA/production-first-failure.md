@@ -1,0 +1,5 @@
+# 初回production probe失敗の分類
+
+製品変更0。PC/320/横は20m着地後RESTARTをclickした直後にHUDを読み、次のrequestAnimationFrame前の20mを0mと比較してFAIL。モデル初期化ではなくHUD更新を待つべき基盤の前提。phoneは固定450/375/80ms列で累積した出発xが準備跳躍へ合わず、最大左で実際に3.6mへ転落。正しい失敗物理で、乱数や入力破損ではない。
+
+初回原本はproduction-root/report.jsonとPNG/log。再試験はproduction-root-retestへ分離。compiled版にはDEV hookを追加しない。Nodeの公開model APIで予測を選び、browserは通常キー/多指touchだけ。記録された実charge_msをNodeの公開charge-releaseへ与え、実着地idと一致することを確認して次の跳躍を選ぶ。HUDのRESTARTはframe更新を待つ。人間の読み/判断の証拠にしない。

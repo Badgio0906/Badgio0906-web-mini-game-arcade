@@ -1,0 +1,3535 @@
+{
+  "started": "2026-10-05T21:59:49.909Z",
+  "url": "http://127.0.0.1:5196/tests/game019/prototype.html",
+  "sourceBefore": {
+    "src/games/game019/ChargeRun.ts": "683aea8308cd77dd70b5a930cf3666db2ce8fa02f1ef1a66cf395840669991c2",
+    "src/games/game019/chargeTypes.ts": "70acd97c56343aa19b44c65944a987adc2586bb20a03fc819398497c40618a2e",
+    "src/games/game019/ChargeInput.ts": "ab10e359f717f762b3660accf4bdd3f01418804d32acaf6e593d4ee95e65797d",
+    "src/games/game019/ChargeBoard.ts": "2dacdd5527b638fbfc91b05dbe3047cc9e3ef1d3dacd55792132d2f7d06f2e99",
+    "src/games/game019/prototypeLevel.ts": "7b719847814dfb92dbf0a14115eb6c4bca405a806141cdcf4dc729eff7ea9262",
+    "src/games/game019/prototypeMain.ts": "d8d6597a28264b887e94936b6c5eec91bf9d89638440766bd68fc4cbc93201ac",
+    "tests/game019/prototype.html": "6b80fc55e2b9efcdd337a226379b8960c91a2c06c2a769dd285882d02182674c",
+    "src/games/game019/frogPixels.ts": "ff19c27bd0d242589159f0d45b777041d3918ca565299b3dcfaa2f3b4906aa50"
+  },
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "flat": [
+        {
+          "requestedMs": 80,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 166.67,
+              "jump_power_normalized": 0.2380952380952381,
+              "jump_band": "short",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 0.8916666666666659,
+            "height": 0,
+            "maxHeight": 1.3799739887398188,
+            "player": {
+              "x": 240.10029388551695,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.14333333333333334,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 1.3799739887398186,
+            "falls": 0,
+            "biggestFall": 1.3799739887398188,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 1.3799739887398188,
+              "loss": 0,
+              "success": true
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 166.67,
+                "jump_power_normalized": 0.2380952380952381,
+                "jump_band": "short",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 1.3799739887398188
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 1.3799739887398188,
+                "fall_end_height": 0,
+                "fall_distance": 1.3799739887398188,
+                "progress_lost": 0,
+                "total_fall": 1.3799739887398186
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "short",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 1.3799739887398188,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "requestedMs": 400,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 425,
+              "jump_power_normalized": 0.6071428571428568,
+              "jump_band": "medium",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 1.5583333333333302,
+            "height": 0,
+            "maxHeight": 4.576045151651297,
+            "player": {
+              "x": 321.77730424086593,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.15166666666666667,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 4.5760451516512965,
+            "falls": 0,
+            "biggestFall": 4.576045151651297,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 4.576045151651297,
+              "loss": 0,
+              "success": true
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 425,
+                "jump_power_normalized": 0.6071428571428568,
+                "jump_band": "medium",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 4.576045151651297
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 4.576045151651297,
+                "fall_end_height": 0,
+                "fall_distance": 4.576045151651297,
+                "progress_lost": 0,
+                "total_fall": 4.5760451516512965
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "medium",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 4.576045151651297,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "requestedMs": 700,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 700,
+              "jump_power_normalized": 1,
+              "jump_band": "long",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 2.2749999999999946,
+            "height": 0,
+            "maxHeight": 8.999997559864482,
+            "player": {
+              "x": 327,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.16,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 8.999997559864486,
+            "falls": 0,
+            "biggestFall": 8.999997559864482,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 8.999997559864482,
+              "loss": 0,
+              "success": false
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 700,
+                "jump_power_normalized": 1,
+                "jump_band": "long",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482
+              }
+            },
+            {
+              "type": "wall_bump",
+              "data": {
+                "height": 8.346435075957084
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482,
+                "fall_end_height": 0,
+                "fall_distance": 8.999997559864482,
+                "progress_lost": 0,
+                "total_fall": 8.999997559864486
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": false,
+                "landing_id": "bottom",
+                "jump_band": "long",
+                "ceiling_or_wall_bump": true
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 8.999997559864482,
+                "loss": 0,
+                "success": false
+              }
+            }
+          ]
+        }
+      ],
+      "air": [],
+      "route": [],
+      "failures": [],
+      "maxUp": [],
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "geometry": [
+        {
+          "selector": "#trial-canvas",
+          "x": 420,
+          "y": 62,
+          "w": 600,
+          "h": 717,
+          "right": 1020,
+          "bottom": 779,
+          "vw": 1440,
+          "vh": 900
+        },
+        {
+          "selector": "#left-button",
+          "x": 420,
+          "y": 787,
+          "w": 146,
+          "h": 60,
+          "right": 566,
+          "bottom": 847,
+          "vw": 1440,
+          "vh": 900
+        },
+        {
+          "selector": "#jump-button",
+          "x": 574,
+          "y": 787,
+          "w": 292,
+          "h": 60,
+          "right": 866,
+          "bottom": 847,
+          "vw": 1440,
+          "vh": 900
+        },
+        {
+          "selector": "#right-button",
+          "x": 874,
+          "y": 787,
+          "w": 146,
+          "h": 60,
+          "right": 1020,
+          "bottom": 847,
+          "vw": 1440,
+          "vh": 900
+        }
+      ],
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(r.flat[0].end.player.x>195&&r.flat[0].end.player.x<225)\n\n    at file:///workspace/Badgio0906-web-mini-game-arcade/docs/game019/revision-02/QA/prototype-independent/probe.mjs:30:151",
+      "last": {
+        "run": {
+          "alive": true,
+          "clear": false,
+          "levelId": "flat-charge",
+          "goal": 50,
+          "time": 2.291666666666661,
+          "height": 0,
+          "maxHeight": 8.999997559864482,
+          "player": {
+            "x": 327,
+            "y": 0,
+            "vx": 0,
+            "vy": 0,
+            "width": 18,
+            "height": 24,
+            "grounded": true,
+            "ledgeId": "bottom",
+            "facing": 1,
+            "landTime": 0.14333333333333334,
+            "slipTime": 0
+          },
+          "phase": "grounded",
+          "chargeMs": 0,
+          "chargeBand": "short",
+          "direction": 0,
+          "chapter": "well",
+          "seaProgress": 0,
+          "wellCleared": false,
+          "ledges": [
+            {
+              "id": "bottom",
+              "x": 24,
+              "originX": 24,
+              "y": 0,
+              "width": 312,
+              "surface": "stone",
+              "section": "flat",
+              "route": "base",
+              "amplitude": 0,
+              "period": 4,
+              "offset": 0,
+              "active": true,
+              "crumbleAt": null,
+              "restoreAt": null
+            }
+          ],
+          "blocks": [],
+          "winds": [],
+          "sections": [
+            {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            }
+          ],
+          "section": {
+            "id": "flat",
+            "from": 0,
+            "to": 50,
+            "name": "跳び方だけの試作",
+            "motif": "water",
+            "purpose": "短・中・長の連続差と空中制御比較"
+          },
+          "wind": null,
+          "nextWind": null,
+          "totalFall": 8.999997559864486,
+          "falls": 0,
+          "biggestFall": 8.999997559864482,
+          "jumps": 1,
+          "feedback": "着地。次はどこへ？",
+          "lastLanding": {
+            "id": "bottom",
+            "height": 0,
+            "drop": 8.999997559864482,
+            "loss": 0,
+            "success": false
+          }
+        },
+        "events": [
+          {
+            "type": "section_reached",
+            "data": {
+              "section_id": "flat",
+              "section_name": "跳び方だけの試作",
+              "height": 0,
+              "section_from": 0
+            }
+          },
+          {
+            "type": "charge_start",
+            "data": {
+              "height": 0
+            }
+          },
+          {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 700,
+              "jump_power_normalized": 1,
+              "jump_band": "long",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          {
+            "type": "fall_start",
+            "data": {
+              "attempt_id": 1,
+              "fall_start_height": 8.999997559864482
+            }
+          },
+          {
+            "type": "wall_bump",
+            "data": {
+              "height": 8.346435075957084
+            }
+          },
+          {
+            "type": "fall_end",
+            "data": {
+              "attempt_id": 1,
+              "fall_start_height": 8.999997559864482,
+              "fall_end_height": 0,
+              "fall_distance": 8.999997559864482,
+              "progress_lost": 0,
+              "total_fall": 8.999997559864486
+            }
+          },
+          {
+            "type": "jump_end",
+            "data": {
+              "attempt_id": 1,
+              "jump_start_height": 0,
+              "jump_end_height": 0,
+              "landing_success": false,
+              "landing_id": "bottom",
+              "jump_band": "long",
+              "ceiling_or_wall_bump": true
+            }
+          },
+          {
+            "type": "land",
+            "data": {
+              "ledge_id": "bottom",
+              "height": 0,
+              "surface": "stone",
+              "drop": 8.999997559864482,
+              "loss": 0,
+              "success": false
+            }
+          }
+        ],
+        "weak": false,
+        "stage": false,
+        "forecasts": [
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 298.7391410103533,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 291.7903008470337,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 100,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 286.7599616537437,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 100,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 100,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 281.5875854768053,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 150,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 271.6326721315393,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 150,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 150,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 200,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 256.30763027197054,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 200,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 200,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 250,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 241.02021280106842,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 250,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 250,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 300,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 225.00559242079734,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 300,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 300,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 325,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 217.72187419209646,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 325,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 325,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 350,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 209.30708883431106,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 350,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 350,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 375,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 201.75428610434278,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 375,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 375,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 400,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 193.03424575803191,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 400,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 400,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 425,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 185.22269575913393,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 425,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 425,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 450,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 177.29487154021362,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999943
+          },
+          {
+            "chargeMs": 450,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999943
+          },
+          {
+            "chargeMs": 450,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999943
+          },
+          {
+            "chargeMs": 475,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 169.25259220012356,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666607
+          },
+          {
+            "chargeMs": 475,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666607
+          },
+          {
+            "chargeMs": 475,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666607
+          },
+          {
+            "chargeMs": 500,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 161.0976419168178,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333285
+          },
+          {
+            "chargeMs": 500,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333285
+          },
+          {
+            "chargeMs": 500,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333285
+          },
+          {
+            "chargeMs": 525,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 152.83176101748327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7999999999999985
+          },
+          {
+            "chargeMs": 525,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7999999999999985
+          },
+          {
+            "chargeMs": 525,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7999999999999985
+          },
+          {
+            "chargeMs": 550,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 144.45664071032525,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666685
+          },
+          {
+            "chargeMs": 550,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666685
+          },
+          {
+            "chargeMs": 550,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666685
+          },
+          {
+            "chargeMs": 575,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 135.97392029206492,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333385
+          },
+          {
+            "chargeMs": 575,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333385
+          },
+          {
+            "chargeMs": 575,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333385
+          },
+          {
+            "chargeMs": 600,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 127.38518603184374,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000084
+          },
+          {
+            "chargeMs": 600,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000084
+          },
+          {
+            "chargeMs": 600,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000084
+          },
+          {
+            "chargeMs": 625,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 118.69197118625883,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666784
+          },
+          {
+            "chargeMs": 625,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666784
+          },
+          {
+            "chargeMs": 625,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666784
+          },
+          {
+            "chargeMs": 650,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 111.11544353023547,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1250000000000147
+          },
+          {
+            "chargeMs": 650,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1250000000000147
+          },
+          {
+            "chargeMs": 650,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1250000000000147
+          },
+          {
+            "chargeMs": 675,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 102.23295658060078,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1916666666666846
+          },
+          {
+            "chargeMs": 675,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1916666666666846
+          },
+          {
+            "chargeMs": 675,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.1916666666666846
+          },
+          {
+            "chargeMs": 700,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 94.5,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000021
+          },
+          {
+            "chargeMs": 700,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000021
+          },
+          {
+            "chargeMs": 700,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000021
+          }
+        ]
+      }
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "flat": [
+        {
+          "requestedMs": 80,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 133.33,
+              "jump_power_normalized": 0.19047619047619044,
+              "jump_band": "short",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 0.7999999999999996,
+            "height": 0,
+            "maxHeight": 1.0634922808145653,
+            "player": {
+              "x": 229.94324162517296,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.15166666666666667,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 1.0634922808145653,
+            "falls": 0,
+            "biggestFall": 1.0634922808145653,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 1.0634922808145653,
+              "loss": 0,
+              "success": true
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 133.33,
+                "jump_power_normalized": 0.19047619047619044,
+                "jump_band": "short",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 1.0634922808145653
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 1.0634922808145653,
+                "fall_end_height": 0,
+                "fall_distance": 1.0634922808145653,
+                "progress_lost": 0,
+                "total_fall": 1.0634922808145653
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": true,
+                "landing_id": "bottom",
+                "jump_band": "short",
+                "ceiling_or_wall_bump": false
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 1.0634922808145653,
+                "loss": 0,
+                "success": true
+              }
+            }
+          ]
+        },
+        {
+          "requestedMs": 400,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 491.67,
+              "jump_power_normalized": 0.7023809523809518,
+              "jump_band": "medium",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 1.7916666666666627,
+            "height": 0,
+            "maxHeight": 5.566407247283391,
+            "player": {
+              "x": 327,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.16,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 5.566407247283391,
+            "falls": 0,
+            "biggestFall": 5.566407247283391,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 5.566407247283391,
+              "loss": 0,
+              "success": false
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 491.67,
+                "jump_power_normalized": 0.7023809523809518,
+                "jump_band": "medium",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.566407247283391
+              }
+            },
+            {
+              "type": "wall_bump",
+              "data": {
+                "height": 1.9527843375535305
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 5.566407247283391,
+                "fall_end_height": 0,
+                "fall_distance": 5.566407247283391,
+                "progress_lost": 0,
+                "total_fall": 5.566407247283391
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": false,
+                "landing_id": "bottom",
+                "jump_band": "medium",
+                "ceiling_or_wall_bump": true
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 5.566407247283391,
+                "loss": 0,
+                "success": false
+              }
+            }
+          ]
+        },
+        {
+          "requestedMs": 700,
+          "requestedDirection": 1,
+          "event": {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 700,
+              "jump_power_normalized": 1,
+              "jump_band": "long",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          "end": {
+            "alive": true,
+            "clear": false,
+            "levelId": "flat-charge",
+            "goal": 50,
+            "time": 2.391666666666661,
+            "height": 0,
+            "maxHeight": 8.999997559864482,
+            "player": {
+              "x": 327,
+              "y": 0,
+              "vx": 0,
+              "vy": 0,
+              "width": 18,
+              "height": 24,
+              "grounded": true,
+              "ledgeId": "bottom",
+              "facing": 1,
+              "landTime": 0.16,
+              "slipTime": 0
+            },
+            "phase": "grounded",
+            "chargeMs": 0,
+            "chargeBand": "short",
+            "direction": 0,
+            "chapter": "well",
+            "seaProgress": 0,
+            "wellCleared": false,
+            "ledges": [
+              {
+                "id": "bottom",
+                "x": 24,
+                "originX": 24,
+                "y": 0,
+                "width": 312,
+                "surface": "stone",
+                "section": "flat",
+                "route": "base",
+                "amplitude": 0,
+                "period": 4,
+                "offset": 0,
+                "active": true,
+                "crumbleAt": null,
+                "restoreAt": null
+              }
+            ],
+            "blocks": [],
+            "winds": [],
+            "sections": [
+              {
+                "id": "flat",
+                "from": 0,
+                "to": 50,
+                "name": "跳び方だけの試作",
+                "motif": "water",
+                "purpose": "短・中・長の連続差と空中制御比較"
+              }
+            ],
+            "section": {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            },
+            "wind": null,
+            "nextWind": null,
+            "totalFall": 8.999997559864486,
+            "falls": 0,
+            "biggestFall": 8.999997559864482,
+            "jumps": 1,
+            "feedback": "着地。次はどこへ？",
+            "lastLanding": {
+              "id": "bottom",
+              "height": 0,
+              "drop": 8.999997559864482,
+              "loss": 0,
+              "success": false
+            }
+          },
+          "events": [
+            {
+              "type": "section_reached",
+              "data": {
+                "section_id": "flat",
+                "section_name": "跳び方だけの試作",
+                "height": 0,
+                "section_from": 0
+              }
+            },
+            {
+              "type": "charge_start",
+              "data": {
+                "height": 0
+              }
+            },
+            {
+              "type": "jump",
+              "data": {
+                "attempt_id": 1,
+                "jump_charge_ms": 700,
+                "jump_power_normalized": 1,
+                "jump_band": "long",
+                "jump_direction": 1,
+                "jump_start_height": 0,
+                "wind_direction": "none",
+                "wind_strength": "none",
+                "section_id": "flat"
+              }
+            },
+            {
+              "type": "fall_start",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482
+              }
+            },
+            {
+              "type": "wall_bump",
+              "data": {
+                "height": 8.346435075957084
+              }
+            },
+            {
+              "type": "fall_end",
+              "data": {
+                "attempt_id": 1,
+                "fall_start_height": 8.999997559864482,
+                "fall_end_height": 0,
+                "fall_distance": 8.999997559864482,
+                "progress_lost": 0,
+                "total_fall": 8.999997559864486
+              }
+            },
+            {
+              "type": "jump_end",
+              "data": {
+                "attempt_id": 1,
+                "jump_start_height": 0,
+                "jump_end_height": 0,
+                "landing_success": false,
+                "landing_id": "bottom",
+                "jump_band": "long",
+                "ceiling_or_wall_bump": true
+              }
+            },
+            {
+              "type": "land",
+              "data": {
+                "ledge_id": "bottom",
+                "height": 0,
+                "surface": "stone",
+                "drop": 8.999997559864482,
+                "loss": 0,
+                "success": false
+              }
+            }
+          ]
+        }
+      ],
+      "air": [],
+      "route": [],
+      "failures": [],
+      "maxUp": [],
+      "errors": [],
+      "geometry": [
+        {
+          "selector": "#trial-canvas",
+          "x": 10,
+          "y": 114,
+          "w": 370,
+          "h": 609,
+          "right": 380,
+          "bottom": 723,
+          "vw": 390,
+          "vh": 844
+        },
+        {
+          "selector": "#left-button",
+          "x": 10,
+          "y": 731,
+          "w": 88.5,
+          "h": 60,
+          "right": 98.5,
+          "bottom": 791,
+          "vw": 390,
+          "vh": 844
+        },
+        {
+          "selector": "#jump-button",
+          "x": 106.5,
+          "y": 731,
+          "w": 177,
+          "h": 60,
+          "right": 283.5,
+          "bottom": 791,
+          "vw": 390,
+          "vh": 844
+        },
+        {
+          "selector": "#right-button",
+          "x": 291.5,
+          "y": 731,
+          "w": 88.5,
+          "h": 60,
+          "right": 380,
+          "bottom": 791,
+          "vw": 390,
+          "vh": 844
+        }
+      ],
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(r.flat[0].end.player.x>195&&r.flat[0].end.player.x<225)\n\n    at file:///workspace/Badgio0906-web-mini-game-arcade/docs/game019/revision-02/QA/prototype-independent/probe.mjs:30:151",
+      "last": {
+        "run": {
+          "alive": true,
+          "clear": false,
+          "levelId": "flat-charge",
+          "goal": 50,
+          "time": 2.4083333333333274,
+          "height": 0,
+          "maxHeight": 8.999997559864482,
+          "player": {
+            "x": 327,
+            "y": 0,
+            "vx": 0,
+            "vy": 0,
+            "width": 18,
+            "height": 24,
+            "grounded": true,
+            "ledgeId": "bottom",
+            "facing": 1,
+            "landTime": 0.14333333333333334,
+            "slipTime": 0
+          },
+          "phase": "grounded",
+          "chargeMs": 0,
+          "chargeBand": "short",
+          "direction": 0,
+          "chapter": "well",
+          "seaProgress": 0,
+          "wellCleared": false,
+          "ledges": [
+            {
+              "id": "bottom",
+              "x": 24,
+              "originX": 24,
+              "y": 0,
+              "width": 312,
+              "surface": "stone",
+              "section": "flat",
+              "route": "base",
+              "amplitude": 0,
+              "period": 4,
+              "offset": 0,
+              "active": true,
+              "crumbleAt": null,
+              "restoreAt": null
+            }
+          ],
+          "blocks": [],
+          "winds": [],
+          "sections": [
+            {
+              "id": "flat",
+              "from": 0,
+              "to": 50,
+              "name": "跳び方だけの試作",
+              "motif": "water",
+              "purpose": "短・中・長の連続差と空中制御比較"
+            }
+          ],
+          "section": {
+            "id": "flat",
+            "from": 0,
+            "to": 50,
+            "name": "跳び方だけの試作",
+            "motif": "water",
+            "purpose": "短・中・長の連続差と空中制御比較"
+          },
+          "wind": null,
+          "nextWind": null,
+          "totalFall": 8.999997559864486,
+          "falls": 0,
+          "biggestFall": 8.999997559864482,
+          "jumps": 1,
+          "feedback": "着地。次はどこへ？",
+          "lastLanding": {
+            "id": "bottom",
+            "height": 0,
+            "drop": 8.999997559864482,
+            "loss": 0,
+            "success": false
+          }
+        },
+        "events": [
+          {
+            "type": "section_reached",
+            "data": {
+              "section_id": "flat",
+              "section_name": "跳び方だけの試作",
+              "height": 0,
+              "section_from": 0
+            }
+          },
+          {
+            "type": "charge_start",
+            "data": {
+              "height": 0
+            }
+          },
+          {
+            "type": "jump",
+            "data": {
+              "attempt_id": 1,
+              "jump_charge_ms": 700,
+              "jump_power_normalized": 1,
+              "jump_band": "long",
+              "jump_direction": 1,
+              "jump_start_height": 0,
+              "wind_direction": "none",
+              "wind_strength": "none",
+              "section_id": "flat"
+            }
+          },
+          {
+            "type": "fall_start",
+            "data": {
+              "attempt_id": 1,
+              "fall_start_height": 8.999997559864482
+            }
+          },
+          {
+            "type": "wall_bump",
+            "data": {
+              "height": 8.346435075957084
+            }
+          },
+          {
+            "type": "fall_end",
+            "data": {
+              "attempt_id": 1,
+              "fall_start_height": 8.999997559864482,
+              "fall_end_height": 0,
+              "fall_distance": 8.999997559864482,
+              "progress_lost": 0,
+              "total_fall": 8.999997559864486
+            }
+          },
+          {
+            "type": "jump_end",
+            "data": {
+              "attempt_id": 1,
+              "jump_start_height": 0,
+              "jump_end_height": 0,
+              "landing_success": false,
+              "landing_id": "bottom",
+              "jump_band": "long",
+              "ceiling_or_wall_bump": true
+            }
+          },
+          {
+            "type": "land",
+            "data": {
+              "ledge_id": "bottom",
+              "height": 0,
+              "surface": "stone",
+              "drop": 8.999997559864482,
+              "loss": 0,
+              "success": false
+            }
+          }
+        ],
+        "weak": false,
+        "stage": false,
+        "forecasts": [
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 298.7391410103533,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 58.333333333333336,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.47133409253452524,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4166666666666652
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 291.7903008470337,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 83.33333333333333,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.6471838611418906,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.4999999999999982
+          },
+          {
+            "chargeMs": 100,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 286.7599616537437,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 100,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 100,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.777121691475945,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.5583333333333313
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 281.5875854768053,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 116.66666666666667,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 0.9161386866426336,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.6166666666666645
+          },
+          {
+            "chargeMs": 150,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 271.6326721315393,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 150,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 150,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.2182527916610488,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.7249999999999974
+          },
+          {
+            "chargeMs": 200,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 256.30763027197054,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 200,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 200,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 1.723196201503872,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 0.8833333333333302
+          },
+          {
+            "chargeMs": 250,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 241.02021280106842,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 250,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 250,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.281867549529351,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.0333333333333297
+          },
+          {
+            "chargeMs": 300,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 225.00559242079734,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 300,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 300,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 2.88716480539175,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.1833333333333291
+          },
+          {
+            "chargeMs": 325,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 217.72187419209646,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 325,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 325,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.2057153937619725,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.2499999999999956
+          },
+          {
+            "chargeMs": 350,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 209.30708883431106,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 350,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 350,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.5345107556875472,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3249999999999953
+          },
+          {
+            "chargeMs": 375,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 201.75428610434278,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 375,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 375,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 3.872730887121241,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.3916666666666617
+          },
+          {
+            "chargeMs": 400,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 193.03424575803191,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 400,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 400,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.219902881573369,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.4666666666666615
+          },
+          {
+            "chargeMs": 425,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 185.22269575913393,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 425,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 425,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.576045151651297,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5333333333333279
+          },
+          {
+            "chargeMs": 450,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 177.29487154021362,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999948
+          },
+          {
+            "chargeMs": 450,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999948
+          },
+          {
+            "chargeMs": 450,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 4.940687440611824,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.5999999999999948
+          },
+          {
+            "chargeMs": 475,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 169.25259220012356,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666647
+          },
+          {
+            "chargeMs": 475,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666647
+          },
+          {
+            "chargeMs": 475,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.313294409661279,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.6666666666666647
+          },
+          {
+            "chargeMs": 500,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 161.0976419168178,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333347
+          },
+          {
+            "chargeMs": 500,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333347
+          },
+          {
+            "chargeMs": 500,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 5.6941824441961595,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.7333333333333347
+          },
+          {
+            "chargeMs": 525,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 152.83176101748327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8000000000000047
+          },
+          {
+            "chargeMs": 525,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8000000000000047
+          },
+          {
+            "chargeMs": 525,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.082408527123694,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8000000000000047
+          },
+          {
+            "chargeMs": 550,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 144.45664071032525,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666747
+          },
+          {
+            "chargeMs": 550,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666747
+          },
+          {
+            "chargeMs": 550,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.47844107615352,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.8666666666666747
+          },
+          {
+            "chargeMs": 575,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 135.97392029206492,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333447
+          },
+          {
+            "chargeMs": 575,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333447
+          },
+          {
+            "chargeMs": 575,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 6.881517566500751,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 1.9333333333333447
+          },
+          {
+            "chargeMs": 600,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 127.38518603184374,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000147
+          },
+          {
+            "chargeMs": 600,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000147
+          },
+          {
+            "chargeMs": 600,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.291695598248684,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0000000000000147
+          },
+          {
+            "chargeMs": 625,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 118.69197118625883,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666846
+          },
+          {
+            "chargeMs": 625,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666846
+          },
+          {
+            "chargeMs": 625,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 7.708918628048711,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.0666666666666846
+          },
+          {
+            "chargeMs": 650,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 111.11544353023547,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.125000000000021
+          },
+          {
+            "chargeMs": 650,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.125000000000021
+          },
+          {
+            "chargeMs": 650,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.132621535327495,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.125000000000021
+          },
+          {
+            "chargeMs": 675,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 102.23295658060078,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.191666666666691
+          },
+          {
+            "chargeMs": 675,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.191666666666691
+          },
+          {
+            "chargeMs": 675,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.563050636074458,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.191666666666691
+          },
+          {
+            "chargeMs": 700,
+            "direction": -1,
+            "landing": {
+              "id": "bottom",
+              "x": 94.5,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000027
+          },
+          {
+            "chargeMs": 700,
+            "direction": 0,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": false,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000027
+          },
+          {
+            "chargeMs": 700,
+            "direction": 1,
+            "landing": {
+              "id": "bottom",
+              "x": 327,
+              "y": 0
+            },
+            "peak": 8.999997559864482,
+            "bump": true,
+            "clear": false,
+            "sea": false,
+            "duration": 2.250000000000027
+          }
+        ]
+      }
+    }
+  ],
+  "limits": "Native input with read-only diagnostics. Technical/design evaluation; no human fun or physical device test."
+}

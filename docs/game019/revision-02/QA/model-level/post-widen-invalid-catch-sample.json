@@ -1,0 +1,2265 @@
+{
+  "start": "2026-10-05T22:18:32.079Z",
+  "maxOnly": {
+    "search": "all 3 directions, 700ms only, depth 20, 2px/4vx state bins",
+    "states": 38,
+    "maxLanding": 10.2,
+    "maxPeak": 19.199997559864478,
+    "queued": 0,
+    "passed": true,
+    "notAnExhaustiveMathematicalProof": true
+  },
+  "bucketPhases": [
+    {
+      "initialWait": 0,
+      "time": 23.149999999999327,
+      "x": 73.46286333770513,
+      "ledge": "old-bucket",
+      "lastJump": {
+        "charge_ms": 366.66666666666663,
+        "direction": -1,
+        "target": "old-bucket",
+        "landing_x": 73.46286333770513,
+        "landing_height": 64.2,
+        "predicted": {
+          "chargeMs": 366.66666666666663,
+          "direction": -1,
+          "landing": {
+            "id": "old-bucket",
+            "x": 73.46286333770513,
+            "y": 64.2
+          },
+          "peak": 64.45897357689667,
+          "bump": false,
+          "clear": false,
+          "sea": false,
+          "duration": 0.9999999999999432,
+          "score": 119.63668812576705
+        },
+        "wind": null
+      }
+    },
+    {
+      "initialWait": 1.1,
+      "time": 24.249999999999265,
+      "x": 73.46286333770513,
+      "ledge": "old-bucket",
+      "lastJump": {
+        "charge_ms": 366.66666666666663,
+        "direction": -1,
+        "target": "old-bucket",
+        "landing_x": 73.46286333770513,
+        "landing_height": 64.2,
+        "predicted": {
+          "chargeMs": 366.66666666666663,
+          "direction": -1,
+          "landing": {
+            "id": "old-bucket",
+            "x": 73.46286333770513,
+            "y": 64.2
+          },
+          "peak": 64.45897357689667,
+          "bump": false,
+          "clear": false,
+          "sea": false,
+          "duration": 0.9999999999999432,
+          "score": 105.87421975022052
+        },
+        "wind": null
+      }
+    },
+    {
+      "initialWait": 2.2,
+      "time": 25.349999999999202,
+      "x": 73.46286333770513,
+      "ledge": "old-bucket",
+      "lastJump": {
+        "charge_ms": 366.66666666666663,
+        "direction": -1,
+        "target": "old-bucket",
+        "landing_x": 73.46286333770513,
+        "landing_height": 64.2,
+        "predicted": {
+          "chargeMs": 366.66666666666663,
+          "direction": -1,
+          "landing": {
+            "id": "old-bucket",
+            "x": 73.46286333770513,
+            "y": 64.2
+          },
+          "peak": 64.45897357689667,
+          "bump": false,
+          "clear": false,
+          "sea": false,
+          "duration": 0.9999999999999432,
+          "score": 127.28903854964003
+        },
+        "wind": null
+      }
+    },
+    {
+      "initialWait": 3.3,
+      "time": 26.533333333332468,
+      "x": 64.16593052683567,
+      "ledge": "old-bucket",
+      "lastJump": {
+        "charge_ms": 383.3333333333333,
+        "direction": -1,
+        "target": "old-bucket",
+        "landing_x": 64.16593052683567,
+        "landing_height": 64.2,
+        "predicted": {
+          "chargeMs": 383.3333333333333,
+          "direction": -1,
+          "landing": {
+            "id": "old-bucket",
+            "x": 64.16593052683567,
+            "y": 64.2
+          },
+          "peak": 64.6874825727652,
+          "bump": false,
+          "clear": false,
+          "sea": false,
+          "duration": 1.0833333333332718,
+          "score": 131.75457411432095
+        },
+        "wind": null
+      }
+    }
+  ],
+  "fallExamples": [
+    {
+      "name": "one small step back",
+      "start": 46.29999999999999,
+      "end": 45.20000000000001,
+      "loss": 1.09999999999998,
+      "landing": "timber-short",
+      "alive": true,
+      "event": null
+    },
+    {
+      "name": "medium pilot failure",
+      "start": 13.9,
+      "end": 10.2,
+      "loss": 3.700000000000001,
+      "landing": "under-beam",
+      "alive": true,
+      "event": null
+    },
+    {
+      "name": "pilot deep failure",
+      "start": 13.9,
+      "end": 3.6,
+      "loss": 10.3,
+      "landing": "first",
+      "alive": true,
+      "event": null
+    },
+    {
+      "name": "50m catch",
+      "start": 57.20000000000001,
+      "end": 57.20000000000001,
+      "loss": 0,
+      "landing": "root-gap-top",
+      "alive": true,
+      "event": null
+    },
+    {
+      "name": "risk misses the 75m shelf",
+      "start": 77.5,
+      "end": 50,
+      "loss": 27.5,
+      "landing": "catch-50",
+      "alive": true,
+      "event": {
+        "type": "catch_ledge_used",
+        "data": {
+          "ledge_id": "catch-50",
+          "height": 50,
+          "fall_distance": 28.277121691475955
+        }
+      }
+    }
+  ],
+  "tolerance": [
+    {
+      "route": "safe",
+      "target": "first",
+      "charge": 391.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "first",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "first",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "brick",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "brick",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "brick",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "under-beam",
+      "charge": 383.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": true
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "under-beam",
+      "charge": 50,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "takeoff",
+      "charge": 450,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "takeoff",
+      "charge": 80,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "root-top",
+      "charge": 666.6666666666666,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "root-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "root-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "brick-narrow",
+      "charge": 433.33333333333337,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "brick-narrow",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "brick-narrow",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "catch-25",
+      "charge": 283.3333333333333,
+      "direction": 0,
+      "jitter20ms": [
+        {
+          "landing": "catch-25",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "catch-25",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "cracked-step",
+      "charge": 433.33333333333337,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "cracked-step",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "cracked-step",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "moss-low",
+      "charge": 566.6666666666666,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "moss-low",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "moss-low",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "moss-turn",
+      "charge": 466.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "moss-turn",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "moss-turn",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "timber-long",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "timber-long",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-long",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "timber-short",
+      "charge": 300,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "timber-short",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-short",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "timber-nub",
+      "charge": 158.33333333333331,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "timber-nub",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-nub",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "rest-edge",
+      "charge": 200,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "rest-edge",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rest-edge",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "catch-50",
+      "charge": 383.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "catch-50",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "catch-50",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "root-gap-top",
+      "charge": 616.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "root-gap-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "root-gap-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "bucket-approach",
+      "charge": 558.3333333333334,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "bucket-approach",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bucket-approach",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "old-bucket",
+      "charge": 366.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "old-bucket",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "old-bucket",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "bucket-return",
+      "charge": 491.66666666666663,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "bucket-return",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bucket-return",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "fork-start",
+      "charge": 250,
+      "direction": 0,
+      "jitter20ms": [
+        {
+          "landing": "fork-start",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-start",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "fork-safe-low",
+      "charge": 341.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "fork-safe-low",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-safe-low",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "catch-75",
+      "charge": 316.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "catch-75",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "catch-75",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "fork-safe-high",
+      "charge": 358.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "fork-safe-high",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-safe-high",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "fork-join",
+      "charge": 416.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "fork-join",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-join",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "upper-moss",
+      "charge": 458.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "upper-moss",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "upper-moss",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "last-crack",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "last-crack",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-crack",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "light-root",
+      "charge": 491.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "light-root",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "light-root",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "exit-stone",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "exit-stone",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "exit-stone",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "sky-start",
+      "charge": 300,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": null,
+          "sea": true,
+          "bump": false
+        },
+        {
+          "landing": null,
+          "sea": true,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "cloud-left",
+      "charge": 416.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "cloud-left",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "cloud-left",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "flag-east",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "flag-east",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "flag-east",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "east-cloud",
+      "charge": 500,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "east-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "east-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "rising-base",
+      "charge": 458.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "rising-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rising-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "rising-top",
+      "charge": 508.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "rising-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rising-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "west-flag-cloud",
+      "charge": 441.66666666666663,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "west-flag-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "west-flag-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "west-cloud",
+      "charge": 441.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "west-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "west-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "heavy-base",
+      "charge": 516.6666666666666,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "heavy-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "heavy-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "heavy-top",
+      "charge": 500,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "heavy-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "heavy-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "sky-catch",
+      "charge": 433.33333333333337,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "sky-catch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "sky-catch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "sky-rest-top",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "sky-rest-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "sky-rest-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "strong-east-base",
+      "charge": 541.6666666666666,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "strong-east-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "strong-east-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "strong-east-top",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "strong-east-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "strong-east-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "bird-perch",
+      "charge": 650,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "bird-perch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bird-perch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "bird-high",
+      "charge": 558.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "bird-high",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bird-high",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "ice-rise-base",
+      "charge": 441.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "ice-rise-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-rise-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "ice-rise-top",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "ice-rise-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-rise-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "ice-heavy-step",
+      "charge": 550,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "ice-heavy-step",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-heavy-step",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "star-catch",
+      "charge": 391.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "star-catch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "star-catch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "star-west",
+      "charge": 408.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "star-west",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "star-west",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "last-star-base",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "last-star-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-star-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "last-star",
+      "charge": 450,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "last-star",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-star",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "safe",
+      "target": "space-goal",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "space-goal",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "space-goal",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "first",
+      "charge": 391.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "first",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "first",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "brick",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "brick",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "brick",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "under-beam",
+      "charge": 383.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": true
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "under-beam",
+      "charge": 50,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "under-beam",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "takeoff",
+      "charge": 450,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "takeoff",
+      "charge": 80,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "takeoff",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "root-top",
+      "charge": 666.6666666666666,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "root-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "root-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "brick-narrow",
+      "charge": 433.33333333333337,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "brick-narrow",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "brick-narrow",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "catch-25",
+      "charge": 283.3333333333333,
+      "direction": 0,
+      "jitter20ms": [
+        {
+          "landing": "catch-25",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "catch-25",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "cracked-step",
+      "charge": 433.33333333333337,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "cracked-step",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "cracked-step",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "moss-low",
+      "charge": 566.6666666666666,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "moss-low",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "moss-low",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "moss-turn",
+      "charge": 466.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "moss-turn",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "moss-turn",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "timber-long",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "timber-long",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-long",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "timber-short",
+      "charge": 300,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "timber-short",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-short",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "timber-nub",
+      "charge": 158.33333333333331,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "timber-nub",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "timber-nub",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "rest-edge",
+      "charge": 200,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "rest-edge",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rest-edge",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "catch-50",
+      "charge": 383.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "catch-50",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "catch-50",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "root-gap-top",
+      "charge": 616.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "root-gap-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "root-gap-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "bucket-approach",
+      "charge": 558.3333333333334,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "bucket-approach",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bucket-approach",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "old-bucket",
+      "charge": 366.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "old-bucket",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "old-bucket",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "bucket-return",
+      "charge": 491.66666666666663,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "bucket-return",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bucket-return",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "fork-start",
+      "charge": 250,
+      "direction": 0,
+      "jitter20ms": [
+        {
+          "landing": "fork-start",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-start",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "fork-risk",
+      "charge": 641.6666666666666,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "fork-risk",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-risk",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "fork-join",
+      "charge": 583.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "fork-join",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "fork-join",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "upper-moss",
+      "charge": 458.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "upper-moss",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "upper-moss",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "last-crack",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "last-crack",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-crack",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "light-root",
+      "charge": 491.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "light-root",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "light-root",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "exit-stone",
+      "charge": 491.66666666666663,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "exit-stone",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "exit-stone",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "sky-start",
+      "charge": 300,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": null,
+          "sea": true,
+          "bump": false
+        },
+        {
+          "landing": null,
+          "sea": true,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "cloud-left",
+      "charge": 416.6666666666667,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "cloud-left",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "cloud-left",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "flag-east",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "flag-east",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "flag-east",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "east-cloud",
+      "charge": 500,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "east-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "east-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "rising-base",
+      "charge": 458.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "rising-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rising-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "rising-top",
+      "charge": 508.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "rising-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "rising-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "west-flag-cloud",
+      "charge": 441.66666666666663,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "west-flag-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "west-flag-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "west-cloud",
+      "charge": 441.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "west-cloud",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "west-cloud",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "heavy-base",
+      "charge": 516.6666666666666,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "heavy-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "heavy-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "heavy-top",
+      "charge": 500,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "heavy-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "heavy-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "sky-catch",
+      "charge": 433.33333333333337,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "sky-catch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "sky-catch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "sky-rest-top",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "sky-rest-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "sky-rest-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "strong-east-base",
+      "charge": 541.6666666666666,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "strong-east-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "strong-east-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "strong-east-top",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "strong-east-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "strong-east-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "bird-perch",
+      "charge": 650,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "bird-perch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bird-perch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "bird-high",
+      "charge": 558.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "bird-high",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "bird-high",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "ice-rise-base",
+      "charge": 441.66666666666663,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "ice-rise-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-rise-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "ice-rise-top",
+      "charge": 483.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "ice-rise-top",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-rise-top",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "ice-heavy-step",
+      "charge": 550,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "ice-heavy-step",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "ice-heavy-step",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "star-catch",
+      "charge": 391.6666666666667,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "star-catch",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "star-catch",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "star-west",
+      "charge": 408.3333333333333,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "star-west",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "star-west",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "last-star-base",
+      "charge": 533.3333333333334,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "last-star-base",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-star-base",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "last-star",
+      "charge": 450,
+      "direction": -1,
+      "jitter20ms": [
+        {
+          "landing": "last-star",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "last-star",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    },
+    {
+      "route": "risk",
+      "target": "space-goal",
+      "charge": 408.3333333333333,
+      "direction": 1,
+      "jitter20ms": [
+        {
+          "landing": "space-goal",
+          "sea": false,
+          "bump": false
+        },
+        {
+          "landing": "space-goal",
+          "sea": false,
+          "bump": false
+        }
+      ],
+      "bothSameTarget": true
+    }
+  ],
+  "recovery": {
+    "visitedPhysicalFootings": [
+      "bottom",
+      "first",
+      "brick",
+      "under-beam",
+      "takeoff",
+      "root-top",
+      "brick-narrow",
+      "catch-25",
+      "cracked-step",
+      "moss-low",
+      "moss-turn",
+      "timber-long",
+      "timber-short",
+      "timber-nub",
+      "rest-edge",
+      "catch-50",
+      "root-gap-top",
+      "bucket-approach",
+      "old-bucket",
+      "bucket-return",
+      "fork-start",
+      "fork-safe-low",
+      "catch-75",
+      "fork-safe-high",
+      "fork-join",
+      "upper-moss",
+      "last-crack",
+      "light-root",
+      "exit-stone",
+      "sky-start",
+      "cloud-left",
+      "flag-east",
+      "east-cloud",
+      "rising-base",
+      "rising-top",
+      "west-flag-cloud",
+      "west-cloud",
+      "heavy-base",
+      "heavy-top",
+      "sky-catch",
+      "sky-rest-top",
+      "strong-east-base",
+      "strong-east-top",
+      "bird-perch",
+      "bird-high",
+      "ice-rise-base",
+      "ice-rise-top",
+      "ice-heavy-step",
+      "star-catch",
+      "star-west",
+      "last-star-base",
+      "last-star",
+      "space-goal",
+      "fork-risk"
+    ],
+    "except": [
+      "sea-shore"
+    ],
+    "missing": [],
+    "reason": "Both complete public-input paths contain a subsequent real jump after every visited footing; shore is transition scenery, final star terminates RUN. This does not prove every arbitrary edge pose."
+  },
+  "status": "PASS",
+  "end": "2026-10-05T22:18:44.875Z"
+}

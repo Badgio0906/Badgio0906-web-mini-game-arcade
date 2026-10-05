@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "provenance": "SYNTHETIC-FIELD-EXAMPLE-NOT-OBSERVED-GAMEPLAY",
+  "purpose": "Illustrates validated charge/landing/fall fields and analysis. Rounded values, no claimed physical replay or player metrics.",
+  "events": [
+    {
+      "name": "run_start",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "source": "synthetic-schema-example"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "jump",
+        "attempt_id": 1,
+        "jump_charge_ms": 80,
+        "jump_power_normalized": 0.11428571428571428,
+        "jump_band": "short",
+        "jump_direction": 1,
+        "jump_start_height": 0,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "water"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "jump_end",
+        "attempt_id": 1,
+        "jump_start_height": 0,
+        "jump_end_height": 0,
+        "landing_success": true,
+        "landing_id": "bottom",
+        "jump_band": "short",
+        "ceiling_or_wall_bump": false
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "fall_end",
+        "attempt_id": 1,
+        "fall_start_height": 0.62,
+        "fall_end_height": 0,
+        "fall_distance": 0.62,
+        "progress_lost": 0,
+        "total_fall": 0.62
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "jump",
+        "attempt_id": 2,
+        "jump_charge_ms": 450,
+        "jump_power_normalized": 0.6428571428571429,
+        "jump_band": "medium",
+        "jump_direction": -1,
+        "jump_start_height": 0,
+        "wind_direction": "none",
+        "wind_strength": "none",
+        "section_id": "water"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "jump_end",
+        "attempt_id": 2,
+        "jump_start_height": 0,
+        "jump_end_height": 3.6,
+        "landing_success": true,
+        "landing_id": "first",
+        "jump_band": "medium",
+        "ceiling_or_wall_bump": false
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "event": "fall_end",
+        "attempt_id": 2,
+        "fall_start_height": 4.94,
+        "fall_end_height": 3.6,
+        "fall_distance": 1.34,
+        "progress_lost": 0,
+        "total_fall": 1.96
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-05T22:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "synthetic-fields-only",
+        "run_id": 1,
+        "outcome": "quit",
+        "score": 4.94,
+        "jumps": 2,
+        "total_fall": 1.96
+      }
+    }
+  ]
+}
