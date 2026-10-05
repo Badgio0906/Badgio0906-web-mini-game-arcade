@@ -1,0 +1,447 @@
+
+Running 99 tests using 1 worker
+
+(node:113118) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game001: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   2 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game002: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   3 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game003: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   4 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game004: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   5 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game005: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   6 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game006: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   7 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game007: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -   8 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game008: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  ✓   9 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game009: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (2.8s)
+  ✓  10 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game010: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (6.9s)
+  ✓  11 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game011: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (2.8s)
+  ✓  12 [desktop] › tests/e2e/arcade-onboarding.spec.ts:53:1 › held practice input cannot automatically activate the newly focused real-start button (1.2s)
+  ✓  13 [desktop] › tests/e2e/arcade-onboarding.spec.ts:65:1 › native Enter auto-repeat during successful practice cannot click the new real-start control (903ms)
+  ✘  14 [desktop] › tests/e2e/arcade-onboarding.spec.ts:76:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets (1.6m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [desktop] › tests/e2e/arcade-onboarding.spec.ts:76:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets 
+
+    Error: all viewport findings retained; no assertion is waived
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   1
+    + Received  + 386
+
+    - Array []
+    + Array [
+    +   "game001/active-title/1920x1080: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1081
+    + Received:    1115",
+    +   "game001/active-title/1440x900: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 901
+    + Received:    935",
+    +   "game001/active-title/1280x720: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 721
+    + Received:    755",
+    +   "game001/active-title/1024x768: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 769
+    + Received:    803",
+    +   "game001/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    643",
+    +   "game001/active-title/844x390: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    424",
+    +   "game001/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    372",
+    +   "game001/practice/844x390: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game001/practice/568x320: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game002/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    603",
+    +   "game002/practice/844x390: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game002/practice/568x320: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game003/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    604",
+    +   "game003/practice/844x390: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game003/practice/568x320: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game004/active-title/390x844: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 845
+    + Received:    863",
+    +   "game004/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    650",
+    +   "game004/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    337",
+    +   "game004/practice/844x390: Error: [data-practice-action=\"cell-6\"][aria-label=\"7\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    435.171875",
+    +   "game004/practice/568x320: Error: [data-practice-action=\"cell-6\"][aria-label=\"7\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    372.6875",
+    +   "game005/active-title/390x844: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 845
+    + Received:    913",
+    +   "game005/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    663",
+    +   "game005/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    324",
+    +   "game005/practice/844x390: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game005/practice/568x320: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game006/active-title/1920x1080: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1081
+    + Received:    1106",
+    +   "game006/active-title/1440x900: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 901
+    + Received:    948",
+    +   "game006/active-title/1280x720: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 721
+    + Received:    809",
+    +   "game006/active-title/1024x768: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 769
+    + Received:    816",
+    +   "game006/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    611",
+    +   "game006/active-title/844x390: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    392",
+    +   "game006/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    350",
+    +   "game006/practice/844x390: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game006/practice/568x320: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game007/active-title/1920x1080: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1081
+    + Received:    1087",
+    +   "game007/active-title/1440x900: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 901
+    + Received:    907",
+    +   "game007/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    607",
+    +   "game007/practice/844x390: Error: [data-practice-action=\"reject\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game007/practice/568x320: Error: [data-practice-action=\"reject\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game008/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    590",
+    +   "game008/active-title/844x390: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    410",
+    +   "game008/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    325",
+    +   "game008/practice/844x390: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    469.671875",
+    +   "game008/practice/568x320: Error: [data-practice-action=\"left\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    401.875",
+    +   "game009/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    572",
+    +   "game009/explanation/1280x720: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1281
+    + Received:    1307",
+    +   "game009/explanation/390x844: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    932",
+    +   "game009/explanation/320x568: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    361",
+    +   "game009/practice/1280x720: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1281
+    + Received:    1307",
+    +   "game009/practice/1024x768: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1025
+    + Received:    1178",
+    +   "game009/practice/844x390: Error: [data-practice-action=\"stamp-other\"][aria-label=\"青い角印鑑\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    396.171875",
+    +   "game009/practice/568x320: Error: [data-practice-action=\"stamp-other\"][aria-label=\"青い角印鑑\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    342.6875",
+    +   "game009/success/1280x720: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1281
+    + Received:    1307",
+    +   "game009/success/1024x768: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 1025
+    + Received:    1178",
+    +   "game009/success/390x844: Error: document width
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    932",
+    +   "game010/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    593",
+    +   "game010/active-title/844x390: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    425",
+    +   "game010/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    338",
+    +   "game010/practice/844x390: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game010/practice/568x320: Error: [data-practice-action=\"action\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    +   "game011/active-title/320x568: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 569
+    + Received:    634",
+    +   "game011/active-title/568x320: Error: active document height
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    357",
+    +   "game011/practice/844x390: Error: [data-practice-action=\"ukon\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 391
+    + Received:    413.671875",
+    +   "game011/practice/568x320: Error: [data-practice-action=\"ukon\"]
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 321
+    + Received:    341.875",
+    + ]
+
+      95 |     await page.locator('#tutorial-close-button').click();
+      96 |   }
+    > 97 |   await info.attach('actual-onboarding-layouts',{body:JSON.stringify({records,issues,errors}),contentType:'application/json'});expect(errors).toEqual([]);expect(issues,'all viewport findings retained; no assertion is waived').toEqual([]);
+         |                                                                                                                                                                                                                                   ^
+      98 | });
+      99 |
+        at /workspace/orbit-shift/tests/e2e/arcade-onboarding.spec.ts:97:227
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop] › tests/e2e/arcade-onboarding.spec.ts:76:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets 
+  8 skipped
+  85 did not run
+  5 passed (1.9m)
+  1 error was not a part of any test, see above for details

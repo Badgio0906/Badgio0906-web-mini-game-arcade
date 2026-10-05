@@ -1,3 +1,5 @@
+> 001〜005の企画比較を保持した履歴資料。新規企画は[CURRENT_STATUS](CURRENT_STATUS.md)の全カタログと各manifestで重複確認する。
+
 # GAME DESIGN DATASET — Game001〜005
 
 > 初期5本の履歴です。今回の改修・新作を含む最新比較は [TEN_GAME_REVIEW.md](TEN_GAME_REVIEW.md)、企画の学習資料は [CONCEPT_DESIGNER_LEARNING.md](ten-game/CONCEPT_DESIGNER_LEARNING.md) を参照してください。

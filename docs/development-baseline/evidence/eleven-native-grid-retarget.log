@@ -1,0 +1,21 @@
+
+Running 9 tests using 1 worker
+
+(node:122146) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game009: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.0s)
+  ✓  2 [desktop] › tests/e2e/arcade-onboarding.spec.ts:79:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets (2.0m)
+  ✓  3 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.9s)
+(node:124754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [mobile-portrait] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game009: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (2.6s)
+  -  5 [mobile-portrait] › tests/e2e/arcade-onboarding.spec.ts:79:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets
+  -  6 [mobile-portrait] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+(node:125157) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  7 [mobile-landscape] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game009: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate
+  -  8 [mobile-landscape] › tests/e2e/arcade-onboarding.spec.ts:79:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets
+  -  9 [mobile-landscape] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+
+  5 skipped
+  4 passed (2.2m)

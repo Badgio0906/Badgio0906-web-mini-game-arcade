@@ -1,0 +1,118 @@
+
+Running 18 tests using 1 worker
+
+(node:118066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [desktop] › tests/e2e/arcade-onboarding.spec.ts:77:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets (2.0m)
+(node:118269) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop] › tests/e2e/arcade-revised-ux.spec.ts:5:1 › Elevator native RIGHT boards and LEFT refuses; real weight arithmetic and unloading remain readable at eight sizes (9.5s)
+  ✓   3 [desktop] › tests/e2e/arcade-revised-ux.spec.ts:35:1 › Coffee actual liquid slope is attributed to its cup and all distance/remaining/arrow information stays inside the game window (2.8s)
+  ✓   4 [desktop] › tests/e2e/arcade-revised-ux.spec.ts:59:1 › Meeting uses two distinct generated foreground images through real LISTEN/WORK inputs without extra image loads (2.3s)
+  ✓   5 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game001: saved zero credits allows three genuine endings and retries without wallet or reward activity (34.1s)
+  ✓   6 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game002: saved zero credits allows three genuine endings and retries without wallet or reward activity (54.3s)
+  ✓   7 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game003: saved zero credits allows three genuine endings and retries without wallet or reward activity (53.1s)
+  ✓   8 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game004: saved zero credits allows three genuine endings and retries without wallet or reward activity (12.3s)
+  ✓   9 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game005: saved zero credits allows three genuine endings and retries without wallet or reward activity (4.2s)
+  ✓  10 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game006: saved zero credits allows three genuine endings and retries without wallet or reward activity (34.4s)
+  ✓  11 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game007: saved zero credits allows three genuine endings and retries without wallet or reward activity (25.1s)
+  ✓  12 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game008: saved zero credits allows three genuine endings and retries without wallet or reward activity (58.0s)
+  ✓  13 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game009: saved zero credits allows three genuine endings and retries without wallet or reward activity (5.4s)
+  ✓  14 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game010: saved zero credits allows three genuine endings and retries without wallet or reward activity (31.3s)
+  ✓  15 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game011: saved zero credits allows three genuine endings and retries without wallet or reward activity (4.8s)
+  ✓  16 [desktop] › tests/e2e/game011.spec.ts:12:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (18.5s)
+  ✘  17 [desktop] › tests/e2e/game011.spec.ts:75:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (4.2s)
+(node:119141) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  18 [desktop] › tests/e2e/game011.spec.ts:90:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.6s)
+
+
+  1) [desktop] › tests/e2e/arcade-onboarding.spec.ts:77:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets 
+
+    Error: all viewport findings retained; no assertion is waived
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 8
+
+    - Array []
+    + Array [
+    +   "game009/practice/320x568: Error: [data-practice-action=\"stamp-other\"][aria-label=\"ペン\"] clipped by div.practice-window
+    +
+    + expect(received).toBeLessThanOrEqual(expected)
+    +
+    + Expected: <= 292
+    + Received:    311",
+    + ]
+
+       98 |   const auditPath=info.outputPath('actual-onboarding-layouts.json');
+       99 |   writeFileSync(auditPath,JSON.stringify({records,issues,errors},null,2));
+    > 100 |   await info.attach('actual-onboarding-layouts',{path:auditPath,contentType:'application/json'});expect(errors).toEqual([]);expect(issues,'all viewport findings retained; no assertion is waived').toEqual([]);
+          |                                                                                                                                                                                                     ^
+      101 | });
+      102 |
+        at /workspace/orbit-shift/tests/e2e/arcade-onboarding.spec.ts:100:197
+
+    attachment #1: actual-onboarding-layouts (application/json) ────────────────────────────────────
+    artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/attachments/actual-onboarding-layouts-81ed926a2276911aa9c1dbf47a3fb319c55f85cf.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/eleven-game-development/arcade-onboarding-all-elev-3683e-ut-reducing-primary-targets-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › tests/e2e/game011.spec.ts:75:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "alive": false,
+        "phase": "ended",
+    -   "remaining": 0,
+    +   "remaining": null,
+        "score": 100,
+      }
+
+      82 |   await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));expect((await runtime(page)).events.filter(e=>e.name==='run_end'||e.name==='quit')).toEqual([]);
+      83 |   await page.locator('#resume-button').click();await expect(page.locator('#retry-button')).toBeVisible({timeout:3000});
+    > 84 |   const expired=(await runtime(page)).inspection;expect(expired).toMatchObject({alive:false,score:100,phase:'ended',remaining:0});
+         |                                                                  ^
+      85 |   await page.keyboard.press(expired.answerSide==='left'?'ArrowLeft':'ArrowRight');expect((await runtime(page)).inspection.score).toBe(100);
+      86 |   expect((await runtime(page)).events.filter(e=>e.name==='run_end')).toHaveLength(1);expect(errors).toEqual([]);
+      87 |   await info.attach('actual-quiz-deadline-and-repeat',{body:JSON.stringify({first,paused,expired,events:(await runtime(page)).events,errors}),contentType:'application/json'});
+        at /workspace/orbit-shift/tests/e2e/game011.spec.ts:84:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/game011-Quiz-native-held-r-7330e-blocks-a-late-native-answer-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/eleven-game-development/game011-Quiz-native-held-r-7330e-blocks-a-late-native-answer-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/game011-Quiz-native-held-r-7330e-blocks-a-late-native-answer-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/eleven-game-development/game011-Quiz-native-held-r-7330e-blocks-a-late-native-answer-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: [desktop] › tests/e2e/arcade-unlimited.spec.ts (5.3m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 failed
+    [desktop] › tests/e2e/arcade-onboarding.spec.ts:77:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets 
+    [desktop] › tests/e2e/game011.spec.ts:75:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer 
+  16 passed (8.1m)

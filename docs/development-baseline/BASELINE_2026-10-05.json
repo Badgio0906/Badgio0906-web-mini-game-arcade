@@ -1,0 +1,1336 @@
+{
+  "checkedJst": "2026-10-05T11:53:10.096386+09:00",
+  "snapshot": "c793e35f16ea752cc3493558ea6d2a0b7ae38578",
+  "sources": "Existing local Git repository, saved logs, checked-in QA/review records only; no plugin or external analytics used as a data source.",
+  "definitions": {
+    "gameSelection": "Latest three new native browser games; imported legacy games012–014 excluded. Game015 includes revision01; Game011 includes migration timing/scoring revision.",
+    "commitScope": "main first-parent commits touching game-owned source/HTML/unit/browser tests/public images and game manifest. Shared core/catalog/font, reports/docs and source-art provenance excluded. Local archival commits and GitHub re-uploads not counted twice. Documentation-only commits excluded.",
+    "lines": "Cumulative git numstat insertions/deletions across selected adopted commits; binary paths included in file count but have no line count. Includes unit/browser test source and JSON game manifests. Does not include unpublished editor revisions.",
+    "tests": "One logged Vitest/browser/CI command invocation=one batch, not one case. Includes development and public regression conducted during that game stage. Fixed manifest is a confirmed lower bound, not complete history. Does not include build/check/discovery-only/all-skipped runs, asset/hash audits, model simulations, manual or agent playtest scripts. Copies of logs/reports for the same run excluded. Later games testing older games not assigned back to those older game totals.",
+    "failures": "Logged batches with a failed target-game assertion or its collection harness. Game011 two mixed batches failed on other games; recorded separately and excluded from target failures. A failed harness is not automatically a product bug.",
+    "fixCount": "Complete correction count unavailable. Post-first-adopted-code commit count is a separate observable metric; 0 does not mean no pre-commit repairs.",
+    "bugs": "Classified with actual QA/Feel findings and adopted diff, not commit-title keyword search. First bundled implementation commits include earlier bug repairs but are not post-initial bug-fix commits.",
+    "timestamps": "Author dates of adopted commits are checkpoints, not actual implementation start/end or active development duration. All displayed dates JST.",
+    "agents": "Roles/evidence prove delegation happened, not number of spawns/followups/worker turns. Exact counts unavailable.",
+    "pricing": "Codex account billing/credits/tokens directly unavailable. In-game CREDIT is unrelated and excluded."
+  },
+  "games": [
+    {
+      "ゲーム番号": "game016",
+      "ゲーム名": "負けじゃんけん ～LOSE TO WIN～",
+      "実装開始日時": "取得不可",
+      "実作業終了日時": "取得不可",
+      "開発経過時間": "取得不可",
+      "全テスト実行回数": "取得不可",
+      "全テスト失敗回数": "取得不可",
+      "全修正回数": "取得不可",
+      "実装サブエージェント呼出回数": "取得不可",
+      "レビュー専用サブエージェント呼出回数": "取得不可",
+      "Codexチャット数": "取得不可",
+      "Codexタスク数": "取得不可",
+      "Codexターン数": "取得不可",
+      "使用モデル": "取得不可",
+      "Reasoning設定": "取得不可",
+      "Speed設定": "取得不可",
+      "料金": "取得不可",
+      "Codexクレジット": "取得不可",
+      "入力トークン": "取得不可",
+      "キャッシュ済み入力トークン": "取得不可",
+      "出力トークン": "取得不可",
+      "初回採用コードコミット日時_参考": "2026-10-05T11:26:15+09:00",
+      "直近採用コードコミット日時_参考": "2026-10-05T11:26:15+09:00",
+      "採用コードコミット数": 1,
+      "変更ファイル数_重複除外": 23,
+      "追加行数_累計": 992,
+      "削除行数_累計": 0,
+      "変更行数_追加削除合計": 992,
+      "確認済みテスト実行バッチ数": 9,
+      "確認済み対象テスト失敗バッチ数": 2,
+      "他ゲーム原因の失敗バッチ数": 0,
+      "初回採用後の変更コミット数": 0,
+      "不具合修正を含む初回採用後コミット数": 0
+    },
+    {
+      "ゲーム番号": "game015",
+      "ゲーム名": "落下キング ～FALL KING～",
+      "実装開始日時": "取得不可",
+      "実作業終了日時": "取得不可",
+      "開発経過時間": "取得不可",
+      "全テスト実行回数": "取得不可",
+      "全テスト失敗回数": "取得不可",
+      "全修正回数": "取得不可",
+      "実装サブエージェント呼出回数": "取得不可",
+      "レビュー専用サブエージェント呼出回数": "取得不可",
+      "Codexチャット数": "取得不可",
+      "Codexタスク数": "取得不可",
+      "Codexターン数": "取得不可",
+      "使用モデル": "取得不可",
+      "Reasoning設定": "取得不可",
+      "Speed設定": "取得不可",
+      "料金": "取得不可",
+      "Codexクレジット": "取得不可",
+      "入力トークン": "取得不可",
+      "キャッシュ済み入力トークン": "取得不可",
+      "出力トークン": "取得不可",
+      "初回採用コードコミット日時_参考": "2026-10-05T01:17:04+09:00",
+      "直近採用コードコミット日時_参考": "2026-10-05T07:59:46+09:00",
+      "採用コードコミット数": 2,
+      "変更ファイル数_重複除外": 19,
+      "追加行数_累計": 1947,
+      "削除行数_累計": 75,
+      "変更行数_追加削除合計": 2022,
+      "確認済みテスト実行バッチ数": 14,
+      "確認済み対象テスト失敗バッチ数": 3,
+      "他ゲーム原因の失敗バッチ数": 0,
+      "初回採用後の変更コミット数": 1,
+      "不具合修正を含む初回採用後コミット数": 1
+    },
+    {
+      "ゲーム番号": "game011",
+      "ゲーム名": "ウンコかウコンかゲーム ～UNKO or UKON～",
+      "実装開始日時": "取得不可",
+      "実作業終了日時": "取得不可",
+      "開発経過時間": "取得不可",
+      "全テスト実行回数": "取得不可",
+      "全テスト失敗回数": "取得不可",
+      "全修正回数": "取得不可",
+      "実装サブエージェント呼出回数": "取得不可",
+      "レビュー専用サブエージェント呼出回数": "取得不可",
+      "Codexチャット数": "取得不可",
+      "Codexタスク数": "取得不可",
+      "Codexターン数": "取得不可",
+      "使用モデル": "取得不可",
+      "Reasoning設定": "取得不可",
+      "Speed設定": "取得不可",
+      "料金": "取得不可",
+      "Codexクレジット": "取得不可",
+      "入力トークン": "取得不可",
+      "キャッシュ済み入力トークン": "取得不可",
+      "出力トークン": "取得不可",
+      "初回採用コードコミット日時_参考": "2026-10-04T21:44:44+09:00",
+      "直近採用コードコミット日時_参考": "2026-10-04T23:39:43+09:00",
+      "採用コードコミット数": 3,
+      "変更ファイル数_重複除外": 30,
+      "追加行数_累計": 682,
+      "削除行数_累計": 59,
+      "変更行数_追加削除合計": 741,
+      "確認済みテスト実行バッチ数": 14,
+      "確認済み対象テスト失敗バッチ数": 1,
+      "他ゲーム原因の失敗バッチ数": 2,
+      "初回採用後の変更コミット数": 2,
+      "不具合修正を含む初回採用後コミット数": 1
+    }
+  ],
+  "details": {
+    "game016": {
+      "scope": [
+        "game016.html",
+        "src/games/game016",
+        "public/assets/game016",
+        "public/assets/portal/game016.webp",
+        "tests/game016",
+        "tests/unit/game016.test.ts",
+        "tests/unit/game016-practice.test.ts",
+        "tests/unit/game016-wallet.test.ts"
+      ],
+      "commits": [
+        {
+          "sha": "c58079cd7cfd0b54f89b6b3710ac73ddb3a4a897",
+          "authorDateJst": "2026-10-05T11:26:15+09:00",
+          "subject": "Add LOSE TO WIN fixed-choice reverse rock paper scissors arcade game",
+          "files": [
+            {
+              "path": "game016.html",
+              "added": 1,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "public/assets/game016/hand-paper.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game016/hand-rock.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game016/hand-scissors.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/portal/game016.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "src/games/game016/LoseRun.ts",
+              "added": 166,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/game.manifest.json",
+              "added": 23,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/handVisual.ts",
+              "added": 29,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/main.ts",
+              "added": 151,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/onboarding.ts",
+              "added": 29,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/questions.ts",
+              "added": 78,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/resultFlavor.ts",
+              "added": 10,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/runWallet.ts",
+              "added": 16,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/style.css",
+              "added": 35,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game016/types.ts",
+              "added": 32,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game016/audit-preservation.py",
+              "added": 35,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game016/helpers.mjs",
+              "added": 21,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game016/probe-production.mjs",
+              "added": 34,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game016/probe.mjs",
+              "added": 61,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game016/review.mjs",
+              "added": 25,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game016-practice.test.ts",
+              "added": 48,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game016-wallet.test.ts",
+              "added": 31,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game016.test.ts",
+              "added": 167,
+              "deleted": 0,
+              "binary": false
+            }
+          ]
+        }
+      ],
+      "testRuns": [
+        {
+          "path": "docs/development-baseline/evidence/game016-model-check.log",
+          "bytes": 327,
+          "sha256": "413c152303ee06c2806fe3da3770c2ace9b0abcca12c457ca8fe20d8fe105a86",
+          "category": "vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-full-units.log",
+          "bytes": 3256,
+          "sha256": "cfac506bd78e3e826284394e7feebeda29fca44d6076557640bbd7801e242864",
+          "category": "vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-native-final.log",
+          "bytes": 513,
+          "sha256": "63e4a3df212350c9bcc1573fb082e28ea67c7a6c9027cdeadb35b79f5f1c27d9",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-native-final-retarget.log",
+          "bytes": 274,
+          "sha256": "4591ce9e600d565e9cc321da86acbb49d7791153584d1b47ea27b51ae329180f",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-production-final.log",
+          "bytes": 3197,
+          "sha256": "565f5c25ef350b94aede55805639795cf98c153872f7ce536c6e606689f3ee27",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-production-final-retarget.log",
+          "bytes": 356,
+          "sha256": "ad6723ff14bec9eefd30fd0ad08a7f506b668476b6798502f2b980517a429ec5",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-regression-28.log",
+          "bytes": 2324,
+          "sha256": "77b577fda32b3efeab8550e7af7226e5bcdba8e353a6ebe2512419c0d1974b96",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game016-public-14.log",
+          "bytes": 1673,
+          "sha256": "0567ad827aa0ddc99e24fb6fdbb2a72705275e5a23a5d7eed1d9a37536e87b06",
+          "category": "browser-publication",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/game016/QA/PUBLIC_ACTIONS_EXCERPT.log",
+          "bytes": 394,
+          "sha256": "c2872808cebf0013e2b1c430e70669b959510e538b323544a1701ef884865dba",
+          "category": "ci-vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        }
+      ],
+      "fixExamples": [
+        {
+          "class": "UI／可読性",
+          "finding": "明るいTVボタンに白文字が埋もれる",
+          "resolution": "ボタン文字を濃紺にする限定CSS修正",
+          "evidence": "docs/game016/VISUAL_REVIEW.md"
+        },
+        {
+          "class": "仕様チェック／問題データ",
+          "finding": "間接文章問題の初期06/07が直接答えを伝えていた",
+          "resolution": "紙を切れる手／石に勝てる手へ修正",
+          "evidence": "docs/game016/QA/QA_REPORT.md"
+        },
+        {
+          "class": "テスト基盤",
+          "finding": "2000.0000000000002の浮動小数点比較失敗",
+          "resolution": "テスト側だけ数値誤差比較を修正",
+          "evidence": "docs/game016/QA/INITIAL_NATIVE_TIMESTAMP_ARITHMETIC.json"
+        },
+        {
+          "class": "テスト基盤",
+          "finding": "遷移中にHTTP200画像のCDP bodyを読めない",
+          "resolution": "初回画像jobを遷移前に回収",
+          "evidence": "docs/game016/QA/INITIAL_PRODUCTION_BODY_NAVIGATION.json"
+        }
+      ],
+      "bugFixCommits": []
+    },
+    "game015": {
+      "scope": [
+        "game015.html",
+        "src/games/game015",
+        "public/assets/game015",
+        "public/assets/portal/game015.webp",
+        "tests/game015",
+        "tests/unit/game015.test.ts",
+        "tests/unit/game015-practice.test.ts",
+        "tests/unit/game015-wallet.test.ts"
+      ],
+      "commits": [
+        {
+          "sha": "b8ba287aacf5fe5c25699abdbd77ffe9f7f1f1f2",
+          "authorDateJst": "2026-10-05T01:17:04+09:00",
+          "subject": "Add FALL KING pixel-art endless descent and fifteen-game portal",
+          "files": [
+            {
+              "path": "game015.html",
+              "added": 3,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "public/assets/portal/game015.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "src/games/game015/FallBoard.ts",
+              "added": 86,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/FallRun.ts",
+              "added": 167,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/art.ts",
+              "added": 319,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/audio.ts",
+              "added": 34,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/game.manifest.json",
+              "added": 62,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/generation.ts",
+              "added": 77,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/main.ts",
+              "added": 87,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/style.css",
+              "added": 6,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/types.ts",
+              "added": 68,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/probe-production-geometry.mjs",
+              "added": 41,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/probe.mjs",
+              "added": 178,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/review-model.mjs",
+              "added": 36,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/review-practice.mjs",
+              "added": 24,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game015-practice.test.ts",
+              "added": 42,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game015.test.ts",
+              "added": 159,
+              "deleted": 0,
+              "binary": false
+            }
+          ]
+        },
+        {
+          "sha": "4956ae958371d2ae37dd564e6a514bbb51891826",
+          "authorDateJst": "2026-10-05T07:59:46+09:00",
+          "subject": "Add larger FALL KING character and visible floor wall bird hazards",
+          "files": [
+            {
+              "path": "game015.html",
+              "added": 1,
+              "deleted": 1,
+              "binary": false
+            },
+            {
+              "path": "public/assets/portal/game015.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "src/games/game015/FallBoard.ts",
+              "added": 14,
+              "deleted": 4,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/FallRun.ts",
+              "added": 96,
+              "deleted": 10,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/art.ts",
+              "added": 82,
+              "deleted": 4,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/game.manifest.json",
+              "added": 20,
+              "deleted": 3,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/generation.ts",
+              "added": 37,
+              "deleted": 18,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/main.ts",
+              "added": 53,
+              "deleted": 7,
+              "binary": false
+            },
+            {
+              "path": "src/games/game015/types.ts",
+              "added": 22,
+              "deleted": 5,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/audit-revision.mjs",
+              "added": 23,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/game015/probe-revision.mjs",
+              "added": 85,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game015-practice.test.ts",
+              "added": 5,
+              "deleted": 5,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game015.test.ts",
+              "added": 120,
+              "deleted": 18,
+              "binary": false
+            }
+          ]
+        }
+      ],
+      "testRuns": [
+        {
+          "path": "docs/development-baseline/evidence/game015-native.log",
+          "bytes": 914,
+          "sha256": "eacc84f7461b8ea35ddd4659d63e47c9348ff555e91298d9959f3489b80f782d",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-native-final.log",
+          "bytes": 173,
+          "sha256": "d319d30413e1aba747c1412b56624cfbe9486f90aa457edde6dc285c52d6ffe9",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-production-geometry.log",
+          "bytes": 851,
+          "sha256": "5503da7f88c2eb3c79a902622c0d1c3c1c8a404660aa61494152a477fadc8d94",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-production-26.log",
+          "bytes": 2157,
+          "sha256": "7a0b4ffedf16ac35e65e6dcb2a3dbe97054c99c7c8c3576e7d5654bc31030224",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-public-13.log",
+          "bytes": 1553,
+          "sha256": "35ae73284fa1b57af0f52beb9db3052665b515cbbc3948f70bb8966d17532a09",
+          "category": "browser-publication",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-native.log",
+          "bytes": 689,
+          "sha256": "f3ac894bb809156b88770e5d4c2dceca860f6e886250389f4f5456906c4d0e2a",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-touch-diagnostic.log",
+          "bytes": 513,
+          "sha256": "4df8a6c438a4c885d8aa3728132c61b02a51f7be1bbfb942fc03646adef7ab3e",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-final-native.log",
+          "bytes": 420,
+          "sha256": "66dd492228f29cd1fb8b0646c5b8338fabb0d0c8dba5e4a0897b6afd2671e6ed",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-production.log",
+          "bytes": 236,
+          "sha256": "f739f2fa3153f56443b0a45c9a19772d83a86c50d89f06c322b6eaaacf3f7aba",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-production-26.log",
+          "bytes": 2157,
+          "sha256": "283be48cd4542af83f4eefe441046bd2d318e323fb65f3e8ecd22cbcd313f4ec",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-public-13.log",
+          "bytes": 1553,
+          "sha256": "bebaf306115c55e52d7a83ddf4b5a8b8456ce059f2cd673549a6a23b65b16dec",
+          "category": "browser-publication",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/game015-revision-units.log",
+          "bytes": 647,
+          "sha256": "264385d45c35392dfc7bddccddf78ad30268e3de54c708380edc5528ed598d1a",
+          "category": "vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/game015/QA/CI_TEST_BUILD_SUMMARY.txt",
+          "bytes": 672,
+          "sha256": "779176246d7c5292de8a15f539681dd78ed27bab5a81f746e6053f07e15c6c29",
+          "category": "ci-vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/game015/revision-01/CI_VALIDATION_SUMMARY.json",
+          "bytes": 740,
+          "sha256": "b20d98b096df3ada0f4e7e30cf1ecfa22d135492cf95ae73feaf5dae4d234162",
+          "category": "ci-vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        }
+      ],
+      "fixExamples": [
+        {
+          "class": "ゲームロジック／練習",
+          "finding": "練習の初期ターゲット到達不能",
+          "evidence": "docs/game015/IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "class": "操作性",
+          "finding": "ヘッダー操作後の最初の方向入力を無視",
+          "evidence": "docs/game015/IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "class": "UI／美術",
+          "finding": "中央背景が過密",
+          "resolution": "詳細壁を左右48pxへ限定",
+          "evidence": "docs/game015/VISUAL_REVIEW.md"
+        },
+        {
+          "class": "レスポンシブ／可読性",
+          "finding": "小画面の落下数値が小さい",
+          "resolution": "320縦／844横のHUDを改修し実画像再確認",
+          "evidence": "docs/game015/VISUAL_REVIEW.md"
+        },
+        {
+          "class": "配信",
+          "finding": "favicon未指定で404",
+          "evidence": "docs/game015/IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "class": "要求変更／難易度",
+          "finding": "中央で落ち続けられる",
+          "resolution": "キャラ1.5倍・全幅安全床廃止・トゲ／壁針／鳥を追加",
+          "evidence": "docs/game015/revision-01/IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "class": "操作性／バグ",
+          "finding": "長押し解除のclickが結果画面TITLEへ持ち越される",
+          "resolution": "pointer開始画面と現在画面を照合",
+          "evidence": "docs/game015/revision-01/INITIAL_GESTURE_CROSSING.json"
+        }
+      ],
+      "bugFixCommits": [
+        "4956ae958371d2ae37dd564e6a514bbb51891826"
+      ]
+    },
+    "game011": {
+      "scope": [
+        "game011.html",
+        "src/games/game011",
+        "public/assets/game011",
+        "public/assets/portal/game011.webp",
+        "tests/game011",
+        "tests/unit/game011.test.ts",
+        "tests/unit/game011-practice.test.ts",
+        "tests/unit/game011-wallet.test.ts"
+      ],
+      "commits": [
+        {
+          "sha": "e76f28a896da02d73f77fa7de54560c7c1f16da0",
+          "authorDateJst": "2026-10-04T21:44:44+09:00",
+          "subject": "Integrate eleven-game arcade, onboarding and Pages build",
+          "files": [
+            {
+              "path": "game011.html",
+              "added": 26,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-01.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-02.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-03.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-04.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-05.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-06.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-07.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-08.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-09.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/ukon-10.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-01.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-02.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-03.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-04.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-05.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-06.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-07.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-08.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-09.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/game011/icons/unko-10.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "public/assets/portal/game011.webp",
+              "added": null,
+              "deleted": null,
+              "binary": true
+            },
+            {
+              "path": "src/games/game011/UnkoBoard.ts",
+              "added": 153,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/UnkoRun.ts",
+              "added": 143,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/contracts.ts",
+              "added": 37,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/game.manifest.json",
+              "added": 20,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/main.ts",
+              "added": 98,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/resultFlavor.ts",
+              "added": 10,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/style.css",
+              "added": 24,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game011.test.ts",
+              "added": 64,
+              "deleted": 0,
+              "binary": false
+            }
+          ]
+        },
+        {
+          "sha": "96a8e50736cb80d4aeb772202625dc42af96febb",
+          "authorDateJst": "2026-10-04T22:20:13+09:00",
+          "subject": "Integrate eleven-game arcade, onboarding and Pages build",
+          "files": [
+            {
+              "path": "src/games/game011/UnkoBoard.ts",
+              "added": 1,
+              "deleted": 0,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/main.ts",
+              "added": 1,
+              "deleted": 0,
+              "binary": false
+            }
+          ]
+        },
+        {
+          "sha": "f71297794a5618c27134c972c86f4a51ea1dad6b",
+          "authorDateJst": "2026-10-04T23:39:43+09:00",
+          "subject": "Adjust quiz deadline scoring and integrate three existing Godot games",
+          "files": [
+            {
+              "path": "src/games/game011/UnkoBoard.ts",
+              "added": 7,
+              "deleted": 7,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/UnkoRun.ts",
+              "added": 13,
+              "deleted": 14,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/contracts.ts",
+              "added": 3,
+              "deleted": 2,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/game.manifest.json",
+              "added": 39,
+              "deleted": 10,
+              "binary": false
+            },
+            {
+              "path": "src/games/game011/main.ts",
+              "added": 9,
+              "deleted": 8,
+              "binary": false
+            },
+            {
+              "path": "tests/unit/game011.test.ts",
+              "added": 34,
+              "deleted": 18,
+              "binary": false
+            }
+          ]
+        }
+      ],
+      "testRuns": [
+        {
+          "path": "docs/development-baseline/evidence/eleven-repaired-unit.log",
+          "bytes": 2978,
+          "sha256": "f658e580c37401ace89945d4889b73ac33e47f0b709ea494e7554e5199a41107",
+          "category": "vitest",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/eleven-game/QA/EXECUTION_LEDGER.json",
+          "bytes": 16217,
+          "sha256": "09597cc20b9f8a26cf72d48f878ea577b935c6952d5063b5834e686c824c4793",
+          "category": "targeted-vitest-only:Game0119tests10:32:11Z",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/eleven-game/QA/GITHUB_PUBLICATION_AUDIT.json",
+          "bytes": 1137,
+          "sha256": "7b0f32f6f66d45de4e344f720bd8ddc015abcd5f42d192a9b0a7206f24885151",
+          "category": "ci-vitest-only:run37205351046",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-fifth.log",
+          "bytes": 17731,
+          "sha256": "4d26051c8e6accb61ea56e0ce761cf1cc9fc0d8276f2927f06b03007bdf68a1a",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": true,
+          "executedTargetCaseLines": [
+            "  ✓  11 [desktop] › tests/e2e/arcade-onboarding.spec.ts:5:3 › game011: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (2.8s)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-final-first.log",
+          "bytes": 6531,
+          "sha256": "c7451f2efb2da5a52ad91ff7531f5e70d61a755d2d944b667542d758f59e0ac7",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": true,
+          "executedTargetCaseLines": [
+            "  ✓  11 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game011: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.4s)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-final-desktop.log",
+          "bytes": 11038,
+          "sha256": "d9eaad0b61767ac6f5ce34380b9780c5a443ca153f2755785f2b02c03d3d48d4",
+          "category": "browser",
+          "targetOrHarnessFailure": true,
+          "batchFailedElsewhere": false,
+          "executedTargetCaseLines": [
+            "  ✓  15 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game011: saved zero credits allows three genuine endings and retries without wallet or reward activity (4.8s)",
+            "  ✓  16 [desktop] › tests/e2e/game011.spec.ts:12:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (18.5s)",
+            "  ✘  17 [desktop] › tests/e2e/game011.spec.ts:75:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (4.2s)",
+            "  ✓  18 [desktop] › tests/e2e/game011.spec.ts:90:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.6s)"
+          ],
+          "failedTargetCases": 1
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-final-portrait.log",
+          "bytes": 6472,
+          "sha256": "89b6f1a1a3e86520af4d0ef11be3b389952c8b1f31f68cb16ec08b6b40059b24",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false,
+          "executedTargetCaseLines": [
+            "  ✓  11 [mobile-portrait] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game011: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.2s)",
+            "  ✓  31 [mobile-portrait] › tests/e2e/game011.spec.ts:12:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (18.4s)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-grid-retarget.log",
+          "bytes": 2275,
+          "sha256": "bb047fc9f95ff6b9f328e5bde552cb7ba31ea70611e76552f1c219f6d001e273",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false,
+          "executedTargetCaseLines": [
+            "  ✓  3 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.9s)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-focus-retarget.log",
+          "bytes": 2847,
+          "sha256": "2c42a528687b7b6fc97cc52dccbeefd01dfc5a510f2bd391d72284de732895fd",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false,
+          "executedTargetCaseLines": [
+            "  ✓   1 [desktop] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (16.7s)",
+            "  ✓   2 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.5s)",
+            "  ✓   3 [desktop] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.2s)",
+            "  ✓   4 [desktop] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (784ms)",
+            "  ✓   5 [mobile-portrait] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (17.1s)",
+            "  ✓   8 [mobile-portrait] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (761ms)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-native-mode-retarget.log",
+          "bytes": 3900,
+          "sha256": "3dadefe77cb0aba06cd7737eff191831c67dbdff3b5aaa79b55119c56097ff1c",
+          "category": "browser",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false,
+          "executedTargetCaseLines": [
+            "  ✓   2 [desktop] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (18.0s)",
+            "  ✓   3 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.8s)",
+            "  ✓   4 [desktop] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.9s)",
+            "  ✓   5 [desktop] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (1.1s)",
+            "  ✓   6 [desktop] › tests/e2e/game011.spec.ts:154:1 › Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once (4.3s)",
+            "  ✓   8 [mobile-portrait] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (16.9s)",
+            "  ✓  11 [mobile-portrait] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (798ms)",
+            "  ✓  12 [mobile-portrait] › tests/e2e/game011.spec.ts:154:1 › Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once (7.0s)"
+          ],
+          "failedTargetCases": 0
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-production-root-subpath-final.log",
+          "bytes": 1998,
+          "sha256": "977fe329280c1f45c080ec8b4520ed0f27c1b481f7ffad0c80ba8ac05f26dbdf",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-production-focus-retarget.log",
+          "bytes": 332,
+          "sha256": "0a3ba2785ae7de3af60e2f8cca74777d08662e89ec4c4b290635974a35ed38c1",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-production-mode-retarget.log",
+          "bytes": 499,
+          "sha256": "5cb8958cbefc5fa440b317872b47ccf06a3e75f9bd92ae60f7e4200ff8021bb6",
+          "category": "browser-regression",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        },
+        {
+          "path": "docs/development-baseline/evidence/eleven-pages-remote-complete.log",
+          "bytes": 1437,
+          "sha256": "3a5b33b39bc968915e4744bb9cd4c2427cdef172f4121df01d16ba48d320fdaa",
+          "category": "browser-publication",
+          "targetOrHarnessFailure": false,
+          "batchFailedElsewhere": false
+        }
+      ],
+      "fixExamples": [
+        {
+          "class": "操作性／バグ",
+          "finding": "RESUMEで非表示ボタンfocusが残る",
+          "resolution": "非表示になる際に内部focusをblur",
+          "evidence": "docs/eleven-game/reviews/GAME011_FEEL.md"
+        },
+        {
+          "class": "操作性／バグ",
+          "finding": "FINAL MODE選択で非表示選択肢focusが残る",
+          "resolution": "非表示になる際に内部focusをblur",
+          "evidence": "docs/eleven-game/reviews/GAME011_FEEL.md"
+        },
+        {
+          "class": "要求変更／ゲームロジック",
+          "finding": "指定により回答期限と配点を変更",
+          "resolution": "1〜20問2秒／21〜50問1.5秒／51以後0.5秒・100/200/500点",
+          "evidence": "docs/migration/IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "class": "テスト基盤",
+          "finding": "終了後remaining:nullをテスト側が未想定",
+          "resolution": "期限／run_end／late入力拒否を確認するassertionへ修正",
+          "evidence": "docs/eleven-game/IMPLEMENTATION_REPORT.md"
+        }
+      ],
+      "bugFixCommits": [
+        "96a8e50736cb80d4aeb772202625dc42af96febb"
+      ]
+    }
+  },
+  "statistics": {
+    "平均コミット数": {
+      "value": 2,
+      "observations": 3,
+      "median": 2,
+      "minimum": 1,
+      "maximum": 3,
+      "basis": "採用コードコミット数"
+    },
+    "平均変更ファイル数": {
+      "value": 24,
+      "observations": 3,
+      "median": 23,
+      "minimum": 19,
+      "maximum": 30,
+      "basis": "変更ファイル数_重複除外"
+    },
+    "平均追加行数": {
+      "value": 1207,
+      "observations": 3,
+      "median": 992,
+      "minimum": 682,
+      "maximum": 1947,
+      "basis": "追加行数_累計"
+    },
+    "平均削除行数": {
+      "value": 44.666666666666664,
+      "observations": 3,
+      "median": 59,
+      "minimum": 0,
+      "maximum": 75,
+      "basis": "削除行数_累計"
+    },
+    "平均変更行数": {
+      "value": 1251.6666666666667,
+      "observations": 3,
+      "median": 992,
+      "minimum": 741,
+      "maximum": 2022,
+      "basis": "変更行数_追加削除合計"
+    },
+    "確認済みテスト実行数の平均": {
+      "value": 12.333333333333334,
+      "observations": 3,
+      "median": 14,
+      "minimum": 9,
+      "maximum": 14,
+      "basis": "確認済みテスト実行バッチ数"
+    },
+    "確認済み対象テスト失敗数の平均": {
+      "value": 2,
+      "observations": 3,
+      "median": 2,
+      "minimum": 1,
+      "maximum": 3,
+      "basis": "確認済み対象テスト失敗バッチ数"
+    },
+    "初回採用後の変更コミット数の平均": {
+      "value": 1,
+      "observations": 3,
+      "median": 1,
+      "minimum": 0,
+      "maximum": 2,
+      "basis": "初回採用後の変更コミット数"
+    },
+    "平均開発時間": {
+      "value": "取得不可",
+      "observations": 0,
+      "reason": "No complete start/end or invocation/turn history; confirmed observations are not full totals."
+    },
+    "平均全修正回数": {
+      "value": "取得不可",
+      "observations": 0,
+      "reason": "No complete start/end or invocation/turn history; confirmed observations are not full totals."
+    },
+    "平均全テスト実行回数": {
+      "value": "取得不可",
+      "observations": 0,
+      "reason": "No complete start/end or invocation/turn history; confirmed observations are not full totals."
+    },
+    "平均全テスト失敗回数": {
+      "value": "取得不可",
+      "observations": 0,
+      "reason": "No complete start/end or invocation/turn history; confirmed observations are not full totals."
+    }
+  },
+  "replacementAssessment": [
+    {
+      "process": "仕様チェック／問題文チェック",
+      "classification": "部分的に置換可能",
+      "evidence": "docs/game016/QA/QA_REPORT.md: direct-answer initial06/07 repaired; nine-pair tests and semantic validation remain executable checks",
+      "limit": "Fast judge can compare structured spec/result and flag wording; natural-language ambiguity and deadline/input semantics need responsible review."
+    },
+    {
+      "process": "テスト結果の定型PASS/FAIL集約",
+      "classification": "Jevへ置換可能",
+      "evidence": "docs/game016/QA/VALIDATION_SUMMARY.json and saved CI_TEST_BUILD_SUMMARY/PUBLIC_ACTIONS_EXCERPT",
+      "limit": "Run actual tests in existing runner; aggregation is deterministic and often better implemented as a script. Jev does not replace test execution."
+    },
+    {
+      "process": "Codexによる差分再レビュー",
+      "classification": "部分的に置換可能",
+      "evidence": "docs/game016/SOURCE_FREEZE.json, docs/game016/VISUAL_REVIEW.md: only button color; docs/eleven-game/QA/FOCUS_REPAIR_SOURCE_BRIDGE.json",
+      "limit": "Change classification and affected-check selection can use a judge; input epochs, timers and focus defects require code/browser investigation."
+    },
+    {
+      "process": "修正が必要かの一次判定",
+      "classification": "部分的に置換可能",
+      "evidence": "Game016 two preserved harness failures vs Game015 INITIAL_GESTURE_CROSSING runtime failure",
+      "limit": "Triage a structured failure record; root cause and appropriate correction are not safely inferred from a PASS/FAIL label."
+    },
+    {
+      "process": "サブエージェントによるQA／Visual／Feelレビュー",
+      "classification": "部分的に置換可能",
+      "evidence": "docs/game016/VISUAL_REVIEW.md, GAME_FEEL_REVIEW.md, docs/game015/VISUAL_REVIEW.md",
+      "limit": "Spec checklist/result summary can move. Image review requires actual multimodal support; executing play probes and human cognitive-fun assessment remain separate."
+    },
+    {
+      "process": "次工程への移行判定",
+      "classification": "部分的に置換可能",
+      "evidence": "docs/game016/IMPLEMENTATION_REPORT.md: source freeze, independent QA, publication file match and human pending gates",
+      "limit": "Technical gate checklist can be aggregated; source truth, exception decisions and human acceptance are not replaced."
+    },
+    {
+      "process": "操作バグ調査／修正／実ブラウザ再検証",
+      "classification": "Codexが必要",
+      "evidence": "docs/game015/revision-01/INITIAL_GESTURE_CROSSING.json; docs/eleven-game/reviews/GAME011_FEEL.md",
+      "limit": "Requires event traces, modifying code, rerunning real input and integration, beyond a review-only judge."
+    }
+  ],
+  "preservation": {
+    "note": "Terminal logs copied byte-identically; existing repository evidence reused. All evidence paths are repository-relative. This preservation does not rerun tests.",
+    "baselineSnapshot": "c793e35f16ea752cc3493558ea6d2a0b7ae38578"
+  }
+}

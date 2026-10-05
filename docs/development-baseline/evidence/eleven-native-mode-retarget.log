@@ -1,0 +1,30 @@
+
+Running 18 tests using 1 worker
+
+(node:142810) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game008: saved zero credits allows three genuine endings and retries without wallet or reward activity (59.9s)
+  ✓   2 [desktop] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (18.0s)
+  ✓   3 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.8s)
+  ✓   4 [desktop] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.9s)
+  ✓   5 [desktop] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (1.1s)
+  ✓   6 [desktop] › tests/e2e/game011.spec.ts:154:1 › Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once (4.3s)
+(node:143184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   7 [mobile-portrait] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game008: saved zero credits allows three genuine endings and retries without wallet or reward activity
+  ✓   8 [mobile-portrait] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (16.9s)
+  -   9 [mobile-portrait] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+  -  10 [mobile-portrait] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes
+  ✓  11 [mobile-portrait] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (798ms)
+  ✓  12 [mobile-portrait] › tests/e2e/game011.spec.ts:154:1 › Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once (7.0s)
+(node:143522) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  13 [mobile-landscape] › tests/e2e/arcade-unlimited.spec.ts:50:3 › game008: saved zero credits allows three genuine endings and retries without wallet or reward activity
+  -  14 [mobile-landscape] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records
+  -  15 [mobile-landscape] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+  -  16 [mobile-landscape] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes
+  -  17 [mobile-landscape] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once
+  -  18 [mobile-landscape] › tests/e2e/game011.spec.ts:154:1 › Quiz FINAL MODE releases hidden choice focus so the first immediate native arrow earns 250 exactly once
+
+  9 skipped
+  9 passed (2.0m)

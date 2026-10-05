@@ -1,0 +1,22 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 2000.0000000000002
+- 2000
+      ^
+
+    at flow (file:///workspace/orbit-shift/tests/game016/probe.mjs:38:222)
+    at async file:///workspace/orbit-shift/tests/game016/probe.mjs:61:81 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2000.0000000000002,
+  expected: 2000,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

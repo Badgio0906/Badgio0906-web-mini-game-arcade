@@ -1,0 +1,24 @@
+
+Running 12 tests using 1 worker
+
+(node:139873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (16.7s)
+  ✓   2 [desktop] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer (3.5s)
+  ✓   3 [desktop] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes (2.2s)
+  ✓   4 [desktop] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (784ms)
+(node:140145) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [mobile-portrait] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records (17.1s)
+  -   6 [mobile-portrait] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+  -   7 [mobile-portrait] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes
+  ✓   8 [mobile-portrait] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once (761ms)
+(node:140411) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   9 [mobile-landscape] › tests/e2e/game011.spec.ts:13:1 › Quiz ordinary image/text answers reach both final modes, preserve untimed reading, release READY fairly and update independent records
+  -  10 [mobile-landscape] › tests/e2e/game011.spec.ts:76:1 › Quiz native held/repeated arrows never carry an answer across questions; exact wall deadline blocks a late native answer
+  -  11 [mobile-landscape] › tests/e2e/game011.spec.ts:95:1 › Quiz actual initial question, pause and earned wrong-result retain full readable information and 44px actions at eight sizes
+  -  12 [mobile-landscape] › tests/e2e/game011.spec.ts:106:1 › Quiz RESUME releases hidden menu focus synchronously so the first immediate native arrow answers exactly once
+
+  6 skipped
+  6 passed (44.7s)

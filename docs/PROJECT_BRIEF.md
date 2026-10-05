@@ -1,3 +1,5 @@
+> 原始企画書を保持した履歴資料。後日の移行・CREDIT無効・ゲーム固有例外がある。現状は[CURRENT_STATUS](CURRENT_STATUS.md)、開発手順は[GAME_DEVELOPMENT_RULES](GAME_DEVELOPMENT_RULES.md)。
+
 # Web Mini Game Arcade プロジェクト企画書
 
 ## 1\. プロジェクトの目的

@@ -1,0 +1,65 @@
+
+Running 99 tests using 1 worker
+
+(node:115970) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game001: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (10.5s)
+  ✓   2 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game002: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (17.5s)
+  ✓   3 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game003: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (10.1s)
+  ✓   4 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game004: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (8.9s)
+  ✓   5 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game005: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.2s)
+  ✓   6 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game006: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (13.5s)
+  ✓   7 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game007: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (6.8s)
+  ✓   8 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game008: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (5.1s)
+  ✓   9 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game009: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.1s)
+  ✓  10 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game010: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (7.4s)
+  ✓  11 [desktop] › tests/e2e/arcade-onboarding.spec.ts:6:3 › game011: first real practice is isolated, completion is deliberate, reload skips it and repeat practice stays separate (3.4s)
+  ✓  12 [desktop] › tests/e2e/arcade-onboarding.spec.ts:54:1 › held practice input cannot automatically activate the newly focused real-start button (1.3s)
+  ✓  13 [desktop] › tests/e2e/arcade-onboarding.spec.ts:66:1 › native Enter auto-repeat during successful practice cannot click the new real-start control (1.1s)
+  ✓  14 [desktop] › tests/e2e/arcade-onboarding.spec.ts:77:1 › all eleven explanation, practice and success controls fit the eight viewport sizes without reducing primary targets (2.5m)
+  ✓  15 [desktop] › tests/e2e/arcade-portal.spec.ts:5:1 › portal exposes eleven real illustrated cards, PC/mobile columns and complete titles without fabricated rankings (1.8s)
+  ✓  16 [desktop] › tests/e2e/arcade-portal.spec.ts:27:1 › each whole card launches its direct route; refresh and native return link keep the portal and base prefix intact (26.0s)
+  ✘  17 [desktop] › tests/e2e/arcade-revised-ux.spec.ts:4:1 › Elevator native RIGHT boards and LEFT refuses; real weight arithmetic and unloading remain readable at eight sizes (4.5s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [desktop] › tests/e2e/arcade-revised-ux.spec.ts:4:1 › Elevator native RIGHT boards and LEFT refuses; real weight arithmetic and unloading remain readable at eight sizes 
+
+    Error: active document height
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1081
+    Received:    1083
+
+       at helpers/eleven-arcade.ts:107
+
+      105 |   expect(result.docWidth,'document width').toBeLessThanOrEqual(result.width+1);
+      106 |   // A native modal makes the title underlay inert. Its own controls must fit; active-page height is checked separately.
+    > 107 |   if(!result.modalOpen)expect(result.docHeight,'active document height').toBeLessThanOrEqual(result.height+1);
+          |                                                                          ^
+      108 |   for(const r of result.entries){
+      109 |     expect(r.missing,r.selector).toBe(false);expect(r.visible,r.selector).toBe(true);
+      110 |     expect(r.width!,r.selector).toBeGreaterThan(0);expect(r.height!,r.selector).toBeGreaterThan(0);
+        at geometry (/workspace/orbit-shift/tests/e2e/helpers/eleven-arcade.ts:107:74)
+        at /workspace/orbit-shift/tests/e2e/arcade-revised-ux.spec.ts:14:148
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-revised-ux-Elevator-7a943-ain-readable-at-eight-sizes-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: artifacts/eleven-game-development/arcade-revised-ux-Elevator-7a943-ain-readable-at-eight-sizes-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/eleven-game-development/arcade-revised-ux-Elevator-7a943-ain-readable-at-eight-sizes-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/eleven-game-development/arcade-revised-ux-Elevator-7a943-ain-readable-at-eight-sizes-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop] › tests/e2e/arcade-revised-ux.spec.ts:4:1 › Elevator native RIGHT boards and LEFT refuses; real weight arithmetic and unloading remain readable at eight sizes 
+  82 did not run
+  16 passed (4.6m)
+  1 error was not a part of any test, see above for details

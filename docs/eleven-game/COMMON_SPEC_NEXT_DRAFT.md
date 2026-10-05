@@ -1,3 +1,5 @@
+> 11本時点の候補と受入証拠を保持した履歴資料。現行共通境界は[GAME_COMMON_SPEC](../../GAME_COMMON_SPEC.md)、新タスクの手順は[GAME_DEVELOPMENT_RULES](../GAME_DEVELOPMENT_RULES.md)、現状は[CURRENT_STATUS](../CURRENT_STATUS.md)。
+
 # GAME_COMMON_SPEC 次期候補 — 説明 → 実操作練習 → 本番
 
 2026-10-04 / **DRAFT・人間検証前**。[今回のspec](IMPLEMENTATION_SPEC.md)3〜20・115〜117から得た次期候補。[現行GAME_COMMON_SPEC](../../GAME_COMMON_SPEC.md)をこの草案で置き換えず、旧ゲーム固有の分岐/score/physicsを共通テンプレートへ変換しない。Game012以降の基本操作練習を設計するための候補である。

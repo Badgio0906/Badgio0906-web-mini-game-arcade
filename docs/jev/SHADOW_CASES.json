@@ -1,0 +1,93 @@
+{
+  "preparedJst": "2026-10-05T13:03:03.296794+09:00",
+  "status": "BLOCKED_MISSING_CREDENTIAL_AND_CONFIRMED_API_CONTRACT",
+  "repositorySnapshot": "c793e35f16ea752cc3493558ea6d2a0b7ae38578",
+  "requestedModel": "Jev 1.13",
+  "apiCallsMade": 0,
+  "questions": [
+    {
+      "id": "PRODUCT_BUG",
+      "type": "noul",
+      "question": "製品コード側に修正が必要な問題であるか"
+    },
+    {
+      "id": "TEST_INFRA_BUG",
+      "type": "noul",
+      "question": "テストまたはテスト基盤側の問題であるか"
+    },
+    {
+      "id": "SPEC_MISMATCH",
+      "type": "noul",
+      "question": "実装または内容が仕様と不一致であるか"
+    },
+    {
+      "id": "CODEX_REVIEW_REQUIRED",
+      "type": "noul",
+      "question": "Codexによる追加レビュー・調査が必要か"
+    },
+    {
+      "id": "HUMAN_REVIEW_REQUIRED",
+      "type": "noul",
+      "question": "人間によるFeel / Visual確認が必要か"
+    },
+    {
+      "id": "RELEASE_BLOCKING",
+      "type": "noul",
+      "question": "この問題を解決せず公開工程へ進むべきではないか"
+    }
+  ],
+  "evaluationInstructions": "Evaluate the historical faulty scenario immediately before remediation, not the current corrected implementation. Evaluate six decisions together in one request per case. Do not include knownPrimaryCauseForScoringOnly or statements of already-confirmed cause in the model input. Preserve all native noul probabilities; do not substitute binary probabilities or a guessed schema. Compare strongest among PRODUCT_BUG/TEST_INFRA_BUG/SPEC_MISMATCH only. Codex/human/release decisions are separate gates. No code changes follow from decisions. No retries that may repeat a case call. Input tokens and cost must come from actual API usage; latency is measured wall time for the single request.",
+  "cases": [
+    {
+      "id": "A",
+      "game": "Game016",
+      "observations": "ブラウザのテストで画面遷移中に画像レスポンス本文を取得しようとしたところ、Chromium CDPのNetwork.getResponseBodyが「Response body is not available for a response that was navigated away from」と返し、エラーなしのassertionが失敗した。画像のHTTPステータスは200。ゲーム本体の起動、回答、リロード、一覧への復帰の機能に問題は観測されていない。",
+      "knownPrimaryCauseForScoringOnly": "TEST_INFRA_BUG",
+      "evidence": [
+        "docs/game016/QA/INITIAL_PRODUCTION_BODY_NAVIGATION.json",
+        "docs/game016/QA/QA_REPORT.md"
+      ],
+      "evidenceSha256": {
+        "docs/game016/QA/INITIAL_PRODUCTION_BODY_NAVIGATION.json": "ef893d76b6f8369cffbadaa3c308b1960d731db98f74ea3125652e26947f9436",
+        "docs/game016/QA/QA_REPORT.md": "cef4c0579f65d730d5d34d66831e75e59ce5a7cfab7894c463a920569aa42884"
+      },
+      "apiStatus": "NOT_CALLED"
+    },
+    {
+      "id": "B",
+      "game": "Game015",
+      "observations": "練習モードで、DROPし右方向へ移動する練習を行った。ターゲット足場の高さに到達した際、プレイヤー中心xは147.3875、着地に必要な最小中心xは151であり、接触できず落ち続けた。練習が初期位置へ戻り、プレイヤーは意図された練習を完了できなかった。",
+      "knownPrimaryCauseForScoringOnly": "PRODUCT_BUG",
+      "evidence": [
+        "docs/game015/QA/INITIAL_PRACTICE_REACHABILITY.json",
+        "docs/game015/IMPLEMENTATION_REPORT.md"
+      ],
+      "evidenceSha256": {
+        "docs/game015/QA/INITIAL_PRACTICE_REACHABILITY.json": "783cc183901d02e066ab740e7ab66b5044658cbc77c149491480610898f752f7",
+        "docs/game015/IMPLEMENTATION_REPORT.md": "e3f22ae2ae4f998118d466b17cf33494fe97db255ff8e3a0af3dcee429bc88b4"
+      },
+      "apiStatus": "NOT_CALLED"
+    },
+    {
+      "id": "C",
+      "game": "Game016",
+      "observations": "ROUND21〜30の説明問題は、手の名前を直接表示せず、簡単な文章の意味から相手の手を特定し、その手に負ける手へ変換して回答させる仕様である。初期の問題データには、プレイヤーが間接的に特定するはずの相手の手を問題文が直接伝えてしまう項目が含まれていた。",
+      "knownPrimaryCauseForScoringOnly": "SPEC_MISMATCH",
+      "evidence": [
+        "docs/game016/IMPLEMENTATION_SPEC.md",
+        "docs/game016/QA/QA_REPORT.md"
+      ],
+      "evidenceSha256": {
+        "docs/game016/IMPLEMENTATION_SPEC.md": "214228d3748ec5b2d709a5dc977c7a28f5a0d51ea6d955f3fe442bb89f247091",
+        "docs/game016/QA/QA_REPORT.md": "cef4c0579f65d730d5d34d66831e75e59ce5a7cfab7894c463a920569aa42884"
+      },
+      "apiStatus": "NOT_CALLED"
+    }
+  ],
+  "credentialReadiness": "2026-10-05準備時点の環境には認証情報がなかった。新タスクでは安全な環境設定を再確認。APIキーは未取得・未表示・未保存。",
+  "apiContractReadiness": "Previous connectivity-test request is not accessible. Public model catalog lists typesafe/jev-router; this does not identify Jev1.13 Decisions endpoint/model or noul schema. Router is not substituted.",
+  "results": "取得不可：API呼出前。",
+  "record_type": "prepared-local-case-registry-not-an-api-payload-or-result",
+  "sourcePreparationRepositoryModified": false,
+  "preservationNote": "既知ケースの準備記録をRepositoryへ保存したもの。sourcePreparationRepositoryModifiedは当時の準備時点の値で、今回の継承文書編集の有無を表すものではない。結果は未取得。"
+}
