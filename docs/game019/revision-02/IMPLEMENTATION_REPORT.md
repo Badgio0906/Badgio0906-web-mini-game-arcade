@@ -31,6 +31,8 @@
 | 他ゲーム保護 | [最終監査](QA/FINAL_SCOPE_AUDIT.json)。他18／共通の303file、他profileとcatalog19file、他thumbnail18entryがbaselineと同一。CREDIT・AdSense・外部Jev・共有SDK変更0。 |
 | Visual | 独立83/100、F12/H12。実画像36枚以上の閲覧記録。小画面のfrog／旗が小さく、resultはscrollを要する限界を残す。 |
 
+raw commandログの空白／末尾改行は証拠をbyteで保持した。`git diff --check`はQA raw `.log`を除くsource／文書でPASS。
+
 初回FAILを消していない。狭い57.2m棚の許容幅、横titleの3択、整数readerへ小数保存の製品問題を修正。固定入力の累積位置ずれ、HUD更新前read、collectorが実棚を経路へ含めない失敗、coverage候補未実行等は検証基盤として分離した。[独立QAの分類と原本](QA_REPORT.md)を参照。
 
 ## Jev向けデータ
@@ -45,7 +47,9 @@ node tools/analyze-game019.mjs device-export.json output.json
 
 ## 公開
 
-ユーザーの既存「検証後、すべて公開まで進める」の許可を適用。検証済み候補をPRへまとめ、既存GitHub Pagesのbuild/deploy後、正式HTTPS上でcompiled asset hashとnative入力を確認する。最終公開commit／CI／URLは [PUBLICATION.json](PUBLICATION.json) へ実結果のみ記録する。公開確認前はpendingであり、local PASSを公開PASSへ変換しない。
+ユーザーの既存「検証後、すべて公開まで進める」の許可を適用。[PR #3](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/3)をマージ、runtime `1a533e9d92114029086835bfc6f915848db49b47`。[Pages run37385472480](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37385472480)のnpm test／build／deploy成功をAPIのstep／jobで確認した。[正式ゲーム](https://game100garage.com/game019.html)でPC／phone／320／横の通常入力20m・保存再読込、DEV hookなしを確認。配信JS／CSS／font／thumbnail／HTMLはdist hash一致、portal19card、018／019／portalのHTTPとHTML一致。[公開集約](QA/PUBLIC_FINAL.json)／[公開HTTP](QA/PUBLIC_HTTP.json)／[公開記録](PUBLICATION.json)。
+
+最初の公開collectorは4画面とも通常入力・保存caseを完了した後、NodeのAPIRequestContextだけでDNS `EAI_AGAIN`になった。原本は[公開collector](QA/production-public/report.json)へ保持し、正常にサイトを読み込める同じbrowserのfetchでassetを照合した。runtime変更0。公開集約は入力証拠と配信証拠を合わせた技術PASSであり、初回collectorのFAILを書き換えていない。CI text logのsigned URLは403だったため、step／job成功の[API記録](QA/CI-runtime.json)と[取得境界](QA/CI_LOG_FETCH.json)を残す。PR添付toolはhandler未登録で失敗したため、実PR URLを文書に記録した。
 
 ## 残る人間評価
 
