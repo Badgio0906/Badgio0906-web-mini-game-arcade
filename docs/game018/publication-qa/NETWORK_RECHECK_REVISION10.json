@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-05T12:20:16.138722+00:00",
+  "policy_revision": "10",
+  "policy_state": "enforced",
+  "allowed_hosts": [
+    "api.github.com",
+    "badgio0906.github.io",
+    "jev-ai.org",
+    "openrouter.ai"
+  ],
+  "main_commit": "1ab4fcf5a35637b15554d7942d944763e79920c9",
+  "candidate_commit": "ed8a4630081e1c3d55c4732d3df7f325f2c85d3e",
+  "requests": [
+    {
+      "url": "https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/index.html",
+      "exit_code": 0,
+      "headers": "HTTP/1.1 200 OK\ndate: Mon, 05 Oct 2026 12:20:15 GMT\nserver: envoy\n\nHTTP/2 301 \nserver: envoy\ncontent-type: text/html\nlocation: http://game100garage.com/index.html\nx-github-request-id: 0BCA:78EE3:14BF2:18AB3:6AC391C6\nx-github-edge-region: westus3\naccept-ranges: bytes\nage: 1081\ndate: Mon, 05 Oct 2026 12:20:16 GMT\nvia: 1.1 varnish\nx-served-by: cache-lax-kwhp1940119-LAX\nx-cache: HIT\nx-cache-hits: 0\nx-timer: S1791202816.070752,VS0,VE1\nvary: Accept-Encoding\nx-fastly-request-id: 3f6b2c2e765c827572897db71156f9d260ddaab4\ncontent-length: 162\nx-envoy-upstream-service-time: 95\n\n",
+      "error": ""
+    },
+    {
+      "url": "https://game100garage.com/index.html",
+      "exit_code": 56,
+      "headers": "HTTP/1.1 403 Forbidden\ncontent-length: 16\ncontent-type: text/plain\ndate: Mon, 05 Oct 2026 12:20:16 GMT\nserver: envoy\nconnection: close\n\n",
+      "error": "curl: (56) CONNECT tunnel failed, response 403\n"
+    }
+  ],
+  "main_push_performed": false
+}
