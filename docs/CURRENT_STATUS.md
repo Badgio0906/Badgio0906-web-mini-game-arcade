@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+次タスクは018公開：[最新引き継ぎ書](game018/PUBLICATION_HANDOFF.md)。候補ブランチ`codex/game018-shoe-fly-high`の最新HEADを取得する。mainは017の`1ab4fcf`、018は実装済み・未公開。最終再確認のenforced revision10でも`game100garage.com`が許可ホストに含まれずCONNECT403。新環境で公開先HTTP200を確認後、main反映→Pages成功→実公開PC／phone導線・asset一致を検証する。この引き継ぎ編集はゲームruntimeを変更しない。
+
 今回の公開工程（2026-10-05 日本時間）：018候補を新環境へ取得し、freeze301ファイル一致、248/248単体・check・build、018／017各4件のローカルproduction導線を再検証した。GitHub Pages URLは意図したカスタムドメイン `game100garage.com`へ転送される（ユーザー確認済み）。GitHub APIへの通信は成功するが、この転送先は現環境の許可ホストに含まれずCONNECT403。公開URLのHTTP200確認待ちでmainは017のまま。[今回の公開工程と証拠](game018/PUBLICATION.md)。以下の旧環境CONNECT403記述は引き継ぎ時点の記録。
 
 2026-10-05 UTC。mainはGame017を含む17本、commit `1ab4fcf5a35637b15554d7942d944763e79920c9`。Pages Actions run37283475701はbuild／deployとも成功。公開URLは現環境のHTTP CONNECT403で実表示未確認。018を含む18本候補は公開前の技術検証完了で、最終結果は[018報告](game018/IMPLEMENTATION_REPORT.md)と[RELEASE_GATE](game018/QA/RELEASE_GATE.json)が正本。
