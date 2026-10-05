@@ -1,0 +1,48 @@
+{
+  "checkpoint": "B: initial native QA failures",
+  "tests": [
+    {
+      "viewport": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "input": "native touch drag START → read-only validated route → GOAL",
+      "last_point": {
+        "x": 929.999958218559,
+        "z": 299.999944841709
+      },
+      "phase": "over",
+      "result_reason": "unfinished",
+      "expected": "GOAL marker reached: finish practice",
+      "actual": "unfinished; practice-complete never appears",
+      "errors": []
+    },
+    {
+      "viewport": {
+        "name": "narrow",
+        "width": 320,
+        "height": 568,
+        "touch": true
+      },
+      "input": "native touch drag START → read-only validated route → GOAL",
+      "last_point": {
+        "x": 929.9999542006182,
+        "z": 300.0000249326618
+      },
+      "phase": "over",
+      "result_reason": "unfinished",
+      "expected": "GOAL marker reached: finish practice",
+      "actual": "unfinished; practice-complete never appears",
+      "errors": []
+    }
+  ],
+  "comparison": "desktop mouse and landscape touch completed same practice flow",
+  "source_observations": {
+    "goal_condition": "next.x >= 930 && abs(next.z - 300) <= 75",
+    "dash_drop_height": "height - fallSpeed * (run.time % 1.4)",
+    "run_time_includes": "warning, rain, camera and planning phases",
+    "afterimage_lookup": "findIndex(p => p.x >= run.position.x) - i"
+  }
+}

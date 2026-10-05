@@ -1,0 +1,67 @@
+{
+  "checkpoint": "B2: native retest failure at 320x568",
+  "input": "resume pause; calculate every drag coordinate sequentially via CDP; native touch on read-only safeRoute",
+  "expected_route_first_points": [
+    {
+      "x": 70,
+      "z": 300
+    },
+    {
+      "x": 90,
+      "z": 260
+    },
+    {
+      "x": 110,
+      "z": 220
+    },
+    {
+      "x": 130,
+      "z": 180
+    }
+  ],
+  "actual_route_first_points": [
+    {
+      "x": 70,
+      "z": 300
+    },
+    {
+      "x": 89.81842905980305,
+      "z": 276.4775246956039
+    },
+    {
+      "x": 109.82729641605107,
+      "z": 252.95129773151874
+    },
+    {
+      "x": 129.8361337918866,
+      "z": 229.42507076743354
+    }
+  ],
+  "actual_route_points_19_20": [
+    {
+      "x": 429.999993980092,
+      "z": 60.00000661593442
+    },
+    {
+      "x": 449.99998713423355,
+      "z": 60.00000661593442
+    }
+  ],
+  "result": {
+    "reason": "rain",
+    "score": 0,
+    "round": 1,
+    "streak": 0,
+    "time": 4.39559999999907,
+    "collision": {
+      "x": 333.11685549107614,
+      "z": 158.84625239727475
+    }
+  },
+  "other_viewports": "1440x900 mouse,390x844 touch,844x390 touch complete",
+  "source_observations": [
+    "ResizeObserver asynchronously sets intrinsic canvas.height after layout changes",
+    "test helper samples canvas.height for each point immediately after resume, without waiting for an animation frame"
+  ],
+  "errors": []
+}

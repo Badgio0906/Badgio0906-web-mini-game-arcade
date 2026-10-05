@@ -1,0 +1,11 @@
+{
+  "checkpoint": "B5: independent QA modifier behavior",
+  "finding": "QA017-01",
+  "test": "native mouse,1440x900,primary left click with Shift held",
+  "before_phase": "rain",
+  "after_Shift_accelerate_button": "rain",
+  "after_Shift_canvas_click": "rise",
+  "source_observation": "app pointer origin records approved=false for Shift; canvas pointerdown filters alt/ctrl/meta but has no Shift check",
+  "expected": "modifier handling consistent between canvas and native accelerate button",
+  "scope": "native observed mismatch; no score, timer or phase fixture writes"
+}

@@ -1,0 +1,68 @@
+{
+  "checkpoint": "D: consolidated retest observations",
+  "unit_tests": {
+    "total": 219,
+    "passed": 219,
+    "failed": 0,
+    "game017": 23
+  },
+  "typescript_and_production_build": {
+    "exit_code": 0
+  },
+  "native_profiles": [
+    {
+      "viewport": "1440x900 mouse",
+      "practice_complete": true,
+      "main_clear": true,
+      "next_round": true,
+      "rain_collision": true,
+      "retry": true,
+      "pause_remaining_unchanged": true,
+      "console_errors": 0
+    },
+    {
+      "viewport": "390x844 touch",
+      "practice_complete": true,
+      "main_clear": true,
+      "next_round": true,
+      "rain_collision": true,
+      "retry": true,
+      "pause_remaining_unchanged": true,
+      "console_errors": 0
+    },
+    {
+      "viewport": "320x568 touch",
+      "practice_complete": true,
+      "main_clear": true,
+      "next_round": true,
+      "rain_collision": true,
+      "retry": true,
+      "pause_remaining_unchanged": true,
+      "console_errors": 0
+    },
+    {
+      "viewport": "844x390 touch",
+      "practice_complete": true,
+      "main_clear": true,
+      "next_round": true,
+      "rain_collision": true,
+      "retry": true,
+      "pause_remaining_unchanged": true,
+      "console_errors": 0
+    }
+  ],
+  "additional_tests": [
+    "native route continuation;erase preserves deadline;held activation cannot draw nextphase",
+    "practice collision→planning retry→clear withscore0/noRUNevents",
+    "storage-denied best persists withinpage/retry, resetafterreload",
+    "Shift button/canvas do notactivate;Shift drag leavesroute1;freshnormalrouteclears"
+  ],
+  "independent_native_review": {
+    "PC_and_phone_consecutive_clears": 6,
+    "wind_observed_round": 4,
+    "large_rain_observed_round": 6,
+    "dash_positions_on_drawn_polyline": true,
+    "before_after_runtime_hash_equal": true
+  },
+  "human_experience_measurements": "fun,enjoyment,sound comfort,realphonefingers andmotionsickness notmeasured"
+}

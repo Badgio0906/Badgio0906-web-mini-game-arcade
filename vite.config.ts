@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: Object.fromEntries(readdirSync(process.cwd())
-        .filter(file => /^(index|game00[1-9]|game01[0156])\.html$/.test(file))
+        .filter(file => /^(index|game00[1-9]|game01[01567])\.html$/.test(file))
         .map(file => [file.replace('.html', ''), resolve(process.cwd(), file)])),
     },
   },

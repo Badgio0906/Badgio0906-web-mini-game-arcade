@@ -1,6 +1,6 @@
 # WEBミニゲーセン — WEB MINI GAME ARCADE
 
-短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。現在は16本の公開試作版。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
+短時間で遊べる異なる体験のゲームを集めた、静的Webゲームセンターです。公開版は16本、ローカル候補は17本（[RAINSHIFT報告](docs/game017/IMPLEMENTATION_REPORT.md)）。nativeゲームと、元のUIを維持して移行した旧Godot3本を収録しています。
 
 **[ゲームセンターを遊ぶ](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/)** ／ [負けじゃんけん](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game016.html) ／ [落下キング](https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/game015.html)
 

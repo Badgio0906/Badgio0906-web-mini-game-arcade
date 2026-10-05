@@ -1,0 +1,12 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "HUMAN_ONLY_JUDGMENT_REQUIRED": false,
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Game017を全く読み込まないCanvasとRetryだけの最小ページでも、CDPの1 moveドラッグ後はnative buttonにclickが出ない。中間moveを1つ入れた同じ直線ではclickが出る。ゲームのcapture解除有無とtouch-action:manipulationによって結果は変わらなかった。原failureを保存し、native gestureを3サンプル以上にする。実効collisionは別の解析的sweep単体テストで2点でも検証。",
+  "independent_evidence": [
+    "ISOLATED_CHROMIUM_TOUCH.log",
+    "tests/game017/touch-isolation.mjs"
+  ],
+  "decision_source": "normal Codex investigation with isolated browser reproduction, not Jev classification"
+}

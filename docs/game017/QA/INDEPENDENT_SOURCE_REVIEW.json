@@ -1,0 +1,174 @@
+{
+  "game_id": "game017",
+  "review_role": "independent source and QA evidence review",
+  "reviewer": "qa_review delegated worker, separate from implementation worker",
+  "timestamp": "2026-10-05T07:39:33.400518+00:00",
+  "source_hash": "a3025ff2f7c4e3d489a0ebe4b82e535f24b4779d8a7943a4036ffbeeba02536e",
+  "source_freeze_record": "docs/game017/SOURCE_FREEZE.json",
+  "reviewed_file_sha256": {
+    "game017.html": "644906897443c32581f390ee0e191100880d5f993a9e1917bab3489a6514d118",
+    "src/games/game017/RainBoard.ts": "284a4faa6bea35f66d754437968c1049a8103674346399d5c4d6c2b74562f2b5",
+    "src/games/game017/RainRun.ts": "2bf3a5d74a2fbfd4f93ce9ae67f513caa68add38bcab8eed9ac12ddac8a477a4",
+    "src/games/game017/game.manifest.json": "d416e2313b6a121fb8e2a9e5cea1eea9d230922d1681beb25a1a403659a03392",
+    "src/games/game017/generation.ts": "8d0fdc90516bfe914149d90e7a4a4b2573227be408d8007dd1b0ab5cd849d505",
+    "src/games/game017/geometry.ts": "ecdf16feed588b4fd99afd8de5e377edaab9273605bfa6f49d78e90955ee3523",
+    "src/games/game017/main.ts": "0a60e28289d77d0a683d4b5841b7a039d6dd926a702a77741e93aa7b4c813c46",
+    "src/games/game017/style.css": "12324fa4f77c29dbb82214acd105b3898e5dc739832650d11a11140bc3182752",
+    "src/games/game017/types.ts": "c827912d06c442b84be571b90eb67c2a7abd4761f06c5def2c87a99c585301bc",
+    "src/data/gameCatalog.ts": "55df7c8c4cf291f45434c1e0772fa8f9a73d47b9f4101bece14c886481f232a3",
+    "vite.config.ts": "c6a1877de0485e8f745c46e3f01b5e43125fd64d0623b095bf729c46eaf1f80c",
+    "tests/unit/game017.test.ts": "2ee67db5f39f8fe8f243f1c5ba396b13682e2d02909174cb4c7ff1c1571810f1",
+    "tests/game017/probe.mjs": "9a2f9a2b6a500be7312752835b17f9a6bf11ec2480eff41044f4fde26fc1f6ee",
+    "tests/game017/guards.mjs": "6f01b2e9b1022684e996ef686ba8def910a74d6b93b77d9044ae6e16a4395dc3",
+    "tests/game017/probe-production.mjs": "122fbcd324c5c145b119c9358f2de36eb9aa70d7f64c76ebf8e71ff11982a252",
+    "tests/game017/modifier.mjs": "2c5839ac88b758d48aa279214f8163a0613d6505d8894b2564f459fefd522628"
+  },
+  "freeze_file_matches": true,
+  "method": "Read specifications, model/render/input code and targeted test code; inspect saved QA results; static bundle boundary scan. No source edits, no browser run, no Jev request, no broad duplicate tests.",
+  "result": "PASS independent source review: no open defect identified; QA017-01 repaired and targeted native retest record reviewed.",
+  "checks": [
+    {
+      "area": "camera and planning clock",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "RainRun.settle starts plan deadline only on completed rise; camera .55s, planning 5s, lower .55s; no execute during rise/plan/lower",
+        "unit tests cover delayed camera frame, exact plan deadline, pause deadline shift"
+      ]
+    },
+    {
+      "area": "route input epochs and capture",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "phase/menu changes increment epoch and release capture; begin must anchor at tail; move requires matching pointer ID and epoch",
+        "native guards cover held activation gesture, far start, redraw, continuation after pause; see minor Shift inconsistency below",
+        "After QA017-01 correction, canvas pointerdown also rejects e.shiftKey. Saved modifier retest shows Shift button/canvas stay in rain, Shift drag appends zero points, and fresh unmodified route clears."
+      ]
+    },
+    {
+      "area": "continuous collision and visible forecast circles",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "execute walks every crossed polyline segment and solves analytic circle entry with radius rain.radius+PLAYER_RADIUS",
+        "top-down footprint radii use the same .884 and depthScale as project, covered by independent projection extent assertions",
+        "high rain not arriving during dash is excluded; dangerous footprint is intentionally conservative for whole dash, matching documented collision policy",
+        "unit cases include tangency, large frame tunneling, bent path, high rain and close-call boundary"
+      ]
+    },
+    {
+      "area": "generation fairness",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "forward grid validates complete edges with additional12 world-unit clearance; accepted paths run START to GOAL",
+        "24 failed candidates lead to bounded regenerated and revalidated fallback, never an unchecked layout",
+        "180 round/seed scenes independently check every segment; impossible barrier rejection and fallback tested"
+      ]
+    },
+    {
+      "area": "practice recovery and isolation",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "practice clear adds zero score and only tutorial milestone; practice failure returns to plan with new full5 seconds, activation failure restarts Step1",
+        "practice onEvent end avoids real best/score/run_end; main start only after tutorial completion",
+        "saved native touch guard verifies actual practice collision, same-step retry, completion and absence of real RUN/credit/score events"
+      ]
+    },
+    {
+      "area": "score, streak, close-call, best",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "clear awards once; multiplier equivalent1000+bounded streak increment; close calls require strictly positive clearance above exact collision radius and capped3 awards",
+        "real over stores max(previous best, score); retry resets run score and round; storage-denied in-memory fallback/reload and normal best/mute reload covered",
+        "quit does not record a completed best, consistent with run-end score policy; no broad change to old game save keys"
+      ]
+    },
+    {
+      "area": "lifecycle",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "blur/hidden cancel held input and active drag then pause; pause shifts phase/deadline clock; cached pagehide pauses; noncached real pagehide quits once",
+        "HMR aborts listeners, cancels RAF, disconnects ResizeObserver, destroys AudioService and removes DEV hook",
+        "synthetic blur listener fixture is technical evidence, not actual focus-loss hardware validation"
+      ]
+    },
+    {
+      "area": "production diagnostic and secret boundary",
+      "result": "PASS_SOURCE_REVIEW",
+      "evidence": [
+        "__arcadeDebug emitted only inside import.meta.env.DEV; production game017 bundle static scan has none of __arcadeDebug, __qa017Journal, OPENROUTER_API_KEY, openrouter.ai, typesafe/jev, import.meta.hot",
+        "Jev helper remains development-side tools script; no browser import or dependency; no key value inspected in this review",
+        "saved production records have zero API calls and no production diagnostic oracle"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "QA017-01",
+      "priority": "P3",
+      "classification": "PRODUCT_BUG",
+      "release_blocking": false,
+      "human_only_judgment_required": false,
+      "file": "src/games/game017/main.ts",
+      "location": "app pointerdown capture and canvas pointerdown listeners",
+      "title": "Canvas actions accept Shift while native button guard rejects Shift",
+      "observed_source": "app pointerdown sets approved:false when e.shiftKey is true. Canvas pointerdown rejects altKey/ctrlKey/metaKey but omits shiftKey; its rain branch activates before any click guard, and its plan branch starts a captured route.",
+      "reproduction": "With screen playing or practice and phase rain, send primary left pointerdown on canvas with Shift held: origin is unapproved but accelerate reaches model. The corresponding Shift click on accelerate-button is suppressed by app click guard. In phase plan, Shift pointerdown at tail plus moves writes a route.",
+      "verification_kind": "deterministic static event-path analysis; no browser reproduction performed by this reviewer",
+      "recommendation": "Add e.shiftKey to canvas pointerdown rejection, and cover Shift pointer activation/draw rejection in existing targeted guard if rejection is intended.",
+      "status": "resolved_after_independent_finding",
+      "repair": "Canvas pointerdown rejection includes e.shiftKey, matching app origin policy.",
+      "repair_source_hash": "a3025ff2f7c4e3d489a0ebe4b82e535f24b4779d8a7943a4036ffbeeba02536e",
+      "retest_record": "docs/game017/QA/MODIFIER_RETEST.json",
+      "repair_verification": "Source guard inspected; main worker native test results independently read. Reviewer did not launch browser."
+    }
+  ],
+  "evidence_reviewed": {
+    "unit_record": "docs/game017/QA/FINAL_UNIT_RESULTS.json",
+    "unit_total_passed": 219,
+    "unit_failed": 0,
+    "game017_assertions_passed": 23,
+    "stable_native_record": "docs/game017/QA/final-stable-native/report.json",
+    "stable_native_profiles_passed": [
+      "desktop1440x900",
+      "phone390x844",
+      "narrow320x568",
+      "landscape844x390"
+    ],
+    "input_guard_record": "docs/game017/QA/INPUT_LIFECYCLE_GUARDS.json",
+    "input_guards_passed": 3,
+    "previous_production_record": "docs/game017/QA/PRODUCTION_ROOT_SUBPATH.json",
+    "previous_production_passed": 4,
+    "production_record_scope": "Reviewed saved records from prior metadata freeze; main worker will run final production/regression against fresh freeze. This worker did not execute these runs.",
+    "modifier_retest_record": "docs/game017/QA/MODIFIER_RETEST.json",
+    "modifier_retest_status": "PASS"
+  },
+  "not_claimed": [
+    "Actual human fun, comfort, motion sickness, reaction time, thumb usability, physical device FPS or sound quality",
+    "All16 old games played",
+    "New browser runs performed by source reviewer",
+    "Independent source review equals publication authorization"
+  ],
+  "human_final_judgment": null,
+  "review_history": [
+    {
+      "source_hash": "2c5ea3d79bac4b844706453be58c9c8dd28788522ecca1783728cd5731767433",
+      "result": "No release-blocking defect identified; one minor modifier-input consistency defect reported to implementation worker before repair.",
+      "finding_status": "QA017-01 reported before repair",
+      "timestamp": "2026-10-05T07:23:51.262111+00:00"
+    }
+  ],
+  "independent_A_risk_reassessment": {
+    "checkpoint_id": "A",
+    "original_annotation_record": "docs/game017/QA/A_CODEX_JUDGMENT.json (original decision also preserved in Shadow history)",
+    "original_RELEASE_RISK_IF_UNRESOLVED": true,
+    "recommended_RELEASE_RISK_IF_UNRESOLVED": false,
+    "PRIMARY_CAUSE": "PRODUCT_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "HUMAN_ONLY_JUDGMENT_REQUIRED": false,
+    "definition_basis": "Implementation spec section23: unresolved problem IF PUBLISHED must have high likelihood of normal-play failure, user confusion or major quality problem. This differs from a compile/build-process gate.",
+    "contemporaneous_observation": "Initial npm run check exited2: TS6133 GOAL imported but unused; 215unit tests passed; browser not yet checked.",
+    "rationale": "Unused import is a static build-quality violation requiring Codex repair. Its presence alone provides no evidence of runtime malfunction, misunderstanding or major player-facing harm if emitted JavaScript were served. Normal CI blocks the candidate and leaves the previous public version intact. Build gate was correctly blocked, but that fact does not make this differently defined risk signal true.",
+    "false_pass_under_revised_ground_truth": false,
+    "history_policy": "Keep original true and rationale as dated history; record the independent definition correction and compute final risk agreement/FALSE PASS using the revised false. Do not discard the model response or claim a miss based on the original build-gate/user-harm conflation.",
+    "decision_source": "Independent source/definition review; model prediction .25 does not determine Ground Truth."
+  }
+}

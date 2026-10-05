@@ -1,0 +1,16 @@
+{
+  "checkpoint": "A: initial implementation automatic checks",
+  "unit_tests": {
+    "total": 215,
+    "passed": 215,
+    "failed": 0,
+    "new_game017_tests": 19
+  },
+  "typescript": {
+    "command": "npm run check",
+    "exit_code": 2,
+    "error": "src/games/game017/generation.ts(1,24): error TS6133: 'GOAL' is declared but its value is never read."
+  },
+  "build_requirement": "TypeScript check must finish before Vite production build",
+  "browser_checks": "not executed yet"
+}

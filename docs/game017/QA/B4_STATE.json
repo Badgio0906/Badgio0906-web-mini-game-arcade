@@ -1,0 +1,22 @@
+{
+  "checkpoint": "B4: portal and independent Visual observed text",
+  "portal": {
+    "catalog_entries": 17,
+    "meta_description": "ちょっと変な16本のブラウザゲーム",
+    "HTML_fallback_game_count": 16,
+    "runtime_game_count": 17,
+    "expected": "metadata and fallback count match catalog"
+  },
+  "result_screen": {
+    "viewport": "1440x900",
+    "phase": "over",
+    "reason": "rain",
+    "main_card_text": "赤い雨の着地点に触れました。",
+    "auxiliary_status": "RAINY… / 視点が移る間、計画の時計は止まります。",
+    "expected": "terminal feedback describes failure instead of an ongoing camera move"
+  },
+  "capture_followup": {
+    "phone_explanation": "initial screenshot canvas entirely blue while explanation card is readable; next stable capture not obtained yet",
+    "source_observation": "ResizeObserver changes canvas.height on layout; capture occurs before geometry helper waits two RAF"
+  }
+}

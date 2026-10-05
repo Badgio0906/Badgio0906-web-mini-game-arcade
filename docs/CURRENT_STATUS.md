@@ -30,7 +30,7 @@
 | 015 | 落下キング ～FALL KING～ | `game015.html` | [初版仕様](game015/IMPLEMENTATION_SPEC.md)／[改訂01依頼](game015/revision-01/REQUEST.md)／[最新報告](game015/revision-01/IMPLEMENTATION_REPORT.md) |
 | 016 | 負けじゃんけん ～LOSE TO WIN～ | `game016.html` | [仕様](game016/IMPLEMENTATION_SPEC.md)／[実装・公開報告](game016/IMPLEMENTATION_REPORT.md) |
 
-番号017以降は未登録。この記録を固定の予約番号とせず、新タスクでカタログを再確認する。
+017はローカル候補に登録済み（公開版は16本）。018以降はカタログを再確認する。
 
 ## 変更時に守る現行例外
 
@@ -72,3 +72,9 @@
 対象ID・今回の指示・変更範囲・最後の検証済みcommit／hash・未完了の検証・人間評価・必要な外部接続を更新する。CURRENT_STATUSは現在の一覧と再開地点だけを持ち、詳細な実行ログは対象ゲームの報告へリンクする。会話だけに新しい例外や合格を残さない。
 
 この継承構造の変更範囲と照合結果は[整理記録](CONTEXT_REORGANIZATION_REPORT.md)を参照。
+
+## Game017 local candidate — 2026-10-05 UTC
+
+[実装報告](game017/IMPLEMENTATION_REPORT.md)：RAINSHIFT追加でローカル17本、公開は16本のまま。単体219/219、native4、production4、既存modern root/subpath28件PASS。独立Visual81/F13/H12、Feel PC/phone6連続CLEAR、独立QA限定modifier修正の再検証PASS。font1029文字、旧1020全保持。旧374 runtime/asset files保持。
+
+017は固有Canvas／経路描画練習、共通Storage/Audio/Telemetry、CREDIT OFF・将来開始時1消費。Viteは017を含む。Jevは開発CLIで9 calls実測、4質問choice+noul、[結果](game017/JEV_SHADOW_REPORT.md)。上記旧「0回／未登録／16本font」の段落は016時点の履歴。Jev自動運用なし。人間体験と公開は未実施。[フォーム](game017/HUMAN_PLAYTEST.md)。Game018は続く別commitで実装予定。

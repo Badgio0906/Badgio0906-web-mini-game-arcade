@@ -1,0 +1,75 @@
+{
+  "checkpoint": "B3: native touch practice retry observation",
+  "viewport": "390x844 mobile emulated Chromium",
+  "test": "native-touch-practice-collision-same-step-recovery",
+  "input": "native CDP touch drag START directly to GOAL; then native Playwright tap on practice retry",
+  "actual_state": "practice-failure",
+  "actual_phase": "over",
+  "expected": "retry at planning stage with full 5 seconds",
+  "events_after_retry": [
+    {
+      "type": "pointerdown",
+      "id": 6,
+      "isPrimary": true,
+      "target": "practice-retry-button",
+      "state": "practice-failure",
+      "phase": "over",
+      "time": 4052.2999999988824,
+      "trusted": true,
+      "prevented": false,
+      "x": 111.5,
+      "y": 777
+    },
+    {
+      "type": "touchstart",
+      "target": "practice-retry-button",
+      "state": "practice-failure",
+      "phase": "over",
+      "time": 4052.39999999851,
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "type": "pointerup",
+      "id": 6,
+      "isPrimary": true,
+      "target": "practice-retry-button",
+      "state": "practice-failure",
+      "phase": "over",
+      "time": 4052.39999999851,
+      "trusted": true,
+      "prevented": false,
+      "x": 111.5,
+      "y": 777
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 6,
+      "isPrimary": true,
+      "target": "practice-retry-button",
+      "state": "practice-failure",
+      "phase": "over",
+      "time": 4052.39999999851,
+      "trusted": true,
+      "prevented": false,
+      "x": 111.5,
+      "y": 777
+    },
+    {
+      "type": "touchend",
+      "target": "practice-retry-button",
+      "state": "practice-failure",
+      "phase": "over",
+      "time": 4052.5,
+      "trusted": true,
+      "prevented": false
+    }
+  ],
+  "observations": [
+    "trusted pointerdown, pointerup, touchstart and touchend reach retry button",
+    "no click event observed in next 10 seconds",
+    "repeat with 400ms wait before retry has same result",
+    "button CSS has no touch-action property; Canvas has touch-action:none"
+  ],
+  "console_errors": []
+}

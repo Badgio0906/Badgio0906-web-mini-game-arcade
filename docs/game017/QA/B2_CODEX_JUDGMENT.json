@@ -1,0 +1,8 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "HUMAN_ONLY_JUDGMENT_REQUIRED": false,
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "再現ログはポーズ解除時の非同期Canvas寸法変更をまたいで座標を生成していた。2 RAF後に座標を取得すると320px native touchを含む4サイズが成功。ゲーム入力はその時点の表示と同じ投影を使用する。",
+  "decision_source": "normal Codex source review plus stable native retest"
+}

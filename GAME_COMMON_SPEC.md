@@ -59,3 +59,7 @@ Phaserは001〜003・006だけが必要。他native gameで共有engineを取得
 ## 証拠の境界
 
 単体、通常入力の到達、表示fixture、実画像Visual、独立Feel、人間プレイ、実配信を別に記録する。過去snapshotの合格を変更後のPASSへ流用しない。独立レビューと検証の実施・未実施は対象報告とCURRENT_STATUSが管理する。
+
+## 017追加時の現行例外
+
+ローカル候補は17本。017は固有Canvas／経路描画の練習、既存保存・音・Telemetry・CREDITサービスを使用。016同様に将来ON時は開始1回消費、現在OFF。[実装報告](docs/game017/IMPLEMENTATION_REPORT.md)参照。公開16本とローカル候補を区別する。

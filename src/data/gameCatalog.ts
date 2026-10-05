@@ -36,4 +36,5 @@ const legacyGames: readonly GameCatalogEntry[] = [
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
   { id: 'game016', titleJa: '負けじゃんけん ～LOSE TO WIN～', titleEn: 'LOSE TO WIN', tagline: '勝ったら負け。負ければ勝ち。', thumbnail: './assets/portal/game016.webp', route: './game016.html', releaseOrder: 16 },
+  { id: 'game017', titleJa: '雨って避けたら濡れないよね ～RAINSHIFT～', titleEn: 'RAINSHIFT', tagline: '雨？ 当たらなければ晴れです。', thumbnail: './assets/portal/game017.webp', route: './game017.html', releaseOrder: 17 },
 ].map(game => Object.freeze(game)));
