@@ -6,9 +6,74 @@
   <title>指ハートチャレンジ — WEBミニゲーセン</title>
   <link rel="icon" type="image/png" href="./index.icon.png" />
   <link rel="stylesheet" href="./portal-return.css" />
+
+<style>
+.legacy-play-area{position:relative;overflow:auto}.legacy-start{box-sizing:border-box;min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff2d7;font:16px/1.7 system-ui,'Yu Gothic',sans-serif;color:#263949}.legacy-card{max-width:640px;width:100%;text-align:center}.legacy-card h1{font-size:clamp(25px,5vw,38px);line-height:1.4}.legacy-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.legacy-card button{min-width:110px;min-height:48px;padding:9px 15px;border:1px solid #263949;border-radius:8px;background:#fff7e9;font:inherit;color:inherit;touch-action:manipulation}.legacy-card .primary{background:#263949;color:#fff}.legacy-card button:focus-visible{outline:3px solid #bc573e;outline-offset:3px}.legacy-sample{border:2px solid #263949;padding:20px;margin:15px 0;font-size:26px;background:#fff}.legacy-feedback{min-height:54px}.legacy-pads{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.legacy-pads button{min-width:0}.legacy-pads button.lit{background:#f5bc44}.legacy-native[hidden],.legacy-start[hidden]{display:none}#legacy-menu-return{margin-left:auto;min-height:44px;padding:8px;border:1px solid #263949;border-radius:6px;background:transparent;color:inherit;font:inherit}#legacy-game-frame[hidden]{display:none}@media(max-height:450px){.legacy-start{padding:10px}.legacy-card h1{margin:6px}.legacy-card p{margin:8px}.legacy-sample{padding:8px;margin:8px 0}.legacy-feedback{min-height:25px}}
+</style>
 </head>
-<body class="legacy-page">
-  <header class="legacy-navigation"><a id="legacy-portal-return" href="../../index.html" target="_top">← ゲームセンターへ</a></header>
-  <main class="legacy-play-area"><iframe id="legacy-game-frame" src="./game.html" title="指ハートチャレンジのゲーム画面" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></main>
+<body class="legacy-page" data-game="game014">
+  <header class="legacy-navigation"><a id="legacy-portal-return" href="../../index.html" target="_top">← ゲームセンターへ</a><button id="legacy-menu-return" type="button" hidden>遊び方・練習</button></header>
+  <main class="legacy-play-area"><section id="legacy-start" class="legacy-start" aria-label="開始方法を選択"></section><iframe id="legacy-game-frame" hidden title="指ハートチャレンジのゲーム画面" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></main>
+
+<script>
+(() => {
+  const game = document.body.dataset.game, title = document.title.split(' — ')[0];
+  const frame = document.getElementById('legacy-game-frame'), shell = document.getElementById('legacy-start'), back = document.getElementById('legacy-menu-return');
+  const details = {
+    game012: ['同僚がよそ見したら成果を横取り！', 'PCはEnter、スマホは画面をタップ。同僚が作業中に押すと失敗。よそ見を待って押そう。バナナは高得点です。'],
+    game013: ['音と指示を見て、4つのタスクを叩こう。', 'PCは1〜4、スマホは各タスクをタップ。お手本を聞いて、次の自分の番で同じリズムを返します。元ゲームの「遊び方 / 音の調整」と練習も残っています。'],
+    game014: ['指ハートになった瞬間だけ押そう。', 'PCはSpace、スマホは画面をタップ。変わる手の形を見て、指ハートを狙おう。他のポーズで押すと失敗。25回成功を目指します。']
+  };
+  const telemetryKey='web-mini-game-arcade:telemetry:v1', sessionId=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
+  function track(name,data={}) { try { const raw=localStorage.getItem(telemetryKey);const records=raw&&raw.length<800000?JSON.parse(raw):[];localStorage.setItem(telemetryKey,JSON.stringify([...(Array.isArray(records)?records:[]),{name,at:new Date().toISOString(),data:{...data,game:game,game_id:game,session_id:sessionId,measurement:'legacy-shell'}}].slice(-400))); } catch { /* Logging never gates play. */ } }
+  let phase = 'title', epoch = 0, frameId = 0, tickTime = 0, step = 0, startTime = 0, held = new Set(), gestureEpoch = new Map();
+  const button = (id,text,primary=false) => '<button type="button" id="'+id+'" class="'+(primary?'primary':'')+'">'+text+'</button>';
+  const actions = () => '<div class="legacy-actions">'+button('play-button','すぐ遊ぶ',true)+button('tutorial-explain-button','説明を見る')+button('tutorial-again-button','練習する')+'</div>';
+  function stop() { cancelAnimationFrame(frameId); frameId=0; }
+  function menu(next) {
+    stop(); epoch++; phase=next; if(next==='explanation')track('tutorial_view'); shell.hidden=false; frame.hidden=true; back.hidden=true;
+    // Return to an unloaded engine; isolated shell practice never writes native BEST.
+    if(frame.hasAttribute('src')) frame.removeAttribute('src');
+    shell.innerHTML='<article class="legacy-card"><h1>'+title+'</h1>'+(next==='title'?'<p>'+details[game][0]+'</p>'+actions():'<h2>遊び方</h2><p>'+details[game][1]+'</p><div class="legacy-actions">'+button('tutorial-again-button','練習する',true)+button('play-button','すぐ遊ぶ')+button('title-button','タイトルへ')+'</div>')+'</article>';
+  }
+  function play() { track('tutorial_skip',{startMethod:'immediate'});track('game_launch');stop(); epoch++; phase='playing'; shell.hidden=true; back.hidden=false; frame.hidden=false; frame.src='./game.html?start=immediate'; }
+  function practice() {
+    track('practice_start');stop(); epoch++; phase='practice'; step=0; startTime=performance.now();
+    const copy=game==='game013'?'黄色く光ったタスクを、光っている間に押そう。1→2→3→4を試します。':game==='game012'?'「よそ見中」になったらEnterかボタン。2回成功してみよう。':'指ハート 🫰 のときだけSpaceかボタン。2回成功してみよう。';
+    shell.innerHTML='<article class="legacy-card"><h2>操作を練習する</h2><p>'+copy+'</p><div class="legacy-sample" id="practice-sample"></div>'+(game==='game013'?'<div class="legacy-pads">'+[1,2,3,4].map(n=>'<button type="button" data-pad="'+n+'">'+n+'</button>').join('')+'</div>':button('practice-action','今だ！',true))+'<p id="practice-feedback" class="legacy-feedback" role="status">失敗しても何度でも試せます。</p><small>この操作練習は元ゲームと独立しています。得点・BESTは保存しません。<br/>本番の絵や音は「すぐ遊ぶ」で楽しめます。</small><div class="legacy-actions">'+button('title-button','タイトルへ')+'</div></article>';
+    function draw(time) {
+      if(phase!=='practice')return;tickTime=(time-startTime)/1000;
+      const ready=game==='game013'?tickTime%1.5<1:tickTime%3>=1.5;
+      document.getElementById('practice-sample').textContent=game==='game013'?(ready?'タスク '+(step+1)+' を押そう':'次の光を待とう'):game==='game012'?(ready?'よそ見中 👀 → 横取り！':'作業中 💼 → 待とう'):(ready?'指ハート 🫰 → 今！':'グー ✊ → 待とう');
+      shell.querySelectorAll('[data-pad]').forEach(b=>b.classList.toggle('lit',ready&&Number(b.dataset.pad)===step+1));
+      frameId=requestAnimationFrame(draw);
+    }
+    frameId=requestAnimationFrame(draw);
+  }
+  function answer(pad) {
+    if(phase!=='practice')return;
+    const ready=game==='game013'?tickTime%1.5<1&&pad===step+1:tickTime%3>=1.5;
+    const feedback=document.getElementById('practice-feedback');
+    if(!ready){feedback.textContent='今は待とう。対象をよく見て、もう一度！';return;}
+    step++; startTime=performance.now(); tickTime=0; feedback.textContent='成功！ 次も見てから押そう。';
+    if(step===(game==='game013'?4:2)){track('practice_complete');stop();epoch++;phase='success';shell.innerHTML='<article class="legacy-card"><h2>できました！</h2><p>本番も、対象を見てタイミングよく押そう。</p><small>練習の得点は記録されていません。</small>'+actions()+'</article>';}
+  }
+  shell.addEventListener('pointerdown',e=>gestureEpoch.set(e.pointerId,epoch),true);
+  shell.addEventListener('click',e=>{
+    if(e.button!==0||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
+    const origin=gestureEpoch.get(e.pointerId);gestureEpoch.delete(e.pointerId);if(origin!==undefined&&origin!==epoch){e.preventDefault();return;}
+    const b=e.target.closest('button');if(!b)return;
+    if(b.id==='play-button')play();else if(b.id==='tutorial-explain-button')menu('explanation');else if(b.id==='tutorial-again-button')practice();else if(b.id==='title-button')menu('title');else if(b.id==='practice-action'||b.dataset.pad)answer(Number(b.dataset.pad));
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.repeat||held.has(e.code)){if(['Space','Enter'].includes(e.code))e.preventDefault();return;}held.add(e.code);
+    if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||phase!=='practice')return;
+    if(e.target.closest('button'))return;
+    if(game==='game013'&&/^[1-4]$/.test(e.key)){e.preventDefault();answer(Number(e.key));}else if(game==='game012'&&e.code==='Enter'||game==='game014'&&e.code==='Space'){e.preventDefault();answer(0);}
+  });
+  document.addEventListener('keyup',e=>held.delete(e.code));window.addEventListener('blur',()=>held.clear());
+  back.addEventListener('click',()=>menu('title'));document.getElementById('legacy-portal-return').addEventListener('click',()=>track('return_to_portal'));window.addEventListener('pagehide',()=>track('page_exit',{phase}));track('game_open');menu('title');
+})();
+</script>
 </body>
 </html>

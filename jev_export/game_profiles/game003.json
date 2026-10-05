@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "game003",
+  "title": "我が国の建築は世界一ぃ！",
+  "titleJa": "我が国の建築は世界一ぃ！",
+  "titleEn": "DROP TOWER",
+  "tagline": "積め。15mを超えた先は、責任を持てません。",
+  "tags": [
+    {
+      "id": "timing",
+      "label": "タイミング"
+    },
+    {
+      "id": "stacking",
+      "label": "積み上げ"
+    },
+    {
+      "id": "architecture",
+      "label": "建築"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    }
+  ],
+  "genre": [
+    "arcade",
+    "physics",
+    "timing"
+  ],
+  "controls": {
+    "summary": "Space / クリック / タップで床を落とす",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 50,
+    "experienced": 110
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "位置と支持を読んで建物を積み上げる",
+  "description": "位置と支持を読んで建物を積み上げる",
+  "failureModes": "落下位置と重心による崩壊",
+  "route": "./game003.html",
+  "thumbnail": "./assets/portal/game003.webp",
+  "design": {
+    "thumbnailDescription": "我が国の建築は世界一ぃ！の実プレイ画面。建築クレーンと実寸の長方形の階層",
+    "majorVisuals": "建築クレーンと実寸の長方形の階層",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game003/game.manifest.json",
+    "details": "src/games/game003/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game003",
+    "title": "我が国の建築は世界一ぃ！ ～DROP TOWER～",
+    "subtitle": "もう1個だけ、積みたい。",
+    "genre": [
+      "arcade",
+      "physics",
+      "timing"
+    ],
+    "core_mechanic": [
+      "drop timing",
+      "full-width stacking",
+      "mass and support balance"
+    ],
+    "primary_input": [
+      "single-action"
+    ],
+    "skill_axes": [
+      "timing",
+      "spatial-estimation",
+      "risk-management"
+    ],
+    "expected_run_seconds": {
+      "beginner": 50,
+      "experienced": 110
+    },
+    "primary_score": "accepted floors",
+    "secondary_score": "perfect precision bonus",
+    "escalation_mechanic": "Once accepted height strictly exceeds 15m, choose ordinary construction or irreversible fictional C mode: hanging swing 200%, future PERFECT bonus 300%.",
+    "risk_reward": "Accepted floors remain the primary record; faster swing risks missed drops for triple prospective precision bonus, tracked separately.",
+    "visual_identity": "illustrated full-rectangle building floors, low city, quiet sky and architectural crane ledger"
+  }
+}

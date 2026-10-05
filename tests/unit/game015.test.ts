@@ -321,3 +321,70 @@ describe('enlarged king and genuine telegraphed revision hazards', () => {
     expect(run.snapshot().hazards[0].state).toBe(originalState);expect(run.snapshot().hazards[0].x).not.toBe(999);
   });
 });
+
+
+describe('revision03 continuous fall and consequential route choices', () => {
+  it('holding DOWN passes ordinary floors without resetting gravity or impact distance; release catches the next floor', () => {
+    const events: FallEvent[] = [];
+    const run = new FallRun(e => events.push(e), random(1), { scroll: false, course: [
+      { x: 0, y: 112, width: 256, type: 'normal' },
+      { x: 0, y: 144, width: 256, type: 'normal' },
+      { x: 0, y: 176, width: 256, type: 'normal' },
+      { x: 0, y: 272, width: 256, type: 'normal' },
+    ] });
+    run.start(); run.setDropHeld(true);
+    until(run, s => s.passedPlatforms === 2);
+    expect(run.snapshot()).toMatchObject({ phase: 'falling', heldDrop: true });
+    expect(run.snapshot().fallDistance).toBeGreaterThanOrEqual(4);
+    expect(run.inspection().fallStartY).toBe(112);
+    expect(events.filter(e => e.type === 'landing')).toHaveLength(0);
+    run.setDropHeld(false); until(run, s => !s.alive);
+    expect(run.result()).toMatchObject({ outcome: 'impact', fallDistance: 10 });
+  });
+  it('soft catches hold at its true deep distance, awards NICE and automatically resumes after bounded recovery', () => {
+    const run = new FallRun(() => {}, random(1), { scroll: false, course: [
+      { x: 0, y: 112, width: 256, type: 'normal' },
+      { x: 0, y: 160, width: 256, type: 'normal' },
+      { x: 0, y: 112 + 10.7 * 16, width: 256, type: 'soft' },
+      { x: 0, y: 112 + 14 * 16, width: 256, type: 'crumble' },
+    ] });
+    run.start(); run.setDropHeld(true); const catchState = until(run, s => s.player.platformId === 3);
+    expect(catchState.lastLanding).toMatchObject({ kind: 'hard', nice: true, fallDistance: 10.7 });
+    expect(catchState.passedPlatforms).toBe(1); expect(catchState.niceDrops).toBe(1);
+    until(run, s => s.player.platformId === 4);
+    expect(run.snapshot().alive).toBe(true); expect(run.snapshot().lastLanding?.fallDistance).toBeCloseTo(3.3);
+  });
+  it('held continuous falls remain vulnerable to floor spikes and restart clears every held input', () => {
+    const run = new FallRun(() => {}, random(1), { scroll: false, course: [
+      { x: 0, y: 112, width: 256, type: 'normal' }, { x: 0, y: 176, width: 256, type: 'normal' },
+    ], hazards: [{ kind: 'spikes', x: 112, y: 168, width: 32, height: 8 }] });
+    run.start(); run.setDropHeld(true); until(run, s => !s.alive);
+    expect(run.result()?.outcome).toBe('spike'); run.start();
+    expect(run.snapshot()).toMatchObject({ heldDrop: false, passedPlatforms: 0, phase: 'grounded' });
+  });
+  it('varied safe steps and deep soft routes coexist in every authored pattern, with short and long gaps that remain physically reachable', () => {
+    const gaps = new Set<number>();
+    for (let index = 0; index < AUTHORED_PATTERNS.length; index++) {
+      const chunk = generateChunk({ y: START_Y, center: 128, nextId: 2, chunks: 0 }, () => (index + .1) / AUTHORED_PATTERNS.length);
+      let previous = platformFromSeed(INITIAL_PLATFORM, 1);
+      for (const p of chunk.platforms.filter(p => p.route)) { gaps.add((p.y - previous.y) / 16); expect(safeLinkIssues(previous, p)).toEqual([]); previous = p; }
+      const catchPad = chunk.platforms.find(p => p.type === 'soft')!;
+      expect((catchPad.y - START_Y) / 16).toBeGreaterThan(10.2);
+      expect((catchPad.y - START_Y) / 16).toBeLessThan(12);
+    }
+    expect(Math.max(...gaps) - Math.min(...gaps)).toBeGreaterThan(3);
+  });
+  it('public hold and steering can choose the deep soft catch instead of stepping and neutral hold has no permanent safe lane', () => {
+    for (const seed of [1, 17, 77]) {
+      const run = new FallRun(() => {}, random(seed)); run.start();
+      const soft = run.snapshot().platforms.find(p => p.type === 'soft')!; run.setDropHeld(true);
+      let s = run.snapshot();
+      for (let i = 0; s.alive && s.player.platformId !== soft.id && i < 600; i++) {
+        run.setHorizontal(signControl(soft.x + soft.width / 2 - s.player.x, s.player.vx)); run.step(1 / 120); s = run.snapshot();
+      }
+      expect(s.alive, `seed ${seed} shortcut`).toBe(true); expect(s.player.platformId).toBe(soft.id);
+      expect(s.lastLanding?.fallDistance).toBeGreaterThan(10.2); expect(s.niceDrops).toBe(1);
+    }
+    for (let seed = 1; seed <= 25; seed++) { const run = new FallRun(() => {}, random(seed)); run.start(); run.setDropHeld(true); until(run, s => !s.alive, 20); expect(run.snapshot().depth).toBeLessThan(40); }
+  });
+});

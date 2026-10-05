@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "provenance": "synthetic-example-not-real-player-observations",
+  "purpose": "Schema and aggregator fixture only; no popularity or completion claims",
+  "events": [
+    {
+      "name": "game_open",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page"
+      }
+    },
+    {
+      "name": "tutorial_skip",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page",
+        "runId": "SYNTHETIC-fall-1"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page",
+        "runId": "SYNTHETIC-fall-1",
+        "event": "drop_hold",
+        "depth": 9
+      }
+    },
+    {
+      "name": "death_reason",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page",
+        "runId": "SYNTHETIC-fall-1",
+        "reason": "fall_distance",
+        "depth": 18
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game015",
+        "session_id": "SYNTHETIC-fall-page",
+        "runId": "SYNTHETIC-fall-1",
+        "outcome": "over",
+        "reason": "fall_distance",
+        "time": 15,
+        "depth": 18,
+        "score": 18
+      }
+    },
+    {
+      "name": "game_open",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page"
+      }
+    },
+    {
+      "name": "practice_start",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page"
+      }
+    },
+    {
+      "name": "practice_complete",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page",
+        "runId": "SYNTHETIC-frog-1"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page",
+        "runId": "SYNTHETIC-frog-1",
+        "phase": "sky",
+        "height": 100
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page",
+        "runId": "SYNTHETIC-frog-1",
+        "event": "fall_recovered",
+        "distance": 15
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game019",
+        "session_id": "SYNTHETIC-frog-page",
+        "runId": "SYNTHETIC-frog-1",
+        "outcome": "quit",
+        "time": 120,
+        "height": 110
+      }
+    },
+    {
+      "name": "game_open",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page"
+      }
+    },
+    {
+      "name": "run_start",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page",
+        "runId": "SYNTHETIC-shoe-1",
+        "shoe": "sneaker"
+      }
+    },
+    {
+      "name": "phase_reached",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page",
+        "runId": "SYNTHETIC-shoe-1",
+        "phase": "spin"
+      }
+    },
+    {
+      "name": "specific_game_events",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page",
+        "runId": "SYNTHETIC-shoe-1",
+        "event": "spin_choice",
+        "spin": -0.5
+      }
+    },
+    {
+      "name": "run_end",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page",
+        "runId": "SYNTHETIC-shoe-1",
+        "outcome": "clear",
+        "time": 23,
+        "score": 150,
+        "distance": 123
+      }
+    },
+    {
+      "name": "best_update",
+      "at": "2026-10-05T00:00:00.000Z",
+      "data": {
+        "game_id": "game018",
+        "session_id": "SYNTHETIC-shoe-page",
+        "runId": "SYNTHETIC-shoe-1",
+        "best": 150
+      }
+    }
+  ]
+}

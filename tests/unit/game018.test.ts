@@ -162,3 +162,25 @@ describe('truthful sky event view holds', () => {
     }
   });
 });
+
+describe('spin guidance preserves physical behavior', () => {
+  it('opposite ankle directions reverse rotation while equal strength keeps the same trajectory and score', () => {
+    const left = simulate(fixture({ spin: .8 })), right = simulate(fixture({ spin: -.8 }));
+    expect(left.result.distance).toBe(right.result.distance);
+    expect(left.result.height).toBe(right.result.height);
+    expect(left.result.score).toEqual(right.result.score);
+    const index = Math.floor(left.samples.length / 3);
+    expect(left.samples[index].rotation).toBeGreaterThan(0);
+    expect(right.samples[index].rotation).toBeCloseTo(-left.samples[index].rotation);
+  });
+  it('spin tutorial trajectory uses the same integrator at the declared power and suppresses scoring', async () => {
+    const { spinPreview, canvasSpinAngle, spinDirection } = await import('../../src/games/game018/spinGuide');
+    const preview = spinPreview('sneaker', .8, 45), actual = simulate(fixture({ power: 80 }));
+    expect(preview.result.distance).toBe(actual.result.distance);
+    expect(preview.result.height).toBe(actual.result.height);
+    expect(preview.result.score.total).toBe(0);
+    expect(canvasSpinAngle(preview.samples[40].rotation)).toBeLessThan(0);
+    expect(spinDirection(.8)).toContain('反時計');
+    expect(spinDirection(-.8)).toContain('時計');
+  });
+});

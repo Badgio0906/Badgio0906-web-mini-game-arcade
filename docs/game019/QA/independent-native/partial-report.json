@@ -1,0 +1,3324 @@
+{
+  "branch": "codex/arcade-frog-risk-and-data",
+  "baseCommit": "f39bf7fd3c090de44ecc4a8f4ff32bef515eee70",
+  "startedAt": "2026-10-05T14:27:30.959Z",
+  "sourceHashes": {
+    "game019.html": "ff592d6582541c3ca07349e910347d3a04a84ace02882b9e46677fcb049a3b4c",
+    "src/games/game019/main.ts": "744851d1da6f66d4fb6b2f36a2a719b550cf041c27091d418f7af82f55744c47",
+    "src/games/game019/style.css": "6e90ae19f4ac3428332106ac734ccb5afe4ca20f40bbe6016b6b17b63f8946a7",
+    "src/games/game019/FrogRun.ts": "911d1fb6fad448dcec0c61c7e2d97283d0f0f3825a2a4b555a54b90dc146b977",
+    "src/games/game019/generation.ts": "b0d33d1aa8ed46662c19904d1d7f0c05caf457b60a5f7979d5667acd4a80822d",
+    "src/games/game019/types.ts": "97e5f55893975552c065d91bc52a12cb259265cb7e8782bfc8d750bbe71d81d4",
+    "src/games/game019/FrogPractice.ts": "b4f15fa5aa431f1573fa80037176e5f6043bac7d0c16fcee39fd8338e1a3bd14",
+    "src/games/game019/FrogBoard.ts": "ed420bf4adf48fbef403ec429f70c3fa641ea6959a5dc8312921494777f0bb34",
+    "src/games/game019/frogPixels.ts": "ff19c27bd0d242589159f0d45b777041d3918ca565299b3dcfaa2f3b4906aa50",
+    "src/core/TelemetryService.ts": "e61623f0c969b780d625a883357270c4d7f202073a52a4770fedd97b16e3125d",
+    "game018.html": "5156bded6e8b9e15760a3a6739b3c3f2bce18e909a317afe5a97504e5b42a3c8",
+    "src/games/game018/main.ts": "b21564a404e3d79f17e8a2af378b8925f74b2fea49780f2087c18b36a95836d8",
+    "src/games/game018/ShoeBoard.ts": "e74130be61573fe802233d494f633ce009e7baf81024ddb916adf8b8732719c9",
+    "src/games/game018/ShoeArt.ts": "f3b83764741acfcd5ee4386b57489b9e21b09b45033d1a3e3f848107b9addb57",
+    "src/games/game018/spinGuide.ts": "f66ba65c9c3ff64cddfa7416f6c40cd4504657370610fbbfcd692c9c806fd8a1"
+  },
+  "runtimeMutation": false,
+  "evidence": "ordinary keyboard/touch inputs guided by readonly exact-physics forecasts; not human fun evaluation",
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 930,
+                "y": 551.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 930,
+                "y": 603.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 930,
+                "y": 655.5,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 930,
+                "y": 503.875,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 930,
+                "y": 555.875,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 607.875,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 930,
+                "y": 638.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 930,
+                "y": 690.5,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 742.5,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 675.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 729.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 658.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 712.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 379,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 723.5,
+                "y": 842,
+                "width": 337.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1213.875,
+                "y": 20,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 721.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 775.75,
+                "width": 203,
+                "height": 53
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1206.453125,
+                "y": 20,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 438,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 648,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 858,
+                "y": 704.25,
+                "width": 203,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 438,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 648,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 858,
+                "y": 758.75,
+                "width": 203,
+                "height": 53
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1440,
+            "scrollHeight": 900,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 104,
+                "y": 20,
+                "width": 111.328125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 1206.453125,
+                "y": 20,
+                "width": 78.546875,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 1292,
+                "y": 20,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 930,
+                "y": 570.75,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 930,
+                "y": 622.75,
+                "width": 292,
+                "height": 44
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 930,
+                "y": 674.75,
+                "width": 292,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/QA/independent-native/desktop-title.png",
+        "docs/game019/QA/independent-native/desktop-pause.png",
+        "docs/game019/QA/independent-native/desktop-explanation.png",
+        "docs/game019/QA/independent-native/desktop-practice-0.png",
+        "docs/game019/QA/independent-native/desktop-practice-1.png",
+        "docs/game019/QA/independent-native/desktop-practice-2.png",
+        "docs/game019/QA/independent-native/desktop-practice-3.png",
+        "docs/game019/QA/independent-native/desktop-practice-complete.png",
+        "docs/game019/QA/independent-native/desktop-well-start.png",
+        "docs/game019/QA/independent-native/desktop-fall-recovery.png",
+        "docs/game019/QA/independent-native/desktop-shore-milestone.png",
+        "docs/game019/QA/independent-native/desktop-sky-start.png",
+        "docs/game019/QA/independent-native/desktop-upper-sky.png",
+        "docs/game019/QA/independent-native/desktop-space-result.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 32,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 29,
+                "y": 676.5,
+                "width": 332,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 29,
+                "y": 727.5,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 198.5,
+                "y": 727.5,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 29,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 198.5,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 29,
+                "y": 758,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 29,
+                "y": 605,
+                "width": 332,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 29,
+                "y": 656,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 198.5,
+                "y": 656,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 618,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 667,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 618,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 618,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 667,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 667,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 636,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 636,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 636,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 685,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 685,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 685,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 601,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 601,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 601,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 650,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 650,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 650,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 12,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 198.5,
+                "y": 788,
+                "width": 179.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 281.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 682,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 682,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 682,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 731,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 731,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 731,
+                "width": 102.328125,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 276.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 61,
+                "y": 665,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 168.328125,
+                "y": 665,
+                "width": 102.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 275.671875,
+                "y": 665,
+                "width": 102.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 61,
+                "y": 714,
+                "width": 102.328125,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 168.328125,
+                "y": 714,
+                "width": 102.34375,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 275.671875,
+                "y": 714,
+                "width": 102.328125,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 390,
+            "scrollHeight": 844,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 366,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 276.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 334,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 29,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 198.5,
+                "y": 707,
+                "width": 162.5,
+                "height": 44
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 29,
+                "y": 758,
+                "width": 162.5,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/QA/independent-native/phone-title.png",
+        "docs/game019/QA/independent-native/phone-pause.png",
+        "docs/game019/QA/independent-native/phone-explanation.png",
+        "docs/game019/QA/independent-native/phone-practice-0.png",
+        "docs/game019/QA/independent-native/phone-practice-1.png",
+        "docs/game019/QA/independent-native/phone-practice-2.png",
+        "docs/game019/QA/independent-native/phone-practice-3.png",
+        "docs/game019/QA/independent-native/phone-practice-complete.png",
+        "docs/game019/QA/independent-native/phone-well-start.png",
+        "docs/game019/QA/independent-native/phone-fall-recovery.png",
+        "docs/game019/QA/independent-native/phone-shore-milestone.png",
+        "docs/game019/QA/independent-native/phone-sky-start.png",
+        "docs/game019/QA/independent-native/phone-upper-sky.png",
+        "docs/game019/QA/independent-native/phone-space-result.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 32,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "narrow",
+        "width": 320,
+        "height": 568,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 594,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 25,
+                "y": 454.6875,
+                "width": 270,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 25,
+                "y": 505.6875,
+                "width": 131.5,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 163.5,
+                "y": 505.6875,
+                "width": 131.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 25,
+                "y": 419,
+                "width": 131.5,
+                "height": 56
+              },
+              {
+                "id": "retry-button",
+                "x": 163.5,
+                "y": 419,
+                "width": 131.5,
+                "height": 56
+              },
+              {
+                "id": "title-button",
+                "x": 25,
+                "y": 482,
+                "width": 131.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 614,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 25,
+                "y": 505,
+                "width": 270,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 25,
+                "y": 556,
+                "width": 131.5,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 163.5,
+                "y": 556,
+                "width": 131.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 342,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 391,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 8,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 163.5,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-1",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 342,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 391,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 8,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 163.5,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-2",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 342,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 342,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 391,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 391,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 8,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 163.5,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-3",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 325,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 325,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 325,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 374,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 374,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 374,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "next-practice-button",
+                "x": 8,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 163.5,
+                "y": 512,
+                "width": 148.5,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "well-start",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 211.34375,
+                "y": 49,
+                "width": 47.65625,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 406,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 406,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 406,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 455,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 455,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 455,
+                "width": 81.671875,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "sky",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 206.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 57,
+                "y": 389,
+                "width": 81.65625,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 143.65625,
+                "y": 389,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 230.328125,
+                "y": 389,
+                "width": 81.671875,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 57,
+                "y": 438,
+                "width": 81.65625,
+                "height": 50
+              },
+              {
+                "id": "medium",
+                "x": 143.65625,
+                "y": 438,
+                "width": 81.671875,
+                "height": 50
+              },
+              {
+                "id": "large",
+                "x": 230.328125,
+                "y": 438,
+                "width": 81.671875,
+                "height": 50
+              }
+            ]
+          }
+        },
+        {
+          "name": "result",
+          "geometry": {
+            "width": 320,
+            "height": 568,
+            "scrollWidth": 320,
+            "scrollHeight": 568,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 12,
+                "y": 3,
+                "width": 296,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 206.25,
+                "y": 49,
+                "width": 52.75,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 264,
+                "y": 49,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 25,
+                "y": 439,
+                "width": 131.5,
+                "height": 56
+              },
+              {
+                "id": "title-button",
+                "x": 163.5,
+                "y": 439,
+                "width": 131.5,
+                "height": 56
+              },
+              {
+                "id": "ゲームセンターへ",
+                "x": 25,
+                "y": 502,
+                "width": 131.5,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/QA/independent-native/narrow-title.png",
+        "docs/game019/QA/independent-native/narrow-pause.png",
+        "docs/game019/QA/independent-native/narrow-explanation.png",
+        "docs/game019/QA/independent-native/narrow-practice-0.png",
+        "docs/game019/QA/independent-native/narrow-practice-1.png",
+        "docs/game019/QA/independent-native/narrow-practice-2.png",
+        "docs/game019/QA/independent-native/narrow-practice-3.png",
+        "docs/game019/QA/independent-native/narrow-practice-complete.png",
+        "docs/game019/QA/independent-native/narrow-well-start.png",
+        "docs/game019/QA/independent-native/narrow-fall-recovery.png",
+        "docs/game019/QA/independent-native/narrow-shore-milestone.png",
+        "docs/game019/QA/independent-native/narrow-sky-start.png",
+        "docs/game019/QA/independent-native/narrow-upper-sky.png",
+        "docs/game019/QA/independent-native/narrow-space-result.png"
+      ],
+      "jumps": [
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 0
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 30.4,
+          "landingHeight": 0,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 0,
+          "landingHeight": 7.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 7.6,
+          "landingHeight": 15.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 15.2,
+          "landingHeight": 22.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 22.8,
+          "landingHeight": 30.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 30.4,
+          "landingHeight": 38,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 38,
+          "landingHeight": 45.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 45.6,
+          "landingHeight": 53.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 53.2,
+          "landingHeight": 60.8,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 60.8,
+          "landingHeight": 68.4,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 68.4,
+          "landingHeight": 76,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 76,
+          "landingHeight": 83.6,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 83.6,
+          "landingHeight": 91.2,
+          "chapter": "well",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 91.2,
+          "landingHeight": 100,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 100,
+          "landingHeight": 107.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 107.2,
+          "landingHeight": 114.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 114.4,
+          "landingHeight": 121.6,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 121.6,
+          "landingHeight": 130.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 130.4,
+          "landingHeight": 136,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 136,
+          "landingHeight": 143.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 143.2,
+          "landingHeight": 150.4,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 150.4,
+          "landingHeight": 159.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": -1,
+          "startHeight": 159.2,
+          "landingHeight": 164.8,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 164.8,
+          "landingHeight": 172,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 172,
+          "landingHeight": 179.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 1,
+          "startHeight": 179.2,
+          "landingHeight": 188,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "large",
+          "direction": 0,
+          "startHeight": 188,
+          "landingHeight": 197.2,
+          "chapter": "sky",
+          "falls": 1
+        },
+        {
+          "size": "medium",
+          "direction": -1,
+          "startHeight": 197.2,
+          "landingHeight": 200.06805555555556,
+          "chapter": "space",
+          "falls": 1
+        }
+      ],
+      "errors": [],
+      "fallEvidence": {
+        "startHeight": 30.4,
+        "height": 0,
+        "feedback": "39.4mも落ちた！ ゲコーッ！ まだ跳べる。"
+      },
+      "upperCapture": true,
+      "result": {
+        "maxHeight": 200,
+        "jumps": 32,
+        "firstRunDirect": true,
+        "practiceIndependent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "title",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 515,
+                "y": 322.75,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "tutorial-explain-button",
+                "x": 515,
+                "y": 372.75,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "tutorial-again-button",
+                "x": 515,
+                "y": 422.75,
+                "width": 302,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "pause",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "resume-button",
+                "x": 515,
+                "y": 221.625,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "retry-button",
+                "x": 515,
+                "y": 271.625,
+                "width": 302,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 515,
+                "y": 321.625,
+                "width": 302,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "explanation",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 517,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "play-button",
+                "x": 27,
+                "y": 358.5,
+                "width": 790,
+                "height": 44
+              },
+              {
+                "id": "practice-button",
+                "x": 27,
+                "y": 408.5,
+                "width": 790,
+                "height": 44
+              },
+              {
+                "id": "title-button",
+                "x": 27,
+                "y": 458.5,
+                "width": 790,
+                "height": 44
+              }
+            ]
+          }
+        },
+        {
+          "name": "practice-0",
+          "geometry": {
+            "width": 844,
+            "height": 390,
+            "scrollWidth": 844,
+            "scrollHeight": 390,
+            "targets": [
+              {
+                "id": "portal-link",
+                "x": 13,
+                "y": 4,
+                "width": 92.78125,
+                "height": 44
+              },
+              {
+                "id": "mute-button",
+                "x": 708.875,
+                "y": 4,
+                "width": 71.125,
+                "height": 44
+              },
+              {
+                "id": "pause-button",
+                "x": 787,
+                "y": 4,
+                "width": 44,
+                "height": 44
+              },
+              {
+                "id": "-1",
+                "x": 531,
+                "y": 121,
+                "width": 95.328125,
+                "height": 44
+              },
+              {
+                "id": "0",
+                "x": 633.328125,
+                "y": 121,
+                "width": 95.34375,
+                "height": 44
+              },
+              {
+                "id": "1",
+                "x": 735.671875,
+                "y": 121,
+                "width": 95.328125,
+                "height": 44
+              },
+              {
+                "id": "small",
+                "x": 531,
+                "y": 196,
+                "width": 95.328125,
+                "height": 53
+              },
+              {
+                "id": "medium",
+                "x": 633.328125,
+                "y": 196,
+                "width": 95.34375,
+                "height": 53
+              },
+              {
+                "id": "large",
+                "x": 735.671875,
+                "y": 196,
+                "width": 95.328125,
+                "height": 53
+              },
+              {
+                "id": "next-practice-button",
+                "x": 531,
+                "y": 332,
+                "width": 146.5,
+                "height": 44
+              },
+              {
+                "id": "skip-practice-button",
+                "x": 684.5,
+                "y": 332,
+                "width": 146.5,
+                "height": 44
+              }
+            ]
+          }
+        }
+      ],
+      "captures": [
+        "docs/game019/QA/independent-native/landscape-title.png",
+        "docs/game019/QA/independent-native/landscape-pause.png",
+        "docs/game019/QA/independent-native/landscape-explanation.png",
+        "docs/game019/QA/independent-native/landscape-practice-0.png",
+        "docs/game019/QA/independent-native/landscape-FAILURE.png"
+      ],
+      "jumps": [],
+      "errors": [],
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-direction=\"-1\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-direction=\"-1\" aria-pressed=\"false\">← 左</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <section class=\"status\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <section class=\"status\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <section class=\"status\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ]
+}

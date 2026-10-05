@@ -4,9 +4,12 @@ import { FallPractice, PRACTICE_START_Y } from '../../src/arcade/FallPractice';
 import { AIR_ACCELERATION, GRAVITY, PLAYER_WIDTH, SCROLL_START_SPEED, SCROLL_TOP_LIMIT } from '../../src/games/game015/types';
 const advance = (s: PracticeSession, seconds: number, dt = .005): void => { for (let t = 0; t < seconds; t += dt) s.update(dt); };
 function reachSteering(): PracticeSession { const s = new PracticeSession('game015'); s.action('action'); advance(s, 2.2); expect(s.snapshot().step).toBe(1); return s; }
-function reachScrollDemo(): PracticeSession {
+function reachHoldLesson(): PracticeSession {
   const s = reachSteering(); s.setInput(1); s.action('action'); advance(s, 2.2); expect(s.snapshot().step).toBe(2);
   s.setInput(-1); s.action('action'); advance(s, 2.2); expect(s.snapshot().step).toBe(3); return s;
+}
+function reachScrollDemo(): PracticeSession {
+  const s = reachHoldLesson(); s.setDropHeld(true); advance(s, 2.3); expect(s.snapshot().step).toBe(4); advance(s, 3); expect(s.snapshot().step).toBe(5); return s;
 }
 describe('FALL KING isolated scrolling and hazard practice', () => {
   it('cannot complete by waiting, safely retries the scroll death, and ignores invalid elapsed values', () => {
@@ -40,7 +43,7 @@ describe('FALL KING isolated scrolling and hazard practice', () => {
     advance(s, .25); s.setInput(0); const released = s.snapshot().fall!; advance(s, .1); expect(s.snapshot().fall!.x).toBeGreaterThan(released.x); expect(s.snapshot().fall!.vx).toBeGreaterThan(0);
     s.setInput(-1); advance(s, .15); expect(s.snapshot().fall!.vx).toBeLessThan(released.vx);
   });
-  it('earns three real landings then demonstrates a stationary ghost being swept into the top edge', () => {
+  it('earns movement and real hold landings, demonstrates impact, then demonstrates a stationary ghost being swept into the top edge', () => {
     const s = reachScrollDemo(), before = s.snapshot().fall!;
     expect(before).toMatchObject({ ghost: true, grounded: true, phase: 'ghost', fallDistance: 0 }); expect(s.snapshot().complete).toBe(false);
     s.setInput(1); s.action('action'); advance(s, 1); const scrolling = s.snapshot().fall!;
@@ -48,7 +51,13 @@ describe('FALL KING isolated scrolling and hazard practice', () => {
     expect(scrolling.y - scrolling.cameraY).toBeLessThan(before.y - before.cameraY); expect(scrolling.topRemaining).toBeCloseTo(scrolling.y - scrolling.cameraY - SCROLL_TOP_LIMIT);
     advance(s, 1.7); expect(s.snapshot().fall).toMatchObject({ ghost: true, phase: 'splat', cause: 'scroll', fallDistance: 0 });
     expect(s.snapshot().fall!.topRemaining).toBeLessThanOrEqual(0); expect(s.snapshot().feedback).toContain('上端'); expect(s.snapshot().complete).toBe(false);
-    advance(s, 1.3); expect(s.snapshot()).toMatchObject({ step: 4, complete: true, practicePoints: 0 });
+    advance(s, 1.3); expect(s.snapshot()).toMatchObject({ step: 6, complete: true, practicePoints: 0 });
+  });
+  it('requires continuous DOWN through two ordinary floors and teaches unreset impact distance', () => {
+    const s = reachHoldLesson(); s.action('action'); advance(s, .8); expect(s.snapshot().step).toBe(3); expect(s.snapshot().feedback).toContain('押し続け');
+    s.setDropHeld(true); advance(s, 1.5); expect(s.snapshot().fall).toMatchObject({ passedPlatforms: 2, fallDistance: 9, phase: 'landed', heldDrop: true });
+    s.setDropHeld(false); advance(s, 1); expect(s.snapshot().step).toBe(4); advance(s, 1.7); expect(s.snapshot().fall).toMatchObject({ phase: 'splat', cause: 'impact', fallDistance: 10 });
+    expect(s.snapshot().feedback).toContain('9m以上'); advance(s, 1.3); expect(s.snapshot().step).toBe(5);
   });
   it('exposed geometry cannot alter practice and completion absorbs further inputs', () => {
     const s = reachSteering(), exposed = s.snapshot(); exposed.fall!.target.x = 999; exposed.fall!.startPlatform.y = 999; exposed.fall!.hazards[0].x = 999; exposed.fall!.y = 999;

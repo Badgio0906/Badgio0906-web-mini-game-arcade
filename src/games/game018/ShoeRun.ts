@@ -1,5 +1,6 @@
 import { activeReplayHold, clamp, nearbyObstacles, normalizeInputs, routeFor, sampleTrajectory, simulate } from './physics';
 import { shoeFor } from './shoes';
+import { spinExplanation } from './spinGuide';
 import { JUST_MAX_SECONDS, JUST_MAX_THRESHOLD, KICK_SECONDS, LANDING_SECONDS, LOCK_SECONDS, type Effect, type Inputs, type Obstacle, type Phase, type PracticeStage, type Result, type ShoeEvent, type ShoeType, type Trajectory, type Vector } from './types';
 export const ANGLE_PERIOD = 2.8;
 export const SPIN_PERIOD = 1.65;
@@ -76,7 +77,7 @@ export class ShoeRun {
       this.event({ type: 'lock', step: 'angle', value: this.angle }); this.setPhase('angle-lock', LOCK_SECONDS); return true;
     }
     if (this.phase === 'spin') {
-      this.locked.spin = this.spin; this.feedback = Math.abs(this.spin) >= .7 ? '強いSPINで回転＆貫通！' : Math.abs(this.spin) < .25 ? 'SPIN小。姿勢と抵抗が変わるよ。' : 'ほどよいSPINで飛行を安定！';
+      this.locked.spin = this.spin; this.feedback = spinExplanation(this.spin);
       this.event({ type: 'lock', step: 'spin', value: this.spin }); this.setPhase('spin-lock', LOCK_SECONDS); return true;
     }
     if (this.phase === 'power') {

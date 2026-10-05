@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "game005",
+  "title": "右往左往の仕分け術",
+  "titleJa": "右往左往の仕分け術",
+  "titleEn": "SORT SHIFT",
+  "tagline": "ルールは簡単。途中で変わるまでは。",
+  "tags": [
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "rule-change",
+      "label": "ルール変化"
+    },
+    {
+      "id": "brain-training",
+      "label": "脳トレ"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    }
+  ],
+  "genre": [
+    "sorting",
+    "reaction",
+    "score-attack"
+  ],
+  "controls": {
+    "summary": "左右キー / 左右タップで二択仕分け",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 45,
+    "experienced": 100
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "途中で変わる分類ルールを読み替える",
+  "description": "途中で変わる分類ルールを読み替える",
+  "failureModes": "誤仕分けまたは時間切れ",
+  "route": "./game005.html",
+  "thumbnail": "./assets/portal/game005.webp",
+  "design": {
+    "thumbnailDescription": "右往左往の仕分け術の実プレイ画面。紫色の工場、色と形の荷物、分類看板",
+    "majorVisuals": "紫色の工場、色と形の荷物、分類看板",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game005/game.manifest.json",
+    "details": "src/games/game005/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game005",
+    "title": "右往左往の仕分け術 ～SORT SHIFT～",
+    "genre": [
+      "sorting",
+      "reaction",
+      "score-attack"
+    ],
+    "core_mechanic": [
+      "changing-classification-rule",
+      "binary-decision",
+      "parcel-dispatch"
+    ],
+    "primary_input": [
+      "left-right",
+      "half-screen-tap"
+    ],
+    "skill_axes": [
+      "rule-switching",
+      "visual-classification",
+      "decision-speed"
+    ],
+    "expected_run_seconds": {
+      "beginner": 45,
+      "experienced": 100
+    },
+    "primary_score": "correctly sorted parcels",
+    "secondary_score": "consecutive correct combo",
+    "visual_identity": "colorful purple-ink factory, illustrated round and angular light and dark products, routing signs",
+    "decision_seconds_bounds": [
+      1.3,
+      4.8
+    ],
+    "rule_change_seconds": 0.95
+  }
+}

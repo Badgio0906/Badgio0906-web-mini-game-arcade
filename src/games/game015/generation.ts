@@ -7,12 +7,12 @@ export const START_Y = 112;
 export const INITIAL_PLATFORM: PlatformSeed = Object.freeze({ x: 48, y: START_Y, width: 160, type: 'normal', route: true, pattern: 'start' });
 /** Lanes are absolute targets, so a centered/stationary route cannot persist across chunks. */
 export const AUTHORED_PATTERNS = Object.freeze([
-  { id: 'center-left-right', lanes: [128, 68, 188, 128], gaps: [4.4, 4.4, 4.6, 4.4] },
-  { id: 'right-center-left', lanes: [188, 128, 68, 128], gaps: [4.6, 4.4, 4.4, 4.4] },
-  { id: 'left-center-right', lanes: [68, 128, 188, 128], gaps: [4.6, 4.4, 4.4, 4.4] },
-  { id: 'stairs', lanes: [188, 128, 68, 104], gaps: [4.4, 4.4, 4.4, 4.4] },
-  { id: 'zigzag', lanes: [68, 164, 188, 128], gaps: [4.4, 4.6, 4.4, 4.4] },
-  { id: 'soft-route', lanes: [188, 96, 68, 128], gaps: [4.4, 4.6, 4.4, 4.4] },
+  { id: 'center-left-right', lanes: [128, 80, 172, 176], gaps: [2.4, 5.4, 2.8, 5.6] },
+  { id: 'right-center-left', lanes: [180, 132, 76, 76], gaps: [5.5, 2.2, 3.1, 4.6] },
+  { id: 'left-center-right', lanes: [76, 124, 176, 176], gaps: [5.1, 2.4, 3.2, 5.8] },
+  { id: 'stairs', lanes: [178, 142, 80, 80], gaps: [3.2, 2.1, 5.4, 4.8] },
+  { id: 'zigzag', lanes: [80, 138, 176, 176], gaps: [2.2, 5.6, 2.9, 5.2] },
+  { id: 'soft-route', lanes: [172, 116, 80, 80], gaps: [4.7, 3.5, 2.6, 5.7] },
 ].map(p => Object.freeze({ ...p, lanes: Object.freeze(p.lanes), gaps: Object.freeze(p.gaps) })));
 export function scrollSpeedAt(seconds: number): number {
   return Math.min(SCROLL_MAX_SPEED, SCROLL_START_SPEED + Math.max(0, seconds) * SCROLL_ACCELERATION);
@@ -59,9 +59,10 @@ export function safeLinkIssues(previous: FallPlatform, next: FallPlatform): stri
   return issues;
 }
 
-/** Pattern-guided randomness with a protected, physically reachable landing bay on every row.
- * Spikes can span the center whenever the safe bay bends to a side. Birds stay in unsafe
- * side lanes; a route never depends on waiting indefinitely for a moving hazard.
+/** Four safe steps coexist with a 10.6–10.8m held shortcut to a soft catch.
+ * Early spike banks leave a visible diagonal corridor open. The final decision row
+ * closes that corridor with ordinary stone and central/side spikes: neutral hold fails.
+ * Safe route widths and lateral transitions are bounded by the actual flight model.
  */
 export function generateChunk(cursor: GenerationCursor, random: () => number): GeneratedChunk {
   const unit = () => Math.max(0, Math.min(0.999999, random()));
@@ -70,38 +71,40 @@ export function generateChunk(cursor: GenerationCursor, random: () => number): G
   let y = cursor.y, center = cursor.center, nextId = cursor.nextId;
   const platforms: FallPlatform[] = [], hazards: FallHazard[] = [];
   for (let i = 0; i < 4; i++) {
-    y += pattern.gaps[i] * PIXELS_PER_METER;
-    // Mixed widths persist throughout the game; difficulty is lateral decisions and pursuit.
+    const gap = pattern.gaps[i] * PIXELS_PER_METER;
+    y += gap;
     const widths = depth < 30 ? [104, 96, 112, 88] : [88, 104, 80, 96];
-    const width = widths[(i + Math.floor(unit() * widths.length)) % widths.length];
+    const width = i === 3 ? 72 : i === 2 ? 100 : widths[(i + Math.floor(unit() * widths.length)) % widths.length];
     const moving = depth >= 100 && i === 1 && pattern.id === 'stairs';
     const amplitude = moving ? 6 : 0;
-    const proposed = pattern.lanes[i] + (unit() - 0.5) * 10;
-    // Bound a lane transition to retain a generous steering/braking reserve from rest.
+    const proposed = pattern.lanes[i] + (unit() - .5) * 8;
+    const maxShift = Math.min(62, horizontalReach(flightTime(gap)) + width / 2 - PLAYER_WIDTH / 2 - 24 - amplitude);
     center = Math.max(width / 2 + amplitude + 24, Math.min(WORLD_WIDTH - width / 2 - amplitude - 24,
-      Math.max(center - 66, Math.min(center + 66, proposed))));
-    const type = i === 3 ? 'normal' : moving ? 'moving' : i === 2 && pattern.id === 'soft-route' ? 'soft'
-      : depth >= 40 && i === 2 && pattern.id === 'zigzag' ? 'crumble' : 'normal';
-    const p = platformFromSeed({ x: center - width / 2, y, width, type, route: true,
-      pattern: pattern.id, amplitude, period: 8, phase: nextId * 0.7 }, nextId++);
-    platforms.push(p);
-    // Active floor banks occupy the complement of the entire movement envelope.
-    // An extra 5px reserve at the bay edges absorbs the final airborne braking phase.
-    const leftEnd = p.originX - amplitude - 5, rightStart = p.originX + width + amplitude + 5;
-    const paired = i === 3 || i === 1;
-    if (paired || center > 140) hazards.push(hazardFromSeed({ kind: 'spikes', x: 0, y: y - 8,
-      width: leftEnd, height: 8, side: -1 }, `spike-${p.id}-L`, p.id));
-    if (paired || center < 116) hazards.push(hazardFromSeed({ kind: 'spikes', x: rightStart, y: y - 8,
-      width: WORLD_WIDTH - rightStart, height: 8, side: 1 }, `spike-${p.id}-R`, p.id));
-    // A short dangerous ledge makes the blocked central/side choice visually concrete.
-    const blockedLeft = center > 140;
-    if (center < 116 || blockedLeft) {
-      const ledgeX = blockedLeft ? Math.max(8, leftEnd - 48) : Math.min(WORLD_WIDTH - 56, rightStart + 8);
-      platforms.push(platformFromSeed({ x: ledgeX, y, width: 48, type: 'normal', route: false,
-        pattern: `${pattern.id}-danger` }, nextId++));
-    }
-    for (const side of [-1, 1] as const) hazards.push(hazardFromSeed({ kind: 'wall_needle',
-      x: side === -1 ? 0 : WORLD_WIDTH - 18, y: y - 36, width: 18, height: 44, side }, `needle-${p.id}-${side}`, p.id));
+      Math.max(center - maxShift, Math.min(center + maxShift, proposed))));
+    const type = i === 2 ? 'soft' : moving ? 'moving'
+      : depth >= 30 && i === 1 && pattern.id === 'zigzag' ? 'crumble' : 'normal';
+    platforms.push(platformFromSeed({ x: center - width / 2, y, width, type, route: true,
+      pattern: pattern.id, amplitude, period: 8, phase: nextId * .7 }, nextId++));
   }
+  const soft = platforms[2];
+  for (let i = 0; i < 4; i++) {
+    const p = platforms[i];
+    // Reserve both the safe pad and the held-drop corridor, including full-body clearance.
+    const reserveLeft = i === 3 ? p.originX - p.amplitude - 5
+      : Math.min(p.originX - p.amplitude - 5, cursor.center - 28, soft.originX - 24);
+    const reserveRight = i === 3 ? p.originX + p.width + p.amplitude + 5
+      : Math.max(p.originX + p.width + p.amplitude + 5, cursor.center + 28, soft.originX + soft.width + 24);
+    const leftWidth = Math.max(0, reserveLeft), rightX = Math.min(WORLD_WIDTH, reserveRight);
+    if (leftWidth > 8) hazards.push(hazardFromSeed({ kind: 'spikes', x: 0, y: p.y - 8,
+      width: leftWidth, height: 8, side: -1 }, `spike-${p.id}-L`, p.id));
+    if (WORLD_WIDTH - rightX > 8) hazards.push(hazardFromSeed({ kind: 'spikes', x: rightX, y: p.y - 8,
+      width: WORLD_WIDTH - rightX, height: 8, side: 1 }, `spike-${p.id}-R`, p.id));
+    for (const side of [-1, 1] as const) hazards.push(hazardFromSeed({ kind: 'wall_needle',
+      x: side === -1 ? 0 : WORLD_WIDTH - 18, y: p.y - 36, width: 18, height: 44, side }, `needle-${p.id}-${side}`, p.id));
+  }
+  // A spiked alternative on the final row clearly marks the blocked lane, without narrowing the safe bay.
+  const final = platforms[3], ledgeX = final.originX > 72 ? 8 : 200;
+  platforms.push(platformFromSeed({ x: ledgeX, y: final.y, width: 48, type: 'normal', route: false,
+    pattern: `${pattern.id}-danger` }, nextId++));
   return { platforms, hazards, cursor: { y, center, nextId, chunks: cursor.chunks + 1 } };
 }

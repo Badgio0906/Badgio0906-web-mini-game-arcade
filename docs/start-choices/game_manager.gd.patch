@@ -1,0 +1,13 @@
+--- a/scripts/game_manager.gd
++++ b/scripts/game_manager.gd
+@@ -199,8 +199,6 @@
+-func start_run() -> void:
+-	if seen_tutorial:
+-		request_start(1)
+-	else:
+-		audio.unlock()
+-		show_help()
++func start_run() -> void:
++	# The surrounding arcade title lets first-time players choose practice explicitly.
++	# Skipping does not mark the native tutorial as completed.
++	request_start(1)

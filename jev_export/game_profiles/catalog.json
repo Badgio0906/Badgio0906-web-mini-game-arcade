@@ -1,0 +1,740 @@
+{
+  "schemaVersion": 1,
+  "gameCount": 19,
+  "gameCatalog": [
+    {
+      "id": "game001",
+      "titleJa": "軌道をズラせ！",
+      "titleEn": "ORBIT SHIFT",
+      "tagline": "押すのは一回。間違うのは一瞬。",
+      "thumbnail": "./assets/portal/game001.webp",
+      "route": "./game001.html",
+      "releaseOrder": 1,
+      "tags": [
+        {
+          "id": "reflex",
+          "label": "反射神経"
+        },
+        {
+          "id": "dodge",
+          "label": "回避"
+        },
+        {
+          "id": "score-attack",
+          "label": "スコアアタック"
+        },
+        {
+          "id": "short",
+          "label": "短時間"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game002",
+      "titleJa": "ゆううつな月曜日",
+      "titleEn": "WORKDAY DODGE",
+      "tagline": "弊社まで1000m。出勤するか、人生を変えるか。",
+      "thumbnail": "./assets/portal/game002.webp",
+      "route": "./game002.html",
+      "releaseOrder": 2,
+      "tags": [
+        {
+          "id": "dodge",
+          "label": "回避"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "commute",
+          "label": "通勤"
+        },
+        {
+          "id": "endless",
+          "label": "エンドレス"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game003",
+      "titleJa": "我が国の建築は世界一ぃ！",
+      "titleEn": "DROP TOWER",
+      "tagline": "積め。15mを超えた先は、責任を持てません。",
+      "thumbnail": "./assets/portal/game003.webp",
+      "route": "./game003.html",
+      "releaseOrder": 3,
+      "tags": [
+        {
+          "id": "timing",
+          "label": "タイミング"
+        },
+        {
+          "id": "stacking",
+          "label": "積み上げ"
+        },
+        {
+          "id": "architecture",
+          "label": "建築"
+        },
+        {
+          "id": "score-attack",
+          "label": "スコアアタック"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game004",
+      "titleJa": "あなたの短期記憶、無事ですか？",
+      "titleEn": "ECHO GRID",
+      "tagline": "光った順番、覚えてますよね？",
+      "thumbnail": "./assets/portal/game004.webp",
+      "route": "./game004.html",
+      "releaseOrder": 4,
+      "tags": [
+        {
+          "id": "memory",
+          "label": "記憶"
+        },
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "brain-training",
+          "label": "脳トレ"
+        },
+        {
+          "id": "short",
+          "label": "短時間"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game005",
+      "titleJa": "右往左往の仕分け術",
+      "titleEn": "SORT SHIFT",
+      "tagline": "ルールは簡単。途中で変わるまでは。",
+      "thumbnail": "./assets/portal/game005.webp",
+      "route": "./game005.html",
+      "releaseOrder": 5,
+      "tags": [
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "rule-change",
+          "label": "ルール変化"
+        },
+        {
+          "id": "brain-training",
+          "label": "脳トレ"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game006",
+      "titleJa": "ギリギリ駐車",
+      "titleEn": "PARK IT!",
+      "tagline": "あと3cm。たぶん入る。たぶん。",
+      "thumbnail": "./assets/portal/game006.webp",
+      "route": "./game006.html",
+      "releaseOrder": 6,
+      "tags": [
+        {
+          "id": "physics",
+          "label": "物理"
+        },
+        {
+          "id": "timing",
+          "label": "タイミング"
+        },
+        {
+          "id": "precision",
+          "label": "精密操作"
+        },
+        {
+          "id": "vehicle",
+          "label": "乗り物"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game007",
+      "titleJa": "まだ乗れます",
+      "titleEn": "ELEVATOR OVERLOAD",
+      "tagline": "あと82kg。乗せる？見送る？責任はあなたです。",
+      "thumbnail": "./assets/portal/game007.webp",
+      "route": "./game007.html",
+      "releaseOrder": 7,
+      "tags": [
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "puzzle",
+          "label": "パズル"
+        },
+        {
+          "id": "weight",
+          "label": "重量管理"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game008",
+      "titleJa": "コーヒーこぼすな",
+      "titleEn": "COFFEE WALK",
+      "tagline": "一滴もこぼさず、部長の分まで持っていけ。",
+      "thumbnail": "./assets/portal/game008.webp",
+      "route": "./game008.html",
+      "releaseOrder": 8,
+      "tags": [
+        {
+          "id": "balance",
+          "label": "バランス"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "drink",
+          "label": "飲み物"
+        },
+        {
+          "id": "precision",
+          "label": "精密操作"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game009",
+      "titleJa": "印鑑どこですか",
+      "titleEn": "STAMP HUNT",
+      "tagline": "片づけるか、倍率を取るか。印鑑はたぶんそこ。",
+      "thumbnail": "./assets/portal/game009.webp",
+      "route": "./game009.html",
+      "releaseOrder": 9,
+      "tags": [
+        {
+          "id": "search",
+          "label": "探索"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "desk",
+          "label": "机上"
+        },
+        {
+          "id": "score-attack",
+          "label": "スコアアタック"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game010",
+      "titleJa": "会議、聞いてます？",
+      "titleEn": "MEETING SURVIVAL",
+      "tagline": "聞くふりをしながら、仕事を進めろ。",
+      "thumbnail": "./assets/portal/game010.webp",
+      "route": "./game010.html",
+      "releaseOrder": 10,
+      "tags": [
+        {
+          "id": "stealth",
+          "label": "ステルス"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "meeting",
+          "label": "会議"
+        },
+        {
+          "id": "multitask",
+          "label": "マルチタスク"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game011",
+      "titleJa": "ウンコかウコンかゲーム",
+      "titleEn": "UNKO or UKON",
+      "tagline": "絶対わかる。0.5秒になるまでは。",
+      "thumbnail": "./assets/portal/game011.webp",
+      "route": "./game011.html",
+      "releaseOrder": 11,
+      "tags": [
+        {
+          "id": "quiz",
+          "label": "クイズ"
+        },
+        {
+          "id": "reflex",
+          "label": "反射神経"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        },
+        {
+          "id": "decision",
+          "label": "判断"
+        }
+      ],
+      "difficulty": "rising"
+    },
+    {
+      "id": "game012",
+      "titleJa": "お前の仕事は俺の仕事",
+      "titleEn": "YOUR WORK IS MY WORK",
+      "tagline": "「今だ！」の瞬間に、同僚の仕事とバナナを横取り。",
+      "thumbnail": "./assets/portal/game012.webp",
+      "route": "./games/yokodori-days/index.html",
+      "releaseOrder": 12,
+      "tags": [
+        {
+          "id": "timing",
+          "label": "タイミング"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        },
+        {
+          "id": "reflex",
+          "label": "反射神経"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game013",
+      "titleJa": "タスク天国",
+      "titleEn": "TASK HEAVEN",
+      "tagline": "上司のお手本を覚えて、1〜4キーで仕事を奏でよう。",
+      "thumbnail": "./assets/portal/game013.webp",
+      "route": "./games/tachibana-task-heaven/index.html",
+      "releaseOrder": 13,
+      "tags": [
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "rhythm",
+          "label": "リズム感"
+        },
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game014",
+      "titleJa": "指ハートチャレンジ",
+      "titleEn": "FINGER HEART CHALLENGE",
+      "tagline": "指ハートの瞬間でストップ。全5段階、25回成功を目指せ。",
+      "thumbnail": "./assets/portal/game014.webp",
+      "route": "./games/finger-heart-challenge/index.html",
+      "releaseOrder": 14,
+      "tags": [
+        {
+          "id": "timing",
+          "label": "タイミング"
+        },
+        {
+          "id": "pose",
+          "label": "ポーズ"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        },
+        {
+          "id": "short",
+          "label": "短時間"
+        }
+      ],
+      "difficulty": "rising"
+    },
+    {
+      "id": "game015",
+      "titleJa": "落下キング",
+      "titleEn": "FALL KING",
+      "tagline": "上を目指すな。うまく落ちろ。",
+      "thumbnail": "./assets/portal/game015.webp",
+      "route": "./game015.html",
+      "releaseOrder": 15,
+      "tags": [
+        {
+          "id": "fall",
+          "label": "落下"
+        },
+        {
+          "id": "precision",
+          "label": "精密操作"
+        },
+        {
+          "id": "pixel-art",
+          "label": "ドット絵"
+        },
+        {
+          "id": "retro",
+          "label": "レトロ"
+        },
+        {
+          "id": "hard",
+          "label": "高難度"
+        }
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": "game016",
+      "titleJa": "負けじゃんけん ～LOSE TO WIN～",
+      "titleEn": "LOSE TO WIN",
+      "tagline": "勝ったら負け。負ければ勝ち。",
+      "thumbnail": "./assets/portal/game016.webp",
+      "route": "./game016.html",
+      "releaseOrder": 16,
+      "tags": [
+        {
+          "id": "reflex",
+          "label": "反射神経"
+        },
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "quiz",
+          "label": "クイズ"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        },
+        {
+          "id": "short",
+          "label": "短時間"
+        }
+      ],
+      "difficulty": "rising"
+    },
+    {
+      "id": "game017",
+      "titleJa": "雨って避けたら濡れないよね ～RAINSHIFT～",
+      "titleEn": "RAINSHIFT",
+      "tagline": "雨？ 当たらなければ晴れです。",
+      "thumbnail": "./assets/portal/game017.webp",
+      "route": "./game017.html",
+      "releaseOrder": 17,
+      "tags": [
+        {
+          "id": "dodge",
+          "label": "回避"
+        },
+        {
+          "id": "weather",
+          "label": "天気"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        },
+        {
+          "id": "endless",
+          "label": "エンドレス"
+        }
+      ],
+      "difficulty": "rising"
+    },
+    {
+      "id": "game018",
+      "titleJa": "靴とばそ ～Shoe fly in the sky～",
+      "titleEn": "Shoe fly in the sky",
+      "tagline": "靴は履くもの？ それ誰が決めた？",
+      "thumbnail": "./assets/portal/game018.webp",
+      "route": "./game018.html",
+      "releaseOrder": 18,
+      "tags": [
+        {
+          "id": "physics",
+          "label": "物理"
+        },
+        {
+          "id": "multi-step",
+          "label": "マルチステップ"
+        },
+        {
+          "id": "distance",
+          "label": "距離競技"
+        },
+        {
+          "id": "absurd",
+          "label": "バカゲー"
+        }
+      ],
+      "difficulty": "standard"
+    },
+    {
+      "id": "game019",
+      "titleJa": "井の中の蛙、大海を目指す ～WELL TO SPACE～",
+      "titleEn": "WELL TO SPACE",
+      "tagline": "井戸を出たら、今度は宇宙でした。",
+      "thumbnail": "./assets/portal/game019.webp",
+      "route": "./game019.html",
+      "releaseOrder": 19,
+      "tags": [
+        {
+          "id": "jump",
+          "label": "ジャンプ"
+        },
+        {
+          "id": "rise",
+          "label": "上昇"
+        },
+        {
+          "id": "pixel-art",
+          "label": "ドット絵"
+        },
+        {
+          "id": "animal",
+          "label": "アニマル"
+        },
+        {
+          "id": "hard",
+          "label": "高難度"
+        },
+        {
+          "id": "precision",
+          "label": "精密操作"
+        },
+        {
+          "id": "space",
+          "label": "宇宙"
+        },
+        {
+          "id": "wind",
+          "label": "風"
+        }
+      ],
+      "difficulty": "hard"
+    }
+  ],
+  "tagCatalog": [
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    },
+    {
+      "id": "dodge",
+      "label": "回避"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    },
+    {
+      "id": "short",
+      "label": "短時間"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "commute",
+      "label": "通勤"
+    },
+    {
+      "id": "endless",
+      "label": "エンドレス"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    },
+    {
+      "id": "timing",
+      "label": "タイミング"
+    },
+    {
+      "id": "stacking",
+      "label": "積み上げ"
+    },
+    {
+      "id": "architecture",
+      "label": "建築"
+    },
+    {
+      "id": "memory",
+      "label": "記憶"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "brain-training",
+      "label": "脳トレ"
+    },
+    {
+      "id": "rule-change",
+      "label": "ルール変化"
+    },
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    },
+    {
+      "id": "vehicle",
+      "label": "乗り物"
+    },
+    {
+      "id": "puzzle",
+      "label": "パズル"
+    },
+    {
+      "id": "weight",
+      "label": "重量管理"
+    },
+    {
+      "id": "balance",
+      "label": "バランス"
+    },
+    {
+      "id": "drink",
+      "label": "飲み物"
+    },
+    {
+      "id": "search",
+      "label": "探索"
+    },
+    {
+      "id": "desk",
+      "label": "机上"
+    },
+    {
+      "id": "stealth",
+      "label": "ステルス"
+    },
+    {
+      "id": "meeting",
+      "label": "会議"
+    },
+    {
+      "id": "multitask",
+      "label": "マルチタスク"
+    },
+    {
+      "id": "quiz",
+      "label": "クイズ"
+    },
+    {
+      "id": "rhythm",
+      "label": "リズム感"
+    },
+    {
+      "id": "pose",
+      "label": "ポーズ"
+    },
+    {
+      "id": "fall",
+      "label": "落下"
+    },
+    {
+      "id": "pixel-art",
+      "label": "ドット絵"
+    },
+    {
+      "id": "retro",
+      "label": "レトロ"
+    },
+    {
+      "id": "hard",
+      "label": "高難度"
+    },
+    {
+      "id": "weather",
+      "label": "天気"
+    },
+    {
+      "id": "multi-step",
+      "label": "マルチステップ"
+    },
+    {
+      "id": "distance",
+      "label": "距離競技"
+    },
+    {
+      "id": "jump",
+      "label": "ジャンプ"
+    },
+    {
+      "id": "rise",
+      "label": "上昇"
+    },
+    {
+      "id": "animal",
+      "label": "アニマル"
+    },
+    {
+      "id": "space",
+      "label": "宇宙"
+    },
+    {
+      "id": "wind",
+      "label": "風"
+    }
+  ]
+}

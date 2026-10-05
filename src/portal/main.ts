@@ -21,6 +21,16 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   const english = document.createElement('span'); english.className = 'game-english'; english.textContent = game.titleEn;
   const tagline = document.createElement('p'); tagline.textContent = game.tagline;
   const play = document.createElement('span'); play.className = 'game-play'; play.innerHTML = 'PLAY <span aria-hidden="true">↗</span>';
-  content.append(title, english, tagline, play); card.append(imageFrame, content); gallery.append(card);
+  const tags = document.createElement('ul'); tags.className = 'game-tags'; tags.setAttribute('aria-label', 'ゲームのタグ');
+  for (const tag of game.tags.slice(0, 4)) { const badge = document.createElement('li'); badge.className = 'game-tag'; badge.dataset.tagId = tag.id; badge.textContent = tag.label; tags.append(badge); }
+  content.append(title, english, tagline, tags, play); card.append(imageFrame, content); gallery.append(card);
 }
 document.getElementById('game-count')!.textContent = String(gameCatalog.length);
+
+const saveRecords = document.getElementById('save-play-records');
+saveRecords?.addEventListener('click', () => {
+  const payload = telemetry.exportRecords();
+  const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
+  const link = document.createElement('a'); link.href = url; link.download = 'arcade-play-records.json'; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});

@@ -4,7 +4,7 @@ from fontTools.ttLib import TTFont
 import json, hashlib
 root=Path(__file__).resolve().parents[1]
 source=root/'assets/fonts/source/MPLUSRounded1c-Medium.ttf'
-inputs=list((root/'src').rglob('*.ts'))+list(root.glob('*.html'))+[root/'docs/revisions/TITLE_UI_SPEC.md', root/'docs/ten-game/IMPLEMENTATION_SPEC.md']
+inputs=list((root/'src').rglob('*.ts'))+list(root.glob('*.html'))+list((root/'public/games').glob('*/index.html'))+[root/'docs/revisions/TITLE_UI_SPEC.md', root/'docs/ten-game/IMPLEMENTATION_SPEC.md']
 text=''.join(p.read_text() for p in inputs)+''.join(chr(i) for i in range(32,127))
 font=TTFont(source)
 missing=sorted(set(map(ord,text))-set(font.getBestCmap()))

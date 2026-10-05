@@ -33,3 +33,6 @@
 }
 /* TV prose is cream; native menu labels retain ink contrast on light keycaps. */
 .show-card button{color:#243349}
+
+#tutorial-explain-button,#tutorial-again-button{min-height:44px;touch-action:manipulation}
+@media(max-width:430px){.menu-actions{flex-wrap:wrap}.menu-actions #play-button{flex-basis:100%}.menu-actions #tutorial-explain-button,.menu-actions #tutorial-again-button{flex:1 1 110px}}

@@ -118,3 +118,11 @@
 #arcade-training[data-game='game015'] .practice-controls button:disabled{opacity:.6}
 @media(max-width:600px){#arcade-training[data-game='game015']{padding:10px}#arcade-training[data-game='game015'] h2{font-size:20px;margin:5px 0}#arcade-training[data-game='game015'] p{font-size:13px;line-height:1.45;margin:6px 0}#arcade-training[data-game='game015'] .practice-window{margin-top:6px}#arcade-training[data-game='game015'] canvas{height:31dvh}#arcade-training[data-game='game015'] .practice-feedback{min-height:36px}#arcade-training[data-game='game015'] .practice-controls{margin-top:6px;gap:5px}}
 @media(max-height:500px) and (min-width:501px){#arcade-training[data-game='game015'] canvas{height:calc(100dvh - 104px);max-height:none}#arcade-training[data-game='game015'] .practice-controls button{font-size:11px;padding:6px 3px}}
+
+/* Explicit title choices do not participate in a running game. */
+.arcade-practice-again{min-width:118px;touch-action:manipulation;font-size:14px}
+#play-button{min-height:44px;touch-action:manipulation}
+body[data-arcade-game='game015'] .title-actions{flex-wrap:wrap}
+body[data-arcade-game='game015'] .title-actions .arcade-practice-again{flex:1 1 100px;margin:0;padding:8px}
+
+.arcade-start-options{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:8px auto 0;max-width:100%;width:100%}.arcade-start-options .arcade-practice-again{display:inline-flex;justify-content:center;align-items:center;margin:0;min-width:110px;min-height:44px;padding:8px 12px}body[data-arcade-game='game015'] .title-actions .arcade-start-options{flex-basis:100%}

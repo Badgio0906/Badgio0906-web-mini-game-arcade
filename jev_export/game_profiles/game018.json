@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "game018",
+  "title": "靴とばそ ～Shoe fly in the sky～",
+  "titleJa": "靴とばそ",
+  "titleEn": "Shoe fly in the sky",
+  "tagline": "靴は履くもの？ それ誰が決めた？",
+  "tags": [
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "multi-step",
+      "label": "マルチステップ"
+    },
+    {
+      "id": "distance",
+      "label": "距離競技"
+    },
+    {
+      "id": "absurd",
+      "label": "バカゲー"
+    }
+  ],
+  "genre": "timing / trajectory experiment",
+  "controls": {
+    "summary": "Space / タップで角度→足首ひねり→パワーを決定",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": [
+    20,
+    40
+  ],
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "角度、実物理スピン、パワー、靴選びを試して飛距離を伸ばす",
+  "description": "角度、実物理スピン、パワー、靴選びを試して飛距離を伸ばす",
+  "failureModes": "飛距離の伸びない設定、MAXボーナスのタイミングずれ",
+  "route": "./game018.html",
+  "thumbnail": "./assets/portal/game018.webp",
+  "design": {
+    "thumbnailDescription": "靴とばそ ～Shoe fly in the sky～の実プレイ画面。赤シャツと青い短パンの少年、素足の蹴り、飛ぶ青い靴",
+    "majorVisuals": "赤シャツと青い短パンの少年、素足の蹴り、飛ぶ青い靴",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "User shoe-kicking boy reference: pose, red shirt, blue shorts and flying shoe; authored game character and kick states.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game018/game.manifest.json",
+    "details": "src/games/game018/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game018",
+    "title": "靴とばそ ～Shoe fly in the sky～",
+    "titleEn": "Shoe fly in the sky",
+    "genre": "timing / trajectory experiment",
+    "coreMechanic": "Three timed stops choose launch angle, real spin physics and power; follow physical shoe to landing",
+    "skillAxes": [
+      "timing",
+      "parameter experiments",
+      "shoe selection"
+    ],
+    "runSecondsDesignTarget": [
+      20,
+      40
+    ],
+    "shoeTypes": [
+      "paper",
+      "zori",
+      "sneaker",
+      "leather",
+      "iron-geta"
+    ],
+    "routes": {
+      "ground": [
+        5,
+        25
+      ],
+      "distance": [
+        25,
+        55
+      ],
+      "sky": [
+        55,
+        85
+      ]
+    },
+    "power": {
+      "justMaxThreshold": 99.5,
+      "peakPlateauSeconds": 0.1,
+      "periodSeconds": 1.36
+    },
+    "practice": "4 separate stages; no score/best/run events/credits",
+    "storagePrefix": "web-mini-arcade:v1:game018:",
+    "creditMode": "prototype free; future enabled start-once consumption",
+    "ads": "none; development stub only when credits flag enabled",
+    "jev": "development Shadow only",
+    "humanReview": "pending physical device and subjective experience"
+  }
+}

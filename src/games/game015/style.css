@@ -6,3 +6,8 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 
 #title-king{float:right;width:48px;height:72px;image-rendering:pixelated;margin:10px 0 4px 8px}.title-menu h1{font-size:30px}.title-menu .tagline{clear:both}
+
+.fall-controls #drop-button small{display:block;font-family:inherit;font-size:9px;line-height:1.2;margin-top:2px;white-space:normal}
+@media(max-height:500px) and (orientation:landscape){.fall-controls #drop-button small{font-size:8px}}
+
+@media(max-height:500px) and (orientation:landscape){#app:is([data-state="playing"],[data-state="ending"]) .game-layout{align-items:start}.playing-guide p{font-size:11px;line-height:1.25;margin:4px 0}.playing-guide small{font-size:10px;line-height:1.35}.playing-guide h1{font-size:20px;margin:4px 0}.playing-guide dl{margin:6px 0;padding:4px 0}}

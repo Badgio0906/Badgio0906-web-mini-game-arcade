@@ -30,7 +30,7 @@ function setScreen(next: Screen): void {
   stopDrag(); epoch++; screen = next; app.dataset.state = screen; menu.hidden = next === 'playing' || next === 'practice';
   if (document.activeElement instanceof HTMLElement && menu.contains(document.activeElement)) document.activeElement.blur();
   const actions = (markup: string): string => '<div class="menu-actions">' + markup + '</div>';
-  if (next === 'title') menu.innerHTML = '<span class="menu-eyebrow">A VERY DRY THEORY</span><h1>雨って避けたら<br/>濡れないよね<small>～RAINSHIFT～</small></h1><p>雨を止めて、道を描いて、<br/>シュシュン！ と右端まで。</p>' + actions(btn('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true) + btn('tutorial-again-button', '練習する')) + '<p class="menu-detail">クリック／タップ → ドラッグ<br/>無料・回数制限なしの試作版</p>';
+  if (next === 'title') menu.innerHTML = '<span class="menu-eyebrow">A VERY DRY THEORY</span><h1>雨って避けたら<br/>濡れないよね<small>～RAINSHIFT～</small></h1><p>雨を止めて、道を描いて、<br/>シュシュン！ と右端まで。</p>' + actions(btn('play-button', 'すぐ遊ぶ', true) + btn('tutorial-explain-button', '説明を見る') + btn('tutorial-again-button', '練習する')) + '<p class="menu-detail">クリック／タップ → ドラッグ<br/>無料・回数制限なしの試作版</p>';
   if (next === 'explanation') menu.innerHTML = '<span class="menu-eyebrow">HOW TO STAY DRY</span><h2>雨？ 当たらなければ晴れです。</h2><ol><li>雨が来たら、道路か「超加速」をタップ。</li><li>世界が止まったら、黄色い主人公からドラッグ。</li><li>赤い着地点を避け、右のGOALへ。計画は5秒。</li></ol><p>薄い雨は今回は届きません。<br/>線が途切れたら、先端から続きを描けます。</p>' + actions(btn('tutorial-practice-button', 'やってみる', true) + titleButton());
   if (next === 'practice-complete') menu.innerHTML = '<span class="menu-eyebrow">PRACTICE COMPLETE</span><h2>DRY CLEAR！</h2><p>雨って実質、晴れと同じよな。<br/>同じ操作で、次は本番の通りへ。</p>' + actions(btn('tutorial-start-button', '本番へ', true) + titleButton()) + '<p class="menu-detail">練習はSCORE・BEST・CREDITに影響しません。</p>';
   if (next === 'paused') menu.innerHTML = '<span class="menu-eyebrow">WORLD PAUSED</span><h2>雨も時計も、お休み。</h2><p>描いた線と残り時間を保持しています。<br/>再開後は、線の先端から描けます。</p>' + actions(btn('resume-button', '続きから', true) + titleButton());
@@ -65,7 +65,7 @@ function onEvent(event: RainEvent): void {
   }
   if (event.type === 'clear') {
     audio.tone(660, 990, .18, 'triangle', 0, .04);
-    if (run.practice) { telemetry.trackEvent('tutorial_step_complete', { step: 5 }); setScreen('practice-complete'); }
+    if (run.practice) { telemetry.trackEvent('practice_complete'); telemetry.trackEvent('tutorial_step_complete', { step: 5 }); setScreen('practice-complete'); }
     else telemetry.trackEvent('milestone_reached', { runId, round: event.round, score: event.score, close_calls: event.closeCalls });
   }
   if (event.type === 'end') {
@@ -76,10 +76,10 @@ function onEvent(event: RainEvent): void {
     telemetry.trackEvent('score', { runId, score: event.result.score, best }); telemetry.trackEvent('run_duration', { runId, seconds: event.result.time, reason: 'over' }); setScreen('result');
   }
 }
-function explain(): void { quit(); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) }); setScreen('explanation'); }
+function explain(): void { quit(); telemetry.trackEvent('tutorial_view'); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) }); setScreen('explanation'); }
 function start(retry = false): void {
   if (disposed || screen === 'playing' || screen === 'practice' || credits.rewardPending) return;
-  if (!storage.readBoolean('tutorialCompleted', false)) { explain(); return; }
+  if (screen === 'title') telemetry.trackEvent('tutorial_skip', { startMethod: 'immediate', completedBefore: storage.readBoolean('tutorialCompleted', false) });
   if (!credits.canPlay) { setScreen('reward'); return; }
   runId = 'game017-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
   if (credits.enabled && !credits.consume(runId)) return;
@@ -132,8 +132,9 @@ app.addEventListener('click', e => {
   switch (target.id) {
     case 'play-button': start(); break;
     case 'retry-button': start(true); break;
-    case 'tutorial-again-button': explain(); break;
-    case 'tutorial-practice-button': setScreen('practice'); run.start(now(), 1, true); sync(); break;
+    case 'tutorial-explain-button': explain(); break;
+    case 'tutorial-again-button': telemetry.trackEvent('practice_start'); setScreen('practice'); run.start(now(), 1, true); sync(); break;
+    case 'tutorial-practice-button': telemetry.trackEvent('practice_start'); setScreen('practice'); run.start(now(), 1, true); sync(); break;
     case 'tutorial-start-button': storage.writeBoolean('tutorialCompleted', true); telemetry.trackEvent('tutorial_complete'); start(); break;
     case 'practice-retry-button': if (run.result?.reason === 'activation') run.start(now(), 1, true); else run.retryPractice(now()); setScreen('practice'); break;
     case 'title-button': quit(); setScreen('title'); break;

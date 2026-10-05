@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "game009",
+  "title": "印鑑どこですか",
+  "titleJa": "印鑑どこですか",
+  "titleEn": "STAMP HUNT",
+  "tagline": "片づけるか、倍率を取るか。印鑑はたぶんそこ。",
+  "tags": [
+    {
+      "id": "search",
+      "label": "探索"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "desk",
+      "label": "机上"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    }
+  ],
+  "genre": [
+    "visual-search",
+    "attention",
+    "arcade"
+  ],
+  "controls": {
+    "summary": "指定された印鑑をクリック / タップ",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 55,
+    "experienced": 130
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "机を片づけるか倍率を取るかを選ぶ",
+  "description": "机を片づけるか倍率を取るかを選ぶ",
+  "failureModes": "違う印鑑または時間切れ",
+  "route": "./game009.html",
+  "thumbnail": "./assets/portal/game009.webp",
+  "design": {
+    "thumbnailDescription": "印鑑どこですかの実プレイ画面。暖かい木の机と個別の印鑑・文具",
+    "majorVisuals": "暖かい木の机と個別の印鑑・文具",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game009/game.manifest.json",
+    "details": "src/games/game009/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game009",
+    "title": "印鑑どこですか ～STAMP HUNT～",
+    "subtitle": "赤い丸印、さっきここにあった。",
+    "genre": [
+      "visual-search",
+      "attention",
+      "arcade"
+    ],
+    "core_mechanic": [
+      "find requested color and shape",
+      "visible duplicate matches all accepted",
+      "cleanup versus future score multiplier"
+    ],
+    "primary_input": [
+      "individual target tap",
+      "native button activation"
+    ],
+    "skill_axes": [
+      "visual-search",
+      "selective-attention",
+      "risk-management"
+    ],
+    "expected_run_seconds": {
+      "beginner": 55,
+      "experienced": 130
+    },
+    "duration_note": "numeric design hypotheses; human search and natural failure times unmeasured",
+    "primary_score": "correct search points with remaining-time bonus and future multiplier",
+    "secondary_score": "correct rounds",
+    "escalation_mechanic": "Each five successes freeze and offer cleanup or continued clutter; native target bounds never shrink below64x72CSSpx.",
+    "risk_reward": "Cleanup removes actual desk pieces and resets future multiplier; continue adds pieces to a truthful bounded limit and increases future multiplier by25 percentage points up to3x.",
+    "visual_identity": "generated individual stamps and desk tools, code warm wood, irregular unframed native hit regions"
+  }
+}

@@ -31,7 +31,7 @@ export function sweptHazardHit(from: Pick<FallPlayer, 'x' | 'y'>, to: Pick<FallP
   return enter <= 1 && exit > 0 ? enter : null;
 }
 
-/** Input-free float simulation. Renderers alone quantize the pixel grid. DROP skips only the departed support. */
+/** Input-free float simulation. Renderers alone quantize the pixel grid. Tapped DROP skips the departed support; held DROP bypasses ordinary floors without resetting impact distance. */
 export class FallRun {
   private alive = false;
   private time = 0;
@@ -46,12 +46,16 @@ export class FallRun {
   private cameraY = 0;
   private ignoredPlatformId: number | null = null;
   private niceDrops = 0;
+  private heldDrop = false;
+  private passedPlatforms = 0;
+  private holdRecovery = 0;
   private lastLanding: LandingReport | null = null;
   private ending: FallResult | null = null;
   private milestone1000 = false;
   constructor(private readonly emit: (event: FallEvent) => void = () => {}, private readonly random: () => number = Math.random, private readonly options: FallOptions = {}) {}
   reset(): void {
     this.alive = false; this.time = 0; this.horizontal = 0; this.niceDrops = 0; this.cameraY = 0;
+    this.heldDrop = false; this.passedPlatforms = 0; this.holdRecovery = 0;
     this.lastLanding = null; this.ending = null; this.ignoredPlatformId = null; this.milestone1000 = false;
     this.platforms = []; this.hazards = []; this.cursor = { y: START_Y, center: WORLD_WIDTH / 2, nextId: 2, chunks: 0 };
     this.startY = this.fallStartY = this.deepestY = START_Y;
@@ -71,6 +75,10 @@ export class FallRun {
   }
   setHorizontal(direction: HorizontalInput): void {
     if (direction === -1 || direction === 0 || direction === 1) this.horizontal = this.alive ? direction : 0;
+  }
+  setDropHeld(held: boolean): void {
+    this.heldDrop = this.alive && held;
+    if (this.heldDrop && this.holdRecovery <= 0) this.drop();
   }
   drop(): boolean {
     if (!this.alive || !this.player.grounded || this.player.stunRemaining > 0) return false;
@@ -94,6 +102,7 @@ export class FallRun {
   private tick(dt: number): void {
     this.ensureGenerated();
     const oldTime = this.time, tickStart = { x: this.player.x, y: this.player.y }; this.time += dt;
+    this.holdRecovery = Math.max(0, this.holdRecovery - dt);
     this.updateHazards(dt);
     for (const p of this.platforms) {
       p.x = platformX(p, this.time);
@@ -102,6 +111,7 @@ export class FallRun {
         if (p.crumbleAge >= CRUMBLE_SECONDS) { p.gone = true; this.emit({ type: 'crumble', platformId: p.id }); }
       }
     }
+    if (this.heldDrop && this.holdRecovery <= 0) this.drop();
     const body = this.player; let groundAdvanced = false, airAdvanced = false;
     if (body.grounded) {
       const support = this.support();
@@ -130,13 +140,20 @@ export class FallRun {
           const alpha = (p.y - beforeY) / Math.max(1e-12, body.y - beforeY);
           const x = beforeX + (body.x - beforeX) * alpha, platformLeft = platformX(p, oldTime + dt * alpha);
           return { p, x, alpha, overlaps: x + PLAYER_WIDTH / 2 > platformLeft && x - PLAYER_WIDTH / 2 < platformLeft + p.width };
-        }).filter(hit => hit.overlaps).sort((a, b) => a.alpha - b.alpha)[0];
-      const endpoint = crossing ? { x: crossing.x, y: crossing.p.y } : { x: body.x, y: body.y };
-      if (this.hitHazard(tickStart, endpoint, oldTime, crossing ? oldTime + dt * crossing.alpha : this.time)) return;
-      if (crossing) this.land(crossing.p, crossing.x);
+        }).filter(hit => hit.overlaps).sort((a, b) => a.alpha - b.alpha);
+      const bypassed = crossing.filter(hit => this.heldDrop && (hit.p.type === 'normal' || hit.p.type === 'moving'));
+      const landingCrossing = crossing.find(hit => !bypassed.includes(hit));
+      this.passedPlatforms += bypassed.filter(hit => !landingCrossing || hit.alpha < landingCrossing.alpha).length;
+      const endpoint = landingCrossing ? { x: landingCrossing.x, y: landingCrossing.p.y } : { x: body.x, y: body.y };
+      if (this.hitHazard(tickStart, endpoint, oldTime, landingCrossing ? oldTime + dt * landingCrossing.alpha : this.time)) return;
+      if (landingCrossing) this.land(landingCrossing.p, landingCrossing.x);
     }
     if (!airAdvanced && body.grounded && this.alive && this.hitHazard(tickStart, body, oldTime)) return;
     this.deepestY = Math.max(this.deepestY, body.y);
+    if ((this.options.endless ?? !this.options.course) && !body.grounded && body.y - this.fallStartY > SOFT_FATAL_METERS * PIXELS_PER_METER) {
+      const distance = (body.y - this.fallStartY) / PIXELS_PER_METER;
+      this.finish(distance, 'normal', `落下距離 ${distance.toFixed(1)}m。受け止める足場を逃しました。`); return;
+    }
     if (this.options.scroll !== false) {
       this.cameraY = Math.max(this.cameraY + scrollSpeedAt(oldTime + dt / 2) * dt, body.y - 224);
       if (body.y <= this.cameraY + SCROLL_TOP_LIMIT && this.alive) { this.finishScroll(); return; }
@@ -224,15 +241,17 @@ export class FallRun {
       this.finish(distance, platform.type); return;
     }
     this.fallStartY = platform.y; this.ignoredPlatformId = null;
+    // Soft and crumble floors arrest a held fall briefly; the next departure resumes automatically.
+    this.holdRecovery = platform.type === 'soft' ? .18 : .12;
     this.player.stunRemaining = kind === 'hard' ? HARD_STUN_SECONDS : 0;
     if (platform.type === 'crumble' && platform.crumbleAge === null) platform.crumbleAge = 0;
     if (nice) { this.niceDrops++; this.emit({ type: 'nice_drop', count: this.niceDrops, landing: { ...landing } }); }
   }
-  private finish(distance: number, type: PlatformType): void {
+  private finish(distance: number, type: PlatformType, reason?: string): void {
     if (!this.alive) return;
     this.alive = false; this.horizontal = 0;
     this.ending = { depth: this.depth(), score: Math.floor(this.depth()), time: this.time, niceDrops: this.niceDrops, outcome: 'impact',
-      reason: `落下距離 ${distance.toFixed(1)}m。着地衝撃に耐えられませんでした。`, fallDistance: distance, platformType: type };
+      reason: reason ?? `落下距離 ${distance.toFixed(1)}m。着地衝撃に耐えられませんでした。`, fallDistance: distance, platformType: type };
     this.emit({ type: 'end', result: { ...this.ending } });
   }
   private finishScroll(): void {
@@ -252,7 +271,7 @@ export class FallRun {
   private depth(): number { return Math.max(0, (this.deepestY - this.startY) / PIXELS_PER_METER); }
   snapshot(): FallSnapshot {
     const fallDistance = this.player.grounded ? this.lastLanding?.kind === 'fatal' ? this.lastLanding.fallDistance : 0 : Math.max(0, (this.player.y - this.fallStartY) / PIXELS_PER_METER);
-    return { alive: this.alive, time: this.time, depth: this.depth(), score: Math.floor(this.depth()), fallDistance, niceDrops: this.niceDrops, cameraY: this.cameraY, scrollSpeed: this.options.scroll === false ? 0 : scrollSpeedAt(this.time),
+    return { alive: this.alive, time: this.time, depth: this.depth(), score: Math.floor(this.depth()), fallDistance, niceDrops: this.niceDrops, heldDrop: this.heldDrop, passedPlatforms: this.passedPlatforms, cameraY: this.cameraY, scrollSpeed: this.options.scroll === false ? 0 : scrollSpeedAt(this.time),
       topRemaining: this.player.y - this.cameraY - SCROLL_TOP_LIMIT,
       horizontal: this.horizontal, phase: !this.alive ? 'ended' : this.player.grounded ? this.player.stunRemaining > 0 ? 'stunned' : 'grounded' : 'falling',
       player: { ...this.player }, platforms: this.platforms.map(copyPlatform), hazards: this.hazards.map(h => ({ ...h })), lastLanding: this.lastLanding ? { ...this.lastLanding } : null,

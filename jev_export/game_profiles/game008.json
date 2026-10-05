@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "game008",
+  "title": "コーヒーこぼすな",
+  "titleJa": "コーヒーこぼすな",
+  "titleEn": "COFFEE WALK",
+  "tagline": "一滴もこぼさず、部長の分まで持っていけ。",
+  "tags": [
+    {
+      "id": "balance",
+      "label": "バランス"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "drink",
+      "label": "飲み物"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    }
+  ],
+  "genre": [
+    "balance",
+    "physics",
+    "survival"
+  ],
+  "controls": {
+    "summary": "左右キー / 左右ボタンを押して体を支える",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 50,
+    "experienced": 140
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "加速度と液面の揺れを読みながら歩く",
+  "description": "加速度と液面の揺れを読みながら歩く",
+  "failureModes": "コーヒーをこぼしてカップが空になる",
+  "route": "./game008.html",
+  "thumbnail": "./assets/portal/game008.webp",
+  "design": {
+    "thumbnailDescription": "コーヒーこぼすなの実プレイ画面。一人称の街路とクリップ描画した液面",
+    "majorVisuals": "一人称の街路とクリップ描画した液面",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game008/game.manifest.json",
+    "details": "src/games/game008/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game008",
+    "title": "コーヒーこぼすな ～COFFEE WALK～",
+    "subtitle": "右へ動くと、コーヒーは左へ。",
+    "genre": [
+      "balance",
+      "physics",
+      "survival"
+    ],
+    "core_mechanic": [
+      "continuous body balance",
+      "acceleration-opposite liquid inertia",
+      "gradual rim overflow"
+    ],
+    "primary_input": [
+      "left-right hold",
+      "touch hold or tap"
+    ],
+    "skill_axes": [
+      "balance-control",
+      "inertia-prediction",
+      "multi-object-attention",
+      "risk-management"
+    ],
+    "expected_run_seconds": {
+      "beginner": 50,
+      "experienced": 140
+    },
+    "duration_note": "numeric design hypotheses; human natural failure and timing unmeasured",
+    "primary_score": "future-only weighted walking distance",
+    "secondary_score": "distance and independent cup remainders",
+    "escalation_mechanic": "Frozen500m offer adds boss's cup with150% future distance points; only two-cup runs receive1000m offer to add chairman's cup for200% future points.",
+    "risk_reward": "Additional cups have independent frequency, damping and phase. The first emptied cup ends the run; previously earned points remain unchanged.",
+    "visual_identity": "first-person illustrated morning street, live clipped coffee surfaces and warm cafe receipt UI"
+  }
+}

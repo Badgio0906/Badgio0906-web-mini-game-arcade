@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "game019",
+  "title": "井の中の蛙、大海を目指す ～WELL TO SPACE～",
+  "titleJa": "井の中の蛙、大海を目指す",
+  "titleEn": "WELL TO SPACE",
+  "tagline": "井戸を出たら、今度は宇宙でした。",
+  "tags": [
+    {
+      "id": "jump",
+      "label": "ジャンプ"
+    },
+    {
+      "id": "rise",
+      "label": "上昇"
+    },
+    {
+      "id": "pixel-art",
+      "label": "ドット絵"
+    },
+    {
+      "id": "animal",
+      "label": "アニマル"
+    },
+    {
+      "id": "hard",
+      "label": "高難度"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    },
+    {
+      "id": "space",
+      "label": "宇宙"
+    },
+    {
+      "id": "wind",
+      "label": "風"
+    }
+  ],
+  "genre": "precise ascent / planned jumps",
+  "controls": {
+    "summary": "左右方向＋小 / 中 / 大ジャンプ（キー・画面ボタン）",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": [
+    180,
+    600
+  ],
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "高難度",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "小で位置調整し、中・大で登り、100m以降は風を読んで宇宙を目指す",
+  "description": "小で位置調整し、中・大で登り、100m以降は風を読んで宇宙を目指す",
+  "failureModes": "着地を外して下へ戻る / 崩れる足場 / 風に流される",
+  "route": "./game019.html",
+  "thumbnail": "./assets/portal/game019.webp",
+  "design": {
+    "thumbnailDescription": "井の中の蛙、大海を目指す ～WELL TO SPACE～の実プレイ画面。緑の太い輪郭のカエル、苔の石壁、上空の雲と宇宙",
+    "majorVisuals": "緑の太い輪郭のカエル、苔の石壁、上空の雲と宇宙",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "User green pixel frog reference: recognizable green silhouette and cream belly; authored game sprite states.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game019/game.manifest.json",
+    "details": "src/games/game019/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game019",
+    "title": "井の中の蛙、大海を目指す ～WELL TO SPACE～",
+    "titleEn": "WELL TO SPACE",
+    "tagline": "井戸を出たら、今度は宇宙でした。",
+    "genre": "precise ascent / planned jumps",
+    "coreMechanic": "Choose left/straight/right and small/medium/large on a platform; commit the jump, recover falls, read wind after reaching the sea",
+    "skillAxes": [
+      "landing judgment",
+      "direction and size choice",
+      "wind reading",
+      "fall recovery"
+    ],
+    "runSecondsDesignTarget": [
+      180,
+      600
+    ],
+    "height": {
+      "wellMeters": 100,
+      "spaceMeters": 200
+    },
+    "inputs": {
+      "direction": "arrows / A D W, or three direction buttons",
+      "size": "Z X C / 1 2 3, or small medium large buttons",
+      "space": "repeat selected jump size"
+    },
+    "practice": "Four separate physics lessons; no best, score, credits or run events",
+    "storagePrefix": "web-mini-arcade:v1:game019:",
+    "bestStorage": "maximum height in integer decimeters; no checkpoint or position persistence",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "offline schema and observed events only",
+    "humanReview": "pending physical device and subjective experience"
+  }
+}

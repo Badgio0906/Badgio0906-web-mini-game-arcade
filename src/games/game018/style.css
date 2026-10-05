@@ -9,3 +9,7 @@
 
 @media(max-width:350px){#app[data-state=selection] .shoe-card,#app[data-state=selection] .shoe-card:last-child{flex-direction:row;height:66px;gap:5px;padding:5px;align-items:center}#app[data-state=selection] .shoe-card canvas{width:38px;height:28px}#app[data-state=selection] .shoe-card span{min-width:0}#app[data-state=selection] #menu{max-height:none;padding:9px 11px}#app[data-state=selection] .shoe-detail{min-height:0;margin:5px 0}#app[data-state=selection] .menu-actions{margin-top:7px}}
 @media(max-height:500px) and (orientation:landscape){#app:is([data-state=playing],[data-state=practice]) main{grid-template-rows:31px minmax(0,1fr) 46px 36px}}
+
+/* Revision 01: title choices and practice exit remain reachable on narrow screens. */
+.brand{font-size:22px;letter-spacing:0}#menu h1 small{font-size:14px;overflow-wrap:anywhere}#app[data-state=title] .menu-actions{display:grid;grid-template-columns:1fr}.status{position:relative}#skip-practice-button{font-size:11px;padding:4px 10px;min-height:32px;float:right;margin-left:8px}#skip-practice-button[hidden]{display:none}
+@media(max-width:700px){.brand{font-size:15px}.status p{font-size:12px;line-height:1.5}#app[data-state=practice] main{grid-template-rows:44px minmax(160px,1fr) 0 48px auto}#skip-practice-button{float:none;margin:0 0 3px;min-height:44px}#app[data-state=title] .menu-actions{grid-template-columns:1fr 1fr}#app[data-state=title] #play-button{grid-column:1/-1}}

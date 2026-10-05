@@ -56,7 +56,7 @@ export interface LandingReport {
 }
 export interface FallSnapshot {
   alive: boolean; time: number; depth: number; score: number; fallDistance: number;
-  niceDrops: number; cameraY: number; scrollSpeed: number; topRemaining: number; horizontal: HorizontalInput;
+  niceDrops: number; heldDrop: boolean; passedPlatforms: number; cameraY: number; scrollSpeed: number; topRemaining: number; horizontal: HorizontalInput;
   phase: 'grounded' | 'falling' | 'stunned' | 'ended';
   player: FallPlayer; platforms: FallPlatform[]; hazards: FallHazard[]; lastLanding: LandingReport | null;
   danger: 'safe' | 'danger' | 'fatal';
@@ -83,7 +83,7 @@ export interface FallHooks {
 }
 export interface FallController {
   start: () => void; title: () => void; pause: (paused: boolean) => void;
-  setHorizontal: (direction: HorizontalInput) => void; drop: () => boolean;
+  setHorizontal: (direction: HorizontalInput) => void; setDropHeld: (held: boolean) => void; drop: () => boolean;
   snapshot: () => FallSnapshot; inspection: () => FallInspection; destroy: () => void;
 }
 /** Authored courses are useful for the independent practice and geometry tests; no live state mutation. */

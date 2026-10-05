@@ -74,7 +74,7 @@ function sync(): void {
 function screen(next: Screen): void {
   screenEpoch++; state = next; sync(); overlay.hidden = next === 'playing' || next === 'ending';
   if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
-  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><canvas id="title-king" width="48" height="72" aria-label="王冠と白ひげ、紫の衣装に赤マントのキング"></canvas><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>迫る天井から逃げ、次の足場へDROP。<br />左右で空中移動。中央のトゲにも注意！</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
+  if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><canvas id="title-king" width="48" height="72" aria-label="王冠と白ひげ、紫の衣装に赤マントのキング"></canvas><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>離して刻むか、押し続けて欲張るか。<br />深い落下はやわらかい床へ。天井とトゲに注意！</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST ${best} m · 無料・回数制限なし</small></article>`;
   if (next === 'title') { const c = overlay.querySelector<HTMLCanvasElement>('#title-king')!.getContext('2d')!; c.scale(2, 2); drawKing(c, 0, 0, { state: 'falling' }); }
   if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div></article>`;
   if (next === 'result' && result) {
@@ -85,12 +85,12 @@ function screen(next: Screen): void {
 function update(s: FallSnapshot): void {
   if (state !== 'title') { text('score-value', String(s.score)); text('nice-value', String(s.niceDrops)); }
   app.dataset.phase = s.phase;
-  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.time < hazardNoticeUntil ? hazardMessage : s.topRemaining < 48 ? '天井が迫る！ 今すぐ下へ DROP ↓' : s.phase === 'grounded' ? '次の足場はどこ？ 天井が来る前に DROP ↓' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
+  if (state === 'playing') { audio.tick(s.time, s.depth, s.phase === 'falling'); text('live-status', s.time < milestoneUntil ? milestoneMessage : s.time < hazardNoticeUntil ? hazardMessage : s.topRemaining < 48 ? '天井が迫る！ 今すぐ下へ DROP ↓' : s.heldDrop ? `連続降下中 · FALL ${s.fallDistance.toFixed(1)} m · やわらかい床へ！` : s.phase === 'grounded' ? '短く刻む？ 深く欲張る？ DROPをホールドで連続降下' : s.phase === 'stunned' ? '強い着地！ 少しだけひざを休めます' : `空中移動 · FALL ${s.fallDistance.toFixed(1)} m${s.danger !== 'safe' ? ' · DANGER' : ''}`); }
 }
 function event(e: FallEvent): void {
   if (e.type === 'hazard_warning') { hazardMessage = e.kind === 'bird' ? '鳥の動きを待って、タイミングよく DROP。' : '壁の針の予兆！ 壁から離れよう。'; hazardNoticeUntil = controller.snapshot().time + e.seconds; audio.tone(720, 520, .07, .02); }
   if (e.type === 'hazard_active' && e.kind === 'wall_needle') audio.tone(150, 85, .08, .018, 'sawtooth');
-  if (e.type === 'drop') audio.tone(520, 160, .085);
+  if (e.type === 'drop') { audio.tone(520, 160, .085); telemetry.trackEvent('specific_game_events', { runId, event: 'drop', held: controller.snapshot().heldDrop, depth: e.depth, platform_id: e.platformId }); }
   if (e.type === 'landing') {
     const l = e.landing; telemetry.trackEvent('fall_distance', { runId, meters: l.fallDistance }); telemetry.trackEvent('landing_type', { runId, kind: l.kind }); telemetry.trackEvent('platform_type', { runId, type: l.platformType });
     if (l.kind !== 'fatal') audio.tone(l.kind === 'hard' ? 115 : 280, l.kind === 'hard' ? 70 : 420, .09);
@@ -101,6 +101,8 @@ function event(e: FallEvent): void {
 }
 const controller = createFallGame($('game-canvas'), { onUpdate: update, onEvent: event, onEnd(value) {
   if (ended || disposed) return; ended = true; result = value; newBest = value.score > best; best = Math.max(best, value.score); storage.writeNumber('best', best);
+  if (newBest) telemetry.trackEvent('best_update', { runId, score: value.score, best });
+  telemetry.trackEvent('death_reason', { runId, reason: value.outcome, depth: value.depth, fall_distance: value.fallDistance });
   audio.setPlaying(false); audio.tone(240, 42, .26, .04);
   telemetry.trackEvent('run_end', { runId, outcome: 'over', score: value.score, time: value.time, reason: value.outcome });
   telemetry.trackEvent('score', { runId, score: value.score, best, newBest, nice_drops: value.niceDrops }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over', failure_reason: value.outcome }); telemetry.trackEvent('depth_reached', { runId, depth: value.depth });

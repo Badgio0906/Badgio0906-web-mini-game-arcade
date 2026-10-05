@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "game015",
+  "title": "落下キング",
+  "titleJa": "落下キング",
+  "titleEn": "FALL KING",
+  "tagline": "上を目指すな。うまく落ちろ。",
+  "tags": [
+    {
+      "id": "fall",
+      "label": "落下"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    },
+    {
+      "id": "pixel-art",
+      "label": "ドット絵"
+    },
+    {
+      "id": "retro",
+      "label": "レトロ"
+    },
+    {
+      "id": "hard",
+      "label": "高難度"
+    }
+  ],
+  "genre": [
+    "scrolling-action",
+    "vertical-descent",
+    "arcade"
+  ],
+  "controls": {
+    "summary": "左右移動 / 下キー・DROPホールドで連続降下",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": {
+    "beginner": 60,
+    "experienced": 180
+  },
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "高難度",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "刻む安全ルートと深い欲張り落下を選び、追う画面上端から逃げる",
+  "description": "刻む安全ルートと深い欲張り落下を選び、追う画面上端から逃げる",
+  "failureModes": "落下距離超過 / 危険物 / スクロールに追いつかない",
+  "route": "./game015.html",
+  "thumbnail": "./assets/portal/game015.webp",
+  "design": {
+    "thumbnailDescription": "落下キングの実プレイ画面。王冠、白ひげ、紫衣装、赤マント、金色装飾の黒縁ドット絵",
+    "majorVisuals": "王冠、白ひげ、紫衣装、赤マント、金色装飾の黒縁ドット絵",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "Prior user king reference: crown, beard, purple robe and red cape; independently authored pixel sprites, not pasted image.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game015/game.manifest.json",
+    "details": "src/games/game015/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game015",
+    "title": "落下キング ～FALL KING～",
+    "titleJa": "落下キング",
+    "titleEn": "FALL KING",
+    "subtitle": "上を目指すな。うまく落ちろ。",
+    "genre": [
+      "scrolling-action",
+      "vertical-descent",
+      "arcade"
+    ],
+    "core_mechanic": [
+      "controlled-falling",
+      "platform-landing",
+      "momentum",
+      "hold-drop-through-ordinary-platforms",
+      "short-safe-steps-vs-deep-soft-catch"
+    ],
+    "primary_input": [
+      "left",
+      "right",
+      "drop"
+    ],
+    "skill_axes": [
+      "spatial-estimation",
+      "momentum-control",
+      "risk-management",
+      "drop-timing"
+    ],
+    "escalation_mechanic": "gradually accelerating camera pursuit",
+    "score_type": "depth-meters",
+    "primary_score": "maximum depth in meters",
+    "secondary_score": "nice-drop-count",
+    "prototype": {
+      "unlimited_play": true,
+      "advertising": false
+    },
+    "tutorial": "isolated DROP, right/left hazard steering, held continuous fall, excessive-impact ghost, pursuing-ceiling ghost",
+    "human_playtest_status": "pending",
+    "fall_thresholds_m": {
+      "normal_safe_max": 6,
+      "normal_fatal_min": 9,
+      "soft_safe_max": 9,
+      "soft_fatal_min": 12,
+      "nice_fraction_of_survival_ceiling": 0.85
+    },
+    "native_resolution": [
+      256,
+      448
+    ],
+    "pixel_scale_per_meter": 16,
+    "platform_types": [
+      "normal",
+      "soft",
+      "crumble",
+      "moving"
+    ],
+    "milestone_meters": 1000,
+    "generation": "six patterns with 2.1–5.8m safe gaps, 10.6–10.8m diagonal soft-catch shortcuts, central spikes and forced final stone choice",
+    "expected_run_seconds": {
+      "beginner": 60,
+      "experienced": 180
+    },
+    "duration_note": "Design hypothesis only; human run-duration observations pending. Endless play has no time limit.",
+    "character_dimensions": {
+      "sprite": [
+        24,
+        36
+      ],
+      "collision": [
+        18,
+        33
+      ],
+      "art": "original native pixel frames: crown, white beard, purple robe, red cape, gold trim"
+    },
+    "hazards": [
+      "spiked-floor-including-center",
+      "telegraphed-proximity-wall-needle",
+      "pursuing-screen-ceiling"
+    ],
+    "scroll_pixels_per_second": {
+      "start": 18,
+      "maximum": 36,
+      "acceleration": 0.22
+    },
+    "revision": "03",
+    "hold_drop": {
+      "normal_and_moving": "bypass without resetting fall distance",
+      "soft_and_crumble": "brief catch, honest impact, automatic resumption",
+      "hazards": "remain active"
+    }
+  }
+}

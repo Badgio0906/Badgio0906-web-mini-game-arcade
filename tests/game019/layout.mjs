@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright';
+import { mkdir, writeFile } from 'node:fs/promises';
+const out=process.env.GAME019_LAYOUT_OUT??'docs/game019/QA/ui-layout-rerun';await mkdir(out,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const results=[];
+try {
+for(const [name,width,height] of [['desktop',1440,900],['phone',390,844],['narrow',320,568],['landscape',844,390]]) {
+const context=await browser.newContext({viewport:{width,height},hasTouch:name!=='desktop',isMobile:name!=='desktop'});const page=await context.newPage();
+await page.goto(new URL('game019.html',process.env.GAME019_URL??'http://127.0.0.1:5181/').href);await page.waitForFunction(()=>!!window.__game019);await page.locator('#tutorial-again-button').click();await page.waitForTimeout(180);
+const rects=await page.evaluate(()=>({height:innerHeight,width:innerWidth,scrollHeight:document.documentElement.scrollHeight,scrollWidth:document.documentElement.scrollWidth,targets:[...document.querySelectorAll('#frog-canvas,#jump-controls,#chapter-label,#live-status,#next-practice-button,#skip-practice-button,button[data-direction],button[data-size]')].map(e=>{const b=e.getBoundingClientRect();const middle=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);return{id:e.id||e.dataset.direction||e.dataset.size,x:b.x,y:b.y,width:b.width,height:b.height,hit:middle===e||e.contains(middle)}})}));
+assert.ok(rects.scrollHeight<=height+1,`${name}: docheight${rects.scrollHeight}>${height}`);assert.ok(rects.scrollWidth<=width+1,`${name}: width`);
+for(const r of rects.targets){assert.ok(r.x>=-1&&r.y>=-1&&r.x+r.width<=width+1&&r.y+r.height<=height+1,`${name}: ${r.id}offscreen ${JSON.stringify(r)}`);if(['-1','0','1','small','medium','large','skip-practice-button'].includes(r.id)){assert.ok(r.width>=43.5&&r.height>=43.5);assert.ok(r.hit,`${name}: ${r.id}intercept`);}}
+await page.screenshot({path:`${out}/${name}-practice.png`,fullPage:true});
+const input=selector=>name==='desktop'?page.locator(selector).click():page.locator(selector).tap();await input('[data-direction="-1"]');await input('[data-size="small"]');await page.waitForFunction(()=>window.__game019.practice.passed);await input('#next-practice-button');
+await page.waitForFunction(()=>window.__game019.practice.stage===1);await page.waitForTimeout(160);for(const [stage,dir,size] of [[1,-1,'medium'],[2,1,'large'],[3,-1,'medium']]){await input(`[data-direction="${dir}"]`);await input(`[data-size="${size}"]`);await page.waitForFunction(()=>window.__game019.practice.passed);const dims=await page.evaluate(()=>({height:innerHeight,scrollHeight:document.documentElement.scrollHeight,controls:[...document.querySelectorAll('#next-practice-button,#skip-practice-button,button[data-direction],button[data-size]')].map(e=>{const b=e.getBoundingClientRect();return{bottom:b.bottom,top:b.top,width:b.width,height:b.height}})}));assert.ok(dims.scrollHeight<=height+1,`${name}:stage${stage}docheight`);for(const b of dims.controls)assert.ok(b.top>=-1&&b.bottom<=height+1&&b.width>=43.5&&b.height>=43.5);if(stage===3)await page.screenshot({path:`${out}/${name}-wind-practice.png`,fullPage:true});await input('#next-practice-button');await page.waitForTimeout(160);}results.push({name,rects,actualTapPracticeSmallPassed:true});await context.close();
+}
+} finally{await browser.close();await writeFile(`${out}/RESULTS.json`,JSON.stringify(results,null,2));}
+console.log(JSON.stringify(results.map(r=>({profile:r.name,docHeight:r.rects.scrollHeight,viewportHeight:r.rects.height,canvas:r.rects.targets[0],tap:r.actualTapPracticeSmallPassed})),null,2));

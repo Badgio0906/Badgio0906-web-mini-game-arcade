@@ -1,0 +1,7 @@
+{
+  "status": "TEST_INFRA_BUG",
+  "observedError": "page.waitForEvent: Timeout30000ms exceeded waiting for download",
+  "cause": "Collector clicked #save-play-records inside collapsed details without opening summary; product correctly hides button until expanded. Orphan download promise timed out before click visibility rejection.",
+  "productMutation": false,
+  "correction": "Open .play-records summary and await download/click together with Promise.all."
+}
