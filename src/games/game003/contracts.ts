@@ -23,7 +23,16 @@ export interface AcceptedLanding {
   supportMargin: number;
   perfect: boolean;
 }
+export interface SupportInterface { index: number; left: number; right: number; loadCenter: number; margin: number; instability: number }
+export interface ArtPair { firstId: number; secondId: number; firstX: number; secondX: number; firstRatio: number; secondRatio: number; recoveryPixels: number; points: number }
 export interface TowerSnapshot {
+  rulesVersion: 2;
+  artPairs: number;
+  artScore: number;
+  artStreak: number;
+  bonusScore: number;
+  foundationCenter: number;
+  supportMargin: number;
   floors: number;
   height: number;
   time: number;
@@ -42,6 +51,10 @@ export interface TowerSnapshot {
   outcome: TowerOutcome | null;
 }
 export interface TowerResult {
+  rulesVersion: 2;
+  artPairs: number;
+  artScore: number;
+  bonusScore: number;
   floors: number;
   height: number;
   time: number;
@@ -57,6 +70,9 @@ export interface TowerResult {
 }
 export type TowerEvent =
   | { type: 'release' }
+  | { type: 'overhang'; cargoId: number; offsetRatio: number; margin: number; weakJointIndex: number }
+  | { type: 'art'; pair: ArtPair; streak: number }
+  | { type: 'support_failure'; jointIndex: number; margin: number; contact: boolean }
   | { type: 'land'; floors: number }
   | { type: 'perfect'; combo: number; points: number }
   | { type: 'danger'; instability: number }
@@ -74,6 +90,8 @@ export interface TowerInspection extends TowerSnapshot {
   loadCenter: number;
   weakJointIndex: number;
   recentlyAccepted: AcceptedLanding | null;
+  recentArtPair: ArtPair | null;
+  interfaces: SupportInterface[];
 }
 export interface TowerHooks {
   onUpdate: (snapshot: TowerSnapshot) => void;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ParkingRun, PARKING_TEMPLATES, CAR_WIDTH, CAR_HEIGHT, WHEELBASE, MIN_DISTANCE, MAX_DISTANCE, poseAlongArc, rectangleCorners, containsCar, rectanglesTouch, sweptCarTouches, parkingGrade, scoreParking } from '../../src/games/game006/ParkingRun';
+import { ParkingRun, PARKING_TEMPLATES, createParkingLayout, parkingRouteIsSafe, CAR_WIDTH, CAR_HEIGHT, WHEELBASE, MIN_DISTANCE, MAX_DISTANCE, poseAlongArc, rectangleCorners, containsCar, rectanglesTouch, sweptCarTouches, parkingGrade, scoreParking } from '../../src/games/game006/ParkingRun';
 import type { ParkingEvent, ParkingPose } from '../../src/games/game006/contracts';
 const shape = (x = 0, y = 0, rotation = 0, width = CAR_WIDTH, height = CAR_HEIGHT): ParkingPose => ({ x, y, rotation, width, height });
 function until(run: ParkingRun, condition: () => boolean, dt = 1 / 240, budget = 40) {
@@ -14,7 +14,7 @@ function controls(run: ParkingRun) {
   return { steering: Math.atan(curvature * WHEELBASE) * 180 / Math.PI, power: (distance - MIN_DISTANCE) / (MAX_DISTANCE - MIN_DISTANCE) };
 }
 function park(run: ParkingRun) {
-  until(run, () => run.snapshot().phase === 'angle'); const target = controls(run);
+  until(run, () => run.snapshot().phase === 'angle' || run.snapshot().phase === 'slot-choice'); if (run.snapshot().phase === 'slot-choice') expect(run.chooseSlot('safe')).toBe(true); const target = controls(run);
   until(run, () => Math.abs(run.snapshot().steeringDegrees - target.steering) < .02, .0002);
   expect(run.act()).toBe(true);
   until(run, () => Math.abs(run.snapshot().power - target.power) < .0006, .0005);
@@ -59,7 +59,8 @@ describe('PARK IT! geometry and ordinary gauge play', () => {
     expect(run.snapshot()).toMatchObject({ phase: 'power', lockedPower: null });
     expect(Math.abs(run.snapshot().lockedSteering!)).toBeLessThan(.02);
     expect(run.act()).toBe(true); expect(run.snapshot()).toMatchObject({ phase: 'driving', lockedPower: 0 });
-    for (let n = 0; n < 500 && run.snapshot().alive; n++) { expect(run.act()).toBe(false); run.step(1 / 240); }
+    expect(run.act()).toBe(false); // Launch input at zero travel cannot brake.
+    for (let n = 0; n < 500 && run.snapshot().alive; n++) run.step(1 / 240);
     expect(run.result()).toMatchObject({ outcome: 'outside', parked: 0, score: 0 }); expect(run.result()!.reason).toContain('足りず');
     expect(events.filter(event => event.type === 'failure')).toHaveLength(1);
     const result = run.result(); run.step(.05); run.act(); expect(run.result()).toEqual(result);
@@ -83,23 +84,20 @@ describe('PARK IT! geometry and ordinary gauge play', () => {
       until(run,()=>!run.snapshot().alive,1/240,3);
       expect(run.result()).toMatchObject({outcome:'outside',parked:2});
       expect(run.result()!.reason).toContain('足りず');
-      expect(run.result()!.score).toBe(450); // Two real centered Perfects, no failed parking score.
+      expect(run.result()!.score).toBe(495); // 200+20 and 250+25: no-brake rewards are new-rule points only.
     }
   });
 
-  it('all seven visible designed templates are achievable via legal gauge waits in normal and narrow forbidden modes', () => {
+  it('retains all seven historical template geometry routes for the intro and forbidden preview', () => {
     for (const mode of ['normal','forbidden'] as const) {
       const seen = new Set<string>();
       for (const roll of [0,.2,.4,.5,.6,.8,.999]) {
-        const run = offer(roll); run.choose(mode);
-        for (let n = 0; n < 3; n++) {
-          seen.add(run.inspection().layout.templateId); park(run);
-          expect(run.inspection().projection).toHaveLength(41); expect(run.inspection().layout.obstacles.length).toBeLessThanOrEqual(2);
-        }
+        const layout = createParkingLayout(10,mode,roll); seen.add(layout.templateId);
+        expect(parkingRouteIsSafe(layout)).toBe(true);
       }
       expect(seen).toEqual(new Set(PARKING_TEMPLATES));
     }
-  }, 30_000);
+  });
 
   it('tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry', () => {
     const events: ParkingEvent[] = []; const normal = offer(); const forbidden = offer(0, events); const frozen = forbidden.inspection();

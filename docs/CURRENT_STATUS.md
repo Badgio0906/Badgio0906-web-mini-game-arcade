@@ -1,5 +1,9 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-06（日本時間）：**対象7本（018／003／006／007／008／009／010）の改修・独立レビュー・統合検証が完了。main反映／公開を進行中。** [統合報告](seven-games-2026-10-06/REPORT.md)。315単体／TypeScript／build、compiled7×4画面・7prefix・portal19を確認。対象外12作品は217保護fileとprofile／Catalog／thumb entry不変。Game015とGame019は本人から「とても面白くなっていた。イイ感じ」の評価を受けた。この好評価を現行状態として採用し、両作品のコードは今回変更しない。全機能・全端末の詳細検証済みという意味には広げない。今回7本の本人試遊・実機音/FPSは未実施。候補branch codex/seven-games-gameplay-visual-2026-10-06、公開前baseline5b2dff8。
+
+以下は過去の公開時点の記録。015／019の現在の本人評価は上記を優先する。
+
 2026-10-06（日本時間）：**Game019改訂02を正式HTTPSへ公開済み。** [ゲーム](https://game100garage.com/game019.html)／[最新報告](game019/revision-02/IMPLEMENTATION_REPORT.md)／[公開記録](game019/revision-02/PUBLICATION.json)。溜めて離すジャンプ、空中操作0、井戸12＋空12の手作り区間、地形による落下復帰、固定予告風、7練習へ再設計。294単体／check／build、4画面200m、compiled root／subpath各4画面20m PASS。他18本と共通303fileは不変。runtime `1a533e9d92114029086835bfc6f915848db49b47`、Pages run37385472480 build/deploy成功。公開4画面native20m・保存再読込とbrowser経路の配信hash一致、portal19cardを確認。最初のNode配信照合DNS失敗原本は保持。019 Jev profileと端末内記録を更新し、外部送信はない。旧版の方向×小中大や旧試作記録を現行仕様へ流用しない。人間評価は未実施。以下は前回公開版と歴史記録。
 
 2026-10-06（日本時間）：**019を含む全19本を正式HTTPSへ公開済み。** 最新作業の正本は[統合報告](integration-2026-10-05/IMPLEMENTATION_REPORT.md)。今回は015改訂03、018少年／回転表示、全19本の開始3択とタグ、端末内400件JSON記録、019「井の中の蛙、大海を目指す」を追加。最終runtimeは`d6f6f6b9b193562a933e1cc728b739e770c478ed`、Pages run37330051749の284unit／build／deploy成功。公開PC／phone各19routeと27配信file hash一致。初回PCの単発503は全route再実行とHTTP200で復旧を確認。AdSenseは[独立PR #1](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/1)、root headのscript2行だけで公開済み。Google側の所有確認／審査と実機の人間試遊は未確認。

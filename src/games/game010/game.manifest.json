@@ -1,16 +1,73 @@
 {
   "id": "game010",
   "title": "会議、聞いてます？ ～MEETING SURVIVAL～",
-  "subtitle": "進捗は出したい。質問は聞き逃せない。",
-  "genre": ["attention", "timing", "risk-taking"],
-  "core_mechanic": ["one-button attention toggle", "read actual question cues", "side-work time earns points"],
-  "primary_input": ["Space", "click", "tap"],
-  "skill_axes": ["attention-switching", "risk-taking", "timing"],
-  "expected_run_seconds": { "beginner": 45, "experienced": 160 },
-  "duration_note": "numeric design hypotheses; human natural failure and cognitive timing unmeasured; five minutes of meeting time equals sixty real simulation seconds",
-  "primary_score": "10 points per real SIDE WORK second; prospective20 in board mode; LISTEN earns0",
-  "secondary_score": "questions answered and real side-work seconds",
-  "escalation_mechanic": "Once at300 virtual meeting seconds, freeze and offer free score banking or board mode with more questions, readable cues and future work points2x.",
-  "risk_reward": "LISTEN is always safe but earns0. Work earns points but a genuine question while working ends the run. Board choice resumes listening without changing prior points or cue time.",
-  "visual_identity": "generated boss talk/glance/question and colleagues in a code conference room at eye level, visible typing foreground and live dialogue"
+  "subtitle": "その提案、まだ決まっていません。",
+  "genre": [
+    "reading",
+    "judgment",
+    "memory"
+  ],
+  "core_mechanic": [
+    "read explicit decisions versus proposals/chat",
+    "overwrite who/task/deadline notes when corrected",
+    "limited ask-again pauses reading",
+    "3 authored agendas then optional deeper correction agenda"
+  ],
+  "primary_input": [
+    "statement card click/tap",
+    "native Tab/Enter",
+    "submit completed minutes"
+  ],
+  "skill_axes": [
+    "reading-comprehension",
+    "selective-attention",
+    "updating-working-memory"
+  ],
+  "expected_run_seconds": {
+    "beginner": 110,
+    "experienced": 95
+  },
+  "duration_note": "Text shows3.8–7seconds based on length; authored reading time about25seconds per agenda is a design hypothesis; human comprehension unmeasured",
+  "primary_score": "100 per correct field +100 complete agenda +30 actual correction response +20 per complete streak;25 per unique irrelevant recording",
+  "secondary_score": "completed agendas, correct fields, correction responses",
+  "escalation_mechanic": "After3 agendas bank score freely or accept one authored rollback/conditional/multi-correction agenda without speeding text.",
+  "risk_reward": "Two major failures end the meeting; one incorrect field allows learning and continuing. Ask twice per agenda with no score penalty.",
+  "visual_identity": "existing generated speaker portraits with consistent neutral cards, readable dialogue and simultaneous3-field minutes",
+  "rulesVersion": 2,
+  "practice": {
+    "optional_from_first_title": true,
+    "production_score_and_best_isolated": true,
+    "required_actions": [
+      "record all three decided fields",
+      "overwrite the corrected field",
+      "ask again and continue reading",
+      "submit correct minutes without recording proposal or chat"
+    ]
+  },
+  "score_persistence": {
+    "storage_prefix": "web-mini-arcade:v1:game010:",
+    "current_best_key": "bestRules2",
+    "legacy_best_key": "best",
+    "legacy_best_preserved": true,
+    "mute_preserved": true,
+    "rulesVersion": 2
+  },
+  "telemetry": {
+    "destination": "existing local TelemetryService only",
+    "rulesVersion": 2,
+    "lifecycle_events": [
+      "run_start",
+      "run_end",
+      "practice_start",
+      "practice_complete"
+    ],
+    "specific_game_events": [
+      "record",
+      "ask_again",
+      "submit",
+      "choice",
+      "end"
+    ],
+    "correction_tracking": "record.corrected and submit.corrections"
+  }
 }

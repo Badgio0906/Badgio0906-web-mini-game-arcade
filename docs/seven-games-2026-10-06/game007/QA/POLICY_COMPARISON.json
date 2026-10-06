@@ -1,0 +1,30 @@
+{
+  "provenance": "deterministic model simulation, instantaneous policies; not observed human gameplay",
+  "rulesVersion": 2,
+  "policies": {
+    "greedy": "accept every fitting candidate, depart when queue exhausted",
+    "light": "accept only candidates <=150kg that fit",
+    "planning": "reserve for valuable visible next two-floor requests, prefer value density, accept valuable heavy >=600point, reject impossible deadlines"
+  },
+  "results": [
+    {
+      "scenario": 0,
+      "greedy": 1190,
+      "light": 1180,
+      "planning": 2940
+    },
+    {
+      "scenario": 1,
+      "greedy": 2430,
+      "light": 1440,
+      "planning": 1880
+    },
+    {
+      "scenario": 2,
+      "greedy": 1760,
+      "light": 1410,
+      "planning": 3340
+    }
+  ],
+  "interpretation": "Always-fit and always-light are not always optimal. The simple planning heuristic is not always optimal either: scenario1 valuable long-haul copier reverses the greedy comparison. No universal strategy claimed."
+}

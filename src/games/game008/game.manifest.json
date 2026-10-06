@@ -1,14 +1,13 @@
 {
-  "id": "game008", "title": "コーヒーこぼすな ～COFFEE WALK～", "subtitle": "右へ動くと、コーヒーは左へ。",
-  "genre": ["balance", "physics", "survival"],
-  "core_mechanic": ["continuous body balance", "acceleration-opposite liquid inertia", "gradual rim overflow"],
-  "primary_input": ["left-right hold", "touch hold or tap"],
-  "skill_axes": ["balance-control", "inertia-prediction", "multi-object-attention", "risk-management"],
-  "expected_run_seconds": {"beginner": 50, "experienced": 140},
-  "duration_note": "numeric design hypotheses; human natural failure and timing unmeasured",
-  "primary_score": "future-only weighted walking distance",
-  "secondary_score": "distance and independent cup remainders",
-  "escalation_mechanic": "Frozen500m offer adds boss's cup with150% future distance points; only two-cup runs receive1000m offer to add chairman's cup for200% future points.",
-  "risk_reward": "Additional cups have independent frequency, damping and phase. The first emptied cup ends the run; previously earned points remain unchanged.",
-  "visual_identity": "first-person illustrated morning street, live clipped coffee surfaces and warm cafe receipt UI"
+ "id":"game008","title":"コーヒーこぼすな ～COFFEE WALK～","subtitle":"直線は急ぎ、危険の前で慎重に。","rulesVersion":2,
+ "genre":["balance","physics","delivery"],"core_mechanic":["left-right tray support","switch careful/rush walking","forecasted hazards and deadline"],
+ "primary_input":["left-right hold","Space pace toggle","two direction buttons and central pace button"],
+ "skill_axes":["balance-control","inertia-prediction","pace-planning","risk-management"],
+ "expected_run_seconds":{"oneDelivery":29,"withOptionalSecondDelivery":59},"duration_note":"model comparison 29.25 seconds per mixed-policy delivery; human judgement and physical device timing unmeasured",
+ "primary_score":"1000 per nonempty delivered cup + 10 per remaining percent + 40 per spare second, integer floor each successful delivery",
+ "secondary_score":"delivered cups, delivered remaining and spare time",
+ "escalation_mechanic":"First180m delivery optionally starts another180m delivery with two cups. At most two simultaneous cups, same input.",
+ "risk_reward":"Careful4m/s alone misses32s deadline; rush8m/s risks predicted step, corner and seam. Mixed policy can arrive with higher remaining and score.",
+ "visual_identity":"slant top-down white ceramic cup with real handle, separately clipped coffee, thick wood tray, visible supporting palms/fingers/cuffs/teal sleeves and cafe-office corridor",
+ "storage_compatibility":"Legacy best retained read-only; independent best-delivery-v2; original mute preference preserved"
 }

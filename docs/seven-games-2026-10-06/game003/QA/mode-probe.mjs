@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright';
+import { mkdir,writeFile,readFile,readdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const out=process.env.TOWER_MODE_OUT??'docs/seven-games-2026-10-06/game003/QA/mode-native';
+const files=['game003.html',...(await readdir('src/games/game003')).map(f=>'src/games/game003/'+f)];
+const hash=async()=>Object.fromEntries(await Promise.all(files.map(async f=>[f,createHash('sha256').update(await readFile(f)).digest('hex')])));
+const before=await hash(),started=new Date().toISOString(),report={landings:[],errors:[]};await mkdir(out,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const context=await browser.newContext({viewport:{width:1440,height:900}}),page=await context.newPage();
+const read=()=>page.evaluate(()=>window.__arcadeDebug.inspection());
+async function until(f,limit=20000){let s;for(const end=Date.now()+limit;Date.now()<end;){s=await read();if(f(s))return s;await page.waitForTimeout(8);}throw Error('timeout '+JSON.stringify(s));}
+async function land(target){await until(s=>s.phase==='hanging');const release=await until(s=>Math.abs(s.cargo.x+Math.max(-3,Math.min(3,s.cargo.vx*.02))*.6+s.cargo.vx*.015-target)<1.2);await page.keyboard.press('Space');const ended=await until(s=>s.phase==='settling'||s.pending||!s.alive,5000);assert.ok(ended.alive);report.landings.push({target,release:release.cargo,accepted:ended.recentlyAccepted,mode:ended.mode,precisionScore:ended.precisionScore,artScore:ended.artScore});return ended;}
+try{page.on('pageerror',e=>report.errors.push(e.message));await page.goto(process.env.TOWER_URL??'http://127.0.0.1:5205/game003.html');await page.locator('#play-button').click();await page.locator('#stage').focus();
+for(let i=0;i<35&&!(await read()).pending;i++){const s=await read();await land(s.topCenter);console.log('floor',i+1,(await read()).height);}
+report.offer=await read();assert.equal(report.offer.pending,'height15');assert.ok(report.offer.height>15);await page.screenshot({path:out+'/offer.png'});await page.waitForTimeout(250);assert.deepEqual(await read(),report.offer);
+await page.locator('#challenge-button').click();report.choice=await read();assert.equal(report.choice.precisionScore,report.offer.precisionScore);assert.equal(report.choice.speedMultiplier,2);assert.equal(report.choice.perfectMultiplier,3);assert.equal(report.choice.cMode,true);
+const center=report.choice.topCenter;await land(center+50);await page.screenshot({path:out+'/C-overhang.png'});const afterOverhang=await read();report.art=await land(afterOverhang.topCenter-60);await page.screenshot({path:out+'/C-art.png'});const final=await read();report.final=final;assert.equal(final.artPairs,1);assert.ok(final.artScore>=930&&final.artScore<=1080);assert.equal(final.precisionScore,report.offer.precisionScore);assert.equal(final.artScore%3,0);assert.equal(final.pending,null);
+report.events=await page.evaluate(()=>window.__arcadeDebug.telemetry());assert.equal(report.events.filter(e=>e.name==='escalation_accepted').length,1);assert.equal(report.events.filter(e=>e.name==='specific_game_events'&&e.data.event==='art_pair').length,1);assert.deepEqual(report.errors,[]);report.status='PASS';
+}catch(e){report.status='FAIL';report.error=e.stack;report.last=await read().catch(()=>null);process.exitCode=1;await page.screenshot({path:out+'/FAIL.png'}).catch(()=>{});}finally{await context.close();await browser.close();const after=await hash();report.sourceStable=JSON.stringify(before)===JSON.stringify(after);await writeFile(out+'/report.json',JSON.stringify({started,finished:new Date().toISOString(),before,after,...report,limits:'Normal PC input selected with read-only diagnostics; not human fun/physical-device feel.'},null,2));assert.deepEqual(before,after);console.log(report.status,report.error??'',report.final?.floors);}

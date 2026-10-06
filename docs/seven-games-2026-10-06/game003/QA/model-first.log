@@ -1,0 +1,37 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game003-art.test.ts (5 tests | 1 failed) 53ms
+   ✓ Game003 artistic physical balance > keeps every interface and rejects intermediate failure even if aggregate lies inside foundation 5ms
+   ✓ Game003 artistic physical balance > uses one visible-volume density and retains full geometry for two distinct stable overhang pairs 13ms
+   ✓ Game003 artistic physical balance > never rewards tiny alternation, waiting, repeat drops or overlapping reuse of the same cargo 3ms
+   × Game003 artistic physical balance > same-direction overhang fails an actual lower joint, instead of random collapse 9ms
+     → {"rulesVersion":2,"artScore":0,"artPairs":0,"artStreak":0,"bonusScore":100,"foundationCenter":318.2566088612583,"supportMargin":51.597541453937424,"floors":2,"height":1.3333333333333333,"pending":null,"cMode":false,"mode":"normal","speedMultiplier":1,"perfectMultiplier":1,"time":27.845833333332074,"perfectCount":1,"combo":0,"maxCombo":1,"precisionScore":100,"alive":true,"phase":"hanging","instability":0.19188176087362097,"outcome":null}: expected false to be true // Object.is equality
+   ✓ Game003 artistic physical balance > keeps centered precision combo and applies C mode to art once with bounded streak 23ms
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 73ms
+ ✓ tests/unit/game003.test.ts (9 tests) 116ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game003-art.test.ts > Game003 artistic physical balance > same-direction overhang fails an actual lower joint, instead of random collapse
+AssertionError: {"rulesVersion":2,"artScore":0,"artPairs":0,"artStreak":0,"bonusScore":100,"foundationCenter":318.2566088612583,"supportMargin":51.597541453937424,"floors":2,"height":1.3333333333333333,"pending":null,"cMode":false,"mode":"normal","speedMultiplier":1,"perfectMultiplier":1,"time":27.845833333332074,"perfectCount":1,"combo":0,"maxCombo":1,"precisionScore":100,"alive":true,"phase":"hanging","instability":0.19188176087362097,"outcome":null}: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ until tests/unit/game003-art.test.ts:5:220
+
+ ❯ land tests/unit/game003-art.test.ts:6:80
+ ❯ tests/unit/game003-art.test.ts:43:58
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 17 passed (18)
+   Start at  01:40:28
+   Duration  385ms (transform 118ms, setup 0ms, collect 231ms, tests 242ms, environment 0ms, prepare 176ms)
+

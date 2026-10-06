@@ -1,0 +1,5 @@
+import type { DeskKind } from './contracts';
+export const ITEMS: ReadonlyArray<{ kind: DeskKind; name: string; anchor: [number, number] }> = [
+ ['round-stamp','丸印鑑',46,70],['square-stamp','角印鑑',45,65],['ink-pad','朱肉',48,49],['stamp-pad','スタンプ台',48,55],['pen','ボールペン',48,48],['highlighter','蛍光ペン',49,47],['pencil','シャープペン',45,45],['eraser','消しゴム',49,48],['ruler','定規',48,49],['scissors','はさみ',44,49],['cutter','カッター',43,50],['stapler','ホチキス',47,39],['correction','修正テープ',43,43],['glue','のり',49,55],['tape','セロハンテープ',46,63],['calculator','電卓',46,44],['phone','スマートフォン',48,47],['usb','USBメモリ',45,49],['keys','鍵束',54,50],['clip','クリップ',37,73],['binder','ダブルクリップ',48,58],['envelope','封筒',48,54],['card-case','名刺入れ',51,59],['sticky','付箋の束',49,39],['id-card','社員証',59,54],['notebook','小さなノート',50,58]
+].map(([kind,name,x,y]) => ({ kind: kind as DeskKind, name: name as string, anchor: [x as number,y as number] }));
+export const itemName = (kind: DeskKind): string => ITEMS.find(item => item.kind === kind)!.name;

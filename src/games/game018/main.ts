@@ -8,6 +8,7 @@ import { ShoeRun } from './ShoeRun';
 import { ShoeBoard } from './ShoeBoard';
 import { drawShoe } from './ShoeArt';
 import { spinExplanation } from './spinGuide';
+import {RARE_LABELS} from './rarePresentation';
 import { SHOES, shoeFor } from './shoes';
 import { formatDistance, simulate } from './physics';
 import type { Inputs, Phase, PracticeStage, ShoeEvent, ShoeType } from './types';
@@ -20,6 +21,7 @@ const app = $('app'), menu = $('menu'), canvas = $<HTMLCanvasElement>('shoe-canv
 const board = new ShoeBoard(canvas), run = new ShoeRun(onEvent), origins = new Map<number, { epoch: number; approved: boolean; handled: boolean }>(), held = new Set<string>();
 let screen: Screen = 'title', previousScreen: Screen = 'playing', selected: ShoeType = 'sneaker', stage: PracticeStage = 0, epoch = 0, frame = 0, disposed = false, ended = true, runId = '', lastTone = 0;
 let bestDistance = storage.readNumber('bestDistanceDecimeters', 0) / 10, bestScore = storage.readNumber('bestScore', 0);
+let shoeRecordAt:number|null=null,startShoeBest=0;
 const now = (): number => performance.now();
 const text = (id: string, value: string): void => { const e = $(id); if (e.textContent !== value) e.textContent = value; };
 const button = (id: string, value: string, primary = false): string => '<button id="' + id + '" class="' + (primary ? 'primary' : '') + '" type="button">' + value + '</button>';
@@ -41,7 +43,7 @@ function setScreen(next: Screen): void {
   if (next === 'paused') menu.innerHTML = '<span class="menu-eyebrow">SHOE TAKES A BREATHER</span><h2>靴も時計も、お休み。</h2><p>入力と飛行をそのまま保っています。</p>' + actions(button('resume-button', '続きから', true) + titleButton());
   if (next === 'result' && run.result) {
     const r = run.result, s = r.score;
-    menu.innerHTML = '<span class="menu-eyebrow">' + shoeFor(r.inputs.shoeType).name + ' · LANDED</span><h2>靴、そこまで行く？</h2><div class="result-metrics"><div><span>DISTANCE</span><strong id="result-distance">' + formatDistance(r.distance) + '</strong></div><div><span>MAX HEIGHT</span><strong>' + formatDistance(r.height) + '</strong></div><div><span>BREAK / COMBO</span><strong>' + r.breaks + ' / ' + r.maxBreakCombo + '</strong></div><div><span>SPIN / POWER</span><strong>' + r.spinRating + ' / ' + r.powerRating + '</strong></div></div><p class="specials">' + (r.specials.join(' · ') || 'NEXT: 別の組み合わせを試そう。') + '</p><p class="score-breakdown">DISTANCE ' + s.distance.toLocaleString() + ' ＋ HEIGHT ' + s.height.toLocaleString() + ' ＋ BREAK ' + s.breaks.toLocaleString() + '<br/>SPIN ' + s.spin.toLocaleString() + ' ＋ MAX ' + s.justMax.toLocaleString() + ' ＋ SPECIAL ' + s.special.toLocaleString() + '</p><p class="total-label">TOTAL <strong id="result-score">' + s.total.toLocaleString() + '</strong></p><p class="menu-detail">BEST DISTANCE ' + formatDistance(bestDistance) + ' · SCORE ' + bestScore.toLocaleString() + '</p>' + actions(button('retry-button', 'もう一回', true) + button('change-shoe-button', '靴を変える') + '<a href="./index.html">ゲームセンター</a>');
+    menu.innerHTML = '<span class="menu-eyebrow">' + shoeFor(r.inputs.shoeType).name + ' · LANDED</span><h2>靴、そこまで行く？</h2><div class="result-metrics"><div><span>飛距離</span><strong id="result-distance">' + formatDistance(r.distance) + '</strong></div><div><span>最高高度</span><strong>' + formatDistance(r.height) + '</strong></div><div><span>BREAK / COMBO</span><strong>' + r.breaks + ' / ' + r.maxBreakCombo + '</strong></div><div><span>SPIN / POWER</span><strong>' + r.spinRating + ' / ' + r.powerRating + '</strong></div></div><p class="specials">' + ([...(run.presentation.selected?[RARE_LABELS[run.presentation.selected]]:[]),...r.specials].join(' · ') || 'NEXT: 別の組み合わせを試そう。') + '</p><p class="score-breakdown">DISTANCE ' + s.distance.toLocaleString() + ' ＋ HEIGHT ' + s.height.toLocaleString() + ' ＋ BREAK ' + s.breaks.toLocaleString() + '<br/>SPIN ' + s.spin.toLocaleString() + ' ＋ MAX ' + s.justMax.toLocaleString() + ' ＋ SPECIAL ' + s.special.toLocaleString() + '</p><p class="total-label">TOTAL <strong id="result-score">' + s.total.toLocaleString() + '</strong></p><p class="menu-detail">BEST DISTANCE ' + formatDistance(bestDistance) + ' · SCORE ' + bestScore.toLocaleString() + '</p>' + actions(button('retry-button', 'もう一回', true) + button('change-shoe-button', '靴を変える') + '<a href="./index.html">ゲームセンター</a>');
   }
   if (next === 'reward') menu.innerHTML = '<h2>CREDITを補充</h2><p>開発用Stub。本番広告はありません。</p>' + actions(button('reward-confirm-button', '+3 CREDIT', true) + titleButton());
   sync();
@@ -73,15 +75,17 @@ function onEvent(event: ShoeEvent): void {
   if (event.type === 'phase') {
     epoch++;
     if (event.phase === 'max') audio.tone(700, 2000, .23, 'triangle', 0, .06);
-    if (event.phase === 'kick') audio.tone(170, 38, .22, 'sawtooth', 0, .055);
+    if(event.phase==='kick')audio.tone(run.justMax?240:170,38,run.justMax?.28:.22,'sawtooth',0,run.justMax?.06:.04);
     if (event.phase === 'landing') audio.tone(110, 55, .09, 'sine', 0, .03);
     if (event.phase === 'practice-complete' && stage < 3) { telemetry.trackEvent('tutorial_step_complete', { step: stage + 1 }); setScreen('practice-step-complete'); }
     if (!run.practice && !ended) telemetry.trackEvent('phase_reached', { runId, phase: event.phase });
-    if (!run.practice && !ended && event.phase === 'kick') telemetry.trackEvent('specific_game_events', { runId, event: 'kick', shoe: selected, angle: run.angle, spin: run.spin, power: run.power });
+    if (!run.practice && !ended && event.phase === 'kick') telemetry.trackEvent('specific_game_events', { runId, event: 'kick', just:run.justMax, shoe: selected, angle: run.angle, spin: run.spin, power: run.power });
   }
+  if(event.type==='presentation'&&!run.practice&&!ended)telemetry.trackEvent('specific_game_events',{runId,event:'rare_draw',presentation_id:event.draw.id,presentation_seed:event.draw.seed,eligible:true,won:event.draw.won,probability:event.draw.probability});
   if (event.type === 'lock') audio.tone(event.step === 'spin' ? 720 : 430, event.step === 'spin' ? 190 : 570, .07, 'triangle', 0, .025);
   if (event.type === 'lock' && !run.practice && !ended) telemetry.trackEvent('specific_game_events', { runId, event: 'input_lock', step: event.step, value: event.value });
   if (event.type === 'impact') audio.tone(event.effect.name === 'BREAK!' ? 230 : 95, 40, .13, 'sawtooth', 0, .035);
+  if(event.type==='special'&&event.effect.name==='UFO INCIDENT'&&!run.practice)telemetry.trackEvent('specific_game_events',{runId,event:'ufo_view_hold',duration_ms:1050});
   if (event.type === 'special') { audio.tone(800, 1200, .12, 'triangle', 0, .035); if (!run.practice) telemetry.trackEvent('milestone_reached', { runId, special: event.effect.name }); }
   if (event.type === 'end') {
     if (run.practice) { telemetry.trackEvent('practice_complete'); telemetry.trackEvent('tutorial_step_complete', { step: 4 }); setScreen('practice-complete'); return; }
@@ -103,7 +107,7 @@ function start(retry = false): void {
   if (disposed || screen === 'playing' || screen === 'practice' || credits.rewardPending) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   runId = 'game018-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8); if (credits.enabled && !credits.consume(runId)) return;
-  ended = false; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
+  ended = false;shoeRecordAt=null;startShoeBest=storage.readNumber('shoeBestDecimeters:'+selected,0)/10; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
 }
 function quit(): void { if (ended || run.practice) return; ended = true; run.pause(true, now()); telemetry.trackEvent('quit', { runId, time: run.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', time: run.time }); }
 function pause(): void { if (screen === 'playing' || screen === 'practice') { previousScreen = screen; run.pause(true, now()); if (run.paused) { telemetry.trackEvent('pause', { runId }); setScreen('paused'); } } else if (screen === 'paused') { run.pause(false, now()); telemetry.trackEvent('resume', { runId }); setScreen(previousScreen); } }
@@ -137,7 +141,8 @@ function blur(): void { held.clear(); if (screen === 'playing' || screen === 'pr
 window.addEventListener('blur', blur, { signal: abort.signal }); document.addEventListener('visibilitychange', () => { if (document.hidden) blur(); }, { signal: abort.signal }); window.addEventListener('pagehide', e => { if (e.persisted) blur(); else quit(); }, { signal: abort.signal });
 function tick(time: number): void {
   if (screen === 'playing' || screen === 'practice') run.settle(time);
-  board.render(run, time, { title: ['title', 'explanation', 'selection', 'reward'].includes(screen) }); sync();
+  if(screen==='playing'&&run.phase==='flight'&&shoeRecordAt===null&&run.position.x>startShoeBest){shoeRecordAt=run.time;telemetry.trackEvent('specific_game_events',{runId,event:'shoe_best_crossed',shoe:selected,distance:run.position.x,previous_best:startShoeBest});}
+  board.render(run, time, { recordAt:shoeRecordAt, title: ['title', 'explanation', 'selection', 'reward'].includes(screen) }); sync();
   if ((screen === 'playing' || screen === 'practice') && (run.phase === 'power' || run.phase === 'flight') && time - lastTone > (run.phase === 'power' ? 160 : 480)) { lastTone = time; audio.tone(run.phase === 'power' ? 450 + run.power * 5 : 180, run.phase === 'power' ? 450 + run.power * 5 : 600, .06, 'sine', 0, .007); }
   frame = requestAnimationFrame(tick);
 }

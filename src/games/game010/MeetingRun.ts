@@ -1,116 +1,39 @@
-import type { AttentionMode, MeetingChoice, MeetingCue, MeetingEvent, MeetingInspection, MeetingMode, MeetingResult, MeetingSnapshot } from './contracts';
-
-export const MEETING_CLOCK_MULTIPLIER = 5;
-export const OVERTIME_MEETING_SECONDS = 300;
-export const WORK_POINTS_PER_SECOND = 10;
-export const FIRST_QUESTION_SECONDS = 8;
-export const ANSWER_SECONDS = 0.65;
-export const questionIntervalAt = (time: number, mode: MeetingMode): number => mode === 'normal' ? Math.max(5.2, 8 - time * 0.03) : Math.max(4, 4.8 - Math.max(0, time - 60) * 0.008);
-export const warningSecondsAt = (time: number, mode: MeetingMode): number => mode === 'normal' ? Math.max(1.05, 1.5 - time * 0.004) : Math.max(0.9, 1.15 - Math.max(0, time - 60) * 0.002);
-const copyCue = (cue: MeetingCue | null): MeetingCue | null => cue ? { ...cue } : null;
-const EPSILON = 1e-9;
-
-/** The meeting clock is five times the real simulation clock; scoring always uses real work seconds. */
+import {decisions,emptyMinutes,FIELDS,PRACTICE_SCENARIO,SCENARIOS} from './scenarios';
+import type {AgendaFeedback,MeetingEvent,MeetingInspection,MeetingResult,MeetingScenario,MeetingSnapshot,MinuteField} from './contracts';
+const clone=<T>(value:T):T=>structuredClone(value);
 export class MeetingRun {
-  private time = 0;
-  private score = 0;
-  private workSeconds = 0;
-  private alive = false;
-  private mode: AttentionMode = 'listen';
-  private meetingMode: MeetingMode = 'normal';
-  private phase: MeetingSnapshot['phase'] = 'talk';
-  private pending: 'overtime' | null = null;
-  private milestoneOffered = false;
-  private currentCue: MeetingCue | null = null;
-  private nextCue: MeetingCue | null = null;
-  private nextCueId = 1;
-  private answerUntil = 0;
-  private answered = 0;
-  private ending: MeetingResult | null = null;
-  constructor(private readonly emit: (event: MeetingEvent) => void = () => {}, private readonly random: () => number = Math.random) {}
-  reset(): void {
-    this.time = this.score = this.workSeconds = this.answerUntil = this.answered = 0;
-    this.alive = false; this.mode = 'listen'; this.meetingMode = 'normal'; this.phase = 'talk'; this.pending = null;
-    this.milestoneOffered = false; this.currentCue = this.nextCue = null; this.nextCueId = 1; this.ending = null;
-  }
-  start(): void {
-    this.reset(); this.alive = true;
-    this.nextCue = this.makeCue(FIRST_QUESTION_SECONDS, 'question', 1.5);
-  }
-  toggle(): boolean {
-    if (!this.alive || this.pending) return false;
-    this.mode = this.mode === 'listen' ? 'work' : 'listen'; this.emit({ type: 'toggle', mode: this.mode }); return true;
-  }
-  choose(choice: MeetingChoice): boolean {
-    if (!this.alive || !this.pending || (choice !== 'leave' && choice !== 'board')) return false;
-    this.pending = null;
-    if (choice === 'leave') {
-      this.emit({ type: 'choice', milestone: 'overtime', choice, multiplier: 1 }); this.finish('safe_exit');
-    } else {
-      // Explicitly start listening after the dialog. The existing cue and its remaining time stay intact.
-      this.meetingMode = 'board'; this.mode = 'listen'; this.emit({ type: 'choice', milestone: 'overtime', choice, multiplier: 2 });
-    }
-    return true;
-  }
-  step(seconds: number): void {
-    if (!this.alive || this.pending || !Number.isFinite(seconds) || seconds <= 0) return;
-    let remaining = Math.min(0.05, seconds);
-    while (remaining > 1e-10 && this.alive && !this.pending) {
-      this.transitions(); if (!this.alive || this.pending) break;
-      let dt = Math.min(1 / 240, remaining);
-      // Split at each real deadline so a nominal 1.05s cue never loses a simulation frame of warning.
-      const boundaries = [this.nextCue?.cueStart, this.phase === 'cue' ? this.currentCue?.questionTime : undefined,
-        this.phase === 'answer' ? this.answerUntil : undefined, !this.milestoneOffered ? OVERTIME_MEETING_SECONDS / MEETING_CLOCK_MULTIPLIER : undefined];
-      for (const boundary of boundaries) if (boundary !== undefined && boundary > this.time + EPSILON) dt = Math.min(dt, boundary - this.time);
-      if (this.mode === 'work') { this.workSeconds += dt; this.score += dt * WORK_POINTS_PER_SECOND * (this.meetingMode === 'board' ? 2 : 1); }
-      this.time += dt; remaining -= dt; this.transitions();
-    }
-  }
-  private transitions(): void {
-    if (this.phase === 'answer' && this.time >= this.answerUntil - EPSILON) { this.phase = 'talk'; this.currentCue = null; }
-    if (this.nextCue && this.time >= this.nextCue.cueStart - EPSILON) {
-      this.currentCue = this.nextCue; this.nextCue = null; this.phase = 'cue'; this.emit({ type: 'cue', cue: { ...this.currentCue } });
-    }
-    if (this.phase === 'cue' && this.currentCue && this.time >= this.currentCue.questionTime - EPSILON) {
-      if (this.currentCue.kind === 'question') {
-        if (this.mode === 'work') { this.finish('caught'); return; }
-        this.answered++; this.phase = 'answer'; this.answerUntil = this.time + ANSWER_SECONDS; this.emit({ type: 'answer', answered: this.answered });
-      } else { this.currentCue = null; this.phase = 'talk'; this.emit({ type: 'feint_clear' }); }
-      this.scheduleNext();
-    }
-    // A question at exactly the checkpoint is resolved first; a dialog cannot erase a committed failure.
-    if (this.alive && !this.milestoneOffered && this.time >= OVERTIME_MEETING_SECONDS / MEETING_CLOCK_MULTIPLIER - EPSILON) {
-      this.milestoneOffered = true; this.pending = 'overtime'; this.emit({ type: 'milestone', milestone: 'overtime' });
-    }
-  }
-  private makeCue(questionTime: number, kind: MeetingCue['kind'], warning: number): MeetingCue {
-    return { id: this.nextCueId++, kind, questionTime, cueStart: questionTime - warning, warningSeconds: warning,
-      text: kind === 'question' ? 'ところで……あなたはどう思いますか？' : '資料確認……少しお待ちください。' };
-  }
-  private scheduleNext(): void {
-    const random = Math.min(1, Math.max(0, this.random()));
-    const questionTime = this.time + questionIntervalAt(this.time, this.meetingMode) + random * 0.65;
-    const kind = this.answered >= 2 && this.nextCueId % 4 === 0 ? 'feint' : 'question';
-    this.nextCue = this.makeCue(questionTime, kind, kind === 'question' ? warningSecondsAt(questionTime, this.meetingMode) : 0.85);
-  }
-  private finish(outcome: MeetingResult['outcome']): void {
-    if (!this.alive) return;
-    this.alive = false; this.phase = 'ended';
-    this.ending = { score: Math.floor(this.score + EPSILON), time: this.time, meetingSeconds: this.time * MEETING_CLOCK_MULTIPLIER,
-      mode: this.mode, meetingMode: this.meetingMode, multiplier: this.meetingMode === 'board' ? 2 : 1,
-      answered: this.answered, workSeconds: this.workSeconds, outcome,
-      reason: outcome === 'caught' ? 'すみません、聞いてませんでした。' : '本日の会議は、ここまで。', question: outcome === 'caught' ? copyCue(this.currentCue) : null };
-    if (outcome === 'caught') this.emit({ type: 'caught' });
-  }
-  snapshot(): MeetingSnapshot {
-    return { score: Math.floor(this.score + EPSILON), time: this.time, meetingSeconds: this.time * MEETING_CLOCK_MULTIPLIER, alive: this.alive,
-      mode: this.mode, meetingMode: this.meetingMode, multiplier: this.meetingMode === 'board' ? 2 : 1, phase: this.phase, pending: this.pending,
-      currentCue: copyCue(this.currentCue), cueRemaining: this.phase === 'cue' && this.currentCue ? Math.max(0, this.currentCue.questionTime - this.time) : null,
-      participants: Math.min(8, 3 + Math.floor(this.time / 30) + (this.meetingMode === 'board' ? 2 : 0)), answered: this.answered, workSeconds: this.workSeconds };
-  }
-  inspection(): MeetingInspection {
-    return { ...this.snapshot(), nextCue: copyCue(this.nextCue), answerRemaining: this.phase === 'answer' ? Math.max(0, this.answerUntil - this.time) : 0,
-      milestoneOffered: this.milestoneOffered, exactScore: this.score };
-  }
-  result(): MeetingResult | null { return this.ending ? { ...this.ending, question: copyCue(this.ending.question) } : null; }
+ private alive=false;private phase:MeetingSnapshot['phase']='talking';private score=0;private time=0;private agenda=0;private scenario:MeetingScenario=SCENARIOS[0];private plan:MeetingScenario[]=[];private statementIndex=0;private remaining=0;private minutes=emptyMinutes();private asksRemaining=2;private asksUsed=0;private completed=0;private correctFieldCount=0;private majorFailures=0;private streak=0;private correctionCount=0;private corrections=new Set<number>();private noiseRecords=new Set<number>();private feedback:AgendaFeedback|null=null;private practice=false;private practiceDone=false;private recorded=new Set<number>();private ending:MeetingResult|null=null;private extra=false;
+ constructor(private readonly emit:(event:MeetingEvent)=>void=()=>{},private readonly random:()=>number=Math.random){}
+ start(practice=false):void {this.alive=true;this.phase='talking';this.score=this.time=this.agenda=this.asksUsed=this.completed=this.correctFieldCount=this.majorFailures=this.streak=this.correctionCount=0;this.practice=practice;this.practiceDone=false;this.extra=false;this.ending=null;const pool=SCENARIOS.filter(s=>!s.extra);for(let i=pool.length-1;i>0;i--){const j=Math.max(0,Math.min(i,Math.floor(this.random()*(i+1))));[pool[i],pool[j]]=[pool[j],pool[i]];}this.plan=practice?[PRACTICE_SCENARIO]:pool.slice(0,3);this.beginAgenda(this.plan[0]);}
+ private beginAgenda(scenario:MeetingScenario):void {this.scenario=scenario;this.agenda++;this.statementIndex=0;this.remaining=scenario.statements[0].readSeconds;this.minutes=emptyMinutes();this.asksRemaining=2;this.recorded.clear();this.corrections.clear();this.noiseRecords.clear();this.feedback=null;this.phase='talking';}
+ record(index:number):boolean {
+  if(!this.alive||!['talking','repeating','submit'].includes(this.phase)||!Number.isInteger(index)||index<Math.max(0,this.statementIndex-2)||index>this.statementIndex)return false;
+  const statement=this.scenario.statements[index];const fields=FIELDS.filter(field=>statement.patch[field]!==undefined);if(!fields.some(field=>this.minutes[field]!==statement.patch[field]))return false;
+  const before=decisions(this.scenario,index-1);const genuinelyCorrected=statement.role==='correction'&&fields.some(field=>this.minutes[field]!==''&&this.minutes[field]===before[field]&&this.minutes[field]!==statement.patch[field]);
+  for(const field of fields)this.minutes[field]=statement.patch[field]!;this.recorded.add(index);if(genuinelyCorrected)this.corrections.add(index);if(statement.role==='proposal'||statement.role==='chat')this.noiseRecords.add(index);
+  this.emit({type:'record',fieldCount:fields.length,corrected:genuinelyCorrected,statement:index,role:statement.role,agenda:this.agenda,scenarioId:this.scenario.id});return true;
+ }
+ ask():boolean {if(!this.alive||this.phase!=='talking'||this.asksRemaining<=0)return false;this.asksRemaining--;this.asksUsed++;this.phase='repeating';this.emit({type:'ask_again',asksRemaining:this.asksRemaining,agenda:this.agenda});return true;}
+ continueReading():boolean {if(!this.alive||this.phase!=='repeating')return false;this.phase='talking';this.remaining=Math.max(this.remaining,this.scenario.statements[this.statementIndex].readSeconds);return true;}
+ step(seconds:number):void {if(!this.alive||this.phase!=='talking'||!Number.isFinite(seconds)||seconds<=0)return;const dt=Math.min(.05,seconds);this.time+=dt;this.remaining-=dt;if(this.remaining<=1e-8){if(this.statementIndex+1>=this.scenario.statements.length){this.phase='submit';this.remaining=0;}else{this.statementIndex++;this.remaining=this.scenario.statements[this.statementIndex].readSeconds;}}}
+ submit():boolean {
+  if(!this.alive||this.phase!=='submit')return false;const expected=decisions(this.scenario);const correctFields=FIELDS.filter(field=>this.minutes[field]===expected[field]);const wrongFields=FIELDS.filter(field=>this.minutes[field]!==expected[field]);const complete=correctFields.length===3;const majorFailure=wrongFields.length>=2;let validCorrectionCount=0;
+  for(const index of this.corrections){const statement=this.scenario.statements[index];if(FIELDS.some(field=>statement.patch[field]!==undefined&&this.minutes[field]===expected[field]&&expected[field]===statement.patch[field]))validCorrectionCount++;}
+  this.streak=complete?this.streak+1:0;const points=Math.max(0,correctFields.length*100+(complete?100+20*this.streak:0)+validCorrectionCount*30-this.noiseRecords.size*25);
+  const label:Record<MinuteField,string>={who:'担当',task:'作業',due:'期限'};const note=wrongFields.length?wrongFields.map(field=>`${label[field]}は「${expected[field]}」。記録は「${this.minutes[field]||'未記入'}」。`).join(' '):'3項目とも、最新の決定どおりです。';
+  this.feedback={correctFields,wrongFields,expected,actual:{...this.minutes},points,complete,majorFailure,corrections:validCorrectionCount,noiseRecords:this.noiseRecords.size,note};this.phase='feedback';this.completed++;this.correctFieldCount+=correctFields.length;this.correctionCount+=validCorrectionCount;if(majorFailure)this.majorFailures++;this.score+=points;
+  this.emit({type:'submit',correctFields:correctFields.length,wrongFields:wrongFields.join(','),complete,majorFailure,points,corrections:validCorrectionCount,noiseRecords:this.noiseRecords.size,agenda:this.agenda,scenarioId:this.scenario.id});return true;
+ }
+ next():boolean {if(!this.alive||this.phase!=='feedback')return false;
+  if(this.practice){const complete=this.feedback!.complete&&this.asksUsed>0&&this.correctionCount>0&&this.noiseRecords.size===0;if(complete){this.practiceDone=true;this.finish('practice');}else{this.score=this.completed=this.correctFieldCount=this.correctionCount=this.majorFailures=this.streak=this.asksUsed=0;this.agenda=0;this.beginAgenda(PRACTICE_SCENARIO);}return true;}
+  if(this.majorFailures>=2){this.finish('failed');return true;}
+  if(this.extra){this.finish('complete');return true;}
+  if(this.agenda>=3){this.phase='choice';return true;}
+  this.beginAgenda(this.plan[this.agenda]);return true;
+ }
+ choose(choice:'leave'|'extra'):boolean {if(!this.alive||this.phase!=='choice')return false;if(choice!=='leave'&&choice!=='extra')return false;this.emit({type:'choice',choice});if(choice==='leave')this.finish('complete');else{this.extra=true;const extras=SCENARIOS.filter(s=>s.extra);this.beginAgenda(extras[Math.max(0,Math.min(extras.length-1,Math.floor(this.random()*extras.length)))]);}return true;}
+ private finish(outcome:MeetingResult['outcome']):void {if(!this.alive)return;this.alive=false;this.phase='ended';this.ending={score:this.score,completed:this.completed,correctFields:this.correctFieldCount,corrections:this.correctionCount,majorFailures:this.majorFailures,asksUsed:this.asksUsed,time:this.time,outcome,title:this.score>=1700?'訂正を逃さない会議忍者':this.score>=1200?'議事録職人':this.score>=600?'たぶん聞いていた人':'うなずき係'};this.emit({type:'end',outcome});}
+ snapshot():MeetingSnapshot {return {alive:this.alive,phase:this.phase,score:this.score,time:this.time,agenda:this.agenda,scenarioId:this.scenario.id,topic:this.scenario.title,extra:this.extra,statementIndex:this.statementIndex,current:clone(this.scenario.statements[this.statementIndex]),history:this.scenario.statements.slice(Math.max(0,this.statementIndex-2),this.statementIndex).map((statement,i)=>({index:Math.max(0,this.statementIndex-2)+i,statement:clone(statement)})),remaining:Math.max(0,this.remaining),minutes:{...this.minutes},asksRemaining:this.asksRemaining,asksUsed:this.asksUsed,completed:this.completed,correctFields:this.correctFieldCount,majorFailures:this.majorFailures,streak:this.streak,corrections:this.correctionCount,noiseRecords:this.noiseRecords.size,feedback:clone(this.feedback),practice:this.practice,practiceDone:this.practiceDone,recorded:[...this.recorded]};}
+ inspection():MeetingInspection {return {...this.snapshot(),scenario:clone(this.scenario),canonical:decisions(this.scenario,this.statementIndex)};}
+ result():MeetingResult|null {return this.ending?{...this.ending}:null;}
 }

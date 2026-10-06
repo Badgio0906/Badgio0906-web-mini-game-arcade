@@ -1,0 +1,1 @@
+最初の統合collectorは003/006の説明・練習button IDを別ゲームと同じと仮定した。009/010はresume直後の180ms gesture guard中にmuteを押した。Portalはlazy画像をscroll前に全読込と仮定した。各既存code/DOM/実画像と照合し、selector・待機・画像scrollのみcollectorを修正。製品変更なし。原本reportとcollectorを保持、未成功16profileだけ再検証。成功12profileの反復はしない。

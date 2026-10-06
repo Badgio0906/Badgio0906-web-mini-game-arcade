@@ -25,7 +25,7 @@
 @media(max-height:500px){.brand-title{font-size:12px}.brand-title small{font-size:6px}.start-card .game-title{font-size:18px}.result-game-title{font-size:9px}.result-heading .result-game-title{margin-bottom:4px}}
 @media(max-height:350px){.start-card .game-title{font-size:16px}.result-game-title{font-size:8px}.result-game-title small{font-size:6px!important}}
 
-@font-face{font-family:"Arcade Rounded";src:url("/fonts/arcade-rounded-jp.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Arcade Rounded";src:url("/assets/seven-games-2026-10-06/arcade-rounded-v2.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 .result-flavor{padding:8px 5px;margin:0 0 10px;background:#e6d39e55;border-top:1px solid #344b6044;border-bottom:1px solid #344b6044}.result-flavor small{display:block;font-size:8px;letter-spacing:1px;margin-bottom:4px}.result-flavor b{display:block;font-size:16px;line-height:1.45;overflow-wrap:anywhere}.result-game-title{font-size:11px}.result-card h2{font-size:22px;margin:8px 0 5px}
 @media(min-width:701px) and (min-height:501px){#app{max-width:1480px;padding:0 28px}.topbar{height:64px}.layout{display:block;padding:12px 0 10px}.intro,.site-footer{display:none}.arcade{width:min(100%,calc((100dvh - 215px)*5/6));max-width:680px}.scorebar{height:61px}.game-footer{height:54px}.start-card,.result-card{width:360px}}
 @media(max-width:700px) and (min-height:501px){.result-card{padding:13px 14px 11px}.result-flavor{padding:5px;margin-bottom:8px}.result-flavor b{font-size:14px}.result-flavor small{font-size:7px}.result-card h2{font-size:20px}.result-score{margin:6px 0 9px}.result-details{padding:8px 0;gap:7px 3px;margin-bottom:8px}}
@@ -54,3 +54,33 @@
 
 /* Paused and completed runs budget the native menu without changing live play. */
 #app:is([data-state="paused"],[data-state="result"]) #drop-button{display:none}@media(max-width:360px) and (min-height:501px){#app:is([data-state="paused"],[data-state="result"]) .game-footer{height:18px;padding:0}#app:is([data-state="paused"],[data-state="result"]) .site-footer{padding-top:4px;padding-bottom:4px}}
+
+/* v2: live geometry stays large; new menus and practice are game-local. */
+.center-label{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);font-size:9px;white-space:nowrap;color:#344b60;pointer-events:none}
+.mini-best small{display:block;font-size:8px;line-height:1.5;margin-top:4px;letter-spacing:0}
+#app[data-state="title"] .start-card{display:block;padding:18px 20px 16px}
+#app[data-state="title"] .start-card .game-title{margin:10px 0;font-size:23px}
+#app[data-state="title"] .start-card p{margin:8px 0 12px}
+#app[data-state="title"] .mini-best{margin:10px 0}
+.tower-start-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.tower-start-options button{width:100%;min-width:44px;min-height:44px}
+#precision-label{letter-spacing:0!important;font-size:9px!important}
+#arcade-training{padding:18px;width:min(620px,calc(100vw - 28px));max-height:calc(100dvh - 24px);overflow:auto;border:1px solid #aab7b9;border-radius:7px;background:#f7f6ef;color:#344b60;font-family:inherit}
+#arcade-training::backdrop{background:#263d4266}
+.tower-training-head{display:flex;align-items:center;justify-content:space-between;font-size:11px}
+.tower-training-head button{width:44px;border:1px solid #bbc6c5;border-radius:3px}
+#arcade-training h2{font-size:21px;margin:10px 0}
+#arcade-training p{font-size:13px;line-height:1.7;margin:8px 0}
+#arcade-training canvas{width:100%;height:auto;border:1px solid #aab7b9;margin:8px 0}
+#arcade-training small{display:block;font-size:10px;margin-top:8px}
+#arcade-training #tutorial-practice-button{margin:12px 0 8px}
+.tower-training-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tower-training-actions #practice-drop-button{grid-column:1/3}
+#arcade-training[data-phase="success"] #practice-drop-button{display:none}
+@media(max-width:360px) and (min-height:501px){#app[data-state="title"] .start-card{padding:9px 12px}#app[data-state="title"] .start-card .game-title{font-size:17px;margin:7px 0}#app[data-state="title"] .start-card p{font-size:9px;margin:7px 0}#app[data-state="title"] .mini-best{margin:6px 0}.tower-start-options{margin-top:7px;gap:6px}.mini-best small{font-size:7px}#precision-label{font-size:7px!important}.center-label{font-size:7px}}
+@media(max-height:500px){#pause-button{height:44px;min-height:44px}.scorebar{height:47px}.playfield{height:calc(100dvh - 147px)}#app[data-state="title"] .start-card{padding:8px 12px}#app[data-state="title"] .start-card .game-title{font-size:16px;margin:5px 0}#app[data-state="title"] .start-card .eyebrow,#app[data-state="title"] .start-card>.input-note{display:none}#app[data-state="title"] .start-card p{font-size:9px;margin:5px 0}#app[data-state="title"] .mini-best{margin:5px 0;font-size:7px}.mini-best small{font-size:6px}.tower-start-options{gap:6px;margin-top:6px}.tower-start-options button{font-size:9px}.center-label{font-size:6px;bottom:28px}#arcade-training h2{font-size:16px;margin:4px 0}#arcade-training p{font-size:11px;margin:5px 0}#arcade-training canvas{width:min(100%,400px);display:block;margin:5px auto}.tower-training-actions{grid-template-columns:1fr 1fr 1fr}.tower-training-actions #practice-drop-button{grid-column:auto}#arcade-training{padding:8px 12px}#arcade-training small{font-size:8px}}
+
+@media(max-width:360px) and (min-height:501px){.layout{padding-top:4px;padding-bottom:4px}}
+@media(max-height:500px){#arcade-training canvas{width:min(100%,280px)}#arcade-training p{line-height:1.4}}
+
+@media(min-width:361px) and (max-width:700px) and (min-height:501px){#app[data-state="title"] .start-card .game-title{font-size:20px}}

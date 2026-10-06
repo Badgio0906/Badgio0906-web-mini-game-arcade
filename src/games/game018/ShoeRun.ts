@@ -1,4 +1,5 @@
 import { activeReplayHold, clamp, nearbyObstacles, normalizeInputs, routeFor, sampleTrajectory, simulate } from './physics';
+import {RarePresentation} from './rarePresentation';
 import { shoeFor } from './shoes';
 import { spinExplanation } from './spinGuide';
 import { JUST_MAX_SECONDS, JUST_MAX_THRESHOLD, KICK_SECONDS, LANDING_SECONDS, LOCK_SECONDS, type Effect, type Inputs, type Obstacle, type Phase, type PracticeStage, type Result, type ShoeEvent, type ShoeType, type Trajectory, type Vector } from './types';
@@ -20,6 +21,8 @@ export class ShoeRun {
   maxHeight = 2; breaks = 0; breakCombo = 0; maxBreakCombo = 0; time = 0; flightElapsed = 0; flightDuration = 0; alive = false; paused = false; practice = false; practiceStage: PracticeStage = 0;
   result: Result | null = null; feedback = '';
   private lastNow = 0; private phaseStart = 0; private phaseDuration = 0; private pauseStart = 0; private trajectory: Trajectory | null = null; private effectIndex = 0; private recentEffects: Effect[] = []; private seenObstacles: Obstacle[] = [];
+  presentation = new RarePresentation(0);
+  private presentationSeed=0; private readonly emittedRare=new Set<string>();private readonly reachedSpecials=new Set<string>();
   constructor(private readonly event: (event: ShoeEvent) => void = () => {}) {}
   get justMax(): boolean { return this.locked.power !== null && this.locked.power >= JUST_MAX_THRESHOLD; }
   get route() { return routeFor(this.angle); }
@@ -44,6 +47,7 @@ export class ShoeRun {
     this.shoeType = shoeFor(shoeType).id; this.practice = practice; this.practiceStage = stage; this.lastNow = Number.isFinite(now) ? now : 0;
     this.angle = 5; this.spin = this.power = this.time = this.phaseStart = this.flightElapsed = this.flightDuration = this.rotation = this.angularVelocity = this.breaks = 0;
     this.maxHeight = 2; this.breakCombo = this.maxBreakCombo = 0; this.position = { x: 0, y: 2 }; this.velocity = { x: 0, y: 0 }; this.locked = { angle: null, spin: null, power: null };
+    this.presentation = new RarePresentation(++this.presentationSeed); this.emittedRare.clear();this.reachedSpecials.clear();
     this.alive = true; this.paused = false; this.result = null; this.feedback = ''; this.trajectory = null; this.effectIndex = 0; this.recentEffects = []; this.seenObstacles = [];
   }
   private setPhase(phase: Phase, duration = 0): void { this.phase = phase; this.phaseStart = this.time; this.phaseDuration = duration; this.event({ type: 'phase', phase }); }
@@ -64,7 +68,7 @@ export class ShoeRun {
       else { this.setPhase('flight', this.flightDuration); this.updateFlight(0); }
     } else if (this.phase === 'flight') {
       this.flightElapsed = elapsed + 1e-9 >= this.flightDuration ? this.flightDuration : elapsed; this.updateFlight(this.flightElapsed);
-      if (elapsed + 1e-9 >= this.flightDuration) this.setPhase('landing', LANDING_SECONDS);
+      if (elapsed + 1e-9 >= this.flightDuration) {this.updatePresentation(true);this.setPhase('landing', LANDING_SECONDS);}
     } else if (this.phase === 'landing' && elapsed + 1e-9 >= LANDING_SECONDS && this.trajectory) {
       this.result = structuredClone(this.trajectory.result); this.alive = false; this.setPhase(this.practice ? 'practice-complete' : 'result'); this.event({ type: 'end', result: structuredClone(this.result) });
     }
@@ -84,6 +88,7 @@ export class ShoeRun {
       this.locked.power = this.power; this.feedback = this.justMax ? 'JUST MAX！初速が一段アップ！' : this.power >= 98 ? 'PERFECT！次はMAXを狙え！' : 'POWERが高いほど速く飛ぶ！';
       this.event({ type: 'lock', step: 'power', value: this.power });
       if (!(this.practice && this.practiceStage === 2)) { this.trajectory = simulate(this.inputs(), this.practice); this.flightDuration = this.trajectory.duration; }
+      this.updatePresentation(false);
       this.setPhase(this.justMax ? 'max' : 'kick', this.justMax ? JUST_MAX_SECONDS : KICK_SECONDS); return true;
     }
     return false;
@@ -95,13 +100,18 @@ export class ShoeRun {
     const sample = sampleTrajectory(this.trajectory, elapsed);
     this.position = { x: sample.x, y: sample.y }; this.velocity = { x: sample.vx, y: sample.vy }; this.rotation = sample.rotation; this.angularVelocity = sample.angularVelocity; this.maxHeight = sample.maxHeight;
     while (this.effectIndex < this.trajectory.effects.length && this.trajectory.effects[this.effectIndex].time <= elapsed + 1e-9) {
-      const effect = this.trajectory.effects[this.effectIndex++]; this.recentEffects.push({ ...effect }); if (this.recentEffects.length > 18) this.recentEffects.shift();
+      const effect = this.trajectory.effects[this.effectIndex++]; this.recentEffects.push({ ...effect });if(effect.type==='special')this.reachedSpecials.add(effect.name); if (this.recentEffects.length > 18) this.recentEffects.shift();
       if (effect.type === 'impact') {
         const obstacle = this.trajectory.obstacles.find(candidate => candidate.id === effect.obstacleId);
         if (obstacle) { this.seenObstacles.push({ ...obstacle }); if (this.seenObstacles.length > 64) this.seenObstacles.shift(); if (obstacle.broken) { this.breaks++; this.breakCombo++; this.maxBreakCombo = Math.max(this.maxBreakCombo, this.breakCombo); } else this.breakCombo = 0; }
       }
       this.event({ type: effect.type, effect: { ...effect } });
+      this.updatePresentation(false);
     }
+  }
+  private updatePresentation(landed:boolean):void {
+    this.presentation.update(this.inputs(),[...this.reachedSpecials],landed);
+    for(const draw of this.presentation.draws)if(!this.emittedRare.has(draw.id)){this.emittedRare.add(draw.id);this.event({type:'presentation',draw:{...draw}});}
   }
   pause(value: boolean, now: number): void {
     if (!this.alive || value === this.paused || !Number.isFinite(now) || now < this.lastNow) return;
@@ -109,6 +119,6 @@ export class ShoeRun {
     else { if (now < this.pauseStart) return; this.lastNow = now; this.paused = false; }
   }
   snapshot() {
-    return { phase: this.phase, shoeType: this.shoeType, angle: this.angle, spin: this.spin, power: this.power, locked: { ...this.locked }, justMax: this.justMax, route: this.route, phaseProgress: this.phaseProgress, phaseElapsed: this.phaseElapsed, position: { ...this.position }, velocity: { ...this.velocity }, rotation: this.rotation, angularVelocity: this.angularVelocity, maxHeight: this.maxHeight, breaks: this.breaks, breakCombo: this.breakCombo, maxBreakCombo: this.maxBreakCombo, time: this.time, flightElapsed: this.flightElapsed, flightDuration: this.flightDuration, activeHold: this.activeHold, alive: this.alive, paused: this.paused, practice: this.practice, practiceStage: this.practiceStage, feedback: this.feedback, effects: this.recentEffects.map(effect => ({ ...effect })), obstacles: this.obstacles.map(obstacle => ({ ...obstacle })), result: this.result ? structuredClone(this.result) : null, timing: { anglePeriod: ANGLE_PERIOD, spinPeriod: SPIN_PERIOD, powerPeriod: POWER_PERIOD, powerPeakStart: POWER_PEAK_START, powerPeakEnd: POWER_PEAK_END } };
+    return { presentation:{seed:this.presentation.seed,selected:this.presentation.selected,draws:this.presentation.draws.map(d=>({...d}))}, phase: this.phase, shoeType: this.shoeType, angle: this.angle, spin: this.spin, power: this.power, locked: { ...this.locked }, justMax: this.justMax, route: this.route, phaseProgress: this.phaseProgress, phaseElapsed: this.phaseElapsed, position: { ...this.position }, velocity: { ...this.velocity }, rotation: this.rotation, angularVelocity: this.angularVelocity, maxHeight: this.maxHeight, breaks: this.breaks, breakCombo: this.breakCombo, maxBreakCombo: this.maxBreakCombo, time: this.time, flightElapsed: this.flightElapsed, flightDuration: this.flightDuration, activeHold: this.activeHold, alive: this.alive, paused: this.paused, practice: this.practice, practiceStage: this.practiceStage, feedback: this.feedback, effects: this.recentEffects.map(effect => ({ ...effect })), obstacles: this.obstacles.map(obstacle => ({ ...obstacle })), result: this.result ? structuredClone(this.result) : null, timing: { anglePeriod: ANGLE_PERIOD, spinPeriod: SPIN_PERIOD, powerPeriod: POWER_PERIOD, powerPeakStart: POWER_PEAK_START, powerPeakEnd: POWER_PEAK_END } };
   }
 }

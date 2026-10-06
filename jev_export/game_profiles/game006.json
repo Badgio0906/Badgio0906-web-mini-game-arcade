@@ -4,7 +4,7 @@
   "title": "ギリギリ駐車",
   "titleJa": "ギリギリ駐車",
   "titleEn": "PARK IT!",
-  "tagline": "あと3cm。たぶん入る。たぶん。",
+  "tagline": "安全枠か、挑戦枠か。止めどころまで、腕の見せどころ。",
   "tags": [
     {
       "id": "physics",
@@ -29,7 +29,7 @@
     "arcade"
   ],
   "controls": {
-    "summary": "Space / タップで角度、次に強さを止める",
+    "summary": "安全/挑戦枠を選び、Space / タップで角度→パワー。走行中の新しい入力で一度ブレーキ",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": {
@@ -41,14 +41,14 @@
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "車全体が区画に入る角度と距離を予測する",
-  "description": "車全体が区画に入る角度と距離を予測する",
-  "failureModes": "車体が駐車区画からはみ出す",
+  "mainMechanics": "同じ円弧の到達距離と停止位置、車体の接近を読み狙う枠と止めどころを選ぶ",
+  "description": "同じ円弧の到達距離と停止位置、車体の接近を読み狙う枠と止めどころを選ぶ",
+  "failureModes": "角度違い、手前、行き過ぎ、車体衝突、指定外枠",
   "route": "./game006.html",
   "thumbnail": "./assets/portal/game006.webp",
   "design": {
-    "thumbnailDescription": "ギリギリ駐車の実プレイ画面。俯瞰の車とコードで一致させた駐車枠",
-    "majorVisuals": "俯瞰の車とコードで一致させた駐車枠",
+    "thumbnailDescription": "ギリギリ駐車の実プレイ画面。車体形状に一致した俯瞰駐車と色と文字で分かる安全・挑戦枠",
+    "majorVisuals": "車体形状に一致した俯瞰駐車と色と文字で分かる安全・挑戦枠",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
     "referenceImageUse": "No new user reference for this game in this task.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
@@ -72,7 +72,10 @@
     "core_mechanic": [
       "lock steering curvature",
       "lock driving distance",
-      "whole-rectangle parking"
+      "whole-rectangle parking",
+      "choose safe or challenge bay",
+      "one-use finite braking on committed arc",
+      "rectangle near-miss clearance"
     ],
     "primary_input": [
       "single-action",
@@ -88,7 +91,7 @@
       "beginner": 60,
       "experienced": 190
     },
-    "duration_note": "design hypothesis; beginner human unmeasured; oracle timing bounds separate",
+    "duration_note": "v2 design hypothesis; old v1 oracle timing historical, new native QA measured separately",
     "oracle_timing_seconds": {
       "ten_parks": [
         84,
@@ -99,10 +102,11 @@
         237
       ]
     },
-    "primary_score": "accuracy points with capped perfect-streak multiplier",
+    "primary_score": "precision and perfect-streak × forbidden 2 × challenge 1.4; successful no-brake +10%, successful near misses capped20",
     "secondary_score": "successfully parked cars",
     "escalation_mechanic": "After ten successes, one frozen choice offers permanently narrow forbidden spaces or ordinary parking.",
-    "risk_reward": "Forbidden slots are 50x82 for a 42x70 car and award twice the future parking points; previous points stay unchanged.",
-    "visual_identity": "generated top-down Japanese daily cars, code-exact parking bays, warm asphalt, thin driver console"
+    "risk_reward": "After 3 initial cars, choose distinct safe or challenge before angle; successful challenge ×1.4, forbidden choice after10 still ×2. Brake only reduces committed travel.",
+    "visual_identity": "generated top-down Japanese daily cars, code-exact parking bays, warm asphalt, thin driver console",
+    "rulesVersion": 2
   }
 }

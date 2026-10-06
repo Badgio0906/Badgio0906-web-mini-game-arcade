@@ -1,0 +1,1 @@
+First native run interrupted after desktop execution because stylesheet used non-existent /assets/fonts/rounded-jp.woff2. Existing shared font is /fonts/arcade-rounded-jp.woff2. This is a product asset URL defect; completed screenshots retained, no PASS asserted. Chromium and collector terminated before changing source. Fix only009 font URL and rerun.

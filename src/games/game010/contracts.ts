@@ -1,37 +1,12 @@
-export type AttentionMode = 'listen' | 'work';
-export type MeetingMode = 'normal' | 'board';
-export type MeetingChoice = 'leave' | 'board';
-export interface MeetingCue {
-  id: number; kind: 'question' | 'feint'; cueStart: number; questionTime: number;
-  warningSeconds: number; text: string;
-}
-export interface MeetingSnapshot {
-  score: number; time: number; meetingSeconds: number; alive: boolean;
-  mode: AttentionMode; meetingMode: MeetingMode; multiplier: 1 | 2;
-  phase: 'talk' | 'cue' | 'answer' | 'ended'; pending: 'overtime' | null;
-  currentCue: MeetingCue | null; cueRemaining: number | null;
-  participants: number; answered: number; workSeconds: number;
-}
-export interface MeetingResult {
-  score: number; time: number; meetingSeconds: number; mode: AttentionMode;
-  meetingMode: MeetingMode; multiplier: 1 | 2; answered: number; workSeconds: number;
-  outcome: 'caught' | 'safe_exit'; reason: string; question: MeetingCue | null;
-}
-export type MeetingEvent =
-  | { type: 'toggle'; mode: AttentionMode }
-  | { type: 'cue'; cue: MeetingCue }
-  | { type: 'answer'; answered: number }
-  | { type: 'feint_clear' }
-  | { type: 'caught' }
-  | { type: 'milestone'; milestone: 'overtime' }
-  | { type: 'choice'; milestone: 'overtime'; choice: MeetingChoice; multiplier: 1 | 2 };
-export interface MeetingInspection extends MeetingSnapshot {
-  nextCue: MeetingCue | null; answerRemaining: number; milestoneOffered: boolean; exactScore: number;
-}
-export interface MeetingHooks {
-  onUpdate: (snapshot: MeetingSnapshot) => void; onEnd: (result: MeetingResult) => void; onEvent: (event: MeetingEvent) => void;
-}
-export interface MeetingController {
-  start: () => void; title: () => void; toggle: () => boolean; choose: (choice: MeetingChoice) => boolean;
-  pause: (value: boolean) => void; snapshot: () => MeetingSnapshot; inspection: () => MeetingInspection; destroy: () => void;
-}
+export type MinuteField = 'who' | 'task' | 'due';
+export type Minutes = Record<MinuteField,string>;
+export type StatementRole = 'decision' | 'correction' | 'proposal' | 'chat';
+export interface Statement { speaker:string; text:string; role:StatementRole; patch:Partial<Minutes>; stateChange:Partial<Minutes>; readSeconds:number }
+export interface MeetingScenario { id:string; title:string; structure:string; extra:boolean; difficulty:1|2|3; statements:Statement[]; expected:Minutes; readSeconds:number }
+export interface AgendaFeedback { correctFields:MinuteField[]; wrongFields:MinuteField[]; expected:Minutes; actual:Minutes; points:number; complete:boolean; majorFailure:boolean; corrections:number; noiseRecords:number; note:string }
+export interface MeetingSnapshot { alive:boolean; phase:'talking'|'repeating'|'submit'|'feedback'|'choice'|'ended'; score:number; time:number; agenda:number; scenarioId:string; topic:string; extra:boolean; statementIndex:number; current:Statement; history:Array<{index:number;statement:Statement}>; remaining:number; minutes:Minutes; asksRemaining:number; asksUsed:number; completed:number; correctFields:number; majorFailures:number; streak:number; corrections:number; noiseRecords:number; feedback:AgendaFeedback|null; practice:boolean; practiceDone:boolean; recorded:number[] }
+export interface MeetingInspection extends MeetingSnapshot { scenario:MeetingScenario; canonical:Minutes }
+export interface MeetingResult { score:number; completed:number; correctFields:number; corrections:number; majorFailures:number; asksUsed:number; time:number; outcome:'complete'|'failed'|'practice'; title:string }
+export type MeetingEvent = {type:'record'; fieldCount:number; corrected:boolean; statement:number; role:StatementRole; agenda:number; scenarioId:string} | {type:'ask_again'; asksRemaining:number; agenda:number} | {type:'submit'; correctFields:number; wrongFields:string; complete:boolean; majorFailure:boolean; points:number; corrections:number; noiseRecords:number; agenda:number; scenarioId:string} | {type:'choice'; choice:'leave'|'extra'} | {type:'end'; outcome:'complete'|'failed'|'practice'};
+export interface MeetingHooks { onUpdate:(snapshot:MeetingSnapshot)=>void; onEnd:(result:MeetingResult)=>void; onEvent:(event:MeetingEvent)=>void }
+export interface MeetingController { start:(practice?:boolean)=>void; title:()=>void; record:(index:number)=>boolean; ask:()=>boolean; continueReading:()=>boolean; submit:()=>boolean; next:()=>boolean; choose:(choice:'leave'|'extra')=>boolean; pause:(value:boolean)=>void; snapshot:()=>MeetingSnapshot; inspection:()=>MeetingInspection; destroy:()=>void }

@@ -1,0 +1,293 @@
+{
+  "started": "2026-10-06T01:45:51.454Z",
+  "base": "http://127.0.0.1:5266/",
+  "source": {
+    "game006.html": "890dfe4f11a046db25b6797cb159b37965abaa213e9c46afe39506c6dbd00855",
+    "src/games/game006/main.ts": "d57d38df4c5c66e02dab642bca754a19e977683cb67b84cb4ed6b827b7b4e362",
+    "src/games/game006/ParkingScene.ts": "a8d4c22df9bfb55b97f77c730fb62ecb49eeff4c6ee824d688df3e2718941087",
+    "src/games/game006/ParkingRun.ts": "3e14b463f4ddce27aa8cab8bff1487b1831e33580e4a11dddcadbd859f55183a",
+    "src/games/game006/contracts.ts": "eed3906cdd8f52af75712dbb8bf038113c03ec4a6bbb3261d6b709cf136238ad",
+    "src/games/game006/style.css": "3b9761c13baaed7d9803a7f2fa3673526abf90dbecd5ad7ca4432f1367be207f",
+    "src/games/game006/game.manifest.json": "dea2e5050de17f0e1816856659b001ede0c26a4549306c440d2bf44ff35b7672"
+  },
+  "provenance": "native-browser QA with readonly gauge observation; no human play",
+  "profiles": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "mobile": false,
+      "errors": [
+        "504 http://127.0.0.1:5266/node_modules/.vite/deps/phaser.js?v=17ca58e0",
+        "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+      ],
+      "cases": {},
+      "parks": [],
+      "passed": false,
+      "failure": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:20:50"
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "mobile": true,
+      "errors": [],
+      "cases": {
+        "title": [
+          {
+            "id": "arcade-portal-back",
+            "rect": {
+              "x": 14,
+              "y": 6,
+              "width": 74.21875,
+              "height": 44,
+              "top": 6,
+              "right": 88.21875,
+              "bottom": 50,
+              "left": 14
+            },
+            "hit": true
+          },
+          {
+            "id": "mute-button",
+            "rect": {
+              "x": 331.734375,
+              "y": 6,
+              "width": 44.265625,
+              "height": 44,
+              "top": 6,
+              "right": 376,
+              "bottom": 50,
+              "left": 331.734375
+            },
+            "hit": true
+          },
+          {
+            "id": "play-button",
+            "rect": {
+              "x": 69,
+              "y": 303.6875,
+              "width": 252,
+              "height": 44,
+              "top": 303.6875,
+              "right": 321,
+              "bottom": 347.6875,
+              "left": 69
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-explain-button",
+            "rect": {
+              "x": 69,
+              "y": 354.6875,
+              "width": 123,
+              "height": 44,
+              "top": 354.6875,
+              "right": 192,
+              "bottom": 398.6875,
+              "left": 69
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-again-button",
+            "rect": {
+              "x": 198,
+              "y": 354.6875,
+              "width": 123,
+              "height": 44,
+              "top": 354.6875,
+              "right": 321,
+              "bottom": 398.6875,
+              "left": 198
+            },
+            "hit": true
+          }
+        ]
+      },
+      "parks": [],
+      "passed": false,
+      "failure": "AssertionError [ERR_ASSERTION]: angle gauge\n    at gauge (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:13:908)\n    at async park (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:15:305)\n    at async file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:24:40"
+    },
+    {
+      "name": "narrow",
+      "width": 320,
+      "height": 568,
+      "mobile": true,
+      "errors": [],
+      "cases": {
+        "title": [
+          {
+            "id": "arcade-portal-back",
+            "rect": {
+              "x": 10,
+              "y": 4,
+              "width": 64.953125,
+              "height": 44,
+              "top": 4,
+              "right": 74.953125,
+              "bottom": 48,
+              "left": 10
+            },
+            "hit": true
+          },
+          {
+            "id": "mute-button",
+            "rect": {
+              "x": 265.734375,
+              "y": 4,
+              "width": 44.265625,
+              "height": 44,
+              "top": 4,
+              "right": 310,
+              "bottom": 48,
+              "left": 265.734375
+            },
+            "hit": true
+          },
+          {
+            "id": "play-button",
+            "rect": {
+              "x": 34,
+              "y": 252.75,
+              "width": 252,
+              "height": 44,
+              "top": 252.75,
+              "right": 286,
+              "bottom": 296.75,
+              "left": 34
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-explain-button",
+            "rect": {
+              "x": 34,
+              "y": 301.75,
+              "width": 123,
+              "height": 44,
+              "top": 301.75,
+              "right": 157,
+              "bottom": 345.75,
+              "left": 34
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-again-button",
+            "rect": {
+              "x": 163,
+              "y": 301.75,
+              "width": 123,
+              "height": 44,
+              "top": 301.75,
+              "right": 286,
+              "bottom": 345.75,
+              "left": 163
+            },
+            "hit": true
+          }
+        ]
+      },
+      "parks": [],
+      "passed": false,
+      "failure": "AssertionError [ERR_ASSERTION]: angle gauge\n    at gauge (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:13:908)\n    at async park (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:15:305)\n    at async file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:24:40"
+    },
+    {
+      "name": "landscape",
+      "width": 844,
+      "height": 390,
+      "mobile": true,
+      "errors": [],
+      "cases": {
+        "title": [
+          {
+            "id": "arcade-portal-back",
+            "rect": {
+              "x": 15,
+              "y": 1,
+              "width": 74.21875,
+              "height": 44,
+              "top": 1,
+              "right": 89.21875,
+              "bottom": 45,
+              "left": 15
+            },
+            "hit": true
+          },
+          {
+            "id": "mute-button",
+            "rect": {
+              "x": 782.734375,
+              "y": 1,
+              "width": 46.265625,
+              "height": 44,
+              "top": 1,
+              "right": 829,
+              "bottom": 45,
+              "left": 782.734375
+            },
+            "hit": true
+          },
+          {
+            "id": "play-button",
+            "rect": {
+              "x": 414.5,
+              "y": 250.15625,
+              "width": 274,
+              "height": 44,
+              "top": 250.15625,
+              "right": 688.5,
+              "bottom": 294.15625,
+              "left": 414.5
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-explain-button",
+            "rect": {
+              "x": 414.5,
+              "y": 298.15625,
+              "width": 134,
+              "height": 44,
+              "top": 298.15625,
+              "right": 548.5,
+              "bottom": 342.15625,
+              "left": 414.5
+            },
+            "hit": true
+          },
+          {
+            "id": "tutorial-again-button",
+            "rect": {
+              "x": 554.5,
+              "y": 298.15625,
+              "width": 134,
+              "height": 44,
+              "top": 298.15625,
+              "right": 688.5,
+              "bottom": 342.15625,
+              "left": 554.5
+            },
+            "hit": true
+          }
+        ]
+      },
+      "parks": [],
+      "passed": false,
+      "failure": "AssertionError [ERR_ASSERTION]: angle gauge\n    at gauge (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:13:908)\n    at async park (file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:15:305)\n    at async file:///workspace/Badgio0906-web-mini-game-arcade/docs/seven-games-2026-10-06/game006/probe.mjs:24:40"
+    }
+  ],
+  "ended": "2026-10-06T01:48:10.336Z",
+  "sourceAfter": {
+    "game006.html": "890dfe4f11a046db25b6797cb159b37965abaa213e9c46afe39506c6dbd00855",
+    "src/games/game006/main.ts": "d57d38df4c5c66e02dab642bca754a19e977683cb67b84cb4ed6b827b7b4e362",
+    "src/games/game006/ParkingScene.ts": "a8d4c22df9bfb55b97f77c730fb62ecb49eeff4c6ee824d688df3e2718941087",
+    "src/games/game006/ParkingRun.ts": "3e14b463f4ddce27aa8cab8bff1487b1831e33580e4a11dddcadbd859f55183a",
+    "src/games/game006/contracts.ts": "eed3906cdd8f52af75712dbb8bf038113c03ec4a6bbb3261d6b709cf136238ad",
+    "src/games/game006/style.css": "3b9761c13baaed7d9803a7f2fa3673526abf90dbecd5ad7ca4432f1367be207f",
+    "src/games/game006/game.manifest.json": "dea2e5050de17f0e1816856659b001ede0c26a4549306c440d2bf44ff35b7672"
+  },
+  "sourceUnchanged": true
+}

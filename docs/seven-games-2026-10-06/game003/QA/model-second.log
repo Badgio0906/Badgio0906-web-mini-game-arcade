@@ -1,0 +1,40 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 77ms
+ ❯ tests/unit/game003-art.test.ts (5 tests | 1 failed) 84ms
+   ✓ Game003 artistic physical balance > keeps every interface and rejects intermediate failure even if aggregate lies inside foundation 4ms
+   ✓ Game003 artistic physical balance > uses one visible-volume density and retains full geometry for two distinct stable overhang pairs 19ms
+   ✓ Game003 artistic physical balance > never rewards tiny alternation, waiting, repeat drops or overlapping reuse of the same cargo 5ms
+   × Game003 artistic physical balance > same-direction overhang fails an actual lower joint, instead of random collapse 30ms
+     → expected true to be false // Object.is equality
+   ✓ Game003 artistic physical balance > keeps centered precision combo and applies C mode to art once with bounded streak 24ms
+ ✓ tests/unit/game003.test.ts (9 tests) 146ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game003-art.test.ts > Game003 artistic physical balance > same-direction overhang fails an actual lower joint, instead of random collapse
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/game003-art.test.ts:44:21
+     42|     const events: TowerEvent[] = []; const r = new TowerRun(e => event…
+     43|     for (const x of [300, 300, 300, 335, 370, 405, 417]) { if (r.alive…
+     44|     expect(r.alive).toBe(false); expect(r.result()!.outcome).toBe('col…
+       |                     ^
+     45|     expect(r.snapshot().artPairs).toBe(0); expect(events.some(e => e.t…
+     46|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 17 passed (18)
+   Start at  01:40:52
+   Duration  471ms (transform 180ms, setup 0ms, collect 332ms, tests 307ms, environment 0ms, prepare 178ms)
+

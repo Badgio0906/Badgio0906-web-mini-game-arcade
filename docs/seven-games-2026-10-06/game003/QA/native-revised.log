@@ -1,0 +1,15 @@
+desktop PASS 
+phone PASS 
+narrow PASS 
+landscape FAIL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
+    current: '3',
++   currentBonus: '300',
+-   currentBonus: '600',
+    legacy: '900',
+    legacyBonus: '8000'
+  }
+
+    

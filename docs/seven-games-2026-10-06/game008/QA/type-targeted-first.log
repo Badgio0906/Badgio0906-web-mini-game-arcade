@@ -1,0 +1,5 @@
+Captured tool output from snapshot-only tsconfig008 before vite/client types were included:
+src/games/game008/main.ts(46,16): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/games/game008/main.ts(47,16): error TS2339: Property 'hot' does not exist on type 'ImportMeta'.
+src/games/game008/main.ts(47,32): error TS2339: Property 'hot' does not exist on type 'ImportMeta'.
+Test configuration omission, corrected only in snapshot tsconfig008 with types:[vite/client]. Production source/tsconfig unchanged.

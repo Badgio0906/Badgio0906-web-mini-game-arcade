@@ -16,7 +16,7 @@ export interface Result { distance: number; height: number; breaks: number; maxB
 export interface Sample { t: number; x: number; y: number; vx: number; vy: number; rotation: number; angularVelocity: number; maxHeight: number; breaks: number }
 export interface ReplayHold { name: string; physicalTime: number; start: number; end: number; x: number; y: number }
 export interface Trajectory { samples: Sample[]; effects: Effect[]; obstacles: Obstacle[]; duration: number; motionDuration: number; physicalDuration: number; holds: ReplayHold[]; result: Result }
-export type ShoeEvent = { type: 'phase'; phase: Phase } | { type: 'lock'; step: 'angle' | 'spin' | 'power'; value: number } | { type: 'impact'; effect: Effect } | { type: 'special'; effect: Effect } | { type: 'end'; result: Result };
+export type ShoeEvent = {type:'presentation';draw:import('./rarePresentation').RareDraw} | { type: 'phase'; phase: Phase } | { type: 'lock'; step: 'angle' | 'spin' | 'power'; value: number } | { type: 'impact'; effect: Effect } | { type: 'special'; effect: Effect } | { type: 'end'; result: Result };
 export const LOCK_SECONDS = .3;
 export const KICK_SECONDS = .6;
 export const LANDING_SECONDS = .65;

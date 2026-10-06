@@ -1,0 +1,13 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+stdout | tests/unit/game008.test.ts > Game008 delivery rules 2 > deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill
+{"careful":{"distance":128,"score":0,"time":32.00416666666517,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":0.0003164663249067682,"liquidVelocity":0.001991189612405887,"surfaceTilt":-0.00002845097715483872,"spilling":false,"spillRate":0}],"outcome":"timeout","reason":"配達の時間に間に合いませんでした。","deliveries":0,"totalDeliveredRemaining":0,"spareTime":0,"rulesVersion":2},"rush":{"distance":180,"score":1788,"time":22.50416666666571,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":40.8323458848966,"liquidAngle":0.00810969001498917,"liquidVelocity":0.07739252629943917,"surfaceTilt":0.001430245083535558,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"こぼさず配達できました。","deliveries":1,"totalDeliveredRemaining":40.8323458848966,"spareTime":9.49583333333429,"rulesVersion":2},"mixed":{"distance":180,"score":2110,"time":29.24999999999866,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":-0.0070284658945135615,"liquidVelocity":-0.0016635166385906659,"surfaceTilt":-0.0007740142523649535,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"こぼさず配達できました。","deliveries":1,"totalDeliveredRemaining":100,"spareTime":2.7500000000013394,"rulesVersion":2}}
+
+ ✓ tests/unit/game008.test.ts (5 tests) 120ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  01:42:24
+   Duration  386ms (transform 63ms, setup 0ms, collect 55ms, tests 120ms, environment 0ms, prepare 65ms)
+

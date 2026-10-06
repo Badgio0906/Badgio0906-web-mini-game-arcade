@@ -25,7 +25,7 @@
   ],
   "genre": "timing / trajectory experiment",
   "controls": {
-    "summary": "Space / タップで角度→足首ひねり→パワーを決定",
+    "summary": "Space / タップで角度→自然な足首ひねりと靴の回転preview→パワーを決定",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": [
@@ -37,14 +37,14 @@
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "角度、実物理スピン、パワー、靴選びを試して飛距離を伸ばす",
-  "description": "角度、実物理スピン、パワー、靴選びを試して飛距離を伸ばす",
-  "failureModes": "飛距離の伸びない設定、MAXボーナスのタイミングずれ",
+  "mainMechanics": "5種の既存靴の角度・スピン・パワーを試す。JUSTは炎/速度線/擬音、正規条件で一度のレア演出",
+  "description": "5種の既存靴の角度・スピン・パワーを試す。JUSTは炎/速度線/擬音、正規条件で一度のレア演出",
+  "failureModes": "距離の伸びない設定・JUSTタイミングずれ。レア落選は失敗や得点減ではない",
   "route": "./game018.html",
   "thumbnail": "./assets/portal/game018.webp",
   "design": {
-    "thumbnailDescription": "靴とばそ ～Shoe fly in the sky～の実プレイ画面。赤シャツと青い短パンの少年、素足の蹴り、飛ぶ青い靴",
-    "majorVisuals": "赤シャツと青い短パンの少年、素足の蹴り、飛ぶ青い靴",
+    "thumbnailDescription": "靴とばそ ～Shoe fly in the sky～の実プレイ画面。固定長の自然な少年キック、飛距離mの主HUD、漫画発射と宇宙船の1050msカットイン",
+    "majorVisuals": "固定長の自然な少年キック、飛距離mの主HUD、漫画発射と宇宙船の1050msカットイン",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
     "referenceImageUse": "User shoe-kicking boy reference: pose, red shirt, blue shorts and flying shoe; authored game character and kick states.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
@@ -102,6 +102,35 @@
     "creditMode": "prototype free; future enabled start-once consumption",
     "ads": "none; development stub only when credits flag enabled",
     "jev": "development Shadow only",
-    "humanReview": "pending physical device and subjective experience"
+    "humanReview": "pending physical device and subjective experience",
+    "presentationRevision": 2,
+    "distanceDisplay": "comma-separated one-decimal meters, fixed HUD; height secondary",
+    "skyHoldMilliseconds": {
+      "airplane": 550,
+      "ufo": 1050,
+      "orbital": 550
+    },
+    "rarePresentation": {
+      "independentPhysicsSeed": true,
+      "eligibleDrawsPerRun": 1,
+      "iron-meteor": {
+        "probability": 0.2,
+        "condition": "iron-geta, actual ORBITAL SHOE reached, final physical landing"
+      },
+      "zori-whirlwind": {
+        "probability": 0.15,
+        "condition": "zori, JUST, abs(spin)>=0.92"
+      },
+      "paper-star-mail": {
+        "probability": 0.15,
+        "condition": "paper, JUST, actual CLOUD NINE reached"
+      }
+    },
+    "telemetryEvents": [
+      "rare_draw",
+      "ufo_view_hold",
+      "shoe_best_crossed",
+      "kick (just boolean)"
+    ]
   }
 }

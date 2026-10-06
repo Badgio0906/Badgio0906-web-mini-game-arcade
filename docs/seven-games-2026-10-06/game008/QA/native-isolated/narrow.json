@@ -1,0 +1,411 @@
+{
+  "label": "narrow",
+  "viewport": {
+    "width": 320,
+    "height": 740
+  },
+  "nativeInput": "CDP touch and button tap",
+  "source": {
+    "CoffeeRun.ts": "6d32267ca788ac9d40ebb5ffb17afeba592008cc40f4972dcbf19d6b058198e7",
+    "contracts.ts": "5b16e9229b844e98831dc9752f3eba1a6430c4f190c56e277e6f70f5e22b8893",
+    "CoffeeBoard.ts": "09da0a47869dfaee0e9d61538c5dfb6f713a70afc975122c25b32c17e9175402",
+    "coffeeArt.ts": "4395af3eb8366ea704b5bea05cd73f83d8c4a583efbeafa0267559e553d90872",
+    "main.ts": "7ae45d39e5f07987ebfa6a7b61e417022f573bf6d2b84c85baa6db664afc0569",
+    "style.css": "cd1be383089dc79008d51c552c00f559a7b0da6c0cf2c3f9e24b96aed708302e"
+  },
+  "titleBounds": [
+    {
+      "id": "brand-button",
+      "w": 110.015625,
+      "h": 44,
+      "inView": true
+    },
+    {
+      "id": "",
+      "w": 37.015625,
+      "h": 44,
+      "inView": true
+    },
+    {
+      "id": "mute-button",
+      "w": 44,
+      "h": 44,
+      "inView": true
+    },
+    {
+      "id": "play-button",
+      "w": 122.6875,
+      "h": 44,
+      "inView": true
+    },
+    {
+      "id": "explain-button",
+      "w": 122.703125,
+      "h": 44,
+      "inView": true
+    },
+    {
+      "id": "practice-button",
+      "w": 251.390625,
+      "h": 44,
+      "inView": true
+    }
+  ],
+  "pausedExact": true,
+  "end": {
+    "state": "result",
+    "s": {
+      "distance": 180.0157333333393,
+      "legDistance": 180,
+      "target": 180,
+      "remainingDistance": 0,
+      "score": 2129,
+      "time": 28.751666666665532,
+      "legTime": 28.751666666665532,
+      "deadline": 32,
+      "remainingTime": 3.248333333334468,
+      "alive": false,
+      "phase": "ended",
+      "bodyLean": 0.005931766912778925,
+      "bodyVelocity": -0.027200121554667035,
+      "input": 0,
+      "pace": "rush",
+      "cups": [
+        {
+          "id": 0,
+          "name": "コーヒー",
+          "remaining": 100,
+          "liquidAngle": 0.006304382440552715,
+          "liquidVelocity": -0.01732843282030491,
+          "surfaceTilt": 0.0003726155277737897,
+          "spilling": false,
+          "spillRate": 0
+        }
+      ],
+      "cupCount": 1,
+      "minRemaining": 100,
+      "pending": null,
+      "deliveries": 1,
+      "preview": null,
+      "activeEvent": null,
+      "practice": false
+    },
+    "events": [
+      {
+        "name": "game_open",
+        "at": "2026-10-06T01:50:33.622Z",
+        "data": {
+          "rulesVersion": 2,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "tutorial_view",
+        "at": "2026-10-06T01:50:33.999Z",
+        "data": {
+          "rulesVersion": 2,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "run_start",
+        "at": "2026-10-06T01:50:34.494Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "pause",
+        "at": "2026-10-06T01:50:34.997Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "phase": "playing",
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "resume",
+        "at": "2026-10-06T01:50:35.912Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "phase": "playing",
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:36.421Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "rush",
+          "distance": 2.7335999999999965,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:40.092Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "warning",
+          "hazard": "step",
+          "side": 1,
+          "hazard_distance": 48,
+          "distance": 32.031733333333946,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:41.194Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "careful",
+          "distance": 40.86320000000018,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:42.991Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "hazard",
+          "hazard": "step",
+          "side": 1,
+          "hazard_distance": 48,
+          "distance": 48.01279999999988,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:45.246Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "rush",
+          "distance": 56.86159999999956,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:47.897Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "warning",
+          "hazard": "corner",
+          "side": -1,
+          "hazard_distance": 94,
+          "distance": 78.02613333333206,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:49.102Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "careful",
+          "distance": 87.25839999999829,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:50.941Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "hazard",
+          "hazard": "corner",
+          "side": -1,
+          "hazard_distance": 94,
+          "distance": 94.00786666666454,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:53.246Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "rush",
+          "distance": 103.19119999999742,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:56.182Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "warning",
+          "hazard": "seam",
+          "side": 1,
+          "hazard_distance": 142,
+          "distance": 126.0223999999965,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:57.376Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "careful",
+          "distance": 135.18639999999604,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:50:59.078Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "hazard",
+          "hazard": "seam",
+          "side": 1,
+          "hazard_distance": 142,
+          "distance": 142.00360000000137,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:51:01.208Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "pace",
+          "pace": "rush",
+          "distance": 150.51920000000774,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:51:05.024Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "delivery",
+          "success": true,
+          "remaining": 100,
+          "spareTime": 3.248333333334468,
+          "cupCount": 1,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:51:05.545Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "choice",
+          "choice": "decline",
+          "cupCount": 1,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "specific_game_events",
+        "at": "2026-10-06T01:51:05.546Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "event": "finish",
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      },
+      {
+        "name": "run_end",
+        "at": "2026-10-06T01:51:05.547Z",
+        "data": {
+          "runId": "coffee-1791251434494",
+          "rulesVersion": 2,
+          "outcome": "delivered",
+          "score": 2129,
+          "distance": 180,
+          "time": 28.751666666665532,
+          "deliveries": 1,
+          "remaining": 100,
+          "spareTime": 3.248333333334468,
+          "game": "game008",
+          "game_id": "game008",
+          "session_id": "muw0urv8-jfp4eqtm"
+        }
+      }
+    ],
+    "legacy": "777",
+    "best": "2129"
+  },
+  "saved": {
+    "best": "2129",
+    "mute": "音 OFF",
+    "legacy": "777"
+  },
+  "errors": []
+}

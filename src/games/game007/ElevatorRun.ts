@@ -1,148 +1,94 @@
-import type { ElevatorChoice, ElevatorEvent, ElevatorInspection, ElevatorItem, ElevatorMode, ElevatorParty, ElevatorPassenger, ElevatorPhase, ElevatorResult, ElevatorSide, ElevatorSnapshot, OccupantKind } from './contracts';
-
+import type { ElevatorChoice, ElevatorEvent, ElevatorInspection, ElevatorParty, ElevatorPassenger, ElevatorPhase, ElevatorResult, ElevatorSide, ElevatorSnapshot } from './contracts';
+import { floorParties } from './scenarios';
 export const CAPACITY_KG = 450;
-export const DEPART_SECONDS = 0.4;
-export const UNLOAD_SECONDS = 0.45;
-export const OVERLOAD_WARNING_SECONDS = 0.65;
-export const decisionSecondsAt = (floor: number, mode: ElevatorMode): number => mode === 'fast' ? Math.max(2, 3.2 - Math.max(0, floor - 20) * 0.035) : Math.max(4.5, 7 - Math.max(0, floor - 1) * 0.055);
-export const travelSecondsFor = (mode: ElevatorMode): number => mode === 'fast' ? 0.58 : 1.15;
-export const scoreMultiplierFor = (mode: ElevatorMode): 1 | 1.5 => mode === 'fast' ? 1.5 : 1;
-const copyParty = <T extends ElevatorParty>(p: T): T => ({ ...p, items: p.items.map(item => ({ ...item })) });
-const labels: Record<OccupantKind, string> = { office: '会社員', courier: '配達員', visitor: '来客', plant: '巨大な観葉植物', copier: 'コピー機', fridge: 'なぜか冷蔵庫', boxes: '段ボール台車' };
-const item = (kind: OccupantKind, kg: number): ElevatorItem => ({ kind, label: labels[kind], kg,
-  people: ['office', 'courier', 'visitor'].includes(kind) ? 1 : 0, cargo: kind === 'boxes' ? 4 : ['plant', 'copier', 'fridge'].includes(kind) ? 1 : 0,
-  value: { office: 100, courier: 100, visitor: 110, boxes: 160, plant: 300, copier: 340, fridge: 400 }[kind] });
-
-/** NEXT is an already-created real party. RNG is consumed only once when its future floor is queued. */
-export function createElevatorParty(floor: number, random: () => number = Math.random): ElevatorParty {
-  let items: ElevatorItem[]; let destination: number;
-  if (floor === 1) { items = [item('office', 65)]; destination = 4; }
-  else if (floor === 2) { items = [item('visitor', 90)]; destination = 6; }
-  else if (floor === 3) { items = [item('boxes', 240)]; destination = 9; }
-  else if (floor === 4) { items = [item('courier', 85), item('plant', 220)]; destination = 6; }
-  else {
-    const roll = Math.max(0, Math.min(0.999999, random()));
-    const kinds: OccupantKind[] = floor < 8 ? ['office', 'courier', 'visitor', 'boxes'] : floor < 14 ? ['office', 'courier', 'visitor', 'boxes', 'plant', 'copier'] : ['office', 'courier', 'visitor', 'boxes', 'plant', 'copier', 'fridge'];
-    const kind = kinds[Math.floor(roll * kinds.length)];
-    const variant = Math.min(3, Math.floor(random() * 4));
-    const kg = { office: 60 + variant * 10, courier: 70 + variant * 10, visitor: 55 + variant * 10,
-      boxes: 120 + variant * 30, plant: 170 + variant * 20, copier: 220 + variant * 20, fridge: 260 + variant * 20 }[kind];
-    items = [item(kind, kg)];
-    if (floor >= 12 && roll > 0.76 && kg <= 280) items.push(item('courier', 75));
-    destination = floor + 2 + Math.min(4, Math.floor(random() * 5));
-  }
-  return { id: floor, floor, destination, label: items.map(i => i.label).join('＋'), kg: items.reduce((sum, i) => sum + i.kg, 0), value: items.reduce((sum, i) => sum + i.value, 0), items };
-}
-
+export const BOARD_SECONDS = .7, SKIP_SECONDS = .2, DEPART_SECONDS = .4, TRAVEL_SECONDS = 1, UNLOAD_SECONDS = .8;
+export const RUN_SECONDS = 65, ROOF_SECONDS = 28, SPECIAL_SCORE = 1600;
+const copy = <T extends ElevatorParty>(party: T): T => ({ ...party, items: party.items.map(item => ({ ...item })) });
 export class ElevatorRun {
-  private floor = 1;
-  private score = 0;
-  private time = 0;
-  private alive = false;
-  private phase: ElevatorPhase = 'boarding';
-  private mode: ElevatorMode = 'normal';
-  private pending: 'floor20' | null = null;
-  private offered = false;
-  private phaseTime = 0;
-  private load = 0;
-  private currentParty: ElevatorParty;
-  private nextParty: ElevatorParty;
-  private aboard: ElevatorPassenger[] = [];
-  private lastUnloaded: ElevatorPassenger[] = [];
-  private lastSide: ElevatorSide | null = null;
-  private deliveredPeople = 0;
-  private deliveredCargo = 0;
-  private refused = 0;
-  private timedOut = 0;
-  private occupiedFloors = 0;
-  private kgFloors = 0;
-  private travelLoad = 0;
-  private ending: ElevatorResult | null = null;
-  constructor(private readonly emit: (event: ElevatorEvent) => void = () => {}, private readonly random: () => number = Math.random) {
-    this.currentParty = createElevatorParty(1); this.nextParty = createElevatorParty(2);
+  private floor = 1; private score = 0; private time = 0; private segmentTime = 0; private limit = RUN_SECONDS;
+  private alive = false; private phase: ElevatorPhase = 'boarding'; private phaseTime = 0; private duration = 0;
+  private scenario = 0; private practice = false; private mode: 'normal' | 'roof' = 'normal'; private target = 10;
+  private queue: ElevatorParty[] = []; private aboard: ElevatorPassenger[] = []; private lastUnloaded: ElevatorPassenger[] = [];
+  private lastPoints = 0; private lastSide: ElevatorSide | null = null; private deliveredPeople = 0; private deliveredCargo = 0;
+  private delivered = 0; private expired = 0; private refused = 0; private ending: ElevatorResult | null = null;
+  constructor(private readonly emit: (event: ElevatorEvent) => void = () => {}) { this.reset(); }
+  reset(scenario = 0, practice = false): void {
+    this.floor = 1; this.score = this.time = this.segmentTime = this.phaseTime = 0; this.limit = practice ? 50 : RUN_SECONDS;
+    this.alive = false; this.phase = 'boarding'; this.scenario = scenario; this.practice = practice; this.mode = 'normal'; this.target = practice ? 4 : 10;
+    this.queue = floorParties(1, scenario, practice); this.aboard = []; this.lastUnloaded = []; this.lastPoints = 0; this.lastSide = null;
+    this.deliveredPeople = this.deliveredCargo = this.delivered = this.expired = this.refused = 0; this.ending = null;
   }
-  start(): void { this.reset(); this.alive = true; }
-  reset(): void {
-    this.floor = 1; this.score = this.time = this.phaseTime = this.load = 0; this.alive = false; this.phase = 'boarding'; this.mode = 'normal'; this.pending = null; this.offered = false;
-    this.currentParty = createElevatorParty(1); this.nextParty = createElevatorParty(2); this.aboard.length = this.lastUnloaded.length = 0; this.lastSide = null;
-    this.deliveredPeople = this.deliveredCargo = this.refused = this.timedOut = this.occupiedFloors = this.kgFloors = this.travelLoad = 0; this.ending = null;
+  start(scenario = 0, practice = false): void { this.reset(scenario, practice); this.alive = true; }
+  input(side: ElevatorSide): boolean {
+    if (!this.alive || this.phase !== 'boarding') return false;
+    if (side === 'depart') {
+      const skipped = this.queue.length; this.refused += skipped;
+      this.queue.forEach(party => this.emitDecision('refuse', party)); this.queue = [];
+      this.emit({ type: 'departure', floor: this.floor, freeKg: CAPACITY_KG - this.load(), skipped });
+      this.lastSide = side; this.change('departing', DEPART_SECONDS); return true;
+    }
+    const party = this.queue[0]; if (!party || (side !== 'accept' && side !== 'refuse') || (side === 'accept' && this.load() + party.kg > CAPACITY_KG)) return false;
+    this.queue.shift(); this.lastSide = side;
+    if (side === 'accept') this.aboard.push({ ...copy(party), boardedFloor: this.floor }); else this.refused++;
+    this.emitDecision(side, party); this.change('action', side === 'accept' ? BOARD_SECONDS : SKIP_SECONDS); return true;
   }
-  input(side: ElevatorSide): boolean { return this.decide(side, false); }
-  private decide(side: ElevatorSide, timedOut: boolean): boolean {
-    if (!this.alive || this.pending || this.phase !== 'boarding' || (side !== 'refuse' && side !== 'accept')) return false;
-    this.lastSide = side; this.lastUnloaded.length = 0;
-    if (side === 'accept') {
-      this.load += this.currentParty.kg; this.aboard.push({ ...copyParty(this.currentParty), boardedFloor: this.floor });
-    } else { this.refused++; if (timedOut) this.timedOut++; }
-    this.emit({ type: 'decision', side, party: copyParty(this.currentParty), timedOut });
-    if (this.load > CAPACITY_KG) { this.finish(); return true; }
-    this.travelLoad = this.load; this.phase = 'departing'; this.phaseTime = 0; return true;
-  }
+  private emitDecision(side: ElevatorSide, p: ElevatorParty): void { this.emit({ type: 'decision', side, partyId: p.id, floor: this.floor, kg: p.kg, destination: p.destination, points: p.value, deadline: p.deadline, load: this.load() }); }
+  private change(phase: ElevatorPhase, duration = 0): void { this.phase = phase; this.phaseTime = 0; this.duration = duration; }
   choose(choice: ElevatorChoice): boolean {
-    if (!this.alive || !this.pending || (choice !== 'normal' && choice !== 'fast')) return false;
-    this.mode = choice; this.pending = null; this.phase = 'unloading'; this.phaseTime = 0;
-    this.emit({ type: 'choice', milestone: 'floor20', choice }); return true;
+    if (!this.alive || this.phase !== 'choice' || !['finish', 'roof'].includes(choice)) return false;
+    this.emit({ type: 'choice', choice });
+    if (choice === 'finish') this.finish('complete');
+    else { this.mode = 'roof'; this.target = 14; this.limit = ROOF_SECONDS; this.segmentTime = 0; this.queue = floorParties(10, this.scenario, false, true); this.change('boarding'); }
+    return true;
   }
   step(seconds: number): void {
-    if (!this.alive || this.pending || !Number.isFinite(seconds) || seconds <= 0) return;
-    let remaining = Math.min(0.05, seconds);
-    while (remaining > 1e-10 && this.alive && !this.pending) {
-      const dt = Math.min(1 / 240, remaining); remaining -= dt; this.time += dt; this.phaseTime += dt;
-      if (this.phase === 'boarding' && this.phaseTime >= decisionSecondsAt(this.floor, this.mode)) this.decide('refuse', true);
-      else if (this.phase === 'departing' && this.phaseTime >= DEPART_SECONDS) { this.phase = 'travel'; this.phaseTime = 0; }
-      else if (this.phase === 'travel' && this.phaseTime >= travelSecondsFor(this.mode)) this.arrive();
-      else if (this.phase === 'unloading' && this.phaseTime >= UNLOAD_SECONDS) { this.phase = 'boarding'; this.phaseTime = 0; this.lastSide = null; }
+    if (!this.alive || this.phase === 'choice' || !Number.isFinite(seconds) || seconds <= 0) return;
+    let left = Math.min(.05, seconds);
+    while (left > 1e-10 && this.alive && (this.phase as ElevatorPhase) !== 'choice') {
+      const dt = Math.min(1 / 240, left); left -= dt; this.time += dt; this.segmentTime += dt; this.phaseTime += dt;
+      if (this.segmentTime >= this.limit - 1e-9) { this.finish('timeout'); break; }
+      if (this.phase === 'action' && this.phaseTime >= this.duration - 1e-9) this.change('boarding');
+      else if (this.phase === 'departing' && this.phaseTime >= DEPART_SECONDS - 1e-9) this.change('travel', TRAVEL_SECONDS);
+      else if (this.phase === 'travel' && this.phaseTime >= TRAVEL_SECONDS - 1e-9) {
+        this.floor++; this.emit({ type: 'floor', floor: this.floor }); this.lastUnloaded = this.aboard.filter(p => p.destination === this.floor); this.lastPoints = 0;
+        if (this.lastUnloaded.length) this.change('unloading', UNLOAD_SECONDS); else this.arrived();
+      } else if (this.phase === 'unloading' && this.phaseTime >= UNLOAD_SECONDS - 1e-9) {
+        for (const p of this.lastUnloaded) {
+          const onTime = p.deadline === null || this.segmentTime <= p.deadline + 1e-9; const points = onTime ? p.value : 0;
+          this.score += points; this.lastPoints += points;
+          if (onTime) { this.delivered++; this.deliveredPeople += p.items.reduce((n, i) => n + i.people, 0); this.deliveredCargo += p.items.reduce((n, i) => n + i.cargo, 0); } else this.expired++;
+          this.emit({ type: 'delivery', floor: this.floor, partyId: p.id, kg: p.kg, points, onTime, deadline: p.deadline, time: this.segmentTime });
+        }
+        this.aboard = this.aboard.filter(p => p.destination !== this.floor); this.arrived();
+      }
     }
   }
-  private arrive(): void {
-    let floorPoints = 0;
-    if (this.travelLoad > 0) {
-      this.occupiedFloors++; this.kgFloors += this.travelLoad;
-      floorPoints = Math.round((10 + Math.round(this.travelLoad / CAPACITY_KG * 20)) * scoreMultiplierFor(this.mode)); this.score += floorPoints;
+  private arrived(): void {
+    if (this.floor >= this.target) {
+      if (!this.practice && this.mode === 'normal' && this.score >= SPECIAL_SCORE) { this.change('choice'); this.emit({ type: 'special_offer', score: this.score }); }
+      else this.finish('complete');
+      return;
     }
-    this.floor++; this.emit({ type: 'floor', floor: this.floor, points: floorPoints });
-    this.lastUnloaded = this.aboard.filter(p => p.destination <= this.floor);
-    this.aboard = this.aboard.filter(p => p.destination > this.floor);
-    this.load = this.aboard.reduce((sum, p) => sum + p.kg, 0);
-    if (this.lastUnloaded.length) {
-      const people = this.lastUnloaded.reduce((sum, p) => sum + p.items.reduce((n, i) => n + i.people, 0), 0);
-      const cargo = this.lastUnloaded.reduce((sum, p) => sum + p.items.reduce((n, i) => n + i.cargo, 0), 0);
-      const kg = this.lastUnloaded.reduce((sum, p) => sum + p.kg, 0);
-      const points = Math.round(this.lastUnloaded.reduce((sum, p) => sum + p.value, 0) * scoreMultiplierFor(this.mode));
-      this.deliveredPeople += people; this.deliveredCargo += cargo; this.score += points;
-      this.emit({ type: 'delivery', people, cargo, kg, points });
-    }
-    this.currentParty = this.nextParty; this.nextParty = createElevatorParty(this.floor + 1, this.random);
-    this.phase = 'unloading'; this.phaseTime = 0;
-    if (this.floor === 20 && !this.offered) {
-      this.offered = true; this.pending = 'floor20'; this.phase = 'choice'; this.emit({ type: 'milestone', milestone: 'floor20' });
-    }
+    this.queue = floorParties(this.floor, this.scenario, this.practice, this.mode === 'roof'); this.lastSide = null; this.change('boarding');
   }
-  /** Capacity violation is terminal at the actual boarding action, not after warning animation. */
-  private finish(): void {
-    if (!this.alive) return;
-    this.alive = false; this.phase = 'overload'; this.phaseTime = 0;
-    this.ending = { floor: this.floor, score: this.score, time: this.time, mode: this.mode, deliveredPeople: this.deliveredPeople,
-      deliveredCargo: this.deliveredCargo, utilization: this.utilization(), occupiedFloors: this.occupiedFloors, refused: this.refused, timedOut: this.timedOut,
-      outcome: 'overload', reason: `重量オーバー！ ${this.load}kg / ${CAPACITY_KG}kg（${this.load - CAPACITY_KG}kg 超過）`, load: this.load, excessKg: this.load - CAPACITY_KG, party: copyParty(this.currentParty) };
-    this.emit({ type: 'overload', excessKg: this.load - CAPACITY_KG });
+  private load(): number { return this.aboard.reduce((n, p) => n + p.kg, 0); }
+  private finish(outcome: 'complete' | 'timeout'): void {
+    this.alive = false; this.change('complete');
+    this.ending = { floor: this.floor, score: this.score, time: this.time, mode: this.mode, deliveredPeople: this.deliveredPeople, deliveredCargo: this.deliveredCargo,
+      delivered: this.delivered, expired: this.expired, refused: this.refused, outcome, reason: outcome === 'timeout' ? '時間切れ。届いた依頼だけ記録。' : '上昇便、お届け完了！', rulesVersion: 2 };
   }
-  private utilization(): number { return this.occupiedFloors ? this.kgFloors / (CAPACITY_KG * this.occupiedFloors) * 100 : 0; }
   snapshot(): ElevatorSnapshot {
-    const destination = this.aboard.length ? Math.min(...this.aboard.map(p => p.destination)) : null;
-    const next = this.aboard.filter(p => p.destination === destination);
-    return { floor: this.floor, score: this.score, time: this.time, alive: this.alive, phase: this.phase, pending: this.pending, mode: this.mode,
-      scoreMultiplier: scoreMultiplierFor(this.mode), load: this.load, capacity: CAPACITY_KG, currentParty: copyParty(this.currentParty), nextParty: copyParty(this.nextParty),
-      aboard: this.aboard.map(p => copyParty(p)), nextUnload: destination === null ? null : { floor: destination, kg: next.reduce((sum, p) => sum + p.kg, 0),
-        people: next.reduce((sum, p) => sum + p.items.reduce((n, i) => n + i.people, 0), 0), cargo: next.reduce((sum, p) => sum + p.items.reduce((n, i) => n + i.cargo, 0), 0) },
-      deliveredPeople: this.deliveredPeople, deliveredCargo: this.deliveredCargo, refused: this.refused, timedOut: this.timedOut, utilization: this.utilization(), occupiedFloors: this.occupiedFloors,
-      decisionRemaining: this.phase === 'boarding' ? Math.max(0, decisionSecondsAt(this.floor, this.mode) - this.phaseTime) : 0,
-      decisionSeconds: decisionSecondsAt(this.floor, this.mode), travelSeconds: travelSecondsFor(this.mode), lastSide: this.lastSide,
-      lastUnloaded: this.lastUnloaded.map(p => copyParty(p)), excessKg: Math.max(0, this.load - CAPACITY_KG) };
+    const currentParty = this.queue[0] ? copy(this.queue[0]) : null;
+    const destinations = this.aboard.map(p => p.destination); const nextFloor = destinations.length ? Math.min(...destinations) : null;
+    const stops = currentParty ? new Set([...destinations.filter(d => d <= currentParty.destination), currentParty.destination]).size : 0;
+    const minimumArrival = currentParty ? this.segmentTime + BOARD_SECONDS + (currentParty.destination - this.floor) * (DEPART_SECONDS + TRAVEL_SECONDS) + stops * UNLOAD_SECONDS : null;
+    return { floor: this.floor, score: this.score, time: this.time, remaining: Math.max(0, this.limit - this.segmentTime), limit: this.limit, alive: this.alive, phase: this.phase,
+      pending: this.phase === 'choice' ? 'roof' : null, mode: this.mode, rulesVersion: 2, scenario: this.scenario, target: this.target, load: this.load(), capacity: CAPACITY_KG,
+      currentParty, queue: this.queue.map(copy), future: [this.floor + 1, this.floor + 2].filter(f => f < this.target).map(floor => ({ floor, parties: floorParties(floor, this.scenario, this.practice, this.mode === 'roof') })),
+      aboard: this.aboard.map(copy), nextUnload: nextFloor === null ? null : { floor: nextFloor, kg: this.aboard.filter(p => p.destination === nextFloor).reduce((n, p) => n + p.kg, 0) }, nextStop: this.floor + 1,
+      deliveredPeople: this.deliveredPeople, deliveredCargo: this.deliveredCargo, delivered: this.delivered, expired: this.expired, refused: this.refused,
+      lastSide: this.lastSide, lastUnloaded: this.lastUnloaded.map(copy), lastPoints: this.lastPoints, minimumArrival };
   }
-  result(): ElevatorResult | null { return this.ending ? { ...this.ending, party: copyParty(this.ending.party) } : null; }
-  inspection(): ElevatorInspection {
-    const doorOpen = this.phase === 'departing' ? Math.max(0, 1 - this.phaseTime / DEPART_SECONDS) : this.phase === 'travel' ? 0 : this.phase === 'unloading' ? Math.min(1, this.phaseTime / UNLOAD_SECONDS) : 1;
-    return { ...this.snapshot(), phaseTime: this.phaseTime, doorOpen, travelProgress: this.phase === 'travel' ? Math.min(1, this.phaseTime / travelSecondsFor(this.mode)) : 0 };
-  }
+  inspection(): ElevatorInspection { return { ...this.snapshot(), phaseTime: this.phaseTime, doorOpen: this.phase === 'travel' ? 0 : this.phase === 'departing' ? Math.max(0, 1 - this.phaseTime / DEPART_SECONDS) : 1, travelProgress: this.phase === 'travel' ? this.phaseTime / TRAVEL_SECONDS : 0 }; }
+  result(): ElevatorResult | null { return this.ending ? { ...this.ending } : null; }
 }
