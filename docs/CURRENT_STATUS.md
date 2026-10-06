@@ -1,6 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-06（日本時間）：**対象7本（018／003／006／007／008／009／010）の改修・独立レビュー・統合検証が完了。main反映／公開を進行中。** [統合報告](seven-games-2026-10-06/REPORT.md)。315単体／TypeScript／build、compiled7×4画面・7prefix・portal19を確認。対象外12作品は217保護fileとprofile／Catalog／thumb entry不変。Game015とGame019は本人から「とても面白くなっていた。イイ感じ」の評価を受けた。この好評価を現行状態として採用し、両作品のコードは今回変更しない。全機能・全端末の詳細検証済みという意味には広げない。今回7本の本人試遊・実機音/FPSは未実施。候補branch codex/seven-games-gameplay-visual-2026-10-06、公開前baseline5b2dff8。
+2026-10-06（日本時間）：**対象7本（018／003／006／007／008／009／010）の改訂02を正式HTTPSへ公開済み。** [ゲームセンター](https://game100garage.com/)／[統合報告](seven-games-2026-10-06/REPORT.md)／[公開記録](seven-games-2026-10-06/QA/PUBLICATION.json)。PR #4はmainへmerge、runtime58718f9、Pages run37413280501のtest／build／deploy成功。315単体、compiled7×4画面＋7prefix、公開7画面の通常操作と保存再読込、39配信fileのhash一致、portal19を確認。対象外12作品は217保護fileとprofile／Catalog／thumb entry不変。今回7本の本人試遊・実機音/FPSは未実施。Game015とGame019は本人から「とても面白くなっていた。イイ感じ」の最新評価を受けた。両作品は今回変更していない。この好評価を全機能・全端末の詳細検証へ広げない。
 
 以下は過去の公開時点の記録。015／019の現在の本人評価は上記を優先する。
 

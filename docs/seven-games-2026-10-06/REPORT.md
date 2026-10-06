@@ -36,4 +36,8 @@
 
 ## 公開記録
 
-現在：候補ブランチ実装・レビュー・統合検証。main反映／GitHub Pages／公開URL確認はこれから。公開までの既存ユーザー許可に従い、下記へ実際の結果を追加する。
+**正式HTTPS公開済み。** [ゲームセンター](https://game100garage.com/)／[PR #4](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/4)はmainへmerge済み。runtime main `58718f908c7e9432d3deff3f3c32ff629b2d4455`、[Pages run37413280501](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37413280501)のnpm test／build／deployが成功。
+
+[公開native7](QA/public/native/report.json)は390×844で通常mouse／keyによる起動・操作・pause／resume・mute再読込・font／画像、portal19をPASS。これはスマホ相当viewportの自動ブラウザ確認で、実機touchの本人試遊ではない。実touchscreen入力の各個別4画面証拠は別に残す。[配信比較39file](QA/public/ASSET_HASHES.json)は全HTML／必要JS・CSS・新font・7thumbがHTTP200でローカル最終buildとSHA256一致。Nodeの外部DNSに依存せずsame-origin browser fetch＋WebCryptoで確認した。
+
+[公開記録](QA/PUBLICATION.json)。候補ef17a48、main58718f9、CI／公開確認／人間未評価を別記録にした。最後の公開証拠・CURRENT_STATUS・このreportの追加commitは文書と検証utilityだけで、runtimeを変更しない。
