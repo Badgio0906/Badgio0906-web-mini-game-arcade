@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-06：**Jev運用をrouting層として正式整理。** OpenRouter／`typesafe/jev-1.13`固定、schema v2のPRIMARY_CAUSE・CODEX_ACTION_REQUIRED・NEXT_EVIDENCE・RELEASE_RISK_IF_UNRESOLVED、Shadow Mode。0.45未満でも独立Codexレビュー継続、両見逃しを別記録、自動Gateなし。新規findingは[正本ルール](JEV_REVIEW_RULES.md)を適用。[評価・検証履歴](jev/JEV_EVALUATION_HISTORY.md)。ゲーム／Portal／公開runtimeは変更なし。
+
 2026-10-06（日本時間）：**集客前の分析基盤・共通長押し対策・Game010退役を正式HTTPSへ公開済み。active18、次は020。** Game010 retired after human playtest：抜本改修後も本人試遊で面白くないため、AIテストの合否とは別の企画判断で退役。ID010/releaseOrder/過去コード/資料/Telemetry/profileを保持し、軽量noindex退役routeへ変更。Game015/019固有ソースと現在の本人好評価を維持。広告/CREDIT OFFも不変。[最新報告](analytics/REPORT.md)、[本番外部設定](analytics/MANUAL_SETUP.md)。Consent/GA/upload/Worker/D1/管理集計/集計exportまで実装・ローカル検証。本番Worker/D1/GA4は未設定・inactive。PR #5／runtime4608ac8、Pages37456340150のtest/build/deploy成功。公開全18作品×4画面＋portal/退役/privacyの84経路と70配信hash一致。公開状態と最終検証は最新報告・QA/PUBLICATION.jsonを参照。
 
 以下は各公開時点の歴史。過去のportal19は当時の本数であり、現行active18へ全文置換しない。
@@ -73,6 +75,6 @@ CREDITは[config](../src/arcade/config.ts)でOFF。残高0で練習／本番／r
 
 人間の面白さ、実機FPS／音／親指操作、酔い、JUST難度の体験評価は未実施。[017フォーム](game017/HUMAN_PLAYTEST.md)／[018フォーム](game018/HUMAN_PLAYTEST.md)。自動入力の成功を人間合格へ変換しない。旧3サイト停止は過去API403で未完了、元Repository保持：[停止監査](migration/PAGES_RETIREMENT_AUDIT.json)。
 
-JevはOpenRouter Decisionsの開発CLIのみ、原因choice＋独立3noul。runtime／CIへの自動判断接続なし。歴史的3ケース・10〜20件ベンチマークを今回の開発checkpointとして完了扱いしない。[ルール](JEV_REVIEW_RULES.md)。Codexのtokens／料金は取得不可、nullで記録する。[過去baseline](development-baseline/BASELINE_2026-10-05.json)。
+当時のJevはOpenRouter Decisionsの開発CLIのみ、原因choice＋独立3noul。現行は本書冒頭のschema v2を参照。runtime／CIへの自動判断接続なし。歴史的3ケース・10〜20件ベンチマークを今回の開発checkpointとして完了扱いしない。[ルール](JEV_REVIEW_RULES.md)。Codexのtokens／料金は取得不可、nullで記録する。[過去baseline](development-baseline/BASELINE_2026-10-05.json)。
 
 再開時はbranch／HEAD／git statusとremote mainを確認し、他の未コミット変更を保つ。source hash、検証範囲、公開確認、人間評価を対象報告から読む。起動server／認証情報／distが次タスクにも残ると仮定しない。

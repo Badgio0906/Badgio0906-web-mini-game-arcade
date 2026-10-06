@@ -1,5 +1,7 @@
 # Jev向けの中間データ
 
+Jevの役割・4質問・Shadow Modeの正本は[JEV_REVIEW_RULES](../JEV_REVIEW_RULES.md)。本書は入力に使う背景データの準備だけを扱う。profile／集計から1つの観測findingを短く作り、最終原因・人間の結論やraw識別子を渡さない。
+
 2026-10-06更新：active18、Game010はretiredとして元profileを`jev_export/retired_game_profiles/game010.json`へ保持。ID010は再利用せず次は020。外部計測は**準備済み・production inactive**。現在Cloudflare/D1/GA4の本番設定はなく、公開ブラウザから外部解析へ送信しない。local400件の確認履歴と、同意後に新しく発生する外部envelopeを区別する。
 
 集客後は[分析基盤](../analytics/ARCHITECTURE.md)の集計APIまたは`tools/export-analytics-summary.mjs`で、期間・母数・欠測・版・環境を含むJSONを出す。個別browser/visit/session/run/event ID、raw event、トークンは含めない。Jevのリアルタイム呼び出しはなく、得点・成功・抽選・公開可否へ接続しない。Worker本番deployと実送信確認を行った場合にのみproduction activeへ更新する。
