@@ -1,0 +1,11 @@
+{
+ "$schema":"./node_modules/wrangler/config-schema.json",
+ "name":"game100-analytics",
+ "main":"src/index.ts",
+ "compatibility_date":"2026-10-06",
+ "workers_dev":false,
+ "vars":{"ENVIRONMENT":"production","RAW_RETENTION_DAYS":"90","AGGREGATE_RETENTION_MONTHS":"13"},
+ "d1_databases":[{"binding":"DB","database_name":"game100-analytics","database_id":"REPLACE_WITH_D1_DATABASE_ID","migrations_dir":"migrations"}],
+ "triggers":{"crons":["17 3 * * *"]},
+ "env":{"development":{"name":"game100-analytics-development","workers_dev":false,"vars":{"ENVIRONMENT":"development","RAW_RETENTION_DAYS":"90","AGGREGATE_RETENTION_MONTHS":"13"},"d1_databases":[{"binding":"DB","database_name":"game100-analytics-development","database_id":"REPLACE_WITH_DEVELOPMENT_D1_DATABASE_ID","migrations_dir":"migrations"}]}}
+}

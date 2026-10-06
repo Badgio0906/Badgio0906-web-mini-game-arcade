@@ -1,0 +1,22 @@
+{
+  "environment": "synthetic-local-only",
+  "attempts": [
+    {
+      "stage": "unit-test aggregate privacy assertion",
+      "status": "FAIL",
+      "classification": "test_infrastructure",
+      "error": "Expected response not to contain run1\"; it matched the required aggregate metric key run1, not an exposed run ID.",
+      "correction": "Assert absence of a raw run_id value rather than the required aggregate metric name.",
+      "subsequent_result": "PASS"
+    },
+    {
+      "stage": "Wrangler local D1 SQL result collector",
+      "status": "FAIL",
+      "classification": "test_infrastructure",
+      "error": "SyntaxError: Unexpected token 'P', \"Proxy envi\"... is not valid JSON",
+      "cause": "Wrangler printed a proxy-environment notice before its JSON array. HTTP checks had completed; the final SQL result parser failed.",
+      "correction": "Parse the machine JSON array after the informational prefix.",
+      "subsequent_result": "PASS; independently rerun after final worker changes"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# 解析とプライバシーの境界
+
+解析同意はunknown/granted/denied。初期状態unknown。選択の設定だけは先に保存可能。同意前にbrowser_id・visit_idを保存せず、Google tagと独自uploadを開始しない。任意バナーは同程度の許可／拒否ボタン、設定を再表示可能。拒否・保留でもゲームを遊べる。
+
+許可後、ランダムbrowser IDと訪問ID、ゲーム利用状況、到達・失敗・継続、流入token、大まかなdevice/inputを利用。氏名・メール・住所・生IP・User-Agent全文・referrer全文・会話・typed text・stack・認証headerをD1へ保存しない。ID付きイベントについて完全匿名と断言しない。
+
+撤回時は新規upload停止、送信中fetch中断、browser ID・visit情報・未送信queue・impression記録を削除。GAはdisable flagとpending dataLayer破棄により以後送信せず、自サイトcookieを可能な範囲で削除。既に送信済みのrawは撤回で自動削除されずretentionで処理。既に取得されたGoogleライブラリ自体はページ内に残る。vendorの実挙動はMeasurement ID設定後に実通信で確認する。
+
+旧device-local400件の履歴は消去しない。production未知・拒否時の新規イベントはmemory-only。同意時にも現在の同意前memoryを端末履歴へ後付け保存しない。過去local履歴は外部へreplayしない。dev/QAは従来のlocaldebug保存を保つ。
+
+UTM5keyは初回ページのメモリだけに保持。同意後だけsanitized tokenをvisitへ保存、拒否では破棄。未知query・自由文・URLは捨てる。同意前にページを移動した場合のUTM欠測を推測補完しない。GA page_locationはqueryのないURL、page_referrerは必要なhostnameのみ。
+
+Cloudflareはインフラとして接続元情報を扱いうるがD1イベントへの生IP保存は行わない。public write endpointは偽造可能。Origin/CORS/strict schema/件数・body上限/UUID dedupeは濫用対策でありデータを正本にしない。広告報酬・CREDIT・正式ランキング・金銭処理には利用しない。
+
+raw90日・IDなし日別集計13か月、queue200件/24時間。管理API認証必須。UIトークンはメモリだけ、exportは集計allowlistのみ。Google側のretentionは運営設定。AdSense所有確認・広告同意・CREDIT OFFは変更しない。本文は実装説明で、法的適合の認証ではない。

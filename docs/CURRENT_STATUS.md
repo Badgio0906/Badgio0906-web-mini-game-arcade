@@ -1,5 +1,9 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-06（日本時間）：**集客前の分析基盤・共通長押し対策・Game010退役を実装。active18、次は020。** Game010 retired after human playtest：抜本改修後も本人試遊で面白くないため、AIテストの合否とは別の企画判断で退役。ID010/releaseOrder/過去コード/資料/Telemetry/profileを保持し、軽量noindex退役routeへ変更。Game015/019固有ソースと現在の本人好評価を維持。広告/CREDIT OFFも不変。[最新報告](analytics/REPORT.md)、[本番外部設定](analytics/MANUAL_SETUP.md)。Consent/GA/upload/Worker/D1/管理集計/集計exportまで実装・ローカル検証。本番Worker/D1/GA4は未設定・inactive。公開状態と最終検証は最新報告・QAを参照。
+
+以下は各公開時点の歴史。過去のportal19は当時の本数であり、現行active18へ全文置換しない。
+
 2026-10-06（日本時間）：**対象7本（018／003／006／007／008／009／010）の改訂02を正式HTTPSへ公開済み。** [ゲームセンター](https://game100garage.com/)／[統合報告](seven-games-2026-10-06/REPORT.md)／[公開記録](seven-games-2026-10-06/QA/PUBLICATION.json)。PR #4はmainへmerge、runtime58718f9、Pages run37413280501のtest／build／deploy成功。315単体、compiled7×4画面＋7prefix、公開7画面の通常操作と保存再読込、39配信fileのhash一致、portal19を確認。対象外12作品は217保護fileとprofile／Catalog／thumb entry不変。今回7本の本人試遊・実機音/FPSは未実施。Game015とGame019は本人から「とても面白くなっていた。イイ感じ」の最新評価を受けた。両作品は今回変更していない。この好評価を全機能・全端末の詳細検証へ広げない。
 
 以下は過去の公開時点の記録。015／019の現在の本人評価は上記を優先する。

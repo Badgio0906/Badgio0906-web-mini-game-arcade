@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "environment": "synthetic-local-only",
+  "backend": "Wrangler workerd + actual local D1 SQLite",
+  "checks": [
+    "migration",
+    "health",
+    "valid_batch_202",
+    "duplicate_uuid_dedup",
+    "unknown_event_400",
+    "bad_origin_403",
+    "oversize_413",
+    "admin_unauthorized_401",
+    "admin_aggregate_200",
+    "game_detail_200",
+    "no_raw_ids",
+    "D1_insert_count"
+  ],
+  "d1_event_count": 2,
+  "run_count": 1,
+  "measured_duration_count": 1,
+  "median_run_duration": 12
+}

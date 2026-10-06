@@ -1,6 +1,7 @@
 import { tagsFor, type GameTag, type TagId } from './tagCatalog.ts';
 export interface GameCatalogEntry {
   readonly id: string;
+  readonly status: 'active' | 'retired';
   readonly titleJa: string;
   readonly titleEn: string;
   readonly tagline: string;
@@ -62,13 +63,18 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
 
 const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard'] as const;
 
-export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
+export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
   { id: 'game016', titleJa: '負けじゃんけん ～LOSE TO WIN～', titleEn: 'LOSE TO WIN', tagline: '勝ったら負け。負ければ勝ち。', thumbnail: './assets/portal/game016.webp', route: './game016.html', releaseOrder: 16 },
   { id: 'game017', titleJa: '雨って避けたら濡れないよね ～RAINSHIFT～', titleEn: 'RAINSHIFT', tagline: '雨？ 当たらなければ晴れです。', thumbnail: './assets/portal/game017.webp', route: './game017.html', releaseOrder: 17 },
   { id: 'game018', titleJa: '靴とばそ ～Shoe fly in the sky～', titleEn: 'Shoe fly in the sky', tagline: '靴は履くもの？ それ誰が決めた？', thumbnail: './assets/portal/game018.webp', route: './game018.html', releaseOrder: 18 },
   { id: 'game019', titleJa: '井の中の蛙、大海を目指す ～WELL TO SPACE～', titleEn: 'WELL TO SPACE', tagline: '井戸を出たら、今度は宇宙でした。', thumbnail: './assets/portal/game019.webp', route: './game019.html', releaseOrder: 19 },
-].map(game => Object.freeze({ ...game, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+
+/** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
+export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'active'));
+export const retiredGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'retired'));
+export const NEXT_GAME_NUMBER = Math.max(...historicalGameCatalog.map(game => Number(game.id.slice(4)))) + 1;
 
 export function filterCatalog(tagIds: readonly TagId[] = []): readonly GameCatalogEntry[] {
   return gameCatalog.filter(game => tagIds.every(id => game.tags.some(tag => tag.id === id)));
