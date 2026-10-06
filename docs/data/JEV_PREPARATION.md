@@ -1,8 +1,15 @@
 # Jev向けの中間データ
 
-現在の正本は[`gameCatalog.ts`](../../src/data/gameCatalog.ts)、[`tagCatalog.ts`](../../src/data/tagCatalog.ts)、[`telemetrySchema.ts`](../../src/data/telemetrySchema.ts)。対象19本のJSONは[`jev_export/game_profiles`](../../jev_export/game_profiles/)、改修3本と共通仕様の短いプロファイルも同じ場所に置く。
+2026-10-06更新：active18、Game010はretiredとして元profileを`jev_export/retired_game_profiles/game010.json`へ保持。ID010は再利用せず次は020。外部計測は**準備済み・production inactive**。現在Cloudflare/D1/GA4の本番設定はなく、公開ブラウザから外部解析へ送信しない。local400件の確認履歴と、同意後に新しく発生する外部envelopeを区別する。
 
-`node tools/export-jev-data.mjs`でcatalog、全19本のプロフィール、event schemaを再生成する。manifestからジャンル/想定時間を読み、操作/メカニクス/失敗/ビジュアルの説明を対応づける。想定時間は設計仮説。無い場合はnull。人間の平均プレイ時間を創作しない。新規manifestを更新したら再生成する。
+集客後は[分析基盤](../analytics/ARCHITECTURE.md)の集計APIまたは`tools/export-analytics-summary.mjs`で、期間・母数・欠測・版・環境を含むJSONを出す。個別browser/visit/session/run/event ID、raw event、トークンは含めない。Jevのリアルタイム呼び出しはなく、得点・成功・抽選・公開可否へ接続しない。Worker本番deployと実送信確認を行った場合にのみproduction activeへ更新する。
+
+以下はdevice-local資料と既存プロフィール出力の説明。外部解析の有効・無効は上記とanalytics報告を優先する。
+
+
+現在の正本は[`gameCatalog.ts`](../../src/data/gameCatalog.ts)、[`tagCatalog.ts`](../../src/data/tagCatalog.ts)、[`telemetrySchema.ts`](../../src/data/telemetrySchema.ts)。active18本のJSONは[`jev_export/game_profiles`](../../jev_export/game_profiles/)、改修3本と共通仕様の短いプロファイルも同じ場所に置く。
+
+`node tools/export-jev-data.mjs`でcatalog、active18本のプロフィール、event schemaを再生成する。manifestからジャンル/想定時間を読み、操作/メカニクス/失敗/ビジュアルの説明を対応づける。想定時間は設計仮説。無い場合はnull。人間の平均プレイ時間を創作しない。新規manifestを更新したら再生成する。
 
 TelemetryServiceは各ページ内200件の従来historyを維持し、`web-mini-game-arcade:telemetry:v1`に最近400件をdevice-local保存。保存が壊れる/拒否される場合はmemoryに継続。既存BEST・CREDITのキーやゲーム結果は変更しない。session_idはページ単位のランダムな値で個人や端末を識別しない。外部送信、Jev接続、認証キーは無い。
 

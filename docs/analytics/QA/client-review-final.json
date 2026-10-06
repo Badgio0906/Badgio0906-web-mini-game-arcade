@@ -1,0 +1,217 @@
+{
+  "kind": "independent local fixture; production environment forced in module config; no live GA or Worker",
+  "findings": [],
+  "lifecycle": {
+    "before": {
+      "keys": [],
+      "sessionKeys": [],
+      "calls": 0
+    },
+    "after": {
+      "local": [
+        {
+          "name": "specific_game_events",
+          "at": "2026-10-06T11:10:07.249Z",
+          "data": {
+            "event": "jump",
+            "jump_charge_ms": 300,
+            "game": "game019",
+            "game_id": "game019",
+            "session_id": "muwkudfu-08wt09kh"
+          }
+        }
+      ],
+      "events": [
+        {
+          "schema_version": 2,
+          "event_id": "f2e82b87-7cae-47fe-b3c7-68e077332e01",
+          "occurred_at": "2026-10-06T11:10:07.249Z",
+          "game_id": "game019",
+          "game_version": "2026-10-06-analytics-1",
+          "rules_version": "2",
+          "presentation_version": "2",
+          "browser_id": "e8b839f8-d9f7-4da4-9045-e8d27c36f5fe",
+          "visit_id": "b33f5756-53b4-4834-954f-daca66b6eb70",
+          "session_id": "muwkudfu-08wt09kh",
+          "run_id": "74ae1090-7c11-4112-8bc7-8da7c675619b",
+          "event_name": "specific_game_events",
+          "environment": "production",
+          "device_class": "desktop",
+          "input_type": "unknown",
+          "page": "game019.html",
+          "data": {
+            "event": "jump",
+            "jump_charge_ms": 300,
+            "phase": "playing",
+            "utm_source": "tiktok",
+            "utm_campaign": "launch"
+          }
+        }
+      ],
+      "browser": "e8b839f8-d9f7-4da4-9045-e8d27c36f5fe",
+      "visit": {
+        "id": "b33f5756-53b4-4834-954f-daca66b6eb70",
+        "at": 1791285007249,
+        "attribution": {
+          "utm_source": "tiktok",
+          "utm_campaign": "launch"
+        }
+      }
+    },
+    "revoked": {
+      "keys": [
+        "web-mini-game-arcade:telemetry:v1",
+        "game100garage:analytics-consent:v1"
+      ],
+      "sessionKeys": [],
+      "calls": 1,
+      "local": [
+        {
+          "name": "specific_game_events",
+          "at": "2026-10-06T11:10:07.249Z",
+          "data": {
+            "event": "jump",
+            "jump_charge_ms": 300,
+            "game": "game019",
+            "game_id": "game019",
+            "session_id": "muwkudfu-08wt09kh"
+          }
+        }
+      ]
+    }
+  },
+  "layouts": [
+    {
+      "width": 1365,
+      "height": 900,
+      "layout": [
+        {
+          "selector": ".panel",
+          "x": 462.5,
+          "y": 10,
+          "width": 440,
+          "height": 319.5,
+          "clientWidth": 436,
+          "scrollWidth": 436
+        },
+        {
+          "selector": "#grant",
+          "x": 480.5,
+          "y": 178,
+          "width": 197,
+          "height": 44,
+          "clientWidth": 193,
+          "scrollWidth": 193
+        },
+        {
+          "selector": "#deny",
+          "x": 687.5,
+          "y": 178,
+          "width": 197,
+          "height": 44,
+          "clientWidth": 193,
+          "scrollWidth": 193
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "layout": [
+        {
+          "selector": ".panel",
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 319.5,
+          "clientWidth": 366,
+          "scrollWidth": 366
+        },
+        {
+          "selector": "#grant",
+          "x": 28,
+          "y": 178,
+          "width": 162,
+          "height": 44,
+          "clientWidth": 158,
+          "scrollWidth": 158
+        },
+        {
+          "selector": "#deny",
+          "x": 200,
+          "y": 178,
+          "width": 162,
+          "height": 44,
+          "clientWidth": 158,
+          "scrollWidth": 158
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "layout": [
+        {
+          "selector": ".panel",
+          "x": 10,
+          "y": 10,
+          "width": 300,
+          "height": 358.5,
+          "clientWidth": 296,
+          "scrollWidth": 296
+        },
+        {
+          "selector": "#grant",
+          "x": 28,
+          "y": 217,
+          "width": 127,
+          "height": 44,
+          "clientWidth": 123,
+          "scrollWidth": 123
+        },
+        {
+          "selector": "#deny",
+          "x": 165,
+          "y": 217,
+          "width": 127,
+          "height": 44,
+          "clientWidth": 123,
+          "scrollWidth": 123
+        }
+      ]
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "layout": [
+        {
+          "selector": ".panel",
+          "x": 202,
+          "y": 10,
+          "width": 440,
+          "height": 255,
+          "clientWidth": 436,
+          "scrollWidth": 436
+        },
+        {
+          "selector": "#grant",
+          "x": 214,
+          "y": 121,
+          "width": 203,
+          "height": 44,
+          "clientWidth": 199,
+          "scrollWidth": 199
+        },
+        {
+          "selector": "#deny",
+          "x": 427,
+          "y": 121,
+          "width": 203,
+          "height": 44,
+          "clientWidth": 199,
+          "scrollWidth": 199
+        }
+      ]
+    }
+  ]
+}

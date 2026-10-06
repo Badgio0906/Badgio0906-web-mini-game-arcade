@@ -1,4 +1,4 @@
-import { gameCatalog } from './gameCatalog.ts';
+import { historicalGameCatalog as gameCatalog } from './gameCatalog.ts';
 import type { TelemetryEvent } from './telemetrySchema.ts';
 
 /** Summaries are restricted to the retained event window, never population claims. */
@@ -40,7 +40,7 @@ export function summarizeEvents(events: readonly TelemetryEvent[]) {
         }
       }
     }
-    return { gameId: game.id, difficulty: game.difficulty, tags: game.tags.map(tag => tag.id), sessions: new Set(rows.map(event => event.data.session_id).filter(Boolean)).size,
+    return { gameId: game.id, status: game.status, difficulty: game.difficulty, tags: game.tags.map(tag => tag.id), sessions: new Set(rows.map(event => event.data.session_id).filter(Boolean)).size,
       opens: rows.filter(event => event.name === 'game_open').length, playCount: starts.length, completedRunCount: ends.filter(event => !['quit', 'restart'].includes(String(event.data.outcome))).length,
       averagePlaySeconds: durations.length ? durations.reduce((a,b) => a+b, 0) / durations.length : null, measuredDurationCount: durations.length,
       exitPhases, deathReasons, firstDeathLocations, measurementCoverage: game.releaseOrder >= 12 && game.releaseOrder <= 14 ? 'legacy-shell-only; game loop uninstrumented' : 'native events; fields differ by game; missing values unknown' };

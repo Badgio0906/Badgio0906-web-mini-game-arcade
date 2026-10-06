@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "gameCount": 19,
+  "gameCount": 18,
   "gameCatalog": [
     {
       "id": "game001",
@@ -10,6 +10,7 @@
       "thumbnail": "./assets/portal/game001.webp",
       "route": "./game001.html",
       "releaseOrder": 1,
+      "status": "active",
       "tags": [
         {
           "id": "reflex",
@@ -38,6 +39,7 @@
       "thumbnail": "./assets/portal/game002.webp",
       "route": "./game002.html",
       "releaseOrder": 2,
+      "status": "active",
       "tags": [
         {
           "id": "dodge",
@@ -70,6 +72,7 @@
       "thumbnail": "./assets/portal/game003.webp",
       "route": "./game003.html",
       "releaseOrder": 3,
+      "status": "active",
       "tags": [
         {
           "id": "timing",
@@ -102,6 +105,7 @@
       "thumbnail": "./assets/portal/game004.webp",
       "route": "./game004.html",
       "releaseOrder": 4,
+      "status": "active",
       "tags": [
         {
           "id": "memory",
@@ -130,6 +134,7 @@
       "thumbnail": "./assets/portal/game005.webp",
       "route": "./game005.html",
       "releaseOrder": 5,
+      "status": "active",
       "tags": [
         {
           "id": "decision",
@@ -158,6 +163,7 @@
       "thumbnail": "./assets/portal/game006.webp",
       "route": "./game006.html",
       "releaseOrder": 6,
+      "status": "active",
       "tags": [
         {
           "id": "physics",
@@ -186,6 +192,7 @@
       "thumbnail": "./assets/portal/game007.webp",
       "route": "./game007.html",
       "releaseOrder": 7,
+      "status": "active",
       "tags": [
         {
           "id": "decision",
@@ -214,6 +221,7 @@
       "thumbnail": "./assets/portal/game008.webp",
       "route": "./game008.html",
       "releaseOrder": 8,
+      "status": "active",
       "tags": [
         {
           "id": "balance",
@@ -242,6 +250,7 @@
       "thumbnail": "./assets/portal/game009.webp",
       "route": "./game009.html",
       "releaseOrder": 9,
+      "status": "active",
       "tags": [
         {
           "id": "search",
@@ -263,34 +272,6 @@
       "difficulty": "standard"
     },
     {
-      "id": "game010",
-      "titleJa": "会議、聞いてます？",
-      "titleEn": "MEETING SURVIVAL",
-      "tagline": "提案、決定、訂正。最後に決まったのは？",
-      "thumbnail": "./assets/portal/game010.webp",
-      "route": "./game010.html",
-      "releaseOrder": 10,
-      "tags": [
-        {
-          "id": "decision",
-          "label": "判断"
-        },
-        {
-          "id": "office",
-          "label": "お仕事"
-        },
-        {
-          "id": "meeting",
-          "label": "会議"
-        },
-        {
-          "id": "memory",
-          "label": "記憶"
-        }
-      ],
-      "difficulty": "standard"
-    },
-    {
       "id": "game011",
       "titleJa": "ウンコかウコンかゲーム",
       "titleEn": "UNKO or UKON",
@@ -298,6 +279,7 @@
       "thumbnail": "./assets/portal/game011.webp",
       "route": "./game011.html",
       "releaseOrder": 11,
+      "status": "active",
       "tags": [
         {
           "id": "quiz",
@@ -326,6 +308,7 @@
       "thumbnail": "./assets/portal/game012.webp",
       "route": "./games/yokodori-days/index.html",
       "releaseOrder": 12,
+      "status": "active",
       "tags": [
         {
           "id": "timing",
@@ -354,6 +337,7 @@
       "thumbnail": "./assets/portal/game013.webp",
       "route": "./games/tachibana-task-heaven/index.html",
       "releaseOrder": 13,
+      "status": "active",
       "tags": [
         {
           "id": "office",
@@ -382,6 +366,7 @@
       "thumbnail": "./assets/portal/game014.webp",
       "route": "./games/finger-heart-challenge/index.html",
       "releaseOrder": 14,
+      "status": "active",
       "tags": [
         {
           "id": "timing",
@@ -410,6 +395,7 @@
       "thumbnail": "./assets/portal/game015.webp",
       "route": "./game015.html",
       "releaseOrder": 15,
+      "status": "active",
       "tags": [
         {
           "id": "fall",
@@ -442,6 +428,7 @@
       "thumbnail": "./assets/portal/game016.webp",
       "route": "./game016.html",
       "releaseOrder": 16,
+      "status": "active",
       "tags": [
         {
           "id": "reflex",
@@ -474,6 +461,7 @@
       "thumbnail": "./assets/portal/game017.webp",
       "route": "./game017.html",
       "releaseOrder": 17,
+      "status": "active",
       "tags": [
         {
           "id": "dodge",
@@ -502,6 +490,7 @@
       "thumbnail": "./assets/portal/game018.webp",
       "route": "./game018.html",
       "releaseOrder": 18,
+      "status": "active",
       "tags": [
         {
           "id": "physics",
@@ -530,6 +519,7 @@
       "thumbnail": "./assets/portal/game019.webp",
       "route": "./game019.html",
       "releaseOrder": 19,
+      "status": "active",
       "tags": [
         {
           "id": "jump",
@@ -565,6 +555,37 @@
         }
       ],
       "difficulty": "hard"
+    }
+  ],
+  "retiredGameCatalog": [
+    {
+      "id": "game010",
+      "titleJa": "会議、聞いてます？",
+      "titleEn": "MEETING SURVIVAL",
+      "tagline": "提案、決定、訂正。最後に決まったのは？",
+      "thumbnail": "./assets/portal/game010.webp",
+      "route": "./game010.html",
+      "releaseOrder": 10,
+      "status": "retired",
+      "tags": [
+        {
+          "id": "decision",
+          "label": "判断"
+        },
+        {
+          "id": "office",
+          "label": "お仕事"
+        },
+        {
+          "id": "meeting",
+          "label": "会議"
+        },
+        {
+          "id": "memory",
+          "label": "記憶"
+        }
+      ],
+      "difficulty": "standard"
     }
   ],
   "tagCatalog": [

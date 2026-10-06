@@ -16,7 +16,7 @@ afterEach(() => vi.restoreAllMocks());
 
 describe('catalog identity and future tag filtering', () => {
   it('keeps legacy routes/tags attached to the actual title and appends019', () => {
-    expect(new Set(gameCatalog.map(game => game.id)).size).toBe(19);
+    expect(new Set(gameCatalog.map(game => game.id)).size).toBe(18);
     const work = gameCatalog.find(game => game.id === 'game012')!;
     const tasks = gameCatalog.find(game => game.id === 'game013')!;
     expect(work.titleJa).toBe('お前の仕事は俺の仕事');

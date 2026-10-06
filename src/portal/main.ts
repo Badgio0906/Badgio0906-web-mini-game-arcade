@@ -1,14 +1,20 @@
 import './style.css';
 import { gameCatalog } from '../data/gameCatalog';
 import { TelemetryService } from '../core/TelemetryService';
+import { analyticsRuntime } from '../analytics/runtime';
+import { observeCardImpressions } from '../analytics/impressions';
 
 const telemetry = new TelemetryService(undefined, 'portal');
 telemetry.trackEvent('portal_open');
+const analytics = analyticsRuntime();
+if (analytics?.consent.getState() === 'granted') telemetry.trackEvent('portal_view');
+analytics?.consent.subscribe(state=>{if(state==='granted')telemetry.trackEvent('portal_view');});
 
 const gallery = document.getElementById('game-gallery')!;
+let cardPosition = 0;
 for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrder)) {
   const card = document.createElement('a');
-  card.className = 'game-card'; card.href = game.route; card.dataset.gameId = game.id;
+  card.className = 'game-card'; card.href = game.route; card.dataset.gameId = game.id; card.dataset.cardPosition = String(++cardPosition);
   card.setAttribute('aria-label', `${game.titleJa}を遊ぶ`);
   card.addEventListener('click', () => { telemetry.trackEvent('game_card_click', { selected_game: game.id }); telemetry.trackEvent('game_launch', { selected_game: game.id }); });
   const imageFrame = document.createElement('div'); imageFrame.className = 'game-image';
@@ -34,3 +40,11 @@ saveRecords?.addEventListener('click', () => {
   const link = document.createElement('a'); link.href = url; link.download = 'arcade-play-records.json'; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
+
+if (analytics) {
+  let disposeImpressions: (()=>void) | undefined;
+  const install = () => { disposeImpressions?.(); disposeImpressions = observeCardImpressions(gallery.querySelectorAll<HTMLElement>('.game-card'),id=>analytics.seenImpression(id),id=>analytics.markImpression(id),(id,position)=>telemetry.trackEvent('game_card_impression',{selected_game:id,card_position:position,visible_duration_threshold:1000,catalog_version:'active18-2026-10-06',thumbnail_revision:'2026-10-06'}),()=>analytics.consent.getState()==='granted'); };
+  install();
+  window.addEventListener('pagehide',()=>{disposeImpressions?.();disposeImpressions=undefined;});
+  window.addEventListener('pageshow',event=>{if(event.persisted)install();});
+}

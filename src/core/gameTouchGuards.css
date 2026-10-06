@@ -1,0 +1,33 @@
+/* Restrict browser gestures to actual gameplay targets, never the whole page. */
+[data-game-interaction], [data-game-control], .game-canvas, .game-control, .touch-control,
+[data-game-interaction] *, [data-game-control] *, .game-canvas *, .game-control *, .touch-control * {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+[data-game-touch-page] button { touch-action: manipulation; }
+[data-game-touch-page] [data-game-interaction], [data-game-touch-page] [data-game-control],
+[data-game-touch-page] .game-canvas, [data-game-touch-page] .game-control, [data-game-touch-page] .touch-control { touch-action: none; }
+[data-game-interaction] img, [data-game-control] img, .game-canvas img, .game-control img, .touch-control img {
+  -webkit-user-drag: none;
+}
+/* An embedded editable field remains editable even inside a gameplay region. */
+[data-game-touch-allow], input, textarea, select, [contenteditable="true"] {
+  user-select: auto;
+  -webkit-user-select: auto;
+  -webkit-touch-callout: default;
+}
+/* Existing stage rules inherit no-select; restore ordinary explanation/menu text. */
+#overlay, #menu, #arcade-training, #legacy-start {
+  user-select: text;
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
+}
+/* Practice targets inside those menus still require the gameplay guard. */
+#arcade-training [data-game-control], #arcade-training [data-game-interaction],
+#legacy-start [data-game-control], #legacy-start [data-game-interaction] {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}

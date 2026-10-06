@@ -1,0 +1,29 @@
+{
+  "sourceBase": "b766232ba9997d3b4eeb415c848f334bc98e0480",
+  "scope": "TouchGuard + Game010 retirement",
+  "reports": {
+    "desktop": 27,
+    "phone": 27,
+    "narrow": 27,
+    "landscape": 27
+  },
+  "passed": true,
+  "fixtureCases": 6,
+  "realIphone": "not tested; native Safari callout cannot be asserted from Chromium",
+  "game015019": "all source files unchanged byte-for-byte vs HEAD",
+  "retiredProfileSha256": "588eef1bd1c536a13ecd79d8f26eceb299badf1f226d961ee78f3ea721e86a6e",
+  "initialFailures": [
+    {
+      "file": "touch-fixture-initial.json",
+      "cause": "TEST_INFRA_BUG: Vite dev-client script counted as retired game runtime; retired route itself has no script"
+    },
+    {
+      "file": "touch-integrated-phone-initial.json",
+      "cause": "TEST_INFRA_BUG: no next pointer event to process pending capture"
+    },
+    {
+      "file": "touch-integrated-phone-capture-pending.json",
+      "cause": "TEST_INFRA_BUG: pending capture released before gotpointercapture; establish capture via first native move, then release and native second move to test lostpointercapture"
+    }
+  ]
+}

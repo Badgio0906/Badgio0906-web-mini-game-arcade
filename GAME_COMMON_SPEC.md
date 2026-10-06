@@ -38,6 +38,12 @@ scoreの単位・補助指標を統一しない。002は旧距離BESTを保ちSC
 
 主要操作44CSSpx以上。PCとphoneで文字・対象・スコア・失敗理由を読め、色だけで正解が分からないようにする。ラベル、keyboard focus、reduced-motion、viewportと祖先のclipを扱う。全ゲームの非視覚プレイを認証したとは主張しない。
 
+## 2026-10-06 分析・入力・退役の追加境界
+
+active18、010は退役routeでIDと過去コード保持、次は020。[実装境界](docs/analytics/ARCHITECTURE.md)と[イベント](docs/analytics/EVENTS.md)を優先する。共通TouchGuardはゲーム操作だけの選択・callout・dragを抑制し、説明・privacy・通常ポータルは選択/スクロール可能。015/019の固有ソースはbyte不変。
+
+旧TelemetryServiceへConsentService連携と外部観測adapterを追加。production未知/拒否は新しい端末履歴を恒久保存せず、同意前にbrowser ID生成/Google tag/uploadを行わない。設定不足はdisabled、本番Worker/D1/GA4は未設定・未稼働。dev/QAの端末400件は維持、過去記録をuploadしない。下記local境界は歴史的な機能の説明として保持する。
+
 ## 音とTelemetry
 
 ユーザー操作でAudioをunlockし、muteを保存。音が使えなくても遊べるようにする。oscillator／gain、RAF、listener等をcleanupする。成功／失敗の意味は固有に設計する。

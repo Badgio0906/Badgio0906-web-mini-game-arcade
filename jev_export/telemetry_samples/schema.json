@@ -54,6 +54,10 @@
     "death_reason",
     "specific_game_events",
     "page_exit",
+    "page_ready",
+    "client_error",
+    "portal_view",
+    "game_card_impression",
     "portal_open",
     "game_card_click",
     "game_launch",
@@ -64,5 +68,5 @@
     "at": "ISO UTC string",
     "data": "up to40 primitive string/number/boolean fields including game_id and session_id"
   },
-  "limitations": "Values must be finite; strings max300 characters. No identity or external transmission. Session ID is ephemeral per page load, not a user ID."
+  "limitations": "Values must be finite; strings max300 characters. This is the device-local debugging schema only, not the external analytics envelope. Production uploads require consent and configured endpoint; past local records are never replayed. Session ID is ephemeral per page load. External schema_version2 is documented in src/data/analyticsEnvelope.ts."
 }

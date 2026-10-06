@@ -71,6 +71,7 @@ function sync(): void {
   text('live-status', run.phase === 'angle' ? '低く＝破壊。中くらい＝距離。高く＝空。' : run.phase === 'spin' ? spinExplanation(run.spin) : run.phase === 'power' ? 'メーターの右端！ JUST MAXを狙え！' : run.phase === 'flight' ? (run.effects.at(-1)?.name || '靴が主役。どこまで行く？') : run.phase === 'result' ? '着地！ 次は別の角度・回転・靴で飛ばそう。' : run.phase === 'landing' ? 'ポスッ。靴の旅、ここまで。' : run.feedback || '靴は履くもの？ それ誰が決めた？');
   app.dataset.phase = run.phase; app.dataset.shoe = selected;
 }
+let rareShownForRun = '';
 function onEvent(event: ShoeEvent): void {
   if (event.type === 'phase') {
     epoch++;
@@ -96,7 +97,7 @@ function onEvent(event: ShoeEvent): void {
     bestDistance = Math.max(bestDistance, distance); bestScore = Math.max(bestScore, r.score.total);
     storage.writeNumber('bestDistanceDecimeters', Math.round(bestDistance * 10)); storage.writeNumber('bestScore', bestScore);
     storage.writeNumber('shoeBestDecimeters:' + selected, Math.max(storage.readNumber('shoeBestDecimeters:' + selected, 0), Math.round(r.distance * 10)));
-    telemetry.trackEvent('run_end', { runId, outcome: 'clear', shoe: selected, score: r.score.total, distance: r.distance, time: run.time }); telemetry.trackEvent('score', { runId, score: r.score.total, best: bestScore }); telemetry.trackEvent('run_duration', { runId, seconds: run.time, reason: 'landed' });
+    telemetry.trackEvent('run_end', { runId, outcome: 'clear', shoe: selected, score: r.score.total, distance: r.distance, max_height:r.height, landing_type:'landed', time: run.time }); telemetry.trackEvent('score', { runId, score: r.score.total, best: bestScore }); telemetry.trackEvent('run_duration', { runId, seconds: run.time, reason: 'landed' });
     audio.tone(660, 990, .18, 'triangle', 0, .04); setScreen('result');
   }
 }
@@ -107,7 +108,7 @@ function start(retry = false): void {
   if (disposed || screen === 'playing' || screen === 'practice' || credits.rewardPending) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   runId = 'game018-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8); if (credits.enabled && !credits.consume(runId)) return;
-  ended = false;shoeRecordAt=null;startShoeBest=storage.readNumber('shoeBestDecimeters:'+selected,0)/10; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
+  ended = false;rareShownForRun='';shoeRecordAt=null;startShoeBest=storage.readNumber('shoeBestDecimeters:'+selected,0)/10; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
 }
 function quit(): void { if (ended || run.practice) return; ended = true; run.pause(true, now()); telemetry.trackEvent('quit', { runId, time: run.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', time: run.time }); }
 function pause(): void { if (screen === 'playing' || screen === 'practice') { previousScreen = screen; run.pause(true, now()); if (run.paused) { telemetry.trackEvent('pause', { runId }); setScreen('paused'); } } else if (screen === 'paused') { run.pause(false, now()); telemetry.trackEvent('resume', { runId }); setScreen(previousScreen); } }
@@ -143,6 +144,8 @@ function tick(time: number): void {
   if (screen === 'playing' || screen === 'practice') run.settle(time);
   if(screen==='playing'&&run.phase==='flight'&&shoeRecordAt===null&&run.position.x>startShoeBest){shoeRecordAt=run.time;telemetry.trackEvent('specific_game_events',{runId,event:'shoe_best_crossed',shoe:selected,distance:run.position.x,previous_best:startShoeBest});}
   board.render(run, time, { recordAt:shoeRecordAt, title: ['title', 'explanation', 'selection', 'reward'].includes(screen) }); sync();
+  const rare = run.presentation.selected;
+  if (!run.practice && rare && rareShownForRun !== rare && document.visibilityState === 'visible' && ['playing','result'].includes(screen) && (rare === 'iron-meteor' ? ['landing','result'].includes(run.phase) : run.phase === 'flight')) { rareShownForRun = rare; telemetry.trackEvent('specific_game_events',{runId,event:'rare_effect_shown',presentation_id:rare,shown:true}); }
   if ((screen === 'playing' || screen === 'practice') && (run.phase === 'power' || run.phase === 'flight') && time - lastTone > (run.phase === 'power' ? 160 : 480)) { lastTone = time; audio.tone(run.phase === 'power' ? 450 + run.power * 5 : 180, run.phase === 'power' ? 450 + run.power * 5 : 600, .06, 'sine', 0, .007); }
   frame = requestAnimationFrame(tick);
 }

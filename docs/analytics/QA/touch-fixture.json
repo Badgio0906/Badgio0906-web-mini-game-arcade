@@ -1,0 +1,101 @@
+{
+  "base": "http://127.0.0.1:5310",
+  "checkedAt": "2026-10-06T11:03:30.712Z",
+  "physicalIphone": "not tested; Chromium cannot reproduce native iOS callout",
+  "cases": [
+    {
+      "name": "scope, editable exclusions, dynamic practice, iframe realm, idempotence",
+      "protectedEvents": [
+        true,
+        true,
+        true
+      ],
+      "ordinaryEvents": [
+        false,
+        false,
+        false
+      ],
+      "menuEvents": [
+        false,
+        false,
+        false
+      ],
+      "editableEvents": [
+        false,
+        false,
+        false
+      ],
+      "fixtureStyle": {
+        "holdTouch": "none",
+        "canvasTouch": "none",
+        "menuTouch": "manipulation",
+        "holdSelect": "none",
+        "textSelect": "auto",
+        "imageDraggable": false
+      },
+      "dynamicGuard": true,
+      "frameGuard": true,
+      "sameDispose": true,
+      "pass": true
+    },
+    {
+      "name": "native Chromium touch 1s",
+      "before": {
+        "up": 0,
+        "down": 0,
+        "cancel": 0,
+        "lost": 0
+      },
+      "after": {
+        "up": 1,
+        "down": 1,
+        "cancel": 0,
+        "lost": 1,
+        "selection": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "native Chromium touch 2s",
+      "before": {
+        "up": 1,
+        "down": 1,
+        "cancel": 0,
+        "lost": 1
+      },
+      "after": {
+        "up": 2,
+        "down": 2,
+        "cancel": 0,
+        "lost": 2,
+        "selection": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "native Chromium touch 3s",
+      "before": {
+        "up": 2,
+        "down": 2,
+        "cancel": 0,
+        "lost": 2
+      },
+      "after": {
+        "up": 3,
+        "down": 3,
+        "cancel": 0,
+        "lost": 3,
+        "selection": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "pointercancel reaches gameplay without swallowed/duplicated pointerup",
+      "pass": true
+    },
+    {
+      "name": "retired route no engine",
+      "pass": true
+    }
+  ]
+}

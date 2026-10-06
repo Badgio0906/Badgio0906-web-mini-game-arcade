@@ -1,5 +1,5 @@
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { gameCatalog } from '../src/data/gameCatalog.ts';
+import { readFile, writeFile, mkdir, rename } from 'node:fs/promises';
+import { gameCatalog, retiredGameCatalog } from '../src/data/gameCatalog.ts';
 import { tagCatalog } from '../src/data/tagCatalog.ts';
 import { eventNames, TELEMETRY_SCHEMA_VERSION } from '../src/data/telemetrySchema.ts';
 
@@ -25,7 +25,12 @@ const design = {
   game019: ['チャージ精密・上昇', '左右を押しながらSpace / JUMPを溜め、離して跳ぶ。空中修正なし', '短い跳躍で位置を整え、溜め量と方向を覚えて手作り井戸100mから予測可能な風の空200mへ登る', '溜め不足・過剰・壁や梁で失敗し地形に応じて後退。同じRUNで再登りできる', '緑の大きな目のカエルと3チャージ姿勢、井戸のランドマーク、旗の風、海・鳥・宇宙'],
 };
 const difficultyLabels = { standard: '標準', rising: 'じわじわ難化', hard: '高難度' };
-await Promise.all(['game_profiles','design_notes','telemetry_samples','analytics_summary'].map(folder => mkdir(`jev_export/${folder}`, { recursive: true })));
+await Promise.all(['game_profiles','retired_game_profiles','design_notes','telemetry_samples','analytics_summary'].map(folder => mkdir(`jev_export/${folder}`, { recursive: true })));
+// Preserve historical profiles byte-for-byte; remove retired IDs from active exports.
+for (const game of retiredGameCatalog) {
+  try { await rename(`jev_export/game_profiles/${game.id}.json`, `jev_export/retired_game_profiles/${game.id}.json`); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+}
 const selectedIds=new Set(process.argv.slice(2));
 for (const game of gameCatalog) {
   if(selectedIds.size&&!selectedIds.has(game.id))continue;
@@ -47,5 +52,5 @@ for (const game of gameCatalog) {
     humanEvaluation: 'pending; do not infer fun or real-device comfort from synthetic QA', currentManifest: manifest };
   await writeFile(`jev_export/game_profiles/${game.id}.json`, JSON.stringify(profile, null, 2) + '\n');
 }
-await writeFile('jev_export/game_profiles/catalog.json', JSON.stringify({ schemaVersion: 1, gameCount: gameCatalog.length, gameCatalog, tagCatalog }, null, 2) + '\n');
-await writeFile('jev_export/telemetry_samples/schema.json', JSON.stringify({ schemaVersion: TELEMETRY_SCHEMA_VERSION, eventNames, envelope: { name: 'EventName', at: 'ISO UTC string', data: 'up to40 primitive string/number/boolean fields including game_id and session_id' }, limitations: 'Values must be finite; strings max300 characters. No identity or external transmission. Session ID is ephemeral per page load, not a user ID.' }, null, 2) + '\n');
+await writeFile('jev_export/game_profiles/catalog.json', JSON.stringify({ schemaVersion: 1, gameCount: gameCatalog.length, gameCatalog, retiredGameCatalog, tagCatalog }, null, 2) + '\n');
+await writeFile('jev_export/telemetry_samples/schema.json', JSON.stringify({ schemaVersion: TELEMETRY_SCHEMA_VERSION, eventNames, envelope: { name: 'EventName', at: 'ISO UTC string', data: 'up to40 primitive string/number/boolean fields including game_id and session_id' }, limitations: 'Values must be finite; strings max300 characters. This is the device-local debugging schema only, not the external analytics envelope. Production uploads require consent and configured endpoint; past local records are never replayed. Session ID is ephemeral per page load. External schema_version2 is documented in src/data/analyticsEnvelope.ts.' }, null, 2) + '\n');

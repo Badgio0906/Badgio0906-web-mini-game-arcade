@@ -24,8 +24,7 @@
     game013: ['音と指示を見て、4つのタスクを叩こう。', 'PCは1〜4、スマホは各タスクをタップ。お手本を聞いて、次の自分の番で同じリズムを返します。元ゲームの「遊び方 / 音の調整」と練習も残っています。'],
     game014: ['指ハートになった瞬間だけ押そう。', 'PCはSpace、スマホは画面をタップ。変わる手の形を見て、指ハートを狙おう。他のポーズで押すと失敗。25回成功を目指します。']
   };
-  const telemetryKey='web-mini-game-arcade:telemetry:v1', sessionId=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
-  function track(name,data={}) { try { const raw=localStorage.getItem(telemetryKey);const records=raw&&raw.length<800000?JSON.parse(raw):[];localStorage.setItem(telemetryKey,JSON.stringify([...(Array.isArray(records)?records:[]),{name,at:new Date().toISOString(),data:{...data,game:game,game_id:game,session_id:sessionId,measurement:'legacy-shell'}}].slice(-400))); } catch { /* Logging never gates play. */ } }
+  function track(name,data={}) { window.dispatchEvent(new CustomEvent('arcade-legacy-event',{detail:{name,data}})); }
   let phase = 'title', epoch = 0, frameId = 0, tickTime = 0, step = 0, startTime = 0, held = new Set(), gestureEpoch = new Map();
   const button = (id,text,primary=false) => '<button type="button" id="'+id+'" class="'+(primary?'primary':'')+'">'+text+'</button>';
   const actions = () => '<div class="legacy-actions">'+button('play-button','すぐ遊ぶ',true)+button('tutorial-explain-button','説明を見る')+button('tutorial-again-button','練習する')+'</div>';
@@ -75,5 +74,6 @@
   back.addEventListener('click',()=>menu('title'));document.getElementById('legacy-portal-return').addEventListener('click',()=>track('return_to_portal'));window.addEventListener('pagehide',()=>track('page_exit',{phase}));track('game_open');menu('title');
 })();
 </script>
+<script type="module" src="../../analytics-legacy.js"></script>
 </body>
 </html>

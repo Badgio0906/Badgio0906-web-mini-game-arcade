@@ -1,0 +1,18 @@
+{
+  "name": "game100-analytics-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --config tests/wrangler.local.jsonc",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit",
+    "test": "node tests/local-d1.mjs",
+    "migrate:local": "wrangler d1 migrations apply DB --local --config tests/wrangler.local.jsonc",
+    "migrate:remote": "wrangler d1 migrations apply DB --remote"
+  },
+  "devDependencies": {
+    "wrangler": "4.42.0",
+    "typescript": "^5.9.3",
+    "esbuild": "^0.25.0"
+  }
+}
