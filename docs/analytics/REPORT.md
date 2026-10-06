@@ -41,3 +41,5 @@ Cloud runtimeでCloudflare token/DB binding/GA Measurement IDの準備なし。A
 初回hash照合はローカルでVITE設定を省略し、CIでは空文字を渡していたため不一致：[原記録](QA/PUBLIC_BROWSER_INITIAL.json)。両変数を空文字にした同条件buildで70/70一致し、product修正なし。公開管理画面はHTTP200、noindex/nofollow、320px overflowなし、「Telemetry endpoint未設定」を正しく表示：[PUBLIC_ADMIN](QA/PUBLIC_ADMIN.json)。
 
 公開の正本は[PUBLICATION](QA/PUBLICATION.json)。**サイト機能は公開済みだが、外部Telemetryはcode ready＋local D1検証済み、Cloudflare本番未deploy。GA4もMeasurement ID未設定・実送信未確認。** 本番D1/migration、endpoint/custom domain/admin secretは未設定。公開bundleも空の設定値と一致し、外部解析はinactive。
+
+最終記録の点検で、起動collectorのGame009初回clickが既存180msの連打防止に入っていたことも検出。旧collectorは起動状態をassertしておらず、タイトルのまま通過できたため、220ms待機とnative各作品のplaying状態assertを追加。Game009は実際の整頓ボタン操作へ変更。ゲーム本体の修正なし。旧記録はPUBLIC_REGRESSION_INITIAL.json／compiled-regression-before-start-assert.jsonへ保存し、修正版でcompiled・公開各84経路を再確認した。
