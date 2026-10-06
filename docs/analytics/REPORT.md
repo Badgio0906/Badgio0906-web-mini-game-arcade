@@ -31,3 +31,13 @@
 Cloud runtimeでCloudflare token/DB binding/GA Measurement IDの準備なし。API許可も既存GitHub/site/OpenRouter中心。Worker本番未deploy、D1本番未作成/未migration、custom domain/admin secret未設定。GA adapterは完成、Measurement ID未設定。GitHub Variables一覧はintegration403で直接読めないため、公開bundle/通信の実測を公開QAで照合する。鍵の要求で作業を停止しない。
 
 [一度きりの設定](MANUAL_SETUP.md)。Worker/D1のコード・実ローカル検証完成を本番収集開始へ読み替えない。Google/Cloudflare本番収集・cron・CF負荷、実機iPhoneのSafari callout/音/FPSは未確認。raw欠測・同意拒否・旧Godotの内部・page_exit欠測を推定しない。本人の015/019好評価を維持し、今回の自動操作を新たな人間合格にしない。
+
+## 公開結果
+
+**2026-10-06日本時間、正式HTTPSへ公開済み。** [サイト](https://game100garage.com/)・[PR #5](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/5)・[Pages実行](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37456340150)。runtime `4608ac86756bbc0866bbca5fec55f12ce5550e6f`。単体・build・deployすべて成功。
+
+公開PC1365、phone390、narrow320、landscape844の4画面で、全18作品の開始と通常入力、portal18・010退役・privacyの計84経路、pageerror0を確認：[PUBLIC_REGRESSION](QA/PUBLIC_REGRESSION.json)。同意前/拒否時の外部解析通信0、許可でID作成、撤回でID/queue削除、privacy文字選択を確認：[PUBLIC_BROWSER](QA/PUBLIC_BROWSER.json)。自動ブラウザはqa扱いであり、本番同意処理は独立client試験でも別途検証。公開bundleとCI同条件のbuildは70配信fileのSHA-256が一致。旧engineバイナリの公開再ダウンロードは省略し、保護file監査とcompiled旧shell検証を併用した。
+
+初回hash照合はローカルでVITE設定を省略し、CIでは空文字を渡していたため不一致：[原記録](QA/PUBLIC_BROWSER_INITIAL.json)。両変数を空文字にした同条件buildで70/70一致し、product修正なし。公開管理画面はHTTP200、noindex/nofollow、320px overflowなし、「Telemetry endpoint未設定」を正しく表示：[PUBLIC_ADMIN](QA/PUBLIC_ADMIN.json)。
+
+公開の正本は[PUBLICATION](QA/PUBLICATION.json)。**サイト機能は公開済みだが、外部Telemetryはcode ready＋local D1検証済み、Cloudflare本番未deploy。GA4もMeasurement ID未設定・実送信未確認。** 本番D1/migration、endpoint/custom domain/admin secretは未設定。公開bundleも空の設定値と一致し、外部解析はinactive。
