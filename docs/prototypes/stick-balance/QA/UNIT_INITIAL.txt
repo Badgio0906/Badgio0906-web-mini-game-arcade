@@ -1,0 +1,245 @@
+
+> orbit-shift@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game017.test.ts (23 tests | 1 failed) 18217ms
+   ✓ RAINSHIFT phase and clock contracts > rejects early acceleration and opens a generous rain input window 103ms
+   ✓ RAINSHIFT phase and clock contracts > starts the full five seconds only once the .55s camera rotation completes 67ms
+   ✓ RAINSHIFT phase and clock contracts > does not steal planning time after a delayed camera-completion frame 27ms
+   ✓ RAINSHIFT phase and clock contracts > freezes the planning deadline during an explicit pause 56ms
+   ✓ RAINSHIFT phase and clock contracts > rejects route writes at the exact deadline and runs an incomplete route visibly before ending 6ms
+   ✓ RAINSHIFT phase and clock contracts > reports a single missed-activation end without collision during transitions 15ms
+   ✓ continuous route and rain geometry > accepts the visible goal area despite touch quantization, rejects points outside it 75ms
+   ✓ continuous route and rain geometry > keeps rain time and trailing images on the actual arc when the route backtracks 6ms
+   ✓ continuous route and rain geometry > requires the start/tail rather than accepting disconnected drawing 5ms
+   ✓ continuous route and rain geometry > resets a line without resetting the planning clock 3ms
+   ✓ continuous route and rain geometry > detects a circle entry even when neither endpoint is inside, including tangency 2ms
+   ✓ continuous route and rain geometry > sweeps an entire dash after a delayed frame rather than tunnelling through a raindrop 2ms
+   ✓ continuous route and rain geometry > follows all bends instead of colliding against a straight shortcut 1ms
+   ✓ continuous route and rain geometry > ignores high rain that cannot arrive within this dash 1ms
+   ✓ continuous route and rain geometry > awards CLOSE CALL only outside the actual collision radius 10ms
+   ✓ continuous route and rain geometry > never awards a clear twice, then escalates and resets on a new run 11ms
+   ✓ continuous route and rain geometry > keeps practice score zero, recovers at planning after a collision and can complete 11ms
+   × playable layout generator > independently checks every returned segment over early, wind, large-rain and saturated rounds 17679ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ playable layout generator > rejects an impossible barrier and regenerates a candidate rather than accepting it 5ms
+   ✓ playable layout generator > has a bounded fallback that is itself validated after repeated rejection 19ms
+   ✓ playable layout generator > makes wind and impact forecasts deterministic and introduces large drops only later 36ms
+   ✓ responsive shared projection > inverts the rendered top-down positions at desktop and tall phone sizes 1ms
+   ✓ responsive shared projection > uses exactly the same projected footprint extent as the effective collision circle 3ms
+ ❯ tests/unit/workday-escalation.test.ts (7 tests | 1 failed) 25311ms
+   ✓ Workday milestone and endless journey > 1000m pauses the live run and all motion, rejects nonmatching choices, then clears office exactly once  1403ms
+   ✓ Workday milestone and endless journey > journey reaches a frozen second choice; safe exit finalizes real score once without office clear  328ms
+   ✓ Workday milestone and endless journey > both continuation choices start a visible fresh segment with a usable collision lead and no instant reward 101ms
+   ✓ Workday milestone and endless journey > bike doubles approach, distance and one-lane motion while duration counts real active seconds 64ms
+   × Workday milestone and endless journey > five seeded walking and biking journeys pass 5000m with bounded visible resources and only two offers 23303ms
+     → Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ Workday milestone and endless journey > endless bike still collides normally, reports uncapped distance, and retry resets both milestone choices and speed 99ms
+   ✓ Workday milestone and endless journey > endless scoring keeps tier rounding beyond legacy cap and finite safe arithmetic 3ms
+ ❯ tests/unit/gameplay.test.ts (7 tests | 1 failed) 12775ms
+   ✓ orbit movement and scoring > interpolates a shift, rejects repeated inputs during it, and resets a completed run 8ms
+   ✓ orbit movement and scoring > emits death once, freezes the result, and caps resumed large frames 6ms
+   ✓ orbit movement and scoring > rewards a survivable late switch only after the obstacle has been passed 10ms
+   ✓ difficulty and fair pattern generation > has ordered difficulty boundaries and bounded continuous rotation speed  341ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 1)  3318ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 17)  3099ms
+   × difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 77) 5989ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ✓ tests/unit/game006-unbraked-compat.test.ts (1 test) 7283ms
+   ✓ replays identical legal inputs and varying frame steps with exact old unbraked pose and outcome  7278ms
+ ✓ tests/unit/game006.test.ts (8 tests) 3493ms
+   ✓ PARK IT! geometry and ordinary gauge play > retains all seven historical template geometry routes for the intro and forbidden preview  378ms
+   ✓ PARK IT! geometry and ordinary gauge play > tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry  841ms
+   ✓ PARK IT! geometry and ordinary gauge play > grades actual offset precision, caps consecutive Perfect bonus and bounds retained objects over60 successes  1772ms
+ ❯ tests/unit/game015.test.ts (27 tests | 1 failed) 44892ms
+   ✓ FALL KING honest impact and inertial control > no jump, DROP skips only current support, rejected air presses do not skip the next landing 9ms
+   ✓ FALL KING honest impact and inertial control > classifies exact normal6/9 and soft9/12 boundaries through real swept landings 17ms
+   ✓ FALL KING honest impact and inertial control > HARD landing resets the real fall but locks for a brief bounded recovery; NICE is separate from DEPTH 5ms
+   ✓ FALL KING honest impact and inertial control > air acceleration is gradual, release drifts, opposing input brakes then reverses, and speed is capped 2ms
+   ✓ FALL KING honest impact and inertial control > walking off starts from support plane; moving support carries player and contributes honest departure momentum 2ms
+   ✓ FALL KING honest impact and inertial control > crumble starts only on actual landing and expires after1.25s; hard stun leaves enough time for a deliberate next DROP 12ms
+   ✓ FALL KING honest impact and inertial control > real incoming momentum plus HARD recovery still permits a crumble-to-moving route across both sides and all moving phases 28ms
+   ✓ FALL KING honest impact and inertial control > camera never rises, previews2–3 next supports, snapshots/events cannot mutate physics and invalid deltas do nothing 36ms
+   ✓ authored descending routes and bounded endless generation > all authored chunks keep safe full-foot reach margins at every depth/edge and never overlap same-row alternatives  2906ms
+   ✓ authored descending routes and bounded endless generation > randomized early lanes include central spikes and break centered neutral descent  919ms
+   ✓ authored descending routes and bounded endless generation > public steering/braking safely crosses1000m without freezing and continues5000m with bounded arrays and all material types  18241ms
+   ✓ authored descending routes and bounded endless generation > moving phases stay inside envelopes and route validation rejects physically impossible links 6ms
+   ✓ continuous downward pursuit and randomized fair choices > standing still scrolls the world and ends once at the visible top boundary, with a generous opening 11ms
+   ✓ continuous downward pursuit and randomized fair choices > speed increases smoothly to a sustainable cap, and only simulation steps consume the pursuit clock 50ms
+   ✓ continuous downward pursuit and randomized fair choices > every generated row has a hazard-free landing envelope and a reachable next decision through varied widths/lanes  670ms
+   × continuous downward pursuit and randomized fair choices > ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds 21410ms
+     → Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ enlarged king and genuine telegraphed revision hazards > paired spike bays require all18px of body; exact contact edges remain safe and the underside is harmless 22ms
+   ✓ enlarged king and genuine telegraphed revision hazards > wall hugging gets a visible0.9s warning before real needle death; leaving during warning avoids it 16ms
+   ✓ enlarged king and genuine telegraphed revision hazards > ordinary early wall hugging reaches needle collision before any later spike row 41ms
+   ✓ enlarged king and genuine telegraphed revision hazards > bird sweeps include its own motion and full king body, catching crossing even when both endpoint boxes miss 3ms
+   ✓ enlarged king and genuine telegraphed revision hazards > grounded waiting is safe at both ends of bird gaps; legal timed DROP can avoid or hit the same active bird 51ms
+   ✓ enlarged king and genuine telegraphed revision hazards > spikes preserve the whole moving bay envelope and copied hazard state cannot alter physics 15ms
+   ✓ revision03 continuous fall and consequential route choices > holding DOWN passes ordinary floors without resetting gravity or impact distance; release catches the next floor 1ms
+   ✓ revision03 continuous fall and consequential route choices > soft catches hold at its true deep distance, awards NICE and automatically resumes after bounded recovery 2ms
+   ✓ revision03 continuous fall and consequential route choices > held continuous falls remain vulnerable to floor spikes and restart clears every held input 1ms
+   ✓ revision03 continuous fall and consequential route choices > varied safe steps and deep soft routes coexist in every authored pattern, with short and long gaps that remain physically reachable 1ms
+   ✓ revision03 continuous fall and consequential route choices > public hold and steering can choose the deep soft catch instead of stepping and neutral hold has no permanent safe lane  397ms
+ ✓ tests/unit/game011.test.ts (11 tests) 5316ms
+   ✓ UNKO or UKON explicit phases, real deadlines and public-input scoring > more than five thousand independent placements per phase approach50:50 and permit repeated same-side answers  4819ms
+ ✓ tests/unit/game002.test.ts (8 tests) 1984ms
+   ✓ WORKDAY DODGE model > five seeded reactive runs reach 1000m, cover all four opponent types and keep generation bounded  1901ms
+ ✓ tests/unit/game006-revision.test.ts (9 tests) 3503ms
+   ✓ Parking v2 slots and shape distance > both shared-obstacle routes are reachable at all generated side/mode choices  861ms
+   ✓ Parking v2 finite braking and scoring boundaries > brakes once over 240ms on the identical committed curved path, and can save excessive power  309ms
+   ✓ Parking v2 finite braking and scoring boundaries > offers both bays only after three successes, freezes gauges/time, and scores selected challenge separately  766ms
+   ✓ Parking v2 finite braking and scoring boundaries > keeps forbidden future-only x2 and challenge x1.4 as single independent factors  1030ms
+ ✓ tests/unit/game018-revision02.test.ts (7 tests) 613ms
+   ✓ fixed continuous forward-bend human bones > has fixed bone length and front knee in every subframe and angle  362ms
+ ✓ tests/unit/game018.test.ts (31 tests) 976ms
+   ✓ deterministic physics and genuine score > lands every sampled extreme finite input within the bounded simulation horizon  424ms
+stdout | tests/unit/game008.test.ts > Game008 delivery rules 2 > deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill
+{"careful":{"distance":128,"score":0,"time":32.00416666666517,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":0.0003164663249067682,"liquidVelocity":0.001991189612405887,"surfaceTilt":-0.00002845097715483872,"spilling":false,"spillRate":0}],"outcome":"timeout","reason":"配達の時間に間に合いませんでした。","deliveries":0,"totalDeliveredRemaining":0,"spareTime":0,"rulesVersion":2},"rush":{"distance":180,"score":1788,"time":22.50416666666571,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":40.8323458848966,"liquidAngle":0.00810969001498917,"liquidVelocity":0.07739252629943917,"surfaceTilt":0.001430245083535558,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":40.8323458848966,"spareTime":9.49583333333429,"rulesVersion":2},"mixed":{"distance":180,"score":2110,"time":29.24999999999866,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":-0.0070284658945135615,"liquidVelocity":-0.0016635166385906659,"surfaceTilt":-0.0007740142523649535,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":100,"spareTime":2.7500000000013394,"rulesVersion":2}}
+
+ ✓ tests/unit/game008.test.ts (5 tests) 370ms
+ ✓ tests/unit/analytics-client.test.ts (9 tests) 285ms
+ ❯ tests/unit/game010.test.ts (8 tests | 1 failed) 17122ms
+   ✓ Game010 rules2 meaning/corrections/minutes > 12 authored structures have unique decisions, allthree final fields and real readable durations 13ms
+   ✓ Game010 rules2 meaning/corrections/minutes > proposals/chat never change canonical truth but recording them can overwrite player notes 217ms
+   × Game010 rules2 meaning/corrections/minutes > meaning beats allclick/last-only/no action/boss-only over30 distinct shuffled meetings 16706ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ Game010 rules2 meaning/corrections/minutes > ask pauses progression, resumes fullreading time and only2 requests are permitted per agenda 1ms
+   ✓ Game010 rules2 meaning/corrections/minutes > submits once, reports erroneous fields, toleratesone minor error and ends after2 majorfailed agendas 42ms
+   ✓ Game010 rules2 meaning/corrections/minutes > complete3 normal agendas offer freeexit or one genuinely revised extra agenda 88ms
+   ✓ Game010 rules2 meaning/corrections/minutes > practice requiresactual correction plus ask and ignores production records 40ms
+   ✓ Game010 rules2 meaning/corrections/minutes > readonly copies/invalid frames/history bound and repeatedcard cannot inflate correction score 12ms
+stdout | tests/unit/catalog-telemetry.test.ts > catalog identity and future tag filtering > keeps legacy routes/tags attached to the actual title and appends019
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > rejects corrupt/unknown/nonfinite/object data and copies valid records
+
+
+ ✓ tests/unit/game019-level.test.ts (7 tests) 282ms
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > retains cross-page game records in a bounded400window without changing200memory
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > recovers from corrupt and denied storage without stale resurrection
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > preserves a later page departure after quitting and beginning another run
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > counts a restarted ascent as interrupted rather than completed
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > does not double count quits/deaths or fabricate unreported positions and durations
+
+
+ ✓ tests/unit/catalog-telemetry.test.ts (7 tests) 439ms
+   ✓ local telemetry boundary > retains cross-page game records in a bounded400window without changing200memory  417ms
+ ✓ tests/unit/game003.test.ts (9 tests) 320ms
+stdout | tests/unit/game007.test.ts > Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal
+POLICY_RESULTS [{"scenario":0,"greedy":1190,"light":1180,"planning":2940},{"scenario":1,"greedy":2430,"light":1440,"planning":1880},{"scenario":2,"greedy":1760,"light":1410,"planning":3340}]
+
+ ✓ tests/unit/game007.test.ts (8 tests) 191ms
+ ✓ tests/unit/revision-features.test.ts (10 tests) 191ms
+ ✓ tests/unit/game016.test.ts (10 tests) 366ms
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 113ms
+ ✓ tests/unit/game005.test.ts (6 tests) 165ms
+ ✓ tests/unit/game003-art.test.ts (5 tests) 135ms
+ ✓ tests/unit/analyticsWorker.test.ts (11 tests) 98ms
+ ✓ tests/unit/game004.test.ts (6 tests) 64ms
+ ✓ tests/unit/sort-localization.test.ts (3 tests) 64ms
+ ✓ tests/unit/game019-charge.test.ts (7 tests) 81ms
+ ✓ tests/unit/game009.test.ts (8 tests) 123ms
+ ✓ tests/unit/stick-balance.test.ts (7 tests) 143ms
+ ✓ tests/unit/arcade-credits.test.ts (5 tests) 112ms
+ ✓ tests/unit/game016-wallet.test.ts (2 tests) 19ms
+ ✓ tests/unit/game015-practice.test.ts (9 tests) 63ms
+ ✓ tests/unit/arcade-practice.test.ts (24 tests) 23ms
+ ✓ tests/unit/services.test.ts (17 tests) 107ms
+ ✓ tests/unit/game016-practice.test.ts (3 tests) 13ms
+ ✓ tests/unit/game019-surfaces.test.ts (4 tests) 36ms
+ ✓ tests/unit/analytics-version-history.test.ts (2 tests) 7ms
+ ✓ tests/unit/game019-practice-charge.test.ts (3 tests) 29ms
+ ✓ tests/unit/game010-retirement.test.ts (2 tests) 13ms
+ ✓ tests/unit/analytics-admin.test.ts (6 tests) 22ms
+ ✓ tests/unit/game019-telemetry.test.ts (3 tests) 13ms
+ ✓ tests/unit/game019-stats.test.ts (3 tests) 16ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game010.test.ts > Game010 rules2 meaning/corrections/minutes > meaning beats allclick/last-only/no action/boss-only over30 distinct shuffled meetings
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/unit/game010.test.ts:8:2
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/unit/game015.test.ts > continuous downward pursuit and randomized fair choices > ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds
+Error: Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/unit/game015.test.ts:236:3
+    234|     expect(widths.size).toBeGreaterThanOrEqual(5); expect([...centers]…
+    235|   });
+    236|   it('ordinary DROP/steer/brake survives changing routes and scrolling…
+       |   ^
+    237|     for (let seed = 1; seed <= 64; seed++) {
+    238|       const result = safeDescent(seed, 350);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/unit/game017.test.ts > playable layout generator > independently checks every returned segment over early, wind, large-rain and saturated rounds
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/unit/game017.test.ts:88:3
+     86| });
+     87| describe('playable layout generator', () => {
+     88|   it('independently checks every returned segment over early, wind, la…
+       |   ^
+     89|     for (const round of [1, 2, 4, 6, 12, 40]) for (let seed = 1; seed …
+     90|       const scene = createScene(round, seed);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/unit/gameplay.test.ts > difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 77)
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/unit/gameplay.test.ts:83:22
+     81|   });
+     82|
+     83|   it.each([1, 17, 77])('safe reactive policy survives ten minutes with…
+       |                      ^
+     84|     const run = new OrbitRun(() => {}, seeded(seed));
+     85|     run.start();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/unit/workday-escalation.test.ts > Workday milestone and endless journey > five seeded walking and biking journeys pass 5000m with bounded visible resources and only two offers
+Error: Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/unit/workday-escalation.test.ts:104:3
+    102|   });
+    103|
+    104|   it('five seeded walking and biking journeys pass 5000m with bounded …
+       |   ^
+    105|     for (const choice of ['walk', 'bike'] as const) for (const seed of…
+    106|       const events: WorkdayEvent[] = []; const run = bikeOffer(seed, e…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  5 failed | 37 passed (42)
+      Tests  5 failed | 347 passed (352)
+   Start at  15:24:06
+   Duration  60.15s (transform 4.51s, setup 0ms, collect 8.30s, tests 145.39s, environment 49ms, prepare 8.10s)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

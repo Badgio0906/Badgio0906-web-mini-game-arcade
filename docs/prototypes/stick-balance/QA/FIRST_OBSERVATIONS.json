@@ -1,0 +1,20 @@
+{
+  "layout": {
+    "viewport": [
+      320,
+      568
+    ],
+    "controlsBottom": 614.03125,
+    "feedback": "crossed cuff at y462",
+    "resolution": "compact portrait and landscape CSS; feedback moved beside wrist"
+  },
+  "browserHarness": {
+    "firstRun": "controller failed at 7.700s",
+    "observation": "clock install continued wall time while screenshots and input protocol commands ran",
+    "resolution": "Paused virtual clock did not alone resolve controller loss (7.133s on second attempt). Replaced fragile deadband controller with 100ms model-predicted direction selection; third run passed. Both are test-only changes; no game state injection."
+  },
+  "jevInput": {
+    "firstAttempt": "local schema rejected viewport string; no API request",
+    "resolution": "viewport object; original observation submitted once"
+  }
+}

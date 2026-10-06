@@ -1,0 +1,10 @@
+import {chromium} from '@playwright/test';
+import {writeFileSync} from 'node:fs';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const context=await browser.newContext();const page=await context.newPage();await page.goto('http://localhost:5173/prototype-stick.html');await page.click('#start');await page.waitForTimeout(250);
+const before=await page.evaluate(()=>({visibility:document.visibilityState,state:window.__stick}));
+const other=await context.newPage();await other.goto('about:blank');await other.bringToFront();await page.waitForTimeout(500);
+const away=await page.evaluate(()=>({visibility:document.visibilityState,state:window.__stick}));
+await page.bringToFront();const returned=await page.evaluate(()=>({visibility:document.visibilityState,state:window.__stick}));
+const result={before,away,returned,realTabPauseVerified:away.visibility==='hidden'&&away.state.mode==='paused'};
+writeFileSync('docs/prototypes/stick-balance/QA/TAB.json',JSON.stringify(result,null,2));console.log({realTabPauseVerified:result.realTabPauseVerified,awayVisibility:away.visibility,awayMode:away.state.mode});await browser.close();
