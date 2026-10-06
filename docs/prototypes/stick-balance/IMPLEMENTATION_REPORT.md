@@ -2,7 +2,7 @@
 
 **本番未変更・未統合。ユーザー試遊後に本体担当へ返す候補。** 既存Game008を置換していない。mainへのpush/merge、本番deployなし。他タスクの変更の取り込みなし。
 
-分岐元は `c0c294120bc5a5a6e228819dc9b5120eeff64d84`。作業開始時にorigin/mainとローカルHEADの一致を確認。ブランチ `codex/stick-balance-prototype`。コミットとソースhashは下記の固定記録参照。
+分岐元は `c0c294120bc5a5a6e228819dc9b5120eeff64d84`。作業開始時にorigin/mainとローカルHEADの一致を確認。ブランチ `codex/stick-balance-prototype`。実装・検証固定コミットは `bee6240`。この後の引き継ぎ追記は文書のみ。ソースhashは下記の固定記録参照。
 
 ## 試遊
 
@@ -42,7 +42,7 @@ npx vite preview --config vite.stick.config.ts --host 0.0.0.0 --port 5174
 - `QA/LAYOUT.txt`：1366×900/1366×768/390×844/320×568/844×390の操作下端がviewport内。各画面の画像、全段階、予告/短縮途中、危険/回復/ポーズ/落下を保存。
 - 独立レビューは [INDEPENDENT_REVIEW.md](INDEPENDENT_REVIEW.md)。最終81/100、F13/H12でVisual PASS。初回HOLDや失敗の経緯を保持。描画画像での確認を、すべての実機合格とはしない。
 - Jev4findingはShadow記録のみ（`QA/JEV_SHADOW.jsonl`、`QA/JEV_SUMMARY.json`）。自動公開判定なし。独立判断とNEXT_EVIDENCE等に不一致あり。Jev結果で人間の面白さを判定していない。
-- [人間試遊待ち](HUMAN_PLAYTEST.md)：iOS/Android実機の親指感覚、音、FPS、実際のタブ切替復帰とブラウザUI伸縮は未確認。非表示ハンドラーは実装済み、ブラウザQAのblur/resizeは技術的なイベント確認。本人の面白さ評価は未実施。
+- [人間試遊待ち](HUMAN_PLAYTEST.md)：iOS/Android実機の親指感覚、音、FPS、実際のタブ切替復帰とブラウザUI伸縮は未確認。2タブの実操作を試したがheadless Chromiumは背景タブもvisibleのままで、実タブ非表示の再現はできなかった（`QA/TAB.json`）。非表示ハンドラーは実装済み、ブラウザQAのblur/resizeは技術的なイベント確認。本人の面白さ評価は未実施。
 
 ## 変更ファイルと統合の注意
 
