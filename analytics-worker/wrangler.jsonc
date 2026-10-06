@@ -5,7 +5,7 @@
  "compatibility_date":"2026-10-06",
  "workers_dev":false,
  "vars":{"ENVIRONMENT":"production","RAW_RETENTION_DAYS":"90","AGGREGATE_RETENTION_MONTHS":"13"},
- "d1_databases":[{"binding":"DB","database_name":"game100-analytics","database_id":"REPLACE_WITH_D1_DATABASE_ID","migrations_dir":"migrations"}],
+ "d1_databases":[{"binding":"DB","database_name":"game100garage-production","database_id":"122c6f47-1f9e-4863-9b3d-54b066f17cc7","migrations_dir":"migrations"}],
  "triggers":{"crons":["17 3 * * *"]},
  "env":{"development":{"name":"game100-analytics-development","workers_dev":false,"vars":{"ENVIRONMENT":"development","RAW_RETENTION_DAYS":"90","AGGREGATE_RETENTION_MONTHS":"13"},"d1_databases":[{"binding":"DB","database_name":"game100-analytics-development","database_id":"REPLACE_WITH_DEVELOPMENT_D1_DATABASE_ID","migrations_dir":"migrations"}]}}
 }
