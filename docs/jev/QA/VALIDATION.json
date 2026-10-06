@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-06T12:01:47.515561+00:00",
+  "baseline": "a45c308970b546f90f095e864328596838c19853",
+  "offline_tests": {
+    "passed": 25,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s tests/jev -p 'test_*.py' -v"
+  },
+  "typecheck": "PASS (npm run build runs tsc --noEmit)",
+  "build": "PASS",
+  "runtime_build_hashes": {
+    "matched": 86,
+    "checked": 86,
+    "source_manifest": "docs/analytics/QA/BUILD_HASHES.json"
+  },
+  "protected_runtime_changes": [],
+  "historical_jev_files_byte_identical": 12,
+  "markdown_links": "PASS",
+  "secret_value_scan": "PASS; secret values never emitted",
+  "api_smoke": {
+    "calls": 1,
+    "http": 200,
+    "provenance": "synthetic-helper-contract-smoke-not-real-game-evidence",
+    "requested_model": "typesafe/jev-1.13",
+    "resolved_model": "typesafe/jev-1.13-20260917",
+    "all_four_answers": true,
+    "usage_cost_latency_observed": true,
+    "independent_quality_judgment": "not_performed; contract fixture only"
+  },
+  "review_method": "Main performed implementation then separate schema/security/scope audit; no independent sub-agent review claimed",
+  "build_warnings": "Existing game018 CSS syntax and Phaser bundle-size warnings unchanged",
+  "limits": [
+    "One synthetic API contract sample, not model accuracy evidence",
+    "Stage2 14-case numbers are user-provided; original records not found",
+    "Shadow Mode; no automatic Codex skipping or release gate"
+  ],
+  "collector_note": "First link check ran before creating its own VALIDATION.json; created artifact then checked all links. No product change."
+}

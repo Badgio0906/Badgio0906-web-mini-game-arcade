@@ -1,0 +1,14 @@
+{
+  "finding_id": "synthetic-hold-contract-01",
+  "problem": "長押し中にメニューが現れ、離した入力が観測されないケースの次の確認方法が不明。",
+  "expected": "JUMPを押して溜め、離すと1回ジャンプする。",
+  "observed": [
+    "合成イベントfixtureではpointerdownの後、1200msでcontextmenuが発生する。",
+    "このfixtureの記録にはpointerupがない。"
+  ],
+  "operation": "JUMPに指を置き、1200ms保持してから離す。",
+  "measurements": {"hold_ms": 1200, "pointerdown_count": 1, "pointerup_count": 0},
+  "viewport": {"width": 390, "height": 844},
+  "unknown": ["pointercancelの有無", "実機ブラウザで再現するか", "操作領域に適用されたCSSとイベント処理"],
+  "provenance": "synthetic-helper-contract-smoke-not-real-game-evidence"
+}

@@ -79,6 +79,10 @@ DEVのreadonly診断で答えを選ぶ自動入力は、操作とタイマーの
 
 失敗は製品バグ、テスト基盤、仕様不一致、要求変更等に分ける。2000msの浮動小数誤差や遷移中CDP body収集を製品バグへ転用しない。一方、練習到達不能やpointerの持越しをテスト都合として隠さない。失敗の原本と修正後の記録を別に保持する。
 
+## FindingとJev Shadow
+
+finding発生時は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)の正本に従い、1問題ずつ同時点の観測で4質問を実行する。Jevは原因と次の証拠へのroutingだけで、通常の独立Codex／Visual／Feel／Human／Release Gateを代行しない。0.45未満でもCodex確認を継続し、CODEX FALSE PASSとRELEASE RISK MISSを別に保存する。key不足やAPI失敗はUNAVAILABLEとして通常QAへ続ける。単純PASS/FAIL、HTTP、build確認はスクリプトで行い、全PASSの回数消化をしない。
+
 ## 会話に依存しない納品と作業記録
 
 新native gameは`docs/gameNNN/`に少なくとも次を残す。既存ゲームを改修する場合は既存pathを保ち、revisionの最新報告から過去資料へリンクする。

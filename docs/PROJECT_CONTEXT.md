@@ -19,7 +19,7 @@
 | [CURRENT_STATUS](CURRENT_STATUS.md) | 現行カタログ・例外・検証済み版・残課題 | タスク開始／終了時更新 |
 | [GAME_DEVELOPMENT_RULES](GAME_DEVELOPMENT_RULES.md) | 実装・分担・素材・QA・継承手順 | 実装／改修 |
 | [GAME_COMMON_SPEC](../GAME_COMMON_SPEC.md) | 保存・CREDIT・入力・計測・配信の共通境界 | 共通部分を扱う時 |
-| [JEV_REVIEW_RULES](JEV_REVIEW_RULES.md) | Shadow評価・API実測・判定の用途と限界 | Jevを扱う時 |
+| [JEV_REVIEW_RULES](JEV_REVIEW_RULES.md) | Shadow評価・API実測・判定の用途と限界 | findingが発生した時 |
 | ゲーム別仕様／改修報告 | 固有ルール・直近変更・検証・人間評価 | 対象ゲームのみ |
 
 既存報告・初回失敗・生成原本・草案は証拠として保持する。全履歴を開始時の必読資料にしない。過去の共通仕様は [archive](archive/GAME_COMMON_SPEC_2026-10-04.md)、11本時点の練習候補は [草案](eleven-game/COMMON_SPEC_NEXT_DRAFT.md) にある。過去の本数・配点・CREDIT状態を現行へ適用しない。
@@ -44,7 +44,9 @@ TypeScript、Viteの静的MPA、HTML／CSSが基盤。Phaserは必要なゲー�
 
 001〜003・006はPhaser。004・005・007〜011・015〜019はPhaserを要求しない。012〜014は新規のGodot開発ではなく既存exportの移行であり、UI・操作・保存・音を維持する。[移行構造](legacy-games/MIGRATION.md)。
 
-バックエンド、アカウント、本番広告、オンラインランキングはゲームロジックに接続されていない。端末内の最大400イベントとJSON出力を追加したが、外部Analytics送信はない。Telemetryはゲーム内イベントであり、Codexの料金・使用量を取得する仕組みではない。
+アカウント、本番広告、オンラインランキングはゲームロジックに接続されていない。端末内の最大400イベントとJSON出力に加え、同意連動の外部解析コードは導入済みだが、GA4／Worker／D1の本番設定は未完了でproduction inactive。Telemetryはゲーム内イベントであり、Codexの料金・使用量を取得する仕組みではない。
+
+Jev integration：OpenRouter Decisions、`typesafe/jev-1.13`、Shadow Mode。1 findingずつ4質問で次の証拠へroutingする開発toolで、自動Gateではない。詳細の正本は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)。
 
 ## 新しいゲームタスクの開始
 
