@@ -1,4 +1,4 @@
-# Codex Cloud: WEBミニゲーセン
+# Codex Cloud: 100ガレ ～GAME100 GARAGE～
 
 - 開始時に [PROJECT_CONTEXT](docs/PROJECT_CONTEXT.md) と [CURRENT_STATUS](docs/CURRENT_STATUS.md) を読む。今回のゲーム・工程に必要な仕様と最新改修報告だけを追加で読む。
 - 実装・改修は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)、finding発生時は [JEV_REVIEW_RULES](docs/JEV_REVIEW_RULES.md) のShadow Reviewに従う。全履歴・画像・巨大なQA JSONを毎回読み込まない。

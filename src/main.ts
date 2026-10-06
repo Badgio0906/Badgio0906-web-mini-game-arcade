@@ -68,7 +68,7 @@ app.innerHTML = `
       <span class="guide-bottom">STAY IN ORBIT.<br>GO ONE MORE.</span>
     </aside>
   </main>
-  <footer class="site-footer"><span>A SMALL GAME. A NEW HIGH.</span><span>ローカル自己ベスト <i>·</i> 無料 <i>·</i> インストール不要</span><span>WEB MINI GAME ARCADE © 2026</span></footer>
+  <footer class="site-footer"><span>A SMALL GAME. A NEW HIGH.</span><span>ローカル自己ベスト <i>·</i> 無料 <i>·</i> インストール不要</span><span>GAME100 GARAGE © 2026</span></footer>
   <dialog id="how-dialog" aria-labelledby="how-title">
     <div class="dialog-heading"><span class="eyebrow">FLIGHT MANUAL</span><button class="icon-button" data-action="close-how" aria-label="遊び方を閉じる">×</button></div>
     <h2 id="how-title">タップで、軌道を切替。</h2>

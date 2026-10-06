@@ -1,5 +1,7 @@
 # PROJECT_CONTEXT — 新しいタスクの入口
 
+正式名称は **100ガレ ～GAME100 GARAGE～**、略称は **100ガレ**、英字表記は **GAME100 GARAGE**。ドメインは`game100garage.com`。新しい表示・説明に旧称を再使用しない。
+
 この文書はプロジェクトの目的・構造・参照先を管理する。ゲーム本数、公開版、未完了事項は [CURRENT_STATUS](CURRENT_STATUS.md)、技術上の共通境界は [GAME_COMMON_SPEC](../GAME_COMMON_SPEC.md) が管理する。
 
 ## 目的と優先順位

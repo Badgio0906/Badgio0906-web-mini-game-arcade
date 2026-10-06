@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-06：サイト正式名称を **100ガレ ～GAME100 GARAGE～** に統一。略称 **100ガレ**、英字 **GAME100 GARAGE**、ドメイン`game100garage.com`。変更は公開表示・title・description・現行文書と旧ページ生成templateの名称のみ。Game001はユーザー許可済みのfooter文字列1箇所だけを差し替え、ゲーム処理・015/019・広告・解析・Cloudflare・保存互換・URLは変更しない。旧称を記録した過去資料・ログは履歴として保持する。 check／345単体／build成功。compiled PC・390px・320pxで新名称・18作品link・AdSense保持・同意UI・pageerror0を確認。
+
 2026-10-06：**Jev運用をrouting層として正式整理。** OpenRouter／`typesafe/jev-1.13`固定、schema v2のPRIMARY_CAUSE・CODEX_ACTION_REQUIRED・NEXT_EVIDENCE・RELEASE_RISK_IF_UNRESOLVED、Shadow Mode。0.45未満でも独立Codexレビュー継続、両見逃しを別記録、自動Gateなし。新規findingは[正本ルール](JEV_REVIEW_RULES.md)を適用。[評価・検証履歴](jev/JEV_EVALUATION_HISTORY.md)。ゲーム／Portal／公開runtimeは変更なし。
 
 2026-10-06（日本時間）：**集客前の分析基盤・共通長押し対策・Game010退役を正式HTTPSへ公開済み。active18、次は020。** Game010 retired after human playtest：抜本改修後も本人試遊で面白くないため、AIテストの合否とは別の企画判断で退役。ID010/releaseOrder/過去コード/資料/Telemetry/profileを保持し、軽量noindex退役routeへ変更。Game015/019固有ソースと現在の本人好評価を維持。広告/CREDIT OFFも不変。[最新報告](analytics/REPORT.md)、[本番外部設定](analytics/MANUAL_SETUP.md)。Consent/GA/upload/Worker/D1/管理集計/集計exportまで実装・ローカル検証。本番Worker/D1/GA4は未設定・inactive。PR #5／runtime4608ac8、Pages37456340150のtest/build/deploy成功。公開全18作品×4画面＋portal/退役/privacyの84経路と70配信hash一致。公開状態と最終検証は最新報告・QA/PUBLICATION.jsonを参照。
