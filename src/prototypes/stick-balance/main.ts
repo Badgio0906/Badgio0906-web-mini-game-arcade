@@ -12,8 +12,6 @@ app.innerHTML = `
 <svg id="art" viewBox="0 0 600 570" role="img" aria-label="開いた手のひらの上に、細い伸縮式の棒が立っています">
 <defs>
 <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#f7f1df"/><stop offset="1" stop-color="#fffaf0"/></linearGradient>
-<linearGradient id="skin" x1="0" y1="0" x2="0.7" y2="1"><stop stop-color="#ffdbab"/><stop offset=".55" stop-color="#f8bc88"/><stop offset="1" stop-color="#e69767"/></linearGradient>
-<linearGradient id="sleeve" x2="1" y2=".3"><stop stop-color="#217c78"/><stop offset=".6" stop-color="#399c8c"/><stop offset="1" stop-color="#78b9a0"/></linearGradient>
 <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#c7c5ad" opacity=".36"/></pattern>
 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
 </defs>
@@ -26,13 +24,17 @@ app.innerHTML = `
 <ellipse id="ground-shadow" cx="300" cy="519" rx="76" ry="10" fill="#647b62" opacity=".16" filter="url(#shadow)"/>
 <g id="assembly" transform="translate(300 379)">
 <g id="hand">
-<!-- Original authored vector: forearm, cuff, palm, four overlapping fingers, thumb. -->
-<path d="M-102 170L-101 89Q-92 61-69 46L-42 62Q-61 100-49 170Z" fill="url(#sleeve)" stroke="#254b43" stroke-width="3.5" stroke-linejoin="round"/>
-<path d="M-98 92L-86 68L-49 79L-53 101Z" fill="#e4eee0" stroke="#254b43" stroke-width="3"/>
-<path d="M-86 69Q-79 41-60 25Q-43 9-17 1Q-4-4 10-1L59-11Q70-13 73-7Q75-1 67 3L39 10L74 5Q86 5 85 12Q85 19 75 21L43 25L79 23Q91 24 88 31Q86 37 74 39L39 41L66 40Q79 42 76 49Q74 55 61 56L17 57Q-6 63-22 62L-50 82Z" fill="url(#skin)" stroke="#68432f" stroke-width="3.2" stroke-linejoin="round"/>
-<path d="M-61 47Q-39 48-30 31Q-25 21-13 22L8 29Q19 34 14 41Q9 46-4 41L-15 38Q-19 58-40 62" fill="#ffce99" stroke="#9f6547" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M40 10L22 13M43 25L27 27M39 41L28 41M52-6l6 4M65 10l7 3M67 29l8 1M59 46l7 1" fill="none" stroke="#bf8059" stroke-width="1.7" stroke-linecap="round"/>
-<path d="M-48 21Q-30 10-12 7" fill="none" stroke="#ffe9bf" stroke-width="4" stroke-linecap="round"/>
+<!-- Original flat vector, revision 2: relaxed upturned palm, staggered fingers.
+     Contact stays at (0,0); wrist animation and physics are unchanged. -->
+<path d="M-91 170L-88 88Q-87 73-76 61L-43 76Q-52 91-51 111L-47 170Z" fill="#439b8b" stroke="#34574d" stroke-width="3.2" stroke-linejoin="round"/>
+<path d="M-88 88L-82 69L-43 80L-48 100Z" fill="#f3f3df" stroke="#34574d" stroke-width="3" stroke-linejoin="round"/>
+<path d="M-81 70Q-75 44-56 23Q-35 1-10 0L12 0L53-10Q64-13 67-6Q70 1 61 5L42 12L66 7Q77 5 79 13Q80 19 70 22L46 28L62 25Q72 25 72 32Q71 38 62 40L41 43L49 42Q58 43 56 49Q54 54 44 55L16 55Q32 60 31 68Q29 76 20 73L-13 57Q-30 62-43 80Z" fill="#f5c69e" stroke="#735943" stroke-width="3.2" stroke-linejoin="round"/>
+<path d="M-42 18Q-27 5-10 3L13 3L44-4L50 1Q24 13 2 17Q-24 22-42 18Z" fill="#ffdab6"/>
+<!-- Only three short finger separations; no nails, knuckles or flesh shading. -->
+<path d="M42 12L30 15M46 28L33 30M41 43L31 44" fill="none" stroke="#b78a68" stroke-width="2.1" stroke-linecap="round"/>
+<!-- A single open crease describes the thumb root; no enclosed raised finger. -->
+<path d="M-47 43Q-26 34-10 45L16 55" fill="none" stroke="#b78a68" stroke-width="2.1" stroke-linecap="round"/>
+
 </g>
 <ellipse cx="0" cy="2" rx="13" ry="4" fill="#805232" opacity=".26"/>
 <g id="rod"></g>

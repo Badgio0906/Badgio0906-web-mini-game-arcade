@@ -1,6 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-独立試作メモ（本番未変更・未統合）：Game008代替候補の棒バランスを `codex/stick-balance-prototype` に作成。[試遊・引き継ぎ](prototypes/stick-balance/IMPLEMENTATION_REPORT.md)。本人試遊後に本体担当へ返却する。既存Game008・公開一覧の状態は以下のまま。
+独立試作メモ（本番未変更・未統合）：Game008代替候補の棒バランスを `codex/stick-balance-prototype` に作成。[試遊・引き継ぎ](prototypes/stick-balance/IMPLEMENTATION_REPORT.md)。2026-10-07 JSTに[手の描画のみ修正](prototypes/stick-balance/hand-revision/REPORT.md)、物理/難度不変・未配信。本人試遊後に本体担当へ返却する。既存Game008・公開一覧の状態は以下のまま。
 
 2026-10-06：サイト正式名称を **100ガレ ～GAME100 GARAGE～** に統一。略称 **100ガレ**、英字 **GAME100 GARAGE**、ドメイン`game100garage.com`。変更は公開表示・title・description・現行文書と旧ページ生成templateの名称のみ。Game001はユーザー許可済みのfooter文字列1箇所だけを差し替え、ゲーム処理・015/019・広告・解析・Cloudflare・保存互換・URLは変更しない。旧称を記録した過去資料・ログは履歴として保持する。 check／345単体／build成功。compiled PC・390px・320pxで新名称・18作品link・AdSense保持・同意UI・pageerror0を確認。
 

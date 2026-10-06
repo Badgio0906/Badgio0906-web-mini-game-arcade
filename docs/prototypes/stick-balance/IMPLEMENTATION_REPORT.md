@@ -1,5 +1,7 @@
 # 棒バランス独立試作の引き継ぎ
 
+2026-10-07 JST：本人の指摘を受け[手のSVG描画だけを修正](hand-revision/REPORT.md)。物理/難度不変、iPhone用URLは未配信。
+
 **本番未変更・未統合。ユーザー試遊後に本体担当へ返す候補。** 既存Game008を置換していない。mainへのpush/merge、本番deployなし。他タスクの変更の取り込みなし。
 
 分岐元は `c0c294120bc5a5a6e228819dc9b5120eeff64d84`。作業開始時にorigin/mainとローカルHEADの一致を確認。ブランチ `codex/stick-balance-prototype`。実装・検証固定コミットは `bee6240`。この後の引き継ぎ追記は文書のみ。ソースhashは下記の固定記録参照。
