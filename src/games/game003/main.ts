@@ -1,4 +1,5 @@
-import { createOnboarding } from '../../arcade/onboarding';
+import { createTowerTraining } from './TowerTraining';
+import '../../arcade/onboarding.css';
 import { buildingTitle } from './resultFlavor';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
@@ -14,12 +15,13 @@ const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) 
 const app = $('app'); const overlay = $('overlay'); const stage = $('stage');
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game003:');
 const telemetry = new TelemetryService(storage, 'game003');
-const onboarding = createOnboarding({ gameId: 'game003', storage, telemetry });
+const onboarding = createTowerTraining(storage, telemetry);
 const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
 const listeners = new AbortController();
 let state: Screen = 'title'; let runId = ''; let lastResult: TowerResult | null = null;
-let best = storage.readNumber('best', 0); let newBest = false; let ended = true;
-let bestBonus = storage.readNumber('bestBonus', 0);
+const legacyBest = storage.readNumber('best', 0); const legacyBonus = storage.readNumber('bestBonus', 0);
+let best = storage.readNumber('rules2:best', 0); let newBest = false; let ended = true;
+let bestBonus = storage.readNumber('rules2:bestBonus', 0);
 let milestoneShown = false; let choiceEpoch = 0; let choiceLocked = false;
 let choicePointer: { pointerId: number; button: string; epoch: number } | null = null;
 let choiceKeyboard: { button: string; epoch: number } | null = null;
@@ -54,10 +56,11 @@ function sync(): void {
 function update(snapshot: TowerSnapshot): void {
   $('score-value').textContent = String(snapshot.floors);
   $('height-value').textContent = snapshot.height.toFixed(1);
-  $('precision-label').textContent = `PERFECT ${snapshot.perfectCount}${snapshot.combo > 1 ? ` ×${snapshot.combo}` : ''} · BONUS ${snapshot.precisionScore}${snapshot.cMode ? ' (300%)' : ''}`;
+  $('precision-label').textContent = `PERFECT ${snapshot.perfectCount} · ${snapshot.precisionScore} / 芸術 ${snapshot.artPairs}組 · ${snapshot.artScore}`;
   app.dataset.mode = snapshot.mode;
   $('balance-fill').style.width = `${Math.round(snapshot.instability * 100)}%`;
   $('balance-label').textContent = snapshot.instability > 0.72 ? '危険' : snapshot.instability > 0.4 ? '傾き注意' : '安定';
+  $('center-label').textContent = snapshot.foundationCenter > 312 ? '基礎重心 → 右寄り' : snapshot.foundationCenter < 288 ? '基礎重心 ← 左寄り' : '基礎重心 · 中央';
   $('stage').dataset.danger = String(snapshot.instability > 0.72);
   const ready = state === 'playing' && snapshot.phase === 'hanging' && snapshot.alive;
   $<HTMLButtonElement>('drop-button').disabled = !ready;
@@ -73,13 +76,13 @@ function setScreen(next: Screen, delay = false): void {
     $('score-value').textContent = '0'; $('height-value').textContent = '0.0';
     $('precision-label').textContent = 'PERFECT 0 · BONUS 0'; $('balance-fill').style.width = '0%'; $('balance-label').textContent = '安定'; stage.dataset.danger = 'false';
     $('drop-status').textContent = 'タイミングを見て、DROP';
-    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY TO BUILD?</span><h2 class="game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></h2><p>中心が重なる、その瞬間に。<br />揺れる荷物を落として積み上げよう。</p><div class="mini-best">BEST <b>${best}</b> FLOORS</div>${credits.canPlay ? primary('play-button', 'PLAY · 建築開始') : primary('reward-button', '+3 CREDIT')}<small class="input-note">Space / Enter / Click / Tap</small>${credits.canPlay ? '' : stub}</article>`;
+    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY TO BUILD?</span><h2 class="game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></h2><p>中央を狙うか、左右へ張り出すか。<br />反対へ戻して、釣り合いを取ろう。</p><div class="mini-best">新ルール BEST <b>${best}</b> FLOORS<small>旧ルール ${legacyBest}階 / BONUS ${legacyBonus} を保持</small></div>${credits.canPlay ? primary('play-button', 'PLAY · 建築開始') : primary('reward-button', '+3 CREDIT')}<small class="input-note">Space / Enter / Click / Tap</small>${credits.canPlay ? '' : stub}</article>`;
   } else if (next === 'paused') {
     $('drop-status').textContent = 'PAUSED · 塔は止まっています';
     overlay.innerHTML = `<article class="start-card"><span class="eyebrow">HOLD THE CRANE</span><h2>ひと休み。</h2><p>塔も時間も止まっています。<br />準備ができたら、続きから。</p><div class="inspection-actions">${primary('resume-button', 'RESUME · 再開')}${titleButton}</div></article>`;
   } else if (next === 'result' && lastResult) {
     const result = lastResult;
-    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></span><h2>${result.outcome === 'fall' ? 'あと、もう少し。' : '塔が、崩れた。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.floors}</b><span>階数・スコア</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best} floors</dd></div><div><dt>HEIGHT</dt><dd>${result.height.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} <small>×${result.maxCombo}</small></dd></div><div><dt>BONUS${result.cMode ? ' · 300%' : ''}</dt><dd>${result.precisionScore}<small id="result-bonus-best"> BEST ${bestBonus}</small></dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl><div class="result-flavor"><small>${result.cMode ? 'C国 MODE · 速度200% / BONUS300% · 今回の称号' : '今回の称号'}</small><b id="building-title">${buildingTitle(result.floors, result.cMode)}</b></div><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">${resultNote()}</small></article>`;
+    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></span><h2>${result.outcome === 'fall' ? 'あと、もう少し。' : '塔が、崩れた。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.floors}</b><span>階数・スコア</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best} floors</dd></div><div><dt>HEIGHT</dt><dd>${result.height.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} <small>+${result.precisionScore}</small></dd></div><div><dt>芸術ペア</dt><dd>${result.artPairs}組 <small>+${result.artScore}</small></dd></div><div><dt>合計 BONUS</dt><dd>${result.bonusScore}<small id="result-bonus-best"> 新BEST ${bestBonus}</small></dd></div></dl><div class="result-flavor"><small>${result.cMode ? 'C国 MODE · 速度200% / PERFECT / 芸術点300% · 今回の称号' : '今回の称号'}</small><b id="building-title">${result.artPairs >= 5 ? '釣り合いの魔術師' : result.artPairs >= 2 ? '左右に事情のある建築士' : result.artPairs ? 'ちょっと攻めた大工' : buildingTitle(result.floors, result.cMode)}</b></div><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">新ルール v2 · 旧${legacyBest}階 / ${legacyBonus}点保持<br />${resultNote()}</small></article>`;
     if (delay) {
       overlay.hidden = true;
       resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.hidden = false; trackRewardOffer(); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
@@ -92,7 +95,7 @@ function setScreen(next: Screen, delay = false): void {
 function showMilestone(): void {
   choiceEpoch += 1; choiceLocked = false; choiceKeyboardStarted = false;
   setScreen('milestone');
-  overlay.innerHTML = `<article class="start-card milestone-card"><span class="eyebrow">HEIGHT 15 m / 新たな建築許可</span><h2>15mを突破しました。<br />C国モードを解禁しますか？</h2><div class="mode-terms"><b>C国モード</b><span>速度：<strong>200%</strong></span><span>PERFECT BONUS：<strong>300%</strong></span></div><p>危険ですが、とても伸びます。</p><div class="mode-actions">${primary('normal-button', '通常建築を続ける')}${primary('challenge-button', 'C国モードへ')}</div>${titleButton}<small>塔も時間も停止中。このRUNでは変更できません。</small></article>`;
+  overlay.innerHTML = `<article class="start-card milestone-card"><span class="eyebrow">HEIGHT 15 m / 新たな建築許可</span><h2>15mを突破しました。<br />C国モードを解禁しますか？</h2><div class="mode-terms"><b>C国モード</b><span>速度：<strong>200%</strong></span><span>PERFECT / 芸術点：<strong>300%</strong></span></div><p>危険ですが、とても伸びます。</p><div class="mode-actions">${primary('normal-button', '通常建築を続ける')}${primary('challenge-button', 'C国モードへ')}</div>${titleButton}<small>塔も時間も停止中。このRUNでは変更できません。</small></article>`;
   if (!milestoneShown) {
     milestoneShown = true;
     telemetry.trackEvent('milestone_reached', { runId, milestone: 'height15', height: controller.snapshot().height });
@@ -109,6 +112,12 @@ function chooseMode(buttonId: string): void {
   setScreen('playing');
 }
 function sound(event: TowerEvent): void {
+  if (['overhang', 'art', 'support_failure'].includes(event.type) && !ended) {
+    const snap = controller.snapshot();
+    const data: Record<string, string | number | boolean> = event.type === 'art' ? { event: 'art_pair', first_id: event.pair.firstId, second_id: event.pair.secondId, points: event.pair.points, first_ratio: event.pair.firstRatio, second_ratio: event.pair.secondRatio, recovery_pixels: event.pair.recoveryPixels } : event.type === 'overhang' ? { event: 'overhang', cargo_id: event.cargoId, offset_ratio: event.offsetRatio, support_margin: event.margin, weak_joint_index: event.weakJointIndex } : event.type === 'support_failure' ? { event: 'support_failure', joint_index: event.jointIndex, support_margin: event.margin, contact: event.contact } : {};
+    telemetry.trackEvent('specific_game_events', { runId, rulesVersion: 2, floors: snap.floors, ...data });
+  }
+  if (event.type === 'art') { audio.tone(540, 720, .13, 'triangle', 0, .03); audio.tone(810, 1080, .13, 'sine', .08, .025); }
   if (event.type === 'release') audio.tone(320, 200, 0.07, 'sine', 0, 0.025);
   if (event.type === 'land') { audio.tone(130, 75, 0.15, 'triangle', 0, 0.065); audio.tone(220, 120, 0.08, 'sine', 0.02, 0.025); }
   if (event.type === 'perfect') { const pitch = 520 + Math.min(event.combo, 8) * 65; audio.tone(pitch, pitch * 1.25, 0.14, 'sine'); audio.tone(pitch * 1.5, pitch * 1.5, 0.14, 'triangle', 0.07, 0.03); }
@@ -121,11 +130,11 @@ const controller = createTowerGame($('game-canvas'), {
   onEnd(result) {
     if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
     ended = true; lastResult = result; newBest = result.floors > best;
-    best = Math.max(best, result.floors); storage.writeNumber('best', best);
-    bestBonus = Math.max(bestBonus, result.precisionScore); storage.writeNumber('bestBonus', bestBonus);
+    best = Math.max(best, result.floors); storage.writeNumber('rules2:best', best);
+    bestBonus = Math.max(bestBonus, result.bonusScore); storage.writeNumber('rules2:bestBonus', bestBonus);
     credits.consume(runId);
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.floors, time: result.time });
-    telemetry.trackEvent('score', { runId, score: result.floors, best, newBest });
+    telemetry.trackEvent('run_end', { runId, rulesVersion: 2, outcome: 'over', score: result.floors, time: result.time, artPairs: result.artPairs, artScore: result.artScore, bonusScore: result.bonusScore });
+    telemetry.trackEvent('score', { runId, rulesVersion: 2, score: result.floors, best, newBest });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
     telemetry.trackEvent('tower_height', { runId, height: result.height, floors: result.floors });
     telemetry.trackEvent('perfect_count', { runId, count: result.perfectCount, maxCombo: result.maxCombo, precisionScore: result.precisionScore, cMode: result.cMode, perfectMultiplier: result.perfectMultiplier });
@@ -133,13 +142,13 @@ const controller = createTowerGame($('game-canvas'), {
   },
 });
 function start(retry = false): void {
-  if (onboarding.intercept(() => start(retry))) return;
+  if (onboarding.intercept()) return;
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || state === 'milestone' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game003-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   ended = false; lastResult = null; newBest = false; milestoneShown = false; choiceEpoch += 1; choiceLocked = false; choicePointer = null; choiceKeyboard = null;
   if (retry) telemetry.trackEvent('retry', { runId });
-  telemetry.trackEvent('run_start', { runId, credits: credits.credits });
+  telemetry.trackEvent('run_start', { runId, rulesVersion: 2, credits: credits.credits });
   setScreen('playing'); controller.start();
 }
 function drop(): void { if (state === 'playing' && !ended && controller.snapshot().phase === 'hanging') { void audio.unlock(); controller.drop(); } }
@@ -151,7 +160,7 @@ function recordQuit(): void {
   if ((state !== 'playing' && state !== 'paused' && state !== 'milestone') || ended) return;
   ended = true; const snapshot = controller.snapshot();
   telemetry.trackEvent('quit', { runId, score: snapshot.floors, time: snapshot.time });
-  telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: snapshot.floors, time: snapshot.time });
+  telemetry.trackEvent('run_end', { runId, rulesVersion: 2, outcome: 'quit', score: snapshot.floors, time: snapshot.time });
   telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
 }
 function title(): void { if (credits.rewardPending || (state === 'result' && performance.now() < resultAvailableAt)) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }

@@ -1,0 +1,71 @@
+
+> orbit-shift@0.1.0 check
+> tsc --noEmit
+
+src/games/game003/main.ts(118,50): error TS2345: Argument of type '{ event: string; first_id: number; second_id: number; points: number; first_ratio: number; second_ratio: number; recovery_pixels: number; cargo_id?: undefined; offset_ratio?: undefined; support_margin?: undefined; ... 5 more ...; floors: number; } | { ...; } | { ...; } | { ...; }' is not assignable to parameter of type 'Record<string, string | number | boolean> | undefined'.
+  Type '{ event: string; first_id: number; second_id: number; points: number; first_ratio: number; second_ratio: number; recovery_pixels: number; cargo_id?: undefined; offset_ratio?: undefined; support_margin?: undefined; ... 5 more ...; floors: number; }' is not assignable to type 'Record<string, string | number | boolean>'.
+    Property 'cargo_id' is incompatible with index signature.
+      Type 'undefined' is not assignable to type 'string | number | boolean'.
+src/games/game006/ParkingRun.ts(242,58): error TS2367: This comparison appears to be unintentional because the types '"ended" | "choice" | "angle" | "power" | "driving" | "parked"' and '"slot-choice"' have no overlap.
+src/games/game006/main.ts(125,52): error TS2345: Argument of type '"practice_step_complete"' is not assignable to parameter of type 'EventName'.
+src/games/game007/ElevatorRun.ts(47,42): error TS2367: This comparison appears to be unintentional because the types '"action" | "boarding" | "complete" | "departing" | "travel" | "unloading"' and '"choice"' have no overlap.
+src/games/game007/main.ts(45,27): error TS2367: This comparison appears to be unintentional because the types '"normal" | "roof"' and '"fast"' have no overlap.
+src/games/game007/main.ts(46,122): error TS2367: This comparison appears to be unintentional because the types 'ElevatorPhase' and '"overload"' have no overlap.
+src/games/game007/main.ts(46,166): error TS2339: Property 'excessKg' does not exist on type 'ElevatorSnapshot'.
+src/games/game007/main.ts(62,224): error TS2339: Property 'load' does not exist on type 'ElevatorResult'.
+src/games/game007/main.ts(62,256): error TS2339: Property 'excessKg' does not exist on type 'ElevatorResult'.
+src/games/game007/main.ts(62,287): error TS2339: Property 'party' does not exist on type 'ElevatorResult'.
+src/games/game007/main.ts(62,867): error TS2367: This comparison appears to be unintentional because the types '"normal" | "roof"' and '"fast"' have no overlap.
+src/games/game007/main.ts(62,922): error TS2339: Property 'utilization' does not exist on type 'ElevatorResult'.
+src/games/game007/main.ts(77,7): error TS2367: This comparison appears to be unintentional because the types 'ElevatorChoice' and '"fast"' have no overlap.
+src/games/game007/main.ts(83,7): error TS2367: This comparison appears to be unintentional because the types '"decision" | "choice" | "departure" | "delivery" | "floor" | "special_offer"' and '"overload"' have no overlap.
+src/games/game007/main.ts(91,224): error TS2339: Property 'utilization' does not exist on type 'ElevatorResult'.
+src/games/game007/main.ts(128,34): error TS2345: Argument of type '"normal" | "fast"' is not assignable to parameter of type 'ElevatorChoice'.
+  Type '"normal"' is not assignable to type 'ElevatorChoice'.
+src/games/game008/main.ts(44,66): error TS2339: Property 'multiplier' does not exist on type 'CoffeeSnapshot'.
+src/games/game008/main.ts(45,170): error TS2339: Property 'emptyCupName' does not exist on type 'CoffeeResult'.
+src/games/game008/main.ts(61,214): error TS2339: Property 'emptyCupName' does not exist on type 'CoffeeResult'.
+src/games/game008/main.ts(61,821): error TS2339: Property 'multiplier' does not exist on type 'CoffeeResult'.
+src/games/game008/main.ts(70,17): error TS2367: This comparison appears to be unintentional because the types '"second_cup"' and '"third_cup"' have no overlap.
+src/games/game008/main.ts(84,7): error TS2367: This comparison appears to be unintentional because the types '"warning" | "choice" | "finish" | "delivery" | "hazard" | "pace" | "spill"' and '"empty"' have no overlap.
+src/games/game008/main.ts(93,176): error TS2339: Property 'multiplier' does not exist on type 'CoffeeResult'.
+src/games/game009/StampBoard.ts(5,48): error TS2367: This comparison appears to be unintentional because the types 'DeskKind' and '"stamp"' have no overlap.
+src/games/game009/StampBoard.ts(5,108): error TS2339: Property 'shape' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(5,148): error TS7053: Element implicitly has an 'any' type because expression of type 'DeskKind' can't be used to index type '{ paper: string; pen: string; clip: string; memo: string; calculator: string; cup: string; stapler: string; stamp: string; }'.
+  Property 'keys' does not exist on type '{ paper: string; pen: string; clip: string; memo: string; calculator: string; cup: string; stapler: string; stamp: string; }'.
+src/games/game009/StampBoard.ts(5,167): error TS2339: Property 'stackCount' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(5,191): error TS2339: Property 'stackCount' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(6,42): error TS2367: This comparison appears to be unintentional because the types 'DeskKind' and '"stamp"' have no overlap.
+src/games/game009/StampBoard.ts(6,91): error TS2339: Property 'shape' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(25,87): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(39,156): error TS2339: Property 'shape' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(42,40): error TS2339: Property 'stackCount' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(46,42): error TS2367: This comparison appears to be unintentional because the types 'DeskKind' and '"stamp"' have no overlap.
+src/games/game009/StampBoard.ts(49,159): error TS2367: This comparison appears to be unintentional because the types 'DeskKind' and '"stamp"' have no overlap.
+src/games/game009/StampBoard.ts(49,192): error TS2339: Property 'shape' does not exist on type 'DeskObject'.
+src/games/game009/StampBoard.ts(49,224): error TS7053: Element implicitly has an 'any' type because expression of type 'DeskKind' can't be used to index type '{ paper: string; pen: string; clip: string; memo: string; calculator: string; cup: string; stapler: string; stamp: string; }'.
+  Property 'keys' does not exist on type '{ paper: string; pen: string; clip: string; memo: string; calculator: string; cup: string; stapler: string; stamp: string; }'.
+src/games/game009/StampBoard.ts(78,90): error TS2339: Property 'clutterLevel' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(82,39): error TS2339: Property 'clutterLevel' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(84,118): error TS2339: Property 'shape' does not exist on type 'StampRequest'.
+src/games/game009/StampBoard.ts(92,107): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(92,166): error TS2339: Property 'clutterLevel' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(92,230): error TS2339: Property 'objectCount' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(95,73): error TS2339: Property 'deadline' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(96,41): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/StampBoard.ts(117,49): error TS2339: Property 'reset' does not exist on type 'StampRun'.
+src/games/game009/StampBoard.ts(119,5): error TS2353: Object literal may only specify known properties, and 'choose' does not exist in type 'StampController'.
+src/games/game009/StampBoard.ts(119,12): error TS7006: Parameter 'choice' implicitly has an 'any' type.
+src/games/game009/StampBoard.ts(119,63): error TS2339: Property 'choose' does not exist on type 'StampRun'.
+src/games/game009/main.ts(10,15): error TS2305: Module '"./contracts"' has no exported member 'StampChoice'.
+src/games/game009/main.ts(60,732): error TS2339: Property 'multiplier' does not exist on type 'StampResult'.
+src/games/game009/main.ts(60,807): error TS2339: Property 'clutterLevel' does not exist on type 'StampResult'.
+src/games/game009/main.ts(60,894): error TS2339: Property 'request' does not exist on type 'StampResult'.
+src/games/game009/main.ts(67,57): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/main.ts(74,105): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/main.ts(76,19): error TS2339: Property 'choose' does not exist on type 'StampController'.
+src/games/game009/main.ts(82,7): error TS2367: This comparison appears to be unintentional because the types '"timeout" | "practice_complete" | "correct" | "mistake" | "paper_lift" | "tidy"' and '"choice"' have no overlap.
+src/games/game009/main.ts(82,49): error TS2339: Property 'choice' does not exist on type 'never'.
+src/games/game009/main.ts(85,37): error TS2339: Property 'pending' does not exist on type 'StampSnapshot'.
+src/games/game009/main.ts(90,147): error TS2339: Property 'multiplier' does not exist on type 'StampResult'.
+src/games/game009/main.ts(90,180): error TS2339: Property 'clutterLevel' does not exist on type 'StampResult'.

@@ -1,0 +1,1472 @@
+{
+  "before": {
+    "main.ts": "a21cf937690142bc691382be216fdc2f64ff270610816f04a14500c8c6d7fa22",
+    "style.css": "2ba47a049a4b375aab8e164918a887f3240ec05e884dede8ad0b9f34dd20595e",
+    "MeetingRun.ts": "5b32228085378f1d7c1427d4191ec41599d507e7a0d48a65952acd22ffcf8713",
+    "MeetingBoard.ts": "2e333d28512af87e8c0c47a9ed0822ccca4cf5e13366ec4431bfe63bb2b2babe",
+    "contracts.ts": "9f71815e133679b3508988a3eddb9e0c7499fa6a605b7dda64a565ce692cd330",
+    "scenarios.ts": "28fc7b0a65f197b642b820e6ac96f461f29f023b700beea131c1cb7ea1dcfb48"
+  },
+  "after": {
+    "main.ts": "a21cf937690142bc691382be216fdc2f64ff270610816f04a14500c8c6d7fa22",
+    "style.css": "2ba47a049a4b375aab8e164918a887f3240ec05e884dede8ad0b9f34dd20595e",
+    "MeetingRun.ts": "5b32228085378f1d7c1427d4191ec41599d507e7a0d48a65952acd22ffcf8713",
+    "MeetingBoard.ts": "2e333d28512af87e8c0c47a9ed0822ccca4cf5e13366ec4431bfe63bb2b2babe",
+    "contracts.ts": "9f71815e133679b3508988a3eddb9e0c7499fa6a605b7dda64a565ce692cd330",
+    "scenarios.ts": "28fc7b0a65f197b642b820e6ac96f461f29f023b700beea131c1cb7ea1dcfb48"
+  },
+  "sourceUnchanged": true,
+  "results": [
+    {
+      "name": "desktop",
+      "pass": true,
+      "flow": [
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。記録してみましょう。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 1,
+          "role": "proposal",
+          "text": "期限は金曜という案です。まだ決定ではありません。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 3,
+          "role": "decision",
+          "text": "作業は試作品で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 4,
+          "role": "correction",
+          "text": "訂正です。試作品ではなく展示品を用意してください。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 5,
+          "role": "chat",
+          "text": "水曜の天気が気になります。雑談です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "proposal-after",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "proposal-after",
+          "index": 1,
+          "role": "decision",
+          "text": "田中さんは試作品を用意してください。決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "proposal-after",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "proposal-after",
+          "index": 3,
+          "role": "proposal",
+          "text": "金曜にする案もありますが、まだ決定ではありません。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "proposal-after",
+          "index": 4,
+          "role": "chat",
+          "text": "金曜の食堂はカレーですね。雑談でした。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は伊藤さんで決定です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 1,
+          "role": "decision",
+          "text": "案内文を作ることに決めます。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は月曜で確定します。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 3,
+          "role": "correction",
+          "text": "訂正です。担当は加藤さん、作業は申込書へ変更。期限はそのままです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 4,
+          "role": "chat",
+          "text": "古い案内文、引き出しにありました。雑談です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "condition-no",
+          "index": 0,
+          "role": "decision",
+          "text": "鈴木さんが発送ラベルを作ります。これで決定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "condition-no",
+          "index": 1,
+          "role": "decision",
+          "text": "期限は金曜で確定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "condition-no",
+          "index": 2,
+          "role": "proposal",
+          "text": "今日印刷できれば期限を木曜にする案です。まだ未採用です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "condition-no",
+          "index": 3,
+          "role": "decision",
+          "text": "今日は印刷できません。案は採用せず、期限は金曜のままです。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "condition-no",
+          "index": 4,
+          "role": "chat",
+          "text": "木曜のおやつ、楽しみです。雑談でした。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は加藤さん、作業は案内文で決定します。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 1,
+          "role": "decision",
+          "text": "期限は木曜で確定です。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 2,
+          "role": "correction",
+          "text": "案内文ではなく申込書へ変更します。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 3,
+          "role": "correction",
+          "text": "再度訂正です。申込書ではなく説明資料を用意してください。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 4,
+          "role": "correction",
+          "text": "期限だけ変更。来週月曜で確定します。担当と作業はそのままです。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "three-revisions",
+          "index": 5,
+          "role": "chat",
+          "text": "古い申込書は金曜に片付けます。今回の決定とは無関係です。"
+        }
+      ],
+      "final": {
+        "alive": false,
+        "phase": "ended",
+        "score": 1890,
+        "time": 92.99630000000789,
+        "agenda": 4,
+        "scenarioId": "three-revisions",
+        "topic": "最後の資料変更",
+        "extra": true,
+        "statementIndex": 5,
+        "current": {
+          "speaker": "部長",
+          "text": "古い申込書は金曜に片付けます。今回の決定とは無関係です。",
+          "role": "chat",
+          "patch": {
+            "task": "申込書",
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 5.08
+        },
+        "history": [
+          {
+            "index": 3,
+            "statement": {
+              "speaker": "部長",
+              "text": "再度訂正です。申込書ではなく説明資料を用意してください。",
+              "role": "correction",
+              "patch": {
+                "task": "説明資料"
+              },
+              "stateChange": {
+                "task": "説明資料"
+              },
+              "readSeconds": 5.08
+            }
+          },
+          {
+            "index": 4,
+            "statement": {
+              "speaker": "同僚",
+              "text": "期限だけ変更。来週月曜で確定します。担当と作業はそのままです。",
+              "role": "correction",
+              "patch": {
+                "due": "来週月曜"
+              },
+              "stateChange": {
+                "due": "来週月曜"
+              },
+              "readSeconds": 5.41
+            }
+          }
+        ],
+        "remaining": 0,
+        "minutes": {
+          "who": "加藤",
+          "task": "説明資料",
+          "due": "来週月曜"
+        },
+        "asksRemaining": 2,
+        "asksUsed": 0,
+        "completed": 4,
+        "correctFields": 12,
+        "majorFailures": 0,
+        "streak": 4,
+        "corrections": 3,
+        "noiseRecords": 0,
+        "feedback": {
+          "correctFields": [
+            "who",
+            "task",
+            "due"
+          ],
+          "wrongFields": [],
+          "expected": {
+            "who": "加藤",
+            "task": "説明資料",
+            "due": "来週月曜"
+          },
+          "actual": {
+            "who": "加藤",
+            "task": "説明資料",
+            "due": "来週月曜"
+          },
+          "points": 540,
+          "complete": true,
+          "majorFailure": false,
+          "corrections": 2,
+          "noiseRecords": 0,
+          "note": "3項目とも、最新の決定どおりです。"
+        },
+        "practice": false,
+        "practiceDone": false,
+        "recorded": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "scenario": {
+          "id": "three-revisions",
+          "title": "最後の資料変更",
+          "structure": "作業2回変更、期限だけ最終訂正",
+          "extra": true,
+          "difficulty": 3,
+          "expected": {
+            "who": "加藤",
+            "task": "説明資料",
+            "due": "来週月曜"
+          },
+          "statements": [
+            {
+              "speaker": "部長",
+              "text": "担当は加藤さん、作業は案内文で決定します。",
+              "role": "decision",
+              "patch": {
+                "who": "加藤",
+                "task": "案内文"
+              },
+              "stateChange": {
+                "who": "加藤",
+                "task": "案内文"
+              },
+              "readSeconds": 4.3100000000000005
+            },
+            {
+              "speaker": "部長",
+              "text": "期限は木曜で確定です。",
+              "role": "decision",
+              "patch": {
+                "due": "木曜"
+              },
+              "stateChange": {
+                "due": "木曜"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "部長",
+              "text": "案内文ではなく申込書へ変更します。",
+              "role": "correction",
+              "patch": {
+                "task": "申込書"
+              },
+              "stateChange": {
+                "task": "申込書"
+              },
+              "readSeconds": 3.87
+            },
+            {
+              "speaker": "部長",
+              "text": "再度訂正です。申込書ではなく説明資料を用意してください。",
+              "role": "correction",
+              "patch": {
+                "task": "説明資料"
+              },
+              "stateChange": {
+                "task": "説明資料"
+              },
+              "readSeconds": 5.08
+            },
+            {
+              "speaker": "同僚",
+              "text": "期限だけ変更。来週月曜で確定します。担当と作業はそのままです。",
+              "role": "correction",
+              "patch": {
+                "due": "来週月曜"
+              },
+              "stateChange": {
+                "due": "来週月曜"
+              },
+              "readSeconds": 5.41
+            },
+            {
+              "speaker": "部長",
+              "text": "古い申込書は金曜に片付けます。今回の決定とは無関係です。",
+              "role": "chat",
+              "patch": {
+                "task": "申込書",
+                "due": "金曜"
+              },
+              "stateChange": {},
+              "readSeconds": 5.08
+            }
+          ],
+          "readSeconds": 27.550000000000004
+        },
+        "canonical": {
+          "who": "加藤",
+          "task": "説明資料",
+          "due": "来週月曜"
+        }
+      },
+      "saved": {
+        "legacy": "888",
+        "best": "1890"
+      },
+      "errors": [],
+      "bad": [],
+      "nativeInputs": true,
+      "oracle": "readonly utterance role used to select ordinary card taps; not human semantic comprehension"
+    },
+    {
+      "name": "phone",
+      "pass": true,
+      "flow": [
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。記録してみましょう。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 1,
+          "role": "proposal",
+          "text": "期限は金曜という案です。まだ決定ではありません。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 3,
+          "role": "decision",
+          "text": "作業は試作品で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 4,
+          "role": "correction",
+          "text": "訂正です。試作品ではなく展示品を用意してください。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 5,
+          "role": "chat",
+          "text": "水曜の天気が気になります。雑談です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "topic-detour",
+          "index": 0,
+          "role": "chat",
+          "text": "別の会議では高橋さんがポスター担当でした。雑談です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "topic-detour",
+          "index": 1,
+          "role": "decision",
+          "text": "ここから今回の決定です。担当は山田さんです。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "topic-detour",
+          "index": 2,
+          "role": "decision",
+          "text": "今回の作業は展示申請で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "topic-detour",
+          "index": 3,
+          "role": "decision",
+          "text": "今回の期限は月曜で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "topic-detour",
+          "index": 4,
+          "role": "chat",
+          "text": "別の会議の期限は水曜でしたね。今回は関係ないです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "condition-no",
+          "index": 0,
+          "role": "decision",
+          "text": "鈴木さんが発送ラベルを作ります。これで決定です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "condition-no",
+          "index": 1,
+          "role": "decision",
+          "text": "期限は金曜で確定です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "condition-no",
+          "index": 2,
+          "role": "proposal",
+          "text": "今日印刷できれば期限を木曜にする案です。まだ未採用です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "condition-no",
+          "index": 3,
+          "role": "decision",
+          "text": "今日は印刷できません。案は採用せず、期限は金曜のままです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "condition-no",
+          "index": 4,
+          "role": "chat",
+          "text": "木曜のおやつ、楽しみです。雑談でした。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 0,
+          "role": "decision",
+          "text": "中村さんが担当で決定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 1,
+          "role": "decision",
+          "text": "納品連絡をお願いします。作業はこれで確定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は金曜で決定します。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 3,
+          "role": "correction",
+          "text": "印刷が遅れます。期限を来週火曜へ延長します。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 4,
+          "role": "chat",
+          "text": "金曜は雨らしいですね。期限の話ではないです。"
+        }
+      ],
+      "final": {
+        "alive": false,
+        "phase": "ended",
+        "score": 1350,
+        "time": 65.64730000000169,
+        "agenda": 3,
+        "scenarioId": "deadline-extend",
+        "topic": "納品の連絡",
+        "extra": false,
+        "statementIndex": 4,
+        "current": {
+          "speaker": "部長",
+          "text": "金曜は雨らしいですね。期限の話ではないです。",
+          "role": "chat",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.42
+        },
+        "history": [
+          {
+            "index": 2,
+            "statement": {
+              "speaker": "同僚",
+              "text": "期限は金曜で決定します。",
+              "role": "decision",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {
+                "due": "金曜"
+              },
+              "readSeconds": 3.8
+            }
+          },
+          {
+            "index": 3,
+            "statement": {
+              "speaker": "部長",
+              "text": "印刷が遅れます。期限を来週火曜へ延長します。",
+              "role": "correction",
+              "patch": {
+                "due": "来週火曜"
+              },
+              "stateChange": {
+                "due": "来週火曜"
+              },
+              "readSeconds": 4.42
+            }
+          }
+        ],
+        "remaining": 0,
+        "minutes": {
+          "who": "中村",
+          "task": "納品連絡",
+          "due": "来週火曜"
+        },
+        "asksRemaining": 2,
+        "asksUsed": 0,
+        "completed": 3,
+        "correctFields": 9,
+        "majorFailures": 0,
+        "streak": 3,
+        "corrections": 1,
+        "noiseRecords": 0,
+        "feedback": {
+          "correctFields": [
+            "who",
+            "task",
+            "due"
+          ],
+          "wrongFields": [],
+          "expected": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "actual": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "points": 490,
+          "complete": true,
+          "majorFailure": false,
+          "corrections": 1,
+          "noiseRecords": 0,
+          "note": "3項目とも、最新の決定どおりです。"
+        },
+        "practice": false,
+        "practiceDone": false,
+        "recorded": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scenario": {
+          "id": "deadline-extend",
+          "title": "納品の連絡",
+          "structure": "期限を延長、旧曜日は雑談",
+          "extra": false,
+          "difficulty": 2,
+          "expected": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "statements": [
+            {
+              "speaker": "部長",
+              "text": "中村さんが担当で決定です。",
+              "role": "decision",
+              "patch": {
+                "who": "中村"
+              },
+              "stateChange": {
+                "who": "中村"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "部長",
+              "text": "納品連絡をお願いします。作業はこれで確定です。",
+              "role": "decision",
+              "patch": {
+                "task": "納品連絡"
+              },
+              "stateChange": {
+                "task": "納品連絡"
+              },
+              "readSeconds": 4.529999999999999
+            },
+            {
+              "speaker": "同僚",
+              "text": "期限は金曜で決定します。",
+              "role": "decision",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {
+                "due": "金曜"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "部長",
+              "text": "印刷が遅れます。期限を来週火曜へ延長します。",
+              "role": "correction",
+              "patch": {
+                "due": "来週火曜"
+              },
+              "stateChange": {
+                "due": "来週火曜"
+              },
+              "readSeconds": 4.42
+            },
+            {
+              "speaker": "部長",
+              "text": "金曜は雨らしいですね。期限の話ではないです。",
+              "role": "chat",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {},
+              "readSeconds": 4.42
+            }
+          ],
+          "readSeconds": 20.97
+        },
+        "canonical": {
+          "who": "中村",
+          "task": "納品連絡",
+          "due": "来週火曜"
+        }
+      },
+      "saved": {
+        "legacy": "888",
+        "best": "1350"
+      },
+      "errors": [],
+      "bad": [],
+      "nativeInputs": true,
+      "oracle": "readonly utterance role used to select ordinary card taps; not human semantic comprehension"
+    },
+    {
+      "name": "narrow",
+      "pass": true,
+      "flow": [
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。記録してみましょう。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 1,
+          "role": "proposal",
+          "text": "期限は金曜という案です。まだ決定ではありません。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 3,
+          "role": "decision",
+          "text": "作業は試作品で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 4,
+          "role": "correction",
+          "text": "訂正です。試作品ではなく展示品を用意してください。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 5,
+          "role": "chat",
+          "text": "水曜の天気が気になります。雑談です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "task-replace",
+          "index": 0,
+          "role": "decision",
+          "text": "山田さんが担当です。決定しました。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "task-replace",
+          "index": 1,
+          "role": "decision",
+          "text": "作業はチラシの用意で決定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "task-replace",
+          "index": 2,
+          "role": "correction",
+          "text": "訂正です。チラシではなく展示品を用意してください。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "task-replace",
+          "index": 3,
+          "role": "decision",
+          "text": "期限は水曜で確定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "task-replace",
+          "index": 4,
+          "role": "chat",
+          "text": "机に古いチラシが残っていますね。雑談です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は伊藤さんで決定です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 1,
+          "role": "decision",
+          "text": "案内文を作ることに決めます。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は月曜で確定します。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 3,
+          "role": "correction",
+          "text": "訂正です。担当は加藤さん、作業は申込書へ変更。期限はそのままです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 4,
+          "role": "chat",
+          "text": "古い案内文、引き出しにありました。雑談です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 0,
+          "role": "decision",
+          "text": "中村さんが担当で決定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 1,
+          "role": "decision",
+          "text": "納品連絡をお願いします。作業はこれで確定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は金曜で決定します。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 3,
+          "role": "correction",
+          "text": "印刷が遅れます。期限を来週火曜へ延長します。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "deadline-extend",
+          "index": 4,
+          "role": "chat",
+          "text": "金曜は雨らしいですね。期限の話ではないです。"
+        }
+      ],
+      "final": {
+        "alive": false,
+        "phase": "ended",
+        "score": 1410,
+        "time": 63.130700000001454,
+        "agenda": 3,
+        "scenarioId": "deadline-extend",
+        "topic": "納品の連絡",
+        "extra": false,
+        "statementIndex": 4,
+        "current": {
+          "speaker": "部長",
+          "text": "金曜は雨らしいですね。期限の話ではないです。",
+          "role": "chat",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.42
+        },
+        "history": [
+          {
+            "index": 2,
+            "statement": {
+              "speaker": "同僚",
+              "text": "期限は金曜で決定します。",
+              "role": "decision",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {
+                "due": "金曜"
+              },
+              "readSeconds": 3.8
+            }
+          },
+          {
+            "index": 3,
+            "statement": {
+              "speaker": "部長",
+              "text": "印刷が遅れます。期限を来週火曜へ延長します。",
+              "role": "correction",
+              "patch": {
+                "due": "来週火曜"
+              },
+              "stateChange": {
+                "due": "来週火曜"
+              },
+              "readSeconds": 4.42
+            }
+          }
+        ],
+        "remaining": 0,
+        "minutes": {
+          "who": "中村",
+          "task": "納品連絡",
+          "due": "来週火曜"
+        },
+        "asksRemaining": 2,
+        "asksUsed": 0,
+        "completed": 3,
+        "correctFields": 9,
+        "majorFailures": 0,
+        "streak": 3,
+        "corrections": 3,
+        "noiseRecords": 0,
+        "feedback": {
+          "correctFields": [
+            "who",
+            "task",
+            "due"
+          ],
+          "wrongFields": [],
+          "expected": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "actual": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "points": 490,
+          "complete": true,
+          "majorFailure": false,
+          "corrections": 1,
+          "noiseRecords": 0,
+          "note": "3項目とも、最新の決定どおりです。"
+        },
+        "practice": false,
+        "practiceDone": false,
+        "recorded": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scenario": {
+          "id": "deadline-extend",
+          "title": "納品の連絡",
+          "structure": "期限を延長、旧曜日は雑談",
+          "extra": false,
+          "difficulty": 2,
+          "expected": {
+            "who": "中村",
+            "task": "納品連絡",
+            "due": "来週火曜"
+          },
+          "statements": [
+            {
+              "speaker": "部長",
+              "text": "中村さんが担当で決定です。",
+              "role": "decision",
+              "patch": {
+                "who": "中村"
+              },
+              "stateChange": {
+                "who": "中村"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "部長",
+              "text": "納品連絡をお願いします。作業はこれで確定です。",
+              "role": "decision",
+              "patch": {
+                "task": "納品連絡"
+              },
+              "stateChange": {
+                "task": "納品連絡"
+              },
+              "readSeconds": 4.529999999999999
+            },
+            {
+              "speaker": "同僚",
+              "text": "期限は金曜で決定します。",
+              "role": "decision",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {
+                "due": "金曜"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "部長",
+              "text": "印刷が遅れます。期限を来週火曜へ延長します。",
+              "role": "correction",
+              "patch": {
+                "due": "来週火曜"
+              },
+              "stateChange": {
+                "due": "来週火曜"
+              },
+              "readSeconds": 4.42
+            },
+            {
+              "speaker": "部長",
+              "text": "金曜は雨らしいですね。期限の話ではないです。",
+              "role": "chat",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {},
+              "readSeconds": 4.42
+            }
+          ],
+          "readSeconds": 20.97
+        },
+        "canonical": {
+          "who": "中村",
+          "task": "納品連絡",
+          "due": "来週火曜"
+        }
+      },
+      "saved": {
+        "legacy": "888",
+        "best": "1410"
+      },
+      "errors": [],
+      "bad": [],
+      "nativeInputs": true,
+      "oracle": "readonly utterance role used to select ordinary card taps; not human semantic comprehension"
+    },
+    {
+      "name": "landscape",
+      "pass": true,
+      "flow": [
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。記録してみましょう。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 1,
+          "role": "proposal",
+          "text": "期限は金曜という案です。まだ決定ではありません。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 3,
+          "role": "decision",
+          "text": "作業は試作品で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 4,
+          "role": "correction",
+          "text": "訂正です。試作品ではなく展示品を用意してください。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "practice",
+          "index": 5,
+          "role": "chat",
+          "text": "水曜の天気が気になります。雑談です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "owner-handoff",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は佐藤さんに決めます。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "owner-handoff",
+          "index": 1,
+          "role": "decision",
+          "text": "作業は請求書の確認で決定です。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "owner-handoff",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は火曜です。これで確定します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "owner-handoff",
+          "index": 3,
+          "role": "correction",
+          "text": "担当を佐藤さんから鈴木さんへ変更します。"
+        },
+        {
+          "agenda": 1,
+          "scenario": "owner-handoff",
+          "index": 4,
+          "role": "chat",
+          "text": "佐藤さんの弁当、おいしそう。仕事の話ではないです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は伊藤さんで決定です。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 1,
+          "role": "decision",
+          "text": "案内文を作ることに決めます。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は月曜で確定します。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 3,
+          "role": "correction",
+          "text": "訂正です。担当は加藤さん、作業は申込書へ変更。期限はそのままです。"
+        },
+        {
+          "agenda": 2,
+          "scenario": "double-change",
+          "index": 4,
+          "role": "chat",
+          "text": "古い案内文、引き出しにありました。雑談です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "cancel-replace",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は田中さんで決定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "cancel-replace",
+          "index": 1,
+          "role": "decision",
+          "text": "試作品を用意することに決めます。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "cancel-replace",
+          "index": 2,
+          "role": "decision",
+          "text": "期限は木曜で確定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "cancel-replace",
+          "index": 3,
+          "role": "correction",
+          "text": "試作品は取りやめます。代わりに説明資料を用意してください。決定です。"
+        },
+        {
+          "agenda": 3,
+          "scenario": "cancel-replace",
+          "index": 4,
+          "role": "proposal",
+          "text": "水曜という案もありますが、採用されていません。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "condition-yes",
+          "index": 0,
+          "role": "decision",
+          "text": "担当は中村さん。作業は印刷原稿。これで決定します。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "condition-yes",
+          "index": 1,
+          "role": "decision",
+          "text": "期限は金曜で確定です。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "condition-yes",
+          "index": 2,
+          "role": "proposal",
+          "text": "校了すれば高橋さん担当で水曜にする案です。まだ未採用です。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "condition-yes",
+          "index": 3,
+          "role": "correction",
+          "text": "校了しました。案を採用し、担当を高橋さん、期限を水曜へ変更します。"
+        },
+        {
+          "agenda": 4,
+          "scenario": "condition-yes",
+          "index": 4,
+          "role": "chat",
+          "text": "金曜は中村さんとランチの予定です。雑談でした。"
+        }
+      ],
+      "final": {
+        "alive": false,
+        "phase": "ended",
+        "score": 1920,
+        "time": 87.67960000000656,
+        "agenda": 4,
+        "scenarioId": "condition-yes",
+        "topic": "印刷の最終確認",
+        "extra": true,
+        "statementIndex": 4,
+        "current": {
+          "speaker": "部長",
+          "text": "金曜は中村さんとランチの予定です。雑談でした。",
+          "role": "chat",
+          "patch": {
+            "who": "中村",
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.529999999999999
+        },
+        "history": [
+          {
+            "index": 2,
+            "statement": {
+              "speaker": "同僚",
+              "text": "校了すれば高橋さん担当で水曜にする案です。まだ未採用です。",
+              "role": "proposal",
+              "patch": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "stateChange": {},
+              "readSeconds": 5.1899999999999995
+            }
+          },
+          {
+            "index": 3,
+            "statement": {
+              "speaker": "同僚",
+              "text": "校了しました。案を採用し、担当を高橋さん、期限を水曜へ変更します。",
+              "role": "correction",
+              "patch": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "stateChange": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "readSeconds": 5.63
+            }
+          }
+        ],
+        "remaining": 0,
+        "minutes": {
+          "who": "高橋",
+          "task": "印刷原稿",
+          "due": "水曜"
+        },
+        "asksRemaining": 2,
+        "asksUsed": 0,
+        "completed": 4,
+        "correctFields": 12,
+        "majorFailures": 0,
+        "streak": 4,
+        "corrections": 4,
+        "noiseRecords": 0,
+        "feedback": {
+          "correctFields": [
+            "who",
+            "task",
+            "due"
+          ],
+          "wrongFields": [],
+          "expected": {
+            "who": "高橋",
+            "task": "印刷原稿",
+            "due": "水曜"
+          },
+          "actual": {
+            "who": "高橋",
+            "task": "印刷原稿",
+            "due": "水曜"
+          },
+          "points": 510,
+          "complete": true,
+          "majorFailure": false,
+          "corrections": 1,
+          "noiseRecords": 0,
+          "note": "3項目とも、最新の決定どおりです。"
+        },
+        "practice": false,
+        "practiceDone": false,
+        "recorded": [
+          0,
+          1,
+          3
+        ],
+        "scenario": {
+          "id": "condition-yes",
+          "title": "印刷の最終確認",
+          "structure": "条件成立が明示されて2欄変更",
+          "extra": true,
+          "difficulty": 3,
+          "expected": {
+            "who": "高橋",
+            "task": "印刷原稿",
+            "due": "水曜"
+          },
+          "statements": [
+            {
+              "speaker": "部長",
+              "text": "担当は中村さん。作業は印刷原稿。これで決定します。",
+              "role": "decision",
+              "patch": {
+                "who": "中村",
+                "task": "印刷原稿"
+              },
+              "stateChange": {
+                "who": "中村",
+                "task": "印刷原稿"
+              },
+              "readSeconds": 4.75
+            },
+            {
+              "speaker": "同僚",
+              "text": "期限は金曜で確定です。",
+              "role": "decision",
+              "patch": {
+                "due": "金曜"
+              },
+              "stateChange": {
+                "due": "金曜"
+              },
+              "readSeconds": 3.8
+            },
+            {
+              "speaker": "同僚",
+              "text": "校了すれば高橋さん担当で水曜にする案です。まだ未採用です。",
+              "role": "proposal",
+              "patch": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "stateChange": {},
+              "readSeconds": 5.1899999999999995
+            },
+            {
+              "speaker": "同僚",
+              "text": "校了しました。案を採用し、担当を高橋さん、期限を水曜へ変更します。",
+              "role": "correction",
+              "patch": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "stateChange": {
+                "who": "高橋",
+                "due": "水曜"
+              },
+              "readSeconds": 5.63
+            },
+            {
+              "speaker": "部長",
+              "text": "金曜は中村さんとランチの予定です。雑談でした。",
+              "role": "chat",
+              "patch": {
+                "who": "中村",
+                "due": "金曜"
+              },
+              "stateChange": {},
+              "readSeconds": 4.529999999999999
+            }
+          ],
+          "readSeconds": 23.9
+        },
+        "canonical": {
+          "who": "高橋",
+          "task": "印刷原稿",
+          "due": "水曜"
+        }
+      },
+      "saved": {
+        "legacy": "888",
+        "best": "1920"
+      },
+      "errors": [],
+      "bad": [],
+      "nativeInputs": true,
+      "oracle": "readonly utterance role used to select ordinary card taps; not human semantic comprehension"
+    }
+  ]
+}

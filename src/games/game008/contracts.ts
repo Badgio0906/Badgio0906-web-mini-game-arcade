@@ -1,35 +1,12 @@
 export type CoffeeDirection = -1 | 0 | 1;
+export type CoffeePace = 'careful' | 'rush';
 export type CoffeeChoice = 'decline' | 'accept';
-export type CoffeeMilestone = 'second_cup' | 'third_cup';
-export type CoffeeHazardType = 'people' | 'step' | 'stop' | 'door' | 'train';
-export interface CoffeeHazard { id: number; type: CoffeeHazardType; name: string; side: -1 | 1; onsetTime: number; warningStart: number; duration: number }
-export interface CoffeeCup {
-  id: number; name: string; remaining: number; liquidAngle: number; liquidVelocity: number;
-  surfaceTilt: number; spilling: boolean; spillRate: number; frequency: number; damping: number;
-}
-export interface CoffeeSnapshot {
-  distance: number; score: number; time: number; alive: boolean; phase: 'walking' | 'choice' | 'ended';
-  bodyLean: number; bodyVelocity: number; input: CoffeeDirection; cups: CoffeeCup[]; cupCount: 1 | 2 | 3;
-  minRemaining: number; pending: CoffeeMilestone | null; multiplier: 1 | 1.5 | 2;
-  preview: CoffeeHazard | null; activeEvent: CoffeeHazard | null;
-}
-export interface CoffeeResult {
-  distance: number; score: number; time: number; cupCount: 1 | 2 | 3; multiplier: 1 | 1.5 | 2;
-  cups: CoffeeCup[]; outcome: 'empty'; reason: string; emptyCupId: number; emptyCupName: string;
-}
-export type CoffeeEvent =
-  | { type: 'warning'; hazard: CoffeeHazard }
-  | { type: 'hazard'; hazard: CoffeeHazard }
-  | { type: 'spill'; cupId: number; remaining: number; amount: number }
-  | { type: 'empty'; cupId: number }
-  | { type: 'milestone'; milestone: CoffeeMilestone }
-  | { type: 'choice'; milestone: CoffeeMilestone; choice: CoffeeChoice; cupCount: 1 | 2 | 3 };
-export interface CoffeeInspection extends CoffeeSnapshot { hazards: CoffeeHazard[]; bodyAcceleration: number; tapRemaining: number }
-export interface CoffeeHooks {
-  onUpdate: (snapshot: CoffeeSnapshot) => void; onEnd: (result: CoffeeResult) => void; onEvent: (event: CoffeeEvent) => void;
-}
-export interface CoffeeController {
-  start: () => void; title: () => void; setInput: (direction: CoffeeDirection) => boolean; tap: (direction: -1 | 1) => boolean;
-  choose: (choice: CoffeeChoice) => boolean; pause: (value: boolean) => void;
-  snapshot: () => CoffeeSnapshot; inspection: () => CoffeeInspection; destroy: () => void;
-}
+export type CoffeeHazardType = 'step' | 'corner' | 'seam';
+export interface CoffeeHazard { id: number; type: CoffeeHazardType; name: string; side: -1 | 1; distance: number; length: number; warned: boolean; started: boolean }
+export interface CoffeeCup { id: number; name: string; remaining: number; liquidAngle: number; liquidVelocity: number; surfaceTilt: number; spilling: boolean; spillRate: number }
+export interface CoffeeSnapshot { distance: number; legDistance: number; target: number; remainingDistance: number; score: number; time: number; legTime: number; deadline: number; remainingTime: number; alive: boolean; phase: 'walking' | 'choice' | 'ended'; bodyLean: number; bodyVelocity: number; input: CoffeeDirection; pace: CoffeePace; cups: CoffeeCup[]; cupCount: 1 | 2; minRemaining: number; pending: 'second_cup' | null; deliveries: number; preview: CoffeeHazard | null; activeEvent: CoffeeHazard | null; practice: boolean; }
+export interface CoffeeResult { distance: number; score: number; time: number; cupCount: 1 | 2; cups: CoffeeCup[]; outcome: 'delivered' | 'timeout' | 'empty'; reason: string; deliveries: number; totalDeliveredRemaining: number; spareTime: number; rulesVersion: 2 }
+export type CoffeeEvent = { type: 'warning' | 'hazard'; hazard: CoffeeHazard } | {type:'pace'; pace:CoffeePace; distance:number} | {type:'spill';cupId:number;remaining:number;amount:number;side:-1|1;hazard:string} | {type:'delivery';success:boolean;remaining:number;spareTime:number;cupCount:number} | {type:'choice';choice:CoffeeChoice;cupCount:number} | {type:'finish';outcome:string};
+export interface CoffeeInspection extends CoffeeSnapshot { hazards: CoffeeHazard[] }
+export interface CoffeeHooks { onUpdate:(s:CoffeeSnapshot)=>void; onEnd:(r:CoffeeResult)=>void; onEvent:(e:CoffeeEvent)=>void }
+export interface CoffeeController { start:(practice?:boolean)=>void; title:()=>void; setInput:(d:CoffeeDirection)=>boolean; tap:(d:-1|1)=>boolean; choose:(c:CoffeeChoice)=>boolean; togglePace:()=>boolean; pause:(v:boolean)=>void; snapshot:()=>CoffeeSnapshot; inspection:()=>CoffeeInspection; destroy:()=>void }

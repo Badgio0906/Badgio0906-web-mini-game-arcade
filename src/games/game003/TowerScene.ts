@@ -31,6 +31,7 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
     private visualTime = 0;
     private impactAge = 10;
     private popupAge = 10;
+    private artAge = 10;
     private deathAge = -1;
     private reported = false;
     private collapseVisual = false;
@@ -62,12 +63,12 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
     begin(): void {
       run.start(); this.cameraY = 0; this.deathAge = -1; this.reported = false; this.sparks.length = 0;
       this.collapseVisual = false;
-      this.impactAge = this.popupAge = 10; this.popup.setVisible(false); this.cameras.main.resetFX(); hooks.onUpdate(run.snapshot());
+      this.impactAge = this.popupAge = this.artAge = 10; this.popup.setVisible(false); this.cameras.main.resetFX(); hooks.onUpdate(run.snapshot());
     }
     title(): void {
       run.reset(); this.cameraY = 0; this.deathAge = -1; this.reported = true; this.sparks.length = 0;
       this.collapseVisual = false;
-      this.impactAge = this.popupAge = 10; this.popup.setVisible(false); this.warning.setVisible(false); this.cameras.main.resetFX(); this.draw();
+      this.impactAge = this.popupAge = this.artAge = 10; this.popup.setVisible(false); this.warning.setVisible(false); this.cameras.main.resetFX(); this.draw();
     }
     choose(choice: TowerChoice): boolean {
       if (!run.choose(choice)) return false;
@@ -82,7 +83,11 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
       }
       if (event.type === 'perfect') {
         this.popupAge = 0;
-        this.popup.setText(`PERFECT${event.combo > 1 ? ` ×${event.combo}` : ''}  +${event.points}`).setVisible(true).setAlpha(1);
+        this.popup.setText(`PERFECT${event.combo > 1 ? ` ×${event.combo}` : ''}  +${event.points}`).setFontSize(26).setVisible(true).setAlpha(1);
+      }
+      if (event.type === 'art') {
+        this.artAge = this.popupAge = 0;
+        this.popup.setText(`釣り合った！ 芸術 +${event.pair.points}`).setFontSize(23).setVisible(true).setAlpha(1);
       }
       if (event.type === 'collapse') {
         this.deathAge = 0;
@@ -94,7 +99,7 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
       if (paused || destroyed) return;
       if (run.pending) { this.draw(); return; }
       const dt = Math.min(0.05, delta / 1000); this.visualTime += dt;
-      this.impactAge += dt; this.popupAge += dt;
+      this.impactAge += dt; this.popupAge += dt; this.artAge += dt;
       if (run.alive) {
         run.step(dt); hooks.onUpdate(run.snapshot());
         if (!run.alive && !this.reported) { const result = run.result(); if (result) { this.reported = true; hooks.onEnd(result); } }
@@ -119,7 +124,7 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
         y += age * age * 170;
         rotation += side * age * 0.28;
       }
-      const sway = reduced || demo ? 0 : Math.sin(this.impactAge * 18) * Math.exp(-this.impactAge * 5) * run.instability * 0.012;
+      const sway = reduced || demo || !active ? 0 : Math.sin(this.impactAge * 18) * Math.exp(-this.impactAge * 5) * run.instability * 0.012;
       const key = assetKey(facades[cargo.id % facades.length]);
       if (this.textures.exists(key) && this.moduleCursor < this.modules.length) {
         this.modules[this.moduleCursor++].setTexture(key).setPosition(x, y).setDisplaySize(cargo.width, cargo.height).setRotation(rotation + sway).setVisible(true);
@@ -233,6 +238,30 @@ export function createTowerGame(parent: HTMLElement, hooks: TowerHooks): TowerCo
         this.weight.setText(`${cargo.mass} kg`).setPosition(cargo.x + 6, y - cargo.height / 2 - 14).setRotation(cargo.rotation).setVisible(y > 0 && y < 720);
       } else this.weight.setVisible(false);
 
+      if (active && run.stack.length) {
+        const diag = run.supportDiagnostic;
+        const y = diag.y - this.cameraY + 2;
+        if (y >= 0 && y < 690) {
+          g.lineStyle(run.instability >= .62 ? 3 : 2, run.instability >= .62 ? DANGER : 0x698e79, .8);
+          g.lineBetween(diag.left, y, diag.right, y);
+          g.fillStyle(run.instability >= .62 ? DANGER : INK, .9);
+          g.fillTriangle(diag.loadCenter, y - 3, diag.loadCenter - 5, y - 13, diag.loadCenter + 5, y - 13);
+        }
+        const snap = run.snapshot();
+        // Foundation aggregate COM is distinct from the weakest upper contact COM.
+        const cx = 300 + Math.max(-90, Math.min(90, snap.foundationCenter - FOUNDATION.x));
+        g.fillStyle(0xfff5d6, .88); g.fillRoundedRect(178, 646, 244, 37, 4);
+        g.lineStyle(2, INK, .5); g.lineBetween(204, 668, 396, 668); g.lineBetween(300, 662, 300, 675);
+        g.fillStyle(GOLD); g.fillTriangle(cx, 660, cx - 5, 651, cx + 5, 651);
+      }
+      const pair = run.artDiagnostic;
+      if (pair && this.artAge < 1.3) {
+        const first = run.stack.find(c => c.id === pair.firstId), second = run.stack.find(c => c.id === pair.secondId);
+        if (first && second) {
+          g.lineStyle(3, GOLD, .55 * (1 - this.artAge / 1.3));
+          g.lineBetween(first.x, first.y - this.cameraY, second.x, second.y - this.cameraY);
+        }
+      }
       if (run.instability >= 0.62 && active) {
         const support = run.supportDiagnostic;
         const y = support.y - this.cameraY + 2;

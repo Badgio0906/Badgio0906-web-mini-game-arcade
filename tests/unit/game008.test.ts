@@ -1,85 +1,13 @@
-import { describe, expect, it } from 'vitest';
-import { CoffeeRun, spillRateFor, MAX_SPILL_PERCENT_PER_SECOND, HAZARD_WARNING_SECONDS } from '../../src/games/game008/CoffeeRun';
-import type { CoffeeEvent } from '../../src/games/game008/contracts';
-const seeded=(seed:number)=>()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+import {describe,it,expect} from 'vitest';
+import {CoffeeRun,COURSE_DISTANCE,DEADLINE,CAREFUL_SPEED,RUSH_SPEED,spillRateFor} from '../../src/games/game008/CoffeeRun';
+import type {CoffeeEvent} from '../../src/games/game008/contracts';
 const DT=1/120;
-function balance(run:CoffeeRun){const s=run.snapshot();const error=s.bodyLean+.4*s.bodyVelocity;run.setInput(error>.035?-1:error<-.035?1:0);}
-function drive(run:CoffeeRun, condition:()=>boolean,budget=120){for(let n=0;n<budget/DT&&run.snapshot().alive&&!run.snapshot().pending&&!condition();n++){balance(run);run.step(DT);}expect(condition(),JSON.stringify(run.inspection())).toBe(true);}
-function start(seed=1,events:CoffeeEvent[]=[]){const run=new CoffeeRun(event=>events.push(event),seeded(seed));run.start();return run;}
-function triple(seed=1,events:CoffeeEvent[]=[]){const run=start(seed,events);drive(run,()=>run.snapshot().pending==='second_cup');run.choose('accept');drive(run,()=>run.snapshot().pending==='third_cup');run.choose('accept');return run;}
-
-describe('Coffee real liquid inertia, gradual overflow and earned cup choices',()=>{
- it('right acceleration moves the body right and fluid left; release retains inertia and short taps expire without queued input',()=>{
-  const run=start();run.setInput(1);for(let n=0;n<18;n++)run.step(DT);const accelerated=run.snapshot();expect(accelerated.bodyLean).toBeGreaterThan(0);expect(accelerated.bodyVelocity).toBeGreaterThan(0);expect(accelerated.cups[0].liquidAngle).toBeLessThan(0);expect(accelerated.cups[0].liquidVelocity).toBeLessThan(0);
-  run.setInput(0);run.step(DT);expect(run.snapshot().cups[0].liquidAngle).toBeLessThan(accelerated.cups[0].liquidAngle);expect(run.snapshot().bodyLean).toBeGreaterThan(accelerated.bodyLean);
-  run.start();expect(run.tap(-1)).toBe(true);expect(run.snapshot().input).toBe(-1);for(let n=0;n<30;n++)run.step(DT);expect(run.snapshot().input).toBe(0);expect(run.inspection().tapRemaining).toBe(0);
-  const before=run.inspection();for(const dt of[NaN,Infinity,-1,0])run.step(dt);expect(run.inspection()).toEqual(before);run.step(99);expect(run.snapshot().time-before.time).toBeCloseTo(.05,8);
- });
- it('overflow uses the drawn cross-section threshold, is symmetric, irreversible and never removes more than25 percent per second',()=>{
-  const threshold=Math.atan(.2*82/62);expect(spillRateFor(100,0)).toBe(0);expect(spillRateFor(100,threshold-.001)).toBe(0);expect(spillRateFor(100,threshold+.001)).toBeGreaterThan(0);expect(spillRateFor(100,.5)).toBe(spillRateFor(100,-.5));expect(spillRateFor(100,1.2)).toBe(MAX_SPILL_PERCENT_PER_SECOND);
-  const run=start();run.setInput(1);let partial=false;
-  for(let n=0;n<90/DT&&run.snapshot().alive;n++){const before=run.snapshot().cups[0].remaining;run.step(DT);const after=run.snapshot().cups[0].remaining;expect(before-after).toBeGreaterThanOrEqual(-1e-9);expect(before-after).toBeLessThanOrEqual(25*DT+1e-8);if(after>0&&after<99)partial=true;}
-  expect(partial).toBe(true);expect(run.result()).toMatchObject({outcome:'empty',emptyCupId:0,emptyCupName:'あなたの分'});
- });
- it('gentle public balance control survives repeated warned hazards while the same no-input route naturally empties',()=>{
-  const idle=start(4);for(let n=0;n<90/DT&&idle.snapshot().alive;n++)idle.step(DT);expect(idle.snapshot().alive).toBe(false);
-  const run=start(4);drive(run,()=>run.snapshot().pending==='second_cup');run.choose('decline');drive(run,()=>run.snapshot().time>=160,120);expect(run.snapshot().alive).toBe(true);expect(run.snapshot().distance).toBeGreaterThan(1700);expect(run.snapshot().cups[0].remaining).toBeGreaterThan(50);
- });
- it('500m freezes every cup/body/hazard/clock and declines once;2 cups alone unlock1000m, with prospective1.5x then2x',()=>{
-  const events:CoffeeEvent[]=[];const one=start(2),two=start(2,events);for(const run of[one,two])drive(run,()=>run.snapshot().pending==='second_cup');const frozen=two.inspection();expect(frozen).toMatchObject({distance:500,score:500,input:0,cupCount:1,multiplier:1,alive:true});
-  for(let n=0;n<60;n++){two.step(.05);expect(two.setInput(1)).toBe(false);expect(two.tap(-1)).toBe(false);}expect(two.inspection()).toEqual(frozen);expect(two.result()).toBeNull();
-  expect(one.choose('decline')).toBe(true);expect(two.choose('accept')).toBe(true);expect(two.choose('accept')).toBe(false);expect(two.snapshot().cups[0]).toEqual(frozen.cups[0]);expect(two.snapshot()).toMatchObject({score:500,cupCount:2,multiplier:1.5,input:0});
-  drive(one,()=>one.snapshot().distance>=1000);drive(two,()=>two.snapshot().pending==='third_cup');expect(one.snapshot().pending).toBeNull();expect(one.snapshot().score).toBe(1000);expect(two.snapshot()).toMatchObject({distance:1000,score:1250,pending:'third_cup'});
-  const previous=two.snapshot();expect(two.choose('accept')).toBe(true);expect(two.snapshot().cups.slice(0,2)).toEqual(previous.cups);expect(two.snapshot()).toMatchObject({cupCount:3,multiplier:2,score:1250});drive(two,()=>two.snapshot().distance>=1500);expect(two.snapshot().score).toBeGreaterThanOrEqual(2250);expect(two.snapshot().score).toBeLessThan(2252);expect(two.snapshot().pending).toBeNull();expect(events.filter(event=>event.type==='milestone')).toHaveLength(2);expect(events.filter(event=>event.type==='choice')).toHaveLength(2);
- });
- it('three cups have genuinely independent frequencies/damping and dynamic liquid states, with no snapshot mutation leak',()=>{
-  const run=triple();const before=run.snapshot();expect(before.cups.map(c=>c.frequency)).toEqual([4.2,3.4,5.3]);expect(before.cups.map(c=>c.damping)).toEqual([.52,.28,.12]);
-  run.setInput(-1);for(let n=0;n<100;n++)run.step(DT);const s=run.snapshot();expect(new Set(s.cups.map(c=>c.liquidAngle.toFixed(5))).size).toBe(3);expect(new Set(s.cups.map(c=>c.liquidVelocity.toFixed(5))).size).toBe(3);
-  const copy=run.inspection();copy.cups[0].remaining=-999;copy.hazards[0].onsetTime=-999;expect(run.snapshot().cups[0].remaining).toBeGreaterThanOrEqual(0);expect(run.inspection().hazards[0].onsetTime).toBeGreaterThan(0);
- });
- it('integer500/1000 score boundaries remain exact under varied legal frame durations, with prospective awards only',()=>{
-  const scores=[];let fractionalTerminalObserved=false;
-  for(const frames of[[1/60],[.013,.021,.0167],[.05,.011,.027]]){
-   const run=start(2);
-   const reach=(target:CoffeeRun,condition=()=>!!target.snapshot().pending)=>{for(let n=0;n<20_000&&target.snapshot().alive&&!condition();n++){balance(target);target.step(frames[n%frames.length]);}expect(condition()).toBe(true);expect(target.snapshot().alive).toBe(true);};
-   reach(run);expect(run.snapshot()).toMatchObject({distance:500,score:500,pending:'second_cup'});run.choose('accept');
-   reach(run);expect(run.snapshot()).toMatchObject({distance:1000,pending:'third_cup'});scores.push(run.snapshot().score);
-   const before=run.snapshot().score;run.choose('accept');expect(run.snapshot().score).toBe(before);
-   reach(run,()=>run.snapshot().distance>=1500);expect(run.snapshot()).toMatchObject({cupCount:3,multiplier:2,pending:null});
-   // Public distance is floored; its final fraction can contribute at most one additional2x point.
-   expect(run.snapshot().score).toBeGreaterThanOrEqual(2250);expect(run.snapshot().score).toBeLessThanOrEqual(2251);
-   run.setInput(1);for(let n=0;n<20_000&&run.snapshot().alive;n++)run.step(frames[n%frames.length]);
-   const terminal=run.result()!;expect(terminal).not.toBeNull();const displayedDistanceBase=1250+2*(terminal.distance-1000);
-   expect(terminal.score).toBeGreaterThanOrEqual(displayedDistanceBase);expect(terminal.score).toBeLessThanOrEqual(displayedDistanceBase+1);fractionalTerminalObserved ||= terminal.score===displayedDistanceBase+1;
-   run.start();expect(run.snapshot()).toMatchObject({distance:0,score:0,cupCount:1,multiplier:1});
-   const single=start(2);reach(single);single.choose('decline');reach(single,()=>single.snapshot().distance>=1000);expect(single.snapshot()).toMatchObject({score:1000,cupCount:1,pending:null});
-   const double=start(2);reach(double);double.choose('accept');reach(double);double.choose('decline');reach(double,()=>double.snapshot().distance>=1500);expect(double.snapshot()).toMatchObject({score:2000,cupCount:2,multiplier:1.5,pending:null});
-  }
-  expect(scores).toEqual([1250,1250,1250]);
-  expect(fractionalTerminalObserved,'legal actual fractional-meter progress can earn the second point hidden by floored distance').toBe(true);
- });
- it('the first train shove follows its advertised seeded side before later oscillations reverse',()=>{
-  const train=(side:-1|1)=>{let draw=0;const run=new CoffeeRun(()=>{},()=>draw++===4?(side===1?.9:.1):.1);run.start();drive(run,()=>run.snapshot().time>=37,40);return run;};
-  const left=train(-1),right=train(1);const initialLeft=left.snapshot(),initialRight=right.snapshot();
-  expect(initialLeft.bodyLean).toBeCloseTo(initialRight.bodyLean,8);expect(initialLeft.cups[0].liquidAngle).toBeCloseTo(initialRight.cups[0].liquidAngle,8);
-  for(const run of[left,right]){run.setInput(0);for(let n=0;n<100;n++)run.step(.001);}
-  const l=left.inspection(),r=right.inspection();expect(l.activeEvent).toMatchObject({type:'train',side:-1});expect(r.activeEvent).toMatchObject({type:'train',side:1});
-  expect(r.bodyAcceleration-l.bodyAcceleration).toBeGreaterThan(.001);expect(r.bodyVelocity-l.bodyVelocity).toBeGreaterThan(0);expect(r.bodyLean-l.bodyLean).toBeGreaterThan(0);expect(r.cups[0].liquidAngle-l.cups[0].liquidAngle).toBeGreaterThan(0);
- });
- it('all five hazards give honest warning lead, do not overlap, and bound the queue across five long routes',()=>{
-  const types=new Set<string>();
-  for(let seed=1;seed<=5;seed++){const events:CoffeeEvent[]=[];const warnedAt=new Map<number,number>();const actualLead:number[]=[];let run!:CoffeeRun;run=new CoffeeRun(event=>{events.push(event);if(event.type==='warning')warnedAt.set(event.hazard.id,run.snapshot().time);if(event.type==='hazard')actualLead.push(run.snapshot().time-(warnedAt.get(event.hazard.id)??Infinity));},seeded(seed));run.start();let lastOnset=0;let maxQueue=0;let overlapped=false;
-   for(let n=0;n<480/DT&&run.snapshot().alive;n++){if(run.snapshot().pending)run.choose('decline');balance(run);run.step(DT);const s=run.inspection();maxQueue=Math.max(maxQueue,s.hazards.length);if(s.hazards.filter(h=>s.time>=h.onsetTime&&s.time<h.onsetTime+h.duration).length>1)overlapped=true;}
-   expect(maxQueue).toBeLessThanOrEqual(5);expect(overlapped).toBe(false);expect(actualLead.length).toBeGreaterThan(50);for(const lead of actualLead)expect(lead).toBeGreaterThanOrEqual(1.39);
-   expect(run.snapshot().alive).toBe(true);expect(run.snapshot().distance).toBeGreaterThan(5000);
-   const warned=new Map(events.filter((event):event is Extract<CoffeeEvent,{type:'warning'}>=>event.type==='warning').map(event=>[event.hazard.id,event.hazard]));for(const e of events)if(e.type==='hazard'){expect(warned.has(e.hazard.id)).toBe(true);expect(e.hazard.onsetTime-e.hazard.warningStart).toBeCloseTo(HAZARD_WARNING_SECONDS,8);expect(e.hazard.duration).toBeLessThanOrEqual(2.4);types.add(e.hazard.type);expect(e.hazard.onsetTime).toBeGreaterThan(lastOnset+4.7);lastOnset=e.hazard.onsetTime;}
-  }
-  expect(types).toEqual(new Set(['people','step','stop','door','train']));
- },30_000);
- it('one actual empty cup names that cup without wiping the other cups; terminal events deduplicate and reset removes extra cups',()=>{
-  const events:CoffeeEvent[]=[];const run=triple(3,events);run.setInput(1);
-  for(let n=0;n<90/DT&&run.snapshot().alive;n++)run.step(DT);const result=run.result()!;expect(result).not.toBeNull();expect(result.cups[result.emptyCupId].remaining).toBe(0);expect(result.emptyCupName).toBe(result.cups[result.emptyCupId].name);expect(result.cups.some(c=>c.remaining>0)).toBe(true);expect(result.reason).toContain(result.emptyCupName);
-  const ended=run.inspection();for(let n=0;n<30;n++){run.step(.05);expect(run.tap(-1)).toBe(false);}expect(run.inspection()).toEqual(ended);expect(events.filter(event=>event.type==='empty')).toHaveLength(1);result.cups[0].remaining=-999;expect(run.result()!.cups[0].remaining).toBeGreaterThanOrEqual(0);
-  run.start();expect(run.snapshot()).toMatchObject({distance:0,score:0,time:0,cupCount:1,multiplier:1,pending:null,input:0});expect(run.snapshot().cups[0].remaining).toBe(100);
- });
+function policy(name:'careful'|'rush'|'mixed',two=false){const events:CoffeeEvent[]=[];const run=new CoffeeRun(e=>events.push(e));run.start();let choiceDone=false;for(let n=0;n<100/DT&&run.snapshot().alive;n++){let s=run.snapshot();if(s.pending){run.choose(two&&!choiceDone?'accept':'decline');choiceDone=true;s=run.snapshot();}if(!s.alive)break;const near=run.inspection().hazards.some(h=>s.legDistance>=h.distance-10&&s.legDistance<h.distance+h.length+2);const want=name==='rush'||(name==='mixed'&&!near)?'rush':'careful';if(s.pace!==want)run.togglePace(); // Balance is identical across policy comparisons; no future answers in the feedback.
+ const correction=s.bodyLean*.9+s.bodyVelocity*.35;run.setInput(correction>.075?1:correction<-.075?-1:0);run.step(DT);}return {run,result:run.result()!,events};}
+describe('Game008 delivery rules 2',()=>{
+ it('deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill',()=>{expect(COURSE_DISTANCE/RUSH_SPEED).toBeLessThan(DEADLINE);expect(COURSE_DISTANCE/CAREFUL_SPEED).toBeGreaterThan(DEADLINE);const careful=policy('careful'),rush=policy('rush'),mixed=policy('mixed');console.log(JSON.stringify({careful:careful.result,rush:rush.result,mixed:mixed.result}));expect(careful.result.outcome).toBe('timeout');expect(mixed.result.outcome).toBe('delivered');expect(rush.events.some(e=>e.type==='spill')).toBe(true);expect(mixed.result.totalDeliveredRemaining).toBeGreaterThan(rush.result.totalDeliveredRemaining);expect(mixed.result.score).toBeGreaterThan(0);});
+ it('each hazard is announced at least two rush-seconds before onset, three actual distinct types',()=>{const {events}=policy('mixed');const warnings=new Map<number,number>();const r=new CoffeeRun(e=>{if(e.type==='warning')warnings.set(e.hazard.id,r.snapshot().time);if(e.type==='hazard')expect(r.snapshot().time-warnings.get(e.hazard.id)!).toBeGreaterThanOrEqual(1.99);});r.start();r.togglePace();for(let i=0;i<25/DT&&r.snapshot().alive;i++)r.step(DT);expect(new Set(events.filter(e=>e.type==='hazard').map(e=>e.type==='hazard'?e.hazard.type:''))).toEqual(new Set(['step','corner','seam']));});
+ it('second delivery has two distinct cups, same controller, three deliveries total and optional choice freezes deadline',()=>{const one=policy('mixed');expect(one.result.deliveries).toBe(1);const two=policy('mixed',true);expect(two.result.cupCount).toBe(2);expect(two.result.deliveries).toBe(3);expect(two.result.score).toBeGreaterThan(one.result.score);const r=new CoffeeRun();r.start();r.togglePace();while(r.snapshot().alive&&!r.snapshot().pending)r.step(.05);if(r.snapshot().pending){const before=r.snapshot();r.step(.1);expect(r.snapshot()).toEqual(before);expect(r.choose('accept')).toBe(true);expect(r.choose('accept')).toBe(false);expect(r.snapshot().remainingTime).toBe(DEADLINE);}});
+ it('spill is mirrored, empty vessels award no delivery, remaining declines only through actual overflow',()=>{expect(spillRateFor(100,.8)).toBe(spillRateFor(100,-.8));expect(spillRateFor(0,0)).toBe(0);const events:CoffeeEvent[]=[];const r=new CoffeeRun(e=>events.push(e));r.start();r.setInput(-1);r.togglePace();for(let n=0;n<40/DT&&r.snapshot().alive;n++)r.step(DT);expect(r.result()?.deliveries).toBe(0);expect(r.result()?.score).toBe(0);const spill=events.filter(e=>e.type==='spill');expect(spill.length).toBeGreaterThan(0);expect(spill.every(e=>e.type==='spill'&&[-1,1].includes(e.side))).toBe(true);});
+ it('practice ignores deadline and no normal offer, terminal event deduplicates, snapshots are detached and bad dt ignored',()=>{const events:CoffeeEvent[]=[];const r=new CoffeeRun(e=>events.push(e));r.start(true);for(let n=0;n<34/DT;n++)r.step(DT);expect(r.snapshot().alive).toBe(true);expect(r.snapshot().practice).toBe(true);const before=r.snapshot();r.step(NaN);r.step(-1);expect(r.snapshot()).toEqual(before);before.cups[0].remaining=-99;expect(r.snapshot().cups[0].remaining).toBeGreaterThanOrEqual(0);r.reset();expect(r.snapshot().cupCount).toBe(1);expect(r.snapshot().time).toBe(0);const mixed=policy('mixed');const ended=mixed.run.snapshot();for(let i=0;i<20;i++)mixed.run.step(.05);expect(mixed.run.snapshot()).toEqual(ended);expect(mixed.events.filter(e=>e.type==='finish')).toHaveLength(1);});
 });

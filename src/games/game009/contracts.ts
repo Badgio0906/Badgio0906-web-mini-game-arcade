@@ -1,33 +1,11 @@
-export type StampColor = 'red' | 'blue';
-export type StampShape = 'round' | 'square';
-export type DeskKind = 'stamp' | 'paper' | 'pen' | 'clip' | 'memo' | 'calculator' | 'cup' | 'stapler';
-export type StampChoice = 'clean' | 'continue';
-export interface StampRequest { color: StampColor; shape: StampShape; text: string }
-export interface DeskObject { id: number; kind: DeskKind; color: StampColor | null; shape: StampShape | null; rotation: number; stackCount: number; placement: number }
+export type DeskKind = 'round-stamp' | 'square-stamp' | 'ink-pad' | 'stamp-pad' | 'pen' | 'highlighter' | 'pencil' | 'eraser' | 'ruler' | 'scissors' | 'cutter' | 'stapler' | 'correction' | 'glue' | 'tape' | 'calculator' | 'phone' | 'usb' | 'keys' | 'clip' | 'binder' | 'envelope' | 'card-case' | 'sticky' | 'id-card' | 'notebook';
+export interface DeskObject { id: number; kind: DeskKind; color: string; capped: boolean; rotation: number; placement: number; paper: number | null }
+export interface StampRequest { kind: DeskKind; color?: string; capped?: boolean; text: string; sample: boolean }
 export interface DeskBounds { id: number; left: number; top: number; width: number; height: number }
 export interface DeskLayout { width: number; height: number; bounds: DeskBounds[] }
-export interface StampSnapshot {
-  round: number; roundId: number; correct: number; score: number; time: number; alive: boolean;
-  phase: 'searching' | 'feedback' | 'choice' | 'ended'; pending: 'cleanup' | null;
-  multiplier: number; clutterLevel: number; clutterCount: number; objectCount: number;
-  request: StampRequest; objects: DeskObject[]; remaining: number; deadline: number;
-  lastPicked: number | null; lastPoints: number;
-}
-export interface StampResult {
-  round: number; correct: number; score: number; time: number; multiplier: number; clutterLevel: number;
-  outcome: 'wrong' | 'timeout'; reason: string; request: StampRequest; picked: DeskObject | null; matchingIds: number[];
-}
-export type StampEvent =
-  | { type: 'correct'; objectId: number; points: number; correct: number }
-  | { type: 'mistake'; objectId: number }
-  | { type: 'timeout' }
-  | { type: 'milestone'; milestone: 'cleanup'; correct: number }
-  | { type: 'choice'; milestone: 'cleanup'; choice: StampChoice; multiplier: number; clutterLevel: number };
-export interface StampInspection extends StampSnapshot { matchingIds: number[]; phaseTime: number; layout: DeskLayout | null }
-export interface StampHooks {
-  onUpdate: (snapshot: StampSnapshot) => void; onEnd: (result: StampResult) => void; onEvent: (event: StampEvent) => void;
-}
-export interface StampController {
-  start: () => void; title: () => void; pick: (id: number) => boolean; choose: (choice: StampChoice) => boolean;
-  pause: (value: boolean) => void; snapshot: () => StampSnapshot; inspection: () => StampInspection; destroy: () => void;
-}
+export interface StampSnapshot { round: number; roundId: number; deskId: number; correct: number; score: number; time: number; remaining: number; alive: boolean; phase: 'searching' | 'feedback' | 'ended'; request: StampRequest; objects: DeskObject[]; liftedPapers: number[]; tidy: boolean; multiplier: number; lastPicked: number | null; lastPoints: number; errors: number; lifts: number; tidies: number; note: string; practice: boolean; practiceStep: number; practiceDone: boolean }
+export interface StampInspection extends StampSnapshot { matchingIds: number[]; layout: DeskLayout | null }
+export interface StampResult { score: number; correct: number; time: number; errors: number; lifts: number; tidies: number; outcome: 'timeout' | 'practice'; reason: string }
+export type StampEvent = { type: 'correct'; kind: DeskKind; objectId: number; points: number; searchMs: number; correct: number } | { type: 'mistake'; kind: DeskKind; objectId: number; penaltySeconds: number } | { type: 'paper_lift'; paper: number; count: number } | { type: 'tidy'; costSeconds: number; count: number } | { type: 'timeout' } | { type: 'practice_complete' };
+export interface StampHooks { onUpdate: (snapshot: StampSnapshot) => void; onEnd: (result: StampResult) => void; onEvent: (event: StampEvent) => void }
+export interface StampController { start: (practice?: boolean) => void; title: () => void; pick: (id: number) => boolean; lift: (id: number) => boolean; tidy: () => boolean; pause: (value: boolean) => void; snapshot: () => StampSnapshot; inspection: () => StampInspection; destroy: () => void }

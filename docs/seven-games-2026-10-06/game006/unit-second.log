@@ -1,0 +1,52 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game006-revision.test.ts (9 tests | 1 failed) 656ms
+   ✓ Parking v2 slots and shape distance > both shared-obstacle routes are reachable at all generated side/mode choices 217ms
+   ✓ Parking v2 slots and shape distance > measures corners and touching bodies, rather than center separation 1ms
+   × Parking v2 finite braking and scoring boundaries > preserves the exact unbraked historical arc, speed and endpoint, until the new success reward 31ms
+     → expected { x: 299.9998747489072, …(4) } to deeply equal { x: 299.9998747489072, …(4) }
+   ✓ Parking v2 finite braking and scoring boundaries > brakes once over 240ms on the identical committed curved path, and can save excessive power 61ms
+   ✓ Parking v2 finite braking and scoring boundaries > an early brake cannot rescue wrong power and cannot accelerate or change steering 18ms
+   ✓ Parking v2 finite braking and scoring boundaries > offers both bays only after three successes, freezes gauges/time, and scores selected challenge separately 110ms
+   ✓ Parking v2 finite braking and scoring boundaries > never awards proximity when a body corner subsequently contacts the neighbor 24ms
+   ✓ Parking v2 finite braking and scoring boundaries > keeps forbidden future-only x2 and challenge x1.4 as single independent factors 165ms
+   ✓ Parking v2 finite braking and scoring boundaries > landing in the visible unselected bay explains the designation, and gains no success score 26ms
+ ✓ tests/unit/game006.test.ts (8 tests) 1588ms
+   ✓ PARK IT! geometry and ordinary gauge play > tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry  324ms
+   ✓ PARK IT! geometry and ordinary gauge play > grades actual offset precision, caps consecutive Perfect bonus and bounds retained objects over60 successes  947ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game006-revision.test.ts > Parking v2 finite braking and scoring boundaries > preserves the exact unbraked historical arc, speed and endpoint, until the new success reward
+AssertionError: expected { x: 299.9998747489072, …(4) } to deeply equal { x: 299.9998747489072, …(4) }
+
+- Expected
++ Received
+
+  {
+    "height": 70,
+-   "rotation": -0.000028121549007589817,
++   "rotation": -0.00002812154900758981,
+    "width": 42,
+    "x": 299.9998747489072,
+-   "y": 481.0921613721264,
++   "y": 481.09216137212644,
+  }
+
+ ❯ tests/unit/game006-revision.test.ts:48:33
+     46|     const speed=distance/(1.1+distance/340*.35);run.step(.05);
+     47|     expect(run.inspection().driven).toBeCloseTo(speed*.05,8);
+     48|     expect(run.snapshot().pose).toEqual(poseAlongArc(v.layout.start,cu…
+       |                                 ^
+     49|     wait(run,()=>run.snapshot().phase==='parked',1/240,3);
+     50|     expect(run.snapshot().pose).toEqual(poseAlongArc(v.layout.start,cu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 16 passed (17)
+   Start at  01:42:27
+   Duration  2.09s (transform 194ms, setup 0ms, collect 283ms, tests 2.24s, environment 0ms, prepare 185ms)
+

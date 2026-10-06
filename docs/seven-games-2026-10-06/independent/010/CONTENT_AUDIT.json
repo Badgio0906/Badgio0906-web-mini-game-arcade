@@ -1,0 +1,1295 @@
+{
+  "kind": "independent manual Japanese semantic readings entered first; code comparison and anti-allpress check afterward",
+  "sourceSha256": "28fc7b0a65f197b642b820e6ac96f461f29f023b700beea131c1cb7ea1dcfb48",
+  "scenarioCount": 12,
+  "allMatches": true,
+  "records": [
+    {
+      "id": "proposal-after",
+      "structure": "決定の後に未採用の期限案",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "田中",
+        "task": "試作品",
+        "due": "木曜"
+      },
+      "declaredExpected": {
+        "who": "田中",
+        "task": "試作品",
+        "due": "木曜"
+      },
+      "computedState": {
+        "who": "田中",
+        "task": "試作品",
+        "due": "木曜"
+      },
+      "allPressFinal": {
+        "who": "田中",
+        "task": "試作品",
+        "due": "金曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.75,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は田中さんで決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "田中"
+          },
+          "stateChange": {
+            "who": "田中"
+          },
+          "readSeconds": 3.8,
+          "charCount": 13
+        },
+        {
+          "index": 1,
+          "text": "田中さんは試作品を用意してください。決定です。",
+          "role": "decision",
+          "patch": {
+            "task": "試作品"
+          },
+          "stateChange": {
+            "task": "試作品"
+          },
+          "readSeconds": 4.529999999999999,
+          "charCount": 23
+        },
+        {
+          "index": 2,
+          "text": "期限は木曜で確定します。",
+          "role": "decision",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {
+            "due": "木曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 12
+        },
+        {
+          "index": 3,
+          "text": "金曜にする案もありますが、まだ決定ではありません。",
+          "role": "proposal",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 4,
+          "text": "金曜の食堂はカレーですね。雑談でした。",
+          "role": "chat",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.09,
+          "charCount": 19
+        }
+      ]
+    },
+    {
+      "id": "owner-handoff",
+      "structure": "担当変更と旧担当の雑談",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "鈴木",
+        "task": "請求書",
+        "due": "火曜"
+      },
+      "declaredExpected": {
+        "who": "鈴木",
+        "task": "請求書",
+        "due": "火曜"
+      },
+      "computedState": {
+        "who": "鈴木",
+        "task": "請求書",
+        "due": "火曜"
+      },
+      "allPressFinal": {
+        "who": "佐藤",
+        "task": "請求書",
+        "due": "火曜"
+      },
+      "allPressWrongFields": [
+        "who"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.75,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は佐藤さんに決めます。",
+          "role": "decision",
+          "patch": {
+            "who": "佐藤"
+          },
+          "stateChange": {
+            "who": "佐藤"
+          },
+          "readSeconds": 3.8,
+          "charCount": 13
+        },
+        {
+          "index": 1,
+          "text": "作業は請求書の確認で決定です。",
+          "role": "decision",
+          "patch": {
+            "task": "請求書"
+          },
+          "stateChange": {
+            "task": "請求書"
+          },
+          "readSeconds": 3.8,
+          "charCount": 15
+        },
+        {
+          "index": 2,
+          "text": "期限は火曜です。これで確定します。",
+          "role": "decision",
+          "patch": {
+            "due": "火曜"
+          },
+          "stateChange": {
+            "due": "火曜"
+          },
+          "readSeconds": 3.87,
+          "charCount": 17
+        },
+        {
+          "index": 3,
+          "text": "担当を佐藤さんから鈴木さんへ変更します。",
+          "role": "correction",
+          "patch": {
+            "who": "鈴木"
+          },
+          "stateChange": {
+            "who": "鈴木"
+          },
+          "readSeconds": 4.2,
+          "charCount": 20
+        },
+        {
+          "index": 4,
+          "text": "佐藤さんの弁当、おいしそう。仕事の話ではないです。",
+          "role": "chat",
+          "patch": {
+            "who": "佐藤"
+          },
+          "stateChange": {},
+          "readSeconds": 4.75,
+          "charCount": 25
+        }
+      ]
+    },
+    {
+      "id": "task-replace",
+      "structure": "作業だけ訂正、後から期限",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "山田",
+        "task": "展示品",
+        "due": "水曜"
+      },
+      "declaredExpected": {
+        "who": "山田",
+        "task": "展示品",
+        "due": "水曜"
+      },
+      "computedState": {
+        "who": "山田",
+        "task": "展示品",
+        "due": "水曜"
+      },
+      "allPressFinal": {
+        "who": "山田",
+        "task": "チラシ",
+        "due": "水曜"
+      },
+      "allPressWrongFields": [
+        "task"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.75,
+      "statements": [
+        {
+          "index": 0,
+          "text": "山田さんが担当です。決定しました。",
+          "role": "decision",
+          "patch": {
+            "who": "山田"
+          },
+          "stateChange": {
+            "who": "山田"
+          },
+          "readSeconds": 3.87,
+          "charCount": 17
+        },
+        {
+          "index": 1,
+          "text": "作業はチラシの用意で決定します。",
+          "role": "decision",
+          "patch": {
+            "task": "チラシ"
+          },
+          "stateChange": {
+            "task": "チラシ"
+          },
+          "readSeconds": 3.8,
+          "charCount": 16
+        },
+        {
+          "index": 2,
+          "text": "訂正です。チラシではなく展示品を用意してください。",
+          "role": "correction",
+          "patch": {
+            "task": "展示品"
+          },
+          "stateChange": {
+            "task": "展示品"
+          },
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 3,
+          "text": "期限は水曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "水曜"
+          },
+          "stateChange": {
+            "due": "水曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 4,
+          "text": "机に古いチラシが残っていますね。雑談です。",
+          "role": "chat",
+          "patch": {
+            "task": "チラシ"
+          },
+          "stateChange": {},
+          "readSeconds": 4.3100000000000005,
+          "charCount": 21
+        }
+      ]
+    },
+    {
+      "id": "deadline-extend",
+      "structure": "期限を延長、旧曜日は雑談",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "中村",
+        "task": "納品連絡",
+        "due": "来週火曜"
+      },
+      "declaredExpected": {
+        "who": "中村",
+        "task": "納品連絡",
+        "due": "来週火曜"
+      },
+      "computedState": {
+        "who": "中村",
+        "task": "納品連絡",
+        "due": "来週火曜"
+      },
+      "allPressFinal": {
+        "who": "中村",
+        "task": "納品連絡",
+        "due": "金曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.529999999999999,
+      "statements": [
+        {
+          "index": 0,
+          "text": "中村さんが担当で決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "中村"
+          },
+          "stateChange": {
+            "who": "中村"
+          },
+          "readSeconds": 3.8,
+          "charCount": 13
+        },
+        {
+          "index": 1,
+          "text": "納品連絡をお願いします。作業はこれで確定です。",
+          "role": "decision",
+          "patch": {
+            "task": "納品連絡"
+          },
+          "stateChange": {
+            "task": "納品連絡"
+          },
+          "readSeconds": 4.529999999999999,
+          "charCount": 23
+        },
+        {
+          "index": 2,
+          "text": "期限は金曜で決定します。",
+          "role": "decision",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {
+            "due": "金曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 12
+        },
+        {
+          "index": 3,
+          "text": "印刷が遅れます。期限を来週火曜へ延長します。",
+          "role": "correction",
+          "patch": {
+            "due": "来週火曜"
+          },
+          "stateChange": {
+            "due": "来週火曜"
+          },
+          "readSeconds": 4.42,
+          "charCount": 22
+        },
+        {
+          "index": 4,
+          "text": "金曜は雨らしいですね。期限の話ではないです。",
+          "role": "chat",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.42,
+          "charCount": 22
+        }
+      ]
+    },
+    {
+      "id": "proposal-adopt",
+      "structure": "提案を後で正式採用",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "高橋",
+        "task": "見積書",
+        "due": "水曜"
+      },
+      "declaredExpected": {
+        "who": "高橋",
+        "task": "見積書",
+        "due": "水曜"
+      },
+      "computedState": {
+        "who": "高橋",
+        "task": "見積書",
+        "due": "水曜"
+      },
+      "allPressFinal": {
+        "who": "中村",
+        "task": "見積書",
+        "due": "水曜"
+      },
+      "allPressWrongFields": [
+        "who"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.75,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は高橋さんという案です。まだ決まっていません。",
+          "role": "proposal",
+          "patch": {
+            "who": "高橋"
+          },
+          "stateChange": {},
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 1,
+          "text": "作業は見積書の作成で決定します。",
+          "role": "decision",
+          "patch": {
+            "task": "見積書"
+          },
+          "stateChange": {
+            "task": "見積書"
+          },
+          "readSeconds": 3.8,
+          "charCount": 16
+        },
+        {
+          "index": 2,
+          "text": "期限は水曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "水曜"
+          },
+          "stateChange": {
+            "due": "水曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 3,
+          "text": "先ほどの案を採用します。担当は高橋さんで決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "高橋"
+          },
+          "stateChange": {
+            "who": "高橋"
+          },
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 4,
+          "text": "中村さん、あとでお茶にしませんか。雑談です。",
+          "role": "chat",
+          "patch": {
+            "who": "中村"
+          },
+          "stateChange": {},
+          "readSeconds": 4.42,
+          "charCount": 22
+        }
+      ]
+    },
+    {
+      "id": "double-change",
+      "structure": "担当と作業を同時訂正、期限保持",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "加藤",
+        "task": "申込書",
+        "due": "月曜"
+      },
+      "declaredExpected": {
+        "who": "加藤",
+        "task": "申込書",
+        "due": "月曜"
+      },
+      "computedState": {
+        "who": "加藤",
+        "task": "申込書",
+        "due": "月曜"
+      },
+      "allPressFinal": {
+        "who": "加藤",
+        "task": "案内文",
+        "due": "月曜"
+      },
+      "allPressWrongFields": [
+        "task"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.63,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は伊藤さんで決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "伊藤"
+          },
+          "stateChange": {
+            "who": "伊藤"
+          },
+          "readSeconds": 3.8,
+          "charCount": 13
+        },
+        {
+          "index": 1,
+          "text": "案内文を作ることに決めます。",
+          "role": "decision",
+          "patch": {
+            "task": "案内文"
+          },
+          "stateChange": {
+            "task": "案内文"
+          },
+          "readSeconds": 3.8,
+          "charCount": 14
+        },
+        {
+          "index": 2,
+          "text": "期限は月曜で確定します。",
+          "role": "decision",
+          "patch": {
+            "due": "月曜"
+          },
+          "stateChange": {
+            "due": "月曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 12
+        },
+        {
+          "index": 3,
+          "text": "訂正です。担当は加藤さん、作業は申込書へ変更。期限はそのままです。",
+          "role": "correction",
+          "patch": {
+            "who": "加藤",
+            "task": "申込書"
+          },
+          "stateChange": {
+            "who": "加藤",
+            "task": "申込書"
+          },
+          "readSeconds": 5.63,
+          "charCount": 33
+        },
+        {
+          "index": 4,
+          "text": "古い案内文、引き出しにありました。雑談です。",
+          "role": "chat",
+          "patch": {
+            "task": "案内文"
+          },
+          "stateChange": {},
+          "readSeconds": 4.42,
+          "charCount": 22
+        }
+      ]
+    },
+    {
+      "id": "cancel-replace",
+      "structure": "取りやめと代替作業、後の案を拒否",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "田中",
+        "task": "説明資料",
+        "due": "木曜"
+      },
+      "declaredExpected": {
+        "who": "田中",
+        "task": "説明資料",
+        "due": "木曜"
+      },
+      "computedState": {
+        "who": "田中",
+        "task": "説明資料",
+        "due": "木曜"
+      },
+      "allPressFinal": {
+        "who": "田中",
+        "task": "説明資料",
+        "due": "水曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.74,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は田中さんで決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "田中"
+          },
+          "stateChange": {
+            "who": "田中"
+          },
+          "readSeconds": 3.8,
+          "charCount": 13
+        },
+        {
+          "index": 1,
+          "text": "試作品を用意することに決めます。",
+          "role": "decision",
+          "patch": {
+            "task": "試作品"
+          },
+          "stateChange": {
+            "task": "試作品"
+          },
+          "readSeconds": 3.8,
+          "charCount": 16
+        },
+        {
+          "index": 2,
+          "text": "期限は木曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {
+            "due": "木曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 3,
+          "text": "試作品は取りやめます。代わりに説明資料を用意してください。決定です。",
+          "role": "correction",
+          "patch": {
+            "task": "説明資料"
+          },
+          "stateChange": {
+            "task": "説明資料"
+          },
+          "readSeconds": 5.74,
+          "charCount": 34
+        },
+        {
+          "index": 4,
+          "text": "水曜という案もありますが、採用されていません。",
+          "role": "proposal",
+          "patch": {
+            "due": "水曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.529999999999999,
+          "charCount": 23
+        }
+      ]
+    },
+    {
+      "id": "condition-no",
+      "structure": "条件つき案が不成立、元の決定維持",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "鈴木",
+        "task": "発送ラベル",
+        "due": "金曜"
+      },
+      "declaredExpected": {
+        "who": "鈴木",
+        "task": "発送ラベル",
+        "due": "金曜"
+      },
+      "computedState": {
+        "who": "鈴木",
+        "task": "発送ラベル",
+        "due": "金曜"
+      },
+      "allPressFinal": {
+        "who": "鈴木",
+        "task": "発送ラベル",
+        "due": "木曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.1899999999999995,
+      "statements": [
+        {
+          "index": 0,
+          "text": "鈴木さんが発送ラベルを作ります。これで決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "鈴木",
+            "task": "発送ラベル"
+          },
+          "stateChange": {
+            "who": "鈴木",
+            "task": "発送ラベル"
+          },
+          "readSeconds": 4.640000000000001,
+          "charCount": 24
+        },
+        {
+          "index": 1,
+          "text": "期限は金曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {
+            "due": "金曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 2,
+          "text": "今日印刷できれば期限を木曜にする案です。まだ未採用です。",
+          "role": "proposal",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {},
+          "readSeconds": 5.08,
+          "charCount": 28
+        },
+        {
+          "index": 3,
+          "text": "今日は印刷できません。案は採用せず、期限は金曜のままです。",
+          "role": "decision",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {
+            "due": "金曜"
+          },
+          "readSeconds": 5.1899999999999995,
+          "charCount": 29
+        },
+        {
+          "index": 4,
+          "text": "木曜のおやつ、楽しみです。雑談でした。",
+          "role": "chat",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.09,
+          "charCount": 19
+        }
+      ]
+    },
+    {
+      "id": "topic-detour",
+      "structure": "別議題の脱線と本議題への復帰",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "山田",
+        "task": "展示申請",
+        "due": "月曜"
+      },
+      "declaredExpected": {
+        "who": "山田",
+        "task": "展示申請",
+        "due": "月曜"
+      },
+      "computedState": {
+        "who": "山田",
+        "task": "展示申請",
+        "due": "月曜"
+      },
+      "allPressFinal": {
+        "who": "山田",
+        "task": "展示申請",
+        "due": "水曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.859999999999999,
+      "statements": [
+        {
+          "index": 0,
+          "text": "別の会議では高橋さんがポスター担当でした。雑談です。",
+          "role": "chat",
+          "patch": {
+            "who": "高橋",
+            "task": "ポスター"
+          },
+          "stateChange": {},
+          "readSeconds": 4.859999999999999,
+          "charCount": 26
+        },
+        {
+          "index": 1,
+          "text": "ここから今回の決定です。担当は山田さんです。",
+          "role": "decision",
+          "patch": {
+            "who": "山田"
+          },
+          "stateChange": {
+            "who": "山田"
+          },
+          "readSeconds": 4.42,
+          "charCount": 22
+        },
+        {
+          "index": 2,
+          "text": "今回の作業は展示申請で確定します。",
+          "role": "decision",
+          "patch": {
+            "task": "展示申請"
+          },
+          "stateChange": {
+            "task": "展示申請"
+          },
+          "readSeconds": 3.87,
+          "charCount": 17
+        },
+        {
+          "index": 3,
+          "text": "今回の期限は月曜で決定です。",
+          "role": "decision",
+          "patch": {
+            "due": "月曜"
+          },
+          "stateChange": {
+            "due": "月曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 14
+        },
+        {
+          "index": 4,
+          "text": "別の会議の期限は水曜でしたね。今回は関係ないです。",
+          "role": "chat",
+          "patch": {
+            "due": "水曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.75,
+          "charCount": 25
+        }
+      ]
+    },
+    {
+      "id": "rollback",
+      "structure": "変更を撤回し2欄を元へ戻す",
+      "extra": true,
+      "independentJapaneseReadExpected": {
+        "who": "田中",
+        "task": "提出資料",
+        "due": "木曜"
+      },
+      "declaredExpected": {
+        "who": "田中",
+        "task": "提出資料",
+        "due": "木曜"
+      },
+      "computedState": {
+        "who": "田中",
+        "task": "提出資料",
+        "due": "木曜"
+      },
+      "allPressFinal": {
+        "who": "鈴木",
+        "task": "提出資料",
+        "due": "金曜"
+      },
+      "allPressWrongFields": [
+        "who",
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.1899999999999995,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は田中さん、作業は提出資料で決定です。",
+          "role": "decision",
+          "patch": {
+            "who": "田中",
+            "task": "提出資料"
+          },
+          "stateChange": {
+            "who": "田中",
+            "task": "提出資料"
+          },
+          "readSeconds": 4.3100000000000005,
+          "charCount": 21
+        },
+        {
+          "index": 1,
+          "text": "期限は木曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {
+            "due": "木曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 2,
+          "text": "担当を鈴木さんへ、期限を金曜へ変更します。",
+          "role": "correction",
+          "patch": {
+            "who": "鈴木",
+            "due": "金曜"
+          },
+          "stateChange": {
+            "who": "鈴木",
+            "due": "金曜"
+          },
+          "readSeconds": 4.3100000000000005,
+          "charCount": 21
+        },
+        {
+          "index": 3,
+          "text": "先ほどの変更を撤回。担当は田中さん、期限は木曜へ戻します。",
+          "role": "correction",
+          "patch": {
+            "who": "田中",
+            "due": "木曜"
+          },
+          "stateChange": {
+            "who": "田中",
+            "due": "木曜"
+          },
+          "readSeconds": 5.1899999999999995,
+          "charCount": 29
+        },
+        {
+          "index": 4,
+          "text": "鈴木さんは金曜にお休みでしたね。雑談です。",
+          "role": "chat",
+          "patch": {
+            "who": "鈴木",
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.3100000000000005,
+          "charCount": 21
+        }
+      ]
+    },
+    {
+      "id": "condition-yes",
+      "structure": "条件成立が明示されて2欄変更",
+      "extra": true,
+      "independentJapaneseReadExpected": {
+        "who": "高橋",
+        "task": "印刷原稿",
+        "due": "水曜"
+      },
+      "declaredExpected": {
+        "who": "高橋",
+        "task": "印刷原稿",
+        "due": "水曜"
+      },
+      "computedState": {
+        "who": "高橋",
+        "task": "印刷原稿",
+        "due": "水曜"
+      },
+      "allPressFinal": {
+        "who": "中村",
+        "task": "印刷原稿",
+        "due": "金曜"
+      },
+      "allPressWrongFields": [
+        "who",
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.63,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は中村さん。作業は印刷原稿。これで決定します。",
+          "role": "decision",
+          "patch": {
+            "who": "中村",
+            "task": "印刷原稿"
+          },
+          "stateChange": {
+            "who": "中村",
+            "task": "印刷原稿"
+          },
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 1,
+          "text": "期限は金曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {
+            "due": "金曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 2,
+          "text": "校了すれば高橋さん担当で水曜にする案です。まだ未採用です。",
+          "role": "proposal",
+          "patch": {
+            "who": "高橋",
+            "due": "水曜"
+          },
+          "stateChange": {},
+          "readSeconds": 5.1899999999999995,
+          "charCount": 29
+        },
+        {
+          "index": 3,
+          "text": "校了しました。案を採用し、担当を高橋さん、期限を水曜へ変更します。",
+          "role": "correction",
+          "patch": {
+            "who": "高橋",
+            "due": "水曜"
+          },
+          "stateChange": {
+            "who": "高橋",
+            "due": "水曜"
+          },
+          "readSeconds": 5.63,
+          "charCount": 33
+        },
+        {
+          "index": 4,
+          "text": "金曜は中村さんとランチの予定です。雑談でした。",
+          "role": "chat",
+          "patch": {
+            "who": "中村",
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.529999999999999,
+          "charCount": 23
+        }
+      ]
+    },
+    {
+      "id": "three-revisions",
+      "structure": "作業2回変更、期限だけ最終訂正",
+      "extra": true,
+      "independentJapaneseReadExpected": {
+        "who": "加藤",
+        "task": "説明資料",
+        "due": "来週月曜"
+      },
+      "declaredExpected": {
+        "who": "加藤",
+        "task": "説明資料",
+        "due": "来週月曜"
+      },
+      "computedState": {
+        "who": "加藤",
+        "task": "説明資料",
+        "due": "来週月曜"
+      },
+      "allPressFinal": {
+        "who": "加藤",
+        "task": "申込書",
+        "due": "金曜"
+      },
+      "allPressWrongFields": [
+        "task",
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 5.41,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は加藤さん、作業は案内文で決定します。",
+          "role": "decision",
+          "patch": {
+            "who": "加藤",
+            "task": "案内文"
+          },
+          "stateChange": {
+            "who": "加藤",
+            "task": "案内文"
+          },
+          "readSeconds": 4.3100000000000005,
+          "charCount": 21
+        },
+        {
+          "index": 1,
+          "text": "期限は木曜で確定です。",
+          "role": "decision",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {
+            "due": "木曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 11
+        },
+        {
+          "index": 2,
+          "text": "案内文ではなく申込書へ変更します。",
+          "role": "correction",
+          "patch": {
+            "task": "申込書"
+          },
+          "stateChange": {
+            "task": "申込書"
+          },
+          "readSeconds": 3.87,
+          "charCount": 17
+        },
+        {
+          "index": 3,
+          "text": "再度訂正です。申込書ではなく説明資料を用意してください。",
+          "role": "correction",
+          "patch": {
+            "task": "説明資料"
+          },
+          "stateChange": {
+            "task": "説明資料"
+          },
+          "readSeconds": 5.08,
+          "charCount": 28
+        },
+        {
+          "index": 4,
+          "text": "期限だけ変更。来週月曜で確定します。担当と作業はそのままです。",
+          "role": "correction",
+          "patch": {
+            "due": "来週月曜"
+          },
+          "stateChange": {
+            "due": "来週月曜"
+          },
+          "readSeconds": 5.41,
+          "charCount": 31
+        },
+        {
+          "index": 5,
+          "text": "古い申込書は金曜に片付けます。今回の決定とは無関係です。",
+          "role": "chat",
+          "patch": {
+            "task": "申込書",
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 5.08,
+          "charCount": 28
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "structure": "提案／決定／訂正／聞き返し",
+      "extra": false,
+      "independentJapaneseReadExpected": {
+        "who": "田中",
+        "task": "展示品",
+        "due": "木曜"
+      },
+      "declaredExpected": {
+        "who": "田中",
+        "task": "展示品",
+        "due": "木曜"
+      },
+      "computedState": {
+        "who": "田中",
+        "task": "展示品",
+        "due": "木曜"
+      },
+      "allPressFinal": {
+        "who": "田中",
+        "task": "展示品",
+        "due": "水曜"
+      },
+      "allPressWrongFields": [
+        "due"
+      ],
+      "matches": true,
+      "minimumReadSeconds": 3.8,
+      "maximumReadSeconds": 4.75,
+      "statements": [
+        {
+          "index": 0,
+          "text": "担当は田中さんで決定です。記録してみましょう。",
+          "role": "decision",
+          "patch": {
+            "who": "田中"
+          },
+          "stateChange": {
+            "who": "田中"
+          },
+          "readSeconds": 4.529999999999999,
+          "charCount": 23
+        },
+        {
+          "index": 1,
+          "text": "期限は金曜という案です。まだ決定ではありません。",
+          "role": "proposal",
+          "patch": {
+            "due": "金曜"
+          },
+          "stateChange": {},
+          "readSeconds": 4.640000000000001,
+          "charCount": 24
+        },
+        {
+          "index": 2,
+          "text": "期限は木曜で確定します。",
+          "role": "decision",
+          "patch": {
+            "due": "木曜"
+          },
+          "stateChange": {
+            "due": "木曜"
+          },
+          "readSeconds": 3.8,
+          "charCount": 12
+        },
+        {
+          "index": 3,
+          "text": "作業は試作品で決定です。",
+          "role": "decision",
+          "patch": {
+            "task": "試作品"
+          },
+          "stateChange": {
+            "task": "試作品"
+          },
+          "readSeconds": 3.8,
+          "charCount": 12
+        },
+        {
+          "index": 4,
+          "text": "訂正です。試作品ではなく展示品を用意してください。",
+          "role": "correction",
+          "patch": {
+            "task": "展示品"
+          },
+          "stateChange": {
+            "task": "展示品"
+          },
+          "readSeconds": 4.75,
+          "charCount": 25
+        },
+        {
+          "index": 5,
+          "text": "水曜の天気が気になります。雑談です。",
+          "role": "chat",
+          "patch": {
+            "due": "水曜"
+          },
+          "stateChange": {},
+          "readSeconds": 3.98,
+          "charCount": 18
+        }
+      ]
+    }
+  ],
+  "humanReadingSpeed": "unassessed; 3.8–7 second design allocation, not human-tested"
+}

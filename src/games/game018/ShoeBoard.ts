@@ -1,6 +1,9 @@
 import type { ShoeRun } from './ShoeRun';
 import type { Effect, Obstacle, ShoeType } from './types';
 import { drawShoe, drawStar, INK } from './ShoeArt';
+import {formatDistance} from './physics';
+import {RARE_LABELS} from './rarePresentation';
+import {kickPose,supportPose} from './kickPose';
 import { canvasSpinAngle, spinDirection, spinPreview } from './spinGuide';
 
 const TAU = Math.PI * 2;
@@ -11,7 +14,7 @@ const SKY_NAMES: Readonly<Record<string, string>> = {
   'ORBITAL SHOE': '地球を見下ろす靴。', 'WALL BREAK': '壁、スポーン！', 'IRON GETA EVENT': '鉄下駄の本気。', 'JET STREAM': '紙、空へ。', 'TORNADO ZORI': '回れ。草履。',
   'BUSINESS MISSILE': '社会人の重み！', 'IRON BREAKER': '鉄下駄、飛んだ。', 'DRILL THROUGH': 'ドリルシューズ！', 'HIGHWAY STAR': '靴、道路を制す。',
 };
-export interface BoardOptions { title?: boolean; reducedMotion?: boolean }
+export interface BoardOptions { title?: boolean; reducedMotion?: boolean; recordAt?:number|null }
 export interface BoardProjection { width: number; height: number; cameraX: number; cameraY: number; scale: number; shoeX: number; shoeY: number }
 
 /** Canvas artwork only. Trajectory, break state, altitude and effects come from ShoeRun. */
@@ -89,6 +92,7 @@ export class ShoeBoard {
       this.setup(run, title, reduced);
     }
     c.restore();
+    if(!title&&!['angle','angle-lock','spin','spin-lock','power','practice-complete'].includes(run.phase))this.distanceHud(run,options.recordAt??null);
     // Ink border and small registration marks make the drawing feel like an authored comic panel.
     c.strokeStyle = '#18374635'; c.lineWidth = 2; c.strokeRect(12, 12, this.width - 24, h - 24);
   }
@@ -118,10 +122,22 @@ export class ShoeBoard {
     const c = this.c, h = this.height, phase = run.phase, s = this.artScale;
     const spinFocus = !title && (phase === 'spin' || phase === 'spin-lock' || run.practice && run.practiceStage === 1 && phase === 'practice-complete');
     if (spinFocus) { this.spinGuide(run, reduced); return; }
-    const scale = Math.min(s, h / 430, title ? 1.7 : 2.4);
+    // Reserve the same headroom throughout setup so the fixed flight HUD never
+    // hides the hair and the actor does not resize at the instant of release.
+    const headroomScale = (h * .83 - this.hudHeight - 28) / 333;
+    const scale = Math.min(s, h / 430, title ? 1.7 : headroomScale);
     const hipX = title ? 330 : Math.max(320, 185 * scale), hipY = h * .83 - 115 * scale;
     const poseAngle = title ? 60 : run.angle;
     const swing = title ? 1.15 : (poseAngle - 5) / 80 * 1.65 - .28;
+    if (phase === 'kick' && !title && run.justMax && run.phaseProgress >= .63) {
+      const pose = kickPose(run.phaseProgress, swing);
+      const travel = pose.releaseProgress * 260;
+      const x = hipX + (pose.ankle.x + 29 + travel) * scale;
+      const y = hipY + (pose.ankle.y - Math.sin(runAngleForArt(swing)) * travel - 17) * scale;
+      // The actor draws the released shoe exactly once. Its trail shares that
+      // position and is painted first, behind the character and shoe.
+      this.justTrail(run, x, y, Math.min(scale, 1.7), -run.angle * Math.PI / 180, 1 - run.phaseProgress * .3, reduced);
+    }
     this.boy(hipX, hipY, scale, swing, run.shoeType, run.spin, title ? .82 : phase === 'kick' ? run.phaseProgress : 0, phase === 'max', false, title);
     if (title) {
       this.arrow(hipX + 177 * scale, hipY - 6 * scale, -.55, 150 * scale, '#ef7250', 6 * scale);
@@ -147,7 +163,7 @@ export class ShoeBoard {
     }
     if (phase === 'kick' && !title) {
       // Reserve the upper-right sky for the callout, clear of the face and release trajectory.
-      const bubbleScale = Math.min(s, 1.1), bubbleY = Math.max(28, h * .045);
+      const bubbleScale = Math.min(s, 1.1), bubbleY = Math.min(h*.21,112*s)+12*s;
       this.capsule(590, bubbleY, 330 * bubbleScale, 68 * bubbleScale, '#fffbed');
       this.text('いっけぇぇぇ！！', 590 + 165 * bubbleScale, bubbleY + 46 * bubbleScale, 29 * bubbleScale);
       if (!reduced && run.phaseProgress > .45) {
@@ -158,24 +174,25 @@ export class ShoeBoard {
   /** Original profile illustration: red tee, denim shorts, brown spikes and an expressive grin. */
   private boy(x: number, y: number, size: number, swing: number, shoe: ShoeType, spin: number, kick: number, glowing: boolean, launched = false, title = false): void {
     const c = this.c; c.save(); c.translate(x, y); c.scale(size, size);
-    const hit = kick > .48, progress = Math.max(0, (kick - .48) / .52);
-    const activeSwing = hit ? 1.58 + progress * .22 : swing - (kick > 0 ? Math.sin(kick * Math.PI) * .55 : 0);
-    const fx = Math.sin(activeSwing) * 149, fy = Math.cos(activeSwing) * 149;
+    const pose=kickPose(kick,swing,launched),support=supportPose(),hit=pose.released,progress=pose.releaseProgress;
+    const {x:fx,y:fy}=pose.ankle;
     const path = (fill: string, draw: () => void) => { c.fillStyle = fill; c.strokeStyle = INK; c.lineWidth = 4; c.beginPath(); draw(); c.closePath(); c.fill(); c.stroke(); };
     const limb = (ax: number, ay: number, bx: number, by: number, width: number) => { this.line(ax, ay, bx, by, INK, width + 7); this.line(ax, ay, bx, by, '#ffbe8a', width); };
     c.fillStyle = '#18374624'; c.beginPath(); c.ellipse(-11, 138, 91, 12, 0, 0, TAU); c.fill();
     // Supporting leg: calf, striped sock and blue sneaker stay visibly planted.
-    limb(-22, -4, -35, 72, 24); limb(-35, 72, -48, 113, 18);
-    this.line(-46, 101, -49, 119, '#fff4da', 21); this.line(-44, 104, -48, 105, '#416b90', 3);
+    limb(support.hip.x,support.hip.y,support.knee.x,support.knee.y,24); limb(support.knee.x,support.knee.y,support.ankle.x,support.ankle.y,18);
+    const sx=support.ankle.x+(support.knee.x-support.ankle.x)*.28,sy=support.ankle.y+(support.knee.y-support.ankle.y)*.28;
+    this.line(sx,sy,support.ankle.x,support.ankle.y,'#fff4da',21);
+    const sd=Math.hypot(support.ankle.x-sx,support.ankle.y-sy),nx=(support.ankle.y-sy)/sd,ny=-(support.ankle.x-sx)/sd;this.line(sx-7*nx,sy-7*ny,sx+7*nx,sy+7*ny,'#416b90',3);
     c.save(); c.translate(-40, 124); c.scale(.68, .68); drawShoe(c, 'sneaker', 0, 0, 1); c.fillStyle = '#416b90'; c.fillRect(-28, -15, 27, 15); c.restore();
     // A connected thigh, bent knee, calf and a bare, upturned foot at release.
-    const kx = fx * .48 - 11, ky = fy * .46 + 9;
-    limb(15, -2, kx, ky, 28); limb(kx, ky, fx, fy, 21);
-    c.save(); c.translate(fx, fy); c.rotate(hit ? -.75 : -spin * .55);
-    path('#ffbe8a', () => { c.moveTo(-8, -9); c.lineTo(8, -13); c.quadraticCurveTo(13, -42, 22, -37); c.quadraticCurveTo(33, -23, 28, -5); c.quadraticCurveTo(20, 13, -1, 12); });
-    this.line(22, -30, 28, -25, '#d88c61', 1.7); this.line(21, -20, 30, -17, '#d88c61', 1.7); c.restore();
+    const {x:kx,y:ky}=pose.knee;
+    limb(pose.hip.x,pose.hip.y,kx,ky,28); limb(kx,ky,fx,fy,21);
+    c.save(); c.translate(fx,fy); c.rotate(pose.footAngle-Math.max(-.18,Math.min(.18,spin*.18)));
+    path('#ffbe8a',()=>{c.moveTo(-9,-11);c.lineTo(7,-12);c.quadraticCurveTo(12,-5,25,-5);c.quadraticCurveTo(42,-16,46,-8);c.quadraticCurveTo(47,3,35,9);c.lineTo(-8,12);c.quadraticCurveTo(-15,4,-9,-11);});
+    for(let i=0;i<3;i++)this.line(33+i*4,-6,35+i*3,0,'#d88c61',1.4);c.restore();
     if (!launched && !title) {
-      if (!hit) drawShoe(c, shoe, fx + 14, fy, .83, -spin * .55);
+      if (!hit) drawShoe(c, shoe, fx + 14, fy, .83,pose.footAngle-Math.max(-.18,Math.min(.18,spin*.18)));
       else {
         const travel = progress * 260, rise = Math.sin(runAngleForArt(swing)) * travel;
         drawShoe(c, shoe, fx + 29 + travel, fy - rise - 17, .83, -spin * (1 + progress * 7), true);
@@ -184,6 +201,7 @@ export class ShoeBoard {
     }
     // Two separate denim cuffs articulate the hip; seams and highlights avoid a flat block.
     path('#315d7f', () => { c.moveTo(-45, -33); c.lineTo(26, -41); c.lineTo(53, -5); c.lineTo(11, 17); c.lineTo(-3, -4); c.lineTo(-10, 24); c.lineTo(-51, 18); });
+    c.save();c.translate(pose.hip.x,pose.hip.y);c.rotate(-pose.a);path('#315d7f',()=>{c.moveTo(-21,-15);c.lineTo(20,-15);c.lineTo(19,31);c.quadraticCurveTo(0,37,-20,31);});this.line(-18,29,18,29,'#6589a1',4);c.restore();
     this.line(-10, -30, -3, -4, '#17394f', 3); this.line(12, 11, 46, -4, '#6589a1', 4); this.line(-47, 12, -12, 18, '#6589a1', 4);
     // Counterbalanced arms and rounded fists point in the direction of travel.
     limb(-23, -93, -69, -83 - kick * 12, 17); limb(-69, -83 - kick * 12, -110, -53 - kick * 35, 14);
@@ -221,7 +239,7 @@ export class ShoeBoard {
     // Isolated, connected calf/ankle closeup. The sign is identical to flight rendering.
     c.save(); c.translate(500, portrait ? h * .54 : baseY); if (portrait) c.scale(1.9, 1.9);
     this.line(-103, -52, -18, 7, INK, 49); this.line(-103, -52, -18, 7, '#ffbe8a', 40);
-    c.save(); c.rotate(canvasSpinAngle(run.spin * .7));
+    c.save(); c.rotate(canvasSpinAngle(Math.max(-.18,Math.min(.18,run.spin*.18))));
     c.fillStyle = '#ffbe8a'; c.strokeStyle = INK; c.lineWidth = 4; c.beginPath(); c.roundRect(-19, -9, 78, 30, 12); c.fill(); c.stroke();
     drawShoe(c, run.shoeType, 36, 13, 1.4); c.restore(); c.restore();
     const t = reduced ? .3 : run.time;
@@ -273,16 +291,19 @@ export class ShoeBoard {
     const ease = this.following ? 1 - Math.exp(-dt * 9) : 1;
     this.scale += (wantedScale - this.scale) * ease;
     const wantedX = run.position.x - this.width * .43 / this.scale;
-    const wantedY = run.position.y - this.height * .5 / this.scale;
+    const lowY = this.hudHeight + 68 * this.artScale;
+    const highY = this.height - 70 * this.artScale;
+    const centerY = Math.max(lowY, Math.min(highY, this.height * .5));
+    const wantedY = run.position.y - (this.height - centerY) / this.scale;
     this.cameraX += (wantedX - this.cameraX) * ease; this.cameraY += (wantedY - this.cameraY) * ease;
     this.following = true;
     let sx = (run.position.x - this.cameraX) * this.scale, sy = this.height - (run.position.y - this.cameraY) * this.scale;
     // Bound the tracking lag. High-speed records must never leave the visible panel.
-    const lowX = 120 * this.artScale, highX = this.width - 120 * this.artScale, lowY = 110 * this.artScale, highY = this.height - 110 * this.artScale;
+    const lowX = 120 * this.artScale, highX = this.width - 120 * this.artScale;
     if (sx < lowX || sx > highX) { sx = Math.max(lowX, Math.min(highX, sx)); this.cameraX = run.position.x - sx / this.scale; }
     if (sy < lowY || sy > highY) { sy = Math.max(lowY, Math.min(highY, sy)); this.cameraY = run.position.y - (this.height - sy) / this.scale; }
     this.shoeX = sx; this.shoeY = sy;
-    if (reduced) { this.cameraX = wantedX; this.cameraY = wantedY; this.shoeX = this.width * .43; this.shoeY = this.height * .5; }
+    if (reduced) { this.cameraX = wantedX; this.cameraY = wantedY; this.shoeX = this.width * .43; this.shoeY = centerY; }
   }
   private flightSky(run: ShoeRun): void {
     const c = this.c, h = this.height, altitude = run.position.y;
@@ -420,6 +441,9 @@ export class ShoeBoard {
     if (reentry && !reduced) {
       c.save(); c.translate(x, y); c.rotate(angle); c.fillStyle = '#ffac5b'; c.beginPath(); c.moveTo(-25 * s, -25 * s); c.lineTo(-160 * s, -13 * s); c.lineTo(-125 * s, 4 * s); c.lineTo(-165 * s, 20 * s); c.lineTo(-25 * s, 27 * s); c.closePath(); c.fill(); c.restore();
     }
+    if(run.justMax&&run.phase==='flight'&&run.flightElapsed<3.2)this.justTrail(run,x,y,s,angle,Math.max(.12,1-run.flightElapsed/3.2),reduced);
+    if(run.presentation.selected&&run.phase==='flight')this.rareFlight(run,x,y,s);
+    if(run.presentation.selected==='iron-meteor'&&['landing','result'].includes(run.phase))this.crater(x,y,s,run);
     drawShoe(c, run.shoeType, x, y, 1.13 * s, canvasSpinAngle(run.rotation), true);
     if (run.phase === 'landing' || run.phase === 'result') {
       c.fillStyle = '#18374620'; c.beginPath(); c.ellipse(x, y + 35 * s, 59 * s, 10 * s, 0, 0, TAU); c.fill();
@@ -435,12 +459,50 @@ export class ShoeBoard {
     if (latest) {
       const w = 860, x = (1000 - w) / 2, height = Math.min(86 * s, this.height * .18);
       // Keep the announcement away from the actual tracking position, with shoe art on top.
-      const y = this.shoeY < this.height * .42 ? this.height - height - 24 * s : 24 * s;
+      const y = this.shoeY < this.height * .42 ? this.height - height - 24 * s : Math.min(this.height*.21,112*s)+15*s;
       c.save(); c.globalAlpha = .93; this.capsule(x, y, w, height, '#fff8d9'); c.restore();
       this.text(latest.name, 500, y + height * .45, 30 * Math.min(s, 1.75), '#a74739');
       this.text(SKY_NAMES[latest.name] ?? '靴の可能性、拡大中。', 500, y + height * .79, 18 * s, '#294956');
     } else if (run.breakCombo > 1) {
-      this.text('BREAK COMBO × ' + run.breakCombo, 500, 75 * s, 30 * s, '#fff6d3');
+      this.text('BREAK COMBO × ' + run.breakCombo, 500, Math.min(this.height*.21,112*s)+35*s, 30 * s, '#fff6d3');
     }
   }
+  private distanceHud(run:ShoeRun,recordAt:number|null):void{
+    const c=this.c,s=this.artScale,h=Math.min(this.height*.21,112*s);
+    c.fillStyle='#fffaf0';c.fillRect(14,14,972,h-14);this.line(14,h,986,h,INK,3);
+    this.text('飛距離',48,42*s,20*s,INK,'left');
+    const value=formatDistance(run.position.x);const font=Math.min(45*s,670/Math.max(6,value.length)*1.65);
+    this.text(value,510,72*s,font,INK);
+    this.text('最高高度 '+formatDistance(run.maxHeight),960,h-15*s,14*s,'#526b71','right');
+    if(recordAt!==null&&run.time-recordAt<1.8)this.text('この靴の記録更新！',48,h-14*s,17*s,'#b04138','left');
+  }
+  private get hudHeight():number { return Math.min(this.height*.21,112*this.artScale); }
+  private justTrail(run:ShoeRun,x:number,y:number,s:number,angle:number,alpha:number,reduced:boolean):void{
+    const c=this.c;c.save();c.translate(x,y);c.rotate(angle);c.globalAlpha=alpha;
+    if(run.shoeType==='zori'){
+      c.strokeStyle='#d4f7ee';c.lineWidth=8*s;c.beginPath();for(let i=0;i<65;i++){const t=i/64,px=-30*s-t*220*s,py=Math.sin(t*24+canvasSpinAngle(run.rotation))*25*s;if(i)c.lineTo(px,py);else c.moveTo(px,py);}c.stroke();
+    }else if(run.shoeType==='paper'){
+      for(let i=0;i<10;i++){const px=-(35+i*23)*s,py=((i%3)-1)*20*s;c.fillStyle=i%2?'#fff9df':'#f6db78';c.beginPath();c.moveTo(px,py);c.lineTo(px-18*s,py-9*s);c.lineTo(px-9*s,py+13*s);c.closePath();c.fill();}
+    }else{
+      const bulky=run.shoeType==='iron-geta',bullet=run.shoeType==='leather';
+      c.fillStyle=bullet?'#d2e6ed':bulky?'#d84337':'#f27a31';c.beginPath();c.moveTo(-20*s,-24*s);c.lineTo(-210*s,-(bulky?48:12)*s);c.lineTo(-145*s,0);c.lineTo(-235*s,(bulky?35:16)*s);c.lineTo(-20*s,25*s);c.closePath();c.fill();
+      c.fillStyle=bullet?'#fffaf0':'#ffe692';c.beginPath();c.moveTo(-17*s,-12*s);c.lineTo(-165*s,0);c.lineTo(-17*s,13*s);c.closePath();c.fill();
+      if(bulky)for(let i=0;i<4;i++)drawStar(c,-(55+i*40)*s,(i%2?35:-36)*s,9*s,'#e6eef3',i*.7);
+    }
+    for(let i=0;i<4;i++)this.line(-70*s,(i-1.5)*42*s,-260*s,(i-1.5)*42*s,'#fffaf0',4*s);c.restore();
+    if(run.phase==='kick'||run.flightElapsed<.8){c.save();const h=this.hudHeight;const hasCaption=run.phase==='flight'&&run.effects.some(e=>e.type==='special'&&run.flightElapsed-e.time>=0&&run.flightElapsed-e.time<2.5);c.translate(run.phase==='kick'?745:625,h+(run.phase==='kick'?155:hasCaption?180:80)*Math.min(s,1.4));c.rotate(reduced?0:-.1);const word=run.shoeType==='iron-geta'?'ズドォォン!!':run.shoeType==='paper'?'バシュゥゥ!!':'グオオオ!!';c.font='900 '+Math.min(46*s,75)+'px '+FONT;c.textAlign='center';c.strokeStyle=INK;c.lineWidth=10;c.strokeText(word,0,0);c.fillStyle='#ffe272';c.fillText(word,0,0);c.restore();}
+  }
+  private rareFlight(run:ShoeRun,x:number,y:number,s:number):void{
+    const c=this.c,id=run.presentation.selected;
+    if(id==='zori-whirlwind'){c.save();c.strokeStyle='#efffed';c.lineWidth=5*s;for(let j=0;j<5;j++){const offset=Math.sin(canvasSpinAngle(run.rotation)+j*.8)*14*s;c.beginPath();c.ellipse(x+offset,y+(j-2)*16*s,(28+j*12)*s,12*s,0,0,TAU);c.stroke();}c.restore();}
+    if(id==='paper-star-mail')for(let j=0;j<7;j++)drawStar(c,x-(60+j*26)*s,y+Math.sin(j+run.time)*24*s,(4+j%3*3)*s,'#fff8bd',run.rotation+j);
+    if(id)this.text(RARE_LABELS[id],500,this.height-45*s,24*s,'#fff8dc');
+  }
+  private crater(x:number,y:number,s:number,run:ShoeRun):void{
+    const c=this.c;c.save();c.fillStyle='#a37c54';c.strokeStyle='#57443b';c.lineWidth=5*s;c.beginPath();c.ellipse(x,y+30*s,125*s,32*s,0,0,TAU);c.fill();c.stroke();
+    for(let i=0;i<9;i++){const a=i*TAU/9;this.line(x+Math.cos(a)*75*s,y+30*s+Math.sin(a)*21*s,x+Math.cos(a)*160*s,y+30*s+Math.sin(a)*52*s,'#6f4b3a',4*s);}
+    if(run.phase==='landing')for(let i=0;i<6;i++)this.cloud(x+(i-2.5)*48*s,y+15*s-Math.sin(i)*25*s,30*s,'#ead8b6a0');
+    this.text('鉄下駄、天体になる',500,this.height-45*s,28*s,'#713a2e');c.restore();
+  }
+
 }

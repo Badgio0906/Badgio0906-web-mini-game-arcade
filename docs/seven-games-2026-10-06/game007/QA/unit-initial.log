@@ -1,0 +1,36 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ❯ tests/unit/game007.test.ts (8 tests | 1 failed) 61ms
+   ✓ Game007 transport rules v2 > scores only at actual destination after deterministic unload; weight conserved and passenger removed 5ms
+   ✓ Game007 transport rules v2 > prevents overload without finishing, exposes projection and leaves declined candidates permanently consumed 3ms
+   ✓ Game007 transport rules v2 > departing non-full preserves room for valuable next-floor delivery and grouped destinations share unload stop 3ms
+   ✓ Game007 transport rules v2 > deadlines use same model time and expired passengers unload but earn zero 3ms
+   × Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal 35ms
+     → expected false to be true // Object.is equality
+   ✓ Game007 transport rules v2 > roof offer is conditional, freezes clock and either finishes or starts special capacity tradeoff 8ms
+   ✓ Game007 transport rules v2 > practice uses same transport but isolated short scenario can teach non-full depart and express delivery 1ms
+   ✓ Game007 transport rules v2 > finite timeout ends once; readonly snapshots and invalid dt cannot corrupt run or queue 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game007.test.ts > Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game007.test.ts:62:55
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  01:41:44
+   Duration  334ms (transform 71ms, setup 0ms, collect 79ms, tests 61ms, environment 0ms, prepare 51ms)
+

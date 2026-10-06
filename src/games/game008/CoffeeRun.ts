@@ -1,155 +1,37 @@
-import type { CoffeeChoice, CoffeeCup, CoffeeDirection, CoffeeEvent, CoffeeHazard, CoffeeHazardType, CoffeeInspection, CoffeeMilestone, CoffeeResult, CoffeeSnapshot } from './contracts';
-
-export const TAP_SECONDS = 0.18;
-export const MAX_SPILL_PERCENT_PER_SECOND = 25;
-export const HAZARD_WARNING_SECONDS = 1.4;
-export const MAX_BODY_LEAN = 0.95;
-export const CUP_PARAMETERS = [
-  { name: 'あなたの分', frequency: 4.2, damping: 0.52, gain: 0.7 },
-  { name: '部長の分', frequency: 3.4, damping: 0.28, gain: 1 },
-  { name: '会長の分', frequency: 5.3, damping: 0.12, gain: 1.15 },
-] as const;
-export const walkingSpeedAt = (distance: number): number => 10 + Math.min(1000, distance) * 0.002;
-export const multiplierForCups = (count: number): 1 | 1.5 | 2 => count === 3 ? 2 : count === 2 ? 1.5 : 1;
-const clamp = (n: number, a: number, b: number): number => Math.max(a, Math.min(b, n));
-/** The same 124x82 inner cross-section is drawn in the renderer. Relative surface slope drives overflow. */
-export function spillRateFor(remaining: number, surfaceTilt: number): number {
-  const edge = 0.8 * clamp(remaining, 0, 100) / 100 + Math.tan(Math.abs(clamp(surfaceTilt, -1.2, 1.2))) * 62 / 82;
-  return Math.min(MAX_SPILL_PERCENT_PER_SECOND, Math.max(0, edge - 1) * 20);
-}
-interface CupState extends CoffeeCup { bucket: number; gain: number }
-interface HazardState extends CoffeeHazard { warned: boolean; started: boolean }
-const hazardTypes: CoffeeHazardType[] = ['people', 'step', 'stop', 'door', 'train'];
-const names: Record<CoffeeHazardType, string> = { people: '人とすれ違う', step: '足元に段差', stop: '急停止に注意', door: 'ドアを通ります', train: '電車が揺れます' };
-const durations: Record<CoffeeHazardType, number> = { people: 1.5, step: 0.6, stop: 1, door: 1.2, train: 2.4 };
-
+import type {CoffeeChoice,CoffeeCup,CoffeeDirection,CoffeeEvent,CoffeeHazard,CoffeeInspection,CoffeePace,CoffeeResult,CoffeeSnapshot} from './contracts';
+export const RULES_VERSION = 2;
+export const COURSE_DISTANCE=180;
+export const DEADLINE=32;
+export const CAREFUL_SPEED=4;
+export const RUSH_SPEED=8;
+export const WARNING_DISTANCE=16;
+export const TAP_SECONDS=.14;
+const clamp=(v:number,a:number,b:number)=>Math.max(a,Math.min(b,v));
+export function spillRateFor(remaining:number,surfaceTilt:number):number { const edge=.72*clamp(remaining,0,100)/100+Math.tan(Math.min(1.15,Math.abs(surfaceTilt)))*60/52;return clamp((edge-1)*60,0,65); }
+function hazards():CoffeeHazard[]{return [{id:0,type:'step',name:'小さな段差',side:1,distance:48,length:6,warned:false,started:false},{id:1,type:'corner',name:'左の曲がり角',side:-1,distance:94,length:6,warned:false,started:false},{id:2,type:'seam',name:'床の継ぎ目',side:1,distance:142,length:6,warned:false,started:false}];}
 export class CoffeeRun {
-  private distance = 0;
-  private score = 0;
-  private time = 0;
-  private alive = false;
-  private bodyLean = 0;
-  private bodyVelocity = 0;
-  private bodyAcceleration = 0;
-  private held: CoffeeDirection = 0;
-  private pulse: CoffeeDirection = 0;
-  private pulseRemaining = 0;
-  private cups: CupState[] = [];
-  private pending: CoffeeMilestone | null = null;
-  private secondOffered = false;
-  private thirdProcessed = false;
-  private ending: CoffeeResult | null = null;
-  private hazards: HazardState[] = [];
-  private nextOnset = 9;
-  private nextId = 0;
-  constructor(private readonly emit: (event: CoffeeEvent) => void = () => {}, private readonly random: () => number = Math.random) { this.reset(); }
-  private addCup(): void {
-    const id = this.cups.length; const config = CUP_PARAMETERS[id];
-    this.cups.push({ id, ...config, remaining: 100, liquidAngle: 0, liquidVelocity: 0, surfaceTilt: -this.bodyLean, spilling: false, spillRate: 0, bucket: 0 });
-  }
-  reset(): void {
-    this.distance = this.score = this.time = this.bodyLean = this.bodyVelocity = this.bodyAcceleration = 0;
-    this.alive = false; this.held = this.pulse = 0; this.pulseRemaining = 0; this.pending = null;
-    this.secondOffered = this.thirdProcessed = false; this.ending = null; this.cups.length = this.hazards.length = 0; this.nextOnset = 9; this.nextId = 0; this.addCup();
-  }
-  start(): void { this.reset(); this.alive = true; this.generateAhead(); }
-  setInput(direction: CoffeeDirection): boolean {
-    if (direction !== -1 && direction !== 0 && direction !== 1) return false;
-    if (direction === 0) { this.held = this.pulse = 0; this.pulseRemaining = 0; return true; }
-    if (!this.alive || this.pending) return false;
-    this.held = direction; this.pulse = 0; this.pulseRemaining = 0; return true;
-  }
-  tap(direction: -1 | 1): boolean {
-    if (!this.alive || this.pending || (direction !== -1 && direction !== 1)) return false;
-    this.pulse = direction; this.pulseRemaining = TAP_SECONDS; return true;
-  }
-  choose(choice: CoffeeChoice): boolean {
-    if (!this.alive || !this.pending || (choice !== 'decline' && choice !== 'accept')) return false;
-    const milestone = this.pending; this.pending = null; this.setInput(0);
-    if (choice === 'accept') this.addCup();
-    this.emit({ type: 'choice', milestone, choice, cupCount: this.cups.length as 1 | 2 | 3 }); return true;
-  }
-  step(seconds: number): void {
-    if (!this.alive || this.pending || !Number.isFinite(seconds) || seconds <= 0) return;
-    let remaining = Math.min(0.05, seconds);
-    while (remaining > 1e-10 && this.alive && !this.pending) {
-      const dt = Math.min(1 / 240, remaining); remaining -= dt; this.time += dt;
-      if (this.pulseRemaining > 0) { this.pulseRemaining = Math.max(0, this.pulseRemaining - dt); if (this.pulseRemaining === 0) this.pulse = 0; }
-      const input = this.held || this.pulse;
-      for (const h of this.hazards) {
-        if (!h.warned && this.time >= h.warningStart) { h.warned = true; this.emit({ type: 'warning', hazard: this.copyHazard(h) }); }
-        if (!h.started && this.time >= h.onsetTime) { h.started = true; this.emit({ type: 'hazard', hazard: this.copyHazard(h) }); }
-      }
-      const hazard = this.hazards.find(h => this.time >= h.onsetTime && this.time < h.onsetTime + h.duration);
-      const forces = this.forces(hazard);
-      const rawAcceleration = 2.4 * input + 0.65 * this.bodyLean - 2.8 * this.bodyVelocity + 0.012 + 0.1 * Math.sin(this.time * 2.7) + forces.body;
-      const previousVelocity = this.bodyVelocity;
-      this.bodyVelocity = clamp(this.bodyVelocity + rawAcceleration * dt, -1.4, 1.4);
-      this.bodyLean += this.bodyVelocity * dt;
-      if (Math.abs(this.bodyLean) > MAX_BODY_LEAN) { this.bodyLean = Math.sign(this.bodyLean) * MAX_BODY_LEAN; this.bodyVelocity = 0; }
-      this.bodyAcceleration = (this.bodyVelocity - previousVelocity) / dt;
-      for (const cup of this.cups) {
-        // Positive body acceleration forces the fluid in the opposite direction; each oscillator is independent.
-        const liquidAcceleration = -cup.frequency * cup.frequency * cup.liquidAngle - 2 * cup.damping * cup.frequency * cup.liquidVelocity
-          - cup.gain * this.bodyAcceleration + forces.liquid + 0.05 * Math.sin(this.time * 2.7 + cup.id * 1.4);
-        cup.liquidVelocity = clamp(cup.liquidVelocity + liquidAcceleration * dt, -5, 5);
-        cup.liquidAngle = clamp(cup.liquidAngle + cup.liquidVelocity * dt, -0.9, 0.9);
-        cup.surfaceTilt = clamp(cup.liquidAngle - this.bodyLean, -1.2, 1.2);
-        cup.spillRate = spillRateFor(cup.remaining, cup.surfaceTilt); cup.spilling = cup.spillRate > 0;
-        cup.remaining = Math.max(0, cup.remaining - cup.spillRate * dt);
-        const bucket = Math.floor((100 - cup.remaining) / 5);
-        if (bucket > cup.bucket) { const amount = (bucket - cup.bucket) * 5; cup.bucket = bucket; this.emit({ type: 'spill', cupId: cup.id, remaining: cup.remaining, amount }); }
-      }
-      const boundary = !this.secondOffered ? 500 : !this.thirdProcessed ? 1000 : Infinity;
-      this.distance = Math.min(boundary, this.distance + walkingSpeedAt(this.distance) * dt);
-      // Cups are added only at500/1000m. Exact earned-segment anchors avoid cumulative rounding drift.
-      this.score = this.cups.length === 3 ? 1250 + (this.distance - 1000) * 2
-        : this.cups.length === 2 ? 500 + (this.distance - 500) * 1.5 : this.distance;
-      const empty = this.cups.find(c => c.remaining <= 0);
-      if (empty) { this.finish(empty); break; }
-      if (!this.secondOffered && this.distance >= 500) { this.secondOffered = true; this.offer('second_cup'); break; }
-      if (!this.thirdProcessed && this.distance >= 1000) {
-        this.thirdProcessed = true;
-        if (this.cups.length === 2) { this.offer('third_cup'); break; }
-      }
-      this.hazards = this.hazards.filter(h => this.time < h.onsetTime + h.duration + 0.1); this.generateAhead();
-    }
-  }
-  private offer(milestone: CoffeeMilestone): void { this.pending = milestone; this.setInput(0); this.emit({ type: 'milestone', milestone }); }
-  private forces(hazard: HazardState | undefined): { body: number; liquid: number } {
-    if (!hazard) return { body: 0, liquid: 0 };
-    const age = this.time - hazard.onsetTime; const envelope = Math.sin(Math.PI * age / hazard.duration);
-    const scale = Math.min(1.5, 1 + this.distance / 2000); const side = hazard.side;
-    if (hazard.type === 'train') return { body: side * Math.sin(age * 5.3) * 0.22 * envelope * scale, liquid: side * Math.sin(age * 5.3) * 4 * envelope * scale };
-    const body = { people: 0.35, step: 0.18, stop: 0.15, door: 0.4 }[hazard.type];
-    const liquid = { people: 0.35, step: 2, stop: 1.6, door: 0.4 }[hazard.type];
-    return { body: side * body * envelope * scale, liquid: side * liquid * envelope * scale };
-  }
-  private generateAhead(): void {
-    while (this.nextOnset <= this.time + 15) {
-      const id = this.nextId++; const type = hazardTypes[id % hazardTypes.length];
-      this.hazards.push({ id, type, name: names[type], side: this.random() < 0.5 ? -1 : 1, onsetTime: this.nextOnset,
-        warningStart: this.nextOnset - HAZARD_WARNING_SECONDS, duration: durations[type], warned: false, started: false });
-      this.nextOnset += this.distance < 500 ? 7 : this.distance < 1000 ? 5.5 : 4.8;
-    }
-  }
-  private copyHazard(h: CoffeeHazard): CoffeeHazard { return { id: h.id, type: h.type, name: h.name, side: h.side, onsetTime: h.onsetTime, warningStart: h.warningStart, duration: h.duration }; }
-  private copyCup(c: CoffeeCup): CoffeeCup { return { id: c.id, name: c.name, remaining: c.remaining, liquidAngle: c.liquidAngle, liquidVelocity: c.liquidVelocity,
-    surfaceTilt: c.surfaceTilt, spilling: c.spilling, spillRate: c.spillRate, frequency: c.frequency, damping: c.damping }; }
-  private finish(cup: CupState): void {
-    if (!this.alive) return;
-    this.alive = false; this.setInput(0); this.pending = null;
-    this.ending = { distance: Math.floor(this.distance), score: Math.floor(this.score), time: this.time, cupCount: this.cups.length as 1 | 2 | 3,
-      multiplier: multiplierForCups(this.cups.length), cups: this.cups.map(c => this.copyCup(c)), outcome: 'empty', emptyCupId: cup.id, emptyCupName: cup.name,
-      reason: `${cup.name}のコーヒーが空になりました。` }; this.emit({ type: 'empty', cupId: cup.id });
-  }
-  snapshot(): CoffeeSnapshot {
-    return { distance: Math.floor(this.distance), score: Math.floor(this.score), time: this.time, alive: this.alive, phase: !this.alive ? 'ended' : this.pending ? 'choice' : 'walking',
-      bodyLean: this.bodyLean, bodyVelocity: this.bodyVelocity, input: this.held || this.pulse, cups: this.cups.map(c => this.copyCup(c)), cupCount: this.cups.length as 1 | 2 | 3,
-      minRemaining: Math.min(...this.cups.map(c => c.remaining)), pending: this.pending, multiplier: multiplierForCups(this.cups.length),
-      preview: (() => { const h = this.hazards.find(h => this.time >= h.warningStart && this.time < h.onsetTime); return h ? this.copyHazard(h) : null; })(),
-      activeEvent: (() => { const h = this.hazards.find(h => this.time >= h.onsetTime && this.time < h.onsetTime + h.duration); return h ? this.copyHazard(h) : null; })() };
-  }
-  inspection(): CoffeeInspection { return { ...this.snapshot(), hazards: this.hazards.map(h => this.copyHazard(h)), bodyAcceleration: this.bodyAcceleration, tapRemaining: this.pulseRemaining }; }
-  result(): CoffeeResult | null { return this.ending ? { ...this.ending, cups: this.ending.cups.map(c => this.copyCup(c)) } : null; }
+ private distance=0;private legDistance=0;private time=0;private legTime=0;private score=0;private alive=false;private practice=false;private bodyLean=0;private bodyVelocity=0;private input:CoffeeDirection=0;private pace:CoffeePace='careful';private cups:CoffeeCup[]=[];private course=hazards();private pending:'second_cup'|null=null;private ending:CoffeeResult|null=null;private deliveries=0;private totalDeliveredRemaining=0;private spareTime=0;private spillBuckets=[0,0];private tapRemaining=0;
+ constructor(private readonly emit:(e:CoffeeEvent)=>void=()=>{}){this.reset();}
+ reset():void {this.distance=this.legDistance=this.time=this.legTime=this.score=this.bodyLean=this.bodyVelocity=this.deliveries=this.totalDeliveredRemaining=this.spareTime=0;this.input=0;this.pace='careful';this.alive=false;this.practice=false;this.pending=null;this.ending=null;this.course=hazards();this.cups=[this.newCup(0)];this.spillBuckets=[0,0];this.tapRemaining=0;}
+ private newCup(id:number):CoffeeCup{return {id,name:id?'追加の1杯':'コーヒー',remaining:100,liquidAngle:0,liquidVelocity:0,surfaceTilt:0,spilling:false,spillRate:0};}
+ start(practice=false):void{this.reset();this.practice=practice;this.alive=true;}
+ setInput(d:CoffeeDirection):boolean{if(![-1,0,1].includes(d))return false;if(d!==0&&(!this.alive||this.pending))return false;this.input=d;this.tapRemaining=0;return true;}
+ tap(d:-1|1):boolean{if(!this.setInput(d))return false;this.tapRemaining=TAP_SECONDS;return true;}
+ togglePace():boolean {if(!this.alive||this.pending)return false;this.pace=this.pace==='careful'?'rush':'careful';this.bodyVelocity+=(this.pace==='rush'?.065:-.065);this.emit({type:'pace',pace:this.pace,distance:this.distance});return true;}
+ choose(c:CoffeeChoice):boolean{if(!this.alive||!this.pending||!['accept','decline'].includes(c))return false;this.pending=null;this.input=0;this.emit({type:'choice',choice:c,cupCount:c==='accept'?2:1});if(c==='decline'){this.finish('delivered');return true;}this.legDistance=this.legTime=this.bodyLean=this.bodyVelocity=0;this.pace='careful';this.cups=[this.newCup(0),this.newCup(1)];this.spillBuckets=[0,0];this.course=hazards();return true;}
+ step(seconds:number):void{if(!this.alive||this.pending||!Number.isFinite(seconds)||seconds<=0)return;let remaining=Math.min(.1,seconds);while(remaining>1e-10&&this.alive&&!this.pending){const dt=Math.min(1/240,remaining);remaining-=dt;this.time+=dt;this.legTime+=dt;if(this.tapRemaining>0){this.tapRemaining=Math.max(0,this.tapRemaining-dt);if(!this.tapRemaining)this.input=0;}
+ const speed=this.pace==='rush'?RUSH_SPEED:CAREFUL_SPEED;this.distance+=speed*dt;this.legDistance=Math.min(COURSE_DISTANCE,this.legDistance+speed*dt);
+ for(const h of this.course){if(!h.warned&&this.legDistance>=h.distance-WARNING_DISTANCE){h.warned=true;this.emit({type:'warning',hazard:{...h}});}if(!h.started&&this.legDistance>=h.distance){h.started=true;const impulse=this.pace==='rush'?1.7:.14;this.bodyVelocity+=h.side*impulse*.3;for(const c of this.cups)c.liquidVelocity+=h.side*impulse*(c.id?3.4:3.1);this.emit({type:'hazard',hazard:{...h}});}}
+ const active=this.course.find(h=>h.started&&this.legDistance<h.distance+h.length);const rush=this.pace==='rush';const wobble=(rush?.2:.035)*Math.sin(this.time*5.2)+(active?active.side*(rush?.45:.025)*Math.sin((this.legDistance-active.distance)*Math.PI/active.length):0);
+ const accel=-2.8*this.input-1.9*this.bodyLean-(rush?2.4:4.2)*this.bodyVelocity+wobble;this.bodyVelocity=clamp(this.bodyVelocity+accel*dt,-1.5,1.5);this.bodyLean=clamp(this.bodyLean+this.bodyVelocity*dt,-.72,.72);
+ for(const c of this.cups){const freq=c.id?3.6:4.1;const damping=rush?.23:.95;const fluid=-freq*freq*c.liquidAngle-2*damping*freq*c.liquidVelocity-accel*.6+(rush?.19:.03)*Math.sin(this.time*5.2+c.id);c.liquidVelocity=clamp(c.liquidVelocity+fluid*dt,-7,7);c.liquidAngle=clamp(c.liquidAngle+c.liquidVelocity*dt,-1.1,1.1);c.surfaceTilt=clamp(c.liquidAngle-this.bodyLean,-1.2,1.2);c.spillRate=spillRateFor(c.remaining,c.surfaceTilt);c.spilling=c.spillRate>0;c.remaining=Math.max(0,c.remaining-c.spillRate*dt);const bucket=Math.floor((100-c.remaining)/5);if(bucket>this.spillBuckets[c.id]){this.emit({type:'spill',cupId:c.id,remaining:c.remaining,amount:5*(bucket-this.spillBuckets[c.id]),side:c.surfaceTilt>=0?-1:1,hazard:active?.type??'straight'});this.spillBuckets[c.id]=bucket;}}
+ if(!this.practice&&this.legTime>=DEADLINE&&this.legDistance<COURSE_DISTANCE){this.finish('timeout');break;}
+ if(this.cups.some(c=>c.remaining<=0)){if(this.practice){for(const c of this.cups)c.remaining=Math.max(c.remaining,30);}else{this.finish('empty');break;}}
+ if(this.legDistance>=COURSE_DISTANCE){this.deliver();break;}
+ }}
+ private deliver():void{const rem=this.cups.reduce((a,c)=>a+c.remaining,0);const spare=Math.max(0,DEADLINE-this.legTime);const success=this.cups.every(c=>c.remaining>=20);this.emit({type:'delivery',success,remaining:rem,spareTime:spare,cupCount:this.cups.length});if(!success){this.finish('empty');return;}this.deliveries+=this.cups.length;this.totalDeliveredRemaining+=rem;this.spareTime+=spare;this.score+=Math.floor(this.cups.length*1000+rem*10+spare*40);this.input=0;if(this.cups.length===1&&!this.practice)this.pending='second_cup';else this.finish('delivered');}
+ private finish(outcome:CoffeeResult['outcome']):void{if(!this.alive)return;this.alive=false;this.input=0;this.pending=null;this.ending={distance:Math.floor(this.distance),score:this.score,time:this.time,cupCount:this.cups.length as 1|2,cups:this.cups.map(c=>({...c})),outcome,reason:outcome==='timeout'?'配達の時間に間に合いませんでした。':outcome==='empty'?'残量が足りず、配達できませんでした。':'配達できました。',deliveries:this.deliveries,totalDeliveredRemaining:this.totalDeliveredRemaining,spareTime:this.spareTime,rulesVersion:2};this.emit({type:'finish',outcome});}
+ snapshot():CoffeeSnapshot{const preview=this.course.find(h=>h.warned&&!h.started)??null;const active=this.course.find(h=>h.started&&this.legDistance<h.distance+h.length)??null;return {distance:this.distance,legDistance:this.legDistance,target:COURSE_DISTANCE,remainingDistance:Math.max(0,COURSE_DISTANCE-this.legDistance),score:this.score,time:this.time,legTime:this.legTime,deadline:DEADLINE,remainingTime:Math.max(0,DEADLINE-this.legTime),alive:this.alive,phase:!this.alive?'ended':this.pending?'choice':'walking',bodyLean:this.bodyLean,bodyVelocity:this.bodyVelocity,input:this.input,pace:this.pace,cups:this.cups.map(c=>({...c})),cupCount:this.cups.length as 1|2,minRemaining:Math.min(...this.cups.map(c=>c.remaining)),pending:this.pending,deliveries:this.deliveries,preview:preview?{...preview}:null,activeEvent:active?{...active}:null,practice:this.practice};}
+ inspection():CoffeeInspection{return {...this.snapshot(),hazards:this.course.map(h=>({...h}))};}
+ result():CoffeeResult|null{return this.ending?{...this.ending,cups:this.ending.cups.map(c=>({...c}))}:null;}
 }

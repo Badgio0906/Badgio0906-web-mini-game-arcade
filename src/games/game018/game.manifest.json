@@ -44,5 +44,34 @@
   "creditMode": "prototype free; future enabled start-once consumption",
   "ads": "none; development stub only when credits flag enabled",
   "jev": "development Shadow only",
-  "humanReview": "pending physical device and subjective experience"
+  "humanReview": "pending physical device and subjective experience",
+  "presentationRevision": 2,
+  "distanceDisplay": "comma-separated one-decimal meters, fixed HUD; height secondary",
+  "skyHoldMilliseconds": {
+    "airplane": 550,
+    "ufo": 1050,
+    "orbital": 550
+  },
+  "rarePresentation": {
+    "independentPhysicsSeed": true,
+    "eligibleDrawsPerRun": 1,
+    "iron-meteor": {
+      "probability": 0.2,
+      "condition": "iron-geta, actual ORBITAL SHOE reached, final physical landing"
+    },
+    "zori-whirlwind": {
+      "probability": 0.15,
+      "condition": "zori, JUST, abs(spin)>=0.92"
+    },
+    "paper-star-mail": {
+      "probability": 0.15,
+      "condition": "paper, JUST, actual CLOUD NINE reached"
+    }
+  },
+  "telemetryEvents": [
+    "rare_draw",
+    "ufo_view_hold",
+    "shoe_best_crossed",
+    "kick (just boolean)"
+  ]
 }

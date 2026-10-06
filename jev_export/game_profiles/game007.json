@@ -4,7 +4,7 @@
   "title": "まだ乗れます",
   "titleJa": "まだ乗れます",
   "titleEn": "ELEVATOR OVERLOAD",
-  "tagline": "あと82kg。乗せる？見送る？責任はあなたです。",
+  "tagline": "誰を乗せ、どこで降ろす？次の階も待っている。",
   "tags": [
     {
       "id": "decision",
@@ -29,26 +29,26 @@
     "arcade"
   ],
   "controls": {
-    "summary": "左右キー / 乗せる・見送るボタン",
+    "summary": "乗せる・見送る・出発をキー / タップで選ぶ",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": {
-    "beginner": 55,
-    "experienced": 120
+    "beginner": 65,
+    "experienced": 45
   },
   "expectedRunSecondsBasis": "design-hypothesis; not human measured",
   "difficulty": {
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "次の荷物と降りる階を見ながら容量を予約する",
-  "description": "次の荷物と降りる階を見ながら容量を予約する",
-  "failureModes": "過積載などの運搬失敗",
+  "mainMechanics": "目的階と時間・重量・次階の依頼を見て容量を予約し、届けて得点する",
+  "description": "目的階と時間・重量・次階の依頼を見て容量を予約し、届けて得点する",
+  "failureModes": "未配達、期限切れ、便の制限時間",
   "route": "./game007.html",
   "thumbnail": "./assets/portal/game007.webp",
   "design": {
-    "thumbnailDescription": "まだ乗れますの実プレイ画面。真鍮枠とワイン色のオフィスエレベーター",
-    "majorVisuals": "真鍮枠とワイン色のオフィスエレベーター",
+    "thumbnailDescription": "まだ乗れますの実プレイ画面。目的階と依頼点の大きな乗客カード、次階の待機、輸送中の一覧",
+    "majorVisuals": "目的階と依頼点の大きな乗客カード、次階の待機、輸送中の一覧",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
     "referenceImageUse": "No new user reference for this game in this task.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
@@ -63,36 +63,38 @@
   "currentManifest": {
     "id": "game007",
     "title": "まだ乗れます ～ELEVATOR OVERLOAD～",
-    "subtitle": "その観葉植物、何階まで？",
+    "subtitle": "空きを残して、次の依頼へ。",
     "genre": [
       "strategy",
       "timing",
       "arcade"
     ],
     "core_mechanic": [
-      "admit or refuse",
-      "capacity planning with visible next party",
-      "destination unloading"
+      "destination delivery",
+      "two-floor queue planning",
+      "depart before full",
+      "predictable operational time and deadlines"
     ],
     "primary_input": [
-      "two-choice",
-      "left-right"
+      "admit",
+      "refuse",
+      "depart"
     ],
     "skill_axes": [
-      "mental-arithmetic",
       "resource-management",
       "opportunity-cost",
-      "risk-management"
+      "look-ahead",
+      "time-management"
     ],
     "expected_run_seconds": {
-      "beginner": 55,
-      "experienced": 120
+      "beginner": 65,
+      "experienced": 45
     },
-    "duration_note": "numeric design hypotheses; human natural failure and timing unmeasured",
-    "primary_score": "actually delivered people and cargo plus occupied travel and utilization",
-    "secondary_score": "reached floor and delivered counts",
-    "escalation_mechanic": "At20F a frozen once-per-run choice offers commercial fast mode: shorter decision time, faster travel, 150% future points.",
-    "risk_reward": "Refuse a fitting long-haul party to reserve room for the visible next valuable delivery; fast mode rewards future deliveries but demands faster decisions.",
-    "visual_identity": "warm retro office elevator, wine doors, brass frames and seven generated daily passengers and cargo"
+    "duration_note": "design hypotheses; actual automated normal-input timing recorded separately; human timing unmeasured",
+    "primary_score": "delivery points only, zero on boarding or occupied travel; rulesVersion 2 best separately retained",
+    "secondary_score": "delivered requests and expired requests",
+    "escalation_mechanic": "After a successful ordinary 10F run, optional rooftop relocation with large cargo competing against intermediate express requests.",
+    "risk_reward": "Reserve capacity for visible valuable requests or carry worthy heavy cargo; group destinations to save unload stop time.",
+    "visual_identity": "warm retro office elevator, brass frames, wine doors and existing illustrated people/cargo; large destination cards and dispatch preview"
   }
 }

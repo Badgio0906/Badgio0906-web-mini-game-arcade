@@ -1,0 +1,4 @@
+import { chromium } from '@playwright/test';
+import fs from 'node:fs';
+const browser = await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+const page = await browser.newPage({viewport:{width:390,height:844}}); await page.goto('http://127.0.0.1:5207/game007.html');await page.waitForTimeout(250);await page.screenshot({path:'docs/seven-games-2026-10-06/game007/QA/phone-title-initial.png'});await page.click('#play-button');await page.waitForTimeout(220);await page.screenshot({path:'docs/seven-games-2026-10-06/game007/QA/phone-gameplay-initial.png'});console.log(await page.evaluate(()=>({state:window.__arcadeDebug.state(),snapshot:window.__arcadeDebug.snapshot(),bounds:[...document.querySelectorAll('button')].filter(e=>e.offsetParent).map(e=>({id:e.id,...Object.fromEntries(['x','y','width','height'].map(k=>[k,e.getBoundingClientRect()[k]]))}))})));await browser.close();

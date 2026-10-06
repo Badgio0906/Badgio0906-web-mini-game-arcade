@@ -4,11 +4,11 @@
   "title": "会議、聞いてます？",
   "titleJa": "会議、聞いてます？",
   "titleEn": "MEETING SURVIVAL",
-  "tagline": "聞くふりをしながら、仕事を進めろ。",
+  "tagline": "提案、決定、訂正。最後に決まったのは？",
   "tags": [
     {
-      "id": "stealth",
-      "label": "ステルス"
+      "id": "decision",
+      "label": "判断"
     },
     {
       "id": "office",
@@ -19,36 +19,36 @@
       "label": "会議"
     },
     {
-      "id": "multitask",
-      "label": "マルチタスク"
+      "id": "memory",
+      "label": "記憶"
     }
   ],
   "genre": [
-    "attention",
-    "timing",
-    "risk-taking"
+    "reading",
+    "judgment",
+    "memory"
   ],
   "controls": {
-    "summary": "Space / クリック / タップで聞く・作業を切り替える",
+    "summary": "発言カードをキー / タップで記録、聞き返し、議事録提出",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": {
-    "beginner": 45,
-    "experienced": 160
+    "beginner": 110,
+    "experienced": 95
   },
   "expectedRunSecondsBasis": "design-hypothesis; not human measured",
   "difficulty": {
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "仕事で得点を取り、質問の時は聞く",
-  "description": "仕事で得点を取り、質問の時は聞く",
-  "failureModes": "質問された時に作業している",
+  "mainMechanics": "提案と確定と訂正を読み、誰・作業・期限の最新決定を記録する",
+  "description": "提案と確定と訂正を読み、誰・作業・期限の最新決定を記録する",
+  "failureModes": "古い決定、未採用の提案、雑談による誤記",
   "route": "./game010.html",
   "thumbnail": "./assets/portal/game010.webp",
   "design": {
-    "thumbnailDescription": "会議、聞いてます？の実プレイ画面。会議室、部長の表情、タイピングする手",
-    "majorVisuals": "会議室、部長の表情、タイピングする手",
+    "thumbnailDescription": "会議、聞いてます？の実プレイ画面。話者と短い発言履歴、同時に見える議事録3欄",
+    "majorVisuals": "話者と短い発言履歴、同時に見える議事録3欄",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
     "referenceImageUse": "No new user reference for this game in this task.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
@@ -63,36 +63,74 @@
   "currentManifest": {
     "id": "game010",
     "title": "会議、聞いてます？ ～MEETING SURVIVAL～",
-    "subtitle": "進捗は出したい。質問は聞き逃せない。",
+    "subtitle": "その提案、まだ決まっていません。",
     "genre": [
-      "attention",
-      "timing",
-      "risk-taking"
+      "reading",
+      "judgment",
+      "memory"
     ],
     "core_mechanic": [
-      "one-button attention toggle",
-      "read actual question cues",
-      "side-work time earns points"
+      "read explicit decisions versus proposals/chat",
+      "overwrite who/task/deadline notes when corrected",
+      "limited ask-again pauses reading",
+      "3 authored agendas then optional deeper correction agenda"
     ],
     "primary_input": [
-      "Space",
-      "click",
-      "tap"
+      "statement card click/tap",
+      "native Tab/Enter",
+      "submit completed minutes"
     ],
     "skill_axes": [
-      "attention-switching",
-      "risk-taking",
-      "timing"
+      "reading-comprehension",
+      "selective-attention",
+      "updating-working-memory"
     ],
     "expected_run_seconds": {
-      "beginner": 45,
-      "experienced": 160
+      "beginner": 110,
+      "experienced": 95
     },
-    "duration_note": "numeric design hypotheses; human natural failure and cognitive timing unmeasured; five minutes of meeting time equals sixty real simulation seconds",
-    "primary_score": "10 points per real SIDE WORK second; prospective20 in board mode; LISTEN earns0",
-    "secondary_score": "questions answered and real side-work seconds",
-    "escalation_mechanic": "Once at300 virtual meeting seconds, freeze and offer free score banking or board mode with more questions, readable cues and future work points2x.",
-    "risk_reward": "LISTEN is always safe but earns0. Work earns points but a genuine question while working ends the run. Board choice resumes listening without changing prior points or cue time.",
-    "visual_identity": "generated boss talk/glance/question and colleagues in a code conference room at eye level, visible typing foreground and live dialogue"
+    "duration_note": "Text shows3.8–7seconds based on length; authored reading time about25seconds per agenda is a design hypothesis; human comprehension unmeasured",
+    "primary_score": "100 per correct field +100 complete agenda +30 actual correction response +20 per complete streak;25 per unique irrelevant recording",
+    "secondary_score": "completed agendas, correct fields, correction responses",
+    "escalation_mechanic": "After3 agendas bank score freely or accept one authored rollback/conditional/multi-correction agenda without speeding text.",
+    "risk_reward": "Two major failures end the meeting; one incorrect field allows learning and continuing. Ask twice per agenda with no score penalty.",
+    "visual_identity": "existing generated speaker portraits with consistent neutral cards, readable dialogue and simultaneous3-field minutes",
+    "rulesVersion": 2,
+    "practice": {
+      "optional_from_first_title": true,
+      "production_score_and_best_isolated": true,
+      "required_actions": [
+        "record all three decided fields",
+        "overwrite the corrected field",
+        "ask again and continue reading",
+        "submit correct minutes without recording proposal or chat"
+      ]
+    },
+    "score_persistence": {
+      "storage_prefix": "web-mini-arcade:v1:game010:",
+      "current_best_key": "bestRules2",
+      "legacy_best_key": "best",
+      "legacy_best_preserved": true,
+      "mute_preserved": true,
+      "rulesVersion": 2
+    },
+    "telemetry": {
+      "destination": "existing local TelemetryService only",
+      "rulesVersion": 2,
+      "lifecycle_events": [
+        "run_start",
+        "run_end",
+        "practice_start",
+        "practice_complete"
+      ],
+      "specific_game_events": [
+        "record",
+        "ask_again",
+        "submit",
+        "choice",
+        "end"
+      ],
+      "correction_tracking": "record.corrected and submit.corrections"
+    }
   }
 }

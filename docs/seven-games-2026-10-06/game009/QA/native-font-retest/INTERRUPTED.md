@@ -1,0 +1,1 @@
+Source freeze was local009 only, while other agents were editing unrelated physical HTML files in shared Vite. Root identified global HMR full-reload risk and requested an isolated candidate copy. This collector was interrupted before a final acceptance report; screenshots remain. No product verdict inferred. Re-run uses isolated source snapshot.

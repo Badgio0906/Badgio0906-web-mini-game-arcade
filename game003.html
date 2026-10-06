@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#e9e3d5" />
-    <meta name="description" content="揺れる荷物を、タイミングよくDROP。もう1個だけ積みたくなる建築ゲーム DROP TOWER。PC・スマートフォン対応。" />
+    <meta name="description" content="中央PERFECTと左右の張り出し。全ての支持面で釣り合いを取り、芸術点を狙う建築ゲーム DROP TOWER。PC・スマートフォン対応。" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%232a3942'/%3E%3Cpath d='M10 12h44M42 12v12' fill='none' stroke='%23e4b751' stroke-width='5'/%3E%3Cpath d='M34 26h16v12H34zM18 42h28v12H18z' fill='%23e4b751'/%3E%3C/svg%3E" />
     <title>我が国の建築は世界一ぃ！ ～DROP TOWER～</title>
   </head>
@@ -19,14 +19,14 @@
           <span class="eyebrow">THE VERTICAL CITY / 建築記録</span>
           <h1>我が国の建築は世界一ぃ！<small>DROP TOWER</small></h1>
           <p class="lede">揺れる荷物。<br />落とすのは、あなたのタイミング。</p>
-          <p class="intro-copy">塔の中心をよく見て、ひとつずつ。<br />急がなくていい。高く、まっすぐ。</p>
+          <p class="intro-copy">塔の中心をよく見て、ひとつずつ。<br />急がなくていい。中央に正確に。左右に大胆に。</p>
           <div class="blueprint" aria-hidden="true"><i></i><i></i><i></i><i></i><span>BUILD / BALANCE / REPEAT</span></div>
           <div class="controls-note"><kbd>SPACE</kbd><kbd>ENTER</kbd><p>またはクリック / タップで DROP</p></div>
           <p class="research-note">Game003 / Timing & Stacking<br />静かな緊張感を、ひと積みずつ。</p>
         </aside>
         <section class="arcade" aria-label="我が国の建築は世界一ぃ！ ゲーム">
           <div class="scorebar"><div class="floor-stat"><span>FLOORS</span><strong id="score-value">0</strong></div><div><span>HEIGHT</span><strong><b id="height-value">0.0</b><small> m</small></strong></div><div class="best-stat"><span>BEST</span><strong id="best-value">0</strong></div><button id="pause-button" type="button" aria-label="一時停止" disabled>Ⅱ</button></div>
-          <div class="playfield"><div id="stage" tabindex="0" aria-label="揺れる荷物をタップ、クリック、Space、Enterで落とす"><div id="game-canvas"></div><div class="stability" aria-label="塔の傾き"><span>BALANCE</span><i><b id="balance-fill"></b></i><span id="balance-label">安定</span></div></div><div id="overlay" class="overlay"></div></div>
+          <div class="playfield"><div id="stage" tabindex="0" aria-label="揺れる荷物をタップ、クリック、Space、Enterで落とす"><div id="game-canvas"></div><div id="center-label" class="center-label">基礎重心 · 中央</div><div class="stability" aria-label="塔の傾き"><span>BALANCE</span><i><b id="balance-fill"></b></i><span id="balance-label">安定</span></div></div><div id="overlay" class="overlay"></div></div>
           <div class="game-footer"><div><span id="drop-status">タイミングを見て、DROP</span><small id="precision-label">PERFECT 0 · BONUS 0</small></div><button id="drop-button" type="button" aria-label="荷物を落とす" disabled>DROP <span aria-hidden="true">↓</span></button></div>
         </section>
       </main>

@@ -1,159 +1,47 @@
-import { createOnboarding } from '../../arcade/onboarding';
 import './style.css';
-import { StorageService } from '../../core/StorageService';
-import { CreditService } from '../../core/CreditService';
-import { TelemetryService } from '../../core/TelemetryService';
-import { AudioService } from '../../core/AudioService';
-import { requestRewardedCredit } from '../../core/RewardService';
-import { createCoffeeGame } from './CoffeeBoard';
-import { coffeeTitle } from './resultFlavor';
-import type { CoffeeChoice, CoffeeEvent, CoffeeSnapshot, CoffeeResult } from './contracts';
-
-type Screen = 'title' | 'playing' | 'paused' | 'milestone' | 'ending' | 'result' | 'reward';
-const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
-const app = $('app'); const overlay = $('overlay');
-const storage = new StorageService(undefined, 'web-mini-arcade:v1:game008:');
-const telemetry = new TelemetryService(storage, 'game008');
-const onboarding = createOnboarding({ gameId: 'game008', storage, telemetry }); const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
-const listeners = new AbortController();
-let state: Screen = 'title'; let runId = ''; let ended = true; let disposed = false;
-let best = storage.readNumber('best', 0); let newBest = false; let lastResult: CoffeeResult | null = null;
-let resultAvailableAt = 0; let resultTimer: ReturnType<typeof window.setTimeout> | undefined;
-let offerVisible = false; let milestoneShown = new Set<string>(); let choiceLocked = false; let choiceEpoch = 0;
-let pointerApproval: { id: number; button: string; epoch: number } | null = null;
-let keyApproval: { button: string; epoch: number } | null = null; let keyboardStarted = false;
-const choiceButtons = new Set(['decline-button', 'accept-button']);
-const primary = (id: string, text: string) => `<button id="${id}" type="button" class="primary">${text}<span aria-hidden="true">→</span></button>`;
-const titleButton = '<button id="title-button" type="button" class="secondary" aria-label="タイトルに戻る">タイトル</button>';
-const stub = '<small class="stub-note">開発版 Rewarded Ad Stub<br />本番広告は表示されません。</small>';
-const writeText = (id: string, value: string): void => { const element = $(id); if (element && element.textContent !== value) element.textContent = value; };
-function clearApprovals(): void { pointerApproval = null; keyApproval = null; }
-function trackOffer(): void {
-  if (!credits.canPlay && !offerVisible && !overlay.hidden && $('reward-button')) { offerVisible = true; telemetry.trackEvent('reward_offer_shown', { runId }); }
+import {StorageService} from '../../core/StorageService';
+import {TelemetryService} from '../../core/TelemetryService';
+import {AudioService} from '../../core/AudioService';
+import {createCoffeeGame} from './CoffeeBoard';
+import type {CoffeeEvent,CoffeeResult,CoffeeSnapshot} from './contracts';
+type Screen='title'|'explain'|'playing'|'paused'|'choice'|'result'|'practice'|'practice-done';
+const $=(id:string)=>document.getElementById(id)!;
+const app=$('app'),overlay=$('overlay');const storage=new StorageService(undefined,'web-mini-arcade:v1:game008:');const telemetry=new TelemetryService(storage,'game008');const audio=new AudioService(storage);
+const legacyBest=storage.readNumber('best',0);let best=storage.readNumber('best-delivery-v2',0);let state:Screen='title';let pausedFrom:'playing'|'practice'='playing';let lastResult:CoffeeResult|null=null;let runId='';let ended=true;let resultGuard=0;let practiceLeft=false,practiceRight=false,practiceRush=false,practiceCareful=false,practiceStep=0;let practiceCompleting=false;let practiceHazard=false;
+const listeners=new AbortController();const button=(id:string,label:string,primary=false)=>`<button type="button" id="${id}" class="${primary?'primary':''}">${label}</button>`;
+function sync(){app.dataset.state=state;$('best-value').textContent=String(best);$('mute-button').textContent=audio.muted?'音 OFF':'音 ON';$('mute-button').setAttribute('aria-pressed',String(audio.muted));const p=$('pause-button') as HTMLButtonElement;p.disabled=!['playing','practice','paused'].includes(state);p.textContent=state==='paused'?'▶':'Ⅱ';p.setAttribute('aria-label',state==='paused'?'再開':'一時停止');}
+function render(next:Screen){state=next;sync();overlay.hidden=['playing','practice'].includes(state);let content='';
+ if(state==='title')content=`<small>CAFÉ → OFFICE / DELIVERY RULES 2</small><h1>コーヒーこぼすな<small>COFFEE WALK</small></h1><p>両手のトレーでコーヒーを配達。<br>直線で急ぎ、危険の前では慎重に。</p><div class="menu-actions">${button('play-button','すぐ遊ぶ',true)}${button('explain-button','説明を見る')}${button('practice-button','練習する')}</div><p class="best-note">配達 BEST ${best}${legacyBest?`<br>旧ルール BEST ${legacyBest}（距離の記録）`:''}</p><small>← → / A D：左右を支える<br>SPACE：急ぐ／慎重に切替</small>`;
+ if(state==='explain')content=`<h2>時間までに届けよう。</h2><ol><li>左右で手元を支える。器と液体は少し遅れて動きます。</li><li>右が低いときは右を支える。押しすぎは逆に揺れます。</li><li>SPACE／中央ボタンで歩く速さを切り替える。</li><li>直線は急ぐ。予告された段差・曲がり角・継ぎ目の前では慎重に。</li></ol><p>180mを32秒以内。残量20%以上で配達成功。<br>残量と余裕時間が得点になります。</p><div class="menu-actions">${button('play-button','すぐ遊ぶ',true)}${button('practice-button','練習する')}${button('title-button','タイトル')}</div>`;
+ if(state==='paused')content=`<h2>ひと休み。</h2><p>手元も配達の時計も止まっています。</p><div class="menu-actions">${button('resume-button','再開',true)}${button('title-button','タイトル')}</div>`;
+ if(state==='choice')content=`<small>DELIVERED / 1 CUP</small><h2>配達できました！</h2><p>今の得点 ${controller.snapshot().score}<br>「もう1杯もお願いします」<br>次は2杯。操作は同じ、揺れはそれぞれ違います。</p><div class="menu-actions">${button('decline-button','ここで終了')}${button('accept-button','もう1杯も運ぶ',true)}</div>`;
+ if(state==='result'&&lastResult){const r=lastResult;content=`<small>コーヒーこぼすな / DELIVERY RULES 2</small><h2>${r.outcome==='delivered'?'お届けしました！':r.outcome==='timeout'?'時間切れ。':'あっ、こぼれた。'}</h2><p>${r.reason}</p><strong class="result-score">${r.score}<small>SCORE</small></strong><dl><div><dt>配達したコーヒー</dt><dd>${r.deliveries} 杯</dd></div><div><dt>配達した残量</dt><dd>${Math.floor(r.totalDeliveredRemaining)}%</dd></div><div><dt>余裕時間</dt><dd>${r.spareTime.toFixed(1)} s</dd></div><div><dt>歩いた距離</dt><dd>${r.distance} m</dd></div><div><dt>BEST</dt><dd>${best}</dd></div></dl><div class="menu-actions">${button('retry-button','もう1回',true)}${button('title-button','タイトル')}</div>`;}
+ if(state==='practice-done')content=`<h2>${practiceCompleting?'練習できました！':'もう一度練習しよう。'}</h2><p>${practiceCompleting?'左右の支え、速度切替、危険の前の慎重歩きを体験しました。':'左右を短く支えてから、急ぐ→慎重にを切り替え、最初の段差を慎重に越えよう。'}<br>練習はBEST・配達記録に入りません。</p><div class="menu-actions">${button('play-button','本番へ',true)}${button('practice-button','もう一度練習')}${button('title-button','タイトル')}</div>`;
+ overlay.innerHTML=content?`<article class="receipt">${content}</article>`:'';
+ $('practice-note').hidden=state!=='practice';
 }
-function sync(): void {
-  app.dataset.state = state; writeText('credit-count', String(credits.credits)); writeText('credit-dots', Array.from({ length: 3 }, (_, i) => i < credits.credits ? '●' : '○').join(' ')); writeText('best-value', String(best));
-  writeText('mute-button', audio.muted ? '音 OFF' : '音 ON'); $('mute-button').setAttribute('aria-label', audio.muted ? '音声をオンにする' : '音声をミュート'); $('mute-button').setAttribute('aria-pressed', String(audio.muted));
-  const button = $<HTMLButtonElement>('pause-button'); button.disabled = state !== 'playing' && state !== 'paused'; button.textContent = state === 'paused' ? '▶' : 'Ⅱ'; button.setAttribute('aria-label', state === 'paused' ? '再開' : '一時停止');
-  $<HTMLButtonElement>('brand-button').disabled = state === 'ending' || credits.rewardPending;
+function update(s:CoffeeSnapshot){$('score-value').textContent=String(s.score);$('mode-label').textContent=`${s.cupCount}杯 · ${s.pace==='rush'?'急ぐ':'慎重'}`;
+ if(s.pending&&state==='playing'){queueMicrotask(()=>{if(state==='playing'&&controller.snapshot().pending)render('choice');});}
+ if(state==='practice'){if(s.bodyLean>.08)practiceLeft=true;if(s.bodyLean<-.08)practiceRight=true;if(s.pace==='rush')practiceRush=true;else if(practiceRush)practiceCareful=true;practiceStep=practiceLeft&&practiceRight?practiceRush&&practiceCareful?2:1:0;$('practice-text').textContent=practiceStep===0?'練習1：左右を短く押し、トレーが動くのを見よう。':practiceStep===1?'練習2：急ぐ → 慎重に。中央ボタンで切替。':'練習3：段差の予告。段差は慎重に越えよう。';if(practiceHazard&&s.legDistance>=54&&s.pace==='careful'&&!practiceCompleting){practiceCompleting=true;queueMicrotask(()=>{controller.pause(true);telemetry.trackEvent('practice_complete',{rulesVersion:2});render('practice-done');});}}
 }
-function update(snapshot: CoffeeSnapshot): void {
-  writeText('score-value', String(snapshot.score)); writeText('distance-value', String(Math.floor(snapshot.distance)));
-  app.dataset.phase = snapshot.phase; app.dataset.cups = String(snapshot.cupCount);
-  app.dataset.scoreDigits = String(Math.min(7, Math.max(String(snapshot.score).length, String(best).length)));
-  writeText('mode-label', `${snapshot.cupCount}カップ · ×${snapshot.multiplier}`);
-  writeText('phase-label', state === 'paused' ? '身体も液面も停止中。準備ができたら再開。' : state === 'milestone' ? '散歩を止めて考え中。今までのスコアはそのまま。' : snapshot.phase === 'ended' ? `${lastResult?.emptyCupName ?? 'コーヒー'}が0%。散歩はここまで。` : snapshot.activeEvent ? `${snapshot.activeEvent.name}。液面の遅れを見て、落ち着いて。` : snapshot.preview ? `${snapshot.preview.name}の予告。急な操作に気をつけて。` : '身体を戻しても、液面は少し遅れて戻ります。');
+function event(e:CoffeeEvent){if(state==='practice'){if(e.type==='hazard'&&e.hazard.type==='step'&&practiceStep===2&&controller.snapshot().pace==='careful')practiceHazard=true;return;}
+ if(!['playing','choice'].includes(state)||ended)return;
+ const data:Record<string,string|number|boolean>={runId,rulesVersion:2,event:e.type};
+ if(e.type==='warning'||e.type==='hazard'){data.hazard=e.hazard.type;data.side=e.hazard.side;data.hazard_distance=e.hazard.distance;data.distance=controller.snapshot().legDistance;}
+ if(e.type==='pace'){data.pace=e.pace;data.distance=e.distance;}
+ if(e.type==='spill'){data.cupId=e.cupId;data.remaining=e.remaining;data.amount=e.amount;data.side=e.side;data.hazard=e.hazard;}
+ if(e.type==='delivery'){data.success=e.success;data.remaining=e.remaining;data.spareTime=e.spareTime;data.cupCount=e.cupCount;}
+ if(e.type==='choice'){data.choice=e.choice;data.cupCount=e.cupCount;}
+ telemetry.trackEvent('specific_game_events',data);
+ if(e.type==='warning')audio.tone(430,550,.08,'sine',0,.015);if(e.type==='delivery')audio.tone(420,680,.15,'triangle',0,.025);
 }
-function setScreen(next: Screen): void {
-  if (resultTimer !== undefined) { window.clearTimeout(resultTimer); resultTimer = undefined; }
-  state = next; clearApprovals(); sync(); overlay.hidden = next === 'ending';
-  if (credits.canPlay || next === 'playing') offerVisible = false;
-  if (next === 'playing') {
-    overlay.innerHTML = '<article class="receipt play-receipt"><span class="eyebrow">A LITTLE MORNING WALK</span><h2>Easy does it.</h2><p>左右を押して、身体のバランスを取ろう。<br />液体は、身体より遅れて揺れます。</p><ol><li>急に動かすと、反対へ揺れる。</li><li>戻したあとも、揺れは少し残る。</li><li>少しこぼれても大丈夫。どれか1杯が0%になると終了。</li></ol><small>← → / A D を押す<br />左右のボタンを押す・画面をタップ</small></article>'; update(controller.snapshot()); return;
-  }
-  if (next === 'title') {
-    writeText('score-value', '0'); writeText('distance-value', '0'); writeText('mode-label', 'ひとり分 · ×1'); writeText('phase-label', '急に動くと、コーヒーは遅れて揺れます。'); app.dataset.cups = '1'; app.dataset.phase = 'walking'; app.dataset.scoreDigits = String(Math.min(7, String(best).length));
-    overlay.innerHTML = `<article class="receipt start-note"><span class="eyebrow">FRESHLY POURED / TAKE A WALK</span><h2 class="game-title">コーヒーこぼすな<small>COFFEE WALK</small></h2><p>朝の街へ、コーヒーと一緒に。<br />左右のバランスを取って、<br />最後の一滴まで届けよう。</p><div class="mini-best">BEST SCORE <b>${best}</b></div>${credits.canPlay ? primary('play-button', 'PLAY · 散歩へ') : primary('reward-button', '+3 CREDIT')}<small>← → / A D / 左右を押す・タップ<br />急に動くと液面が遅れて揺れます。0%で終了。</small>${credits.canPlay ? '' : stub}</article>`;
-  } else if (next === 'paused') {
-    update(controller.snapshot()); overlay.innerHTML = `<article class="receipt pause-note"><span class="eyebrow">COFFEE BREAK / PAUSED</span><h2>ひと休み。</h2><p>身体も、液面も、時計も停止中。<br />準備ができたら続きから。</p><div class="paired-actions">${primary('resume-button', 'RESUME · 再開')}${titleButton}</div></article>`;
-  } else if (next === 'result' && lastResult) {
-    const result = lastResult;
-    overlay.innerHTML = `<article class="receipt result-note"><div class="result-heading"><span class="result-game-title">コーヒーこぼすな<small>COFFEE WALK</small></span><h2>あっ、空っぽ。</h2><p class="result-reason">${result.emptyCupName}が0%。<br />${result.reason}</p></div><div class="result-score"><b id="result-score">${result.score}</b><span>SCORE</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best}</dd></div><div><dt>歩いた距離</dt><dd>${Math.floor(result.distance)} m</dd></div><div><dt>カップ</dt><dd>${result.cupCount} 杯</dd></div><div><dt>${credits.enabled ? 'TIME / CREDIT' : 'TIME'}</dt><dd>${result.time.toFixed(1)} s${credits.enabled ? ` · ${credits.credits}/3` : ''}</dd></div></dl><div class="coffee-title"><small>今回の称号 · ×${result.multiplier}</small><b id="coffee-title">${coffeeTitle(result.distance, result.cupCount)}</b><div class="final-cups">${result.cups.map(cup => `<span>${cup.name} ${Math.max(0, Math.floor(cup.remaining))}%</span>`).join('')}</div></div><div class="paired-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small>${credits.canPlay ? '次は、もう少し遠くまで。' : 'NO CREDIT · 開発版 Rewarded Ad Stub'}</small></article>`;
-  } else if (next === 'reward') {
-    overlay.innerHTML = `<article class="receipt reward-note"><span class="eyebrow">ONE MORE MORNING WALK</span><h2>もうひと散歩？</h2><p>開発版の補充ボタンで<br /><b>+3 CREDIT</b></p><div class="paired-actions">${primary('reward-button', '+3 CREDIT')}${titleButton}</div>${stub}<p id="reward-status" role="status"></p></article>`;
-  }
-  trackOffer();
-}
-function showMilestone(): void {
-  const snapshot = controller.snapshot(); const milestone = snapshot.pending; if (!milestone) return;
-  choiceEpoch += 1; choiceLocked = false; keyboardStarted = false; setScreen('milestone');
-  const third = milestone === 'third_cup';
-  overlay.innerHTML = `<article class="receipt choice-note"><span class="eyebrow">${third ? '1000' : '500'} m / A SMALL REQUEST</span><h2>${third ? '会長の分も頼まれました。' : '部長の分も持っていきますか？'}</h2><p>今までのスコアは、そのまま。<br />${third ? '3杯を同時に運ぶ、とても忙しい散歩へ。' : '持つと2杯。液面の揺れは、それぞれ違います。'}</p><div class="choice-terms">${third ? '持ちます：<b>3カップ · これからの得点2倍</b><br />いやです：2カップのまま、×1.5を継続。' : '持つ：<b>2カップ · これからの得点1.5倍</b><br />断る：1カップのまま、散歩を継続。'}<br />どれか1杯が0%になると終了。</div><div class="choice-actions">${primary('decline-button', third ? 'いやです' : '断る')}${primary('accept-button', third ? '持ちます' : '持つ')}</div>${titleButton}<small>身体も液面も時計も停止中。<br />選択は自由にもう一度遊べます。</small></article>`;
-  if (!milestoneShown.has(milestone)) { milestoneShown.add(milestone); telemetry.trackEvent('milestone_reached', { runId, milestone, distance: snapshot.distance }); telemetry.trackEvent('escalation_offered', { runId, milestone }); }
-  update(snapshot);
-}
-function chooseMode(choice: CoffeeChoice): void {
-  if (state !== 'milestone' || ended || choiceLocked || credits.rewardPending || !controller.snapshot().pending) return;
-  const milestone = controller.snapshot().pending!; choiceLocked = true; clearApprovals();
-  if (!controller.choose(choice)) { choiceLocked = false; return; }
-  if (choice === 'accept') telemetry.trackEvent('escalation_accepted', { runId, milestone, choice, cupCount: controller.snapshot().cupCount }); setScreen('playing');
-}
-function sound(event: CoffeeEvent): void {
-  if (event.type === 'warning') audio.tone(550, 620, 0.09, 'sine', 0, 0.023);
-  if (event.type === 'hazard') audio.tone(220, 190, 0.08, 'triangle', 0, 0.012);
-  if (event.type === 'empty') audio.tone(260, 125, 0.25, 'sine', 0, 0.04);
-  if (event.type === 'choice' && event.choice === 'accept') audio.tone(430, 650, 0.14, 'triangle', 0, 0.026);
-}
-const controller = createCoffeeGame($('game-canvas'), {
-  onUpdate(snapshot) { if (snapshot.pending && state === 'playing') showMilestone(); if (state === 'playing' || state === 'paused' || state === 'milestone' || state === 'ending') update(snapshot); },
-  onEvent: sound,
-  onEnd(result) {
-    if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best', best); credits.consume(runId);
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time, distance: result.distance, cupCount: result.cupCount, multiplier: result.multiplier });
-    telemetry.trackEvent('score', { runId, score: result.score, best, newBest, distance: result.distance, cupCount: result.cupCount }); telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over', failure_reason: 'empty' });
-    resultAvailableAt = performance.now() + 300; setScreen('ending');
-    resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'ending') { resultAvailableAt = performance.now(); setScreen('result'); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
-  },
-});
-function start(retry = false): void {
-  if (onboarding.intercept(() => start(retry))) return;
-  if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || state === 'milestone' || state === 'ending' || (state === 'result' && performance.now() < resultAvailableAt)) return;
-  if (!credits.canPlay) { setScreen('reward'); return; }
-  void audio.unlock(); runId = `game008-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false; milestoneShown.clear(); choiceEpoch += 1; choiceLocked = false; clearApprovals();
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
-}
-function pause(): void {
-  if (state === 'playing') { controller.pause(true); telemetry.trackEvent('pause', { runId }); setScreen('paused'); }
-  else if (state === 'paused') { void audio.unlock(); controller.pause(false); telemetry.trackEvent('resume', { runId }); setScreen('playing'); }
-}
-function recordQuit(): void {
-  if ((state !== 'playing' && state !== 'paused' && state !== 'milestone') || ended) return;
-  ended = true; const snapshot = controller.snapshot(); telemetry.trackEvent('quit', { runId, score: snapshot.score, time: snapshot.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: snapshot.score, time: snapshot.time, distance: snapshot.distance, cupCount: snapshot.cupCount }); telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
-}
-function title(): void { if (credits.rewardPending || state === 'ending' || (state === 'result' && performance.now() < resultAvailableAt)) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }
-async function reward(): Promise<void> {
-  if (disposed || credits.rewardPending || credits.canPlay || state === 'ending' || (state === 'result' && performance.now() < resultAvailableAt)) return;
-  if (state !== 'reward') setScreen('reward'); $<HTMLButtonElement>('reward-button').disabled = true; $('reward-button').textContent = 'CREDIT を補充中…'; $<HTMLButtonElement>('title-button').disabled = true; $<HTMLButtonElement>('brand-button').disabled = true;
-  const success = await credits.requestRewardedCredit(requestRewardedCredit); if (disposed) return;
-  $<HTMLButtonElement>('brand-button').disabled = false;
-  if (success) { controller.title(); setScreen('title'); $('play-button')?.focus({ preventScroll: true }); }
-  else { setScreen('reward'); writeText('reward-status', '補充できませんでした。もう一度お試しください。'); }
-}
-app.addEventListener('click', event => {
-  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || (state === 'result' && performance.now() < resultAvailableAt)) return;
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button'); if (!button || button.disabled) return;
-  if (choiceButtons.has(button.id)) {
-    const pointer = event as PointerEvent;
-    if ((event.detail > 0 || pointer.pointerType) && (!pointerApproval || pointerApproval.id !== pointer.pointerId || pointerApproval.button !== button.id || pointerApproval.epoch !== choiceEpoch)) return;
-    if (!event.detail && !pointer.pointerType && keyboardStarted && (!keyApproval || keyApproval.button !== button.id || keyApproval.epoch !== choiceEpoch)) return;
-    clearApprovals(); chooseMode(button.id === 'accept-button' ? 'accept' : 'decline'); return;
-  }
-  switch (button.id) {
-    case 'play-button': start(); break; case 'retry-button': start(true); break; case 'title-button': case 'brand-button': title(); break; case 'reward-button': void reward(); break;
-    case 'mute-button': audio.toggle(); sync(); break; case 'pause-button': case 'resume-button': pause(); break;
-  }
-}, { signal: listeners.signal });
-app.addEventListener('pointerdown', event => {
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button'); if (!button || button.disabled || !choiceButtons.has(button.id) || state !== 'milestone' || !event.isPrimary || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-  pointerApproval = { id: event.pointerId, button: button.id, epoch: choiceEpoch };
-}, { signal: listeners.signal });
-app.addEventListener('pointercancel', () => { pointerApproval = null; }, { signal: listeners.signal });
-app.addEventListener('keydown', event => {
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button'); if (!button || button.disabled || !choiceButtons.has(button.id) || (event.key !== ' ' && event.key !== 'Enter')) return;
-  if (event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) { event.preventDefault(); return; }
-  keyboardStarted = true; keyApproval = { button: button.id, epoch: choiceEpoch };
-}, { signal: listeners.signal });
-document.addEventListener('keydown', event => {
-  const action = event.key === ' ' || event.key === 'Enter';
-  if (event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) { if (action) event.preventDefault(); return; }
-  if (event.key === 'Escape' && (state === 'playing' || state === 'paused')) { event.preventDefault(); pause(); return; }
-  if (!action || (event.target as HTMLElement).closest('button,a')) return;
-  event.preventDefault(); if (state === 'title' || state === 'result') start(state === 'result'); else if (state === 'paused') pause();
-}, { signal: listeners.signal });
-document.addEventListener('visibilitychange', () => { if (document.hidden && state === 'playing') pause(); }, { signal: listeners.signal });
-window.addEventListener('blur', () => { clearApprovals(); if (state === 'playing') pause(); }, { signal: listeners.signal });
-window.addEventListener('pagehide', event => { clearApprovals(); if (!event.persisted) recordQuit(); if (state === 'playing') pause(); }, { signal: listeners.signal });
-telemetry.trackEvent('game_open'); setScreen('title');
-if (import.meta.env.DEV) (window as unknown as { __arcadeDebug: unknown }).__arcadeDebug = Object.freeze({ gameId: 'game008', snapshot: () => controller.snapshot(), inspection: () => controller.inspection(), state: () => state, telemetry: () => telemetry.getEvents() });
-if (import.meta.hot) import.meta.hot.dispose(() => { onboarding.destroy(); disposed = true; if (resultTimer !== undefined) window.clearTimeout(resultTimer); listeners.abort(); controller.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });
+const controller=createCoffeeGame($('game-canvas'),{onUpdate:update,onEvent:event,onEnd(r){if(state==='practice'){render('practice-done');return;}if(ended||!['playing','choice'].includes(state))return;ended=true;lastResult=r;best=Math.max(best,r.score);storage.writeNumber('best-delivery-v2',best);telemetry.trackEvent('run_end',{runId,rulesVersion:2,outcome:r.outcome,score:r.score,distance:r.distance,time:r.time,deliveries:r.deliveries,remaining:r.totalDeliveredRemaining,spareTime:r.spareTime});resultGuard=performance.now()+250;render('result');}});
+function start(practice=false){void audio.unlock();controller.title();if(practice){practiceLeft=practiceRight=practiceRush=practiceCareful=practiceCompleting=false;practiceStep=0;practiceHazard=false;ended=true;telemetry.trackEvent('practice_start',{rulesVersion:2});render('practice');controller.start(true);}else{runId=`coffee-${Date.now()}`;ended=false;lastResult=null;telemetry.trackEvent('run_start',{runId,rulesVersion:2});render('playing');controller.start();}}
+function pause(){if(state==='playing'||state==='practice'){pausedFrom=state;controller.pause(true);telemetry.trackEvent('pause',{runId,phase:state});render('paused');}else if(state==='paused'){render(pausedFrom);controller.pause(false);telemetry.trackEvent('resume',{runId,phase:pausedFrom});}}
+function title(){if(!ended&&['playing','paused','choice'].includes(state)){const s=controller.snapshot();telemetry.trackEvent('run_end',{runId,rulesVersion:2,outcome:'quit',score:s.score,time:s.time,distance:s.distance});ended=true;}controller.title();render('title');}
+app.addEventListener('click',e=>{const target=(e.target as Element).closest<HTMLButtonElement>('button');if(!target||target.disabled||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;const id=target.id;if(state==='result'&&performance.now()<resultGuard)return;switch(id){case'play-button':case'retry-button':start();break;case'practice-button':case'practice-retry-button':start(true);break;case'explain-button':telemetry.trackEvent('tutorial_view',{rulesVersion:2});render('explain');break;case'title-button':case'brand-button':title();break;case'pause-button':case'resume-button':pause();break;case'mute-button':audio.toggle();sync();break;case'decline-button':case'accept-button':if(state==='choice'){render('playing');controller.choose(id==='accept-button'?'accept':'decline');}break;}},{signal:listeners.signal});
+$('skip-practice-button').addEventListener('click',()=>{controller.title();render('title');},{signal:listeners.signal});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!e.repeat&&!e.altKey&&!e.ctrlKey&&!e.metaKey){if(['playing','practice','paused'].includes(state)){e.preventDefault();pause();}}},{signal:listeners.signal});document.addEventListener('visibilitychange',()=>{if(document.hidden&&['playing','practice'].includes(state))pause();},{signal:listeners.signal});window.addEventListener('blur',()=>{if(['playing','practice'].includes(state))pause();},{signal:listeners.signal});
+telemetry.trackEvent('game_open',{rulesVersion:2});render('title');
+if(import.meta.env.DEV)(window as unknown as {__arcadeDebug:unknown}).__arcadeDebug=Object.freeze({gameId:'game008',snapshot:()=>controller.snapshot(),inspection:()=>controller.inspection(),state:()=>state,telemetry:()=>telemetry.getEvents()});
+if(import.meta.hot)import.meta.hot.dispose(()=>{listeners.abort();controller.destroy();audio.destroy();delete(window as unknown as {__arcadeDebug?:unknown}).__arcadeDebug;});

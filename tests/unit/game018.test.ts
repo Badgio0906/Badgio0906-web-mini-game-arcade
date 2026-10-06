@@ -109,7 +109,7 @@ describe('deterministic physics and genuine score', () => {
     }
     expect(simulate(fixture({ angle: NaN, spin: Infinity, power: -100 })).result.inputs).toMatchObject({ angle: 5, spin: -1, power: 0 });
   });
-  it('formats measured meters and kilometers with consistent units', () => { expect(formatDistance(124.7)).toBe('124.7 m'); expect(formatDistance(3420)).toBe('3.42 km'); expect(formatDistance(18600)).toBe('18.6 km'); expect(formatDistance(NaN)).toBe('0.0 m'); });
+  it('formats measured meters and kilometers with consistent units', () => { expect(formatDistance(124.7)).toBe('124.7 m'); expect(formatDistance(3420)).toBe('3,420.0 m'); expect(formatDistance(18600)).toBe('18,600.0 m'); expect(formatDistance(NaN)).toBe('0.0 m'); });
 });
 describe('isolated forgiving practice', () => {
   it('finishes individual ANGLE/SPIN/POWER stages without creating flight or scored results', () => {
@@ -138,7 +138,7 @@ describe('truthful sky event view holds', () => {
   });
   it('retimes encounters and later ground impacts while keeping final distance/height/score tied to physical samples', () => {
     const trajectory = simulate(fixture({ shoeType: 'paper', angle: 85 }));
-    expect(trajectory.duration).toBeCloseTo(trajectory.motionDuration + trajectory.holds.length * .55);
+    expect(trajectory.duration).toBeCloseTo(trajectory.motionDuration + trajectory.holds.reduce((s,h)=>s+h.end-h.start,0));
     expect(trajectory.result.duration).toBeCloseTo(trajectory.duration + .6 + .65 + .38); expect(trajectory.result.duration).toBeLessThan(40);
     for (const hold of trajectory.holds) { const effect = trajectory.effects.find(effect => effect.name === hold.name)!; expect(effect.time).toBeCloseTo(hold.start); expect(sampleTrajectory(trajectory, effect.time).y).toBeCloseTo(effect.y, 8); }
     const end = sampleTrajectory(trajectory, trajectory.duration); expect(end.x).toBe(trajectory.result.distance); expect(end.y).toBe(0); expect(end.maxHeight).toBe(trajectory.result.height); expect(replayPhysicalTime(trajectory, trajectory.duration)).toBeCloseTo(trajectory.physicalDuration);
@@ -157,7 +157,7 @@ describe('truthful sky event view holds', () => {
   it('remains deterministic, adds at most three short holds and leaves low-power near throws fast', () => {
     const input = fixture({ shoeType: 'paper', angle: 85 }); expect(simulate(input)).toEqual(simulate(input));
     for (const shoe of SHOES) for (const angle of [5, 20, 45, 60, 85]) for (const power of [0, 80, 99.5, 100]) {
-      const trajectory = simulate(fixture({ shoeType: shoe.id, angle, power })); expect(trajectory.holds.length).toBeLessThanOrEqual(3); expect(trajectory.duration - trajectory.motionDuration).toBeLessThanOrEqual(1.650000001); expect(trajectory.duration).toBeLessThan(26); expect(sampleTrajectory(trajectory, trajectory.duration).y).toBe(0);
+      const trajectory = simulate(fixture({ shoeType: shoe.id, angle, power })); expect(trajectory.holds.length).toBeLessThanOrEqual(3); expect(trajectory.duration - trajectory.motionDuration).toBeLessThanOrEqual(2.150000001); expect(trajectory.duration).toBeLessThan(26); expect(sampleTrajectory(trajectory, trajectory.duration).y).toBe(0);
       if (power === 0) expect(trajectory.duration).toBeLessThan(10);
     }
   });

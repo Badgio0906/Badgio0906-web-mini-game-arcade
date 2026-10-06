@@ -1,125 +1,55 @@
 import { calculateDeskLayout, StampRun } from './StampRun';
-import type { DeskLayout, DeskObject, StampController, StampHooks } from './contracts';
-
-const labels = { paper: '紙束', pen: 'ペン', clip: 'クリップ', memo: 'メモ', calculator: '電卓', cup: 'コーヒー', stapler: 'ホッチキス', stamp: '印鑑' };
-const objectLabel = (o: DeskObject): string => o.kind === 'stamp' ? `${o.color === 'red' ? '赤い' : '青い'}${o.shape === 'round' ? '丸' : '四角'}印鑑` : `${labels[o.kind]}${o.stackCount > 1 ? `と紙${o.stackCount - 1}枚` : ''}`;
-const asset = (o: DeskObject): string => o.kind === 'stamp' ? `./assets/game009/stamp-${o.shape}-${o.color}.webp` : `./assets/game009/desk-${o.kind}.webp`;
-
-/** Hit rectangles are unrotated native CSS-pixel buttons; only generated artwork rotates within them. */
-export function createStampGame(parent: HTMLElement, hooks: StampHooks): StampController {
-  const root = document.createElement('div'); root.className = 'stamp-board';
-  root.innerHTML = `<div class="request-slip"><span class="request-sample" aria-hidden="true"></span><strong></strong><small class="round-label"></small></div><div class="search-meter"><div class="search-track"><i></i></div><span></span></div><div class="desk-field" aria-label="机の上の印鑑と文具"></div><div class="desk-note" role="status"></div>`;
-  parent.append(root);
-  const request = root.querySelector<HTMLElement>('.request-slip strong')!; const sample = root.querySelector<HTMLElement>('.request-sample')!;
-  const round = root.querySelector<HTMLElement>('.round-label')!; const field = root.querySelector<HTMLElement>('.desk-field')!;
-  const fill = root.querySelector<HTMLElement>('.search-track i')!; const timer = root.querySelector<HTMLElement>('.search-meter span')!;
-  const note = root.querySelector<HTMLElement>('.desk-note')!;
-  let objectAbort = new AbortController();
-  const run = new StampRun(event => hooks.onEvent(event));
-  let paused = false; let title = true; let destroyed = false; let notified = false; let frame = 0; let last = performance.now();
-  let width = field.clientWidth || parent.clientWidth || 300; let layout: DeskLayout = calculateDeskLayout(run.snapshot().objects, width);
-  let signature = ''; let timerSignature = ''; let guardUntil = 0;
-  const buttons = new Map<number, HTMLButtonElement>();
-  const modifiers = (event: MouseEvent | KeyboardEvent): boolean => event.altKey || event.ctrlKey || event.shiftKey || event.metaKey;
-  const available = (): boolean => {
-    const s = run.snapshot(); return !destroyed && !title && !paused && s.alive && !s.pending && s.phase === 'searching' && performance.now() >= guardUntil && !document.querySelector('dialog[open]');
-  };
-  function pick(id: number): boolean {
-    if (!available() || !run.pick(id)) return false;
-    publish(); return true;
-  }
-  function artwork(source: string, size: number, rotation: number, offset = 0): HTMLImageElement {
-    const image = document.createElement('img'); image.src = source; image.alt = ''; image.draggable = false; image.decoding = 'async';
-    image.style.cssText = `position:absolute;left:calc(50% + ${offset}px);top:calc(50% + ${offset}px);width:${size}px;height:auto;pointer-events:none;transform:translate(-50%,-50%) rotate(${rotation}deg)`;
-    image.addEventListener('error', () => { image.hidden = true; }, { once: true }); return image;
-  }
-  function makeObject(object: DeskObject): HTMLButtonElement {
-    const options = { signal: objectAbort.signal };
-    const button = document.createElement('button'); button.type = 'button'; button.className = 'desk-object is-arriving'; button.id = `object-${object.id}`;
-    button.dataset.object = String(object.id); button.dataset.kind = object.kind; button.dataset.color = object.color ?? ''; button.dataset.shape = object.shape ?? '';
-    button.setAttribute('aria-label', objectLabel(object));
-    const desktop = width >= 600;
-    for (let layer = 1; layer < object.stackCount; layer++) {
-      const image = artwork('./assets/game009/desk-paper.webp', desktop ? 60 : 46, object.rotation + (layer % 2 ? 2 : -2), (layer - 2) * 2);
-      image.className = 'paper-layer'; button.append(image);
+import { ITEMS, itemName } from './items';
+import type { DeskObject, StampController, StampHooks } from './contracts';
+const NS='http://www.w3.org/2000/svg';
+export function createStampGame(parent:HTMLElement,hooks:StampHooks):StampController {
+ const root=document.createElement('div');root.className='stamp-board';root.innerHTML='<div class="request-slip"><span class="request-sample"></span><div><small>頼まれた物</small><strong></strong></div><span class="timer"></span></div><div class="desk-scroll"><svg class="desk-field" aria-label="机の上の道具"></svg></div><div class="desk-controls"><span class="desk-note" role="status"></span><button id="tidy-button" type="button">整頓する <small>−2.5秒</small></button></div>';parent.append(root);
+ const field=root.querySelector<SVGSVGElement>('.desk-field')!,sample=root.querySelector<HTMLElement>('.request-sample')!,request=root.querySelector<HTMLElement>('.request-slip strong')!,timer=root.querySelector<HTMLElement>('.timer')!,note=root.querySelector<HTMLElement>('.desk-note')!,tidyButton=root.querySelector<HTMLButtonElement>('#tidy-button')!;
+ const run=new StampRun(e=>hooks.onEvent(e));let paused=false,title=true,destroyed=false,ended=false,frame=0,last=performance.now(),signature='',guard=0,width=300;
+ const assets=new Map<string,string>();const abort=new AbortController();
+ const ready=Promise.all(ITEMS.map(async item=>{const response=await fetch(`./assets/game009/desk-v2/${item.kind}.svg`);if(!response.ok)throw new Error(`Missing item artwork ${item.kind}`);const svg=new DOMParser().parseFromString(await response.text(),'image/svg+xml');assets.set(item.kind,svg.documentElement.innerHTML);})).then(()=>draw(true));
+ const available=()=>!destroyed&&!title&&!paused&&run.snapshot().alive&&run.snapshot().phase==='searching'&&performance.now()>=guard;
+ const publish=()=>{draw();hooks.onUpdate(run.snapshot());};
+ const pick=(id:number)=>{if(!available())return false;const accepted=run.pick(id);guard=performance.now()+120;publish();return accepted;};
+ const lift=(id:number)=>{if(!available())return false;const accepted=run.lift(id);guard=performance.now()+120;publish();return accepted;};
+ const tidy=()=>{if(!available())return false;const accepted=run.tidy();guard=performance.now()+120;publish();return accepted;};
+ function activate(g:SVGGElement,action:()=>void):void {
+  let press:{id:number;x:number;y:number;round:number}|null=null;
+  g.addEventListener('pointerdown',event=>{if(!event.isPrimary||event.button!==0||event.altKey||event.ctrlKey||event.metaKey||!available())return;event.stopPropagation();g.focus({preventScroll:true});press={id:event.pointerId,x:event.clientX,y:event.clientY,round:run.snapshot().roundId};});
+  g.addEventListener('pointerup',event=>{const candidate=press;press=null;if(!candidate||candidate.id!==event.pointerId||candidate.round!==run.snapshot().roundId||Math.hypot(event.clientX-candidate.x,event.clientY-candidate.y)>8)return;event.stopPropagation();action();});
+  g.addEventListener('pointercancel',()=>{press=null;});g.addEventListener('lostpointercapture',()=>{press=null;});
+  g.addEventListener('keydown',event=>{if(event.key!=='Enter'&&event.key!==' ')return;event.preventDefault();event.stopPropagation();if(!event.repeat&&!event.altKey&&!event.ctrlKey&&!event.metaKey)action();});
+  g.addEventListener('click',event=>{if(event.detail===0&&!('pointerType' in event))action();});
+ }
+ function artwork(object:DeskObject):string {
+  let body=assets.get(object.kind)??'';
+  if(object.kind==='pen'&&object.capped)body+='<path d="M58 22L68 9L87 26L77 39Z" fill="#245670" stroke="#283a3d" stroke-width="2.8"/><path d="M70 16L79 25L73 31" fill="none" stroke="#a6cddd" stroke-width="2.4"/>';
+  if(object.kind==='pen'&&!object.capped)body=body.replace('M58 25L72 39M65 16L70 10L85 25L79 30','M58 25L72 39')+'<path d="M65 16L68 8L73 20Z" fill="#d3dcd7" stroke="#283a3d" stroke-width="2.8"/>';
+  return body;
+ }
+ function draw(force=false):void {
+  const s=run.snapshot();const layout=calculateDeskLayout(s.objects,width);const key=[s.deskId,s.roundId,s.phase,s.lastPicked,s.tidy,s.liftedPapers.join(','),width,title,paused,assets.size].join('|');
+  request.textContent=s.request.text;timer.textContent=s.practice?'練習':`${s.remaining.toFixed(1)}秒`;note.textContent=s.note||'名前と形で探そう。';tidyButton.disabled=!available()||s.tidy;
+  if(key!==signature||force){signature=key;field.setAttribute('viewBox',`0 0 ${layout.width} ${layout.height}`);field.style.height=`${layout.height}px`;field.replaceChildren();
+   sample.innerHTML=s.request.sample?`<svg viewBox="0 0 96 96" aria-hidden="true">${artwork(s.objects.find(o=>o.kind===s.request.kind)!)}</svg>`:'';
+   sample.hidden=!s.request.sample;
+   for(const bound of layout.bounds){const o=s.objects.find(object=>object.id===bound.id)!;const group=document.createElementNS(NS,'g');group.setAttribute('transform',`translate(${bound.left} ${bound.top}) scale(${bound.width/96})`);
+    const art=document.createElementNS(NS,'g');art.dataset.object=String(o.id);art.dataset.kind=o.kind;art.setAttribute('role','button');art.setAttribute('aria-label',`${itemName(o.kind)}${o.kind==='pen'?o.capped?' キャップ付き':' キャップなし':''}`);art.setAttribute('tabindex',!title&&!paused&&s.alive?'0':'-1');art.setAttribute('transform',`rotate(${s.tidy?0:o.rotation} 48 48)`);art.classList.add('item-art');art.innerHTML=artwork(o);activate(art,()=>pick(o.id));group.append(art);
+    if(s.phase==='feedback'&&s.lastPicked===o.id){const mark=document.createElementNS(NS,'text');mark.setAttribute('x','48');mark.setAttribute('y','51');mark.setAttribute('text-anchor','middle');mark.setAttribute('class','found-mark');mark.textContent='✓';group.append(mark);}
+    if(o.paper!==null&&!s.tidy&&!s.liftedPapers.includes(o.paper)){
+     const paper=document.createElementNS(NS,'g');paper.classList.add('cover-paper');paper.innerHTML='<path d="M0 0H96V96H0Z" fill="#f5ecd8" stroke="#b9ad8e" stroke-width="2"/><path d="M12 15H74M12 25H80M12 35H74M12 45H68" fill="none" stroke="#c3b79b" stroke-width="2"/>';
+     paper.addEventListener('pointerdown',event=>{event.stopPropagation();note.textContent='折れた紙の端「めくる」を押そう。';});
+     const edge=document.createElementNS(NS,'g');edge.dataset.paper=String(o.paper);edge.setAttribute('role','button');edge.setAttribute('tabindex',!title&&!paused&&s.alive?'0':'-1');edge.setAttribute('aria-label','紙の端をめくる');edge.innerHTML='<path d="M32 96L96 32V96Z" fill="#d9c797" stroke="#9f906b" stroke-width="2"/><path d="M32 96L32 32L96 32Z" fill="#fff8e3" stroke="#9f906b" stroke-width="2"/><text x="67" y="80" text-anchor="middle" font-size="13" fill="#4d574c">めくる</text>';activate(edge,()=>lift(o.paper!));paper.append(edge);group.append(paper);
+     art.setAttribute('tabindex','-1');art.setAttribute('aria-hidden','true');
     }
-    const image = artwork(asset(object), object.kind === 'stamp' ? desktop ? 60 : 48 : desktop ? 70 : 56, object.rotation);
-    image.className = 'item-art'; button.append(image);
-    image.addEventListener('error', () => {
-      button.classList.add('asset-fallback'); const fallback = document.createElement('span'); fallback.className = 'fallback-object'; fallback.textContent = object.kind === 'stamp' ? object.shape === 'round' ? '●' : '■' : labels[object.kind]; button.append(fallback);
-    }, { once: true });
-    button.addEventListener('pointerdown', event => {
-      if (!event.isPrimary || event.button !== 0 || modifiers(event) || !available()) return;
-      event.preventDefault(); button.focus({ preventScroll: true }); pick(object.id);
-    }, options);
-    button.addEventListener('keydown', event => {
-      if (event.key !== 'Enter' && event.key !== ' ') return;
-      event.preventDefault(); if (event.repeat || modifiers(event) || !available()) return; pick(object.id);
-    }, options);
-    button.addEventListener('keyup', event => { if (event.key === 'Enter' || event.key === ' ') event.preventDefault(); }, options);
-    button.addEventListener('click', event => {
-      const pointer = event as PointerEvent;
-      if (event.detail > 0 || pointer.pointerType || modifiers(event)) return;
-      pick(object.id); // Assistive activation; pointer and native key paths already consumed their own gesture.
-    }, options);
-    return button;
+    field.append(group);
+   }
   }
-  function rebuild(): void {
-    // Release removed objects' handlers each round rather than retaining them on a run-long AbortSignal.
-    objectAbort.abort(); objectAbort = new AbortController();
-    const objects = run.snapshot().objects; layout = calculateDeskLayout(objects, width); field.style.height = `${layout.height}px`;
-    buttons.clear(); field.replaceChildren(...objects.map(object => { const button = makeObject(object); buttons.set(object.id, button); return button; }));
-    for (const bound of layout.bounds) {
-      const button = buttons.get(bound.id)!; button.style.position = 'absolute'; button.style.left = `${bound.left}px`; button.style.top = `${bound.top}px`; button.style.width = `${bound.width}px`; button.style.height = `${bound.height}px`;
-    }
-  }
-  function draw(): void {
-    const s = run.snapshot();
-    const key = [title, paused, s.phase, s.roundId, width, s.lastPicked, s.multiplier, s.clutterLevel].join('|');
-    if (key !== signature) {
-      const roundChanged = root.dataset.roundId !== String(s.roundId);
-      signature = key; root.dataset.phase = title ? 'title' : s.phase; root.dataset.paused = String(paused); root.dataset.roundId = String(s.roundId);
-      root.dataset.clutter = String(s.clutterLevel);
-      if (roundChanged || buttons.size !== s.objects.length || layout.width !== width) rebuild();
-      request.textContent = s.request.text; sample.dataset.color = s.request.color; sample.dataset.shape = s.request.shape;
-      round.textContent = `ROUND ${s.round}`;
-      const matching = run.inspection().matchingIds;
-      for (const [id, button] of buttons) {
-        button.disabled = !available(); button.classList.toggle('is-correct', s.phase === 'feedback' && s.lastPicked === id);
-        button.classList.toggle('is-wrong', !s.alive && !title && s.lastPicked === id);
-        button.classList.toggle('is-answer', !s.alive && !title && matching.includes(id));
-      }
-      note.textContent = title ? '見つけた印鑑を、そのまま押す。' : s.phase === 'feedback' ? `ポン！ +${s.lastPoints}点` : s.pending ? '机を片付けますか？' : !s.alive ? '条件に合う印鑑を枠で示しています。' : s.clutterLevel >= 24 ? `散らかり上限 · 今後 ×${s.multiplier}` : `机上の物 ${s.objectCount}個 · 今後 ×${s.multiplier}`;
-    }
-    const disabled = !available(); for (const button of buttons.values()) if (button.disabled !== disabled) button.disabled = disabled;
-    const percent = !title && s.phase === 'searching' ? s.remaining / s.deadline * 100 : 0;
-    const text = title ? '9秒からスタート' : s.pending ? '選択中：時計停止' : paused ? 'PAUSE' : s.phase === 'searching' ? `${s.remaining.toFixed(1)}s` : s.phase === 'feedback' ? '次の指示へ' : '—';
-    const meter = percent.toFixed(1) + text;
-    if (meter !== timerSignature) { timerSignature = meter; fill.style.width = `${percent}%`; timer.textContent = text; }
-  }
-  function publish(): void {
-    draw(); hooks.onUpdate(run.snapshot());
-    if (!title && !notified && !run.snapshot().alive) { const result = run.result(); if (result) { notified = true; hooks.onEnd(result); } }
-  }
-  const resize = new ResizeObserver(() => {
-    const nextWidth = field.clientWidth || parent.clientWidth || 300;
-    if (Math.abs(width - nextWidth) < 0.5) return;
-    width = nextWidth; rebuild(); signature = ''; draw();
-  });
-  resize.observe(field);
-  function tick(now: number): void {
-    const dt = Math.min(0.05, Math.max(0, (now - last) / 1000)); last = now;
-    if (!paused && !title) run.step(dt); publish(); if (!destroyed) frame = requestAnimationFrame(tick);
-  }
-  rebuild(); draw(); frame = requestAnimationFrame(tick);
-  return {
-    start() { title = false; paused = false; notified = false; run.start(); last = performance.now(); signature = ''; publish(); },
-    title() { title = true; paused = false; run.reset(); signature = ''; publish(); },
-    pick,
-    choose(choice) { if (title || paused || destroyed || !run.choose(choice)) return false; guardUntil = performance.now() + 350; last = performance.now(); signature = ''; publish(); return true; },
-    pause(value) { paused = value; last = performance.now(); signature = ''; publish(); },
-    snapshot: () => run.snapshot(),
-    inspection: () => ({ ...run.inspection(), layout: { ...layout, bounds: layout.bounds.map(b => ({ ...b })) } }),
-    destroy() { if (destroyed) return; destroyed = true; objectAbort.abort(); resize.disconnect(); cancelAnimationFrame(frame); buttons.clear(); root.remove(); },
-  };
+  field.style.pointerEvents=available()?'auto':'none';
+ }
+ tidyButton.addEventListener('click',tidy,{signal:abort.signal});
+ const resize=new ResizeObserver(()=>{width=root.querySelector<HTMLElement>('.desk-scroll')!.clientWidth||300;draw(true);});resize.observe(root.querySelector('.desk-scroll')!);
+ function tick(now:number):void {if(destroyed)return;const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;if(!title&&!paused){run.step(dt);publish();if(!run.snapshot().alive&&!ended){ended=true;const result=run.result();if(result)hooks.onEnd(result);}}frame=requestAnimationFrame(tick);}
+ frame=requestAnimationFrame(tick);void ready;
+ return {start(practice=false){title=false;paused=false;ended=false;guard=performance.now()+200;run.start(practice);publish();},title(){title=true;paused=false;publish();},pick,lift,tidy,pause(value){paused=value;guard=performance.now()+150;publish();},snapshot:()=>run.snapshot(),inspection:()=>({...run.inspection(),layout:calculateDeskLayout(run.snapshot().objects,width)}),destroy(){destroyed=true;cancelAnimationFrame(frame);resize.disconnect();abort.abort();root.remove();}};
 }

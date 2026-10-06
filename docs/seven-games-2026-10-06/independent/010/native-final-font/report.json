@@ -1,0 +1,202 @@
+{
+  "kind": "native manually audited decision-index inputs; readonlydiagnostics, no roleanswerautomation",
+  "before": {
+    "scenarios.ts": "28fc7b0a65f197b642b820e6ac96f461f29f023b700beea131c1cb7ea1dcfb48",
+    "MeetingRun.ts": "5b32228085378f1d7c1427d4191ec41599d507e7a0d48a65952acd22ffcf8713",
+    "MeetingBoard.ts": "b4498e83e530f0bda7bbdcbce4e566c966201d7f7c196fd919d86a9c6fd0965a",
+    "main.ts": "a21cf937690142bc691382be216fdc2f64ff270610816f04a14500c8c6d7fa22",
+    "style.css": "c31452051d3b638baf73c0b1c485740ca8ca1b616cb718df9f7ff7a3941c4800",
+    "contracts.ts": "9f71815e133679b3508988a3eddb9e0c7499fa6a605b7dda64a565ce692cd330"
+  },
+  "after": {
+    "scenarios.ts": "28fc7b0a65f197b642b820e6ac96f461f29f023b700beea131c1cb7ea1dcfb48",
+    "MeetingRun.ts": "5b32228085378f1d7c1427d4191ec41599d507e7a0d48a65952acd22ffcf8713",
+    "MeetingBoard.ts": "b4498e83e530f0bda7bbdcbce4e566c966201d7f7c196fd919d86a9c6fd0965a",
+    "main.ts": "a21cf937690142bc691382be216fdc2f64ff270610816f04a14500c8c6d7fa22",
+    "style.css": "c31452051d3b638baf73c0b1c485740ca8ca1b616cb718df9f7ff7a3941c4800",
+    "contracts.ts": "9f71815e133679b3508988a3eddb9e0c7499fa6a605b7dda64a565ce692cd330"
+  },
+  "unchanged": true,
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "touch": false
+      },
+      "captures": [
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-title.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-explanation.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-play.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-ask.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-correction-or-decision.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-feedback.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/desktop-pause.png"
+      ],
+      "errors": [],
+      "forcedRuntimeWrites": false,
+      "scenarioId": "condition-no",
+      "feedback": {
+        "correctFields": [
+          "who",
+          "task",
+          "due"
+        ],
+        "wrongFields": [],
+        "expected": {
+          "who": "鈴木",
+          "task": "発送ラベル",
+          "due": "金曜"
+        },
+        "actual": {
+          "who": "鈴木",
+          "task": "発送ラベル",
+          "due": "金曜"
+        },
+        "points": 420,
+        "complete": true,
+        "majorFailure": false,
+        "corrections": 0,
+        "noiseRecords": 0,
+        "note": "3項目とも、最新の決定どおりです。"
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "captures": [
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-title.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-explanation.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-play.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-ask.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-correction-or-decision.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-feedback.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/phone-pause.png"
+      ],
+      "errors": [],
+      "forcedRuntimeWrites": false,
+      "scenarioId": "double-change",
+      "feedback": {
+        "correctFields": [
+          "who",
+          "task",
+          "due"
+        ],
+        "wrongFields": [],
+        "expected": {
+          "who": "加藤",
+          "task": "申込書",
+          "due": "月曜"
+        },
+        "actual": {
+          "who": "加藤",
+          "task": "申込書",
+          "due": "月曜"
+        },
+        "points": 450,
+        "complete": true,
+        "majorFailure": false,
+        "corrections": 1,
+        "noiseRecords": 0,
+        "note": "3項目とも、最新の決定どおりです。"
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "narrow",
+        "width": 320,
+        "height": 568,
+        "touch": true
+      },
+      "captures": [
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-title.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-explanation.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-play.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-ask.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-correction-or-decision.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-feedback.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/narrow-pause.png"
+      ],
+      "errors": [],
+      "forcedRuntimeWrites": false,
+      "scenarioId": "proposal-after",
+      "feedback": {
+        "correctFields": [
+          "who",
+          "task",
+          "due"
+        ],
+        "wrongFields": [],
+        "expected": {
+          "who": "田中",
+          "task": "試作品",
+          "due": "木曜"
+        },
+        "actual": {
+          "who": "田中",
+          "task": "試作品",
+          "due": "木曜"
+        },
+        "points": 420,
+        "complete": true,
+        "majorFailure": false,
+        "corrections": 0,
+        "noiseRecords": 0,
+        "note": "3項目とも、最新の決定どおりです。"
+      },
+      "status": "PASS"
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "captures": [
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-title.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-explanation.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-play.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-ask.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-correction-or-decision.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-feedback.png",
+        "docs/seven-games-2026-10-06/independent/010/native-final-font/landscape-pause.png"
+      ],
+      "errors": [],
+      "forcedRuntimeWrites": false,
+      "scenarioId": "double-change",
+      "feedback": {
+        "correctFields": [
+          "who",
+          "task",
+          "due"
+        ],
+        "wrongFields": [],
+        "expected": {
+          "who": "加藤",
+          "task": "申込書",
+          "due": "月曜"
+        },
+        "actual": {
+          "who": "加藤",
+          "task": "申込書",
+          "due": "月曜"
+        },
+        "points": 450,
+        "complete": true,
+        "majorFailure": false,
+        "corrections": 1,
+        "noiseRecords": 0,
+        "note": "3項目とも、最新の決定どおりです。"
+      },
+      "status": "PASS"
+    }
+  ]
+}

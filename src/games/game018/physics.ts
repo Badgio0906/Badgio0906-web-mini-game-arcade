@@ -3,7 +3,7 @@ import { FIXED_STEP, JUST_MAX_THRESHOLD, type Effect, type Inputs, type Obstacle
 export const clamp = (value: number, min: number, max: number): number => Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : min;
 export function normalizeInputs(input: Inputs): Inputs { return { angle: clamp(input.angle, 5, 85), spin: clamp(input.spin, -1, 1), power: clamp(input.power, 0, 100), shoeType: shoeFor(input.shoeType).id }; }
 export function routeFor(angle: number): Route { return angle <= 25 ? 'ground' : angle < 55 ? 'distance' : 'sky'; }
-export function formatDistance(meters: number): string { const value = Math.max(0, Number.isFinite(meters) ? meters : 0); return value >= 1000 ? (value / 1000).toFixed(value >= 10000 ? 1 : 2) + ' km' : value.toFixed(1) + ' m'; }
+export function formatDistance(meters:number):string{return Math.max(0,Number.isFinite(meters)?meters:0).toLocaleString('ja-JP',{minimumFractionDigits:1,maximumFractionDigits:1})+' m';}
 const obstacleTypes: readonly ObstacleType[] = ['fence', 'wall', 'vending', 'sign', 'truck', 'warehouse', 'building'];
 const heights = [18, 42, 25, 44, 34, 65, 105], widths = [4, 9, 9, 5, 35, 45, 38], strengths = [300, 850, 550, 420, 950, 1200, 1800];
 export function obstacleAt(id: number): Obstacle {
@@ -99,13 +99,14 @@ export function simulate(raw: Inputs, practice = false): Trajectory {
   const physicalDuration = t, motionDuration = input.power < 25 ? clamp(physicalDuration * .7, 4, 9) : clamp(12 + physicalDuration * .13 + specialNames.size * .6, 12, 24);
   const replayScale = motionDuration / Math.max(FIXED_STEP, physicalDuration), holds: ReplayHold[] = [];
   for (const effect of effects) if (['AIRPLANE BREAK', 'UFO INCIDENT', 'ORBITAL SHOE'].includes(effect.name)) {
-    const start = effect.time * replayScale + holds.length * .55;
-    holds.push({ name: effect.name, physicalTime: effect.time, start, end: start + .55, x: effect.x, y: effect.y });
+    const start = effect.time * replayScale + holds.reduce((sum,hold)=>sum+hold.end-hold.start,0);
+    const holdSeconds=effect.name==='UFO INCIDENT'?1.05:.55;
+    holds.push({ name: effect.name, physicalTime: effect.time, start, end: start + holdSeconds, x: effect.x, y: effect.y });
   }
-  const replayTime = (physicalTime: number) => physicalTime * replayScale + holds.filter(hold => hold.physicalTime < physicalTime - 1e-9).length * .55;
+  const replayTime = (physicalTime: number) => physicalTime * replayScale + holds.filter(hold => hold.physicalTime < physicalTime - 1e-9).reduce((sum,hold)=>sum+hold.end-hold.start,0);
   for (const effect of effects) effect.time = replayTime(effect.time);
   for (const obstacle of obstacles) obstacle.time = replayTime(obstacle.time);
-  const duration = motionDuration + holds.length * .55;
+  const duration = motionDuration + holds.reduce((sum,hold)=>sum+hold.end-hold.start,0);
   const spinRating = Math.abs(input.spin) >= .7 ? 'GREAT' : Math.abs(input.spin) >= .25 ? 'GOOD' : 'LOW';
   const score = { distance: Math.floor(x * 4), height: Math.floor(maxHeight * 2), breaks: breaks * 1200, spin: Math.min(10000, Math.floor(Math.abs(rotation) / (Math.PI * 2) * (input.shoeType === 'zori' ? 125 : 80))), justMax: launch.justMax ? 2500 : 0, special: [...specialNames].reduce((total, name) => total + (name === 'ORBITAL SHOE' ? 10000 : name.startsWith('IRON') ? 5000 : 1000), 0), total: 0 };
   score.total = score.distance + score.height + score.breaks + score.spin + score.justMax + score.special;
