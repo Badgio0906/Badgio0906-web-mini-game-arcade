@@ -1,0 +1,83 @@
+
+ RUN  v3.2.7 /workspace/batch-two-author-030
+
+ ❯ tests/unit/game030.test.ts (35 tests | 2 failed) 46ms
+   ✓ game030 original fixed-world route > stage 1 has independently checkable safe solution and finger margin 2ms
+   ✓ game030 original fixed-world route > stage 2 has independently checkable safe solution and finger margin 1ms
+   ✓ game030 original fixed-world route > stage 3 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 4 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 5 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 6 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 7 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 8 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 9 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 10 has independently checkable safe solution and finger margin 1ms
+   ✓ game030 original fixed-world route > stage 11 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 12 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 13 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 14 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 15 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 16 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 17 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 18 has independently checkable safe solution and finger margin 0ms
+   ✓ game030 original fixed-world route > stage 19 has independently checkable safe solution and finger margin 0ms
+   × game030 original fixed-world route > stage 20 has independently checkable safe solution and finger margin 7ms
+     → expected false to be true // Object.is equality
+   ✓ game030 original fixed-world route > all20 authored routes tolerate bounded interior finger deviation and ordinary dense pointer sampling 25ms
+   × game030 original fixed-world route > late narrow shortcuts save real Euclidean length compared with wide safe alternatives 1ms
+     → expected false to be true // Object.is equality
+   ✓ game030 original fixed-world route > practice is a real separate route 0ms
+   ✓ game030 original fixed-world route > sweeps through thin furniture even when target is far beyond it 1ms
+   ✓ game030 original fixed-world route > takes plug+cable thickness into account including corner tangency 0ms
+   ✓ game030 original fixed-world route > outside reentry cannot relocate the plug 0ms
+   ✓ game030 original fixed-world route > enforces budget before socket clear 0ms
+   ✓ game030 original fixed-world route > only rewinds contiguous final segment, not remote prior segments 0ms
+   ✓ game030 original fixed-world route > forbids nonadjacent crossing and collinear overlap 0ms
+   ✓ game030 original fixed-world route > simplification retains a corner whose shortcut cuts furniture 0ms
+   ✓ game030 original fixed-world route > rejects corrupt/illegal saved routes and mismatched rules 0ms
+   ✓ game030 original fixed-world route > clears and unlocks exactly once independently from nullable observer 1ms
+   ✓ game030 original fixed-world route > save coordinates/length do not depend on display size or DPR 0ms
+   ✓ game030 original fixed-world route > denied writes retain fresh memory rather than stale backend 0ms
+   ✓ game030 original fixed-world route > invalid unlocks, reused local-result IDs and fake progress are rejected 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game030.test.ts > game030 original fixed-world route > stage 20 has independently checkable safe solution and finger margin
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game030.test.ts:14:69
+     12|   for(let i=1;i<l.solution.length;i++)expect(clearSegment(l.solution[i…
+     13|   const r=new Route(l);for(const p of l.solution.slice(1))r.move(p);ex…
+     14|   if(l.alternate)expect(safePath(l.alternate,l.obstacles,l.budget)).to…
+       |                                                                     ^
+     15|  });
+     16|  it('all20 authored routes tolerate bounded interior finger deviation …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/game030.test.ts > game030 original fixed-world route > late narrow shortcuts save real Euclidean length compared with wide safe alternatives
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game030.test.ts:27:367
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 33 passed (35)
+   Start at  18:31:15
+   Duration  301ms (transform 73ms, setup 0ms, collect 87ms, tests 46ms, environment 0ms, prepare 50ms)
+

@@ -1,0 +1,36 @@
+{
+  "finding_id": "phone-hint-first-post-drag",
+  "problem": "The phone hint tap after captured board drag does not add a hint or show its marker.",
+  "expected": "A fresh tap on 一点ヒント while playing increments the hint count once and shows a single marker.",
+  "observed": [
+    "Desktop completed all20 with hints and menus; phone reached playing and contiguous retreat then Single hint recorded assertion failed.",
+    "Trace has trusted-path pointerdown and pointerup on hint at rounded2291ms, then lostpointercapture on hint; no click event in captured trace.",
+    "Phone failure image shows the unchanged retreat message and no hint marker; state stays playing.",
+    "Source hint action is assigned to onclick. Current code tracks fresh pointerdown and captures click for phase consistency."
+  ],
+  "unknown": [
+    "Whether this is Chromium/CDP tap synthesis, product touch handling, or another cause.",
+    "Precise pointer down/up duration, coordinates, touch count, defaultPrevented, and hit-test were not recorded in this collector.",
+    "Behavior on physical mobile device and a differently timed first post-drag tap is unverified."
+  ],
+  "operation": "Native CDP captured drag and backtrack, followed by Playwright locator.tap on hint, one first failed run; no retry or product edit.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "measurements": {
+    "state": "playing",
+    "hint_before": 0,
+    "hint_after_observed_assertion": 0,
+    "hint_pointerdown_rounded_ms": 2291,
+    "hint_pointerup_rounded_ms": 2291,
+    "hint_clicks_in_tail": 0
+  },
+  "evidence": [
+    "docs/game030/QA/8592935b4152/2026-10-07T19-19-08-129Z/report.json",
+    "docs/game030/QA/finding-phone-hint-before/native-manifest.json",
+    "docs/game030/QA/finding-phone-hint-before/phone-failure.png",
+    "docs/game030/QA/finding-phone-hint-before/src/games/game030/main.ts"
+  ],
+  "provenance": "actual first native compiled browser run on frozen source; no physical phone or human feel claim"
+}

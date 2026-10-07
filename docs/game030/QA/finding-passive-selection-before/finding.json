@@ -1,0 +1,19 @@
+{
+  "finding_id": "passive-stage-selector-save",
+  "problem": "保存途中のステージがあるtitleから、別ステージを開始せず選択画面だけ開いた時の保存保持が不明。",
+  "expected": "初期titleの保存したステージは、受動的な選択画面閲覧や戻るだけでは破棄しない。",
+  "observed": [
+    "初期loaded.currentをavailableへ保持している。active初期値はfalse。",
+    "current()はactiveがfalseの時nullを返す。save()はcurrent()を保存する。",
+    "selectStages()の末尾は条件なしでsave()を呼ぶ。selection-backで初期titleへ戻るとavailableはメモリ上に残っている。"
+  ],
+  "unknown": [
+    "実ブラウザで選択を開閉した後に再読込した時の復元ボタンと保存値。"
+  ],
+  "operation": "code inspection of initial title -> passive stage selection -> back without choosing a stage",
+  "provenance": "actual own-source code observation before fix; browser not yet run",
+  "evidence": [
+    "src/games/game030/main.ts save/current/selectStages",
+    "docs/game030/QA/finding-passive-selection-before/main.ts.txt"
+  ]
+}

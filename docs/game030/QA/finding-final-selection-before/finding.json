@@ -1,0 +1,18 @@
+{
+  "finding_id": "final-selection-return-state",
+  "problem": "最終ステージのクリア後に選択画面だけ開いて現在の盤面へ戻ると、クリア済みモデルがplayingへ入る経路がある。",
+  "expected": "クリア済みステージの確認から戻る場合は結果を保持し、通常の未クリア盤面操作へ戻さない。",
+  "observed": [
+    "stage20のresultMenuにはall-stagesボタンがありselectStages()を呼ぶ。",
+    "selectStages()のselection-backはactive=trueならmode(playing)にする。route.clearedを確認していない。",
+    "route.move()はcleared=trueの時sameを返す。rewindはroute.reset()、reportedフラグは変更していない。"
+  ],
+  "unknown": [
+    "実ブラウザで20クリア後の選択戻り表示と、その後の入力・保存。"
+  ],
+  "provenance": "actual own production source observation before fix; no runtime/human claim",
+  "evidence": [
+    "src/games/game030/main.ts selectStages/resultMenu/rewind",
+    "docs/game030/QA/finding-final-selection-before/main.ts.txt"
+  ]
+}

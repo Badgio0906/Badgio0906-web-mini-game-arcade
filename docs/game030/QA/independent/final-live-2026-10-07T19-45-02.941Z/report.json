@@ -1,0 +1,874 @@
+{
+  "run": "2026-10-07T19-45-02.941Z",
+  "id": "030",
+  "sourceRoot": "/workspace/batch-two-author-030",
+  "base": "http://127.0.0.1:4930",
+  "sourceHashes": {
+    "game030.html": "fbf5a77b964d766f7ccab61cd783e0225d32e0d4c54af7f8a87b372e9bfe1c81",
+    "src/games/game030/Geometry.ts": "ca7fc537b8f1ffa0ff0f0c1e585986dc44ea7925909d7afc4d6848a0a76d8e7b",
+    "src/games/game030/Levels.ts": "966e740467e4024960060e7632240fd020ae6d6b7346aebdb41b3e9064afbd0f",
+    "src/games/game030/Route.ts": "285f24b530b8a61627a8fae3df905ff3b6e0f5172c6da6fda3b508ccc7593d87",
+    "src/games/game030/Save.ts": "f5870efabd8949af04d9454d44d12e6722ee78cb5dc3db71a559fbffef2b6472",
+    "src/games/game030/game.manifest.json": "3157c46a95b7fe2e6d6078738a00a3b7e4481598a3b8834841e59da8ed9bae9d",
+    "src/games/game030/main.ts": "81e16542106dbb826c54155c8d63b0ed6552b63ca7e41ee347af0431130c61df",
+    "src/games/game030/style.css": "e8b960c0be83f2c9c2e7261fee38ce602cfdb6098287abe316a99ea5d71106f3"
+  },
+  "method": "Independent native bounded normal PC/phone review, no saved-state/model injection; author full ordinary result/all20/4viewport QA remains separately attributed. No Jev answer read.",
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1365,
+        "height": 900
+      },
+      "errors": [],
+      "images": [
+        "desktop-title.png",
+        "desktop-ready.png",
+        "desktop-partial.png",
+        "desktop-hint.png",
+        "desktop-paused.png",
+        "desktop-resumed.png"
+      ],
+      "trace": [
+        {
+          "at": 220.79999999701977,
+          "type": "pointerdown",
+          "target": "analytics-settings-host",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 221.29999999701977,
+          "type": "pointerup",
+          "target": "analytics-settings-host",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 221.29999999701977,
+          "type": "click",
+          "target": "analytics-settings-host",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 331,
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 332,
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 332,
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 493.6000000014901,
+          "type": "pointerdown",
+          "target": "",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 628.6999999955297,
+          "type": "pointerup",
+          "target": "board",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 629.6999999955297,
+          "type": "lostpointercapture",
+          "target": "board",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 629.6999999955297,
+          "type": "click",
+          "target": "board",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 695.8999999985099,
+          "type": "pointerdown",
+          "target": "hint",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 696.1999999955297,
+          "type": "pointerup",
+          "target": "hint",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 696.2999999970198,
+          "type": "click",
+          "target": "hint",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 762.3999999985099,
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 762.6999999955297,
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 762.6999999955297,
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 864.8999999985099,
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        },
+        {
+          "at": 865.3999999985099,
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        },
+        {
+          "at": 865.3999999985099,
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        }
+      ],
+      "snapshots": [
+        {
+          "label": "partial",
+          "state": "playing",
+          "value": {
+            "stage": 1,
+            "points": [
+              {
+                "x": 65,
+                "y": 425
+              },
+              {
+                "x": 65,
+                "y": 335
+              }
+            ],
+            "cleared": false,
+            "reported": false,
+            "resultId": "75728628-89c7-44dd-8639-8190befd567e",
+            "runId": "a3e4b288-b726-4925-9fbd-a8878ffe2c03",
+            "hints": 0,
+            "resets": 0
+          }
+        },
+        {
+          "label": "hint",
+          "state": "playing",
+          "value": {
+            "stage": 1,
+            "points": [
+              {
+                "x": 65,
+                "y": 425
+              },
+              {
+                "x": 65,
+                "y": 335
+              }
+            ],
+            "cleared": false,
+            "reported": false,
+            "resultId": "75728628-89c7-44dd-8639-8190befd567e",
+            "runId": "a3e4b288-b726-4925-9fbd-a8878ffe2c03",
+            "hints": 1,
+            "resets": 0
+          }
+        }
+      ],
+      "compiled_scripts": [
+        "http://127.0.0.1:4930/assets/game030-COBvQ1ht.js"
+      ],
+      "controls": [
+        {
+          "id": "mute",
+          "text": "音 ON",
+          "width": 72.828125,
+          "height": 46,
+          "x": 1127.671875,
+          "y": 15,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "hint",
+          "text": "一点ヒント",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 388.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "rewind",
+          "text": "プラグを戻す",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 443.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "restart",
+          "text": "ステージやり直し",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 498.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "pause",
+          "text": "休憩",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 553.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "stages",
+          "text": "ステージ選択",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 608.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "help",
+          "text": "遊び方",
+          "width": 174,
+          "height": 46,
+          "x": 966.5,
+          "y": 663.5,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "",
+          "text": "↑",
+          "width": 48,
+          "height": 45,
+          "x": 576,
+          "y": 899,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "←",
+          "width": 48,
+          "height": 45,
+          "x": 631,
+          "y": 899,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "↓",
+          "width": 48,
+          "height": 45,
+          "x": 686,
+          "y": 899,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "→",
+          "width": 48,
+          "height": 45,
+          "x": 741,
+          "y": 899,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "settings",
+          "text": "解析データ設定",
+          "width": 112.015625,
+          "height": 44,
+          "x": 584.609375,
+          "y": 1091.390625,
+          "disabled": false,
+          "foreground": "rgb(24, 55, 70)",
+          "background": "rgb(255, 255, 255)",
+          "font": "12px"
+        }
+      ],
+      "board": {
+        "x": 224.5,
+        "y": 249,
+        "width": 720,
+        "height": 600
+      },
+      "state": "playing"
+    },
+    {
+      "name": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "errors": [],
+      "images": [
+        "phone-title.png",
+        "phone-ready.png",
+        "phone-partial.png",
+        "phone-hint.png",
+        "phone-paused.png",
+        "phone-resumed.png"
+      ],
+      "trace": [
+        {
+          "at": 164.5,
+          "type": "pointerdown",
+          "target": "analytics-settings-host",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 165,
+          "type": "pointerup",
+          "target": "analytics-settings-host",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 165,
+          "type": "click",
+          "target": "analytics-settings-host",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 277.6000000014901,
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 362.90000000596046,
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 363.20000000298023,
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 365.40000000596046,
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "title"
+        },
+        {
+          "at": 430.90000000596046,
+          "type": "pointerdown",
+          "target": "",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 645,
+          "type": "pointerup",
+          "target": "board",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 645.8000000044703,
+          "type": "lostpointercapture",
+          "target": "board",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 726.5,
+          "type": "pointerdown",
+          "target": "hint",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 809.7000000029802,
+          "type": "pointerup",
+          "target": "hint",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 809.7000000029802,
+          "type": "lostpointercapture",
+          "target": "hint",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 811.1000000014901,
+          "type": "click",
+          "target": "hint",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 893.2000000029802,
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 977.3000000044703,
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 977.3000000044703,
+          "type": "lostpointercapture",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 978.4000000059605,
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "playing"
+        },
+        {
+          "at": 1059.8000000044703,
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        },
+        {
+          "at": 1144.7000000029802,
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        },
+        {
+          "at": 1144.9000000059605,
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        },
+        {
+          "at": 1146.1000000014901,
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "trusted": true,
+          "prevented": false,
+          "state": "paused"
+        }
+      ],
+      "snapshots": [
+        {
+          "label": "partial",
+          "state": "playing",
+          "value": {
+            "stage": 1,
+            "points": [
+              {
+                "x": 65,
+                "y": 425
+              },
+              {
+                "x": 65,
+                "y": 335
+              }
+            ],
+            "cleared": false,
+            "reported": false,
+            "resultId": "763d8878-e84e-404d-84c0-16346d5d97fc",
+            "runId": "06bdf4e8-04b2-4f16-9519-3acd501ddd78",
+            "hints": 0,
+            "resets": 0
+          }
+        },
+        {
+          "label": "hint",
+          "state": "playing",
+          "value": {
+            "stage": 1,
+            "points": [
+              {
+                "x": 65,
+                "y": 425
+              },
+              {
+                "x": 65,
+                "y": 335
+              }
+            ],
+            "cleared": false,
+            "reported": false,
+            "resultId": "763d8878-e84e-404d-84c0-16346d5d97fc",
+            "runId": "06bdf4e8-04b2-4f16-9519-3acd501ddd78",
+            "hints": 1,
+            "resets": 0
+          }
+        }
+      ],
+      "compiled_scripts": [
+        "http://127.0.0.1:4930/assets/game030-COBvQ1ht.js"
+      ],
+      "controls": [
+        {
+          "id": "mute",
+          "text": "音 ON",
+          "width": 66.828125,
+          "height": 44,
+          "x": 310.171875,
+          "y": 9,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "16px"
+        },
+        {
+          "id": "hint",
+          "text": "一点ヒント",
+          "width": 116.65625,
+          "height": 44,
+          "x": 13,
+          "y": 525.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "rewind",
+          "text": "プラグを戻す",
+          "width": 116.671875,
+          "height": 44,
+          "x": 136.65625,
+          "y": 525.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "restart",
+          "text": "ステージやり直し",
+          "width": 116.65625,
+          "height": 44,
+          "x": 260.328125,
+          "y": 525.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "pause",
+          "text": "休憩",
+          "width": 116.65625,
+          "height": 44,
+          "x": 13,
+          "y": 576.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "stages",
+          "text": "ステージ選択",
+          "width": 116.671875,
+          "height": 44,
+          "x": 136.65625,
+          "y": 576.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "help",
+          "text": "遊び方",
+          "width": 116.65625,
+          "height": 44,
+          "x": 260.328125,
+          "y": 576.328125,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "12px"
+        },
+        {
+          "id": "",
+          "text": "↑",
+          "width": 48,
+          "height": 45,
+          "x": 88.5,
+          "y": 689.921875,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "←",
+          "width": 48,
+          "height": 45,
+          "x": 143.5,
+          "y": 689.921875,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "↓",
+          "width": 48,
+          "height": 45,
+          "x": 198.5,
+          "y": 689.921875,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "",
+          "text": "→",
+          "width": 48,
+          "height": 45,
+          "x": 253.5,
+          "y": 689.921875,
+          "disabled": false,
+          "foreground": "rgb(37, 79, 72)",
+          "background": "rgb(255, 253, 245)",
+          "font": "20px"
+        },
+        {
+          "id": "settings",
+          "text": "解析データ設定",
+          "width": 112.015625,
+          "height": 44,
+          "x": 97.109375,
+          "y": 894.71875,
+          "disabled": false,
+          "foreground": "rgb(24, 55, 70)",
+          "background": "rgb(255, 255, 255)",
+          "font": "12px"
+        }
+      ],
+      "board": {
+        "x": 13,
+        "y": 209,
+        "width": 364,
+        "height": 303.328125
+      },
+      "state": "playing"
+    }
+  ],
+  "pass": true
+}

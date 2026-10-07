@@ -1,0 +1,23 @@
+{
+  "finding_id": "late-route-length-choice",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root independent blind source and coordinate arithmetic",
+  "rationale": "Original late13/14/18/20 primary and alternate monotone rectilinear fixtures had equal Manhattan length, while the user requires a genuine narrow-short versus wide-long choice. Root approved real diagonal primary paths, not artificial detour punishment. Revised four pairs differ by more than30 world units and both preserve +4 clearance; full35 model checks pass. Live phone finger input not yet measured; subjective route-choice feel remains pending.",
+  "evidence": [
+    "docs/game030/QA/finding-route-choice-before/Levels.ts.txt",
+    "docs/game030/QA/finding-route-choice-after/lengths.json",
+    "docs/game030/QA/finding-route-choice-after/model.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Verify actual primary/alternate Euclidean lengths, expanded obstacle clearance+4, >=70 budget margin, 240 bounded finger deviations and20dense pointer sample routes. Live viewport verification still queued.",
+    "evidence": [
+      "docs/game030/QA/finding-route-choice-after/lengths.json",
+      "docs/game030/QA/finding-route-choice-after/model.txt"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

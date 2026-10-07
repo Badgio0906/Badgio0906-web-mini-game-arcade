@@ -1,0 +1,22 @@
+{
+  "finding_id": "late-route-length-choice",
+  "problem": "後半ステージの「短い狭い道」と「長い安全な道」の使う長さの差が、固定primary/alternate経路の測定では見えない。",
+  "expected": "後半に狭い短ルートと、より長い安全なルートを選ぶ余地を設計する。",
+  "observed": [
+    "stage13 primary/alternateの両方の測定長は830単位。",
+    "stage14、18、20のprimary/alternateも、x増加・y減少のみの折れ線なので測定長が同じ。",
+    "障害物の幅やclearanceは違い、複数ルート自体はsafePath検証済み。"
+  ],
+  "unknown": [
+    "実操作の対角ルートを含めた選択感。本人の難度感。"
+  ],
+  "measurements": {
+    "stage13_primary_length": 830,
+    "stage13_alternate_length": 830
+  },
+  "provenance": "actual source coordinate arithmetic before redesign; no live play or human feel claim",
+  "evidence": [
+    "src/games/game030/Levels.ts",
+    "docs/game030/QA/finding-route-choice-before/Levels.ts.txt"
+  ]
+}

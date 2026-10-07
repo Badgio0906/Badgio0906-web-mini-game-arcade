@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**Game029「給湯室の落としもの釣り」を試作公開済み。runtime8d3ac39／公式Pages37681354491成功。** 公開指定4画面の通常投→回収→結果/再挑戦/保存/練習、Portal28/640thumb/Ads維持、13file配信SHA＋CIasset確認、SheetA42だけ済/他列不変読戻し。最後の030は固定20面・独立解法1260route・39対象/root736（66file）/check/build・WorkerlocalD138events12RUN、独立Visual82/F13/H12とPC/phone全20面を完了して公開前。active29/historical30、026〜029公開済、030公式CI/公開/A49待ち、031未着手。Worker既存auth再確認でも未認証、新作externalOFF/中央pending維持。本人/実機主観未実施・旧9tree保全。
+
 2026-10-08（日本時間）：**Game028「ぽんぽん卓球」を試作公開済み。runtime4310be3／公式Pages37680233126成功。** 公開指定4画面125check・通常5点試合終局/再挑戦/保存、Portal27/thumbnail/Ads維持、13file配信SHA＋CIhash-namedasset確認、SheetA11だけ済/読戻し。他ゲームsave不変、root666/64/check/build・WorkerlocalD132events10RUN。続く029はsource06/27対象/root695/65・check/build/Worker35events11RUN、指定4画面通常結果/再挑戦・独立Visual81/F12/H12を完了して公開前。active28/historical29は次commit統合予定、030未公開・031未着手。本番新作AnalyticsOFF/Workerblocker、本人/実機未試遊を継続。
 
 2026-10-08（日本時間）：**Game028「ぽんぽん卓球」を統合検証し公開前。** 疑似2.5D球高/反発・11点deuce/任意5点・CPU3難度・任意無得点練習・保存復帰。47対象/root666（64file）・check/build、Worker実ローカルD132events10RUN PASS、作者128nativechecks・独立PC900/phone実操作とVisual81/F12/H12。旧作者desktop1000と今回要求900は区別し、公開通常完走900を予定。active27/historical28、026/027公開済、028公式CI/公開/SheetA11待ち、029/030未公開、031未着手。旧9作業tree・018保全、外部新作AnalyticsOFF・本番Workerblocker継続、本人/実機未試遊。

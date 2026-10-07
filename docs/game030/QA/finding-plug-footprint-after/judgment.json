@@ -1,0 +1,25 @@
+{
+  "finding_id": "plug-drawn-footprint-clearance",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Axis-aligned SVG body halfwidth18 plus1stroke, top prongs22 plus.5stroke exceed center collider15. Example plug center16units from a vertical furniture edge passes the15-unit pad but drawn body/stroke overlaps it. This is a model/render correspondence defect in required swept footprint, though no critical blockage or impossible published level demonstrated. Keeping drawn readability and increasing conservative rectangular sweep padding is sensible;A25-unit square padding covers the max22.5-unit SVG/stroke extent and the3-unit cable halfwidth, leaving2.5 units extra at the top. Plug and cable swept union needs the larger footprint; do not describe25 as literally22.5+3. Because plug is translated without rotation, maxaxis padding is appropriate; no unsupported circular radius claim. Reverify every20 level+practice and tolerance/budget/late route advantage after any obstacle/route adjustments; snapshot old route compatibility must be considered.",
+  "evidence": [
+    "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+    "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+    "/workspace/batch-two-author-030/src/games/game030/main.ts",
+    "docs/game030/QA/finding-plug-footprint-after/model-final.txt",
+    "docs/game030/QA/finding-plug-footprint-after/lengths.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared SVG translated body/prong/stroke extents to closed-rectangle swept center padding and constructed16-unit vertical gap mismatch. Needs numerical all-stage route verification after scoped padding correction.",
+    "evidence": [
+      "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+      "/workspace/batch-two-author-030/game030.html"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

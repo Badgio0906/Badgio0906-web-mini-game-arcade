@@ -1,0 +1,3824 @@
+{
+  "schema_version": 1,
+  "audit_scope": "Second batch game026–game030 and its shared practice-navigation finding only; historical game001–025 copies excluded by each row game_id and shared canonical directory",
+  "audit_as_of": "2026-10-07T20:15:22.051739+00:00",
+  "auditor": "/root/final_jev_audit; offline evidence review only",
+  "root_commit_observed_at_audit_start": "ff369e5511b1d7e691430088ec2d025e4cd7e372",
+  "instructions_read": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "35f796fc4047b94ce6e3f068cc46416777fcbe4630fc76a70db3b7982934bcd2",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/PROJECT_CONTEXT.md",
+      "sha256": "b151e048c16fa200a0dc87452fb2e38fb96fe7b10a09d8b70cef22621bc54418",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/CURRENT_STATUS.md",
+      "sha256": "1fc065cbbfb1cf7a14019e6c04d3a0f6019bc2666e880298cb30b5d1add34f39",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/GAME_DEVELOPMENT_RULES.md",
+      "sha256": "a32fc77cf5c9507ae0b29af3739f7f6836836295d4af5cb7ba97a0d53c50fb50",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/JEV_REVIEW_RULES.md",
+      "sha256": "18a86bc30258dff17494bf5d329df7fce6cebb62b2e325f611884ed9715b0361",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/classic-batch-two/REQUEST.md",
+      "sha256": "65e80a20a6ac4a704e58a79a8b02cf8f6cfbb3d896b97e7f3bc334cc1f24ec87",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    },
+    {
+      "path": "docs/classic-batch-two/ADDITIONAL_INSTRUCTIONS.md",
+      "sha256": "f99391db9e531aa7f90ce24eb0b54e8c6f6689c50248f312ed83cd3d1653de42",
+      "audit_read_completed_observed_at": "2026-10-07T20:10:27+00:00",
+      "read_scope": "full AGENTS and JEV rules; task-specific excerpts of other files; this audit reading only, not proof of original implementation-start reading"
+    }
+  ],
+  "new_api_calls_during_this_audit": 0,
+  "historical_logs_modified": false,
+  "deduplication_key": [
+    "timestamp",
+    "game_id",
+    "finding_id",
+    "checkpoint"
+  ],
+  "deduplication_note": "Copied rows are counted once; all full row copies compared, not merely matching invocation counts. Distinct C/F checkpoints retain distinct contemporary observations.",
+  "availability_evidence_limit": "Preserved helper-recorded api_attempted=true, HTTP200 and valid parsed4 decisions/model metadata support28 actual successful request records. Provider-side billing/raw HTTP transcripts were not accessed; raw bodies are deliberately not retained by the secret-safe helper.",
+  "counts": {
+    "scanned_log_files": 17,
+    "scanned_nonblank_matching_rows": 39,
+    "unique_request_records": 28,
+    "duplicate_copy_rows_removed": 11,
+    "per_game": {
+      "game028": 8,
+      "game029": 5,
+      "game026": 4,
+      "game030": 6,
+      "game027": 4,
+      "shared": 1
+    },
+    "api_attempted_true": 28,
+    "available_http200_valid4_requested_resolved": 28,
+    "valid_independent_annotations_and_actions": 28,
+    "unannotated": 0,
+    "schema_only_unnecessary_actual_calls": 1,
+    "duplicate_metadata_response_annotation_conflicts": 0,
+    "invalid_json_rows": 0,
+    "codex_action_below_045": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 0,
+    "human_judgments": 0,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matching": 22,
+        "compared": 28
+      },
+      "NEXT_EVIDENCE": {
+        "matching": 13,
+        "compared": 28
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "matching": 28,
+        "compared": 28
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "matching": 19,
+        "compared": 28
+      }
+    },
+    "human_feel_routes": 1,
+    "risk_confusion": {
+      "TP": 8,
+      "TN": 11,
+      "FP": 9,
+      "FN": 0
+    },
+    "jev_next_equals_actual_method": 13,
+    "stored_comparison_fields_consistent": 28,
+    "annotation_timestamp_after_request": 28,
+    "distinct_game_finding_pairs": 27,
+    "in_scope_routing_requests_excluding_schema_call": 27,
+    "in_scope_routing_comparison": {
+      "PRIMARY_CAUSE": {
+        "matching": 22,
+        "compared": 27
+      },
+      "NEXT_EVIDENCE": {
+        "matching": 12,
+        "compared": 27
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "matching": 27,
+        "compared": 27
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "matching": 18,
+        "compared": 27
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": {
+      "reported_records": 28,
+      "missing_records": 0,
+      "reported_sum": 46546.0
+    },
+    "output_tokens": {
+      "reported_records": 28,
+      "missing_records": 0,
+      "reported_sum": 6039.0
+    },
+    "cost_usd": {
+      "reported_records": 28,
+      "missing_records": 0,
+      "reported_sum": 0.001954932
+    },
+    "latency_seconds": {
+      "reported_records": 28,
+      "missing_records": 0,
+      "reported_sum": 10.468831631005742,
+      "reported_mean": 0.3738868439644908
+    }
+  },
+  "logs": {
+    "docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl": {
+      "sha256": "0c27de2532cbcbebb7f07554a5b1629296bf0d3830dfdcf13cb9345d345016b4",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game026/QA/JEV_SHADOW.jsonl": {
+      "sha256": "8357591c6a40a7b978b244a234e94e6bcef48b18318f35236942e8d77c007e6f",
+      "accepted_lines": [
+        1,
+        2
+      ]
+    },
+    "docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl": {
+      "sha256": "aef1683ee85f8b0cc345b8b1dde8a841a66ed34b20ac9e91ed93b1d7fd81d003",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl": {
+      "sha256": "4389a004e4b9c2333ac6877c58a389bfc95e6937906bc87d23d887d546d683e6",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game027/QA/JEV_SHADOW.jsonl": {
+      "sha256": "fe434ef3b4bc2e2f62ee65833ed5ee3556aebeeb51e275944ce4b6059e29a6fe",
+      "accepted_lines": [
+        1,
+        2,
+        3
+      ]
+    },
+    "docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl": {
+      "sha256": "8ca8205ced3564175952a8afdbde2d93869f4bb60e149ea9e2a804b709ae74da",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game028/QA/JEV_SHADOW.jsonl": {
+      "sha256": "bdfed49e58ac9d9f3344d835e6d2a6dc9a509a37fb0f00c846e6f2ce82dcbfad",
+      "accepted_lines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl": {
+      "sha256": "9f67c932291e9fc7cee37eedead107fd72a88c1ee01e40dbcecbcb8ee93dc611",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl": {
+      "sha256": "1768e9fd03c219fc642fe699e3f87c00ade0daa0dfdc2107e1f3d6714dbf2f86",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl": {
+      "sha256": "535a473c78b4e6dd78ee970edce8bf3e1290d09ca0d588aad727dc5132735d21",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl": {
+      "sha256": "646580fd8c43351b32c7d2943780cae61d4bdf2515f52d177e7411cb03c5b74b",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl": {
+      "sha256": "f863b73a6276be493a78557001ad7a87d24f1990fde796225ebb31fef2386196",
+      "accepted_lines": [
+        1
+      ]
+    },
+    "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl": {
+      "sha256": "8357591c6a40a7b978b244a234e94e6bcef48b18318f35236942e8d77c007e6f",
+      "accepted_lines": [
+        1,
+        2
+      ]
+    },
+    "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl": {
+      "sha256": "fe434ef3b4bc2e2f62ee65833ed5ee3556aebeeb51e275944ce4b6059e29a6fe",
+      "accepted_lines": [
+        1,
+        2,
+        3
+      ]
+    },
+    "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl": {
+      "sha256": "bdfed49e58ac9d9f3344d835e6d2a6dc9a509a37fb0f00c846e6f2ce82dcbfad",
+      "accepted_lines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl": {
+      "sha256": "506f1903a18dea3e92825ad9f3d63b8ebd743469224e3a466623b38d6b59dc34",
+      "accepted_lines": [
+        1,
+        2,
+        3
+      ]
+    },
+    "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl": {
+      "sha256": "ac614e625f6efe368eff310d65e522aec503651d80d6ca32b213490e50932aa5",
+      "accepted_lines": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "records": [
+    {
+      "timestamp": "2026-10-07T17:52:35.800472+00:00",
+      "game_id": "game028",
+      "finding_id": "028-normal-native-no-return",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0.01,
+          "UNKNOWN": 0.96,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "PRODUCT_BUG": 0.03,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.89
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "SCREENSHOT_REVIEW": 0.04,
+          "UNKNOWN": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.87,
+          "LIVE_INTERACTION": 0.04,
+          "NO_FURTHER_EVIDENCE": 0,
+          "CODE_INSPECTION": 0.05
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.48
+      },
+      "input_tokens": 1647,
+      "output_tokens": 213,
+      "cost_usd": 6.9174e-05,
+      "latency_seconds": 0.4071933140003239,
+      "codex_review_recorded_at": "2026-10-07T17:57:54.837719+00:00",
+      "final_root_cause": "TEST_INFRA_BUG",
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The collector requires two automatic returns with a stationary centred player after a centre serve. The request requires positioning and impact offset to change return angle, not guaranteed perfect CPU-centre returns. Frozen model hit sets horizontal velocity from offset; CPU samples current ball position with bounded error. Seed28 source simulation and author physics trace show a legal CPU angled return at1.2167s followed by a legitimate player miss at2.4833s/returns1; fresh actual diagnostic obtains returns2 with a different normal seed. This establishes an over-specific nondeterministic test expectation. Exact original failing count/state is missing, so its precise causal history remains unconfirmed; do not claim all first failure details reproduced.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "docs/game028/QA/SOURCE_FREEZE_INPUT_BOUNDARY.json",
+          "docs/game028/QA/findings/normal-no-return.json",
+          "docs/game028/QA/diagnostic-no-return-20261008/trace.json",
+          "docs/game028/QA/diagnostic-no-return-physics.txt",
+          "docs/game028/QA/independent/review-source-20261007T1810/simulation.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Compared fixed-source36 simulated matches across difficulties/seeds and bounded outcomes, source CPU/offset logic, supplied seed28 physics trace and fresh native diagnostic. Recommended changing collector expectation to an observable legal return OR score based on actual state, and separately deliberate tracked-player return checks. Do not alter production angles/CPU to satisfy this fixture.",
+        "evidence": [
+          "docs/game028/QA/independent/review-source-20261007T1810/simulation.json",
+          "docs/game028/QA/diagnostic-no-return-physics.txt",
+          "docs/game028/QA/diagnostic-no-return-20261008/trace.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game028/QA/SOURCE_FREEZE_INPUT_BOUNDARY.json",
+          "resolved": "docs/game028/QA/SOURCE_FREEZE_INPUT_BOUNDARY.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/diagnostic-no-return-20261008/trace.json",
+          "resolved": "docs/game028/QA/diagnostic-no-return-20261008/trace.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/diagnostic-no-return-physics.txt",
+          "resolved": "docs/game028/QA/diagnostic-no-return-physics.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/findings/normal-no-return.json",
+          "resolved": "docs/game028/QA/findings/normal-no-return.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/review-source-20261007T1810/simulation.json",
+          "resolved": "docs/game028/QA/independent/review-source-20261007T1810/simulation.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-20261008-input-boundary/report.json",
+          "resolved": "docs/game028/QA/native-20261008-input-boundary/report.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T17:54:04.082821+00:00",
+      "game_id": "game029",
+      "finding_id": "game029-practice-production-events",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "TEST_INFRA_BUG": 0.01,
+          "CONTENT_OR_SPEC_ISSUE": 0.02,
+          "UNKNOWN": 0.17,
+          "PRODUCT_BUG": 0.79
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.89
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "LIVE_INTERACTION",
+        "probabilities": {
+          "AUTOMATED_TEST": 0.18,
+          "CODE_INSPECTION": 0.34,
+          "SCREENSHOT_REVIEW": 0,
+          "LIVE_INTERACTION": 0.47000000000000003,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "HUMAN_FEEL_TEST": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.3
+      },
+      "input_tokens": 1583,
+      "output_tokens": 217,
+      "cost_usd": 6.6486e-05,
+      "latency_seconds": 0.3750924890009628,
+      "codex_review_recorded_at": "2026-10-07T17:54:42.333907+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Frozen caller has unconditional practice lifecycle tracking. Shared TelemetryService records named events regardless of practice and AnalyticsRuntime has no training exclusion. Current outbound stop prevents production upload, so this is an actual caller/spec omission and consented local history issue, but not presently a major game/progression/critical-input release risk. Scope-local guard plus environment-specific verification is needed before enabling remote collection. No browser observation or future remote delivery is claimed.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "docs/game029/QA/independent/practice-production-01/source-manifest.json",
+          "docs/game029/QA/independent/practice-production-01/src_games_game029_main.ts.txt",
+          "docs/game029/QA/independent/practice-production-01/src_core_TelemetryService.ts.txt",
+          "docs/game029/QA/independent/practice-production-01/src_analytics_runtime.ts.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared frozen practice caller with TelemetryService.trackEvent and AnalyticsRuntime.record gates; confirmed absence of environment-specific training exclusion, and temporary remote stop. Requested author local guard and production/development tests.",
+        "evidence": [
+          "docs/game029/QA/independent/practice-production-01/source-manifest.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game029/QA/independent/practice-production-01/source-manifest.json",
+          "resolved": "docs/game029/QA/independent/practice-production-01/source-manifest.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/practice-production-01/src_analytics_runtime.ts.txt",
+          "resolved": "docs/game029/QA/independent/practice-production-01/src_analytics_runtime.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/practice-production-01/src_core_TelemetryService.ts.txt",
+          "resolved": "docs/game029/QA/independent/practice-production-01/src_core_TelemetryService.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/practice-production-01/src_games_game029_main.ts.txt",
+          "resolved": "docs/game029/QA/independent/practice-production-01/src_games_game029_main.ts.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T17:54:52.414607+00:00",
+      "game_id": "game026",
+      "finding_id": "valid-json-memory-fallback",
+      "checkpoint": "B",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "PRODUCT_BUG": 0.86,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.14,
+          "TEST_INFRA_BUG": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.89
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "HUMAN_FEEL_TEST": 0,
+          "NO_FURTHER_EVIDENCE": 0,
+          "AUTOMATED_TEST": 0.14,
+          "SCREENSHOT_REVIEW": 0,
+          "CODE_INSPECTION": 0.86,
+          "LIVE_INTERACTION": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.59
+      },
+      "input_tokens": 1530,
+      "output_tokens": 215,
+      "cost_usd": 6.426e-05,
+      "latency_seconds": 0.2961776450028992,
+      "codex_review_recorded_at": "2026-10-07T17:59:38.960772+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game026/QA/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        },
+        {
+          "path": "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The actual test changes backend from a valid saved Race to syntactically valid but invalid game JSON after SaveStore.write seeded current memory. Frozen read branch directly returns restore(JSON.parse(raw)), including null, instead of falling through to memory. The test expectation matches explicit corruption/memory fallback instructions. This is production-class storage logic with synthetic corruption, not a badfixture; source-only scope does not demonstrate loss in a live in-progress UI or a frequent/reproducible end-user critical path. Requires fallback and memoryOnly latch for semantically invalid backend, then meaningful corrupted→later-stale validation.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "docs/game026/QA/finding-valid-json-memory/state.json",
+          "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt",
+          "docs/game026/QA/unit-20261007T175418/output.txt",
+          "docs/game026/QA/verified-20261007T175923/unit.txt",
+          "docs/game026/SOURCE_FREEZE.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Independent branch inspection confirmed nullable restore early return bypassed memory; invalid read now latches memoryOnly and26targets pass including failed-write shortcircuit companion fix",
+        "evidence": [
+          "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt",
+          "src/games/game026/save.ts",
+          "docs/game026/QA/verified-20261007T175923/unit.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt",
+          "resolved": "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/finding-valid-json-memory/state.json",
+          "resolved": "docs/game026/QA/finding-valid-json-memory/state.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/unit-20261007T175418/output.txt",
+          "resolved": "docs/game026/QA/unit-20261007T175418/output.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/verified-20261007T175923/unit.txt",
+          "resolved": "docs/game026/QA/verified-20261007T175923/unit.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/SOURCE_FREEZE.json",
+          "resolved": "docs/game026/SOURCE_FREEZE.json",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game026/save.ts",
+          "resolved": "src/games/game026/save.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T17:58:17.955694+00:00",
+      "game_id": "game026",
+      "finding_id": "denied-write-retry-01",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.01,
+          "TEST_INFRA_BUG": 0,
+          "PRODUCT_BUG": 0.99
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.87
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0.04,
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0.07,
+          "SCREENSHOT_REVIEW": 0,
+          "AUTOMATED_TEST": 0.2,
+          "CODE_INSPECTION": 0.68,
+          "UNKNOWN": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.61
+      },
+      "input_tokens": 1507,
+      "output_tokens": 215,
+      "cost_usd": 6.3294e-05,
+      "latency_seconds": 0.3653157980006654,
+      "codex_review_recorded_at": "2026-10-07T17:59:17.470865+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "write records memoryOnly after a storage exception but never checks it before later setItem; source is enough to establish repeated backend attempts. Local play continues via memory, so not a current major release risk. A guarded write and a denied-backend call-count regression are required.",
+        "reviewer": "root independent source inspection before hidden Shadow record; no answers inspected",
+        "evidence": [
+          "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Inspected SaveStore write/read exception flow; requested scoped memoryOnly short circuit and backend-throws-once regression from author.",
+        "evidence": [
+          "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt",
+          "resolved": "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T17:59:02.244077+00:00",
+      "game_id": "game029",
+      "finding_id": "phone-pause-after-drag-01",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "TEST_INFRA_BUG",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0.61,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.27,
+          "PRODUCT_BUG": 0.12
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.89
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "CODE_INSPECTION": 0.46,
+          "NO_FURTHER_EVIDENCE": 0,
+          "LIVE_INTERACTION": 0.08,
+          "AUTOMATED_TEST": 0.44,
+          "HUMAN_FEEL_TEST": 0,
+          "UNKNOWN": 0,
+          "SCREENSHOT_REVIEW": 0.02
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.51
+      },
+      "input_tokens": 1757,
+      "output_tokens": 217,
+      "cost_usd": 7.3794e-05,
+      "latency_seconds": 0.3012561280011141,
+      "codex_review_recorded_at": "2026-10-07T18:21:55.704153+00:00",
+      "final_root_cause": "TEST_INFRA_BUG",
+      "canonical_log": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "New bounded diagnostic narrows initial UNKNOWN: usual post-drag locator.tap produces trusted down/up on the correct enabled pause target in .2ms but no click, no default prevention, hiddenfalse/focustrue/scroll0. Delivered .2ms gesture therefore never reaches game onclick. One fresh deliberately held native CDP touch (requested80ms, actually116.2ms down/up) at identical coordinates produces trusted click and pauses depth74 stable500ms. Current product handler/gate functions with delivered native click; scoped collector gesture correction supported, no game-input rewrite warranted. Exact browser internal reason for compatibility-click suppression and real hardware behavior remain unproven.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+          "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "/workspace/batch-two-author-029/src/games/game029/input.ts",
+          "docs/game029/QA/independent/phone-pause-01/preliminary-blind-judgment.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "LIVE_INTERACTION",
+        "description": "Independently analyzed sole authorized author native diagnostic trace: same water drag and .2ms tap fails to emit click; one fresh116.2ms measured CDP native press emits click and freezes depth500ms. No product source change between operations.",
+        "evidence": [
+          "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-029/src/games/game029/input.ts",
+          "resolved": "/workspace/batch-two-author-029/src/games/game029/input.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "resolved": "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/before",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/before",
+          "kind": "directory"
+        },
+        {
+          "reference": "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-observation.json",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-observation.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-viewport.png",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-viewport.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/phone-pause-01/preliminary-blind-judgment.json",
+          "resolved": "docs/game029/QA/independent/phone-pause-01/preliminary-blind-judgment.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game029/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": true,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:00:32.607924+00:00",
+      "game_id": "game028",
+      "finding_id": "game028-semantic-corruption-memory-reset",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "PRODUCT_BUG": 0.99,
+          "UNKNOWN": 0.01,
+          "TEST_INFRA_BUG": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "CODE_INSPECTION": 0.25,
+          "UNKNOWN": 0,
+          "AUTOMATED_TEST": 0.75,
+          "LIVE_INTERACTION": 0,
+          "NO_FURTHER_EVIDENCE": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "SCREENSHOT_REVIEW": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.59
+      },
+      "input_tokens": 1586,
+      "output_tokens": 215,
+      "cost_usd": 6.6612e-05,
+      "latency_seconds": 0.43689264300337527,
+      "codex_review_recorded_at": "2026-10-07T18:01:59.924193+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Independent synthetic backend confirms seven current wins become zero after semantically invalid JSON, then one stale backend win replaces memory; read overwrites memory with parser fresh fallback.",
+        "reviewer": "root independent source and synthetic backend probe; no Jev answers inspected",
+        "evidence": [
+          "docs/game028/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game028/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Bundled the actual unmodified source class and exercised current snapshot → semantic corruption → older valid backend, without browser or production data.",
+        "evidence": [
+          "docs/game028/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game028/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game028/QA/independent/semantic-storage-01/probe.json",
+          "resolved": "docs/game028/QA/independent/semantic-storage-01/probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "resolved": "docs/game028/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/semantic-storage-01/source.json",
+          "resolved": "docs/game028/QA/independent/semantic-storage-01/source.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:00:33.115521+00:00",
+      "game_id": "game029",
+      "finding_id": "game029-semantic-corruption-memory-not-latched",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.01,
+          "PRODUCT_BUG": 0.99
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.87
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "CODE_INSPECTION": 0.54,
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0,
+          "AUTOMATED_TEST": 0.45,
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "UNKNOWN": 0,
+          "SCREENSHOT_REVIEW": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.48
+      },
+      "input_tokens": 1567,
+      "output_tokens": 215,
+      "cost_usd": 6.5814e-05,
+      "latency_seconds": 0.2831554240001424,
+      "codex_review_recorded_at": "2026-10-07T18:01:59.978130+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Independent synthetic backend confirms nine current BEST remains nine after invalid JSON but is then overwritten by stale valid BEST one; semantic rejection does not latch memoryOnly.",
+        "reviewer": "root independent source and synthetic backend probe; no Jev answers inspected",
+        "evidence": [
+          "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game029/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Bundled the actual unmodified source class and exercised current snapshot → semantic corruption → older valid backend, without browser or production data.",
+        "evidence": [
+          "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game029/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game029/QA/independent/semantic-storage-01/probe.json",
+          "resolved": "docs/game029/QA/independent/semantic-storage-01/probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "resolved": "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/semantic-storage-01/source.json",
+          "resolved": "docs/game029/QA/independent/semantic-storage-01/source.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:00:53.860936+00:00",
+      "game_id": "game028",
+      "finding_id": "028-native-scroll-measurement",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "CONTENT_OR_SPEC_ISSUE": 0.01,
+          "PRODUCT_BUG": 0.06,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "UNKNOWN": 0.59,
+          "TEST_INFRA_BUG": 0.34
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0.02,
+          "SCREENSHOT_REVIEW": 0.11,
+          "CODE_INSPECTION": 0.09,
+          "AUTOMATED_TEST": 0.78,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.39
+      },
+      "input_tokens": 1671,
+      "output_tokens": 213,
+      "cost_usd": 7.0182e-05,
+      "latency_seconds": 0.30175332900034846,
+      "codex_review_recorded_at": "2026-10-07T18:08:29.673208+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Own app min-height100dvh reserves the whole viewport before the existing64px analytics settings row appended to body. The bounded native diagnostic measured body1064 at viewport1000 both before and after correct consent dismissal. Closed dialog has zero geometry. This violates requested no realtime page scroll, but the actual court spans y131..783.8125 and remains entirely visible, so no demonstrated critical play blockage. Wrong denial selector is a separate collector correction and does not explain the remaining64px after proper denial. Scope-own layout budget should account for the existing row; do not alter shared Analytics UI.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json",
+          "/workspace/batch-two-author-028/src/games/game028/style.css",
+          "/workspace/batch-two-author-028/src/analytics/consentUI.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared own viewport min-height with unchanged settings host append/block CSS and actual before/after denial DOM geometry.",
+        "evidence": [
+          "/workspace/batch-two-author-028/src/analytics/consentUI.ts",
+          "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json",
+          "resolved": "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-028/src/analytics/consentUI.ts",
+          "resolved": "/workspace/batch-two-author-028/src/analytics/consentUI.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-028/src/games/game028/style.css",
+          "resolved": "/workspace/batch-two-author-028/src/games/game028/style.css",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-BiMqlmti-20261008-r02/desktop-failure.png",
+          "resolved": "docs/game028/QA/native-BiMqlmti-20261008-r02/desktop-failure.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-BiMqlmti-20261008-r02/report.json",
+          "resolved": "docs/game028/QA/native-BiMqlmti-20261008-r02/report.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:06:22.817591+00:00",
+      "game_id": "game030",
+      "finding_id": "passive-stage-selector-save",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "UNKNOWN": 0.4,
+          "PRODUCT_BUG": 0.6,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "TEST_INFRA_BUG": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.85
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "LIVE_INTERACTION",
+        "probabilities": {
+          "UNKNOWN": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.23,
+          "SCREENSHOT_REVIEW": 0,
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "CODE_INSPECTION": 0.04,
+          "LIVE_INTERACTION": 0.72
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.34
+      },
+      "input_tokens": 1636,
+      "output_tokens": 217,
+      "cost_usd": 6.8712e-05,
+      "latency_seconds": 0.40658449500188,
+      "codex_review_recorded_at": "2026-10-07T18:08:27.561589+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Initial loaded available continuation remains in memory while active=false. Passive stage selector called save with current() null, so stored continuation disappeared without choosing a new stage. Root source inspection authorized save(active?current():available). Explicit abandon already clears available, so intentional quitting still persists null. Game remains playable; continuation loss judged not release-blocking major risk.",
+        "reviewer": "/root independent blind source inspection",
+        "evidence": [
+          "src/games/game030/main.ts current/save/selectStages",
+          "docs/game030/QA/finding-passive-selection-before/main.ts.txt",
+          "docs/game030/QA/finding-passive-selection-before/reproduction.txt",
+          "docs/game030/QA/finding-passive-selection-after/reproduction.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Root inspected production source blind before scoped repair; author then executed exact production current/save functions with a synthetic valid SaveStore snapshot before and after, checked TypeScript and compiled build. Native passive browse/reload remains to be verified.",
+        "evidence": [
+          "docs/game030/QA/finding-passive-selection-before/main.ts.txt",
+          "docs/game030/QA/finding-passive-selection-after/reproduction.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game030/QA/finding-passive-selection-after/reproduction.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-passive-selection-after/reproduction.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-passive-selection-before/main.ts.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-passive-selection-before/main.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-passive-selection-before/reproduction.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-passive-selection-before/reproduction.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game030/main.ts current/save/selectStages",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "descriptive_source_reference"
+        },
+        {
+          "reference": "src/games/game030/main.ts save/current/selectStages",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "descriptive_source_reference"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": false,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:07:41.105481+00:00",
+      "game_id": "game028",
+      "finding_id": "game028-racket-render-model-width",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "VISUAL_OR_FEEL_ISSUE",
+        "probabilities": {
+          "UNKNOWN": 0.12,
+          "PRODUCT_BUG": 0.41,
+          "VISUAL_OR_FEEL_ISSUE": 0.39999999999999997,
+          "TEST_INFRA_BUG": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0.07
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.82
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "SCREENSHOT_REVIEW",
+        "probabilities": {
+          "CODE_INSPECTION": 0.13,
+          "UNKNOWN": 0,
+          "AUTOMATED_TEST": 0.22,
+          "NO_FURTHER_EVIDENCE": 0,
+          "LIVE_INTERACTION": 0.19,
+          "SCREENSHOT_REVIEW": 0.46,
+          "HUMAN_FEEL_TEST": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.45
+      },
+      "input_tokens": 1740,
+      "output_tokens": 222,
+      "cost_usd": 7.308e-05,
+      "latency_seconds": 0.36698052100109635,
+      "codex_review_recorded_at": "2026-10-07T18:09:46.940381+00:00",
+      "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+      "canonical_log": "docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Collision tolerance functions but its accepted x interval is wider than the visible paddle and ball, so contact feedback misrepresents placement. Source-derived valid contact at x .12,y .86,z .08 has69.108designpx separation vs racket~41.62+ball12, proving a15.49px horizontal gap. Not a gameplay crash or critical operation failure; scope rendering to existing model/projection instead of narrowing easy-play physics solely for fixture. Net hardcoded drawn height also differs from model projected plane; same renderer correspondence issue, observed after API and recorded separately without retroactively editing submitted state.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "docs/game028/QA/independent/racket-render-01/source.json",
+          "docs/game028/QA/independent/racket-render-01/projection-probe.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Evaluated valid contact predicates and projected silhouette bounds with frozen renderer constants; found horizontal nonoverlap despite accepted collision. No browser was used.",
+        "evidence": [
+          "docs/game028/QA/independent/racket-render-01/projection-probe.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game028/QA/independent/racket-render-01/projection-probe.json",
+          "resolved": "docs/game028/QA/independent/racket-render-01/projection-probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/racket-render-01/source.json",
+          "resolved": "docs/game028/QA/independent/racket-render-01/source.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/racket-render-01/src_games_game028_main.ts.txt",
+          "resolved": "docs/game028/QA/independent/racket-render-01/src_games_game028_main.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/racket-render-01/src_games_game028_model.ts.txt",
+          "resolved": "docs/game028/QA/independent/racket-render-01/src_games_game028_model.ts.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:10:03.034540+00:00",
+      "game_id": "game026",
+      "finding_id": "bottom-overlap-marker-clipping",
+      "checkpoint": "D",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0.08,
+          "UNKNOWN": 0,
+          "TEST_INFRA_BUG": 0,
+          "PRODUCT_BUG": 0.92,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "SCREENSHOT_REVIEW": 0.09,
+          "UNKNOWN": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.63,
+          "LIVE_INTERACTION": 0,
+          "CODE_INSPECTION": 0.27
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.46
+      },
+      "input_tokens": 1638,
+      "output_tokens": 215,
+      "cost_usd": 6.8796e-05,
+      "latency_seconds": 0.38781853900218266,
+      "codex_review_recorded_at": "2026-10-07T18:17:13.493597+00:00",
+      "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+      "canonical_log": "docs/game026/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "copy_locations": [
+        {
+          "path": "docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        },
+        {
+          "path": "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Actual phone390 and landscape844 images show lower-row triangle/hex silhouettes clipped by the board bottom. Source max extent100.45 confirms geometry outside viewBox100. Players and turn still distinguishable via shape/body/sidebar; this is a minor polish/readability defect, not a critical unavailable operation. Check every cell/count/index to guarantee corrected shape and stroke remain within cell, then compare same actual viewport.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+          "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+          "/workspace/batch-two-author-026/docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+          "docs/game026/QA/verified-20261007T181042/unit.txt",
+          "docs/game026/QA/native-marker-fixed-20261007T181232/report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Independent observed currentcell1 lower-shape clipping, then exhaustive100cells×1..4markers geometry test verifies everyshape whollyinside itscell; native4 aftercaptures confirm sourcevariant without overwritingbefore",
+        "evidence": [
+          "tests/unit/game026.test.ts",
+          "docs/game026/QA/verified-20261007T181042/unit.txt",
+          "docs/game026/QA/native-marker-fixed-20261007T181232/report.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-026/docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+          "resolved": "/workspace/batch-two-author-026/docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+          "resolved": "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+          "resolved": "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+          "resolved": "docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+          "resolved": "docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+          "resolved": "docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/native-marker-fixed-20261007T181232/report.json",
+          "resolved": "docs/game026/QA/native-marker-fixed-20261007T181232/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/verified-20261007T181042/unit.txt",
+          "resolved": "docs/game026/QA/verified-20261007T181042/unit.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "tests/unit/game026.test.ts",
+          "resolved": "tests/unit/game026.test.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:10:38.462766+00:00",
+      "game_id": "game030",
+      "finding_id": "late-route-length-choice",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "CONTENT_OR_SPEC_ISSUE",
+        "probabilities": {
+          "CONTENT_OR_SPEC_ISSUE": 0.54,
+          "PRODUCT_BUG": 0.06,
+          "UNKNOWN": 0.08,
+          "TEST_INFRA_BUG": 0.04,
+          "VISUAL_OR_FEEL_ISSUE": 0.27
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.82
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "HUMAN_FEEL_TEST",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "HUMAN_FEEL_TEST": 0.33,
+          "AUTOMATED_TEST": 0.19,
+          "SCREENSHOT_REVIEW": 0.06,
+          "CODE_INSPECTION": 0.17,
+          "LIVE_INTERACTION": 0.24,
+          "UNKNOWN": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.29
+      },
+      "input_tokens": 1626,
+      "output_tokens": 220,
+      "cost_usd": 6.8292e-05,
+      "latency_seconds": 0.4347933099998045,
+      "codex_review_recorded_at": "2026-10-07T18:15:46.322777+00:00",
+      "final_root_cause": "CONTENT_OR_SPEC_ISSUE",
+      "canonical_log": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Original late13/14/18/20 primary and alternate monotone rectilinear fixtures had equal Manhattan length, while the user requires a genuine narrow-short versus wide-long choice. Root approved real diagonal primary paths, not artificial detour punishment. Revised four pairs differ by more than30 world units and both preserve +4 clearance; full35 model checks pass. Live phone finger input not yet measured; subjective route-choice feel remains pending.",
+        "reviewer": "/root independent blind source and coordinate arithmetic",
+        "evidence": [
+          "docs/game030/QA/finding-route-choice-before/Levels.ts.txt",
+          "docs/game030/QA/finding-route-choice-after/lengths.json",
+          "docs/game030/QA/finding-route-choice-after/model.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Verify actual primary/alternate Euclidean lengths, expanded obstacle clearance+4, >=70 budget margin, 240 bounded finger deviations and20dense pointer sample routes. Live viewport verification still queued.",
+        "evidence": [
+          "docs/game030/QA/finding-route-choice-after/lengths.json",
+          "docs/game030/QA/finding-route-choice-after/model.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game030/QA/finding-route-choice-after/lengths.json",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-route-choice-after/lengths.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-route-choice-after/model.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-route-choice-after/model.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-route-choice-before/Levels.ts.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-route-choice-before/Levels.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game030/Levels.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/Levels.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": false,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:13:04.936408+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-semantic-storage-rejection-not-latched",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "PRODUCT_BUG": 0.96,
+          "UNKNOWN": 0.04,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "TEST_INFRA_BUG": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.9
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.89,
+          "LIVE_INTERACTION": 0.01,
+          "UNKNOWN": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "CODE_INSPECTION": 0.1
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.62
+      },
+      "input_tokens": 1599,
+      "output_tokens": 215,
+      "cost_usd": 6.7158e-05,
+      "latency_seconds": 0.3941265610010305,
+      "codex_review_recorded_at": "2026-10-07T18:15:11.519897+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Rejected initial backend data returns blank games0 without retaining a memory fallback; the next read loads older games4. Current main appears to read at initialization only, so no measured current live gameplay failure; enforce the requested stable memory fallback in the local class.",
+        "reviewer": "root independent source and actual synthetic backend probe, no Jev answers inspected",
+        "evidence": [
+          "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game027/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Executed unmodified PoolStore invalid semantic backend → later stale valid save, confirming two backend reads and fallback replacement.",
+        "evidence": [
+          "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "docs/game027/QA/independent/semantic-storage-01/probe.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game027/QA/independent/semantic-storage-01/probe.json",
+          "resolved": "docs/game027/QA/independent/semantic-storage-01/probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "resolved": "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:13:32.321236+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-phone-paused-title-tap",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0.02,
+          "PRODUCT_BUG": 0.96,
+          "UNKNOWN": 0.02,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "CODE_INSPECTION": 0.46,
+          "SCREENSHOT_REVIEW": 0.1,
+          "AUTOMATED_TEST": 0.32,
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0.11,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0.01
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.63
+      },
+      "input_tokens": 1679,
+      "output_tokens": 215,
+      "cost_usd": 7.0518e-05,
+      "latency_seconds": 0.3323641669994686,
+      "codex_review_recorded_at": "2026-10-07T18:19:11.276296+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game027/QA/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        },
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Actual phone FAILED image shows unchanged Analytics settings row spanning y~526..590 over own pause dialog title button. Dialog enabled title button exists; native tap timeout/interception matches overlay, not missing handler. Own app short content puts appended relative z10000 settings host inside middleviewport; own fixed dialog z20 overlaps it. Existing Analytics UI is out of scope; reserve its flow below playing viewport through own app layout, and verify menu actions remain reachable in phone/small/landscape. Important title/exit control blocked in paused state if unresolved.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+          "/workspace/batch-two-author-027/src/games/game027/style.css",
+          "/workspace/batch-two-author-027/src/analytics/consentUI.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared actual overlapping viewport with own short app layout/fixed menu z20 and existing appended settings host relative z10000.",
+        "evidence": [
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "/workspace/batch-two-author-027/src/analytics/consentUI.ts"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/src/analytics/consentUI.ts",
+          "resolved": "/workspace/batch-two-author-027/src/analytics/consentUI.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/src/games/game027/style.css",
+          "resolved": "/workspace/batch-two-author-027/src/games/game027/style.css",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "resolved": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+          "resolved": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/source-before-native/manifest.json",
+          "resolved": "docs/game027/QA/source-before-native/manifest.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:13:32.726555+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-phone-ball-numerals",
+      "checkpoint": "D",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "VISUAL_OR_FEEL_ISSUE",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0.7,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.01,
+          "PRODUCT_BUG": 0.29
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.8
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "SCREENSHOT_REVIEW",
+        "probabilities": {
+          "LIVE_INTERACTION": 0.03,
+          "SCREENSHOT_REVIEW": 0.87,
+          "CODE_INSPECTION": 0.03,
+          "UNKNOWN": 0,
+          "AUTOMATED_TEST": 0.07,
+          "NO_FURTHER_EVIDENCE": 0,
+          "HUMAN_FEEL_TEST": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.55
+      },
+      "input_tokens": 1660,
+      "output_tokens": 222,
+      "cost_usd": 6.972e-05,
+      "latency_seconds": 0.2689296239987016,
+      "codex_review_recorded_at": "2026-10-07T18:19:11.332883+00:00",
+      "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+      "canonical_log": "docs/game027/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "copy_locations": [
+        {
+          "path": "docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        },
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Actual390 normal rack image gives whole table but16 ball group occupies only~40px wide; per-ball white number inset renders ~3.6px-high text (draw10designpx times~.36). Distinguishing8/legal solid vsstripe after rackspread is core rule information, so this is not decorative small-text concern. Whole-field visibility must be preserved while increasing object/readable ID silhouette or providing usable close/detail cues. Original reference depicts substantially legible ball IDs and larger table objects; no direct UI copy requested.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+          "/workspace/batch-two-author-027/src/games/game027/main.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "SCREENSHOT_REVIEW",
+        "description": "Viewed real normal rack phone viewport and inspected draw font/ball dimensions and complete table composition against inherited reference; meaningful numeric IDs are too small.",
+        "evidence": [
+          "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/src/games/game027/main.ts",
+          "resolved": "/workspace/batch-two-author-027/src/games/game027/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+          "resolved": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+          "resolved": "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/source-before-native/src__games__game027__main.ts.txt",
+          "resolved": "docs/game027/QA/source-before-native/src__games__game027__main.ts.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:15:00.024125+00:00",
+      "game_id": "game028",
+      "finding_id": "028-save-terminal-invariants",
+      "checkpoint": "B",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "UNKNOWN": 0.02,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "PRODUCT_BUG": 0.98,
+          "TEST_INFRA_BUG": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "UNKNOWN": 0,
+          "CODE_INSPECTION": 0.04,
+          "LIVE_INTERACTION": 0.33,
+          "AUTOMATED_TEST": 0.63,
+          "SCREENSHOT_REVIEW": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "NO_FURTHER_EVIDENCE": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.63
+      },
+      "input_tokens": 1720,
+      "output_tokens": 215,
+      "cost_usd": 7.224e-05,
+      "latency_seconds": 0.3658421539948904,
+      "codex_review_recorded_at": "2026-10-07T18:33:21.071331+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 3,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The before-validator permits impossible zero-score terminal winnerless/unscored states and inactive-reported live snapshots. These violate the saved-state model contract and could produce incoherent terminal restoration; evidence is synthetic corruption, not a measured live production failure. Require consistent real mode/deuce winner, scored/status and active/ledger semantics while retaining interrupted active-over/unreported recovery.",
+        "reviewer": "root source and author direct production-validator probe inspection; Jev answers not inspected",
+        "evidence": [
+          "docs/game028/QA/findings/terminal-invariants-before",
+          "src/games/game028/save.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Reviewed original source and direct production-parser acceptances of impossible states, required invalid-state and genuine interrupted terminal recovery regressions.",
+        "evidence": [
+          "docs/game028/QA/findings/terminal-invariants-before"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game028/QA/findings/terminal-invariants-before",
+          "resolved": "docs/game028/QA/findings/terminal-invariants-before",
+          "kind": "directory"
+        },
+        {
+          "reference": "docs/game028/QA/findings/terminal-invariants-before/probe.json",
+          "resolved": "docs/game028/QA/findings/terminal-invariants-before/probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/findings/terminal-invariants-before/save.ts.txt",
+          "resolved": "docs/game028/QA/findings/terminal-invariants-before/save.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game028/main.ts",
+          "resolved": "src/games/game028/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game028/save.ts",
+          "resolved": "src/games/game028/save.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:15:11.736104+00:00",
+      "game_id": "game026",
+      "finding_id": "game026-independent-snapshot-observer-shape",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "UNKNOWN": 0.43,
+          "PRODUCT_BUG": 0.2,
+          "TEST_INFRA_BUG": 0.36,
+          "CONTENT_OR_SPEC_ISSUE": 0.01,
+          "VISUAL_OR_FEEL_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.89
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0,
+          "UNKNOWN": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "LIVE_INTERACTION": 0.01,
+          "AUTOMATED_TEST": 0.43,
+          "HUMAN_FEEL_TEST": 0,
+          "CODE_INSPECTION": 0.56
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.39
+      },
+      "input_tokens": 1591,
+      "output_tokens": 213,
+      "cost_usd": 6.6822e-05,
+      "latency_seconds": 0.27689478899992537,
+      "codex_review_recorded_at": "2026-10-07T18:15:28.015519+00:00",
+      "final_root_cause": "TEST_INFRA_BUG",
+      "canonical_log": "docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Saved active is documented/replayed history-based Saved, without players property. Production snapshot() serializes mode/history/pending/lastDie/local result/observer identities; restore derives Race players by replay. Collector wrongly assumed players serialized. Correct read-only observer to use visible participant data-position plus actual saved history/pending, leaving gameplay intact. This failure prevents reviewer evidence only, not user play.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+          "docs/game026/QA/independent/final-live-01/probe.mjs",
+          "docs/game026/QA/independent/final-live-01/report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read frozen Saved type and snapshot serializer; compared assumed active.players to actual history-only envelope and visible participant data-position emitted by render.",
+        "evidence": [
+          "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+          "/workspace/batch-two-author-026/src/games/game026/main.ts"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-026/src/games/game026/main.ts",
+          "resolved": "/workspace/batch-two-author-026/src/games/game026/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/independent/final-live-01/probe.mjs",
+          "resolved": "docs/game026/QA/independent/final-live-01/probe.mjs",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/independent/final-live-01/report.json",
+          "resolved": "docs/game026/QA/independent/final-live-01/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+          "resolved": "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "unnecessary_schema_only_call_retained",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:19:27.773339+00:00",
+      "game_id": "game030",
+      "finding_id": "final-selection-return-state",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "PRODUCT_BUG": 1,
+          "UNKNOWN": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.84
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "LIVE_INTERACTION",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0.02,
+          "HUMAN_FEEL_TEST": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "LIVE_INTERACTION": 0.48,
+          "CODE_INSPECTION": 0.19,
+          "AUTOMATED_TEST": 0.31,
+          "UNKNOWN": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.63
+      },
+      "input_tokens": 1626,
+      "output_tokens": 217,
+      "cost_usd": 6.8292e-05,
+      "latency_seconds": 0.44825324400153477,
+      "codex_review_recorded_at": "2026-10-07T18:23:16.258801+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "line": 3,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Current source proves terminal result still has active=true, cleared=true and reported=true. Stage20 all-stages opens selection, whose back ignores cleared and enables playing tools. Move returns same, while rewind resets clearedfalse/path but leaves reportedtrue. Snapshot validation rejects cleared!=reported; later genuine reclear skips recording because reported remains true. This can turn a finished run into nonfunctional or unpersistable pseudo-playing state after an ordinary result navigation, so protect terminal state and preserve result return rather than permit old-run play. No actual20-clear browser occurrence claimed.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-before/main.ts.txt",
+          "/workspace/batch-two-author-030/src/games/game030/Route.ts",
+          "/workspace/batch-two-author-030/src/games/game030/Save.ts",
+          "docs/game030/QA/finding-final-selection-after/flow.txt",
+          "docs/game030/QA/finding-final-selection-after/check.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Followed resultMenu→selectStages→selection-back→playable/rewind across terminal flags and restore validation, confirming old completed run cannot safely become ordinary playing.",
+        "evidence": [
+          "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "/workspace/batch-two-author-030/src/games/game030/Save.ts"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-before/main.ts.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-before/main.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/Route.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/Route.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/Save.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/Save.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-final-selection-after/check.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-after/check.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-final-selection-after/flow.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-after/flow.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-final-selection-before/main.ts.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-before/main.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "src/games/game030/main.ts selectStages/resultMenu/rewind",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "descriptive_source_reference"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": false,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:25:05.764803+00:00",
+      "game_id": "shared",
+      "finding_id": "practice-origin-portal-production-navigation",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "CONTENT_OR_SPEC_ISSUE": 0.08,
+          "PRODUCT_BUG": 0.79,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "UNKNOWN": 0.13,
+          "TEST_INFRA_BUG": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.9
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "CODE_INSPECTION",
+        "probabilities": {
+          "CODE_INSPECTION": 0.5,
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "AUTOMATED_TEST": 0.33,
+          "UNKNOWN": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0.16
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.27
+      },
+      "input_tokens": 1646,
+      "output_tokens": 215,
+      "cost_usd": 6.9132e-05,
+      "latency_seconds": 0.4305076500022551,
+      "codex_review_recorded_at": "2026-10-07T18:32:42.069465+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "027 clears its training flag before unconditional navigation emission;028 unconditionally emits during practice. The existing service also automatically records page_exit, so individual menu guards alone do not guarantee full practice exclusion. Outbound traffic is currently stopped, but production-local debug/statistic history needs the same exclusion. A small opt-in event predicate leaves prior callers unchanged and blocks practice-origin automatic and explicit events for these new games.",
+        "reviewer": "root independent source guard inspection; model answers not inspected",
+        "evidence": [
+          "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+          "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+          "src/core/TelemetryService.ts",
+          "tests/unit/classic-telemetry.test.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Inspected original handlers plus TelemetryService pagehide observer; added optional game-supplied ignoreEvent predicate and regression covering practice navigation/page_exit/errors followed by normal recording.",
+        "evidence": [
+          "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+          "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+          "src/core/TelemetryService.ts",
+          "tests/unit/classic-telemetry.test.ts"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+          "resolved": "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+          "resolved": "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "src/core/TelemetryService.ts",
+          "resolved": "src/core/TelemetryService.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "tests/unit/classic-telemetry.test.ts",
+          "resolved": "tests/unit/classic-telemetry.test.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:26:12.151722+00:00",
+      "game_id": "game029",
+      "finding_id": "phone-pause-after-drag-01",
+      "checkpoint": "F",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "UNKNOWN": 0.76,
+          "TEST_INFRA_BUG": 0.06,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "PRODUCT_BUG": 0.18
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.87
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.36,
+          "NO_FURTHER_EVIDENCE": 0,
+          "UNKNOWN": 0,
+          "CODE_INSPECTION": 0.34,
+          "LIVE_INTERACTION": 0.29,
+          "SCREENSHOT_REVIEW": 0.01
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.63
+      },
+      "input_tokens": 1892,
+      "output_tokens": 213,
+      "cost_usd": 7.9464e-05,
+      "latency_seconds": 0.33853409799485235,
+      "codex_review_recorded_at": "2026-10-07T19:15:48.421753+00:00",
+      "final_root_cause": "UNKNOWN",
+      "canonical_log": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+          "line": 2
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "UNKNOWN",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "New first-after-drag held press measured100.5ms still has no click and times out30s. Prior successful later116.2ms press demonstrates the handler can work, but duration and tap order were confounded. Therefore previous duration-led collector diagnosis is insufficient and cannot classify product versus browser/collector cause. Preserve every observation, do not change product based on a missing click alone. Investigate first-postdrag event stream, touch identity/capture, hit target/disabled mutations and frame/scroll timing before another full run.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json",
+          "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before/tests/game029/native.mjs",
+          "docs/game029/QA/independent/phone-pause-01/final-after-diagnostic-judgment.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared new held-touch observer and raw100.5ms trace to unchanged static pause DOM render/handler/gate source and earlier first-versus-later touch evidence. No cause or product fix established; next needs one bounded richer native diagnostic.",
+        "evidence": [
+          "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before/tests/game029/native.mjs",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before/tests/game029/native.mjs",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "resolved": "/workspace/batch-two-author-029/src/games/game029/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before",
+          "kind": "directory"
+        },
+        {
+          "reference": "docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-viewport.png",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-viewport.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/phone-pause-01/final-after-diagnostic-judgment.json",
+          "resolved": "docs/game029/QA/independent/phone-pause-01/final-after-diagnostic-judgment.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+          "resolved": "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game029/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": true,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:26:35.847668+00:00",
+      "game_id": "game030",
+      "finding_id": "game030-stable-memory-fallback-contract",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "TEST_INFRA_BUG": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.02,
+          "PRODUCT_BUG": 0.98
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.9
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "AUTOMATED_TEST": 0.59,
+          "HUMAN_FEEL_TEST": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "LIVE_INTERACTION": 0,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0,
+          "CODE_INSPECTION": 0.41
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.69
+      },
+      "input_tokens": 1597,
+      "output_tokens": 215,
+      "cost_usd": 6.7074e-05,
+      "latency_seconds": 0.3212909959984245,
+      "codex_review_recorded_at": "2026-10-07T18:45:35.198450+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl",
+      "line": 1,
+      "copy_locations": [
+        {
+          "path": "docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl",
+          "line": 1
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Valid memory current clears2 is discarded on semantic reject, next read resurrects older clears1 with two backend accesses. Three denied writes still call backend three times after fallback. This violates the stable memory contract; current ordinary play corruption was not observed.",
+        "reviewer": "root independent before-source synthetic backend probe; hidden answers not inspected",
+        "evidence": [
+          "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+          "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Bundled unmodified Save.ts and exercised valid→semantic invalid→old backend and three denied writes; immutable results saved.",
+        "evidence": [
+          "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+          "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt",
+          "resolved": "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+          "resolved": "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:27:19.768847+00:00",
+      "game_id": "game030",
+      "finding_id": "plug-drawn-footprint-clearance",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "TEST_INFRA_BUG": 0,
+          "PRODUCT_BUG": 0.92,
+          "UNKNOWN": 0.02,
+          "CONTENT_OR_SPEC_ISSUE": 0.05,
+          "VISUAL_OR_FEEL_ISSUE": 0.01
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.81
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "SCREENSHOT_REVIEW",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0.05,
+          "AUTOMATED_TEST": 0.25,
+          "SCREENSHOT_REVIEW": 0.55,
+          "LIVE_INTERACTION": 0.07,
+          "UNKNOWN": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "CODE_INSPECTION": 0.07
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.49
+      },
+      "input_tokens": 1645,
+      "output_tokens": 217,
+      "cost_usd": 6.909e-05,
+      "latency_seconds": 0.30558551600552164,
+      "codex_review_recorded_at": "2026-10-07T18:32:59.453246+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "line": 4,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 4
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Axis-aligned SVG body halfwidth18 plus1stroke, top prongs22 plus.5stroke exceed center collider15. Example plug center16units from a vertical furniture edge passes the15-unit pad but drawn body/stroke overlaps it. This is a model/render correspondence defect in required swept footprint, though no critical blockage or impossible published level demonstrated. Keeping drawn readability and increasing conservative rectangular sweep padding is sensible;A25-unit square padding covers the max22.5-unit SVG/stroke extent and the3-unit cable halfwidth, leaving2.5 units extra at the top. Plug and cable swept union needs the larger footprint; do not describe25 as literally22.5+3. Because plug is translated without rotation, maxaxis padding is appropriate; no unsupported circular radius claim. Reverify every20 level+practice and tolerance/budget/late route advantage after any obstacle/route adjustments; snapshot old route compatibility must be considered.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+          "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+          "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "docs/game030/QA/finding-plug-footprint-after/model-final.txt",
+          "docs/game030/QA/finding-plug-footprint-after/lengths.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared SVG translated body/prong/stroke extents to closed-rectangle swept center padding and constructed16-unit vertical gap mismatch. Needs numerical all-stage route verification after scoped padding correction.",
+        "evidence": [
+          "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+          "/workspace/batch-two-author-030/game030.html"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/game030.html",
+          "resolved": "/workspace/batch-two-author-030/game030.html",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-plug-footprint-after/lengths.json",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-after/lengths.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-plug-footprint-after/model-final.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-after/model-final.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-plug-footprint-before/game030.html.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "game030.html plug SVG",
+          "resolved": "/workspace/batch-two-author-030/game030.html",
+          "kind": "descriptive_source_reference"
+        },
+        {
+          "reference": "src/games/game030/Geometry.ts CLEARANCE",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/Geometry.ts",
+          "kind": "descriptive_source_reference"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": false,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:42:20.355340+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-normal-terminal-qa-bound",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "PRODUCT_BUG": 0.04,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.77,
+          "TEST_INFRA_BUG": 0.19,
+          "VISUAL_OR_FEEL_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.88
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0,
+          "AUTOMATED_TEST": 0.49,
+          "CODE_INSPECTION": 0.39,
+          "SCREENSHOT_REVIEW": 0.02,
+          "UNKNOWN": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "LIVE_INTERACTION": 0.1
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.51
+      },
+      "input_tokens": 1845,
+      "output_tokens": 213,
+      "cost_usd": 7.749e-05,
+      "latency_seconds": 0.49809177099814406,
+      "codex_review_recorded_at": "2026-10-07T18:51:58.830167+00:00",
+      "final_root_cause": null,
+      "canonical_log": "docs/game027/QA/JEV_SHADOW.jsonl",
+      "line": 3,
+      "copy_locations": [
+        {
+          "path": "docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        },
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Independent source/progress inspection found collector deliberately rejects blocked straight pockets and repeats no-contact power0 shots. Reviewer record uses TEST_INFRA_ISSUE wording; mapped to actual helper enum TEST_INFRA_BUG without changing its meaning. Original full world/DOM unavailable; no product defect concluded.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "/workspace/batch-two-author-027/docs/game027/QA/FINDING_NORMAL_TERMINAL_BOUND.json",
+          "/workspace/batch-two-author-027/docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+          "/workspace/batch-two-author-027/docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Extracted collector geometry and legal cluster-contact fallback only, then verified new pure current-model rack reaches legal8 without foul in23shots; product source unchanged. Native terminal pending separate root grant.",
+        "evidence": [
+          "tests/game027/geometry.mjs",
+          "tests/unit/game027-qa-planner.test.ts",
+          "docs/game027/QA/planner-model-diagnostic-2026-10-07T18-51Z.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/FINDING_NORMAL_TERMINAL_BOUND.json",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/FINDING_NORMAL_TERMINAL_BOUND.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-027/docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt",
+          "resolved": "/workspace/batch-two-author-027/docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/FAILED.png",
+          "resolved": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/FAILED.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+          "resolved": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/report.json",
+          "resolved": "docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt",
+          "resolved": "docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game027/QA/planner-model-diagnostic-2026-10-07T18-51Z.txt",
+          "resolved": "docs/game027/QA/planner-model-diagnostic-2026-10-07T18-51Z.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "tests/game027/geometry.mjs",
+          "resolved": "tests/game027/geometry.mjs",
+          "kind": "file"
+        },
+        {
+          "reference": "tests/unit/game027-qa-planner.test.ts",
+          "resolved": "tests/unit/game027-qa-planner.test.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T18:52:22.102987+00:00",
+      "game_id": "game028",
+      "finding_id": "028-menu-touch-release",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "TEST_INFRA_BUG": 0.01,
+          "PRODUCT_BUG": 0.97,
+          "UNKNOWN": 0.02
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.81
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "LIVE_INTERACTION",
+        "probabilities": {
+          "CODE_INSPECTION": 0.28,
+          "AUTOMATED_TEST": 0.33,
+          "HUMAN_FEEL_TEST": 0,
+          "SCREENSHOT_REVIEW": 0,
+          "LIVE_INTERACTION": 0.37,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0.02
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.5
+      },
+      "input_tokens": 1599,
+      "output_tokens": 217,
+      "cost_usd": 6.7158e-05,
+      "latency_seconds": 0.47083265100081917,
+      "codex_review_recorded_at": "2026-10-07T18:55:25.830176+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 4,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 4
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 4
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Actual trusted same-target phone click follows normal pointerup and implicit lost capture. Source clears fresh press on all capture loss and rejects the subsequent physical click, preventing mobile menu entry. Preserve completed release only, keep true cancellation/unexpected loss/phase stale rejection. Original reviewer PRODUCT_ISSUE is normalized to allowed PRODUCT_BUG category for helper comparison.",
+        "reviewer": "batch_two_review blind actual native trace, current source and pure before-event probe; no Jev replies read",
+        "evidence": [
+          "docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+          "docs/game028/QA/independent/menu-touch-blind-original.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Exact production event binder down/up/lostcapture/click regression, cancellation and stale phase checks; next compiled mobile native confirmation.",
+        "evidence": [
+          "tests/unit/game028-save-input.test.ts",
+          "docs/game028/QA/unit-menu-controller.txt"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game028/QA/findings/menu-touch-release-before/input.ts",
+          "resolved": "docs/game028/QA/findings/menu-touch-release-before/input.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/independent/menu-touch-blind-original.json",
+          "resolved": "docs/game028/QA/independent/menu-touch-blind-original.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-Ck89HXbh-20261008-r04/phone-failure.png",
+          "resolved": "docs/game028/QA/native-Ck89HXbh-20261008-r04/phone-failure.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+          "resolved": "docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/unit-menu-controller.txt",
+          "resolved": "docs/game028/QA/unit-menu-controller.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "tests/unit/game028-save-input.test.ts",
+          "resolved": "tests/unit/game028-save-input.test.ts",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T19:03:59.937265+00:00",
+      "game_id": "game028",
+      "finding_id": "028-native-seed-restore",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "TEST_INFRA_BUG": 0.02,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "PRODUCT_BUG": 0.97,
+          "UNKNOWN": 0.01
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.8
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "LIVE_INTERACTION": 0,
+          "AUTOMATED_TEST": 0.52,
+          "NO_FURTHER_EVIDENCE": 0.01,
+          "SCREENSHOT_REVIEW": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "UNKNOWN": 0,
+          "CODE_INSPECTION": 0.47
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.76
+      },
+      "input_tokens": 1663,
+      "output_tokens": 215,
+      "cost_usd": 6.9846e-05,
+      "latency_seconds": 0.46730839899828425,
+      "codex_review_recorded_at": "2026-10-07T19:30:00.544842+00:00",
+      "final_root_cause": null,
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 5,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 5
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 5
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Scoped uint32 seed validator after frozen model/parser proof; real model highseed/endpoints and unchanged counter guard regressions; R07 compiled normal desktop/phone/small restore success, separate landscape failure held.",
+        "reviewer": "batch_two_review",
+        "evidence": [
+          "QA/independent/seed-restore-blind-original.json",
+          "QA/unit-uint32-restore.txt",
+          "QA/SOURCE_FREEZE_R07.json",
+          "QA/native-Cd29xNgj-20261008-r07/report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Scoped uint32 seed validator after frozen model/parser proof; real model highseed/endpoints and unchanged counter guard regressions; R07 compiled normal desktop/phone/small restore success, separate landscape failure held.",
+        "evidence": [
+          "QA/unit-uint32-restore.txt",
+          "QA/SOURCE_FREEZE_R07.json",
+          "QA/native-Cd29xNgj-20261008-r07/report.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "QA/SOURCE_FREEZE_R07.json",
+          "resolved": "docs/game028/QA/SOURCE_FREEZE_R07.json",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/independent/seed-restore-blind-original.json",
+          "resolved": "docs/game028/QA/independent/seed-restore-blind-original.json",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/native-Cd29xNgj-20261008-r07/report.json",
+          "resolved": "docs/game028/QA/native-Cd29xNgj-20261008-r07/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/unit-uint32-restore.txt",
+          "resolved": "docs/game028/QA/unit-uint32-restore.txt",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/findings/native-point-restore-before/seed-isolation-probe.json",
+          "resolved": "docs/game028/QA/findings/native-point-restore-before/seed-isolation-probe.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-BVq8nw0Y-20261008-r05/desktop-failure.png",
+          "resolved": "docs/game028/QA/native-BVq8nw0Y-20261008-r05/desktop-failure.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-BVq8nw0Y-20261008-r05/report.json",
+          "resolved": "docs/game028/QA/native-BVq8nw0Y-20261008-r05/report.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "exact_selected_match",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T19:20:10.844478+00:00",
+      "game_id": "game030",
+      "finding_id": "phone-hint-first-post-drag",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "UNKNOWN",
+        "probabilities": {
+          "PRODUCT_BUG": 0.16,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "UNKNOWN": 0.48,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "TEST_INFRA_BUG": 0.36
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.91
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "NO_FURTHER_EVIDENCE": 0,
+          "HUMAN_FEEL_TEST": 0,
+          "AUTOMATED_TEST": 0.41000000000000003,
+          "SCREENSHOT_REVIEW": 0,
+          "CODE_INSPECTION": 0.28,
+          "UNKNOWN": 0,
+          "LIVE_INTERACTION": 0.31
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.56
+      },
+      "input_tokens": 1843,
+      "output_tokens": 213,
+      "cost_usd": 7.7406e-05,
+      "latency_seconds": 0.3673857929970836,
+      "codex_review_recorded_at": "2026-10-07T19:31:28.346702+00:00",
+      "final_root_cause": "TEST_INFRA_BUG",
+      "canonical_log": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "line": 5,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 5
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Independently inspected actual controlled030 twofresh-context exactprefix pair, no Jev answers read: same correct enabled target at71.32,547.32 and first0.4ms tap botharms. Original lastdrag~61ms yields no click/hints0; only125ms added before finaltouchEnd (~184msdrag) yields trustedclick and exactlyonehint/visiblemarker with identicalsavedpoints. Product click gate never receives a click in failingarm. Supports collector dragdwell correction, no product input rewrite. Onepair and internalChromium suppression unknown; physicalhardware unperformed. Optionalhint failure has no observed progression/data-loss issue; fullphone releaseQA still required separately.",
+        "reviewer": "resume_review",
+        "evidence": [
+          "docs/game030/QA/independent/phone-hint-01/controlled-drag-dwell-later-disposition.json",
+          "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json",
+          "/workspace/batch-two-author-030/src/games/game030/main.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "LIVE_INTERACTION",
+        "description": "Authorized author controlled native twofresh-context firsthint pair inspected offline independently; only finaldrag125ms dwell intervention, no secondtap/retry/productedit. Historicalfailures retained.",
+        "evidence": [
+          "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "resolved": "/workspace/batch-two-author-030/src/games/game030/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/8592935b4152/2026-10-07T19-19-08-129Z/report.json",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/8592935b4152/2026-10-07T19-19-08-129Z/report.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-phone-hint-before/native-manifest.json",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-phone-hint-before/native-manifest.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-phone-hint-before/phone-failure.png",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-phone-hint-before/phone-failure.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/finding-phone-hint-before/src/games/game030/main.ts",
+          "resolved": "/workspace/batch-two-author-030/docs/game030/QA/finding-phone-hint-before/src/games/game030/main.ts",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game030/QA/independent/phone-hint-01/controlled-drag-dwell-later-disposition.json",
+          "resolved": "docs/game030/QA/independent/phone-hint-01/controlled-drag-dwell-later-disposition.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": false,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T19:24:56.440227+00:00",
+      "game_id": "game028",
+      "finding_id": "028-landscape-control-overlap",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "PRODUCT_BUG": 0.93,
+          "UNKNOWN": 0.07,
+          "TEST_INFRA_BUG": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.9
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "SCREENSHOT_REVIEW": 0.2,
+          "HUMAN_FEEL_TEST": 0,
+          "UNKNOWN": 0,
+          "LIVE_INTERACTION": 0.01,
+          "NO_FURTHER_EVIDENCE": 0,
+          "AUTOMATED_TEST": 0.41,
+          "CODE_INSPECTION": 0.38
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.82
+      },
+      "input_tokens": 1730,
+      "output_tokens": 215,
+      "cost_usd": 7.266e-05,
+      "latency_seconds": 0.4267003869972541,
+      "codex_review_recorded_at": "2026-10-07T19:30:00.605864+00:00",
+      "final_root_cause": null,
+      "canonical_log": "docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 6,
+      "copy_locations": [
+        {
+          "path": "docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 6
+        },
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 6
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "One exact frozen R07 computed geometry diagnostic and own CSS/source inspection; definitive250pxgrid with implicit760px row/780x760canvas established. Authorized definitecourt/minmaxrow scoped CSS repair, independent judgment before fix; actual after4 queued.",
+        "reviewer": "resume_review",
+        "evidence": [
+          "QA/independent/landscape-fit-blind-original.json",
+          "QA/diagnostic-landscape-Cd29xNgj-20261008/geometry.json",
+          "QA/findings/landscape-control-overlap-before/style.css",
+          "QA/SOURCE_FREEZE_R08.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "One exact frozen R07 computed geometry diagnostic and own CSS/source inspection; definitive250pxgrid with implicit760px row/780x760canvas established. Authorized definitecourt/minmaxrow scoped CSS repair, independent judgment before fix; actual after4 queued.",
+        "evidence": [
+          "QA/diagnostic-landscape-Cd29xNgj-20261008/geometry.json",
+          "QA/findings/landscape-control-overlap-before/style.css",
+          "QA/SOURCE_FREEZE_R08.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "QA/SOURCE_FREEZE_R08.json",
+          "resolved": "docs/game028/QA/SOURCE_FREEZE_R08.json",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/diagnostic-landscape-Cd29xNgj-20261008/geometry.json",
+          "resolved": "docs/game028/QA/diagnostic-landscape-Cd29xNgj-20261008/geometry.json",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/findings/landscape-control-overlap-before/style.css",
+          "resolved": "docs/game028/QA/findings/landscape-control-overlap-before/style.css",
+          "kind": "file"
+        },
+        {
+          "reference": "QA/independent/landscape-fit-blind-original.json",
+          "resolved": "docs/game028/QA/independent/landscape-fit-blind-original.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/findings/landscape-control-overlap-before/style.css",
+          "resolved": "docs/game028/QA/findings/landscape-control-overlap-before/style.css",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-Cd29xNgj-20261008-r07/landscape-failure.png",
+          "resolved": "docs/game028/QA/native-Cd29xNgj-20261008-r07/landscape-failure.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game028/QA/native-Cd29xNgj-20261008-r07/report.json",
+          "resolved": "docs/game028/QA/native-Cd29xNgj-20261008-r07/report.json",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    },
+    {
+      "timestamp": "2026-10-07T19:36:50.211732+00:00",
+      "game_id": "game029",
+      "finding_id": "landscape-water-field-clipping",
+      "checkpoint": "D",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "PRIMARY_CAUSE": {
+        "selected": "PRODUCT_BUG",
+        "probabilities": {
+          "UNKNOWN": 0.28,
+          "VISUAL_OR_FEEL_ISSUE": 0,
+          "CONTENT_OR_SPEC_ISSUE": 0,
+          "PRODUCT_BUG": 0.72,
+          "TEST_INFRA_BUG": 0
+        }
+      },
+      "CODEX_ACTION_REQUIRED": {
+        "noul": 0.85
+      },
+      "NEXT_EVIDENCE": {
+        "selected": "AUTOMATED_TEST",
+        "probabilities": {
+          "SCREENSHOT_REVIEW": 0.17,
+          "CODE_INSPECTION": 0.26,
+          "LIVE_INTERACTION": 0.05,
+          "AUTOMATED_TEST": 0.52,
+          "HUMAN_FEEL_TEST": 0,
+          "UNKNOWN": 0,
+          "NO_FURTHER_EVIDENCE": 0
+        }
+      },
+      "RELEASE_RISK_IF_UNRESOLVED": {
+        "noul": 0.61
+      },
+      "input_tokens": 1723,
+      "output_tokens": 215,
+      "cost_usd": 7.2366e-05,
+      "latency_seconds": 0.3931701960027567,
+      "codex_review_recorded_at": "2026-10-07T19:39:17.647802+00:00",
+      "final_root_cause": "PRODUCT_BUG",
+      "canonical_log": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+      "line": 3,
+      "copy_locations": [
+        {
+          "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+          "line": 3
+        }
+      ],
+      "copies_identical": true,
+      "valid_four_replies": true,
+      "availability_verified_from_preserved_metadata": true,
+      "valid_independent_annotation": true,
+      "valid_actual_action": true,
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Independent actualnormal844x390 screenshot and sole readonlynativegeometry run (before sourcefix, no Jev answers read) establish fullwater clip: scroll0, main764px withgridrows73/31/177/172/46/219/0; waterwrap y260.8–607.3/canvas264.8–542.3 versusviewportbottom390, body907/app843. Own shortlandscape grid spans all unboundedcontentrows, auto margins verticallycenter346.5h waterwrapper; HUD157h/notes195h inflate implicittracks. Hooknear96m belowviewport prevents following realtimeplay. Author4PASS is insufficient geometric coverage, not proof layoutworks. Own explicit viewportbudget/gridplacements/canvasaspect/44controls repair warranted; sharedsettings/physics/othergames unchanged.",
+        "reviewer": "resume_review",
+        "evidence": [
+          "docs/game029/QA/independent/landscape-field-01/landscape-winding.png",
+          "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json",
+          "docs/game029/QA/independent/landscape-field-01/style.css.before.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "LIVE_INTERACTION",
+        "description": "Independent reviewer one bounded frozen04 ordinary native casttoascending at844x390, captured normalviewport and readonly computedCSS/rect/scroll/control/hittest geometry; browserclosed, no game injection orCSSedit.",
+        "evidence": [
+          "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json"
+        ]
+      },
+      "human_judgment_present": false,
+      "agreement_recomputed": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass_recomputed": false,
+      "release_risk_miss_recomputed": false,
+      "stored_comparisons_consistent": true,
+      "evidence_references": [
+        {
+          "reference": "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json",
+          "resolved": "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/landscape-field-01/landscape-winding.png",
+          "resolved": "docs/game029/QA/independent/landscape-field-01/landscape-winding.png",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/landscape-field-01/manifest.json",
+          "resolved": "docs/game029/QA/independent/landscape-field-01/manifest.json",
+          "kind": "file"
+        },
+        {
+          "reference": "docs/game029/QA/independent/landscape-field-01/style.css.before.txt",
+          "resolved": "docs/game029/QA/independent/landscape-field-01/style.css.before.txt",
+          "kind": "file"
+        }
+      ],
+      "next_evidence_interpretation": "different_choice_not_an_error_by_itself; Jev-first-method counterfactual not tested",
+      "api_scope": "observed_finding_routing",
+      "canonical_expected_path_after_identical_copy": "docs/game029/QA/JEV_SHADOW.jsonl",
+      "canonical_root_copy_present_at_audit": true,
+      "explicit_jev_routing_adoption_recorded": null,
+      "adoption_interpretation": "actual action method/description and evidence are recorded; no field proves Jev recommendation caused that choice; independent routing was required"
+    }
+  ],
+  "conflicts": [],
+  "invalid_rows": [],
+  "unresolved_evidence_references": [],
+  "methodological_limits": [
+    "Comparison target is independently recorded Codex judgment, not universal or human ground truth.",
+    "All28 action judgments are true and noul >=.8; zero low-action cases means zero observed false passes cannot validate safe review skipping.",
+    "Original C and F judgment chronology for029pause remains unchanged; later single-pair controlled drag timing disposition is a separate evidence record.",
+    "NEXT_EVIDENCE mismatch alone does not establish bad routing. Alternative suggestions were not prospectively tested against independent-first methods or time saved.",
+    "A record saying blind or jev_answers_read=false is retained testimony; this audit has no complete original tool transcript proving every read order.",
+    "No author human enjoyment or physical phone assessment is established by these API records.",
+    "Native usage/cost fields are reported data, not estimated Codex costs or development savings.",
+    "Audit is complete for28 records preserved at this timestamp; a later genuinely new finding requires a later snapshot, never retroactive prior-use claims."
+  ],
+  "protocol_limitations": [
+    {
+      "id": "026_schema_only_unnecessary_call",
+      "evidence": "docs/game026/QA/independent/final-live-01/CALL_SCOPE_DEVIATION.json",
+      "summary": "One actual API request on direct observer JSON schema mismatch was unnecessary under the explicit schema-only exclusion; retained and counted, not called compliant finding routing."
+    },
+    {
+      "id": "029_required_result_fields_fixed_before_shadow",
+      "evidence": "/workspace/batch-two-author-029/docs/game029/QA/PROTOCOL_LIMITATIONS.md",
+      "canonical_expected_path": "docs/game029/QA/PROTOCOL_LIMITATIONS.md",
+      "summary": "Recorded omission of max depth and rarest object was fixed before contemporaneous Shadow and complete immutable before capture. Zero API calls for that finding; no retrospective call or reconstructed before claimed."
+    },
+    {
+      "id": "historical_failure_capture_gaps",
+      "evidence": [
+        "docs/game028/QA/JEV_SHADOW.jsonl",
+        "docs/game027/QA/JEV_SHADOW.jsonl",
+        "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl"
+      ],
+      "summary": "Original028 no-return exact count,027 first60shot fullworld/DOM,028 before-reload snapshot and030 firsthint precise duration/hittest were incompletely retained. Later richer collectors and diagnostics do not replace missing originals."
+    },
+    {
+      "id": "029_pause_early_causal_overstatement",
+      "evidence": [
+        "docs/game029/QA/independent/phone-pause-01/final-after-diagnostic-judgment.json",
+        "docs/game029/QA/independent/phone-pause-01/new-held-touch-F-blind-judgment.json",
+        "docs/game029/QA/independent/phone-pause-01/controlled-drag-dwell-later-disposition.json"
+      ],
+      "summary": "Early duration-only TEST_INFRA explanation confounded tap order/duration. New held first tap failed; F preserved UNKNOWN/risktrue. Later one pair changes only drag dwell and supports collector timing cause with Chromium/physical-hardware limits."
+    }
+  ],
+  "codex_time_token_savings": null,
+  "human_fun_verdict": null
+}

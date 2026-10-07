@@ -1,0 +1,68 @@
+{
+  "final_native_run": "docs/game030/QA/255b8090f7f0/2026-10-07T19-39-55-736Z",
+  "report_sha256": "f5d9bee31581f9abae04ade6810fbf5ec175f09b7b9016bd29e23ef66dd27014",
+  "freeze": "docs/game030/QA/SOURCE_FREEZE_FINAL_NATIVE_MEASURED.json",
+  "post_run_freeze_all_hashes_match": true,
+  "runtime": "game030-COBvQ1ht.js",
+  "source_hash": "255b8090f7f0c49fbbedced5201ad5ffeca8b3cd021b97a454123a5e4685efde",
+  "checks": 78,
+  "screenshots": 50,
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1365,
+      "height": 1000,
+      "checks": 21,
+      "passed": true,
+      "settings_top": 1081.390625,
+      "minimum_main_control_width": 48,
+      "minimum_main_control_height": 45,
+      "page_errors": 0
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "checks": 21,
+      "passed": true,
+      "settings_top": 884.71875,
+      "minimum_main_control_width": 48,
+      "minimum_main_control_height": 44,
+      "page_errors": 0
+    },
+    {
+      "name": "small-phone",
+      "width": 320,
+      "height": 720,
+      "checks": 18,
+      "passed": true,
+      "settings_top": 869.390625,
+      "minimum_main_control_width": 48,
+      "minimum_main_control_height": 44,
+      "page_errors": 0
+    },
+    {
+      "name": "landscape",
+      "width": 844,
+      "height": 390,
+      "checks": 18,
+      "passed": true,
+      "settings_top": 412.984375,
+      "minimum_main_control_width": 167,
+      "minimum_main_control_height": 44,
+      "page_errors": 0
+    }
+  ],
+  "normal_complete": [
+    "desktop andphone all20 through legal native originalwaypoints, no game state injection; +1 explicit same-stage retry giving21clears",
+    "small andlandscape first2 stages, native retry/result plus continuation/practice/menu/capture/keyboard"
+  ],
+  "automation_limitations": [
+    "Original designed solution waypoints drive gestures; this is technical reachability, not human planning or fun.",
+    "Synthetic DOM releasePointerCapture fixture and desktop pointercancel fixture are distinguished from native mobile touchCancel.",
+    "Physical smartphone, author subjective playtest, and production operation remain separate/unverified.",
+    "Before initial first failure snapshot/timing gap remains explicit; later diagnostic and final run carry rich evidence."
+  ],
+  "independent_review": "Final independent Visual/Gameplay pending parent reviewer; geometric/storage proofs separately present; author QA does not assign independent scores",
+  "observed_at": "2026-10-07T19:41:44.345970+00:00"
+}

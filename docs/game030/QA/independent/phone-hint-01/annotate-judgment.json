@@ -1,0 +1,22 @@
+{
+  "finding_id": "phone-hint-first-post-drag",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "resume_review",
+  "rationale": "Independently inspected actual controlled030 twofresh-context exactprefix pair, no Jev answers read: same correct enabled target at71.32,547.32 and first0.4ms tap botharms. Original lastdrag~61ms yields no click/hints0; only125ms added before finaltouchEnd (~184msdrag) yields trustedclick and exactlyonehint/visiblemarker with identicalsavedpoints. Product click gate never receives a click in failingarm. Supports collector dragdwell correction, no product input rewrite. Onepair and internalChromium suppression unknown; physicalhardware unperformed. Optionalhint failure has no observed progression/data-loss issue; fullphone releaseQA still required separately.",
+  "evidence": [
+    "docs/game030/QA/independent/phone-hint-01/controlled-drag-dwell-later-disposition.json",
+    "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json",
+    "/workspace/batch-two-author-030/src/games/game030/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Authorized author controlled native twofresh-context firsthint pair inspected offline independently; only finaldrag125ms dwell intervention, no secondtap/retry/productedit. Historicalfailures retained.",
+    "evidence": [
+      "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z/report.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

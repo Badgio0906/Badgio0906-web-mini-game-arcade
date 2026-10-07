@@ -1,0 +1,54 @@
+{
+  "recorded_at": "2026-10-07T19:27:25.760290+00:00",
+  "reviewer": "resume_review",
+  "jev_answers_read": false,
+  "finding_id": "phone-hint-first-post-drag",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "method": "Independent frozen-product exact-prefix twofresh-context raw traces/readonly snapshots inspected; no reviewerbrowser or additionalAPI.",
+  "evidence": "/workspace/batch-two-author-030/docs/game030/QA/hint-touch-diagnostic/8592935b4152/2026-10-07T19-24-46-183Z",
+  "evidence_sha256": "e8932ccd68b8eb79462f47985bad4dee09d894d8c74707a20a4dbad6214e8c1d",
+  "observations": [
+    {
+      "arm": "phone-original-lastdrag",
+      "last_drag_ms": 61.0,
+      "hint_ms": 0.3999999985098839,
+      "hint_click_count": 0,
+      "hints_before": 0,
+      "hints_after": 0,
+      "hint_visible_after": false,
+      "hit": "hint",
+      "enabled": true,
+      "trusted_primary": true,
+      "x": 71.31999969482422,
+      "y": 547.3200073242188
+    },
+    {
+      "arm": "phone-held-lastdrag",
+      "last_drag_ms": 184.0,
+      "hint_ms": 0.3999999985098839,
+      "hint_click_count": 1,
+      "hints_before": 0,
+      "hints_after": 1,
+      "hint_visible_after": true,
+      "hit": "hint",
+      "enabled": true,
+      "trusted_primary": true,
+      "x": 71.31999969482422,
+      "y": 547.3200073242188
+    }
+  ],
+  "conclusion": [
+    "Only planned intervention125ms before final backtracktouchEnd, unchanged first locator.tap. Correct enabled target/trustedprimary/singletouch/hittest agree in botharms; no product phase or savedroute change.",
+    "Failedarm has no compatibilityclick for product freshnessguard to inspect; heldarm dispatches trustedclick then exactlyonehint/onevisiblemarker. Supports collector-only realistic drag dwell, not product input surgery.",
+    "Preliminary UNKNOWN remains retained separately; this laterTEST_INFRA classification derives from030 actualpair, not029 inference."
+  ],
+  "limits": [
+    "One pair, browser-internal suppression mechanism unknown; no guarantee for every realphysicalrapidgesture.",
+    "Normal author4viewport/all20QA and reviewerlive/Visual pending.",
+    "No human or physicalphone assessment performed."
+  ],
+  "next_action": "Freeze product unchanged; adjust collector drag dwell, perform final native4 normal/all20 path result/retry/save tests."
+}

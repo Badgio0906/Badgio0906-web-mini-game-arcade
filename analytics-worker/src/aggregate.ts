@@ -68,7 +68,7 @@ function funnel(rows:Event[], gameId:string):({step:string}&Ratio)[]{
 }
 export function unpack(rows:StoredEvent[]):Event[]{return rows.map(({data_json,received_at,...row})=>{void received_at;return {...row,data:JSON.parse(data_json)};});}
 export function summarizeGames(events:Event[],period:Period,includeRetired=false,context=events):GameMetrics[]{
- const ids=Array.from({length:29},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
+ const ids=Array.from({length:30},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
  return ids.map(game_id=>{const rows=events.filter(e=>e.game_id===game_id);const versions=new Map<string,{game_version:string;rules_version:string;presentation_version:string;event_count:number}>();for(const e of rows){const key=`${e.game_version}:${e.rules_version}:${e.presentation_version}`;const v=versions.get(key)??{game_version:e.game_version,rules_version:e.rules_version,presentation_version:e.presentation_version,event_count:0};v.event_count++;versions.set(key,v);}
  return {...computeMetrics(rows,context,period),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
 }

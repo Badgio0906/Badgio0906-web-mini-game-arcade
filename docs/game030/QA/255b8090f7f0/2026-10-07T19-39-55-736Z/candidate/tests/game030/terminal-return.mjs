@@ -1,0 +1,6 @@
+// Synthetic flow executes the current production stage-selection back arrow.
+import fs from'node:fs';import vm from'node:vm';import ts from'typescript';
+const text=fs.readFileSync('src/games/game030/main.ts','utf8'),sf=ts.createSourceFile('main.ts',text,ts.ScriptTarget.ES2022,true);let arrow;
+function walk(n){if(ts.isBinaryExpression(n)&&n.left.getText(sf)==="el('selection-back').onclick")arrow=n.right.getText(sf);ts.forEachChild(n,walk);}walk(sf);if(!arrow)throw Error('Exact selection-back handler not found');
+const evaluate=(active,cleared,training=false)=>{let state='selection',closed=false;const ctx={active,training,route:{cleared},resultMenu:()=>{state='result';},closeMenu:()=>{closed=true;},mode:s=>{state=s;},title:()=>{state='title';}};vm.runInNewContext(ts.transpileModule(`const back=${arrow};back();`,{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,ctx);return{state,closed};};
+const result={provenance:'Synthetic execution of exact production handler; not browser',terminal:evaluate(true,true),active:evaluate(true,false),practice:evaluate(false,false,true),title:evaluate(false,false)};console.log(JSON.stringify(result));if(result.terminal.state!=='result'||result.active.state!=='playing'||result.practice.state!=='practice'||result.title.state!=='title')process.exitCode=1;

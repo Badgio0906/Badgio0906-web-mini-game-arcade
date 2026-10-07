@@ -1,0 +1,1404 @@
+{
+  "source": "8592935b41525cc2e068b9cf76e3a51797035ed1423a0a47ec6eb0c456554fe6",
+  "sourceFiles": {
+    "game030.html": "fbf5a77b964d766f7ccab61cd783e0225d32e0d4c54af7f8a87b372e9bfe1c81",
+    "src/games/game030/main.ts": "e4037b9a5a2cf9c6318d4c3b6952cadae5cbcddc4e3080d701daf2720d0ea978",
+    "src/games/game030/style.css": "e8b960c0be83f2c9c2e7261fee38ce602cfdb6098287abe316a99ea5d71106f3",
+    "src/games/game030/Geometry.ts": "ca7fc537b8f1ffa0ff0f0c1e585986dc44ea7925909d7afc4d6848a0a76d8e7b",
+    "src/games/game030/Route.ts": "285f24b530b8a61627a8fae3df905ff3b6e0f5172c6da6fda3b508ccc7593d87",
+    "src/games/game030/Levels.ts": "966e740467e4024960060e7632240fd020ae6d6b7346aebdb41b3e9064afbd0f",
+    "src/games/game030/Save.ts": "f5870efabd8949af04d9454d44d12e6722ee78cb5dc3db71a559fbffef2b6472"
+  },
+  "started_at": "2026-10-07T19:19:08.140Z",
+  "base": "http://127.0.0.1:4930",
+  "run": "2026-10-07T19-19-08-129Z",
+  "scope": "Native compiled inputs and technical reachability; waypoints from original level fixture, not human planning or physical phone",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1365,
+      "height": 1000,
+      "touch": false,
+      "checks": [
+        "no production debug hook",
+        "Mouse DOM pointercancel fixture preserves practice",
+        "Real DOM releasePointerCapture fixture stops further input",
+        "practice leaves no normal progress/current",
+        "complete board visible without scrolling",
+        "high-speed sweep stops at wall",
+        "Actual captured outside+reentry cannot warp",
+        "fresh drag starts only at current plug",
+        "contiguous last-segment retreat shortens",
+        "one marker hint",
+        "resize preserves path",
+        "Saved normal continuation survives optional practice/title/reload",
+        "reload preserves existing nullable run/result identity",
+        "result after drag release, one clear, next unlock",
+        "keyboard step",
+        "All20 native ordinary stage clears, narrow stage13 input with finger preview",
+        "Final20 selection back retains terminal result",
+        "Native stage13 narrow/wide length distinction and shorter BEST retained",
+        "title then pagehide cannot resurrect abandoned RUN",
+        "Held Enter across phase blocked, fresh keyboard menu action retained"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "at": 3593,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 3607,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 3778,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 3807,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 3807,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 3844,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 3845,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 3845,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 3857,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 4027,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4058,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4058,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4093,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4093,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4094,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4107,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 4277,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4306,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4306,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4344,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4344,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4344,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4357,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 4478,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4507,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4507,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4543,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4544,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4544,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4558,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 4727,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4755,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4755,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4793,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4793,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 4793,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 4807,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 4977,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5007,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5007,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 5076,
+          "type": "pointerdown",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5076,
+          "type": "pointerup",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5076,
+          "type": "click",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 5110,
+          "type": "pointerdown",
+          "target": "selection-back",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "selection"
+        },
+        {
+          "at": 5111,
+          "type": "pointerup",
+          "target": "selection-back",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "selection"
+        },
+        {
+          "at": 5111,
+          "type": "click",
+          "target": "selection-back",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "selection"
+        },
+        {
+          "at": 5161,
+          "type": "pointerdown",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5161,
+          "type": "pointerup",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5161,
+          "type": "click",
+          "target": "all-stages",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 5193,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "selection"
+        },
+        {
+          "at": 5193,
+          "type": "pointerup",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "selection"
+        },
+        {
+          "at": 5194,
+          "type": "click",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "selection"
+        },
+        {
+          "at": 5207,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 5327,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5355,
+          "type": "pointerup",
+          "target": "menu-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5355,
+          "type": "click",
+          "target": "app",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 5425,
+          "type": "pointerdown",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5426,
+          "type": "pointerup",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "result"
+        },
+        {
+          "at": 5426,
+          "type": "click",
+          "target": "next",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "result"
+        },
+        {
+          "at": 5459,
+          "type": "pointerdown",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 5460,
+          "type": "pointerup",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 5460,
+          "type": "click",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "playing"
+        },
+        {
+          "at": 5493,
+          "type": "pointerdown",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 5494,
+          "type": "pointerup",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 5494,
+          "type": "click",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "paused"
+        },
+        {
+          "at": 563,
+          "type": "keydown",
+          "target": "play",
+          "pointer": null,
+          "key": "Enter",
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 564,
+          "type": "click",
+          "target": "play",
+          "pointer": -1,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 572,
+          "type": "keydown",
+          "target": "board",
+          "pointer": null,
+          "key": "Escape",
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 576,
+          "type": "keyup",
+          "target": "menu-title",
+          "pointer": null,
+          "key": "Escape",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 581,
+          "type": "keydown",
+          "target": "resume",
+          "pointer": null,
+          "key": "Enter",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 584,
+          "type": "keyup",
+          "target": "resume",
+          "pointer": null,
+          "key": "Enter",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 584,
+          "type": "keydown",
+          "target": "resume",
+          "pointer": null,
+          "key": "Enter",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 584,
+          "type": "click",
+          "target": "resume",
+          "pointer": -1,
+          "key": null,
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 588,
+          "type": "keyup",
+          "target": "board",
+          "pointer": null,
+          "key": "Enter",
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 623,
+          "type": "pointerdown",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 623,
+          "type": "pointerup",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 623,
+          "type": "click",
+          "target": "pause",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "playing"
+        },
+        {
+          "at": 656,
+          "type": "pointerdown",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 657,
+          "type": "pointerup",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "at": 657,
+          "type": "click",
+          "target": "pause-title",
+          "pointer": 1,
+          "key": null,
+          "detail": 1,
+          "state": "paused"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        }
+      ],
+      "images": [
+        "desktop-title.png",
+        "desktop-practice.png",
+        "desktop-practice-complete.png",
+        "desktop-explanation.png",
+        "desktop-playing.png",
+        "desktop-partial.png",
+        "desktop-hint.png",
+        "desktop-paused.png",
+        "desktop-clear.png",
+        "desktop-next-stage.png",
+        "desktop-late-narrow-finger.png",
+        "desktop-all20-clear.png",
+        "desktop-wide-route-clear.png"
+      ],
+      "passed": true,
+      "networkFailures": []
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "checks": [
+        "no production debug hook",
+        "Native touchCancel preserves practice",
+        "Real DOM releasePointerCapture fixture stops further input",
+        "practice leaves no normal progress/current",
+        "complete board visible without scrolling",
+        "high-speed sweep stops at wall",
+        "Actual captured outside+reentry cannot warp",
+        "fresh drag starts only at current plug",
+        "contiguous last-segment retreat shortens"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "at": 609,
+          "type": "pointerdown",
+          "target": "analytics-settings-host",
+          "pointer": 2,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 609,
+          "type": "pointerup",
+          "target": "analytics-settings-host",
+          "pointer": 2,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 609,
+          "type": "lostpointercapture",
+          "target": "analytics-settings-host",
+          "pointer": 2,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 611,
+          "type": "click",
+          "target": "analytics-settings-host",
+          "pointer": 2,
+          "key": null,
+          "detail": 1,
+          "state": "title"
+        },
+        {
+          "at": 874,
+          "type": "pointerdown",
+          "target": "practice",
+          "pointer": 3,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 875,
+          "type": "pointerup",
+          "target": "practice",
+          "pointer": 3,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 875,
+          "type": "lostpointercapture",
+          "target": "practice",
+          "pointer": 3,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 877,
+          "type": "click",
+          "target": "practice",
+          "pointer": 3,
+          "key": null,
+          "detail": 1,
+          "state": "title"
+        },
+        {
+          "at": 928,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 4,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1007,
+          "type": "pointercancel",
+          "target": "board",
+          "pointer": 4,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1008,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 4,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1057,
+          "type": "pointerdown",
+          "target": "rewind",
+          "pointer": 5,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1058,
+          "type": "pointerup",
+          "target": "rewind",
+          "pointer": 5,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1058,
+          "type": "lostpointercapture",
+          "target": "rewind",
+          "pointer": 5,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1060,
+          "type": "click",
+          "target": "rewind",
+          "pointer": 5,
+          "key": null,
+          "detail": 1,
+          "state": "practice"
+        },
+        {
+          "at": 1076,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 6,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1207,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 6,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1209,
+          "type": "pointerup",
+          "target": "",
+          "pointer": 6,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1257,
+          "type": "pointerdown",
+          "target": "rewind",
+          "pointer": 7,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1258,
+          "type": "pointerup",
+          "target": "rewind",
+          "pointer": 7,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1258,
+          "type": "lostpointercapture",
+          "target": "rewind",
+          "pointer": 7,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1259,
+          "type": "click",
+          "target": "rewind",
+          "pointer": 7,
+          "key": null,
+          "detail": 1,
+          "state": "practice"
+        },
+        {
+          "at": 1277,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 8,
+          "key": null,
+          "detail": 0,
+          "state": "practice"
+        },
+        {
+          "at": 1391,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 8,
+          "key": null,
+          "detail": 0,
+          "state": "practice-result"
+        },
+        {
+          "at": 1392,
+          "type": "pointerup",
+          "target": "menu",
+          "pointer": 8,
+          "key": null,
+          "detail": 0,
+          "state": "practice-result"
+        },
+        {
+          "at": 1608,
+          "type": "pointerdown",
+          "target": "practice-title",
+          "pointer": 9,
+          "key": null,
+          "detail": 0,
+          "state": "practice-result"
+        },
+        {
+          "at": 1608,
+          "type": "pointerup",
+          "target": "practice-title",
+          "pointer": 9,
+          "key": null,
+          "detail": 0,
+          "state": "practice-result"
+        },
+        {
+          "at": 1608,
+          "type": "lostpointercapture",
+          "target": "practice-title",
+          "pointer": 9,
+          "key": null,
+          "detail": 0,
+          "state": "practice-result"
+        },
+        {
+          "at": 1610,
+          "type": "click",
+          "target": "practice-title",
+          "pointer": 9,
+          "key": null,
+          "detail": 1,
+          "state": "practice-result"
+        },
+        {
+          "at": 1657,
+          "type": "pointerdown",
+          "target": "explain",
+          "pointer": 10,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 1658,
+          "type": "pointerup",
+          "target": "explain",
+          "pointer": 10,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 1658,
+          "type": "lostpointercapture",
+          "target": "explain",
+          "pointer": 10,
+          "key": null,
+          "detail": 0,
+          "state": "title"
+        },
+        {
+          "at": 1660,
+          "type": "click",
+          "target": "explain",
+          "pointer": 10,
+          "key": null,
+          "detail": 1,
+          "state": "title"
+        },
+        {
+          "at": 1741,
+          "type": "pointerdown",
+          "target": "help-return",
+          "pointer": 11,
+          "key": null,
+          "detail": 0,
+          "state": "help"
+        },
+        {
+          "at": 1741,
+          "type": "pointerup",
+          "target": "help-return",
+          "pointer": 11,
+          "key": null,
+          "detail": 0,
+          "state": "help"
+        },
+        {
+          "at": 1741,
+          "type": "lostpointercapture",
+          "target": "help-return",
+          "pointer": 11,
+          "key": null,
+          "detail": 0,
+          "state": "help"
+        },
+        {
+          "at": 1743,
+          "type": "click",
+          "target": "help-return",
+          "pointer": 11,
+          "key": null,
+          "detail": 1,
+          "state": "help"
+        },
+        {
+          "at": 1791,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 12,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1858,
+          "type": "pointerup",
+          "target": "board",
+          "pointer": 12,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1858,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 12,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1875,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 13,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1967,
+          "type": "pointerup",
+          "target": "board",
+          "pointer": 13,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1968,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 13,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 1991,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 14,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2057,
+          "type": "pointerup",
+          "target": "board",
+          "pointer": 14,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2058,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 14,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2107,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 15,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2168,
+          "type": "pointerup",
+          "target": "",
+          "pointer": 15,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2168,
+          "type": "lostpointercapture",
+          "target": "",
+          "pointer": 15,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2176,
+          "type": "pointerdown",
+          "target": "",
+          "pointer": 16,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2240,
+          "type": "pointerup",
+          "target": "board",
+          "pointer": 16,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2241,
+          "type": "lostpointercapture",
+          "target": "board",
+          "pointer": 16,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2291,
+          "type": "pointerdown",
+          "target": "hint",
+          "pointer": 17,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2291,
+          "type": "pointerup",
+          "target": "hint",
+          "pointer": 17,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        },
+        {
+          "at": 2291,
+          "type": "lostpointercapture",
+          "target": "hint",
+          "pointer": 17,
+          "key": null,
+          "detail": 0,
+          "state": "playing"
+        }
+      ],
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4930/game030.html",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-CCp4Ma-Q.css",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:4930/assets/game030-DDXAJVdy.js",
+          "status": 200
+        }
+      ],
+      "images": [
+        "phone-title.png",
+        "phone-practice.png",
+        "phone-practice-complete.png",
+        "phone-explanation.png",
+        "phone-playing.png",
+        "phone-partial.png",
+        "phone-hint.png",
+        "phone-failure.png"
+      ],
+      "passed": false,
+      "failure": "Single hint recorded",
+      "state": "playing",
+      "dom": "← 100ガレへ\nPLUG ROUTE\n音 ON\nコンセントどこ？\n\nつないで、とどけて、ぴったりで。\n\n1 / 20\n机のすみ\n\n残りのコード\n8.95 m\n\nこのステージの最短記録\n—\n\n·\n一点ヒント\nプラグを戻す\nステージやり直し\n休憩\nステージ選択\n遊び方\n\n来た道を戻って、コードが短くなりました。\n\n↑\n←\n↓\n→\n\nプラグからドラッグ。PCは矢印キーでも操作できます（Shiftで細かく）。\n来た道の最後の線分へ戻ると短くなります。自己交差はできません。時間制限なし。\n\n100ガレ ～GAME100 GARAGE～ · PLUG ROUTE"
+    }
+  ],
+  "ended_at": "2026-10-07T19:19:22.124Z"
+}

@@ -1,0 +1,23 @@
+{
+  "finding_id": "final-selection-return-state",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "batch_two_review",
+  "rationale": "Current source proves terminal result still has active=true, cleared=true and reported=true. Stage20 all-stages opens selection, whose back ignores cleared and enables playing tools. Move returns same, while rewind resets clearedfalse/path but leaves reportedtrue. Snapshot validation rejects cleared!=reported; later genuine reclear skips recording because reported remains true. This can turn a finished run into nonfunctional or unpersistable pseudo-playing state after an ordinary result navigation, so protect terminal state and preserve result return rather than permit old-run play. No actual20-clear browser occurrence claimed.",
+  "evidence": [
+    "/workspace/batch-two-author-030/docs/game030/QA/finding-final-selection-before/main.ts.txt",
+    "/workspace/batch-two-author-030/src/games/game030/Route.ts",
+    "/workspace/batch-two-author-030/src/games/game030/Save.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Followed resultMenu\u2192selectStages\u2192selection-back\u2192playable/rewind across terminal flags and restore validation, confirming old completed run cannot safely become ordinary playing.",
+    "evidence": [
+      "/workspace/batch-two-author-030/src/games/game030/main.ts",
+      "/workspace/batch-two-author-030/src/games/game030/Save.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,0 +1,12 @@
+import {SaveStore,freshProgress,makeSnapshot,validate} from '/tmp/game030-save-before-root.mjs';
+import {writeFile} from 'node:fs/promises';
+const make=n=>{const p=freshProgress();p.unlocked=2;p.best[0]=600+n;p.clears=n;return makeSnapshot(p,null);};
+const current=make(2),old=make(1);if(!validate(current)||!validate(old))throw Error('invalid fixtures');
+let raw=JSON.stringify(current),reads=0;
+const backend={getItem(){reads++;return raw;},setItem(k,v){raw=v;}};
+const store=new SaveStore(backend);store.write(current);raw=JSON.stringify({...current,progress:null});
+const rejected=store.read();raw=JSON.stringify(old);const later=store.read();
+let writes=0;const denied=new SaveStore({getItem(){throw Error('denied');},setItem(){writes++;throw Error('denied');}});
+denied.write(current);denied.write(old);denied.write(current);
+const result={recorded_at:new Date().toISOString(),kind:'synthetic unmodified-source contract probe',reject_returns:rejected?.progress.clears??null,later_returns:later?.progress.clears??null,backend_reads:reads,denied_write_attempts:writes,denied_memory_latest:denied.read()?.progress.clears,expected:{reject_returns:2,later_returns:2,backend_reads:1,denied_write_attempts:1,denied_memory_latest:2},physical_browser:false};
+await writeFile('/workspace/arcade-classic-batch-two/docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));

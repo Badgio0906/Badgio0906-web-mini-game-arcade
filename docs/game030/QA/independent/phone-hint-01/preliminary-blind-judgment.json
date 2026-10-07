@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-07T19:22:25.228909+00:00",
+  "reviewer": "resume_review",
+  "jev_answers_read": false,
+  "finding_id": "phone-hint-first-post-drag",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "observations": [
+    "First native phone targethint down/up/lostcapture at same rounded2291ms with no click; stateplaying and singlehint assertion fail, old exact stored payload not retained.",
+    "Product fresh-down/click capture guard only receivesclick when browser synthesizes it; hint onclick absent from captured trace, so cannot prove product freshness rejection.",
+    "Current native driver uses Playwright locator.tap with no dwell; nearby backtrack CDP gesture25ms aftermove. Actual hit, disabled state, precise down/uptime, primary/defaultprevention/touch count unavailable before.",
+    "Game029 similar no-click outcome was timing-sensitive in controlled sameproduct pair; that is context, not evidence030 has the same internal cause."
+  ],
+  "next_bounded_evidence": "One prepared twofreshphone-context exactcollector-prefix diagnostic; same first locator.tap on hint, varying ONLY +125ms finalbacktrack before touchEnd; capture exacttiming/coords/trusted/primary/touchcount/defaultprevented/hittest/disabled/capture and readonly currenthints before/after. No secondtap/retry untilPASS; product unchanged.",
+  "risk_scope": "Optionalhint failure has no observed progression/data-loss issue; desktop actual20clears. Riskfalse does not authorize release: required phone normal operation still pending.",
+  "limits": [
+    "No physical device or human enjoyment verified.",
+    "No reviewerbrowser/API invoked; authorONEC happened beforefix, answers hidden.",
+    "Do not classifydefinite TEST_INFRA solely from029 context or laterPASS."
+  ],
+  "evidence": {
+    "dir": "/workspace/batch-two-author-030/docs/game030/QA/finding-phone-hint-before",
+    "finding_sha256": "5f8ed153db1cd3a1894bced765e462eec6845dbbbd47a29328823a27927051f3",
+    "frozen_main_sha256": "e4037b9a5a2cf9c6318d4c3b6952cadae5cbcddc4e3080d701daf2720d0ea978"
+  }
+}

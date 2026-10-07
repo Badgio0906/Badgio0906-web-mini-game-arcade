@@ -1,0 +1,25 @@
+{
+  "finding_id": "plug-drawn-footprint-clearance",
+  "problem": "描画プラグの大きさと、壁へ使うcenter clearanceの大きさが一致していない。",
+  "expected": "プラグとコードの描画の太さを考慮し、壁を通るかの検査に使う。",
+  "observed": [
+    "Geometry.tsのCLEARANCEは15で、plug radius12+cable halfwidth3とコメントしている。",
+    "game030.htmlのplug bodyはx=-18から+18、y=-17から+17。端子はy=-22から-14。",
+    "swept rectangle判定はすべてcenter segmentと15単位paddingを使う。"
+  ],
+  "unknown": [
+    "実画像で近接する壁との見た目の重なりの程度。"
+  ],
+  "measurements": {
+    "collision_clearance": 15,
+    "drawn_half_width": 18,
+    "drawn_top_extent": 22,
+    "cable_half_width": 3
+  },
+  "provenance": "actual own source SVG and geometry observation before fix; browser not yet run",
+  "evidence": [
+    "game030.html plug SVG",
+    "src/games/game030/Geometry.ts CLEARANCE",
+    "docs/game030/QA/finding-plug-footprint-before/game030.html.txt"
+  ]
+}

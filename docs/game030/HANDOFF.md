@@ -1,0 +1,13 @@
+# Handoff
+
+Ownsource: game030.html＋src/games/game030。Target39tests、isolatedconfig＋reproducible nativecollectorはtests/game030。全20solutionはLevels.tsのprimary/selectedalternate、verification fixturesであり画面へ全解法を出さない。
+
+600×500固定world、100unit/m、clearance25（描画最大axis22.5とcablehalf3をそれぞれ包含、最大glyphから2.5buffer）、finger4margin、length>=70margin。自己交差禁止、backtrackは最後の線分のみ。段階クリアをlocalresultUUIDで一度だけ、optional observer nullable既存UUIDとは独立。savedroute全線分安全・rulesを検証、semantic-invalid／oversize／deniedwrite以降はmemoryOnly固定、成功readがvalidmemoryをseed。受動chooserとoptionalpracticeはinactive continuationを保持し、明示normalstartで新しく置換。pause/manualrestore。
+
+最新freezeはQA/SOURCE_FREEZE_FINAL_NATIVE_MEASURED.json（prior原本を保持）。対象39units、全体型check、isolatedbuild、passive-save／terminal-return／practice-continuation exact handler fixtureはPASS。独立geometry proof（親QA/independent/model-final-01）は1260 perturbations／5736dense samplesで別方式sweepを確認。最終compiled native4はQA/NATIVE_FINAL_SUMMARY.json／78checks／50画像／PCphone全20＋retry／他2画面通常2stage成功。Human／正式統合と公開は別証拠が必要。
+
+親がcatalog/tag/versions/vite/analytics登録、actualplaythumbnail、独立レビュー、最終roottests、順次公開と候補表cellだけupdateを担当。ゲーム内remoteCollectionEnabled:falseを本番Worker登録証拠なしで解除しない。本人／実機試遊は未実施。第2batch030まで、031を着手しない。
+
+再開後のauthor QAは完了、browser閉鎖。src/core/TelemetryService.tsは親が所有するdependency mirrorであり、ownコピーとして採用しない。候補表・commit・push・deployの操作はauthor未実施。phoneの初回hint失敗はbefore保持＋独立controlledpairによりテスト入力へ限定修正；native collectorは +125ms touchEnd 接触時間を使う。後の通常公開検証も同じcollectorのGAME030_BASE/GAME030_FREEZE/GAME030_REPORTを使用し、統合候補のfreeze・公開配信artifactを親が確認する。原isolatedbuildのfilesをそのまま公開artifact一致とみなさない。
+
+Root integration 2026-10-07T20:26:44.792019+00:00:39target/root736tests66files/check/build andWorkeractualD138events12RUN PASS. Allreviewedproductfiles byte-identical; originalnative78checks/all20normalPCphone+retry preserved, independentactualPC900/phone390 Visual82 F13 H12. RootpublicdriveronlychangesrequiredPC900/small740; beforedriverarchived. PublicexpectedCIversion/fullnative requiredsizes pending. Independent1260perturbed routes and5736denseactualrouteinputs confirm20+practice paths, ownnamespace/BEST no oldsavechanges. Actualnormalgame screenshotthumb640x360 noImagegen. Humanfun/physicalphoneunperformed, WorkerauthblockednewremoteOFF.

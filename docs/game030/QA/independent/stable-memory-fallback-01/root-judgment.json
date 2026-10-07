@@ -1,0 +1,22 @@
+{
+  "finding_id": "game030-stable-memory-fallback-contract",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent before-source synthetic backend probe; hidden answers not inspected",
+  "rationale": "Valid memory current clears2 is discarded on semantic reject, next read resurrects older clears1 with two backend accesses. Three denied writes still call backend three times after fallback. This violates the stable memory contract; current ordinary play corruption was not observed.",
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Bundled unmodified Save.ts and exercised valid→semantic invalid→old backend and three denied writes; immutable results saved.",
+    "evidence": [
+      "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+      "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "evidence": [
+    "docs/game030/QA/independent/stable-memory-fallback-01/root-probe.json",
+    "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt"
+  ]
+}

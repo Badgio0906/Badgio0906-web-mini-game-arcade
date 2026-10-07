@@ -7,8 +7,8 @@
 |026|出世すごろく ～UP & DOWN～|実装・単体27／root575・check/build・4画面通常操作・PC/phone通常完走、独立Visual81|公式Pages37669966367成功／runtime cd6d7ad／公開4画面・通常PC89/phone61turns完走・Portal25確認／A33済・読戻し確認|
 |027|ひと息ビリヤード ～EIGHT BALL～|統合40対象／root617、4画面native任意導線・通常PC22/phone23shots終局、独立Visual81|公式Pages37675920015成功／runtime ff369e5／公開4・PC22/phone23終局・Portal26／A47済・読戻し|
 |028|ぽんぽん卓球 ～TABLE TENNIS～|統合47対象／root666・check/build、128nativechecks、独立Visual81/F12/H12|公式Pages37680233126成功／runtime4310be3／公開指定4画面125check・通常終局再挑戦保存／Portal27／A11済読戻し|
-|029|給湯室の落としもの釣り ～LOST & FOUND～|統合27対象／root695・check/build、指定4画面通常結果・再挑戦、独立Visual81/F12/H12|公開028確認後の公式CI/公開/A42待ち|
-|030|コンセントどこ？ ～PLUG ROUTE～|別作業枝で20面設計・独立解法検証、保存修正・操作検証待ち|未統合・未公開・A49未更新|
+|029|給湯室の落としもの釣り ～LOST & FOUND～|統合27対象／root695・check/build、指定4画面通常結果・再挑戦、独立Visual81/F12/H12|公式Pages37681354491成功／runtime8d3ac39／公開指定4画面通常結果・再挑戦保存／Portal28／A42済読戻し|
+|030|コンセントどこ？ ～PLUG ROUTE～|統合39対象／root736・check/build、20面1260変位route検証・PC/phone全20面再挑戦、独立Visual82/F13/H12|公式CI/公開指定4画面/A49待ち|
 
 ## 026統合
 

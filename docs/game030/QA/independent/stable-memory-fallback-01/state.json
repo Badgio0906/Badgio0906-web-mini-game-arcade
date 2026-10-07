@@ -1,0 +1,19 @@
+{
+  "finding_id": "game030-stable-memory-fallback-contract",
+  "problem": "Current SaveStore does not consistently enter and honor stable memory-only fallback after rejected or denied backend operations.",
+  "expected": "Rejected data or denied storage should preserve the current valid memory snapshot and stop backend accesses until the in-memory game ends, without resurrecting stale backend state.",
+  "observed": [
+    "write clones valid current snapshot into this.memory, then calls backend setItem even if memoryOnly was already set.",
+    "read returns validate(JSON.parse(raw)) directly for short nonempty raw, so semantic invalid returns null instead of valid current memory.",
+    "Semantic-invalid and oversized data branches do not latch memoryOnly; exceptions do.",
+    "When memoryOnly true read validates current memory; this intended fallback differs from reject branches and future writes."
+  ],
+  "unknown": [
+    "Independent actual good\u2192invalid\u2192old backend sequence and repeated denied-write call counts have not yet been executed.",
+    "How currently active main caller state interacts with a read rejection; source contract probe needs bounded validation."
+  ],
+  "evidence": [
+    "docs/game030/QA/independent/stable-memory-fallback-01/Save-before.ts.txt"
+  ],
+  "provenance": "current030 original source observation; one stable-memory backend fallback contract problem with read/write branch observations; no hidden reply or browser claim"
+}

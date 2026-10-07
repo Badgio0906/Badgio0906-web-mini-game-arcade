@@ -1,0 +1,84 @@
+import './style.css';
+import { distance, project, WORLD, type Point } from './Geometry';
+import { LEVELS, PRACTICE } from './Levels';
+import { Route } from './Route';
+import { freshProgress, makeSnapshot, recordClear, SaveStore, type Current } from './Save';
+import { AudioService } from '../../core/AudioService';
+import { StorageService } from '../../core/StorageService';
+import { TelemetryService, type EventName } from '../../core/TelemetryService';
+import { analyticsConfig } from '../../analytics/config';
+import { uuid } from '../../analytics/runtime';
+const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
+const app=el('app'),menu=el<HTMLDialogElement>('menu'),board=document.getElementById('board') as unknown as SVGSVGElement;
+const store=new SaveStore(),loaded=store.read();let progress=loaded?.progress??freshProgress(),available=loaded?.current??null;
+const audio=new AudioService(new StorageService(undefined,'web-mini-arcade:v1:game030:'));
+const telemetry=new TelemetryService(undefined,'game030',undefined,{remoteCollectionEnabled:false});
+let route=new Route(LEVELS[0]),stage=1,state='title',training=false,active=false,reported=false;
+let resultId:string|null=null,runId:string|null=null,hints=0,resets=0,feedback='机と棚のすき間を通って、コンセントへ。',hint:Point|null=null;
+let epoch=0,gesture:{id:number;epoch:number;offset:Point;outside:boolean;touch:boolean}|null=null;
+let menuDown:{epoch:number;target:Element}|null=null;const held=new Set<string>(),blocked=new Set<string>();
+function event(name:EventName,data:Record<string,string|number|boolean>={}):void{if(!training||analyticsConfig.environment!=='production')telemetry.trackEvent(name,{...data,...(training?{mode:'practice'}:{})});}
+function specific(action:string):void{if(active&&!training)event('specific_game_events',{event:action,level:stage,path_length:Math.round(route.used),hints,resets});}
+function current():Current|null{return active&&!training&&resultId?{stage,points:route.points.map(p=>({...p})),cleared:route.cleared,reported,resultId,runId,hints,resets}:null;}
+function save():void{if(!training)store.write(makeSnapshot(progress,active?current():available));}
+function endGesture():void{const g=gesture;gesture=null;el('finger-preview').hidden=true;if(g&&board.hasPointerCapture(g.id))try{board.releasePointerCapture(g.id);}catch{/* optional capture */}}
+function mode(next:string):void{epoch++;endGesture();menuDown=null;for(const key of held)blocked.add(key);state=next;app.dataset.state=next;board.tabIndex=playable()?0:-1;render();}
+function playable():boolean{return state==='playing'||state==='practice';}
+function show(html:string,next:string):void{mode(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>';if(!menu.open)menu.show();menu.scrollTop=0;menu.querySelector<HTMLElement>('h2')?.setAttribute('tabindex','-1');menu.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});el('menu-portal').onclick=leave;}
+function closeMenu():void{if(menu.open)menu.close();}
+function abandon():void{if(active&&!training&&!reported)event('run_end',{outcome:'quit',completed:false,level:stage,path_length:Math.round(route.used),hints,resets});active=false;runId=resultId=null;reported=false;available=null;endGesture();if(!training)save();}
+function start(index:number,practice=false):void{abandon();training=practice;stage=index;route=new Route(practice?PRACTICE:LEVELS[index-1]);hints=resets=0;hint=null;reported=false;active=!practice;closeMenu();
+  if(practice){resultId=runId=null;event('practice_start');feedback='練習：プラグからドラッグ。机の左側を通って、白いコンセントへ。';}
+  else{telemetry.trackEvent('run_start',{level:stage});runId=telemetry.getActiveRunId();resultId=uuid();specific('level_start');feedback='プラグをつかんで、コンセントへ。壁に触れるとその手前で止まります。';}
+  mode(practice?'practice':'playing');save();board.focus({preventScroll:true});void audio.unlock();
+}
+function title(initial=false):void{if(!initial){abandon();training=false;save();}hint=null;show(`<p class="eyebrow">PLUG ROUTE</p><h2 id="menu-title">コンセントどこ？</h2><p>机と棚のすき間を通して、プラグを届けよう。<br>短くつなげても、ゆっくり考えても。</p><div class="menu-actions">${available?'<button id="restore" class="primary">保存したステージを続ける</button>':''}<button id="play" class="primary">すぐ遊ぶ</button><button id="explain">説明を見る</button><button id="practice">練習する</button><button id="choose">ステージを選ぶ</button></div><p class="subtle">20ステージ · 時間制限なし<br>ステージ ${progress.unlocked} まで選べます。記録はこの端末内。</p>`,'title');el('play').onclick=()=>start(progress.unlocked);el('explain').onclick=()=>help(false);el('practice').onclick=()=>start(0,true);el('choose').onclick=()=>selectStages();
+  if(available)el('restore').onclick=()=>{const c=available!;training=false;stage=c.stage;route=new Route(LEVELS[stage-1]);if(!route.restore(c.points,c.cleared))return;active=true;runId=c.runId;resultId=c.resultId;reported=c.reported;hints=c.hints;resets=c.resets;available=null;if(runId)telemetry.restoreRun(runId);if(route.cleared)resultMenu();else pause();};
+}
+function help(inRun:boolean):void{event('tutorial_view',{source:inRun?'playing':'title'});show('<h2 id="menu-title">つないで、とどけよう。</h2><ol><li>黄色いプラグからドラッグ。指を離してもコードは残ります。再開は今のプラグから。</li><li>机・箱・棚をよけ、白いコンセントへ。太さを含めて壁に触れる道は通れません。</li><li>来た道の「最後の線分」へ戻ると巻き戻せます。遠い過去の線へ飛び移れません。コードの自己交差も不可です。</li><li>「プラグを戻す」はコードだけを開始位置へ。同じステージの「やり直し」は新しい挑戦にし、ヒント回数もリセットします。最短記録は残ります。</li><li>ヒントは次の目安を一点だけ。時間は評価しません。</li></ol><p>PC：ドラッグ／矢印キー（Shiftで細かく）。スマホ：ドラッグ中は指の上にもプラグを表示します。盤面の外ではスクロールできます。</p><div class="menu-actions"><button id="help-return" class="primary">'+(inRun?'盤面へ戻る':'すぐ遊ぶ')+'</button><button id="help-title">タイトルへ</button></div>','help');el('help-return').onclick=()=>{if(inRun){closeMenu();mode(training?'practice':'playing');board.focus({preventScroll:true});}else start(progress.unlocked);};el('help-title').onclick=()=>title();}
+function pause():void{if(!playable()&&state!=='paused'&&state!=='title')return;show('<h2 id="menu-title">ひと休み。</h2><p>コードは、このまま。<br>続けるときは、今のプラグをつかんでください。</p><div class="menu-actions"><button id="resume" class="primary">続ける</button><button id="pause-title">タイトルへ</button></div>','paused');save();el('resume').onclick=()=>{closeMenu();event('resume');mode(training?'practice':'playing');board.focus({preventScroll:true});};el('pause-title').onclick=()=>title();}
+function selectStages():void{show('<h2 id="menu-title">どこから、つなぐ？</h2><p>クリアすると、次のステージが選べます。<br>★ は記録のあるステージ。</p><div id="stage-grid">'+LEVELS.map(l=>`<button data-stage="${l.id}" ${l.id>progress.unlocked?'disabled':''} aria-label="ステージ${l.id} ${l.name}${l.id>progress.unlocked?' 未解放':''}">${l.id}${progress.best[l.id-1]!==null?' ★':''}</button>`).join('')+'</div><div class="menu-actions"><button id="selection-back">'+(active||training?'現在の盤面へ':'タイトルへ')+'</button></div>','selection');for(const b of menu.querySelectorAll<HTMLElement>('[data-stage]'))b.onclick=()=>start(Number(b.dataset.stage));el('selection-back').onclick=()=>{if(active||training){closeMenu();mode(training?'practice':'playing');}else title(true);};save();}
+function resultMenu():void{show(`<h2 id="menu-title">${stage===20?'20ステージ、つながりました。':'ぴったり、つながりました。'}</h2><p>${route.level.name}<br>使ったコード ${Route.metres(route.used)} m<br>このステージの最短 ${Route.metres(progress.best[stage-1]??route.used)} m<br>ヒント ${hints} 回 · 時間は評価しません。</p><div class="menu-actions">${stage<20?'<button id="next" class="primary">次のステージ</button>':'<button id="all-stages" class="primary">ステージを選ぶ</button>'}<button id="again">同じステージでもう一度</button><button id="result-title">タイトルへ</button></div>`,'result');if(stage<20)el('next').onclick=()=>start(stage+1);else el('all-stages').onclick=selectStages;el('again').onclick=()=>{event('retry');start(stage);};el('result-title').onclick=()=>title();}
+function conclude():void{endGesture();if(training){event('practice_complete');show('<h2 id="menu-title">つながりました。</h2><p>プラグをつかんで、角を曲がって、コンセントへ。<br>練習の結果は、本番記録に入りません。</p><div class="menu-actions"><button id="practice-again">もう一度練習</button><button id="practice-title" class="primary">タイトルへ</button></div>','practice-result');el('practice-again').onclick=()=>start(0,true);el('practice-title').onclick=()=>title();return;}
+  if(!reported&&resultId){const prior=progress.best[stage-1],result=recordClear(progress,stage,route.used,resultId);if(!result.updated)return;progress=result.progress;reported=true;specific('level_clear');event('run_end',{outcome:'clear',completed:true,level:stage,path_length:Math.round(route.used),hints,resets});if(prior===null||route.used<prior)event('best_update',{level:stage,path_length:Math.round(route.used)});save();audio.tone(440,660,.16,'sine',0,.018);}resultMenu();
+}
+function move(p:Point):void{if(!playable())return;const outcome=route.move(p);hint=null;
+  feedback=outcome==='wall'?'机や棚には通せません。少し手前から、角をよけよう。':outcome==='crossing'?'コードの交差はできません。最後の線分を戻るか、プラグを戻そう。':outcome==='outside'?'盤面の外へは出せません。プラグから、もう一度つかんでください。':outcome==='length'?'コードの長さがいっぱい。来た道を戻るか、短い道を探そう。':outcome==='backtrack'?'来た道を戻って、コードが短くなりました。':'指を離しても、ここから続けられます。';
+  render();save();if(outcome==='clear')conclude();
+}
+function render():void{const l=route.level;el('stage').textContent=training?'練習':`${stage} / 20`;el('stage-name').textContent=l.name;el('remaining').textContent=`${Route.metres(route.remaining)} m`;el('best').textContent=training?'記録しません':progress.best[stage-1]!==null?`${Route.metres(progress.best[stage-1]!)} m`:'—';el('status').textContent=feedback;el('practice-note').hidden=!training;
+  el('furniture').innerHTML=l.obstacles.map(o=>`<g filter="url(#shadow)"><rect x="${o.x}" y="${o.y}" width="${o.w}" height="${o.h}" rx="6" fill="${o.kind==='shelf'?'#9cac94':o.kind==='box'?'#c4a978':'#c6b188'}" stroke="#988964" stroke-width="2"/><path d="M${o.x+8} ${o.y+9}H${o.x+o.w-8}" stroke="#fff6dc77" stroke-width="5"/>${o.kind==='shelf'?`<path d="M${o.x+9} ${o.y+o.h/2}H${o.x+o.w-9}" stroke="#7e8e7777" stroke-width="3"/>`:''}</g>`).join('');
+  el('socket').innerHTML=`<g transform="translate(${l.socket.x} ${l.socket.y})"><path d="M-26 -28L-32 -35M0 -35V-45M26 -28L32 -35" stroke="#b18029" stroke-width="3"/><rect x="-22" y="-24" width="44" height="48" rx="11" fill="#fffef0" stroke="#34665a" stroke-width="4"/><rect x="-9" y="-11" width="5" height="14" rx="2" fill="#28594e"/><rect x="4" y="-11" width="5" height="14" rx="2" fill="#28594e"/><circle cy="12" r="3" fill="#28594e"/></g>`;
+  el('anchor').setAttribute('cx',String(l.start.x));el('anchor').setAttribute('cy',String(l.start.y));const path=route.points.map((p,i)=>`${i?'L':'M'}${p.x} ${p.y}`).join(' ');el('cable').setAttribute('d',path);el('cable-shadow').setAttribute('d',path);el('plug').setAttribute('transform',`translate(${route.plug.x} ${route.plug.y})`);const dot=el('hint-dot');dot.toggleAttribute('hidden',!hint);if(hint)dot.setAttribute('transform',`translate(${hint.x} ${hint.y})`);
+  for(const b of document.querySelectorAll<HTMLButtonElement>('.tools button,#direction-pad button'))b.disabled=!playable();
+  board.setAttribute('aria-label',`${l.name}。残り ${Route.metres(route.remaining)}メートル。プラグをドラッグ、または矢印キーで移動。`);
+}
+function coordinate(e:PointerEvent):Point{const p=board.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const matrix=board.getScreenCTM();if(!matrix)return {x:NaN,y:NaN};const local=p.matrixTransform(matrix.inverse());return {x:local.x,y:local.y};}
+function preview(e:PointerEvent):void{const p=el('finger-preview');p.hidden=e.pointerType!=='touch';if(!p.hidden){p.style.left=`${Math.max(33,Math.min(window.innerWidth-33,e.clientX))}px`;p.style.top=`${Math.max(70,e.clientY-32)}px`;}}
+board.addEventListener('pointerdown',e=>{if(!playable()||gesture||!e.isPrimary||e.button!==0)return;const at=coordinate(e),scale=board.getBoundingClientRect().width/WORLD.width;if(distance(at,route.plug)>Math.max(26,24/scale)){feedback='今の黄色いプラグをつかんでください。';render();return;}e.preventDefault();gesture={id:e.pointerId,epoch,offset:{x:route.plug.x-at.x,y:route.plug.y-at.y},outside:false,touch:e.pointerType==='touch'};try{board.setPointerCapture(e.pointerId);}catch{/* pointer bounds still checked */}board.focus({preventScroll:true});preview(e);void audio.unlock();});
+board.addEventListener('pointermove',e=>{const g=gesture;if(!g||g.id!==e.pointerId||g.epoch!==epoch||g.outside)return;e.preventDefault();const at=coordinate(e);if(at.x<0||at.x>WORLD.width||at.y<0||at.y>WORLD.height){g.outside=true;el('finger-preview').hidden=true;feedback='盤面の外では動きません。離して、今のプラグから再開してください。';render();return;}move({x:at.x+g.offset.x,y:at.y+g.offset.y});if(gesture)preview(e);});
+board.addEventListener('pointerup',e=>{if(gesture?.id!==e.pointerId)return;endGesture();if(!training)specific('path_length');save();});
+board.addEventListener('pointercancel',e=>{if(gesture?.id===e.pointerId)endGesture();});board.addEventListener('lostpointercapture',e=>{if(gesture?.id===e.pointerId)endGesture();});
+function directional(dir:string,fine=false):void{const step=fine?2:8,p=route.plug;move({x:p.x+(dir==='left'?-step:dir==='right'?step:0),y:p.y+(dir==='up'?-step:dir==='down'?step:0)});}
+for(const b of document.querySelectorAll<HTMLElement>('[data-direction]'))b.onclick=()=>directional(b.dataset.direction!);
+el('hint').onclick=()=>{if(!playable())return;let best=Infinity,next=route.level.solution[1];for(let i=1;i<route.level.solution.length;i++){const q=project(route.plug,route.level.solution[i-1],route.level.solution[i]);if(q.distance<best){best=q.distance;next=route.level.solution[i];}}hint={...next};hints++;feedback='丸印が、次の通りやすい場所の目安です。道全体は表示しません。';specific('hint');save();render();};
+el('rewind').onclick=()=>{if(!playable())return;route.reset();resets++;hint=null;feedback='コードだけを、開始位置へ戻しました。記録にペナルティはありません。';specific('reset');save();render();};
+el('restart').onclick=()=>{if(!playable())return;event('retry');start(stage,training);};el('pause').onclick=()=>{if(playable()){event('pause');pause();}};el('stages').onclick=selectStages;el('help').onclick=()=>help(true);
+el('mute').onclick=()=>{el('mute').textContent=audio.toggle()?'音 OFF':'音 ON';};el('mute').textContent=audio.muted?'音 OFF':'音 ON';
+function leave():void{const source=state;abandon();event('return_to_portal',{source});training=false;save();}
+el('portal').onclick=leave;
+// Every physical menu activation needs its own same-target press in this screen.
+document.addEventListener('pointerdown',e=>{const target=(e.target as Element).closest('button,a');menuDown=e.isPrimary&&e.button===0&&target?{epoch,target}:null;},true);
+document.addEventListener('pointercancel',()=>{menuDown=null;},true);
+document.addEventListener('click',e=>{const target=(e.target as Element).closest('button,a');if(!target)return;const fresh=menuDown?.epoch===epoch&&menuDown.target===target;menuDown=null;if(e.detail>0&&!fresh){e.preventDefault();e.stopImmediatePropagation();}},true);
+document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){if(e.repeat||held.has(e.key)||blocked.has(e.key)){e.preventDefault();e.stopImmediatePropagation();return;}held.add(e.key);}else held.add(e.key);
+  if(blocked.has(e.key))return;
+  if(e.key==='Escape'&&playable()){e.preventDefault();pause();}
+  if(playable()&&e.target===board&&e.key.startsWith('Arrow')){e.preventDefault();directional(e.key.slice(5).toLowerCase(),e.shiftKey);}
+  if(playable()&&e.target===board&&(e.key==='Enter'||e.key===' '))e.preventDefault();
+},true);
+document.addEventListener('keyup',e=>{if(blocked.has(e.key)){e.preventDefault();e.stopImmediatePropagation();}held.delete(e.key);blocked.delete(e.key);},true);
+menu.addEventListener('cancel',e=>e.preventDefault());
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playable())pause();});window.addEventListener('blur',()=>{if(playable())pause();});
+window.addEventListener('pagehide',()=>{endGesture();if(active&&!training)save();audio.destroy();},{once:true});
+telemetry.trackEvent('game_open');title(true);
