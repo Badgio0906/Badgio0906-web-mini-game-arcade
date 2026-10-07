@@ -8,3 +8,9 @@
 - 実装とFeel／Visual／QAの判定を分離する。レビュー済みソースを固定し、実行した検証と未実施の人間評価を区別する。
 - コード変更は対象テストとビルドを確認する。文書だけの変更はリンク・記述・差分を確認し、不要な全ゲーム再実行をしない。
 - 終了時に変更・検証・残課題を対象ゲームの報告とCURRENT_STATUSへ残す。新タスクが会話、`/workspace`の一時ログ、稼働中サーバーに依存せず再開できる状態にする。
+
+## 本番Analytics（Phase 1）
+
+- 実績・利用状況・継続率・離脱・ランキング・プレイ傾向など、本番データに基づく判断を求められたら、推測せず `scripts/fetch-analytics-context.mjs` で必要なゲーム・期間だけ最新集計を取得する。通常の実装タスクで毎回取得しない。設定不足・取得失敗は明示し、データを推測で補わない。
+- Analyticsだけを根拠にゲームコードを自動変更しない。ユーザー指示または明確な改修タスクが必要。「少数」／`sample_size_small`や欠測を断定材料にせず、同意した観測対象だけの集計であることを扱う。
+- D1を直接問い合わせずCodex用集計APIを使う。`ANALYTICS_CODEX_TOKEN`を表示・保存・commitしない。admin tokenは使わない。取得結果は原則stdoutのみで、本番snapshotをGitへ保存しない。設定・制約は [CODEX_ANALYTICS_ACCESS](docs/analytics/CODEX_ANALYTICS_ACCESS.md) を参照する。

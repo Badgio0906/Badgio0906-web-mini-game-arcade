@@ -40,14 +40,17 @@ function getPeriod(url:URL,env:Env,now=Date.now()):Period|null{
  const span=Date.parse(to)-Date.parse(from);if(span<=0||span>retention(env).rawDays*86400000||Date.parse(to)>now+300000)return null;
  return {from,to:new Date(Math.min(Date.parse(to),now)).toISOString()};
 }
-async function admin(request:Request,env:Env,origin?:string){
- const expected=env.ANALYTICS_ADMIN_TOKEN;if(!expected)return error('admin_not_configured',503,origin);
+async function authorize(request:Request,expected:string|undefined,notConfigured:string,origin?:string):Promise<Response|undefined>{
+ if(!expected)return error(notConfigured,503,origin);
  const header=request.headers.get('Authorization')??'';if(!header.startsWith('Bearer '))return error('unauthorized',401,origin);
  const supplied=header.slice(7);const enc=new TextEncoder();const a=new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(supplied))),b=new Uint8Array(await crypto.subtle.digest('SHA-256',enc.encode(expected)));let mismatch=0;for(let i=0;i<a.length;i++)mismatch|=a[i]^b[i];if(mismatch)return error('unauthorized',401,origin);
+}
+/** Shared aggregate-only reader. Route handlers select their own credential before calling it. */
+async function aggregate(request:Request,env:Env,gameId?:string,origin?:string){
  const url=new URL(request.url);const period=getPeriod(url,env);if(!period)return error('invalid_period',400,origin);
  const environment=url.searchParams.get('environment')??'production';if(!['production','development','qa','synthetic'].includes(environment))return error('invalid_environment',400,origin);
- const includeRetired=url.searchParams.get('include_retired')==='1';let gameId:string|undefined;
- if(url.pathname.startsWith('/v1/admin/game/')){gameId=url.pathname.split('/').at(-1);if(!/^game(?:00[1-9]|01[0-9])$/.test(gameId??''))return error('unknown_game',404,origin);}
+ const includeRetired=url.searchParams.get('include_retired')==='1';
+ if(gameId!==undefined&&!/^game(?:00[1-9]|01[0-9])$/.test(gameId))return error('unknown_game',404,origin);
  const versionFilters:Record<string,string>={};
  const conditions=['occurred_at >= ?','occurred_at < ?','environment = ?'];const args:unknown[]=[period.from,period.to,environment];
  // Read all games for cross-game analysis; the selected game's display is filtered afterwards.
@@ -88,7 +91,15 @@ export default {
   const url=new URL(request.url),origin=request.headers.get('Origin'),cors=origin&&allowedOrigin(origin,env)?origin:undefined;
   try{
    if(request.method==='GET'&&url.pathname==='/v1/health'){await env.DB.prepare('SELECT COUNT(*) AS ok FROM events WHERE 0').all();return response({status:'ok',schema_version:2,environment:env.ENVIRONMENT??'production'},200,cors);}
-   if(url.pathname.startsWith('/v1/admin/')){if(request.method==='OPTIONS'&&cors)return new Response(null,{status:204,headers:{'Access-Control-Allow-Origin':cors,'Access-Control-Allow-Methods':'GET, OPTIONS','Access-Control-Allow-Headers':'Authorization','Access-Control-Max-Age':'600',Vary:'Origin'}});if(origin&&!cors)return error('invalid_origin',403);if(request.method!=='GET')return error('method_not_allowed',405,cors);if(url.pathname!=='/v1/admin/summary'&&!/^\/v1\/admin\/game\/[^/]+$/.test(url.pathname))return error('not_found',404,cors);return await admin(request,env,cors);}
+   if(url.pathname.startsWith('/v1/codex/')){
+    // Deliberately GET-only, with no fallback to admin authentication or future admin routes.
+    if(request.method!=='GET')return error('method_not_allowed',405);
+    if(origin&&!cors)return error('invalid_origin',403);
+    if(url.pathname!=='/v1/codex/summary'&&!/^\/v1\/codex\/game\/[^/]+$/.test(url.pathname))return error('not_found',404);
+    const denied=await authorize(request,env.ANALYTICS_CODEX_TOKEN,'codex_not_configured');if(denied)return denied;
+    return await aggregate(request,env,url.pathname==='/v1/codex/summary'?undefined:url.pathname.split('/').at(-1));
+   }
+   if(url.pathname.startsWith('/v1/admin/')){if(request.method==='OPTIONS'&&cors)return new Response(null,{status:204,headers:{'Access-Control-Allow-Origin':cors,'Access-Control-Allow-Methods':'GET, OPTIONS','Access-Control-Allow-Headers':'Authorization','Access-Control-Max-Age':'600',Vary:'Origin'}});if(origin&&!cors)return error('invalid_origin',403);if(request.method!=='GET')return error('method_not_allowed',405,cors);if(url.pathname!=='/v1/admin/summary'&&!/^\/v1\/admin\/game\/[^/]+$/.test(url.pathname))return error('not_found',404,cors);const denied=await authorize(request,env.ANALYTICS_ADMIN_TOKEN,'admin_not_configured',cors);if(denied)return denied;return await aggregate(request,env,url.pathname==='/v1/admin/summary'?undefined:url.pathname.split('/').at(-1),cors);}
    if(url.pathname!=='/v1/events')return error('not_found',404,cors);
    if(!cors)return error('invalid_origin',403);
    if(request.method==='OPTIONS')return new Response(null,{status:204,headers:{'Access-Control-Allow-Origin':cors,'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Access-Control-Max-Age':'600',Vary:'Origin'}});

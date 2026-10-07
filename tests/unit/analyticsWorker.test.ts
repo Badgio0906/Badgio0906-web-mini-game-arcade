@@ -15,9 +15,56 @@ function database():Database&{sqlite:DatabaseSync}{
  return {sqlite,prepare,async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const statement of statements)results.push(await statement.run());sqlite.exec('COMMIT');return results;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
 }
 afterEach(()=>{for(const db of open.splice(0))db.close();});
-function env():Env&{DB:ReturnType<typeof database>}{return {DB:database(),ENVIRONMENT:'production',ANALYTICS_ADMIN_TOKEN:'synthetic-test-only-admin'};}
+function env():Env&{DB:ReturnType<typeof database>}{return {DB:database(),ENVIRONMENT:'production',ANALYTICS_ADMIN_TOKEN:'synthetic-test-only-admin',ANALYTICS_CODEX_TOKEN:'synthetic-test-only-codex'};}
 function post(events:unknown[],origin='https://game100garage.com'){return new Request('https://telemetry.example/v1/events',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({schema_version:2,events})});}
 function admin(path='/v1/admin/summary'){return new Request('https://telemetry.example'+path,{headers:{Authorization:'Bearer synthetic-test-only-admin'}});}
+function codex(path='/v1/codex/summary',token='synthetic-test-only-codex',method='GET'){return new Request('https://telemetry.example'+path,{method,headers:token?{Authorization:`Bearer ${token}`}:{}});}
+describe('Codex aggregate-only access',()=>{
+ it('requires the dedicated token and isolates admin credentials in both directions',async()=>{
+  const e=env();
+  for(const token of ['','wrong-fixture','synthetic-test-only-admin'])expect((await worker.fetch(codex(undefined,token),e)).status).toBe(401);
+  for(const path of ['/v1/admin/summary','/v1/admin/game/game019'])expect((await worker.fetch(codex(path),e)).status).toBe(401);
+  expect((await worker.fetch(codex(),e)).status).toBe(200);
+  delete e.ANALYTICS_CODEX_TOKEN;
+  expect((await worker.fetch(codex(),e)).status).toBe(503);
+  expect((await worker.fetch(admin(),e)).status).toBe(200);
+  e.ANALYTICS_CODEX_TOKEN='synthetic-test-only-codex';delete e.ANALYTICS_ADMIN_TOKEN;
+  expect((await worker.fetch(codex(),e)).status).toBe(200);
+ });
+ it('only exposes the two GET routes and cannot write or use future admin routes',async()=>{
+  const e=env();
+  for(const path of ['/v1/codex/summary','/v1/codex/game/game019']){
+   for(const method of ['POST','PUT','PATCH','DELETE','HEAD','OPTIONS'])expect((await worker.fetch(codex(path,undefined,method),e)).status).toBe(405);
+  }
+  for(const path of ['/v1/codex/events','/v1/codex/export','/v1/codex/game/game019/extra','/v1/codex/game/game999'])expect((await worker.fetch(codex(path),e)).status).toBe(404);
+  expect(e.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM events').get()?.n).toBe(0);
+ });
+ it('reuses admin metrics and filters without returning individual identifiers or headers',async()=>{
+  const e=env(),row=event({occurred_at:iso(-1000),visit_id:randomUUID(),session_id:randomUUID(),run_id:randomUUID()});await worker.fetch(post([row]),e);
+  const query=`?from=${iso(-7*86400000)}&to=${iso()}&environment=production&game_version=2&rules_version=2&presentation_version=2`;
+  for(const suffix of ['/summary','/game/game019']){
+   const adminResult=await worker.fetch(admin('/v1/admin'+suffix+query),e);
+   const result=await worker.fetch(codex('/v1/codex'+suffix+query),e);expect(result.status).toBe(200);expect(result.headers.get('Cache-Control')).toBe('no-store');
+   const text=await result.text(),body=JSON.parse(text),baseline=await adminResult.json() as Record<string,unknown>;
+   delete body.generated_at;delete baseline.generated_at;expect(body).toEqual(baseline);
+   for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','ip_address','user_agent','user-agent'])expect(text).not.toContain(`"${key}"`);
+   for(const value of [row.browser_id,row.visit_id,row.session_id,row.run_id!,row.event_id,e.ANALYTICS_CODEX_TOKEN!,e.ANALYTICS_ADMIN_TOKEN!])expect(text).not.toContain(value);
+  }
+  const empty=await worker.fetch(codex('/v1/codex/game/game019?game_version=missing'),e);expect((await empty.json() as {game:{run_count:number}}).game.run_count).toBe(0);
+ });
+ it('preserves production defaults, retired exclusions and explicit game010 detail',async()=>{
+  const e=env();await worker.fetch(post([event({occurred_at:iso(-1000)})]),e);
+  const summary=await worker.fetch(codex(),e),body=await summary.json() as {environment:string;games:{game_id:string}[]};
+  expect(body.environment).toBe('production');expect(body.games).toHaveLength(18);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
+  const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(19);
+  const detail=await worker.fetch(codex('/v1/codex/game/game010'),e);expect((await detail.json() as {game:{status:string}}).game.status).toBe('retired');
+ });
+ it('rejects invalid or oversized periods, environments, versions and disallowed origins',async()=>{
+  const e=env();
+  for(const query of ['from=bad','to=bad','environment=bad','game_version=bad%20version','rules_version=bad!','presentation_version=bad!','from='+iso(-91*86400000),'from='+iso()+'&to='+iso(-1000),'to='+iso(600000)])expect((await worker.fetch(codex('/v1/codex/summary?'+query),e)).status).toBe(400);
+  expect((await worker.fetch(new Request('https://telemetry.example/v1/codex/summary',{headers:{Origin:'https://invalid.example',Authorization:'Bearer synthetic-test-only-codex'}}),e)).status).toBe(403);
+ });
+});
 describe('external analytics boundary',()=>{
  it('validates strict envelope and documented data, excluding free text and URL query',()=>{
   expect(isAnalyticsBatch({schema_version:2,events:[event()]},now)).toBe(true);

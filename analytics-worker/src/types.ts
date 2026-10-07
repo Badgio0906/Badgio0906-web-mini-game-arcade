@@ -2,7 +2,7 @@ import type { AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
 export interface D1Result<T = unknown> { results: T[]; meta?: { changes?: number }; success?: boolean; }
 export interface D1Statement { bind(...values: unknown[]): D1Statement; all<T = unknown>(): Promise<D1Result<T>>; run(): Promise<D1Result>; }
 export interface Database { prepare(sql: string): D1Statement; batch<T = unknown>(statements: D1Statement[]): Promise<D1Result<T>[]>; }
-export interface Env { DB: Database; ENVIRONMENT?: 'production' | 'development'; ANALYTICS_ADMIN_TOKEN?: string; RAW_RETENTION_DAYS?: string; AGGREGATE_RETENTION_MONTHS?: string; RATE_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> }; }
+export interface Env { DB: Database; ENVIRONMENT?: 'production' | 'development'; ANALYTICS_ADMIN_TOKEN?: string; ANALYTICS_CODEX_TOKEN?: string; RAW_RETENTION_DAYS?: string; AGGREGATE_RETENTION_MONTHS?: string; RATE_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> }; }
 export interface StoredEvent extends Omit<AnalyticsEnvelope,'data'> { received_at: string; data_json: string; }
 export interface Ratio { numerator: number; denominator: number; rate: number | null; sample_size_small: boolean; }
 export interface Metrics {
