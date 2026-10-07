@@ -24,12 +24,17 @@ node scripts/fetch-analytics-context.mjs --days 7 --environment production --inc
 ```
 
 - 必須：`ANALYTICS_CODEX_TOKEN`。後でCloudflare WorkerのSecretとCodex CloudのSecretへ同じ専用値を設定する。admin tokenはCodexへ渡さない。
+- tokenは非空文字列をBearer値として扱い、独自の文字種検証をしない。Codex Cloudのネットワークシークレットは許可先への通信時にプロキシが実Secretへ置換するため、内部のプレースホルダー形式に依存しない。未設定・空文字列は`missing_codex_token`、標準HTTPヘッダー検証などfetch側の失敗は値を表示せず`analytics_request_failed`にする。
 - 任意：`ANALYTICS_BASE_URL`。既定`https://analytics.game100garage.com`。HTTPS originのみ（ローカルfixture検証ではloopback HTTP可）。URLの認証情報・query・fragment・追加pathは拒否する。
 - `--days`は1〜90、既定7。`--game`省略時は全体、`--environment`既定production（development／qa／syntheticも明示可）。退役は`--include-retired`指定時のみ一覧へ含める。game010を個別指定すると退役集計を取得できる。
 
 JSONをstdoutへ出す。形式は`{ "source": "GAME100 Analytics", "fetched_at": "...", "period": { "from": "...", "to": "..." }, "data": { ... } }`。失敗時は非0終了コードと固定JSONエラーをstderrへ出す。tokenはBearer headerだけに送信し、応答本文・例外内容・URLをエラーログへ出さない。redirectは拒否、timeoutは30秒、生ID fieldやtoken反射を含む成功応答も拒否する。
 
 Secretはコード・URL・ログ・ファイル名・Gitへ保存しない。取得スクリプトに保存機能はない。通常はstdoutだけを解析し、一時保存が必要ならGit管理外のOS一時ディレクトリを使い削除する。本番snapshotをリポジトリへ永続保存・commitしない。
+
+### 2026-10-07 プレースホルダー対応の検証
+
+文字種チェックと不要なエラーコードを削除。`npm test -- tests/unit/analytics-codex-fetch.test.ts`は15件成功、`npm run check`／`npm run build`も成功。追加テストは修正前に4件失敗し、修正後はすべて成功した。実SecretやCodex内部形式を使わず、合成文字列のfetch呼び出し・ローカルHTTP実送信と安全なCLI出力を確認。未設定／空文字列、URL制約、redirect拒否、timeout設定、応答内の識別子／token反射拒否、例外／HTTPエラー本文の非表示も検証した。buildは既存ゲームCSSの構文警告2件とchunkサイズ警告を伴う。本番Analytics取得、ゲーム・Worker・D1変更は今回未実施。
 
 ## 集計の制約
 

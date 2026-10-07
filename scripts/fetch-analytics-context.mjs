@@ -53,7 +53,7 @@ export async function fetchAnalyticsContext(args, env = process.env, fetcher = f
   const options = parseOptions(args);
   const token = env.ANALYTICS_CODEX_TOKEN;
   if (!token) fail('missing_codex_token');
-  if (!/^[A-Za-z0-9._~+/-]+=*$/.test(token)) fail('invalid_codex_token');
+  // Treat the credential as opaque; a Cloud proxy may replace its placeholder.
   const base = env.ANALYTICS_BASE_URL || DEFAULT_BASE_URL;
   if (base.includes(token)) fail('invalid_base_url');
   const url = new URL(options.game ? `/v1/codex/game/${options.game}` : '/v1/codex/summary', baseURL(base));
@@ -88,7 +88,7 @@ export async function fetchAnalyticsContext(args, env = process.env, fetcher = f
 }
 
 const ERROR_CODES = new Set(['invalid_arguments', 'invalid_days', 'invalid_game', 'invalid_environment',
-  'missing_codex_token', 'invalid_codex_token', 'invalid_base_url', 'analytics_request_failed',
+  'missing_codex_token', 'invalid_base_url', 'analytics_request_failed',
   'analytics_http_error', 'invalid_analytics_response', 'unsafe_response']);
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

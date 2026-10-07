@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-07（日本時間）：**Codex Analytics取得スクリプトのネットワークシークレット対応を修正。** 非空tokenの独自文字種チェックと不要なエラーコードを削除し、プロキシ置換前のプレースホルダーをBearer値としてfetchへ渡す。Secret非表示・URL制約・redirect拒否・30秒timeout・応答の反射／生ID拒否は維持。実Secretを使わないfetch／ローカルHTTPテストを追加し、対象15件／root check／build成功（既存CSS・chunk警告あり）。[変更・検証記録](analytics/CODEX_ANALYTICS_ACCESS.md#2026-10-07-プレースホルダー対応の検証)。本番Analytics取得とゲーム・Worker・D1変更は今回未実施。
+
 2026-10-07（日本時間）：**Codex本番Analytics取得 Phase 1を実装。** 専用`ANALYTICS_CODEX_TOKEN`でGET `/v1/codex/summary`／`/v1/codex/game/:game_id`だけを読み取り、adminの認証を分離したまま匿名集計ロジック・query検証を共用。`scripts/fetch-analytics-context.mjs`は必要な期間・ゲームのJSONをstdoutへ取得し、秘密値・生ID・redirect・エラー本文の出力を拒否。[仕様・使い方・制約](analytics/CODEX_ANALYTICS_ACCESS.md)。本番Secret設定、Worker deploy、Codex Cloud Secret登録、本番APIへの取得は今回未実施。ゲーム・広告・GA4・CREDIT・D1／event schema・本番設定は変更しない。Worker typecheck／実ローカルD1の19確認／root361単体（42file）／check／build成功。D1検証はsynthetic fixtureのみ。初回テストのrun1部分一致をUUID fixtureへ修正し再検証済み。取得結果はGitに保存しない。
 
 2026-10-06：サイト正式名称を **100ガレ ～GAME100 GARAGE～** に統一。略称 **100ガレ**、英字 **GAME100 GARAGE**、ドメイン`game100garage.com`。変更は公開表示・title・description・現行文書と旧ページ生成templateの名称のみ。Game001はユーザー許可済みのfooter文字列1箇所だけを差し替え、ゲーム処理・015/019・広告・解析・Cloudflare・保存互換・URLは変更しない。旧称を記録した過去資料・ログは履歴として保持する。 check／345単体／build成功。compiled PC・390px・320pxで新名称・18作品link・AdSense保持・同意UI・pageerror0を確認。

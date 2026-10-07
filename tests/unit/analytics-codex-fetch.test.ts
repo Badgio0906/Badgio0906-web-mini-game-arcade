@@ -37,12 +37,30 @@ describe('Codex Analytics fetch script',()=>{
   for(const args of [['--token',token],['--days'],['--days','0'],['--days','91'],['--days','NaN'],['--days','1.5'],['--game','game999'],['--environment','other'],['--days','7','--days','30'],['--include-retired','false']])expect(()=>parseOptions(args)).toThrow();
  });
  it('requires the Codex credential even when an admin credential is present',async()=>{
-  const fetcher=vi.fn();await expect(fetchAnalyticsContext([],{ANALYTICS_ADMIN_TOKEN:'admin-fixture-only'},fetcher,now)).rejects.toThrow('missing_codex_token');expect(fetcher).not.toHaveBeenCalled();
+  const fetcher=vi.fn();
+  for(const missing of [undefined,''])await expect(fetchAnalyticsContext([],{ANALYTICS_ADMIN_TOKEN:'admin-fixture-only',ANALYTICS_CODEX_TOKEN:missing},fetcher,now)).rejects.toThrow('missing_codex_token');
+  expect(fetcher).not.toHaveBeenCalled();
  });
- it('rejects insecure remote URLs, URL credentials/query/path and invalid Bearer tokens',async()=>{
+ it.each(['fixture:network-secret<placeholder>','fixture placeholder with spaces'])('passes a nonempty opaque credential to the fetcher without a character allowlist (%#)',async(placeholder)=>{
+  const fetcher=vi.fn(async(url:URL,options:RequestInit)=>{
+   expect(url.href).not.toContain(placeholder);
+   expect(options.headers).toEqual({Authorization:`Bearer ${placeholder}`,Accept:'application/json'});
+   expect(options.redirect).toBe('error');expect(options.signal).toBeInstanceOf(AbortSignal);
+   return Response.json(payload(url));
+  });
+  const result=await fetchAnalyticsContext([],{ANALYTICS_CODEX_TOKEN:placeholder},fetcher,now);
+  expect(fetcher).toHaveBeenCalledOnce();expect(JSON.stringify(result)).not.toContain(placeholder);
+  await expect(fetchAnalyticsContext([],{ANALYTICS_CODEX_TOKEN:placeholder},async(url:URL)=>Response.json({...payload(url),echo:placeholder}),now)).rejects.toThrow('unsafe_response');
+ });
+ it('rejects insecure remote URLs and URL credentials/query/path before sending a request',async()=>{
   const fetcher=vi.fn();
   for(const base of ['http://analytics.example.test','https://user:password@analytics.example.test','https://analytics.example.test/?token='+token,'https://analytics.example.test/v1/admin','https://analytics.example.test/#fragment','not-a-url'])await expect(fetchAnalyticsContext([],{...env,ANALYTICS_BASE_URL:base},fetcher,now)).rejects.toThrow('invalid_base_url');
-  await expect(fetchAnalyticsContext([],{ANALYTICS_CODEX_TOKEN:'bad\nheader'},fetcher,now)).rejects.toThrow('invalid_codex_token');expect(fetcher).not.toHaveBeenCalled();
+  expect(fetcher).not.toHaveBeenCalled();
+ });
+ it('sanitizes standard HTTP header validation failures from the fetcher',async()=>{
+  const fetcher=vi.fn(async(url:URL,options:RequestInit)=>{new Headers(options.headers);return Response.json(payload(url));});
+  await expect(fetchAnalyticsContext([],{ANALYTICS_CODEX_TOKEN:'fixture\nheader'},fetcher,now)).rejects.toThrow('analytics_request_failed');
+  expect(fetcher).toHaveBeenCalledOnce();
  });
  it('does not propagate exception messages, echoed HTTP bodies or malformed JSON',async()=>{
   await expect(fetchAnalyticsContext([],env,async()=>{throw new Error(token);},now)).rejects.toThrow('analytics_request_failed');
@@ -62,6 +80,22 @@ describe('Codex Analytics fetch script',()=>{
  it('accepts the existing API end-time clamp for small clock skew',async()=>{
   const result=await fetchAnalyticsContext([],env,async(url:URL)=>{const data=payload(url);data.period.to=new Date(now.getTime()-1000).toISOString();return Response.json(data);},now);
   expect(result.period.to).toBe('2026-10-06T23:59:59.000Z');
+ });
+ it('CLI sends an opaque placeholder over local HTTP and prints only safe aggregate JSON',async()=>{
+  const placeholder='fixture:network-secret<placeholder>';
+  let authorization:string|undefined,requestedURL='';
+  const server=createServer((request,response)=>{
+   authorization=request.headers.authorization;requestedURL=request.url??'';
+   response.writeHead(200,{'Content-Type':'application/json'});response.end(JSON.stringify(payload(new URL(requestedURL,'http://127.0.0.1'))));
+  });
+  await new Promise<void>(resolve=>server.listen(0,'127.0.0.1',resolve));
+  try{
+   const address=server.address() as {port:number};
+   const result=await execute(process.execPath,[script,'--days','7'],{env:{...process.env,ANALYTICS_CODEX_TOKEN:placeholder,ANALYTICS_BASE_URL:`http://127.0.0.1:${address.port}`}});
+   expect(authorization).toBe(`Bearer ${placeholder}`);expect(requestedURL).not.toContain(placeholder);
+   expect(result.stderr).toBe('');expect(result.stdout).not.toContain(placeholder);
+   const data=JSON.parse(result.stdout);expect(data.source).toBe('GAME100 Analytics');expect(data.data.environment).toBe('production');
+  }finally{await new Promise<void>(resolve=>server.close(()=>resolve()));}
  });
  it('CLI errors have nonzero exit codes and never echo headers, bodies or tokens',async()=>{
   const server=createServer((request,response)=>{response.writeHead(request.url?.includes('environment=qa')?403:401);response.end(request.headers.authorization);});
