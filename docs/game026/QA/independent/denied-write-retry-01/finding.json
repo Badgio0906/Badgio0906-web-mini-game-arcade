@@ -1,0 +1,18 @@
+{
+  "finding_id": "denied-write-retry-01",
+  "problem": "Subsequent snapshot writes still call the backend after its first setItem exception.",
+  "expected": "After a denied write, continued game-local saving uses in-page memory only, without repeatedly attempting the denied storage backend.",
+  "observed": [
+    "SaveStore.write catches a backend exception and sets memoryOnly=true.",
+    "The same write method contains no memoryOnly guard before the next backend.setItem call.",
+    "read returns the memory snapshot when memoryOnly is true."
+  ],
+  "unknown": [
+    "Actual browser storage-denial timing has not been exercised in this source review."
+  ],
+  "operation": "Source review of current Game026 SaveStore after initial candidate build.",
+  "evidence": [
+    "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt"
+  ],
+  "provenance": "actual-development-source-observation"
+}

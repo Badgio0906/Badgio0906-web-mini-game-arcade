@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**第2バッチ026〜030の実装・検証中。026「出世すごろく」は統合検証575 tests／check／build、27対象、4画面実操作とPC/phone通常完走、独立Visual81を完了し公式公開前。** active25／historical26、010退役維持。027〜030は別作業枝で検証中・未公開、次031未着手。結果までの通常操作・期待CI/配信版・Portal掲載を確認してから対象Sheet A33/A47/A11/A42/A49を順次更新する。[報告](classic-batch-two/IMPLEMENTATION_REPORT.md)／[引継ぎ](classic-batch-two/HANDOFF.md)。旧9作業tree・018未commit182fileは保全。Workerコード登録とローカルD1は許可範囲、本番認証不足で新作の外部収集停止を維持。広告／GA4／CREDIT／Secret／D1 schema不変。本人・実機未試遊公開は承認済みだが主観評価は未実施。
+
 2026-10-07 UTC：**定番5作品021〜025の試作公開・候補表更新が完了。** 最新runtime `9e02494`、公式Pages37655713679成功。025公開4画面通常操作／Portal24／配信thumbnail SHA一致、A72だけ済／読戻し確認。全545テスト／56ファイル、check／build、Jev helper25テスト、WorkerローカルD123イベント7RUN成功。各公開SHA・URL・Sheet結果は[バッチ報告](classic-five/IMPLEMENTATION_REPORT.md)。active24／historical25、010退役維持、次026は未着手で今回バッチ終了。Jev21実API／HTTP200／有効4回答を独立監査、risk見逃し3件と手順・証拠の不備は[利用報告](classic-five/JEV_USAGE_REPORT.md)に明示。新作本番Analytics登録は現環境の未認証で保留・外部送信停止、既存020登録保持。作者本人／実機の主観試遊は未実施。元018未commit182file保全、広告／CREDIT／GA4／既存ゲーム固有ソース不変。再開は[HANDOFF](classic-five/HANDOFF.md)。
 
 2026-10-07 UTC：**Game024「ひとマススネーク」試作版を公式公開済み（runtime c7fde20、Pages37653078771成功）。** fixed4/6/8・20×20・queue2・任意練習・速度別BEST／保存。root514tests/check/build、Worker20events6RUN、公開4画面58項目／Portal23／配信thumbnail SHA一致。候補表A48だけ済／読戻し確認。[公開証明](game024/QA/PUBLICATION.json)。headless focusfixture・失われた一部の隔離最終画像は記録を区別。本人／実機未試遊、新作外部収集停止・本番Worker認証blocker継続。active23／historical24、次025。

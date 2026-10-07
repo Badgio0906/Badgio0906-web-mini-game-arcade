@@ -1,0 +1,26 @@
+{
+  "finding_id": "bottom-overlap-marker-clipping",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Actual phone390 and landscape844 images show lower-row triangle/hex silhouettes clipped by the board bottom. Source max extent100.45 confirms geometry outside viewBox100. Players and turn still distinguishable via shape/body/sidebar; this is a minor polish/readability defect, not a critical unavailable operation. Check every cell/count/index to guarantee corrected shape and stroke remain within cell, then compare same actual viewport.",
+  "evidence": [
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt",
+    "docs/game026/QA/verified-20261007T181042/unit.txt",
+    "docs/game026/QA/native-marker-fixed-20261007T181232/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independent observed currentcell1 lower-shape clipping, then exhaustive100cells×1..4markers geometry test verifies everyshape whollyinside itscell; native4 aftercaptures confirm sourcevariant without overwritingbefore",
+    "evidence": [
+      "tests/unit/game026.test.ts",
+      "docs/game026/QA/verified-20261007T181042/unit.txt",
+      "docs/game026/QA/native-marker-fixed-20261007T181232/report.json"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

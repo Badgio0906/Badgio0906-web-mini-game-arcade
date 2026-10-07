@@ -1,0 +1,60 @@
+{
+  "reviewer": "batch_two_review",
+  "recorded_at": "2026-10-07T17:48:41.053805+00:00",
+  "base_commit": "7c3d089d69da1ff076c63acb7c3ba96449728a1d",
+  "method": "search_service_web_run system2_search_query/open/find; no executor policy bypass",
+  "queries": [
+    "\"出世すごろく\" ゲーム",
+    "\"ひと息ビリヤード\"",
+    "\"ぽんぽん卓球\"",
+    "\"給湯室の落としもの釣り\"",
+    "\"コンセントどこ？\" ゲーム",
+    "WPA official rules eight ball break scratch",
+    "ITTF official statutes 2026 table tennis laws"
+  ],
+  "primary_sources": [
+    {
+      "url": "https://www.wpapool.com/wp-content/uploads/2026/01/2026.01.02-WPA-Rules.pdf",
+      "read_sections": [
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.8",
+        "4.9"
+      ],
+      "document_effective_date": "2025-09-15"
+    },
+    {
+      "url": "https://documents.ittf.sport/sites/default/files/public/2026-02/2026_Statutes_v1_consolidated_clean.pdf",
+      "read_sections": [
+        "2.6.3",
+        "2.7.1",
+        "2.9.1.1",
+        "2.10",
+        "2.11.1",
+        "2.13.3"
+      ],
+      "document_effective_date": "2026-01-01"
+    },
+    {
+      "url": "https://www.copyright.gov/register/tx-games.html",
+      "scope": "US rule/expression distinction only, not Japanese legal clearance"
+    },
+    {
+      "url": "https://www.city.gyoda.lg.jp/soshiki/shougaigakusyubu/kyodohakubutsukan/digital/ouchi_museum.html",
+      "scope": "generic 出世すごろく phrase also used in educational title, no board/image copied"
+    }
+  ],
+  "limits": [
+    "Limited general Web title search, no formal trademark clearance",
+    "First two Web tool calls incorrectly used search_query, returned empty isError; corrected to supported system2_search_query. Initially reported connector blocker to root then corrected; no network configuration changed.",
+    "ITTF statutes landing-page open returned Internal Error; latest 2026 official PDF successfully opened and relevant section read.",
+    "No browser game play performed in this research stage; no release/fun decision.",
+    "Inline user image viewed in inherited conversation; original local file/hash/dimensions not independently established."
+  ],
+  "billiards_rule_table_review": {
+    "path": "/workspace/batch-two-author-027/docs/game027/SHOT_RULE_TABLE.md",
+    "sha256": "7189fed0fdf6c70874779f592933b45cb9110a3c2ec8343e38a6b553b2ce1c89",
+    "stage": "Before model publication; all 8 required ambiguous results explicit; no finding from table alone"
+  }
+}

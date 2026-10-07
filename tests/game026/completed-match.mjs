@@ -1,0 +1,31 @@
+// Missing full ordinary RUN coverage, separate fresh artifacts; fair dice and model never injected.
+import {chromium} from '@playwright/test';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+const base=process.env.GAME026_BASE,out=process.env.GAME026_REPORT;if(!base||!out)throw new Error('Set base and NEW output');await fs.mkdir(out,{recursive:false});
+const freeze=JSON.parse(await fs.readFile(process.env.GAME026_FREEZE??'docs/game026/SOURCE_FREEZE.json','utf8'));
+for(const[p,h]of Object.entries(freeze.files))assert.equal(crypto.createHash('sha256').update(await fs.readFile(p)).digest('hex'),h);
+const report={base,started_at:new Date().toISOString(),source:freeze.files,provenance:'Ordinary unmodified cryptographic fair dice; real native human roll inputs + normal CPU turns; reduced-motion OS preference shortens display-only delay; no seed/state/dice injection; synthetic QA, not human opinion.',records:[]};
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+async function write(){await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2));}
+const save=p=>p.evaluate(()=>JSON.parse(localStorage.getItem('web-mini-arcade:v1:game026:snapshot')??'null'));
+const waitHumanOrResult=p=>p.waitForFunction(()=>document.getElementById('app').dataset.state==='result'||document.getElementById('app').dataset.state==='playing'&&!document.getElementById('roll').disabled,null,{timeout:5000});
+try{for(const[name,width,height,touch]of [['desktop',1365,900,false],['phone',390,844,true]]){
+ const r={name,width,height,touch,status:'RUNNING',errors:[],checks:[],captures:[],humanRolls:0};report.records.push(r);const ctx=await browser.newContext({viewport:{width,height},hasTouch:touch,isMobile:touch,reducedMotion:'reduce'});await ctx.addInitScript(()=>localStorage.setItem('game100garage:analytics-consent:v1','denied'));await ctx.route(/google-analytics\.com|googletagmanager\.com|analytics\.game100garage\.com/,q=>q.abort());await ctx.route(/googlesyndication\.com/,q=>q.fulfill({status:200,body:'',contentType:'application/javascript'}));const p=await ctx.newPage();p.setDefaultTimeout(7000);p.on('pageerror',e=>r.errors.push(e.message));const tap=s=>touch?p.locator(s).tap():p.locator(s).click();const capture=async label=>{const f=`${name}-${label}.png`;await p.screenshot({path:path.join(out,f),fullPage:false});r.captures.push(f);};
+ try{
+ await p.goto(`${base}/game026.html`);await p.waitForFunction(()=>document.getElementById('app').dataset.state==='title');await tap('#play');await capture('ordinary-start');const initial=await save(p),start=Date.now();
+ while(await p.locator('#app').getAttribute('data-state')!=='result'){
+  assert.ok(r.humanRolls<600&&Date.now()-start<240000,'ordinary match bound exhausted');await waitHumanOrResult(p);if(await p.locator('#app').getAttribute('data-state')==='result')break;await tap('#roll');r.humanRolls++;await waitHumanOrResult(p);if(r.humanRolls%20===0){r.lastVisiblePositions=await p.locator('#players .player').evaluateAll(es=>es.map(e=>({position:+e.dataset.position,rank:e.dataset.rank})));await write();console.log(`${name}: ${r.humanRolls} ordinary rolls`);}
+ }
+ const terminal=await save(p);assert.equal(terminal.active.reported,true);assert.equal(terminal.stats.matches,initial.stats.matches+1);assert.equal(await p.locator('#menu tbody tr').count(),2);assert.equal(terminal.active.history.filter(m=>m.event==='finish').length,1);assert.ok(terminal.active.history.length>=1);await capture('ordinary-result');r.turns=terminal.active.history.length;r.diceCounts=terminal.active.history.reduce((counts,m)=>(counts[m.die-1]++,counts),[0,0,0,0,0,0]);r.stats=terminal.stats;r.stats.reported=r.stats.reported.map(()=>'<synthetic-local-result-id>');r.checks.push('ordinary human+CPU completed full standings; finish/run_end/result ledger once');
+ // Real stored values remain read-only; r.stats display redaction above is only Node copy.
+ const ledgerBefore=await save(p);await p.reload();await p.waitForFunction(()=>document.getElementById('app').dataset.state==='title');const ledgerReload=await save(p);assert.deepEqual(ledgerReload.stats,ledgerBefore.stats);assert.equal(ledgerReload.active.resultId,ledgerBefore.active.resultId);assert.equal(await p.locator('#restore').count(),0);r.checks.push('terminal reload neither regrants stats nor restores a completed race');
+ await tap('#play');await p.waitForFunction(()=>document.getElementById('app').dataset.state==='playing');const fresh=await save(p);assert.notEqual(fresh.active.resultId,ledgerBefore.active.resultId);assert.equal(fresh.active.history.length,0);assert.deepEqual(fresh.stats,ledgerBefore.stats);await tap('#retry');await p.waitForFunction(()=>document.getElementById('app').dataset.state==='confirm');await tap('#confirm-retry');await p.waitForFunction(()=>document.getElementById('app').dataset.state==='playing');assert.notEqual((await save(p)).active.resultId,fresh.active.resultId);assert.deepEqual((await save(p)).stats,fresh.stats);r.checks.push('normal freshmatch and confirmed retry replace run without double results');
+ // Held Enter across an explicit pause transition: old release must not roll/resume.
+ await p.locator('#roll').focus();await p.keyboard.down('Enter');await p.keyboard.press('Escape');await p.waitForFunction(()=>document.getElementById('app').dataset.state==='paused');await p.keyboard.up('Enter');assert.equal(await p.locator('#app').getAttribute('data-state'),'paused');assert.equal((await save(p)).active.pending,null);assert.equal((await save(p)).active.history.length,0);await capture('held-enter-pause');r.checks.push('held Enter→pause→old release cannot activate new screen');
+ assert.deepEqual(r.errors,[]);r.status='PASS';console.log(`${name}: PASS full ordinary ${r.turns} turns`);
+ }catch(e){r.status='FAIL';r.error=String(e);await capture('failure').catch(()=>{});r.failure=await p.evaluate(()=>({state:document.getElementById('app').dataset.state,body:document.getElementById('app').outerHTML.slice(0,18000)})).catch(()=>null);await write();process.exitCode=1;break;}
+ finally{await ctx.close();await write();}
+ }}finally{await browser.close();report.finished_at=new Date().toISOString();await write();}

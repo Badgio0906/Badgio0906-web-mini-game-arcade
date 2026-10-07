@@ -1,0 +1,96 @@
+{
+  "recorded_at": "2026-10-07T18:17:19.391899+00:00",
+  "reviewer": "batch_two_review",
+  "source_freeze": {
+    "base_commit": "7c3d089d69da1ff076c63acb7c3ba96449728a1d",
+    "recorded_at": "2026-10-07T18:10:47.217097+00:00",
+    "files": {
+      "game026.html": "b7f37d3b09a519592f2b2b4a8a3687413d59369548a0f799fa9ebafa22b9d2d5",
+      "src/games/game026/model.ts": "dd61b2f5761c6f2a4007b8b83344e0eb3c251af90c69875728c391e13d556847",
+      "src/games/game026/flow.ts": "e8c688ad945d5e98906480db9cd27ac582c73c1a47746a201ae8fd029cf8dbfb",
+      "src/games/game026/main.ts": "43748957b46be058718832378e68d95da51748eba1b0f25e7ad593c28361ae41",
+      "src/games/game026/style.css": "d129f0006d5acaa652507870953682c9d56090bfbae1c0c237b0b64c5dc83234",
+      "src/games/game026/save.ts": "648d04d1c66b3da3fc7bf2b96d7c0177bc9326f8039963c7a30d7667526cd762",
+      "src/games/game026/game.manifest.json": "ee3fe4afefe6d536fac4585874d17527b0dc8403abde39b3e7f090aae373dcf7",
+      "tests/unit/game026.test.ts": "125750c22dfdb000df38de42a3d5a7dbeb529d1048f8cc09e9bf39743eb0d8e8",
+      "tests/game026/vite.config.mjs": "80016bd61fcc5dc13a7034a47dc417792a12de1ff69a64e125d12d3a391a8c5a"
+    },
+    "build": "docs/game026/QA/verified-20261007T181042/dist",
+    "browser_verified": false
+  },
+  "method": "Independent actual compiled PC+phone native input review, plus independently viewed final actual viewport images at four sizes",
+  "images": [
+    "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-02/phone-four-overlap.png",
+    "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-02/desktop-keyboard-focus.png",
+    "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-02/phone-after-move.png",
+    "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-02/desktop-paused.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-marker-fixed-20261007T181232/landscape-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-marker-fixed-20261007T181232/small-ordinary-four-overlap.png"
+  ],
+  "reference": "Inline second-batch reference viewed in inherited conversation; no local original metadata independently verified",
+  "components": {
+    "A": {
+      "score": 12,
+      "max": 15,
+      "reason": "Clear quiet office up/down identity via exact game title, promotion/transfer labels, original route arrows; not a generic unrelated board."
+    },
+    "B": {
+      "score": 12,
+      "max": 15,
+      "reason": "Four original color+shape markers remain distinct; matched final phone/landscape images show complete lower triangle and hex bases inside border after containment repair."
+    },
+    "C": {
+      "score": 7,
+      "max": 10,
+      "reason": "Clean ivory background/soft grid useful for low-stimulus game; sparse, intentional lack of decorative characters."
+    },
+    "D": {
+      "score": 9,
+      "max": 10,
+      "reason": "Strong teal roll, discrete die, current participant border and clear pause/explanation/restart states; phone result table fits."
+    },
+    "E": {
+      "score": 9,
+      "max": 10,
+      "reason": "Whole100-cell board fits all four captured viewports. Desktop landscape uses board-left/controls-right; phone stacked retains roll. Small320 needs normal page scroll for bottom secondary controls, not hidden realtime board."
+    },
+    "F": {
+      "score": 13,
+      "max": 15,
+      "reason": "Actual PC/phone die and current-turn card update with visible token and clear movement text. Phone numbers, route solid/dashed arrows and shape markers distinguishable; keyboard focus ring clearly visible. Landscape270px grid minimum9px labels is readable for overview but remains less generous than phone."
+    },
+    "G": {
+      "score": 7,
+      "max": 10,
+      "reason": "Independent native roll observed rolling→playing confirmation, exact die and token/status move together once; no flicker or exaggerated effect. Deliberately simple position update suits untimed chance board. Native pause stops progression for330ms and fresh resume returns cleanly. No rich traversal tween claimed."
+    },
+    "H": {
+      "score": 12,
+      "max": 15,
+      "reason": "Consistent borders/shadows/controls and title/explanation/result complete, no screenshot placeholders. Minor token clip prevents final approval before correction."
+    }
+  },
+  "total": 81,
+  "final_gate": "PASS visual81/100; F13/15,H12/15, component reasons derive actual final viewport/input review",
+  "findings": [
+    "Initial bottom marker clipping independently rechecked corrected in final phone/landscape/small images; prior initial review retained."
+  ],
+  "human_fun": "UNPERFORMED",
+  "limitations": [
+    "Physical smartphone hardware and human enjoyment unperformed.",
+    "Prior desktop/phone ordinary result images originate matching source before marker-only repair; result layout was unchanged.",
+    "Small320 bottom secondary controls require ordinary page scroll, full board and roll remain visible; no realtime hidden ball problem.",
+    "Initial collector schema-only failure preserved separately with unnecessary non-gating Jev call acknowledged in CALL_SCOPE_DEVIATION.json."
+  ],
+  "measured_controls": {
+    "phone_roll": "306×48px at72,646",
+    "phone_other_buttons": "44px height; pause/help/retry118×44",
+    "focus": "actual desktopkeyboard-focus.png orange3px ring, distinct from teal button",
+    "text_contrast": {
+      "primary_white_teal": 6.731,
+      "body_dark_ivory": 10.976,
+      "disabled_dark_neutral": 5.57
+    },
+    "state_styles": "Source hover teal darkens; actual paused disabled die/roll neutral-grey; actual focus image visible; no hovered screenshot claimed."
+  }
+}

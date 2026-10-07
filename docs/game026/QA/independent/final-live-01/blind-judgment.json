@@ -1,0 +1,23 @@
+{
+  "finding_id": "game026-independent-snapshot-observer-shape",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Saved active is documented/replayed history-based Saved, without players property. Production snapshot() serializes mode/history/pending/lastDie/local result/observer identities; restore derives Race players by replay. Collector wrongly assumed players serialized. Correct read-only observer to use visible participant data-position plus actual saved history/pending, leaving gameplay intact. This failure prevents reviewer evidence only, not user play.",
+  "evidence": [
+    "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+    "docs/game026/QA/independent/final-live-01/probe.mjs",
+    "docs/game026/QA/independent/final-live-01/report.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read frozen Saved type and snapshot serializer; compared assumed active.players to actual history-only envelope and visible participant data-position emitted by render.",
+    "evidence": [
+      "docs/game026/QA/independent/final-live-01/save-source-before.txt",
+      "/workspace/batch-two-author-026/src/games/game026/main.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

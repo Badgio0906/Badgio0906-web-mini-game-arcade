@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-07T18:32:22.329997+00:00",
+  "original_absolute_source_references_preserved_for_provenance": true,
+  "portable_repository_evidence": [
+    {
+      "repository_path": "docs/game026/QA/native-marker-fixed-20261007T181232/landscape-ordinary-four-overlap.png",
+      "sha256": "5cc6e8fdf2c67123cefd31739501c3ed0a2788eea130f28bec9a8d0d5cd92008"
+    },
+    {
+      "repository_path": "docs/game026/QA/native-marker-fixed-20261007T181232/small-ordinary-four-overlap.png",
+      "sha256": "051d28c590f521aef1fb057fd57463052eab5a02aa090bfc57c6d3c61538dfbb"
+    },
+    {
+      "repository_path": "docs/game026/QA/completed-20261007T180638/phone-ordinary-result.png",
+      "sha256": "11af6fd6bd07931085da676c55960a8675f6cb19166e7e5e135cf9fcbb994871"
+    },
+    {
+      "repository_path": "docs/game026/QA/completed-20261007T180638/desktop-ordinary-result.png",
+      "sha256": "ae6a177c1f7915a2ca2532190d2fe204e2cdee1f98225549d1ed78bce57ab31e"
+    },
+    {
+      "repository_path": "docs/game026/SOURCE_FREEZE.json",
+      "sha256": "0be0fdf0b260f0ec0b66c0b6333ec921de7c033a7226b7a99a584cba6ab99c80"
+    }
+  ],
+  "reproduce": "After serving frozen root compiled game026 locally: GAME026_BASE=http://127.0.0.1:4926 GAME026_REVIEW_OUT=/tmp/game026-review-unique node docs/game026/QA/independent/final-live-02/reproduce.mjs",
+  "note": "Use fresh synthetic browser and local server only. Executed probe.mjs remains original immutable path-bound record; reproduce.mjs has equivalent observations with repository-relative dependency/source and required unique output."
+}

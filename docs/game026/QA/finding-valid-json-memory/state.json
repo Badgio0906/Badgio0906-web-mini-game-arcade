@@ -1,0 +1,20 @@
+{
+  "finding_id": "valid-json-memory-fallback",
+  "problem": "Current page memory is not returned after the backend becomes syntactically valid but invalid game data",
+  "expected": "Corrupted backend data should not discard the current in-page match",
+  "observed": [
+    "A local3 Race was written through SaveStore into memory and backend",
+    "Backend fixture was changed to {save_version:1,stats:null,active:null}",
+    "Subsequent SaveStore.read returned null although the current memory snapshot had local3 mode"
+  ],
+  "unknown": [
+    "Which read branch is responsible",
+    "Whether any other failed-read variants behave the same way"
+  ],
+  "test_name": "syntactically valid corrupted storage retains current page memory",
+  "evidence": [
+    "docs/game026/QA/unit-20261007T175418/output.txt",
+    "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt"
+  ],
+  "provenance": "synthetic fixture; real production SaveStore class; no browser or user data"
+}

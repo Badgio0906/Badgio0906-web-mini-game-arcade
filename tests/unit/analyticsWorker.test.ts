@@ -35,8 +35,8 @@ describe('Codex aggregate-only access',()=>{
    for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','user_agent'])expect(text).not.toContain(`"${key}"`);
    for(const id of [browser,visit,session,run,...events.map(row=>row.event_id)])expect(text).not.toContain(id);
   }
-  for(const request of [admin('/v1/admin/game/game026'),codex('/v1/codex/game/game026')])expect((await worker.fetch(request,e)).status).toBe(404);
-  expect((await worker.fetch(post([event({...base,game_id:'game026',page:'game026.html'})]),e)).status).toBe(400);
+  for(const request of [admin('/v1/admin/game/game031'),codex('/v1/codex/game/game031')])expect((await worker.fetch(request,e)).status).toBe(404);
+  expect((await worker.fetch(post([event({...base,game_id:'game031',page:'game031.html'})]),e)).status).toBe(400);
  });
  it.each(gameCatalog.filter(game=>game.releaseOrder>=21))('registers classic $id through strict ingest and anonymous aggregate detail',async game=>{
   const e=env(),browser=randomUUID(),run=randomUUID(),base={game_id:game.id,page:game.id+'.html',browser_id:browser,run_id:run,rules_version:'1',presentation_version:'prototype-1'};

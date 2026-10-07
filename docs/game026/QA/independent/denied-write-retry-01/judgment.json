@@ -1,0 +1,20 @@
+{
+  "finding_id": "denied-write-retry-01",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent source inspection before hidden Shadow record; no answers inspected",
+  "rationale": "write records memoryOnly after a storage exception but never checks it before later setItem; source is enough to establish repeated backend attempts. Local play continues via memory, so not a current major release risk. A guarded write and a denied-backend call-count regression are required.",
+  "evidence": [
+    "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected SaveStore write/read exception flow; requested scoped memoryOnly short circuit and backend-throws-once regression from author.",
+    "evidence": [
+      "docs/game026/QA/independent/denied-write-retry-01/save-before.ts.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

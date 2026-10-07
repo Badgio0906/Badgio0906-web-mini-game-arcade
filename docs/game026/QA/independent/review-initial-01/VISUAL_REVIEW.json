@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-10-07T18:12:29.626515+00:00",
+  "reviewer": "batch_two_review",
+  "source_freeze": "/workspace/batch-two-author-026/docs/game026/SOURCE_FREEZE.json",
+  "method": "Independent viewing of author native viewport captures; no reviewer live browser yet",
+  "images": [
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/small-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/desktop-ordinary-four-overlap.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/phone-title.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/native-20261007T180350/small-explanation.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/completed-20261007T180638/phone-ordinary-result.png",
+    "/workspace/batch-two-author-026/docs/game026/QA/completed-20261007T180638/desktop-ordinary-result.png"
+  ],
+  "reference": "Inline second-batch reference viewed in inherited conversation; no local original metadata independently verified",
+  "components": {
+    "A": {
+      "score": 12,
+      "max": 15,
+      "reason": "Clear quiet office up/down identity via exact game title, promotion/transfer labels, original route arrows; not a generic unrelated board."
+    },
+    "B": {
+      "score": 12,
+      "max": 15,
+      "reason": "Original four shape tokens and muted gold/teal/coral/green look cohesive and are not color-only; lower two clipped at starting square needs scoped repair."
+    },
+    "C": {
+      "score": 7,
+      "max": 10,
+      "reason": "Clean ivory background/soft grid useful for low-stimulus game; sparse, intentional lack of decorative characters."
+    },
+    "D": {
+      "score": 9,
+      "max": 10,
+      "reason": "Strong teal roll, discrete die, current participant border and clear pause/explanation/restart states; phone result table fits."
+    },
+    "E": {
+      "score": 9,
+      "max": 10,
+      "reason": "Whole100-cell board fits all four captured viewports. Desktop landscape uses board-left/controls-right; phone stacked retains roll. Small320 needs normal page scroll for bottom secondary controls, not hidden realtime board."
+    },
+    "F": {
+      "score": 12,
+      "max": 15,
+      "reason": "Numbers/arrows readable at phone390, shape overlap and participant positions distinguishable. Landscape tiny grid ~9px numbers is minimum rather than exemplary; tiny320 wait-text wraps and token cut limits polish."
+    },
+    "G": {
+      "score": null,
+      "max": 10,
+      "reason": "Motion not independently viewed; static image/source/author native trace cannot substitute final direct observation."
+    },
+    "H": {
+      "score": 12,
+      "max": 15,
+      "reason": "Consistent borders/shadows/controls and title/explanation/result complete, no screenshot placeholders. Minor token clip prevents final approval before correction."
+    }
+  },
+  "static_subtotal": 73,
+  "static_max": 90,
+  "total": null,
+  "final_gate": "PENDING: token correction, final image recheck and independent motion/input observation",
+  "findings": [
+    "Bottom triangle/hex clipping confirmed actual phone and landscape images; author owns ONE D shadow before repair."
+  ],
+  "human_fun": "UNPERFORMED",
+  "limitations": [
+    "Button geometry>=44px comes from author measured native report plus CSS, not reviewer DOM probe.",
+    "Contrast/focus details require explicit numeric/source and focused-state verification before final gate."
+  ]
+}

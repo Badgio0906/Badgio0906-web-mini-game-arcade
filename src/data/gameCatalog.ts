@@ -65,9 +65,10 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game023: ["quiz", "decision", "brain-training"],
   game024: ["reflex", "retro", "endless"],
   game025: ["puzzle", "decision", "brain-training"],
+  game026: ["office", "retro", "decision"],
 };
 
-const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard'] as const;
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
 export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
@@ -81,6 +82,7 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   {"id": "game023", "titleJa": "伏字ことば ～KANA GUESS～", "titleEn": "KANA GUESS", "tagline": "一文字わかると、ことばが見える。", "thumbnail": "./assets/portal/game023.webp", "route": "./game023.html", "releaseOrder": 23},
   {"id": "game024", "titleJa": "ひとマススネーク ～SNAKE～", "titleEn": "SNAKE", "tagline": "食べて、のびて。自分のしっぽに、ご用心。", "thumbnail": "./assets/portal/game024.webp", "route": "./game024.html", "releaseOrder": 24},
   {"id": "game025", "titleJa": "こつこつマインスイーパー ～MINESWEEPER～", "titleEn": "MINESWEEPER", "tagline": "数字を手がかりに、ひとマスずつ。", "thumbnail": "./assets/portal/game025.webp", "route": "./game025.html", "releaseOrder": 25},
+  {"id": "game026", "titleJa": "出世すごろく ～UP & DOWN～", "titleEn": "UP & DOWN", "tagline": "ふって、すすんで、のぼったり、おりたり。", "thumbnail": "./assets/portal/game026.webp", "route": "./game026.html", "releaseOrder": 26},
 ].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */

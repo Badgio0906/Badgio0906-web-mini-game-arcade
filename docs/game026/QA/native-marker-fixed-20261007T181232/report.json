@@ -1,0 +1,4918 @@
+{
+  "base": "http://127.0.0.1:4926",
+  "started_at": "2026-10-07T18:12:32.790Z",
+  "source": {
+    "game026.html": "b7f37d3b09a519592f2b2b4a8a3687413d59369548a0f799fa9ebafa22b9d2d5",
+    "src/games/game026/model.ts": "dd61b2f5761c6f2a4007b8b83344e0eb3c251af90c69875728c391e13d556847",
+    "src/games/game026/flow.ts": "e8c688ad945d5e98906480db9cd27ac582c73c1a47746a201ae8fd029cf8dbfb",
+    "src/games/game026/main.ts": "43748957b46be058718832378e68d95da51748eba1b0f25e7ad593c28361ae41",
+    "src/games/game026/style.css": "d129f0006d5acaa652507870953682c9d56090bfbae1c0c237b0b64c5dc83234",
+    "src/games/game026/save.ts": "648d04d1c66b3da3fc7bf2b96d7c0177bc9326f8039963c7a30d7667526cd762",
+    "src/games/game026/game.manifest.json": "ee3fe4afefe6d536fac4585874d17527b0dc8403abde39b3e7f090aae373dcf7",
+    "tests/unit/game026.test.ts": "125750c22dfdb000df38de42a3d5a7dbeb529d1048f8cc09e9bf39743eb0d8e8",
+    "tests/game026/vite.config.mjs": "80016bd61fcc5dc13a7034a47dc417792a12de1ff69a64e125d12d3a391a8c5a"
+  },
+  "records": [
+    {
+      "name": "desktop",
+      "width": 1365,
+      "height": 900,
+      "touch": false,
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "ordinary4players, full100cell code-drawn overview and distinguishable overlap",
+          "status": "PASS"
+        },
+        {
+          "name": "pendingdie pause stops settlement and retains current turn",
+          "status": "PASS"
+        },
+        {
+          "name": "restore explicitly paused, exact pendingdice/localresult/observer preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "exact pending result settles once, no reroll",
+          "status": "PASS"
+        },
+        {
+          "name": "held repeat keyboard commits one roll on release",
+          "status": "PASS"
+        },
+        {
+          "name": "delivered DOM blur fixture pauses, explicit resume no catchup",
+          "status": "PASS",
+          "fixture": "DOM blur dispatch, not physical app switch"
+        },
+        {
+          "name": "DOMpointercancel fixture refuses subsequent compatibility click",
+          "status": "PASS"
+        },
+        {
+          "name": "abandon→pagehide→reload cannot resurrect oldmatch",
+          "status": "PASS"
+        },
+        {
+          "name": "genuine practice transfer+promotion, no localstats or RUN persistence",
+          "status": "PASS"
+        },
+        {
+          "name": "ordinary equal-rule CPU turn returns to human once",
+          "status": "PASS"
+        },
+        {
+          "name": "44px controls, no horizontal clipping, real viewport fullboard, errors0",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "desktop-title.png",
+        "desktop-explanation.png",
+        "desktop-ordinary-four-overlap.png",
+        "desktop-pending-die-paused.png",
+        "desktop-ordinary-after-first.png",
+        "desktop-paused.png",
+        "desktop-practice.png",
+        "desktop-practice-complete.png"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "type": "pointerdown",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 395.0999999977648
+        },
+        {
+          "type": "pointerup",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 396.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "explain",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 397.0999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 522.5999999977648
+        },
+        {
+          "type": "pointerup",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 523.5999999977648
+        },
+        {
+          "type": "click",
+          "target": "help-return",
+          "detail": 1,
+          "key": null,
+          "state": "help",
+          "at": 523.6999999992549
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 587.8999999985099
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 588.5999999977648
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 588.5999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 755.5999999977648
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 755.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 756
+        },
+        {
+          "type": "keydown",
+          "target": "",
+          "detail": 0,
+          "key": "Escape",
+          "state": "rolling",
+          "at": 766.1999999992549
+        },
+        {
+          "type": "keyup",
+          "target": "menu-title",
+          "detail": 0,
+          "key": "Escape",
+          "state": "paused",
+          "at": 775.0999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1254.800000000745
+        },
+        {
+          "type": "pointerup",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1255.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "mute",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1255.300000000745
+        },
+        {
+          "type": "pointerdown",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 142.59999999776483
+        },
+        {
+          "type": "pointerup",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 143.29999999701977
+        },
+        {
+          "type": "click",
+          "target": "restore",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 143.29999999701977
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 191.89999999850988
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 192.89999999850988
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 193
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 382.69999999925494
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 384.5
+        },
+        {
+          "type": "keyup",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 385.5
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 385.69999999925494
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1091.0999999977648
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1091.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1091.8999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1102.0999999977648
+        },
+        {
+          "type": "pointercancel",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1102.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1102.199999999255
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1145
+        },
+        {
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1145.3999999985099
+        },
+        {
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1145.5
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1191.7999999970198
+        },
+        {
+          "type": "pointerup",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1192.5999999977648
+        },
+        {
+          "type": "click",
+          "target": "pause-title",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1192.5999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 110.80000000074506
+        },
+        {
+          "type": "pointerup",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 112.40000000223517
+        },
+        {
+          "type": "click",
+          "target": "practice",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 112.60000000149012
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 222.80000000074506
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 223.20000000298023
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "practice",
+          "at": 224.80000000074506
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 488.1000000014901
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 488.30000000074506
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "practice",
+          "at": 488.4000000022352
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 822
+        },
+        {
+          "type": "pointerup",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 822.7000000029802
+        },
+        {
+          "type": "click",
+          "target": "practice-title",
+          "detail": 1,
+          "key": null,
+          "state": "practice-result",
+          "at": 822.7000000029802
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 890.4000000022352
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 891.1000000014901
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 891.1000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 938.3000000007451
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 938.5
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 938.6000000014901
+        }
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1151.1875,
+              "y": 5,
+              "width": 63.3125,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 ON"
+            },
+            {
+              "x": 858.5,
+              "y": 320,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 378,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 498,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 542,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 542,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 542,
+              "text": "やり直す"
+            },
+            {
+              "x": 496.5,
+              "y": 378.3671875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 422.3671875,
+              "text": "あなた + CPU同じ端末で2人同じ端末で3人同じ端末で4人"
+            },
+            {
+              "x": 496.5,
+              "y": 438.3671875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 482.3671875,
+              "text": "すぐ遊ぶ"
+            },
+            {
+              "x": 496.5,
+              "y": 490.3671875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 534.3671875,
+              "text": "説明を見る"
+            },
+            {
+              "x": 496.5,
+              "y": 542.3671875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 586.3671875,
+              "text": "練習する"
+            }
+          ]
+        },
+        {
+          "state": "help",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1151.1875,
+              "y": 5,
+              "width": 63.3125,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 ON"
+            },
+            {
+              "x": 858.5,
+              "y": 320,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 378,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 498,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 542,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 542,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 542,
+              "text": "やり直す"
+            },
+            {
+              "x": 496.5,
+              "y": 554.65625,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 598.65625,
+              "text": "タイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1151.1875,
+              "y": 5,
+              "width": 63.3125,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 ON"
+            },
+            {
+              "x": 858.5,
+              "y": 470,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 528,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 648,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 692,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 692,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 692,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1151.1875,
+              "y": 5,
+              "width": 63.3125,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 ON"
+            },
+            {
+              "x": 858.5,
+              "y": 470,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 528,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 648,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 692,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 692,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 692,
+              "text": "やり直す"
+            },
+            {
+              "x": 496.5,
+              "y": 428.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 472.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 496.5,
+              "y": 480.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 524.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1147.484375,
+              "y": 5,
+              "width": 67.015625,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 OFF"
+            },
+            {
+              "x": 858.5,
+              "y": 470,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 528,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 648,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 692,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 692,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 692,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1147.484375,
+              "y": 5,
+              "width": 67.015625,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 OFF"
+            },
+            {
+              "x": 858.5,
+              "y": 470,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 528,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 648,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 692,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 692,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 648,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 692,
+              "text": "やり直す"
+            },
+            {
+              "x": 496.5,
+              "y": 428.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 472.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 496.5,
+              "y": 480.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 524.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "practice",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1147.484375,
+              "y": 5,
+              "width": 67.015625,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 OFF"
+            },
+            {
+              "x": 858.5,
+              "y": 320,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 378,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 498,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 542,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 542,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 542,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "practice-result",
+          "width": 1365,
+          "height": 900,
+          "scrollY": 0,
+          "scrollWidth": 1365,
+          "board": {
+            "x": 164.5,
+            "y": 156,
+            "width": 590,
+            "height": 590,
+            "right": 754.5,
+            "bottom": 746,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 1147.484375,
+              "y": 5,
+              "width": 67.015625,
+              "height": 44,
+              "right": 1214.5,
+              "bottom": 49,
+              "text": "音 OFF"
+            },
+            {
+              "x": 858.5,
+              "y": 320,
+              "width": 342,
+              "height": 58,
+              "right": 1200.5,
+              "bottom": 378,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 778.5,
+              "y": 498,
+              "width": 136.65625,
+              "height": 44,
+              "right": 915.15625,
+              "bottom": 542,
+              "text": "休憩"
+            },
+            {
+              "x": 921.15625,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1057.828125,
+              "bottom": 542,
+              "text": "遊び方"
+            },
+            {
+              "x": 1063.828125,
+              "y": 498,
+              "width": 136.671875,
+              "height": 44,
+              "right": 1200.5,
+              "bottom": 542,
+              "text": "やり直す"
+            },
+            {
+              "x": 496.5,
+              "y": 428.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 472.46875,
+              "text": "もう一度練習"
+            },
+            {
+              "x": 496.5,
+              "y": 480.46875,
+              "width": 372,
+              "height": 44,
+              "right": 868.5,
+              "bottom": 524.46875,
+              "text": "タイトルへ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "ordinary4players, full100cell code-drawn overview and distinguishable overlap",
+          "status": "PASS"
+        },
+        {
+          "name": "pendingdie pause stops settlement and retains current turn",
+          "status": "PASS"
+        },
+        {
+          "name": "restore explicitly paused, exact pendingdice/localresult/observer preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "exact pending result settles once, no reroll",
+          "status": "PASS"
+        },
+        {
+          "name": "held repeat keyboard commits one roll on release",
+          "status": "PASS"
+        },
+        {
+          "name": "delivered DOM blur fixture pauses, explicit resume no catchup",
+          "status": "PASS",
+          "fixture": "DOM blur dispatch, not physical app switch"
+        },
+        {
+          "name": "DOMpointercancel fixture refuses subsequent compatibility click",
+          "status": "PASS"
+        },
+        {
+          "name": "abandon→pagehide→reload cannot resurrect oldmatch",
+          "status": "PASS"
+        },
+        {
+          "name": "genuine practice transfer+promotion, no localstats or RUN persistence",
+          "status": "PASS"
+        },
+        {
+          "name": "ordinary equal-rule CPU turn returns to human once",
+          "status": "PASS"
+        },
+        {
+          "name": "44px controls, no horizontal clipping, real viewport fullboard, errors0",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "phone-title.png",
+        "phone-explanation.png",
+        "phone-ordinary-four-overlap.png",
+        "phone-pending-die-paused.png",
+        "phone-ordinary-after-first.png",
+        "phone-paused.png",
+        "phone-practice.png",
+        "phone-practice-complete.png"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "type": "pointerdown",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 270.79999999701977
+        },
+        {
+          "type": "pointerup",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 273
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 273.79999999701977
+        },
+        {
+          "type": "click",
+          "target": "explain",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 276.19999999925494
+        },
+        {
+          "type": "pointerdown",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 386.3999999985099
+        },
+        {
+          "type": "pointerup",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 386.79999999701977
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 387
+        },
+        {
+          "type": "click",
+          "target": "help-return",
+          "detail": 1,
+          "key": null,
+          "state": "help",
+          "at": 390.19999999925494
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 469.19999999925494
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 469.69999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 469.79999999701977
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 471.79999999701977
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 568.8999999985099
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 569.2999999970198
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 569.3999999985099
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 571.2999999970198
+        },
+        {
+          "type": "keydown",
+          "target": "",
+          "detail": 0,
+          "key": "Escape",
+          "state": "rolling",
+          "at": 579.3999999985099
+        },
+        {
+          "type": "keyup",
+          "target": "menu-title",
+          "detail": 0,
+          "key": "Escape",
+          "state": "paused",
+          "at": 588.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1052.199999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1052.5999999977648
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1052.5999999977648
+        },
+        {
+          "type": "click",
+          "target": "mute",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1054.2999999970198
+        },
+        {
+          "type": "pointerdown",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 141.59999999776483
+        },
+        {
+          "type": "pointerup",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 142.19999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 142.19999999925494
+        },
+        {
+          "type": "click",
+          "target": "restore",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 146.29999999701977
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 209.09999999776483
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 209.39999999850988
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 209.39999999850988
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 2,
+          "key": null,
+          "state": "paused",
+          "at": 211.39999999850988
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 386.5
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 388.3999999985099
+        },
+        {
+          "type": "keyup",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 390.19999999925494
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 390.29999999701977
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1057.699999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1058.0999999977648
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1058.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1060.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1071.5999999977648
+        },
+        {
+          "type": "pointercancel",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1071.699999999255
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1071.8999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1124.199999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1124.7999999970198
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1125
+        },
+        {
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1126.5999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1174.2999999970198
+        },
+        {
+          "type": "pointerup",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1174.5
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1174.699999999255
+        },
+        {
+          "type": "click",
+          "target": "pause-title",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1176.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 115
+        },
+        {
+          "type": "pointerup",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 115.40000000223517
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 115.5
+        },
+        {
+          "type": "click",
+          "target": "practice",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 119.10000000149012
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 215.60000000149012
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 215.90000000223517
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 216
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "practice",
+          "at": 217.40000000223517
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 498.5
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 500.20000000298023
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 500.30000000074506
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 2,
+          "key": null,
+          "state": "practice",
+          "at": 501.1000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 814.9000000022352
+        },
+        {
+          "type": "pointerup",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 815.1000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 815.2000000029802
+        },
+        {
+          "type": "click",
+          "target": "practice-title",
+          "detail": 1,
+          "key": null,
+          "state": "practice-result",
+          "at": 817.1000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 881.7000000029802
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 882.2000000029802
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 882.3000000007451
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 885.2000000029802
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 931.5
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 931.8000000007451
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 931.8000000007451
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 933.4000000022352
+        }
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 314.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 588,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 636,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 745,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 745,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 745,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 350.3671875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 394.3671875,
+              "text": "あなた + CPU同じ端末で2人同じ端末で3人同じ端末で4人"
+            },
+            {
+              "x": 32,
+              "y": 410.3671875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 454.3671875,
+              "text": "すぐ遊ぶ"
+            },
+            {
+              "x": 32,
+              "y": 462.3671875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 506.3671875,
+              "text": "説明を見る"
+            },
+            {
+              "x": 32,
+              "y": 514.3671875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 558.3671875,
+              "text": "練習する"
+            }
+          ]
+        },
+        {
+          "state": "help",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 314.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 588,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 636,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 745,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 745,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 745,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 555.2265625,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 599.2265625,
+              "text": "タイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 314.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 646,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 694,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 803,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 803,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 803,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 314.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 646,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 694,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 803,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 803,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 803,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 400.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 444.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 32,
+              "y": 452.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 496.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 310.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 646,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 694,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 803,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 803,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 803,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 310.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 646,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 694,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 803,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 803,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 759,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 803,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 400.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 444.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 32,
+              "y": 452.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 496.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "practice",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 310.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 588,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 636,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 745,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 745,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 701,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 745,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "practice-result",
+          "width": 390,
+          "height": 844,
+          "scrollY": 0,
+          "scrollWidth": 390,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 366,
+            "height": 366,
+            "right": 378,
+            "bottom": 492,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 310.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 588,
+              "width": 306,
+              "height": 48,
+              "right": 378,
+              "bottom": 636,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 719,
+              "width": 118,
+              "height": 44,
+              "right": 130,
+              "bottom": 763,
+              "text": "休憩"
+            },
+            {
+              "x": 136,
+              "y": 719,
+              "width": 118,
+              "height": 44,
+              "right": 254,
+              "bottom": 763,
+              "text": "遊び方"
+            },
+            {
+              "x": 260,
+              "y": 719,
+              "width": 118,
+              "height": 44,
+              "right": 378,
+              "bottom": 763,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 400.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 444.46875,
+              "text": "もう一度練習"
+            },
+            {
+              "x": 32,
+              "y": 452.46875,
+              "width": 326,
+              "height": 44,
+              "right": 358,
+              "bottom": 496.46875,
+              "text": "タイトルへ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "small",
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "ordinary4players, full100cell code-drawn overview and distinguishable overlap",
+          "status": "PASS"
+        },
+        {
+          "name": "pendingdie pause stops settlement and retains current turn",
+          "status": "PASS"
+        },
+        {
+          "name": "restore explicitly paused, exact pendingdice/localresult/observer preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "exact pending result settles once, no reroll",
+          "status": "PASS"
+        },
+        {
+          "name": "held repeat keyboard commits one roll on release",
+          "status": "PASS"
+        },
+        {
+          "name": "delivered DOM blur fixture pauses, explicit resume no catchup",
+          "status": "PASS",
+          "fixture": "DOM blur dispatch, not physical app switch"
+        },
+        {
+          "name": "DOMpointercancel fixture refuses subsequent compatibility click",
+          "status": "PASS"
+        },
+        {
+          "name": "abandon→pagehide→reload cannot resurrect oldmatch",
+          "status": "PASS"
+        },
+        {
+          "name": "genuine practice transfer+promotion, no localstats or RUN persistence",
+          "status": "PASS"
+        },
+        {
+          "name": "ordinary equal-rule CPU turn returns to human once",
+          "status": "PASS"
+        },
+        {
+          "name": "44px controls, no horizontal clipping, real viewport fullboard, errors0",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "small-title.png",
+        "small-explanation.png",
+        "small-ordinary-four-overlap.png",
+        "small-pending-die-paused.png",
+        "small-ordinary-after-first.png",
+        "small-paused.png",
+        "small-practice.png",
+        "small-practice-complete.png"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "type": "pointerdown",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 280
+        },
+        {
+          "type": "pointerup",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 281
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 281.1000000014901
+        },
+        {
+          "type": "click",
+          "target": "explain",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 282.9000000022352
+        },
+        {
+          "type": "pointerdown",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 364.70000000298023
+        },
+        {
+          "type": "pointerup",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 365.1000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 365.4000000022352
+        },
+        {
+          "type": "click",
+          "target": "help-return",
+          "detail": 1,
+          "key": null,
+          "state": "help",
+          "at": 369.6000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 446.20000000298023
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 446.6000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 446.80000000074506
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 448.6000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 546
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 546.4000000022352
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 546.5
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 548.3000000007451
+        },
+        {
+          "type": "keydown",
+          "target": "",
+          "detail": 0,
+          "key": "Escape",
+          "state": "rolling",
+          "at": 557.9000000022352
+        },
+        {
+          "type": "keyup",
+          "target": "menu-title",
+          "detail": 0,
+          "key": "Escape",
+          "state": "paused",
+          "at": 567.6000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1029.1000000014901
+        },
+        {
+          "type": "pointerup",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1029.300000000745
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1029.4000000022352
+        },
+        {
+          "type": "click",
+          "target": "mute",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1031.9000000022352
+        },
+        {
+          "type": "pointerdown",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 123.69999999925494
+        },
+        {
+          "type": "pointerup",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 124.19999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 124.30000000074506
+        },
+        {
+          "type": "click",
+          "target": "restore",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 126.39999999850988
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 190.09999999776483
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 190.5
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 190.69999999925494
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 2,
+          "key": null,
+          "state": "paused",
+          "at": 192.59999999776483
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 361.0999999977648
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 362.30000000074506
+        },
+        {
+          "type": "keyup",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 363.19999999925494
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 363.30000000074506
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1039.199999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1039.5
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1039.5999999977648
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1041.5999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1052
+        },
+        {
+          "type": "pointercancel",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1052.199999999255
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1052.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1107.0999999977648
+        },
+        {
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1107.300000000745
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1107.3999999985099
+        },
+        {
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1108.699999999255
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1155.699999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1156
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1156.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "pause-title",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1158.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 130.69999999925494
+        },
+        {
+          "type": "pointerup",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 131.19999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 131.29999999701977
+        },
+        {
+          "type": "click",
+          "target": "practice",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 132.89999999850988
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 214.29999999701977
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 214.69999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 214.79999999701977
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "practice",
+          "at": 216.59999999776483
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 498.29999999701977
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 498.69999999925494
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 498.69999999925494
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 2,
+          "key": null,
+          "state": "practice",
+          "at": 499.29999999701977
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 813.8999999985099
+        },
+        {
+          "type": "pointerup",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 814.1999999992549
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 814.2999999970198
+        },
+        {
+          "type": "click",
+          "target": "practice-title",
+          "detail": 1,
+          "key": null,
+          "state": "practice-result",
+          "at": 816.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 880.3999999985099
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 881
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 881
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 883.7999999970198
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 930.2999999970198
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 930.7999999970198
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 930.7999999970198
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 933.1999999992549
+        }
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 244.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 533,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 581,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 646,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 690,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 646,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 690,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 646,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 690,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 298.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 342.3671875,
+              "text": "あなた + CPU同じ端末で2人同じ端末で3人同じ端末で4人"
+            },
+            {
+              "x": 32,
+              "y": 358.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 402.3671875,
+              "text": "すぐ遊ぶ"
+            },
+            {
+              "x": 32,
+              "y": 410.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 454.3671875,
+              "text": "説明を見る"
+            },
+            {
+              "x": 32,
+              "y": 462.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 506.3671875,
+              "text": "練習する"
+            }
+          ]
+        },
+        {
+          "state": "help",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 244.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 533,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 581,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 646,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 690,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 646,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 690,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 646,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 690,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 538.921875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 582.921875,
+              "text": "タイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 244.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 606,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 654,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 719,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 763,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 763,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 763,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 244.6875,
+              "y": 3,
+              "width": 63.3125,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 ON"
+            },
+            {
+              "x": 72,
+              "y": 606,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 654,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 719,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 763,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 763,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 763,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 348.46875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 392.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 32,
+              "y": 400.46875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 444.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 240.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 606,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 654,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 737,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 781,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 737,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 781,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 737,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 781,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 320,
+          "height": 740,
+          "scrollY": 0,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 126,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 422,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 240.984375,
+              "y": 3,
+              "width": 67.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 47,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 606,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 654,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 719,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 763,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 763,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 719,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 763,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 348.46875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 392.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 32,
+              "y": 400.46875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 444.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "practice",
+          "width": 320,
+          "height": 740,
+          "scrollY": 23,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 103,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 399,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 240.984375,
+              "y": -20,
+              "width": 67.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 24,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 510,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 558,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 641,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 685,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 641,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 685,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 641,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 685,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "practice-result",
+          "width": 320,
+          "height": 740,
+          "scrollY": 23,
+          "scrollWidth": 320,
+          "board": {
+            "x": 12,
+            "y": 103,
+            "width": 296,
+            "height": 296,
+            "right": 308,
+            "bottom": 399,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 240.984375,
+              "y": -20,
+              "width": 67.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 24,
+              "text": "音 OFF"
+            },
+            {
+              "x": 72,
+              "y": 510,
+              "width": 236,
+              "height": 48,
+              "right": 308,
+              "bottom": 558,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 12,
+              "y": 641,
+              "width": 94.65625,
+              "height": 44,
+              "right": 106.65625,
+              "bottom": 685,
+              "text": "休憩"
+            },
+            {
+              "x": 112.65625,
+              "y": 641,
+              "width": 94.671875,
+              "height": 44,
+              "right": 207.328125,
+              "bottom": 685,
+              "text": "遊び方"
+            },
+            {
+              "x": 213.328125,
+              "y": 641,
+              "width": 94.671875,
+              "height": 44,
+              "right": 308,
+              "bottom": 685,
+              "text": "やり直す"
+            },
+            {
+              "x": 32,
+              "y": 360.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 404.3671875,
+              "text": "もう一度練習"
+            },
+            {
+              "x": 32,
+              "y": 412.3671875,
+              "width": 256,
+              "height": 44,
+              "right": 288,
+              "bottom": 456.3671875,
+              "text": "タイトルへ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "landscape",
+      "width": 844,
+      "height": 390,
+      "touch": true,
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "ordinary4players, full100cell code-drawn overview and distinguishable overlap",
+          "status": "PASS"
+        },
+        {
+          "name": "pendingdie pause stops settlement and retains current turn",
+          "status": "PASS"
+        },
+        {
+          "name": "restore explicitly paused, exact pendingdice/localresult/observer preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "exact pending result settles once, no reroll",
+          "status": "PASS"
+        },
+        {
+          "name": "held repeat keyboard commits one roll on release",
+          "status": "PASS"
+        },
+        {
+          "name": "delivered DOM blur fixture pauses, explicit resume no catchup",
+          "status": "PASS",
+          "fixture": "DOM blur dispatch, not physical app switch"
+        },
+        {
+          "name": "DOMpointercancel fixture refuses subsequent compatibility click",
+          "status": "PASS"
+        },
+        {
+          "name": "abandon→pagehide→reload cannot resurrect oldmatch",
+          "status": "PASS"
+        },
+        {
+          "name": "genuine practice transfer+promotion, no localstats or RUN persistence",
+          "status": "PASS"
+        },
+        {
+          "name": "ordinary equal-rule CPU turn returns to human once",
+          "status": "PASS"
+        },
+        {
+          "name": "44px controls, no horizontal clipping, real viewport fullboard, errors0",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "landscape-title.png",
+        "landscape-explanation.png",
+        "landscape-ordinary-four-overlap.png",
+        "landscape-pending-die-paused.png",
+        "landscape-ordinary-after-first.png",
+        "landscape-paused.png",
+        "landscape-practice.png",
+        "landscape-practice-complete.png"
+      ],
+      "errors": [],
+      "trace": [
+        {
+          "type": "pointerdown",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 291.5
+        },
+        {
+          "type": "pointerup",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 293.1000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "explain",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 293.30000000074506
+        },
+        {
+          "type": "click",
+          "target": "explain",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 296.5
+        },
+        {
+          "type": "pointerdown",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 389.30000000074506
+        },
+        {
+          "type": "pointerup",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 389.6000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "help-return",
+          "detail": 0,
+          "key": null,
+          "state": "help",
+          "at": 389.80000000074506
+        },
+        {
+          "type": "click",
+          "target": "help-return",
+          "detail": 2,
+          "key": null,
+          "state": "help",
+          "at": 392.30000000074506
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 471.6000000014901
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 471.8999999985099
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 472
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 474.5
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 573.5
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 573.8999999985099
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 573.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 575.3999999985099
+        },
+        {
+          "type": "keydown",
+          "target": "",
+          "detail": 0,
+          "key": "Escape",
+          "state": "rolling",
+          "at": 591.3999999985099
+        },
+        {
+          "type": "keyup",
+          "target": "menu-title",
+          "detail": 0,
+          "key": "Escape",
+          "state": "paused",
+          "at": 603.5
+        },
+        {
+          "type": "pointerdown",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1072.199999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1072.800000000745
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "mute",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1072.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "mute",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1075.3999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 155.39999999850988
+        },
+        {
+          "type": "pointerup",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 155.89999999850988
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "restore",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 155.89999999850988
+        },
+        {
+          "type": "click",
+          "target": "restore",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 158.09999999776483
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 221.19999999925494
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 221.5
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 221.69999999925494
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 223.89999999850988
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 397.79999999701977
+        },
+        {
+          "type": "keydown",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 399.29999999701977
+        },
+        {
+          "type": "keyup",
+          "target": "roll",
+          "detail": 0,
+          "key": "Enter",
+          "state": "playing",
+          "at": 400
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 400.19999999925494
+        },
+        {
+          "type": "pointerdown",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1070.699999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1071.0999999977648
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1071.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "resume",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1072.7999999970198
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1084.5999999977648
+        },
+        {
+          "type": "pointercancel",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1084.8999999985099
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1085.0999999977648
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1137.699999999255
+        },
+        {
+          "type": "pointerup",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1138
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 1138.0999999977648
+        },
+        {
+          "type": "click",
+          "target": "pause",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 1140.8999999985099
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1204
+        },
+        {
+          "type": "pointerup",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1204.3999999985099
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause-title",
+          "detail": 0,
+          "key": null,
+          "state": "paused",
+          "at": 1204.3999999985099
+        },
+        {
+          "type": "click",
+          "target": "pause-title",
+          "detail": 1,
+          "key": null,
+          "state": "paused",
+          "at": 1207.5
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 125.5
+        },
+        {
+          "type": "pointerup",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 126.10000000149012
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 126.19999999925494
+        },
+        {
+          "type": "click",
+          "target": "practice",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 129.69999999925494
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 223.69999999925494
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 224.10000000149012
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 224.19999999925494
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "practice",
+          "at": 227
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 506.30000000074506
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 506.6000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "practice",
+          "at": 506.69999999925494
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 2,
+          "key": null,
+          "state": "practice",
+          "at": 507.30000000074506
+        },
+        {
+          "type": "pointerdown",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 823
+        },
+        {
+          "type": "pointerup",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 823.3000000007451
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "practice-title",
+          "detail": 0,
+          "key": null,
+          "state": "practice-result",
+          "at": 823.6999999992549
+        },
+        {
+          "type": "click",
+          "target": "practice-title",
+          "detail": 1,
+          "key": null,
+          "state": "practice-result",
+          "at": 826.1999999992549
+        },
+        {
+          "type": "pointerdown",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 889.5
+        },
+        {
+          "type": "pointerup",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 889.6999999992549
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "play",
+          "detail": 0,
+          "key": null,
+          "state": "title",
+          "at": 889.8000000007451
+        },
+        {
+          "type": "click",
+          "target": "play",
+          "detail": 1,
+          "key": null,
+          "state": "title",
+          "at": 891.6000000014901
+        },
+        {
+          "type": "pointerdown",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 939.4000000022352
+        },
+        {
+          "type": "pointerup",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 939.6000000014901
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "roll",
+          "detail": 0,
+          "key": null,
+          "state": "playing",
+          "at": 939.6000000014901
+        },
+        {
+          "type": "click",
+          "target": "roll",
+          "detail": 1,
+          "key": null,
+          "state": "playing",
+          "at": 941
+        }
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 762.6875,
+              "y": 0,
+              "width": 63.3125,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 ON"
+            },
+            {
+              "x": 491,
+              "y": 164,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 212,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 328,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 328,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 328,
+              "text": "やり直す"
+            },
+            {
+              "x": 236,
+              "y": 222.328125,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 266.328125,
+              "text": "あなた + CPU同じ端末で2人同じ端末で3人同じ端末で4人"
+            },
+            {
+              "x": 236,
+              "y": 282.328125,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 326.328125,
+              "text": "すぐ遊ぶ"
+            },
+            {
+              "x": 236,
+              "y": 334.328125,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 378.328125,
+              "text": "説明を見る"
+            },
+            {
+              "x": 236,
+              "y": 386.328125,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 430.328125,
+              "text": "練習する"
+            }
+          ]
+        },
+        {
+          "state": "help",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 762.6875,
+              "y": 0,
+              "width": 63.3125,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 ON"
+            },
+            {
+              "x": 491,
+              "y": 164,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 212,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 328,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 328,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 328,
+              "text": "やり直す"
+            },
+            {
+              "x": 236,
+              "y": 349.3125,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 393.3125,
+              "text": "タイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 762.6875,
+              "y": 0,
+              "width": 63.3125,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 ON"
+            },
+            {
+              "x": 491,
+              "y": 216,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 264,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 380,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 380,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 380,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 762.6875,
+              "y": 0,
+              "width": 63.3125,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 ON"
+            },
+            {
+              "x": 491,
+              "y": 216,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 264,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 380,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 380,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 380,
+              "text": "やり直す"
+            },
+            {
+              "x": 236,
+              "y": 173.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 217.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 236,
+              "y": 225.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 269.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "playing",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 758.984375,
+              "y": 0,
+              "width": 67.015625,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 OFF"
+            },
+            {
+              "x": 491,
+              "y": 216,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 264,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 380,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 380,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 380,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "paused",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 758.984375,
+              "y": 0,
+              "width": 67.015625,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 OFF"
+            },
+            {
+              "x": 491,
+              "y": 216,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 264,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 380,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 380,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 336,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 380,
+              "text": "やり直す"
+            },
+            {
+              "x": 236,
+              "y": 173.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 217.46875,
+              "text": "続ける"
+            },
+            {
+              "x": 236,
+              "y": 225.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 269.46875,
+              "text": "対戦を終えてタイトルへ"
+            }
+          ]
+        },
+        {
+          "state": "practice",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 758.984375,
+              "y": 0,
+              "width": 67.015625,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 OFF"
+            },
+            {
+              "x": 491,
+              "y": 164,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 212,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 328,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 328,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 328,
+              "text": "やり直す"
+            }
+          ]
+        },
+        {
+          "state": "practice-result",
+          "width": 844,
+          "height": 390,
+          "scrollY": 0,
+          "scrollWidth": 844,
+          "board": {
+            "x": 83.5,
+            "y": 109,
+            "width": 270,
+            "height": 270,
+            "right": 353.5,
+            "bottom": 379,
+            "text": "123↑456789101112↑131415161718↓19202122232425↑2627282930313233↓34353637↑383940414243444546↑4748↓495051525354555657↓58596061↑626364656667686970↓717273↑747576777879808182↑83848586↓8788899091929394↓9596979899↓100"
+          },
+          "controls": [
+            {
+              "x": 758.984375,
+              "y": 0,
+              "width": 67.015625,
+              "height": 44,
+              "right": 826,
+              "bottom": 44,
+              "text": "音 OFF"
+            },
+            {
+              "x": 491,
+              "y": 164,
+              "width": 331,
+              "height": 48,
+              "right": 822,
+              "bottom": 212,
+              "text": "サイコロをふる"
+            },
+            {
+              "x": 429,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 556,
+              "bottom": 328,
+              "text": "休憩"
+            },
+            {
+              "x": 562,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 689,
+              "bottom": 328,
+              "text": "遊び方"
+            },
+            {
+              "x": 695,
+              "y": 284,
+              "width": 127,
+              "height": 44,
+              "right": 822,
+              "bottom": 328,
+              "text": "やり直す"
+            },
+            {
+              "x": 236,
+              "y": 173.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 217.46875,
+              "text": "もう一度練習"
+            },
+            {
+              "x": 236,
+              "y": 225.46875,
+              "width": 372,
+              "height": 44,
+              "right": 608,
+              "bottom": 269.46875,
+              "text": "タイトルへ"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "provenance": "Compiled production ordinary native input, read-only synthetic browser save; DOM background/capture cancellation fixtures labeled explicitly; no model or dice injection. Not author enjoyment or physical phone.",
+  "physicalPhone": false,
+  "authorPlayed": false,
+  "updated_at": "2026-10-07T18:12:50.311Z",
+  "finished_at": "2026-10-07T18:12:50.311Z"
+}

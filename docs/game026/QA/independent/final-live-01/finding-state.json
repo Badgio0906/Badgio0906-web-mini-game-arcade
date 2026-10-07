@@ -1,0 +1,21 @@
+{
+  "finding_id": "game026-independent-snapshot-observer-shape",
+  "problem": "Independent native review collector stopped before first roll because read-only saved snapshot inspection threw while reading active.players.map.",
+  "expected": "Independent collector can read current gameplay saved snapshot schema without changing game state, then observe a normal native roll.",
+  "observed": [
+    "Compiled desktop title\u2192mode local4\u2192play succeeded and real four-overlap viewport image was captured.",
+    "Collector snapshot() read JSON save active.history, active.players.map and active.pending.",
+    "page.evaluate threw TypeError Cannot read properties of undefined reading map before first native roll.",
+    "Browser closed immediately; source freeze verified unchanged and original report/probe/failure image retained."
+  ],
+  "unknown": [
+    "Whether the current saved envelope keeps player positions under another field or unexpectedly omitted them.",
+    "No roll, motion or phone independent review completed in this run."
+  ],
+  "evidence": [
+    "docs/game026/QA/independent/final-live-01/probe.mjs",
+    "docs/game026/QA/independent/final-live-01/report.json",
+    "docs/game026/QA/independent/final-live-01/save-source-before.txt"
+  ],
+  "provenance": "actual first independent compiled desktop native review attempt; read-only collector; no game model/dice injection"
+}

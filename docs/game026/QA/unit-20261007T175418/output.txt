@@ -1,0 +1,57 @@
+
+> orbit-shift@0.1.0 test
+> vitest run --run tests/unit/game026.test.ts
+
+
+ RUN  v3.2.7 /workspace/batch-two-author-026
+
+ ❯ tests/unit/game026.test.ts (25 tests | 1 failed) 74ms
+   ✓ 026 classic board and transactional moves > maps1..100 uniquely with all ten rows correctly snaking 5ms
+   ✓ 026 classic board and transactional moves > usesunique event starts and correct monotonic destinations, none at100 1ms
+   ✓ 026 classic board and transactional moves > rejection sampling produces six equal buckets, rejects final four uint32 values 1ms
+   ✓ 026 classic board and transactional moves > startsat1 and supports CPUplusone and2/3/4 local humans 0ms
+   ✓ 026 classic board and transactional moves > retains settled die before movement and refuses double rolls 2ms
+   ✓ 026 classic board and transactional moves > rejects invaliddice without mutation 0ms
+   ✓ 026 classic board and transactional moves > 100 overrunstaysput without event or additional6 turn 0ms
+   ✓ 026 classic board and transactional moves > exact100 finishes without another moveevent, fixes lastplace immediately 1ms
+   ✓ 026 classic board and transactional moves > performs every promotion andtransfer exactly once and never chains 2ms
+   ✓ 026 classic board and transactional moves > allstarting positionshave a reachable exact100 path 25ms
+   ✓ 026 classic board and transactional moves > givescomplete unique2/3/4 standings and skips already finished players 6ms
+   ✓ 026 replayable save and local accounting > restores pendingdie without reroll or prematurely applying movement 1ms
+   ✓ 026 replayable save and local accounting > replays turn,counters andlastdie exactly 0ms
+   ✓ 026 replayable save and local accounting > rejects corrupted landing,turn,rank path,foreigngame,version orobserverID 1ms
+   ✓ 026 replayable save and local accounting > reportscompleted local result once with null observer and reload 7ms
+   ✓ 026 replayable save and local accounting > rejectsterminal unreported or mismatching ledger, skips active reporting 4ms
+   ✓ 026 replayable save and local accounting > abandonsnapshot cannot revive on reread 0ms
+   ✓ 026 replayable save and local accounting > deniedwrite keeps current memory instead of stale backend 0ms
+   ✓ 026 replayable save and local accounting > malformedstorage keeps current memory when JSON parse fails 0ms
+   × 026 replayable save and local accounting > syntactically valid corrupted storage retains current page memory 10ms
+     → expected undefined to be 'local3' // Object.is equality
+   ✓ 026 lifecycle and gestures > cancelsoldCPU/move callbacks across cancel or replacement 4ms
+   ✓ 026 lifecycle and gestures > acceptsonefresh physical click, not an old-screencompatibility click 1ms
+   ✓ 026 lifecycle and gestures > canceland premature lostcapture commit nothing, ordinary post-upcapture loss is safe 0ms
+   ✓ 026 lifecycle and gestures > blocksheld Enter/Space across screen change and permits fresh presses 1ms
+   ✓ 026 lifecycle and gestures > backgroundclears gestures and held keys without reusing them 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game026.test.ts > 026 replayable save and local accounting > syntactically valid corrupted storage retains current page memory
+AssertionError: expected undefined to be 'local3' // Object.is equality
+
+- Expected: 
+"local3"
+
++ Received: 
+undefined
+
+ ❯ tests/unit/game026.test.ts:35:344
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 24 passed (25)
+   Start at  17:54:18
+   Duration  408ms (transform 106ms, setup 0ms, collect 115ms, tests 74ms, environment 0ms, prepare 59ms)
+

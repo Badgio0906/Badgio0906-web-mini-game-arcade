@@ -1,0 +1,26 @@
+{
+  "finding_id": "practice-origin-portal-production-navigation",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent source guard inspection; model answers not inspected",
+  "rationale": "027 clears its training flag before unconditional navigation emission;028 unconditionally emits during practice. The existing service also automatically records page_exit, so individual menu guards alone do not guarantee full practice exclusion. Outbound traffic is currently stopped, but production-local debug/statistic history needs the same exclusion. A small opt-in event predicate leaves prior callers unchanged and blocks practice-origin automatic and explicit events for these new games.",
+  "evidence": [
+    "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+    "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+    "src/core/TelemetryService.ts",
+    "tests/unit/classic-telemetry.test.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected original handlers plus TelemetryService pagehide observer; added optional game-supplied ignoreEvent predicate and regression covering practice navigation/page_exit/errors followed by normal recording.",
+    "evidence": [
+      "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+      "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt",
+      "src/core/TelemetryService.ts",
+      "tests/unit/classic-telemetry.test.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

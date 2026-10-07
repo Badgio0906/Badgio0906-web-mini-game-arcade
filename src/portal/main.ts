@@ -43,7 +43,7 @@ saveRecords?.addEventListener('click', () => {
 
 if (analytics) {
   let disposeImpressions: (()=>void) | undefined;
-  const install = () => { disposeImpressions?.(); disposeImpressions = observeCardImpressions(gallery.querySelectorAll<HTMLElement>('.game-card'),id=>analytics.seenImpression(id),id=>analytics.markImpression(id),(id,position)=>telemetry.trackEvent('game_card_impression',{selected_game:id,card_position:position,visible_duration_threshold:1000,catalog_version:'active24-2026-10-07',thumbnail_revision:'2026-10-06'}),()=>analytics.consent.getState()==='granted'); };
+  const install = () => { disposeImpressions?.(); disposeImpressions = observeCardImpressions(gallery.querySelectorAll<HTMLElement>('.game-card'),id=>analytics.seenImpression(id),id=>analytics.markImpression(id),(id,position)=>telemetry.trackEvent('game_card_impression',{selected_game:id,card_position:position,visible_duration_threshold:1000,catalog_version:'active25-2026-10-08',thumbnail_revision:'2026-10-06'}),()=>analytics.consent.getState()==='granted'); };
   install();
   window.addEventListener('pagehide',()=>{disposeImpressions?.();disposeImpressions=undefined;});
   window.addEventListener('pageshow',event=>{if(event.persisted)install();});

@@ -18,7 +18,7 @@ export class TelemetryService {
   private analytics = analyticsRuntime();
   private analyticsContext: ReturnType<NonNullable<ReturnType<typeof analyticsRuntime>>['createContext']> | undefined;
   private lastPhase = 'title';
-  constructor(_storage?: StorageService, private readonly gameId = 'game001', backend?: Pick<Storage, 'getItem' | 'setItem'>, options: { remoteCollectionEnabled?: boolean } = {}) {
+  constructor(_storage?: StorageService, private readonly gameId = 'game001', backend?: Pick<Storage, 'getItem' | 'setItem'>, private readonly options: { remoteCollectionEnabled?: boolean; ignoreEvent?: () => boolean } = {}) {
     this.analyticsContext = this.analytics?.createContext(this.gameId, this.sessionId);
     if (this.analyticsContext && options.remoteCollectionEnabled !== undefined) this.analyticsContext.remoteCollectionEnabled = options.remoteCollectionEnabled;
     try { this.backend = backend ?? window.localStorage; } catch { /* optional storage */ }
@@ -45,6 +45,7 @@ export class TelemetryService {
     } catch { return this.persisted; }
   }
   trackEvent(name: EventName, data: TelemetryEvent['data'] = {}): void {
+    if (this.options.ignoreEvent?.()) return; // Opt-in game-local practice exclusion also covers page_exit and errors.
     const event: TelemetryEvent = { name, at: new Date().toISOString(), data: { ...data, game: this.gameId === 'game001' ? 'orbit-shift' : this.gameId, game_id: this.gameId, session_id: this.sessionId } };
     if (!isTelemetryEvent(event)) return;
     if (name === 'tutorial_view' || name === 'tutorial_start') this.lastPhase = 'explanation';

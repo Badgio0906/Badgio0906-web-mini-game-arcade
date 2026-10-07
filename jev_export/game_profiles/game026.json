@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "game026",
+  "titleJa": "出世すごろく ～UP & DOWN～",
+  "titleEn": "UP & DOWN",
+  "tagline": "ふって、すすんで、のぼったり、おりたり。",
+  "thumbnail": "./assets/portal/game026.webp",
+  "route": "./game026.html",
+  "releaseOrder": 26,
+  "status": "active",
+  "tags": [
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "retro",
+      "label": "レトロ"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "出世すごろく ～UP & DOWN～",
+  "genre": "classic race board",
+  "controls": {
+    "roll": "PC click / Space / Enter; phone tap",
+    "pause": "休憩 / Escape / background",
+    "players": "one human + CPU, local2/3/4"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "no fixed time limit; human duration not measured",
+  "mainMechanics": "Equal-probability dice across an original 100-cell serpentine board; one promotion/transfer per move; exact100 goal",
+  "currentManifest": {
+    "id": "game026",
+    "title": "出世すごろく ～UP & DOWN～",
+    "titleEn": "UP & DOWN",
+    "tagline": "ふって、すすんで、のぼったり、おりたり。",
+    "genre": "classic race board",
+    "coreMechanic": "Equal-probability dice across an original 100-cell serpentine board; one promotion/transfer per move; exact100 goal",
+    "skillAxes": [
+      "turn awareness",
+      "social anticipation"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "roll": "PC click / Space / Enter; phone tap",
+      "pause": "休憩 / Escape / background",
+      "players": "one human + CPU, local2/3/4"
+    },
+    "rules": {
+      "start": 1,
+      "goal": 100,
+      "overrun": "no move",
+      "six": "no extra turn",
+      "events": "one only; no chain; none after100",
+      "standings": "finished players skipped; final remaining player assigned last rank without more dice"
+    },
+    "practice": "Optional dedicated two-roll lesson, actual model at clearly labeled practice positions; fixed die2 demonstrates transfer and promotion; no RUN, BEST, statistics or production telemetry",
+    "storagePrefix": "web-mini-arcade:v1:game026:",
+    "storage": "Save_version1 atomic state replayed from move history; pending die retained across pause/reload; explicit resume; local result UUID ledger separate from nullable observer RUN UUID; memoryOnly after denied writes",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "development-only Shadow on findings; never gameplay or release approval",
+    "humanReview": "author subjective and physical-device playtest pending",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "1",
+    "telemetry": "game_open/run_start/run_end/retry/pause/resume/return_to_portal and specific_game_events dice_roll/promotion/transfer/finish; practice production excluded; remoteCollectionEnabled:false pending Worker registration"
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "game_open/run_start/run_end/retry/pause/resume/return_to_portal and specific_game_events dice_roll/promotion/transfer/finish; practice production excluded; remoteCollectionEnabled:false pending Worker registration",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game026/game.manifest.json"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "finding_id": "valid-json-memory-fallback",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "The actual test changes backend from a valid saved Race to syntactically valid but invalid game JSON after SaveStore.write seeded current memory. Frozen read branch directly returns restore(JSON.parse(raw)), including null, instead of falling through to memory. The test expectation matches explicit corruption/memory fallback instructions. This is production-class storage logic with synthetic corruption, not a badfixture; source-only scope does not demonstrate loss in a live in-progress UI or a frequent/reproducible end-user critical path. Requires fallback and memoryOnly latch for semantically invalid backend, then meaningful corrupted→later-stale validation.",
+  "evidence": [
+    "docs/game026/QA/finding-valid-json-memory/state.json",
+    "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt",
+    "docs/game026/QA/unit-20261007T175418/output.txt"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected immutable SaveStore.read earlyreturn of nullable restore, compared with syntax-error catch and memoryOnly return branch. Requested semanticcorruption fallback to lastmemory and permanent memoryOnly, retaining original failure.",
+    "evidence": [
+      "docs/game026/QA/finding-valid-json-memory/save-before.ts.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

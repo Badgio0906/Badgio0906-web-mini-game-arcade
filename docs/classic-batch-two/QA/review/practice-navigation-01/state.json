@@ -1,0 +1,24 @@
+{
+  "finding_id": "practice-origin-portal-production-navigation",
+  "problem": "Practice-origin portal navigation bypasses existing production practice guards in game027 and game028.",
+  "expected": "Practice-derived production Analytics must stay excluded while normal portal navigation may continue to be recorded.",
+  "observed": [
+    "Game027 track() excludes production practice events, but portal() calls abandon then sets training=false then directly telemetry.trackEvent(return_to_portal).",
+    "Game028 trainingEvent() excludes production practice events, but portal() records return_to_portal unconditionally after conditional normal-save abandon.",
+    "Both handlers are used by regular header/menu portal links, including when in practice.",
+    "Current remoteCollectionEnabled=false stops outbound sends but named events may still enter local consented event history."
+  ],
+  "unknown": [
+    "No current consented production recorder execution of these portal branches has been independently probed yet.",
+    "Whether author guards should preserve captured practice origin through teardown or use a scoped common predicate."
+  ],
+  "measurements": {
+    "affected_games": "game027,game028",
+    "outbound_collection_currently_enabled": false
+  },
+  "evidence": [
+    "docs/classic-batch-two/QA/review/practice-navigation-01/game027-main-before.ts.txt",
+    "docs/classic-batch-two/QA/review/practice-navigation-01/game028-main-before.ts.txt"
+  ],
+  "provenance": "current source observation; one shared practice-origin navigation policy omission; no real Analytics API or hidden reply consulted"
+}

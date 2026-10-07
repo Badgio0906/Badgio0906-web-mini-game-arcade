@@ -1,0 +1,24 @@
+{
+  "finding_id": "bottom-overlap-marker-clipping",
+  "problem": "Lower-row player markers touch or cut the bottom edge of the board when four participants overlap at cell1",
+  "expected": "All four circle/square/triangle/hexagon markers remain fully visible and distinguishable at the same cell",
+  "observed": [
+    "Actual390x844 playing viewport at initiallocal4 cell1 shows triangle and hexagon bases at the bottom SVG border",
+    "Actual844x390 landscape viewport shows the same lower-marker edge behavior",
+    "SVG viewBox is 0 0 100 100; current lower marker center y=99 and marker extent radius1.45 reaches100.45"
+  ],
+  "unknown": [
+    "Whether any other board edge or participantcount clips markers",
+    "How much of the visible shape is clipped across rendered sizes"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/game026/QA/native-20261007T180350/phone-ordinary-four-overlap.png",
+    "docs/game026/QA/native-20261007T180350/landscape-ordinary-four-overlap.png",
+    "docs/game026/QA/finding-bottom-overlap-clip/main-before.ts.txt"
+  ],
+  "provenance": "actual compiled normal native local4 start; no board or sprite fixture"
+}

@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-07T18:36:05.803775+00:00",
+  "type": "Post-review integration source-only delta; original executed report/images remain exact historical181042freeze",
+  "files": [
+    {
+      "path": "src/games/game026/main.ts",
+      "sha256": "b9b09d54696fa2b26575d298e4fae02274b2bab664b2bcd7777547ce9c4f853a"
+    },
+    {
+      "path": "src/core/TelemetryService.ts",
+      "sha256": "cfcefdbc59ff78044e2e6aa98fb9764d7df08a9ac8396e0a821cd538dc5d845e"
+    }
+  ],
+  "independent_comparison": "diff-u root main vs exact author181042 main: analyticsConfig import, inPractice declaration moved before constructor, opt-in ignoreEvent predicate only. Shared Telemetry diff adds optional predicate and early return; default undefined preserves existing behavior. Draw/model/input/flow/save unaffected.",
+  "visual_conclusion": "Existing actual81/F13/H12 review remains applicable to unchanged visible gameplay, explicitly not a live execution of new SDK source.",
+  "remaining_exact_release_validation": "Root integration SDK production-practice exclusion/default regression tests, build and release browser/CI checks; do not substitute old exactfreeze record."
+}

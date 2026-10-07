@@ -1,0 +1,2 @@
+# Human playtest
+Not performed. User explicitly authorizes prototype publication without author's personal playtest. Desktop/headless touchscreen viewport QA is technical evidence, not physical phone usability or fun endorsement. Human follow-up: full-board number legibility on actual small phone; shared-device turn clarity; readable overlap; equal-randomness feel; short enough CPU wait; quiet event copy; voluntary replay motivation.

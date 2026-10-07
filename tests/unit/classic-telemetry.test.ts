@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AnalyticsRuntime } from '../../src/analytics/runtime';
+import { PENDING_WORKER_GAME_IDS } from '../../src/analytics/remoteRegistration';
 import { TelemetryService } from '../../src/core/TelemetryService';
 
 const RUN = '12345678-1234-4234-8234-123456789012';
@@ -60,7 +61,7 @@ describe('pending Worker registration gate', () => {
   });
   it.each(['game_card_impression', 'game_card_click', 'game_launch'] as const)('blocks pending Portal-selected IDs for %s, and preserves the registered game020 route', name => {
     const observer = runtime(), context = observer.createContext('portal', 'test-page');
-    for (const selected_game of ['game021', 'game022', 'game023', 'game024', 'game025']) {
+    for (const selected_game of [...PENDING_WORKER_GAME_IDS]) {
       observer.record(context, { name, at: new Date().toISOString(), data: { selected_game } });
     }
     expect((observer as any).send).not.toHaveBeenCalled();
@@ -68,5 +69,24 @@ describe('pending Worker registration gate', () => {
     observer.record(context, { name, at: new Date().toISOString(), data: { selected_game: 'game020' } });
     expect((observer as any).send).toHaveBeenCalledOnce();
     expect((observer as any).ga.track).toHaveBeenCalledWith(name, 'game020', expect.anything());
+  });
+});
+
+
+describe('opt-in complete practice recorder exclusion', () => {
+  it('drops practice navigation/page-exit/errors before local and remote observation, restoring normal recording afterward', () => {
+    let practice = false;
+    const service = new TelemetryService(undefined, 'game026', undefined, { ignoreEvent: () => practice });
+    const observer = runtime(), context = observer.createContext('game020', 'test-page');
+    Object.assign(service, { analytics: observer, analyticsContext: context });
+    service.trackEvent('run_start');
+    practice = true;
+    for (const name of ['practice_start', 'practice_complete', 'return_to_portal', 'page_exit', 'client_error'] as const) service.trackEvent(name, { phase: 'practice' });
+    expect(service.getEvents().map(event => event.name)).toEqual(['run_start']);
+    expect((observer as any).send).toHaveBeenCalledOnce();
+    practice = false;
+    service.trackEvent('return_to_portal', { phase: 'title' });
+    expect(service.getEvents().map(event => event.name)).toEqual(['run_start', 'return_to_portal']);
+    expect((observer as any).send).toHaveBeenCalledTimes(2);
   });
 });
