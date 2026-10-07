@@ -1,0 +1,53 @@
+{
+  "observed_at": "2026-10-07T13:05:34.708Z",
+  "base": "http://127.0.0.1:5620/arcade/",
+  "source_hashes": {
+    "PairBoard.ts": "18aab33803a6cb55535c9e4c5fdf0b8bfefc19e8bf0eb152c813f2cde38e0712",
+    "main.ts": "d4e0b153fe66e2163e065fc0e46e93d932a6de9a3ccc8427cf602e49b4c0584d",
+    "icons.ts": "533c47ab1ef9ff3f4c84bee84fd763f1a477cb617084a21cca4165e9390689b5",
+    "style.css": "9afb04f3f67bc816c3d9e77d80cbe4026f21c446e7b16aefaefc1e1e7039ecb5"
+  },
+  "syntheticBrowser": true,
+  "authorPlayed": false,
+  "productionAnalyticsRequestsAllowed": false,
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        "optional practice clears without BEST/clear statistics",
+        "blocked tile no penalty/selection",
+        "selected state/pair removal/undo restores exact count",
+        "Enter key pair",
+        "remaining-only reshuffle resets history",
+        "pause/resume preserves board",
+        "help and cancelled next preserve run",
+        "restart restores full original board",
+        "all clear / explicit next board",
+        "preferences/BEST/clear count persist, board run intentionally restarts",
+        "48 tile board + live resize",
+        "Space selection/deselection and arrow navigation",
+        "48 tile proven route clear",
+        "portal return/new card/19 active games"
+      ],
+      "captures": [
+        "docs/game020/QA/subpath/desktop-title.png",
+        "docs/game020/QA/subpath/desktop-practice.png",
+        "docs/game020/QA/subpath/desktop-board24.png",
+        "docs/game020/QA/subpath/desktop-hint.png",
+        "docs/game020/QA/subpath/desktop-selected.png",
+        "docs/game020/QA/subpath/desktop-pause.png",
+        "docs/game020/QA/subpath/desktop-clear.png",
+        "docs/game020/QA/subpath/desktop-board48.png"
+      ],
+      "errors": [],
+      "blockedAnalyticsRequests": 0,
+      "stubbedExistingAdRequests": 1,
+      "status": "PASS"
+    }
+  ]
+}

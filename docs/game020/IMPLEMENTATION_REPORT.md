@@ -1,6 +1,6 @@
 # Game020 実装・検証・公開報告
 
-正式名：**すっきり牌合わせ ～PAIR TILE～**。ID `game020`、公開予定URL `https://game100garage.com/game020.html`。候補表シート1・行22／No21の1本のみを対象とした。次候補・Sheet A22は変更していない。
+正式名：**すっきり牌合わせ ～PAIR TILE～**。ID `game020`、公開URL `https://game100garage.com/game020.html`。候補表シート1・行22／No21の1本のみを対象とした。次候補・Sheet A22は変更していない。
 
 基準main `fd1d09a293cd8da1b9dbfeb73dc3e68e27ad7bcc` から隔離branch `codex/game020-pair-tile` を作成。後で明示承認された018 revision03と020 Worker登録だけを追加統合した。元018worktreeは182file・status／branch／HEADを保全。[指示読込](QA/INSTRUCTION_READS.jsonl)／[保全確認](QA/ORIGINAL_WORKTREE_FINAL_CHECK.json)。過去の未公開記録を公開確認へ流用しない。
 
@@ -29,12 +29,18 @@
 
 ## Jev実利用と素材
 
-6件で実API送信・HTTP200・resolved model・有効な4回答を各行で確認した。finding当時の観測を1問題ごとの4問へ送信し、回答を見ない独立判断と採った方法を後でannotateした。[実API証跡](QA/JEV_API_EVIDENCE.json)／[Shadow原本](QA/JEV_SHADOW.jsonl)／[集計](QA/JEV_SUMMARY.json)。Jevは公開・面白さ・画像評価を代行せず、PASSのために呼ばない。旧018の5件は当時の履歴をオフライン照合し、今回コピー・PASSのための再呼出はしない。小標本の一致率を一般的な有効性や作業節約率へ広げない。[対象外理由](QA/JEV_EXCLUSIONS.json)。
+8件で実API送信・HTTP200・resolved model・有効な4回答を各行で確認した。finding当時の観測を1問題ごとの4問へ送信し、回答を見ない独立判断と採った方法を後でannotateした。[実API証跡](QA/JEV_API_EVIDENCE.json)／[Shadow原本](QA/JEV_SHADOW.jsonl)／[集計](QA/JEV_SUMMARY.json)。Jevは公開・面白さ・画像評価を代行せず、PASSのために呼ばない。旧018の5件は当時の履歴をオフライン照合し、今回コピー・PASSのための再呼出はしない。小標本の一致率を一般的な有効性や作業節約率へ広げない。[対象外理由](QA/JEV_EXCLUSIONS.json)。
 
 素材は独自 `icons.ts` のコードSVG、システム字体、控えめなAudioService合成音、実プレイ画面のcrop／WebP thumbnail。ImageGen0、他サイト素材流用0。名称検索と米著作権局のルール／具体的表現の区別を参考にし、日本法・商標のクリアランス／権利ゼロは保証しない。[RIGHTS_NOTE](RIGHTS_NOTE.md)／[台帳](../../assets/portal/thumbnails/asset-index.json)。
 
 ## 公開と残課題
 
-本報告の初回commit時点ではcommit／Pages CI／公開検証は未確定。実結果は `QA/PUBLICATION.json` と下の公開追補へ保存する。期待commitの公式Build and deploy arcade成功を確認してから公開済みへ更新する。
+初回runtime commit `9e3c66de26d017bd85177e4cdffdf1e444292461` をmainへpushし、公式 [Build and deploy arcade run37625676913](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37625676913) のbuild／deploy成功を確認した。Game020と追加承認されたGame018 revision03は公開済み。[公開記録](QA/PUBLICATION.json)／[CI実測](QA/pages-runtime-ci.json)。
+
+公開HTTPSで020はPC・390px・320px・横長844pxの4画面を操作し、24／48枚全消去、任意練習、入力・戻す・並べ替え・保存・resize・Portal19掲載を成功した。Analytics同意拒否・送信先遮断を先行し、外向き解析送信の試行も0。[公開4画面](QA/public-final/report.json)。018はPC2RUN／phone相当2RUNの全フェーズ→結果→retryを成功、全28capture不透明比1・pageerror0。[018公開QA](../game018/revision03/QA/public-revision03/report.json)。19activeと退役010の公開routeを確認、AdSense scriptと既存同意UIは維持。[公開route](QA/public-routes/report.json)。
+
+公開後の初回比較では既存CIのAnalytics endpoint環境値を省いたローカルbuildとasset名が異なった。公開済みの非秘密値だけを隔離buildへ再現し、同一runtime commitの35配信fileはSHA256一致した。公開設定・ゲームソースは変えていない。[配信一致](QA/public-assets-final/report.json)／[独立原因確認](QA/independent/public-judgments.json)。初回PC Space不一致はresize未安定の間にキー押下とDOM再描画が重なるdriver条件で2/20再現し、安定後20回と通常Enter／Space10回は成功。testの待機だけを修正し、初回失敗・traceも保存した。
+
+本番に既存Analytics endpointが含まれることと、新作020をWorkerが受理できることは別である。Worker本番deployは未認証／許可先不足で未実施のまま。020の本番集計対応完了は主張しない。
 
 本人の主観試遊、実機スマホ、音・FPS・長時間の快適さは未実施。ユーザーは本人未プレイ公開を明示承認済み。[試遊方法](HUMAN_PLAYTEST.md)。認証／ネットワークが整うまではWorker本番登録が残る。広告・GA4・CREDIT・新権限・次候補・Sheet編集は行わない。再現は [HANDOFF](HANDOFF.md)。

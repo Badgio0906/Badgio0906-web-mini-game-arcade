@@ -1,0 +1,53 @@
+[
+  {
+    "finding_id": "g020-public-space-after-resize",
+    "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "AUTOMATED_TEST",
+    "RELEASE_RISK_IF_UNRESOLVED": false,
+    "reviewer": "pair020_review (blind to Jev answers)",
+    "recorded_at": "2026-10-07T13:17:18.581712+00:00",
+    "rationale": "The exact immediate resize/focus/Space sequence reproduced two misses in 20 attempts. In both traces resize replaces the focused tile DOM between Space keydown and keyup; no native click follows keyup, so the engine never receives a tile click. This is the driver firing keyboard input before viewport event processing settles. Twenty two-RAF-settled resize cases and ten steady Enter/Space cases all work with the same published artifact. A pending resize cancelling an in-progress native activation is not a persistent blocked input or unintended tile removal. The original first failure had no trace; this records a reproduced mechanism, not a claim to have captured its historical event sequence.",
+    "evidence": [
+      "docs/game020/QA/PUBLIC_KEYBOARD_FINDING.json",
+      "docs/game020/QA/public-native/desktop-FAILURE.png",
+      "docs/game020/QA/independent/public-check.json"
+    ],
+    "actual_next_action": {
+      "method": "AUTOMATED_TEST",
+      "description": "Added read-only event/resize/DOM replacement tracing in a fresh public browser context; reproduced exact raw sequence 2/20, contrasted settled resize 20/20 and steady Enter/Space 10/10. Denied consent, blocked every non-site request, made no game-data writes or product changes.",
+      "evidence": [
+        "docs/game020/QA/independent/public-check.json",
+        "docs/game020/QA/independent-public.mjs"
+      ]
+    },
+    "final_root_cause": "Resize-driven tile DOM replacement can occur between keydown and keyup when the browser driver immediately inputs Space after setViewportSize resolves; the native button click is cancelled. Waiting for viewport/render stabilization fixes the assertion baseline without changing game input."
+  },
+  {
+    "finding_id": "g020-public-artifact-comparison",
+    "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "CODE_INSPECTION",
+    "RELEASE_RISK_IF_UNRESOLVED": false,
+    "reviewer": "pair020_review (blind to Jev answers)",
+    "recorded_at": "2026-10-07T13:17:18.581712+00:00",
+    "rationale": "Existing Pages workflow supplies VITE_TELEMETRY_ENDPOINT and VITE_GA4_MEASUREMENT_ID from repository vars; config.ts captures import.meta.env. Vite hashes the emitted shared runtime and transitive import filenames, so a default-empty local build is not the same comparison baseline as the CI build containing the already-public nonsecret endpoint. The independent source inspection explains the filename cascade; the root same-env replay report verifies all 35 served assets exactly match the expected commit build. No new public setting or source change is inferred from content hashes alone.",
+    "evidence": [
+      ".github/workflows/pages.yml",
+      "src/analytics/config.ts",
+      "docs/game020/QA/PUBLIC_ASSET_FINDING.json",
+      "docs/game020/QA/public-asset-comparison-initial-failure.json",
+      "docs/game020/QA/public-assets-final/report.json"
+    ],
+    "actual_next_action": {
+      "method": "CODE_INSPECTION",
+      "description": "Inspected current environment substitution and Pages injection, then checked the existing same-public-env replay comparison record: expected runtime commit9e3c66d, PASS35 exact asset hashes, pageerrors0. Did not query Analytics, secrets, Worker or D1.",
+      "evidence": [
+        ".github/workflows/pages.yml",
+        "src/analytics/config.ts",
+        "docs/game020/QA/public-assets-final/report.json"
+      ]
+    },
+    "final_root_cause": "Local default environment omitted existing public CI build variables, changing shared runtime content hash and importing bundle filenames; comparing against a same-env build resolves the baseline mismatch."
+  }
+]

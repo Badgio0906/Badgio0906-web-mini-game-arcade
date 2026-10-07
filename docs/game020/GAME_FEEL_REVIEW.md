@@ -52,3 +52,15 @@ PC1365×900／phone390×844各3contextの初回unknownで「許可する／許�
 PC／phoneでtitleとpauseの背景牌がSpace／Enterに反応しないこと、Escでpause→復帰、help→復帰、resultのSpace／Enterでクリア数を重複加算しないこと、resultのPortal linkで正常帰還を確認。24枚全消去も再操作。保存get/setがthrowする第7contextで初回拒否→24枚プレイが成立。pageerror 0、main／styleの開始・終了hash一致。[consent.json](QA/independent/consent.json)。
 
 背景の盤面はstate・`inert`・control disabledで隔離し、同意panelをブラウザtop layerへ移す変更はしていない。休憩中の牌数／BEST／クリア数は実確認した。active timeの休憩除外はコード観察であり、今回の追加RUNでTelemetry秒数を独立に実測したとは記録しない。人間の音聴感・実機・長期継続の未実施は維持する。
+
+## 公開版のresize直後Spaceと配信比較の独立確認
+
+公開runtime `9e3c66de26d017bd85177e4cdffdf1e444292461`について、rootの最初のdesktop probeでresize往復直後のSpace選択が一度期待と異なった。独立reviewerは同意deniedの新contextで、site以外の通信を遮断し、通常Space／Enter、resize event、focus、牌DOMの置換をread-only traceした。trace用window log以外にゲーム状態を書き換えていない。
+
+最初の50回はfocusとSpaceの間にtrace取得のCDP呼出を入れていたため全成功だったが、そのroundtripが待ちを加えることを認識し、[初回記録](QA/independent/public-check-instrumented.json)を保持したまま、critical sequenceにその呼出を入れない別RUNへ進めた。
+
+[最終trace](QA/independent/public-check.json)では、即入力20回中2回を再現。どちらもSpace keydown→resize→focusout→牌DOM置換→新しい同ID牌へfocus→Space keyupとなり、native clickが発生しない。remainingは48、pageerrorは0。resizeの2RAF安定後20回と、通常Enter／Space各5回は全成功。同じ公開artifactのままなので、常時入力不能や公開版だけのソース差を示していない。元の最初の1回にはtraceがないため、過去その瞬間を測定できたとはしない。
+
+独立判断はTEST_INFRA_BUG、追加の検証／driver修正必要、最初の証拠AUTOMATED_TEST、未解決の重大release riskなし。viewport応答直後もresize eventは未処理になり得るため、安定前のキー入力はnative activation途中で対象DOMを失う。ゲームの入力や基礎ルールを変える必要はないと判断した。これはJev回答や公開成功だけからの推定ではなく、2件の再現traceによる限定診断。[独立判断](QA/independent/public-judgments.json)。
+
+公開asset名が初回のdefault-empty local distと異なった件は、既存Pages workflowの公開環境変数注入と`src/analytics/config.ts`のimport.meta.env取得を独立に確認。runtimeの内容hashが変わるとimportするbundle名も連鎖して変わる。rootの既存public非Secret環境を再現したbuild比較は[35asset exact hash PASS](QA/public-assets-final/report.json)。これをSecret・本番API・設定変更の実施と混同しない。独立判断は比較基準のTEST_INFRA_BUG、追加コード／設定確認必要、重大な配信riskなし。prodWorker deploy、D1、Analytics APIアクセスはこのreviewでは行っていない。

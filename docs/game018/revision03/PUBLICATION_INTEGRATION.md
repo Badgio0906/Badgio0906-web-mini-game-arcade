@@ -35,3 +35,9 @@ SHOE018_COMPILED_ORIGIN=http://127.0.0.1:5520 SHOE018_COMPILED_REPORT_DIR="$PWD/
 ブラウザ実行はPlaywrightと `/usr/bin/chromium` が必要。collectorは通常時計・PC click／Space／Enterと390px touch相当で2回ずつ結果→リトライを確認する。QA相当で解析同意を拒否し、生の本番Analytics取得は行わない。
 
 実機スマホ、音・FPS、人間による修正版の最終試遊、全フレーム動画のカメラ遷移評価は引き続き未確認。公開への追加承認をこれらの実施済み記録へ読み替えない。旧PC POWERの髪の部分遮蔽等の既知境界は当時の報告を維持する。
+
+## 公開確認の追補（2026-10-07 UTC）
+
+runtime `9e3c66de26d017bd85177e4cdffdf1e444292461` をmainへ統合・pushし、公式Pages run37625676913のbuild／deploy成功を確認した。公開先は https://game100garage.com/game018.html 。通常時計・本番debugなしでPC click／Space／Enterの2RUN、390px touch相当の2RUNをANGLE→SPIN→POWER→kick→flight→結果→retryまで確認。28captureの不透明比1、pageerror0。[公開実操作](QA/public-revision03/report.json)。rootも公開phoneのSPIN実PNGを見て、少年全身と同一足首からの接続、固定支点・つま先・選択値の表示を確認した。公開物の35比較対象file（018含む）は隔離同一commit・既存公開設定buildと全てSHA256一致。[配信一致](../../game020/QA/public-assets-final/report.json)。
+
+以前の統合前・compiled証拠と、この公開追補は別時点である。基礎物理、SPIN効果、飛距離、保存、宇宙／レア、膝の変更はなく、元182fileの未commit作業を保全した。実機スマホと本人試遊・音／FPSは未確認のまま。今回新しいJev API呼出はなく、旧5行は当時の履歴として保持する。

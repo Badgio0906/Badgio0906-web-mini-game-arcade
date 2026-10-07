@@ -10,5 +10,12 @@
   "worker_deploy_attempted": false,
   "remote_migration_attempted": false,
   "configuration_changes": false,
-  "next_step": "Operator supplies existing Cloudflare Worker deployment authentication via environment/official login and permits Cloudflare API network access; then npm --prefix analytics-worker run deploy and verifyhealth/version. Do not paste secrets into chat or Git; do not create new permissions or change auth architecture."
+  "next_step": "Operator supplies existing Cloudflare Worker deployment authentication via environment/official login and permits Cloudflare API network access; then npm --prefix analytics-worker run deploy and verifyhealth/version. Do not paste secrets into chat or Git; do not create new permissions or change auth architecture.",
+  "final_environment_recheck": {
+    "checked_at": "2026-10-07T13:22:20.316256+00:00",
+    "environment_policy_revision": "90",
+    "cloudflare_api_allowed": false,
+    "cloudflare_credentials_injected": false,
+    "worker_deploy_attempted": false
+  }
 }

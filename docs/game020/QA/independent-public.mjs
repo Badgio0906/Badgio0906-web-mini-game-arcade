@@ -1,0 +1,17 @@
+import {chromium}from'@playwright/test';import fs from'node:fs';
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const c=await b.newContext({viewport:{width:1365,height:900}});await c.addInitScript(()=>{localStorage.setItem('game100garage:analytics-consent:v1','denied');window.__readonlyInputTrace=[];let gen=0;const rec=(kind,e)=>{const a=document.activeElement;window.__readonlyInputTrace.push({t:performance.now(),kind,key:e?.key,target:e?.target?.dataset?.tileId,active:a?.dataset?.tileId,activeConnected:a?.isConnected,generation:gen,w:innerWidth,h:innerHeight});if(window.__readonlyInputTrace.length>3000)window.__readonlyInputTrace.shift();};for(const n of ['keydown','keyup','click','focusin','focusout'])document.addEventListener(n,e=>rec(n,e),true);window.addEventListener('resize',e=>rec('resize',e));document.addEventListener('DOMContentLoaded',()=>{const t=document.getElementById('tile-board');new MutationObserver(()=>{gen++;rec('tile-dom-replaced');}).observe(t,{childList:true});});});let blocked=0;await c.route('**/*',r=>{const h=new URL(r.request().url()).hostname;if(['game100garage.com','www.game100garage.com'].includes(h))return r.continue();blocked++;return r.abort();});const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(15000);await p.goto('https://game100garage.com/game020.html');await p.locator('#size-choice').selectOption('regular');await p.locator('#play-button').click();const tests=[];
+const count=()=>p.locator('.tile[aria-pressed="true"]').count();
+for(const stable of [false,true]){
+ for(let trial=0;trial<20;trial++){
+  if(await count())await p.keyboard.press('Space');
+  const traceAt=await p.evaluate(()=>window.__readonlyInputTrace.length);
+  await p.setViewportSize({width:900,height:1365});await p.setViewportSize({width:1365,height:900});
+  if(stable)await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+  await p.locator('.tile[data-free="true"]').first().focus();
+  await p.keyboard.press('Space');const selected=await count();
+  tests.push({trial,stable,key:'Space',selected,expected:1,trace:await p.evaluate(n=>window.__readonlyInputTrace.slice(n),traceAt)});
+  if(selected)await p.keyboard.press('Space');
+ }
+}
+for(const key of ['Enter','Space'])for(let trial=0;trial<5;trial++){await p.locator('.tile[data-free="true"]').first().focus();await p.keyboard.press(key);const selected=await count();tests.push({trial,stable:true,resize:false,key,selected,expected:1});if(selected)await p.keyboard.press(key);}
+await p.screenshot({path:'docs/game020/QA/independent/public-keyboard-final.png',fullPage:true});const trace=await p.evaluate(()=>window.__readonlyInputTrace);const result={reviewer:'pair020_review',observed_at:new Date().toISOString(),runtime_commit:'9e3c66de26d017bd85177e4cdffdf1e444292461',url:p.url(),normal_input:true,read_only_trace:true,trace_writes_product_data:false,consent:'denied',production_analytics_access:false,blocked_external_requests:blocked,tests,trace,pageerrors:errors,remaining:await p.locator('#remaining-value').innerText()};fs.writeFileSync('docs/game020/QA/independent/public-check.json',JSON.stringify(result,null,2));console.log(JSON.stringify({tests:tests.length,immediate_failures:tests.filter(x=>!x.stable&&x.selected!==1).length,stable_failures:tests.filter(x=>x.stable&&x.selected!==1).length,pageerrors:errors.length,remaining:result.remaining}));await b.close();
