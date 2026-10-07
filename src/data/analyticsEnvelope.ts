@@ -33,7 +33,7 @@ export interface AnalyticsEnvelope {
   data: Record<string, AnalyticsPrimitive>;
 }
 export interface AnalyticsBatch { schema_version: 2; events: AnalyticsEnvelope[]; }
-export const ANALYTICS_ACTIVE_GAME_IDS = ['portal', ...Array.from({ length: 28 }, (_, i) => `game${String(i + 1).padStart(3, '0')}`).filter(id => id !== 'game010')];
+export const ANALYTICS_ACTIVE_GAME_IDS = ['portal', ...Array.from({ length: 29 }, (_, i) => `game${String(i + 1).padStart(3, '0')}`).filter(id => id !== 'game010')];
 const names = new Set<string>(ANALYTICS_EVENT_NAMES);
 const games = new Set(ANALYTICS_ACTIVE_GAME_IDS);
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

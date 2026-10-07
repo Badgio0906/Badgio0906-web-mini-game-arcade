@@ -1,0 +1,79 @@
+{
+  "recorded_at": "2026-10-07T20:15:59.542900+00:00",
+  "reviewer": "final_review_028_029",
+  "source_hashes": {
+    "game029.html": "d65bc47da46e4f5d0d02baadda41eb516816f929cc8dc17f2a15d0feec734624",
+    "src/games/game029/Fishing.ts": "29fa3ebebae0f7b1d6bf4a249432bfb175c7f0bbad12b1bc8debb66cdac42e6c",
+    "src/games/game029/Save.ts": "75f19f947bfca236d341101a5764de1a96e3b6f0caf1548fc2989b529313aa30",
+    "src/games/game029/draw.ts": "789ca3964801deaf1201ec5a96299941fae1132ed4ab5ff743317299617a7c66",
+    "src/games/game029/game.manifest.json": "91005f548a4286ee956c9541a6f9f7ca5150bfed2c9a09e083c01915f9166fa7",
+    "src/games/game029/input.ts": "061635c85e4b8028e284d4d304de695c01a7ecb97a39a776f6b78e7043a0d977",
+    "src/games/game029/main.ts": "12650df4bf32ba028fc11ff69511339a1544465ea709eb0010b9d427d387d758",
+    "src/games/game029/practiceEvents.ts": "8c1153bab4a2d1a2c5b179f58c37e6986da7029c7c0136d4a55e29e83bb19fe4",
+    "src/games/game029/style.css": "316aa2815fd15472f9e59d37755f046333d1a8bc6c56b0e6c885b70dd56d5307"
+  },
+  "native_report": "report.json",
+  "pass": true,
+  "observed": [
+    "OwnPC/phone optionalhelp→normalstart→cast→automaticwinding→nativehorizontalhookmovement→pause→explicitresume→one surface deposit→TodayGoHome result succeeded.",
+    "Exactpausedsavedstate held320ms; paused viewportwidthresize -10 andrestore preservedmodel.",
+    "OwnPC Enter held throughresume/repeat/release didnot re-openpause or triggeranotherphase.",
+    "Phone trustedpointercancel thenlostpointercapture on water occurred while data-state playing duringascending; subsequentpause/resume/return/result succeeded, no injected event dispatch/modelstate."
+  ],
+  "ascending_touch_cancel_evidence": [
+    {
+      "at": 3309.39999999851,
+      "type": "lostpointercapture",
+      "target": "water",
+      "detail": 0,
+      "key": null,
+      "trusted": true,
+      "prevented": false,
+      "state": "playing"
+    },
+    {
+      "at": 3392.7000000029802,
+      "type": "pointercancel",
+      "target": "water",
+      "detail": 0,
+      "key": null,
+      "trusted": true,
+      "prevented": false,
+      "state": "playing"
+    },
+    {
+      "at": 3392.7000000029802,
+      "type": "lostpointercapture",
+      "target": "water",
+      "detail": 0,
+      "key": null,
+      "trusted": true,
+      "prevented": false,
+      "state": "playing"
+    }
+  ],
+  "cancellation_limits": "Trace proves actual native ascendingcancel/captureloss and continuingcompletecast. Immediate postcancelx/helddirection was not independentlysnapshotted; source documentpointercancel/lostcapture clears pointer and MenuEpoch state, unitguards separatelytested.",
+  "normal_results": {
+    "desktop": {
+      "returned": 52,
+      "casts": 1,
+      "errors": []
+    },
+    "phone": {
+      "returned": 84,
+      "casts": 1,
+      "errors": []
+    }
+  },
+  "code_observations": [
+    "At most48items/cast; maxdepth300/capacity8/width3; olditems replacedcast, immutable positions retained throughsave.",
+    "Returnedphase idempotentdeposit; reportFinish ledger preventsrepeatedresultcount; invalid/deniedstorage latches memoryfallback.",
+    "Rarity is designedprobability notplayerobservation; resultstates no guarantee; no timeorzero-catchforcedexit."
+  ],
+  "separate_author_evidence": "Currentsource06 authornative4 includes ordinaryresults/retry/reload/practice/menu plusfield/ancestor/dock64reserve; paused-onlycancel in authorreport notmislabelledascending.",
+  "interpretation": "PASS observedtechnicalcoreloopandinputcontinuity; nothumanfun or publicationauthorization.",
+  "unperformed": [
+    "Physicalsmartphone and subjectivedifficulty/enjoyment",
+    "Production expectedversion/actualcollection"
+  ]
+}

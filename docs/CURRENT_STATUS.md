@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**Game028「ぽんぽん卓球」を試作公開済み。runtime4310be3／公式Pages37680233126成功。** 公開指定4画面125check・通常5点試合終局/再挑戦/保存、Portal27/thumbnail/Ads維持、13file配信SHA＋CIhash-namedasset確認、SheetA11だけ済/読戻し。他ゲームsave不変、root666/64/check/build・WorkerlocalD132events10RUN。続く029はsource06/27対象/root695/65・check/build/Worker35events11RUN、指定4画面通常結果/再挑戦・独立Visual81/F12/H12を完了して公開前。active28/historical29は次commit統合予定、030未公開・031未着手。本番新作AnalyticsOFF/Workerblocker、本人/実機未試遊を継続。
+
 2026-10-08（日本時間）：**Game028「ぽんぽん卓球」を統合検証し公開前。** 疑似2.5D球高/反発・11点deuce/任意5点・CPU3難度・任意無得点練習・保存復帰。47対象/root666（64file）・check/build、Worker実ローカルD132events10RUN PASS、作者128nativechecks・独立PC900/phone実操作とVisual81/F12/H12。旧作者desktop1000と今回要求900は区別し、公開通常完走900を予定。active27/historical28、026/027公開済、028公式CI/公開/SheetA11待ち、029/030未公開、031未着手。旧9作業tree・018保全、外部新作AnalyticsOFF・本番Workerblocker継続、本人/実機未試遊。
 
 2026-10-08（日本時間）：**Game027「ひと息ビリヤード」を試作公開済み。runtime ff369e5、公式Pages37675920015のbuild/deploy成功。** 公開4画面native・通常PC22/phone23shotsのlegal8終局、結果/再挑戦/保存、Portal26/thumbnail確認。期待CI hash-named JS/CSS＋同公開設定再現buildとの13fileSHA一致（artifact直取得不可の制約を明記）。候補表A47だけ済／他列不変・読戻し。[公開証拠](game027/QA/PUBLICATION.json)。root617/62・40対象・check/build、WorkerlocalD129events9RUN。独立Visual81/F12/H12、本人/実機主観は未実施。active26/historical27、026/027公開済、028〜030は未公開・031未着手。新作Analytics送信停止、本番Worker認証blocker継続。

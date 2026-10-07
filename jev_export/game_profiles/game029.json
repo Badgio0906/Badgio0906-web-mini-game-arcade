@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "game029",
+  "titleJa": "給湯室の落としもの釣り ～LOST & FOUND～",
+  "titleEn": "LOST & FOUND",
+  "tagline": "おとして、ひろって、またおとして。",
+  "thumbnail": "./assets/portal/game029.webp",
+  "route": "./game029.html",
+  "releaseOrder": 29,
+  "status": "active",
+  "tags": [
+    {
+      "id": "office",
+      "label": "お仕事"
+    },
+    {
+      "id": "search",
+      "label": "探索"
+    },
+    {
+      "id": "endless",
+      "label": "エンドレス"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "給湯室の落としもの釣り ～LOST & FOUND～",
+  "genre": "relaxed collection",
+  "controls": {
+    "PC": "ArrowLeft/ArrowRight or A/D while winding; click native buttons; keyboard focus and Enter",
+    "mobile": "horizontal drag within water while winding; tap native buttons",
+    "pause": "Pause/Escape/blur/hidden; explicit resume only, no catch-up"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "no fixed time limit; human duration not measured",
+  "mainMechanics": "Cast automatically to depth, steer a winding J hook horizontally to recover original office silhouettes, deposit once and optionally upgrade within the same run.",
+  "currentManifest": {
+    "id": "game029",
+    "title": "給湯室の落としもの釣り ～LOST & FOUND～",
+    "titleEn": "LOST & FOUND",
+    "tagline": "おとして、ひろって、またおとして。",
+    "genre": "relaxed collection",
+    "coreMechanic": "Cast automatically to depth, steer a winding J hook horizontally to recover original office silhouettes, deposit once and optionally upgrade within the same run.",
+    "skillAxes": [
+      "spatial route choice",
+      "capacity management",
+      "patient collecting"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "PC": "ArrowLeft/ArrowRight or A/D while winding; click native buttons; keyboard focus and Enter",
+      "mobile": "horizontal drag within water while winding; tap native buttons",
+      "pause": "Pause/Escape/blur/hidden; explicit resume only, no catch-up"
+    },
+    "practice": "Optional short30m pen/clip actual collection; isolated from normal RUN, BEST and saved continuation.",
+    "storagePrefix": "web-mini-arcade:v1:game029:",
+    "storage": "version1 stable per-cast objects, caught IDs, phase and upgrade/balance snapshot; restore paused. Observer UUID may be null. Local result UUID exists only for one-time local report; never sent to telemetry. Failed storage writes select memory-only.",
+    "limits": {
+      "depth": 300,
+      "capacity": 8,
+      "width": 3,
+      "objectsPerCast": 48,
+      "counterCap": 1000000000
+    },
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "rules_version": "1",
+    "presentation_version": "1",
+    "revision": 1,
+    "telemetry": "Existing TelemetryService game_open/run_start/run_end/retry/best_update/return_to_portal and specific_game_events cast/depth/pickup/return/upgrade/finish_run, never frames, practice not normal RUN. remoteCollectionEnabled:false until registered production Worker is independently verified.",
+    "jev": "Development finding Shadow only; not gameplay, feel or publication authority.",
+    "humanReview": "Author subjective playtest and physical-device review pending."
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "Existing TelemetryService game_open/run_start/run_end/retry/best_update/return_to_portal and specific_game_events cast/depth/pickup/return/upgrade/finish_run, never frames, practice not normal RUN. remoteCollectionEnabled:false until registered production Worker is independently verified.",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game029/game.manifest.json"
+  }
+}

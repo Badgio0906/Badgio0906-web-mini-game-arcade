@@ -1,0 +1,11 @@
+{
+  "finding_id":"phone-pause-after-drag-01",
+  "problem":"The pause tap after a water drag did not stop the winding scene during the next350ms.",
+  "expected":"A normal enabled Pause button tap should open pause and freeze depth until explicit resume.",
+  "observed":["Desktop1365x900 normal cast, pause, restore, return, finish, retry and practice completed.","Phone390x844 performed water touchStart/touchMove/touchEnd while winding, then native Playwright locator.tap on enabled #pause.","After tap returned, depth text changed during a350ms wait; screenshot and app data-state remained playing.","Trace records pointerdown/up/lostpointercapture on #pause, but no click for #pause among the captured input records.","No pageerror recorded."],
+  "unknown":["Why this tap did not create an observed pause action.","Whether the browser input fixture, common input handling, or game-local handlers contributed."],
+  "operation":"Native phone touch drag then enabled Pause button tap.",
+  "viewport":"390x844 touch Chromium headless",
+  "evidence":["docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-observation.json","docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-viewport.png","docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/before"],
+  "provenance":"Actual compiled native input, no model injection. Read-only saved model redacted UUIDs; desktop previous normal run and phone current context separate."
+}

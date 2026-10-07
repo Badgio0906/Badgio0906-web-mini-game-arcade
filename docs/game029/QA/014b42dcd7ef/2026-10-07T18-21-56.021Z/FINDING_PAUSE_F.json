@@ -1,0 +1,11 @@
+{
+ "finding_id":"phone-pause-after-drag-01",
+ "problem":"A deliberately held native touch on Pause immediately after water drag still emitted no click and did not pause the scene.",
+ "expected":"A fresh enabled Pause button touch should stop winding until explicit resume.",
+ "observed":["390x844 touch Chromium: native water touchStart/move/end, then fresh native CDP touchStart on #pause at195,687.5, requested80ms hold, touchEnd.","Captured pause pointerdown3019.1ms and pointerup3119.6ms: measured100.5ms; subsequent lostpointercapture but no click among the captured input records.","Wait for paused state timed out after30s; scene remained playing and returned normally with3 objects/52points.","No pageerror. Desktop1365x900 normal loop completed in this run.","An earlier bounded diagnostic on the same input implementation observed a0.2ms first pause touch with no click and a later116.2ms separate pause touch with a click and stable paused depth74m."],
+ "unknown":["What determines whether the native touch produces a compatibility click after water drag.","Whether first versus later touch, browser automation, rendering or product event handling contributes."],
+ "viewport":{"width":390,"height":844},
+ "operation":"One fresh held native Pause touch after water drag; current source03, storage-only difference from initial input source.",
+ "evidence":["docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-observation.json","docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/failure-viewport.png","docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before","docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json"],
+ "provenance":"Actual compiled native input, no model/state injection; read-only saved observation UUIDs redacted. First failure, bounded diagnostic and current run preserved separately."
+}

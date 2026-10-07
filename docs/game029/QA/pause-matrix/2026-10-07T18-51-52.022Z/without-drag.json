@@ -1,0 +1,4977 @@
+{
+  "condition": "without-drag",
+  "errors": [],
+  "network": [
+    {
+      "url": "http://127.0.0.1:4929/game029.html",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4929/assets/game029-DAIVASJm.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4929/assets/game029-BrUzmx6l.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4929/fonts/arcade-rounded-jp.woff2",
+      "status": 200
+    }
+  ],
+  "sent": [
+    {
+      "label": "consent-deny",
+      "id": 1,
+      "x": 281,
+      "y": 200,
+      "requestedMs": 100,
+      "startAt": "2026-10-07T18:51:52.639Z",
+      "endAt": "2026-10-07T18:51:52.773Z"
+    },
+    {
+      "label": "#play",
+      "id": 2,
+      "x": 195,
+      "y": 328.46875,
+      "requestedMs": 100,
+      "startAt": "2026-10-07T18:51:52.809Z",
+      "endAt": "2026-10-07T18:51:52.987Z"
+    },
+    {
+      "label": "#cast",
+      "id": 3,
+      "x": 118,
+      "y": 687.5,
+      "requestedMs": 100,
+      "startAt": "2026-10-07T18:51:53.028Z",
+      "endAt": "2026-10-07T18:51:53.193Z"
+    },
+    {
+      "label": "#pause",
+      "id": 4,
+      "x": 195,
+      "y": 687.5,
+      "requestedMs": 100,
+      "startAt": "2026-10-07T18:51:55.512Z",
+      "endAt": "2026-10-07T18:51:55.678Z"
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "before",
+      "wallTime": "2026-10-07T18:51:55.423Z",
+      "state": {
+        "screen": "playing",
+        "phase": "巻き上げ中 · 左右で拾う",
+        "depth": "100 m",
+        "hidden": false,
+        "focus": true,
+        "scrollY": 0,
+        "pauseDisabled": false,
+        "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+        "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">給湯室の<br>落としもの釣り</h2><p>おとして、ひろって、またおとして。<br>時間制限なし。今日は、何が釣れるかな。</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">すぐ遊ぶ</button><button id=\"explain\">説明を見る</button><button id=\"practice\">練習する</button></div><p>この端末のBEST 0点 · 0回帰宅<br>深度100m・回収3個から。途中は保存します。</p><p><a id=\"menu-portal\" href=\"./index.html\">← 100ガレへ</a></p></dialog>"
+      }
+    },
+    {
+      "label": "first-pause",
+      "wallTime": "2026-10-07T18:51:55.678Z",
+      "state": {
+        "screen": "paused",
+        "phase": "休憩中",
+        "depth": "94 m",
+        "hidden": false,
+        "focus": true,
+        "scrollY": 0,
+        "pauseDisabled": true,
+        "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+        "menu": "<dialog id=\"menu\" open=\"\"><h2 tabindex=\"-1\">ひと休み。</h2><p>糸も、落としものも止まっています。<br>続けるまで時間は進みません。</p><div class=\"menu-actions\"><button id=\"resume\" class=\"primary\">続ける</button><button id=\"to-title\">終了してタイトルへ</button></div><p><a id=\"menu-portal\" href=\"./index.html\">← 100ガレへ</a></p></dialog>"
+      }
+    },
+    {
+      "label": "first-plus400ms",
+      "wallTime": "2026-10-07T18:51:56.081Z",
+      "state": {
+        "screen": "paused",
+        "phase": "休憩中",
+        "depth": "94 m",
+        "hidden": false,
+        "focus": true,
+        "scrollY": 0,
+        "pauseDisabled": true,
+        "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+        "menu": "<dialog id=\"menu\" open=\"\"><h2 tabindex=\"-1\">ひと休み。</h2><p>糸も、落としものも止まっています。<br>続けるまで時間は進みません。</p><div class=\"menu-actions\"><button id=\"resume\" class=\"primary\">続ける</button><button id=\"to-title\">終了してタイトルへ</button></div><p><a id=\"menu-portal\" href=\"./index.html\">← 100ガレへ</a></p></dialog>"
+      }
+    },
+    {
+      "label": "second-not-executed",
+      "reason": "Already paused or control condition"
+    }
+  ],
+  "trace": [
+    {
+      "at": 167.70000000298023,
+      "event": "focus",
+      "stage": "capture",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":169.796875,\"y\":658.5,\"width\":50,\"height\":44,\"top\":658.5,\"right\":219.796875,\"bottom\":702.5,\"left\":169.796875}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 183.5,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 273.29999999701977,
+      "event": "pointerdown",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 273.79999999701977,
+      "event": "touchstart",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 374.3999999985099,
+      "event": "pointerdown",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 374.70000000298023,
+      "event": "touchstart",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 389.1000000014901,
+      "event": "gotpointercapture",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 389.29999999701977,
+      "event": "pointerup",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 389.3999999985099,
+      "event": "lostpointercapture",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 389.6000000014901,
+      "event": "touchend",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 390.6000000014901,
+      "event": "mousedown",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 390.70000000298023,
+      "event": "blur",
+      "stage": "capture",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 390.79999999701977,
+      "event": "focus",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 390.8999999985099,
+      "event": "mouseup",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 391,
+      "event": "click",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "DIV",
+          "id": "analytics-settings-host"
+        },
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.29999999701977,
+      "event": "gotpointercapture",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.3999999985099,
+      "event": "pointerup",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.3999999985099,
+      "event": "lostpointercapture",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.5,
+      "event": "touchend",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 281,
+      "y": 200,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 1,
+          "x": 281,
+          "y": 200
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.6000000014901,
+      "event": "mousedown",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.6000000014901,
+      "event": "blur",
+      "stage": "after-task",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.6000000014901,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.70000000298023,
+      "event": "mouseup",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.70000000298023,
+      "event": "click",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 2,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 281,
+      "y": 200,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "H2",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.70000000298023,
+      "event": "blur",
+      "stage": "capture",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 406.79999999701977,
+      "event": "blur",
+      "stage": "after-task",
+      "target": "analytics-settings-host",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 439.70000000298023,
+      "event": "pointerdown",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 440.20000000298023,
+      "event": "touchstart",
+      "stage": "capture",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 540.5,
+      "event": "pointerdown",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 540.7999999970198,
+      "event": "touchstart",
+      "stage": "after-task",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 555.2000000029802,
+      "event": "gotpointercapture",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 555.5,
+      "event": "pointerup",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 555.6000000014901,
+      "event": "lostpointercapture",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 555.7000000029802,
+      "event": "touchend",
+      "stage": "capture",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 556.7000000029802,
+      "event": "mousedown",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 556.7999999970198,
+      "event": "focus",
+      "stage": "capture",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 557.6000000014901,
+      "event": "mouseup",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 557.7000000029802,
+      "event": "click",
+      "stage": "capture",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "play"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "DIALOG",
+          "id": "menu"
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "title",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610,
+      "event": "gotpointercapture",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.1000000014901,
+      "event": "pointerup",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.1000000014901,
+      "event": "lostpointercapture",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.2000000029802,
+      "event": "touchend",
+      "stage": "after-task",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 328.46875,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 2,
+          "x": 195,
+          "y": 328.46875
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.2999999970198,
+      "event": "mousedown",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.2999999970198,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.2999999970198,
+      "event": "mouseup",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.3999999985099,
+      "event": "click",
+      "stage": "after-task",
+      "target": "play",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 3,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 328,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "CANVAS",
+          "id": "water"
+        },
+        {
+          "tag": "DIV",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 610.3999999985099,
+      "event": "blur",
+      "stage": "capture",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 611.2999999970198,
+      "event": "blur",
+      "stage": "after-task",
+      "target": "play",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 673.2999999970198,
+      "event": "pointerdown",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 673.5,
+      "event": "touchstart",
+      "stage": "capture",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 774,
+      "event": "pointerdown",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 774.2000000029802,
+      "event": "touchstart",
+      "stage": "after-task",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 807.7999999970198,
+      "event": "gotpointercapture",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 807.8999999985099,
+      "event": "pointerup",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 808.1000000014901,
+      "event": "lostpointercapture",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 808.1000000014901,
+      "event": "touchend",
+      "stage": "capture",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 809,
+      "event": "mousedown",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 809.1000000014901,
+      "event": "focus",
+      "stage": "capture",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 809.2999999970198,
+      "event": "mouseup",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 809.2999999970198,
+      "event": "click",
+      "stage": "capture",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落として、ゆっくり拾おう。",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 811.6000000014901,
+      "event": "blur",
+      "stage": "capture",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "0 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824,
+      "event": "gotpointercapture",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.1000000014901,
+      "event": "pointerup",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2000000029802,
+      "event": "lostpointercapture",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2000000029802,
+      "event": "touchend",
+      "stage": "after-task",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 118,
+      "y": 687.5,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 3,
+          "x": 118,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2000000029802,
+      "event": "mousedown",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2999999970198,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2999999970198,
+      "event": "mouseup",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2999999970198,
+      "event": "click",
+      "stage": "after-task",
+      "target": "cast",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 4,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 118,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "cast"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 824.2999999970198,
+      "event": "blur",
+      "stage": "after-task",
+      "target": "cast",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "糸を落としています · 操作不要",
+      "depth": "2 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3055.2999999970198,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "100 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3071.7000000029802,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "99 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3088.2000000029802,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "99 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3104.7999999970198,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "98 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3121.39999999851,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "98 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3138.2000000029802,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "97 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3154.7999999970198,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "97 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3157.89999999851,
+      "event": "pointerdown",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "97 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3158.2000000029802,
+      "event": "touchstart",
+      "stage": "capture",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "97 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3171.5,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "97 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3188.10000000149,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "96 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3204.89999999851,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "96 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3221.7000000029802,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "95 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3238.39999999851,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "95 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3254.89999999851,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "95 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3258.60000000149,
+      "event": "pointerdown",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "95 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3258.7999999970198,
+      "event": "touchstart",
+      "stage": "after-task",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "changedTouches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "95 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3271.7999999970198,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3288.2999999970198,
+      "event": "disabled-setter",
+      "value": false,
+      "before": false,
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3291.10000000149,
+      "event": "gotpointercapture",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3291.2999999970198,
+      "event": "pointerup",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3291.2999999970198,
+      "event": "lostpointercapture",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3291.2999999970198,
+      "event": "touchend",
+      "stage": "capture",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3292.5,
+      "event": "mousedown",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3292.60000000149,
+      "event": "focus",
+      "stage": "capture",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3294,
+      "event": "mouseup",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3294.10000000149,
+      "event": "click",
+      "stage": "capture",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": false,
+      "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+      "screen": "playing",
+      "phase": "巻き上げ中 · 左右で拾う",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3294.89999999851,
+      "event": "disabled-setter",
+      "value": true,
+      "before": false,
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3295.2999999970198,
+      "event": "blur",
+      "stage": "capture",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3296.7000000029802,
+      "event": "focus",
+      "stage": "capture",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3297,
+      "event": "disabled-attribute-mutation",
+      "oldValue": null,
+      "attributeValue": "",
+      "disabled": true,
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3305.7000000029802,
+      "event": "gotpointercapture",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3305.7999999970198,
+      "event": "pointerup",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3305.7999999970198,
+      "event": "lostpointercapture",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": true,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3305.89999999851,
+      "event": "touchend",
+      "stage": "after-task",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": 195,
+      "y": 687.5,
+      "touches": [],
+      "changedTouches": [
+        {
+          "id": 4,
+          "x": 195,
+          "y": 687.5
+        }
+      ],
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3305.89999999851,
+      "event": "mousedown",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 1,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3306,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3306,
+      "event": "mouseup",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3306,
+      "event": "click",
+      "stage": "after-task",
+      "target": "pause",
+      "button": 0,
+      "buttons": 0,
+      "pointerId": 5,
+      "pointerType": "touch",
+      "isPrimary": false,
+      "trusted": true,
+      "prevented": false,
+      "detail": 1,
+      "x": 195,
+      "y": 688,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": false,
+      "hit": [
+        {
+          "tag": "BUTTON",
+          "id": "pause"
+        },
+        {
+          "tag": "SECTION",
+          "id": ""
+        },
+        {
+          "tag": "MAIN",
+          "id": ""
+        },
+        {
+          "tag": "DIV",
+          "id": "app"
+        },
+        {
+          "tag": "BODY",
+          "id": ""
+        },
+        {
+          "tag": "HTML",
+          "id": ""
+        }
+      ],
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3306,
+      "event": "blur",
+      "stage": "after-task",
+      "target": "pause",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    },
+    {
+      "at": 3306,
+      "event": "focus",
+      "stage": "after-task",
+      "target": "",
+      "button": null,
+      "buttons": null,
+      "pointerId": null,
+      "pointerType": null,
+      "isPrimary": null,
+      "trusted": true,
+      "prevented": false,
+      "detail": 0,
+      "x": null,
+      "y": null,
+      "touches": null,
+      "changedTouches": null,
+      "canvasCapture": null,
+      "hit": null,
+      "pauseDisabled": true,
+      "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+      "screen": "paused",
+      "phase": "休憩中",
+      "depth": "94 m",
+      "hidden": false,
+      "focus": true,
+      "scrollX": 0,
+      "scrollY": 0
+    }
+  ]
+}

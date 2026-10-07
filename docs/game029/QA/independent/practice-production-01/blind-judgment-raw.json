@@ -1,0 +1,23 @@
+{
+  "finding_id": "game029-practice-production-events",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Frozen caller has unconditional practice lifecycle tracking. Shared TelemetryService records named events regardless of practice and AnalyticsRuntime has no training exclusion. Current outbound stop prevents production upload, so this is an actual caller/spec omission and consented local history issue, but not presently a major game/progression/critical-input release risk. Scope-local guard plus environment-specific verification is needed before enabling remote collection. No browser observation or future remote delivery is claimed.",
+  "evidence": [
+    "docs/game029/QA/independent/practice-production-01/source-manifest.json",
+    "docs/game029/QA/independent/practice-production-01/src_games_game029_main.ts.txt",
+    "docs/game029/QA/independent/practice-production-01/src_core_TelemetryService.ts.txt",
+    "docs/game029/QA/independent/practice-production-01/src_analytics_runtime.ts.txt"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared frozen practice caller with TelemetryService.trackEvent and AnalyticsRuntime.record gates; confirmed absence of environment-specific training exclusion, and temporary remote stop. Requested author local guard and production/development tests.",
+    "evidence": [
+      "docs/game029/QA/independent/practice-production-01/source-manifest.json"
+    ]
+  },
+  "final_root_cause": "Unconditional game029 practice lifecycle calls reach a recorder that intentionally accepts practice events; no game-local production guard. External collection is still disabled separately."
+}

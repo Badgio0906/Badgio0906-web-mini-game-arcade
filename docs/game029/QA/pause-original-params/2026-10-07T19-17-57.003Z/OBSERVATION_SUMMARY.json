@@ -1,0 +1,149 @@
+{
+  "recorded_at": "2026-10-07T19:19:08.951651+00:00",
+  "browser_closed": true,
+  "source_freeze": "QA/SOURCE_FREEZE_04.json",
+  "observer_clarification": "run-manifest mentions property-forwarding; collector actually uses passive event listeners and MutationObserver only. No property setter wrapper or game model injection. Original manifest retained unchanged.",
+  "conditions": [
+    {
+      "condition": "immediate-drag",
+      "pause_duration_measured_ms": 116.69999999552965,
+      "first_pause_click_count": 0,
+      "first_pause_disabled": false,
+      "snapshots": [
+        {
+          "label": "before-drag",
+          "wallTime": "2026-10-07T19:18:00.278Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "100 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "after-drag",
+          "wallTime": "2026-10-07T19:18:00.390Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "97 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "first-pause",
+          "wallTime": "2026-10-07T19:18:00.625Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "91 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "first-plus400ms",
+          "wallTime": "2026-10-07T19:18:01.028Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "81 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        }
+      ],
+      "page_errors": [],
+      "raw_trace": "immediate-drag.json"
+    },
+    {
+      "condition": "deliberate-drag",
+      "pause_duration_measured_ms": 100.0,
+      "first_pause_click_count": 1,
+      "first_pause_disabled": false,
+      "snapshots": [
+        {
+          "label": "before-drag",
+          "wallTime": "2026-10-07T19:18:04.128Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "100 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "after-drag",
+          "wallTime": "2026-10-07T19:18:04.310Z",
+          "state": {
+            "screen": "playing",
+            "phase": "\u5dfb\u304d\u4e0a\u3052\u4e2d \u00b7 \u5de6\u53f3\u3067\u62fe\u3046",
+            "depth": "95 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": false,
+            "pauseRect": "{\"x\":170,\"y\":665.5,\"width\":50,\"height\":44,\"top\":665.5,\"right\":220,\"bottom\":709.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\"><p class=\"eyebrow\">LOST &amp; FOUND</p><h2 tabindex=\"-1\">\u7d66\u6e6f\u5ba4\u306e<br>\u843d\u3068\u3057\u3082\u306e\u91e3\u308a</h2><p>\u304a\u3068\u3057\u3066\u3001\u3072\u308d\u3063\u3066\u3001\u307e\u305f\u304a\u3068\u3057\u3066\u3002<br>\u6642\u9593\u5236\u9650\u306a\u3057\u3002\u4eca\u65e5\u306f\u3001\u4f55\u304c\u91e3\u308c\u308b\u304b\u306a\u3002</p><div class=\"menu-actions\"><button id=\"play\" class=\"primary\">\u3059\u3050\u904a\u3076</button><button id=\"explain\">\u8aac\u660e\u3092\u898b\u308b</button><button id=\"practice\">\u7df4\u7fd2\u3059\u308b</button></div><p>\u3053\u306e\u7aef\u672b\u306eBEST 0\u70b9 \u00b7 0\u56de\u5e30\u5b85<br>\u6df1\u5ea6100m\u30fb\u56de\u53ce3\u500b\u304b\u3089\u3002\u9014\u4e2d\u306f\u4fdd\u5b58\u3057\u307e\u3059\u3002</p><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "first-pause",
+          "wallTime": "2026-10-07T19:18:04.497Z",
+          "state": {
+            "screen": "paused",
+            "phase": "\u4f11\u61a9\u4e2d",
+            "depth": "91 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": true,
+            "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\" open=\"\"><h2 tabindex=\"-1\">\u3072\u3068\u4f11\u307f\u3002</h2><p>\u7cf8\u3082\u3001\u843d\u3068\u3057\u3082\u306e\u3082\u6b62\u307e\u3063\u3066\u3044\u307e\u3059\u3002<br>\u7d9a\u3051\u308b\u307e\u3067\u6642\u9593\u306f\u9032\u307f\u307e\u305b\u3093\u3002</p><div class=\"menu-actions\"><button id=\"resume\" class=\"primary\">\u7d9a\u3051\u308b</button><button id=\"to-title\">\u7d42\u4e86\u3057\u3066\u30bf\u30a4\u30c8\u30eb\u3078</button></div><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        },
+        {
+          "label": "first-plus400ms",
+          "wallTime": "2026-10-07T19:18:04.899Z",
+          "state": {
+            "screen": "paused",
+            "phase": "\u4f11\u61a9\u4e2d",
+            "depth": "91 m",
+            "hidden": false,
+            "focus": true,
+            "scrollY": 0,
+            "pauseDisabled": true,
+            "pauseRect": "{\"x\":170,\"y\":664.5,\"width\":50,\"height\":44,\"top\":664.5,\"right\":220,\"bottom\":708.5,\"left\":170}",
+            "menu": "<dialog id=\"menu\" open=\"\"><h2 tabindex=\"-1\">\u3072\u3068\u4f11\u307f\u3002</h2><p>\u7cf8\u3082\u3001\u843d\u3068\u3057\u3082\u306e\u3082\u6b62\u307e\u3063\u3066\u3044\u307e\u3059\u3002<br>\u7d9a\u3051\u308b\u307e\u3067\u6642\u9593\u306f\u9032\u307f\u307e\u305b\u3093\u3002</p><div class=\"menu-actions\"><button id=\"resume\" class=\"primary\">\u7d9a\u3051\u308b</button><button id=\"to-title\">\u7d42\u4e86\u3057\u3066\u30bf\u30a4\u30c8\u30eb\u3078</button></div><p><a id=\"menu-portal\" href=\"./index.html\">\u2190 100\u30ac\u30ec\u3078</a></p></dialog>"
+          }
+        }
+      ],
+      "page_errors": [],
+      "raw_trace": "deliberate-drag.json"
+    }
+  ],
+  "cause": "Not classified by author; awaiting independent disposition. Physical-device test not performed."
+}

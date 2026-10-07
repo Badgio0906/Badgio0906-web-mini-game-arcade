@@ -1,0 +1,22 @@
+{
+  "finding_id": "game029-semantic-corruption-memory-not-latched",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent source and synthetic backend probe; no Jev answers inspected",
+  "rationale": "Independent synthetic backend confirms nine current BEST remains nine after invalid JSON but is then overwritten by stale valid BEST one; semantic rejection does not latch memoryOnly.",
+  "evidence": [
+    "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+    "docs/game029/QA/independent/semantic-storage-01/probe.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Bundled the actual unmodified source class and exercised current snapshot \u2192 semantic corruption \u2192 older valid backend, without browser or production data.",
+    "evidence": [
+      "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt",
+      "docs/game029/QA/independent/semantic-storage-01/probe.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

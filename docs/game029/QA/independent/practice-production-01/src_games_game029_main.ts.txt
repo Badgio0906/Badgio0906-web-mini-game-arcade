@@ -1,0 +1,86 @@
+import './style.css';
+import {Fishing,NAMES,type Upgrade} from './Fishing';
+import {SaveStore,reportFinish,type Saved} from './Save';
+import {draw} from './draw';
+import {MenuEpoch} from './input';
+import {StorageService} from '../../core/StorageService';
+import {AudioService} from '../../core/AudioService';
+import {TelemetryService} from '../../core/TelemetryService';
+import {uuid} from '../../analytics/runtime';
+const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
+const app=el('app'),canvas=el<HTMLCanvasElement>('water'),menu=el<HTMLDialogElement>('menu'),context=canvas.getContext('2d')!;
+const store=new SaveStore(),audio=new AudioService(new StorageService(undefined,'web-mini-arcade:v1:game029:'));
+const telemetry=new TelemetryService(undefined,'game029',undefined,{remoteCollectionEnabled:false});
+let saved:Saved=store.read()??{version:1,model:null,runId:null,resultId:null,best:0,finishes:0,reported:[]};
+let available=saved.model&&saved.resultId&&saved.model.phase!=='finished'?structuredClone(saved):null;
+let model=new Fishing(),screen='title',practice=false,runId:string|null=null,resultId:string|null=null,active=false;
+let last=0,accumulator=0,elapsed=0;const epoch=new MenuEpoch(),keys=new Set<string>();
+let pointer:{id:number;epoch:number}|null=null;
+function event(action:string):void {if(active&&!practice)telemetry.trackEvent('specific_game_events',{event:action,depth:Math.round(model.state.depth),score:model.state.score,items:model.state.bag.length,casts:model.state.casts});}
+function save():void {if(active&&!practice){saved.model=structuredClone(model.state);saved.runId=runId;saved.resultId=resultId;store.write(saved);}}
+function state(next:string):void {epoch.next();keys.clear();pointer=null;accumulator=0;last=0;screen=next;app.dataset.state=next;render();}
+function show(html:string,next:string):void {state(next);menu.innerHTML=html+'<p><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=()=>abandon(true);menu.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});menu.scrollTop=0;}
+function closeMenu():void{if(menu.open)menu.close();}
+function render():void {
+  const s=model.state;draw(context,model,practice);el('depth').textContent=`${Math.round(s.depth)} m`;el('bag').textContent=`${s.bag.length} / ${s.capacity}`;el('score').textContent=String(s.score);el('balance').textContent=String(s.balance);el('best').textContent=String(saved.best);
+  el('equipment').textContent=`糸 ${s.maxDepth}m · 回収枠 ${s.capacity} · 幅 Lv.${s.width}`;
+  el('phase').textContent=practice?'練習 · 戻ったら終了 · 記録に入りません':screen==='paused'?'休憩中':s.phase==='descending'?'糸を落としています · 操作不要':s.phase==='ascending'?`巻き上げ中 · 左右で拾う${s.bag.length>=s.capacity?' · 回収枠いっぱい':''}`:s.phase==='returned'?`${s.lastCaught}個回収 · ＋${s.lastValue}点${s.lastCaught===0?' · 何度でももう一投できます':''}`:'糸を落として、ゆっくり拾おう。';
+  const dock=screen==='playing'&&['ready','returned'].includes(s.phase);el<HTMLButtonElement>('cast').disabled=!dock;el<HTMLButtonElement>('finish').disabled=!dock;el<HTMLButtonElement>('pause').disabled=!['playing','practice'].includes(screen);
+  for(const type of ['depth','capacity','width'] as Upgrade[]){const button=el<HTMLButtonElement>(`upgrade-${type}`),price=model.price(type);button.disabled=!dock||price===null||s.balance<price;button.textContent=`${type==='depth'?'糸 +50m':type==='capacity'?'回収枠 +1':'フック幅 +1'} · ${price===null?'上限':`${price}点`}`;}
+  el('haul').textContent=s.bag.map(id=>NAMES[s.items.find(i=>i.id===id)!.kind]).join('、')||'まだ回収していません';
+  canvas.setAttribute('aria-label',`${el('phase').textContent}。現在深度${Math.round(s.depth)}メートル、回収${s.bag.length}個。`);
+}
+function abandon(portal=false):void {
+  if(practice){practice=false;active=false;keys.clear();pointer=null;epoch.next();if(portal)telemetry.trackEvent('return_to_portal',{source:'practice'});return;}
+  if(active&&!practice)telemetry.trackEvent('run_end',{outcome:'quit',score:model.state.score,casts:model.state.casts,seconds:elapsed,completed:false});
+  active=false;practice=false;runId=null;resultId=null;available=null;saved.model=null;saved.runId=null;saved.resultId=null;store.write(saved);keys.clear();pointer=null;epoch.next();
+  if(portal)telemetry.trackEvent('return_to_portal',{source:screen});
+}
+function title(initial=false):void {
+  if(!initial)abandon();model=new Fishing();practice=false;
+  show(`<p class="eyebrow">LOST & FOUND</p><h2 tabindex="-1">給湯室の<br>落としもの釣り</h2><p>おとして、ひろって、またおとして。<br>時間制限なし。今日は、何が釣れるかな。</p><div class="menu-actions">${available?'<button id="restore" class="primary">保存した釣りを続ける</button>':''}<button id="play" class="primary">すぐ遊ぶ</button><button id="explain">説明を見る</button><button id="practice">練習する</button></div><p>この端末のBEST ${saved.best}点 · ${saved.finishes}回帰宅<br>深度100m・回収3個から。途中は保存します。</p>`,'title');
+  el('play').onclick=start;el('explain').onclick=help;el('practice').onclick=train;
+  if(available)el('restore').onclick=()=>{const a=available!;model=Fishing.restore(a.model)!;runId=a.runId;resultId=a.resultId;active=true;practice=false;if(runId)telemetry.restoreRun(runId);available=null;pause();};
+}
+function start():void {abandon();model=new Fishing();active=true;practice=false;elapsed=0;resultId=uuid();telemetry.trackEvent('run_start',{mode:'normal'});runId=telemetry.getActiveRunId();closeMenu();state('playing');save();void audio.unlock();}
+function help():void {
+  telemetry.trackEvent('tutorial_view');show('<h2 tabindex="-1">落として、巻き上げるだけ。</h2><ol><li>「糸を落とす」で自動下降。底で自動的に巻き上げます。</li><li>巻き上げ中は←→ / A D。スマホは水の中を左右にドラッグ。釣り針に触れた物を回収します。</li><li>水面へ戻ると回収物が点に。点で糸・回収枠・幅をRUN内だけ強化できます。</li><li>０個でも続けられます。「今日は帰る」で好きな時に終了。時間制限・即終了はありません。</li><li>途中保存からは休憩状態で再開。タイトルや一覧へ戻ると現在のRUNは終了します。</li></ol><p>糸は300m、回収枠8個、幅Lv.3が上限。残りの点は次のRUNへ持ち越しません。浅い所にもレア物が出ることがあります。</p><div class="menu-actions"><button id="play" class="primary">すぐ遊ぶ</button><button id="practice">練習する</button><button id="back">タイトルへ</button></div>','help');el('play').onclick=start;el('practice').onclick=train;el('back').onclick=()=>title(true);
+}
+function train():void {
+  // Preserve any continuation save: practice never writes a normal snapshot or acquires a normal observer RUN.
+  model=new Fishing(29);practice=true;active=false;closeMenu();state('practice');model.cast();model.state.maxDepth=30;model.state.items=[{id:0,x:150,depth:14,kind:'pen',value:18,caught:false},{id:1,x:230,depth:23,kind:'clip',value:8,caught:false}];render();telemetry.trackEvent('practice_start',{mode:'practice'});
+}
+function cast():void {if(screen!=='playing'||!model.cast())return;epoch.next();keys.clear();pointer=null;event('cast');save();render();void audio.unlock();}
+function pause():void {if(!active&&!practice)return;save();show('<h2 tabindex="-1">ひと休み。</h2><p>糸も、落としものも止まっています。<br>続けるまで時間は進みません。</p><div class="menu-actions"><button id="resume" class="primary">続ける</button><button id="to-title">終了してタイトルへ</button></div>','paused');el('resume').onclick=()=>{closeMenu();state(practice?'practice':'playing');};el('to-title').onclick=()=>title();}
+function finish():void {
+  if(!active||practice||!model.finish()||!resultId)return;const score=model.state.score,before=saved.best;
+  if(reportFinish(saved,resultId,score)){event('finish_run');telemetry.trackEvent('run_end',{outcome:'safe_exit',score,casts:model.state.casts,items:model.state.totalCaught,seconds:elapsed,completed:true});if(saved.best>before)telemetry.trackEvent('best_update',{score});}
+  active=false;saved.model=null;saved.resultId=null;saved.runId=null;store.write(saved);runId=null;resultId=null;
+  show(`<h2 tabindex="-1">今日は、おつかれさま。</h2><p class="result-score">${score} <small>点</small></p><p>${model.state.casts}投 · ${model.state.totalCaught}個回収<br>最大深度 ${Math.round(model.state.maxReached)}m<br>最もレアな拾得物：${model.state.rarestKind?NAMES[model.state.rarestKind]:'なし'}<br>この端末のBEST ${saved.best}点</p><div class="menu-actions"><button id="retry" class="primary">もう一度釣る</button><button id="back">タイトルへ</button></div>`,'result');el('retry').onclick=()=>{telemetry.trackEvent('retry');start();};el('back').onclick=()=>title();
+}
+function tick(now:number):void {
+  requestAnimationFrame(tick);if(!['playing','practice'].includes(screen)){last=0;return;}
+  if(!last){last=now;return;}const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;accumulator+=dt;
+  while(accumulator>=1/60){accumulator-=1/60;elapsed+=1/60;const d=Number(keys.has('ArrowRight')||keys.has('d'))-Number(keys.has('ArrowLeft')||keys.has('a'));const r=model.step(1/60,d);
+    if(r.turned){keys.clear();pointer=null;epoch.next();event('depth');}
+    for(const item of r.picked){event('pickup');audio.tone(420+item.value,620,.075,'sine',0,.025);}
+    if(r.returned){epoch.next();keys.clear();pointer=null;save();event('return');
+      if(practice){const count=model.state.lastCaught;show(`<h2 tabindex="-1">${count?'回収できました！':'水面へ戻れました。'}</h2><p>巻き上げ中だけ、左右に動かせます。<br>${count?'次は長い糸で拾ってみよう。':'物のある左右へ寄せて、もう一度。'}<br>練習の点や回収はBESTに入りません。</p><div class="menu-actions"><button id="play" class="primary">すぐ遊ぶ</button><button id="practice">もう一度練習</button><button id="back">タイトルへ</button></div>`,'practice-result');if(count)telemetry.trackEvent('practice_complete',{mode:'practice'});el('play').onclick=start;el('practice').onclick=train;el('back').onclick=()=>title(true);return;}}
+  }render();
+}
+el('cast').onclick=cast;el('finish').onclick=finish;el('pause').onclick=pause;el('title').onclick=()=>title();el('portal').onclick=()=>abandon(true);
+for(const type of ['depth','capacity','width'] as Upgrade[])el(`upgrade-${type}`).onclick=()=>{if(screen==='playing'&&model.upgrade(type)){event('upgrade');save();render();}};
+el('mute').onclick=()=>{audio.toggle();el('mute').textContent=audio.muted?'音 OFF':'音 ON';};el('mute').textContent=audio.muted?'音 OFF':'音 ON';
+document.addEventListener('pointerdown',e=>{if(e.isPrimary&&e.button===0){const t=(e.target as Element).closest('button,a');if(t)epoch.pointerDown(t);}},true);
+document.addEventListener('click',e=>{const t=(e.target as Element).closest('button,a');if(t&&!epoch.validClick(t,e.detail)){e.preventDefault();e.stopImmediatePropagation();}},true);
+document.addEventListener('pointercancel',()=>{epoch.cancel();pointer=null;},true);
+canvas.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0||!['playing','practice'].includes(screen)||model.state.phase!=='ascending')return;pointer={id:e.pointerId,epoch:epoch.epoch};canvas.setPointerCapture(e.pointerId);movePointer(e);});
+function movePointer(e:PointerEvent):void {if(pointer?.id===e.pointerId&&pointer.epoch===epoch.epoch&&model.state.phase==='ascending'){const b=canvas.getBoundingClientRect();model.moveTo((e.clientX-b.left)/b.width*360);render();}}
+canvas.addEventListener('pointermove',movePointer);canvas.addEventListener('pointerup',e=>{if(pointer?.id===e.pointerId){pointer=null;if(canvas.hasPointerCapture(e.pointerId))canvas.releasePointerCapture(e.pointerId);save();}});canvas.addEventListener('lostpointercapture',()=>{pointer=null;epoch.cancel();});
+document.addEventListener('keydown',e=>{const fresh=epoch.keyDown(e.key);if(!fresh){if(['Enter',' ','ArrowLeft','ArrowRight','a','d'].includes(e.key))e.preventDefault();return;}
+  if(['ArrowLeft','ArrowRight','a','d'].includes(e.key)&&['playing','practice'].includes(screen)){e.preventDefault();if(model.state.phase==='ascending')keys.add(e.key);}
+  if(e.key==='Escape'&&['playing','practice'].includes(screen))pause();
+},true);document.addEventListener('keyup',e=>{if(!epoch.keyUp(e.key)&&['Enter',' '].includes(e.key))e.preventDefault();keys.delete(e.key);},true);
+window.addEventListener('blur',()=>{epoch.releaseAll();if(['playing','practice'].includes(screen))pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){epoch.releaseAll();if(['playing','practice'].includes(screen))pause();}});
+window.addEventListener('pagehide',()=>{save();audio.destroy();});
+telemetry.trackEvent('game_open');title(true);requestAnimationFrame(tick);

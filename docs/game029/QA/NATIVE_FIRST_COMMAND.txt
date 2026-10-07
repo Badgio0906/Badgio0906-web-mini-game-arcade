@@ -1,0 +1,8 @@
+file:///workspace/batch-two-author-029/tests/game029/native.mjs:24
+  await tap('#pause');const depth=await page.locator('#depth').textContent();await page.waitForTimeout(350);if(await page.locator('#depth').textContent()!==depth)throw new Error('Pause progressed');await page.screenshot({path:path.join(out,`${v.name}-paused.png`)});await tap('#resume');
+                                                                                                                                                                        ^
+
+Error: Pause progressed
+    at file:///workspace/batch-two-author-029/tests/game029/native.mjs:24:169
+
+Node.js v24.19.0

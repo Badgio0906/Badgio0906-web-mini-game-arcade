@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-07T18:23:06.303817+00:00",
+  "source_freeze": "/workspace/batch-two-author-029/docs/game029/QA/SOURCE_FREEZE_03.json",
+  "files": [
+    {
+      "path": "src/games/game029/main.ts",
+      "sha256": "0f500c2ebe7c7d7750e600d590b360e2384544f4a96fba0fac683d2f679e36e0"
+    },
+    {
+      "path": "src/games/game029/practiceEvents.ts",
+      "sha256": "8c1153bab4a2d1a2c5b179f58c37e6986da7029c7c0136d4a55e29e83bb19fe4"
+    },
+    {
+      "path": "src/games/game029/Save.ts",
+      "sha256": "75f19f947bfca236d341101a5764de1a96e3b6f0caf1548fc2989b529313aa30"
+    },
+    {
+      "path": "tests/unit/game029.test.ts",
+      "sha256": "74ccbc0b4502a6199799c73ce6f9499e0885aa07f13c270e170df65a8b3d26da"
+    }
+  ],
+  "source_verification": [
+    "Both practice lifecycle calls route helper; production helper emits0, development/qa emits2 per available recorder test.",
+    "Save rejection now consistently latches memoryOnly and clone-returns current data; write avoids backend once latched."
+  ],
+  "scope_pending": "Practice-derived return_to_portal navigation is still unconditional. Root asked whether strict all-practice-production exclusion includes this common navigation; no additional API, same original practice cause.",
+  "claimed_browser_result": "None; source-only verification; prior author native images and separate phone pause diagnostics are separately cited.",
+  "hidden_jev_answers_read": false
+}

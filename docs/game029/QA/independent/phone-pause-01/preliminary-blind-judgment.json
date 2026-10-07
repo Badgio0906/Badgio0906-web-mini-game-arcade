@@ -1,0 +1,23 @@
+{
+  "finding_id": "phone-pause-after-drag-01",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "batch_two_review",
+  "rationale": "Actualtrace shows pause primarypointerdown/up/lostcapture with no observed click, enabledbutton/stateplaying and depthprogress, after a waterCDPdrag. Source pause binding needs click; common TouchGuard prevents only contextmenu/selectstart/dragstart and does not suppress native touchclick. MenuEpoch rejects some clicks but documentcapturelogger would still observe them first. No documented sourcepath explains missingclick yet; originaltrace lacks coordinates,timestamps,defaultPrevented/touchmove/capture state. Do not infer testinfra or product solely from missingclick. Requiredphonepause is unresolved, so treat as release risk pending a focused bounded live trace.",
+  "evidence": [
+    "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/FINDING_PAUSE_NORMALIZED.json",
+    "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-observation.json",
+    "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/before/src/games/game029/main.ts",
+    "src/core/installGameTouchGuards.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read saved trace and immutable game-local handlers plus unchanged common TouchGuard; no source explains absentclick. Requested one bounded fresh native phone reproduction with touch/mouse/capture/state timing, prevented flags and coordinates before any repair. Browser notstartedbyreviewer.",
+    "evidence": [
+      "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/failure-observation.json",
+      "docs/game029/QA/1ae1d1ed6ce3/2026-10-07T17-56-38.619Z/before/src/games/game029/main.ts"
+    ]
+  }
+}

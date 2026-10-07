@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-10-07T20:10:58.669900+00:00",
+  "reviewer": "final_review_028_029",
+  "jev_answers_read": false,
+  "classification": "Known own viewport-budget D followup; newly exposed320px portrait measurement, not uncertain input/save/physics cause.",
+  "primary_cause": "PRODUCT_BUG",
+  "additional_work_required": true,
+  "release_risk_if_unresolved": true,
+  "observations": [
+    "Actual320x740 failure image viewed: water fits, but44px dock ends679.5 versus existing footer starts676.",
+    "Canvas198.5–558.5; wrapper194.5–623.5 height429; dock margin12+44 gives635.5–679.5.",
+    "Portrait remains width-driven intrinsic360x450 canvas with captionmin57; unlike05 landscape it has no height budget."
+  ],
+  "source_observations": [
+    "Known cause: own portrait layout exceeds64px reserve by3.5px. Scope is own field budget/gaps/margins, keep44px controls and unchanged footer.",
+    "No compatibilityclick or inconsistent model state follows from this measured overflow."
+  ],
+  "source_hashes": {
+    "game029.html": "d65bc47da46e4f5d0d02baadda41eb516816f929cc8dc17f2a15d0feec734624",
+    "src/games/game029/style.css": "82a1b0827ae22b6f8d0fd5442b22d29b7a15716a71740d9e47b42d3a9de49dc0"
+  },
+  "evidence": [
+    "/workspace/batch-two-author-029/docs/game029/QA/e726051c3536/2026-10-07T20-08-55.153Z/failure-viewport.png",
+    "/workspace/batch-two-author-029/docs/game029/QA/e726051c3536/2026-10-07T20-08-55.153Z/small-phone-winding-geometry.json",
+    "/workspace/batch-two-author-029/docs/game029/QA/e726051c3536/2026-10-07T20-08-55.153Z/failure-dom.html"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed retained failure image and geometry, then own HTML/CSS; no browser rerun, source fix or Jev answer read.",
+    "evidence": [
+      "/workspace/batch-two-author-029/docs/game029/QA/e726051c3536/2026-10-07T20-08-55.153Z/failure-viewport.png",
+      "/workspace/batch-two-author-029/docs/game029/QA/e726051c3536/2026-10-07T20-08-55.153Z/small-phone-winding-geometry.json"
+    ]
+  },
+  "limits": [
+    "Final Visual/G pending repair, freeze and actual native verification.",
+    "Physicalphone/humanfun not performed."
+  ]
+}

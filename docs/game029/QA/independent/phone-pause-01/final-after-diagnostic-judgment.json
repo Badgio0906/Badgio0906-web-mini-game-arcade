@@ -1,0 +1,23 @@
+{
+  "finding_id": "phone-pause-after-drag-01",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "New bounded diagnostic narrows initial UNKNOWN: usual post-drag locator.tap produces trusted down/up on the correct enabled pause target in .2ms but no click, no default prevention, hiddenfalse/focustrue/scroll0. Delivered .2ms gesture therefore never reaches game onclick. One fresh deliberately held native CDP touch (requested80ms, actually116.2ms down/up) at identical coordinates produces trusted click and pauses depth74 stable500ms. Current product handler/gate functions with delivered native click; scoped collector gesture correction supported, no game-input rewrite warranted. Exact browser internal reason for compatibility-click suppression and real hardware behavior remain unproven.",
+  "evidence": [
+    "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json",
+    "/workspace/batch-two-author-029/src/games/game029/main.ts",
+    "/workspace/batch-two-author-029/src/games/game029/input.ts",
+    "docs/game029/QA/independent/phone-pause-01/preliminary-blind-judgment.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Independently analyzed sole authorized author native diagnostic trace: same water drag and .2ms tap fails to emit click; one fresh116.2ms measured CDP native press emits click and freezes depth500ms. No product source change between operations.",
+    "evidence": [
+      "/workspace/batch-two-author-029/docs/game029/QA/pause-diagnostic/2026-10-07T18-18-17.782Z/trace.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

@@ -1,0 +1,25 @@
+{
+  "finding_id": "landscape-water-field-clipping",
+  "problem": "The normal landscape fishing screenshot shows only the upper portion of the water playfield inside the viewport.",
+  "expected": "At844x390 shortlandscape, the full realtimewaterfield and cast/pause/finish controls fit without realtimepage scrolling.",
+  "observed": [
+    "Actual normal author screenshot landscape-winding.png at844x390 shows water playfield starting well below the header and only its upper portion above the viewportbottom.",
+    "Depth96m and windingcaption outside the visibleportion prevent following the actualhook near the bottom in this normalviewport screenshot.",
+    "Author nativefourview manifest reports landscapePASS; the screenshot itself does not show the complete waterfield."
+  ],
+  "unknown": [
+    "Exact DOMboundingboxes, scroll offsets, overflowancestors and fixedgrid dimensions not yet measured.",
+    "Specific layoutmechanism and behavior on physicalphone not confirmed."
+  ],
+  "operation": "Independently viewed actual frozencompiled normalascending screenshot from firstcompletedfourview authornative run, before any layoutrepair.",
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "evidence": [
+    "docs/game029/QA/independent/landscape-field-01/landscape-winding.png",
+    "docs/game029/QA/independent/landscape-field-01/manifest.json",
+    "docs/game029/QA/independent/landscape-field-01/style.css.before.txt"
+  ],
+  "provenance": "Actual author normalviewport screenshot independentlyviewed; no reviewerbrowser or productstate injection at findingobservation."
+}

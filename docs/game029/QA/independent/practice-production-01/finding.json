@@ -1,0 +1,20 @@
+{
+  "finding_id": "game029-practice-production-events",
+  "problem": "Practice lifecycle event calls lack a production exclusion at their caller or recorder",
+  "expected": "Optional practice does not enter production telemetry; normal RUN and BEST remain separate",
+  "observed": [
+    "Frozen game029 main.ts calls practice_start and practice_complete directly with mode=practice, without checking Analytics environment.",
+    "TelemetryService.trackEvent pushes supplied events into current event history and consent-permitted persisted history, then AnalyticsRuntime.record.",
+    "AnalyticsRuntime.record updates phase for practice_start and has consent/registration/remote gates but no practice event exclusion.",
+    "Game029 currently sets remoteCollectionEnabled=false, so outbound collection remains stopped independently of this behavior."
+  ],
+  "unknown": [
+    "Actual browser production local history after a practice round has not been inspected.",
+    "Behavior after later authorized Worker registration and remote stop removal has not been executed."
+  ],
+  "operation": "Source-first independent practice integration review before any repair",
+  "evidence": [
+    "docs/game029/QA/independent/practice-production-01/source-manifest.json"
+  ],
+  "provenance": "source-observation: frozen01 game029 caller and existing shared recorder/runtime, no browser or production API"
+}

@@ -1,0 +1,22 @@
+{
+  "finding_id": "landscape-water-field-clipping",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "resume_review",
+  "rationale": "Independent actualnormal844x390 screenshot and sole readonlynativegeometry run (before sourcefix, no Jev answers read) establish fullwater clip: scroll0, main764px withgridrows73/31/177/172/46/219/0; waterwrap y260.8\u2013607.3/canvas264.8\u2013542.3 versusviewportbottom390, body907/app843. Own shortlandscape grid spans all unboundedcontentrows, auto margins verticallycenter346.5h waterwrapper; HUD157h/notes195h inflate implicittracks. Hooknear96m belowviewport prevents following realtimeplay. Author4PASS is insufficient geometric coverage, not proof layoutworks. Own explicit viewportbudget/gridplacements/canvasaspect/44controls repair warranted; sharedsettings/physics/othergames unchanged.",
+  "evidence": [
+    "docs/game029/QA/independent/landscape-field-01/landscape-winding.png",
+    "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json",
+    "docs/game029/QA/independent/landscape-field-01/style.css.before.txt"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Independent reviewer one bounded frozen04 ordinary native casttoascending at844x390, captured normalviewport and readonly computedCSS/rect/scroll/control/hittest geometry; browserclosed, no game injection orCSSedit.",
+    "evidence": [
+      "docs/game029/QA/independent/landscape-field-01/2026-10-07T19-37-30.540Z/geometry.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,0 +1,7 @@
+# 実施順序の限界
+
+2026-10-08日本時間（host17:50〜17:51UTC）：初期実装のsource auditで、結果画面に指示の「最大深度」「最もレアな拾得物」がまだないことを確認し、Rootへ報告した。実装者は未完成の予定項目として追加を進めたが、omission findingとして報告した時点ではJEV_REVIEW_RULESのbefore保存・4質問が必要だった。
+
+Rootの停止指示を受ける前に該当stateとresult文面を追加してcheck／23unit／isolated buildを実行済み。この問題にJev APIを呼んでいない。修正前のimmutable source／buildファイルは保存していない。チャットの最初のapply_patchには当時のresult（score／casts／totalCaught／BESTのみ）が残るが、これを保存済み原本や完全な再現証拠と称しない。
+
+後からJevを呼び当時実施済みに見せない。以後の独立レビューは新source freeze01を対象にし、この手順欠落を残したまま技術QAを継続する。実際に新しいfindingが出た場合は修正・再試行前の一意run証拠を保存し、同時点4質問を行う。

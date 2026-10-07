@@ -1,0 +1,21 @@
+{
+  "finding_id": "game029-semantic-corruption-memory-not-latched",
+  "problem": "Recorder semantic-rejection path returns current memory but leaves later backend reads eligible",
+  "expected": "Corrupted backend storage switches to current in-page memory and does not reread older backend data",
+  "observed": [
+    "SaveStore.read returns this.memory for syntactically valid records failing field/model validation.",
+    "That branch has no assignment setting memoryOnly=true.",
+    "A later read still calls backend.getItem and valid data replaces this.memory.",
+    "By contrast, the catch branch sets memoryOnly=true before returning memory."
+  ],
+  "unknown": [
+    "A corrupt-record then later-stale-valid-record sequence has not yet been independently executed.",
+    "Actual end-user incidence of such storage changes is unknown."
+  ],
+  "operation": "Source-first independent memory fallback review before any repair",
+  "evidence": [
+    "docs/game029/QA/independent/semantic-storage-01/source.json",
+    "docs/game029/QA/independent/semantic-storage-01/save-before.ts.txt"
+  ],
+  "provenance": "source-observation of frozen production class; no browser, player data or production API"
+}

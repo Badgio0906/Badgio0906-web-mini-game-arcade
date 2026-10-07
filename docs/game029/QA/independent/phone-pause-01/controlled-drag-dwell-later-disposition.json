@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-10-07T19:20:49.535723+00:00",
+  "reviewer": "resume_review",
+  "jev_answers_read": false,
+  "finding_id": "phone-pause-after-drag-01",
+  "stage": "Later independent controlled first-postdrag disposition; old UNKNOWN/F and incorrect duration-only theory retained",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "evidence_dir": "/workspace/batch-two-author-029/docs/game029/QA/pause-original-params/2026-10-07T19-17-57.003Z",
+  "observations": [
+    {
+      "arm": "immediate-drag",
+      "actual_drag_ms": 83.20000000298023,
+      "actual_pause_tap_ms": 116.69999999552965,
+      "pause_clicks": 0,
+      "before": "playing",
+      "plus400": "playing",
+      "plus400_depth": "81 m",
+      "disabled_mutations": []
+    },
+    {
+      "arm": "deliberate-drag",
+      "actual_drag_ms": 149.79999999701977,
+      "actual_pause_tap_ms": 100.0,
+      "pause_clicks": 1,
+      "before": "paused",
+      "plus400": "paused",
+      "plus400_depth": "91 m",
+      "disabled_mutations": [
+        {
+          "at": 3215.5,
+          "disabled": true
+        }
+      ]
+    }
+  ],
+  "source_control": "Both fresh390x844 contexts use unchanged freeze04, identical omitted id/force/radius, mouse consent, one touchMove, requested firstpause80ms. Only planned intervention is50ms beforemove plus50ms beforeend. Passive document event observers plus MutationObserver in both arms; original manifest property-forwarding wording inaccurate, no property setter wrapping actually performed.",
+  "conclusion": [
+    "Failure occurs before any compatibility mouse/click reaches product menu freshness handler, with correct enabled stationary target, trusted primary down/up, no preventDefault/cancel/early disabled mutation.",
+    "Same product accepts fresh first pause in deliberate-drag arm and freezes91m for400ms; input timing intervention supports collector-only physical drag dwell correction, no product menu change.",
+    "Classification applies to this controlled automation observation, not proof every rapid physical touch works. No further Jev API required for this continuation; originalF annotation chronology preserved."
+  ],
+  "limits": [
+    "One sample per arm; exact Chromium compatibility-click suppression mechanism is unknown.",
+    "Native immediate drag lasts83.2ms from dispatch/transport despite no deliberate wait, so do not call observed gesture0ms.",
+    "Other full normal4viewport/result/retry validation pending; physical phone and human enjoyment unperformed."
+  ],
+  "next_action": "Keep product frozen; adjust normal collector drag dwell, then one bounded full4viewport normal operation QA. Preserve immediate-drag failure as retained automation limitation.",
+  "file_hashes": {
+    "run-manifest.json": "8aae559054b64c17d6d84456a2412f9e35ef32b688d7cabf5c6249bee2a358a5",
+    "immediate-drag.json": "ab52f7beef0ab5c2e34162487c1472868d54e74abddc6047ff68436e37bd73ac",
+    "deliberate-drag.json": "b4b0468d04b05c18f60f91672aa10d93e1b822d1987819e98110c0f2594acb7b"
+  }
+}

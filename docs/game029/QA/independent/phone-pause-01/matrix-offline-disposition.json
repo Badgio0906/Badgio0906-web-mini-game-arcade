@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-07T18:55:23.662020+00:00",
+  "reviewer": "batch_two_review",
+  "finding_id": "phone-pause-after-drag-01",
+  "stage": "Offline independent disposition after new freeze04 first-tap matrix",
+  "jev_answers_read": false,
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_BROWSER",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "old_evidence": "Actual old held-firsttap100.5ms correctpause target but no capture-loggedclick; oldtrace lacks touch/mouse/defaultprevent/primary/buttons/disabledtimeline. Threecapturedtouch gestures after mouseconsentdeny, immediate single-move waterdrag then screenshot/locator/tap.",
+  "new_evidence": "Both fresh-contextfirsttaps succeed with requested100ms taps, unique explicittouchIDs, radius1/force1; postdragfirsttap111.4ms after two-move held100msdrag produces trustedmousedown/up/click and pause90mstable400ms. No true cancel events and no disabledattribute mutation before click; false→true only after handlerpauses.",
+  "differences": {
+    "tap_points": "old touchPoints x/y only (CDP defaults for id/radius/force); new monotonicid/radiusX1/radiusY1/force1 for alltouches",
+    "tap_hold": "old requested80ms, observed100.5ms; matrix100ms, actual postdrag111.4ms and nodrag133.4ms",
+    "drag": "old immediate down→singlemove156px→up (observed50.2ms down/up); new two moves with33/33/34ms delays (observed167.7ms down/up)",
+    "prior_actions": "oldconsentdeny mouse.click; matrixconsentdeny nativeCDPtouch. Screenshot/snapshot/instrumentation order also differs.",
+    "trace": "matrix adds capture+aftertask touch/mouse/hit/capture plus disabled-property forwarding and MutationObserver; old lacks these. These observations increase visibility and alter timing, not isolated A/B causal intervention."
+  },
+  "conclusion": [
+    "Matrix demonstrates valid noninstant touch and normal UI path works without product input repair. It does not isolate why old100.5ms firsttap lacked browserclick.",
+    "The old event does not reach the click freshness gate at all; current evidence cannot establish a product menu guard defect, and cannot prove id,force,dragduration,delay or disabled mutation individually caused missingclick.",
+    "No productfix supported at this point. Reclassifying definite TEST_INFRA from newPASSalone would repeat prior unfounded duration explanation."
+  ],
+  "next_bounded_evidence": "If root requires causal closure, one planned two-context comparison with original tap/defaultCDP/prioractions and passive rich event+MutationObserver tracing (no disabled setter wrapper), changing only immediate-versus-held two-move drag timing. First FIRST postdrag80ms tap each, exactcommands/wall/native durations and completefailureDOM retained; no retryuntilpass. This is currentF continuation, no duplicateAPI.",
+  "limits": [
+    "No new reviewerbrowser orAPI run.",
+    "Physicalphone/human outcome unknown.",
+    "Unknown risktrue records outstanding operational coverage, not proven broad product failure."
+  ],
+  "source_hashes": {
+    "/workspace/batch-two-author-029/docs/game029/QA/014b42dcd7ef/2026-10-07T18-21-56.021Z/before/tests/game029/native.mjs": "0be6ffd128e42360eac857e7d59fc04e8e329d228ed5f7fde6f409fea42bcf3c",
+    "/workspace/batch-two-author-029/tests/game029/pause-matrix.mjs": "76a5eb11cb8271e92651c657060e5c184fa68ee93b9af9f7897b8d76ea89fa94"
+  }
+}
