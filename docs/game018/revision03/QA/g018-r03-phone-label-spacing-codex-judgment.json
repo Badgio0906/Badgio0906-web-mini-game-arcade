@@ -1,0 +1,25 @@
+{
+  "finding_id": "g018-r03-phone-label-spacing",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root/shoe018_review",
+  "rationale": "初回phone画像で拡大した靴のつま先とラベルが重なり、左最大では踵と固定支点ラベルも接近。方向・強さ・主入力は別位置に見えるので重大操作不能ではない。拡大倍率・位置・ラベル余白を限定調整し画像で再判定する必要がある。",
+  "evidence": [
+    "docs/game018/revision03/QA/after-preliminary/phone-spinleft.png",
+    "docs/game018/revision03/QA/after-preliminary/phone-spinright.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "初回左右最大の重なりを実装担当へ指摘し、調整後のphone±1/0とLOCKを再view。",
+    "evidence": [
+      "docs/game018/revision03/QA/after/phone-spinleft.png",
+      "docs/game018/revision03/QA/after/phone-spinright.png",
+      "docs/game018/revision03/QA/after/phone-spinneutral.png",
+      "docs/game018/revision03/QA/after/phone-spin-lock.png"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

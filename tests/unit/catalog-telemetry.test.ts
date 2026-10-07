@@ -15,8 +15,8 @@ beforeEach(() => vi.spyOn(console, 'debug').mockImplementation(() => {}));
 afterEach(() => vi.restoreAllMocks());
 
 describe('catalog identity and future tag filtering', () => {
-  it('keeps legacy routes/tags attached to the actual title and appends019', () => {
-    expect(new Set(gameCatalog.map(game => game.id)).size).toBe(18);
+  it('keeps legacy routes/tags attached to the actual title and appends020', () => {
+    expect(new Set(gameCatalog.map(game => game.id)).size).toBe(gameCatalog.length);
     const work = gameCatalog.find(game => game.id === 'game012')!;
     const tasks = gameCatalog.find(game => game.id === 'game013')!;
     expect(work.titleJa).toBe('お前の仕事は俺の仕事');
@@ -24,7 +24,8 @@ describe('catalog identity and future tag filtering', () => {
     expect(work.tags.some(tag => tag.id === 'timing')).toBe(true);
     expect(tasks.titleJa).toBe('タスク天国');
     expect(tasks.tags.some(tag => tag.id === 'rhythm')).toBe(true);
-    expect(gameCatalog.at(-1)?.route).toBe('./game019.html');
+    expect(gameCatalog.at(-1)?.route).toBe('./game020.html');
+    expect(gameCatalog.at(-1)?.tags.map(tag => tag.id)).toEqual(['puzzle','decision','brain-training']);
     expect(gameCatalog.every(game => game.tags.length >= 3 && game.tags.every(tag => tagCatalog.some(known => known.id === tag.id && known.label === tag.label)))).toBe(true);
     expect(filterCatalog(['jump','animal']).map(game => game.id)).toEqual(['game019']);
   });

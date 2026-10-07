@@ -1,0 +1,66 @@
+[
+  {
+    "reviewer": "pair020_review (no Jev answers accessed)",
+    "recorded_at": "2026-10-07T12:48:42.527386+00:00",
+    "finding_id": "g020-modal-portal-return",
+    "PRIMARY_CAUSE": "PRODUCT_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "CODE_INSPECTION",
+    "RELEASE_RISK_IF_UNRESOLVED": true,
+    "rationale": "The original native modal makes the header Portal link inert and supplies no replacement link within the dialog. A required return action is therefore inaccessible from title/result without starting another board first. This is a DOM interaction boundary, not a question of fun or art.",
+    "evidence": [
+      "docs/game020/QA/modal-return-main-before.ts.txt",
+      "docs/game020/QA/independent/corrections.json"
+    ],
+    "actual_next_action": {
+      "method": "LIVE_INTERACTION",
+      "description": "Verified native taps from title/explanation/pause/confirm/result navigate to Portal through the added modal link.",
+      "evidence": [
+        "docs/game020/QA/independent/corrections.json"
+      ]
+    }
+  },
+  {
+    "reviewer": "pair020_review (no Jev answers accessed)",
+    "recorded_at": "2026-10-07T12:48:42.527386+00:00",
+    "finding_id": "g020-keyboard-offscreen",
+    "PRIMARY_CAUSE": "PRODUCT_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "CODE_INSPECTION",
+    "RELEASE_RISK_IF_UNRESOLVED": true,
+    "rationale": "The old arrow handler explicitly prevents browser scrolling while moving focus to a tile outside the viewport. Short-landscape keyboard play can therefore hide the target it asks users to select. Code and measured geometry connect the cause to product focus handling.",
+    "evidence": [
+      "docs/game020/QA/modal-return-main-before.ts.txt",
+      "docs/game020/QA/KEYBOARD_VIEW_FINDING.json",
+      "docs/game020/QA/independent/corrections.json"
+    ],
+    "actual_next_action": {
+      "method": "AUTOMATED_TEST",
+      "description": "Repeated normal ArrowRight input on 844x390 regular board and measured active element wholly inside viewport after automatic scrolling.",
+      "evidence": [
+        "docs/game020/QA/independent/corrections.json"
+      ]
+    }
+  },
+  {
+    "reviewer": "pair020_review (no Jev answers accessed)",
+    "recorded_at": "2026-10-07T12:48:42.527386+00:00",
+    "finding_id": "g020-blocked-input-driver",
+    "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "CODE_INSPECTION",
+    "RELEASE_RISK_IF_UNRESOLVED": false,
+    "rationale": "Playwright locator actionability regards aria-disabled=true as disabled, while the original button has no HTML disabled attribute and intentionally receives invalid-user-click feedback. Native coordinate tapping on the visible blocked tile leaves remaining tiles and selection unchanged. The stalled automation check alone is not a product release defect.",
+    "evidence": [
+      "docs/game020/QA/independent/followup-initial-failure.json",
+      "docs/game020/QA/independent/followup.json"
+    ],
+    "actual_next_action": {
+      "method": "LIVE_INTERACTION",
+      "description": "Used the browser native touchscreen at the visible blocked tile center, then checked remaining and selection; no product change.",
+      "evidence": [
+        "docs/game020/QA/independent/followup.json"
+      ]
+    }
+  }
+]

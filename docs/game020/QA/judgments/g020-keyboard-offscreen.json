@@ -1,0 +1,22 @@
+{
+  "finding_id": "g020-keyboard-offscreen",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "pair020_review (no Jev answers accessed)",
+  "rationale": "The old arrow handler explicitly prevents browser scrolling while moving focus to a tile outside the viewport. Short-landscape keyboard play can therefore hide the target it asks users to select. Code and measured geometry connect the cause to product focus handling.",
+  "evidence": [
+    "docs/game020/QA/modal-return-main-before.ts.txt",
+    "docs/game020/QA/KEYBOARD_VIEW_FINDING.json",
+    "docs/game020/QA/independent/corrections.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Repeated normal ArrowRight input on 844x390 regular board and measured active element wholly inside viewport after automatic scrolling.",
+    "evidence": [
+      "docs/game020/QA/independent/corrections.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

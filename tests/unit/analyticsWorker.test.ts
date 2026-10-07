@@ -20,6 +20,23 @@ function post(events:unknown[],origin='https://game100garage.com'){return new Re
 function admin(path='/v1/admin/summary'){return new Request('https://telemetry.example'+path,{headers:{Authorization:'Bearer synthetic-test-only-admin'}});}
 function codex(path='/v1/codex/summary',token='synthetic-test-only-codex',method='GET'){return new Request('https://telemetry.example'+path,{method,headers:token?{Authorization:`Bearer ${token}`}:{}});}
 describe('Codex aggregate-only access',()=>{
+ it('registers020 ingestion and anonymized admin/Codex detail without accepting future IDs',async()=>{
+  const e=env(),browser=randomUUID(),visit=randomUUID(),session=randomUUID(),run=randomUUID();
+  const base={game_id:'game020',page:'game020.html',game_version:'fixture020',rules_version:'1',presentation_version:'1',browser_id:browser,visit_id:visit,session_id:session,run_id:run};
+  const events=[event({...base,occurred_at:iso(-18000)}),...['tile_pair','hint','undo','reshuffle'].map((action,i)=>event({...base,occurred_at:iso(-17000+i*1000),event_name:'specific_game_events',data:{event:action,remaining:22,steps:1,first_id:3,second_id:7}})),event({...base,occurred_at:iso(-1000),event_name:'run_end',data:{outcome:'clear',seconds:17,score:12,unit:'pairs'}})];
+  const ingest=await worker.fetch(post(events),e);expect(ingest.status).toBe(202);expect(await ingest.json()).toEqual({accepted:6,duplicates:0});
+  const stored=e.DB.sqlite.prepare("SELECT data_json FROM events WHERE game_id='game020' AND event_name='specific_game_events' ORDER BY occurred_at").all();
+  expect(stored.map(row=>JSON.parse(String(row.data_json)).event)).toEqual(['tile_pair','hint','undo','reshuffle']);
+  for(const request of [admin('/v1/admin/game/game020'),codex('/v1/codex/game/game020')]){
+   const response=await worker.fetch(request,e);expect(response.status).toBe(200);const text=await response.text(),body=JSON.parse(text);
+   expect(body.game).toMatchObject({game_id:'game020',status:'active',run_count:1,measured_duration_count:1,median_run_duration:17});
+   expect(body.game.funnel.map((step:{step:string})=>step.step)).toEqual(['run_start','run_end']);
+   for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','user_agent'])expect(text).not.toContain(`"${key}"`);
+   for(const id of [browser,visit,session,run,...events.map(row=>row.event_id)])expect(text).not.toContain(id);
+  }
+  for(const request of [admin('/v1/admin/game/game021'),codex('/v1/codex/game/game021')])expect((await worker.fetch(request,e)).status).toBe(404);
+  expect((await worker.fetch(post([event({...base,game_id:'game021',page:'game021.html'})]),e)).status).toBe(400);
+ });
  it('requires the dedicated token and isolates admin credentials in both directions',async()=>{
   const e=env();
   for(const token of ['','wrong-fixture','synthetic-test-only-admin'])expect((await worker.fetch(codex(undefined,token),e)).status).toBe(401);
@@ -55,8 +72,8 @@ describe('Codex aggregate-only access',()=>{
  it('preserves production defaults, retired exclusions and explicit game010 detail',async()=>{
   const e=env();await worker.fetch(post([event({occurred_at:iso(-1000)})]),e);
   const summary=await worker.fetch(codex(),e),body=await summary.json() as {environment:string;games:{game_id:string}[]};
-  expect(body.environment).toBe('production');expect(body.games).toHaveLength(18);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
-  const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(19);
+  expect(body.environment).toBe('production');expect(body.games).toHaveLength(19);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
+  const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(20);
   const detail=await worker.fetch(codex('/v1/codex/game/game010'),e);expect((await detail.json() as {game:{status:string}}).game.status).toBe('retired');
  });
  it('rejects invalid or oversized periods, environments, versions and disallowed origins',async()=>{

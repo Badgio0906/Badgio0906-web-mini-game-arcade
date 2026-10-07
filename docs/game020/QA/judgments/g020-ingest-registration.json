@@ -1,0 +1,25 @@
+{
+  "finding_id": "g020-ingest-registration",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root/pair020_integrate",
+  "rationale": "A new ID must be registered in the strict existing analytics game/page allowlist. Existing browser upload checks the allowlist and will reject020 without registration; valid specific_game_events data values already fit existing schema. This finding does not prevent playing/clearing the new game. Pages-only publication cannot update an already deployed remote Worker bundle.",
+  "evidence": [
+    "src/data/analyticsEnvelope.ts",
+    "src/core/TelemetryUploadService.ts",
+    "src/analytics/runtime.ts",
+    "src/analytics/config.ts",
+    ".github/workflows/pages.yml"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Added020-only active ID/page registration and explicit1/1 version; focused new020 strict-envelope validation plus catalog/retirement/Worker/version regression passed30 tests. Existing Worker source/config unchanged; currentWorker summary still enumerates19 historical IDs.",
+    "evidence": [
+      "tests/unit/game020-integration.test.ts",
+      "docs/game020/QA/INTEGRATION_RESULT.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

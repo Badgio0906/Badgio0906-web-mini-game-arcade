@@ -1,0 +1,67 @@
+{
+  "reviewer": "/root/shoe018_review",
+  "jev_outputs_read": false,
+  "scope": "観測時点の独立routing判断。確認後の結論は各resolutionへ分離。true/falseは独立Codex判断でありJev確率ではない。",
+  "findings": [
+    {
+      "finding_id": "g018-r03-spin-continuity",
+      "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "CODE_INSPECTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reviewer": "/root/shoe018_review",
+      "rationale": "全身が説明カードへ切り替わることで自分の足を調整する感覚が途切れる。現入力・確定・進行は成立するため重大操作不能とは判断しない。phase分岐を調べ、描画だけで連続性を保つ修正が必要。",
+      "evidence": ["docs/game018/revision03/QA/before/desktop-spinleft.png", "src/games/game018/ShoeBoard.ts"],
+      "actual_next_action": {"method": "CODE_INSPECTION", "description": "旧setupのspinFocus早期returnで少年描画を省くことを確認。固定座標の少年と同じ足首から拡大する案を実装担当へ送付。", "evidence": ["src/games/game018/ShoeBoard.ts"]},
+      "resolution": "最終PC/phoneの±最大・中立とLOCK画像では少年全身と同じ足へのリーダー線が残り、観測した連続性問題は解消。"
+    },
+    {
+      "finding_id": "g018-r03-spin-value-link",
+      "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "CODE_INSPECTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reviewer": "/root/shoe018_review",
+      "rationale": "足首±0.18radと選択強度に無関係な定速見本のため、方向・強弱を身体表示から読み取りにくい。数値・方向の文と入力はあるので重大な進行不能には分類しない。人体を安全範囲に保った値連動transformと確定値表示を調査・修正する必要がある。",
+      "evidence": ["src/games/game018/ShoeBoard.ts", "src/games/game018/spinGuide.ts", "docs/game018/revision03/QA/before/desktop-spinleft.png"],
+      "actual_next_action": {"method": "CODE_INSPECTION", "description": "旧足首制限とclock*4*signの見本回転を特定。物理のspin符号・効率を変えず本人の足首/靴へ共通transformを使う提案を送付。", "evidence": ["src/games/game018/ShoeBoard.ts", "src/games/game018/physics.ts"]},
+      "resolution": "最終±1/0画像で足と靴の方向、強さの矢印・数値が対応し、LOCK→POWERにも同値が残る。連続する全強度の体感・人間の初見理解は未評価。"
+    },
+    {
+      "finding_id": "g018-r03-launch-anchor",
+      "PRIMARY_CAUSE": "PRODUCT_BUG",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "CODE_INSPECTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reviewer": "/root/shoe018_review",
+      "rationale": "ANGLE矢印は旧sin/cos描画座標、弧はhip中心で、実骨格の靴座標と一致しない。離脱描画もx=travel/y=-sin(angle)*travelで設定角度の射出ベクトルに一致しない。客観的な描画座標不具合だが、実際の角度数値と物理入力は保持されており、本findingだけで重大操作不能や物理誤りとは判断しない。",
+      "evidence": ["docs/game018/revision03/QA/before/desktop-angle85.png", "src/games/game018/ShoeBoard.ts", "src/games/game018/kickPose.ts", "src/games/game018/physics.ts"],
+      "actual_next_action": {"method": "CODE_INSPECTION", "description": "矢印/弧の独立座標と蹴り後の表示ベクトルを比較し、共通靴アンカーとcos/sin射出を提案。", "evidence": ["src/games/game018/ShoeBoard.ts", "src/games/game018/shoePose.ts"]},
+      "resolution": "PC/phoneの5/45/85度画像で靴から矢印・弧が接続。コードは.63時のアンカー固定とcos/sinを使用。離脱静止画像を確認したが、全フレーム動画の滑らかさは未評価。"
+    },
+    {
+      "finding_id": "g018-r03-phone-label-spacing",
+      "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reviewer": "/root/shoe018_review",
+      "rationale": "初回phone画像で拡大した靴のつま先とラベルが重なり、左最大では踵と固定支点ラベルも接近。方向・強さ・主入力は別位置に見えるので重大操作不能ではない。拡大倍率・位置・ラベル余白を限定調整し画像で再判定する必要がある。",
+      "evidence": ["docs/game018/revision03/QA/after-preliminary/phone-spinleft.png", "docs/game018/revision03/QA/after-preliminary/phone-spinright.png"],
+      "actual_next_action": {"method": "SCREENSHOT_REVIEW", "description": "初回左右最大の重なりを実装担当へ指摘し、調整後のphone±1/0とLOCKを再view。", "evidence": ["docs/game018/revision03/QA/after/phone-spinleft.png", "docs/game018/revision03/QA/after/phone-spinright.png", "docs/game018/revision03/QA/after/phone-spinneutral.png", "docs/game018/revision03/QA/after/phone-spin-lock.png"]},
+      "resolution": "最終画像では靴と固定支点/つま先の両ラベルが分離。初回原本を保持。"
+    },
+    {
+      "finding_id": "g018-r03-frozen-clock-canvas",
+      "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "LIVE_INTERACTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reviewer": "/root/shoe018_review",
+      "rationale": "仮想時計撮影でphone POWERのCanvasが単色だが、phase PASSとfixture描画だけでは製品かcollectorか確定できない。時計停止後にResizeObserverがCanvasをclearし次RAFが進まない候補を通常時計で切り分ける必要がある。最初の観測時点ではcollector主原因を仮説とし、重大本番リスクと断定しない。",
+      "evidence": ["docs/game018/revision03/QA/after/phone-native-power.png", "docs/game018/revision03/QA/after/report.json", "tests/game018/connected-preview.mjs", "src/games/game018/ShoeBoard.ts"],
+      "actual_next_action": {"method": "LIVE_INTERACTION", "description": "実装担当へ通常時計・通常tapでPOWER遷移後の2 RAF待機と再captureを依頼。compiled-nativeのphone POWER2枚を独立viewし人物/ゲージ/LOCK表示を確認。", "evidence": ["docs/game018/revision03/QA/compiled-native/phone-run0-power.png", "docs/game018/revision03/QA/compiled-native/phone-run1-power.png", "docs/game018/revision03/QA/compiled-native/report.json"]},
+      "resolution": "通常時計のphone2run全工程で描画正常、pageerror0、capture実phaseとopaqueRatio=1を確認。現証拠は仮想時計collectorの描画待機不足を支持し、継続的な製品欠落は再現しない。仮想時計collectorの限定再確認結果はMainのQA記録へ分離。"
+    }
+  ]
+}

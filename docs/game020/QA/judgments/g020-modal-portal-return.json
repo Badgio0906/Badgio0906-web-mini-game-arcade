@@ -1,0 +1,21 @@
+{
+  "finding_id": "g020-modal-portal-return",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "pair020_review (no Jev answers accessed)",
+  "rationale": "The original native modal makes the header Portal link inert and supplies no replacement link within the dialog. A required return action is therefore inaccessible from title/result without starting another board first. This is a DOM interaction boundary, not a question of fun or art.",
+  "evidence": [
+    "docs/game020/QA/modal-return-main-before.ts.txt",
+    "docs/game020/QA/independent/corrections.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Verified native taps from title/explanation/pause/confirm/result navigate to Portal through the added modal link.",
+    "evidence": [
+      "docs/game020/QA/independent/corrections.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

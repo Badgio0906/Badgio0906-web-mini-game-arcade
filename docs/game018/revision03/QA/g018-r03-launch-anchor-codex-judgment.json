@@ -1,0 +1,25 @@
+{
+  "finding_id": "g018-r03-launch-anchor",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root/shoe018_review",
+  "rationale": "ANGLE矢印は旧sin/cos描画座標、弧はhip中心で、実骨格の靴座標と一致しない。離脱描画もx=travel/y=-sin(angle)*travelで設定角度の射出ベクトルに一致しない。客観的な描画座標不具合だが、実際の角度数値と物理入力は保持されており、本findingだけで重大操作不能や物理誤りとは判断しない。",
+  "evidence": [
+    "docs/game018/revision03/QA/before/desktop-angle85.png",
+    "src/games/game018/ShoeBoard.ts",
+    "src/games/game018/kickPose.ts",
+    "src/games/game018/physics.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "矢印/弧の独立座標と蹴り後の表示ベクトルを比較し、共通靴アンカーとcos/sin射出を提案。",
+    "evidence": [
+      "src/games/game018/ShoeBoard.ts",
+      "src/games/game018/shoePose.ts"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,0 +1,22 @@
+{
+  "finding_id": "g018-r03-phone-label-spacing",
+  "problem": "スマホの足首拡大表示で靴とラベルの一部が重なる",
+  "expected": "左右最大の足首設定でも支点・つま先ラベルを靴の輪郭と区別して読める",
+  "observed": [
+    "独立レビューがphone右最大でつま先文字と靴のソールの重なりを観察",
+    "phone左最大でも踵が固定支点ラベルへ接近する",
+    "PCではラベル余白がある"
+  ],
+  "unknown": [
+    "拡大率またはラベル位置調整後に左右最大と中立で余白が保てるか"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "after-preliminary/phone-spinright.png",
+    "after-preliminary/phone-spinleft.png"
+  ],
+  "provenance": "independent-agent-actual-screenshot-review"
+}

@@ -1,0 +1,24 @@
+{
+  "finding_id": "g018-r03-spin-value-link",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root/shoe018_review",
+  "rationale": "足首±0.18radと選択強度に無関係な定速見本のため、方向・強弱を身体表示から読み取りにくい。数値・方向の文と入力はあるので重大な進行不能には分類しない。人体を安全範囲に保った値連動transformと確定値表示を調査・修正する必要がある。",
+  "evidence": [
+    "src/games/game018/ShoeBoard.ts",
+    "src/games/game018/spinGuide.ts",
+    "docs/game018/revision03/QA/before/desktop-spinleft.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "旧足首制限とclock*4*signの見本回転を特定。物理のspin符号・効率を変えず本人の足首/靴へ共通transformを使う提案を送付。",
+    "evidence": [
+      "src/games/game018/ShoeBoard.ts",
+      "src/games/game018/physics.ts"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

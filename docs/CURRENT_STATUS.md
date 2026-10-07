@@ -1,5 +1,9 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-07 UTC：**Game020「すっきり牌合わせ ～PAIR TILE～」を実装・公開準備、追加承認されたGame018 revision03を安全に統合。** 新作は24／48枚の古典牌合わせ、独自幾何学牌、時間制限・ミス罰なし、任意説明／8枚練習、ヒント／戻す／解ける残牌並べ替え。active19／historical20、010退役維持、次ID021は未着手。[020報告](game020/IMPLEMENTATION_REPORT.md)／[018統合追補](game018/revision03/PUBLICATION_INTEGRATION.md)。018は少年の全身・足首接合・選択値連動SPIN・ANGLE／射出方向の描画だけを採用し、物理／保存互換は不変。元018未commit作業は182fileとstatus／HEAD／branchを保全。本人未試遊の公開はユーザー明示承認済み、実機・主観評価は未実施。Pages commit／CI／公開確認は上記報告と020 QA/PUBLICATION.jsonを正本として追記する。
+
+**020 Analytics Worker登録も後で許可され、typecheck／実ローカルD1の23確認を完了。** 020 ingest・匿名admin/Codex詳細・summary、021拒否を確認。認証／Secret／権限／D1 schema／広告／GA4／CREDIT設定は不変。`wrangler whoami`は未認証、Cloudflare APIは許可先外のため本番Worker deploy未実施。[Worker登録記録](game020/QA/WORKER_REGISTRATION_RESULT.json)／[本番反映blocker](game020/QA/WORKER_DEPLOY_BLOCKER.json)。Pages公開とWorker本番登録完了は別。候補表A22は編集しない。
+
 2026-10-07（日本時間）：**Codex Analytics取得スクリプトのネットワークシークレット対応を修正。** 非空tokenの独自文字種チェックと不要なエラーコードを削除し、プロキシ置換前のプレースホルダーをBearer値としてfetchへ渡す。Secret非表示・URL制約・redirect拒否・30秒timeout・応答の反射／生ID拒否は維持。実Secretを使わないfetch／ローカルHTTPテストを追加し、対象15件／root check／build成功（既存CSS・chunk警告あり）。[変更・検証記録](analytics/CODEX_ANALYTICS_ACCESS.md#2026-10-07-プレースホルダー対応の検証)。本番Analytics取得とゲーム・Worker・D1変更は今回未実施。
 
 2026-10-07（日本時間）：**Codex本番Analytics取得 Phase 1を実装。** 専用`ANALYTICS_CODEX_TOKEN`でGET `/v1/codex/summary`／`/v1/codex/game/:game_id`だけを読み取り、adminの認証を分離したまま匿名集計ロジック・query検証を共用。`scripts/fetch-analytics-context.mjs`は必要な期間・ゲームのJSONをstdoutへ取得し、秘密値・生ID・redirect・エラー本文の出力を拒否。[仕様・使い方・制約](analytics/CODEX_ANALYTICS_ACCESS.md)。本番Secret設定、Worker deploy、Codex Cloud Secret登録、本番APIへの取得は今回未実施。ゲーム・広告・GA4・CREDIT・D1／event schema・本番設定は変更しない。Worker typecheck／実ローカルD1の19確認／root361単体（42file）／check／build成功。D1検証はsynthetic fixtureのみ。初回テストのrun1部分一致をUUID fixtureへ修正し再検証済み。取得結果はGitに保存しない。

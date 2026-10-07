@@ -4,10 +4,10 @@ import { drawShoe, drawStar, INK } from './ShoeArt';
 import {formatDistance} from './physics';
 import {RARE_LABELS} from './rarePresentation';
 import {kickPose,supportPose} from './kickPose';
-import { canvasSpinAngle, spinDirection, spinPreview } from './spinGuide';
+import { canvasSpinAngle, spinDirection } from './spinGuide';
+import { attachedShoe, releasedShoe, setupSwing } from './shoePose';
 
 const TAU = Math.PI * 2;
-const runAngleForArt = (swing: number) => Math.max(.09, Math.min(1.48, (swing + .28) / 1.65 * 80 * Math.PI / 180 + .09));
 const FONT = '"Arcade Rounded", sans-serif';
 const SKY_NAMES: Readonly<Record<string, string>> = {
   'CLOUD NINE': '雲まで届いた！', 'AIRPLANE BREAK': 'スポーン！', 'UFO INCIDENT': '宇宙まで靴、来た。',
@@ -121,39 +121,51 @@ export class ShoeBoard {
   private setup(run: ShoeRun, title: boolean, reduced: boolean): void {
     const c = this.c, h = this.height, phase = run.phase, s = this.artScale;
     const spinFocus = !title && (phase === 'spin' || phase === 'spin-lock' || run.practice && run.practiceStage === 1 && phase === 'practice-complete');
-    if (spinFocus) { this.spinGuide(run, reduced); return; }
     // Reserve the same headroom throughout setup so the fixed flight HUD never
     // hides the hair and the actor does not resize at the instant of release.
     const headroomScale = (h * .83 - this.hudHeight - 28) / 333;
     const scale = Math.min(s, h / 430, title ? 1.7 : headroomScale);
     const hipX = title ? 330 : Math.max(320, 185 * scale), hipY = h * .83 - 115 * scale;
     const poseAngle = title ? 60 : run.angle;
-    const swing = title ? 1.15 : (poseAngle - 5) / 80 * 1.65 - .28;
+    const swing = title ? 1.15 : setupSwing(poseAngle);
+    const selectedSpin = run.locked.spin ?? run.spin;
+    const pose = kickPose(phase === 'kick' ? run.phaseProgress : 0, swing);
+    const shoe = attachedShoe(pose, selectedSpin);
     if (phase === 'kick' && !title && run.justMax && run.phaseProgress >= .63) {
-      const pose = kickPose(run.phaseProgress, swing);
-      const travel = pose.releaseProgress * 260;
-      const x = hipX + (pose.ankle.x + 29 + travel) * scale;
-      const y = hipY + (pose.ankle.y - Math.sin(runAngleForArt(swing)) * travel - 17) * scale;
+      const released = releasedShoe(pose, selectedSpin, run.angle);
+      const x = hipX + released.x * scale;
+      const y = hipY + released.y * scale;
       // The actor draws the released shoe exactly once. Its trail shares that
       // position and is painted first, behind the character and shoe.
       this.justTrail(run, x, y, Math.min(scale, 1.7), -run.angle * Math.PI / 180, 1 - run.phaseProgress * .3, reduced);
     }
-    this.boy(hipX, hipY, scale, swing, run.shoeType, run.spin, title ? .82 : phase === 'kick' ? run.phaseProgress : 0, phase === 'max', false, title);
+    this.boy(hipX, hipY, scale, swing, run.shoeType, selectedSpin, title ? .82 : phase === 'kick' ? run.phaseProgress : 0, phase === 'max', false, title, run.angle);
+    if (spinFocus) this.spinGuide(run, hipX, hipY, scale, pose);
     if (title) {
       this.arrow(hipX + 177 * scale, hipY - 6 * scale, -.55, 150 * scale, '#ef7250', 6 * scale);
       drawShoe(c, run.shoeType, hipX + 285 * scale, hipY - 81 * scale, 1.12 * scale, -.65, true);
       this.text('FLY!', hipX + 279 * scale, hipY - 140 * scale, 43 * scale, '#b9412b');
     }
-    if (phase === 'angle' && !title) {
-      c.save(); c.strokeStyle = '#fff8cf'; c.lineWidth = 7; c.setLineDash([10, 15]); c.beginPath(); c.arc(hipX, hipY, 165 * scale, -.95, Math.PI / 2); c.stroke(); c.restore();
-      this.arrow(hipX + Math.sin(swing) * 145 * scale, hipY + Math.cos(swing) * 145 * scale, -run.angle * Math.PI / 180, 92 * scale, '#e56b46', 7 * scale);
-      this.capsule(535, h * .14, 360, 68, '#fff9dd');
-      this.text(run.angle.toFixed(0) + '°  /  ' + (run.angle <= 25 ? '低く＝破壊' : run.angle < 55 ? '中＝距離' : '高く＝空'), 715, h * .14 + 44, 27);
+    if (['angle', 'angle-lock'].includes(phase) && !title) {
+      const x = hipX + shoe.center.x * scale, y = hipY + shoe.center.y * scale, radians = run.angle * Math.PI / 180;
+      c.save(); c.strokeStyle = '#fff8cf'; c.lineWidth = 4 * scale; c.setLineDash([7 * scale, 7 * scale]); c.beginPath(); c.arc(x, y, 65 * scale, -radians, 0); c.stroke(); c.restore();
+      this.line(x, y, x + 69 * scale, y, '#fff8cf', 3 * scale);
+      this.arrow(x, y, -radians, 105 * scale, '#e56b46', 6 * scale);
+      this.pivot(x, y, 6 * scale);
+      if (phase === 'angle') {
+        this.capsule(535, h * .14, 360, 68, '#fff9dd');
+        this.text(run.angle.toFixed(0) + '°  /  ' + (run.angle <= 25 ? '低く＝破壊' : run.angle < 55 ? '中＝距離' : '高く＝空'), 715, h * .14 + 44, 27);
+      }
     }
-    if (phase === 'power' && !title) this.powerGauge(run.power);
-    if (phase === 'angle-lock' || phase === 'spin-lock') {
-      const label = phase === 'angle-lock' ? 'ANGLE LOCK!' : 'SPIN LOCK!';
-      this.text(label, 500, h * .17, 42 * s, '#183746');
+    if (phase === 'power' && !title) {
+      this.powerGauge(run.power);
+      const y = h > 900 ? h * .36 : h * .64;
+      this.capsule(550, y, 400, 74, '#fff9dd');
+      this.text('SPIN LOCK · ' + Math.round(Math.abs(selectedSpin) * 100) + '%', 750, y + 29, 25);
+      this.text(spinDirection(selectedSpin), 750, y + 57, 23, '#ae4734');
+    }
+    if (phase === 'angle-lock') {
+      this.text('ANGLE LOCK!', 500, h * .17, 42 * s, '#183746');
     }
     if (phase === 'max' && !title) {
       if (!reduced) { c.fillStyle = run.shoeType === 'iron-geta' ? '#ffffffbc' : '#fffbd170'; c.fillRect(0, 0, 1000, h); }
@@ -172,9 +184,9 @@ export class ShoeBoard {
     }
   }
   /** Original profile illustration: red tee, denim shorts, brown spikes and an expressive grin. */
-  private boy(x: number, y: number, size: number, swing: number, shoe: ShoeType, spin: number, kick: number, glowing: boolean, launched = false, title = false): void {
+  private boy(x: number, y: number, size: number, swing: number, shoe: ShoeType, spin: number, kick: number, glowing: boolean, launched = false, title = false, launchAngle = 45): void {
     const c = this.c; c.save(); c.translate(x, y); c.scale(size, size);
-    const pose=kickPose(kick,swing,launched),support=supportPose(),hit=pose.released,progress=pose.releaseProgress;
+    const pose=kickPose(kick,swing,launched),support=supportPose(),hit=pose.released;
     const {x:fx,y:fy}=pose.ankle;
     const path = (fill: string, draw: () => void) => { c.fillStyle = fill; c.strokeStyle = INK; c.lineWidth = 4; c.beginPath(); draw(); c.closePath(); c.fill(); c.stroke(); };
     const limb = (ax: number, ay: number, bx: number, by: number, width: number) => { this.line(ax, ay, bx, by, INK, width + 7); this.line(ax, ay, bx, by, '#ffbe8a', width); };
@@ -188,15 +200,15 @@ export class ShoeBoard {
     // A connected thigh, bent knee, calf and a bare, upturned foot at release.
     const {x:kx,y:ky}=pose.knee;
     limb(pose.hip.x,pose.hip.y,kx,ky,28); limb(kx,ky,fx,fy,21);
-    c.save(); c.translate(fx,fy); c.rotate(pose.footAngle-Math.max(-.18,Math.min(.18,spin*.18)));
-    path('#ffbe8a',()=>{c.moveTo(-9,-11);c.lineTo(7,-12);c.quadraticCurveTo(12,-5,25,-5);c.quadraticCurveTo(42,-16,46,-8);c.quadraticCurveTo(47,3,35,9);c.lineTo(-8,12);c.quadraticCurveTo(-15,4,-9,-11);});
-    for(let i=0;i<3;i++)this.line(33+i*4,-6,35+i*3,0,'#d88c61',1.4);c.restore();
+    const attachment = attachedShoe(pose, spin);
+    c.save(); c.translate(fx,fy); this.foot(shoe, attachment.footAngle, !launched && !title && !hit); c.restore();
     if (!launched && !title) {
-      if (!hit) drawShoe(c, shoe, fx + 14, fy, .83,pose.footAngle-Math.max(-.18,Math.min(.18,spin*.18)));
-      else {
-        const travel = progress * 260, rise = Math.sin(runAngleForArt(swing)) * travel;
-        drawShoe(c, shoe, fx + 29 + travel, fy - rise - 17, .83, -spin * (1 + progress * 7), true);
-        for (let i = 0; i < 3; i++) this.line(fx + 30 + travel - 35 - i * 7, fy - rise + i * 12, fx + 30 + travel - 73 - i * 7, fy - rise + i * 12 + 10, '#fffce4', 4);
+      if (hit) {
+        const released = releasedShoe(pose, spin, launchAngle);
+        drawShoe(c, shoe, released.x, released.y, .83, released.rotation, true);
+        c.save(); c.translate(released.x, released.y); c.rotate(-launchAngle * Math.PI / 180);
+        for (let i = 0; i < 3; i++) this.line(-35 - i * 7, -10 + i * 10, -73 - i * 7, -10 + i * 10, '#fffce4', 4);
+        c.restore();
       }
     }
     // Two separate denim cuffs articulate the hip; seams and highlights avoid a flat block.
@@ -229,45 +241,50 @@ export class ShoeBoard {
     if (hit) { c.strokeStyle = '#f27846'; c.lineWidth = 5; c.beginPath(); c.arc(3, 1, 155, -.65, .65); c.stroke(); }
     c.restore();
   }
-  private spinGuide(run: ShoeRun, reduced: boolean): void {
-    const c = this.c, h = Math.max(650, this.height);
-    const fit = this.height / h, portrait = h > 900;
-    c.save(); c.translate((1000 - 1000 * fit) / 2, 0); c.scale(fit, fit);
-    const baseY = h * (portrait ? .30 : .44);
-    this.capsule(36, 36, 928, h - 72, '#fffae9');
-    this.text('足首のひねり → 靴の回転', 500, portrait ? 110 : 87, portrait ? 43 : 36);
-    // Isolated, connected calf/ankle closeup. The sign is identical to flight rendering.
-    c.save(); c.translate(500, portrait ? h * .54 : baseY); if (portrait) c.scale(1.9, 1.9);
-    this.line(-103, -52, -18, 7, INK, 49); this.line(-103, -52, -18, 7, '#ffbe8a', 40);
-    c.save(); c.rotate(canvasSpinAngle(Math.max(-.18,Math.min(.18,run.spin*.18))));
-    c.fillStyle = '#ffbe8a'; c.strokeStyle = INK; c.lineWidth = 4; c.beginPath(); c.roundRect(-19, -9, 78, 30, 12); c.fill(); c.stroke();
-    drawShoe(c, run.shoeType, 36, 13, 1.4); c.restore(); c.restore();
-    const t = reduced ? .3 : run.time;
-    this.spinExample(205, baseY, run.shoeType, 1, t, '← 足首を左へ', '左回転・反時計回り', run.spin > .04, portrait ? 1.25 : 1);
-    this.spinExample(797, baseY, run.shoeType, -1, t, '→ 足首を右へ', '右回転・時計回り', run.spin < -.04, portrait ? 1.25 : 1);
-    this.text(spinDirection(run.spin) + '  ' + Math.round(Math.abs(run.spin) * 100) + '%', 500, portrait ? h * .68 : baseY + 143, portrait ? 34 : 28, '#ae4734');
-    this.drawFlightPreview(run, h - (portrait ? 210 : 154));
-    this.text('方向＝回り方 ／ 強さ＝安定・貫通', 500, h - 72, 29); c.restore();
+  private foot(shoe: ShoeType, angle: number, wearing: boolean): void {
+    const c = this.c; c.save(); c.rotate(angle); c.fillStyle = '#ffbe8a'; c.strokeStyle = INK; c.lineWidth = 4;
+    c.beginPath(); c.moveTo(-9,-11); c.lineTo(7,-12); c.quadraticCurveTo(12,-5,25,-5); c.quadraticCurveTo(42,-16,46,-8); c.quadraticCurveTo(47,3,35,9); c.lineTo(-8,12); c.quadraticCurveTo(-15,4,-9,-11); c.closePath(); c.fill(); c.stroke();
+    for(let i=0;i<3;i++) this.line(33+i*4,-6,35+i*3,0,'#d88c61',1.4);
+    // The shoe center is translated inside the foot rotation, so the heel stays attached.
+    if (wearing) drawShoe(c, shoe, 14, 0, .83);
+    c.restore();
   }
-  private spinExample(x: number, y: number, shoe: ShoeType, sign: number, clock: number, ankle: string, caption: string, selected: boolean, size: number): void {
-    const c = this.c, r = 73, a = canvasSpinAngle(clock * 4 * sign);
-    c.save(); c.translate(x, y); c.scale(size, size); c.strokeStyle = selected ? '#e56543' : '#94aaa6'; c.lineWidth = selected ? 7 : 3;
-    c.beginPath(); c.arc(0, 0, r, .35, TAU - .35); c.stroke();
-    const endAngle = sign > 0 ? .35 : TAU - .35;
-    this.arrow(Math.cos(endAngle) * r, Math.sin(endAngle) * r, endAngle + (sign > 0 ? -Math.PI / 2 : Math.PI / 2), 8, selected ? '#e56543' : '#94aaa6', 5);
-    drawShoe(c, shoe, 0, 0, .93, a);
-    this.text(ankle, 0, -109, 32); this.text(caption, 0, 111, 29); c.restore();
+  private pivot(x: number, y: number, radius: number): void {
+    const c = this.c; c.fillStyle = '#ffe179'; c.strokeStyle = INK; c.lineWidth = 2;
+    c.beginPath(); c.arc(x, y, radius, 0, TAU); c.fill(); c.stroke();
   }
-  private drawFlightPreview(run: ShoeRun, y: number): void {
-    const c = this.c, trajectory = spinPreview(run.shoeType, run.spin, run.angle);
-    const maxX = Math.max(1, trajectory.result.distance), maxY = Math.max(1, trajectory.result.height);
-    const count = trajectory.samples.length, stride = Math.max(1, Math.floor(count / 70));
-    const point = (i: number) => ({ x: 160 + trajectory.samples[i].x / maxX * 660, y: y - trajectory.samples[i].y / maxY * 58 });
-    c.strokeStyle = '#3b9090'; c.lineWidth = 4; c.beginPath();
-    for (let i = 0; i < count; i += stride) { const p = point(i); if (i) c.lineTo(p.x, p.y); else c.moveTo(p.x, p.y); } const last = point(count - 1); c.lineTo(last.x, last.y); c.stroke();
-    const index = Math.min(count - 1, Math.floor((run.time % 3) / 3 * count)), current = point(index);
-    drawShoe(c, run.shoeType, current.x, current.y, .36, canvasSpinAngle(trajectory.samples[index].rotation));
-    this.text('飛び方の目安・POWER 80 / ' + Math.round(trajectory.result.distance) + 'm', 500, y + 34, 27);
+  private spinGuide(run: ShoeRun, hipX: number, hipY: number, size: number, pose: ReturnType<typeof kickPose>): void {
+    const c = this.c, h = this.height, portrait = h > 900, spin = run.locked.spin ?? run.spin;
+    const attachment = attachedShoe(pose, spin), neutral = attachedShoe(pose, 0), magnitude = Math.abs(spin);
+    const x = portrait ? 60 : 555, y = 28, width = portrait ? 880 : 405;
+    const height = portrait ? Math.min(430, hipY - 218 * size - 64) : Math.min(310, h - 65);
+    const ankleX = hipX + pose.ankle.x * size, ankleY = hipY + pose.ankle.y * size;
+    c.save(); c.strokeStyle = '#e56543'; c.lineWidth = 3; c.setLineDash([9, 8]); c.beginPath(); c.moveTo(ankleX, ankleY);
+    if (portrait) { c.lineTo(945, ankleY); c.lineTo(945, y + height); c.lineTo(x + width, y + height); }
+    else c.lineTo(x, y + height * .73);
+    c.stroke(); c.restore();
+    this.pivot(ankleX, ankleY, 7 * size);
+    this.capsule(x, y, width, height, '#fff9e7');
+    this.text(run.locked.spin === null ? '足首を調整 · SPIN' : '足首を固定 · SPIN LOCK', x + width / 2, y + 40, portrait ? 36 : 27);
+    const cx = x + width * .46, cy = y + height * (portrait ? .44 : .48), zoom = portrait ? 2.1 : 1.45;
+    c.save(); c.beginPath(); c.rect(x + 4, y + 52, width - 8, height - 150); c.clip(); c.translate(cx, cy); c.scale(zoom, zoom);
+    // This magnifier samples the same calf/ankle and attachment as the visible full-body actor.
+    this.line(pose.knee.x - pose.ankle.x, pose.knee.y - pose.ankle.y, 0, 0, INK, 28);
+    this.line(pose.knee.x - pose.ankle.x, pose.knee.y - pose.ankle.y, 0, 0, '#ffbe8a', 21);
+    c.save(); c.setLineDash([4, 4]); this.line(0, 0, neutral.toe.x - pose.ankle.x, neutral.toe.y - pose.ankle.y, '#97aaa1', 2); c.restore();
+    this.foot(run.shoeType, attachment.footAngle, true);
+    this.line(0, 0, attachment.toe.x - pose.ankle.x, attachment.toe.y - pose.ankle.y, '#e56543', 2);
+    this.pivot(0, 0, 5); c.fillStyle = '#e56543'; c.beginPath(); c.arc(attachment.toe.x - pose.ankle.x, attachment.toe.y - pose.ankle.y, 4, 0, TAU); c.fill(); c.restore();
+    const labelY = portrait ? y + height - 126 : cy + 54;
+    this.text('固定支点', cx - 65, labelY, portrait ? 30 : 21);
+    this.text('つま先', cx + 110, labelY, portrait ? 30 : 21, '#ae4734');
+    const locked = run.locked.spin !== null, label = spinDirection(spin) + ' ' + Math.round(magnitude * 100) + '%';
+    this.text(label, x + width / 2, y + height - 66, portrait ? 32 : 24, '#ae4734');
+    const center = x + width / 2, barY = y + height - 40, half = width * .38;
+    this.line(center - half, barY, center + half, barY, '#d3dfcd', 12);
+    if (magnitude >= .04) this.arrow(center, barY, spin > 0 ? Math.PI : 0, half * magnitude, '#e56543', 9);
+    this.pivot(center, barY, 5);
+    this.text(locked ? '確定した足首の向き' : '左 ←  強さ  → 右', center, y + height - 12, portrait ? 27 : 20);
   }
   private powerGauge(power: number): void {
     const c = this.c, s = this.artScale, h = this.height;

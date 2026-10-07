@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-10-07T12:44:48.120920+00:00",
+  "actual_command": "node docs/game020/QA/independent-followup.mjs",
+  "observed": "locator.tap Timeout 30000ms exceeded on visibly exposed [data-tile-id=\"1\"] with aria-disabled=true; Playwright said element is not enabled.",
+  "classification": "TEST_INFRA_BUG",
+  "independent_reason": "Playwright locator actionability uses aria-disabled; native button remains enabled and blocked-click explanatory handling exists. Coordinate touch is needed for testing invalid user taps.",
+  "jev_exclusion": "Mechanical known locator actionability condition, no uncertain product or next-evidence routing; ordinary coordinate operation will separately test product behavior.",
+  "product_changed": false
+}

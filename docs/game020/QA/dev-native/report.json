@@ -1,0 +1,99 @@
+{
+  "observed_at": "2026-10-07T12:40:40.387Z",
+  "base": "http://127.0.0.1:5420/",
+  "source_hashes": {
+    "PairBoard.ts": "18aab33803a6cb55535c9e4c5fdf0b8bfefc19e8bf0eb152c813f2cde38e0712",
+    "main.ts": "57fddec83838cbb8207ff503eb4432636b58153dccf2a45276df806cf53802e4",
+    "icons.ts": "533c47ab1ef9ff3f4c84bee84fd763f1a477cb617084a21cca4165e9390689b5",
+    "style.css": "a365a3b9bcdddbf1a38d620bb6e93a40d88e5b840378323d6d784a72c7c1c419"
+  },
+  "syntheticBrowser": true,
+  "authorPlayed": false,
+  "productionAnalyticsRequestsAllowed": false,
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        "optional practice clears without BEST/clear statistics"
+      ],
+      "captures": [
+        "docs/game020/QA/dev-native/desktop-title.png",
+        "docs/game020/QA/dev-native/desktop-practice.png",
+        "docs/game020/QA/dev-native/desktop-board24.png",
+        "docs/game020/QA/dev-native/desktop-FAILURE.png"
+      ],
+      "errors": [],
+      "blockedAnalyticsRequests": 0,
+      "status": "FAIL",
+      "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-tile-id=\"1\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"tile\" type=\"button\" data-face=\"4\" data-tile-id=\"1\" data-free=\"false\" data-hint=\"false\" aria-pressed=\"false\" aria-disabled=\"true\" data-game-interaction=\"\" aria-label=\"四角・点, 今は選べない牌\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "checks": [
+        "optional practice clears without BEST/clear statistics"
+      ],
+      "captures": [
+        "docs/game020/QA/dev-native/phone-title.png",
+        "docs/game020/QA/dev-native/phone-practice.png",
+        "docs/game020/QA/dev-native/phone-board24.png",
+        "docs/game020/QA/dev-native/phone-FAILURE.png"
+      ],
+      "errors": [],
+      "blockedAnalyticsRequests": 0,
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-tile-id=\"1\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"tile\" type=\"button\" data-face=\"1\" data-tile-id=\"1\" data-free=\"false\" data-hint=\"false\" aria-pressed=\"false\" aria-disabled=\"true\" data-game-interaction=\"\" aria-label=\"三角・線, 今は選べない牌\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "profile": {
+        "name": "narrow",
+        "width": 320,
+        "height": 740,
+        "touch": true
+      },
+      "checks": [
+        "optional practice clears without BEST/clear statistics"
+      ],
+      "captures": [
+        "docs/game020/QA/dev-native/narrow-title.png",
+        "docs/game020/QA/dev-native/narrow-practice.png",
+        "docs/game020/QA/dev-native/narrow-board24.png",
+        "docs/game020/QA/dev-native/narrow-FAILURE.png"
+      ],
+      "errors": [],
+      "blockedAnalyticsRequests": 0,
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-tile-id=\"1\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"tile\" type=\"button\" data-face=\"3\" data-tile-id=\"1\" data-free=\"false\" data-hint=\"false\" aria-pressed=\"false\" aria-disabled=\"true\" data-game-interaction=\"\" aria-label=\"ひし形・線, 今は選べない牌\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "checks": [
+        "optional practice clears without BEST/clear statistics"
+      ],
+      "captures": [
+        "docs/game020/QA/dev-native/landscape-title.png",
+        "docs/game020/QA/dev-native/landscape-practice.png",
+        "docs/game020/QA/dev-native/landscape-board24.png",
+        "docs/game020/QA/dev-native/landscape-FAILURE.png"
+      ],
+      "errors": [],
+      "blockedAnalyticsRequests": 0,
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-tile-id=\"1\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"tile\" type=\"button\" data-face=\"0\" data-tile-id=\"1\" data-free=\"false\" data-hint=\"false\" aria-pressed=\"false\" aria-disabled=\"true\" data-game-interaction=\"\" aria-label=\"輪・点, 今は選べない牌\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+
+ RUN  v3.2.7 /workspace/arcade-game020
+
+ ❯ tests/unit/game020-model.test.ts (12 tests | 3 failed) 68ms
+   ✓ Game020 classic tile availability > requires upper space and either left or right space, not both 1ms
+   ✓ Game020 classic tile availability > detects covering rectangles and side contact without blocking different rows/layers 0ms
+   ✓ Game020 classic tile availability > only pairs distinct, matching, available tiles 1ms
+   × original guaranteed-solvable layouts > small has original geometry, repeated icon choices, and a legal complete witness for 200 seeds 31ms
+     → Original layout has no paired removal route
+   × original guaranteed-solvable layouts > regular has original geometry, repeated icon choices, and a legal complete witness for 200 seeds 8ms
+     → Original layout has no paired removal route
+   ✓ original guaranteed-solvable layouts > solver provides only fully valid witnesses and rejects a true stalled board 11ms
+   ✓ PairBoard calm continuation > invalid/mismatched clicks change no tiles or history; selection can be cancelled 4ms
+   ✓ PairBoard calm continuation > undo restores exact faces, positions, and removal flags, then restart restores the original run 1ms
+   ✓ PairBoard calm continuation > hints can clear the entire board and undo still works after clearing 3ms
+   ✓ PairBoard calm continuation > stalled faces reshuffle into a legal route preserving the remaining face multiset 0ms
+   ✓ PairBoard calm continuation > a stranded vertical pair is safely repacked; history and selection are explicitly reset 0ms
+   × PairBoard calm continuation > reshuffle after removals keeps removed tile identities and guarantees the remaining route for 40 seeds 5ms
+     → Original layout has no paired removal route
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game020-model.test.ts > original guaranteed-solvable layouts > small has original geometry, repeated icon choices, and a legal complete witness for 200 seeds
+ FAIL  tests/unit/game020-model.test.ts > original guaranteed-solvable layouts > regular has original geometry, repeated icon choices, and a legal complete witness for 200 seeds
+Error: Original layout has no paired removal route
+ ❯ generateBoard src/games/game020/PairBoard.ts:99:24
+     97|   const solution = peel(tiles, random);
+     98|   // These original whole-column layers always expose at least two til…
+     99|   if (!solution) throw new Error('Original layout has no paired remova…
+       |                        ^
+    100|   // Two pairs per icon: repeated faces give actual matching choices, …
+    101|   const faces = Array.from({ length: tiles.length / 2 }, (_, index) =>…
+ ❯ tests/unit/game020-model.test.ts:44:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/unit/game020-model.test.ts > PairBoard calm continuation > reshuffle after removals keeps removed tile identities and guarantees the remaining route for 40 seeds
+Error: Original layout has no paired removal route
+ ❯ generateBoard src/games/game020/PairBoard.ts:99:24
+     97|   const solution = peel(tiles, random);
+     98|   // These original whole-column layers always expose at least two til…
+     99|   if (!solution) throw new Error('Original layout has no paired remova…
+       |                        ^
+    100|   // Two pairs per icon: repeated faces give actual matching choices, …
+    101|   const faces = Array.from({ length: tiles.length / 2 }, (_, index) =>…
+ ❯ new PairBoard src/games/game020/PairBoard.ts:163:19
+ ❯ tests/unit/game020-model.test.ts:115:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 9 passed (12)
+   Start at  12:31:06
+   Duration  320ms (transform 61ms, setup 0ms, collect 66ms, tests 68ms, environment 0ms, prepare 58ms)
+

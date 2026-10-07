@@ -1,0 +1,21 @@
+{
+  "finding_id": "g020-blocked-input-driver",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "pair020_review (no Jev answers accessed)",
+  "rationale": "Playwright locator actionability regards aria-disabled=true as disabled, while the original button has no HTML disabled attribute and intentionally receives invalid-user-click feedback. Native coordinate tapping on the visible blocked tile leaves remaining tiles and selection unchanged. The stalled automation check alone is not a product release defect.",
+  "evidence": [
+    "docs/game020/QA/independent/followup-initial-failure.json",
+    "docs/game020/QA/independent/followup.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Used the browser native touchscreen at the visible blocked tile center, then checked remaining and selection; no product change.",
+    "evidence": [
+      "docs/game020/QA/independent/followup.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

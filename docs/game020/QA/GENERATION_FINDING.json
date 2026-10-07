@@ -1,0 +1,19 @@
+{
+  "finding_id": "g020-generation-one-free",
+  "problem": "牌の自由なペアを順に選ぶ生成で一部seedが開始盤面を作れない",
+  "expected": "どの新規盤面も解法を持って開始できる",
+  "observed": [
+    "生成の途中に残り枚数が偶数でも自由な牌が1枚になる場合があり例外になる",
+    "独立実装担当のseed0〜199検証で24枚は23件、48枚は43件の生成失敗を観測",
+    "24枚の初回失敗seed14、48枚の初回失敗seed1"
+  ],
+  "unknown": [
+    "残り形状と自由判定の相互作用",
+    "全seedの生成を保証できる生成手順"
+  ],
+  "evidence": [
+    "src/games/game020/PairBoard.ts",
+    "tests/unit/game020-model.test.ts"
+  ],
+  "provenance": "model-agent-local-seeded-test-failure-before-correction"
+}

@@ -62,7 +62,7 @@ function sync(): void {
   text('distance-value', formatDistance(active || screen === 'paused' || screen === 'result' ? run.position.x : 0));
   text('height-value', formatDistance(active || screen === 'paused' || screen === 'result' ? run.maxHeight : 0));
   text('break-value', String(active || screen === 'paused' || screen === 'result' ? run.breaks : 0)); text('best-value', formatDistance(bestDistance));
-  text('angle-value', run.locked.angle === null ? '—' : run.angle.toFixed(0) + '°'); text('spin-value', run.locked.spin === null ? '—' : (run.spin > 0 ? '← ' : '→ ') + Math.abs(run.spin * 100).toFixed(0)); text('power-value', run.locked.power === null ? '—' : run.justMax ? 'MAX!' : run.power.toFixed(0));
+  text('angle-value', run.locked.angle === null ? '—' : run.angle.toFixed(0) + '°'); text('spin-value', run.locked.spin === null ? '—' : Math.abs(run.spin) < .04 ? '0' : (run.spin > 0 ? '← ' : '→ ') + Math.abs(run.spin * 100).toFixed(0)); text('power-value', run.locked.power === null ? '—' : run.justMax ? 'MAX!' : run.power.toFixed(0));
   text('mute-button', audio.muted ? '音 OFF' : '音 ON'); $('mute-button').setAttribute('aria-pressed', String(audio.muted));
   $<HTMLButtonElement>('pause-button').disabled = !(active || screen === 'paused'); text('pause-button', screen === 'paused' ? '▶' : 'Ⅱ'); $('pause-button').setAttribute('aria-label', screen === 'paused' ? '再開' : '一時停止');
   $<HTMLButtonElement>('control-button').disabled = !active || !['angle', 'spin', 'power'].includes(run.phase);

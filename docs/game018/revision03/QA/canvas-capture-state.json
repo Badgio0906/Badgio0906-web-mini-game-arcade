@@ -1,0 +1,19 @@
+{
+  "finding_id": "g018-r03-frozen-clock-canvas",
+  "problem": "時計停止下で撮影したスマホPOWER画像のCanvasが単色になっている",
+  "expected": "POWER段階でも人物とメーターを表示すること",
+  "observed": [
+    "独立レビューがafter/phone-native-power.pngのCanvas領域が単色で人物とメーターがないと観察",
+    "同じスマホの値指定描画fixture phone-power.pngでは人物とメーターがある",
+    "collectorはpage.clock.runFor後に仮想時計を停止して撮影している"
+  ],
+  "unknown": [
+    "通常時計のビルド版でも空表示が再現するか",
+    "仮想時計停止とResizeObserver、RAFの順序の影響か"
+  ],
+  "evidence": [
+    "after/phone-native-power.png",
+    "after/phone-power.png"
+  ],
+  "provenance": "independent-agent-actual-screenshot-review"
+}

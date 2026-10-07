@@ -1,0 +1,18 @@
+{
+  "finding_id": "g020-ingest-registration",
+  "problem": "新規game020のイベントが既存の本番送信検証で受理されるか未登録の状態",
+  "expected": "新作が共通Telemetryへ登録され必要なイベントを既存送信仕様で扱えること",
+  "observed": [
+    "src/data/analyticsEnvelope.tsのgame_id許可一覧は001〜019を対象とし020を含まない",
+    "TelemetryServiceの端末内記録は任意game_idで作成できるが送信検証にはgame_id許可条件がある"
+  ],
+  "unknown": [
+    "今回の新作登録に必要な変更範囲",
+    "既存本番Workerとクライアントの許可一覧が同期しているか"
+  ],
+  "evidence": [
+    "src/data/analyticsEnvelope.ts",
+    "src/core/TelemetryService.ts"
+  ],
+  "provenance": "integration-agent-code-observation-new-game-registration"
+}

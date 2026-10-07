@@ -1,0 +1,182 @@
+{
+  "game_id": "game020",
+  "recorded_at": "2026-10-07T12:51:13.026653+00:00",
+  "base_commit": "fd1d09a293cd8da1b9dbfeb73dc3e68e27ad7bcc",
+  "reviewer": "/root/pair020_integrate",
+  "authorization": {
+    "quote": "今回の候補表から追加するゲームについて、既存Analytics WorkerのゲームID・必要イベントの登録、テスト、本番反映を許可します。広告・クレジット・認証権限は変更せず、必要最小限で進めてください。",
+    "source": "Exact user quote relayed by /root in follow-up task message; root owns deployment/auth status",
+    "record_basis": "New authorization following initial Pages-only scope; earlier findings/results retained as historical evidence"
+  },
+  "status": "PASS",
+  "changed_files": [
+    {
+      "path": "analytics-worker/src/aggregate.ts",
+      "sha256": "b840147ccc6c54e3a25df9633935600903c53319b630b4ba06cfac3a40b0c785"
+    },
+    {
+      "path": "analytics-worker/src/index.ts",
+      "sha256": "08a4108335c13f018fbf536663ff4055138b15916134f8f4ebacee87e9f3315a"
+    },
+    {
+      "path": "tests/unit/analyticsWorker.test.ts",
+      "sha256": "01ba19faef1da268955f68815484d21badd81e1469dfcf1bf2fe5c1aa88016e0"
+    },
+    {
+      "path": "analytics-worker/tests/local-d1.mjs",
+      "sha256": "a8a251d751b263116bae14e8f775afd673269289a5bb97ee54040a15372bf526"
+    }
+  ],
+  "changes": [
+    "Enumerate020 in existing historical summary catalog (20 historical /19 active,010retired preserved)",
+    "Append020-only to existing admin/Codex game detail known-ID regex",
+    "Existing shared strict envelope allows020/page020 from initial client registration",
+    "No new event/schema fields: tile_pair/hint/undo/reshuffle already valid specific_game_events.event string values"
+  ],
+  "commands": [
+    {
+      "command": "npm ci --prefix analytics-worker",
+      "exit_code": 0,
+      "result": "56 packages prepared from existing package-lock; lockfile unchanged"
+    },
+    {
+      "command": "npm run check --prefix analytics-worker",
+      "exit_code": 0
+    },
+    {
+      "command": "npx vitest run tests/unit/analyticsWorker.test.ts tests/unit/game020-integration.test.ts tests/unit/analytics-version-history.test.ts",
+      "exit_code": 0,
+      "files": 3,
+      "tests": 22
+    },
+    {
+      "command": "npm test --prefix analytics-worker",
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "environment": "synthetic-local-only",
+        "backend": "Wrangler workerd + actual local D1 SQLite",
+        "checks": [
+          "migration",
+          "health",
+          "valid_batch_202",
+          "duplicate_uuid_dedup",
+          "unknown_event_400",
+          "bad_origin_403",
+          "oversize_413",
+          "admin_unauthorized_401",
+          "admin_aggregate_200",
+          "game_detail_200",
+          "no_raw_ids",
+          "codex_missing_wrong_token_401",
+          "bidirectional_token_isolation_401",
+          "codex_summary_detail_200",
+          "codex_unknown_game_route_404",
+          "codex_non_get_405",
+          "codex_safe_query_filters",
+          "fetch_script_summary_detail",
+          "game020_ingest_six_events",
+          "game020_admin_codex_detail_no_raw_ids",
+          "game020_summary_registered",
+          "game021_ingest_detail_rejected",
+          "D1_insert_count"
+        ],
+        "d1_event_count": 8,
+        "run_count": 2,
+        "game019_median_run_duration": 12,
+        "game020_median_run_duration": 18
+      }
+    }
+  ],
+  "preservation": [
+    {
+      "path": "analytics-worker/wrangler.jsonc",
+      "base_sha256": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+      "sha256": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+      "byte_unchanged": true
+    },
+    {
+      "path": "analytics-worker/tests/wrangler.local.jsonc",
+      "base_sha256": "ef8853bfcfc9d7c3a2ec6703b4bc33769257ba66205c7ee971628495af268d9f",
+      "sha256": "ef8853bfcfc9d7c3a2ec6703b4bc33769257ba66205c7ee971628495af268d9f",
+      "byte_unchanged": true
+    },
+    {
+      "path": "analytics-worker/src/types.ts",
+      "base_sha256": "e740ada51a1418f5566ec25b13c568e40960818d6eb5ccc92398c8a5569f35bf",
+      "sha256": "e740ada51a1418f5566ec25b13c568e40960818d6eb5ccc92398c8a5569f35bf",
+      "byte_unchanged": true
+    },
+    {
+      "path": "analytics-worker/migrations/0001_events.sql",
+      "base_sha256": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+      "sha256": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/analytics/config.ts",
+      "base_sha256": "860625c8276d5770a8d39f6c202855da334c0b08701564762e03f8121dc32740",
+      "sha256": "860625c8276d5770a8d39f6c202855da334c0b08701564762e03f8121dc32740",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/core/TelemetryUploadService.ts",
+      "base_sha256": "61dce9118ef9edabb9055fdfcd3729ff91cb9b20516c95667b648227d012965e",
+      "sha256": "61dce9118ef9edabb9055fdfcd3729ff91cb9b20516c95667b648227d012965e",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/core/ConsentService.ts",
+      "base_sha256": "0591a950e1c7fd83a9bc34ca48d1e9ad87c8f72a397259ba0567e258fc0b7407",
+      "sha256": "0591a950e1c7fd83a9bc34ca48d1e9ad87c8f72a397259ba0567e258fc0b7407",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/core/GoogleAnalyticsService.ts",
+      "base_sha256": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+      "sha256": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/arcade/config.ts",
+      "base_sha256": "f56a5393d176680daa8765038aebf8a3f4137fafe68e5b2d44c40de79d3d142b",
+      "sha256": "f56a5393d176680daa8765038aebf8a3f4137fafe68e5b2d44c40de79d3d142b",
+      "byte_unchanged": true
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "base_sha256": "28f19de0061b7c16432f0c11fa190a480583e67ba255c752cd67698183d1eaea",
+      "sha256": "28f19de0061b7c16432f0c11fa190a480583e67ba255c752cd67698183d1eaea",
+      "byte_unchanged": true
+    },
+    {
+      "path": "src/data/telemetrySchema.ts",
+      "base_sha256": "8538f75287ee1053a4af128233308a6cc0257ad9985cc27f584dd1c24e067a90",
+      "sha256": "8538f75287ee1053a4af128233308a6cc0257ad9985cc27f584dd1c24e067a90",
+      "byte_unchanged": true
+    }
+  ],
+  "authentication": "Existing admin/Codex token separation,GET-only codex guards,origin,query validation unchanged and regression-tested with fixture-only credentials",
+  "jev_followup": {
+    "same_finding_id": "g020-ingest-registration",
+    "new_api_call": false,
+    "reason": "Same known registration issue; authorized minimal server registration follows initial independent diagnosis. No new uncertain finding or replay. Past independent judgment/state remains intact",
+    "actual_next_action": {
+      "method": "AUTOMATED_TEST",
+      "description": "020 Worker registered minimally; typecheck,22 unit regressions,23 real local workerd/D1 checks PASS. Production deploy delegated to root; no credentials/auth/config created.",
+      "evidence": [
+        "analytics-worker/src/aggregate.ts",
+        "analytics-worker/src/index.ts",
+        "tests/unit/analyticsWorker.test.ts",
+        "analytics-worker/tests/local-d1.mjs",
+        "docs/game020/QA/WORKER_REGISTRATION_RESULT.json"
+      ]
+    }
+  },
+  "limits": [
+    "Only synthetic local D1 used; no production database reads/writes or analytics testdata uploads",
+    "Production Worker deploy, credential availability, expectedversion and online020detail are root-owned and unverified here",
+    "Existing source-config does not establish deployment state; environment network/credentials limitation reported by root may block production apply",
+    "No provider-level timing/physical-device/human-fun inference from these checks"
+  ]
+}

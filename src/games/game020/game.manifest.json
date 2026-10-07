@@ -1,0 +1,40 @@
+{
+  "id": "game020",
+  "title": "すっきり牌合わせ ～PAIR TILE～",
+  "titleEn": "PAIR TILE",
+  "tagline": "同じ柄を、ひと組ずつ。時間を気にせず、盤面すっきり。",
+  "genre": "relaxed layered tile matching / mahjong solitaire",
+  "coreMechanic": "Remove two identical original geometric-icon tiles when both have no tile above and at least one open left or right side; clear the layered board at your own pace",
+  "skillAxes": [
+    "visible matching",
+    "layer reading",
+    "open-side judgment",
+    "board planning"
+  ],
+  "runSecondsDesignTarget": null,
+  "timeLimit": null,
+  "inputs": {
+    "select": "click / tap a tile; keyboard focus and Enter / Space select",
+    "assist": "optional hint, undo one pair, solvable reshuffle, restart or next board",
+    "pause": "pause button / Escape"
+  },
+  "boards": {
+    "tileCounts": [
+      24,
+      48
+    ],
+    "construction": "original compact layouts; reverse removal assignment retains a verified solution",
+    "stuck": "no game over; undo or solution-verified reshuffle of remaining tiles"
+  },
+  "practice": "Optional isolated pair-selection lesson; no production run events, BEST, saved board or cleared-board statistics",
+  "storagePrefix": "web-mini-arcade:v1:game020:",
+  "bestStorage": "bestPairs: maximum pairs removed on one board; clearedBoards: completed boards; separate new020 keys only",
+  "creditMode": "free",
+  "ads": "none in game logic",
+  "jev": "development-only Shadow Review on observed findings; no runtime API or automatic gate",
+  "humanReview": "author subjective playtest and physical-device review pending; user explicitly authorized publication before author play",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "1",
+  "telemetry": "Existing common events and specific_game_events with event tile_pair/hint/undo/reshuffle; event-level only; practice isolated; upload requires existing consent/environment/endpoint"
+}

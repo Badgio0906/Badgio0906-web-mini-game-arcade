@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#eaf0e7"/>
+  <meta name="description" content="すっきり牌合わせ ～PAIR TILE～。同じ柄の自由な牌をひと組ずつ。時間制限なし、ヒント・戻す・並べ替えで落ち着いて遊べる100ガレの牌合わせ。"/>
+  <title>すっきり牌合わせ ～PAIR TILE～ | 100ガレ ～GAME100 GARAGE～</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='4' width='48' height='56' rx='9' fill='%23fffaf0' stroke='%23336c66' stroke-width='4'/%3E%3Ccircle cx='32' cy='30' r='14' fill='none' stroke='%23336c66' stroke-width='4'/%3E%3Ccircle cx='32' cy='30' r='3' fill='%23336c66'/%3E%3C/svg%3E"/>
+</head>
+<body>
+<div id="app" data-state="title">
+  <header><a id="portal-link" href="./index.html">← 100ガレへ</a><span class="brand">PAIR TILE<small>すっきり牌合わせ</small></span><nav><button id="mute-button" type="button">音 ON</button><button id="pause-button" type="button" disabled>休憩</button></nav></header>
+  <main>
+    <section class="intro"><p class="eyebrow">ひと組ずつ、すっきり。</p><h1>すっきり牌合わせ</h1><p id="board-caption">時間を気にせず、形を見つけよう。</p></section>
+    <section class="stats" aria-label="盤面の状態"><div><span>残りの牌</span><strong id="remaining-value">24</strong></div><div><span>この盤面のペア</span><strong id="pairs-value">0</strong></div><div><span>クリアした盤面</span><strong id="clear-value">0</strong></div></section>
+    <section class="play-area"><div id="table" aria-label="牌の盤面"><div id="tile-board" role="group" aria-label="同じ柄の自由な牌を2枚選ぶ"></div></div><aside class="guide"><span class="guide-shape" aria-hidden="true">○</span><h2>自由な牌を、2枚。</h2><p>上に牌がなく、<br>左右どちらかが空いていれば<br>選べます。</p><p>形と中の模様が<br>同じ牌を合わせよう。</p><p class="gentle">急がなくて大丈夫。<br>迷ったらヒントをどうぞ。</p></aside></section>
+    <p id="live-status" class="status" role="status" aria-live="polite">同じ柄をひと組、選んでみよう。</p>
+    <section class="controls" aria-label="盤面の操作"><button id="hint-button" type="button">ヒント</button><button id="undo-button" type="button">1手戻す</button><button id="shuffle-button" type="button">並べ替え</button><button id="restart-button" type="button">やり直し</button><button id="next-button" type="button">次の盤面</button><button id="help-button" type="button">遊び方</button></section>
+    <section id="practice-actions" hidden><button id="practice-play-button" class="primary" type="button">本番を遊ぶ</button><button id="practice-title-button" type="button">タイトルへ</button></section>
+    <p class="keyboard-note">PC：Tabまたは矢印で牌へ移動、Enter / Spaceで選択。Escで休憩。</p>
+  </main>
+  <dialog id="menu" aria-labelledby="menu-title"></dialog>
+  <footer>100ガレ ～GAME100 GARAGE～ · PAIR TILE</footer>
+</div>
+<script type="module" src="/src/games/game020/main.ts"></script>
+</body></html>

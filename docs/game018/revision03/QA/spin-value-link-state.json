@@ -1,0 +1,16 @@
+{
+  "finding_id": "g018-r03-spin-value-link",
+  "problem": "SPINの方向と強さが見本靴の表示に対応するか不明瞭",
+  "expected": "選択中と確定後の足首・靴プレビューから方向と強さが読めること",
+  "observed": [
+    "コードでは足首の補正量がspin*.18で左右見本靴の角度がclock*4*sign",
+    "ユーザーは選択強度と見本の定速回転が無関係と観察"
+  ],
+  "unknown": [
+    "改修後の実画面で対応が一目で分かるか"
+  ],
+  "evidence": [
+    "../../../../src/games/game018/ShoeBoard.ts"
+  ],
+  "provenance": "user-public-browser-observation-and-local-native-input-plus-code"
+}

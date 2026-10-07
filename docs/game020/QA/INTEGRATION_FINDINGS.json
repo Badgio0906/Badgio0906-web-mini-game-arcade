@@ -1,0 +1,56 @@
+{
+  "finding_id": "g020-ingest-registration",
+  "reviewer": "/root/pair020_integrate",
+  "recorded_at": "2026-10-07T12:30:09.411659+00:00",
+  "base_commit": "fd1d09a293cd8da1b9dbfeb73dc3e68e27ad7bcc",
+  "jev_outputs_read": false,
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "A new ID must be registered in the strict existing analytics game/page allowlist. Existing browser upload checks the allowlist and will reject020 without registration; valid specific_game_events data values already fit existing schema. This finding does not prevent playing/clearing the new game. Pages-only publication cannot update an already deployed remote Worker bundle.",
+  "evidence": [
+    "src/data/analyticsEnvelope.ts",
+    "src/core/TelemetryUploadService.ts",
+    "src/analytics/runtime.ts",
+    "src/analytics/config.ts",
+    ".github/workflows/pages.yml"
+  ],
+  "code_observations": [
+    "analyticsEnvelope.ts active list is hardcoded length19 and page set derives from active game IDs",
+    "TelemetryUploadService.enqueue returns early when isAnalyticsEnvelope rejects an envelope",
+    "Runtime send constructs game020/game020.html, falls back version1/1; existing specific event and primitive keys survive sanitization",
+    "analyticsConfig endpoint and GA measurement depend on existing Vite build variables; no configuration or secret values inspected",
+    "navigator.webdriver sets qa environment, independent of hostname"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read strict game/page registry, enqueue guard, runtime sanitizer/version fallback and unchanged environment/config code. Next add020-only registration and focused offline validation; no new schema fields or production Worker deploy.",
+    "evidence": [
+      "src/data/analyticsEnvelope.ts",
+      "src/core/TelemetryUploadService.ts",
+      "src/analytics/runtime.ts",
+      "src/analytics/config.ts",
+      ".github/workflows/pages.yml"
+    ]
+  },
+  "final_root_cause": "New-game registration required in existing hardcoded allowlist; remoteWorker support requires a separate permitted deployment if its current bundle still uses the old allowlist",
+  "human_judgment": null,
+  "additional_observations": [
+    {
+      "observed_at": "2026-10-07T12:31:06.320713+00:00",
+      "command": "npx vitest run tests/unit/catalog-telemetry.test.ts tests/unit/game010-retirement.test.ts tests/unit/analyticsWorker.test.ts",
+      "result": "24 PASS /1 FAIL: temporary catalog-dynamic Worker expectedcount19, actual18",
+      "cause_evidence": "analytics-worker/src/aggregate.ts summarizeGames independently hardcodes19 historical IDs",
+      "scope_action": "Restored original Worker tests/localD1 test byte-for-byte; Worker runtime/deployment explicitlyexcluded. Record remote ingest/detail/summary limitation separately; no assertion changes masking runtime coverage."
+    }
+  ],
+  "completed_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Added020-only active ID/page registration and explicit1/1 version; focused new020 strict-envelope validation plus catalog/retirement/Worker/version regression passed30 tests. Existing Worker source/config unchanged; currentWorker summary still enumerates19 historical IDs.",
+    "evidence": [
+      "tests/unit/game020-integration.test.ts",
+      "docs/game020/QA/INTEGRATION_RESULT.json"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-07T12:47:32.142766+00:00",
+  "exclusions": [
+    {
+      "observation": "existing Portal AdSense script failed with ERR_TUNNEL_CONNECTION_FAILED in restricted cloud network",
+      "evidence": [
+        "QA/external-network-observation.json",
+        "QA/dev-final/report.json",
+        "QA/compiled-native/report.json"
+      ],
+      "reason": "identified external network rejection; no product semantic diagnosis/routing remains. Raw status/resource presence and configured network checks use scripts, not Jev PASS calls. Tests now explicitly substitute empty external ad response, preserving script inclusion and all advertising code/config. This does not validate real ad serving."
+    },
+    {
+      "observation": "check/build/385units/25offlineJev tests pass",
+      "reason": "mechanical test outputs are not Jev findings; no API call for PASS"
+    },
+    {
+      "observation": "New route collector literal checks first used nested .game-card a and body label 退役; actual card is anchor itself and unchanged retired body says 公開を終了",
+      "reason": "Mechanical selector/text expectations corrected after direct DOM/source read, no remaining cause or routing ambiguity. No product source change or Jev PASS calls.",
+      "evidence": [
+        "QA/routes-selector-before.mjs",
+        "tests/game020/routes.mjs",
+        "game010.html",
+        "src/portal/main.ts"
+      ]
+    }
+  ]
+}

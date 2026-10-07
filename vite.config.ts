@@ -18,7 +18,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         ...Object.fromEntries(readdirSync(process.cwd())
-          .filter(file => /^(index|privacy|analytics-admin|game00[1-9]|game01[0156789])\.html$/.test(file))
+          .filter(file => /^(index|privacy|analytics-admin|game00[1-9]|game01[0156789]|game020)\.html$/.test(file))
           .map(file => [file.replace('.html', ''), resolve(process.cwd(), file)])),
         'analytics-legacy': resolve(process.cwd(), 'src/analytics/legacy.ts'),
       },

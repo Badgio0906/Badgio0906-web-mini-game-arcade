@@ -1,0 +1,21 @@
+{
+  "finding_id": "g020-generation-one-free",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "pair020_review (blind to Jev answers)",
+  "rationale": "The first generator assumes every arbitrary legal two-tile peeling order completes, but a remaining vertical dependency can expose only one tile. Its constructor throws although the original layout itself admits other paired orders. In a randomly seeded new board this prevents play from starting. Bounded retries plus a proven even-row fallback remove reliance on that false assumption.",
+  "evidence": [
+    "docs/game020/QA/generation-initial/PairBoard.ts.txt",
+    "docs/game020/QA/independent/model.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independently reproduced two original constructor exceptions and applied every returned paired-removal witness for 1,000 fresh seeds per difficulty.",
+    "evidence": [
+      "docs/game020/QA/independent/model.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

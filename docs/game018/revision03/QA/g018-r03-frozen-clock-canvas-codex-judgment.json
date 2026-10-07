@@ -1,0 +1,26 @@
+{
+  "finding_id": "g018-r03-frozen-clock-canvas",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "/root/shoe018_review",
+  "rationale": "仮想時計撮影でphone POWERのCanvasが単色だが、phase PASSとfixture描画だけでは製品かcollectorか確定できない。時計停止後にResizeObserverがCanvasをclearし次RAFが進まない候補を通常時計で切り分ける必要がある。最初の観測時点ではcollector主原因を仮説とし、重大本番リスクと断定しない。",
+  "evidence": [
+    "docs/game018/revision03/QA/after/phone-native-power.png",
+    "docs/game018/revision03/QA/after/report.json",
+    "tests/game018/connected-preview.mjs",
+    "src/games/game018/ShoeBoard.ts"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "実装担当へ通常時計・通常tapでPOWER遷移後の2 RAF待機と再captureを依頼。compiled-nativeのphone POWER2枚を独立viewし人物/ゲージ/LOCK表示を確認。",
+    "evidence": [
+      "docs/game018/revision03/QA/compiled-native/phone-run0-power.png",
+      "docs/game018/revision03/QA/compiled-native/phone-run1-power.png",
+      "docs/game018/revision03/QA/compiled-native/report.json"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "TEST_INFRA_BUG"
+}

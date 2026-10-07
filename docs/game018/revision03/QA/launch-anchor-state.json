@@ -1,0 +1,17 @@
+{
+  "finding_id": "g018-r03-launch-anchor",
+  "problem": "高ANGLEで発射矢印の根元と靴が離れて見える",
+  "expected": "実際の足首または靴の位置から設定角度に発射方向を表示すること",
+  "observed": [
+    "ユーザーのANGLE85度の公開実画面で矢印根元が靴の上に離れている",
+    "ローカルANGLE85度に近い実操作画面で同じ離れを確認",
+    "蹴り出し表示は横travel、縦sin(runAngleForArt)*travelを使うが動画で瞬間の飛びを確定したわけではない"
+  ],
+  "unknown": [
+    "改修後の実画面で対応が一目で分かるか"
+  ],
+  "evidence": [
+    "before/desktop-native-angle85.png"
+  ],
+  "provenance": "user-public-browser-observation-and-local-native-input-plus-code"
+}

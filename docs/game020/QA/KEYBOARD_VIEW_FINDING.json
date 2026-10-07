@@ -1,0 +1,28 @@
+{
+  "finding_id": "g020-keyboard-offscreen",
+  "problem": "短い横画面で矢印キーの選択先の牌が画面外になる",
+  "expected": "キーボードで移った牌を見ながら選べる",
+  "observed": [
+    "844x390で48枚盤面を開始、ArrowRight2回後にtile20へfocus",
+    "tile20のtop677 bottom745、viewportheight390、scrollY0",
+    "続くArrowRightでもfocus先が画面外のままになる"
+  ],
+  "unknown": [
+    "自動scrollを伴うfocusにした場合の選択と描画の保持"
+  ],
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "operation": "start regular → ArrowRight",
+  "measurements": {
+    "top": 677,
+    "bottom": 745,
+    "viewport_height": 390,
+    "scroll_y": 0
+  },
+  "evidence": [
+    "src/games/game020/main.ts"
+  ],
+  "provenance": "actual-local-native-keyboard-input"
+}

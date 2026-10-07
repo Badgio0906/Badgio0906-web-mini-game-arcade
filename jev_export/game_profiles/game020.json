@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "game020",
+  "title": "すっきり牌合わせ ～PAIR TILE～",
+  "titleJa": "すっきり牌合わせ",
+  "titleEn": "PAIR TILE",
+  "tagline": "同じ柄を、ひと組ずつ。時間を気にせず、盤面すっきり。",
+  "tags": [
+    {
+      "id": "puzzle",
+      "label": "パズル"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "brain-training",
+      "label": "脳トレ"
+    }
+  ],
+  "genre": "relaxed layered tile matching / mahjong solitaire",
+  "controls": {
+    "summary": "クリック / タップ / キーボードで同柄の空いた牌を2枚選ぶ。任意のヒント・戻す・並べ替え",
+    "evidence": "src/games/game020/main.ts and game.manifest.json; final actual UI controls are authoritative"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "self-paced without a time limit; human duration not measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; mobile legibility prioritizes two compact board sizes; human feedback pending"
+  },
+  "mainMechanics": "Remove two identical original geometric-icon tiles when both have no tile above and at least one open left or right side; clear the layered board at your own pace",
+  "description": "上が塞がれず左右どちらかが空いた同柄2枚を取り、重なる盤面を落ち着いて片付ける",
+  "failureModes": "無効選択はペナルティなし。詰まりは戻す・解法検証済みの並べ替えで継続可能。時間切れ・ミス終了なし",
+  "route": "./game020.html",
+  "thumbnail": "./assets/portal/game020.webp",
+  "design": {
+    "thumbnailDescription": "実プレイ盤面のオリジナル幾何学アイコン牌、軽い影と明確な重なり",
+    "majorVisuals": "独自の輪・三角・星など形と模様で区別する牌。色だけに依存しない",
+    "directionNotes": "Quiet original code-drawn geometric icons; no character, copied tile art, or copied map",
+    "referenceImageUse": "No third-party visual assets or user character references used",
+    "uiPolicy": "Responsive accessible selection; optional explanation and isolated practice; no timer or urgency"
+  },
+  "telemetryCoverage": "Existing common events plus event tile_pair/hint/undo/reshuffle; no per-frame logs or practice BEST/production run data. External delivery depends on existing configuration and deployed Worker registration",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game020/game.manifest.json",
+    "details": "src/games/game020/"
+  },
+  "humanEvaluation": "pending; author unplayed publication explicitly authorized; AI operation/image checks are not subjective human review",
+  "currentManifest": {
+    "id": "game020",
+    "title": "すっきり牌合わせ ～PAIR TILE～",
+    "titleEn": "PAIR TILE",
+    "tagline": "同じ柄を、ひと組ずつ。時間を気にせず、盤面すっきり。",
+    "genre": "relaxed layered tile matching / mahjong solitaire",
+    "coreMechanic": "Remove two identical original geometric-icon tiles when both have no tile above and at least one open left or right side; clear the layered board at your own pace",
+    "skillAxes": [
+      "visible matching",
+      "layer reading",
+      "open-side judgment",
+      "board planning"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "select": "click / tap a tile; keyboard focus and Enter / Space select",
+      "assist": "optional hint, undo one pair, solvable reshuffle, restart or next board",
+      "pause": "pause button / Escape"
+    },
+    "boards": {
+      "tileCounts": [
+        24,
+        48
+      ],
+      "construction": "original compact layouts; reverse removal assignment retains a verified solution",
+      "stuck": "no game over; undo or solution-verified reshuffle of remaining tiles"
+    },
+    "practice": "Optional isolated pair-selection lesson; no production run events, BEST, saved board or cleared-board statistics",
+    "storagePrefix": "web-mini-arcade:v1:game020:",
+    "bestStorage": "bestPairs: maximum pairs removed on one board; clearedBoards: completed boards; separate new020 keys only",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "development-only Shadow Review on observed findings; no runtime API or automatic gate",
+    "humanReview": "author subjective playtest and physical-device review pending; user explicitly authorized publication before author play",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "1",
+    "telemetry": "Existing common events and specific_game_events with event tile_pair/hint/undo/reshuffle; event-level only; practice isolated; upload requires existing consent/environment/endpoint"
+  }
+}

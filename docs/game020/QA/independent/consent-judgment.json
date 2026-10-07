@@ -1,0 +1,26 @@
+{
+  "finding_id": "g020-consent-top-layer",
+  "recorded_at": "2026-10-07T13:00:02.731604+00:00",
+  "reviewer": "pair020_review (no Jev answers accessed)",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Game020 showModal places its native dialog in the browser top layer and makes ordinary document content inert. The unchanged shared consent panel is document Shadow DOM with z-index10000; a z-index cannot put it above that top layer. Initial reject/defer choices are therefore inaccessible while the title is open. The local nonmodal dialog removes that conflict while board state/inert/disabled guards must still be tested independently.",
+  "evidence": [
+    "docs/game020/QA/CONSENT_OVERLAY_FINDING.json",
+    "docs/game020/QA/consent-main-before.ts.txt",
+    "src/analytics/consentUI.ts",
+    "docs/game020/QA/independent/consent.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Used seven isolated local browser contexts: desktop and phone unknown-consent grant/deny/later, plus storage-denied. Normal clicks/taps operate the shared consent choices on title; title/help/pause/result preserve inactive board and expected Escape/Portal behavior. All external requests blocked.",
+    "evidence": [
+      "docs/game020/QA/independent/consent.json",
+      "docs/game020/QA/independent/consent-phone-unknown.png",
+      "docs/game020/QA/independent/consent-desktop-title-final.png"
+    ]
+  },
+  "final_root_cause": "Native game dialog top-layer modality conflicted with unchanged document-level consent controls; fixed within Game020 UI, without common Analytics modifications."
+}
