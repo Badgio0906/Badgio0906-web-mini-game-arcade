@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-07T15:25:43.655733+00:00",
+  "source_freeze": "Original author SOURCE_HASHES at2026-10-07T15:18:48Z. main/style/manifest changed during review; model/worker/Save remained unchanged when probed.",
+  "reviewer": "classic024 independent readonly reviewer",
+  "no_jev_answers_read": true,
+  "no_product_edits": true,
+  "no_browser_launched": true,
+  "tests": {
+    "command": "npm test -- --run tests/unit/game025.test.ts",
+    "at": "2026-10-07T15:23:07Z",
+    "passed": 19
+  },
+  "positive_evidence": [
+    "9x9exact10 and16x16exact40. All337 cell positions checked for center plus valid-neighbor safety.",
+    "Deductions signature has no flags/mines/hidden answers. Solver selects only deductions from board.visible; revealed answers supply numbers only.1948 deductions over200 own generated boards compared with oracle truth without driving product action.",
+    "All81 independently replayed own fallbacks match exact clicked start. Max measured replay2.12ms on this runner.",
+    "Worker attempts bounded80/12 and450/300ms between attempts;1s host timeout and exact-start fallback. Job ID,state,pending checks plus terminate prevent stale application.",
+    "Wrong equal-count flags may lose by chord; flags alone cannot win, opened-safe total wins exactly once. Existing19 model tests cover both.",
+    "Restore validates counts/proof/start/history/replayed flags/opened/outcome and result ledger. Practice does not save or count production RUN; restored active board is explicitly paused."
+  ],
+  "findings": [
+    {
+      "id": "025-touch-target-below44",
+      "status": "root notified before change",
+      "evidence": "Original frozen CSS 36px beginner/40px portrait intermediate/42px desktop; compiled report corroborates. Current author sources changing, recheck next freeze."
+    },
+    {
+      "id": "025-denied-write-stale-read",
+      "status": "confirmed independent synthetic execution; root notified",
+      "evidence": "DENIED_WRITE_FINDING.json"
+    }
+  ],
+  "unconfirmed_followup": [
+    "Visibility/blur during generating is not handled by pause() because generating is not playable; apply later calls mode(playing), potentially starting elapsed clock while hidden. Read-only code concern; need compiled interruption probe after browser handoff.",
+    "Missing analytics-context runId causes conclude() to skip stats/report flag; restore rejects ended unreported snapshots. Browser runtime normally has IDs even on denied consent; missing-ID fallback path requires deliberate test."
+  ],
+  "visual_observations": [
+    "Viewed supplied actual320-beginner and844-intermediate full-page captures. Colors, numbers and controls are readable;320 beginner rightmost column is partially outside its scroll window. Beginner too needs pan affordance, whereas old text specifies only intermediate.",
+    "844x390 landscape evidence is a full-page capture extending beyond viewport height; scrolling makes controls reachable but this alone proves neither viewport fit nor touch panning."
+  ],
+  "limits": [
+    "These are not human playtests or physical iPhone checks.",
+    "SSR probe completed then Vite dependency-scan emitted shutdown warnings; assertions/output had completed successfully before server.close. No product failure is inferred from those harness warnings.",
+    "Live pan-versus-tap, generation hide/blur and post-fix44px require next fixed compiled-browser evidence."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "finding_id": "025-terminal-null-observer",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic024 independent readonly reviewer; no Jev answers read",
+  "rationale": "Game statistics/report flags previously depended on an optional observer ID and terminal restore required those flags, so the observer-unavailable path could lose both statistics and valid terminal saves. Gameplay results must work without the observer. The repaired local resultId ledger is separate from nullable Analytics runId. Independent won/lost JSON reloads kept runId null, reported true and the same local result ID, and duplicate reportResult calls left counts at1. The title restore option now uses resultId, while Analytics restoration remains conditional on runId.",
+  "evidence": [
+    "docs/game025/QA/OBSERVER_NULL_FINDING.json",
+    "src/games/game025/main.ts",
+    "src/games/game025/Save.ts",
+    "tests/unit/game025.test.ts",
+    "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Ran22 actual unit tests and independently generated won/lost own terminal model fixtures, saved with null observer ID, JSON-reloaded, then reapplied reportResult to verify unchanged counts and one ledger entry.",
+    "evidence": [
+      "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+      "tests/unit/game025.test.ts"
+    ]
+  }
+}

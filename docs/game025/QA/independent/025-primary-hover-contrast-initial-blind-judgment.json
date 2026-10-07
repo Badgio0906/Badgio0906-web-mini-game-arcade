@@ -1,0 +1,15 @@
+{
+  "finding_id": "025-primary-hover-contrast",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic024 independent Visual/source reviewer; no hidden answers read",
+  "rationale": "The fresh normal pause screenshot shows the primary resume label washed out. The specific global button:hover background overrides the lower-specificity primary background while leaving white text unchanged; computed pair contrast is1.16:1. This affects the main resume action and other primary hover states, so the readability gate should not be closed without correcting and viewing the actual hovered action. Source and copied actual before image are preserved.",
+  "evidence": [
+    "docs/game025/QA/independent/PRIMARY_HOVER_BEFORE.json",
+    "docs/game025/QA/independent/025-primary-hover-before.png",
+    "src/games/game025/style.css"
+  ],
+  "recorded_before_reading_answers_at": "2026-10-07T16:34:38.230448+00:00"
+}

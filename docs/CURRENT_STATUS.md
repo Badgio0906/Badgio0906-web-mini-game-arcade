@@ -1,6 +1,8 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-07 UTC：**Game024「ひとマススネーク」統合QA完了・順次公開準備。** 20×20・fixed4/6/8・queue2・任意練習・速度別BEST・途中保存、root514tests/check/build、Worker20events6RUN、compiled4画面成功、Visual83/F13/H13。端衝突terminal clock保存・Portal/pagehideを修正。headless focusfixtureと実機未検証を区別。active23／historical24、次025。公開完了はQA/PUBLICATION.json、新作外部収集停止・本番登録blocker継続。
+2026-10-07 UTC：**Game025「こつこつマインスイーパー」統合QA完了・順次公開準備。** 初級9×9／10地雷は全81初手で推測不要を独立検証、中級16×16／40地雷は初手周囲安全。旗／周囲開封／見える情報だけのヒント／任意練習／保存。全545テスト／check／build、WorkerローカルD123イベント7RUN、統合4画面通常入力・touch pan4ケース成功。生成中の背景化保存と旧tapの新menu到達を当ゲーム内で修正。Visual83/F13/H13、技術Feel別記録。active24／historical25、次026（未着手）。新作本番Analytics停止・Worker未認証。本人／実機未試遊は許可済み試作公開と区別。
+
+2026-10-07 UTC：**Game024「ひとマススネーク」試作版を公式公開済み（runtime c7fde20、Pages37653078771成功）。** fixed4/6/8・20×20・queue2・任意練習・速度別BEST／保存。root514tests/check/build、Worker20events6RUN、公開4画面58項目／Portal23／配信thumbnail SHA一致。候補表A48だけ済／読戻し確認。[公開証明](game024/QA/PUBLICATION.json)。headless focusfixture・失われた一部の隔離最終画像は記録を区別。本人／実機未試遊、新作外部収集停止・本番Worker認証blocker継続。active23／historical24、次025。
 
 2026-10-07 UTC：**Game023「伏字ことば」試作版を公式公開済み（runtime de5327d、Pages37651114868成功）。** 独自180語／6カテゴリ／全かな3タブ、wrong8・hint・次問、任意説明／2語練習。root486tests/check/buildとWorkerローカルD117events5RUN、compiled4画面・統合4画面成功、Visual83/F14/H13。混合入力・横向き答えscrollを当ゲーム内で修正。active22／historical23、次024。公開4画面・Portal22・配信thumb SHA一致、候補表A31だけ済／読戻し成功。[公開証明](game023/QA/PUBLICATION.json)。新作外部Analytics停止・本番登録blocker継続。
 

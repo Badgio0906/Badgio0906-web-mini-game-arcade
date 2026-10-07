@@ -1,0 +1,27 @@
+{
+  "finding_id": "025-hidden-during-generation",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic024 independent source/automated reviewer; hidden Jev answers never read",
+  "rationale": "The preserved execution of actual lifecycle source showed a visibility event ignored in generating and a delayed callback entering playing/opening the first safe cell/starting the clock while still hidden. This is a game-state boundary defect and requires a source fix. It affects explicit pause behavior and reference elapsed time; the turn-based board has no time limit and the only automatic opening was the already selected safe first cell, so evidence does not establish major progression loss or unplayability if unresolved. The narrow repair records generationPaused, retains a deferred exact-start first opening, completes hidden or previously blurred work into pause, and requires manual resume. Independent actual-source execution with actual Mines/Save confirms zero opened cells/clock while hidden and after becoming visible, valid prepared/pagehide saves, and exactly one opening plus clock start after manual resume.",
+  "evidence": [
+    "docs/game025/QA/independent/GENERATING_HIDDEN_FINDING.json",
+    "docs/game025/QA/independent/GENERATING_HIDDEN_BEFORE.json",
+    "docs/game025/QA/independent/GENERATING_HIDDEN_AFTER.json",
+    "src/games/game025/main.ts",
+    "src/games/game025/Save.ts",
+    "tests/unit/game025-generation-lifecycle.test.ts",
+    "tests/unit/game025.test.ts"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Rechecked final freeze hashes and ran26 candidate model/production-AST lifecycle tests. Independently extracted unchanged final source functions/handlers, executed hidden→completion→visible→manual-resume with actual Mines/Save, and validated deferred prepared save plus pagehide save and prior-blur completion. No browser launched, no product edits and no API retry.",
+    "evidence": [
+      "docs/game025/QA/independent/GENERATING_HIDDEN_AFTER.json",
+      "tests/unit/game025-generation-lifecycle.test.ts",
+      "tests/unit/game025.test.ts"
+    ]
+  }
+}

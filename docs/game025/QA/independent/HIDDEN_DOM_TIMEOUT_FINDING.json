@@ -1,0 +1,28 @@
+{
+  "finding_id": "025-hidden-prepared-dom-timeout",
+  "problem": "The compiled prepared-board fixture did not reach its expected paused state within8 seconds after its native tap and synthetic visibility setup.",
+  "expected": "A valid first tap followed by visibility loss during generation should eventually produce a prepared paused board without opening its first cell.",
+  "observed": [
+    "The first probe log records an8s timeout while waiting for generating after tapping cell5.",
+    "The second probe installed a generating-state MutationObserver to dispatch synthetic visibility, tapped cell5, then recorded an8s timeout while waiting for paused.",
+    "Neither failed probe retained actual DOM phase, pointer events, matched Worker request or visibility-callback timing at timeout."
+  ],
+  "unknown": [
+    "Whether the first cell tap activated any action.",
+    "Which phase transitions occurred in the failed second run.",
+    "Whether the Worker interception matched.",
+    "Whether synthetic visibility ran during generation or after completion."
+  ],
+  "operation": "Two preserved author compiled Playwright fixture attempts; second observer triggers synthetic document.hidden when app state becomes generating",
+  "measurements": {
+    "timeout_ms": 8000,
+    "first_expected_phase": "generating",
+    "second_expected_phase": "paused"
+  },
+  "evidence": [
+    "docs/game025/QA/independent/hidden-prepared-final-first.txt",
+    "docs/game025/QA/independent/hidden-prepared-final-second.txt",
+    "docs/game025/QA/independent/hidden-prepared-final-second.mjs"
+  ],
+  "provenance": "Actual prior compiled QA timeout logs; no live trace captured at those instants. Synthetic hidden and blocked Worker are explicit test fixtures, not physical visibility."
+}

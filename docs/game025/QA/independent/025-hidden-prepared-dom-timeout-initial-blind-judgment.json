@@ -1,0 +1,16 @@
+{
+  "finding_id": "025-hidden-prepared-dom-timeout",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic024 independent browser/source reviewer; hidden answers unread",
+  "rationale": "The passive diagnostic preserved native touchcell5 pointerdown/up, state generating and matched blocked Worker asset, then the same gesture compatibility click targeted the new cancel-generation button at identical coordinates and returned to title. The prepared fixture did not reach pause because that gesture cancelled its job. This is a product transition input boundary; it can prevent a legitimate first opening at coordinates under the new cancel action. The original two logs lack live trace, so their exact state is not reconstructed; this fresh reproduction independently establishes the defect. Raw capture queueMicrotask entries do not establish target-handler completion; phase snapshots, click target and subsequent state mutations provide the conclusion.",
+  "evidence": [
+    "docs/game025/QA/independent/HIDDEN_DOM_TIMEOUT_FINDING.json",
+    "docs/game025/QA/independent/HIDDEN_DOM_TRACE.json",
+    "docs/game025/QA/independent/COMPAT_CLICK_TRACE_REVIEW.json",
+    "src/games/game025/main.ts"
+  ],
+  "recorded_before_answer_reading_at": "2026-10-07T16:44:46.158385+00:00"
+}

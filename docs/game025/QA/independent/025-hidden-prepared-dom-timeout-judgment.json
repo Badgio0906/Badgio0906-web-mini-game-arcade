@@ -1,0 +1,27 @@
+{
+  "finding_id": "025-hidden-prepared-dom-timeout",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic024 independent browser/source reviewer; hidden answers unread",
+  "rationale": "The passive diagnostic preserved native touchcell5 pointerdown/up, state generating and matched blocked Worker asset, then the same gesture compatibility click targeted the new cancel-generation button at identical coordinates and returned to title. The prepared fixture did not reach pause because that gesture cancelled its job. This is a product transition input boundary; it can prevent a legitimate first opening at coordinates under the new cancel action. The original two logs lack live trace, so their exact state is not reconstructed; this fresh reproduction independently establishes the defect. Raw capture queueMicrotask entries do not establish target-handler completion; phase snapshots, click target and subsequent state mutations provide the conclusion. The frozen repaired build was verified in one independent native touch AFTER run: that same compatibility click still targets cancel-generation but is blocked; its Worker timeout completes into paused prepared/save-valid state. The saved elapsed155.9ms remains identical while hidden, visible withoutresume and restored. Explicit native Resume opens cell5 once. Fresh cancel/resume/next and keyboard resume remain functional; terminal native tap leaves result shown.",
+  "evidence": [
+    "docs/game025/QA/independent/HIDDEN_DOM_TIMEOUT_FINDING.json",
+    "docs/game025/QA/independent/HIDDEN_DOM_TRACE.json",
+    "docs/game025/QA/independent/COMPAT_CLICK_TRACE_REVIEW.json",
+    "src/games/game025/main.ts",
+    "docs/game025/QA/independent/HIDDEN_DOM_TRACE_AFTER.json",
+    "docs/game025/QA/SOURCE_HASHES_MENU_GESTURE.json",
+    "docs/game025/QA/independent/025-hidden-prepared-dom-timeout-initial-blind-judgment.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "ONE bounded native Chromium touch run on frozen compiled-menu-gesture. Synthetic hidden property and blocked Worker are explicit test fixtures. No answer/model mutation or additional API. Browser closed in finally. Terminal compatibility click landed on menu container rather than a result action button; stale button cases are separately extracted-source tests.",
+    "evidence": [
+      "docs/game025/QA/independent/HIDDEN_DOM_TRACE_AFTER.json",
+      "docs/game025/QA/independent/MENU_DOM_AFTER_REVIEW.json",
+      "docs/game025/QA/independent/MENU_SOURCE_VERIFICATION.json"
+    ]
+  }
+}

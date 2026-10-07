@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-07T15:43:32.820009+00:00",
+  "freeze": "SOURCE_HASHES_HIDDEN_GENERATION.json",
+  "all_freeze_hashes_matched": true,
+  "unit_command": "npm test -- --run tests/unit/game025.test.ts tests/unit/game025-generation-lifecycle.test.ts",
+  "unit_at": "2026-10-07T15:41:54Z",
+  "unit_result": "26 tests passed (23 model/save +3 actual production-AST lifecycle)",
+  "independent_after": "GENERATING_HIDDEN_AFTER.json",
+  "verified": [
+    "Hidden while generating records generationPaused. Completion produces paused state, clock0, firstOpenPending5, opened0.",
+    "Becoming visible retains pause, clock0 and opened0. No automatic resume.",
+    "Manual resume starts clock and opens the exact start5 once; firstOpenPending cleared and saved state validates.",
+    "Pagehide of prepared paused board retains firstOpenPending5; actual Save.restore validates and openedCount stays0.",
+    "Prior blur followed by completion also remains paused even when document.hidden false.",
+    "Cancelled jobs still have ID/state/pending guards and worker termination; author actual-AST stale-cancel test passes."
+  ],
+  "pending": [
+    "Native compiled generation interruption and live touch behavior belong to root/browser reviewer; this is synthetic offline execution of actual source, not physical iPhone or human play."
+  ],
+  "jev": "Single preserved pre-fix record only; no answers read and no retry. Filtered independent judgment ready for root annotate."
+}

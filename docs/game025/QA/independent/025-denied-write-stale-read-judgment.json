@@ -1,0 +1,24 @@
+{
+  "finding_id": "025-denied-write-stale-read",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic024 independent readonly reviewer; no Jev answers read",
+  "rationale": "The synthetic denied-write execution demonstrated stale hints0 after writing current hints7. A SaveStore memory boundary must use current memory after write denial. The repaired memoryOnly latch does so; independent execution returned7 then8 across successive denied writes, and the actual regression passes. The live board was not shown to become unplayable because of this latent reader behavior, so I do not classify this as a demonstrated major release risk.",
+  "evidence": [
+    "docs/game025/QA/STORAGE_FINDING.json",
+    "docs/game025/QA/independent/MODEL_ADVERSARIAL.json",
+    "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+    "src/games/game025/Save.ts",
+    "tests/unit/game025.test.ts"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independently ran all22 game025 unit tests and executed real SaveStore with stale valid read backend plus successive denied writes, confirming current hints7 then8.",
+    "evidence": [
+      "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+      "tests/unit/game025.test.ts"
+    ]
+  }
+}

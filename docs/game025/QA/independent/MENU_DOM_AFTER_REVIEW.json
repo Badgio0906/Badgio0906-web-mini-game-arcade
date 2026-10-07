@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-07T16:57:01.535723+00:00",
+  "trace": "HIDDEN_DOM_TRACE_AFTER.json",
+  "native_touch_phase_checks": {
+    "reachedPaused": true,
+    "preparedValid": true,
+    "noAutoResume": true,
+    "restoredPrepared": true,
+    "sameIds": true,
+    "manualExactlyFirst": true,
+    "freshResume": true,
+    "noCarriedCancel": true,
+    "freshCancel": true,
+    "resultStayed": true,
+    "freshNext": true,
+    "keyboardResume": true
+  },
+  "clock_stable_while_hidden_visible_restored": true,
+  "stopped_elapsed_ms": 155.89999999850988,
+  "original_compat_click_still_targets_cancel_but_no_longer_invokes_it": true,
+  "terminal_click_target": "menu container, not a result action button; native result remains shown, source listener tests separately cover stale button targets",
+  "served_assets": [
+    {
+      "asset": "./assets/game025-B4b3vRx6.js",
+      "http_sha256": "55834d60f0dedf792d161195c28df397421498363bfd735bb955ad605d78efd4",
+      "matches_compiled_artifact": true
+    },
+    {
+      "asset": "./assets/game025-CX6ZzStI.css",
+      "http_sha256": "59f4a175df71a904a3cdaf5e8a85e269cde2a9fec5a743c2cc4fa8be529da8f7",
+      "matches_compiled_artifact": true
+    }
+  ],
+  "browser_closed": true,
+  "page_errors": [],
+  "console_errors": [],
+  "limitations": [
+    "Synthetic document.hidden, blocked Worker and desktop Chromium touch emulation; not real backgrounding or physical mobile device.",
+    "Original BEFORE queueMicrotask names are misleading; original raw trace retained. AFTER names say post-capture-microtask and do not assert handler completion. Snapshots plus later mutation/tap phases establish behavior.",
+    "Only one bounded native AFTER run; no silent retry and no new API."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "finding_id": "025-consent-pointer-interception",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic024 independent readonly reviewer (no Jev logs/answers read)",
+  "rationale": "The initial Analytics consent surface intercepted a sound-button click before QA chose a consent option. The common consent flow intentionally awaits that choice; updated author QA explicitly declines before interacting, and the supplied compiled report then records sound clicks and zero page errors across four viewports. This identifies an unhandled prerequisite in the QA sequence, not evidence that the product sound control is unavailable after the consent choice. The original consent-era PNG at the reused390-intermediate path was overwritten by later QA; this judgment uses the preserved timeout and later sequence/report, not an asserted review of the original screenshot.",
+  "evidence": [
+    "docs/game025/QA/CONSENT_FINDING.json",
+    "docs/game025/QA/browser-second.txt",
+    "tests/game025/browser.mjs",
+    "docs/game025/QA/browser/report.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the original timeout, normal consent prerequisite in the updated browser script, and subsequent existing compiled output; did not launch another browser or alter product code.",
+    "evidence": [
+      "docs/game025/QA/browser-second.txt",
+      "tests/game025/browser.mjs",
+      "docs/game025/QA/browser/report.json"
+    ]
+  }
+}

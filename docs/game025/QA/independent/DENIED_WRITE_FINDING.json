@@ -1,0 +1,24 @@
+{
+  "finding_id": "025-denied-write-stale-read",
+  "problem": "A refused snapshot write can cause the current-page SaveStore reader to return an older valid backend snapshot instead of its newly written memory snapshot.",
+  "expected": "When persistent writes are denied, current memory should remain authoritative for the current page.",
+  "observed": [
+    "A valid prior backend snapshot had hints=0.",
+    "The current snapshot with hints=7 was passed to SaveStore.write while setItem threw.",
+    "The subsequent SaveStore.read returned saved.hints=0."
+  ],
+  "unknown": [
+    "Whether an affected browser reports write denial persistently or intermittently."
+  ],
+  "operation": "Synthetic localStorage backend returning a valid older snapshot and throwing on setItem",
+  "measurements": {
+    "expected_hints": 7,
+    "observed_hints": 0,
+    "source_sha256": "e307335b4071888568c770ed9348eeaeee7937194ede672d866aaea6fbf2d812"
+  },
+  "evidence": [
+    "docs/game025/QA/independent/MODEL_ADVERSARIAL.json",
+    "src/games/game025/Save.ts"
+  ],
+  "provenance": "Actual independent module execution with synthetic denied-write backend; no production browser or player data"
+}

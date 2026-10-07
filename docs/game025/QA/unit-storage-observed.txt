@@ -1,0 +1,57 @@
+
+> orbit-shift@0.1.0 test
+> vitest run tests/unit/game025.test.ts
+
+
+ RUN  v3.2.7 /workspace/classic-author-025
+
+ ❯ tests/unit/game025.test.ts (20 tests | 1 failed) 128ms
+   ✓ game025 standard fixed mines > correct eight neighbors on corners, edges, middle and 1–8 counts 3ms
+   ✓ game025 standard fixed mines > exact mine totals and safe first click plus all valid neighbors in both modes 2ms
+   ✓ game025 standard fixed mines > flags before initialization do not initialize and flagged opening is ignored 0ms
+   ✓ game025 standard fixed mines > zero expansion skips user flags and never changes mines 2ms
+   ✓ game025 standard fixed mines > all safe opens win once, flags alone never win 1ms
+   ✓ game025 standard fixed mines > mine opens lose once and further actions are rejected 2ms
+   ✓ game025 standard fixed mines > correct flags chord safe cells; wrong equal-count flags can lose 2ms
+   ✓ game025 visible-state deduction and fallback proof > all 81 own fallback starts have complete matching replayable proof 89ms
+   ✓ game025 visible-state deduction and fallback proof > ambiguous public fixture gives no proven safe or mine cells 0ms
+   ✓ game025 visible-state deduction and fallback proof > an original ambiguous candidate is not claimed verified 8ms
+   ✓ game025 visible-state deduction and fallback proof > the solver public projection contains no hidden board or flags 2ms
+   ✓ game025 visible-state deduction and fallback proof > logical hint identifies safe user flag without trusting it as truth 1ms
+   ✓ game025 visible-state deduction and fallback proof > bounded generation reports failure without falsely verifying 0ms
+   ✓ game025 visible-state deduction and fallback proof > clicked start cannot differ from the independently valid proof start 0ms
+   ✓ game025 visible-state deduction and fallback proof > proof mismatch, translated start and tampering are rejected 1ms
+   ✓ game025 atomic validated snapshot > replays all active flags/opened/history and proof, elapsed and same run id 2ms
+   ✓ game025 atomic validated snapshot > empty flagged state restores with no initialized board 0ms
+   ✓ game025 atomic validated snapshot > rejects mismatched counts, flags, outcome, first start, history and versions 3ms
+   ✓ game025 atomic validated snapshot > won/lost snapshot requires atomic report ledger and restores no new result 2ms
+   × game025 blocked snapshot storage > retains the current memory snapshot after denied writes against valid stale reads 6ms
+     → expected +0 to be 7 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game025.test.ts > game025 blocked snapshot storage > retains the current memory snapshot after denied writes against valid stale reads
+AssertionError: expected +0 to be 7 // Object.is equality
+
+- Expected
++ Received
+
+- 7
++ 0
+
+ ❯ tests/unit/game025.test.ts:50:101
+     48|     const b=new Mines('beginner'),old=snapshot(b,0,0,'12345678-1234-41…
+     49|     vi.stubGlobal('localStorage',{getItem:()=>JSON.stringify(old),setI…
+     50|     try{const store=new SaveStore();store.write({...old,hints:7});expe…
+       |                                                                                                     ^
+     51|   });
+     52| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 19 passed (20)
+   Start at  15:25:37
+   Duration  424ms (transform 76ms, setup 0ms, collect 94ms, tests 128ms, environment 0ms, prepare 58ms)
+

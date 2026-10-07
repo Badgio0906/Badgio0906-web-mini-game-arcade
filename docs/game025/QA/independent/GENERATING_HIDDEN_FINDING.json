@@ -1,0 +1,27 @@
+{
+  "finding_id": "025-hidden-during-generation",
+  "problem": "A hidden event during board generation is followed by a delayed generation callback entering playing and starting the elapsed clock while the page is still hidden.",
+  "expected": "A page hidden during generation should remain stopped and wait for explicit resume when its prepared board is ready.",
+  "observed": [
+    "The actual visibility handler was invoked with document.hidden=true while state was generating.",
+    "After that handler, state remained generating and no pause menu was shown.",
+    "Invoking the pending application callback transitioned state to playing, opened one initial cell and set ticking=1000 while document.hidden remained true."
+  ],
+  "unknown": [
+    "Native compiled-browser timing and browser-specific throttling have not been measured for this sequence."
+  ],
+  "operation": "Extracted unmodified source lifecycle functions, synthetic hidden DOM and successful fallback initialization boundary",
+  "measurements": {
+    "before_state": "generating",
+    "after_hidden_state": "generating",
+    "after_callback_state": "playing",
+    "pause_menus": 0,
+    "after_callback_ticking": 1000,
+    "opened_actions": 1,
+    "hidden_after_callback": true
+  },
+  "evidence": [
+    "docs/game025/QA/independent/GENERATING_HIDDEN_BEFORE.json"
+  ],
+  "provenance": "Actual offline execution of current source AST functions with synthetic DOM/Worker boundary; no browser, player data or product edits"
+}

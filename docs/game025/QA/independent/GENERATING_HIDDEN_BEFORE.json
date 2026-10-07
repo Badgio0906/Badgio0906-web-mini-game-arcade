@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-07T15:31:14.018Z",
+  "source": "src/games/game025/main.ts",
+  "source_sha256": "3748a4ac5d58b3551aa95d4e8d33545bdabdd52a8a5920eb68d8767cfc193a9e",
+  "provenance": "Actual source AST lifecycle functions extracted unmodified and TS-transpiled in offline VM; synthetic DOM/worker application boundary, no browser or product edits",
+  "fragments": [
+    "const playable = () => ['playing','practice'].includes(state);",
+    "const training = () => state === 'practice' || prior === 'practice' && ['paused','help','generating'].includes(state);",
+    "const elapsed = () => elapsedMs + (ticking ? performance.now() - ticking : 0);",
+    "function stopClock(): void { elapsedMs = elapsed(); ticking = 0; }",
+    "function cancelJob(): void { job++; worker?.terminate(); worker = null; if (deadline) clearTimeout(deadline); deadline = null; pending = null; }",
+    "function mode(next: string): void {\n  stopClock(); epoch++; gesture = null; state = next; app.dataset.state = next;\n  grid.inert = !playable(); if (playable() && !training() && board.outcome === 'active') ticking = performance.now();\n  if (playable() && menu.open) menu.close(); render();\n}",
+    "const apply = (mines: boolean[] | null, proof: Proof | null) => {\n    if (id !== job || state !== 'generating' || pending !== startCell) return;\n    let initialized = mines && board.initialize(mines, startCell, proof);\n    if (!initialized && board.difficulty === 'beginner') { const fallback = fallbacks[startCell]; initialized = board.initialize(fallback.mines, startCell, fallback.proof as Proof); }\n    if (!initialized && board.difficulty === 'intermediate') initialized = board.initialize(candidate('intermediate', startCell, seed), startCell);\n    cancelJob();\n    if (!initialized) { feedback = '盤面を用意できませんでした。新しい盤面を選んでください。'; mode('playing'); return; }\n    mode('playing'); move('open', startCell); focusCell();\n  };",
+    "function pause(): void { if (playable()) { prior = state; event('pause'); pauseMenu(); } }"
+  ],
+  "visibilityHandler": "() => { if (document.hidden) pause(); }",
+  "trace": [
+    {
+      "stage": "before-hidden-event",
+      "state": "generating",
+      "ticking": 0
+    },
+    {
+      "stage": "after-hidden-event",
+      "state": "generating",
+      "ticking": 0,
+      "pauseMenus": 0
+    },
+    {
+      "stage": "after-delayed-generation",
+      "state": "playing",
+      "ticking": 1000,
+      "opened": 1,
+      "hidden": true
+    }
+  ]
+}

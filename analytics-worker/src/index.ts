@@ -50,7 +50,7 @@ async function aggregate(request:Request,env:Env,gameId?:string,origin?:string){
  const url=new URL(request.url);const period=getPeriod(url,env);if(!period)return error('invalid_period',400,origin);
  const environment=url.searchParams.get('environment')??'production';if(!['production','development','qa','synthetic'].includes(environment))return error('invalid_environment',400,origin);
  const includeRetired=url.searchParams.get('include_retired')==='1';
- if(gameId!==undefined&&!/^game(?:00[1-9]|01[0-9]|02[0-4])$/.test(gameId))return error('unknown_game',404,origin);
+ if(gameId!==undefined&&!/^game(?:00[1-9]|01[0-9]|02[0-5])$/.test(gameId))return error('unknown_game',404,origin);
  const versionFilters:Record<string,string>={};
  const conditions=['occurred_at >= ?','occurred_at < ?','environment = ?'];const args:unknown[]=[period.from,period.to,environment];
  // Read all games for cross-game analysis; the selected game's display is filtered afterwards.

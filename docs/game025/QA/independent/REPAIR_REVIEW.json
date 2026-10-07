@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-07T15:33:21.423663+00:00",
+  "freeze": "SOURCE_HASHES_REPAIR.json",
+  "all_freeze_hashes_matched_before_validation": true,
+  "tests": {
+    "command": "npm test -- --run tests/unit/game025.test.ts",
+    "at": "2026-10-07T15:30:35Z",
+    "passed": 22
+  },
+  "source_review": "SaveStore now latches memoryOnly after denied writes. reportResult uses a distinct local result UUID independently of optional Analytics run ID. Active restore remains explicitly paused and avoids new run_start. Terminal local flags and ledger survive validation when observer is null.",
+  "evidence": [
+    "REPAIR_ADVERSARIAL.json",
+    "025-denied-write-stale-read-judgment.json",
+    "025-terminal-null-observer-judgment.json"
+  ],
+  "new_finding": {
+    "id": "025-hidden-during-generation",
+    "confirmed_by": "Extracted unmodified lifecycle AST functions in offline synthetic boundary; see GENERATING_HIDDEN_BEFORE.json",
+    "shadow": "One authorized checkpointC hidden-answer request AVAILABLE, no answers read",
+    "status": "Author notified after record completion; narrow repair authorized by root, pending next freeze and verification"
+  },
+  "limits": [
+    "No product code edits or browser launch by reviewer.",
+    "Synthetic terminal selection knows the answer board for function validation and does not establish human ability/enjoyment.",
+    "Live compiled native interruption evidence remains pending browser handoff."
+  ]
+}

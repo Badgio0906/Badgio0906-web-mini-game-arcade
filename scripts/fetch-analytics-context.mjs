@@ -20,7 +20,7 @@ export function parseOptions(args) {
       if (!/^[1-9]\d*$/.test(value) || Number(value) > 90) fail('invalid_days');
       options.days = Number(value);
     } else if (flag === '--game') {
-      if (!/^game(?:00[1-9]|01[0-9]|02[0-4])$/.test(value)) fail('invalid_game');
+      if (!/^game(?:00[1-9]|01[0-9]|02[0-5])$/.test(value)) fail('invalid_game');
       options.game = value;
     } else {
       if (!ENVIRONMENTS.has(value)) fail('invalid_environment');

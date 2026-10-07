@@ -1,0 +1,40 @@
+--- SOURCE_HASHES_HOVER_NOTE/main.ts
++++ menu-gesture/main.ts
+@@ -20,6 +20,7 @@
+ let gesture: { pointer: number; x: number; y: number; cell: number; time: number; epoch: number } | null = null;
+ let lastPointerType = 'mouse';
+ let generationPaused = false, deferredFirstOpen: number | null = null;
++let menuDown: { epoch: number; target: HTMLElement } | null = null;
+ let epoch = 0, suppressClickUntil = 0, practiceFlag = false, practiceOpen = false;
+ const playable = () => ['playing','practice'].includes(state);
+ const training = () => state === 'practice' || prior === 'practice' && ['paused','help','generating'].includes(state);
+@@ -30,7 +31,7 @@
+ function specific(action: string): void { if (state === 'playing') event('specific_game_events', { event: action, difficulty, guaranteed: !!board.proof, opened: board.openedCount, flags: board.flagCount, flag_operations: board.history.filter(a => a.type === 'flag').length, hints }); }
+ function cancelJob(): void { job++; worker?.terminate(); worker = null; if (deadline) clearTimeout(deadline); deadline = null; pending = null; generationPaused = false; }
+ function mode(next: string): void {
+-  stopClock(); epoch++; gesture = null; state = next; app.dataset.state = next;
++  stopClock(); epoch++; gesture = null; menuDown = null; state = next; app.dataset.state = next;
+   grid.inert = !playable(); if (playable() && !training() && board.outcome === 'active' && !document.hidden) ticking = performance.now();
+   if (playable() && menu.open) menu.close(); render();
+ }
+@@ -173,6 +174,20 @@
+ el('mute').onclick = () => { el('mute').textContent = audio.toggle() ? '音 OFF' : '音 ON'; }; el('mute').textContent = audio.muted ? '音 OFF' : '音 ON';
+ el('portal').onclick = () => { cancelJob(); stopClock(); save(); telemetry.trackEvent('return_to_portal', { source: state }); };
+ document.addEventListener('keydown', e => { if (e.key === 'Escape' && playable()) { e.preventDefault(); pause(); } });
++// A cell's pointerup can display a menu before the browser sends its compatibility
++// click. Menu actions require their own fresh press in this screen, never that tap.
++menu.addEventListener('pointerdown', e => {
++  const target = (e.target as HTMLElement).closest<HTMLElement>('button,a');
++  menuDown = target && e.isPrimary && e.button === 0 ? { epoch, target } : null;
++});
++menu.addEventListener('pointercancel', () => { menuDown = null; });
++menu.addEventListener('click', e => {
++  const target = (e.target as HTMLElement).closest<HTMLElement>('button,a');
++  if (!target) return;
++  const fresh = menuDown !== null && menuDown.epoch === epoch && menuDown.target === target;
++  menuDown = null;
++  if (e.detail > 0 && !fresh) { e.preventDefault(); e.stopImmediatePropagation(); }
++}, true);
+ menu.addEventListener('cancel', e => e.preventDefault());
+ document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); }); window.addEventListener('blur', pause);
+ window.addEventListener('pagehide', () => { cancelJob(); stopClock(); save(); audio.destroy(); }, { once: true });

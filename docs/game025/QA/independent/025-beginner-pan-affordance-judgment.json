@@ -1,0 +1,27 @@
+{
+  "finding_id": "025-beginner-pan-affordance",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic024 independent Visual/source reviewer; no hidden answers read",
+  "rationale": "The beginner phone grid extends beyond its scroll window and normal touch evidence proves it pans. Static visible note and viewport label restrict that instruction to intermediate, so wording should describe any board that extends beyond the viewport. Existing native-emulated panning and taps work; this is an affordance mismatch, not a demonstrated progression block. Preserve generic note and accessible-label verification after the narrow wording change. The repaired note and viewport accessible label now describe whichever board extends beyond the screen. I independently viewed the fresh generic-pan image; author output confirms the generic text/aria and beginner scrollreach70px.",
+  "evidence": [
+    "docs/game025/QA/independent/BEGINNER_PAN_BEFORE.json",
+    "docs/game025/QA/independent/025-beginner-pan-note-before.png",
+    "docs/game025/QA/browser-pan-final/touch-pan.json",
+    "game025.html",
+    "docs/game025/QA/hover-note-final/report.json",
+    "docs/game025/QA/SOURCE_HASHES_HOVER_NOTE.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "The repaired note and viewport accessible label now describe whichever board extends beyond the screen. I independently viewed the fresh generic-pan image; author output confirms the generic text/aria and beginner scrollreach70px. Read actual PNGs plus report and frozen-source rules; no additional API request or source edit.",
+    "evidence": [
+      "docs/game025/QA/hover-note-final/390-title-primary-hover.png",
+      "docs/game025/QA/hover-note-final/390-pause-primary-hover.png",
+      "docs/game025/QA/hover-note-final/390-generic-pan-note.png",
+      "docs/game025/QA/hover-note-final/report.json"
+    ]
+  }
+}

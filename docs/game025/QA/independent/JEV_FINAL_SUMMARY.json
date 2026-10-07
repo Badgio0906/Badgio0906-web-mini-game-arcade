@@ -1,0 +1,166 @@
+{
+  "at": "2026-10-07T16:58:26.131433+00:00",
+  "count": 8,
+  "independently_annotated": 8,
+  "records": [
+    {
+      "finding_id": "025-consent-pointer-interception",
+      "checkpoint": "C",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "actual_next_action": "CODE_INSPECTION",
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-proof-start-association",
+      "checkpoint": "B",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "actual_next_action": "AUTOMATED_TEST",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-denied-write-stale-read",
+      "checkpoint": "B",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "actual_next_action": "AUTOMATED_TEST",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-terminal-null-observer",
+      "checkpoint": "B",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "actual_next_action": "AUTOMATED_TEST",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-hidden-during-generation",
+      "checkpoint": "C",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "actual_next_action": "AUTOMATED_TEST",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-primary-hover-contrast",
+      "checkpoint": "D",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "actual_next_action": "SCREENSHOT_REVIEW",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": true
+    },
+    {
+      "finding_id": "025-beginner-pan-affordance",
+      "checkpoint": "D",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "actual_next_action": "SCREENSHOT_REVIEW",
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "finding_id": "025-hidden-prepared-dom-timeout",
+      "checkpoint": "C",
+      "independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "actual_next_action": "LIVE_INTERACTION",
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": true
+    }
+  ],
+  "codex_false_pass_count": 0,
+  "release_risk_miss_findings": [
+    "025-primary-hover-contrast",
+    "025-hidden-prepared-dom-timeout"
+  ],
+  "human_play_claim": false,
+  "no_new_api_in_closure": true
+}

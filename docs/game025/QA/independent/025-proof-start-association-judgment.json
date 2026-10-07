@@ -1,0 +1,24 @@
+{
+  "finding_id": "025-proof-start-association",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic024 independent readonly reviewer (no Jev logs/answers read)",
+  "rationale": "The preserved synthetic wrong association accepted clicked start5 with a proof for start0. A proof is valid only for its specified start; accepting another safe first cell does not establish the requested no-guess claim from that cell. This boundary is used by snapshot restoration too, so exact association needs enforcement independently of the usual correct UI fallback index. Current initialize rejects differing starts before proof replay; targeted regression and all81 proof replays pass. Risk judgment concerns an unsupported guarantee if left unresolved, not evidence of a normal UI board having failed.",
+  "evidence": [
+    "docs/game025/QA/PROOF_START_FINDING.json",
+    "docs/game025/QA/proof-start-observed.json",
+    "src/games/game025/Mines.ts",
+    "tests/unit/game025.test.ts",
+    "docs/game025/QA/independent/MODEL_ADVERSARIAL.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Ran the current game025 unit file:19 tests passed, including wrong-start rejection. Independently replayed all81 proof records through current verifyProof.",
+    "evidence": [
+      "tests/unit/game025.test.ts",
+      "docs/game025/QA/independent/MODEL_ADVERSARIAL.json"
+    ]
+  }
+}

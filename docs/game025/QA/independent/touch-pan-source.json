@@ -1,0 +1,24 @@
+{
+  "finding_id": "g025-cell-touch-pan-cascade",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic_review",
+  "recorded_at": "2026-10-07T15:55:48.849141+00:00",
+  "rationale": "All44px cells require horizontal scrolling on narrow beginner and16-column intermediate. Guard specificity disables advertised native swipe from cells. Keyboard focus/fallbackscroller may still reach cells, but primary mobile boardnavigation is at risk. Compiled physical swipe not asserted.",
+  "evidence": [
+    "docs/game025/QA/independent/touch-pan-source-initial/style.css.txt",
+    "docs/game025/QA/independent/touch-pan-source-initial/shared-guard.css.txt"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently compared emitted cell attributes, scoped shared guard selector and game stylesheet. No product edits or Jev answers accessed; root needs beforefix recording, scoped CSS repair and final rendered cascade/normal input validation.",
+    "evidence": [
+      "docs/game025/QA/independent/touch-pan-source-initial/style.css.txt",
+      "docs/game025/QA/independent/touch-pan-source-initial/shared-guard.css.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

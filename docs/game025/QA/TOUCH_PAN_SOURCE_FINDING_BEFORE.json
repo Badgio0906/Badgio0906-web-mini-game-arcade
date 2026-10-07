@@ -1,0 +1,21 @@
+{
+  "finding_id": "g025-cell-touch-pan-cascade",
+  "game_id": "game025",
+  "observed_at": "2026-10-07T15:55:48.849141+00:00",
+  "observation": "Author current stylesheet gives.cell touch-action:pan-x pan-y, but shared injected guard [data-game-touch-page] [data-game-interaction] has greater specificity and sets none. Every cell is marked data-game-interaction, so declared native pan from cells is disabled.",
+  "scope": "Independent source inspection only. Root compiled025 and physical iPhone not run. Root022 computed none under same guard observed separately; not substituted as025 browser evidence.",
+  "source_sha256": {
+    "/workspace/classic-author-025/src/games/game025/style.css": "4f95065a90180fddbf6bdc846524b7c17232caaf5b4148e5d76216807a13c66a",
+    "/workspace/arcade-classic-five/src/core/gameTouchGuards.css": "1b22cd61d1861f3b3f18aaaf40ccc24cba50871f38acb12df1120b272c11699e"
+  },
+  "actual_steps": [
+    "Read author025 full main.ts/Mines.ts/Save.ts/style.css/game025.html and worker",
+    "Read sharedgameTouchGuards.css plus installer path already reviewed",
+    "Compare CSS specificity and generated cellattributes"
+  ],
+  "evidence_paths": [
+    "docs/game025/QA/independent/touch-pan-source-initial/style.css.txt",
+    "docs/game025/QA/independent/touch-pan-source-initial/shared-guard.css.txt"
+  ],
+  "product_changes_made": false
+}

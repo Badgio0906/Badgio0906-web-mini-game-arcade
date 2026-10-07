@@ -1,0 +1,31 @@
+{
+  "finding_id": "025-beginner-pan-affordance",
+  "problem": "The phone beginner board requires horizontal panning, but the visible instruction and viewport label describe panning only for intermediate.",
+  "expected": "The instruction and board label should explain panning for whichever board extends beyond the viewport, including beginner and practice.",
+  "observed": [
+    "At320px the fresh beginner image shows right-hand columns beyond the board scroll window.",
+    "Fresh normal touch evidence records beginner scrollWidth430/clientWidth290 and emulated horizontal scroll125px without opening a cell.",
+    "The visible instruction says「中級は盤面を横にスワイプ」and the viewport label says「中級は横へスクロールできます」."
+  ],
+  "unknown": [
+    "How quickly a new player discovers beginner panning without a matching instruction."
+  ],
+  "operation": "Independent view of fresh normal320 beginner image, read-only static instruction and existing author CDP touch evidence",
+  "viewport": {
+    "width": 320,
+    "height": 740
+  },
+  "measurements": {
+    "beginner_scroll_width": 430,
+    "beginner_client_width": 290,
+    "observed_emulated_scroll_left": 125,
+    "html_sha256": "d48eb2af9f0008804bff3da1d844105d4fc268a32fe4129653df91b1811fe518",
+    "image_sha256": "3d504ee663fe98afe56d50e5fd8e408a2dcb5a1f466dd18cda0cce7f72182a1a"
+  },
+  "evidence": [
+    "docs/game025/QA/independent/025-beginner-pan-note-before.png",
+    "docs/game025/QA/browser-pan-final/touch-pan.json",
+    "game025.html"
+  ],
+  "provenance": "Actual fresh normal compiled screenshot and author normal touch-pan output, independently inspected; no product edit or player data"
+}

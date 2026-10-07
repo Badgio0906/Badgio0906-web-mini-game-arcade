@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-07T16:06:08.231542+00:00",
+  "scope": "Game025 five existing records only; no new request or retry",
+  "records": [
+    {
+      "finding_id": "025-consent-pointer-interception",
+      "checkpoint": "C",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.186760+00:00"
+    },
+    {
+      "finding_id": "025-proof-start-association",
+      "checkpoint": "B",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.256208+00:00"
+    },
+    {
+      "finding_id": "025-denied-write-stale-read",
+      "checkpoint": "B",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.320231+00:00"
+    },
+    {
+      "finding_id": "025-terminal-null-observer",
+      "checkpoint": "B",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.401245+00:00"
+    },
+    {
+      "finding_id": "025-hidden-during-generation",
+      "checkpoint": "C",
+      "log": "docs/game025/QA/independent/JEV_HIDDEN_GENERATION.jsonl",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.467197+00:00"
+    }
+  ],
+  "all_metadata_and_four_answer_shapes_valid": true,
+  "source_log_hashes": {
+    "docs/game025/QA/JEV_SHADOW.jsonl": "56f22b3c069d06defb79a90ab8c5d23dea2460fa1e96ec5d9e726caba9d8a6b9",
+    "docs/game025/QA/independent/JEV_HIDDEN_GENERATION.jsonl": "837208c3dd419e891dec736aceeb61795238acd85e5bcf0e539b6c70fcc37d1f"
+  },
+  "answer_handling": "Raw decisions/probabilities were not printed or read by reviewer. Independent judgment JSONs were fixed before annotate. The helper then emitted only comparison flags; these did not change judgments.",
+  "limitations": [
+    "Consent-era390-intermediate screenshot was overwritten by later QA; original timeout text persists, and the judgment does not claim original-PNG review.",
+    "Original/source-repair freeze history retained. Earlier reviews observed source changes, and that scope is recorded rather than rewriting historical claims.",
+    "Generation interruption evidence is extracted actual production functions/handlers with synthetic DOM/Worker boundaries; final independent trace additionally uses real Mines/Save. This is not full DOM, native browser lifecycle or physical iPhone play.",
+    "Pan CSS author repair is outside this audit; next source freeze/model/browser review must record it separately.",
+    "Jev agreement or all HTTP200 does not establish game quality, human enjoyment or publication approval."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "observed_at": "2026-10-07T16:31:59.263554+00:00",
+  "source_sha256": "474c4cfae71c0aee1c6cc23cfc3271031d5955a127462bf0d27934aaa0734296",
+  "runtime_freeze": "SOURCE_HASHES_PAN_SCOPE.json",
+  "screenshot_copied_before_change": "/workspace/arcade-classic-five/docs/game025/QA/independent/025-primary-hover-before.png",
+  "css_rules": [
+    "button:hover{background:#e7eee5}",
+    ".selector [aria-pressed=true],.primary{background:#326c64;color:#fffdf4;border-color:#326c64}"
+  ],
+  "finding": {
+    "finding_id": "025-primary-hover-contrast",
+    "problem": "The pause menu primary resume label is white on a pale hover background and is difficult to read.",
+    "expected": "Primary action text should remain legible when the pointer hovers over the button.",
+    "observed": [
+      "The fresh normal844-pause screenshot shows the「続ける」button with white text on pale green.",
+      "Current CSS sets primary text to white. Its global button:hover rule sets the hovered background to#e7eee5.",
+      "The primary class background rule does not override the more-specific button:hover rule."
+    ],
+    "unknown": [
+      "Other primary buttons have not been independently hovered in a browser by this reviewer."
+    ],
+    "operation": "Independent view of the author normal compiled pause screenshot, then read-only CSS inspection",
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "measurements": {
+      "foreground": "#fffdf4",
+      "hover_background": "#e7eee5",
+      "source_sha256": "474c4cfae71c0aee1c6cc23cfc3271031d5955a127462bf0d27934aaa0734296",
+      "image_sha256": "c1861269a6cea3f45fcde7578bae3ba9772c42a6886af2d360fa9c750900c546"
+    },
+    "evidence": [
+      "docs/game025/QA/independent/025-primary-hover-before.png",
+      "docs/game025/QA/SOURCE_HASHES_PAN_SCOPE.json"
+    ],
+    "provenance": "Actual fresh normal compiled screenshot reviewed independently; no screenshot fixture, no product edit or reviewer browser launch"
+  }
+}

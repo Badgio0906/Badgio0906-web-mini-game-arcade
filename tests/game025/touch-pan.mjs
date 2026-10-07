@@ -1,0 +1,21 @@
+import {chromium} from '@playwright/test';import fs from 'node:fs';
+const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const results=[];
+for(const width of [320,390]) for(const difficulty of ['beginner','intermediate']){
+ const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.GAME025_QA_URL??'http://127.0.0.1:4026/game025.html');await page.locator('#analytics-settings-host').locator('#deny').click();await page.locator('#difficulty').selectOption(difficulty);await page.locator('#play').click();
+ const size=await page.locator('[data-cell="0"]').boundingBox();if(size.width<44||size.height<44)throw Error('cell below44');
+ const touchCss=await page.locator('[data-cell="0"]').evaluate(e=>{const ancestors=[];for(let node=e.parentElement;node;node=node.parentElement)ancestors.push({tag:node.tagName,id:node.id,touchAction:getComputedStyle(node).touchAction,interaction:node.hasAttribute('data-game-interaction'),control:node.hasAttribute('data-game-control')});return{cell:getComputedStyle(e).touchAction,ancestors};});if(!touchCss.cell.includes('pan-x')||!touchCss.cell.includes('pan-y')||touchCss.ancestors.some(e=>e.touchAction==='none'))throw Error('touch guard blocks pan');
+ const viewport=await page.locator('#viewport').boundingBox();const cdp=await context.newCDPSession(page);const x=viewport.x+viewport.width-40,y=viewport.y+60;
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+ for(let step=1;step<=10;step++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-step*12,y}]});
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await page.waitForTimeout(400);
+ const panned=await page.locator('#viewport').evaluate(e=>({left:e.scrollLeft,width:e.clientWidth,scroll:e.scrollWidth}));if(await page.locator('#opened').textContent()!=='0')throw Error('pan opened a cell');if(await page.locator('#app').getAttribute('data-state')!=='playing')throw Error('pan initialized');
+ const nativePanStatus=panned.left>0?'emulated CDP touch scroll observed':'CDP scroll inconclusive';
+ await page.locator('#viewport').evaluate(e=>{e.scrollLeft=e.scrollWidth-e.clientWidth;});const directReach=await page.locator('#viewport').evaluate(e=>({left:e.scrollLeft,max:e.scrollWidth-e.clientWidth}));if(directReach.max<=0||directReach.left<=0)throw Error('last columns unreachable');
+ const historyBefore=await page.evaluate(()=>JSON.parse(localStorage.getItem('web-mini-arcade:v1:game025:snapshot')).board.history.length);if(historyBefore!==0)throw Error('pan changed history');
+ const target=await page.locator('.cell').evaluateAll(cells=>{const v=document.querySelector('#viewport').getBoundingClientRect();const cell=cells.find(e=>{const b=e.getBoundingClientRect();return b.left>=v.left+12&&b.right<=v.right-12&&b.top>=v.top+12&&b.bottom<=v.bottom-12;});return cell?.dataset.cell;});if(target===undefined)throw Error('no visible cell');
+ await page.locator(`[data-cell="${target}"]`).tap();await page.waitForFunction(()=>document.querySelector('#app').dataset.state==='playing'&&Number(document.querySelector('#opened').textContent)>0);
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('web-mini-arcade:v1:game025:snapshot')));if(saved.board.start!==Number(target))throw Error('tap opened wrong cell');
+ if(errors.length)throw Error(errors.join());results.push({width,difficulty,cellWidth:size.width,cellHeight:size.height,touchCss,pan:panned,nativePanStatus,physicalPan:'unverified',directReach,panOpened:false,panChangedHistory:false,tappedCell:Number(target),firstStart:saved.board.start,pageErrors:errors});await context.close();
+}
+await browser.close();const dir=process.env.GAME025_QA_DIR??'docs/game025/QA/browser-touch44';fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(`${dir}/touch-pan.json`,JSON.stringify({at:new Date().toISOString(),provenance:'compiled browser CDP native touch input + normal tap, no hidden-answer selection or model mutation',results},null,2));console.log('44px computed pan CSS, direct reachability and emulated touch without accidental open verified; physical-device pan unverified');

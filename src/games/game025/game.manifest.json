@@ -1,0 +1,48 @@
+{
+  "id": "game025",
+  "title": "こつこつマインスイーパー ～MINESWEEPER～",
+  "titleEn": "MINESWEEPER",
+  "tagline": "数字を手がかりに、ひとマスずつ。",
+  "genre": "classic logic board",
+  "coreMechanic": "Open all non-mine cells using true eight-neighbor counts; fixed mines, flags and optional risky chord",
+  "skillAxes": [
+    "constraint deduction",
+    "spatial reasoning",
+    "patient planning"
+  ],
+  "runSecondsDesignTarget": null,
+  "timeLimit": null,
+  "inputs": {
+    "open": "left click/tap using open selector; Space/Enter",
+    "flag": "right mouse click/tap using flag selector; F",
+    "navigation": "roving arrows; 44px cells in both sizes, horizontal pan whenever viewport is smaller",
+    "pause": "pause/Escape/blur/background; generation completes into pause after hidden/blur, manual resume only"
+  },
+  "boards": {
+    "beginner": {
+      "width": 9,
+      "height": 9,
+      "mines": 10,
+      "guarantee": "no guess verified via public-number subset solver; all81 exact-start own fallback boards"
+    },
+    "intermediate": {
+      "width": 16,
+      "height": 16,
+      "mines": 40,
+      "guarantee": "first cell and valid neighbors safe; no-guess only when verified"
+    },
+    "generator": "public-subset-v1; worker attempts and wall-clock bounded, host timeout1s, generation ID cancellation",
+    "hiddenChanges": false
+  },
+  "practice": "Optional isolated flag/remove/open lesson with actual model, no production RUN or statistics",
+  "storagePrefix": "web-mini-arcade:v1:game025:",
+  "storage": "save_version2 atomic JSON snapshot + game-local resultId report ledger independent of nullable existing Analytics runId; validate history/counts/proof/outcomes/elapsed; paused restore; failed-write memoryOnly; prepared firstOpenPending preserves the exact initial action across hidden-generation pause/reload",
+  "creditMode": "free",
+  "ads": "none in game logic",
+  "jev": "development-only Shadow on actual findings; never rules/solver/publication authority",
+  "humanReview": "author subjective playtest and physical-device review pending",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "1",
+  "telemetry": "Existing services; meaningful milestones only, no mines or board payload; practice production excluded; same restored context ID; remoteCollectionEnabled:false until root confirms Worker registration"
+}

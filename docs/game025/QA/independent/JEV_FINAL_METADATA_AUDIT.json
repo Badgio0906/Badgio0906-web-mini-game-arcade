@@ -1,0 +1,133 @@
+{
+  "at": "2026-10-07T16:58:26.131433+00:00",
+  "scope": "Eight preserved Game025 records; local schema audit and annotation only, no API/retry",
+  "records": [
+    {
+      "finding_id": "025-consent-pointer-interception",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.186760+00:00"
+    },
+    {
+      "finding_id": "025-proof-start-association",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.256208+00:00"
+    },
+    {
+      "finding_id": "025-denied-write-stale-read",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.320231+00:00"
+    },
+    {
+      "finding_id": "025-terminal-null-observer",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.401245+00:00"
+    },
+    {
+      "finding_id": "025-hidden-during-generation",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/independent/JEV_HIDDEN_GENERATION.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:05:17.467197+00:00"
+    },
+    {
+      "finding_id": "025-primary-hover-contrast",
+      "checkpoint": "D",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/independent/JEV_VISUAL_FINAL_FINDINGS.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:47:28.835129+00:00"
+    },
+    {
+      "finding_id": "025-beginner-pan-affordance",
+      "checkpoint": "D",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/independent/JEV_VISUAL_FINAL_FINDINGS.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:47:28.894761+00:00"
+    },
+    {
+      "finding_id": "025-hidden-prepared-dom-timeout",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "status": "AVAILABLE",
+      "api_attempted": true,
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "log": "docs/game025/QA/independent/JEV_DOM_TIMEOUT.jsonl",
+      "valid_four_questions": true,
+      "independently_annotated": true,
+      "annotation_recorded_at": "2026-10-07T16:57:39.723157+00:00"
+    }
+  ],
+  "all_metadata_and_four_answer_shapes_valid": true,
+  "source_log_hashes": {
+    "docs/game025/QA/JEV_SHADOW.jsonl": "56f22b3c069d06defb79a90ab8c5d23dea2460fa1e96ec5d9e726caba9d8a6b9",
+    "docs/game025/QA/independent/JEV_HIDDEN_GENERATION.jsonl": "837208c3dd419e891dec736aceeb61795238acd85e5bcf0e539b6c70fcc37d1f",
+    "docs/game025/QA/independent/JEV_VISUAL_FINAL_FINDINGS.jsonl": "10e0d5198945a4a28eaf4b1ebaf0adc3705dd67aec5c7caf2f9e8d7032755aa5",
+    "docs/game025/QA/independent/JEV_DOM_TIMEOUT.jsonl": "5b11701471e7bdfbb16ad5cae68b6f62445272c57bcf5f0f5a823eba3e4dcfca"
+  },
+  "answer_handling": "The audit checks response shape/numeric ranges without printing or showing raw decisions/probabilities. Blind independent judgment artifacts predate annotate; only comparison flags subsequently seen.",
+  "limitations": [
+    "Consent before PNG overwritten; preserved timeout does not recover original image.",
+    "Old source freezes and two hidden DOM failures retained, not rewritten as passed.",
+    "Original consent and proof/source protocol chronology retained by original records.",
+    "After native trace uses explicit blocked Worker/hidden property fixtures, not physical backgrounding.",
+    "No Jev record for PASS; agreement and release risk signals do not approve publishing or prove enjoyment."
+  ]
+}
