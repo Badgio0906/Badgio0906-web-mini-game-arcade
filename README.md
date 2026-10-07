@@ -1,11 +1,11 @@
 <!-- Current release evidence is linked first; older sections below retain historical QA. -->
 # 100ガレ ～GAME100 GARAGE～
 
-2026-10-07：定番5作品021〜025の技術QAと試作公開を実施。[バッチ報告](docs/classic-five/IMPLEMENTATION_REPORT.md)から公開commit／CI／候補表／検証範囲を確認できます。現在active24／historical25（010退役）、次026は未着手。作者本人と実機の主観試遊は未実施。新作Analytics本番登録は認証不足で保留し、外部送信を停止中です。
+2026-10-08（日本時間）：第2バッチ026〜030の5作品を技術QA後に試作公開しました。[バッチ報告](docs/classic-batch-two/IMPLEMENTATION_REPORT.md)に公開commit／CI／候補表／確認範囲を記録しています。active29／historical30（010退役）、031は未着手。作者本人と実機の主観試遊は未実施。新作Analytics本番登録は認証不足で保留し、外部送信停止を維持しています。
 
 次のタスクは[CURRENT_STATUS](docs/CURRENT_STATUS.md)と[Game019改訂02報告](docs/game019/revision-02/IMPLEMENTATION_REPORT.md)から再開してください。Game019は溜めて離すジャンプと井戸／空の24手作り区間へ改修・公開済みです。正式URLはhttps://game100garage.com/。019の追加、落下キングの距離選択／連続降下、靴とばその少年と回転、全ゲーム開始3択、タグと端末内記録を公開済みです（2026-10-06日本時間）。AdSense所有確認scriptは独立PRで追加済み、Google側の確認／審査は未確認です。
 
-短時間で遊べる異なる体験を集めた静的Webゲームセンターです。nativeゲームと元UIを保持した旧Godot3本を収録。公開済み24本の検証範囲は、CURRENT_STATUSと各作品の報告を参照してください。
+短時間で遊べる異なる体験を集めた静的Webゲームセンターです。nativeゲームと元UIを保持した旧Godot3本を収録。公開済み29本の検証範囲は、CURRENT_STATUSと各作品の報告を参照してください。
 
 **[ゲームセンターを遊ぶ](https://game100garage.com/)** ／ [負けじゃんけん](https://game100garage.com/game016.html) ／ [落下キング](https://game100garage.com/game015.html) ／ [蛙ゲーム](https://game100garage.com/game019.html)
 
@@ -36,7 +36,7 @@ npm run preview
 
 `dist/`にnativeゲームの物理HTML、画像／ローカルfont、旧Godotの静的exportを出力します。ログイン・ゲーム用サーバー・本番広告は不要です。現在CREDITは無効で、保存残高0でも何度でも遊べます。
 
-検証コマンドは[開発手順](docs/GAME_DEVELOPMENT_RULES.md#検証の選択と証拠)から対象を選びます。古いe2eの期待値やreportの上書き先に注意してください。最新の545単体・公開検証の成績と人間評価の未実施範囲はCURRENT_STATUSへ集約しています。
+検証コマンドは[開発手順](docs/GAME_DEVELOPMENT_RULES.md#検証の選択と証拠)から対象を選びます。古いe2eの期待値やreportの上書き先に注意してください。最新の737単体・公開検証の成績と人間評価の未実施範囲はCURRENT_STATUSへ集約しています。
 
 GitHub Pagesは[workflow](.github/workflows/pages.yml)で`main`へのpush時にnpm ci→test→build→deployします。公開先、最新run、旧3サイト停止の403と再開条件は[現状](docs/CURRENT_STATUS.md)を参照してください。
 

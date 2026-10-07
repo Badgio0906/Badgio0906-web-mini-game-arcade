@@ -37,7 +37,7 @@ TypeScript、Viteの静的MPA、HTML／CSSが基盤。Phaserは必要なゲー�
 | [src/data/gameCatalog.ts](../src/data/gameCatalog.ts) | ポータルの登録データ。表示名・route・thumbnailの実装上の正本 |
 | [src/portal](../src/portal/) | 一覧の表示・入力 |
 | [src/game](../src/game/)／[src/main.ts](../src/main.ts) | Game001。既存フォルダを改名しない |
-| [src/games](../src/games/) | 002〜011・015〜025の固有モデル・描画・UI・manifest |
+| [src/games](../src/games/) | 002〜011・015〜030の固有モデル・描画・UI・manifest |
 | [public/games](../public/games/) | 012〜014の固定Godot Web出力と帰還shell |
 | [public/assets](../public/assets/) | 採用した配信画像・実画面サムネイル |
 | [assets](../assets/) | 生成原本・採用記録・font／画像の出典とライセンス |

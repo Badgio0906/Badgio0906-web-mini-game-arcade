@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**第2バッチ026〜030の5作品を試作公開・候補表更新済み。active29/historical30、010退役維持、031未着手。** 030最終runtime `bd0d293`、公式Pages37682943758 build/deploy成功。指定4画面78check・PC/phone全20面＋再挑戦21clearずつ、Portal29/Ads/640thumb/13file配信SHA確認。Sheet A33/A47/A11/A42/A49のみ済、各読戻しで他列不変。最終root737tests/67file・check/build、Jev offline25、Worker実ローカルD138events12RUN成功。Jev実API28/HTTP200/有効4回答を監査、schema-only不要1件・029のShadow前修正などの不備は[利用報告](classic-batch-two/JEV_USAGE_REPORT.md)。初回030 Vite登録漏れは配信照合で検出・修正し、失敗証跡/実config回帰を保全。旧9tree/018未commit182file保全、ゲーム固有旧source/save・広告/CREDIT/GA4/D1 schema/Secret不変。**本番Workerは再確認でも未認証、021〜030の外部収集停止とpendingを維持。** 本人/物理スマホ主観未試遊は公開承認と区別。[全公開証拠](classic-batch-two/IMPLEMENTATION_REPORT.md)／[再開方法](classic-batch-two/HANDOFF.md)。
+
 2026-10-08（日本時間）：**030公開確認を停止しビルド登録を修正。** e973cf9の公式CIは成功したが、Vite列挙のgame030接頭辞欠けにより物理HTML/assetが未出力。配信版照合でENOENTを検出し、実ブラウザ/Sheet済の前に停止。game030だけの登録式を修正し、実Vite設定から全catalog physicalrouteを確認する回帰テストが修正前FAIL→修正後PASS、全737tests/67file・check/build成功。030本体/保存/物理不変、Worker38events12RUNの変更なし。修正commit公式CI/配信版/通常操作/A49は未完、026〜029公開済。
 
 2026-10-08（日本時間）：**Game029「給湯室の落としもの釣り」を試作公開済み。runtime8d3ac39／公式Pages37681354491成功。** 公開指定4画面の通常投→回収→結果/再挑戦/保存/練習、Portal28/640thumb/Ads維持、13file配信SHA＋CIasset確認、SheetA42だけ済/他列不変読戻し。最後の030は固定20面・独立解法1260route・39対象/root736（66file）/check/build・WorkerlocalD138events12RUN、独立Visual82/F13/H12とPC/phone全20面を完了して公開前。active29/historical30、026〜029公開済、030公式CI/公開/A49待ち、031未着手。Worker既存auth再確認でも未認証、新作externalOFF/中央pending維持。本人/実機主観未実施・旧9tree保全。

@@ -89,3 +89,7 @@ APIが報告した28件分はinput **46,546 tokens**、output **6,039 tokens**�
 | 19:20:10 | game030 | `phone-hint-first-post-drag` / C | [QA](../game030/QA/JEV_SHADOW.jsonl) 行5 |
 | 19:24:56 | game028 | `028-landscape-control-overlap` / C | [QA](../game028/QA/JEV_SHADOW.jsonl) 行6 |
 | 19:36:50 | game029 | `landscape-water-field-clipping` / D | [QA](../game029/QA/JEV_SHADOW.jsonl) 行3 |
+
+## 正式リポジトリへの証跡コピー確認
+
+2026-10-07T20:35:30.815836+00:00：作者treeだけにあった8ログを含め、全28 requestの正本ログが正式リポジトリ内に存在し、有効4回答・HTTP/model metadataが元監査と同一であることを確認した。[追補](QA/JEV_CANONICAL_COPY_CONFIRMATION.json)。監査時点のJSONとraw行を上書きしていない。続く030のVite登録漏れは直接的な登録式の不整合として、新しいJev呼出しを行わず、修正前に失敗する実build entry回帰テストを追加して修正した。これは28件に加算しない。
