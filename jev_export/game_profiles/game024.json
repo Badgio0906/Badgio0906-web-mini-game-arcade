@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "game024",
+  "titleJa": "ひとマススネーク ～SNAKE～",
+  "titleEn": "SNAKE",
+  "tagline": "食べて、のびて。自分のしっぽに、ご用心。",
+  "thumbnail": "./assets/portal/game024.webp",
+  "route": "./game024.html",
+  "releaseOrder": 24,
+  "status": "active",
+  "tags": [
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    },
+    {
+      "id": "retro",
+      "label": "レトロ"
+    },
+    {
+      "id": "endless",
+      "label": "エンドレス"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "ひとマススネーク ～SNAKE～",
+  "genre": "classic snake",
+  "controls": {
+    "direction": "arrows / WASD / large direction buttons",
+    "pause": "pause button / Escape; blur and hidden auto-pause, explicit resume"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "no time limit; no measured human duration",
+  "mainMechanics": "Advance one cell per fixed tick; eat free-cell food, grow by one, avoid walls and body, fill all 400 cells to clear",
+  "currentManifest": {
+    "id": "game024",
+    "title": "ひとマススネーク ～SNAKE～",
+    "titleEn": "SNAKE",
+    "tagline": "食べて、のびて。自分のしっぽに、ご用心。",
+    "genre": "classic snake",
+    "coreMechanic": "Advance one cell per fixed tick; eat free-cell food, grow by one, avoid walls and body, fill all 400 cells to clear",
+    "skillAxes": [
+      "direction timing",
+      "spatial planning",
+      "tail awareness"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "direction": "arrows / WASD / large direction buttons",
+      "pause": "pause button / Escape; blur and hidden auto-pause, explicit resume"
+    },
+    "boards": {
+      "standard": "20x20; length 3; no wrapping",
+      "speedCellsPerSecond": [
+        4,
+        6,
+        8
+      ],
+      "defaultSpeed": 4
+    },
+    "practice": "Optional isolated 8x8, one-food lesson; fixed 4 cells/sec, no BEST, saved board or production RUN",
+    "storagePrefix": "web-mini-arcade:v1:game024:",
+    "bestStorage": "Atomic state JSON: mode-specific best foods, snapshot, seed, direction queue, clock, run ID, report flag and completed run counts",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "Development-only Shadow on observed findings; no runtime connection or automatic gate",
+    "humanReview": "Author subjective playtest and physical iPhone review pending; publication before author play authorized",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "prototype-1",
+    "telemetry": "Existing services: common run/practice milestones plus food count/length/speed; no frames or whole bodies; restored analytics UUID and no duplicate run_start; remote collection disabled until existing Worker registration is confirmed"
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "Existing services: common run/practice milestones plus food count/length/speed; no frames or whole bodies; restored analytics UUID and no duplicate run_start; remote collection disabled until existing Worker registration is confirmed",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game024/game.manifest.json"
+  }
+}

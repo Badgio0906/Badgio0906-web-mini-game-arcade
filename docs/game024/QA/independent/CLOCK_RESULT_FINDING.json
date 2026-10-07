@@ -1,0 +1,29 @@
+{
+  "finding_id": "024-clock-terminal-backlog-restore",
+  "problem": "A saved result after collision during a slow frame reloads without the prior BEST and run count.",
+  "expected": "A permitted slow frame ending a run should persist a valid result and retain prior BEST/statistics on reload.",
+  "observed": [
+    "At speed 8, frame timestamps 0 then 500 ms invoked one tick and produced wall outcome.",
+    "The saved result has clock remainder 375 ms, run reported true, BEST 12, and runs 4.",
+    "validateSave returned null for the saved JSON. A fresh SnakeSaveStore reloaded BEST 0 and runs 0."
+  ],
+  "unknown": [
+    "The same path has not been exercised through compiled main.ts browser UI."
+  ],
+  "operation": "Independent synthetic boundary invocation of frozen model, clock and save using the main lifecycle ordering.",
+  "measurements": {
+    "speed": 8,
+    "frame_ms": 500,
+    "ticks": 1,
+    "saved_remainder_ms": 375,
+    "saved_best": 12,
+    "reloaded_best": 0,
+    "saved_runs": 4,
+    "reloaded_runs": 0
+  },
+  "evidence": [
+    "docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+    "docs/game024/QA/independent/clock-result-repro.mjs"
+  ],
+  "provenance": "Actual independent semantic reproduction against frozen code; explicit synthetic boundary fixture, no production events or browser claim."
+}

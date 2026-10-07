@@ -1,0 +1,26 @@
+{
+  "finding_id": "024-portal-pagehide-snapshot",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Preserved initial persist excerpt writes a still-playing snake after recordEnd has set active false/reported true. Current validator requires active to match playing and rejects that original combination; SnakeSaveStore.read falls back to blankSave and loses saved BEST/run statistics as well as rejecting the abandoned run. This is a material persistence defect. Current captureSave keeps snapshot null when the run is inactive and snake is still playing, preserving stats across pagehide. Browser Portal→pagehide→reload still needs confirmation.",
+  "evidence": [
+    "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+    "docs/game024/QA/FINDING_PORTAL_PAGEHIDE.json",
+    "src/games/game024/main.ts:23,40-45,84-90",
+    "src/games/game024/save.ts:35-47"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read the retained original code excerpt and current Portal/end/pagehide/capture/validation/storage flow. Verified invalid original flags would fall back to blank stats and current capture omits abandoned playing snapshot. No browser execution.",
+    "evidence": [
+      "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+      "src/games/game024/main.ts",
+      "src/games/game024/save.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "reviewer": "classic_review",
+  "human_judgment": null
+}

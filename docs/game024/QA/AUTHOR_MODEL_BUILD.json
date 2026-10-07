@@ -1,0 +1,53 @@
+{
+  "game_id": "game024",
+  "source_frozen_at": "2026-10-07T15:12:51.878530+00:00",
+  "base_commit": "af2edf70cdf8fe46175f4fcf38fec607dda997d0",
+  "source_hashes": {
+    "game024.html": "9601b8e6ba811ffaeecb51870d0c4b705202e9201fb60464b024c3c11a42385d",
+    "src/games/game024/clock.ts": "d0110d6962cd921e9b558e075e9e16e3ac5694866aacac540e89b94e06a26248",
+    "src/games/game024/game.manifest.json": "48a7821623600f872a1aec7c2a8c33327f305b5c9ecbd74fb8cfa03ade1a57be",
+    "src/games/game024/main.ts": "0222c74897ad8aba6b373ee8ac00715df2291a4205e4749022f9098a94996bd0",
+    "src/games/game024/model.ts": "5844853cea420a8ce5cf63da8420aeaa1fe4fe9a557b3ff77badbef31de72b51",
+    "src/games/game024/save.ts": "467fecdc9011483b213b511a749fdaf99ecc0639b473135da28557e07c2c9c44",
+    "src/games/game024/style.css": "ba7004ab0aac5dae25462715e2ba829620077d2bd342b606cced5f603c5a6c4e",
+    "tests/unit/game024.test.ts": "a7eb3b72e6c076f1f2b8d5fc651bca12a20afa642193200eacbabff0c21e6290"
+  },
+  "commands": [
+    {
+      "command": "npm test -- --run tests/unit/game024.test.ts",
+      "result": "PASS",
+      "tests": 25,
+      "executed_at": "2026-10-07T15:11:55Z"
+    },
+    {
+      "command": "npm run check",
+      "result": "PASS",
+      "executed_at": "2026-10-07T15:11:55Z"
+    },
+    {
+      "command": "node --input-type=module (Vite build configFile:false, input game024.html, outDir /tmp/game024-compiled)",
+      "result": "PASS",
+      "executed_at": "2026-10-07T15:11:55Z",
+      "outputs": [
+        "game024.html",
+        "assets/game024-BQI0oavl.css",
+        "assets/game024-BjZhnZCW.js"
+      ]
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS (base entry list includes only up to020; not Game024 build evidence)",
+      "executed_at": "2026-10-07T15:08:14Z",
+      "warnings": "Existing unrelated CSS syntax warnings and Phaser chunk-size warning"
+    }
+  ],
+  "browser_review": "pending independent root reviewer",
+  "human_playtest": "not performed",
+  "physical_iPhone": "not performed",
+  "deployment": "not performed by author worker",
+  "jev": "One actual preserved code-inspection finding, hidden-answer helper AVAILABLE; independent annotate pending root review",
+  "usage": {
+    "codex_tokens": null,
+    "codex_cost": null
+  }
+}

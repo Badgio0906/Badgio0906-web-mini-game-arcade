@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-10-07T15:11:20.888722+00:00",
+  "base_commit": "af2edf70cdf8fe46175f4fcf38fec607dda997d0",
+  "source_sha256": "e07e282c68a391122c557e2ba24b0a8187a65dfc24f21076535e24062c12e6ec",
+  "source_excerpt": [
+    "function persist():void { if(training)return; saved.speed=speed; saved.snapshot=snake; saved.clock={remainder:clock.remainder,elapsed:clock.elapsed};store.write(saved); }",
+    "  if(reason==='quit'||reason==='restart'){saved.snapshot=null;saved.clock={remainder:0,elapsed:0};store.write(saved);}else persist();",
+    "function portal():void {recordEnd('quit');telemetry.trackEvent('return_to_portal',{source:phase});}",
+    "window.addEventListener('pagehide',()=>{clock.pause();clearInput();persist();audio.destroy();},{once:true});"
+  ],
+  "observation": "Code inspection: explicit quit clears saved.snapshot, but pagehide subsequently calls persist which always writes snake back. The in-memory snake outcome is still playing after explicit quit while saved.run.active is false and reported is true. validateSave rejects that combination.",
+  "provenance": "actual code inspection; no browser execution yet"
+}

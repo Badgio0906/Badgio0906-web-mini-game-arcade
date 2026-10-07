@@ -1,0 +1,22 @@
+{
+  "finding_id": "024-headless-focus-loss-collector",
+  "problem": "A compiled focus-loss check did not reach the expected paused screen after a second page was opened.",
+  "expected": "A real focus or visibility loss should pause a running snake and require explicit resume.",
+  "observed": [
+    "Native initial play, reverse rejection, two-turn queue, food/growth/BEST, manual pause and exact reload/mute checks passed.",
+    "The collector resumed the first page, created a second Playwright page, navigated it to Portal, waited300ms, then brought the first page to the front.",
+    "The first page did not reach paused within30 seconds; no pageerror was recorded."
+  ],
+  "unknown": [
+    "Initial collector did not record document.hidden, hasFocus or actual blur/visibilitychange events.",
+    "Whether the second headless page actually caused focus/visibility loss or whether the compiled pause handler missed a delivered event."
+  ],
+  "operation": "Headless Chromium, second-page focus-loss test following active reload.",
+  "viewport": "1365x900 desktop; same checkpoint also timed out390x844 and320x740.",
+  "evidence": [
+    "docs/game024/QA/independent/FOCUS_COLLECTOR_BEFORE.json",
+    "docs/game024/QA/independent/native-revision01/report.json",
+    "docs/game024/QA/independent/native-revision01/desktop-failure.png"
+  ],
+  "provenance": "Actual compiled browser collector timeout, source frozen, no direct state fixture or source change."
+}

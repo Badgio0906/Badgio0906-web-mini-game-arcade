@@ -1,0 +1,57 @@
+{
+  "game_id": "game024",
+  "reviewer": "classic023 independent source reviewer",
+  "reviewed_at": "2026-10-07T15:25:09.337601+00:00",
+  "provenance": "Read-only independent code/semantic review. No Jev answers read; no browser or human playtest.",
+  "source_freeze_matches": true,
+  "source_hashes": {
+    "game024.html": "9601b8e6ba811ffaeecb51870d0c4b705202e9201fb60464b024c3c11a42385d",
+    "src/games/game024/clock.ts": "d0110d6962cd921e9b558e075e9e16e3ac5694866aacac540e89b94e06a26248",
+    "src/games/game024/game.manifest.json": "48a7821623600f872a1aec7c2a8c33327f305b5c9ecbd74fb8cfa03ade1a57be",
+    "src/games/game024/main.ts": "0222c74897ad8aba6b373ee8ac00715df2291a4205e4749022f9098a94996bd0",
+    "src/games/game024/model.ts": "5844853cea420a8ce5cf63da8420aeaa1fe4fe9a557b3ff77badbef31de72b51",
+    "src/games/game024/save.ts": "467fecdc9011483b213b511a749fdaf99ecc0639b473135da28557e07c2c9c44",
+    "src/games/game024/style.css": "ba7004ab0aac5dae25462715e2ba829620077d2bd342b606cced5f603c5a6c4e",
+    "tests/unit/game024.test.ts": "a7eb3b72e6c076f1f2b8d5fc651bca12a20afa642193200eacbabff0c21e6290"
+  },
+  "tests": "Independent rerun of 25 author tests: pass; unit-frozen.txt. New semantic reproduction also confirms a bug not covered by them.",
+  "checks": {
+    "fixed_speeds_4_6_8": "Source plus 9 speed/30–60–120Hz tests confirm fixed rate; no time-dependent speed ramp.",
+    "turn_queue": "Two-slot queue validates against queued tail; opposite/duplicate ignored; right→up→left occurs over two separate ticks.",
+    "tail_vacate": "Nongrowth excludes last tail cell from collision, growth retains it.",
+    "food_fill": "Bounded free-cell enumeration, occupied cells excluded, final cell produces 400-cell clear with food null.",
+    "blur_visibility_pause": "Both call explicit pause while active; setPhase pauses clock and clears held/queue. Return does not auto-resume. Browser verification pending.",
+    "save_restore": "Active saved snapshot resumes only through pause overlay; existing RUN UUID restored without run_start; completed result recordEnd guard ignores re-report. Terminal clock backlog issue below must be fixed.",
+    "best_and_report_dedup": "Stats and report flag share JSON; once-only guard checks active/reported. No BEST increment on restoration. Terminal invalid-record issue can defeat this persistence.",
+    "portal_pagehide": "recordEnd clears abandoned snapshot; captureSave retains null when inactive snake still has playing outcome; existing actual-boundary test passes.",
+    "practice": "Own 8x8 snake and food-one completion; training guard excludes production stats/save/RUN telemetry; production practice events suppressed. Browser interaction pending.",
+    "portal_overlays": "show appends Portal link on all overlays; header Portal stays available."
+  },
+  "historical_findings": [
+    {
+      "issue": "explicit quit/restart initially saved a reported playing snapshot",
+      "evidence": "Author report admits correction before dedicated contemporaneous evidence/Shadow. No before artifact available.",
+      "judgment": "Process deviation; final explicit quit clears snapshot. Do not merge this with the later finding or fabricate a historical before record."
+    },
+    {
+      "issue": "late pagehide restored a playing snapshot after explicit Portal quit",
+      "evidence": "FINDING_PORTAL_PAGEHIDE_BEFORE.json stores time/source hash/excerpts before its fix; separate finding state exists. Author reports one helper submission with hidden answers.",
+      "judgment": "Distinct lifecycle problem with contemporaneous BEFORE source preservation. Final captureSave guard and direct regression test confirm prevention of snapshot resurrection; browser Portal→pagehide still pending."
+    }
+  ],
+  "new_findings": [
+    {
+      "finding_id": "024-clock-terminal-backlog-restore",
+      "classification": "PRODUCT_BUG",
+      "blocking": true,
+      "summary": "A permitted slow frame can persist a terminal result whose remainder exceeds the interval. Validator rejects it and reload resets BEST/run counts.",
+      "evidence": [
+        "CLOCK_RESULT_REPRO_BEFORE.json",
+        "clock-result-repro.mjs",
+        "CLOCK_RESULT_FINDING.json"
+      ],
+      "fix_suggestion": "Normalize terminal snapshot clock remainder to0 at capture boundary before result persistence; resetting only after callback return is insufficient because main.result already persisted within the callback. Then rerun the actual lifecycle reproduction plus focused regression, without relaxing save validator."
+    }
+  ],
+  "review_outcome": "HOLD for new terminal-result persistence finding; ordinary browser/visual review pending. No human enjoyment claim."
+}

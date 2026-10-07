@@ -1,6 +1,8 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-07 UTC：**Game023「伏字ことば」統合QA完了・順次公開準備。** 独自180語／6カテゴリ／全かな3タブ、wrong8・hint・次問、任意説明／2語練習。root486tests/check/buildとWorkerローカルD117events5RUN、compiled4画面・統合4画面成功、Visual83/F14/H13。混合入力・横向き答えscrollを当ゲーム内で修正。active22／historical23、次024。公開完了はQA/PUBLICATION.jsonで確認、新作外部Analytics停止・本番登録blocker継続。
+2026-10-07 UTC：**Game024「ひとマススネーク」統合QA完了・順次公開準備。** 20×20・fixed4/6/8・queue2・任意練習・速度別BEST・途中保存、root514tests/check/build、Worker20events6RUN、compiled4画面成功、Visual83/F13/H13。端衝突terminal clock保存・Portal/pagehideを修正。headless focusfixtureと実機未検証を区別。active23／historical24、次025。公開完了はQA/PUBLICATION.json、新作外部収集停止・本番登録blocker継続。
+
+2026-10-07 UTC：**Game023「伏字ことば」試作版を公式公開済み（runtime de5327d、Pages37651114868成功）。** 独自180語／6カテゴリ／全かな3タブ、wrong8・hint・次問、任意説明／2語練習。root486tests/check/buildとWorkerローカルD117events5RUN、compiled4画面・統合4画面成功、Visual83/F14/H13。混合入力・横向き答えscrollを当ゲーム内で修正。active22／historical23、次024。公開4画面・Portal22・配信thumb SHA一致、候補表A31だけ済／読戻し成功。[公開証明](game023/QA/PUBLICATION.json)。新作外部Analytics停止・本番登録blocker継続。
 
 2026-10-07 UTC：**Game022「ひと息ソリティア」試作版を公式公開済み（runtime cc7f851、Pages37649806664成功）。** 52枚Klondike／1枚・3枚／random・JST daily、説明・6枚練習任意、hint／undo／単札assist／可証明の全整理。root457テスト・check・build、独立fixture全消去4画面、compiled通常操作4画面成功。保存上書き・touch capture・OFFスクロールCSS競合を当ゲーム内で修正。実通常配りからthumbnail、Visual／Feelは別記録。active21／historical22、次023、既存ゲーム不変。公開4画面操作、Portal21、thumbnail配信SHA一致を確認。候補表A26だけ済／読戻し成功。[公開証明](game022/QA/PUBLICATION.json)。新作Analytics本番登録は未認証で保留・外部送信停止、既存020登録保持。
 

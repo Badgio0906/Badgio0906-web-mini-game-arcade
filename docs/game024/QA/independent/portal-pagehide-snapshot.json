@@ -1,0 +1,38 @@
+{
+  "finding_id": "024-portal-pagehide-snapshot",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Preserved initial persist excerpt writes a still-playing snake after recordEnd has set active false/reported true. Current validator requires active to match playing and rejects that original combination; SnakeSaveStore.read falls back to blankSave and loses saved BEST/run statistics as well as rejecting the abandoned run. This is a material persistence defect. Current captureSave keeps snapshot null when the run is inactive and snake is still playing, preserving stats across pagehide. Browser Portal→pagehide→reload still needs confirmation.",
+  "evidence": [
+    "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+    "docs/game024/QA/FINDING_PORTAL_PAGEHIDE.json",
+    "src/games/game024/main.ts:23,40-45,84-90",
+    "src/games/game024/save.ts:35-47"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read the retained original code excerpt and current Portal/end/pagehide/capture/validation/storage flow. Verified invalid original flags would fall back to blank stats and current capture omits abandoned playing snapshot. No browser execution.",
+    "evidence": [
+      "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+      "src/games/game024/main.ts",
+      "src/games/game024/save.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "protocol_note": "Two distinct author findings: earlier explicit quit/restart correction preceded dedicated BEFORE/Shadow capture (deviation). This later Portal→latepagehide finding has preserved BEFORE source excerpt at 15:11:20 UTC and the author report states one hidden-answer checkpoint A request occurred before its fix. Independent reviewer read the evidence/report and did not inspect Jev logs; request sequence is author-reported. No retrospective request sent by reviewer.",
+  "reviewer": "classic_review",
+  "recorded_at": "2026-10-07T15:16:06.623089+00:00",
+  "human_judgment": null,
+  "scope": "Independent code review, Jev answers and author judgments not accessed; browser acceptance pending.",
+  "protocol_correction": {
+    "recorded_at": "2026-10-07T15:17:18.718004+00:00",
+    "previous_note": "Root reports correction occurred before preserved review/Shadow. No retrospective request was sent by independent reviewer, and this judgment does not claim the before-fix Shadow sequence was followed.",
+    "reason": "Previous note conflated the earlier quit/restart correction with this subsequent Portal→latepagehide finding. Root clarification and author report lines15/17 distinguish them. Four independent classifications remain unchanged.",
+    "evidence": [
+      "docs/game024/IMPLEMENTATION_REPORT.md:15-17",
+      "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json"
+    ]
+  }
+}

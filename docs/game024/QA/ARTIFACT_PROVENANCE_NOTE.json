@@ -1,0 +1,74 @@
+{
+  "recorded_at": "2026-10-07T16:30:27.664866+00:00",
+  "issue": "Root integrated collector retained the isolated final folder default and overwrote native-revision01-focus-fixed report/PNGs with its later4173 run.",
+  "reported_by": "Root coordinator before this correction",
+  "original_isolated_run": "Reviewer isolated run finished16:22:38Z/all4PASS. Its earlier summary, visual score/hash record and annotations survive, but exact final isolated PNGs and rawreport were overwritten; no backup found. They are not reconstructed.",
+  "initial_failure_evidence": "independent/native-revision01 report/images and FOCUS_COLLECTOR_BEFORE/MEASUREMENTS remain untouched.",
+  "retained_final_run": {
+    "origin": "Root integrated4173 run (root-declared server URL)",
+    "started_at": "2026-10-07T16:25:55.504Z",
+    "finished_at": "2026-10-07T16:26:50.545Z",
+    "source_sha256": "df1f7a241a966ea3bf1de8bb13379e408232b5f9e99dd2c882284987379e994d",
+    "statuses": [
+      {
+        "profile": "desktop",
+        "status": "PASS",
+        "checks": 13
+      },
+      {
+        "profile": "phone",
+        "status": "PASS",
+        "checks": 15
+      },
+      {
+        "profile": "small",
+        "status": "PASS",
+        "checks": 15
+      },
+      {
+        "profile": "landscape",
+        "status": "PASS",
+        "checks": 15
+      }
+    ],
+    "path": "docs/game024/QA/compiled/"
+  },
+  "preservation": "All overwritten-folder current bytes compared/copied to QA/compiled. No different existing compiled artifact overwritten.",
+  "retained_hashes": {
+    "docs/game024/QA/compiled/desktop-explanation.png": "deff0c35e2216aa2c8730ded9fd65e9f098faa858123a822e3e1de2e79241a9b",
+    "docs/game024/QA/compiled/desktop-ordinary-food.png": "d7c3ff254d290b7f6fbd72862c7ca46a6285b62d3ae6279a64e548a8a20cd133",
+    "docs/game024/QA/compiled/desktop-ordinary-start.png": "98b437015825a773d37f60947f37817bc95afa1acac1f16f804290eaf53d8ed4",
+    "docs/game024/QA/compiled/desktop-paused.png": "5d158228a4d916d204a7234257089767172d946e16340fe9c7b1f62ec4efbc95",
+    "docs/game024/QA/compiled/desktop-practice-complete.png": "70a1fccf259ccce8e41179c19ac7818e2d9430112c115daa7a29e17924d19b01",
+    "docs/game024/QA/compiled/desktop-restored.png": "604f85546b7b9d56026a16cf61d2891c266cce54ed375ede3f97831e68f135a8",
+    "docs/game024/QA/compiled/desktop-terminal.png": "5d7adfa15e486895da9a82e64b3eb697e1e295dadfaef83844f911d87a145b9a",
+    "docs/game024/QA/compiled/desktop-title.png": "b8096ed49bbb3df67cd9ec273360fd7f147ae72c6cf5fbc492d88125d4173e39",
+    "docs/game024/QA/compiled/landscape-explanation.png": "117ae6030b5799055a4cb2e11043890f78c0062ffb8a9391d3916ae676ac53ed",
+    "docs/game024/QA/compiled/landscape-ordinary-food.png": "d76e59ffd98cae436aaf3cb014b116729dcfaa8205de26fe174ccbfc6d89b578",
+    "docs/game024/QA/compiled/landscape-ordinary-start.png": "d82db507c7c4fde0ab940b97b6cd4905824b95a9f9d2dc8259faedd9e961388a",
+    "docs/game024/QA/compiled/landscape-paused.png": "15d310f78a028f83346c116e5f7697934c40e6a0e02320ce8ed9dec8cfa550ac",
+    "docs/game024/QA/compiled/landscape-practice-complete.png": "73968957e44226619956d87922318a358d2821cb96f2295d98329a9356b35bf6",
+    "docs/game024/QA/compiled/landscape-restored.png": "40ae9fc72fb0e2394029ca4cc1f660224eca53ffef9a62ef7bd5faa07911cd3e",
+    "docs/game024/QA/compiled/landscape-terminal.png": "d78c4b71c050a5eda5c242493db91c503050f61552c3a1490ca1f2ea5a971a4d",
+    "docs/game024/QA/compiled/landscape-title.png": "46568f01f95451ec7ae62729027f0b0432fcbb0f490164dbba40487c270e6b1f",
+    "docs/game024/QA/compiled/phone-explanation.png": "85cac8ffaa6d16b5fc67d9ed0eb6e1d64625af9c0bac4b3c88195dd7b0328848",
+    "docs/game024/QA/compiled/phone-ordinary-food.png": "73e78b6bc3c2447df5ca739451f1d67650982eacb943f6c47dac9690499fbc69",
+    "docs/game024/QA/compiled/phone-ordinary-start.png": "9eaabdfe1184ad0c4408073e4929d9d69c2cee8082c813c06e31e143779a19fd",
+    "docs/game024/QA/compiled/phone-paused.png": "973cd09ef87da188fe4fbc3807a36d10f74ad66762729ae83edf3dfdb3585b2e",
+    "docs/game024/QA/compiled/phone-practice-complete.png": "3567d30d459623c10de4dba17010509697338dc95e4f6a358d3c0363f161a6a9",
+    "docs/game024/QA/compiled/phone-restored.png": "d2a84776ecb585b10edb6199442edd28b9a0b09d72bc2a5a467ff8fb5a129c0f",
+    "docs/game024/QA/compiled/phone-terminal.png": "ef4b3333289f8feb8ea6d942d1a921cb0605c5cf840ad5c3a1aa94c3d52074a3",
+    "docs/game024/QA/compiled/phone-title.png": "519baf0e948fc6ce95c108d5846809bde837d51d1acc87599bbfb18c1db1dec5",
+    "docs/game024/QA/compiled/report.json": "61fdc56434faaf966a6ce1eb03fe58d5c5a53a008547ed57b2cb116a173fc0f1",
+    "docs/game024/QA/compiled/small-explanation.png": "506a477b90939e5fe8eb80cccdb4ff023b7b1df752a1820218d398fc722444be",
+    "docs/game024/QA/compiled/small-ordinary-food.png": "e90f065c780c1b7b2e566b231ae3185135f80d9eef253ea0870a4d7b1736faa6",
+    "docs/game024/QA/compiled/small-ordinary-start.png": "f76934f4c5599e5ee74e6319c5f3e939025ff8e9aa34961d7af84ef1c907d178",
+    "docs/game024/QA/compiled/small-paused.png": "cdf4881d774d785b958d90f7d9e4270d4da2c34223e9036227a985a79d61ab34",
+    "docs/game024/QA/compiled/small-practice-complete.png": "373f8cedbf61a1efbcf7b403d201b6f9cea371b6fc4ff4f3ac02a5b53a7d5f2c",
+    "docs/game024/QA/compiled/small-restored.png": "e4f11b8a8d83e395b88d5fd209e3c9f7f13a64dba93ea4109d6a282cc3e81a04",
+    "docs/game024/QA/compiled/small-terminal.png": "25f027239755fd0fda6227b573b22a9eee2c09f3a254456a64ccca459f0b644a",
+    "docs/game024/QA/compiled/small-title.png": "eec4cf1533111fb2a943b0831f1f07731006b022d951f9ca38b690bd449adae5"
+  },
+  "review_correction": "Reviewer will re-view representative final root PNGs and short result, record exact retained hashes, label finalscore/thumbnail asroot4173 capture. Earlier hash list remains superseded historical record, not proof of available PNGs.",
+  "jev_annotation_note": "Focus annotation was created from the original isolated final pass evidence before the overwrite. Its raw annotation is preserved; no duplicate request/annotation or retrospective evidence substitution. This separate note discloses that its prior report reference now contains the later root run."
+}

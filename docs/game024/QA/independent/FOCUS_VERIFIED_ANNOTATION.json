@@ -1,0 +1,25 @@
+{
+  "finding_id": "024-headless-focus-loss-collector",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic023 independent reviewer, Jev answers unread",
+  "rationale": "Actual focus measurements showed no blur/visibilitychange trigger from headless Playwright newPage/bringToFront. A labeled delivered blur fixture paused the unchanged compiled game. The corrected collector passed all four viewports with native gameplay, pause, reload, practice and Portal checks; no product edit was needed. Physical-device focus behavior remains pending.",
+  "evidence": [
+    "docs/game024/QA/independent/FOCUS_COLLECTOR_BEFORE.json",
+    "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json",
+    "docs/game024/QA/independent/native-revision01/report.json",
+    "docs/game024/QA/independent/native-revision01-focus-fixed/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Recorded document.hidden/hasFocus/delivered event measurements, preserved initial4profile timeouts, changed only the collector to a labeled delivered-blur fixture, then completed4profile native rerunPASS with allcontexts/browserclosedfinally. Product source remained revision01.",
+    "evidence": [
+      "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json",
+      "docs/game024/QA/independent/native-revision01/report.json",
+      "docs/game024/QA/independent/native-revision01-focus-fixed/report.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

@@ -1,0 +1,113 @@
+{
+  "audited_at": "2026-10-07T16:05:55.184255+00:00",
+  "game_id": "game024",
+  "scope": "Existing two requests only; audit/annotation performed offline, zero new API requests. Original blind judgments predate answer inspection.",
+  "records": [
+    {
+      "path": "docs/game024/QA/independent/JEV_PORTAL_SHADOW.jsonl",
+      "game_id": "game024",
+      "finding_id": "024-portal-pagehide-snapshot",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "http_status": 200,
+      "status": "AVAILABLE",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_question_results": {
+        "PRIMARY_CAUSE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "four_valid": true,
+      "annotation_recorded": true,
+      "input_tokens": 1500,
+      "output_tokens": 215,
+      "cost_usd": 6.3e-05,
+      "latency_seconds": 0.40314229099749355
+    },
+    {
+      "path": "docs/game024/QA/independent/JEV_CLOCK_SHADOW.jsonl",
+      "game_id": "game024",
+      "finding_id": "024-clock-terminal-backlog-restore",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "http_status": 200,
+      "status": "AVAILABLE",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_question_results": {
+        "PRIMARY_CAUSE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "four_valid": true,
+      "annotation_recorded": true,
+      "input_tokens": 1644,
+      "output_tokens": 215,
+      "cost_usd": 6.9048e-05,
+      "latency_seconds": 0.7077261379999982
+    }
+  ],
+  "actual_api_attempts": 2,
+  "http200": 2,
+  "valid_four_question_responses": 2,
+  "root_annotations": 2,
+  "summary": {
+    "entries": 2,
+    "jev_invocations": 2,
+    "api_attempts_known": 2,
+    "dry_runs": 0,
+    "available": 2,
+    "jev_unavailable": 0,
+    "total_input_tokens": 3144,
+    "total_output_tokens": 430,
+    "total_cost_usd": 0.000132048,
+    "usage_missing": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0
+    },
+    "average_latency_seconds": 0.5554342144987459,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matched": 2,
+        "compared": 2,
+        "rate": 1.0
+      },
+      "NEXT_EVIDENCE": {
+        "matched": 1,
+        "compared": 2,
+        "rate": 0.5
+      }
+    },
+    "codex_action_confusion": {
+      "TP": 2,
+      "TN": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "codex_action_below_045": 0,
+    "below_045_independently_reviewed": 0,
+    "below_045_with_actual_problem": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 0,
+    "release_risk_compared": 2,
+    "human_routed": 0,
+    "human_routing_observed": 2,
+    "actual_human_actions": 0,
+    "actual_actions_recorded": 2,
+    "human_judgment_recorded": 0,
+    "unreviewed_available": 0
+  },
+  "source_revision01_matches": true,
+  "source_sha256": "df1f7a241a966ea3bf1de8bb13379e408232b5f9e99dd2c882284987379e994d",
+  "author_portal_original_unchanged_sha256": "5d3dc45efc17f37160a9dab812f46a4136d6db36b890b98dac09d0af3076efdf",
+  "historical_protocol": {
+    "early_explicit_quit_restart": "Correction preceded dedicated BEFORE evidence/Shadow: documented deviation, no retroactive API call or invented source evidence.",
+    "later_portal_pagehide_A": "Distinct issue, preserved BEFORE source excerpt at15:11:20 UTC and author-reported one before-fix request. Existing raw record verifies actual attempt/HTTP200/valid4; root canonical blind verdict annotated copy only.",
+    "later_clock_terminal_C": "Independent before reproduction and blind classification preserved; one request; root-authorized narrow capture fix semantically verified before annotation."
+  },
+  "interpretation_limits": "Two development findings are a small sample; Jev agreement is against recorded reviewer judgments, not universal truth, visual quality, enjoyment or a release gate. Browser/physical-device/human validation pending."
+}

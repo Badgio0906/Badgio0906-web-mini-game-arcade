@@ -1,0 +1,22 @@
+{
+  "finding_id": "024-headless-focus-loss-collector",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic023 independent reviewer, Jev answers unread",
+  "rationale": "Actual measured first headless page remained visible/focused and received no blur/visibilitychange event when another Playwright page was created or brought forward. The collector therefore asserted pause without the required trigger. A separately labeled blur fixture delivered to the same compiled window immediately paused it. Product source stays frozen; update only the collector expectation and preserve actual-device focus review as pending.",
+  "evidence": [
+    "docs/game024/QA/independent/FOCUS_COLLECTOR_BEFORE.json",
+    "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json",
+    "docs/game024/QA/independent/native-revision01/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Measured actual hidden/focus state and delivered events before and after headless page creation/foreground switching; explicit blur fixture verified compiled handler. Full collector rerun with accurately labeled fixture is pending.",
+    "evidence": [
+      "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

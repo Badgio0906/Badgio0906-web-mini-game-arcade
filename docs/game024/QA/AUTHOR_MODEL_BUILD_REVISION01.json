@@ -1,0 +1,50 @@
+{
+  "game_id": "game024",
+  "revision": "clock-save-revision01",
+  "source_frozen_at": "2026-10-07T15:28:14.176608+00:00",
+  "base_commit": "af2edf70cdf8fe46175f4fcf38fec607dda997d0",
+  "previous_freeze": "AUTHOR_MODEL_BUILD.json (preserved unchanged)",
+  "candidate_source_sha256": "df1f7a241a966ea3bf1de8bb13379e408232b5f9e99dd2c882284987379e994d",
+  "source_hashes": {
+    "game024.html": "9601b8e6ba811ffaeecb51870d0c4b705202e9201fb60464b024c3c11a42385d",
+    "src/games/game024/clock.ts": "d0110d6962cd921e9b558e075e9e16e3ac5694866aacac540e89b94e06a26248",
+    "src/games/game024/game.manifest.json": "48a7821623600f872a1aec7c2a8c33327f305b5c9ecbd74fb8cfa03ade1a57be",
+    "src/games/game024/main.ts": "0222c74897ad8aba6b373ee8ac00715df2291a4205e4749022f9098a94996bd0",
+    "src/games/game024/model.ts": "5844853cea420a8ce5cf63da8420aeaa1fe4fe9a557b3ff77badbef31de72b51",
+    "src/games/game024/save.ts": "3746aec20fa0457d27b07d50ac06f898f8562bc69bcfb3a654fdcb367afda6f1",
+    "src/games/game024/style.css": "ba7004ab0aac5dae25462715e2ba829620077d2bd342b606cced5f603c5a6c4e",
+    "tests/unit/game024.test.ts": "78fab84f308c770ad790f414ba2f91926a903fe473b51d6967cbc34f4f7bce44"
+  },
+  "changed_files": [
+    "src/games/game024/save.ts",
+    "tests/unit/game024.test.ts"
+  ],
+  "compiled_hashes": {
+    "game024.html": "8df4e50e7886cf5d53032eb30645e25fb909b89bb9603b5a1a77bf333a55cb52",
+    "assets/game024-B9tDn86z.js": "3fe8854489640902e125125521da0f722b2b092d1ba2b9e179e4d68992f05ca3",
+    "assets/game024-BQI0oavl.css": "0802689f1993871a4667159e8ab3d1066aadc71be84e5269f58375ec167af32e"
+  },
+  "change": "captureSave normalizes terminal snake clock remainder to0 before callback result persistence; active simulation remains unchanged. Actual model/clock/save early-collision reload regression added.",
+  "commands": [
+    {
+      "command": "npm test -- tests/unit/game024.test.ts",
+      "result": "26/26 pass",
+      "evidence": "unit-clock-save-after.txt"
+    },
+    {
+      "command": "npm run check",
+      "result": "pass",
+      "evidence": "check-clock-save-after.txt"
+    },
+    {
+      "command": "standalone Vite production build, configFile:false, game024 input, /tmp/game024-compiled-revision01",
+      "result": "pass",
+      "evidence": "build-clock-save-after.txt"
+    }
+  ],
+  "independent_before_evidence": "/workspace/arcade-classic-five/docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+  "after_semantic_evidence": "/workspace/arcade-classic-five/docs/game024/QA/independent/CLOCK_RESULT_REPRO_AFTER.json",
+  "after_observation": "wall first tick at speed8 in500ms frame, persisted remainder0, BEST12/runs4 retained after reload",
+  "browser_review": "pending handoff",
+  "source_commit": "none"
+}

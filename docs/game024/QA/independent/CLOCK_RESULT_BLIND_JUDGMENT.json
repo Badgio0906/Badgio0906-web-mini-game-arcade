@@ -1,0 +1,24 @@
+{
+  "finding_id": "024-clock-terminal-backlog-restore",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic023 independent reviewer, Jev answers unread",
+  "rationale": "The independent lifecycle reproduction uses frozen product model/clock/save and demonstrates invalid persisted result followed by BEST/runs loss. The next check is the same reproduction and a regression after a capture-boundary fix.",
+  "evidence": [
+    "docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+    "docs/game024/QA/independent/clock-result-repro.mjs",
+    "docs/game024/QA/independent/unit-frozen.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Executed focused lifecycle reproduction against actual frozen modules and independently reran existing 25 tests. Source fix and after-fix verification are still pending.",
+    "evidence": [
+      "docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+      "docs/game024/QA/independent/unit-frozen.txt"
+    ]
+  },
+  "final_root_cause": "Tick catch-up remainder remains above one interval when the first tick collides, and result persistence runs inside the callback before the clock stops. validateSave rejects the stored remainder.",
+  "human_judgment": null
+}

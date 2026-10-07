@@ -1,0 +1,150 @@
+{
+  "at": "2026-10-07T16:28:10.640505+00:00",
+  "game_id": "game024",
+  "records": [
+    {
+      "path": "docs/game024/QA/independent/JEV_PORTAL_SHADOW.jsonl",
+      "finding_id": "024-portal-pagehide-snapshot",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "http_status": 200,
+      "status": "AVAILABLE",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_question_results": {
+        "PRIMARY_CAUSE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "four_valid": true,
+      "annotated": true,
+      "input_tokens": 1500,
+      "output_tokens": 215,
+      "cost_usd": 6.3e-05,
+      "latency_seconds": 0.40314229099749355,
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "path": "docs/game024/QA/independent/JEV_CLOCK_SHADOW.jsonl",
+      "finding_id": "024-clock-terminal-backlog-restore",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "http_status": 200,
+      "status": "AVAILABLE",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_question_results": {
+        "PRIMARY_CAUSE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "four_valid": true,
+      "annotated": true,
+      "input_tokens": 1644,
+      "output_tokens": 215,
+      "cost_usd": 6.9048e-05,
+      "latency_seconds": 0.7077261379999982,
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    },
+    {
+      "path": "docs/game024/QA/independent/JEV_FOCUS_SHADOW.jsonl",
+      "finding_id": "024-headless-focus-loss-collector",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "http_status": 200,
+      "status": "AVAILABLE",
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "valid_question_results": {
+        "PRIMARY_CAUSE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "four_valid": true,
+      "annotated": true,
+      "input_tokens": 1650,
+      "output_tokens": 213,
+      "cost_usd": 6.93e-05,
+      "latency_seconds": 0.48743256099987775,
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false
+    }
+  ],
+  "unique_findings": 3,
+  "actual_api_attempts": 3,
+  "http200": 3,
+  "valid_four": 3,
+  "annotated": 3,
+  "summary": {
+    "entries": 3,
+    "jev_invocations": 3,
+    "api_attempts_known": 3,
+    "dry_runs": 0,
+    "available": 3,
+    "jev_unavailable": 0,
+    "total_input_tokens": 4794,
+    "total_output_tokens": 643,
+    "total_cost_usd": 0.000201348,
+    "usage_missing": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0
+    },
+    "average_latency_seconds": 0.5327669966657899,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matched": 2,
+        "compared": 3,
+        "rate": 0.6666666666666666
+      },
+      "NEXT_EVIDENCE": {
+        "matched": 2,
+        "compared": 3,
+        "rate": 0.6666666666666666
+      }
+    },
+    "codex_action_confusion": {
+      "TP": 3,
+      "TN": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "codex_action_below_045": 0,
+    "below_045_independently_reviewed": 0,
+    "below_045_with_actual_problem": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 0,
+    "release_risk_compared": 3,
+    "human_routed": 0,
+    "human_routing_observed": 3,
+    "actual_human_actions": 0,
+    "actual_actions_recorded": 3,
+    "human_judgment_recorded": 0,
+    "unreviewed_available": 0
+  },
+  "historical_protocol": "Early explicit quit/restart correction preceded dedicated BEFORE/Shadow (deviation). Distinct later PortalA preserved BEFORE source before fix and one existing request. Separate clockC preserved independent repro/classification before authorized fix. New focusC preserved initial timeout; first helper input failed local viewport validation BEFORE any API/log, corrected schema then exactly ONE actual request. Initial4profile failures and actual measurements remain separate from collector-only fixed rerun.",
+  "interpretation": "Two product findings and one test-driver finding; blind judgments recorded before answer comparison; scores are comparisons against those judgments, not universal truth or publication gate. No PASS-only calls or extra API calls for annotation/audit."
+}

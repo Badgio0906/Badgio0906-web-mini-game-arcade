@@ -1,0 +1,180 @@
+{
+  "observed_at": "2026-10-07T16:20:24.457655+00:00",
+  "source_sha256": "df1f7a241a966ea3bf1de8bb13379e408232b5f9e99dd2c882284987379e994d",
+  "collector_sha256": "490794186b0b760b74a479fa84ea9c03b88844878ad95ac334b08734eea13c14",
+  "profile": {
+    "name": "desktop",
+    "width": 1365,
+    "height": 900,
+    "touch": false
+  },
+  "last_passed_checks": [
+    {
+      "name": "ordinary start, full20x20, production debug absent",
+      "status": "PASS"
+    },
+    {
+      "name": "native reverse is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "pause clock and explicit resume",
+      "status": "PASS"
+    },
+    {
+      "name": "native two queued turns happen over two ticks",
+      "status": "PASS"
+    },
+    {
+      "name": "native food and growth with saved BEST",
+      "status": "PASS",
+      "foods": 1,
+      "best": 1
+    },
+    {
+      "name": "active reload preserves question/RUN/BEST and mute",
+      "status": "PASS"
+    }
+  ],
+  "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+  "failure_layout": {
+    "viewport": {
+      "width": 1365,
+      "height": 900
+    },
+    "scrollY": 0,
+    "bodyScrollWidth": 1365,
+    "controls": [
+      {
+        "text": "音 OFF",
+        "x": 1058.453125,
+        "y": 12,
+        "width": 66.03125,
+        "height": 44,
+        "right": 1124.484375,
+        "bottom": 56
+      },
+      {
+        "text": "休憩",
+        "x": 1130.484375,
+        "y": 12,
+        "width": 52.015625,
+        "height": 44,
+        "right": 1182.5,
+        "bottom": 56
+      },
+      {
+        "text": "↑",
+        "x": 945.5,
+        "y": 434.609375,
+        "width": 60,
+        "height": 54,
+        "right": 1005.5,
+        "bottom": 488.609375
+      },
+      {
+        "text": "←",
+        "x": 878.5,
+        "y": 495.609375,
+        "width": 60,
+        "height": 54,
+        "right": 938.5,
+        "bottom": 549.609375
+      },
+      {
+        "text": "↓",
+        "x": 945.5,
+        "y": 495.609375,
+        "width": 60,
+        "height": 54,
+        "right": 1005.5,
+        "bottom": 549.609375
+      },
+      {
+        "text": "→",
+        "x": 1012.5,
+        "y": 495.609375,
+        "width": 60,
+        "height": 54,
+        "right": 1072.5,
+        "bottom": 549.609375
+      },
+      {
+        "text": "もう1回",
+        "x": 896.96875,
+        "y": 567.609375,
+        "width": 78.046875,
+        "height": 44,
+        "right": 975.015625,
+        "bottom": 611.609375
+      },
+      {
+        "text": "遊び方",
+        "x": 983.015625,
+        "y": 567.609375,
+        "width": 71.015625,
+        "height": 44,
+        "right": 1054.03125,
+        "bottom": 611.609375
+      },
+      {
+        "text": "もう1回",
+        "x": 492.5,
+        "y": 439.734375,
+        "width": 380,
+        "height": 48,
+        "right": 872.5,
+        "bottom": 487.734375
+      },
+      {
+        "text": "タイトルへ",
+        "x": 492.5,
+        "y": 496.734375,
+        "width": 380,
+        "height": 48,
+        "right": 872.5,
+        "bottom": 544.734375
+      }
+    ],
+    "canvas": {
+      "text": "",
+      "x": 257.5,
+      "y": 191.796875,
+      "width": 534,
+      "height": 534,
+      "right": 791.5,
+      "bottom": 725.796875
+    },
+    "dialog": {
+      "text": "SNAKE壁にぶつかりました。餌 1個 · 長さ 4ゆっくり · BEST 1個もう1回タイトルへ← 100ガレへ",
+      "x": 467.5,
+      "y": 270.265625,
+      "width": 430,
+      "height": 359.46875,
+      "right": 897.5,
+      "bottom": 629.734375,
+      "scrollTop": 0,
+      "title": {
+        "text": "壁にぶつかりました。",
+        "x": 492.5,
+        "y": 322.859375,
+        "width": 380,
+        "height": 34.5,
+        "right": 872.5,
+        "bottom": 357.359375
+      }
+    }
+  },
+  "screenshots": [
+    "desktop-title.png",
+    "desktop-explanation.png",
+    "desktop-ordinary-start.png",
+    "desktop-paused.png",
+    "desktop-ordinary-food.png",
+    "desktop-restored.png",
+    "desktop-failure.png"
+  ],
+  "source_mutations": false,
+  "observed_operation": "resume, create second Playwright page, navigate Portal, wait300ms, bring first page to front, expect first page paused",
+  "focus_hidden_event_measurements": "Not captured in the initial collector; pending focused measurement"
+}

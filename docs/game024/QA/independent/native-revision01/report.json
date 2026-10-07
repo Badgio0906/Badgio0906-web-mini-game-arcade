@@ -1,0 +1,2773 @@
+{
+  "started_at": "2026-10-07T16:17:55.563Z",
+  "source_sha256": "df1f7a241a966ea3bf1de8bb13379e408232b5f9e99dd2c882284987379e994d",
+  "source_hashes": {
+    "game024.html": "9601b8e6ba811ffaeecb51870d0c4b705202e9201fb60464b024c3c11a42385d",
+    "src/games/game024/clock.ts": "d0110d6962cd921e9b558e075e9e16e3ac5694866aacac540e89b94e06a26248",
+    "src/games/game024/game.manifest.json": "48a7821623600f872a1aec7c2a8c33327f305b5c9ecbd74fb8cfa03ade1a57be",
+    "src/games/game024/main.ts": "0222c74897ad8aba6b373ee8ac00715df2291a4205e4749022f9098a94996bd0",
+    "src/games/game024/model.ts": "5844853cea420a8ce5cf63da8420aeaa1fe4fe9a557b3ff77badbef31de72b51",
+    "src/games/game024/save.ts": "3746aec20fa0457d27b07d50ac06f898f8562bc69bcfb3a654fdcb367afda6f1",
+    "src/games/game024/style.css": "ba7004ab0aac5dae25462715e2ba829620077d2bd342b606cced5f603c5a6c4e",
+    "tests/unit/game024.test.ts": "78fab84f308c770ad790f414ba2f91926a903fe473b51d6967cbc34f4f7bce44"
+  },
+  "records": [
+    {
+      "profile": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 900,
+        "touch": false
+      },
+      "checks": [
+        {
+          "name": "ordinary start, full20x20, production debug absent",
+          "status": "PASS"
+        },
+        {
+          "name": "native reverse is rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "pause clock and explicit resume",
+          "status": "PASS"
+        },
+        {
+          "name": "native two queued turns happen over two ticks",
+          "status": "PASS"
+        },
+        {
+          "name": "native food and growth with saved BEST",
+          "status": "PASS",
+          "foods": 1,
+          "best": 1
+        },
+        {
+          "name": "active reload preserves question/RUN/BEST and mute",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "desktop-title.png",
+        "desktop-explanation.png",
+        "desktop-ordinary-start.png",
+        "desktop-paused.png",
+        "desktop-ordinary-food.png",
+        "desktop-restored.png",
+        "desktop-failure.png"
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "viewport": {
+            "width": 1365,
+            "height": 900
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 1365,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 1062.0625,
+              "y": 12,
+              "width": 62.421875,
+              "height": 44,
+              "right": 1124.484375,
+              "bottom": 56
+            },
+            {
+              "text": "休憩",
+              "x": 1130.484375,
+              "y": 12,
+              "width": 52.015625,
+              "height": 44,
+              "right": 1182.5,
+              "bottom": 56
+            },
+            {
+              "text": "↑",
+              "x": 945.5,
+              "y": 434.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 488.609375
+            },
+            {
+              "text": "←",
+              "x": 878.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 938.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "↓",
+              "x": 945.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "→",
+              "x": 1012.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1072.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "もう1回",
+              "x": 896.96875,
+              "y": 567.609375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 975.015625,
+              "bottom": 611.609375
+            },
+            {
+              "text": "遊び方",
+              "x": 983.015625,
+              "y": 567.609375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 1054.03125,
+              "bottom": 611.609375
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 492.5,
+              "y": 434.140625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 482.140625
+            },
+            {
+              "text": "説明を見る",
+              "x": 492.5,
+              "y": 491.140625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 539.140625
+            },
+            {
+              "text": "練習する",
+              "x": 492.5,
+              "y": 548.140625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 596.140625
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 257.5,
+            "y": 191.796875,
+            "width": 534,
+            "height": 534,
+            "right": 791.5,
+            "bottom": 725.796875
+          },
+          "dialog": {
+            "text": "SNAKEひとマススネーク食べて、のびて。自分のしっぽに、ご用心。進む速さゆっくり · 毎秒4マスふつう · 毎秒6マスはやい · 毎秒8マスすぐ遊ぶ説明を見る練習する速度ごとにBESTを保存。途中は一時停止で保存します。← 100ガレへ",
+            "x": 467.5,
+            "y": 179.671875,
+            "width": 430,
+            "height": 540.65625,
+            "right": 897.5,
+            "bottom": 720.328125,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひとマススネーク",
+              "x": 492.5,
+              "y": 232.265625,
+              "width": 380,
+              "height": 34.5,
+              "right": 872.5,
+              "bottom": 266.765625
+            }
+          }
+        },
+        {
+          "state": "explanation",
+          "viewport": {
+            "width": 1365,
+            "height": 900
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 1365,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 1062.0625,
+              "y": 12,
+              "width": 62.421875,
+              "height": 44,
+              "right": 1124.484375,
+              "bottom": 56
+            },
+            {
+              "text": "休憩",
+              "x": 1130.484375,
+              "y": 12,
+              "width": 52.015625,
+              "height": 44,
+              "right": 1182.5,
+              "bottom": 56
+            },
+            {
+              "text": "↑",
+              "x": 945.5,
+              "y": 434.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 488.609375
+            },
+            {
+              "text": "←",
+              "x": 878.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 938.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "↓",
+              "x": 945.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "→",
+              "x": 1012.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1072.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "もう1回",
+              "x": 896.96875,
+              "y": 567.609375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 975.015625,
+              "bottom": 611.609375
+            },
+            {
+              "text": "遊び方",
+              "x": 983.015625,
+              "y": 567.609375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 1054.03125,
+              "bottom": 611.609375
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 492.5,
+              "y": 508.390625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 556.390625
+            },
+            {
+              "text": "練習する",
+              "x": 492.5,
+              "y": 565.390625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 613.390625
+            },
+            {
+              "text": "タイトルへ",
+              "x": 492.5,
+              "y": 622.390625,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 670.390625
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 257.5,
+            "y": 191.796875,
+            "width": 534,
+            "height": 534,
+            "right": 791.5,
+            "bottom": 725.796875
+          },
+          "dialog": {
+            "text": "HOW TO PLAY餌を食べて、1マスずつ。蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。琥珀色の四角が餌。食べると身体が1マス伸びます。壁や自分の身体にぶつかると終了。真逆へは曲がれません。20×20マスを埋めるとクリア。途中で速さは変わりません。餌の数が記録です。時間制限はありません。離れると休憩。戻ったら、ボタンで再開。すぐ遊ぶ練習するタイトルへ← 100ガレへ",
+            "x": 467.5,
+            "y": 144.609375,
+            "width": 430,
+            "height": 610.78125,
+            "right": 897.5,
+            "bottom": 755.390625,
+            "scrollTop": 0,
+            "title": {
+              "text": "餌を食べて、1マスずつ。",
+              "x": 492.5,
+              "y": 197.203125,
+              "width": 380,
+              "height": 34.5,
+              "right": 872.5,
+              "bottom": 231.703125
+            }
+          }
+        },
+        {
+          "state": "playing",
+          "viewport": {
+            "width": 1365,
+            "height": 900
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 1365,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 1062.0625,
+              "y": 12,
+              "width": 62.421875,
+              "height": 44,
+              "right": 1124.484375,
+              "bottom": 56
+            },
+            {
+              "text": "休憩",
+              "x": 1130.484375,
+              "y": 12,
+              "width": 52.015625,
+              "height": 44,
+              "right": 1182.5,
+              "bottom": 56
+            },
+            {
+              "text": "↑",
+              "x": 945.5,
+              "y": 434.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 488.609375
+            },
+            {
+              "text": "←",
+              "x": 878.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 938.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "↓",
+              "x": 945.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "→",
+              "x": 1012.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1072.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "もう1回",
+              "x": 896.96875,
+              "y": 567.609375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 975.015625,
+              "bottom": 611.609375
+            },
+            {
+              "text": "遊び方",
+              "x": 983.015625,
+              "y": 567.609375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 1054.03125,
+              "bottom": 611.609375
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 257.5,
+            "y": 191.796875,
+            "width": 534,
+            "height": 534,
+            "right": 791.5,
+            "bottom": 725.796875
+          },
+          "dialog": null
+        },
+        {
+          "state": "paused",
+          "viewport": {
+            "width": 1365,
+            "height": 900
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 1365,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 1062.0625,
+              "y": 12,
+              "width": 62.421875,
+              "height": 44,
+              "right": 1124.484375,
+              "bottom": 56
+            },
+            {
+              "text": "休憩",
+              "x": 1130.484375,
+              "y": 12,
+              "width": 52.015625,
+              "height": 44,
+              "right": 1182.5,
+              "bottom": 56
+            },
+            {
+              "text": "↑",
+              "x": 945.5,
+              "y": 434.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 488.609375
+            },
+            {
+              "text": "←",
+              "x": 878.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 938.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "↓",
+              "x": 945.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1005.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "→",
+              "x": 1012.5,
+              "y": 495.609375,
+              "width": 60,
+              "height": 54,
+              "right": 1072.5,
+              "bottom": 549.609375
+            },
+            {
+              "text": "もう1回",
+              "x": 896.96875,
+              "y": 567.609375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 975.015625,
+              "bottom": 611.609375
+            },
+            {
+              "text": "遊び方",
+              "x": 983.015625,
+              "y": 567.609375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 1054.03125,
+              "bottom": 611.609375
+            },
+            {
+              "text": "再開する",
+              "x": 492.5,
+              "y": 412.53125,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 460.53125
+            },
+            {
+              "text": "最初から遊ぶ",
+              "x": 492.5,
+              "y": 469.53125,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 517.53125
+            },
+            {
+              "text": "タイトルへ",
+              "x": 492.5,
+              "y": 526.53125,
+              "width": 380,
+              "height": 48,
+              "right": 872.5,
+              "bottom": 574.53125
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 257.5,
+            "y": 191.796875,
+            "width": 534,
+            "height": 534,
+            "right": 791.5,
+            "bottom": 725.796875
+          },
+          "dialog": {
+            "text": "ひと休み。盤面はそのまま。休憩中は蛇も止まります。ボタンで再開してください。再開する最初から遊ぶタイトルへ← 100ガレへ",
+            "x": 467.5,
+            "y": 240.46875,
+            "width": 430,
+            "height": 419.0625,
+            "right": 897.5,
+            "bottom": 659.53125,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひと休み。",
+              "x": 492.5,
+              "y": 270.46875,
+              "width": 380,
+              "height": 34.5,
+              "right": 872.5,
+              "bottom": 304.96875
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "analyticsRequests": 0,
+      "stubbedAds": 1,
+      "status": "FAIL",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+      "observed_at": "2026-10-07T16:18:31.457Z",
+      "failureLayout": {
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "scrollY": 0,
+        "bodyScrollWidth": 1365,
+        "controls": [
+          {
+            "text": "音 OFF",
+            "x": 1058.453125,
+            "y": 12,
+            "width": 66.03125,
+            "height": 44,
+            "right": 1124.484375,
+            "bottom": 56
+          },
+          {
+            "text": "休憩",
+            "x": 1130.484375,
+            "y": 12,
+            "width": 52.015625,
+            "height": 44,
+            "right": 1182.5,
+            "bottom": 56
+          },
+          {
+            "text": "↑",
+            "x": 945.5,
+            "y": 434.609375,
+            "width": 60,
+            "height": 54,
+            "right": 1005.5,
+            "bottom": 488.609375
+          },
+          {
+            "text": "←",
+            "x": 878.5,
+            "y": 495.609375,
+            "width": 60,
+            "height": 54,
+            "right": 938.5,
+            "bottom": 549.609375
+          },
+          {
+            "text": "↓",
+            "x": 945.5,
+            "y": 495.609375,
+            "width": 60,
+            "height": 54,
+            "right": 1005.5,
+            "bottom": 549.609375
+          },
+          {
+            "text": "→",
+            "x": 1012.5,
+            "y": 495.609375,
+            "width": 60,
+            "height": 54,
+            "right": 1072.5,
+            "bottom": 549.609375
+          },
+          {
+            "text": "もう1回",
+            "x": 896.96875,
+            "y": 567.609375,
+            "width": 78.046875,
+            "height": 44,
+            "right": 975.015625,
+            "bottom": 611.609375
+          },
+          {
+            "text": "遊び方",
+            "x": 983.015625,
+            "y": 567.609375,
+            "width": 71.015625,
+            "height": 44,
+            "right": 1054.03125,
+            "bottom": 611.609375
+          },
+          {
+            "text": "もう1回",
+            "x": 492.5,
+            "y": 439.734375,
+            "width": 380,
+            "height": 48,
+            "right": 872.5,
+            "bottom": 487.734375
+          },
+          {
+            "text": "タイトルへ",
+            "x": 492.5,
+            "y": 496.734375,
+            "width": 380,
+            "height": 48,
+            "right": 872.5,
+            "bottom": 544.734375
+          }
+        ],
+        "canvas": {
+          "text": "",
+          "x": 257.5,
+          "y": 191.796875,
+          "width": 534,
+          "height": 534,
+          "right": 791.5,
+          "bottom": 725.796875
+        },
+        "dialog": {
+          "text": "SNAKE壁にぶつかりました。餌 1個 · 長さ 4ゆっくり · BEST 1個もう1回タイトルへ← 100ガレへ",
+          "x": 467.5,
+          "y": 270.265625,
+          "width": 430,
+          "height": 359.46875,
+          "right": 897.5,
+          "bottom": 629.734375,
+          "scrollTop": 0,
+          "title": {
+            "text": "壁にぶつかりました。",
+            "x": 492.5,
+            "y": 322.859375,
+            "width": 380,
+            "height": 34.5,
+            "right": 872.5,
+            "bottom": 357.359375
+          }
+        }
+      }
+    },
+    {
+      "profile": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "ordinary start, full20x20, production debug absent",
+          "status": "PASS"
+        },
+        {
+          "name": "native reverse is rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "pause clock and explicit resume",
+          "status": "PASS"
+        },
+        {
+          "name": "native two queued turns happen over two ticks",
+          "status": "PASS"
+        },
+        {
+          "name": "native food and growth with saved BEST",
+          "status": "PASS",
+          "foods": 1,
+          "best": 1
+        },
+        {
+          "name": "active reload preserves question/RUN/BEST and mute",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "phone-title.png",
+        "phone-explanation.png",
+        "phone-ordinary-start.png",
+        "phone-paused.png",
+        "phone-ordinary-food.png",
+        "phone-restored.png",
+        "phone-failure.png"
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 390,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 257.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 319.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 325.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 265.5,
+              "y": 600.6875,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 646.6875
+            },
+            {
+              "text": "←",
+              "x": 216.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 260.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "↓",
+              "x": 265.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "→",
+              "x": 314.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 358.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "もう1回",
+              "x": 44.015625,
+              "y": 664.1875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 102.984375,
+              "bottom": 708.1875
+            },
+            {
+              "text": "遊び方",
+              "x": 107.984375,
+              "y": 664.1875,
+              "width": 53,
+              "height": 44,
+              "right": 160.984375,
+              "bottom": 708.1875
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 39,
+              "y": 393.546875,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 441.546875
+            },
+            {
+              "text": "説明を見る",
+              "x": 39,
+              "y": 450.546875,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 498.546875
+            },
+            {
+              "text": "練習する",
+              "x": 39,
+              "y": 507.546875,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 555.546875
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 340,
+            "height": 340,
+            "right": 365,
+            "bottom": 505.1875
+          },
+          "dialog": {
+            "text": "SNAKEひとマススネーク食べて、のびて。自分のしっぽに、ご用心。進む速さゆっくり · 毎秒4マスふつう · 毎秒6マスはやい · 毎秒8マスすぐ遊ぶ説明を見る練習する速度ごとにBESTを保存。途中は一時停止で保存します。← 100ガレへ",
+            "x": 14,
+            "y": 139.078125,
+            "width": 362,
+            "height": 565.84375,
+            "right": 376,
+            "bottom": 704.921875,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひとマススネーク",
+              "x": 39,
+              "y": 191.671875,
+              "width": 312,
+              "height": 34.5,
+              "right": 351,
+              "bottom": 226.171875
+            }
+          }
+        },
+        {
+          "state": "explanation",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 390,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 257.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 319.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 325.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 265.5,
+              "y": 600.6875,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 646.6875
+            },
+            {
+              "text": "←",
+              "x": 216.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 260.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "↓",
+              "x": 265.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "→",
+              "x": 314.5,
+              "y": 651.6875,
+              "width": 44,
+              "height": 46,
+              "right": 358.5,
+              "bottom": 697.6875
+            },
+            {
+              "text": "もう1回",
+              "x": 44.015625,
+              "y": 664.1875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 102.984375,
+              "bottom": 708.1875
+            },
+            {
+              "text": "遊び方",
+              "x": 107.984375,
+              "y": 664.1875,
+              "width": 53,
+              "height": 44,
+              "right": 160.984375,
+              "bottom": 708.1875
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 39,
+              "y": 492.984375,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 540.984375
+            },
+            {
+              "text": "練習する",
+              "x": 39,
+              "y": 549.984375,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 597.984375
+            },
+            {
+              "text": "タイトルへ",
+              "x": 39,
+              "y": 606.984375,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 654.984375
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 340,
+            "height": 340,
+            "right": 365,
+            "bottom": 505.1875
+          },
+          "dialog": {
+            "text": "HOW TO PLAY餌を食べて、1マスずつ。蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。琥珀色の四角が餌。食べると身体が1マス伸びます。壁や自分の身体にぶつかると終了。真逆へは曲がれません。20×20マスを埋めるとクリア。途中で速さは変わりません。餌の数が記録です。時間制限はありません。離れると休憩。戻ったら、ボタンで再開。すぐ遊ぶ練習するタイトルへ← 100ガレへ",
+            "x": 14,
+            "y": 104.015625,
+            "width": 362,
+            "height": 635.96875,
+            "right": 376,
+            "bottom": 739.984375,
+            "scrollTop": 0,
+            "title": {
+              "text": "餌を食べて、1マスずつ。",
+              "x": 39,
+              "y": 156.609375,
+              "width": 312,
+              "height": 34.5,
+              "right": 351,
+              "bottom": 191.109375
+            }
+          }
+        },
+        {
+          "state": "playing",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 390,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 257.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 319.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 325.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 265.5,
+              "y": 605.078125,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 651.078125
+            },
+            {
+              "text": "←",
+              "x": 216.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 260.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "↓",
+              "x": 265.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "→",
+              "x": 314.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 358.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 44.015625,
+              "y": 672.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 102.984375,
+              "bottom": 716.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 107.984375,
+              "y": 672.96875,
+              "width": 53,
+              "height": 44,
+              "right": 160.984375,
+              "bottom": 716.96875
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 340,
+            "height": 340,
+            "right": 365,
+            "bottom": 505.1875
+          },
+          "dialog": null
+        },
+        {
+          "state": "paused",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 390,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 257.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 319.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 325.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 378,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 265.5,
+              "y": 605.078125,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 651.078125
+            },
+            {
+              "text": "←",
+              "x": 216.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 260.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "↓",
+              "x": 265.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 309.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "→",
+              "x": 314.5,
+              "y": 656.078125,
+              "width": 44,
+              "height": 46,
+              "right": 358.5,
+              "bottom": 702.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 44.015625,
+              "y": 672.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 102.984375,
+              "bottom": 716.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 107.984375,
+              "y": 672.96875,
+              "width": 53,
+              "height": 44,
+              "right": 160.984375,
+              "bottom": 716.96875
+            },
+            {
+              "text": "再開する",
+              "x": 39,
+              "y": 384.53125,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 432.53125
+            },
+            {
+              "text": "最初から遊ぶ",
+              "x": 39,
+              "y": 441.53125,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 489.53125
+            },
+            {
+              "text": "タイトルへ",
+              "x": 39,
+              "y": 498.53125,
+              "width": 312,
+              "height": 48,
+              "right": 351,
+              "bottom": 546.53125
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 340,
+            "height": 340,
+            "right": 365,
+            "bottom": 505.1875
+          },
+          "dialog": {
+            "text": "ひと休み。盤面はそのまま。休憩中は蛇も止まります。ボタンで再開してください。再開する最初から遊ぶタイトルへ← 100ガレへ",
+            "x": 14,
+            "y": 212.46875,
+            "width": 362,
+            "height": 419.0625,
+            "right": 376,
+            "bottom": 631.53125,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひと休み。",
+              "x": 39,
+              "y": 242.46875,
+              "width": 312,
+              "height": 34.5,
+              "right": 351,
+              "bottom": 276.96875
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "analyticsRequests": 0,
+      "stubbedAds": 1,
+      "status": "FAIL",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+      "observed_at": "2026-10-07T16:19:07.988Z",
+      "failureLayout": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 0,
+        "bodyScrollWidth": 390,
+        "controls": [
+          {
+            "text": "音 OFF",
+            "x": 253.953125,
+            "y": 8,
+            "width": 66.03125,
+            "height": 44,
+            "right": 319.984375,
+            "bottom": 52
+          },
+          {
+            "text": "休憩",
+            "x": 325.984375,
+            "y": 8,
+            "width": 52.015625,
+            "height": 44,
+            "right": 378,
+            "bottom": 52
+          },
+          {
+            "text": "↑",
+            "x": 265.5,
+            "y": 600.6875,
+            "width": 44,
+            "height": 46,
+            "right": 309.5,
+            "bottom": 646.6875
+          },
+          {
+            "text": "←",
+            "x": 216.5,
+            "y": 651.6875,
+            "width": 44,
+            "height": 46,
+            "right": 260.5,
+            "bottom": 697.6875
+          },
+          {
+            "text": "↓",
+            "x": 265.5,
+            "y": 651.6875,
+            "width": 44,
+            "height": 46,
+            "right": 309.5,
+            "bottom": 697.6875
+          },
+          {
+            "text": "→",
+            "x": 314.5,
+            "y": 651.6875,
+            "width": 44,
+            "height": 46,
+            "right": 358.5,
+            "bottom": 697.6875
+          },
+          {
+            "text": "もう1回",
+            "x": 44.015625,
+            "y": 664.1875,
+            "width": 58.96875,
+            "height": 44,
+            "right": 102.984375,
+            "bottom": 708.1875
+          },
+          {
+            "text": "遊び方",
+            "x": 107.984375,
+            "y": 664.1875,
+            "width": 53,
+            "height": 44,
+            "right": 160.984375,
+            "bottom": 708.1875
+          },
+          {
+            "text": "もう1回",
+            "x": 39,
+            "y": 411.734375,
+            "width": 312,
+            "height": 48,
+            "right": 351,
+            "bottom": 459.734375
+          },
+          {
+            "text": "タイトルへ",
+            "x": 39,
+            "y": 468.734375,
+            "width": 312,
+            "height": 48,
+            "right": 351,
+            "bottom": 516.734375
+          }
+        ],
+        "canvas": {
+          "text": "",
+          "x": 25,
+          "y": 165.1875,
+          "width": 340,
+          "height": 340,
+          "right": 365,
+          "bottom": 505.1875
+        },
+        "dialog": {
+          "text": "SNAKE壁にぶつかりました。餌 1個 · 長さ 4ゆっくり · BEST 1個もう1回タイトルへ← 100ガレへ",
+          "x": 14,
+          "y": 242.265625,
+          "width": 362,
+          "height": 359.46875,
+          "right": 376,
+          "bottom": 601.734375,
+          "scrollTop": 0,
+          "title": {
+            "text": "壁にぶつかりました。",
+            "x": 39,
+            "y": 294.859375,
+            "width": 312,
+            "height": 34.5,
+            "right": 351,
+            "bottom": 329.359375
+          }
+        }
+      }
+    },
+    {
+      "profile": {
+        "name": "small",
+        "width": 320,
+        "height": 740,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "ordinary start, full20x20, production debug absent",
+          "status": "PASS"
+        },
+        {
+          "name": "native reverse is rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "pause clock and explicit resume",
+          "status": "PASS"
+        },
+        {
+          "name": "native two queued turns happen over two ticks",
+          "status": "PASS"
+        },
+        {
+          "name": "native food and growth with saved BEST",
+          "status": "PASS",
+          "foods": 1,
+          "best": 1
+        },
+        {
+          "name": "active reload preserves question/RUN/BEST and mute",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "small-title.png",
+        "small-explanation.png",
+        "small-ordinary-start.png",
+        "small-paused.png",
+        "small-ordinary-food.png",
+        "small-restored.png",
+        "small-failure.png"
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 320,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 187.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 249.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 255.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 211,
+              "y": 535.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 581.078125
+            },
+            {
+              "text": "←",
+              "x": 162,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 206,
+              "bottom": 632.078125
+            },
+            {
+              "text": "↓",
+              "x": 211,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 632.078125
+            },
+            {
+              "text": "→",
+              "x": 260,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 304,
+              "bottom": 632.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 24.515625,
+              "y": 602.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 83.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 88.484375,
+              "y": 602.96875,
+              "width": 53,
+              "height": 44,
+              "right": 141.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 39,
+              "y": 341.546875,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 389.546875
+            },
+            {
+              "text": "説明を見る",
+              "x": 39,
+              "y": 398.546875,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 446.546875
+            },
+            {
+              "text": "練習する",
+              "x": 39,
+              "y": 455.546875,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 503.546875
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 270,
+            "height": 270,
+            "right": 295,
+            "bottom": 435.1875
+          },
+          "dialog": {
+            "text": "SNAKEひとマススネーク食べて、のびて。自分のしっぽに、ご用心。進む速さゆっくり · 毎秒4マスふつう · 毎秒6マスはやい · 毎秒8マスすぐ遊ぶ説明を見る練習する速度ごとにBESTを保存。途中は一時停止で保存します。← 100ガレへ",
+            "x": 14,
+            "y": 87.078125,
+            "width": 292,
+            "height": 565.84375,
+            "right": 306,
+            "bottom": 652.921875,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひとマススネーク",
+              "x": 39,
+              "y": 139.671875,
+              "width": 242,
+              "height": 34.5,
+              "right": 281,
+              "bottom": 174.171875
+            }
+          }
+        },
+        {
+          "state": "explanation",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 320,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 187.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 249.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 255.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 211,
+              "y": 535.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 581.078125
+            },
+            {
+              "text": "←",
+              "x": 162,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 206,
+              "bottom": 632.078125
+            },
+            {
+              "text": "↓",
+              "x": 211,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 632.078125
+            },
+            {
+              "text": "→",
+              "x": 260,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 304,
+              "bottom": 632.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 24.515625,
+              "y": 602.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 83.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 88.484375,
+              "y": 602.96875,
+              "width": 53,
+              "height": 44,
+              "right": 141.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 39,
+              "y": 514.03125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 562.03125
+            },
+            {
+              "text": "練習する",
+              "x": 39,
+              "y": 571.03125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 619.03125
+            },
+            {
+              "text": "タイトルへ",
+              "x": 39,
+              "y": 628.03125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 676.03125
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 270,
+            "height": 270,
+            "right": 295,
+            "bottom": 435.1875
+          },
+          "dialog": {
+            "text": "HOW TO PLAY餌を食べて、1マスずつ。蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。琥珀色の四角が餌。食べると身体が1マス伸びます。壁や自分の身体にぶつかると終了。真逆へは曲がれません。20×20マスを埋めるとクリア。途中で速さは変わりません。餌の数が記録です。時間制限はありません。離れると休憩。戻ったら、ボタンで再開。すぐ遊ぶ練習するタイトルへ← 100ガレへ",
+            "x": 14,
+            "y": 15,
+            "width": 292,
+            "height": 710,
+            "right": 306,
+            "bottom": 725,
+            "scrollTop": 0,
+            "title": {
+              "text": "餌を食べて、1マスずつ。",
+              "x": 39,
+              "y": 67.59375,
+              "width": 242,
+              "height": 69,
+              "right": 281,
+              "bottom": 136.59375
+            }
+          }
+        },
+        {
+          "state": "playing",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 320,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 187.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 249.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 255.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 211,
+              "y": 535.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 581.078125
+            },
+            {
+              "text": "←",
+              "x": 162,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 206,
+              "bottom": 632.078125
+            },
+            {
+              "text": "↓",
+              "x": 211,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 632.078125
+            },
+            {
+              "text": "→",
+              "x": 260,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 304,
+              "bottom": 632.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 24.515625,
+              "y": 602.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 83.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 88.484375,
+              "y": 602.96875,
+              "width": 53,
+              "height": 44,
+              "right": 141.484375,
+              "bottom": 646.96875
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 270,
+            "height": 270,
+            "right": 295,
+            "bottom": 435.1875
+          },
+          "dialog": null
+        },
+        {
+          "state": "paused",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 320,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 187.5625,
+              "y": 8,
+              "width": 62.421875,
+              "height": 44,
+              "right": 249.984375,
+              "bottom": 52
+            },
+            {
+              "text": "休憩",
+              "x": 255.984375,
+              "y": 8,
+              "width": 52.015625,
+              "height": 44,
+              "right": 308,
+              "bottom": 52
+            },
+            {
+              "text": "↑",
+              "x": 211,
+              "y": 535.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 581.078125
+            },
+            {
+              "text": "←",
+              "x": 162,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 206,
+              "bottom": 632.078125
+            },
+            {
+              "text": "↓",
+              "x": 211,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 255,
+              "bottom": 632.078125
+            },
+            {
+              "text": "→",
+              "x": 260,
+              "y": 586.078125,
+              "width": 44,
+              "height": 46,
+              "right": 304,
+              "bottom": 632.078125
+            },
+            {
+              "text": "もう1回",
+              "x": 24.515625,
+              "y": 602.96875,
+              "width": 58.96875,
+              "height": 44,
+              "right": 83.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "遊び方",
+              "x": 88.484375,
+              "y": 602.96875,
+              "width": 53,
+              "height": 44,
+              "right": 141.484375,
+              "bottom": 646.96875
+            },
+            {
+              "text": "再開する",
+              "x": 39,
+              "y": 332.53125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 380.53125
+            },
+            {
+              "text": "最初から遊ぶ",
+              "x": 39,
+              "y": 389.53125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 437.53125
+            },
+            {
+              "text": "タイトルへ",
+              "x": 39,
+              "y": 446.53125,
+              "width": 242,
+              "height": 48,
+              "right": 281,
+              "bottom": 494.53125
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 25,
+            "y": 165.1875,
+            "width": 270,
+            "height": 270,
+            "right": 295,
+            "bottom": 435.1875
+          },
+          "dialog": {
+            "text": "ひと休み。盤面はそのまま。休憩中は蛇も止まります。ボタンで再開してください。再開する最初から遊ぶタイトルへ← 100ガレへ",
+            "x": 14,
+            "y": 160.46875,
+            "width": 292,
+            "height": 419.0625,
+            "right": 306,
+            "bottom": 579.53125,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひと休み。",
+              "x": 39,
+              "y": 190.46875,
+              "width": 242,
+              "height": 34.5,
+              "right": 281,
+              "bottom": 224.96875
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "analyticsRequests": 0,
+      "stubbedAds": 1,
+      "status": "FAIL",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+      "observed_at": "2026-10-07T16:19:42.926Z",
+      "failureLayout": {
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "scrollY": 0,
+        "bodyScrollWidth": 320,
+        "controls": [
+          {
+            "text": "音 OFF",
+            "x": 183.953125,
+            "y": 8,
+            "width": 66.03125,
+            "height": 44,
+            "right": 249.984375,
+            "bottom": 52
+          },
+          {
+            "text": "休憩",
+            "x": 255.984375,
+            "y": 8,
+            "width": 52.015625,
+            "height": 44,
+            "right": 308,
+            "bottom": 52
+          },
+          {
+            "text": "↑",
+            "x": 211,
+            "y": 535.078125,
+            "width": 44,
+            "height": 46,
+            "right": 255,
+            "bottom": 581.078125
+          },
+          {
+            "text": "←",
+            "x": 162,
+            "y": 586.078125,
+            "width": 44,
+            "height": 46,
+            "right": 206,
+            "bottom": 632.078125
+          },
+          {
+            "text": "↓",
+            "x": 211,
+            "y": 586.078125,
+            "width": 44,
+            "height": 46,
+            "right": 255,
+            "bottom": 632.078125
+          },
+          {
+            "text": "→",
+            "x": 260,
+            "y": 586.078125,
+            "width": 44,
+            "height": 46,
+            "right": 304,
+            "bottom": 632.078125
+          },
+          {
+            "text": "もう1回",
+            "x": 24.515625,
+            "y": 602.96875,
+            "width": 58.96875,
+            "height": 44,
+            "right": 83.484375,
+            "bottom": 646.96875
+          },
+          {
+            "text": "遊び方",
+            "x": 88.484375,
+            "y": 602.96875,
+            "width": 53,
+            "height": 44,
+            "right": 141.484375,
+            "bottom": 646.96875
+          },
+          {
+            "text": "もう1回",
+            "x": 39,
+            "y": 359.734375,
+            "width": 242,
+            "height": 48,
+            "right": 281,
+            "bottom": 407.734375
+          },
+          {
+            "text": "タイトルへ",
+            "x": 39,
+            "y": 416.734375,
+            "width": 242,
+            "height": 48,
+            "right": 281,
+            "bottom": 464.734375
+          }
+        ],
+        "canvas": {
+          "text": "",
+          "x": 25,
+          "y": 165.1875,
+          "width": 270,
+          "height": 270,
+          "right": 295,
+          "bottom": 435.1875
+        },
+        "dialog": {
+          "text": "SNAKE壁にぶつかりました。餌 1個 · 長さ 4ゆっくり · BEST 1個もう1回タイトルへ← 100ガレへ",
+          "x": 14,
+          "y": 190.265625,
+          "width": 292,
+          "height": 359.46875,
+          "right": 306,
+          "bottom": 549.734375,
+          "scrollTop": 0,
+          "title": {
+            "text": "壁にぶつかりました。",
+            "x": 39,
+            "y": 242.859375,
+            "width": 242,
+            "height": 34.5,
+            "right": 281,
+            "bottom": 277.359375
+          }
+        }
+      }
+    },
+    {
+      "profile": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390,
+        "touch": true
+      },
+      "checks": [
+        {
+          "name": "ordinary start, full20x20, production debug absent",
+          "status": "PASS"
+        },
+        {
+          "name": "native reverse is rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "pause clock and explicit resume",
+          "status": "PASS"
+        },
+        {
+          "name": "native two queued turns happen over two ticks",
+          "status": "PASS"
+        },
+        {
+          "name": "native food and growth with saved BEST",
+          "status": "PASS",
+          "foods": 1,
+          "best": 1
+        },
+        {
+          "name": "active reload preserves question/RUN/BEST and mute",
+          "status": "PASS"
+        }
+      ],
+      "captures": [
+        "landscape-title.png",
+        "landscape-explanation.png",
+        "landscape-ordinary-start.png",
+        "landscape-paused.png",
+        "landscape-ordinary-food.png",
+        "landscape-restored.png",
+        "landscape-failure.png"
+      ],
+      "layouts": [
+        {
+          "state": "title",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 844,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 709.5625,
+              "y": 5,
+              "width": 62.421875,
+              "height": 44,
+              "right": 771.984375,
+              "bottom": 49
+            },
+            {
+              "text": "休憩",
+              "x": 777.984375,
+              "y": 5,
+              "width": 52.015625,
+              "height": 44,
+              "right": 830,
+              "bottom": 49
+            },
+            {
+              "text": "↑",
+              "x": 543,
+              "y": 208.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 252.09375
+            },
+            {
+              "text": "←",
+              "x": 491,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 539,
+              "bottom": 300.09375
+            },
+            {
+              "text": "↓",
+              "x": 543,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 300.09375
+            },
+            {
+              "text": "→",
+              "x": 595,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 643,
+              "bottom": 300.09375
+            },
+            {
+              "text": "もう1回",
+              "x": 488.46875,
+              "y": 308.09375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 566.515625,
+              "bottom": 352.09375
+            },
+            {
+              "text": "遊び方",
+              "x": 574.515625,
+              "y": 308.09375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 645.53125,
+              "bottom": 352.09375
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 232,
+              "y": 269.46875,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 317.46875
+            },
+            {
+              "text": "説明を見る",
+              "x": 232,
+              "y": 326.46875,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 374.46875
+            },
+            {
+              "text": "練習する",
+              "x": 232,
+              "y": 383.46875,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 431.46875
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 24,
+            "y": 114.546875,
+            "width": 254,
+            "height": 254,
+            "right": 278,
+            "bottom": 368.546875
+          },
+          "dialog": {
+            "text": "SNAKEひとマススネーク食べて、のびて。自分のしっぽに、ご用心。進む速さゆっくり · 毎秒4マスふつう · 毎秒6マスはやい · 毎秒8マスすぐ遊ぶ説明を見る練習する速度ごとにBESTを保存。途中は一時停止で保存します。← 100ガレへ",
+            "x": 207,
+            "y": 15,
+            "width": 430,
+            "height": 360,
+            "right": 637,
+            "bottom": 375,
+            "scrollTop": 0,
+            "title": {
+              "text": "ひとマススネーク",
+              "x": 232,
+              "y": 67.59375,
+              "width": 380,
+              "height": 34.5,
+              "right": 612,
+              "bottom": 102.09375
+            }
+          }
+        },
+        {
+          "state": "explanation",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 844,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 709.5625,
+              "y": 5,
+              "width": 62.421875,
+              "height": 44,
+              "right": 771.984375,
+              "bottom": 49
+            },
+            {
+              "text": "休憩",
+              "x": 777.984375,
+              "y": 5,
+              "width": 52.015625,
+              "height": 44,
+              "right": 830,
+              "bottom": 49
+            },
+            {
+              "text": "↑",
+              "x": 543,
+              "y": 208.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 252.09375
+            },
+            {
+              "text": "←",
+              "x": 491,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 539,
+              "bottom": 300.09375
+            },
+            {
+              "text": "↓",
+              "x": 543,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 300.09375
+            },
+            {
+              "text": "→",
+              "x": 595,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 643,
+              "bottom": 300.09375
+            },
+            {
+              "text": "もう1回",
+              "x": 488.46875,
+              "y": 308.09375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 566.515625,
+              "bottom": 352.09375
+            },
+            {
+              "text": "遊び方",
+              "x": 574.515625,
+              "y": 308.09375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 645.53125,
+              "bottom": 352.09375
+            },
+            {
+              "text": "すぐ遊ぶ",
+              "x": 232,
+              "y": 378.78125,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 426.78125
+            },
+            {
+              "text": "練習する",
+              "x": 232,
+              "y": 435.78125,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 483.78125
+            },
+            {
+              "text": "タイトルへ",
+              "x": 232,
+              "y": 492.78125,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 540.78125
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 24,
+            "y": 114.546875,
+            "width": 254,
+            "height": 254,
+            "right": 278,
+            "bottom": 368.546875
+          },
+          "dialog": {
+            "text": "HOW TO PLAY餌を食べて、1マスずつ。蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。琥珀色の四角が餌。食べると身体が1マス伸びます。壁や自分の身体にぶつかると終了。真逆へは曲がれません。20×20マスを埋めるとクリア。途中で速さは変わりません。餌の数が記録です。時間制限はありません。離れると休憩。戻ったら、ボタンで再開。すぐ遊ぶ練習するタイトルへ← 100ガレへ",
+            "x": 207,
+            "y": 15,
+            "width": 430,
+            "height": 360,
+            "right": 637,
+            "bottom": 375,
+            "scrollTop": 0,
+            "title": {
+              "text": "餌を食べて、1マスずつ。",
+              "x": 232,
+              "y": 67.59375,
+              "width": 380,
+              "height": 34.5,
+              "right": 612,
+              "bottom": 102.09375
+            }
+          }
+        },
+        {
+          "state": "playing",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 844,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 709.5625,
+              "y": 5,
+              "width": 62.421875,
+              "height": 44,
+              "right": 771.984375,
+              "bottom": 49
+            },
+            {
+              "text": "休憩",
+              "x": 777.984375,
+              "y": 5,
+              "width": 52.015625,
+              "height": 44,
+              "right": 830,
+              "bottom": 49
+            },
+            {
+              "text": "↑",
+              "x": 543,
+              "y": 208.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 252.09375
+            },
+            {
+              "text": "←",
+              "x": 491,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 539,
+              "bottom": 300.09375
+            },
+            {
+              "text": "↓",
+              "x": 543,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 300.09375
+            },
+            {
+              "text": "→",
+              "x": 595,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 643,
+              "bottom": 300.09375
+            },
+            {
+              "text": "もう1回",
+              "x": 488.46875,
+              "y": 308.09375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 566.515625,
+              "bottom": 352.09375
+            },
+            {
+              "text": "遊び方",
+              "x": 574.515625,
+              "y": 308.09375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 645.53125,
+              "bottom": 352.09375
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 24,
+            "y": 114.546875,
+            "width": 254,
+            "height": 254,
+            "right": 278,
+            "bottom": 368.546875
+          },
+          "dialog": null
+        },
+        {
+          "state": "paused",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "scrollY": 0,
+          "bodyScrollWidth": 844,
+          "controls": [
+            {
+              "text": "音 ON",
+              "x": 709.5625,
+              "y": 5,
+              "width": 62.421875,
+              "height": 44,
+              "right": 771.984375,
+              "bottom": 49
+            },
+            {
+              "text": "休憩",
+              "x": 777.984375,
+              "y": 5,
+              "width": 52.015625,
+              "height": 44,
+              "right": 830,
+              "bottom": 49
+            },
+            {
+              "text": "↑",
+              "x": 543,
+              "y": 208.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 252.09375
+            },
+            {
+              "text": "←",
+              "x": 491,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 539,
+              "bottom": 300.09375
+            },
+            {
+              "text": "↓",
+              "x": 543,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 591,
+              "bottom": 300.09375
+            },
+            {
+              "text": "→",
+              "x": 595,
+              "y": 256.09375,
+              "width": 48,
+              "height": 44,
+              "right": 643,
+              "bottom": 300.09375
+            },
+            {
+              "text": "もう1回",
+              "x": 488.46875,
+              "y": 308.09375,
+              "width": 78.046875,
+              "height": 44,
+              "right": 566.515625,
+              "bottom": 352.09375
+            },
+            {
+              "text": "遊び方",
+              "x": 574.515625,
+              "y": 308.09375,
+              "width": 71.015625,
+              "height": 44,
+              "right": 645.53125,
+              "bottom": 352.09375
+            },
+            {
+              "text": "再開する",
+              "x": 232,
+              "y": 128.0625,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 176.0625
+            },
+            {
+              "text": "最初から遊ぶ",
+              "x": 232,
+              "y": 185.0625,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 233.0625
+            },
+            {
+              "text": "タイトルへ",
+              "x": 232,
+              "y": 242.0625,
+              "width": 380,
+              "height": 48,
+              "right": 612,
+              "bottom": 290.0625
+            }
+          ],
+          "canvas": {
+            "text": "",
+            "x": 24,
+            "y": 114.546875,
+            "width": 254,
+            "height": 254,
+            "right": 278,
+            "bottom": 368.546875
+          },
+          "dialog": {
+            "text": "ひと休み。盤面はそのまま。休憩中は蛇も止まります。ボタンで再開してください。再開する最初から遊ぶタイトルへ← 100ガレへ",
+            "x": 207,
+            "y": 15,
+            "width": 430,
+            "height": 360,
+            "right": 637,
+            "bottom": 375,
+            "scrollTop": 59,
+            "title": {
+              "text": "ひと休み。",
+              "x": 232,
+              "y": -14,
+              "width": 380,
+              "height": 34.5,
+              "right": 612,
+              "bottom": 20.5
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "analyticsRequests": 0,
+      "stubbedAds": 1,
+      "status": "FAIL",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+      "observed_at": "2026-10-07T16:20:19.181Z",
+      "failureLayout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "scrollY": 0,
+        "bodyScrollWidth": 844,
+        "controls": [
+          {
+            "text": "音 OFF",
+            "x": 705.953125,
+            "y": 5,
+            "width": 66.03125,
+            "height": 44,
+            "right": 771.984375,
+            "bottom": 49
+          },
+          {
+            "text": "休憩",
+            "x": 777.984375,
+            "y": 5,
+            "width": 52.015625,
+            "height": 44,
+            "right": 830,
+            "bottom": 49
+          },
+          {
+            "text": "↑",
+            "x": 543,
+            "y": 208.09375,
+            "width": 48,
+            "height": 44,
+            "right": 591,
+            "bottom": 252.09375
+          },
+          {
+            "text": "←",
+            "x": 491,
+            "y": 256.09375,
+            "width": 48,
+            "height": 44,
+            "right": 539,
+            "bottom": 300.09375
+          },
+          {
+            "text": "↓",
+            "x": 543,
+            "y": 256.09375,
+            "width": 48,
+            "height": 44,
+            "right": 591,
+            "bottom": 300.09375
+          },
+          {
+            "text": "→",
+            "x": 595,
+            "y": 256.09375,
+            "width": 48,
+            "height": 44,
+            "right": 643,
+            "bottom": 300.09375
+          },
+          {
+            "text": "もう1回",
+            "x": 488.46875,
+            "y": 308.09375,
+            "width": 78.046875,
+            "height": 44,
+            "right": 566.515625,
+            "bottom": 352.09375
+          },
+          {
+            "text": "遊び方",
+            "x": 574.515625,
+            "y": 308.09375,
+            "width": 71.015625,
+            "height": 44,
+            "right": 645.53125,
+            "bottom": 352.09375
+          },
+          {
+            "text": "もう1回",
+            "x": 232,
+            "y": 184.734375,
+            "width": 380,
+            "height": 48,
+            "right": 612,
+            "bottom": 232.734375
+          },
+          {
+            "text": "タイトルへ",
+            "x": 232,
+            "y": 241.734375,
+            "width": 380,
+            "height": 48,
+            "right": 612,
+            "bottom": 289.734375
+          }
+        ],
+        "canvas": {
+          "text": "",
+          "x": 24,
+          "y": 114.546875,
+          "width": 254,
+          "height": 254,
+          "right": 278,
+          "bottom": 368.546875
+        },
+        "dialog": {
+          "text": "SNAKE壁にぶつかりました。餌 1個 · 長さ 4ゆっくり · BEST 1個もう1回タイトルへ← 100ガレへ",
+          "x": 207,
+          "y": 15.265625,
+          "width": 430,
+          "height": 359.46875,
+          "right": 637,
+          "bottom": 374.734375,
+          "scrollTop": 0,
+          "title": {
+            "text": "壁にぶつかりました。",
+            "x": 232,
+            "y": 67.859375,
+            "width": 380,
+            "height": 34.5,
+            "right": 612,
+            "bottom": 102.359375
+          }
+        }
+      }
+    }
+  ],
+  "provenance": "Compiled ordinary native input, readonly save inspection of visible positions, no state injection. Automated mechanics evidence, not human enjoyment. Touchcancel is native CDP protocol fixture.",
+  "authorPlayed": false,
+  "physicalPhone": false,
+  "updated_at": "2026-10-07T16:20:19.354Z",
+  "finished_at": "2026-10-07T16:20:19.354Z"
+}

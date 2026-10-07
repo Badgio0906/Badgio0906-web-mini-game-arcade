@@ -1,0 +1,178 @@
+{
+  "observed_at": "2026-10-07T15:26:53.696Z",
+  "provenance": "independent synthetic boundary invocation of actual frozen model/clock/save; main lifecycle sequence reproduced, no browser or Jev answers",
+  "source_hashes": {
+    "src/games/game024/model.ts": "5844853cea420a8ce5cf63da8420aeaa1fe4fe9a557b3ff77badbef31de72b51",
+    "src/games/game024/clock.ts": "d0110d6962cd921e9b558e075e9e16e3ac5694866aacac540e89b94e06a26248",
+    "src/games/game024/save.ts": "3746aec20fa0457d27b07d50ac06f898f8562bc69bcfb3a654fdcb367afda6f1",
+    "src/games/game024/main.ts": "0222c74897ad8aba6b373ee8ac00715df2291a4205e4749022f9098a94996bd0"
+  },
+  "input": {
+    "speed": 8,
+    "frame_times": [
+      0,
+      500
+    ],
+    "before": {
+      "game_id": "game024",
+      "rules_version": "1",
+      "speed": 8,
+      "snapshot": {
+        "size": 20,
+        "food": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": 1053852823,
+        "body": [
+          {
+            "x": 19,
+            "y": 10
+          },
+          {
+            "x": 18,
+            "y": 10
+          },
+          {
+            "x": 17,
+            "y": 10
+          }
+        ],
+        "direction": "right",
+        "queue": [],
+        "foods": 0,
+        "ticks": 0,
+        "outcome": "playing"
+      },
+      "clock": {
+        "remainder": 0,
+        "elapsed": 0
+      },
+      "run": {
+        "id": "00000000-0000-4000-8000-000000000024",
+        "active": true,
+        "reported": false,
+        "freshFoods": 0
+      },
+      "stats": {
+        "best": {
+          "4": 9,
+          "6": 7,
+          "8": 12
+        },
+        "runs": 3,
+        "clears": 0
+      }
+    }
+  },
+  "observed": {
+    "ticks": 1,
+    "outcome": "wall",
+    "remainder": 375,
+    "elapsed": 500,
+    "saved": {
+      "game_id": "game024",
+      "rules_version": "1",
+      "speed": 8,
+      "snapshot": {
+        "size": 20,
+        "food": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": 1053852823,
+        "body": [
+          {
+            "x": 19,
+            "y": 10
+          },
+          {
+            "x": 18,
+            "y": 10
+          },
+          {
+            "x": 17,
+            "y": 10
+          }
+        ],
+        "direction": "right",
+        "queue": [],
+        "foods": 0,
+        "ticks": 1,
+        "outcome": "wall"
+      },
+      "clock": {
+        "remainder": 0,
+        "elapsed": 500
+      },
+      "run": {
+        "id": "00000000-0000-4000-8000-000000000024",
+        "active": false,
+        "reported": true,
+        "freshFoods": 0
+      },
+      "stats": {
+        "best": {
+          "4": 9,
+          "6": 7,
+          "8": 12
+        },
+        "runs": 4,
+        "clears": 0
+      }
+    },
+    "snapshot_valid": true,
+    "reloaded": {
+      "game_id": "game024",
+      "rules_version": "1",
+      "speed": 8,
+      "snapshot": {
+        "size": 20,
+        "food": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": 1053852823,
+        "body": [
+          {
+            "x": 19,
+            "y": 10
+          },
+          {
+            "x": 18,
+            "y": 10
+          },
+          {
+            "x": 17,
+            "y": 10
+          }
+        ],
+        "direction": "right",
+        "queue": [],
+        "foods": 0,
+        "ticks": 1,
+        "outcome": "wall"
+      },
+      "clock": {
+        "remainder": 0,
+        "elapsed": 500
+      },
+      "run": {
+        "id": "00000000-0000-4000-8000-000000000024",
+        "active": false,
+        "reported": true,
+        "freshFoods": 0
+      },
+      "stats": {
+        "best": {
+          "4": 9,
+          "6": 7,
+          "8": 12
+        },
+        "runs": 4,
+        "clears": 0
+      }
+    }
+  },
+  "expectation": "completed result and prior BEST/statistics remain valid after early collision on a permitted slow frame"
+}

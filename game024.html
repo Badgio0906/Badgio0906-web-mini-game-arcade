@@ -1,0 +1,15 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f7f4e9">
+<meta name="description" content="ひとマススネーク ～SNAKE～。食べて、のびて。20×20の盤面を固定速度で進む、100ガレの落ち着いた定番スネーク。">
+<title>ひとマススネーク ～SNAKE～ | 100ガレ ～GAME100 GARAGE～</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='24' width='48' height='18' rx='8' fill='%23699061'/%3E%3Ccircle cx='49' cy='29' r='2' fill='%23213e35'/%3E%3C/svg%3E">
+</head><body><div id="app" data-state="title">
+<header><a id="portal-link" href="./index.html">← 100ガレへ</a><span class="brand">SNAKE</span><nav><button id="mute-button" type="button">音 ON</button><button id="pause-button" type="button" disabled>休憩</button></nav></header>
+<main><section class="intro"><p class="eyebrow">食べて、のびて。</p><h1>ひとマススネーク</h1><p id="board-caption">20 × 20 · 端は通り抜けません</p></section>
+<div class="game-layout"><section class="board-panel"><canvas id="board" width="600" height="600" role="img" aria-label="20×20マスのスネーク盤面"></canvas></section>
+<section class="side-panel"><div class="stats" aria-label="現在の記録"><div><span>餌</span><strong id="foods-value">0</strong></div><div><span>長さ</span><strong id="length-value">3</strong></div><div><span>BEST</span><strong id="best-value">0</strong></div></div>
+<p id="speed-label">ゆっくり · 毎秒4マス</p><p id="live-status" role="status" aria-live="polite">好きな速さで、のびのびと。</p>
+<div id="directions" class="directions" aria-label="進む方向"><button data-dir="up" data-game-interaction aria-label="上へ" type="button">↑</button><button data-dir="left" data-game-interaction aria-label="左へ" type="button">←</button><button data-dir="down" data-game-interaction aria-label="下へ" type="button">↓</button><button data-dir="right" data-game-interaction aria-label="右へ" type="button">→</button></div>
+<div class="controls"><button id="restart-button" type="button">もう1回</button><button id="help-button" type="button">遊び方</button></div><p class="keyboard-note">PC：矢印 / WASD · Escで休憩<br>スマホ：方向ボタンをタップ</p></section></div>
+</main><dialog id="menu" aria-labelledby="menu-title"></dialog><footer>100ガレ ～GAME100 GARAGE～ · SNAKE</footer></div>
+<script type="module" src="/src/games/game024/main.ts"></script></body></html>

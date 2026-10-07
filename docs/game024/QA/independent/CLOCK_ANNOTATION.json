@@ -1,0 +1,27 @@
+{
+  "finding_id": "024-clock-terminal-backlog-restore",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic023 independent reviewer, Jev answers unread",
+  "rationale": "The original independent reproduction demonstrated loss of persisted BEST/runs. Root authorized a narrow terminal-remainder capture correction; the same model/clock/save sequence now saves a valid result and retains BEST12/runs4. All26 focused tests, typecheck and production packaging pass. Browser verification remains pending.",
+  "evidence": [
+    "docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+    "docs/game024/QA/independent/clock-result-repro.mjs",
+    "docs/game024/QA/independent/unit-frozen.txt",
+    "docs/game024/QA/independent/CLOCK_RESULT_REPRO_AFTER.json",
+    "/workspace/classic-author-024/docs/game024/QA/AUTHOR_MODEL_BUILD_REVISION01.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "After root-authorized terminal remainder0 capture fix, executed the same actual module sequence: speed8, 0→500ms, first tick wall. Saved remainder0 validated; fresh-store reload retained BEST12/runs4 and reported result. Added actual lifecycle regression and verified26 tests/check/build. Browser result reload pending.",
+    "evidence": [
+      "docs/game024/QA/independent/CLOCK_RESULT_REPRO_AFTER.json",
+      "/workspace/classic-author-024/docs/game024/QA/unit-clock-save-after.txt",
+      "/workspace/classic-author-024/docs/game024/QA/check-clock-save-after.txt",
+      "/workspace/classic-author-024/docs/game024/QA/build-clock-save-after.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

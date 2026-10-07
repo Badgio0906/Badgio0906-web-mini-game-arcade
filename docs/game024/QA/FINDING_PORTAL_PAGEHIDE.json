@@ -1,0 +1,18 @@
+{
+  "finding_id": "024-portal-pagehide-snapshot",
+  "problem": "A Portal exit is followed by a pagehide save whose snapshot and run flags are inconsistent.",
+  "expected": "Exiting a run should preserve its already saved BEST/statistics and should not restore it as an active run.",
+  "observed": [
+    "The Portal handler marks the run inactive/reported and clears its saved snapshot.",
+    "The registered pagehide handler subsequently calls persist, which assigns the still-playing snake to the saved snapshot.",
+    "The validator rejects a playing snapshot whose run active flag is false."
+  ],
+  "unknown": [
+    "The exit path has not yet been exercised in a compiled browser."
+  ],
+  "operation": "Portal link click then browser pagehide",
+  "evidence": [
+    "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json"
+  ],
+  "provenance": "Actual author code inspection before changing this finding."
+}
