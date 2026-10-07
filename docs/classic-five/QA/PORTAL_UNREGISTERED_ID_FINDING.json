@@ -1,0 +1,21 @@
+{
+  "finding_id": "classic-five-portal-pending-registration",
+  "problem": "Portal selected-game events can still enqueue newly registered catalog IDs while their game contexts disable external collection pending Worker registration.",
+  "expected": "New game021 through game025 do not send external events while their Worker registration is pending, including Portal events that encode them as envelope.game_id.",
+  "observed": [
+    "TelemetryService option remoteCollectionEnabled false is checked on the current context by AnalyticsRuntime.record.",
+    "Portal creates TelemetryService without that option and emits game_card_impression, game_card_click and game_launch with selected_game.",
+    "AnalyticsRuntime.send uses selected_game as envelope.game_id for Portal events."
+  ],
+  "unknown": [
+    "No compiled browser enqueue or production HTTP response was measured for the new IDs.",
+    "Root integration of catalog/new-ID Portal filtering is not yet complete."
+  ],
+  "operation": "Consent-granted Portal displays or launches a newly added classic-five game card.",
+  "evidence": [
+    "src/portal/main.ts:7,19,46",
+    "src/analytics/runtime.ts:76,95-96",
+    "src/core/TelemetryService.ts:21-23"
+  ],
+  "provenance": "actual-independent-code-inspection-before-change"
+}

@@ -1,0 +1,39 @@
+
+> test
+> node tests/local-d1.mjs
+
+{
+  "status": "PASS",
+  "environment": "synthetic-local-only",
+  "backend": "Wrangler workerd + actual local D1 SQLite",
+  "checks": [
+    "migration",
+    "health",
+    "valid_batch_202",
+    "duplicate_uuid_dedup",
+    "unknown_event_400",
+    "bad_origin_403",
+    "oversize_413",
+    "admin_unauthorized_401",
+    "admin_aggregate_200",
+    "game_detail_200",
+    "no_raw_ids",
+    "codex_missing_wrong_token_401",
+    "bidirectional_token_isolation_401",
+    "codex_summary_detail_200",
+    "codex_unknown_game_route_404",
+    "codex_non_get_405",
+    "codex_safe_query_filters",
+    "fetch_script_summary_detail",
+    "game020_ingest_six_events",
+    "game020_admin_codex_detail_no_raw_ids",
+    "game020_summary_registered",
+    "game026_ingest_detail_rejected",
+    "game020_fetch_script_detail",
+    "D1_insert_count"
+  ],
+  "d1_event_count": 8,
+  "run_count": 2,
+  "game019_median_run_duration": 12,
+  "game020_median_run_duration": 18
+}

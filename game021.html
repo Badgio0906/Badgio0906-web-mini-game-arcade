@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#f6f3e8"/>
+  <meta name="description" content="ならべて4つ ～FOUR IN A ROW～。ひとつ置いて、先を読む。7列6段の四目並べ。CPU3段階・同じ端末で2人・ヒント・待った、時間制限なし。"/>
+  <title>ならべて4つ ～FOUR IN A ROW～ | 100ガレ ～GAME100 GARAGE～</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f6f3e8'/%3E%3Ccircle cx='23' cy='25' r='13' fill='%234d8472'/%3E%3Ccircle cx='42' cy='43' r='13' fill='%23c9903e'/%3E%3Ccircle cx='23' cy='25' r='4' fill='%23fffaf0'/%3E%3Cpath d='M42 37l6 6-6 6-6-6z' fill='%23fffaf0'/%3E%3C/svg%3E"/>
+</head>
+<body>
+<div id="app" data-state="title">
+  <header><a id="portal-link" href="./index.html">← 100ガレへ</a><span class="brand">FOUR IN A ROW</span><nav><button id="mute-button" type="button" data-game-control>音 ON</button><button id="pause-button" type="button" data-game-control disabled>休憩</button></nav></header>
+  <main>
+    <section class="intro"><p class="eyebrow">ひとつ置いて、先を読む。</p><h1>ならべて4つ</h1><p id="board-caption">4つつながる、静かな勝負。</p></section>
+    <section class="hud" aria-label="対局の状態"><span id="green-label"><i class="disc green" aria-hidden="true">●</i> 緑・まる</span><strong id="turn-label">あなたの番</strong><span id="amber-label"><i class="disc amber" aria-hidden="true">◆</i> 琥珀・ひし形</span></section>
+    <section class="play-area"><div class="board-panel"><div id="board" role="group" aria-label="7列6段。列を選んで駒を置く" data-game-interaction></div><div class="board-base" aria-hidden="true">ひとつずつ、下から。</div></div><aside class="guide"><div class="sprig" aria-hidden="true">⌁</div><h2>4つ、つながる。</h2><p>たて・よこ・ななめ。<br>同じ記号を並べよう。</p><p>列を選ぶと、駒は<br>いちばん下の空きへ。</p><p class="gentle">急がなくて大丈夫。<br>時間制限はありません。</p><div id="match-info"></div></aside></section>
+    <p id="live-status" class="status" role="status" aria-live="polite">列を選んで、ひとつ置こう。</p>
+    <section class="controls" aria-label="対局の操作"><button id="hint-button" type="button" data-game-control>ヒント</button><button id="undo-button" type="button" data-game-control>待った</button><button id="restart-button" type="button" data-game-control>新しい対局</button><button id="help-button" type="button" data-game-control>遊び方</button></section>
+    <section id="practice-actions" hidden><button id="practice-play-button" class="primary" type="button" data-game-control>本番を遊ぶ</button><button id="practice-title-button" type="button" data-game-control>タイトルへ</button></section>
+    <p class="keyboard-note">PC：← → で列を選ぶ、Enter / Spaceで置く。Escで休憩。</p>
+  </main>
+  <dialog id="menu" aria-labelledby="menu-title"></dialog>
+  <footer>100ガレ ～GAME100 GARAGE～ · FOUR IN A ROW</footer>
+</div>
+<script type="module" src="/src/games/game021/main.ts"></script>
+</body></html>

@@ -1,0 +1,26 @@
+{
+  "reviewer": "classic_review",
+  "reviewed_at": "2026-10-07T15:17:18.718004+00:00",
+  "base_commit": "af2edf70cdf8fe46175f4fcf38fec607dda997d0",
+  "scope": "Independent source and test inspection only. Root reports nine target tests passed; reviewer did not rerun them. No browser/production collection measurement.",
+  "result": "PASS_SOURCE_REVIEW",
+  "observed": [
+    "Optional TelemetryService guard is assigned before page_ready, so false suppresses that and later events from each new game context.",
+    "AnalyticsRuntime creates run UUID and updates phase even when send/GA disabled. getActiveRunId exposes that ID; restoreRun reuses a valid saved UUID without another run_start and refuses overwriting a different existing context ID.",
+    "Default undefined/true collection behavior for registered existing IDs remains unchanged.",
+    "Central selectedGame check uses the same Portal selected_game substitution as envelope construction and blocks explicit pending IDs021..025 for both enqueue and GA tracking.",
+    "Target tests cover restore/no observer/conflicting ID, resumed end with prior UUID, false guard lifecycle, existing020/defaults, and Portal impression/click/launch for all five pending IDs vs020."
+  ],
+  "limitations": [
+    "Future production registration needs deliberate pending-ID removal plus game page flag update; tests/source review do not prove remote Worker deployment.",
+    "Global upload can flush preexisting registered-game queue on a new game page; the guard prevents new pending-game records, not unrelated prior consented records.",
+    "Current pending-ID list concerns this batch only and is not a universal allowlist for future catalog entries."
+  ],
+  "evidence": [
+    "src/core/TelemetryService.ts",
+    "src/analytics/runtime.ts",
+    "src/analytics/remoteRegistration.ts",
+    "tests/unit/classic-telemetry.test.ts",
+    "docs/classic-five/QA/independent/portal-pending-registration.json"
+  ]
+}

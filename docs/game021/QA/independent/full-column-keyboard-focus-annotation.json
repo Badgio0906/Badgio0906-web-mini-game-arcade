@@ -1,0 +1,24 @@
+{
+  "finding_id": "game021-full-column-keyboard-focus",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic_review",
+  "rationale": "Initial render leaves the selected full column disabled with tabindex0 and all remaining legal columns tabindex-1. focusColumn tries the disabled selected button. CPU-turn render can move focus outside the board, so Arrow/Enter do not reach board handler and Tab cannot regain a legal tabindex0 column. This blocks the specified keyboard interaction in an otherwise playable match. Current render replaces a full selected column with the first legal column before generating tabindex and CPU completion explicitly focuses it. Compiled CPU and same-device fill-column sequences still need measurement.",
+  "evidence": [
+    "docs/game021/QA/FULL_COLUMN_FOCUS_FINDING.json",
+    "docs/game021/QA/full-column-focus-initial/main.ts.txt:44-60",
+    "src/games/game021/main.ts:46-64,154-157,235-248"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read initial and frozen current render, focusColumn, CPU completion and board keydown routing. Confirmed current legal-column reassignment occurs before tabindex/disabled rendering. No browser operation performed; root owns current compiled probe.",
+    "evidence": [
+      "docs/game021/QA/full-column-focus-initial/main.ts.txt",
+      "src/games/game021/main.ts"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "PRODUCT_BUG"
+}

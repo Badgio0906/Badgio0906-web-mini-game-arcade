@@ -1,0 +1,28 @@
+{
+  "reviewer": "classic_review",
+  "human_judgment": null,
+  "finding_id": "game021-reset-run-continuation",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Reload creates an analytics context with run null. Initial replacement path reconstructs the board then calls end(reset) without restoring saved.runId, whereas resume and portal restore it. Therefore reset is not attributed to the original saved run. Gameplay replacement is still available, so this specific defect is not independently judged a major player-facing release risk; it still needs correction to meet continuation telemetry requirements. Current start restores saved.runId before end(reset). Root restoreRun validates UUID and sets context run/phase without emitting another run_start. Frozen integration must verify the actual reset event keeps the prior ID and new run_start creates a new one.",
+  "evidence": [
+    "docs/game021/QA/RESET_CONTINUATION_FINDING.json",
+    "docs/game021/QA/practice-confirm-initial/main.ts.txt:101,112",
+    "src/games/game021/main.ts:101,105",
+    "src/core/TelemetryService.ts:63-72",
+    "src/analytics/runtime.ts:63,69"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared initial replacement/resume/portal paths with current start and root telemetry get/restore methods plus analytics context creation. No external API or browser measurement performed.",
+    "evidence": [
+      "docs/game021/QA/practice-confirm-initial/main.ts.txt",
+      "src/games/game021/main.ts",
+      "src/core/TelemetryService.ts",
+      "src/analytics/runtime.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

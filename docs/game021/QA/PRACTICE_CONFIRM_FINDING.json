@@ -1,0 +1,18 @@
+{
+  "finding_id": "game021-practice-confirm-context",
+  "problem": "Canceling the new-run confirmation from practice can return to a practice screen whose context flag was already cleared.",
+  "expected": "Cancel returns to the same isolated practice context without normal-run statistics or run events.",
+  "observed": [
+    "Code inspection: practice-play-button sets training=false before confirmNew with backScreen practice.",
+    "Code inspection: back sets the screen to practice without restoring the training flag.",
+    "Practice-complete start also clears training before confirmation; returning to its result uses the normal result branch."
+  ],
+  "unknown": [
+    "Compiled browser impact has not yet been measured."
+  ],
+  "operation": "Practice \u2192 \u672c\u756a\u3092\u904a\u3076 \u2192 new-run confirmation \u2192 cancel",
+  "evidence": [
+    "docs/game021/QA/practice-confirm-initial/main.ts.txt"
+  ],
+  "provenance": "actual-development-code-inspection"
+}

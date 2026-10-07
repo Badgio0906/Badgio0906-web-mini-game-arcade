@@ -1,0 +1,183 @@
+
+> orbit-shift@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/arcade-classic-five
+
+ ✓ tests/unit/gameplay.test.ts (7 tests) 4122ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 1)  1686ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 17)  1227ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 77)  993ms
+ ✓ tests/unit/workday-escalation.test.ts (7 tests) 5538ms
+   ✓ Workday milestone and endless journey > five seeded walking and biking journeys pass 5000m with bounded visible resources and only two offers  5163ms
+ ✓ tests/unit/game010.test.ts (8 tests) 2292ms
+   ✓ Game010 rules2 meaning/corrections/minutes > meaning beats allclick/last-only/no action/boss-only over30 distinct shuffled meetings  2140ms
+ ✓ tests/unit/game006-unbraked-compat.test.ts (1 test) 2096ms
+   ✓ replays identical legal inputs and varying frame steps with exact old unbraked pose and outcome  2095ms
+ ✓ tests/unit/game017.test.ts (23 tests) 1529ms
+   ✓ playable layout generator > independently checks every returned segment over early, wind, large-rain and saturated rounds  1475ms
+ ✓ tests/unit/game011.test.ts (11 tests) 1060ms
+   ✓ UNKO or UKON explicit phases, real deadlines and public-input scoring > more than five thousand independent placements per phase approach50:50 and permit repeated same-side answers  1006ms
+ ✓ tests/unit/game006.test.ts (8 tests) 1356ms
+   ✓ PARK IT! geometry and ordinary gauge play > tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry  368ms
+   ✓ PARK IT! geometry and ordinary gauge play > grades actual offset precision, caps consecutive Perfect bonus and bounds retained objects over60 successes  666ms
+ ✓ tests/unit/game002.test.ts (8 tests) 566ms
+   ✓ WORKDAY DODGE model > five seeded reactive runs reach 1000m, cover all four opponent types and keep generation bounded  547ms
+ ✓ tests/unit/game006-revision.test.ts (9 tests) 512ms
+ ✓ tests/unit/game020-model.test.ts (13 tests) 548ms
+ ✓ tests/unit/game018-revision02.test.ts (7 tests) 200ms
+ ✓ tests/unit/analytics-codex-fetch.test.ts (16 tests) 374ms
+stdout | tests/unit/game008.test.ts > Game008 delivery rules 2 > deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill
+{"careful":{"distance":128,"score":0,"time":32.00416666666517,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":0.0003164663249067682,"liquidVelocity":0.001991189612405887,"surfaceTilt":-0.00002845097715483872,"spilling":false,"spillRate":0}],"outcome":"timeout","reason":"配達の時間に間に合いませんでした。","deliveries":0,"totalDeliveredRemaining":0,"spareTime":0,"rulesVersion":2},"rush":{"distance":180,"score":1788,"time":22.50416666666571,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":40.8323458848966,"liquidAngle":0.00810969001498917,"liquidVelocity":0.07739252629943917,"surfaceTilt":0.001430245083535558,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":40.8323458848966,"spareTime":9.49583333333429,"rulesVersion":2},"mixed":{"distance":180,"score":2110,"time":29.24999999999866,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":-0.0070284658945135615,"liquidVelocity":-0.0016635166385906659,"surfaceTilt":-0.0007740142523649535,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":100,"spareTime":2.7500000000013394,"rulesVersion":2}}
+
+ ✓ tests/unit/game008.test.ts (5 tests) 151ms
+ ✓ tests/unit/game018.test.ts (31 tests) 292ms
+ ❯ tests/unit/analyticsWorker.test.ts (17 tests | 2 failed) 77ms
+   × Codex aggregate-only access > registers020 ingestion and anonymized admin/Codex detail without accepting future IDs 31ms
+     → expected 200 to be 404 // Object.is equality
+   ✓ Codex aggregate-only access > requires the dedicated token and isolates admin credentials in both directions 5ms
+   ✓ Codex aggregate-only access > only exposes the two GET routes and cannot write or use future admin routes 3ms
+   ✓ Codex aggregate-only access > reuses admin metrics and filters without returning individual identifiers or headers 10ms
+   × Codex aggregate-only access > preserves production defaults, retired exclusions and explicit game010 detail 6ms
+     → expected [ { …(41) }, { …(41) }, …(18) ] to have a length of 19 but got 20
+   ✓ Codex aggregate-only access > rejects invalid or oversized periods, environments, versions and disallowed origins 3ms
+   ✓ external analytics boundary > validates strict envelope and documented data, excluding free text and URL query 1ms
+   ✓ external analytics boundary > rejects absent/bad origins, nonproduction fixtures and oversized chunked bodies 2ms
+   ✓ external analytics boundary > inserts actual SQLite schema and deduplicates event UUIDs 2ms
+   ✓ external analytics boundary > requires admin Bearer auth and returns aggregates without browser/visit/session/run IDs 4ms
+   ✓ external analytics boundary > computes variable continuation denominators and censored RUN duration 1ms
+   ✓ external analytics boundary > tracks large fall continuation within the same frog RUN, not as an ended RUN 1ms
+   ✓ external analytics boundary > distinguishes browser and visit continuation, matched CTR and true cross-game movement 1ms
+   ✓ external analytics boundary > uses earliest launch for A→B→A and preserves different-version context 2ms
+   ✓ external analytics boundary > counts lost progress rather than ordinary jump apex descent as a large fall 1ms
+   ✓ external analytics boundary > excludes the exclusive final UTC day and filters archived versions 2ms
+   ✓ external analytics boundary > archives identifier-free daily metrics and deletes expired raw/aggregate rows 2ms
+ ✓ tests/unit/game021-model.test.ts (36 tests) 267ms
+stdout | tests/unit/catalog-telemetry.test.ts > catalog identity and future tag filtering > keeps legacy routes/tags attached to the actual title and preserves020 and appends registered games
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > rejects corrupt/unknown/nonfinite/object data and copies valid records
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > retains cross-page game records in a bounded400window without changing200memory
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > recovers from corrupt and denied storage without stale resurrection
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > preserves a later page departure after quitting and beginning another run
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > counts a restarted ascent as interrupted rather than completed
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > does not double count quits/deaths or fabricate unreported positions and durations
+
+
+ ✓ tests/unit/catalog-telemetry.test.ts (7 tests) 143ms
+ ✓ tests/unit/game019-level.test.ts (7 tests) 126ms
+ ✓ tests/unit/game003.test.ts (9 tests) 117ms
+ ✓ tests/unit/analytics-client.test.ts (9 tests) 122ms
+ ✓ tests/unit/game016.test.ts (10 tests) 85ms
+ ✓ tests/unit/revision-features.test.ts (10 tests) 56ms
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 63ms
+stdout | tests/unit/game007.test.ts > Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal
+POLICY_RESULTS [{"scenario":0,"greedy":1190,"light":1180,"planning":2940},{"scenario":1,"greedy":2430,"light":1440,"planning":1880},{"scenario":2,"greedy":1760,"light":1410,"planning":3340}]
+
+ ✓ tests/unit/game007.test.ts (8 tests) 69ms
+ ✓ tests/unit/game003-art.test.ts (5 tests) 34ms
+ ✓ tests/unit/arcade-credits.test.ts (5 tests) 18ms
+ ✓ tests/unit/game005.test.ts (6 tests) 60ms
+ ✓ tests/unit/game015-practice.test.ts (9 tests) 30ms
+ ✓ tests/unit/game009.test.ts (8 tests) 21ms
+ ✓ tests/unit/game019-surfaces.test.ts (4 tests) 8ms
+ ✓ tests/unit/game004.test.ts (6 tests) 29ms
+ ✓ tests/unit/sort-localization.test.ts (3 tests) 22ms
+ ✓ tests/unit/game015.test.ts (27 tests) 14250ms
+   ✓ authored descending routes and bounded endless generation > all authored chunks keep safe full-foot reach margins at every depth/edge and never overlap same-row alternatives  369ms
+   ✓ authored descending routes and bounded endless generation > public steering/braking safely crosses1000m without freezing and continues5000m with bounded arrays and all material types  4204ms
+   ✓ continuous downward pursuit and randomized fair choices > ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds  8944ms
+ ✓ tests/unit/game019-charge.test.ts (7 tests) 19ms
+ ✓ tests/unit/arcade-practice.test.ts (24 tests) 12ms
+ ✓ tests/unit/services.test.ts (17 tests) 19ms
+ ✓ tests/unit/game019-practice-charge.test.ts (3 tests) 13ms
+ ✓ tests/unit/game018-shoe-pose.test.ts (4 tests) 11ms
+ ✓ tests/unit/game016-practice.test.ts (3 tests) 18ms
+ ✓ tests/unit/game020-integration.test.ts (3 tests) 10ms
+ ✓ tests/unit/game016-wallet.test.ts (2 tests) 9ms
+ ✓ tests/unit/classic-telemetry.test.ts (9 tests) 11ms
+ ✓ tests/unit/analytics-admin.test.ts (6 tests) 8ms
+ ❯ tests/unit/game010-retirement.test.ts (2 tests | 1 failed) 11ms
+   × retired IDs remain historical, never active or reused > exposes nineteen active cards with original IDs and releaseOrder 9ms
+     → expected [ { id: 'game001', …(9) }, …(19) ] to have a length of 19 but got 20
+   ✓ retired IDs remain historical, never active or reused > keeps the bookmark route lightweight and never starts the retired engine 1ms
+ ✓ tests/unit/analytics-version-history.test.ts (2 tests) 5ms
+ ✓ tests/unit/game019-telemetry.test.ts (3 tests) 11ms
+ ✓ tests/unit/game019-stats.test.ts (3 tests) 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/analyticsWorker.test.ts > Codex aggregate-only access > registers020 ingestion and anonymized admin/Codex detail without accepting future IDs
+AssertionError: expected 200 to be 404 // Object.is equality
+
+- Expected
++ Received
+
+- 404
++ 200
+
+ ❯ tests/unit/analyticsWorker.test.ts:37:137
+     35|    for(const id of [browser,visit,session,run,...events.map(row=>row.e…
+     36|   }
+     37|   for(const request of [admin('/v1/admin/game/game021'),codex('/v1/cod…
+       |                                                                                                                                         ^
+     38|   expect((await worker.fetch(post([event({...base,game_id:'game021',pa…
+     39|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/unit/analyticsWorker.test.ts > Codex aggregate-only access > preserves production defaults, retired exclusions and explicit game010 detail
+AssertionError: expected [ { …(41) }, { …(41) }, …(18) ] to have a length of 19 but got 20
+
+- Expected
++ Received
+
+- 19
++ 20
+
+ ❯ tests/unit/analyticsWorker.test.ts:75:66
+     73|   const e=env();await worker.fetch(post([event({occurred_at:iso(-1000)…
+     74|   const summary=await worker.fetch(codex(),e),body=await summary.json(…
+     75|   expect(body.environment).toBe('production');expect(body.games).toHav…
+       |                                                                  ^
+     76|   const retired=await worker.fetch(codex('/v1/codex/summary?include_re…
+     77|   const detail=await worker.fetch(codex('/v1/codex/game/game010'),e);e…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/unit/game010-retirement.test.ts > retired IDs remain historical, never active or reused > exposes nineteen active cards with original IDs and releaseOrder
+AssertionError: expected [ { id: 'game001', …(9) }, …(19) ] to have a length of 19 but got 20
+
+- Expected
++ Received
+
+- 19
++ 20
+
+ ❯ tests/unit/game010-retirement.test.ts:7:25
+      5| describe('retired IDs remain historical, never active or reused', () =…
+      6|   it('exposes nineteen active cards with original IDs and releaseOrder…
+      7|     expect(gameCatalog).toHaveLength(19);
+       |                         ^
+      8|     expect(gameCatalog.some(game => game.id === 'game010')).toBe(false…
+      9|     expect(filterCatalog(['meeting'])).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed | 45 passed (47)
+      Tests  3 failed | 429 passed (432)
+   Start at  15:18:00
+   Duration  16.38s (transform 1.64s, setup 0ms, collect 2.85s, tests 36.39s, environment 9ms, prepare 2.89s)
+

@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "thresholds": {
+    "codex_candidate": 0.45,
+    "risk_comparison_only": 0.5
+  },
+  "totals": {
+    "entries": 3,
+    "jev_invocations": 3,
+    "api_attempts_known": 3,
+    "dry_runs": 0,
+    "available": 3,
+    "jev_unavailable": 0,
+    "total_input_tokens": 4494,
+    "total_output_tokens": 647,
+    "total_cost_usd": 0.000188748,
+    "usage_missing": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0
+    },
+    "average_latency_seconds": 0.9238740146671868,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matched": 3,
+        "compared": 3,
+        "rate": 1.0
+      },
+      "NEXT_EVIDENCE": {
+        "matched": 0,
+        "compared": 3,
+        "rate": 0.0
+      }
+    },
+    "codex_action_confusion": {
+      "TP": 3,
+      "TN": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "codex_action_below_045": 0,
+    "below_045_independently_reviewed": 0,
+    "below_045_with_actual_problem": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 0,
+    "release_risk_compared": 3,
+    "human_routed": 0,
+    "human_routing_observed": 3,
+    "actual_human_actions": 0,
+    "actual_actions_recorded": 3,
+    "human_judgment_recorded": 0,
+    "unreviewed_available": 0
+  },
+  "groups": [
+    {
+      "game_id": "game021",
+      "log_schema_version": 2,
+      "provenance": "actual-development-code-inspection",
+      "entries": 3,
+      "jev_invocations": 3,
+      "api_attempts_known": 3,
+      "dry_runs": 0,
+      "available": 3,
+      "jev_unavailable": 0,
+      "total_input_tokens": 4494,
+      "total_output_tokens": 647,
+      "total_cost_usd": 0.000188748,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.9238740146671868,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 3,
+          "compared": 3,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 3,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 3,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 3,
+      "human_routed": 0,
+      "human_routing_observed": 3,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 3,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    }
+  ],
+  "limitations": [
+    "Agreement is against recorded independent Codex review, not universal ground truth.",
+    "Missing usage stays missing; sums are reported amounts only.",
+    "Historical human-only scores do not map to NEXT_EVIDENCE.",
+    "Smoke/synthetic/historical/new-game cohorts are distinct; no automatic gate or savings estimate."
+  ]
+}

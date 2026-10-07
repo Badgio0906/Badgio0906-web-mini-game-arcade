@@ -8,11 +8,12 @@ import { isAnalyticsDataField } from '../data/analyticsEnvelope';
 import { sanitizeAttribution, type Attribution } from './attribution';
 import { installConsentUI } from './consentUI';
 import type { TelemetryEvent } from '../data/telemetrySchema';
+import { isRemoteGameRegistered } from './remoteRegistration';
 export const BROWSER_ID_KEY = 'game100garage:browser-id:v1';
 export const VISIT_KEY = 'game100garage:visit:v1';
 const IMPRESSION_KEY = 'game100garage:impressions:v1';
 
-interface PageContext { game: string; session: string; run: string | null; phase: string; currentSection:string; samples:Map<string,number>; progressLoss:number|null; awaitingContinuation:boolean; }
+interface PageContext { game: string; session: string; run: string | null; phase: string; currentSection:string; samples:Map<string,number>; progressLoss:number|null; awaitingContinuation:boolean; remoteCollectionEnabled?:boolean; }
 function optionalStorage(kind:'localStorage'|'sessionStorage'): Storage | undefined { try { return window[kind]; } catch { return undefined; } }
 export function uuid(): string {
   if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
@@ -73,7 +74,8 @@ export class AnalyticsRuntime {
     const specific=String(event.data.event??event.data.event_type??'');
     if(context.game==='game019'&&specific==='section_reached') context.currentSection=String(event.data.section_id??'none');
     if(event.name==='portal_open') return; // Preserve legacy local name without duplicating the external portal_view.
-    if(this.consent.getState()==='granted') {
+    const selectedGame = context.game === 'portal' && typeof event.data.selected_game === 'string' ? event.data.selected_game : context.game;
+    if(this.consent.getState()==='granted' && context.remoteCollectionEnabled !== false && isRemoteGameRegistered(selectedGame)) {
       if(context.game==='game019') {
         if(specific==='fall_end'&&Number(event.data.progress_lost)>=3) { context.progressLoss=Number(event.data.fall_start_height); if(Number(event.data.progress_lost)>=10) context.awaitingContinuation=true; }
         if(specific==='jump'&&context.awaitingContinuation) { this.send(context,'specific_game_events',{event:'post_fall_continue',height:event.data.jump_start_height}); context.awaitingContinuation=false; }

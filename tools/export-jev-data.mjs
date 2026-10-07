@@ -38,7 +38,7 @@ for (const game of gameCatalog) {
   let manifest = null;
   const source = `src/games/${game.id}/game.manifest.json`;
   try { manifest = JSON.parse(await readFile(source, 'utf8')); } catch { /* original001 / legacy / not yet generated */ }
-  const [genre, controls, mechanics, failures, visual] = design[game.id];
+  const [genre, controls, mechanics, failures, visual] = design[game.id] ?? [manifest?.genre, Object.values(manifest?.inputs ?? {}).join(' / '), manifest?.coreMechanic, 'Standard classic result; optional assist controls', 'Original code-drawn classic board; actual game screenshot'];
   const expected = manifest?.expected_run_seconds ?? manifest?.runSecondsDesignTarget ?? null;
   const profile = { schemaVersion: 1, id: game.id, title: game.titleJa, titleJa: game.titleJa.replace(/ ～.*～$/, ''), titleEn: game.titleEn, tagline: game.tagline, tags: game.tags, genre: manifest?.genre ?? genre,
     controls: { summary: controls, evidence: 'current game source / manifest / native UI; exact key bindings remain in game instructions' },

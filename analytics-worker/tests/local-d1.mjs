@@ -2,6 +2,7 @@ import { spawn, execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import assert from 'node:assert/strict';
+import { gameCatalog } from '../../src/data/gameCatalog.ts';
 const cwd=new URL('..',import.meta.url).pathname.replace(/\/$/,''),bin=cwd+'/node_modules/.bin/wrangler';
 const state=cwd+'/.wrangler/test-'+randomUUID(),config='tests/wrangler.local.jsonc',base='http://127.0.0.1:8797';
 const adminToken='local-synthetic-fixture-only',codexToken='local-codex-fixture-only';
@@ -19,7 +20,7 @@ try{
  assert.equal((await fetch(base+'/v1/events',{method:'POST',headers:{Origin:'https://invalid.example','Content-Type':'application/json'},body:'{}'})).status,403);
  assert.equal((await fetch(base+'/v1/events',{method:'POST',headers:{Origin:'http://localhost:5173','Content-Type':'application/json'},body:' '.repeat(65537)})).status,413);
  assert.equal((await fetch(base+'/v1/admin/summary')).status,401);
- const result=await fetch(base+'/v1/admin/summary?environment=synthetic',{headers:{Authorization:'Bearer local-synthetic-fixture-only'}});assert.equal(result.status,200);const text=await result.text(),summary=JSON.parse(text);assert.equal(summary.summary.run_count,1);assert.equal(summary.summary.median_run_duration,12);assert(!text.includes(browser));assert(!text.includes(run));assert.equal(summary.games.length,19);
+ const result=await fetch(base+'/v1/admin/summary?environment=synthetic',{headers:{Authorization:'Bearer local-synthetic-fixture-only'}});assert.equal(result.status,200);const text=await result.text(),summary=JSON.parse(text);assert.equal(summary.summary.run_count,1);assert.equal(summary.summary.median_run_duration,12);assert(!text.includes(browser));assert(!text.includes(run));assert.equal(summary.games.length,gameCatalog.length);
  const detail=await fetch(base+'/v1/admin/game/game019?environment=synthetic',{headers:{Authorization:'Bearer local-synthetic-fixture-only'}});assert.equal((await detail.json()).game.run_count,1);
  const codex=(path='/v1/codex/summary?environment=synthetic',token=codexToken,method='GET')=>fetch(base+path,{method,headers:token?{Authorization:`Bearer ${token}`}:{}});
  assert.equal((await codex(undefined,null)).status,401);
@@ -48,12 +49,23 @@ try{
  const tileIngest=await post(tileEvents);assert.equal(tileIngest.status,202);assert.deepEqual(await tileIngest.json(),{accepted:6,duplicates:0});
  for(const [prefix,token] of [['admin',adminToken],['codex',codexToken]]){
   const response=await fetch(`${base}/v1/${prefix}/game/game020?environment=synthetic`,{headers:{Authorization:`Bearer ${token}`}});assert.equal(response.status,200);const text=await response.text(),detail=JSON.parse(text);assert.equal(detail.game.game_id,'game020');assert.equal(detail.game.run_count,1);assert.equal(detail.game.median_run_duration,18);for(const id of [browser,tileCommon.visit_id,tileCommon.session_id,tileCommon.run_id,...tileEvents.map(row=>row.event_id)])assert(!text.includes(id));
-  assert.equal((await fetch(`${base}/v1/${prefix}/game/game021?environment=synthetic`,{headers:{Authorization:`Bearer ${token}`}})).status,404);
+  assert.equal((await fetch(`${base}/v1/${prefix}/game/game026?environment=synthetic`,{headers:{Authorization:`Bearer ${token}`}})).status,404);
  }
- assert.equal((await post([{...tileEvents[0],event_id:randomUUID(),game_id:'game021',page:'game021.html'}])).status,400);
- const tileSummary=await codex(),tileSummaryData=await tileSummary.json();assert.equal(tileSummary.status,200);assert.equal(tileSummaryData.games.length,19);assert(!tileSummaryData.games.some(game=>game.game_id==='game010'));assert.equal(tileSummaryData.games.find(game=>game.game_id==='game020').run_count,1);
+ assert.equal((await post([{...tileEvents[0],event_id:randomUUID(),game_id:'game026',page:'game026.html'}])).status,400);
+ const tileSummary=await codex(),tileSummaryData=await tileSummary.json();assert.equal(tileSummary.status,200);assert.equal(tileSummaryData.games.length,gameCatalog.length);assert(!tileSummaryData.games.some(game=>game.game_id==='game010'));assert.equal(tileSummaryData.games.find(game=>game.game_id==='game020').run_count,1);
  const tileScriptOutput=execFileSync(process.execPath,[script,'--days','7','--game','game020','--environment','synthetic'],{env:scriptEnv,encoding:'utf8'});assert(!tileScriptOutput.includes(codexToken));const tileScriptData=JSON.parse(tileScriptOutput);assert.equal(tileScriptData.data.game.game_id,'game020');assert.equal(tileScriptData.data.game.run_count,1);assert.equal(tileScriptData.data.game.median_run_duration,18);
- const sqlOutput=execFileSync(bin,['d1','execute','DB','--local','--config',config,'--persist-to',state,'--command','SELECT COUNT(*) AS total FROM events','--json'],{cwd,env:{...process.env,WRANGLER_SEND_METRICS:'false'},encoding:'utf8'});const sql=JSON.parse(sqlOutput.slice(sqlOutput.search(/^\s*\[/m)));assert.equal(sql[0].results[0].total,8);
- const evidence={status:'PASS',environment:'synthetic-local-only',backend:'Wrangler workerd + actual local D1 SQLite',checks:['migration','health','valid_batch_202','duplicate_uuid_dedup','unknown_event_400','bad_origin_403','oversize_413','admin_unauthorized_401','admin_aggregate_200','game_detail_200','no_raw_ids','codex_missing_wrong_token_401','bidirectional_token_isolation_401','codex_summary_detail_200','codex_unknown_game_route_404','codex_non_get_405','codex_safe_query_filters','fetch_script_summary_detail','game020_ingest_six_events','game020_admin_codex_detail_no_raw_ids','game020_summary_registered','game021_ingest_detail_rejected','game020_fetch_script_detail','D1_insert_count'],d1_event_count:8,run_count:2,game019_median_run_duration:12,game020_median_run_duration:18};
+ const classicChecks=[];
+ for(const game of gameCatalog.filter(game=>game.releaseOrder>=21)) {
+  const row={...common,game_id:game.id,page:game.id+'.html',game_version:'classic-local-fixture',rules_version:'1',presentation_version:'prototype-1',run_id:randomUUID()};
+  const rows=[{...row,event_id:randomUUID(),event_name:'run_start',data:{source:'title'}},{...row,event_id:randomUUID(),event_name:'specific_game_events',data:{event:'hint',difficulty:'normal',hints:1}},{...row,event_id:randomUUID(),event_name:'run_end',data:{outcome:'clear',seconds:12,completed:true}}];
+  assert.equal((await post(rows)).status,202);
+  for(const [prefix,token] of [['admin',adminToken],['codex',codexToken]]) {
+   const response=await fetch(`${base}/v1/${prefix}/game/${game.id}?environment=synthetic`,{headers:{Authorization:`Bearer ${token}`}});assert.equal(response.status,200);const text=await response.text();assert.equal(JSON.parse(text).game.run_count,1);for(const id of [browser,row.visit_id,row.session_id,row.run_id,...rows.map(r=>r.event_id)])assert(!text.includes(id));
+  }
+  const output=execFileSync(process.execPath,[script,'--days','7','--game',game.id,'--environment','synthetic'],{env:scriptEnv,encoding:'utf8'});assert(!output.includes(codexToken));assert.equal(JSON.parse(output).data.game.game_id,game.id);
+  classicChecks.push(game.id+'_ingest_admin_codex_cli');
+ }
+ const sqlOutput=execFileSync(bin,['d1','execute','DB','--local','--config',config,'--persist-to',state,'--command','SELECT COUNT(*) AS total FROM events','--json'],{cwd,env:{...process.env,WRANGLER_SEND_METRICS:'false'},encoding:'utf8'});const sql=JSON.parse(sqlOutput.slice(sqlOutput.search(/^\s*\[/m)));assert.equal(sql[0].results[0].total,8+3*classicChecks.length);
+ const evidence={status:'PASS',environment:'synthetic-local-only',backend:'Wrangler workerd + actual local D1 SQLite',checks:['migration','health','valid_batch_202','duplicate_uuid_dedup','unknown_event_400','bad_origin_403','oversize_413','admin_unauthorized_401','admin_aggregate_200','game_detail_200','no_raw_ids','codex_missing_wrong_token_401','bidirectional_token_isolation_401','codex_summary_detail_200','codex_unknown_game_route_404','codex_non_get_405','codex_safe_query_filters','fetch_script_summary_detail','game020_ingest_six_events','game020_admin_codex_detail_no_raw_ids','game020_summary_registered','game026_ingest_detail_rejected','game020_fetch_script_detail','D1_insert_count',...classicChecks],d1_event_count:8+3*classicChecks.length,run_count:2+classicChecks.length,game019_median_run_duration:12,game020_median_run_duration:18};
  mkdirSync(cwd+'/.wrangler/local-test',{recursive:true});writeFileSync(cwd+'/.wrangler/local-test/summary.json',JSON.stringify(summary,null,2));writeFileSync(cwd+'/.wrangler/local-test/evidence.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence,null,2));
 }finally{try{process.kill(-child.pid,'SIGTERM');}catch{}await new Promise(r=>setTimeout(r,300));}

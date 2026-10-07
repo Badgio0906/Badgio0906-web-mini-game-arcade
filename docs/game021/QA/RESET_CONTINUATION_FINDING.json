@@ -1,0 +1,18 @@
+{
+  "finding_id": "game021-reset-run-continuation",
+  "problem": "Replacing a saved unfinished run after a reload reports its end before restoring its saved run identifier.",
+  "expected": "An explicit reset ends the saved run using its original telemetry identifier before starting the new run.",
+  "observed": [
+    "Code inspection: title sets active=false and offers new-game confirmation for a saved unfinished run.",
+    "Code inspection: start sets active=true, rebuilds saved board and calls end(reset), without calling restoreRun.",
+    "resumeSaved and portal explicitly restoreRun; the replacement path currently does not."
+  ],
+  "unknown": [
+    "Root integration of run telemetry context has not yet been compiled into this worktree."
+  ],
+  "operation": "Reload unfinished CPU game \u2192 New game \u2192 Confirm",
+  "evidence": [
+    "docs/game021/QA/practice-confirm-initial/main.ts.txt"
+  ],
+  "provenance": "actual-development-code-inspection"
+}

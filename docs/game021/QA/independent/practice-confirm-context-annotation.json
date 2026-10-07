@@ -1,0 +1,25 @@
+{
+  "reviewer": "classic_review",
+  "human_judgment": null,
+  "finding_id": "game021-practice-confirm-context",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Initial handlers clear training before confirmation. Cancel restores only screen, so the practice UI/result is interpreted as a normal context: controls lose isolation, hint/undo can mutate the saved normal run assist counters, and completion enters the normal result branch. This violates the explicit separate-practice requirement and can mislead users about the practice outcome. Current handlers defer training reset until accepted start, retaining isolated practice on cancel. Browser cancellation and completing practice after cancel remain necessary acceptance checks.",
+  "evidence": [
+    "docs/game021/QA/PRACTICE_CONFIRM_FINDING.json",
+    "docs/game021/QA/practice-confirm-initial/main.ts.txt:177,249",
+    "src/games/game021/main.ts:177,199,208-214,249",
+    "src/games/game021/main.ts:69-73,143,171-187"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read initial practice start handlers, cancel/back routing, result branch, assist controls and current handlers. Verified current handlers preserve training when showing confirmation. No browser test performed in this finding review.",
+    "evidence": [
+      "docs/game021/QA/practice-confirm-initial/main.ts.txt",
+      "src/games/game021/main.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

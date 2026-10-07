@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "game021",
+  "titleJa": "ならべて4つ ～FOUR IN A ROW～",
+  "titleEn": "FOUR IN A ROW",
+  "tagline": "ひとつ置いて、先を読む。4つつながる、静かな勝負。",
+  "thumbnail": "./assets/portal/game021.webp",
+  "route": "./game021.html",
+  "releaseOrder": 21,
+  "status": "active",
+  "tags": [
+    {
+      "id": "puzzle",
+      "label": "パズル"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "brain-training",
+      "label": "脳トレ"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "ならべて4つ ～FOUR IN A ROW～",
+  "genre": "gravity four-in-a-row / classic board game",
+  "controls": {
+    "select": "tap / click a column; Left / Right choose a column, Enter / Space drops",
+    "assist": "optional non-automatic hint; undo one human/CPU pair or cancel a pending CPU turn and undo one human move; two-player undo one move",
+    "pause": "pause button / Escape; visibility and blur auto-pause"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "self-paced, no time limit; no human duration measured",
+  "mainMechanics": "Alternately drop a disc into one of seven columns; connect four or more matching symbols horizontally, vertically or diagonally on a six-row board",
+  "failureModes": "Four-in-a-row result; undo/hint optional; no timer",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game021/game.manifest.json"
+  },
+  "design": {
+    "majorVisuals": "Original SVG/code circles and diamonds in a quiet ivory/teal board",
+    "referenceImageUse": "User reference composition and palette only; independently authored code",
+    "thumbnailDescription": "Actual original game board"
+  },
+  "telemetryCoverage": "Existing TelemetryService; game_open/run_start/run_end/retry/return_to_portal/pause/resume plus specific_game_events move/cpu_move/hint/undo/restore. Saved existing run_id is restored without new run_start; pagehide preserves active run. Remote collection disabled while Worker registration is pending",
+  "humanEvaluation": "pending; user authorized prototype publication before author play",
+  "currentManifest": {
+    "id": "game021",
+    "title": "ならべて4つ ～FOUR IN A ROW～",
+    "titleEn": "FOUR IN A ROW",
+    "tagline": "ひとつ置いて、先を読む。4つつながる、静かな勝負。",
+    "genre": "gravity four-in-a-row / classic board game",
+    "coreMechanic": "Alternately drop a disc into one of seven columns; connect four or more matching symbols horizontally, vertically or diagonally on a six-row board",
+    "skillAxes": [
+      "spatial planning",
+      "threat recognition",
+      "lookahead",
+      "turn strategy"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "select": "tap / click a column; Left / Right choose a column, Enter / Space drops",
+      "assist": "optional non-automatic hint; undo one human/CPU pair or cancel a pending CPU turn and undo one human move; two-player undo one move",
+      "pause": "pause button / Escape; visibility and blur auto-pause"
+    },
+    "boards": {
+      "columns": 7,
+      "rows": 6,
+      "gravity": true,
+      "winningLength": "4 or more",
+      "draw": "42 occupied cells without a winning line"
+    },
+    "modes": [
+      "CPU",
+      "same-device two-player"
+    ],
+    "cpu": {
+      "default": "normal",
+      "levels": [
+        "easy",
+        "normal",
+        "strong"
+      ],
+      "search": "Web Worker; all levels immediate win/block, easy seeded choice, normal iterative depth 3 / 3000 nodes, strong iterative depth 6 / 18000 nodes; timeout and tactical legal fallback; generation/revision cancellation"
+    },
+    "practice": "Optional isolated near-complete lesson; put a green circle into column 4 to complete a horizontal four. No production telemetry, normal saves or statistics",
+    "storagePrefix": "web-mini-arcade:v1:game021:",
+    "bestStorage": "No overall score/BEST; wins/losses/draws grouped by mode, difficulty, first/second, assisted/unassisted. Snapshot and result-reported marker are stored atomically with stats",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "development-only four-question Shadow Review of contemporaneous findings; no runtime API or automatic gate",
+    "humanReview": "Author subjective playtest and physical-device review pending; user authorized prototype publication before author play",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "prototype-1",
+    "telemetry": "Existing TelemetryService; game_open/run_start/run_end/retry/return_to_portal/pause/resume plus specific_game_events move/cpu_move/hint/undo/restore. Saved existing run_id is restored without new run_start; pagehide preserves active run. Remote collection disabled while Worker registration is pending"
+  }
+}

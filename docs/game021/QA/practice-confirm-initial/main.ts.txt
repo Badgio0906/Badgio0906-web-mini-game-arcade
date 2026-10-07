@@ -1,0 +1,263 @@
+import './style.css';
+import { StorageService } from '../../core/StorageService';
+import { AudioService } from '../../core/AudioService';
+import { TelemetryService, type EventName } from '../../core/TelemetryService';
+import { analyticsConfig } from '../../analytics/config';
+import { FourBoard, TurnGate, COLS, ROWS, humanPlayer, seededRandom, undoCount, type Difficulty, type Settings } from './model';
+import { GameStore, outcomeFor, finalize, statKey, type SavedRun } from './persistence';
+
+type Screen = 'title' | 'playing' | 'practice' | 'paused' | 'explanation' | 'confirm' | 'result';
+// These shared methods are added by the integration owner; no new browser identity is created here.
+type RunTelemetry = TelemetryService & { getActiveRunId(): string | null; restoreRun(runId: string): boolean };
+const el = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
+const app = el('app'), boardElement = el('board'), menu = el<HTMLDialogElement>('menu');
+const audioStorage = new StorageService(undefined, 'web-mini-arcade:v1:game021:');
+const audio = new AudioService(audioStorage), telemetry = new TelemetryService(audioStorage, 'game021') as RunTelemetry;
+let backend: Storage | undefined; try { backend = localStorage; } catch { /* memory-only mode */ }
+const store = new GameStore(backend), archive = store.load();
+let board = new FourBoard(), settings: Settings = { ...archive.settings }, state: Screen = 'title';
+let training = false, active = false, highlighted: number | null = null, selectedColumn = 3, status = '列を選んで、ひとつ置こう。';
+let backScreen: 'playing' | 'practice' | 'title' | 'result' = 'title';
+let worker: Worker | null = null, job: 'cpu' | 'hint' | null = null, fallbackTimer: ReturnType<typeof setTimeout> | null = null;
+const gate = new TurnGate();
+const difficultyName = (difficulty: Difficulty): string => ({ easy: 'やさしい', normal: 'ふつう', strong: 'つよい' })[difficulty];
+const playScreen = () => state === 'playing' || state === 'practice';
+const playerName = (player: number): string => player === 1 ? '緑・まる' : '琥珀・ひし形';
+function trainingEvent(name: EventName): void { if (analyticsConfig.environment !== 'production') telemetry.trackEvent(name, { mode: 'practice' }); }
+function details(): Record<string, string | number | boolean> { return { mode: settings.mode, difficulty: settings.difficulty, first: settings.first, count: board.moves.length, hints: archive.saved?.hints ?? 0, undos: archive.saved?.undos ?? 0, assisted: Boolean(archive.saved?.hints || archive.saved?.undos) }; }
+function action(event: string): void { if (active && !training) telemetry.trackEvent('specific_game_events', { event, ...details() }); }
+function save(): void { if (!training && archive.saved && active) archive.saved.moves = [...board.moves]; store.save(archive); }
+function cancelJob(): void { gate.invalidate(); worker?.terminate(); worker = null; job = null; if (fallbackTimer !== null) clearTimeout(fallbackTimer); fallbackTimer = null; }
+function screen(next: Screen): void {
+  if (next !== 'playing' && next !== 'practice') cancelJob();
+  state = next; app.dataset.state = state; boardElement.inert = !playScreen();
+  if (playScreen() && menu.open) menu.close();
+  render();
+}
+function show(html: string, next: Screen): void {
+  screen(next);
+  menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>';
+  menu.querySelectorAll('button').forEach(button => button.setAttribute('data-game-control', ''));
+  el('menu-portal-link').onclick = portal;
+  if (!menu.open) menu.show();
+  menu.querySelector<HTMLElement>('button, select')?.focus({ preventScroll: true });
+}
+function focusColumn(): void { boardElement.querySelector<HTMLButtonElement>(`[data-column="${selectedColumn}"]`)?.focus({ preventScroll: true }); }
+function render(): void {
+  const humanTurn = settings.mode === 'two' || board.turn === humanPlayer(settings);
+  const canDrop = playScreen() && board.result === 'playing' && humanTurn;
+  const focused = document.activeElement instanceof HTMLElement && document.activeElement.closest('#board');
+  const ghost = canDrop ? board.landing(selectedColumn) : null;
+  const lastColumn = board.moves.at(-1), lastIndex = lastColumn === undefined ? -1 : board.cells.findIndex((cell, index) => index % COLS === lastColumn && cell !== 0);
+  boardElement.innerHTML = Array.from({ length: COLS }, (_, column) => {
+    const full = board.landing(column) === null;
+    const contents = Array.from({ length: ROWS }, (_, row) => {
+      const index = row * COLS + column, value = board.cells[index];
+      const preview = index === ghost && !value;
+      return `<span aria-hidden="true" class="slot ${value === 1 ? 'green' : value === 2 ? 'amber' : ''} ${preview ? `ghost ${board.turn === 2 ? 'amber-ghost' : ''}` : ''} ${board.wins.includes(index) ? 'winner' : ''} ${index === lastIndex ? 'last' : ''}">${value === 1 || preview && board.turn === 1 ? '●' : value === 2 || preview && board.turn === 2 ? '◆' : ''}</span>`;
+    }).join('');
+    const stack = Array.from({ length: ROWS }, (_, row) => board.cells[row * COLS + column]).filter(Boolean).map(playerName).join('、');
+    return `<button type="button" class="column ${column === selectedColumn ? 'selected' : ''} ${column === highlighted ? 'hinted' : ''}" data-game-interaction data-column="${column}" tabindex="${column === selectedColumn ? 0 : -1}" aria-label="${column + 1}列目${full ? '、満杯' : '、置ける'}${stack ? '。上から ' + stack : '。空の列'}" ${!canDrop || full ? 'disabled' : ''}><span class="col-number" aria-hidden="true">${column + 1}</span>${contents}</button>`;
+  }).join('');
+  if (focused && canDrop) focusColumn();
+  el('turn-label').textContent = board.result !== 'playing' ? (board.result === 'draw' ? '引き分け' : `${playerName(board.result === 'green' ? 1 : 2)}の勝ち`) : training ? '練習：まるを4つ' : settings.mode === 'two' ? `${playerName(board.turn)}の番` : humanTurn ? 'あなたの番' : 'CPUの番';
+  el('green-label').innerHTML = `<i class="disc green" aria-hidden="true">●</i> 緑・まる${settings.mode === 'cpu' && !training ? (humanPlayer(settings) === 1 ? '（あなた）' : '（CPU）') : ''}`;
+  el('amber-label').innerHTML = `<i class="disc amber" aria-hidden="true">◆</i> 琥珀・ひし形${settings.mode === 'cpu' && !training ? (humanPlayer(settings) === 2 ? '（あなた）' : '（CPU）') : ''}`;
+  el('board-caption').textContent = training ? '練習の盤面 · 記録には入りません' : `${settings.mode === 'two' ? '同じ端末で2人' : `CPU · ${difficultyName(settings.difficulty)} · あなたは${settings.first ? '先手' : '後手'}`} · 時間制限なし`;
+  el('match-info').textContent = `この対局：${board.moves.length}手${training ? ' · 練習' : archive.saved ? ` · ヒント ${archive.saved.hints} · 待った ${archive.saved.undos}` : ''}`;
+  el('live-status').textContent = status;
+  el<HTMLButtonElement>('pause-button').disabled = !playScreen();
+  el<HTMLButtonElement>('hint-button').disabled = !canDrop || training || job !== null;
+  el<HTMLButtonElement>('undo-button').disabled = !playScreen() || training || !undoCount(board, settings);
+  el<HTMLButtonElement>('restart-button').disabled = !playScreen();
+  el('practice-actions').hidden = !training || !playScreen();
+}
+function end(outcome: NonNullable<SavedRun['outcome']>): void {
+  if (!active || training) return;
+  save();
+  const recorded = finalize(archive, outcome); store.save(archive); active = false;
+  if (recorded) telemetry.trackEvent('run_end', { ...details(), outcome, completed: ['win','loss','draw'].includes(outcome), score: board.moves.length, unit: 'moves' });
+}
+function title(): void {
+  cancelJob(); save(); active = false; training = false; backScreen = 'title'; settings = { ...archive.settings };
+  const saved = archive.saved, continuable = saved && !saved.reported;
+  show(`<h2 id="menu-title">ならべて4つ</h2><p>ひとつ置いて、先を読む。<br>4つつながる、静かな勝負。</p><div class="settings"><label>遊び方<select id="mode-select"><option value="cpu">CPUと対戦</option><option value="two">同じ端末で2人</option></select></label><label id="difficulty-row">CPUの強さ<select id="difficulty-select"><option value="easy">やさしい</option><option value="normal">ふつう</option><option value="strong">つよい</option></select></label><label id="first-row">あなたの順番<select id="first-select"><option value="first">先手（まる）</option><option value="second">後手（ひし形）</option></select></label></div><div class="menu-actions">${continuable ? '<button id="continue-button" class="primary" type="button">続きから</button><button id="start-button" type="button">新しく始める</button>' : '<button id="start-button" class="primary" type="button">すぐ遊ぶ</button>'}<button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p class="quiet">${continuable ? `${saved.moves.length}手目までの対局を保存しています。続きは保存時の設定で再開します。` : '時間制限なし。記録はこの端末だけに保存します。'}</p>`, 'title');
+  el<HTMLSelectElement>('mode-select').value = settings.mode;
+  el<HTMLSelectElement>('difficulty-select').value = settings.difficulty;
+  el<HTMLSelectElement>('first-select').value = settings.first ? 'first' : 'second';
+  const change = () => {
+    settings = { mode: el<HTMLSelectElement>('mode-select').value as Settings['mode'], difficulty: el<HTMLSelectElement>('difficulty-select').value as Difficulty, first: el<HTMLSelectElement>('first-select').value === 'first' };
+    archive.settings = { ...settings }; store.save(archive);
+    el('difficulty-row').hidden = settings.mode === 'two'; el('first-row').hidden = settings.mode === 'two';
+  };
+  for (const id of ['mode-select','difficulty-select','first-select']) el(id).onchange = change;
+  el('difficulty-row').hidden = settings.mode === 'two'; el('first-row').hidden = settings.mode === 'two';
+  el('start-button').onclick = () => { if (continuable) confirmNew('title'); else start(); };
+  if (continuable) el('continue-button').onclick = resumeSaved;
+  el('explain-button').onclick = () => explain('title'); el('practice-button').onclick = practice;
+}
+function start(): void {
+  cancelJob(); training = false;
+  if (archive.saved && !archive.saved.reported) { active = true; settings = { ...archive.saved.settings }; board = FourBoard.fromMoves(archive.saved.moves)!; end('reset'); settings = { ...archive.settings }; }
+  board = new FourBoard(); highlighted = null; selectedColumn = 3;
+  const seed = Math.floor(Math.random() * 0x100000000);
+  archive.saved = { moves: [], settings: { ...settings }, runId: null, seed, hints: 0, undos: 0, reported: false, outcome: null };
+  active = true; telemetry.trackEvent('run_start', details()); archive.saved.runId = telemetry.getActiveRunId(); save();
+  status = settings.mode === 'two' ? '緑・まるから。列を選んで置こう。' : settings.first ? 'あなたは緑・まる。列を選んで置こう。' : 'あなたは琥珀・ひし形。CPUの初手を待とう。';
+  gate.resetInput(); screen('playing'); scheduleCpu(); focusColumn(); void audio.unlock();
+}
+function resumeSaved(): void {
+  const saved = archive.saved; if (!saved || saved.reported) return;
+  cancelJob(); training = false; settings = { ...saved.settings }; board = FourBoard.fromMoves(saved.moves)!; highlighted = null; active = true;
+  if (saved.runId) telemetry.restoreRun(saved.runId);
+  telemetry.trackEvent('specific_game_events', { event: 'restore', ...details() });
+  status = '保存した対局を再開しました。'; gate.resetInput(); screen('playing');
+  if (board.result !== 'playing') result(); else scheduleCpu();
+  focusColumn(); void audio.unlock();
+}
+function practice(): void {
+  cancelJob(); save(); active = false; training = true;
+  settings = { mode: 'two', difficulty: 'normal', first: true }; board = FourBoard.fromMoves([0,6,1,6,2,6])!;
+  selectedColumn = 3; highlighted = 3; status = '練習：4列目に緑・まるを置いて、横に4つつなげよう。';
+  trainingEvent('practice_start'); screen('practice'); gate.resetInput(); focusColumn(); void audio.unlock();
+}
+function drop(column: number): void {
+  if (!playScreen() || job === 'hint') return;
+  if (training && column !== 3) { status = '練習では4列目を選ぼう。まるが横に4つつながります。'; render(); return; }
+  if (!gate.humanDrop(board, column, settings)) return;
+  selectedColumn = column; highlighted = null; action('move'); save(); audio.tone(380, 270, .07, 'sine', 0, .025);
+  if (board.result !== 'playing') { result(); return; }
+  status = settings.mode === 'two' ? `${playerName(board.turn)}の番。端末を渡して、ひとつ置こう。` : 'CPUが考えています。待ったで直前の手を戻せます。';
+  render(); scheduleCpu();
+}
+function beginJob(kind: 'cpu' | 'hint'): void {
+  cancelJob(); job = kind;
+  const ticket = gate.ticket(board), moves = [...board.moves];
+  const seed = (archive.saved?.seed ?? 1) ^ board.moves.length * 7919;
+  const complete = (column: number | null) => {
+    if (!playScreen() || !gate.valid(ticket, board) || job !== kind) return;
+    worker?.terminate(); worker = null; if (fallbackTimer !== null) clearTimeout(fallbackTimer); fallbackTimer = null; job = null;
+    if (column === null || !board.legalColumns().includes(column)) { status = '候補を見つけられませんでした。もう一度どうぞ。'; render(); return; }
+    if (kind === 'hint') {
+      highlighted = column; selectedColumn = column;
+      if (archive.saved) archive.saved.hints++; action('hint'); save();
+      status = `${column + 1}列目が候補です。自分で選んで置こう。`; render(); focusColumn();
+    } else if (gate.cpuDrop(ticket, board, column, settings)) {
+      highlighted = null; action('cpu_move'); save(); audio.tone(300, 230, .07, 'sine', 0, .02);
+      status = `CPUは${column + 1}列目に置きました。あなたの番です。`;
+      if (board.result !== 'playing') result(); else { render(); focusColumn(); }
+    }
+  };
+  const fallback = async () => {
+    if (!playScreen() || !gate.valid(ticket, board) || job !== kind) return;
+    // An unavailable Worker gets a bounded tactical fallback, not unbounded UI search.
+    const { chooseMove } = await import('./ai');
+    if (!playScreen() || !gate.valid(ticket, board) || job !== kind) return;
+    complete(chooseMove(FourBoard.fromMoves(moves)!, 'easy', { random: seededRandom(seed) }));
+  };
+  try {
+    worker = new Worker(new URL('./ai.worker.ts', import.meta.url), { type: 'module' });
+    worker.onmessage = event => {
+      if (event.data.generation !== ticket.generation || event.data.revision !== ticket.revision) return;
+      complete(event.data.column);
+    };
+    worker.onerror = event => { event.preventDefault(); worker?.terminate(); worker = null; void fallback(); };
+    worker.postMessage({ ...ticket, moves, difficulty: kind === 'hint' ? 'strong' : settings.difficulty, seed });
+    fallbackTimer = setTimeout(() => { worker?.terminate(); worker = null; void fallback(); }, 1800);
+  } catch { fallbackTimer = setTimeout(() => { void fallback(); }, 100); }
+  render();
+}
+function scheduleCpu(): void { if (state === 'playing' && board.result === 'playing' && settings.mode === 'cpu' && board.turn !== humanPlayer(settings)) beginJob('cpu'); }
+function result(): void {
+  cancelJob();
+  if (training) {
+    trainingEvent('practice_complete');
+    status = '横に4つ、つながりました。練習完了！';
+    show('<h2 id="menu-title">4つ、つながった！</h2><p>列を選ぶと、下の空きに駒が入ります。<br>本番では、たて・よこ・ななめも見つけてみよう。</p><p class="practice-note">練習は対局の記録に入りません。</p><div class="menu-actions"><button id="training-start" class="primary" type="button">本番を遊ぶ</button><button id="training-title" type="button">タイトルへ</button></div>', 'result');
+    el('training-start').onclick = () => { settings = { ...archive.settings }; training = false; if (archive.saved && !archive.saved.reported) confirmNew('result'); else start(); };
+    el('training-title').onclick = title; return;
+  }
+  const outcome = outcomeFor(board, settings)!; end(outcome);
+  const winner = board.result === 'draw' ? '引き分け。' : settings.mode === 'two' ? `${playerName(board.result === 'green' ? 1 : 2)}の勝ち。` : outcome === 'win' ? 'あなたの勝ち。' : 'CPUの勝ち。';
+  status = winner;
+  const counts = archive.stats[statKey(archive.saved!)] ?? { wins: 0, losses: 0, draws: 0 };
+  show(`<h2 id="menu-title">${winner}</h2><div class="result-symbol" aria-hidden="true">${board.result === 'draw' ? '○ ◆' : board.result === 'green' ? '● ● ● ●' : '◆ ◆ ◆ ◆'}</div><p>${board.moves.length}手の静かな勝負。${archive.saved!.hints || archive.saved!.undos ? '<br>ヒント・待ったを使った対局です。' : ''}</p><p class="quiet">この設定・補助の記録：${settings.mode === 'cpu' ? 'あなたの' : (settings.first ? '緑・まるの' : '琥珀・ひし形の')}勝ち ${counts.wins} ／ 負け ${counts.losses} ／ 引き分け ${counts.draws}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">もう一局</button><button id="result-board-button" type="button">盤面を見る</button><button id="result-title-button" type="button">設定に戻る</button></div>`, 'result');
+  el('retry-button').onclick = () => { telemetry.trackEvent('retry', { source: 'result' }); start(); };
+  el('result-title-button').onclick = title;
+  el('result-board-button').onclick = () => { menu.close(); screen('result'); boardElement.inert = true; el('controls-result')?.remove(); const controls = document.createElement('div'); controls.id = 'controls-result'; controls.className = 'menu-actions'; controls.innerHTML = '<button id="reopen-result" type="button" data-game-control>結果に戻る</button>'; el('live-status').after(controls); el('reopen-result').onclick = () => { controls.remove(); result(); }; };
+}
+function explain(previous: typeof backScreen): void {
+  backScreen = previous; if (active) save();
+  if (previous === 'title') telemetry.trackEvent('tutorial_view');
+  show('<h2 id="menu-title">遊び方</h2><p>7列、6段の盤です。緑のまると琥珀のひし形を交互に1枚ずつ置きます。</p><p>列を選ぶと、駒はその列のいちばん下の空きに入ります。満杯の列は選べません。</p><p>同じ記号が、たて・よこ・ななめに4つ以上つながれば勝ち。盤が埋まれば引き分けです。</p><p>CPU戦の「待った」は直前の自分とCPUの手を戻します。CPU計算中なら、自分の1手を戻します。2人戦は1手戻します。</p><p>ヒントは候補を示すだけ。置く列は自分で選べます。休憩や途中の対局は、続きから再開できます。</p><div class="menu-actions"><button id="help-back-button" class="primary" type="button">戻る</button><button id="help-practice-button" type="button">練習する</button></div>', 'explanation');
+  el('help-back-button').onclick = back;
+  el('help-practice-button').onclick = practice;
+}
+function back(): void {
+  if (backScreen === 'title') { title(); return; }
+  if (backScreen === 'result') { result(); return; }
+  gate.resetInput(); screen(backScreen); if (!training) telemetry.trackEvent('resume'); scheduleCpu(); focusColumn();
+}
+function pause(): void {
+  if (!playScreen() || board.result !== 'playing') return;
+  backScreen = training ? 'practice' : 'playing'; save(); if (!training) telemetry.trackEvent('pause');
+  show('<h2 id="menu-title">ひと休み。</h2><p>盤面はそのまま。<br>いつでも続けられます。</p><div class="menu-actions"><button id="resume-button" class="primary" type="button">続ける</button><button id="pause-title-button" type="button">タイトルへ</button></div>', 'paused');
+  el('resume-button').onclick = back; el('pause-title-button').onclick = title;
+}
+function confirmNew(previous: typeof backScreen): void {
+  backScreen = previous; save();
+  show('<h2 id="menu-title">新しい対局を始める？</h2><p>途中の対局はここで終了します。<br>これまでの勝敗の記録は残ります。</p><div class="menu-actions"><button id="confirm-button" type="button">新しく始める</button><button id="cancel-button" class="primary" type="button">戻る</button></div>', 'confirm');
+  el('confirm-button').onclick = () => {
+    telemetry.trackEvent('retry', { source: 'reset' }); training = false;
+    settings = { ...archive.settings }; start();
+  };
+  el('cancel-button').onclick = back;
+}
+function portal(): void {
+  cancelJob();
+  // Explicit return is a quit. Reload/pagehide only persist the still-active run.
+  if (!training && archive.saved && !archive.saved.reported) {
+    if (!active) { board = FourBoard.fromMoves(archive.saved.moves)!; settings = { ...archive.saved.settings }; active = true; if (archive.saved.runId) telemetry.restoreRun(archive.saved.runId); }
+    end('quit'); archive.saved = null; store.save(archive);
+  }
+  telemetry.trackEvent('return_to_portal', { source: state });
+}
+boardElement.addEventListener('click', event => {
+  const button = (event.target as Element).closest<HTMLButtonElement>('[data-column]'); if (button && !button.disabled) drop(Number(button.dataset.column));
+});
+boardElement.addEventListener('keydown', event => {
+  if (!playScreen() || event.repeat || !['ArrowLeft','ArrowRight','Enter',' '].includes(event.key)) { if (event.repeat && ['ArrowLeft','ArrowRight','Enter',' '].includes(event.key)) event.preventDefault(); return; }
+  event.preventDefault();
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    const legal = board.legalColumns(); if (!legal.length) return;
+    const direction = event.key === 'ArrowLeft' ? -1 : 1;
+    for (let n = 1; n <= COLS; n++) { const col = (selectedColumn + direction * n + COLS * 2) % COLS; if (legal.includes(col)) { selectedColumn = col; break; } }
+    render(); focusColumn();
+  } else drop(selectedColumn);
+});
+el('hint-button').onclick = () => { if (state === 'playing' && !job && (settings.mode === 'two' || board.turn === humanPlayer(settings))) { status = '候補を考えています。'; beginJob('hint'); } };
+el('undo-button').onclick = () => {
+  if (state !== 'playing') return;
+  const count = undoCount(board, settings); if (!count) return;
+  cancelJob(); if (!board.undo(count)) return;
+  if (archive.saved) archive.saved.undos++; highlighted = null; gate.resetInput(); action('undo'); save();
+  status = `${count}手戻しました。もう一度、列を選ぼう。`; render(); focusColumn();
+};
+el('pause-button').onclick = pause; el('help-button').onclick = () => explain(playScreen() ? (training ? 'practice' : 'playing') : state === 'result' ? 'result' : 'title');
+el('restart-button').onclick = () => { if (training) practice(); else if (state === 'playing') confirmNew('playing'); };
+el('practice-title-button').onclick = title;
+el('practice-play-button').onclick = () => { settings = { ...archive.settings }; training = false; if (archive.saved && !archive.saved.reported) confirmNew('practice'); else start(); };
+el('mute-button').onclick = () => { el('mute-button').textContent = audio.toggle() ? '音 OFF' : '音 ON'; };
+el('mute-button').textContent = audio.muted ? '音 OFF' : '音 ON';
+el('portal-link').addEventListener('click', portal);
+menu.addEventListener('cancel', event => { event.preventDefault(); if (['paused','explanation','confirm'].includes(state)) back(); });
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || event.repeat) return;
+  if (playScreen()) { event.preventDefault(); pause(); }
+  else if (['paused','explanation','confirm'].includes(state)) { event.preventDefault(); back(); }
+});
+document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
+window.addEventListener('blur', pause);
+window.addEventListener('pagehide', () => { save(); cancelJob(); audio.destroy(); }, { once: true });
+telemetry.trackEvent('game_open'); title();
+if (import.meta.env.DEV) Object.defineProperty(window, '__game021', { get: () => ({ state, training, board: { moves: [...board.moves], cells: [...board.cells], turn: board.turn, result: board.result }, settings: { ...settings }, active, job, hints: archive.saved?.hints, undos: archive.saved?.undos, stats: structuredClone(archive.stats), telemetry: telemetry.getEvents() }) });

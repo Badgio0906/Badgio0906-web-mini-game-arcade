@@ -1,0 +1,18 @@
+{
+  "finding_id": "game021-full-column-keyboard-focus",
+  "problem": "After the selected column becomes full, keyboard selection still targets its disabled button.",
+  "expected": "After each turn, a keyboard user can focus a legal column and continue using arrows and Enter.",
+  "observed": [
+    "Code inspection: render disables a full column but leaves selectedColumn unchanged.",
+    "Code inspection: focusColumn selects by selectedColumn and calls focus even when the button is disabled.",
+    "Arrow-key handling is attached to the board, so focus outside its descendants does not reach that handler."
+  ],
+  "unknown": [
+    "Compiled keyboard behavior after a full-column CPU sequence remains unmeasured."
+  ],
+  "operation": "Fill the selected column \u2192 CPU response \u2192 keyboard next turn",
+  "evidence": [
+    "docs/game021/QA/full-column-focus-initial/main.ts.txt"
+  ],
+  "provenance": "actual-development-code-inspection"
+}

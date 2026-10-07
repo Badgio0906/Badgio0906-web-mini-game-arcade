@@ -18,8 +18,9 @@ export class TelemetryService {
   private analytics = analyticsRuntime();
   private analyticsContext: ReturnType<NonNullable<ReturnType<typeof analyticsRuntime>>['createContext']> | undefined;
   private lastPhase = 'title';
-  constructor(_storage?: StorageService, private readonly gameId = 'game001', backend?: Pick<Storage, 'getItem' | 'setItem'>) {
+  constructor(_storage?: StorageService, private readonly gameId = 'game001', backend?: Pick<Storage, 'getItem' | 'setItem'>, options: { remoteCollectionEnabled?: boolean } = {}) {
     this.analyticsContext = this.analytics?.createContext(this.gameId, this.sessionId);
+    if (this.analyticsContext && options.remoteCollectionEnabled !== undefined) this.analyticsContext.remoteCollectionEnabled = options.remoteCollectionEnabled;
     try { this.backend = backend ?? window.localStorage; } catch { /* optional storage */ }
     this.persisted = this.readRecords();
     this.analytics?.consent.subscribe(state => { if (this.analytics?.environment === 'production') { this.persisted = []; if (state === 'granted') this.persisted = this.readRecords(); } });
@@ -59,6 +60,16 @@ export class TelemetryService {
     if (!this.analytics || this.analytics.environment !== 'production') console.debug('[ARCADE]', event);
   }
   getEvents(): TelemetryEvent[] { return validatedEvents(this.events, 200); }
+  /** Reuse the observer's existing run ID for an explicit continuation, without another run_start. */
+  getActiveRunId(): string | null { return this.analyticsContext?.run ?? null; }
+  restoreRun(runId: string): boolean {
+    if (!this.analyticsContext || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(runId)) return false;
+    if (this.analyticsContext.run !== null && this.analyticsContext.run !== runId) return false;
+    this.analyticsContext.run = runId;
+    this.analyticsContext.phase = 'playing';
+    this.lastPhase = 'playing';
+    return true;
+  }
   exportRecords() {
     const events = validatedEvents(this.readRecords(), RETAINED_EVENTS);
     return { schemaVersion: TELEMETRY_SCHEMA_VERSION, exportedAt: new Date().toISOString(), provenance: 'device-local-observed-events', retention: { maximumEvents: RETAINED_EVENTS, windowLimited: true },

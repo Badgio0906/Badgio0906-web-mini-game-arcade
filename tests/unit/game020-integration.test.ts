@@ -31,7 +31,7 @@ describe('Game020 isolated common registration', () => {
     });
     expect(gameCatalog.some(game => game.id === 'game010')).toBe(false);
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');
-    expect(NEXT_GAME_NUMBER).toBe(21);
+    expect(NEXT_GAME_NUMBER).toBe(Math.max(...historicalGameCatalog.map(game => game.releaseOrder)) + 1);
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
     expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: '1' });
   });
@@ -43,7 +43,7 @@ describe('Game020 isolated common registration', () => {
       expect(isAnalyticsEnvelope(row)).toBe(true);
     }
     expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game010' })).toBe(false);
-    expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game021', page: 'game021.html' })).toBe(false);
+    expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game026', page: 'game026.html' })).toBe(false);
     expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), page: 'game020.html?secret=example' })).toBe(false);
     expect(sanitizeAnalyticsData({ event: 'hint', remaining: 12, tile_id: 1, board_id: 'user-specific', email: 'unused@example.test' }))
       .toEqual({ event: 'hint', remaining: 12 });

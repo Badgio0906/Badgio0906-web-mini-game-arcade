@@ -1,0 +1,27 @@
+{
+  "finding_id": "classic-five-portal-pending-registration",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Per-context collection suppression on new game pages does not apply to Portal selected-game events because Portal creates an enabled context. send substitutes selected_game as envelope game_id, including pending-registration IDs. This violates the intended suppression scope and can produce rejected analytics requests. It does not prevent gameplay or important player controls, so this specific issue is not independently classified as major unresolved player-facing release risk. Central registration filtering plus targeted enqueue tests can repair it while preserving existing IDs.",
+  "evidence": [
+    "docs/classic-five/QA/PORTAL_UNREGISTERED_ID_FINDING.json",
+    "src/core/TelemetryService.ts:21-23",
+    "src/portal/main.ts:7,19,46",
+    "src/analytics/runtime.ts:76,95-96"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read complete TelemetryService and AnalyticsRuntime, then followed Portal impression/click/launch selected_game through record→send→envelope. Preserved contemporaneous state and executed one hidden-answer Shadow record only after root explicitly requested it. No browser or production request measurement.",
+    "evidence": [
+      "src/core/TelemetryService.ts",
+      "src/analytics/runtime.ts",
+      "src/portal/main.ts",
+      "docs/classic-five/QA/PORTAL_UNREGISTERED_ID_FINDING.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "reviewer": "classic_review",
+  "human_judgment": null
+}

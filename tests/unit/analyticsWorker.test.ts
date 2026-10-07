@@ -5,6 +5,7 @@ import { randomUUID } from 'node:crypto';
 import worker, { applyRetention } from '../../analytics-worker/src/index';
 import { computeMetrics, summarizeGames } from '../../analytics-worker/src/aggregate';
 import { ANALYTICS_SCHEMA_VERSION, isAnalyticsBatch, sanitizeAnalyticsData, type AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
+import { gameCatalog, historicalGameCatalog } from '../../src/data/gameCatalog';
 import type { Database, D1Statement, Env } from '../../analytics-worker/src/types';
 const now=Date.now(),iso=(delta=0)=>new Date(now+delta).toISOString();
 function event(extra:Partial<AnalyticsEnvelope>={}):AnalyticsEnvelope{return {schema_version:ANALYTICS_SCHEMA_VERSION,event_id:randomUUID(),occurred_at:iso(),game_id:'game019',game_version:'2',rules_version:'2',presentation_version:'2',browser_id:'0f354005-c693-4cb8-8bbb-a45ca3346db0',visit_id:'visit1',session_id:'session1',run_id:'run1',event_name:'run_start',environment:'production',device_class:'mobile',input_type:'touch',page:'game019.html',data:{},...extra};}
@@ -34,8 +35,16 @@ describe('Codex aggregate-only access',()=>{
    for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','user_agent'])expect(text).not.toContain(`"${key}"`);
    for(const id of [browser,visit,session,run,...events.map(row=>row.event_id)])expect(text).not.toContain(id);
   }
-  for(const request of [admin('/v1/admin/game/game021'),codex('/v1/codex/game/game021')])expect((await worker.fetch(request,e)).status).toBe(404);
-  expect((await worker.fetch(post([event({...base,game_id:'game021',page:'game021.html'})]),e)).status).toBe(400);
+  for(const request of [admin('/v1/admin/game/game026'),codex('/v1/codex/game/game026')])expect((await worker.fetch(request,e)).status).toBe(404);
+  expect((await worker.fetch(post([event({...base,game_id:'game026',page:'game026.html'})]),e)).status).toBe(400);
+ });
+ it.each(gameCatalog.filter(game=>game.releaseOrder>=21))('registers classic $id through strict ingest and anonymous aggregate detail',async game=>{
+  const e=env(),browser=randomUUID(),run=randomUUID(),base={game_id:game.id,page:game.id+'.html',browser_id:browser,run_id:run,rules_version:'1',presentation_version:'prototype-1'};
+  const rows=[event({...base,data:{difficulty:'normal',first:true,assisted:false}}),event({...base,event_name:'specific_game_events',data:{event:'hint',hints:1,undos:0}}),event({...base,event_name:'run_end',data:{outcome:'clear',completed:true,seconds:12}})];
+  expect((await worker.fetch(post(rows),e)).status).toBe(202);
+  for(const req of [admin('/v1/admin/game/'+game.id),codex('/v1/codex/game/'+game.id)]){
+   const response=await worker.fetch(req,e);expect(response.status).toBe(200);const text=await response.text();expect(JSON.parse(text).game.run_count).toBe(1);for(const id of [browser,run,...rows.map(row=>row.event_id)])expect(text).not.toContain(id);
+  }
  });
  it('requires the dedicated token and isolates admin credentials in both directions',async()=>{
   const e=env();
@@ -72,8 +81,8 @@ describe('Codex aggregate-only access',()=>{
  it('preserves production defaults, retired exclusions and explicit game010 detail',async()=>{
   const e=env();await worker.fetch(post([event({occurred_at:iso(-1000)})]),e);
   const summary=await worker.fetch(codex(),e),body=await summary.json() as {environment:string;games:{game_id:string}[]};
-  expect(body.environment).toBe('production');expect(body.games).toHaveLength(19);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
-  const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(20);
+  expect(body.environment).toBe('production');expect(body.games).toHaveLength(gameCatalog.length);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
+  const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(historicalGameCatalog.length);
   const detail=await worker.fetch(codex('/v1/codex/game/game010'),e);expect((await detail.json() as {game:{status:string}}).game.status).toBe('retired');
  });
  it('rejects invalid or oversized periods, environments, versions and disallowed origins',async()=>{

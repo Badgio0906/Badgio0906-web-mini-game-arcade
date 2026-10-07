@@ -3,15 +3,15 @@ import { readFileSync, existsSync } from 'node:fs';
 import { filterCatalog, gameCatalog, historicalGameCatalog, retiredGameCatalog, NEXT_GAME_NUMBER } from '../../src/data/gameCatalog';
 
 describe('retired IDs remain historical, never active or reused', () => {
-  it('exposes nineteen active cards with original IDs and releaseOrder', () => {
-    expect(gameCatalog).toHaveLength(19);
+  it('exposes the active cards with original IDs and releaseOrder', () => {
+    expect(gameCatalog).toHaveLength(historicalGameCatalog.length - 1);
     expect(gameCatalog.some(game => game.id === 'game010')).toBe(false);
     expect(filterCatalog(['meeting'])).toEqual([]);
     expect(gameCatalog.find(game => game.id === 'game011')?.releaseOrder).toBe(11);
-    expect(gameCatalog.at(-1)?.id).toBe('game020');
-    expect(gameCatalog.at(-1)?.releaseOrder).toBe(20);
-    expect(NEXT_GAME_NUMBER).toBe(21);
-    expect(historicalGameCatalog).toHaveLength(20);
+    expect(gameCatalog.find(game => game.id === 'game020')?.id).toBe('game020');
+    expect(gameCatalog.find(game => game.id === 'game020')?.releaseOrder).toBe(20);
+    expect(NEXT_GAME_NUMBER).toBe(historicalGameCatalog.length + 1);
+    expect(historicalGameCatalog.map(game => game.releaseOrder)).toEqual(Array.from({length: NEXT_GAME_NUMBER - 1}, (_, i) => i + 1));
     expect(retiredGameCatalog.map(game => [game.id, game.status, game.releaseOrder])).toEqual([['game010', 'retired', 10]]);
   });
   it('keeps the bookmark route lightweight and never starts the retired engine', () => {
