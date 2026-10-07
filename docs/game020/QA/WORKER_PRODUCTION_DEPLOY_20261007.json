@@ -1,0 +1,523 @@
+{
+  "task": "Game020 existing Analytics Worker production registration and verification",
+  "status": "PASS",
+  "authorization": "Existing user-approved minimal Analytics game/event registration, tests and production deployment; no new authentication, permissions, network changes or services.",
+  "source": {
+    "deployment_checkout_commit": "96d6e9e765bad4d91af784542e7cc87a9020bb5c",
+    "registration_commit": "9e3c66de26d017bd85177e4cdffdf1e444292461",
+    "latest_remote_main_at_final_check": "7677a57211a16faf2625a597ed16a7dfa2d49293",
+    "worker_source_equal_across_all_three_commits": true,
+    "original_checkout_HEAD_unchanged": "9e3c66de26d017bd85177e4cdffdf1e444292461",
+    "original_checkout_clean": true,
+    "commits_created": 0,
+    "pushes": 0,
+    "frontend_deployments": 0
+  },
+  "environment": {
+    "node_version": "24.19.0",
+    "wrangler_version": "4.42.0",
+    "network_policy_type": "restricted",
+    "api_cloudflare_allowed": true,
+    "analytics_domain_allowed": true,
+    "existing_cloudflare_token_present": true,
+    "existing_cloudflare_account_id_present": true,
+    "existing_codex_token_present": true,
+    "cloudflare_token_verify_http": 200,
+    "cloudflare_token_status": "active",
+    "wrangler_whoami_authenticated": true,
+    "cloud_environment_runtime_skill": "Not available in executor/cloud skill catalogs or searched installed skill files; existing read-only network policy and workspace instructions used.",
+    "credentials_displayed_or_saved": false,
+    "new_credentials_or_permissions": false
+  },
+  "initial_results": {
+    "at": "2026-10-07T13:26:41.453Z",
+    "health_http": 200,
+    "game020_detail_http": 404,
+    "game019_detail_http": 200,
+    "admin_unauthenticated_http": 401,
+    "game020_cli": "invalid_game before HTTP; repaired in detached checkout only"
+  },
+  "local_verification": {
+    "worker_typecheck": "PASS",
+    "root_typecheck": "PASS",
+    "target_unit_test_files": 4,
+    "target_unit_tests_passed": 38,
+    "actual_local_D1": {
+      "status": "PASS",
+      "environment": "synthetic-local-only",
+      "backend": "Wrangler workerd + actual local D1 SQLite",
+      "checks": [
+        "migration",
+        "health",
+        "valid_batch_202",
+        "duplicate_uuid_dedup",
+        "unknown_event_400",
+        "bad_origin_403",
+        "oversize_413",
+        "admin_unauthorized_401",
+        "admin_aggregate_200",
+        "game_detail_200",
+        "no_raw_ids",
+        "codex_missing_wrong_token_401",
+        "bidirectional_token_isolation_401",
+        "codex_summary_detail_200",
+        "codex_unknown_game_route_404",
+        "codex_non_get_405",
+        "codex_safe_query_filters",
+        "fetch_script_summary_detail",
+        "game020_ingest_six_events",
+        "game020_admin_codex_detail_no_raw_ids",
+        "game020_summary_registered",
+        "game021_ingest_detail_rejected",
+        "game020_fetch_script_detail",
+        "D1_insert_count"
+      ],
+      "d1_event_count": 8,
+      "run_count": 2,
+      "game019_median_run_duration": 12,
+      "game020_median_run_duration": 18
+    },
+    "dry_run_bundle": {
+      "phase": "dry-run",
+      "command": "npm --prefix analytics-worker run deploy -- --keep-vars --dry-run --outdir /tmp/game020-worker-bundle",
+      "started_at": "2026-10-07T13:30:03.260Z",
+      "finished_at": "2026-10-07T13:30:04.869Z",
+      "exit_code": 0,
+      "error_codes": [],
+      "version_id": null,
+      "uploaded": false,
+      "triggers_deployed": false,
+      "dry_run_complete": true,
+      "bundle": "Total Upload: 37.92 KiB / gzip: 11.06 KiB",
+      "custom_domain_reported": false,
+      "cron_reported": false,
+      "timeout": false
+    },
+    "environment": "synthetic-local-only; deployment credentials removed for local tests",
+    "runtime_limit": "Pinned Wrangler local runtime falls back from compatibility date 2026-10-06 to supported 2025-10-01. Production compatibility date remains 2026-10-06."
+  },
+  "deployment": {
+    "phase": "deploy",
+    "command": "npm --prefix analytics-worker run deploy -- --keep-vars",
+    "started_at": "2026-10-07T13:30:09.605Z",
+    "finished_at": "2026-10-07T13:30:18.550Z",
+    "exit_code": 0,
+    "error_codes": [],
+    "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+    "uploaded": true,
+    "triggers_deployed": true,
+    "dry_run_complete": false,
+    "bundle": "Total Upload: 37.92 KiB / gzip: 11.06 KiB",
+    "custom_domain_reported": true,
+    "cron_reported": true,
+    "timeout": false
+  },
+  "production_verification": {
+    "status": "PASS",
+    "verified_at": "2026-10-07T13:31:21.517Z",
+    "worker": "game100-analytics",
+    "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+    "deployed_percentage": 100,
+    "domain": "https://analytics.game100garage.com",
+    "production_methods": [
+      "GET"
+    ],
+    "production_test_events_created": 0,
+    "remote_D1_migrations_executed": 0,
+    "secret_write_operations": 0,
+    "checks": [
+      {
+        "path": "/v1/health",
+        "method": "GET",
+        "http": 200,
+        "passed": true,
+        "health": "ok",
+        "environment": "production"
+      },
+      {
+        "command": "node --use-env-proxy scripts/fetch-analytics-context.mjs --days 7 --game game020",
+        "cli_exit_code": 0,
+        "game_id": "game020",
+        "registered": true,
+        "observed_run_count": 0,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game020",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "game_id": "game019",
+        "cli_exit_code": 0,
+        "compatible": true,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "active_game_count": 19,
+        "game020_registered": true,
+        "game010_excluded": true,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game010",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game021",
+        "method": "GET",
+        "http": 404,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "path": "/v1/admin/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "path": "/v1/admin/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "configuration": "settings",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "domains",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "secrets",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "subdomain",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "cron",
+        "value": "17 3 * * *",
+        "unchanged": true,
+        "passed": true
+      }
+    ],
+    "limits": [
+      "Existing admin/Codex secret names and presence verified; secret values neither read nor compared. --keep-vars retained existing secret bindings; current Codex credential successfully authenticated.",
+      "No live admin credential available or used; successful admin aggregate verified locally, live unauthenticated and Codex-token admin rejection verified.",
+      "Registered Game020 may have zero observed runs; this is a valid empty aggregate, not a registration failure.",
+      "No production aggregate snapshots or raw player IDs saved."
+    ]
+  },
+  "configuration_before": {
+    "phase": "before",
+    "checked_at": "2026-10-07T13:26:22.324Z",
+    "worker": "game100-analytics",
+    "results": [
+      {
+        "label": "settings",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "compatibility_date": "2026-10-06",
+          "compatibility_flags": [],
+          "bindings": [
+            {
+              "type": "plain_text",
+              "name": "AGGREGATE_RETENTION_MONTHS",
+              "text": "13"
+            },
+            {
+              "type": "secret_text",
+              "name": "ANALYTICS_ADMIN_TOKEN",
+              "present": true
+            },
+            {
+              "type": "secret_text",
+              "name": "ANALYTICS_CODEX_TOKEN",
+              "present": true
+            },
+            {
+              "type": "d1",
+              "name": "DB",
+              "id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7"
+            },
+            {
+              "type": "plain_text",
+              "name": "ENVIRONMENT",
+              "text": "production"
+            },
+            {
+              "type": "plain_text",
+              "name": "RAW_RETENTION_DAYS",
+              "text": "90"
+            }
+          ],
+          "logpush": false,
+          "tail_consumers": []
+        }
+      },
+      {
+        "label": "schedules",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "cron": "17 3 * * *",
+            "created_on": "2026-10-06T13:18:58.408802Z",
+            "modified_on": "2026-10-07T04:33:07.66164Z"
+          }
+        ]
+      },
+      {
+        "label": "domains",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "hostname": "analytics.game100garage.com",
+            "service": "game100-analytics",
+            "environment": "production"
+          }
+        ]
+      },
+      {
+        "label": "deployments",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "latest": {
+            "id": "4b569434-6e42-4079-8fe7-e15b9d3dce47",
+            "created_on": "2026-10-07T04:33:06.0704Z",
+            "strategy": "percentage",
+            "versions": [
+              {
+                "version_id": "015965c8-22c5-4df6-a799-0a63589fd812",
+                "percentage": 100
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "secrets",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "name": "ANALYTICS_ADMIN_TOKEN",
+            "type": "secret_text",
+            "present": true
+          },
+          {
+            "name": "ANALYTICS_CODEX_TOKEN",
+            "type": "secret_text",
+            "present": true
+          }
+        ]
+      },
+      {
+        "label": "subdomain",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "enabled": false,
+          "previews_enabled": false
+        }
+      }
+    ]
+  },
+  "configuration_after": {
+    "phase": "after",
+    "checked_at": "2026-10-07T13:30:26.563Z",
+    "worker": "game100-analytics",
+    "results": [
+      {
+        "label": "settings",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "compatibility_date": "2026-10-06",
+          "compatibility_flags": [],
+          "bindings": [
+            {
+              "type": "plain_text",
+              "name": "AGGREGATE_RETENTION_MONTHS",
+              "text": "13"
+            },
+            {
+              "type": "secret_text",
+              "name": "ANALYTICS_ADMIN_TOKEN",
+              "present": true
+            },
+            {
+              "type": "secret_text",
+              "name": "ANALYTICS_CODEX_TOKEN",
+              "present": true
+            },
+            {
+              "type": "d1",
+              "name": "DB",
+              "id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7"
+            },
+            {
+              "type": "plain_text",
+              "name": "ENVIRONMENT",
+              "text": "production"
+            },
+            {
+              "type": "plain_text",
+              "name": "RAW_RETENTION_DAYS",
+              "text": "90"
+            }
+          ],
+          "logpush": false,
+          "tail_consumers": []
+        }
+      },
+      {
+        "label": "schedules",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "cron": "17 3 * * *",
+            "created_on": "2026-10-06T13:18:58.408802Z",
+            "modified_on": "2026-10-07T13:30:18.370076Z"
+          }
+        ]
+      },
+      {
+        "label": "domains",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "hostname": "analytics.game100garage.com",
+            "service": "game100-analytics",
+            "environment": "production"
+          }
+        ]
+      },
+      {
+        "label": "deployments",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "latest": {
+            "id": "4860fd73-5557-491e-b328-fd4f95d96ce6",
+            "created_on": "2026-10-07T13:30:14.478734Z",
+            "strategy": "percentage",
+            "versions": [
+              {
+                "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+                "percentage": 100
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "secrets",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": [
+          {
+            "name": "ANALYTICS_ADMIN_TOKEN",
+            "type": "secret_text",
+            "present": true
+          },
+          {
+            "name": "ANALYTICS_CODEX_TOKEN",
+            "type": "secret_text",
+            "present": true
+          }
+        ]
+      },
+      {
+        "label": "subdomain",
+        "http": 200,
+        "success": true,
+        "error_codes": [],
+        "data": {
+          "enabled": false,
+          "previews_enabled": false
+        }
+      }
+    ]
+  },
+  "recoverable_failures": [
+    {
+      "stage": "dependency install",
+      "reason": "npm default cache outside writable roots",
+      "recovery": "Use existing /workspace/.npm cache; npm ci succeeded; lockfiles unchanged"
+    },
+    {
+      "stage": "first local D1 test",
+      "reason": "Wrangler registry path outside writable roots; optional local Request.cf fetch unavailable",
+      "recovery": "Use isolated writable XDG_CONFIG_HOME for runtime registry; NODE_ENV=test uses built-in local Request.cf fallback; retained existing proxy and network allowlist; local D1 24 checks passed"
+    }
+  ],
+  "cli_fix": {
+    "scope": "scripts/fetch-analytics-context.mjs plus targeted unit/local D1 regressions",
+    "behavior": "Accept registered game020, continue rejecting game021; seven-day production default and all credential/output protections retained",
+    "worker_bundle_affected": false,
+    "main_updated": false,
+    "parent_integration_required": true,
+    "new_semantic_Jev_call": false,
+    "reason": "Deterministic ID allowlist validation mismatch resolved by script and real local HTTP/D1 checks; no uncertain semantic classification required"
+  },
+  "unperformed": [
+    "No remote D1 migration/schema/data mutation commands",
+    "No live ingest/synthetic/QA/production test events",
+    "No live authenticated admin aggregate; no admin token injected; successful admin aggregation and token separation verified locally",
+    "No manual Cron execution; schedule value verified before/after",
+    "No game/frontend edits, commits, pushes or Pages deployment",
+    "No secret values read/compared/created/copied/saved and no network permissions changed"
+  ],
+  "remaining_blockers": [],
+  "parent_handoff": "Apply the small CLI/test/documentation patch from detached checkout if desired within parent-authorized integration. Worker production update is already complete; the main fetch CLI still rejects game020 until the script fix is integrated.",
+  "source_sha256": {
+    "analytics-worker/src/index.ts": "08a4108335c13f018fbf536663ff4055138b15916134f8f4ebacee87e9f3315a",
+    "analytics-worker/src/aggregate.ts": "b840147ccc6c54e3a25df9633935600903c53319b630b4ba06cfac3a40b0c785",
+    "analytics-worker/wrangler.jsonc": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+    "scripts/fetch-analytics-context.mjs": "228a6b9d1d7ea9c85869e160d4238a0ccc50d3beae97273f9717db1faec9429d"
+  },
+  "record_scope": "Historical deployment and initial detached-checkout handoff, recorded before the follow-up main integration authorization. Current CLI integration verification is ANALYTICS_CLI_INTEGRATION_20261007.json."
+}

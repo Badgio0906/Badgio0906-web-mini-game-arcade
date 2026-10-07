@@ -14,7 +14,7 @@
 
 018は既存少年の全身と足への連続性、値連動SPIN、足首／靴座標からのANGLE矢印・弧、cos/sinの射出描画を採用した。飛距離・基礎物理・靴性能・宇宙／レア・膝・保存・広告・CREDITは不変。[018公開統合追補](../game018/revision03/PUBLICATION_INTEGRATION.md)。
 
-020のWorker登録は後の明示許可で追加。集計列挙20歴史ID／19active、詳細route020、既存specific_game_eventsのtile_pair/hint/undo/reshuffleを使う。認証分離／権限／Secret／query／origin／method／schema／migration／設定は不変。[Worker検証](QA/WORKER_REGISTRATION_RESULT.json)。本番deployは `wrangler whoami` 未認証とCloudflare API許可先不足により未実施。[blocker](QA/WORKER_DEPLOY_BLOCKER.json)。Pagesの公開とWorker本番反映は別に扱う。
+020のWorker登録は後の明示許可で追加。集計列挙20歴史ID／19active、詳細route020、既存specific_game_eventsのtile_pair/hint/undo/reshuffleを使う。認証分離／権限／Secret／query／origin／method／schema／migration／設定は不変。[Worker検証](QA/WORKER_REGISTRATION_RESULT.json)。旧環境では `wrangler whoami` 未認証とCloudflare API許可先不足で本番deployが止まったが、新環境の既存認証／許可で本番反映を完了。[解消済みblocker履歴](QA/WORKER_DEPLOY_BLOCKER.json)／[反映証拠](QA/WORKER_PRODUCTION_DEPLOY_20261007.json)。Pagesの公開とWorker本番反映は別に扱う。
 
 ## テストとレビュー
 
@@ -41,10 +41,24 @@
 
 公開後の初回比較では既存CIのAnalytics endpoint環境値を省いたローカルbuildとasset名が異なった。公開済みの非秘密値だけを隔離buildへ再現し、同一runtime commitの35配信fileはSHA256一致した。公開設定・ゲームソースは変えていない。[配信一致](QA/public-assets-final/report.json)／[独立原因確認](QA/independent/public-judgments.json)。初回PC Space不一致はresize未安定の間にキー押下とDOM再描画が重なるdriver条件で2/20再現し、安定後20回と通常Enter／Space10回は成功。testの待機だけを修正し、初回失敗・traceも保存した。
 
-本番に既存Analytics endpointが含まれることと、新作020をWorkerが受理できることは別である。Worker本番deployは未認証／許可先不足で未実施のまま。020の本番集計対応完了は主張しない。
+本番に既存Analytics endpointが含まれることと、新作020をWorkerが受理できることは別である。初回公開確認時のWorker本番deployは未認証／許可先不足で未実施だった。後続工程で020登録を本番反映し、Codex集計取得を確認した（末尾追補参照）。
 
-本人の主観試遊、実機スマホ、音・FPS・長時間の快適さは未実施。ユーザーは本人未プレイ公開を明示承認済み。[試遊方法](HUMAN_PLAYTEST.md)。認証／ネットワークが整うまではWorker本番登録が残る。広告・GA4・CREDIT・新権限・次候補・Sheet編集は行わない。再現は [HANDOFF](HANDOFF.md)。
+本人の主観試遊、実機スマホ、音・FPS・長時間の快適さは未実施。ユーザーは本人未プレイ公開を明示承認済み。[試遊方法](HUMAN_PLAYTEST.md)。Worker本番登録と020の匿名集計取得は完了。広告・GA4・CREDIT・新権限・次候補・Sheet編集は行わない。再現は [HANDOFF](HANDOFF.md)。
 
 ### 公開記録commit後の照合追補
 
 公開証拠commit `96d6e9e765bad4d91af784542e7cc87a9020bb5c` の公式Pages run37628004882もbuild／deploy成功。[実CI](QA/pages-evidence-ci.json)。同じruntimeを再照合するcollectorで、遅延読込画像のresponse.body取得前に次entryへ移動しCDP resourceが失われる例外が出た。per-page Promise.allの初回修正もlate response登録を待ち切れず失敗したため、その原本と当時の観測を保存した。最終collectorはentryごとのPageを生かし、動的なbody取得待ちを終えてから閉じる。対象collectorの実行で**37fileのHTTP200・SHA256一致、pageerror0**を確認した。[最終照合](QA/public-after-evidence-ci/report.json)／[当時の観測](QA/PUBLIC_RESPONSE_BODY_FINDING.json)／[初回調整失敗](QA/PUBLIC_RESPONSE_BODY_FOLLOWUP.json)。製品コード・公開環境変数・Worker設定は追加変更せず、検証処理と記録だけを修正した。同一findingのJev送信は1回の4問、後続の失敗／独立追補は再送せず保全した。
+
+## 2026-10-07 Analytics Worker本番反映追補
+
+既存Worker `game100-analytics`を13:30:18 UTCに反映し、13:31:21 UTCに読み取り検証を完了。version `16ad6d54-bf8d-4f39-be0f-f2176a83e57f`は100%配信。deployment checkoutは`96d6e9e765bad4d91af784542e7cc87a9020bb5c`、Workerソースは登録commit `9e3c66de26d017bd85177e4cdffdf1e444292461`および終了時remote main `7677a57211a16faf2625a597ed16a7dfa2d49293`と同一。元checkout、ゲームfrontend、main、Pagesは編集／commit／push／deployしていない。
+
+health／game020詳細／summaryはHTTP200、game019は互換、game010退役扱いを維持、game021は404。020は登録済み・activeで観測RUN0。実利用が未観測なら0が正常であり、収集不具合や利用者数の結論にはしない。本番確認はGETのみで、qa／synthetic／production test eventは作成していない。
+
+公式既存手順 `npm --prefix analytics-worker run deploy -- --keep-vars`で既存変数とSecret bindingを保持。反映前後のCloudflare API読み取りによりCustom Domain `analytics.game100garage.com`、Cron `17 3 * * *`、D1 ID／binding、保持期間、互換日、Secret名・存在、workers.dev／preview無効が同じことを確認。Secret値を読み取り・比較せず、同じCodex credentialで正常取得、adminへの流用401も確認。live admin credentialの正常取得、Cron実行は未実施。認証・権限・ネットワーク許可は変更せず、remote D1 migrationも実行していない。
+
+取得CLIの許可IDが019までで020をHTTP前に拒否していたため、隔離checkoutで020を1箇所追加し、021拒否と020実HTTP取得の回帰を追加。Worker／root typecheck、対象4file38テスト、実ローカルD1の24確認、Worker dry-run bundle成功。初回のnpm cache／Wrangler registry書込み先不備は許可済みworkspace／一時ディレクトリへ限定して回復。既存固定Wranglerのlocal runtimeは互換日2025-10-01へfallbackするため、その限界を記録した。本番互換日は2026-10-06のまま。
+
+[操作・設定・HTTP証拠](QA/WORKER_PRODUCTION_DEPLOY_20261007.json)。追加承認により本追補・CLI・回帰テストを最新remote mainへ統合する。既存Workerは登録ソースと同一なので再deployしない。旧blockerの観測原本を保持し、解消日時と現行状態を追記した。
+
+CLI統合checkoutで対象38テスト、Worker／root check、build、実ローカルD1の24確認を再実行して成功。buildの既存CSS2件／chunk警告は維持。13:42 UTCに修正済みCLIの本番game020取得も成功、health／game019互換／設定維持を再確認した。[統合検証](QA/ANALYTICS_CLI_INTEGRATION_20261007.json)。この統合commitは既存main pushの公式Pages workflowで確認する。CI結果はpush後に確定させ、未完了を成功扱いしない。

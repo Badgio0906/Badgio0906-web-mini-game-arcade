@@ -1,8 +1,10 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-07 13:31 UTC：**Game020の既存Analytics Worker本番登録を完了。** `game100-analytics` version `16ad6d54-bf8d-4f39-be0f-f2176a83e57f`を100%配信。health／Codex game020／summaryはHTTP200、game019互換、game021拒否、未認証／Codex tokenのadmin拒否を確認。020観測RUN0は正常な空集計。Custom Domain、Cron `17 3 * * *`、D1 binding、既存Secret登録、保持期間、workers.dev／preview無効は維持。新認証・権限・ネットワーク変更、remote D1 migration、test event送信、Pages操作なし。[本番反映証拠](game020/QA/WORKER_PRODUCTION_DEPLOY_20261007.json)。以前の未認証／許可先外blockerは旧環境の履歴として保持。取得CLIの020許可漏れを隔離checkoutで最小修正し、対象38テスト／実ローカルD1の24確認成功。追加承認により取得CLI・回帰テスト・記録を最新mainへ統合する。公式Pages CIはこの統合commitのpushで確認し、Workerの再deployは行わない。
+
 2026-10-07 UTC：**Game020「すっきり牌合わせ ～PAIR TILE～」を公開済み、追加承認されたGame018 revision03も安全に統合・公開済み。** 新作は24／48枚の古典牌合わせ、独自幾何学牌、時間制限・ミス罰なし、任意説明／8枚練習、ヒント／戻す／解ける残牌並べ替え。active19／historical20、010退役維持、次ID021は未着手。[020報告](game020/IMPLEMENTATION_REPORT.md)／[018統合追補](game018/revision03/PUBLICATION_INTEGRATION.md)。018は少年の全身・足首接合・選択値連動SPIN・ANGLE／射出方向の描画だけを採用し、物理／保存互換は不変。元018未commit作業は182fileとstatus／HEAD／branchを保全。本人未試遊の公開はユーザー明示承認済み、実機・主観評価は未実施。runtime `9e3c66d`、公式Pages run37625676913のbuild／deploy成功。公開020の4画面・018のPC／phone各2RUN・初回35／追補37配信fileの一致・Portal19掲載を確認。詳細は上記報告と020 QA/PUBLICATION.json。
 
-**020 Analytics Worker登録も後で許可され、typecheck／実ローカルD1の23確認を完了。** 020 ingest・匿名admin/Codex詳細・summary、021拒否を確認。認証／Secret／権限／D1 schema／広告／GA4／CREDIT設定は不変。`wrangler whoami`は未認証、Cloudflare APIは許可先外のため本番Worker deploy未実施。[Worker登録記録](game020/QA/WORKER_REGISTRATION_RESULT.json)／[本番反映blocker](game020/QA/WORKER_DEPLOY_BLOCKER.json)。Pages公開とWorker本番登録完了は別。候補表A22は編集しない。
+**020 Analytics Worker登録も後で許可され、typecheck／実ローカルD1の23確認を完了。** 020 ingest・匿名admin/Codex詳細・summary、021拒否を確認。認証／Secret／権限／D1 schema／広告／GA4／CREDIT設定は不変。旧環境では`wrangler whoami`未認証・Cloudflare API許可先外でdeployが止まったが、既存設定を利用できる新環境で13:30 UTCに本番反映済み。[Worker登録記録](game020/QA/WORKER_REGISTRATION_RESULT.json)／[解消済みblockerの履歴](game020/QA/WORKER_DEPLOY_BLOCKER.json)。Pages公開とWorker本番登録完了は別。候補表A22は編集しない。
 
 2026-10-07（日本時間）：**Codex Analytics取得スクリプトのネットワークシークレット対応を修正。** 非空tokenの独自文字種チェックと不要なエラーコードを削除し、プロキシ置換前のプレースホルダーをBearer値としてfetchへ渡す。Secret非表示・URL制約・redirect拒否・30秒timeout・応答の反射／生ID拒否は維持。実Secretを使わないfetch／ローカルHTTPテストを追加し、対象15件／root check／build成功（既存CSS・chunk警告あり）。[変更・検証記録](analytics/CODEX_ANALYTICS_ACCESS.md#2026-10-07-プレースホルダー対応の検証)。本番Analytics取得とゲーム・Worker・D1変更は今回未実施。
 

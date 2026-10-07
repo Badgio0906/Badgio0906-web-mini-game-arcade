@@ -1,0 +1,182 @@
+{
+  "status": "PASS",
+  "stage": "CLI integration before main push",
+  "verified_at": "2026-10-07T13:43:27.787077+00:00",
+  "base_main_commit": "7677a57211a16faf2625a597ed16a7dfa2d49293",
+  "authorization": "Follow-up explicitly authorized latest-main integration, tests, commit/push and existing official Pages CI confirmation for the two Analytics patches.",
+  "changes": [
+    "Extend only the existing CLI ID allowlist to registered game020",
+    "Test game020 production defaults and game021 rejection",
+    "Exercise game020 CLI against actual local Worker/D1 fixture",
+    "Record existing Worker production deployment and mark previous-environment blocker resolved"
+  ],
+  "commands": [
+    {
+      "command": "npm run check",
+      "exit_code": 0
+    },
+    {
+      "command": "npm --prefix analytics-worker run check",
+      "exit_code": 0
+    },
+    {
+      "command": "npx --no-install vitest run tests/unit/analyticsWorker.test.ts tests/unit/analytics-codex-fetch.test.ts tests/unit/analytics-version-history.test.ts tests/unit/game020-integration.test.ts",
+      "exit_code": 0,
+      "files": 4,
+      "passed": 38
+    },
+    {
+      "command": "npm --prefix analytics-worker test",
+      "exit_code": 0,
+      "local_only": true,
+      "checks": 24
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "existing_warnings": [
+        "CSS media-query syntax warnings (2)",
+        "chunk size"
+      ]
+    }
+  ],
+  "production_verification": {
+    "status": "PASS",
+    "verified_at": "2026-10-07T13:42:25.887Z",
+    "worker": "game100-analytics",
+    "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+    "deployed_percentage": 100,
+    "domain": "https://analytics.game100garage.com",
+    "production_methods": [
+      "GET"
+    ],
+    "production_test_events_created": 0,
+    "remote_D1_migrations_executed": 0,
+    "secret_write_operations": 0,
+    "checks": [
+      {
+        "path": "/v1/health",
+        "method": "GET",
+        "http": 200,
+        "passed": true,
+        "health": "ok",
+        "environment": "production"
+      },
+      {
+        "command": "node --use-env-proxy scripts/fetch-analytics-context.mjs --days 7 --game game020",
+        "cli_exit_code": 0,
+        "game_id": "game020",
+        "registered": true,
+        "observed_run_count": 0,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game020",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "game_id": "game019",
+        "cli_exit_code": 0,
+        "compatible": true,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "active_game_count": 19,
+        "game020_registered": true,
+        "game010_excluded": true,
+        "anonymous_safe_response": true,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game010",
+        "method": "GET",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/game/game021",
+        "method": "GET",
+        "http": 404,
+        "passed": true
+      },
+      {
+        "path": "/v1/codex/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "path": "/v1/admin/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "path": "/v1/admin/summary",
+        "method": "GET",
+        "http": 401,
+        "passed": true
+      },
+      {
+        "configuration": "settings",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "domains",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "secrets",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "subdomain",
+        "unchanged": true,
+        "passed": true
+      },
+      {
+        "configuration": "cron",
+        "value": "17 3 * * *",
+        "unchanged": true,
+        "passed": true
+      }
+    ],
+    "limits": [
+      "Existing admin/Codex secret names and presence verified; secret values neither read nor compared. --keep-vars retained existing secret bindings; current Codex credential successfully authenticated.",
+      "No live admin credential available or used; successful admin aggregate verified locally, live unauthenticated and Codex-token admin rejection verified.",
+      "Registered Game020 may have zero observed runs; this is a valid empty aggregate, not a registration failure.",
+      "No production aggregate snapshots or raw player IDs saved."
+    ]
+  },
+  "source_sha256": {
+    "scripts/fetch-analytics-context.mjs": "228a6b9d1d7ea9c85869e160d4238a0ccc50d3beae97273f9717db1faec9429d",
+    "tests/unit/analytics-codex-fetch.test.ts": "a1ff186c1866be87f3541ef34218b8d34fa01247aee2b4b686423ca3a2d06ff6",
+    "analytics-worker/tests/local-d1.mjs": "3971caf9e326f9156889a1a48751de5926782f383ca193c740aaa1e293cdf25e"
+  },
+  "preserved": [
+    "Frontend and game source",
+    "Ads/CREDIT/GA4 settings",
+    "Worker production source/configuration and version",
+    "D1 schema and production data",
+    "Secret/authentication/network permissions",
+    "Other existing worktrees and changes"
+  ],
+  "worker_redeployed": false,
+  "production_events_created": 0,
+  "ci_workflow": ".github/workflows/pages.yml",
+  "ci_note": "This source commit triggers the unchanged existing Pages workflow on main. Post-push run/conclusion and exact main SHA are verified separately; no pending CI is represented as passed."
+}

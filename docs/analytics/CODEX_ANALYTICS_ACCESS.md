@@ -1,13 +1,13 @@
 # Codex Analytics Access — Phase 1
 
-100ガレの改善・分析タスクで、Codexが必要な最新の匿名集計を既存Worker APIから取得する経路。D1への直接アクセスやMCP Serverは導入しない。今回の実装はローカル検証のみで、本番Secret設定・Worker deploy・Codex CloudへのSecret登録・本番API取得は未実施。
+100ガレの改善・分析タスクで、Codexが必要な最新の匿名集計を既存Worker APIから取得する経路。D1への直接アクセスやMCP Serverは導入しない。Phase1初期実装はローカル検証のみだったが、現在は既存Workerの専用Secretと取得環境の既存設定を利用して本番取得を確認済み。2026-10-07に020登録と取得CLIの対応を完了した。
 
 ## API
 
 | GET専用経路 | 内容 |
 |---|---|
 | `/v1/codex/summary` | サイト全体とゲーム別の集計 |
-| `/v1/codex/game/:game_id` | 指定ゲームの集計（現行001〜019、010は退役） |
+| `/v1/codex/game/:game_id` | 指定ゲームの集計（現行001〜020、010は退役） |
 
 `Authorization: Bearer <ANALYTICS_CODEX_TOKEN>`で認証する。adminとは別の値を設定する。Codex tokenは上記2経路だけで利用可能で、`/v1/admin/*`は引き続き`ANALYTICS_ADMIN_TOKEN`のみ。逆方向の流用も不可。Codex経路のPOST／PUT／PATCH／DELETE／HEAD／OPTIONSは405。未設定503、認証なし・誤token401、不正game_id404。Codex用経路はサーバーからの取得用で、ブラウザー向けCORSを追加しない。
 
@@ -37,6 +37,8 @@ Secretはコード・URL・ログ・ファイル名・Gitへ保存しない。�
 文字種チェックと不要なエラーコードを削除。`npm test -- tests/unit/analytics-codex-fetch.test.ts`は15件成功、`npm run check`／`npm run build`も成功。追加テストは修正前に4件失敗し、修正後はすべて成功した。実SecretやCodex内部形式を使わず、合成文字列のfetch呼び出し・ローカルHTTP実送信と安全なCLI出力を確認。未設定／空文字列、URL制約、redirect拒否、timeout設定、応答内の識別子／token反射拒否、例外／HTTPエラー本文の非表示も検証した。buildは既存ゲームCSSの構文警告2件とchunkサイズ警告を伴う。本番Analytics取得、ゲーム・Worker・D1変更は今回未実施。
 
 ## 集計の制約
+
+2026-10-07 13:31 UTC：既存Workerの020登録を本番反映し、`node --use-env-proxy scripts/fetch-analytics-context.mjs --days 7 --game game020`の成功と正常な観測RUN0を確認。Node.js24で既存環境proxyを使う際は`--use-env-proxy`を付ける。取得スクリプトの020許可と対象回帰修正を、追加承認に基づき最新mainへ統合する。[反映記録](../game020/QA/WORKER_PRODUCTION_DEPLOY_20261007.json)。本番集計snapshot・生ID・Secret値は保存していない。本番設定は既存のものを保持し、新しい認証や権限を作成していない。
 
 同意済み・観測済みイベントのみで、全訪問者の実数ではない。`sample_size_small`（分母20未満）、欠測、打ち切られたRUNを断定材料にしない。raw既定90日、日次集計13か月。20,000イベント／10,000日次行を超える要求は422なので期間を狭める。日次distinct数を足して期間distinct数にしない。部分UTC日の履歴は要求期間の正確な合計ではない。継続・再訪率は観測範囲と追跡期間の制約を持ち、離脱イベントの欠測を「飽きた」と読まない。Analyticsだけを根拠に自動でゲームを改修しない。
 

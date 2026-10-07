@@ -34,7 +34,16 @@ describe('Codex Analytics fetch script',()=>{
   expect(result.data.environment).toBe('synthetic');expect(result.data.game.run_count).toBe(1);
  });
  it('rejects invalid arguments and duplicate flags before sending a request',()=>{
-  for(const args of [['--token',token],['--days'],['--days','0'],['--days','91'],['--days','NaN'],['--days','1.5'],['--game','game999'],['--environment','other'],['--days','7','--days','30'],['--include-retired','false']])expect(()=>parseOptions(args)).toThrow();
+  for(const args of [['--token',token],['--days'],['--days','0'],['--days','91'],['--days','NaN'],['--days','1.5'],['--game','game021'],['--game','game999'],['--environment','other'],['--days','7','--days','30'],['--include-retired','false']])expect(()=>parseOptions(args)).toThrow();
+ });
+ it('fetches the registered Game020 detail with the production defaults',async()=>{
+  const fetcher=vi.fn(async(url:URL)=>{
+   expect(url.pathname).toBe('/v1/codex/game/game020');
+   expect(url.searchParams.get('environment')).toBe('production');
+   return Response.json({...payload(url),game:{game_id:'game020',run_count:0}});
+  });
+  const result=await fetchAnalyticsContext(['--days','7','--game','game020'],env,fetcher,now);
+  expect(result.data.game.game_id).toBe('game020');expect(result.data.game.run_count).toBe(0);expect(fetcher).toHaveBeenCalledOnce();
  });
  it('requires the Codex credential even when an admin credential is present',async()=>{
   const fetcher=vi.fn();
