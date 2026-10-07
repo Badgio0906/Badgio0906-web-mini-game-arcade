@@ -1,0 +1,25 @@
+{
+  "finding_id": "g023-landscape-result-answer-scroll",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic022 actual-image Game023 QA; Shadow answers unread",
+  "rationale": "The actual844x390 result image initially clipped the heading and answer above the dialog because native opening focused its first button and scrolled195px. This obscured the defining result. Root independently authorized initial heading focus and scrollTop0 after native opening. The final viewport image displays the full heading and answer, geometry gives scrollTop0/answer160.7..219.9px, and native Tab reaches the next button.",
+  "evidence": [
+    "docs/game023/QA/independent/844-revision-result-viewport.png",
+    "docs/game023/QA/independent/browser-revision-report.json",
+    "docs/game023/QA/independent/menu-revision-diff.patch",
+    "docs/game023/QA/independent/844-final-result-viewport.png",
+    "docs/game023/QA/independent/browser-final-report.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed actual before/after viewport-only images; measured geometry and checked native Tab/control access on separate compiled revision.",
+    "evidence": [
+      "docs/game023/QA/independent/844-final-result-viewport.png",
+      "docs/game023/QA/independent/browser-final-report.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

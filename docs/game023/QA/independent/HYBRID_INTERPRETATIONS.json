@@ -1,0 +1,25 @@
+{
+  "finding_id": "g023-practice320-missing-gesture",
+  "archived_at": "2026-10-07T15:41:30.307948+00:00",
+  "observations": [
+    "Mouse-tab\u2192touch-key full320 workflow produces native clickdetail2 on previously unguessed\u308a after scrollbar movement.",
+    "Consistent touchscreen-only workflow completed; four isolated practice runs completed."
+  ],
+  "interpretations": [
+    {
+      "reviewer": "Game022 author independent Game023 reviewer",
+      "timing": "Earlier interpretation sent to root before source revision; archived here after a first documentation write failed due to wrong working-directory path.",
+      "initial_primary_cause": "TEST_INFRA_BUG",
+      "rationale": "The mixed collector creates detail2 after automatic scroll while consistent touch succeeds; initially treated mixed input as driver condition.",
+      "product_fix_claim": false
+    },
+    {
+      "reviewer": "Root independent source review",
+      "timing": "Root follow-up authorization after compiled full event trace and consistent-touch evidence.",
+      "primary_cause": "PRODUCT_BUG",
+      "rationale": "Hybrid mouse/touch is supported on touchscreen PCs. Blanket rejection of detail>1 blocks valid DIFFERENT key actions; duplicate model no-op plus pointer epoch,180ms transition guard and repeat guard already protect duplicate/transition actions.",
+      "authorized_change": "Remove only event.detail>1 blanket condition; retain remaining guards.",
+      "physical_human_verified": false
+    }
+  ]
+}

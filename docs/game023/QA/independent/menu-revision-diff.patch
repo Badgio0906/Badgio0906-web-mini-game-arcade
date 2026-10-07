@@ -1,0 +1,14 @@
+--- src/games/game023/main.ts before menu entry fix
++++ src/games/game023/main.ts revised menu entry
+@@ -55,7 +55,10 @@
+   menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>';
+   if (!menu.open) menu.show();
+   el('menu-portal-link').onclick = returnToPortal;
+-  menu.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true });
++  // Native opening may scroll to the first action; show the heading/answer first.
++  const heading = menu.querySelector<HTMLElement>('#menu-title');
++  if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
++  menu.scrollTop = 0;
+ }
+ function sync(): void {
+   const focused = document.activeElement instanceof HTMLElement ? document.activeElement.dataset.kana : undefined;

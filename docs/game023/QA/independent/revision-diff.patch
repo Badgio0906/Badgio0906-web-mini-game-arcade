@@ -1,0 +1,11 @@
+--- src/games/game023/main.ts before root-authorized hybrid revision
++++ src/games/game023/main.ts revised
+@@ -187,7 +187,7 @@
+ document.addEventListener('pointerdown', event => { const target = (event.target as HTMLElement).closest('button, a'); if (target) pointerEpoch.set(target, epoch); }, true);
+ document.addEventListener('click', event => {
+   const target = (event.target as HTMLElement).closest('button');
+-  if (target && app.contains(target) && (event.detail > 1 || event.detail > 0 && (performance.now() < blockUntil || pointerEpoch.get(target) !== epoch))) { event.preventDefault(); event.stopImmediatePropagation(); }
++  if (target && app.contains(target) && event.detail > 0 && (performance.now() < blockUntil || pointerEpoch.get(target) !== epoch)) { event.preventDefault(); event.stopImmediatePropagation(); }
+ }, true);
+ document.addEventListener('keydown', event => {
+   const gameTarget = event.target instanceof HTMLElement && app.contains(event.target);

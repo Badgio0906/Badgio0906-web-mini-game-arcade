@@ -1,0 +1,107 @@
+
+> orbit-shift@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/arcade-classic-five
+
+ ✓ tests/unit/gameplay.test.ts (7 tests) 2898ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 1)  815ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 17)  821ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 77)  1112ms
+ ✓ tests/unit/workday-escalation.test.ts (7 tests) 3893ms
+   ✓ Workday milestone and endless journey > five seeded walking and biking journeys pass 5000m with bounded visible resources and only two offers  3750ms
+ ✓ tests/unit/game010.test.ts (8 tests) 2375ms
+   ✓ Game010 rules2 meaning/corrections/minutes > meaning beats allclick/last-only/no action/boss-only over30 distinct shuffled meetings  2253ms
+ ✓ tests/unit/game017.test.ts (23 tests) 1610ms
+   ✓ playable layout generator > independently checks every returned segment over early, wind, large-rain and saturated rounds  1557ms
+ ✓ tests/unit/game006.test.ts (8 tests) 1332ms
+   ✓ PARK IT! geometry and ordinary gauge play > tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry  325ms
+   ✓ PARK IT! geometry and ordinary gauge play > grades actual offset precision, caps consecutive Perfect bonus and bounds retained objects over60 successes  680ms
+ ✓ tests/unit/game006-unbraked-compat.test.ts (1 test) 1867ms
+   ✓ replays identical legal inputs and varying frame steps with exact old unbraked pose and outcome  1866ms
+ ✓ tests/unit/game011.test.ts (11 tests) 1579ms
+   ✓ UNKO or UKON explicit phases, real deadlines and public-input scoring > more than five thousand independent placements per phase approach50:50 and permit repeated same-side answers  1510ms
+ ✓ tests/unit/game022.test.ts (17 tests) 1622ms
+   ✓ legal play and undo preserve all 52 identities over seeded action sequences  1594ms
+ ✓ tests/unit/game002.test.ts (8 tests) 628ms
+   ✓ WORKDAY DODGE model > five seeded reactive runs reach 1000m, cover all four opponent types and keep generation bounded  604ms
+ ✓ tests/unit/game020-model.test.ts (13 tests) 521ms
+ ✓ tests/unit/analytics-codex-fetch.test.ts (16 tests) 442ms
+ ✓ tests/unit/game006-revision.test.ts (9 tests) 712ms
+ ✓ tests/unit/game021-model.test.ts (36 tests) 413ms
+   ✓ Game021 bounded tactical CPU > strong always returns a legal column or null when terminal  352ms
+ ✓ tests/unit/game018.test.ts (31 tests) 483ms
+stdout | tests/unit/catalog-telemetry.test.ts > catalog identity and future tag filtering > keeps legacy routes/tags attached to the actual title and preserves020 and appends registered games
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > rejects corrupt/unknown/nonfinite/object data and copies valid records
+
+
+ ✓ tests/unit/game018-revision02.test.ts (7 tests) 273ms
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > retains cross-page game records in a bounded400window without changing200memory
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > recovers from corrupt and denied storage without stale resurrection
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > preserves a later page departure after quitting and beginning another run
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > counts a restarted ascent as interrupted rather than completed
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > does not double count quits/deaths or fabricate unreported positions and durations
+
+
+ ✓ tests/unit/catalog-telemetry.test.ts (7 tests) 245ms
+ ✓ tests/unit/game023-model.test.ts (20 tests) 111ms
+ ✓ tests/unit/game019-level.test.ts (7 tests) 165ms
+ ✓ tests/unit/analytics-client.test.ts (9 tests) 125ms
+ ✓ tests/unit/game003.test.ts (9 tests) 133ms
+stdout | tests/unit/game007.test.ts > Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal
+POLICY_RESULTS [{"scenario":0,"greedy":1190,"light":1180,"planning":2940},{"scenario":1,"greedy":2430,"light":1440,"planning":1880},{"scenario":2,"greedy":1760,"light":1410,"planning":3340}]
+
+ ✓ tests/unit/game007.test.ts (8 tests) 81ms
+ ✓ tests/unit/game016.test.ts (10 tests) 95ms
+stdout | tests/unit/game008.test.ts > Game008 delivery rules 2 > deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill
+{"careful":{"distance":128,"score":0,"time":32.00416666666517,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":0.0003164663249067682,"liquidVelocity":0.001991189612405887,"surfaceTilt":-0.00002845097715483872,"spilling":false,"spillRate":0}],"outcome":"timeout","reason":"配達の時間に間に合いませんでした。","deliveries":0,"totalDeliveredRemaining":0,"spareTime":0,"rulesVersion":2},"rush":{"distance":180,"score":1788,"time":22.50416666666571,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":40.8323458848966,"liquidAngle":0.00810969001498917,"liquidVelocity":0.07739252629943917,"surfaceTilt":0.001430245083535558,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":40.8323458848966,"spareTime":9.49583333333429,"rulesVersion":2},"mixed":{"distance":180,"score":2110,"time":29.24999999999866,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":-0.0070284658945135615,"liquidVelocity":-0.0016635166385906659,"surfaceTilt":-0.0007740142523649535,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":100,"spareTime":2.7500000000013394,"rulesVersion":2}}
+
+ ✓ tests/unit/game015.test.ts (27 tests) 13967ms
+   ✓ authored descending routes and bounded endless generation > public steering/braking safely crosses1000m without freezing and continues5000m with bounded arrays and all material types  3195ms
+   ✓ continuous downward pursuit and randomized fair choices > ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds  10056ms
+ ✓ tests/unit/game008.test.ts (5 tests) 171ms
+ ✓ tests/unit/analyticsWorker.test.ts (20 tests) 105ms
+ ✓ tests/unit/revision-features.test.ts (10 tests) 87ms
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 74ms
+ ✓ tests/unit/game005.test.ts (6 tests) 74ms
+ ✓ tests/unit/game003-art.test.ts (5 tests) 62ms
+ ✓ tests/unit/game015-practice.test.ts (9 tests) 34ms
+ ✓ tests/unit/game004.test.ts (6 tests) 24ms
+ ✓ tests/unit/arcade-credits.test.ts (5 tests) 31ms
+ ✓ tests/unit/game009.test.ts (8 tests) 28ms
+ ✓ tests/unit/sort-localization.test.ts (3 tests) 29ms
+ ✓ tests/unit/game019-charge.test.ts (7 tests) 16ms
+ ✓ tests/unit/game019-practice-charge.test.ts (3 tests) 19ms
+ ✓ tests/unit/game019-surfaces.test.ts (4 tests) 13ms
+ ✓ tests/unit/arcade-practice.test.ts (24 tests) 17ms
+ ✓ tests/unit/services.test.ts (17 tests) 17ms
+ ✓ tests/unit/classic-telemetry.test.ts (9 tests) 14ms
+ ✓ tests/unit/game023-persistence.test.ts (7 tests) 9ms
+ ✓ tests/unit/analytics-admin.test.ts (6 tests) 11ms
+ ✓ tests/unit/game016-practice.test.ts (3 tests) 14ms
+ ✓ tests/unit/game016-wallet.test.ts (2 tests) 8ms
+ ✓ tests/unit/game018-shoe-pose.test.ts (4 tests) 10ms
+ ✓ tests/unit/game010-retirement.test.ts (2 tests) 5ms
+ ✓ tests/unit/game020-integration.test.ts (3 tests) 9ms
+ ✓ tests/unit/classic-integration.test.ts (5 tests) 7ms
+ ✓ tests/unit/game019-telemetry.test.ts (3 tests) 5ms
+ ✓ tests/unit/game022-persistence.test.ts (2 tests) 6ms
+ ✓ tests/unit/analytics-version-history.test.ts (2 tests) 5ms
+ ✓ tests/unit/game019-stats.test.ts (3 tests) 4ms
+
+ Test Files  52 passed (52)
+      Tests  486 passed (486)
+   Start at  16:11:09
+   Duration  16.89s (transform 1.78s, setup 0ms, collect 3.18s, tests 36.48s, environment 9ms, prepare 3.27s)
+

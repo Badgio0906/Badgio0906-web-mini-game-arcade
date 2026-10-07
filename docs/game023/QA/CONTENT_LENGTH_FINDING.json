@@ -1,0 +1,14 @@
+{
+  "finding_id": "game023-initial-word-length",
+  "observed_at": "2026-10-07T15:12:25Z",
+  "evidence": "unit-initial.txt",
+  "expected": "Every reading has 3–8 NFC characters",
+  "observed": [
+    "w_animal_004: りす, 2 characters",
+    "w_animal_027: かめ, 2 characters",
+    "w_object_020: くし, 2 characters"
+  ],
+  "action": "Replaced with ももんが, りくがめ, へあぶらし using new original clues",
+  "verification": "unit-final.txt: 27/27 including all 180 vocabulary entries",
+  "jev": "Not sent: direct numeric length comparison and vocabulary-schema validation; excluded by JEV_REVIEW_RULES 呼ぶ時/呼ばない時. No ambiguous cause or next-evidence routing."
+}

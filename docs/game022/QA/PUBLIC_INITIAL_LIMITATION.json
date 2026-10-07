@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-10-07T16:13:31.105044+00:00",
+  "initial_probe": "public-initial/reviewer-report.json",
+  "observed": "First public entry captured empty board/menu and timed out on practice button. No pageerror; resource responses were not logged in that first probe.",
+  "sequence": "Probe started while workflow overall still in_progress (deploy individual steps reported completed); overall success was verified separately afterward.",
+  "subsequent_diagnostic": "QA/public-initial/INITIAL_NETWORK_DIAGNOSTIC.json: all nine resources HTTP200, no network failures/console errors, initialized title/menu present.",
+  "interpretation": "Initial distribution/readiness timing not established as a source bug; exact first failure cause remains unmeasured. Source unchanged. Re-test expected commit after verified CI completion.",
+  "jev_exclusion": "Known deployment/readiness verification with no code repair, not a semantic game finding. Initial failed artifacts retained.",
+  "parent_protocol_note": "Final public proof must follow overall CI success; the early probe is not release verification."
+}

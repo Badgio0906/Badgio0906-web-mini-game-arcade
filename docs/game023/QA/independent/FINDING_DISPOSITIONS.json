@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-07T16:08:23.578427+00:00",
+  "findings": [
+    {
+      "id": "g023-practice320-missing-gesture",
+      "final": "PRODUCT_BUG: supported hybrid input detail2 rejected",
+      "repair": "Removed blanket detail>1 rejection, retained epoch/180ms/repeat guards",
+      "evidence": "browser-final-report.json",
+      "before_interpretation_preserved": "HYBRID_INTERPRETATIONS.json",
+      "shadow_calls": 1
+    },
+    {
+      "id": "g023-landscape-result-answer-scroll",
+      "final": "PRODUCT_BUG: initial native dialog focus scrolled heading/answer away",
+      "repair": "Heading focus preventScroll then scrollTop0",
+      "evidence": "844-final-result-viewport.png + browser-final-report.json",
+      "shadow_calls": 1
+    },
+    {
+      "id": "disabled-used-key-locator",
+      "final": "TEST_INFRA: expected aria-disabled locator cannot be clicked by enabled-only tool",
+      "repair": "Driver performs native coordinate duplicate to verify no-op",
+      "shadow_calls": 0
+    },
+    {
+      "id": "reloaded-event-logger-missing",
+      "final": "TEST_INFRA: logger absent after reload",
+      "repair": "Reinstall passive logger at workflow stage",
+      "shadow_calls": 0
+    }
+  ],
+  "no_shadow_answers_read": true,
+  "human_play": false
+}

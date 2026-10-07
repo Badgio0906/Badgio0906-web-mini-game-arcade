@@ -1,6 +1,8 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-07 UTC：**Game022「ひと息ソリティア」統合QA完了・公式公開準備。** 52枚Klondike／1枚・3枚／random・JST daily、説明・6枚練習任意、hint／undo／単札assist／可証明の全整理。root457テスト・check・build、独立fixture全消去4画面、compiled通常操作4画面成功。保存上書き・touch capture・OFFスクロールCSS競合を当ゲーム内で修正。実通常配りからthumbnail、Visual／Feelは別記録。active21／historical22、次023、既存ゲーム不変。本番公開の確定はQA/PUBLICATION.jsonを参照。新作Analytics本番登録は未認証で保留・外部送信停止、既存020登録保持。
+2026-10-07 UTC：**Game023「伏字ことば」統合QA完了・順次公開準備。** 独自180語／6カテゴリ／全かな3タブ、wrong8・hint・次問、任意説明／2語練習。root486tests/check/buildとWorkerローカルD117events5RUN、compiled4画面・統合4画面成功、Visual83/F14/H13。混合入力・横向き答えscrollを当ゲーム内で修正。active22／historical23、次024。公開完了はQA/PUBLICATION.jsonで確認、新作外部Analytics停止・本番登録blocker継続。
+
+2026-10-07 UTC：**Game022「ひと息ソリティア」試作版を公式公開済み（runtime cc7f851、Pages37649806664成功）。** 52枚Klondike／1枚・3枚／random・JST daily、説明・6枚練習任意、hint／undo／単札assist／可証明の全整理。root457テスト・check・build、独立fixture全消去4画面、compiled通常操作4画面成功。保存上書き・touch capture・OFFスクロールCSS競合を当ゲーム内で修正。実通常配りからthumbnail、Visual／Feelは別記録。active21／historical22、次023、既存ゲーム不変。公開4画面操作、Portal21、thumbnail配信SHA一致を確認。候補表A26だけ済／読戻し成功。[公開証明](game022/QA/PUBLICATION.json)。新作Analytics本番登録は未認証で保留・外部送信停止、既存020登録保持。
 
 2026-10-07 UTC：**Game021「ならべて4つ」試作版を公式公開済み（runtime a4555f2、Pages37644262587成功）。PC／phoneを含む4画面の公開操作、Portal20掲載、実プレイthumb配信hash一致を確認し、候補表A29だけ「済」へ更新・読戻し確認。** 7列6段の古典四目並べ、CPU3難度／先後／同じ端末2人、任意hint／待った／説明／練習、途中保存と明示再開。active20／historical21、010退役維持、次ID022。4画面compiledと独立CPU全6設定・入力・保存の確認、Visual83/F13/H13。[報告](game021/IMPLEMENTATION_REPORT.md)。新作Workerのコード登録とローカルD1確認済み、本番deployは現環境の未認証で停止。既存020登録は完了済みで保持。新作IDはPortalを含め外部送信停止中。[残作業](classic-five/QA/WORKER_DEPLOY_BLOCKER.json)。広告／GA4／CREDIT／認証／D1 schema不変。今回5作品の順次公開以外は着手しない。本人／実機の主観試遊未実施はユーザー許可済みの試作公開と区別。
 

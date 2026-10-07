@@ -13,6 +13,8 @@ describe('ordered classic registrations', () => {
     expect(manifest.storagePrefix).toContain(`${game.id}:`);
     expect(manifest.creditMode).toBe('free');
     expect(gameVersions[game.id]).toEqual({ rules_version: '1', presentation_version: 'prototype-1' });
+    expect(profile.id).toBe(game.id);
+    expect(profile.route).toBe(game.route);
     expect(profile.currentManifest).toEqual(manifest);
     expect(game.route).toBe(`./${game.id}.html`);
     expect(PENDING_WORKER_GAME_IDS.has(game.id)).toBe(true);
@@ -24,7 +26,7 @@ describe('ordered classic registrations', () => {
     expect(retiredGameCatalog.map(game => game.id)).toEqual(['game010']);
   });
   it('retains documented classic primitives and existing numeric completion compatibility, never private IDs or hidden cards', () => {
-    const data = { event: 'hint', difficulty: 'normal', first: true, assisted: true, hints: 1, undos: 2, draw: 3, deal_mode: 'daily', daily_id: '2026-10-07', moves: 12, foundation_count: 4, assists: 1, record_added: false, completed: true };
+    const data = { event: 'hint', difficulty: 'normal', first: true, assisted: true, hints: 1, undos: 2, draw: 3, deal_mode: 'daily', daily_id: '2026-10-07', moves: 12, foundation_count: 4, assists: 1, record_added: false, completed: true, word_id: 'w_food_001', category: 'food', wrong_count: 2, hint_used: true };
     expect(sanitizeAnalyticsData({ ...data, run_id: 'private', seed: 'private', cards: [1, 2, 3], word: 'private' })).toEqual(data);
     expect(isAnalyticsDataField('completed', 3)).toBe(true);
     expect(isAnalyticsDataField('daily_id', 'https://example.test/?private=yes')).toBe(false);

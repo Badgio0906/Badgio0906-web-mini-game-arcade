@@ -1,0 +1,62 @@
+
+> orbit-shift@0.1.0 test
+> vitest run tests/unit/game023-model.test.ts tests/unit/game023-persistence.test.ts
+
+
+ RUN  v3.2.7 /workspace/classic-author-023
+
+ ✓ tests/unit/game023-persistence.test.ts (7 tests) 8ms
+ ❯ tests/unit/game023-model.test.ts (20 tests | 1 failed) 83ms
+   × Game023 vocabulary and full fixed kana keyboard > has 180 unique original 3–8-character reads and valid IDs, clues and categories 9ms
+     → expected [ 'reading:w_animal_004', …(2) ] to deeply equal []
+   ✓ Game023 vocabulary and full fixed kana keyboard > offers independent complete清音, voiced/semi voiced, small and long kana sets 8ms
+   ✓ Game023 vocabulary and full fixed kana keyboard > normalizes decomposed dakuten as one character and keeps small/large kana distinct 1ms
+   ✓ Game023 vocabulary and full fixed kana keyboard > detects invalid IDs, duplicates, impossible keys, length and metadata 0ms
+   ✓ Game023 pure question model > reveals every occurrence of a matching letter with one guess 0ms
+   ✓ Game023 pure question model > ignores duplicate hits and misses without spending chances or selection counts 0ms
+   ✓ Game023 pure question model > accepts normalized voiced kana and distinguishes unvoiced guesses 0ms
+   ✓ Game023 pure question model > handles semi voiced, small tsu/ya and long marks independently 0ms
+   ✓ Game023 pure question model > ignores invalid, multi-character, katakana and free text input 0ms
+   ✓ Game023 pure question model > ends exactly on the eighth new miss and rejects later input and hints 0ms
+   ✓ Game023 pure question model > correct completion is terminal without changing remaining chances 0ms
+   ✓ Game023 pure question model > permits one seeded free letter hint, reveals repeats, and completes the last letter 0ms
+   ✓ Game023 pure question model > solves every initial word through the same selectable keyboard 9ms
+   ✓ Game023 pure question model > serializes and restores exact question, hint, misses and seed 0ms
+   ✓ Game023 pure question model > rejects corrupted semantic snapshots and guesses after terminal completion 0ms
+   ✓ Game023 pure question model > never mutates the input state or recent history 0ms
+   ✓ Game023 deterministic cycle and privacy > replays the same seed/history sequence including cycle boundaries 33ms
+   ✓ Game023 deterministic cycle and privacy > asks all 180 words once before safely cycling without an immediate repeat 8ms
+   ✓ Game023 deterministic cycle and privacy > filters unknown history IDs and still suppresses the current word 0ms
+   ✓ Game023 deterministic cycle and privacy > exports only controlled word IDs/category tokens and meaningful numeric/hint fields 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game023-model.test.ts > Game023 vocabulary and full fixed kana keyboard > has 180 unique original 3–8-character reads and valid IDs, clues and categories
+AssertionError: expected [ 'reading:w_animal_004', …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "reading:w_animal_004",
++   "reading:w_animal_027",
++   "reading:w_object_020",
++ ]
+
+ ❯ tests/unit/game023-model.test.ts:9:62
+      7| describe('Game023 vocabulary and full fixed kana keyboard', () => {
+      8|   it('has 180 unique original 3–8-character reads and valid IDs, clues…
+      9|     expect(words).toHaveLength(180); expect(validateWords()).toEqual([…
+       |                                                              ^
+     10|     expect(new Set(words.map(word => word.reading)).size).toBe(180);
+     11|     for (const category of Object.keys(categories)) expect(words.filte…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 26 passed (27)
+   Start at  15:12:15
+   Duration  355ms (transform 110ms, setup 0ms, collect 174ms, tests 91ms, environment 0ms, prepare 106ms)
+

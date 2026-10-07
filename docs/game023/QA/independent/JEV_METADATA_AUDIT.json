@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-07T16:11:16.319329+00:00",
+  "game_id": "game023",
+  "log": "docs/game023/QA/JEV_REVIEW_SHADOW.jsonl",
+  "log_sha256_after_existing_record_annotations": "163123ed590ace8a3c534034b9e882d898f696259f49b7f529bb5115cf3dee01",
+  "rows_in_log": 2,
+  "records": [
+    {
+      "finding_id": "g023-practice320-missing-gesture",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "timestamp": "2026-10-07T15:30:04.761408+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "input_tokens": 1541,
+      "output_tokens": 213,
+      "cost_usd": 6.4722e-05,
+      "latency_seconds": 0.4737453400011873,
+      "codex_review_recorded_at": "2026-10-07T16:10:37.628816+00:00",
+      "valid_four_question_response": true,
+      "validated_question_names": [
+        "PRIMARY_CAUSE",
+        "CODEX_ACTION_REQUIRED",
+        "NEXT_EVIDENCE",
+        "RELEASE_RISK_IF_UNRESOLVED"
+      ],
+      "annotation_matches_canonical_saved_judgment": true,
+      "canonical_judgment": "docs/game023/QA/independent/HYBRID_FINAL_JUDGMENT.json",
+      "canonical_judgment_sha256": "000e5aeadb6372e9ed68efd487cff959bdab8f419829a40337b28bebcf9da27f"
+    },
+    {
+      "finding_id": "g023-landscape-result-answer-scroll",
+      "checkpoint": "D",
+      "schema_version": 2,
+      "timestamp": "2026-10-07T15:56:42.615414+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "input_tokens": 1689,
+      "output_tokens": 215,
+      "cost_usd": 7.0938e-05,
+      "latency_seconds": 0.48156252699845936,
+      "codex_review_recorded_at": "2026-10-07T16:10:37.687597+00:00",
+      "valid_four_question_response": true,
+      "validated_question_names": [
+        "PRIMARY_CAUSE",
+        "CODEX_ACTION_REQUIRED",
+        "NEXT_EVIDENCE",
+        "RELEASE_RISK_IF_UNRESOLVED"
+      ],
+      "annotation_matches_canonical_saved_judgment": true,
+      "canonical_judgment": "docs/game023/QA/independent/RESULT_SCROLL_FINAL_JUDGMENT.json",
+      "canonical_judgment_sha256": "efff32931776f329d4d10029e1006474346a36e8f510f90d209164984e2124f7"
+    }
+  ],
+  "totals": {
+    "existing_real_api_attempts": 2,
+    "http200": 2,
+    "valid_four_question_responses": 2,
+    "new_api_attempts_during_annotation": 0,
+    "total_input_tokens": 3230,
+    "total_output_tokens": 428,
+    "total_reported_cost_usd": 0.00013566
+  },
+  "disclosures": [
+    "Final judgments were saved before canonical annotations; Shadow choices/probabilities were not displayed or read by this reviewer. Sanitized audit program validates schema and emits metadata only.",
+    "Initial mixed-input observation was provisionally interpreted as a driver condition. Root independently identified supported hybrid users and product blanket detail>1 rejection; the initial interpretation remains in HYBRID_INTERPRETATIONS.json.",
+    "Reviewer initially performed independent source/browser QA, then made two narrow own-author main.ts repairs only after root independent source judgment and explicit authorization. Those repairs were self-regressed; they are not represented as a new independent worker review.",
+    "One existing C and one existing D record were annotated using exact canonical saved final blind judgments. No further API requests, browser operations, product edits, commits, pushes or deployment were made.",
+    "Jev provides finding routing only; separate actual-image83/100 F14/H13 and technicalGameplayPASS are Codex reviews. Human/physical-device enjoyment remains pending."
+  ],
+  "unchanged_author_main_sha256": "610db177adcde8e4fee74f3f15a39ba796fdcb85d838f2ff3acf6c7ddc8f83ff"
+}

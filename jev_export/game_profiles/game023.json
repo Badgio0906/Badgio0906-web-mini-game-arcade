@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "game023",
+  "titleJa": "伏字ことば ～KANA GUESS～",
+  "titleEn": "KANA GUESS",
+  "tagline": "一文字わかると、ことばが見える。",
+  "thumbnail": "./assets/portal/game023.webp",
+  "route": "./game023.html",
+  "releaseOrder": 23,
+  "status": "active",
+  "tags": [
+    {
+      "id": "quiz",
+      "label": "クイズ"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "brain-training",
+      "label": "脳トレ"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "伏字ことば ～KANA GUESS～",
+  "genre": "calm kana word guessing",
+  "controls": {
+    "select": "native click/tap, Tab or arrows plus Enter/Space",
+    "assist": "one optional letter hint per question",
+    "pause": "button/Escape/visibility/blur"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "self-paced; no human duration measured",
+  "mainMechanics": "Select a kana: reveal every occurrence if present; only incorrect new guesses spend one of eight chances; reveal all letters to finish",
+  "currentManifest": {
+    "id": "game023",
+    "title": "伏字ことば ～KANA GUESS～",
+    "titleEn": "KANA GUESS",
+    "tagline": "一文字わかると、ことばが見える。",
+    "genre": "calm kana word guessing",
+    "coreMechanic": "Select a kana: reveal every occurrence if present; only incorrect new guesses spend one of eight chances; reveal all letters to finish",
+    "skillAxes": [
+      "vocabulary",
+      "deduction",
+      "category association"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "select": "native click/tap, Tab or arrows plus Enter/Space",
+      "assist": "one optional letter hint per question",
+      "pause": "button/Escape/visibility/blur"
+    },
+    "questions": {
+      "count": 180,
+      "categories": 6,
+      "reading": "NFC hiragana, 3–8 kana, voiced/small/long distinct",
+      "selection": "seeded non-repeating cycle; all questions share the same complete keyboard"
+    },
+    "practice": "Optional two-word lesson using real kana selection, including voiced and small kana; no production RUNs or question history",
+    "storagePrefix": "web-mini-arcade:v1:game023:",
+    "storage": "One defensive JSON snapshot for current question, seed, history, state, run UUID and reported ledger. Reload restores the same RUN; completed results never report again. No BEST or visible statistics.",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "development Shadow Review on actual findings only; no runtime calls or automatic gate",
+    "humanReview": "Author and physical-device playtests pending; trial publication explicitly authorized",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "prototype-1",
+    "telemetry": "Common lifecycle; word_id/category tokens and numeric guess/wrong counts, hint/outcome only; never answer text or kana history"
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "Common lifecycle; word_id/category tokens and numeric guess/wrong counts, hint/outcome only; never answer text or kana history",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game023/game.manifest.json"
+  }
+}
