@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-07T18:43:12.576582+00:00",
+  "reviewer": "batch_two_review",
+  "finding_id": "game027-normal-terminal-qa-bound",
+  "jev_answers_read": false,
+  "PRIMARY_CAUSE": "TEST_INFRA_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "independent_basis": [
+    "Actual progress has9 object balls removed byshot17, then43 consecutive selected target:null,power:0 with alternating ball-in-hand states; zero pageerrors.",
+    "Exact preserved collector rejects every straight-pocket candidate with either blockers and substitutes power0 aiming away from nearby balls. That deliberately cannot open the remaining cluster, generates no-contact fouls and repeats ball-in-hand; it is not a product shot cap.",
+    "Source and progress establish a collector coverage limit, not physics/rules impossibility. Exact terminal world coordinates were not retained, so no state reconstruction or decisive claim about that cluster."
+  ],
+  "required_action": "Inspect and replace only collector selection fallback with legal current-state cluster-contact/opening or alternate geometric strategy; independently prove it through pure current model first, then one authorized bounded normal native terminal run preserving complete states. No product physics/rules repair warranted by this evidence.",
+  "limits": [
+    "Normal result/retry actual coverage remains pending and release must await root completion of that coverage; risk:false classifies this observed QA-policy finding rather than granting release.",
+    "No full failed world/DOM retained; cannot certify exact frozen cluster or propose known-winning shot.",
+    "Human skill/enjoyment unperformed."
+  ],
+  "evidence": [
+    "/workspace/batch-two-author-027/docs/game027/QA/FINDING_NORMAL_TERMINAL_BOUND.json",
+    "/workspace/batch-two-author-027/docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+    "/workspace/batch-two-author-027/docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "CODEX_ACTION_REQUIRED": true,
+  "reviewer": "batch_two_review",
+  "finding_id": "game027-phone-ball-numerals",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Actual390 normal rack image gives whole table but16 ball group occupies only~40px wide; per-ball white number inset renders ~3.6px-high text (draw10designpx times~.36). Distinguishing8/legal solid vsstripe after rackspread is core rule information, so this is not decorative small-text concern. Whole-field visibility must be preserved while increasing object/readable ID silhouette or providing usable close/detail cues. Original reference depicts substantially legible ball IDs and larger table objects; no direct UI copy requested.",
+  "evidence": [
+    "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+    "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+    "/workspace/batch-two-author-027/src/games/game027/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed real normal rack phone viewport and inspected draw font/ball dimensions and complete table composition against inherited reference; meaningful numeric IDs are too small.",
+    "evidence": [
+      "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

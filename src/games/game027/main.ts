@@ -1,0 +1,496 @@
+import './style.css';
+import { StorageService } from '../../core/StorageService';
+import { AudioService } from '../../core/AudioService';
+import { TelemetryService, type EventName } from '../../core/TelemetryService';
+import { analyticsConfig } from '../../analytics/config';
+import { adjudicate, beginShot, groupOf, newMatch, legalTargets, foulCode, type Match } from './rules';
+import { rack, shoot, step, respot, placeCue, legalPlacement, aimEndpoint, WIDTH, HEIGHT, RADIUS, FIXED_DT, POCKETS, type World } from './physics';
+import { chooseShot, cpuPlacement, type Difficulty } from './cpu';
+import { PoolStore, recordOutcome, type Snapshot } from './save';
+import { InputEpoch } from './input';
+import { unitToWorld } from './camera';
+const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+const canvas = el<HTMLCanvasElement>('table'), menu = el<HTMLDialogElement>('menu'), app = el('app');
+const storage = new StorageService(undefined, 'web-mini-arcade:v1:game027:'), audio = new AudioService(storage);
+let training = false;
+const telemetry = new TelemetryService(storage, 'game027', undefined, { remoteCollectionEnabled: false, ignoreEvent: () => analyticsConfig.environment === 'production' && training });
+const store = new PoolStore(), input = new InputEpoch();
+let saved = store.read();
+type Phase = 'title' | 'explanation' | 'aim' | 'moving' | 'placing' | 'cpu' | 'paused' | 'result' | 'confirm';
+let phase: Phase = 'title', world: World = rack(), match: Match = newMatch(), mode: 'cpu' | 'two' = 'cpu', difficulty: Difficulty = 'normal';
+let angle = 0, power = .6, current: Snapshot | null = null, generation = 0, cpuTimer: ReturnType<typeof setTimeout> | null = null;
+let lastTime: number | null = null, remainder = 0, pausedFrom: Phase = 'aim', message = '', placement = { x: 225, y: 225 };
+let drag: {
+    id: number;
+    epoch: number;
+} | null = null;
+const keyEpochs = new Map<string, number>();
+const labelGroup = (g: string | null) => g === 'solid' ? 'ソリッド 1–7' : g === 'stripe' ? 'ストライプ 9–15' : '未決定';
+const player = (n: number) => mode === 'cpu' ? (n === 0 ? 'あなた' : 'CPU') : `プレイヤー${n + 1}`;
+const active = () => ['aim', 'moving', 'placing', 'cpu'].includes(phase);
+const human = () => training || mode === 'two' || match.turn === 0;
+function track(name: EventName, data: Record<string, string | number | boolean> = {}): void { if (!training)
+    telemetry.trackEvent(name, { ...data, mode, difficulty });
+else if (name.startsWith('practice_') && analyticsConfig.environment !== 'production')
+    telemetry.trackEvent(name, { ...data, mode: 'practice' }); }
+function invalidate(): void { generation++; if (cpuTimer !== null)
+    clearTimeout(cpuTimer); cpuTimer = null; drag = null; input.change(); lastTime = null; remainder = 0; }
+function setPhase(next: Phase): void { phase = next; invalidate(); app.dataset.state = next; app.dataset.training = String(training); if (active() && menu.open) {
+    menu.close();
+    canvas.focus({ preventScroll: true });
+} el<HTMLButtonElement>('pause-button').disabled = !active(); render(); }
+function snapshot(): Snapshot | null { if (training || !current)
+    return null; return { ...current, world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power }; }
+function persist(): void { if (training || !current)
+    return; saved.snapshot = snapshot(); store.write(saved); }
+function abandon(reason: 'quit' | 'restart'): void { if (current) {
+    track('run_end', { outcome: reason, shots: match.shots.reduce((a, b) => a + b, 0), fouls: match.fouls.reduce((a, b) => a + b, 0) });
+} current = null; saved.snapshot = null; store.write(saved); invalidate(); }
+function show(html: string, next: Phase): void { setPhase(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>'; if (!menu.open)
+    menu.show(); menu.scrollTop = 0; menu.querySelector<HTMLElement>('h2')?.setAttribute('tabindex', '-1'); menu.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true }); el('menu-portal').onclick = portal; }
+function title(): void {
+    abandon('quit');
+    training = false;
+    world = rack();
+    match = newMatch();
+    message = '';
+    show(`<h2 id="menu-title">ひと息ビリヤード</h2><p>ねらって、一球ずつ。<br>時間制限なしの100ガレ版8ボール。</p><div class="settings"><label>遊び方<select id="mode-choice"><option value="cpu" ${mode === 'cpu' ? 'selected' : ''}>CPU戦</option><option value="two" ${mode === 'two' ? 'selected' : ''}>同じ端末2人戦</option></select></label><label>CPUの難しさ<select id="difficulty-choice"><option value="easy" ${difficulty === 'easy' ? 'selected' : ''}>やさしい</option><option value="normal" ${difficulty === 'normal' ? 'selected' : ''}>ふつう</option><option value="strong" ${difficulty === 'strong' ? 'selected' : ''}>つよい</option></select></label></div><div class="menu-actions"><button id="play-button" class="primary" type="button">すぐ遊ぶ</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p>対局 ${saved.stats.games} · 先手の勝利 ${saved.stats.wins}</p>`, 'title');
+    el<HTMLSelectElement>('mode-choice').onchange = e => { mode = (e.target as HTMLSelectElement).value as typeof mode; };
+    el<HTMLSelectElement>('difficulty-choice').onchange = e => { difficulty = (e.target as HTMLSelectElement).value as Difficulty; };
+    el('play-button').onclick = () => { track('tutorial_skip'); start(false); };
+    el('explain-button').onclick = () => explain(false);
+    el('practice-button').onclick = () => start(true);
+}
+function start(practice: boolean): void {
+    abandon('restart');
+    training = practice;
+    world = rack();
+    match = newMatch();
+    angle = practice ? -Math.PI / 2 : 0;
+    power = practice ? .4 : .75;
+    message = practice ? '練習：照準を合わせて、1番の先のポケットへ入れよう。' : 'あなたのブレイクです。';
+    if (practice) {
+        world.balls.forEach(b => { if (b.id !== 0 && b.id !== 1)
+            b.pocketed = true; });
+        Object.assign(world.balls.find(b => b.id === 0)!, { x: 450, y: 310 });
+        Object.assign(world.balls.find(b => b.id === 1)!, { x: 450, y: 72 });
+        track('practice_start');
+    }
+    else {
+        track('run_start', { source: 'title' });
+        current = { world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power, observerRun: telemetry.getActiveRunId(), localResultId: localId() };
+    }
+    setPhase('aim');
+    persist();
+    void audio.unlock();
+}
+function localId(): string { try {
+    return crypto.randomUUID();
+}
+catch {
+    return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+} }
+function explain(inRun: boolean): void {
+    track('tutorial_view');
+    if (inRun)
+        pausedFrom = phase;
+    show('<h2 id="menu-title">100ガレ版8ボール</h2><ol><li>台をドラッグして照準。パワーを決めて「ショット」。← → は角度、↑ ↓ は強さを微調整します。</li><li>ブレイク後はグループ未決定。合法入球でソリッド／ストライプを決め、自分の球を全部入れてから8番へ。</li><li>最初に合法球へ当てます。接触後に入球かクッションが必要。ファウル後は相手が白球を好きな有効位置へ置けます。</li><li>8番の合法性はショット開始時に判定。最後の自分の球と8番が同じショットで入ると負け。8番後の白球スクラッチも負け。</li><li>ブレイクの8番は戻します。ブレイクではグループを決めません。未決定の通常ショットで両柄が入れば、最小番号の柄を選びます。</li></ol><p>この100ガレ版では最後の8番はどのポケットでもOK。完全な公式競技ルールではありません。全球が止まってからまとめて判定します。入球後も他の球が動いていればお待ちください。</p><p>練習は対局・勝利・本番RUNに含めません。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">' + (inRun ? '再開する' : 'すぐ遊ぶ') + '</button>' + (inRun ? '' : '<button id="practice-button" type="button">練習する</button><button id="title-button" type="button">タイトルへ</button>') + '</div>', 'explanation');
+    persist();
+    el('continue-button').onclick = inRun ? resume : () => start(false);
+    if (!inRun) {
+        el('practice-button').onclick = () => start(true);
+        el('title-button').onclick = title;
+    }
+}
+function pause(restored = false): void { if (!active() && !restored)
+    return; if (!restored)
+    pausedFrom = phase; track('pause'); show(`<h2 id="menu-title">${restored ? '保存した一球の続き' : 'ひと休み。'}</h2><p>球も時計も止まっています。<br>ボタンで再開してください。</p><div class="menu-actions"><button id="resume-button" class="primary" type="button">再開する</button><button id="help-button" type="button">遊び方</button><button id="restart-button" type="button">最初から</button><button id="title-button" type="button">タイトルへ</button></div>`, 'paused'); persist(); el('resume-button').onclick = resume; el('help-button').onclick = () => explain(true); el('restart-button').onclick = confirmRestart; el('title-button').onclick = title; }
+function resume(): void { track('resume'); setPhase(world.moving ? 'moving' : match.ballInHand ? 'placing' : !human() ? 'cpu' : pausedFrom === 'moving' ? 'aim' : pausedFrom === 'cpu' ? 'cpu' : 'aim'); if (phase === 'cpu' || phase === 'placing' && !human())
+    scheduleCPU(); persist(); void audio.unlock(); }
+function confirmRestart(): void { show('<h2 id="menu-title">最初から遊ぶ？</h2><p>この対局は終了し、新しい球を並べます。</p><div class="menu-actions"><button id="confirm-restart" type="button">最初から</button><button id="cancel-restart" class="primary" type="button">続きへ</button></div>', 'confirm'); el('confirm-restart').onclick = () => { track('retry'); start(training); }; el('cancel-restart').onclick = resume; }
+function takeShot(): void { if (phase !== 'aim' || !human() || world.moving)
+    return; void audio.unlock(); const shot = beginShot(match, world.balls.filter(b => !b.pocketed).map(b => b.id)); if (!shoot(world, angle, power, shot))
+    return; track('specific_game_events', { event: 'shot', power, player: match.turn + 1, break: match.break }); audio.tone(150, 90, .08, 'triangle', 0, .025); setPhase('moving'); persist(); }
+function settled(): void {
+    const shot = world.shot;
+    if (!shot)
+        return;
+    world.shot = null;
+    const decision = adjudicate(match, shot);
+    match = decision.match;
+    message = decision.reason;
+    for (const id of shot.pocketed)
+        track('specific_game_events', { event: 'pocket', ball: id, player: shot.shooter + 1 });
+    if (decision.foul)
+        track('specific_game_events', { event: 'foul', reason: foulCode(decision.foul), player: shot.shooter + 1 });
+    if (decision.assigned)
+        track('specific_game_events', { event: 'group_assigned', group: decision.assigned, player: shot.shooter + 1 });
+    if (decision.respotEight) {
+        respot(world, 8);
+        message += ' · ブレイクの8番は戻しました。';
+    }
+    if (training && shot.pocketed.includes(1)) {
+        track('practice_complete');
+        show('<h2 id="menu-title">一球、入りました。</h2><p>照準とパワーを試せました。<br>練習の記録は本番に入りません。</p><div class="menu-actions"><button id="practice-again" type="button">もう一回練習</button><button id="practice-play" class="primary" type="button">本番を遊ぶ</button><button id="practice-title" type="button">タイトルへ</button></div>', 'result');
+        el('practice-again').onclick = () => start(true);
+        el('practice-play').onclick = () => start(false);
+        el('practice-title').onclick = title;
+        return;
+    }
+    if (match.winner !== null && !training) {
+        result();
+        return;
+    }
+    if (training) {
+        match.turn = 0;
+        match.ballInHand = world.balls.find(b => b.id === 0)!.pocketed;
+        match.groups = [null, null];
+        match.break = false;
+        if (world.balls.find(b => b.id === 1)!.pocketed)
+            respot(world, 1);
+    }
+    if (match.ballInHand) {
+        const cue = world.balls.find(b => b.id === 0)!;
+        cue.pocketed = true;
+        placement = cpuPlacement(world);
+        setPhase('placing');
+        message += ' · 台をタップして白球の位置を選び、配置を確定。';
+        if (!human())
+            scheduleCPU();
+    }
+    else if (!human()) {
+        setPhase('cpu');
+        scheduleCPU();
+    }
+    else
+        setPhase('aim');
+    persist();
+    render();
+}
+function result(): void {
+    if (!current)
+        return;
+    const snap = snapshot()!;
+    if (recordOutcome(saved, snap)) {
+        track('specific_game_events', { event: 'win', player: match.winner! + 1, shots: match.shots.reduce((a, b) => a + b, 0) });
+        track('run_end', { outcome: mode === 'two' || match.winner === 0 ? 'win' : 'loss', winner: match.winner! + 1, shots: match.shots.reduce((a, b) => a + b, 0), fouls: match.fouls.reduce((a, b) => a + b, 0), remaining: world.balls.filter(b => !b.pocketed).length, pocketed: world.balls.filter(b => b.pocketed && b.id !== 0).length, completed: true });
+    }
+    current = null;
+    saved.snapshot = null;
+    store.write(saved);
+    show(`<h2 id="menu-title">${player(match.winner!)}の勝利</h2><p>${message}<br>${mode === 'cpu' ? `CPU戦 · ${difficulty === 'easy' ? 'やさしい' : difficulty === 'normal' ? 'ふつう' : 'つよい'}` : '同じ端末2人戦'}<br>残り球 ${world.balls.filter(b => !b.pocketed && b.id !== 0).length}<br>ショット ${match.shots[0]} / ${match.shots[1]}<br>ファウル ${match.fouls[0]} / ${match.fouls[1]}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">もう一局</button><button id="title-button" type="button">タイトルへ</button></div>`, 'result');
+    el('retry-button').onclick = () => { track('retry'); start(false); };
+    el('title-button').onclick = title;
+}
+function scheduleCPU(): void { if (human() || !active() || world.moving)
+    return; const token = generation; cpuTimer = setTimeout(() => { cpuTimer = null; if (token !== generation || !active() || human() || world.moving)
+    return; if (match.ballInHand) {
+    const p = cpuPlacement(world);
+    if (!placeCue(world, p.x, p.y))
+        return;
+    match.ballInHand = false;
+} const choice = chooseShot(world, match, difficulty); angle = choice.angle; power = choice.power; const shot = beginShot(match, world.balls.filter(b => !b.pocketed).map(b => b.id)); shoot(world, angle, power, shot); track('specific_game_events', { event: 'shot', power, player: 2, break: match.break }); setPhase('moving'); persist(); }, difficulty === 'easy' ? 1000 : 750); }
+function confirmPlacement(): void { if (phase !== 'placing' || !human())
+    return; if (!placeCue(world, placement.x, placement.y)) {
+    message = 'ほかの球・ポケット・枠に重なる場所には置けません。';
+    render();
+    return;
+} match.ballInHand = false; message = `${player(match.turn)}：照準を合わせてください。`; setPhase('aim'); persist(); }
+function portraitCamera(): boolean { return matchMedia('(max-width:650px) and (orientation:portrait)').matches; }
+function draw(): void {
+    const rect = canvas.getBoundingClientRect(), ratio = devicePixelRatio || 1, w = Math.max(1, Math.round(rect.width * ratio)), h = Math.round(w * (portraitCamera() ? 1000 / 550 : .55));
+    canvas.dataset.orientation = portraitCamera() ? 'portrait' : 'landscape';
+    if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+    }
+    const c = canvas.getContext('2d');
+    if (!c)
+        return;
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.clearRect(0, 0, w, h);
+    if (portraitCamera())
+        c.setTransform(0, w / 550, -w / 550, 0, w, 0);
+    else
+        c.setTransform(w / 1000, 0, 0, h / 550, 0, 0);
+    c.fillStyle = '#a77e51';
+    c.beginPath();
+    c.roundRect(0, 0, 1000, 550, 22);
+    c.fill();
+    c.strokeStyle = '#d0b086';
+    c.lineWidth = 3;
+    for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        c.roundRect(9 + i * 9, 9 + i * 9, 982 - i * 18, 532 - i * 18, 17);
+        c.stroke();
+    }
+    c.fillStyle = '#3a745a';
+    c.fillRect(35, 35, 930, 480);
+    c.fillStyle = '#256a50';
+    c.fillRect(50, 50, 900, 450);
+    c.strokeStyle = '#1e5944';
+    c.lineWidth = 13;
+    c.strokeRect(45, 45, 910, 460);
+    for (const p of POCKETS) {
+        c.fillStyle = '#a08b65';
+        c.beginPath();
+        c.arc(50 + p.x, 50 + p.y, 30, 0, Math.PI * 2);
+        c.fill();
+        c.fillStyle = '#172e2a';
+        c.beginPath();
+        c.arc(50 + p.x, 50 + p.y, 24, 0, Math.PI * 2);
+        c.fill();
+    }
+    c.fillStyle = '#eadcc1';
+    for (let i = 1; i < 8; i++) {
+        if (i === 4)
+            continue;
+        c.beginPath();
+        c.arc(50 + i * 112.5, 20, 2, 0, Math.PI * 2);
+        c.arc(50 + i * 112.5, 530, 2, 0, Math.PI * 2);
+        c.fill();
+    }
+    const cue = world.balls.find(b => b.id === 0)!;
+    if (phase === 'aim' && human() && !cue.pocketed) {
+        const end = aimEndpoint(world, angle);
+        c.strokeStyle = '#e1ead8';
+        c.lineWidth = 2;
+        c.setLineDash([7, 7]);
+        c.beginPath();
+        c.moveTo(50 + cue.x, 50 + cue.y);
+        c.lineTo(50 + end.x, 50 + end.y);
+        c.stroke();
+        c.setLineDash([]);
+        c.fillStyle = '#d7e8c088';
+        c.beginPath();
+        c.arc(50 + end.x, 50 + end.y, RADIUS, 0, Math.PI * 2);
+        c.fill();
+        c.strokeStyle = '#d7b37b';
+        c.lineWidth = 6;
+        c.beginPath();
+        c.moveTo(50 + cue.x - Math.cos(angle) * 24, 50 + cue.y - Math.sin(angle) * 24);
+        c.lineTo(50 + cue.x - Math.cos(angle) * 130, 50 + cue.y - Math.sin(angle) * 130);
+        c.stroke();
+    }
+    const targetBall = phase === 'aim' && human() && !cue.pocketed ? aimEndpoint(world, angle).target : null;
+    const colors = ['#fffaf0', '#d7a62e', '#426c9b', '#b95142', '#806887', '#c47936', '#417563', '#87483a', '#232928'];
+    for (const b of world.balls) {
+        if (b.pocketed)
+            continue;
+        const x = 50 + b.x, y = 50 + b.y;
+        if (b.id === targetBall) { c.strokeStyle = '#f2daa4'; c.lineWidth = 3; c.beginPath(); c.arc(x, y, RADIUS + 4, 0, Math.PI * 2); c.stroke(); }
+        const color = colors[b.id > 8 ? b.id - 8 : b.id];
+        c.fillStyle = '#12352a66';
+        c.beginPath();
+        c.ellipse(x + 3, y + 5, RADIUS + 1, RADIUS, 0, 0, Math.PI * 2);
+        c.fill();
+        c.fillStyle = b.id > 8 ? '#f3f2df' : color;
+        c.beginPath();
+        c.arc(x, y, RADIUS, 0, Math.PI * 2);
+        c.fill();
+        if (b.id > 8) {
+            c.save();
+            c.beginPath();
+            c.arc(x, y, RADIUS, 0, Math.PI * 2);
+            c.clip();
+            c.fillStyle = color;
+            c.fillRect(x - RADIUS, y - 7, RADIUS * 2, 14);
+            c.restore();
+        }
+        c.strokeStyle = '#173d33';
+        c.lineWidth = 1;
+        c.beginPath();
+        c.arc(x, y, RADIUS, 0, Math.PI * 2);
+        c.stroke();
+        if (b.id) {
+            c.fillStyle = b.id === 8 ? '#232928' : '#fff9e8';
+            c.beginPath();
+            c.arc(x, y, 11, 0, Math.PI * 2);
+            c.fill();
+            c.fillStyle = b.id === 8 ? '#fff9e8' : '#233c35';
+            const scale = rect.width / (portraitCamera() ? 550 : 1000);
+            c.font = `bold ${Math.max(18, Math.min(28, 11 / scale))}px system-ui`;
+            c.textAlign = 'center';
+            c.textBaseline = 'middle';
+            c.save();
+            if (portraitCamera()) {
+                c.translate(x, y);
+                c.rotate(-Math.PI / 2);
+                c.fillText(String(b.id), 0, .5, 20);
+            }
+            else
+                c.fillText(String(b.id), x, y + .5, 20);
+            c.restore();
+        }
+        else {
+            c.fillStyle = '#fff';
+            c.beginPath();
+            c.arc(x - 3, y - 4, 3, 0, Math.PI * 2);
+            c.fill();
+        }
+    }
+    if (phase === 'placing' && human()) {
+        c.strokeStyle = legalPlacement(world, placement.x, placement.y) ? '#ffefb4' : '#ffb5a5';
+        c.lineWidth = 3;
+        c.setLineDash([4, 3]);
+        c.beginPath();
+        c.arc(placement.x + 50, placement.y + 50, RADIUS + 3, 0, Math.PI * 2);
+        c.stroke();
+        c.setLineDash([]);
+        c.fillStyle = '#fff8e9aa';
+        c.beginPath();
+        c.arc(placement.x + 50, placement.y + 50, RADIUS, 0, Math.PI * 2);
+        c.fill();
+    }
+}
+function render(): void {
+    draw();
+    el('status').textContent = phase === 'moving' ? '球が止まるまでお待ちください。' : phase === 'cpu' ? 'CPUが照準を考えています。' : message || `${player(match.turn)}の番 · ${match.break ? 'ブレイク' : match.ballInHand ? '白球を置いてください' : 'ねらって、一球ずつ。'}`;
+    const remaining = (g: string) => world.balls.filter(b => !b.pocketed && groupOf(b.id) === g).map(b => b.id).sort((a, b) => a - b);
+    const cue = world.balls.find(b => b.id === 0)!;
+    const target = phase === 'aim' && !cue.pocketed ? aimEndpoint(world, angle).target : null;
+    const legal = legalTargets(match, world.balls.filter(b => !b.pocketed).map(b => b.id));
+    el('aim-target').textContent = phase === 'placing' ? '白球の位置を選び、配置を確定。' : target === null ? 'ねらい：クッション／空いた方向' : `ねらい：${target}番 · ${target === 8 ? '黒' : groupOf(target) === 'solid' ? 'ソリッド' : 'ストライプ'}${legal.includes(target) ? '' : '（先に自分の球へ）'}`;
+    el('groups').textContent = training ? '練習 · 本番記録なし' : `${player(0)}：${labelGroup(match.groups[0])} ${match.groups[0] ? `残 ${remaining(match.groups[0]).join(', ') || 'なし'}` : ''} ｜ ${player(1)}：${labelGroup(match.groups[1])} ${match.groups[1] ? `残 ${remaining(match.groups[1]).join(', ') || 'なし'}` : ''}`;
+    const aim = phase === 'aim' && human();
+    el<HTMLButtonElement>('shoot-button').disabled = !aim;
+    el<HTMLButtonElement>('aim-left').disabled = !aim;
+    el<HTMLButtonElement>('aim-right').disabled = !aim;
+    el<HTMLInputElement>('power').disabled = !aim;
+    el<HTMLInputElement>('power').value = String(Math.round(power * 100));
+    el<HTMLButtonElement>('place-button').hidden = phase !== 'placing' || !human();
+    el('shoot-button').hidden = phase === 'placing';
+}
+function tablePoint(e: PointerEvent): {
+    x: number;
+    y: number;
+} { const r = canvas.getBoundingClientRect(); return unitToWorld((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height, portraitCamera()); }
+function aimAt(e: PointerEvent): void { const p = tablePoint(e); if (phase === 'placing') {
+    placement = { x: Math.max(RADIUS, Math.min(WIDTH - RADIUS, p.x)), y: Math.max(RADIUS, Math.min(HEIGHT - RADIUS, p.y)) };
+}
+else {
+    const cue = world.balls.find(b => b.id === 0)!;
+    if (Math.hypot(p.x - cue.x, p.y - cue.y) > 10)
+        angle = Math.atan2(p.y - cue.y, p.x - cue.x);
+} render(); }
+canvas.addEventListener('pointerdown', e => { if (!e.isPrimary || e.button !== 0 || !human() || !['aim', 'placing'].includes(phase))
+    return; e.preventDefault(); drag = { id: e.pointerId, epoch: input.epoch }; canvas.setPointerCapture(e.pointerId); aimAt(e); });
+canvas.addEventListener('pointermove', e => { if (drag?.id === e.pointerId && drag.epoch === input.epoch)
+    aimAt(e); });
+canvas.addEventListener('pointerup', e => { if (drag?.id === e.pointerId && drag.epoch === input.epoch) {
+    aimAt(e);
+    drag = null;
+    persist();
+} if (canvas.hasPointerCapture(e.pointerId))
+    canvas.releasePointerCapture(e.pointerId); });
+canvas.addEventListener('pointercancel', () => { drag = null; input.cancel(); });
+canvas.addEventListener('lostpointercapture', () => { drag = null; });
+function controlTarget(target: EventTarget | null): Element | null { return target instanceof Element ? target.closest('button,a') : null; }
+document.addEventListener('pointerdown', e => { const t = controlTarget(e.target); if (e.isPrimary && e.button === 0 && t)
+    input.pointerDown(t, e.pointerId); }, true);
+document.addEventListener('pointercancel', () => input.cancel(), true);
+document.addEventListener('click', e => { const t = controlTarget(e.target); if (!t)
+    return; const staleKey = e.detail === 0 && [...keyEpochs.values()].some(epoch => epoch !== input.epoch); if (staleKey || !input.click(t, e.detail)) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+} }, true);
+document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        if (!input.press(e.key, e.repeat)) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return;
+        }
+        keyEpochs.set(e.key, input.epoch);
+    }
+    if ((e.target as HTMLElement).closest('input,select,textarea'))
+        return;
+    if (active() && e.key === 'Escape') {
+        e.preventDefault();
+        pause();
+        return;
+    }
+    if (!human() || !['aim', 'placing'].includes(phase))
+        return;
+    const arrow = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key);
+    if (arrow) {
+        e.preventDefault();
+        if (phase === 'placing') {
+            const amount = e.shiftKey ? 2 : 10;
+            placement.x = Math.max(RADIUS, Math.min(WIDTH - RADIUS, placement.x + (e.key === 'ArrowLeft' ? -amount : e.key === 'ArrowRight' ? amount : 0)));
+            placement.y = Math.max(RADIUS, Math.min(HEIGHT - RADIUS, placement.y + (e.key === 'ArrowUp' ? -amount : e.key === 'ArrowDown' ? amount : 0)));
+        }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight')
+            angle += (e.key === 'ArrowLeft' ? -1 : 1) * (e.shiftKey ? .002 : .015);
+        else
+            power = Math.max(0, Math.min(1, power + (e.key === 'ArrowUp' ? .03 : -.03)));
+        render();
+        persist();
+    }
+    else if (e.key === ' ' && !(e.target as HTMLElement).closest('button,a')) {
+        e.preventDefault();
+        if (phase === 'aim')
+            takeShot();
+        else
+            confirmPlacement();
+    }
+}, true);
+document.addEventListener('keyup', e => { if (keyEpochs.has(e.key) && keyEpochs.get(e.key) !== input.epoch)
+    e.preventDefault(); keyEpochs.delete(e.key); input.release(e.key); }, true);
+el('shoot-button').onclick = takeShot;
+el('place-button').onclick = confirmPlacement;
+el('aim-left').onclick = () => { angle -= .015; render(); persist(); };
+el('aim-right').onclick = () => { angle += .015; render(); persist(); };
+el<HTMLInputElement>('power').oninput = e => { power = Number((e.target as HTMLInputElement).value) / 100; render(); persist(); };
+el('pause-button').onclick = () => pause();
+el('mute-button').onclick = () => { el('mute-button').textContent = audio.toggle() ? '音 OFF' : '音 ON'; };
+el('mute-button').textContent = audio.muted ? '音 OFF' : '音 ON';
+function portal(): void { abandon('quit'); track('return_to_portal'); /* Keep practice origin until pagehide so the opt-in production event boundary also excludes built-in exit events. */ }
+el('portal-link').onclick = portal;
+menu.addEventListener('cancel', e => e.preventDefault());
+document.addEventListener('visibilitychange', () => { if (document.hidden)
+    pause(); });
+window.addEventListener('blur', () => { pause(); drag = null; input.cancel(); input.clearKeys(); keyEpochs.clear(); });
+window.addEventListener('resize', () => { drag = null; input.cancel(); draw(); });
+window.addEventListener('pagehide', () => { if (active())
+    pause(); persist(); audio.destroy(); }, { once: true });
+function frame(now: number): void { if (phase === 'moving') {
+    if (lastTime !== null) {
+        const elapsed = (now - lastTime) / 1000;
+        if (elapsed > .25) {
+            pause();
+        }
+        else {
+            remainder += elapsed;
+            while (remainder >= FIXED_DT && phase === 'moving') {
+                remainder -= FIXED_DT;
+                if (step(world)) {
+                    settled();
+                    break;
+                }
+            }
+            draw();
+        }
+    }
+    lastTime = now;
+}
+else
+    lastTime = null; requestAnimationFrame(frame); }
+telemetry.trackEvent('game_open');
+if (saved.snapshot) {
+    current = structuredClone(saved.snapshot);
+    ({ world, match, mode, difficulty, angle, power } = structuredClone(current));
+    if (current.observerRun)
+        telemetry.restoreRun(current.observerRun);
+    if (match.winner !== null)
+        result();
+    else {
+        pausedFrom = world.moving ? 'moving' : match.ballInHand ? 'placing' : !human() ? 'cpu' : 'aim';
+        pause(true);
+    }
+}
+else
+    title();
+requestAnimationFrame(frame);
+if (import.meta.env.DEV)
+    Object.defineProperty(window, '__game027', { get: () => ({ phase, training, world: structuredClone(world), match: structuredClone(match), saved: structuredClone(saved), angle, power, placement: { ...placement }, telemetry: telemetry.getEvents() }) });

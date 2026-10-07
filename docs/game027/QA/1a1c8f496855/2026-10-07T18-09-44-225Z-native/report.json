@@ -1,0 +1,109 @@
+{
+  "sourceId": "1a1c8f496855",
+  "hashes": {
+    "game027.html": "396930e2cffdee4cc06354ca1507020e59bca7d28f6d01ee9b493171b6e8f14c",
+    "src/games/game027/cpu.ts": "51b164556f63aae386ac43f53f2f5e0f1f8370d745367ce237b3e09cad3fb22f",
+    "src/games/game027/game.manifest.json": "807380f95c63e8da97fa13306317a7725bd1d28680dd5504a3b0c2d96c9a2a5c",
+    "src/games/game027/input.ts": "c026fb45694b32cb83226140123f2c788a42e764cc92bff29b8d783d5ea39eeb",
+    "src/games/game027/main.ts": "1f34b5448639baf9c632e387bc8343a0e59fc1468ad189812eb05ae97ff7001a",
+    "src/games/game027/physics.ts": "099caf3ce3404887f6639fd5ac9ed24832081a16c4771af55f5a793ddc54f7c7",
+    "src/games/game027/rules.ts": "854a2d064fcaa9d7dd2f880db2a07b9f38ab1e805d76064b38461e467de40ad9",
+    "src/games/game027/save.ts": "419e604846731bc8d7ee355e6af28ff8a7242b61697c87a205acbdb1f7f634d7",
+    "src/games/game027/style.css": "57650fc1f8369bbdd3495010b3c0093de1933ff890a4c40096ac66b200c1488c"
+  },
+  "runId": "2026-10-07T18-09-44-225Z",
+  "base": "http://127.0.0.1:4927",
+  "provenance": "compiled normal production code; native click/tap/keyboard; explicit synthetic cancel/AT-click cases labelled; save read-only; no board/physics mutation; headless viewports not physical phone",
+  "results": [
+    {
+      "viewport": {
+        "width": 1365,
+        "height": 900,
+        "name": "desktop"
+      },
+      "pass": true,
+      "tableBounds": {
+        "x": 182.5,
+        "y": 139.390625,
+        "width": 1000,
+        "height": 550
+      },
+      "checks": [
+        "house rules",
+        "practice clear/isolated",
+        "whole table viewport",
+        "drag no shot",
+        "arrow aim",
+        "normal break",
+        "inflight pause/reload/one adjudication",
+        "title pagehide discard",
+        "Enter held",
+        "cancel",
+        "fresh physical click",
+        "assistive click",
+        "CPU mode/automatic shot after foul"
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "name": "phone"
+      },
+      "pass": false,
+      "error": "locator.tap: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#title-button')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" id=\"title-button\">タイトルへ</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    19 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "errors": [],
+      "trace": [
+        {
+          "type": "pointerdown",
+          "target": "resume-button",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "type": "pointerup",
+          "target": "resume-button",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "resume-button",
+          "detail": 0,
+          "state": "paused"
+        },
+        {
+          "type": "click",
+          "target": "resume-button",
+          "detail": 1,
+          "state": "paused"
+        },
+        {
+          "type": "pointerdown",
+          "target": "pause-button",
+          "detail": 0,
+          "state": "aim"
+        },
+        {
+          "type": "pointerup",
+          "target": "pause-button",
+          "detail": 0,
+          "state": "aim"
+        },
+        {
+          "type": "lostpointercapture",
+          "target": "pause-button",
+          "detail": 0,
+          "state": "aim"
+        },
+        {
+          "type": "click",
+          "target": "pause-button",
+          "detail": 1,
+          "state": "aim"
+        }
+      ]
+    }
+  ]
+}

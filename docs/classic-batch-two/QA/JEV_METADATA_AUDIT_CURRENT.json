@@ -1,0 +1,1511 @@
+{
+  "schema_version": 1,
+  "audit_scope": "Read-only current API metadata/full normalized four-response validity/annotation audit; no API, secrets, code changes or browser",
+  "started_at": "2026-10-07T19:04:04.623193+00:00",
+  "finished_at": "2026-10-07T19:04:04.635169+00:00",
+  "snapshot_not_final": true,
+  "deduplication_key": [
+    "timestamp",
+    "game_id",
+    "finding_id",
+    "checkpoint"
+  ],
+  "canonical_preference": "Root log over author copy for same actual request; duplicate metadata/answer equality checked. Annotation freshness should be rechecked when copying newer author logs.",
+  "counts": {
+    "scanned_log_files": 15,
+    "scanned_nonblank_rows": 27,
+    "unique_request_records": 25,
+    "duplicate_copy_rows_removed": 2,
+    "api_attempted_true": 25,
+    "available_claimed": 25,
+    "availability_proven_http200_valid4": 25,
+    "annotated_present": 23,
+    "valid_independent_annotation_and_action": 23,
+    "unannotated": 2,
+    "author_only_not_yet_copied_to_root": 14,
+    "schema_only_unnecessary_actual_calls": 1,
+    "false_pass_recomputed_true": 0,
+    "risk_miss_recomputed_true": 0,
+    "invalid_json_rows": 0,
+    "per_game": {
+      "game028": 7,
+      "game029": 4,
+      "game026": 4,
+      "game030": 5,
+      "game027": 4,
+      "shared": 1
+    },
+    "duplicate_api_metadata_or_response_conflicts": 0
+  },
+  "logs": [
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "0c27de2532cbcbebb7f07554a5b1629296bf0d3830dfdcf13cb9345d345016b4",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "8357591c6a40a7b978b244a234e94e6bcef48b18318f35236942e8d77c007e6f",
+      "rows": 2
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "aef1683ee85f8b0cc345b8b1dde8a841a66ed34b20ac9e91ed93b1d7fd81d003",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "4389a004e4b9c2333ac6877c58a389bfc95e6937906bc87d23d887d546d683e6",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "8ca8205ced3564175952a8afdbde2d93869f4bb60e149ea9e2a804b709ae74da",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "9f67c932291e9fc7cee37eedead107fd72a88c1ee01e40dbcecbcb8ee93dc611",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "1768e9fd03c219fc642fe699e3f87c00ade0daa0dfdc2107e1f3d6714dbf2f86",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "535a473c78b4e6dd78ee970edce8bf3e1290d09ca0d588aad727dc5132735d21",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "646580fd8c43351b32c7d2943780cae61d4bdf2515f52d177e7411cb03c5b74b",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/arcade-classic-batch-two/docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl",
+      "canonical_root": true,
+      "sha256": "f863b73a6276be493a78557001ad7a87d24f1990fde796225ebb31fef2386196",
+      "rows": 1
+    },
+    {
+      "path": "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl",
+      "canonical_root": false,
+      "sha256": "8357591c6a40a7b978b244a234e94e6bcef48b18318f35236942e8d77c007e6f",
+      "rows": 2
+    },
+    {
+      "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+      "canonical_root": false,
+      "sha256": "fe434ef3b4bc2e2f62ee65833ed5ee3556aebeeb51e275944ce4b6059e29a6fe",
+      "rows": 3
+    },
+    {
+      "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+      "canonical_root": false,
+      "sha256": "75974e30b14c61c5344093a8009b45a010ed2d442861106fe19aecd5bf21ba4a",
+      "rows": 5
+    },
+    {
+      "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+      "canonical_root": false,
+      "sha256": "84bdef77b019565845fcf7539c6e6b0c7438c728db15b60c18394662eda86341",
+      "rows": 2
+    },
+    {
+      "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+      "canonical_root": false,
+      "sha256": "2cc52402230023c5999e1b9801395c6f91a25eb8d43910e6ec05694b0d5a7551",
+      "rows": 4
+    }
+  ],
+  "records": [
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T17:52:35.800472+00:00",
+      "game_id": "game028",
+      "finding_id": "028-normal-native-no-return",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T17:57:54.837719+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T17:54:04.082821+00:00",
+      "game_id": "game029",
+      "finding_id": "game029-practice-production-events",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T17:54:42.333907+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/practice-production-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T17:54:52.414607+00:00",
+      "game_id": "game026",
+      "finding_id": "valid-json-memory-fallback",
+      "checkpoint": "B",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T17:59:38.960772+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        },
+        {
+          "path": "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 2,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T17:58:17.955694+00:00",
+      "game_id": "game026",
+      "finding_id": "denied-write-retry-01",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T17:59:17.470865+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/denied-write-retry-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T17:59:02.244077+00:00",
+      "game_id": "game029",
+      "finding_id": "phone-pause-after-drag-01",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:21:55.704153+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "NEXT_EVIDENCE": "LIVE_INTERACTION"
+      },
+      "actual_method": "LIVE_INTERACTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:00:32.607924+00:00",
+      "game_id": "game028",
+      "finding_id": "game028-semantic-corruption-memory-reset",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:01:59.924193+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:00:33.115521+00:00",
+      "game_id": "game029",
+      "finding_id": "game029-semantic-corruption-memory-not-latched",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:01:59.978130+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game029/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:00:53.860936+00:00",
+      "game_id": "game028",
+      "finding_id": "028-native-scroll-measurement",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:08:29.673208+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+        "line": 2
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:06:22.817591+00:00",
+      "game_id": "game030",
+      "finding_id": "passive-stage-selector-save",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:08:27.561589+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:07:41.105481+00:00",
+      "game_id": "game028",
+      "finding_id": "game028-racket-render-model-width",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:09:46.940381+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game028/QA/independent/racket-render-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:10:03.034540+00:00",
+      "game_id": "game026",
+      "finding_id": "bottom-overlap-marker-clipping",
+      "checkpoint": "D",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:17:13.493597+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/JEV_SHADOW.jsonl",
+        "line": 2
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": true
+        },
+        {
+          "path": "/workspace/batch-two-author-026/docs/game026/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 2,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:10:38.462766+00:00",
+      "game_id": "game030",
+      "finding_id": "late-route-length-choice",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:15:46.322777+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+        "line": 2
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:13:04.936408+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-semantic-storage-rejection-not-latched",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:15:11.519897+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game027/QA/independent/semantic-storage-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:13:32.321236+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-phone-paused-title-tap",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:19:11.276296+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:13:32.726555+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-phone-ball-numerals",
+      "checkpoint": "D",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:19:11.332883+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+        "line": 2
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW"
+      },
+      "actual_method": "SCREENSHOT_REVIEW",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:15:00.024125+00:00",
+      "game_id": "game028",
+      "finding_id": "028-save-terminal-invariants",
+      "checkpoint": "B",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:33:21.071331+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+        "line": 3
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 3,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:15:11.736104+00:00",
+      "game_id": "game026",
+      "finding_id": "game026-independent-snapshot-observer-shape",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:15:28.015519+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game026/QA/independent/final-live-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "schema-only-unnecessary-call",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:19:27.773339+00:00",
+      "game_id": "game030",
+      "finding_id": "final-selection-return-state",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:23:16.258801+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+        "line": 3
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 3,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:25:05.764803+00:00",
+      "game_id": "shared",
+      "finding_id": "practice-origin-portal-production-navigation",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:32:42.069465+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/classic-batch-two/QA/review/practice-navigation-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:26:12.151722+00:00",
+      "game_id": "game029",
+      "finding_id": "phone-pause-after-drag-01",
+      "checkpoint": "F",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": null,
+      "codex_false_pass": null,
+      "release_risk_miss": null,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+        "line": 2
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+          "line": 2,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": false,
+      "independent_annotation_valid": false,
+      "actual_next_action_valid": false,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": null,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "false_pass_recomputed": null,
+      "risk_miss_recomputed": null
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:26:35.847668+00:00",
+      "game_id": "game030",
+      "finding_id": "game030-stable-memory-fallback-contract",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:45:35.198450+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/arcade-classic-batch-two/docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl",
+        "line": 1
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/arcade-classic-batch-two/docs/game030/QA/independent/stable-memory-fallback-01/JEV_SHADOW.jsonl",
+          "line": 1,
+          "canonical_root": true
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": false,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": true,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:27:19.768847+00:00",
+      "game_id": "game030",
+      "finding_id": "plug-drawn-footprint-clearance",
+      "checkpoint": "A",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:32:59.453246+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+        "line": 4
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-030/docs/game030/QA/JEV_SHADOW.jsonl",
+          "line": 4,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:42:20.355340+00:00",
+      "game_id": "game027",
+      "finding_id": "game027-normal-terminal-qa-bound",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:51:58.830167+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+        "line": 3
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-027/docs/game027/QA/JEV_SHADOW.jsonl",
+          "line": 3,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "NEXT_EVIDENCE": "CODE_INSPECTION"
+      },
+      "actual_method": "CODE_INSPECTION",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T18:52:22.102987+00:00",
+      "game_id": "game028",
+      "finding_id": "028-menu-touch-release",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": "2026-10-07T18:55:25.830176+00:00",
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+        "line": 4
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 4,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": true,
+      "independent_annotation_valid": true,
+      "actual_next_action_valid": true,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": false,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "independent_enum_labels": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "NEXT_EVIDENCE": "AUTOMATED_TEST"
+      },
+      "actual_method": "AUTOMATED_TEST",
+      "false_pass_recomputed": false,
+      "risk_miss_recomputed": false
+    },
+    {
+      "schema_version": 2,
+      "timestamp": "2026-10-07T19:03:59.937265+00:00",
+      "game_id": "game028",
+      "finding_id": "028-native-seed-restore",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_review_recorded_at": null,
+      "codex_false_pass": null,
+      "release_risk_miss": null,
+      "canonical_evidence": {
+        "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+        "line": 5
+      },
+      "all_copies": [
+        {
+          "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+          "line": 5,
+          "canonical_root": false
+        }
+      ],
+      "copy_count": 1,
+      "author_only_not_yet_copied_to_root": true,
+      "four_response_validity": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "all_four_responses_valid": true,
+      "availability_proven_by_http200_valid_answers": true,
+      "independent_annotation_present": false,
+      "independent_annotation_valid": false,
+      "actual_next_action_valid": false,
+      "duplicates_api_metadata_and_answers_consistent": true,
+      "protocol_category": "finding-routing",
+      "historical_next_choice_comparison": {
+        "recorded_agreement": null,
+        "interpretation": "A difference alone is not a wrong answer; efficacy/effective alternative is not established by this metadata audit."
+      },
+      "human_judgment_present": false,
+      "false_pass_recomputed": null,
+      "risk_miss_recomputed": null
+    }
+  ],
+  "invalid_rows": [],
+  "unannotated_requests": [
+    {
+      "path": "/workspace/batch-two-author-029/docs/game029/QA/JEV_SHADOW.jsonl",
+      "line": 2,
+      "game_id": "game029",
+      "finding_id": "phone-pause-after-drag-01",
+      "checkpoint": "F"
+    },
+    {
+      "path": "/workspace/batch-two-author-028/docs/game028/QA/JEV_SHADOW.jsonl",
+      "line": 5,
+      "game_id": "game028",
+      "finding_id": "028-native-seed-restore",
+      "checkpoint": "C"
+    }
+  ],
+  "enum_normalization_record": {
+    "path": "docs/classic-batch-two/QA/review/BLIND_JUDGMENT_LABEL_NORMALIZATION.json",
+    "sha256": "89f224cadffdcba00f63efb4fc451084b0c97c8909ba2a671b602d04227664a8",
+    "mapping": {
+      "PRODUCT_ISSUE": "PRODUCT_BUG",
+      "TEST_INFRA_ISSUE": "TEST_INFRA_BUG",
+      "LIVE_BROWSER": "LIVE_INTERACTION"
+    },
+    "rule": "Vocabulary-only existing mapping. Does not alter original judgment or change UNKNOWN to a diagnosed category."
+  },
+  "protocol_limitations": [
+    {
+      "id": "026_schema_only_unnecessary_call",
+      "evidence": "docs/game026/QA/independent/final-live-01/CALL_SCOPE_DEVIATION.json",
+      "summary": "Actual reviewer ONE C API request on known read-only observer JSON field mismatch is an explicitly excluded schema-only task. It is counted as actual use but not compliant semantic finding routing. Original call/record retained; no game edits or backfill."
+    },
+    {
+      "id": "029_result_fields_prefixed_without_shadow",
+      "evidence": "/workspace/batch-two-author-029/docs/game029/QA/PROTOCOL_LIMITATIONS.md",
+      "canonical_expected_path": "docs/game029/QA/PROTOCOL_LIMITATIONS.md",
+      "summary": "Author recorded required maximum-depth/rarest-object result-field omission and patched before contemporaneous4-question Shadow and immutable source/build capture. No API was called for that finding; no retrospective call/capture should be represented as then-existing evidence."
+    },
+    {
+      "id": "interim_not_final",
+      "summary": "This is a current audit snapshot. Later real requests or independent annotations may change totals. Pending annotations are unknown, never negative/PASS."
+    },
+    {
+      "id": "no_effectiveness_generalization",
+      "summary": "API availability and valid response schema do not prove correctness, saved Codex time/tokens, human enjoyment, image quality or release approval. Current selected cases and tiny denominators cannot establish universal efficacy."
+    }
+  ],
+  "codex_time_token_savings": null,
+  "human_fun_verdict": null,
+  "evidence_level": "Existing helper execution logs contain api_attempted=true, HTTP200, resolved model and all four normalized parsed responses. This audit validates those records; no independent OpenRouter server-side receipts or new requests were fetched.",
+  "validity_scope": "Four-answer checks use normalized stored choice.selected/full probability keys/sums and noul ranges; this is response structural validity, not truth or usefulness."
+}

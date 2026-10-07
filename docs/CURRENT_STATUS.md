@@ -1,5 +1,9 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**Game027「ひと息ビリヤード」を統合検証し公開前。** 16球・6ポケット・8ボールhouse rules、CPU3難度/同端末2人、任意練習、固定時間step物理・全shot一括裁定・inflight保存/pause。40対象・root617/62・check/build、Worker実ローカルD129events9RUN、4画面nativeと通常PC22/phone23shotsでlegal8終局・結果/再挑戦/保存を確認。独立Visual81/F12/H12。[027報告](game027/IMPLEMENTATION_REPORT.md)。active26/historical27、旧save/BESTと010退役不変。026公開済・A33済、027の公式CI/公開/Portal/A47はこの時点では未完。028〜030未公開、031未着手。新作外部AnalyticsOFFと本番Worker認証blocker維持、本人/実機未試遊。
+
+2026-10-08（日本時間）：**Game026「出世すごろく」を正式URLへ試作公開済み。runtime cd6d7ad、公式Pages37669966367のbuild/deploy成功。** 公開4画面44項目・PC89turns/phone61turns通常完走、結果・再挑戦・保存/入力・Portal25/サムネイルを確認。期待commitの公式CI一覧と同じhash-named JS/CSS、公開13fileのSHAを同公開設定の再現buildと照合（artifact55MiBの転送上限により直接ZIP照合は不可、手法を明示）。候補表A33のみ済／他列不変・読戻し確認。[公開証拠](game026/QA/PUBLICATION.json)。root575/check/build、27対象、独立Visual81/F13/H12。作者本人・実機試遊未実施、新作Analytics外部OFFと本番Worker認証blockerを維持。027〜030は検証中・未公開、次031未着手。
+
 2026-10-08（日本時間）：**第2バッチ026〜030の実装・検証中。026「出世すごろく」は統合検証575 tests／check／build、27対象、4画面実操作とPC/phone通常完走、独立Visual81を完了し公式公開前。** active25／historical26、010退役維持。027〜030は別作業枝で検証中・未公開、次031未着手。結果までの通常操作・期待CI/配信版・Portal掲載を確認してから対象Sheet A33/A47/A11/A42/A49を順次更新する。[報告](classic-batch-two/IMPLEMENTATION_REPORT.md)／[引継ぎ](classic-batch-two/HANDOFF.md)。旧9作業tree・018未commit182fileは保全。Workerコード登録とローカルD1は許可範囲、本番認証不足で新作の外部収集停止を維持。広告／GA4／CREDIT／Secret／D1 schema不変。本人・実機未試遊公開は承認済みだが主観評価は未実施。
 
 2026-10-07 UTC：**定番5作品021〜025の試作公開・候補表更新が完了。** 最新runtime `9e02494`、公式Pages37655713679成功。025公開4画面通常操作／Portal24／配信thumbnail SHA一致、A72だけ済／読戻し確認。全545テスト／56ファイル、check／build、Jev helper25テスト、WorkerローカルD123イベント7RUN成功。各公開SHA・URL・Sheet結果は[バッチ報告](classic-five/IMPLEMENTATION_REPORT.md)。active24／historical25、010退役維持、次026は未着手で今回バッチ終了。Jev21実API／HTTP200／有効4回答を独立監査、risk見逃し3件と手順・証拠の不備は[利用報告](classic-five/JEV_USAGE_REPORT.md)に明示。新作本番Analytics登録は現環境の未認証で保留・外部送信停止、既存020登録保持。作者本人／実機の主観試遊は未実施。元018未commit182file保全、広告／CREDIT／GA4／既存ゲーム固有ソース不変。再開は[HANDOFF](classic-five/HANDOFF.md)。

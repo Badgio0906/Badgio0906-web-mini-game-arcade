@@ -1,0 +1,116 @@
+{
+  "state": "paused",
+  "text": "← 100ガレへ\n音 ON\n休憩\nひと息ビリヤード\n\nねらって、一球ずつ。100ガレ版8ボール。\n\n手番が交代しました\n\nプレイヤー1：未決定 ｜ プレイヤー2：未決定\n↶\n↷\nパワー\nショット\n\n台をドラッグして照準 · ← → 微調整 · ↑ ↓ パワー · Space ショット\n白球配置：台をタップ／矢印で移動 → 配置を確定\n\nひと休み。\n\n球も時計も止まっています。\nボタンで再開してください。\n\n再開する\n遊び方\n最初から\nタイトルへ\n\n← 100ガレへ\n\n100ガレ ～GAME100 GARAGE～ · EIGHT BALL",
+  "controls": [
+    {
+      "id": "mute-button",
+      "text": "音 ON",
+      "disabled": false,
+      "hidden": false
+    },
+    {
+      "id": "pause-button",
+      "text": "休憩",
+      "disabled": true,
+      "hidden": false
+    },
+    {
+      "id": "aim-left",
+      "text": "↶",
+      "disabled": true,
+      "hidden": false
+    },
+    {
+      "id": "aim-right",
+      "text": "↷",
+      "disabled": true,
+      "hidden": false
+    },
+    {
+      "id": "shoot-button",
+      "text": "ショット",
+      "disabled": true,
+      "hidden": false
+    },
+    {
+      "id": "place-button",
+      "text": "白球をここへ置く",
+      "disabled": false,
+      "hidden": true
+    },
+    {
+      "id": "resume-button",
+      "text": "再開する",
+      "disabled": false,
+      "hidden": false
+    },
+    {
+      "id": "help-button",
+      "text": "遊び方",
+      "disabled": false,
+      "hidden": false
+    },
+    {
+      "id": "restart-button",
+      "text": "最初から",
+      "disabled": false,
+      "hidden": false
+    },
+    {
+      "id": "title-button",
+      "text": "タイトルへ",
+      "disabled": false,
+      "hidden": false
+    }
+  ],
+  "trace": [
+    {
+      "type": "pointerdown",
+      "target": "resume-button",
+      "detail": 0,
+      "state": "paused"
+    },
+    {
+      "type": "pointerup",
+      "target": "resume-button",
+      "detail": 0,
+      "state": "paused"
+    },
+    {
+      "type": "lostpointercapture",
+      "target": "resume-button",
+      "detail": 0,
+      "state": "paused"
+    },
+    {
+      "type": "click",
+      "target": "resume-button",
+      "detail": 1,
+      "state": "paused"
+    },
+    {
+      "type": "pointerdown",
+      "target": "pause-button",
+      "detail": 0,
+      "state": "aim"
+    },
+    {
+      "type": "pointerup",
+      "target": "pause-button",
+      "detail": 0,
+      "state": "aim"
+    },
+    {
+      "type": "lostpointercapture",
+      "target": "pause-button",
+      "detail": 0,
+      "state": "aim"
+    },
+    {
+      "type": "click",
+      "target": "pause-button",
+      "detail": 1,
+      "state": "aim"
+    }
+  ]
+}

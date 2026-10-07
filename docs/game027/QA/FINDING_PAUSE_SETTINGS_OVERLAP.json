@@ -1,0 +1,26 @@
+{
+  "finding_id": "game027-phone-paused-title-tap",
+  "problem": "On phone viewport the paused menu title button cannot be tapped normally",
+  "expected": "All paused menu actions, including title return, are reachable by a normal native tap without changing shared consent settings",
+  "observed": [
+    "At390x844 after a normal break, pause, reload, explicit resume and second pause, native tap of #title-button times out after10000ms",
+    "Playwright says #analytics-settings-host intercepts pointer events at the target",
+    "Viewport screenshot shows the analytics settings footer strip across the lower pause menu actions",
+    "No pageerror was recorded; desktop run completed the same lifecycle operations"
+  ],
+  "unknown": [
+    "Whether the overlap happens in other small viewports or other menu states",
+    "Which own layout change preserves access to both the menu and existing consent UI"
+  ],
+  "operation": "Normal same-device two-player break → pause → reload → resume → pause → title tap",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+    "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+    "docs/game027/QA/source-before-native/manifest.json"
+  ],
+  "provenance": "actual frozen compiled native browser operation; no game-state fixture"
+}

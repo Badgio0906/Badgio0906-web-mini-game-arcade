@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-10-07T18:56:32.339886+00:00",
+  "reviewer": "batch_two_review",
+  "original_records_retained": true,
+  "reason": "Some original independent verdict docs used descriptive aliases instead of JEV_REVIEW_RULES/helper exact enum labels. Normalize vocabulary only, preserve observed decisions/timestamps and chronology; no API/review rerun or past record alteration.",
+  "mapping": {
+    "PRODUCT_ISSUE": "PRODUCT_BUG",
+    "TEST_INFRA_ISSUE": "TEST_INFRA_BUG",
+    "LIVE_BROWSER": "LIVE_INTERACTION"
+  },
+  "does_not_change": "Cause category, action boolean, risk boolean, actual evidence content, blind status or historical next-action sequence.",
+  "current_029_matrix_canonical": {
+    "PRIMARY_CAUSE": "UNKNOWN",
+    "CODEX_ACTION_REQUIRED": true,
+    "NEXT_EVIDENCE": "LIVE_INTERACTION",
+    "RELEASE_RISK_IF_UNRESOLVED": true
+  }
+}

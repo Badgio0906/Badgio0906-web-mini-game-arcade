@@ -1,0 +1,33 @@
+{
+  "recorded_at": "2026-10-07T18:45:33.864996+00:00",
+  "reviewer": "batch_two_review",
+  "source_hashes": {
+    "game027.html": "1825ee6c18ab30779160f17859f8b4e940d031a8d4c0377a0f1dda13240817a4",
+    "src/games/game027/camera.ts": "5644dfdd654f79e5cd77a225f9392fda041095a72176582d1e21a06f0c63a394",
+    "src/games/game027/cpu.ts": "eb67108273c70e90fe1b410780d04636adb9eea5641063546dffc3ad45a12542",
+    "src/games/game027/game.manifest.json": "807380f95c63e8da97fa13306317a7725bd1d28680dd5504a3b0c2d96c9a2a5c",
+    "src/games/game027/input.ts": "8f587f06d29c2bdf5e66e9c88824d641bff00c2546182d522185858aa2e84e36",
+    "src/games/game027/main.ts": "6c8577ed918efa99b8a873cc384f05f04419bb49e5c8b7c9be39ada41779bc65",
+    "src/games/game027/physics.ts": "e193d73231e609ca7c6556025f2893240493a3e2289eaf98496fc28c8b7b391b",
+    "src/games/game027/rules.ts": "39288eb6594eb46ef244b376e9eec6365543dd4267d0db0e8e07f1ae70984df6",
+    "src/games/game027/save.ts": "84fdc12a142c33252af48f15e1479a7d57f291be5772a623b84504dd6119b2ae",
+    "src/games/game027/style.css": "09e23d7fd8acd482c7f1a2cdfcc10cbed0d51ff43ce832443574f682f59823ee"
+  },
+  "direct_live_observation": {
+    "PC": "Native Enter first/repeat starts exactly one shot, arrows do not shoot; cue225→411.2086 at150ms, inflight pause stores moving shot and velocities stable320ms, resume shots[0]=1.",
+    "phone": "Native start/shot/pause/resume trusted clicks; whole281.3x511.4 field; same native physics movement/pause stability, settled shots[0]=1.",
+    "errors": 0
+  },
+  "source_review": [
+    "Whole-shot adjudication after all balls settle; ordered firstcontact separate from pocket set, same-shot last-own+8 loss and scratch8 loss.",
+    "Rule table explicitly original simplified break8 respot/open groups and grouped assignment; not official WPA compliance.",
+    "Finite bounded substeps, swept contacts/pocket throats, CPU current table bounded aim error/delay not future oracle; source inspection plus author targeted tests, not all live states reenacted.",
+    "Full moving velocities and shot legal state saved; action epochs block stale/repeated controls; authornative4 includes restore/cancel/CPU/AT labelled synthetic separately.",
+    "Current practice flag survives portal event/pagehide and opt-in production ignoreEvent guards automatic events; source verified, own live deniedconsent not production collection."
+  ],
+  "pending": [
+    "Actual normalmatch terminal/result/retry beyond sixty-shot collector limitation.",
+    "Human enjoyment and physical touchscreen hardware."
+  ],
+  "decision": "Core native aiming/shot/pause feedback observed; no additional product issue found. Gameplay review is separate from Visual score and release pending terminal QA."
+}

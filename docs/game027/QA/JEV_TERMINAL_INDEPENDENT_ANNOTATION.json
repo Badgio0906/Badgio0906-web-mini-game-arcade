@@ -1,0 +1,23 @@
+{
+  "finding_id": "game027-normal-terminal-qa-bound",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "evidence": [
+    "/workspace/batch-two-author-027/docs/game027/QA/FINDING_NORMAL_TERMINAL_BOUND.json",
+    "/workspace/batch-two-author-027/docs/game027/QA/6c8577ed918e/2026-10-07T18-39-03-577Z-normal-terminal/progress.json",
+    "/workspace/batch-two-author-027/docs/game027/QA/normal-terminal-first-before/normal-terminal.mjs.txt"
+  ],
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "rationale": "Independent source/progress inspection found collector deliberately rejects blocked straight pockets and repeats no-contact power0 shots. Reviewer record uses TEST_INFRA_ISSUE wording; mapped to actual helper enum TEST_INFRA_BUG without changing its meaning. Original full world/DOM unavailable; no product defect concluded.",
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Extracted collector geometry and legal cluster-contact fallback only, then verified new pure current-model rack reaches legal8 without foul in23shots; product source unchanged. Native terminal pending separate root grant.",
+    "evidence": [
+      "tests/game027/geometry.mjs",
+      "tests/unit/game027-qa-planner.test.ts",
+      "docs/game027/QA/planner-model-diagnostic-2026-10-07T18-51Z.txt"
+    ]
+  }
+}

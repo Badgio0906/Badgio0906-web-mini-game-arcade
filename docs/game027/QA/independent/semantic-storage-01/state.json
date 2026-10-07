@@ -1,0 +1,20 @@
+{
+  "finding_id": "game027-semantic-storage-rejection-not-latched",
+  "problem": "PoolStore read returns a blank save for semantic-invalid or oversized backend data without retaining that fallback or stopping subsequent backend reads.",
+  "expected": "A rejected local save should move the game to a consistent memory-only fallback so later reads do not resurrect an unrelated stale backend snapshot.",
+  "observed": [
+    "Read chooses this.memory if set, otherwise backend raw unless memoryOnly.",
+    "Raw length below100000 parses and validates; validation null returns blankSave without setting memory or memoryOnly.",
+    "Oversized raw also returns blankSave without changing memoryOnly.",
+    "Catch sets memoryOnly, while semantic-invalid and oversize do not.",
+    "Write caches serialized memory, so after a write it normally stops consulting backend; this observation concerns read fallback before that first write."
+  ],
+  "unknown": [
+    "The actual sequence invalid backend then later valid older backend has not yet been executed in an independent test.",
+    "How current main initialization writes fallback before a later read; source boundary contract needs scoped validation."
+  ],
+  "evidence": [
+    "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt"
+  ],
+  "provenance": "current source observation only; original PoolStore; no live browser or hidden model reply consulted"
+}

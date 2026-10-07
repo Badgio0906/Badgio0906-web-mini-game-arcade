@@ -1,0 +1,1 @@
+Initial helper commands for the two native findings used a viewport string, rejected by local schema validation before any API request/log entry. The viewport was corrected to the required width/height object; each actual request below is the first API attempt for its distinct finding. No retry of an attempted API.

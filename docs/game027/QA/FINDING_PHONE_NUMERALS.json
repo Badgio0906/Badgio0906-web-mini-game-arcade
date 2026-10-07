@@ -1,0 +1,24 @@
+{
+  "finding_id": "game027-phone-ball-numerals",
+  "problem": "Phone game table presents ball numbers too small to distinguish reliably in the actual viewport image",
+  "expected": "The full6-pocket table remains visible and the numbered solids/stripes can be identified on phone screens",
+  "observed": [
+    "Actual390x844 normal rack and after-break screenshots show the entire horizontal table, with very small ball-number labels",
+    "At normal screenshot scale, individual ball numbers are hard to read while HUD and buttons are readable",
+    "Canvas source draws10px logical numeral text on a1000-wide logical canvas that scales into the phone width"
+  ],
+  "unknown": [
+    "Whether a different table orientation or fit improves numeral readability without hiding balls or controls",
+    "Readability at320 portrait and844x390 landscape has not yet been reviewed"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-normal-rack.png",
+    "docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-after-break.png",
+    "docs/game027/QA/source-before-native/src__games__game027__main.ts.txt"
+  ],
+  "provenance": "actual viewport screenshot plus source observation, not a physical-phone human trial"
+}

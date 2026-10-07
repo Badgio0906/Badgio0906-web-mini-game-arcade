@@ -1,0 +1,24 @@
+{
+  "CODEX_ACTION_REQUIRED": true,
+  "reviewer": "batch_two_review",
+  "finding_id": "game027-phone-paused-title-tap",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "Actual phone FAILED image shows unchanged Analytics settings row spanning y~526..590 over own pause dialog title button. Dialog enabled title button exists; native tap timeout/interception matches overlay, not missing handler. Own app short content puts appended relative z10000 settings host inside middleviewport; own fixed dialog z20 overlaps it. Existing Analytics UI is out of scope; reserve its flow below playing viewport through own app layout, and verify menu actions remain reachable in phone/small/landscape. Important title/exit control blocked in paused state if unresolved.",
+  "evidence": [
+    "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+    "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-failure-dom.json",
+    "/workspace/batch-two-author-027/src/games/game027/style.css",
+    "/workspace/batch-two-author-027/src/analytics/consentUI.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared actual overlapping viewport with own short app layout/fixed menu z20 and existing appended settings host relative z10000.",
+    "evidence": [
+      "/workspace/batch-two-author-027/docs/game027/QA/1a1c8f496855/2026-10-07T18-09-44-225Z-native/phone-FAILED.png",
+      "/workspace/batch-two-author-027/src/analytics/consentUI.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

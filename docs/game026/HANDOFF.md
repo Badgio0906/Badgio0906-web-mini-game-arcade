@@ -9,3 +9,5 @@ Source manifest storesnullableexistingAnalyticsobserverID only; separate local r
 
 
 Root integration checkpoint 2026-10-07T18:48:26.515361+00:00: 575/57 fullroot tests, check/build and25 offline Jevhelper tests PASS; target27. SOURCE_FREEZE_INTEGRATED.json explicitly records production-practice observer-only delta after author/image freeze. Old source proof remains immutable; current integrated release native/public checks pending. Earlier "pending" paragraphs are chronological history, not current final status. Actual author all-match+after-marker evidence and independent81/F13/H12 are available; no personal playtest.
+
+Publiccheckpoint 2026-10-07T19:03:22.562336+00:00: officialcd6d7ad/Pages37669966367SUCCESS, 13byte-compared public files via exactsource/publicconfig+CIhashname proof, public4/44 checks+normalPC89/phone61turns, normalterminal/retry/Portal25PASS, A33only済/readbackothersunchanged. QA/PUBLICATION.json explains55MiBartifacttransfer limitation; no false directartifact claim. Old pending paragraphs are history.

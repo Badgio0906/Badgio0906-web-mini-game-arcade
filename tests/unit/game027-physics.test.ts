@@ -1,0 +1,27 @@
+import {describe,it,expect} from 'vitest';
+import {rack,shoot,step,placeCue,legalPlacement,respot,aimEndpoint,RADIUS,FIXED_DT,type World} from '../../src/games/game027/physics';
+import {newMatch,beginShot} from '../../src/games/game027/rules';
+import {chooseShot,cpuPlacement} from '../../src/games/game027/cpu';
+const quiet=(ids:number[])=>{const w=rack();w.balls.forEach(b=>{b.pocketed=!ids.includes(b.id);b.vx=0;b.vy=0;});return w;};
+const fire=(w:World,angle=0,power=1)=>shoot(w,angle,power,beginShot(newMatch(),w.balls.filter(b=>!b.pocketed).map(b=>b.id)));
+const finish=(w:World)=>{let ticks=0;while(w.moving&&ticks<2500){step(w);ticks++;}return ticks;};
+const minDistance=(w:World)=>{const a=w.balls.filter(b=>!b.pocketed);return Math.min(...a.flatMap((x,i)=>a.slice(i+1).map(y=>Math.hypot(x.x-y.x,x.y-y.y))));};
+describe('Game027 displacement-bounded billiards',()=>{
+ it('rack contains exactly 16 unique balls,8 centered and no overlap',()=>{const w=rack();expect(new Set(w.balls.map(b=>b.id)).size).toBe(16);expect(w.balls.find(b=>b.id===8)!.y).toBe(225);expect(minDistance(w)).toBeGreaterThan(2*RADIUS);});
+ it('max-power cue transfers momentum, does not tunnel through first ball',()=>{const w=quiet([0,1]);Object.assign(w.balls.find(b=>b.id===1)!,{x:300,y:225});fire(w);for(let i=0;i<12;i++)step(w);expect(w.shot!.firstContact).toBe(1);expect(w.balls.find(b=>b.id===1)!.vx).toBeGreaterThan(800);expect(w.balls.find(b=>b.id===0)!.x).toBeLessThan(w.balls.find(b=>b.id===1)!.x);});
+ it('dense max-power break settles without vibration or overlapping resting balls',()=>{const w=rack();fire(w);expect(finish(w)).toBeLessThan(2401);expect(w.moving).toBe(false);expect(minDistance(w)).toBeGreaterThanOrEqual(2*RADIUS-.05);expect(w.balls.every(b=>b.vx===0&&b.vy===0)).toBe(true);});
+ it('a cushion reverses the inward normal component and reports postcontact rail',()=>{const w=quiet([0]);Object.assign(w.balls[0],{x:40,y:200});fire(w,Math.PI,.5);w.shot!.firstContact=1;for(let i=0;i<12;i++)step(w);expect(w.balls[0].vx).toBeGreaterThan(0);expect(w.shot!.railAfterContact).toBe(true);});
+ it('each of6 pocket centers captures an approaching ball, without phantom rail rebound',()=>{for(const p of [{x:0,y:0},{x:450,y:0},{x:900,y:0},{x:0,y:450},{x:450,y:450},{x:900,y:450}]){const w=quiet([0]);const start={x:p.x===450?450:p.x===0?50:850,y:p.y===0?55:395};Object.assign(w.balls[0],start);fire(w,Math.atan2(p.y-start.y,p.x-start.x),.45);finish(w);expect(w.balls[0].pocketed,JSON.stringify(p)).toBe(true);expect(w.shot!.pocketed).toEqual([0]);}});
+ it('very weak shot ends, no permanent microvibration',()=>{const w=quiet([0,1]);Object.assign(w.balls.find(b=>b.id===1)!,{x:250,y:225});fire(w,0,0);expect(finish(w)).toBeLessThan(180);expect(w.moving).toBe(false);});
+ it('legal ball-in-hand rejects overlap,bounds,pocket and moving world without mutation',()=>{const w=rack(),before=structuredClone(w);expect(placeCue(w,630,225)).toBe(false);expect(placeCue(w,0,0)).toBe(false);expect(placeCue(w,-2,225)).toBe(false);expect(w).toEqual(before);expect(placeCue(w,300,300)).toBe(true);w.moving=true;expect(placeCue(w,200,200)).toBe(false);});
+ it('respot8 finds a free location rather than overlapping a ball',()=>{const w=rack();const b=w.balls.find(b=>b.id===8)!;b.pocketed=true;respot(w,8);expect(b.pocketed).toBe(false);expect(minDistance(w)).toBeGreaterThanOrEqual(2*RADIUS);});
+ it('guide ends atfirst sphere contact, without showing reflected future path',()=>{const w=quiet([0,1]);Object.assign(w.balls.find(b=>b.id===1)!,{x:325,y:225});expect(aimEndpoint(w,0)).toEqual({x:301,y:225,target:1});});
+ it('fixed ticks yield same completed shot for30,60,120 display FPS',()=>{const worlds=[];for(const fps of [30,60,120]){const w=rack();fire(w,.015,.8);let acc=0;for(let f=0;f<fps*20&&w.moving;f++){acc+=1/fps;while(acc>=FIXED_DT&&w.moving){step(w);acc-=FIXED_DT;}}worlds.push(w);}expect(worlds[0]).toEqual(worlds[1]);expect(worlds[1]).toEqual(worlds[2]);});
+ it('several angles/powers have finite coordinates and no unresolved overlap',()=>{for(const angle of [-.8,-.1,0,.1,.8,Math.PI])for(const power of [.1,.5,1]){const w=rack();fire(w,angle,power);finish(w);expect(w.balls.every(b=>Number.isFinite(b.x)&&Number.isFinite(b.y))).toBe(true);expect(minDistance(w)).toBeGreaterThan(23.9);}});
+ it('CPU levels choose finite shots and legal placement separately from adjudication',()=>{const w=rack(),m=newMatch();m.break=false;for(const level of ['easy','normal','strong'] as const){const s=chooseShot(w,m,level,()=>.5);expect(Number.isFinite(s.angle)).toBe(true);expect(s.power).toBeGreaterThan(0);expect(s.power).toBeLessThanOrEqual(1);}const p=cpuPlacement(w);expect(legalPlacement(w,p.x,p.y)).toBe(true);});
+});
+
+describe('Game027 edge and deterministic long-play fixtures',()=>{
+ it('grazing pocket mouths do not strand active balls outside the visible table',()=>{for(const x of [425,427,428,429,430,449,450,470,471,472,473,475]){const w=quiet([0]);Object.assign(w.balls[0],{x,y:100});fire(w,-Math.PI/2,.3);finish(w);const b=w.balls[0];expect(b.pocketed||b.y>=RADIUS-.05,`mouth x=${x}, y=${b.y}`).toBe(true);}});
+ it('maximum speed in an isolated oblique two-ball contact cannot cross a sphere',()=>{for(const offset of [-20,-10,0,10,20]){const w=quiet([0,1]);Object.assign(w.balls[0],{x:200,y:225});Object.assign(w.balls.find(b=>b.id===1)!,{x:260,y:225+offset});fire(w,0,1);for(let i=0;i<9;i++)step(w);expect(w.shot!.firstContact,`offset${offset}`).toBe(1);expect(minDistance(w)).toBeGreaterThan(23.9);}});
+});

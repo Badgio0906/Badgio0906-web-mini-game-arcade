@@ -1,0 +1,23 @@
+import {describe,it,expect} from 'vitest';
+import {newMatch,beginShot,adjudicate,legalTargets,type Match,type Shot} from '../../src/games/game027/rules';
+const normal=():Match=>({...newMatch(),break:false});
+const shot=(m:Match,pocketed:number[],first=1):Shot=>({...beginShot(m,Array.from({length:15},(_,i)=>i+1)),firstContact:first,railAfterContact:true,pocketed});
+const assigned=():Match=>({...normal(),groups:['solid','stripe']});
+describe('Game027 pre-implementation shot table',()=>{
+ it('break8 respots, stays open and continues',()=>{const m=newMatch(),d=adjudicate(m,shot(m,[8]));expect(d.respotEight).toBe(true);expect(d.match.groups).toEqual([null,null]);expect(d.match.winner).toBeNull();expect(d.match.turn).toBe(0);});
+ it('break8 plus scratch respots and grants opponent ball-in-hand',()=>{const m=newMatch(),d=adjudicate(m,shot(m,[8,0]));expect(d.respotEight).toBe(true);expect(d.match.winner).toBeNull();expect(d.match.turn).toBe(1);expect(d.match.ballInHand).toBe(true);});
+ it('break mixed pockets never assigns either group',()=>{const m=newMatch(),d=adjudicate(m,shot(m,[12,3]));expect(d.match.groups).toEqual([null,null]);expect(d.match.turn).toBe(0);});
+ it('open mixed normal shot deterministically assigns lowest numbered group',()=>{const m=normal(),d=adjudicate(m,shot(m,[12,3]));expect(d.match.groups).toEqual(['solid','stripe']);expect(d.match.turn).toBe(0);});
+ it('single stripe assigns stripe, while scratch cannot assign',()=>{const m=normal();expect(adjudicate(m,shot(m,[9],9)).match.groups).toEqual(['stripe','solid']);expect(adjudicate(m,shot(m,[9,0],9)).match.groups).toEqual([null,null]);});
+ it('own plus opposing pocket stays own turn if initial contact legal',()=>{const m=assigned();expect(adjudicate(m,shot(m,[1,9])).match.turn).toBe(0);expect(adjudicate(m,shot(m,[9])).match.turn).toBe(1);});
+ it('last own plus8 in same shot loses based on shot START legality',()=>{const m=assigned();const t={...beginShot(m,[1,8,9]),firstContact:1,pocketed:[1,8],railAfterContact:true};expect(t.legalTargets).toEqual([1]);expect(adjudicate(m,t).match.winner).toBe(1);});
+ it('legal8 then late cue scratch loses, no premature win',()=>{const m=assigned(),t={...beginShot(m,[8,9]),firstContact:8,railAfterContact:true,pocketed:[8,0]};expect(adjudicate(m,t).match.winner).toBe(1);expect(adjudicate(m,{...t,pocketed:[8]}).match.winner).toBe(0);});
+ it('object pocket event permutations do not affect groups, fouls or win',()=>{for(const m of [newMatch(),normal(),assigned()])for(const pockets of [[1,9],[8,0],[1,8],[1,9,0]]){const t=shot(m,pockets);expect(adjudicate(m,t)).toEqual(adjudicate(m,{...t,pocketed:[...pockets].reverse()}));}});
+ it('no contact, wrong first contact, no rail/pocket are distinct fouls',()=>{const m=assigned();for(const t of [{...shot(m,[]),firstContact:null},shot(m,[],9),{...shot(m,[]),railAfterContact:false}])expect(adjudicate(m,t).match.ballInHand).toBe(true);expect(adjudicate(m,shot(m,[])).foul).toBeNull();});
+ it('8 is not a legal initial target on open table, but only target after own cleared',()=>{expect(legalTargets(normal(),[0,1,8,9])).toEqual([1,9]);expect(legalTargets(assigned(),[0,8,9])).toEqual([8]);});
+ it('adjudication does not mutate pre-shot state',()=>{const m=assigned(),t=shot(m,[1,9]),copy=structuredClone({m,t});adjudicate(m,t);expect({m,t}).toEqual(copy);});
+});
+
+import {foulCode} from '../../src/games/game027/rules';
+import {sanitizeAnalyticsData} from '../../src/data/analyticsEnvelope';
+it('UI foul labels map to existing safe ASCII analytics reason codes',()=>{for(const [label,code] of [['白球スクラッチ','scratch'],['どの球にも当たりませんでした','no_contact'],['最初の接触が合法な球ではありません','wrong_first'],['接触後に入球もクッションもありません','no_rail']])expect(sanitizeAnalyticsData({reason:foulCode(label)})).toEqual({reason:code});});

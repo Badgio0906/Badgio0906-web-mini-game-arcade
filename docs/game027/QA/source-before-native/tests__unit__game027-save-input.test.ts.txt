@@ -1,0 +1,17 @@
+import {describe,it,expect} from 'vitest';
+import {blankSave,PoolStore,recordOutcome,validateSave,SAVE_KEY,type Snapshot} from '../../src/games/game027/save';
+import {rack,shoot,step} from '../../src/games/game027/physics';
+import {newMatch,beginShot} from '../../src/games/game027/rules';
+import {InputEpoch} from '../../src/games/game027/input';
+const snapshot=():Snapshot=>({world:rack(),match:newMatch(),mode:'cpu',difficulty:'normal',angle:0,power:.6,observerRun:null,localResultId:'local-outcome-1'});
+describe('Game027 independent local ledger/full shot save/input epochs',()=>{
+ it('in-flight snapshot contains velocities, start legality, all pocket/rail state and survives roundtrip',()=>{const p=snapshot();shoot(p.world,0,.9,beginShot(p.match,p.world.balls.map(b=>b.id)));for(let i=0;i<12;i++)step(p.world);const s=blankSave();s.snapshot=p;const restored=validateSave(JSON.parse(JSON.stringify(s)));expect(restored).toEqual(s);expect(restored!.snapshot!.world.shot!.legalTargets).toContain(8);expect(restored!.snapshot!.world.balls[0].vx).toBeGreaterThan(0);});
+ it('saved ongoing shot resumes to exactly same result without rerandomizing',()=>{const p=snapshot();shoot(p.world,.01,.9,beginShot(p.match,p.world.balls.map(b=>b.id)));for(let i=0;i<60;i++)step(p.world);const q=structuredClone(p);while(p.world.moving)step(p.world);while(q.world.moving)step(q.world);expect(q.world).toEqual(p.world);});
+ it('null observer does not prevent one local result; repeated result is idempotent',()=>{const s=blankSave(),p=snapshot();p.match.winner=0;expect(recordOutcome(s,p)).toBe(true);expect(recordOutcome(s,p)).toBe(false);expect(s.stats.games).toBe(1);expect(s.stats.wins).toBe(1);expect(p.observerRun).toBeNull();});
+ it('denied backend writes keep current memory instead of rereading stale valid snapshot',()=>{const old=blankSave();old.snapshot=snapshot();const backend={getItem:()=>JSON.stringify(old),setItem:()=>{throw Error('fixture-denied');}};const store=new PoolStore(backend);const s=store.read();s.snapshot=null;store.write(s);expect(store.read().snapshot).toBeNull();});
+ it('explicit discard persists null and cannot be resurrected by reading old backend',()=>{let raw='';const store=new PoolStore({getItem:()=>raw,setItem:(key,v)=>{expect(key).toBe(SAVE_KEY);raw=v;}});const s=blankSave();s.snapshot=snapshot();store.write(s);s.snapshot=null;store.write(s);expect(store.read().snapshot).toBeNull();});
+ it('corrupt ID,duplicate balls and non-finite velocities are rejected',()=>{for(const mutate of [(p:Snapshot)=>p.world.balls[0].id=5,(p:Snapshot)=>p.world.balls[0].vx=Infinity,(p:Snapshot)=>p.observerRun='local-result-incorrect']){const s=blankSave();s.snapshot=snapshot();mutate(s.snapshot);expect(validateSave(s)).toBeNull();}});
+ it('old gesture cannot activate new screen button even at same coordinates',()=>{const e=new InputEpoch(),old={},next={};e.pointerDown(old,1);e.change();expect(e.click(next,1)).toBe(false);e.pointerDown(next,2);expect(e.click(next,1)).toBe(true);expect(e.click(next,1)).toBe(false);});
+ it('pointercancel removes click permission; keyboard/AT click detail0 still works',()=>{const e=new InputEpoch(),button={};e.pointerDown(button,1);e.cancel();expect(e.click(button,1)).toBe(false);expect(e.click(button,0)).toBe(true);});
+ it('heldEnter cannot activate another screen until released',()=>{const e=new InputEpoch();expect(e.press('Enter')).toBe(true);e.change();expect(e.press('Enter',true)).toBe(false);expect(e.press('Enter')).toBe(false);e.release('Enter');expect(e.press('Enter')).toBe(true);});
+});

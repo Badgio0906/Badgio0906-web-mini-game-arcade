@@ -57,7 +57,7 @@ try{
  const classicChecks=[];
  const secondBatchActions={
   game026:{event:'dice_roll',dice:4,player:1,players:2,position:14,turns:3},
-  game027:{event:'shot_resolved',shots:2,fouls:0,pocketed:1},
+  game027:{event:'shot',power:70,player:1,break:false},
   game028:{event:'point',player:0,player_score:3,cpu_score:2,rally_count:4},
   game029:{event:'surface_return',depth:100,score:38,items:3,casts:1},
   game030:{event:'level_clear',level:2,path_length:240,resets:1}

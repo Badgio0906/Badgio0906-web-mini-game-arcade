@@ -1,0 +1,8 @@
+file:///workspace/batch-two-author-027/tests/game027/normal-terminal.mjs:22
+ if(await page.locator('#app').getAttribute('data-state')!=='result')throw Error('bounded60shots did not reach normal result');const result=await read();if(result.stats.games!==1)throw Error('normal outcome must count once');await page.locator('#retry-button').click();await page.screenshot({path:path.join(dir,'normal-result-retry.png')});if((await read()).stats.games!==1)throw Error('retry changed match outcome stats');await page.locator('#pause-button').click();await page.locator('#title-button').click();await page.reload();if((await read()).stats.games!==1)throw Error('reload double-counted result');await page.locator('#play-button').click();await page.screenshot({path:path.join(dir,'normal-fresh-after-result.png')});await page.locator('#pause-button').click();await page.locator('#restart-button').click();await page.locator('#confirm-restart').click();await page.screenshot({path:path.join(dir,'normal-retry.png')});if((await read()).stats.games!==1)throw Error('restart changed match outcome stats');if(errors.length)throw Error('page errors');fs.writeFileSync(path.join(dir,'report.json'),JSON.stringify({runId,hash,base,pass:true,shots,resultStats:result.stats,errors,provenance:'normal compiled two-player match, read-only board assistance for geometric ordinary pointer aim/power/placement; no world, rules, outcome or save injection; human skill/fun not claimed'},null,2));console.log(JSON.stringify({dir,shots:shots.length,pass:true}));
+                                                                           ^
+
+Error: bounded60shots did not reach normal result
+    at file:///workspace/batch-two-author-027/tests/game027/normal-terminal.mjs:22:76
+
+Node.js v24.19.0

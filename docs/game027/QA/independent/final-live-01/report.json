@@ -1,0 +1,485 @@
+{
+  "recorded_at": "2026-10-07T18:44:09.393Z",
+  "source_hashes": {
+    "game027.html": "1825ee6c18ab30779160f17859f8b4e940d031a8d4c0377a0f1dda13240817a4",
+    "src/games/game027/camera.ts": "5644dfdd654f79e5cd77a225f9392fda041095a72176582d1e21a06f0c63a394",
+    "src/games/game027/cpu.ts": "eb67108273c70e90fe1b410780d04636adb9eea5641063546dffc3ad45a12542",
+    "src/games/game027/game.manifest.json": "807380f95c63e8da97fa13306317a7725bd1d28680dd5504a3b0c2d96c9a2a5c",
+    "src/games/game027/input.ts": "8f587f06d29c2bdf5e66e9c88824d641bff00c2546182d522185858aa2e84e36",
+    "src/games/game027/main.ts": "6c8577ed918efa99b8a873cc384f05f04419bb49e5c8b7c9be39ada41779bc65",
+    "src/games/game027/physics.ts": "e193d73231e609ca7c6556025f2893240493a3e2289eaf98496fc28c8b7b391b",
+    "src/games/game027/rules.ts": "39288eb6594eb46ef244b376e9eec6365543dd4267d0db0e8e07f1ae70984df6",
+    "src/games/game027/save.ts": "84fdc12a142c33252af48f15e1479a7d57f291be5772a623b84504dd6119b2ae",
+    "src/games/game027/style.css": "09e23d7fd8acd482c7f1a2cdfcc10cbed0d51ff43ce832443574f682f59823ee"
+  },
+  "method": "Independent compiled normal two-player native PC/phone break, read-only save; no state/outcome fixture; third-party network blocked",
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 900
+      },
+      "pass": true,
+      "bounds": {
+        "x": 182.5,
+        "y": 139.390625,
+        "width": 1000,
+        "height": 550
+      },
+      "initialCue": {
+        "id": 0,
+        "x": 225,
+        "y": 225,
+        "vx": 0,
+        "vy": 0,
+        "pocketed": false
+      },
+      "pausedCue": {
+        "id": 0,
+        "x": 411.2085937499998,
+        "y": 225,
+        "vx": 812.125,
+        "vy": 0,
+        "pocketed": false
+      },
+      "settledShots": [
+        1,
+        0
+      ],
+      "remainingObjects": 15,
+      "measures": {
+        "buttons": [
+          {
+            "id": "mute-button",
+            "disabled": false,
+            "rect": {
+              "x": 699.4375,
+              "y": 8,
+              "width": 74.828125,
+              "height": 44
+            }
+          },
+          {
+            "id": "pause-button",
+            "disabled": false,
+            "rect": {
+              "x": 780.265625,
+              "y": 8,
+              "width": 62.015625,
+              "height": 44
+            }
+          },
+          {
+            "id": "aim-left",
+            "disabled": false,
+            "rect": {
+              "x": 463.984375,
+              "y": 794.390625,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "id": "aim-right",
+            "disabled": false,
+            "rect": {
+              "x": 515.984375,
+              "y": 794.390625,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "id": "shoot-button",
+            "disabled": false,
+            "rect": {
+              "x": 807,
+              "y": 794.390625,
+              "width": 94.015625,
+              "height": 44
+            }
+          }
+        ],
+        "field": {
+          "x": 182.5,
+          "y": 139.390625,
+          "width": 1000,
+          "height": 550,
+          "top": 139.390625,
+          "right": 1182.5,
+          "bottom": 689.390625,
+          "left": 182.5
+        },
+        "input": [
+          {
+            "type": "pointerdown",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerup",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "click",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerdown",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerup",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "click",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "keydown",
+            "target": "table",
+            "key": "ArrowRight",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keyup",
+            "target": "table",
+            "key": "ArrowRight",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keydown",
+            "target": "table",
+            "key": "ArrowLeft",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keyup",
+            "target": "table",
+            "key": "ArrowLeft",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keydown",
+            "target": "shoot-button",
+            "key": "Enter",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "click",
+            "target": "shoot-button",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keydown",
+            "target": "",
+            "key": "Enter",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "keyup",
+            "target": "",
+            "key": "Enter",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "pointerdown",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "pointerup",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "click",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "pointerdown",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          },
+          {
+            "type": "pointerup",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          },
+          {
+            "type": "click",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          }
+        ],
+        "bodyHeight": 992,
+        "aimText": "ねらい：9番 · ストライプ"
+      },
+      "errors": []
+    },
+    {
+      "viewport": {
+        "name": "phone",
+        "width": 390,
+        "height": 844
+      },
+      "pass": true,
+      "bounds": {
+        "x": 54.34375,
+        "y": 113.140625,
+        "width": 281.296875,
+        "height": 511.4375
+      },
+      "initialCue": {
+        "id": 0,
+        "x": 225,
+        "y": 225,
+        "vx": 0,
+        "vy": 0,
+        "pocketed": false
+      },
+      "pausedCue": {
+        "id": 0,
+        "x": 411.2085937499998,
+        "y": 225,
+        "vx": 812.125,
+        "vy": 0,
+        "pocketed": false
+      },
+      "settledShots": [
+        1,
+        0
+      ],
+      "remainingObjects": 15,
+      "measures": {
+        "buttons": [
+          {
+            "id": "mute-button",
+            "disabled": false,
+            "rect": {
+              "x": 174.421875,
+              "y": 5.71875,
+              "width": 66.828125,
+              "height": 44
+            }
+          },
+          {
+            "id": "pause-button",
+            "disabled": false,
+            "rect": {
+              "x": 247.25,
+              "y": 5.71875,
+              "width": 54.015625,
+              "height": 44
+            }
+          },
+          {
+            "id": "aim-left",
+            "disabled": false,
+            "rect": {
+              "x": 9,
+              "y": 697.578125,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "id": "aim-right",
+            "disabled": false,
+            "rect": {
+              "x": 58,
+              "y": 697.578125,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "id": "shoot-button",
+            "disabled": false,
+            "rect": {
+              "x": 312.984375,
+              "y": 697.578125,
+              "width": 68.015625,
+              "height": 44
+            }
+          }
+        ],
+        "field": {
+          "x": 54.34375,
+          "y": 113.140625,
+          "width": 281.296875,
+          "height": 511.4375,
+          "top": 113.140625,
+          "right": 335.640625,
+          "bottom": 624.578125,
+          "left": 54.34375
+        },
+        "input": [
+          {
+            "type": "pointerdown",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerup",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "click",
+            "target": "analytics-settings-host",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerdown",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "pointerup",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "click",
+            "target": "play-button",
+            "trusted": true,
+            "state": "title"
+          },
+          {
+            "type": "keydown",
+            "target": "table",
+            "key": "ArrowRight",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keyup",
+            "target": "table",
+            "key": "ArrowRight",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keydown",
+            "target": "table",
+            "key": "ArrowLeft",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "keyup",
+            "target": "table",
+            "key": "ArrowLeft",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "pointerdown",
+            "target": "shoot-button",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "pointerup",
+            "target": "shoot-button",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "click",
+            "target": "shoot-button",
+            "trusted": true,
+            "state": "aim"
+          },
+          {
+            "type": "pointerdown",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "pointerup",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "click",
+            "target": "pause-button",
+            "trusted": true,
+            "state": "moving"
+          },
+          {
+            "type": "pointerdown",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          },
+          {
+            "type": "pointerup",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          },
+          {
+            "type": "click",
+            "target": "resume-button",
+            "trusted": true,
+            "state": "paused"
+          }
+        ],
+        "bodyHeight": 844,
+        "aimText": "ねらい：9番 · ストライプ"
+      },
+      "errors": []
+    }
+  ],
+  "after_source_hashes": {
+    "game027.html": "1825ee6c18ab30779160f17859f8b4e940d031a8d4c0377a0f1dda13240817a4",
+    "src/games/game027/camera.ts": "5644dfdd654f79e5cd77a225f9392fda041095a72176582d1e21a06f0c63a394",
+    "src/games/game027/cpu.ts": "eb67108273c70e90fe1b410780d04636adb9eea5641063546dffc3ad45a12542",
+    "src/games/game027/game.manifest.json": "807380f95c63e8da97fa13306317a7725bd1d28680dd5504a3b0c2d96c9a2a5c",
+    "src/games/game027/input.ts": "8f587f06d29c2bdf5e66e9c88824d641bff00c2546182d522185858aa2e84e36",
+    "src/games/game027/main.ts": "6c8577ed918efa99b8a873cc384f05f04419bb49e5c8b7c9be39ada41779bc65",
+    "src/games/game027/physics.ts": "e193d73231e609ca7c6556025f2893240493a3e2289eaf98496fc28c8b7b391b",
+    "src/games/game027/rules.ts": "39288eb6594eb46ef244b376e9eec6365543dd4267d0db0e8e07f1ae70984df6",
+    "src/games/game027/save.ts": "84fdc12a142c33252af48f15e1479a7d57f291be5772a623b84504dd6119b2ae",
+    "src/games/game027/style.css": "09e23d7fd8acd482c7f1a2cdfcc10cbed0d51ff43ce832443574f682f59823ee"
+  },
+  "pass": true,
+  "finished_at": "2026-10-07T18:44:20.719Z"
+}

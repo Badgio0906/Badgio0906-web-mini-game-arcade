@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "game027",
+  "titleJa": "ひと息ビリヤード ～EIGHT BALL～",
+  "titleEn": "EIGHT BALL",
+  "tagline": "ねらって、一球ずつ。",
+  "thumbnail": "./assets/portal/game027.webp",
+  "route": "./game027.html",
+  "releaseOrder": 27,
+  "status": "active",
+  "tags": [
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "ひと息ビリヤード ～EIGHT BALL～",
+  "genre": "classic billiards",
+  "controls": {
+    "aim": "native pointer drag, arrows fine adjustment",
+    "power": "range slider or up/down",
+    "shot": "explicit shot button or Space",
+    "placement": "tap or keyboard move, separate confirm button",
+    "pause": "manual/blur/hidden, explicit resume"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "no fixed time limit; human duration not measured",
+  "mainMechanics": "Aim and choose power, strike cue ball, adjudicate complete settled eight-ball shot against start-of-shot legality",
+  "currentManifest": {
+    "id": "game027",
+    "title": "ひと息ビリヤード ～EIGHT BALL～",
+    "titleEn": "EIGHT BALL",
+    "tagline": "ねらって、一球ずつ。",
+    "genre": "classic billiards",
+    "coreMechanic": "Aim and choose power, strike cue ball, adjudicate complete settled eight-ball shot against start-of-shot legality",
+    "skillAxes": [
+      "angle estimation",
+      "power control",
+      "planning legal targets"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "aim": "native pointer drag, arrows fine adjustment",
+      "power": "range slider or up/down",
+      "shot": "explicit shot button or Space",
+      "placement": "tap or keyboard move, separate confirm button",
+      "pause": "manual/blur/hidden, explicit resume"
+    },
+    "rules": "100ガレ house eight-ball: no called pockets; break8 respot; break does not assign; open mixed legal pocket assigns lowest numbered group; shot-start remaining balls control eight eligibility",
+    "physics": "fixed120Hz, displacement-bounded adaptive substeps, equal-mass restitution, rolling friction, finite settlement, six actual pocket openings",
+    "modes": [
+      "cpu easy",
+      "cpu normal",
+      "cpu strong",
+      "same-device two player",
+      "isolated optional practice"
+    ],
+    "practice": "Single1-ball straight-shot aiming and power lesson on same physics, no production RUN/stats",
+    "storagePrefix": "web-mini-arcade:v1:game027:",
+    "storage": "validated complete world including in-flight velocities and shot bookkeeping; explicit paused restore; local idempotent result ledger separate from existing nullable observer RUN; failed writes remain memory-only; abandoned snapshot not saved again",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "development-only finding Shadow routing; not physics, fun or publication authority",
+    "humanReview": "author subjective playtest and physical-device review pending",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "1",
+    "telemetry": "Existing game_open/run_start/run_end/retry/return_to_portal and meaningful shot/foul/pocket/group_assigned/win milestones; no perframe positions; practice production excluded; remoteCollectionEnabled:false pending root Worker confirmation"
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "Existing game_open/run_start/run_end/retry/return_to_portal and meaningful shot/foul/pocket/group_assigned/win milestones; no perframe positions; practice production excluded; remoteCollectionEnabled:false pending root Worker confirmation",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game027/game.manifest.json"
+  }
+}

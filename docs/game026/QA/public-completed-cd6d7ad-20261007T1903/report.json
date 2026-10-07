@@ -1,0 +1,115 @@
+{
+  "base": "https://game100garage.com",
+  "started_at": "2026-10-07T18:59:20.353Z",
+  "source": {
+    "game026.html": "b7f37d3b09a519592f2b2b4a8a3687413d59369548a0f799fa9ebafa22b9d2d5",
+    "src/games/game026/model.ts": "dd61b2f5761c6f2a4007b8b83344e0eb3c251af90c69875728c391e13d556847",
+    "src/games/game026/flow.ts": "e8c688ad945d5e98906480db9cd27ac582c73c1a47746a201ae8fd029cf8dbfb",
+    "src/games/game026/main.ts": "b9b09d54696fa2b26575d298e4fae02274b2bab664b2bcd7777547ce9c4f853a",
+    "src/games/game026/style.css": "d129f0006d5acaa652507870953682c9d56090bfbae1c0c237b0b64c5dc83234",
+    "src/games/game026/save.ts": "648d04d1c66b3da3fc7bf2b96d7c0177bc9326f8039963c7a30d7667526cd762",
+    "src/games/game026/game.manifest.json": "ee3fe4afefe6d536fac4585874d17527b0dc8403abde39b3e7f090aae373dcf7",
+    "tests/unit/game026.test.ts": "125750c22dfdb000df38de42a3d5a7dbeb529d1048f8cc09e9bf39743eb0d8e8",
+    "tests/game026/vite.config.mjs": "80016bd61fcc5dc13a7034a47dc417792a12de1ff69a64e125d12d3a391a8c5a",
+    "src/core/TelemetryService.ts": "cfcefdbc59ff78044e2e6aa98fb9764d7df08a9ac8396e0a821cd538dc5d845e",
+    "tests/unit/classic-telemetry.test.ts": "9dda34175c6128f999a801e8a39c8b051727d458d18481b58618c74e77b6716c",
+    "tests/game026/native.mjs": "1d2183fe1e168025cf7f86b14a4e4191f7f0dbb5062c806b357f38660cd5a903",
+    "tests/game026/completed-match.mjs": "64a095c11eb03b715712f3053d96d0194e601c094a6a11ba5a7853427920fb9c"
+  },
+  "provenance": "Ordinary unmodified cryptographic fair dice; real native human roll inputs + normal CPU turns; reduced-motion OS preference shortens display-only delay; no seed/state/dice injection; synthetic QA, not human opinion.",
+  "records": [
+    {
+      "name": "desktop",
+      "width": 1365,
+      "height": 900,
+      "touch": false,
+      "status": "PASS",
+      "errors": [],
+      "checks": [
+        "ordinary human+CPU completed full standings; finish/run_end/result ledger once",
+        "terminal reload neither regrants stats nor restores a completed race",
+        "normal freshmatch and confirmed retry replace run without double results",
+        "held Enter→pause→old release cannot activate new screen"
+      ],
+      "captures": [
+        "desktop-ordinary-start.png",
+        "desktop-ordinary-result.png",
+        "desktop-held-enter-pause.png"
+      ],
+      "humanRolls": 45,
+      "lastVisiblePositions": [
+        {
+          "position": 88,
+          "rank": ""
+        },
+        {
+          "position": 84,
+          "rank": ""
+        }
+      ],
+      "turns": 89,
+      "diceCounts": [
+        12,
+        15,
+        13,
+        23,
+        12,
+        14
+      ],
+      "stats": {
+        "matches": 1,
+        "wins": 1,
+        "reported": [
+          "<synthetic-local-result-id>"
+        ]
+      }
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "status": "PASS",
+      "errors": [],
+      "checks": [
+        "ordinary human+CPU completed full standings; finish/run_end/result ledger once",
+        "terminal reload neither regrants stats nor restores a completed race",
+        "normal freshmatch and confirmed retry replace run without double results",
+        "held Enter→pause→old release cannot activate new screen"
+      ],
+      "captures": [
+        "phone-ordinary-start.png",
+        "phone-ordinary-result.png",
+        "phone-held-enter-pause.png"
+      ],
+      "humanRolls": 31,
+      "lastVisiblePositions": [
+        {
+          "position": 78,
+          "rank": ""
+        },
+        {
+          "position": 77,
+          "rank": ""
+        }
+      ],
+      "turns": 61,
+      "diceCounts": [
+        9,
+        8,
+        11,
+        9,
+        14,
+        10
+      ],
+      "stats": {
+        "matches": 1,
+        "wins": 1,
+        "reported": [
+          "<synthetic-local-result-id>"
+        ]
+      }
+    }
+  ],
+  "finished_at": "2026-10-07T19:00:10.767Z"
+}

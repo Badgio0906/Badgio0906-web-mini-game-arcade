@@ -1,0 +1,22 @@
+{
+  "finding_id": "game027-semantic-storage-rejection-not-latched",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent source and actual synthetic backend probe, no Jev answers inspected",
+  "rationale": "Rejected initial backend data returns blank games0 without retaining a memory fallback; the next read loads older games4. Current main appears to read at initialization only, so no measured current live gameplay failure; enforce the requested stable memory fallback in the local class.",
+  "evidence": [
+    "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+    "docs/game027/QA/independent/semantic-storage-01/probe.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Executed unmodified PoolStore invalid semantic backend \u2192 later stale valid save, confirming two backend reads and fallback replacement.",
+    "evidence": [
+      "docs/game027/QA/independent/semantic-storage-01/save-before.ts.txt",
+      "docs/game027/QA/independent/semantic-storage-01/probe.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}
