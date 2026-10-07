@@ -1,0 +1,21 @@
+{
+  "finding_id": "g022-off-touch-action-conflicts-scroll",
+  "game_id": "game022",
+  "observed_at": "2026-10-07T15:53:21.742893+00:00",
+  "observation": "Compiled390: finger-drag OFF card computes touch-action:none from shared interaction guard, whereas explanation and OFF handler say native scroll. This declarative CSS disables native pan from cards regardless of JS cancelling its drag.",
+  "native_input_limit": "Raw CDP touch dispatch and synthesized touch-scroll left0 on both card and ordinary auto gap. Thus actual successful native-touch scroll is not established here; gap result prevents attributing the whole failed CDP pan to product. No physical iPhone.",
+  "steps": [
+    "Fresh compiled practice390 with deniedconsent preconfigured",
+    "finger-drag OFF",
+    "document.elementFromPoint335,345 card => computed touchAction none",
+    "335,280 ordinary card-board gap => auto",
+    "same native CDP swipe on both gives scrollLeft0/max82, no moves"
+  ],
+  "source_evidence": "Shared injected [data-game-touch-page] [data-game-interaction] specificity sets none. Game022 only declares .drag-enabled .card none; it supplies no OFF override.",
+  "evidence_paths": [
+    "docs/game022/QA/independent/pan-style-initial/style.css.txt",
+    "docs/game022/QA/independent/pan-style-initial/gameTouchGuards.css.txt",
+    "docs/game022/QA/independent/pan-style-initial/pan-diagnostic.json"
+  ],
+  "candidate_changes_made": false
+}

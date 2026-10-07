@@ -1,0 +1,76 @@
+{
+  "audited_at": "2026-10-07T16:04:12.144616+00:00",
+  "no_new_api_calls": true,
+  "answers_displayed_or_used_for_judgments": false,
+  "records": [
+    {
+      "log": "docs/game022/QA/JEV_SHADOW.jsonl",
+      "finding_id": "g022-suffix-move-fixture",
+      "checkpoint": "B",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "four_answers_valid": true,
+      "annotation_present": true,
+      "error": null
+    },
+    {
+      "log": "docs/game022/QA/JEV_REVIEW_SHADOW.jsonl",
+      "finding_id": "g022-title-explanation-overwrites-save",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "four_answers_valid": true,
+      "annotation_present": true,
+      "error": null
+    },
+    {
+      "log": "docs/game022/QA/JEV_ROOT_SHADOW.jsonl",
+      "finding_id": "g022-touch-implicit-capture-transfer",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "four_answers_valid": true,
+      "annotation_present": true,
+      "error": null
+    },
+    {
+      "log": "docs/game022/QA/JEV_ROOT_SHADOW.jsonl",
+      "finding_id": "g022-off-touch-action-conflicts-scroll",
+      "checkpoint": "C",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "four_answers_valid": true,
+      "annotation_present": true,
+      "error": null
+    }
+  ],
+  "totals": {
+    "records": 4,
+    "api_attempted": 4,
+    "available_http200_valid4": 4,
+    "annotated": 4
+  },
+  "log_sha256": {
+    "docs/game022/QA/JEV_SHADOW.jsonl": "b8423b0d28db4f6974e51162f5cb879956aea46e9a64dff63a938670cf3b91dc",
+    "docs/game022/QA/JEV_REVIEW_SHADOW.jsonl": "c99d0a8affb47d6941d10fc7d14bc097c7d6c13c22f55b64c06c6614e7e782b9",
+    "docs/game022/QA/JEV_ROOT_SHADOW.jsonl": "fcb3543afbd3b8e297d035f97914bddfdb675f7d40232f3c6a7dcd7cc0f3319b"
+  },
+  "preserved_local_validation_errors": [
+    "docs/game022/QA/JEV_INPUT_VALIDATION_NOTE.json",
+    "docs/game022/QA/independent/INDEPENDENT_REVIEW.md"
+  ],
+  "limits": "Model/HTTP/API metadata prove requests and schema answers, not a release decision, gameplay judgment or human play.",
+  "choice_probability_normalization_validated": true
+}

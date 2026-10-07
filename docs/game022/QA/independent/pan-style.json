@@ -1,0 +1,36 @@
+{
+  "finding_id": "g022-off-touch-action-conflicts-scroll",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic_review",
+  "recorded_at": "2026-10-07T15:53:21.742893+00:00",
+  "rationale": "CSS declaration directly conflicts with OFF native pan intent on cards. Narrow board remains reachable by gaps/wheel/focus; CDP cannot independently demonstrate native gap scrolling either, so no broad touch-scroll blockage is claimed.",
+  "evidence": [
+    "docs/game022/QA/independent/pan-style-initial/style.css.txt",
+    "docs/game022/QA/independent/pan-style-initial/gameTouchGuards.css.txt",
+    "docs/game022/QA/independent/pan-style-initial/pan-diagnostic.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared rendered computed touch-action card none vs gap auto, authored OFF JS cancellation, and shared injected guard selector specificity. Preserved raw ambiguous touch gesture outcome. No source edits.",
+    "evidence": [
+      "docs/game022/QA/independent/pan-style-initial/style.css.txt",
+      "docs/game022/QA/independent/pan-style-initial/gameTouchGuards.css.txt",
+      "docs/game022/QA/independent/pan-style-initial/pan-diagnostic.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null,
+  "resolution": {
+    "reviewed_at": "2026-10-07T16:06:51.916107+00:00",
+    "source": "#card-board .card / .empty-pile pan-x pan-y; #card-board.drag-enabled .card none. Higher specificity than injected guard; common code untouched.",
+    "observed": "Compiled all4 OFF computed pan-x pan-y;390 ON none; actual native CDP horizontal swipe now82/max82 at390 and152/max152 at320 (see report actual values). Wheel and seventh-column tap reachable. Physical-devicepan still unverified.",
+    "evidence": [
+      "docs/game022/QA/compiled/reviewer-report.json",
+      "docs/game022/QA/ROOT_SOURCE_FREEZE_PAN_FIX.json"
+    ],
+    "protocol": "Parent reports one AVAILABLE HTTP200 Shadow beforefix. No answer/log read by independent reviewer."
+  }
+}

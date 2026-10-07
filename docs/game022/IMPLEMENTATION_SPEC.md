@@ -1,0 +1,23 @@
+# ひと息ソリティア ～KLONDIKE～
+
+Candidate No.25 → game022. Author implementation scope is only this HTML, `src/games/game022`, game022 tests and documentation. Parent owns common registration, thumbnail, Worker integration, independent browser review and sequential publication. Base `af2edf70cdf8fe46175f4fcf38fec607dda997d0`; branch `codex/classic-model-022`.
+
+The authoritative batch request is [classic-five/REQUEST.md](../classic-five/REQUEST.md), sections 0–5, 7 and 11–19. Model rule identifier is `klondike-v1`; manifest registration version `1`, presentation `prototype-1`.
+
+52 unique cards, no jokers. Seven columns hold 1–7 cards, with seven face up, twenty-one face down and twenty-four in stock. Tableau accepts descending alternating colours; movable suffixes must be fully exposed and consecutive. Only a king-led suffix enters an empty column. Four suit-specific foundations ascend A–K; foundation top cards may return to legal tableau positions. A newly exposed tableau top flips as part of the same move. All 52 foundation cards is the sole clear condition.
+
+Draw-one defaults; draw-three is optional. Only the newest waste card can move; removing it exposes the previous card. A partial draw takes the remaining one or two cards. Recycle reverses waste into the pop-oriented stock exactly, with no reshuffle and unlimited passes. A mode change is available at the title and starts a new deal. Retry preserves the original date and draw mode for a daily run even across JST midnight.
+
+Random deals use an independently seeded shuffle. Daily seed is `JST YYYY-MM-DD|klondike-v1|draw1` or `draw3`. An active deal never changes at midnight. Neither random nor daily is labelled guaranteed solvable. Hints enumerate exposed moves only: no stock identities or hidden card identities guide the hint. No unconditional stuck verdict is made. The single-card foundation assist acts only on a user press. Finish requires empty stock and waste, every tableau card exposed, and a complete dry-run sequence of legal foundation moves.
+
+Undo stores the exact previous piles, face states and move count, including flips, draws and recycles, for the most recent 1000 actions. Assistance-use counters are cumulative, and elapsed active play is not rewound. Completed reported runs cannot be undone to farm records. Elapsed time has no penalty; blur, hidden visibility, explanations, confirmation and pause stop it.
+
+Snapshot and clear ledger are saved atomically in one own-prefix JSON. Saved states and every undo position must contain the unique full 52-card set, valid foundations and legal face-up tableau sequences. Metadata includes game ID, rule identifier, seed, draw, daily date/mode, elapsed time, analytics run identity, assistance counts and report flag. Denied storage keeps an in-memory session; this cannot survive reload. Audio preferences use the existing StorageService and AudioService.
+
+New runs emit one shared run_start and persist getActiveRunId. Resume calls restoreRun and emits a state_restored stage event without another run_start. Reload, pause, title and Portal preserve a resumable run without run_end. Explicit replacement ends the abandoned run; clearing ends once. The report flag and clear count share one JSON write, and a daily seed ledger prevents repeat clear-count additions. Only primitive stage metadata is recorded; full card states and hidden card values never go to telemetry. Shared production remote collection remains disabled pending parent Worker registration. Practice events are excluded from production.
+
+Tap-select → destination-tap, desktop drag, native Tab/Enter/Space and arrow focus navigation coexist. Drag starts at 12px. Touch defaults to ordinary scrolling and tapping; the explicit finger-drag toggle enables dragging from a card while gaps remain scrollable. Pointer cancellation and lost capture clear pending state. A completed/cancelled drag suppresses its generated click. Narrow layouts keep 54px cards and pan the seven-column board; longer columns scroll vertically.
+
+Optional practice has six declared cards, three legal moves: red 5 onto black 6, K into an empty column, and A into its suited foundation. It neither saves a practice position nor adds clears, BEST or production RUN. No CREDIT, advertisements, CPU, countdown or forced onboarding.
+
+The original development-only known-solvable fixture has the same standard 7/21/24 deal structure. Each tableau column contains a reversed segment of rank-major suit order; stock continues that order. Exposed foundation moves and stock draws clear it in 76 actions in draw-one. `?fixture=solvable` and the read-only `window.__game022` exist only in DEV. This fixture is functional QA, not the random-deal generator or a human-evaluation result.

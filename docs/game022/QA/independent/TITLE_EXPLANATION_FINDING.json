@@ -1,0 +1,18 @@
+{
+  "finding_id": "g022-title-explanation-overwrites-save",
+  "problem": "Leaving an explanation opened from the title after reload can overwrite the actual unfinished saved deal with the preview board.",
+  "expected": "Explanations opened from title do not create or replace normal saved runs; the existing saved deal and its telemetry run identity remain unchanged.",
+  "observed": [
+    "Code inspection: new page initializes game as a title-preview Klondike while SolitaireStore retains the genuine snapshot.",
+    "explain(false) changes state to explanation without restoring the saved game.",
+    "save accepts any non-title/non-training state; both pagehide and returnToPortal call it in explanation."
+  ],
+  "unknown": [
+    "Browser reproduction has not yet been measured."
+  ],
+  "operation": "Save normal deal \u2192 reload \u2192 explanation from title \u2192 reload or Portal",
+  "evidence": [
+    "docs/game022/QA/independent/title-explanation-initial/main.ts.txt"
+  ],
+  "provenance": "actual-development-independent-code-inspection"
+}

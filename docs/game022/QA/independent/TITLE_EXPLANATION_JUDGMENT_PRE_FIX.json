@@ -1,0 +1,20 @@
+{
+  "finding_id": "g022-title-explanation-overwrites-save",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "classic021-independent-game022-reviewer",
+  "rationale": "The global live game starts as a different preview snapshot on reload, and save() uses display state rather than normal-run provenance. A title explanation can trigger persistence of that unrelated board. This loses a resumable deal and its existing run identity. Browser checks should confirm both reload and explicit Portal paths before and after narrowing the save boundary.",
+  "evidence": [
+    "docs/game022/QA/independent/title-explanation-initial/main.ts.txt",
+    "docs/game022/QA/independent/TITLE_EXPLANATION_FINDING.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Independent judgment recorded before reading answers. Await native browser reproduction; narrow repair authorized by root.",
+    "evidence": [
+      "docs/game022/QA/independent/TITLE_EXPLANATION_FINDING.json"
+    ]
+  }
+}

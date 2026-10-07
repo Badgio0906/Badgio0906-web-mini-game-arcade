@@ -1,0 +1,25 @@
+{
+  "finding_id": "g022-touch-implicit-capture-transfer",
+  "game_id": "game022",
+  "observed_at": "2026-10-07T15:45:12.219143+00:00",
+  "candidate_main_sha256": "4acd0f908e74330b702a23f25380c03876cd5940be187dbf858c9b5926abf5cd",
+  "observation": "390x844 hasTouch Chromium compiled product practice. Finger drag ON. Begin native touch at red5 card center inner span, move past12px toward black6, release over black6. Board stays0 moves; ghost disappears before release. Cancel test correctly stays0 and clears ghost.",
+  "actual_steps": [
+    "Fresh game022.html compiled4173",
+    "練習する",
+    "指ドラッグ ON",
+    "native CDP touch at red5 center(112,345), intermediate left movement to black6 center(50,355), touchEnd",
+    "read HUD0 and unchangedpractice1 status; no DEV hook/model injection"
+  ],
+  "evidence_paths": [
+    "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json",
+    "docs/game022/QA/independent/touch-capture-initial/native-input-state.png",
+    "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"
+  ],
+  "source_reason": "pointermove calls setPointerCapture on button; touch began on inner span with implicit capture. lostpointercapture from prior capture target bubbles to board and unconditional listener clears current drag. Trace shows lostpointercapture midway, then later pointerup hits destination without drag.",
+  "unknowns": [
+    "physical iPhone not run",
+    "other touch target locations may differ"
+  ],
+  "product_changes_made": false
+}

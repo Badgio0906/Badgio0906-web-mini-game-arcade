@@ -1,0 +1,28 @@
+{
+  "finding_id": "g022-suffix-move-fixture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "The original fixture log identifies suffix cards 5 and 16: rank6 clubs then rank4 diamonds, not descending by one. Destination card7 is rank8 clubs: same colour as rank6 and two ranks higher. Both stack and placement are illegal under REQUEST and the source descending predicate. False is the correct product response; the expectation/fixture must change. Current fixture uses 8 spades as target with 7 diamonds,6 clubs,5 diamonds suffix, satisfying both rank and colour constraints. This failure is not evidence of a product blocker.",
+  "evidence": [
+    "docs/game022/QA/SUFFIX_FIXTURE_FINDING.json",
+    "docs/game022/QA/MODEL_FIRST_RUN.txt",
+    "src/games/game022/Klondike.ts:17-19,83,102-126",
+    "tests/unit/game022.test.ts:14"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read the retained first-run excerpt, numerical card mapping and legal stack/destination predicates. Calculated original versus current ranks/colours. Did not view author judgment/Shadow answers or rerun tests.",
+    "evidence": [
+      "docs/game022/QA/MODEL_FIRST_RUN.txt",
+      "src/games/game022/Klondike.ts",
+      "tests/unit/game022.test.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "reviewer": "classic_review",
+  "recorded_at": "2026-10-07T15:16:06.623089+00:00",
+  "human_judgment": null,
+  "scope": "Independent code review, Jev answers and author judgments not accessed; browser acceptance pending."
+}

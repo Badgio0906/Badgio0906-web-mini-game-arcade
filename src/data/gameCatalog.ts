@@ -61,9 +61,10 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game019: ['jump','rise','pixel-art','animal','hard','precision','space','wind'],
   game020: ['puzzle','decision','brain-training'],
   game021: ['puzzle','decision','brain-training'],
+  game022: ["puzzle", "decision", "brain-training"],
 };
 
-const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard'] as const;
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard'] as const;
 
 export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
@@ -73,6 +74,7 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   { id: 'game019', titleJa: '井の中の蛙、大海を目指す ～WELL TO SPACE～', titleEn: 'WELL TO SPACE', tagline: '井戸を出たら、今度は宇宙でした。', thumbnail: './assets/portal/game019.webp', route: './game019.html', releaseOrder: 19 },
   { id: 'game020', titleJa: 'すっきり牌合わせ ～PAIR TILE～', titleEn: 'PAIR TILE', tagline: '同じ柄を、ひと組ずつ。時間を気にせず、盤面すっきり。', thumbnail: './assets/portal/game020.webp', route: './game020.html', releaseOrder: 20 },
   { id: 'game021', titleJa: 'ならべて4つ ～FOUR IN A ROW～', titleEn: 'FOUR IN A ROW', tagline: 'ひとつ置いて、先を読む。4つつながる、静かな勝負。', thumbnail: './assets/portal/game021.webp', route: './game021.html', releaseOrder: 21 },
+  {"id": "game022", "titleJa": "ひと息ソリティア ～KLONDIKE～", "titleEn": "KLONDIKE", "tagline": "一枚ずつ、すっきり。いつものカードで、ひと息。", "thumbnail": "./assets/portal/game022.webp", "route": "./game022.html", "releaseOrder": 22},
 ].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */

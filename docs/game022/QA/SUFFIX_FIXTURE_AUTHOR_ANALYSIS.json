@@ -1,0 +1,21 @@
+{
+  "finding_id": "g022-suffix-move-fixture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "Game022 author source analysis; not independent reviewer",
+  "rationale": "Reading the source shows descending rejects equal colour or nonconsecutive rank. The test supplied 6 clubs and 4 diamonds under 8 clubs, so neither adjacency matched its documented expected rule. A valid suffix 7 diamonds, 6 clubs, 5 diamonds under 8 spades passes the same model code.",
+  "evidence": [
+    "tests/unit/game022.test.ts",
+    "src/games/game022/Klondike.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected fixture values and model rule; changed fixture only, then reran target suite.",
+    "evidence": [
+      "tests/unit/game022.test.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

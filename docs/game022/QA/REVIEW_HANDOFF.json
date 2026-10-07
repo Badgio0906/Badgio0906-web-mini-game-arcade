@@ -1,0 +1,44 @@
+{
+  "reviewer": "classic_review",
+  "recorded_at": "2026-10-07T16:08:45.735517+00:00",
+  "status": "FINAL_COMPILED_REVIEW_COMPLETE",
+  "gameplay": "PASS",
+  "visual": {
+    "total": 83,
+    "F": 13,
+    "H": 13,
+    "status": "PASS"
+  },
+  "final_docs": [
+    "docs/game022/GAME_FEEL_REVIEW.md",
+    "docs/game022/VISUAL_REVIEW.md"
+  ],
+  "actual_report": "docs/game022/QA/compiled/reviewer-report.json",
+  "source_check": "docs/game022/QA/compiled/source-freeze-final-check.json",
+  "browser_closed": true,
+  "thumbnail": {
+    "source": "docs/game022/QA/compiled/desktop-thumbnail-source.png",
+    "crop": {
+      "x": 256,
+      "y": 87,
+      "width": 853,
+      "height": 610
+    },
+    "viewport": {
+      "width": 1365,
+      "height": 1000
+    },
+    "provenance": "Actual normal daily midrun, one legal hint move, ordinary stock draws, one-card foundation assist; no fixture"
+  },
+  "collector_env": {
+    "GAME022_BASE_URL": "Optional full game022.html URL; default localhost4173",
+    "GAME022_REPORT_DIR": "Optional absolute or cwd-relative output directory; mkdir recursive; default compiled directory"
+  },
+  "collector_env_verification": "node --check passed; actual4viewport run preceded env-only adaptation. No additional full run needed for this reversible harness option.",
+  "next_owner": "Root owns CI/public replay/publication; browser returned to classic022/root",
+  "limits": [
+    "Physical iPhone/Safari, human subjective fun, audio/FPS unverified",
+    "Normal daily52-card clear not executed; separate DEV solvable fixture explicitly synthetic",
+    "No Jev answers/logs viewed"
+  ]
+}

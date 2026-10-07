@@ -1,0 +1,10 @@
+{
+  "scope": "Touch capture original observer report used metadata fields outside helper finding schema.",
+  "first_local_attempt": "validation rejected before API; no invocation row created",
+  "followup": "Normalize only same contemporaneous observation to TOUCH_CAPTURE_FINDING.json; one actual request, no network retry",
+  "reason": "Do not submit reviewer labels/metadata as API state. Source reason was converted to source observation without product-bug or fixed labels.",
+  "pan_state_validation": {
+    "observation": "Initial normalized pan state omitted required unknown list; local validation failed before any API request. Added observed native-pan limitations to unknown and made exactly one actual record request.",
+    "api_attempts_for_finding": 1
+  }
+}

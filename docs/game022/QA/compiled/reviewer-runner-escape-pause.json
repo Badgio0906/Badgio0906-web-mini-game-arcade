@@ -1,0 +1,144 @@
+{
+  "reviewer": "classic_review",
+  "observedAt": "2026-10-07T16:03:24.476Z",
+  "base": "http://127.0.0.1:4173/game022.html",
+  "provenance": "Compiled normal daily deals and native product practice; no fixture injection, no DEV hook access. Mouse/touch/keyboard automation is not human play or a physical iPhone.",
+  "results": [
+    {
+      "thumbnail": {
+        "path": "docs/game022/QA/compiled/desktop-thumbnail-source.png",
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "crop": {
+          "x": 256,
+          "y": 87,
+          "width": 853,
+          "height": 610
+        },
+        "actualNormalDeal": true,
+        "syntheticFixture": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 1365,
+        "height": 900
+      },
+      "touch": false,
+      "practiceThreeActualMoves": true,
+      "practiceUndo": true,
+      "exposedFaceUpStrip": 44,
+      "computedTouchActionOff": "pan-x pan-y",
+      "computedTouchActionOn": "not toggled",
+      "nativeDesktopDragAndOutsideCancel": true,
+      "nativeTouchDragAndPointerCancel": false,
+      "normalHintMove": true,
+      "normalStockUndo": true,
+      "hintDidNotChangePosition": true,
+      "oneCardFoundationAssist": true,
+      "finishDisabledWithoutProof": true,
+      "boardOverflow": {
+        "x": false,
+        "y": false
+      },
+      "horizontalReached": true,
+      "pauseClockStopped": true,
+      "restartCancelPreserved": true,
+      "reloadRunAndPositionPreserved": true,
+      "titleExplanationPortalPreserved": true,
+      "muteReload": true,
+      "threeCardDrawUndo": true,
+      "productionHookAbsent": true,
+      "productionFixtureQueryIgnored": true,
+      "dimensions": {
+        "viewport": 1365,
+        "pageWidth": 1365,
+        "tools": [
+          {
+            "id": "undo-button",
+            "w": 52.015625,
+            "h": 44
+          },
+          {
+            "id": "hint-button",
+            "w": 65.015625,
+            "h": 44
+          },
+          {
+            "id": "assist-button",
+            "w": 85.4375,
+            "h": 44
+          },
+          {
+            "id": "finish-button",
+            "w": 91.015625,
+            "h": 44
+          },
+          {
+            "id": "drag-button",
+            "w": 118.03125,
+            "h": 44
+          },
+          {
+            "id": "help-button",
+            "w": 52.015625,
+            "h": 44
+          },
+          {
+            "id": "restart-button",
+            "w": 78.015625,
+            "h": 44
+          },
+          {
+            "id": "title-button",
+            "w": 78.015625,
+            "h": 44
+          }
+        ]
+      }
+    },
+    {
+      "panDiagnostic": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "bounds": {
+          "x": 10,
+          "y": 169,
+          "width": 370,
+          "height": 428
+        },
+        "before": {
+          "left": 0,
+          "rect": {
+            "x": 10,
+            "y": 169,
+            "width": 370,
+            "height": 428,
+            "top": 169,
+            "right": 380,
+            "bottom": 597,
+            "left": 10
+          }
+        },
+        "after": {
+          "left": 82,
+          "max": 82
+        },
+        "nativeTouchPanObserved": true,
+        "note": "CDP touch swipe also fails on auto gap in isolated runner diagnostic; physical touch pan remains unverified."
+      }
+    },
+    {
+      "failure": {
+        "name": "TimeoutError",
+        "message": "locator.hover: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#board-scroll')\u001b[22m\n\u001b[2m    - locator resolved to <div tabindex=\"0\" id=\"board-scroll\" aria-label=\"カード盤面。狭い画面では左右にスクロールできます。\">…</div>\u001b[22m\n\u001b[2m  - attempting hover action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and stable\u001b[22m\n\u001b[2m      - element is visible and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying hover action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible and stable\u001b[22m\n\u001b[2m    - element is visible and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying hover action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible and stable\u001b[22m\n\u001b[2m      - element is visible and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  14 × retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying hover action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible and stable\u001b[22m\n\u001b[2m    - element is visible and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying hover action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+        "stack": "locator.hover: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#board-scroll')\u001b[22m\n\u001b[2m    - locator resolved to <div tabindex=\"0\" id=\"board-scroll\" aria-label=\"カード盤面。狭い画面では左右にスクロールできます。\">…</div>\u001b[22m\n\u001b[2m  - attempting hover action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and stable\u001b[22m\n\u001b[2m      - element is visible and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying hover action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible and stable\u001b[22m\n\u001b[2m    - element is visible and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying hover action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible and stable\u001b[22m\n\u001b[2m      - element is visible and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  14 × retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying hover action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible and stable\u001b[22m\n\u001b[2m       - element is visible and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <p class=\"eyebrow\">TAKE A BREATH</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying hover action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible and stable\u001b[22m\n\u001b[2m    - element is visible and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p>時計も休憩中。ゆっくりどうぞ。</p> from <dialog open=\"\" id=\"menu\" aria-labelledby=\"menu-title\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying hover action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at /workspace/arcade-classic-five/docs/game022/QA/compiled/reviewer-probe.mjs:51:36"
+      }
+    }
+  ],
+  "errors": []
+}

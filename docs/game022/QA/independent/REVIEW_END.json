@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-07T15:33:09.737378+00:00",
+  "repair_source_unchanged": true,
+  "no_commit_push_deploy": true,
+  "no_human_play": true,
+  "browser_contexts_closed": true,
+  "remaining_browser_checks": "root compiled normal/practice/touch/saved controls/publication",
+  "commands": [
+    "npm test -- tests/unit/game022.test.ts tests/unit/game022-persistence.test.ts",
+    "npm run check",
+    "node docs/game022/QA/independent/model-probe.mjs",
+    "GAME022_REGRESSION_REPORT=<initial/fixed outputs> node tests/game022/title-explanation-regression.mjs",
+    "GAME022_URL=http://127.0.0.1:4022/game022.html?fixture=solvable GAME022_REPORT=<independent output> node tests/game022/complete-fixture.mjs",
+    "node --input-type=module -e isolated production build, exact command in reviewer tool record and build-repair.txt result",
+    "python3 tools/jev-shadow.py --game-id game022 --log docs/game022/QA/JEV_REVIEW_SHADOW.jsonl record C docs/game022/QA/independent/TITLE_EXPLANATION_FINDING.json",
+    "python3 tools/jev-shadow.py --game-id game022 --log docs/game022/QA/JEV_REVIEW_SHADOW.jsonl annotate C docs/game022/QA/independent/TITLE_EXPLANATION_JUDGMENT.json"
+  ]
+}

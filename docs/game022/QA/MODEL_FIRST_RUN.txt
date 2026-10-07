@@ -1,0 +1,9 @@
+Actual first target run, 2026-10-07T15:04:17Z, base af2edf70cdf8fe46175f4fcf38fec607dda997d0
+Command: npm test -- --run tests/unit/game022.test.ts
+14 tests / 13 passed / 1 failed:
+alternates colours descending and moves a legal suffix, rejecting bad ranks and colours
+expected false to be true
+Original fixture: [[7],[19,5,16],[8],[21]]; source column 1 index 1; destination column 0.
+That corresponds to suffix 6 clubs, 4 diamonds under 8 clubs. Model returned false.
+Other thirteen tests passed, including complete original full deck (76 legal moves).
+This is an excerpt of the observed tool output, not a recreated test execution.

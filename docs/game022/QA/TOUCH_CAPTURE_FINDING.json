@@ -1,0 +1,16 @@
+{
+  "finding_id": "g022-touch-implicit-capture-transfer",
+  "problem": "A mobile card-center finger drag does not move the card to a legal destination.",
+  "expected": "With finger drag enabled, a card dragged beyond 12px and released over a legal destination moves once; cancellation remains a no-op.",
+  "observed": [
+    "390x844 hasTouch Chromium compiled practice, finger drag ON: touch starts at red5 inner span center, moves to black6, then releases; HUD remains 0 moves.",
+    "Native trace shows lostpointercapture midway and the ghost disappears before pointerup.",
+    "Code observation: pointermove requests capture on the card button, while the original touch target was its inner span; the board lostpointercapture listener unconditionally clears drag.",
+    "Desktop drag and tap selection work; touchCancel clears the ghost without moving."
+  ],
+  "unknown": ["Physical iPhone and other touch start locations are unmeasured."],
+  "viewport": {"width":390,"height":844},
+  "measurements": {"moves_after_release":0,"drag_threshold_px":12},
+  "evidence": ["docs/game022/QA/TOUCH_CAPTURE_FINDING_BEFORE.json", "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json", "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"],
+  "provenance": "actual-compiled-native-touch-QA"
+}

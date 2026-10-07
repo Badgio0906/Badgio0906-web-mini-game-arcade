@@ -1,0 +1,31 @@
+{
+  "audited_at": "2026-10-07T16:04:12.414093+00:00",
+  "head": "a4555f27d05accbfaa1ab8846609db480604d34e",
+  "staged_count": 0,
+  "staged_paths": [],
+  "staged_future_game_paths": [],
+  "current_tracked_diff_paths": [
+    "analytics-worker/src/aggregate.ts",
+    "analytics-worker/src/index.ts",
+    "docs/CURRENT_STATUS.md",
+    "docs/classic-five/QA/REVIEW_READS.jsonl",
+    "index.html",
+    "jev_export/game_profiles/catalog.json",
+    "scripts/fetch-analytics-context.mjs",
+    "src/data/analyticsEnvelope.ts",
+    "src/data/gameCatalog.ts",
+    "src/data/gameVersions.ts",
+    "src/portal/main.ts",
+    "vite.config.ts"
+  ],
+  "unexpected_tracked_paths": [],
+  "reviewed_shared_diff": "Catalog, versions, Vite, Worker index/aggregate and fetch CLI register only022 after existing021. Existing015/018/019/020 runtime sources have no tracked changes. Common primitive additions are Klondike draw/deal/daily/moves/foundation/assist/record_added only. No023/024/025 registration was included.",
+  "future_untracked_docs": [
+    "docs/game023/",
+    "docs/game024/",
+    "docs/game025/"
+  ],
+  "scope_plan": "Use explicit game022 paths and required shared registration/tests, plus prior021 publication evidence and batch status update. Keep future023/024/025 docs, any other future games and node_modules excluded.",
+  "game022_thumbnail_present": false,
+  "limits": "Index was empty at audit time; this is a prospective scope check, not verification of a final staged commit."
+}

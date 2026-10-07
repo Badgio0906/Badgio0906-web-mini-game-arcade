@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-07T15:25:55.673534+00:00",
+  "base": "af2edf70cdf8fe46175f4fcf38fec607dda997d0",
+  "original_freeze_evidence": "/workspace/classic-author-022/docs/game022/QA/AUTHOR_EVIDENCE.json",
+  "role_transition": "Independent reviewer \u2192 root-authorized narrow repair implementer",
+  "finding": "g022-title-explanation-overwrites-save",
+  "changes": "main.ts tracks normalRunLoaded provenance set by newDeal/restore and cleared by practice. Saving requires loaded normal run. Native regression covers title and real restored explanation exits.",
+  "files": {
+    "game022.html": "b9adcb8816804e223bc956a224e2bc4b23d0d432aa28a76a646ecd9591839cc0",
+    "src/games/game022/Klondike.ts": "5bf6654baa028f3d15324cc98f0dda4b46c94d8111ff55924e04a4fbc69f4498",
+    "src/games/game022/cards.ts": "bf9032315b0e6e6a2ea8f4362284f6cbcb3401e5a6acd50d648d62fea16fe5bb",
+    "src/games/game022/game.manifest.json": "0b4f2957d67276ffec9cb740b555674bbcd79f0b40db4aa1aed10cfaa53224c7",
+    "src/games/game022/main.ts": "c96f56a49e25318b1e5a9d58b30c95d650e2466c8c635e59f7de494583b9d848",
+    "src/games/game022/persistence.ts": "ca5d0b6a0517d967d3e155f24a9a17f08d917efc09c57f82e31a55b47b4fcbc6",
+    "src/games/game022/style.css": "c7f213b4e0223293980a48cef6c734aaf82e41ff132e82d8980174b6f54dca72",
+    "tests/game022/title-explanation-regression.mjs": "9c307e2d54648b425bba65a4437ce09996ee19d7ca9ee0a406ac38032771d4b6"
+  }
+}

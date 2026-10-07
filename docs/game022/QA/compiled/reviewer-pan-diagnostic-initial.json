@@ -1,0 +1,140 @@
+{
+  "reviewer": "classic_review",
+  "observedAt": "2026-10-07T15:50:03.688Z",
+  "base": "http://127.0.0.1:4173/game022.html",
+  "provenance": "Compiled normal daily deals and native product practice; no fixture injection, no DEV hook access. Mouse/touch/keyboard automation is not human play or a physical iPhone.",
+  "results": [
+    {
+      "thumbnail": {
+        "path": "docs/game022/QA/compiled/desktop-thumbnail-source.png",
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "crop": {
+          "x": 256,
+          "y": 87,
+          "width": 853,
+          "height": 610
+        },
+        "actualNormalDeal": true,
+        "syntheticFixture": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 1365,
+        "height": 1000
+      },
+      "touch": false,
+      "practiceThreeActualMoves": true,
+      "practiceUndo": true,
+      "exposedFaceUpStrip": 44,
+      "nativeDesktopDragAndOutsideCancel": true,
+      "nativeTouchDragAndPointerCancel": false,
+      "normalHintMove": true,
+      "normalStockUndo": true,
+      "hintDidNotChangePosition": true,
+      "oneCardFoundationAssist": true,
+      "finishDisabledWithoutProof": true,
+      "boardOverflow": {
+        "x": false,
+        "y": false
+      },
+      "horizontalReached": true,
+      "pauseClockStopped": true,
+      "restartCancelPreserved": true,
+      "reloadRunAndPositionPreserved": true,
+      "titleExplanationPortalPreserved": true,
+      "muteReload": true,
+      "threeCardDrawUndo": true,
+      "productionHookAbsent": true,
+      "productionFixtureQueryIgnored": true,
+      "dimensions": {
+        "viewport": 1365,
+        "pageWidth": 1365,
+        "tools": [
+          {
+            "id": "undo-button",
+            "w": 52.015625,
+            "h": 44
+          },
+          {
+            "id": "hint-button",
+            "w": 65.015625,
+            "h": 44
+          },
+          {
+            "id": "assist-button",
+            "w": 85.4375,
+            "h": 44
+          },
+          {
+            "id": "finish-button",
+            "w": 91.015625,
+            "h": 44
+          },
+          {
+            "id": "drag-button",
+            "w": 118.03125,
+            "h": 44
+          },
+          {
+            "id": "help-button",
+            "w": 52.015625,
+            "h": 44
+          },
+          {
+            "id": "restart-button",
+            "w": 78.015625,
+            "h": 44
+          },
+          {
+            "id": "title-button",
+            "w": 78.015625,
+            "h": 44
+          }
+        ]
+      }
+    },
+    {
+      "panDiagnostic": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "bounds": {
+          "x": 10,
+          "y": 169,
+          "width": 370,
+          "height": 428
+        },
+        "before": {
+          "left": 0,
+          "rect": {
+            "x": 10,
+            "y": 169,
+            "width": 370,
+            "height": 428,
+            "top": 169,
+            "right": 380,
+            "bottom": 597,
+            "left": 10
+          }
+        },
+        "after": {
+          "left": 0,
+          "max": 82
+        }
+      }
+    },
+    {
+      "failure": {
+        "name": "AssertionError",
+        "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+        "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///workspace/arcade-classic-five/docs/game022/QA/compiled/reviewer-probe.mjs:49:519"
+      }
+    }
+  ],
+  "errors": []
+}

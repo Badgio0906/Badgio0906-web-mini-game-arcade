@@ -1,0 +1,68 @@
+import {chromium} from '@playwright/test';
+import {writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const output=new URL('./',import.meta.url),base='http://127.0.0.1:4173/game022.html';
+const results=[],errors=[];let browser,context;
+const saved=p=>p.evaluate(()=>JSON.parse(localStorage.getItem('web-mini-arcade:v1:game022:session')));
+const position=p=>saved(p).then(s=>s.snapshot.position);
+async function shot(p,name){await p.screenshot({path:new URL(name+'.png',output).pathname});}
+async function touchScroll(p,from,to){const c=await context.newCDPSession(p);await c.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:from.x,y:from.y}]});for(let i=1;i<=8;i++){await c.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:from.x+(to.x-from.x)*i/8,y:from.y+(to.y-from.y)*i/8}]});await p.waitForTimeout(25);}await c.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await p.waitForTimeout(550);await c.detach();}
+async function tap(p,selector,touch){const l=p.locator(selector).first();if(touch)await l.tap();else await l.click();}
+async function practiceMove(p,source,dest,touch){await tap(p,source,touch);await tap(p,dest,touch);}
+try{
+ browser=await chromium.launch({headless:true,executablePath:'/usr/bin/chromium'});
+ for(const viewport of [{width:1365,height:1000},{width:390,height:844},{width:320,height:740},{width:844,height:390}]){
+  const touch=viewport.width!==1365,id=String(viewport.width);context=await browser.newContext({viewport,hasTouch:touch});
+  await context.addInitScript(()=>localStorage.setItem('game100garage:analytics-consent:v1','denied'));
+  await context.route(/analytics\.game100garage\.com|google-analytics\.com|googletagmanager\.com|pagead2\.googlesyndication\.com/,r=>r.fulfill({status:200,body:''}));
+  const p=await context.newPage();p.on('pageerror',e=>errors.push({viewport:id,error:e.message}));
+  await p.goto(base);const deny=p.getByRole('button',{name:'拒否',exact:true});if(await deny.isVisible())await deny.click();
+  assert.equal(await p.evaluate(()=>typeof window.__game022),'undefined');
+  await shot(p,id+'-title');await tap(p,'#practice-button',touch);
+  // Practice is the product's separate six-card tutorial, not a full-deck fixture.
+  if(!touch){
+   let a=await p.locator('.card[data-source="tableau"][data-column="1"]').boundingBox();await p.mouse.move(a.x+a.width/2,a.y+a.height/2);await p.mouse.down();await p.mouse.move(a.x+a.width/2+30,a.y+a.height/2+20,{steps:5});assert.equal(await p.locator('.drag-ghost').count(),1);await p.mouse.move(10,10,{steps:5});await p.mouse.up();assert.equal(await p.locator('.drag-ghost').count(),0);assert.equal(await p.locator('#move-count').textContent(),'0');await p.waitForTimeout(520);
+   a=await p.locator('.card[data-source="tableau"][data-column="1"]').boundingBox();const b=await p.locator('.card[data-source="tableau"][data-column="0"]').boundingBox();await p.mouse.move(a.x+a.width/2,a.y+a.height/2);await p.mouse.down();await p.mouse.move(b.x+b.width/2,b.y+b.height/2,{steps:10});await p.mouse.up();assert.equal(await p.locator('#move-count').textContent(),'1');await p.waitForTimeout(520);
+   }else if(viewport.width===390){
+   await tap(p,'#drag-button',true);const source=p.locator('.card[data-source="tableau"][data-column="1"]');await source.scrollIntoViewIfNeeded();const a=await source.boundingBox(),b=await p.locator('.card[data-source="tableau"][data-column="0"]').boundingBox();
+   const c=await context.newCDPSession(p);await c.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:a.x+a.width/2,y:a.y+a.height/2}]});await c.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:a.x+a.width/2+25,y:a.y+a.height/2+10}]});assert.equal(await p.locator('.drag-ghost').count(),1);await c.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});assert.equal(await p.locator('.drag-ghost').count(),0);assert.equal(await p.locator('#move-count').textContent(),'0');await c.detach();await p.waitForTimeout(550);
+   await touchScroll(p,{x:a.x+a.width/2,y:a.y+a.height/2},{x:b.x+b.width/2,y:b.y+b.height/2});assert.equal(await p.locator('#move-count').textContent(),'1');await tap(p,'#drag-button',true);
+  }else await practiceMove(p,'.card[data-source="tableau"][data-column="1"]','.card[data-source="tableau"][data-column="0"]',touch);
+  // Exposed suffix height is measured after a real legal stack move.
+  const strips=await p.locator('.tableau-column[data-column="0"] .card').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().top));assert.equal(Math.round(strips[1]-strips[0]),44);
+  await tap(p,'#undo-button',touch);assert.equal(await p.locator('#move-count').textContent(),'0');
+  await practiceMove(p,'.card[data-source="tableau"][data-column="1"]','.card[data-source="tableau"][data-column="0"]',touch);
+  await practiceMove(p,'.card[data-source="tableau"][data-column="2"]','.empty-pile[data-destination="tableau"][data-column="3"]',touch);
+  await practiceMove(p,'.card[data-source="tableau"][data-column="4"]','.empty-pile[data-destination="foundation"][data-column="0"]',touch);
+  assert.equal(await p.locator('#app').getAttribute('data-state'),'result');await shot(p,id+'-practice-complete');assert.equal(await saved(p),null);
+  await tap(p,'#practice-title-button',touch);await p.locator('#deal-mode').selectOption('daily');await p.locator('#draw-mode').selectOption('1');await tap(p,'#play-button',touch);
+  assert.equal((await saved(p)).snapshot.position.tableau.flat().length,28);assert.equal((await saved(p)).snapshot.position.stock.length,24);
+  const before=await position(p);await tap(p,'#stock-button',touch);assert.equal((await position(p)).waste.length,1);await tap(p,'#undo-button',touch);assert.deepEqual(await position(p),before);
+  await tap(p,'#hint-button',touch);assert.deepEqual(await position(p),before);
+  const hint=p.locator('.card[data-hint="true"]');let nativeHintMove=false;
+  if(await hint.count()) {const destination=p.locator('.pile[data-hint="true"],.tableau-column[data-hint="true"]').first();await tap(p,'.card[data-hint="true"]',touch);const d=await destination.getAttribute('data-column'),kind=await destination.getAttribute('data-destination');if(kind==='foundation')await tap(p,`.empty-pile[data-destination="foundation"][data-column="${d}"]`,touch);else {const card=p.locator(`.tableau-column[data-column="${d}"] .card`).last();if(await card.count()){if(touch)await card.tap();else await card.click();}else await tap(p,`.empty-pile[data-destination="tableau"][data-column="${d}"]`,touch);}assert.equal((await position(p)).moves,before.moves+1);nativeHintMove=true;}
+  // Draw ordinary cards and use one-card assistance only when UI exposes an Ace/legal card.
+  let assistanceMoved=false;for(let i=0;i<25&&!assistanceMoved;i++){const n=await p.locator('#foundation-count').textContent();await tap(p,'#assist-button',touch);const m=await p.locator('#foundation-count').textContent();if(n!==m){assistanceMoved=true;break;}await tap(p,'#stock-button',touch);}
+  assert.equal(assistanceMoved,true);assert.equal(await p.locator('#finish-button').isDisabled(),true);
+  // Board scroll uses native wheel/touch input. No model or scroll-position setter is used.
+  await p.locator('#board-scroll').scrollIntoViewIfNeeded();const bounds=await p.locator('#board-scroll').boundingBox();const overflow=await p.locator('#board-scroll').evaluate(n=>({x:n.scrollWidth>n.clientWidth,y:n.scrollHeight>n.clientHeight}));let horizontalReached=true;
+  if(overflow.x){await touchScroll(p,{x:bounds.x+bounds.width-25,y:bounds.y+Math.min(130,bounds.height-25)},{x:bounds.x+25,y:bounds.y+Math.min(130,bounds.height-25)});const state=await p.locator('#board-scroll').evaluate(n=>({left:n.scrollLeft,max:n.scrollWidth-n.clientWidth}));horizontalReached=state.left>0;assert.equal(horizontalReached,true);await p.locator('.tableau-column[data-column="6"] .card').last().tap();await p.keyboard.press('Escape');}
+  if(overflow.y){await p.locator('#board-scroll').hover();await p.mouse.wheel(0,350);await p.waitForTimeout(250);assert.ok(await p.locator('#board-scroll').evaluate(n=>n.scrollTop)>0);}
+  await p.locator('#board-scroll').hover();await p.mouse.wheel(-600,-1000);await p.waitForTimeout(300);await p.mouse.move(0,0);
+  await shot(p,id+'-playing');
+  if(!touch){await p.evaluate(()=>scrollTo(0,0));await shot(p,'desktop-thumbnail-source');const crop=await p.evaluate(()=>{const b=document.querySelector('#board-scroll').getBoundingClientRect(),h=document.querySelector('.hud').getBoundingClientRect();const x=Math.floor(Math.min(b.left,h.left)),y=Math.floor(h.top),r=Math.ceil(Math.max(b.right,h.right)),bottom=Math.ceil(b.bottom);return{x,y,width:r-x,height:bottom-y};});results.push({thumbnail:{path:'docs/game022/QA/compiled/desktop-thumbnail-source.png',viewport,crop,actualNormalDeal:true,syntheticFixture:false}});}
+  await tap(p,'#pause-button',touch);const clock=await p.locator('#elapsed').textContent();await p.waitForTimeout(1250);assert.equal(await p.locator('#elapsed').textContent(),clock);await shot(p,id+'-pause');await tap(p,'#resume-button',touch);
+  await tap(p,'#restart-button',touch);const preserved=await position(p);await tap(p,'#cancel-deal-button',touch);assert.deepEqual(await position(p),preserved);
+  await tap(p,'#mute-button',touch);assert.equal(await p.locator('#mute-button').textContent(),'音 OFF');const prior=await saved(p);await p.reload();assert.equal(await p.locator('#mute-button').textContent(),'音 OFF');assert.equal(await p.locator('#app').getAttribute('data-state'),'title');
+  // Previously saved RUN must survive a title-only explanation and Portal/pagehide.
+  await tap(p,'#explain-button',touch);await shot(p,id+'-explanation');await p.locator('#menu-portal-link').click();await p.waitForURL('**/index.html');await p.goto(base);assert.deepEqual((await saved(p)).snapshot.position,prior.snapshot.position);assert.equal((await saved(p)).snapshot.analytics_run_id,prior.snapshot.analytics_run_id);
+  await tap(p,'#resume-saved-button',touch);assert.deepEqual(await position(p),prior.snapshot.position);assert.equal((await saved(p)).snapshot.analytics_run_id,prior.snapshot.analytics_run_id);
+  await tap(p,'#help-button',touch);await tap(p,'#continue-button',touch);assert.equal(await p.locator('#app').getAttribute('data-state'),'playing');
+  await tap(p,'#title-button',touch);await p.locator('#draw-mode').selectOption('3');await tap(p,'#play-button',touch);const three=await position(p);await tap(p,'#stock-button',touch);assert.equal((await position(p)).waste.length,3);await tap(p,'#undo-button',touch);assert.deepEqual(await position(p),three);
+  const dimensions=await p.evaluate(()=>({viewport:innerWidth,pageWidth:document.documentElement.scrollWidth,tools:[...document.querySelectorAll('#tools button')].map(n=>({id:n.id,w:n.getBoundingClientRect().width,h:n.getBoundingClientRect().height}))}));assert.ok(dimensions.pageWidth<=viewport.width);assert.ok(dimensions.tools.every(n=>n.h>=44&&n.w>=44));
+  results.push({viewport,touch,practiceThreeActualMoves:true,practiceUndo:true,exposedFaceUpStrip:44,nativeDesktopDragAndOutsideCancel:!touch,nativeTouchDragAndPointerCancel:viewport.width===390,normalHintMove:nativeHintMove,normalStockUndo:true,hintDidNotChangePosition:true,oneCardFoundationAssist:true,finishDisabledWithoutProof:true,boardOverflow:overflow,horizontalReached,pauseClockStopped:true,restartCancelPreserved:true,reloadRunAndPositionPreserved:true,titleExplanationPortalPreserved:true,muteReload:true,threeCardDrawUndo:true,productionHookAbsent:true,dimensions});
+  await context.close();context=null;
+ }
+ assert.deepEqual(errors,[]);
+}catch(e){results.push({failure:{name:e.name,message:e.message,stack:e.stack}});process.exitCode=1;}
+finally{if(context)await context.close();if(browser)await browser.close();await writeFile(new URL('reviewer-report.json',output),JSON.stringify({reviewer:'classic_review',observedAt:new Date().toISOString(),base,provenance:'Compiled normal daily deals and native product practice; no fixture injection, no DEV hook access. Mouse/touch/keyboard automation is not human play or a physical iPhone.',results,errors},null,2)+'\n');}

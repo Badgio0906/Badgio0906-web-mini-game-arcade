@@ -1,0 +1,15 @@
+{
+ "id":"game022","title":"ひと息ソリティア ～KLONDIKE～","titleEn":"KLONDIKE",
+ "tagline":"一枚ずつ、すっきり。いつものカードで、ひと息。",
+ "genre":"classic card / Klondike solitaire","coreMechanic":"Move exposed alternating descending stacks among seven tableau columns and build four suited A-to-K foundations; draw one or three cards with unlimited ordered recycling.",
+ "skillAxes":["visible card planning","sequence recognition","stock cycle memory"],"runSecondsDesignTarget":null,"timeLimit":null,
+ "inputs":{"select":"click / tap card then destination, native Tab and Enter/Space, arrow focus navigation","drag":"desktop pointer drag; explicit touch drag mode; 12px threshold, cancellation clears gesture","pause":"pause button; blur; visibility hidden"},
+ "modes":["random draw-1","random draw-3","JST daily draw-1","JST daily draw-3"],
+ "assist":"1000-step exact pile/face/move-count undo; visible-only hint; user-triggered single foundation move; dry-run-proven finish when all exposed and stock/waste empty",
+ "practice":"Optional six-card fixture, three actual legal moves, no save/BEST/production RUN or clears",
+ "storagePrefix":"web-mini-arcade:v1:game022:","storage":"One defensive JSON session contains game_id, rule identifier, unique full 52-card state/history, seed/mode/draw/daily date, elapsed, assistance, analytics identity, reported flag and clear ledger. Audio preferences use StorageService.",
+ "creditMode":"free","ads":"none in game logic","jev":"development-only Shadow findings; no runtime API or automated approval",
+ "humanReview":"Author subjective playtest and physical devices pending; prototype publication authorized by user",
+ "revision":1,"rules_version":"1","presentation_version":"prototype-1","model_rules_identifier":"klondike-v1",
+ "telemetry":"Common consent/environment services; remoteCollectionEnabled false pending parent Worker registration. New run_start obtains shared analytics ID; restoration rebinds same ID without another start. Primitive stage metadata only, no hidden cards. Practice events excluded from production. Reload and portal save resumable run without run_end."
+}

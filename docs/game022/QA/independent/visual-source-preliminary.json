@@ -1,0 +1,49 @@
+{
+  "reviewer": "classic_review",
+  "observed_at": "2026-10-07T15:32:04.896651+00:00",
+  "scope": "Independent source and actual screenshot review. No browser launched by this reviewer yet; compiled normal-input review pending.",
+  "source_matches_repair_freeze": {
+    "game022.html": true,
+    "src/games/game022/Klondike.ts": true,
+    "src/games/game022/cards.ts": true,
+    "src/games/game022/game.manifest.json": true,
+    "src/games/game022/main.ts": true,
+    "src/games/game022/persistence.ts": true,
+    "src/games/game022/style.css": true,
+    "tests/game022/title-explanation-regression.mjs": true
+  },
+  "image_provenance": "Other independent worker: DEV known-solvable authored 52-card fixture, native inputs. Synthetic deck appearance only; not random-deal human play or production clear guarantee.",
+  "images_viewed": [
+    "1280-board.png",
+    "390-board.png",
+    "320-board.png",
+    "844-board.png",
+    "1280-result.png",
+    "320-result.png",
+    "844-result.png"
+  ],
+  "visual_first_score": {
+    "total": 82,
+    "A": 13,
+    "B": 14,
+    "C": 8,
+    "D": 9,
+    "E": 7,
+    "F": 12,
+    "G": 6,
+    "H": 13
+  },
+  "visual_status": "Image gate met; final compiled ordinary-input review pending.",
+  "observations": [
+    "Plant-back vector, card ranks and suit glyphs are independent simple code artwork. Red/black suits maintained. Clear green table and off-white cards keep stock/tableau/foundation identities legible.",
+    "Narrow screens intentionally scroll a 426px board horizontally. Initial320 screenshot exposes only columns1..5 and some foundations; this is an internal scroller, not proof that the remaining columns are inaccessible. Native fixture report clears all52 at320 but a normal scroll/input check remains needed.",
+    "Landscape844 board uses max-height260 vertical scroller; lower portions of tableau are intentionally offscreen. Result dialog clips its lower action in the screenshot and requires internal scrolling. Completion/reload evidence exists but reviewer has not yet measured that scroll.",
+    "Main tool buttons min-height44 and card width54/height84 on mobile are source values, not reviewer DOM measurements. Face-up stack spacing32 gives a smaller exposed strip despite full card bounding boxes; do not claim every visible suffix hit region is44px high.",
+    "Card rank/suit and upper corner are distinct. Mild gold selection/hint outlines and low-saturation surface are consistent with quiet brief; screenshot transitions do not establish motion smoothness."
+  ],
+  "limits": [
+    "No direct comparison with original reference image received by this reviewer.",
+    "No real iPhone, audio, FPS, human fun or natural clear difficulty evaluation.",
+    "Normal compiled title/explanation provenance fix and mobile horizontal scrolling still require actual operation."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "finding_id": "g022-suffix-move-fixture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "classic021-independent-game022-reviewer",
+  "rationale": "Without reading Jev answers, inspect original fixture: its source suffix contains rank6 clubs and rank4 diamonds, which violates descending-by-one, and its proposed target is rank8 clubs. The model should return false. The repaired fixture supplies rank7 diamonds, rank6 clubs, rank5 diamonds onto rank8 spades; all identities remain unique and 19 model/persistence tests pass. This original error is confined to synthetic test data, not runtime legal-move behavior.",
+  "evidence": [
+    "docs/game022/QA/MODEL_FIRST_RUN.txt",
+    "docs/game022/QA/SUFFIX_FIXTURE_FINDING.json",
+    "tests/unit/game022.test.ts:14",
+    "docs/game022/QA/independent/model-author-suite.txt",
+    "docs/game022/QA/independent/model-probe.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently checked original ranks/colours against descending and legal, then reran final tests and additional seeded model simulations.",
+    "evidence": [
+      "tests/unit/game022.test.ts:14",
+      "src/games/game022/Klondike.ts:89",
+      "docs/game022/QA/independent/model-author-suite.txt",
+      "docs/game022/QA/independent/model-probe.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

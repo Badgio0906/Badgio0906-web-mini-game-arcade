@@ -1,0 +1,39 @@
+{
+  "finding_id": "g022-touch-implicit-capture-transfer",
+  "reviewer": "classic_review",
+  "judged_at": "2026-10-07T15:45:12.219143+00:00",
+  "rationale": "The advertised finger drag fails from a normal card-center touch due to capture transfer; selectable-tap fallback remains available, so this blocks that input mode rather than the whole game.",
+  "evidence": [
+    "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json",
+    "docs/game022/QA/independent/touch-capture-initial/native-input-state.png",
+    "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read preserved main.ts pointerdown/move/capture-loss path; performed native CDP input trace with actual document event targets. Verified capture loss happens before destination pointerup and current drag is erased. No product source changed. Root to record hidden-answer Shadow before repair.",
+    "evidence": [
+      "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json",
+      "docs/game022/QA/independent/touch-capture-initial/native-input-state.png",
+      "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"
+    ]
+  },
+  "protocol": "Judgment independent; no Jev answer/log read. Root owns Shadow recording and product repair.",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null,
+  "resolution_source_review": {
+    "reviewed_at": "2026-10-07T16:00:11.412657+00:00",
+    "main_sha256": "0b94c582219a8405a476f7e7aa49a18b0f5f92e51c60eca19cd27a9dd733f9ee",
+    "source_change": "Matching pointer guard, lost-capture event ignored only while current pending card owns that pointer. Genuine loss or matching cancellation still clears.",
+    "actual_operation": "Repaired compiled390 practice native card-center touch drag moved red5 onto black6 (moves1), touchCancel cleared ghost without moving, undo restored, three real practice steps completed. Overall collector later stopped on separate pan assertion; do not call whole run PASS.",
+    "evidence": [
+      "docs/game022/QA/compiled/reviewer-probe.mjs",
+      "docs/game022/QA/compiled/reviewer-pan-diagnostic-initial.json",
+      "docs/game022/QA/compiled/390-practice-complete.png"
+    ],
+    "shadow_protocol": "Parent reports one actual AVAILABLE HTTP200 request before fix following local normalization; independent reviewer did not view log/answer."
+  }
+}
