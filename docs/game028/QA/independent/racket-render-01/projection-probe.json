@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-07T18:08:48.786351+00:00",
+  "kind": "source-derived projection arithmetic; no live screen claim",
+  "ball": {
+    "x": 0.12,
+    "y": 0.86,
+    "z": 0.08,
+    "expected": 0,
+    "bounces": 1
+  },
+  "paddle_x": 0,
+  "hit_predicates": {
+    "receiver": true,
+    "one_bounce": true,
+    "z_le_point6": true,
+    "y_in_band": true,
+    "x_in_radius": true
+  },
+  "accepted_horizontal_separation_pixels": 69.10799999999999,
+  "rendered_racket_max_horizontal_extent": 41.62376366808301,
+  "rendered_ball_radius": 12,
+  "gap_beyond_visible_extents": 15.484236331916982,
+  "additional_source_observation": {
+    "net_modeled_height_projection": 17.5,
+    "draw_net_top": 32,
+    "draw_net_mesh_top": 30,
+    "reason": "Observed after API state capture; same hardcoded render/model mapping cause; not sent retroactively."
+  }
+}

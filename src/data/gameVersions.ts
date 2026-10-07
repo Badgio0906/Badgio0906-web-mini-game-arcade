@@ -66,5 +66,6 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
   "game024": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game025": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game026": { "rules_version": "1", "presentation_version": "prototype-1" },
-  "game027": { "rules_version": "1", "presentation_version": "prototype-1" }
+  "game027": { "rules_version": "1", "presentation_version": "prototype-1" },
+  "game028": { "rules_version": "1", "presentation_version": "prototype-1" }
 };

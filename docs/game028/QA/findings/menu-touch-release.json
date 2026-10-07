@@ -1,0 +1,23 @@
+{
+  "finding_id": "028-menu-touch-release",
+  "problem": "A native phone tap on the optional explanation button leaves the title open.",
+  "expected": "A fresh same-phase phone tap opens the explanation; true cancellations and old-phase gestures are rejected.",
+  "observed": [
+    "Compiled phone390x844 input trace records explain pointerdown, pointerup, lostpointercapture, then trusted click on the same button and title phase remains.",
+    "Menu lostpointercapture handler clears MenuGesture.press, which the capture click guard requires for physical detail>0.",
+    "Desktop optional explanation and normal short match result passed in the same collector; phone stopped on its first explanation check."
+  ],
+  "unknown": [
+    "Whether other native mobile browsers have the same implicit capture release ordering."
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+    "docs/game028/QA/native-Ck89HXbh-20261008-r04/phone-failure.png",
+    "docs/game028/QA/findings/menu-touch-release-before/input.ts"
+  ],
+  "provenance": "compiled native normal input; independent source inspection; automated not human"
+}

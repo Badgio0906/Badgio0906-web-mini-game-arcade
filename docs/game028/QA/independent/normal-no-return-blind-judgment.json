@@ -1,0 +1,26 @@
+{
+  "finding_id": "028-normal-native-no-return",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "The collector requires two automatic returns with a stationary centred player after a centre serve. The request requires positioning and impact offset to change return angle, not guaranteed perfect CPU-centre returns. Frozen model hit sets horizontal velocity from offset; CPU samples current ball position with bounded error. Seed28 source simulation and author physics trace show a legal CPU angled return at1.2167s followed by a legitimate player miss at2.4833s/returns1; fresh actual diagnostic obtains returns2 with a different normal seed. This establishes an over-specific nondeterministic test expectation. Exact original failing count/state is missing, so its precise causal history remains unconfirmed; do not claim all first failure details reproduced.",
+  "evidence": [
+    "docs/game028/QA/SOURCE_FREEZE_INPUT_BOUNDARY.json",
+    "docs/game028/QA/findings/normal-no-return.json",
+    "docs/game028/QA/diagnostic-no-return-20261008/trace.json",
+    "docs/game028/QA/diagnostic-no-return-physics.txt",
+    "docs/game028/QA/independent/review-source-20261007T1810/simulation.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Compared fixed-source36 simulated matches across difficulties/seeds and bounded outcomes, source CPU/offset logic, supplied seed28 physics trace and fresh native diagnostic. Recommended changing collector expectation to an observable legal return OR score based on actual state, and separately deliberate tracked-player return checks. Do not alter production angles/CPU to satisfy this fixture.",
+    "evidence": [
+      "docs/game028/QA/independent/review-source-20261007T1810/simulation.json",
+      "docs/game028/QA/diagnostic-no-return-physics.txt",
+      "docs/game028/QA/diagnostic-no-return-20261008/trace.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

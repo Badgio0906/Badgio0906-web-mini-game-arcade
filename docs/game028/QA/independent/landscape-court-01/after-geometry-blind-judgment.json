@@ -1,0 +1,102 @@
+{
+  "recorded_at": "2026-10-07T19:28:53.513357+00:00",
+  "reviewer": "resume_review",
+  "jev_answers_read": false,
+  "finding_id": "landscape-control-overlap",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "method": "Independent source plus actual bounded readonly computedgrid/rect geometry, no additional reviewerbrowser/API.",
+  "observations": {
+    "body": {
+      "w": 844,
+      "h": 810
+    },
+    "viewport": {
+      "w": 844,
+      "h": 390
+    },
+    "relevant_boxes": {
+      ".play-layout": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 820,
+          "h": 250,
+          "right": 832,
+          "bottom": 300
+        },
+        "grid_rows": "760px"
+      },
+      ".court": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 780,
+          "h": 760,
+          "right": 792,
+          "bottom": 810
+        },
+        "grid_rows": "none"
+      },
+      "#board": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 780,
+          "h": 760,
+          "right": 792,
+          "bottom": 810
+        },
+        "grid_rows": "none"
+      },
+      "aside": {
+        "rect": {
+          "x": 597,
+          "y": 308,
+          "w": 235,
+          "h": 244,
+          "right": 832,
+          "bottom": 552
+        },
+        "grid_rows": "none"
+      },
+      "#serve": {
+        "rect": {
+          "x": 647.015625,
+          "y": 464,
+          "w": 134.96875,
+          "h": 44,
+          "right": 781.984375,
+          "bottom": 508
+        },
+        "grid_rows": "none"
+      },
+      "#analytics-settings-host": {
+        "rect": {
+          "x": 0,
+          "y": 326,
+          "w": 844,
+          "h": 64,
+          "right": 844,
+          "bottom": 390
+        },
+        "grid_rows": "none"
+      }
+    },
+    "serve_center": {
+      "x": 714.5,
+      "y": 486
+    },
+    "hit_at_serve_center": null
+  },
+  "conclusion": "Own playlayout is250px high but implicit row760px from intrinsic canvas through cyclic100percent sizing. Canvas780x760 and aside244px centered in oversized row sendsserve center486 beyond390; existing settingshost326\u2013390 is correctlyplaced. This narrows product rootcause to ownlayout intrinsic gridminimum/percentage sizes, no need sharedsettings or physical-model change.",
+  "scope": "Explicit court pixelheight fromviewportbudget/aspect width, minmax0 gridrow and min-height0 item, sidecontrols44px. Preserve780/760 drawing transform/modelprojection; afterrepair observe full4normalRUN result/retry and viewportgeometry.",
+  "evidence": "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-landscape-Cd29xNgj-20261008/geometry.json",
+  "sha256": "c619e7b02697438bc5c07c8180b68f48eb0db4279019fa3807f055ebe470834d",
+  "limits": [
+    "No physicalphone or humanfun; ownCSS fix not yet independently verified.",
+    "Original sourcehypothesis retained in preliminaryrecord, this lateractualgeometry supports narrowing."
+  ]
+}

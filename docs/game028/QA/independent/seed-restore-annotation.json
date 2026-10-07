@@ -1,0 +1,24 @@
+{
+  "finding_id": "028-native-seed-restore",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "batch_two_review",
+  "rationale": "Scoped uint32 seed validator after frozen model/parser proof; real model highseed/endpoints and unchanged counter guard regressions; R07 compiled normal desktop/phone/small restore success, separate landscape failure held.",
+  "evidence": [
+    "QA/independent/seed-restore-blind-original.json",
+    "QA/unit-uint32-restore.txt",
+    "QA/SOURCE_FREEZE_R07.json",
+    "QA/native-Cd29xNgj-20261008-r07/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Scoped uint32 seed validator after frozen model/parser proof; real model highseed/endpoints and unchanged counter guard regressions; R07 compiled normal desktop/phone/small restore success, separate landscape failure held.",
+    "evidence": [
+      "QA/unit-uint32-restore.txt",
+      "QA/SOURCE_FREEZE_R07.json",
+      "QA/native-Cd29xNgj-20261008-r07/report.json"
+    ]
+  }
+}

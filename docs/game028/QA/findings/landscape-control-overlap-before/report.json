@@ -1,0 +1,757 @@
+{
+  "started_at": "2026-10-07T19:21:07.818Z",
+  "base": "http://127.0.0.1:4928",
+  "provenance": "compiled native normal input; readonly storage inspection; no physics injection; automated not human",
+  "runs": [
+    {
+      "bundleHashes": {
+        "http://127.0.0.1:4928/assets/game028-Cd29xNgj.js": {
+          "status": 200,
+          "sha256": "e768c468ec6265e8392f1cedd9b16193750027c9f1f83ab1980ea23e85ea0514"
+        }
+      },
+      "name": "desktop",
+      "width": 1365,
+      "height": 1000,
+      "touch": false,
+      "checks": [
+        "optional explanation",
+        "score-free practice",
+        "pause practice",
+        "practice excluded from saved RUN",
+        "practice excluded from BEST",
+        "explicit practice resume",
+        "normal start",
+        "atomic active match",
+        "real serve self/opponent bounces then legal CPU return",
+        "variable angled return retains legal rally or point state",
+        "modeled height/receiver",
+        "entire table/ball playfield fits viewport",
+        "no real-time page scroll",
+        "44px controls",
+        "reload restores paused",
+        "restore no simulation catchup",
+        "local and existing observer IDs stable",
+        "restart explicit confirmation",
+        "restart cancellation resumes",
+        "retry invalidates old match",
+        "retry resets scores",
+        "native complete short match",
+        "terminal report once",
+        "one completed match report",
+        "terminal reload",
+        "no duplicate terminal report after reload",
+        "result retry",
+        "abandoned snapshot removed",
+        "no pagehide resurrection",
+        "no page errors"
+      ],
+      "errors": [],
+      "boundary": {
+        "x": 214.5,
+        "y": 131,
+        "w": 670,
+        "h": 652.8125,
+        "vw": 1365,
+        "vh": 1000,
+        "bodyW": 1365,
+        "bodyH": 1000,
+        "buttons": [
+          {
+            "id": "mute",
+            "w": 72.828125,
+            "h": 44
+          },
+          {
+            "id": "pause",
+            "w": 60.015625,
+            "h": 44
+          },
+          {
+            "id": "left",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "serve",
+            "w": 139.96875,
+            "h": 44
+          },
+          {
+            "id": "right",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "help",
+            "w": 76.015625,
+            "h": 44
+          },
+          {
+            "id": "restart",
+            "w": 92.015625,
+            "h": 44
+          }
+        ]
+      },
+      "first_normal_match": {
+        "version": 1,
+        "match": {
+          "mode": 5,
+          "difficulty": "easy",
+          "practice": false,
+          "scores": [
+            0,
+            0
+          ],
+          "firstServer": 0,
+          "rally": {
+            "id": 1,
+            "ball": {
+              "x": 0.22899038108058978,
+              "y": -0.3820099999999994,
+              "z": 0.14126818291232154,
+              "vx": 0.22012981010770064,
+              "vy": -1.62,
+              "vz": -1.066666666666666,
+              "lastHit": 0,
+              "expected": 1,
+              "bounces": 0,
+              "serve": false,
+              "stage": 1,
+              "netTouched": false
+            },
+            "status": "live",
+            "server": 0,
+            "winner": null,
+            "reason": "",
+            "returns": 2,
+            "scored": false
+          },
+          "paddles": [
+            0,
+            0.12490863087326322
+          ],
+          "maxRally": 2,
+          "points": 0,
+          "clock": 3.033333333333325,
+          "seed": 320559085,
+          "cpu": {
+            "elapsed": 0.11666666666666665,
+            "target": 0.12490863087326322,
+            "rallyId": 1
+          }
+        },
+        "observerRunId": "existing-observer-id",
+        "localReportId": "local-report-id",
+        "active": true,
+        "reported": false,
+        "stats": {
+          "wins": 0,
+          "losses": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "bestRally": 0,
+          "reportedIds": []
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "bundleHashes": {
+        "http://127.0.0.1:4928/assets/game028-Cd29xNgj.js": {
+          "status": 200,
+          "sha256": "e768c468ec6265e8392f1cedd9b16193750027c9f1f83ab1980ea23e85ea0514"
+        }
+      },
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "checks": [
+        "optional explanation",
+        "score-free practice",
+        "pause practice",
+        "practice excluded from saved RUN",
+        "practice excluded from BEST",
+        "explicit practice resume",
+        "normal start",
+        "atomic active match",
+        "real serve self/opponent bounces then legal CPU return",
+        "variable angled return retains legal rally or point state",
+        "point from missed angled return counted once",
+        "modeled height/receiver",
+        "entire table/ball playfield fits viewport",
+        "no real-time page scroll",
+        "44px controls",
+        "reload restores paused",
+        "restore no simulation catchup",
+        "local and existing observer IDs stable",
+        "restart explicit confirmation",
+        "restart cancellation resumes",
+        "retry invalidates old match",
+        "retry resets scores",
+        "native complete short match",
+        "terminal report once",
+        "one completed match report",
+        "terminal reload",
+        "no duplicate terminal report after reload",
+        "result retry",
+        "abandoned snapshot removed",
+        "no pagehide resurrection",
+        "no page errors"
+      ],
+      "errors": [],
+      "boundary": {
+        "x": 10,
+        "y": 121,
+        "w": 370,
+        "h": 360.5,
+        "vw": 390,
+        "vh": 844,
+        "bodyW": 390,
+        "bodyH": 844,
+        "buttons": [
+          {
+            "id": "mute",
+            "w": 72.828125,
+            "h": 44
+          },
+          {
+            "id": "pause",
+            "w": 60.015625,
+            "h": 44
+          },
+          {
+            "id": "left",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "serve",
+            "w": 269.96875,
+            "h": 44
+          },
+          {
+            "id": "right",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "help",
+            "w": 179,
+            "h": 44
+          },
+          {
+            "id": "restart",
+            "w": 179,
+            "h": 44
+          }
+        ]
+      },
+      "first_normal_match": {
+        "version": 1,
+        "match": {
+          "mode": 5,
+          "difficulty": "easy",
+          "practice": false,
+          "scores": [
+            0,
+            1
+          ],
+          "firstServer": 0,
+          "rally": {
+            "id": 1,
+            "ball": {
+              "x": 0.28036290182882917,
+              "y": 1.192009999999999,
+              "z": 0.16844856704695407,
+              "vx": 0.22133913302275987,
+              "vy": 1.62,
+              "vz": -0.15429566296836122,
+              "lastHit": 1,
+              "expected": 0,
+              "bounces": 1,
+              "serve": false,
+              "stage": 2,
+              "netTouched": false
+            },
+            "status": "point",
+            "server": 0,
+            "winner": 1,
+            "reason": "台の外へ出ました",
+            "returns": 1,
+            "scored": true
+          },
+          "paddles": [
+            0,
+            -0.08182958787772804
+          ],
+          "maxRally": 1,
+          "points": 1,
+          "clock": 2.483333333333327,
+          "seed": 194953627,
+          "cpu": {
+            "elapsed": 0.19166666666666665,
+            "target": -0.08182958787772804,
+            "rallyId": 1
+          }
+        },
+        "observerRunId": "existing-observer-id",
+        "localReportId": "local-report-id",
+        "active": true,
+        "reported": false,
+        "stats": {
+          "wins": 0,
+          "losses": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "bestRally": 1,
+          "reportedIds": []
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "bundleHashes": {
+        "http://127.0.0.1:4928/assets/game028-Cd29xNgj.js": {
+          "status": 200,
+          "sha256": "e768c468ec6265e8392f1cedd9b16193750027c9f1f83ab1980ea23e85ea0514"
+        }
+      },
+      "name": "small",
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "checks": [
+        "optional explanation",
+        "score-free practice",
+        "pause practice",
+        "practice excluded from saved RUN",
+        "practice excluded from BEST",
+        "explicit practice resume",
+        "normal start",
+        "atomic active match",
+        "real serve self/opponent bounces then legal CPU return",
+        "variable angled return retains legal rally or point state",
+        "point from missed angled return counted once",
+        "modeled height/receiver",
+        "entire table/ball playfield fits viewport",
+        "no real-time page scroll",
+        "44px controls",
+        "reload restores paused",
+        "restore no simulation catchup",
+        "local and existing observer IDs stable",
+        "restart explicit confirmation",
+        "restart cancellation resumes",
+        "retry invalidates old match",
+        "retry resets scores",
+        "native complete short match",
+        "terminal report once",
+        "one completed match report",
+        "terminal reload",
+        "no duplicate terminal report after reload",
+        "result retry",
+        "abandoned snapshot removed",
+        "no pagehide resurrection",
+        "no page errors"
+      ],
+      "errors": [],
+      "boundary": {
+        "x": 10,
+        "y": 121,
+        "w": 300,
+        "h": 292.296875,
+        "vw": 320,
+        "vh": 740,
+        "bodyW": 320,
+        "bodyH": 740,
+        "buttons": [
+          {
+            "id": "mute",
+            "w": 72.828125,
+            "h": 44
+          },
+          {
+            "id": "pause",
+            "w": 60.015625,
+            "h": 44
+          },
+          {
+            "id": "left",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "serve",
+            "w": 199.96875,
+            "h": 44
+          },
+          {
+            "id": "right",
+            "w": 44.015625,
+            "h": 44
+          },
+          {
+            "id": "help",
+            "w": 144,
+            "h": 44
+          },
+          {
+            "id": "restart",
+            "w": 144,
+            "h": 44
+          }
+        ]
+      },
+      "first_normal_match": {
+        "version": 1,
+        "match": {
+          "mode": 5,
+          "difficulty": "easy",
+          "practice": false,
+          "scores": [
+            0,
+            1
+          ],
+          "firstServer": 0,
+          "rally": {
+            "id": 1,
+            "ball": {
+              "x": -0.19199667073898616,
+              "y": 1.192009999999999,
+              "z": 0.16844856704695407,
+              "vx": -0.1515763190044626,
+              "vy": 1.62,
+              "vz": -0.15429566296836122,
+              "lastHit": 1,
+              "expected": 0,
+              "bounces": 1,
+              "serve": false,
+              "stage": 2,
+              "netTouched": false
+            },
+            "status": "point",
+            "server": 0,
+            "winner": 1,
+            "reason": "台の外へ出ました",
+            "returns": 1,
+            "scored": true
+          },
+          "paddles": [
+            0,
+            0.05462433750741184
+          ],
+          "maxRally": 1,
+          "points": 1,
+          "clock": 2.483333333333327,
+          "seed": 3450871110,
+          "cpu": {
+            "elapsed": 0.19166666666666665,
+            "target": 0.05462433750741184,
+            "rallyId": 1
+          }
+        },
+        "observerRunId": "existing-observer-id",
+        "localReportId": "local-report-id",
+        "active": true,
+        "reported": false,
+        "stats": {
+          "wins": 0,
+          "losses": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "bestRally": 1,
+          "reportedIds": []
+        }
+      },
+      "status": "PASS"
+    }
+  ],
+  "collector_sha256": "9095d545045bdfe6d23c77210e51707a14bae642c426994a42afc9592e4c5236",
+  "freeze": {
+    "recorded_at": "2026-10-07T19:19:47.636741+00:00",
+    "base_commit": "7c3d089d69da1ff076c63acb7c3ba96449728a1d",
+    "files": {
+      "game028.html": "2eec9a2d9299b7290f1816e47a25b0ab0e42ac5d561e0cf519980b84e21efeed",
+      "src/games/game028/clock.ts": "f2827e99628810e956d4330a721c161207d9b454545db9b7effd4fd004d08539",
+      "src/games/game028/game.manifest.json": "f1e5b3deede71ebc6c543aaf9464b2ef9da48f43153728b87f9f27fa25a5cef2",
+      "src/games/game028/input.ts": "a966247d2a190b68d9f143a3354cfd368a98197cda2147d31c77379cec68e289",
+      "src/games/game028/main.ts": "b1c5c14f321bc38cf0f7bc03cee20cbbbccac0a1e2f5c69ede69b654a28b627e",
+      "src/games/game028/model.ts": "1fa26006a8a9bbd564e4ecac99c970b3c146afe26bce9dc6d3a24cdabfeded11",
+      "src/games/game028/save.ts": "da9388ede6ce9f1b68f8a54f69911476f59bb1a705faa4212c46e0fbea8e53e8",
+      "src/games/game028/style.css": "aa45b090af27c10f78077c0b4b4d8a99e32d493ef29eddc5d93622b01be360e3",
+      "src/games/game028/view.ts": "ae198d052762daf7e0b98073dbfd79b41a77c7f0805a213eca3578d02d401a7b",
+      "tests/unit/game028-model.test.ts": "9f6a8ed8ae9cef1d44af62e28e854796c99553a1dec6f451aab0b802cfa73189",
+      "tests/unit/game028-save-input.test.ts": "0d5a32f5c644841c9db221f4a0105ef5133139e803309ddd980642628543e56c"
+    },
+    "dependencies": {
+      "src/core/TelemetryService.ts": {
+        "sha256": "cfcefdbc59ff78044e2e6aa98fb9764d7df08a9ac8396e0a821cd538dc5d845e",
+        "owner": "root mirrored implementation; author did not change sharedservice"
+      }
+    },
+    "build_assets": {
+      "dist-game028/assets/game028-Cd29xNgj.js": "e768c468ec6265e8392f1cedd9b16193750027c9f1f83ab1980ea23e85ea0514",
+      "dist-game028/assets/game028-J3ubQHv8.css": "a9bce2beca92977a0e392ef44b4372b39e5ecd9c06d207e58de695a9edb7c7c8"
+    },
+    "corrections": "R05 unchanged gameplay/input plus scoped RNG unsigned32-bit validation; other natural counter limits retained; root-authorized point telemetry ASCII literal codes, UI Japanese reason unchanged, physics unchanged",
+    "test_results": {
+      "target": 47,
+      "typecheck": "PASS",
+      "own_build": "PASS"
+    },
+    "limitations": "actual 4-view native pending; original R05 before-reload payload gap retained; original archived report not reconstructed"
+  },
+  "current_boundary": {
+    "x": 10,
+    "y": 121,
+    "w": 300,
+    "h": 292.296875,
+    "vw": 320,
+    "vh": 740,
+    "bodyW": 320,
+    "bodyH": 740,
+    "buttons": [
+      {
+        "id": "mute",
+        "w": 72.828125,
+        "h": 44
+      },
+      {
+        "id": "pause",
+        "w": 60.015625,
+        "h": 44
+      },
+      {
+        "id": "left",
+        "w": 44.015625,
+        "h": 44
+      },
+      {
+        "id": "serve",
+        "w": 199.96875,
+        "h": 44
+      },
+      {
+        "id": "right",
+        "w": 44.015625,
+        "h": 44
+      },
+      {
+        "id": "help",
+        "w": 144,
+        "h": 44
+      },
+      {
+        "id": "restart",
+        "w": 144,
+        "h": 44
+      }
+    ]
+  },
+  "current_before_reload": {
+    "recorded_at": "2026-10-07T19:22:33.646Z",
+    "viewport": "small",
+    "phase": "paused",
+    "save": {
+      "version": 1,
+      "match": {
+        "mode": 5,
+        "difficulty": "easy",
+        "practice": false,
+        "scores": [
+          0,
+          1
+        ],
+        "firstServer": 0,
+        "rally": {
+          "id": 1,
+          "ball": {
+            "x": -0.19199667073898616,
+            "y": 1.192009999999999,
+            "z": 0.16844856704695407,
+            "vx": -0.1515763190044626,
+            "vy": 1.62,
+            "vz": -0.15429566296836122,
+            "lastHit": 1,
+            "expected": 0,
+            "bounces": 1,
+            "serve": false,
+            "stage": 2,
+            "netTouched": false
+          },
+          "status": "point",
+          "server": 0,
+          "winner": 1,
+          "reason": "台の外へ出ました",
+          "returns": 1,
+          "scored": true
+        },
+        "paddles": [
+          0,
+          0.05462433750741184
+        ],
+        "maxRally": 1,
+        "points": 1,
+        "clock": 2.483333333333327,
+        "seed": 3450871110,
+        "cpu": {
+          "elapsed": 0.19166666666666665,
+          "target": 0.05462433750741184,
+          "rallyId": 1
+        }
+      },
+      "observerRunId": "existing-observer-id",
+      "localReportId": "local-report-id",
+      "active": true,
+      "reported": false,
+      "stats": {
+        "wins": 0,
+        "losses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "bestRally": 1,
+        "reportedIds": []
+      }
+    }
+  },
+  "failure": {
+    "message": "locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#serve')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"serve\" type=\"button\">サーブ</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "stack": "locator.tap: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#serve')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"serve\" type=\"button\">サーブ</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <canvas id=\"board\" role=\"img\" width=\"780\" height=\"760\" tabindex=\"0\" data-game-interaction=\"\" aria-label=\"青緑の卓球台。奥がCPU、手前があなた。左右にラケットを動かして球を返します\"></canvas> from <div class=\"court\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at click (/workspace/batch-two-author-028/tests/game028/native.mjs:9:69)\n    at /workspace/batch-two-author-028/tests/game028/native.mjs:12:244",
+    "viewport": "landscape",
+    "current": {
+      "phase": "practice",
+      "status": "あなたのサーブ · サーブボタンで開始。",
+      "rally": "0",
+      "input": [
+        {
+          "at": 620.9000000059605,
+          "name": "pointerdown",
+          "target": "analytics-settings-host",
+          "x": 528.5,
+          "y": 143,
+          "phase": "title"
+        },
+        {
+          "at": 621.5,
+          "name": "pointerup",
+          "target": "analytics-settings-host",
+          "x": 528.5,
+          "y": 143,
+          "phase": "title"
+        },
+        {
+          "at": 621.6000000014901,
+          "name": "click",
+          "target": "analytics-settings-host",
+          "x": 528,
+          "y": 143,
+          "phase": "title"
+        },
+        {
+          "at": 1000.8000000044703,
+          "name": "pointerdown",
+          "target": "explain",
+          "x": 422,
+          "y": 228.75999450683594,
+          "phase": "title"
+        },
+        {
+          "at": 1001.4000000059605,
+          "name": "pointerup",
+          "target": "explain",
+          "x": 422,
+          "y": 228.75999450683594,
+          "phase": "title"
+        },
+        {
+          "at": 1001.5,
+          "name": "lostpointercapture",
+          "target": "explain",
+          "x": 422,
+          "y": 228.75999450683594,
+          "phase": "title"
+        },
+        {
+          "at": 1003.7000000029802,
+          "name": "click",
+          "target": "explain",
+          "x": 422,
+          "y": 229,
+          "phase": "title"
+        },
+        {
+          "at": 1183.8000000044703,
+          "name": "pointerdown",
+          "target": "practice",
+          "x": 422,
+          "y": 228.9499969482422,
+          "phase": "explanation"
+        },
+        {
+          "at": 1184,
+          "name": "pointerup",
+          "target": "practice",
+          "x": 422,
+          "y": 228.9499969482422,
+          "phase": "explanation"
+        },
+        {
+          "at": 1184.1000000014901,
+          "name": "lostpointercapture",
+          "target": "practice",
+          "x": 422,
+          "y": 228.9499969482422,
+          "phase": "explanation"
+        },
+        {
+          "at": 1185.3000000044703,
+          "name": "click",
+          "target": "practice",
+          "x": 422,
+          "y": 229,
+          "phase": "explanation"
+        }
+      ],
+      "geometry": {
+        "body": {
+          "w": 844,
+          "h": 810
+        },
+        "html": {
+          "w": 844,
+          "h": 810
+        },
+        "app": {
+          "w": 844,
+          "h": 810
+        },
+        "viewport": {
+          "w": 844,
+          "h": 390
+        }
+      },
+      "save": {
+        "version": 1,
+        "match": null,
+        "observerRunId": null,
+        "localReportId": null,
+        "active": false,
+        "reported": true,
+        "stats": {
+          "wins": 0,
+          "losses": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "bestRally": 0,
+          "reportedIds": []
+        }
+      },
+      "scripts": [
+        "http://127.0.0.1:4928/assets/game028-Cd29xNgj.js"
+      ]
+    }
+  },
+  "finished_at": "2026-10-07T19:23:30.951Z"
+}

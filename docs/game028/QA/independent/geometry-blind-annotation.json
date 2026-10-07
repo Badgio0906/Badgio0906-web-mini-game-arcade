@@ -1,0 +1,23 @@
+{
+  "finding_id": "028-native-scroll-measurement",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Own app min-height100dvh reserves the whole viewport before the existing64px analytics settings row appended to body. The bounded native diagnostic measured body1064 at viewport1000 both before and after correct consent dismissal. Closed dialog has zero geometry. This violates requested no realtime page scroll, but the actual court spans y131..783.8125 and remains entirely visible, so no demonstrated critical play blockage. Wrong denial selector is a separate collector correction and does not explain the remaining64px after proper denial. Scope-own layout budget should account for the existing row; do not alter shared Analytics UI.",
+  "evidence": [
+    "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json",
+    "/workspace/batch-two-author-028/src/games/game028/style.css",
+    "/workspace/batch-two-author-028/src/analytics/consentUI.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared own viewport min-height with unchanged settings host append/block CSS and actual before/after denial DOM geometry.",
+    "evidence": [
+      "/workspace/batch-two-author-028/src/analytics/consentUI.ts",
+      "/workspace/batch-two-author-028/docs/game028/QA/diagnostic-geometry-BiMqlmti-20261008/geometry.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

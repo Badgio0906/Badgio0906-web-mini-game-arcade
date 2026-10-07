@@ -1,0 +1,23 @@
+{
+  "finding_id": "game028-racket-render-model-width",
+  "recorded_at": "2026-10-07T18:08:48.786545+00:00",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "batch_two_review",
+  "rationale": "Collision tolerance functions but its accepted x interval is wider than the visible paddle and ball, so contact feedback misrepresents placement. Source-derived valid contact at x .12,y .86,z .08 has69.108designpx separation vs racket~41.62+ball12, proving a15.49px horizontal gap. Not a gameplay crash or critical operation failure; scope rendering to existing model/projection instead of narrowing easy-play physics solely for fixture. Net hardcoded drawn height also differs from model projected plane; same renderer correspondence issue, observed after API and recorded separately without retroactively editing submitted state.",
+  "evidence": [
+    "docs/game028/QA/independent/racket-render-01/source.json",
+    "docs/game028/QA/independent/racket-render-01/projection-probe.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Evaluated valid contact predicates and projected silhouette bounds with frozen renderer constants; found horizontal nonoverlap despite accepted collision. No browser was used.",
+    "evidence": [
+      "docs/game028/QA/independent/racket-render-01/projection-probe.json"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+  "jev_answers_read": false
+}

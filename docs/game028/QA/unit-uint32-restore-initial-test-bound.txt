@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/batch-two-author-028
+
+ ✓ tests/unit/game028-model.test.ts (24 tests) 8ms
+ ❯ tests/unit/game028-save-input.test.ts (23 tests | 1 failed) 15ms
+   ✓ Game028 atomic save and inputs > round trips a live ball, all bounce phases, scores and nullable observer 2ms
+   × Game028 atomic save and inputs > round trips naturally generated high uint32 RNG state without losing paused continuation 6ms
+     → expected 193842991 to be greater than 1000000000
+   ✓ Game028 atomic save and inputs > accepts RNG uint32 endpoints but rejects overflow, negative and fractional seeds 1ms
+   ✓ Game028 atomic save and inputs > rejects corrupted, practice and oversized snapshots 0ms
+   ✓ Game028 atomic save and inputs > rejects arbitrary analytics ID and impossible scores 0ms
+   ✓ Game028 atomic save and inputs > rejects NaN physics / mismatched CPU rally IDs 0ms
+   ✓ Game028 atomic save and inputs > failed writes permanently preserve latest memory without rereading stale valid backend 0ms
+   ✓ Game028 atomic save and inputs > semantic corruption retains current memory and rejects later stale backend reads 0ms
+   ✓ Game028 atomic save and inputs > initial missing backend is legitimate fresh save, separate from malformed saved data 0ms
+   ✓ Game028 atomic save and inputs > completed game with null observer reports local stats exactly once across restoration 0ms
+   ✓ Game028 atomic save and inputs > rejects contradictory zero-score terminal and inactive live saves 0ms
+   ✓ Game028 atomic save and inputs > rejects wrong winner or deuce-over without two-point gap 0ms
+   ✓ Game028 atomic save and inputs > accepts interrupted active over before report, then terminal ledger coherently once 0ms
+   ✓ Game028 atomic save and inputs > reported terminal needs the matching local ledger, not a completed-count equal ledger length 0ms
+   ✓ Game028 atomic save and inputs > rejects scored ready or two-bounce live states 0ms
+   ✓ Game028 atomic save and inputs > abandon removes snapshot and cannot resurrect via pagehide continuation 0ms
+   ✓ Game028 atomic save and inputs > capture menu guard rejects a preceding tap in another phase and allows fresh tap 0ms
+   ✓ Game028 atomic save and inputs > keyboard/assistive detail0 works but held activation cannot cross a phase 0ms
+   ✓ Game028 atomic save and inputs > production capture listener sequence accepts native release once and rejects cancelled or phase-stale clicks 1ms
+   ✓ Game028 atomic save and inputs > native touch completed release survives implicit capture loss and activates once 0ms
+   ✓ Game028 atomic save and inputs > unexpected capture loss, cancelled completed tap and old-phase release remain invalid 0ms
+   ✓ Game028 atomic save and inputs > different target pointerup and unrelated pointer cannot complete fresh menu press 0ms
+   ✓ Game028 atomic save and inputs > real cancelled pointer clears eligibility 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game028-save-input.test.ts > Game028 atomic save and inputs > round trips naturally generated high uint32 RNG state without losing paused continuation
+AssertionError: expected 193842991 to be greater than 1000000000
+ ❯ tests/unit/game028-save-input.test.ts:8:215
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 46 passed (47)
+   Start at  19:16:04
+   Duration  295ms (transform 116ms, setup 0ms, collect 180ms, tests 22ms, environment 0ms, prepare 123ms)
+

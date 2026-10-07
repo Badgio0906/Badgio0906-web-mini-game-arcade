@@ -1,0 +1,30 @@
+{
+  "finding_id": "game028-racket-render-model-width",
+  "problem": "The table-tennis accepted horizontal racket contact interval projects wider than the currently drawn racket and ball silhouettes.",
+  "expected": "Visible ball/racket contact should provide a readable correspondence with accepted collision geometry without requiring contact beyond their drawn boundaries.",
+  "observed": [
+    "Source model hit accepts horizontal separation up to .145 world units after one receiver bounce and at the receiving racket y band.",
+    "Draw projection x=390+x*(520+y*65), racket ellipse x radius40, ball circle radius12, racket stroke width4.",
+    "At near racket y=.87 the .145 interval projects to83.60 design pixels; near visible racket plus ball maximum horizontal extent is about54 pixels including stroke.",
+    "At far y=-.87 the interval projects to67.20 design pixels."
+  ],
+  "unknown": [
+    "No live screenshot trace of a ball in the nonoverlapping accepted strip has been captured.",
+    "Whether the model tolerance should be reflected by a larger silhouette or narrowed while preserving approachable gameplay."
+  ],
+  "measurements": {
+    "world_contact_radius": 0.145,
+    "near_projection_scale": 576.55,
+    "far_projection_scale": 463.45,
+    "near_contact_pixels": 83.59975,
+    "far_contact_pixels": 67.20025,
+    "racket_ellipse_rx": 40,
+    "racket_stroke": 4,
+    "ball_radius": 12
+  },
+  "evidence": [
+    "docs/game028/QA/independent/racket-render-01/src_games_game028_model.ts.txt",
+    "docs/game028/QA/independent/racket-render-01/src_games_game028_main.ts.txt"
+  ],
+  "provenance": "current frozen original source observation; independent reviewer; no live interaction or model reply consulted"
+}

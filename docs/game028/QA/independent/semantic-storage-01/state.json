@@ -1,0 +1,21 @@
+{
+  "finding_id": "game028-semantic-corruption-memory-reset",
+  "problem": "Recorder read assigns the parser fallback into current memory on semantically invalid JSON",
+  "expected": "Corrupted backend storage switches to current in-page memory and does not replace it by older or fresh backend data",
+  "observed": [
+    "MatchStore.write clones a current Save into its memory field.",
+    "MatchStore.read assigns this.memory=parseSave(backend.getItem(SAVE_KEY)) when memoryOnly=false.",
+    "parseSave returns freshSave() for syntactically valid but invalid game records, including stats=null.",
+    "The read path does not signal parser rejection or latch memoryOnly for this case."
+  ],
+  "unknown": [
+    "This sequence has not yet been executed in an independent synthetic backend probe.",
+    "Actual end-user incidence of corrupted stored data is unknown."
+  ],
+  "operation": "Source-first independent memory fallback review before any repair",
+  "evidence": [
+    "docs/game028/QA/independent/semantic-storage-01/source.json",
+    "docs/game028/QA/independent/semantic-storage-01/save-before.ts.txt"
+  ],
+  "provenance": "source-observation of frozen production class; no browser, player data or production API"
+}

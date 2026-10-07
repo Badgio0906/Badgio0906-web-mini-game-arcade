@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-07T18:48:17.197550+00:00",
+  "reviewer": "batch_two_review",
+  "finding_basis": "New actual authorR04 phone optional-explanation failure source/trace independently inspected, no Jev answer read or API from this reviewer",
+  "PRIMARY_CAUSE": "PRODUCT_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "evidence": [
+    "/workspace/batch-two-author-028/docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+    "src/games/game028/main.ts:61-63",
+    "src/games/game028/input.ts:7-8"
+  ],
+  "source_sha256": {
+    "src/games/game028/main.ts": "a92c4cd438b38de8648edf434d8a3057abf8e496991af0b00ba9b1a7ea321282",
+    "src/games/game028/input.ts": "4d83a25385598392f413b77996527c88c8d53d9e25333e03a356a05803b8a5dd"
+  },
+  "observed": [
+    "Exact phone pointerdown/up targetexplain followed automaticlostpointercapture then trustedclick; phase remains title and explanation does not open.",
+    "Source pointerdown stores target+epoch. Menu lostpointercapture listener indiscriminately clears press; physical click then requires thatpress and is rejected.",
+    "PC ordinary mouseclick succeeds, consistent with release-capture sequence difference."
+  ],
+  "required_action": "After owner contemporaneous ONE finding record, scoped preserve completed normal release freshness untilclick while retaining actual cancellation/phase-boundary stale rejection; unit actual sequence down\u2192up\u2192lostcapture\u2192click shouldactivateonce, down\u2192cancel and phasechange shouldnot; actual phone menu/button regression after compiled build.",
+  "limits": [
+    "No reviewer browser rerun or state injection performed.",
+    "Exact clearPointers behavior causal from currentsource+recorded eventorder; independent actual scripted unit probe pending ownerrepair.",
+    "This is distinct028click-rejected finding, not029browsermissingclick."
+  ]
+}

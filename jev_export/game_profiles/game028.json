@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "game028",
+  "titleJa": "ぽんぽん卓球 ～TABLE TENNIS～",
+  "titleEn": "TABLE TENNIS",
+  "tagline": "うって、かえして。もう一球。",
+  "thumbnail": "./assets/portal/game028.webp",
+  "route": "./game028.html",
+  "releaseOrder": 28,
+  "status": "active",
+  "tags": [
+    {
+      "id": "reflex",
+      "label": "反射神経"
+    },
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    }
+  ],
+  "difficulty": "standard",
+  "title": "ぽんぽん卓球 ～TABLE TENNIS～",
+  "genre": "table tennis",
+  "controls": {
+    "paddle": "mouse position / horizontal drag / arrows or A,D / 44px direction controls",
+    "serve": "Space or serve button",
+    "pause": "Escape, button; hidden/blur pause, manual resume"
+  },
+  "expectedRunSeconds": null,
+  "expectedRunSecondsBasis": "no fixed time limit; human duration not measured",
+  "mainMechanics": "A physical ball travels on a bounded table with horizontal position, height, gravity, net and side-specific bounces; move racket sideways and contact after a legal bounce",
+  "currentManifest": {
+    "id": "game028",
+    "title": "ぽんぽん卓球 ～TABLE TENNIS～",
+    "titleEn": "TABLE TENNIS",
+    "tagline": "うって、かえして。もう一球。",
+    "genre": "table tennis",
+    "coreMechanic": "A physical ball travels on a bounded table with horizontal position, height, gravity, net and side-specific bounces; move racket sideways and contact after a legal bounce",
+    "skillAxes": [
+      "horizontal tracking",
+      "racket contact position",
+      "return placement"
+    ],
+    "runSecondsDesignTarget": null,
+    "timeLimit": null,
+    "inputs": {
+      "paddle": "mouse position / horizontal drag / arrows or A,D / 44px direction controls",
+      "serve": "Space or serve button",
+      "pause": "Escape, button; hidden/blur pause, manual resume"
+    },
+    "rules": {
+      "standard": "11 points, 2 point lead after 10-10",
+      "short": "5 points without deuce",
+      "serve": "alternate each 2 points; each point from 10-10; legal net service is a let",
+      "ball": "self then opponent bounce on serve, opponent bounce on returns, double bounce/out/net fail"
+    },
+    "practice": "Isolated score-free actual rallies. Continue freely; no production RUN, BEST or match statistics",
+    "storagePrefix": "web-mini-arcade:v1:game028:",
+    "bestStorage": "Atomic validated match/ball/bounce/score/nullable existing observer UUID plus separate local report ID and bounded reporting ledger",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "jev": "Development-only finding Shadow; not runtime/gate",
+    "humanReview": "Author subjective and physical smartphone play pending; pre-play prototype publication authorized",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "prototype-1",
+    "telemetry": "Common lifecycle plus serve, 10/20/50 rally milestones, point/game_end; no frames; practice separate; remote collection disabled until production Worker registration confirmed"
+  },
+  "humanEvaluation": "pending; prototype publication authorized",
+  "telemetryCoverage": "Common lifecycle plus serve, 10/20/50 rally milestones, point/game_end; no frames; practice separate; remote collection disabled until production Worker registration confirmed",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game028/game.manifest.json"
+  }
+}

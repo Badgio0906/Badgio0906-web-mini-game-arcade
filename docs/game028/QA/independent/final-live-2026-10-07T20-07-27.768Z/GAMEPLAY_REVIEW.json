@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-10-07T20:08:28.765184+00:00",
+  "reviewer": "final_review_028_029",
+  "source_hashes": {
+    "game028.html": "2eec9a2d9299b7290f1816e47a25b0ab0e42ac5d561e0cf519980b84e21efeed",
+    "src/games/game028/clock.ts": "f2827e99628810e956d4330a721c161207d9b454545db9b7effd4fd004d08539",
+    "src/games/game028/game.manifest.json": "f1e5b3deede71ebc6c543aaf9464b2ef9da48f43153728b87f9f27fa25a5cef2",
+    "src/games/game028/input.ts": "a966247d2a190b68d9f143a3354cfd368a98197cda2147d31c77379cec68e289",
+    "src/games/game028/main.ts": "b1c5c14f321bc38cf0f7bc03cee20cbbbccac0a1e2f5c69ede69b654a28b627e",
+    "src/games/game028/model.ts": "1fa26006a8a9bbd564e4ecac99c970b3c146afe26bce9dc6d3a24cdabfeded11",
+    "src/games/game028/save.ts": "da9388ede6ce9f1b68f8a54f69911476f59bb1a705faa4212c46e0fbea8e53e8",
+    "src/games/game028/style.css": "da86cbd312900fe25cf50aadf3fda2c7cbb949e8e937f49542c395039701b0f4",
+    "src/games/game028/view.ts": "ae198d052762daf7e0b98073dbfd79b41a77c7f0805a213eca3578d02d401a7b"
+  },
+  "native_report": "report.json",
+  "pass": true,
+  "observed": [
+    "Own normal short-five easy CPU starts via PC click / native phone tap; near racket follows native horizontal drag.",
+    "Serve starts real 2.5D ball motion, native pause reaches paused, saved model remains byte-equivalent after320ms; native resume reaches playing.",
+    "PC and phone have zero pageerrors; no saved-state or model injection."
+  ],
+  "code_observations": [
+    "Model retains x/y/z and velocity, hitter/receiver/serve stage/legal bounce counts; fixed1/120 step resolves table/net contacts and only award once.",
+    "CPU reads current horizontal ball position at delayed intervals with bounded errors, not future landing oracle.",
+    "Racket projected collision footprint matches model radius; uint32 save validation covers actual RNG range without loosening other counters."
+  ],
+  "separate_author_evidence": "Final R09 native report has128 checks over4viewports including completed five-point result/reload/retry; not claimed as independent full playthrough.",
+  "interpretation": "PASS technical interaction and classic-rally coherence in bounded observed scope; independent visual gate passed. No human fun judgment.",
+  "unperformed": [
+    "Physical device gestures/frame-rate/audio",
+    "Human difficulty/replay desire",
+    "Production expectedcommit/native results"
+  ]
+}

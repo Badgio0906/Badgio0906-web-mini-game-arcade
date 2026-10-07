@@ -1,0 +1,22 @@
+{
+  "finding_id": "028-menu-touch-release",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "batch_two_review blind actual native trace, current source and pure before-event probe; no Jev replies read",
+  "rationale": "Actual trusted same-target phone click follows normal pointerup and implicit lost capture. Source clears fresh press on all capture loss and rejects the subsequent physical click, preventing mobile menu entry. Preserve completed release only, keep true cancellation/unexpected loss/phase stale rejection. Original reviewer PRODUCT_ISSUE is normalized to allowed PRODUCT_BUG category for helper comparison.",
+  "evidence": [
+    "docs/game028/QA/native-Ck89HXbh-20261008-r04/report.json",
+    "docs/game028/QA/independent/menu-touch-blind-original.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Exact production event binder down/up/lostcapture/click regression, cancellation and stale phase checks; next compiled mobile native confirmation.",
+    "evidence": [
+      "tests/unit/game028-save-input.test.ts",
+      "docs/game028/QA/unit-menu-controller.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

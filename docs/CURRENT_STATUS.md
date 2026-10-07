@@ -1,5 +1,9 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-08（日本時間）：**Game028「ぽんぽん卓球」を統合検証し公開前。** 疑似2.5D球高/反発・11点deuce/任意5点・CPU3難度・任意無得点練習・保存復帰。47対象/root666（64file）・check/build、Worker実ローカルD132events10RUN PASS、作者128nativechecks・独立PC900/phone実操作とVisual81/F12/H12。旧作者desktop1000と今回要求900は区別し、公開通常完走900を予定。active27/historical28、026/027公開済、028公式CI/公開/SheetA11待ち、029/030未公開、031未着手。旧9作業tree・018保全、外部新作AnalyticsOFF・本番Workerblocker継続、本人/実機未試遊。
+
+2026-10-08（日本時間）：**Game027「ひと息ビリヤード」を試作公開済み。runtime ff369e5、公式Pages37675920015のbuild/deploy成功。** 公開4画面native・通常PC22/phone23shotsのlegal8終局、結果/再挑戦/保存、Portal26/thumbnail確認。期待CI hash-named JS/CSS＋同公開設定再現buildとの13fileSHA一致（artifact直取得不可の制約を明記）。候補表A47だけ済／他列不変・読戻し。[公開証拠](game027/QA/PUBLICATION.json)。root617/62・40対象・check/build、WorkerlocalD129events9RUN。独立Visual81/F12/H12、本人/実機主観は未実施。active26/historical27、026/027公開済、028〜030は未公開・031未着手。新作Analytics送信停止、本番Worker認証blocker継続。
+
 2026-10-08（日本時間）：**Game027「ひと息ビリヤード」を統合検証し公開前。** 16球・6ポケット・8ボールhouse rules、CPU3難度/同端末2人、任意練習、固定時間step物理・全shot一括裁定・inflight保存/pause。40対象・root617/62・check/build、Worker実ローカルD129events9RUN、4画面nativeと通常PC22/phone23shotsでlegal8終局・結果/再挑戦/保存を確認。独立Visual81/F12/H12。[027報告](game027/IMPLEMENTATION_REPORT.md)。active26/historical27、旧save/BESTと010退役不変。026公開済・A33済、027の公式CI/公開/Portal/A47はこの時点では未完。028〜030未公開、031未着手。新作外部AnalyticsOFFと本番Worker認証blocker維持、本人/実機未試遊。
 
 2026-10-08（日本時間）：**Game026「出世すごろく」を正式URLへ試作公開済み。runtime cd6d7ad、公式Pages37669966367のbuild/deploy成功。** 公開4画面44項目・PC89turns/phone61turns通常完走、結果・再挑戦・保存/入力・Portal25/サムネイルを確認。期待commitの公式CI一覧と同じhash-named JS/CSS、公開13fileのSHAを同公開設定の再現buildと照合（artifact55MiBの転送上限により直接ZIP照合は不可、手法を明示）。候補表A33のみ済／他列不変・読戻し確認。[公開証拠](game026/QA/PUBLICATION.json)。root575/check/build、27対象、独立Visual81/F13/H12。作者本人・実機試遊未実施、新作Analytics外部OFFと本番Worker認証blockerを維持。027〜030は検証中・未公開、次031未着手。

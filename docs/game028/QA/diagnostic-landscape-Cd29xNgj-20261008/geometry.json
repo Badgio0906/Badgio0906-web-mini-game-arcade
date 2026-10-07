@@ -1,0 +1,365 @@
+{
+  "started_at": "2026-10-07T19:27:23.106Z",
+  "freeze": {
+    "recorded_at": "2026-10-07T19:19:47.636741+00:00",
+    "base_commit": "7c3d089d69da1ff076c63acb7c3ba96449728a1d",
+    "files": {
+      "game028.html": "2eec9a2d9299b7290f1816e47a25b0ab0e42ac5d561e0cf519980b84e21efeed",
+      "src/games/game028/clock.ts": "f2827e99628810e956d4330a721c161207d9b454545db9b7effd4fd004d08539",
+      "src/games/game028/game.manifest.json": "f1e5b3deede71ebc6c543aaf9464b2ef9da48f43153728b87f9f27fa25a5cef2",
+      "src/games/game028/input.ts": "a966247d2a190b68d9f143a3354cfd368a98197cda2147d31c77379cec68e289",
+      "src/games/game028/main.ts": "b1c5c14f321bc38cf0f7bc03cee20cbbbccac0a1e2f5c69ede69b654a28b627e",
+      "src/games/game028/model.ts": "1fa26006a8a9bbd564e4ecac99c970b3c146afe26bce9dc6d3a24cdabfeded11",
+      "src/games/game028/save.ts": "da9388ede6ce9f1b68f8a54f69911476f59bb1a705faa4212c46e0fbea8e53e8",
+      "src/games/game028/style.css": "aa45b090af27c10f78077c0b4b4d8a99e32d493ef29eddc5d93622b01be360e3",
+      "src/games/game028/view.ts": "ae198d052762daf7e0b98073dbfd79b41a77c7f0805a213eca3578d02d401a7b",
+      "tests/unit/game028-model.test.ts": "9f6a8ed8ae9cef1d44af62e28e854796c99553a1dec6f451aab0b802cfa73189",
+      "tests/unit/game028-save-input.test.ts": "0d5a32f5c644841c9db221f4a0105ef5133139e803309ddd980642628543e56c"
+    },
+    "dependencies": {
+      "src/core/TelemetryService.ts": {
+        "sha256": "cfcefdbc59ff78044e2e6aa98fb9764d7df08a9ac8396e0a821cd538dc5d845e",
+        "owner": "root mirrored implementation; author did not change sharedservice"
+      }
+    },
+    "build_assets": {
+      "dist-game028/assets/game028-Cd29xNgj.js": "e768c468ec6265e8392f1cedd9b16193750027c9f1f83ab1980ea23e85ea0514",
+      "dist-game028/assets/game028-J3ubQHv8.css": "a9bce2beca92977a0e392ef44b4372b39e5ecd9c06d207e58de695a9edb7c7c8"
+    },
+    "corrections": "R05 unchanged gameplay/input plus scoped RNG unsigned32-bit validation; other natural counter limits retained; root-authorized point telemetry ASCII literal codes, UI Japanese reason unchanged, physics unchanged",
+    "test_results": {
+      "target": 47,
+      "typecheck": "PASS",
+      "own_build": "PASS"
+    },
+    "limitations": "actual 4-view native pending; original R05 before-reload payload gap retained; original archived report not reconstructed"
+  },
+  "provenance": "one read-only layout diagnostic at retained R07; normal menu taps; no game CSS/state injection; automated not human",
+  "geometry": {
+    "phase": "practice",
+    "viewport": {
+      "w": 844,
+      "h": 390
+    },
+    "scroll": {
+      "x": 0,
+      "y": 0
+    },
+    "body": {
+      "w": 844,
+      "h": 810
+    },
+    "elements": {
+      "#app": {
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 844,
+          "h": 326,
+          "right": 844,
+          "bottom": 326
+        },
+        "computed": {
+          "width": "844px",
+          "height": "326px",
+          "minWidth": "0px",
+          "minHeight": "326px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 844,
+        "scrollH": 810,
+        "attributes": null
+      },
+      "header": {
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 844,
+          "h": 50,
+          "right": 844,
+          "bottom": 50
+        },
+        "computed": {
+          "width": "844px",
+          "height": "50px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "flex",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "center",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 844,
+        "scrollH": 50,
+        "attributes": null
+      },
+      "main": {
+        "rect": {
+          "x": 0,
+          "y": 50,
+          "w": 844,
+          "h": 250,
+          "right": 844,
+          "bottom": 300
+        },
+        "computed": {
+          "width": "844px",
+          "height": "250px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 844,
+        "scrollH": 760,
+        "attributes": null
+      },
+      ".play-layout": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 820,
+          "h": 250,
+          "right": 832,
+          "bottom": 300
+        },
+        "computed": {
+          "width": "820px",
+          "height": "250px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "grid",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "573px 235px",
+          "gridTemplateRows": "760px",
+          "alignItems": "center",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 820,
+        "scrollH": 760,
+        "attributes": null
+      },
+      ".court": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 780,
+          "h": 760,
+          "right": 792,
+          "bottom": 810
+        },
+        "computed": {
+          "width": "780px",
+          "height": "760px",
+          "minWidth": "0px",
+          "minHeight": "auto",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "relative",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 780,
+        "scrollH": 760,
+        "attributes": null
+      },
+      "#board": {
+        "rect": {
+          "x": 12,
+          "y": 50,
+          "w": 780,
+          "h": 760,
+          "right": 792,
+          "bottom": 810
+        },
+        "computed": {
+          "width": "780px",
+          "height": "760px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "clip",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "780 / 760"
+        },
+        "scrollW": 780,
+        "scrollH": 760,
+        "attributes": {
+          "width": "780",
+          "height": "760"
+        }
+      },
+      "aside": {
+        "rect": {
+          "x": 597,
+          "y": 308,
+          "w": 235,
+          "h": 244,
+          "right": 832,
+          "bottom": 552
+        },
+        "computed": {
+          "width": "235px",
+          "height": "244px",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 235,
+        "scrollH": 244,
+        "attributes": null
+      },
+      "#serve": {
+        "rect": {
+          "x": 647.015625,
+          "y": 464,
+          "w": 134.96875,
+          "h": 44,
+          "right": 781.984375,
+          "bottom": 508
+        },
+        "computed": {
+          "width": "134.969px",
+          "height": "44px",
+          "minWidth": "44px",
+          "minHeight": "44px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 133,
+        "scrollH": 42,
+        "attributes": null
+      },
+      "#pause": {
+        "rect": {
+          "x": 771.984375,
+          "y": 3,
+          "w": 60.015625,
+          "h": 44,
+          "right": 832,
+          "bottom": 47
+        },
+        "computed": {
+          "width": "60.0156px",
+          "height": "44px",
+          "minWidth": "44px",
+          "minHeight": "44px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 58,
+        "scrollH": 42,
+        "attributes": null
+      },
+      "footer": {
+        "rect": {
+          "x": 0,
+          "y": 300,
+          "w": 844,
+          "h": 22,
+          "right": 844,
+          "bottom": 322
+        },
+        "computed": {
+          "width": "844px",
+          "height": "22px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "static",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 844,
+        "scrollH": 22,
+        "attributes": null
+      },
+      "#analytics-settings-host": {
+        "rect": {
+          "x": 0,
+          "y": 326,
+          "w": 844,
+          "h": 64,
+          "right": 844,
+          "bottom": 390
+        },
+        "computed": {
+          "width": "844px",
+          "height": "64px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none",
+          "display": "block",
+          "position": "relative",
+          "overflow": "visible",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "alignItems": "normal",
+          "aspectRatio": "auto"
+        },
+        "scrollW": 844,
+        "scrollH": 64,
+        "attributes": null
+      }
+    },
+    "serveCenter": {
+      "x": 714.5,
+      "y": 486
+    },
+    "hitAtServeCenter": null,
+    "media": true
+  },
+  "scripts": [
+    "http://127.0.0.1:4928/assets/game028-Cd29xNgj.js"
+  ],
+  "finished_at": "2026-10-07T19:27:24.297Z"
+}

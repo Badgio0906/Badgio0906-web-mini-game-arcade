@@ -1,0 +1,24 @@
+{
+  "finding_id": "028-native-seed-restore",
+  "problem": "A saved normal match reloads into title instead of paused continuation after a legal scored rally.",
+  "expected": "Valid generated current match restores paused with scores, ball and existing observer identity; malformed snapshots remain rejected.",
+  "observed": [
+    "Actual compiled desktop normal point score0-1 was paused and reloaded; phase became title although localStorage retains active/unreported match.",
+    "Retained snapshot seed is1150386359; production validator rejects the model snapshot with sanitized IDs.",
+    "Changing only the retained model seed to28 makes the same validator accept the match and saved continuation.",
+    "Save natural(number) helper calls finite(number) with default maximum1000000000; model random updates unsigned32bit seed and explicit save check otherwise permits4294967295."
+  ],
+  "unknown": [
+    "Whether other legitimate counter values encounter unrelated bounds; not investigated."
+  ],
+  "viewport": {
+    "width": 1365,
+    "height": 1000
+  },
+  "evidence": [
+    "docs/game028/QA/native-BVq8nw0Y-20261008-r05/report.json",
+    "docs/game028/QA/native-BVq8nw0Y-20261008-r05/desktop-failure.png",
+    "docs/game028/QA/findings/native-point-restore-before/seed-isolation-probe.json"
+  ],
+  "provenance": "compiled native normal operation and direct production-validator scalar isolation; no live browser state injection; automated not human"
+}

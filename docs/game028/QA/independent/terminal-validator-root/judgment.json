@@ -1,0 +1,21 @@
+{
+  "finding_id": "terminal-invariants",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root source and author direct production-validator probe inspection; Jev answers not inspected",
+  "rationale": "The before-validator permits impossible zero-score terminal winnerless/unscored states and inactive-reported live snapshots. These violate the saved-state model contract and could produce incoherent terminal restoration; evidence is synthetic corruption, not a measured live production failure. Require consistent real mode/deuce winner, scored/status and active/ledger semantics while retaining interrupted active-over/unreported recovery.",
+  "evidence": [
+    "docs/game028/QA/findings/terminal-invariants-before",
+    "src/games/game028/save.ts"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Reviewed original source and direct production-parser acceptances of impossible states, required invalid-state and genuine interrupted terminal recovery regressions.",
+    "evidence": [
+      "docs/game028/QA/findings/terminal-invariants-before"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

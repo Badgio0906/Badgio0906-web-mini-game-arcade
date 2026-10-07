@@ -26,3 +26,5 @@ collectorは実compiledコードにnative入力を送り、Analytics/広告/GA�
 人間試遊は [HUMAN_PLAYTEST](HUMAN_PLAYTEST.md) の通り未実施。ユーザーは作者未試遊公開を明示承認済み。作者のcommit/push/deployは未実施、期待commitのCI/本番URL/Portal/PC/phone表示確認はrootで行う。
 
 Rootrelease 2026-10-07T19:37:36.343720+00:00:40targettests,617/62 allroot tests, check/build, actualWorkerlocalD1 29events9RUN PASS. Root native4 touchcoverage realoptionalphone menus PASS at QA/root-touch-coverage-20261007T1934; original authorcollector is held in QA/collector-touch-coverage-before.mjs. Fullnormaldesktop22 andphone23shots both reachlegal8 result, retry/reload/restart once, no state/physics injection. IndependentVisual81/F12/H12 and terminal-phone-final-01 supplement; humanfun/physicalphone unperformed. OfficialCI/public URL/SheetA47 pending, no claimfromHTTP alone.
+
+Publiccheckpoint 2026-10-07T19:47:10.653993+00:00: ff369e5 officialPages37675920015SUCCESS; expectedCIhashedassets+13publicbyte matchequivalentbuild; public4native+ordinary22desktop/23phone legal8results/retry/reload, Portal26, A47only済/readbackothercolumnsunchanged. SeeQA/PUBLICATION.json. Physicalphone/authorfunstillunperformed. Priorpendingparagraphsarechronologicalhistory.

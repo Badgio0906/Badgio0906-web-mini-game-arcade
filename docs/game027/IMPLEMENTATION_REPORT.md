@@ -21,3 +21,5 @@ Jev：作者の実APIは3回（phone操作C、番号可読性D、bounded終局co
 既存他ゲームの保存／操作／routeは変更せず、広告／CREDIT／GA4／権限に触れていない。本番Worker登録・production許可・全回帰・CI・公開実確認は親担当。自分はcommit/push/deployを行っていない。
 
 Rootrelease 2026-10-07T19:37:36.343720+00:00:40targettests,617/62 allroot tests, check/build, actualWorkerlocalD1 29events9RUN PASS. Root native4 touchcoverage realoptionalphone menus PASS at QA/root-touch-coverage-20261007T1934; original authorcollector is held in QA/collector-touch-coverage-before.mjs. Fullnormaldesktop22 andphone23shots both reachlegal8 result, retry/reload/restart once, no state/physics injection. IndependentVisual81/F12/H12 and terminal-phone-final-01 supplement; humanfun/physicalphone unperformed. OfficialCI/public URL/SheetA47 pending, no claimfromHTTP alone.
+
+Publiccheckpoint 2026-10-07T19:47:10.653993+00:00: ff369e5 officialPages37675920015SUCCESS; expectedCIhashedassets+13publicbyte matchequivalentbuild; public4native+ordinary22desktop/23phone legal8results/retry/reload, Portal26, A47only済/readbackothercolumnsunchanged. SeeQA/PUBLICATION.json. Physicalphone/authorfunstillunperformed. Priorpendingparagraphsarechronologicalhistory.

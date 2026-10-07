@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-10-07T19:05:49.154938+00:00",
+  "reviewer": "batch_two_review",
+  "jev_answers_read": false,
+  "finding": "Actual compiled normal match reload unexpectedly returns title; valid model uint32 seed rejected by save parser",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "observed": [
+    "Actual nativeR05 failure report and pause/play images establish user-visible reload/title failure, not a bare numeric test finding.",
+    "Source validMatch calls natural(seed), whose finite default max1e9 rejects RNGuint32 >1e9 despite separate later max4294967295.",
+    "Independent frozenR05 parser seed-only variants of retainedR04 legitimate0–1point state accept0/28/999999999/1000000000 and reject1000000001/1150386359/4294967295. Point winner/scored/counters valid, so not need relax terminal coherence."
+  ],
+  "scope": "Dedicated validuint32 seed numeric guard only; keep other save counters bounded/terminal point invariants unchanged. Test seed0/max1e9+1/observed1150386359/UINT32MAX accepted through realmodel/save point/live/ready; negative/fraction/>UINT32MAX rejected; then compiled normal restore regression. Avoid adding maxargument to natural and passing directly to Array.every because callback index could alter bound.",
+  "source_sha256": "f40d85c700d96ddc8fc445539ad54bb8d201316a6130e5440301a83650802b5f",
+  "limits": [
+    "Author seed-isolation states native observed1150386359 but original report does not retain exact before-reload saved payload; independent proof uses separately retainedR04 point variant and frozenparser, not originalR05state reconstruction.",
+    "No new reviewerbrowser/API called; authorONE C owned before repair."
+  ]
+}

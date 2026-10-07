@@ -1,0 +1,31 @@
+{
+  "finding_id": "028-landscape-control-overlap",
+  "problem": "The landscape practice serve control cannot receive normal touch because the canvas covers its tap location, and playfield layout exceeds the viewport.",
+  "expected": "At844x390 the entire real-time table and enabled controls fit without overlapping, and a normal tap on Serve starts a rally.",
+  "observed": [
+    "Compiled R07 collector completed normal desktop, phone390 and small320 matches through terminal and retry before entering landscape844x390.",
+    "Landscape optional explanation and practice entered successfully, then native Serve tap timed out; Playwright reports canvas intercepts the button pointer events.",
+    "At failure practice remained ready with0returns, body and app scrollHeight810 against viewport height390.",
+    "Source/build/freeze, actual failure screenshot and native input/state report retained before any fix or diagnostic."
+  ],
+  "unknown": [
+    "Exact court/control computed geometry and which CSS rule creates overlap have not yet been measured."
+  ],
+  "operation": "landscape title → explanation → practice → normal Serve tap",
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "measurements": {
+    "viewport_height": 390,
+    "body_scroll_height": 810,
+    "app_scroll_height": 810,
+    "rally_returns": 0
+  },
+  "evidence": [
+    "docs/game028/QA/native-Cd29xNgj-20261008-r07/report.json",
+    "docs/game028/QA/native-Cd29xNgj-20261008-r07/landscape-failure.png",
+    "docs/game028/QA/findings/landscape-control-overlap-before/style.css"
+  ],
+  "provenance": "compiled normal trusted tap; no injected state; automated not physical-device play"
+}
