@@ -1,0 +1,1077 @@
+{
+  "checked_at": "2026-10-07T17:01:32.097189+00:00",
+  "scope": "five classic game batch only; duplicate stored copies deduplicated by game/finding/checkpoint",
+  "totals": {
+    "unique_api_requests": 21,
+    "all_available_http200_valid_four": true,
+    "independently_annotated": 21,
+    "by_game": {
+      "portal": 1,
+      "game021": 3,
+      "game022": 4,
+      "game023": 2,
+      "game024": 3,
+      "game025": 8
+    },
+    "codex_false_pass": 0,
+    "release_risk_miss": 3,
+    "PRIMARY_CAUSE": {
+      "matched": 16,
+      "compared": 21
+    },
+    "NEXT_EVIDENCE": {
+      "matched": 7,
+      "compared": 21
+    },
+    "CODEX_ACTION_REQUIRED": {
+      "matched": 21,
+      "compared": 21
+    },
+    "RELEASE_RISK_IF_UNRESOLVED": {
+      "matched": 12,
+      "compared": 21
+    },
+    "input_tokens": {
+      "observed_total": 33393,
+      "missing": 0
+    },
+    "output_tokens": {
+      "observed_total": 4516,
+      "missing": 0
+    },
+    "cost_usd": {
+      "observed_total": 0.001402506,
+      "missing": 0
+    }
+  },
+  "records": [
+    {
+      "game_id": "portal",
+      "finding_id": "classic-five-portal-pending-registration",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:15:00.941534+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Per-context collection suppression on new game pages does not apply to Portal selected-game events because Portal creates an enabled context. send substitutes selected_game as envelope game_id, including pending-registration IDs. This violates the intended suppression scope and can produce rejected analytics requests. It does not prevent gameplay or important player controls, so this specific issue is not independently classified as major unresolved player-facing release risk. Central registration filtering plus targeted enqueue tests can repair it while preserving existing IDs.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/classic-five/QA/PORTAL_UNREGISTERED_ID_FINDING.json",
+          "src/core/TelemetryService.ts:21-23",
+          "src/portal/main.ts:7,19,46",
+          "src/analytics/runtime.ts:76,95-96"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read complete TelemetryService and AnalyticsRuntime, then followed Portal impression/click/launch selected_game through record→send→envelope. Preserved contemporaneous state and executed one hidden-answer Shadow record only after root explicitly requested it. No browser or production request measurement.",
+        "evidence": [
+          "src/core/TelemetryService.ts",
+          "src/analytics/runtime.ts",
+          "src/portal/main.ts",
+          "docs/classic-five/QA/PORTAL_UNREGISTERED_ID_FINDING.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1586,
+      "output_tokens": 215,
+      "cost_usd": 6.6612e-05,
+      "latency_seconds": 0.3552789310015214,
+      "log_file": "docs/classic-five/QA/JEV_PORTAL_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game021",
+      "finding_id": "game021-practice-confirm-context",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:08:16.149818+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Initial handlers clear training before confirmation. Cancel restores only screen, so the practice UI/result is interpreted as a normal context: controls lose isolation, hint/undo can mutate the saved normal run assist counters, and completion enters the normal result branch. This violates the explicit separate-practice requirement and can mislead users about the practice outcome. Current handlers defer training reset until accepted start, retaining isolated practice on cancel. Browser cancellation and completing practice after cancel remain necessary acceptance checks.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game021/QA/PRACTICE_CONFIRM_FINDING.json",
+          "docs/game021/QA/practice-confirm-initial/main.ts.txt:177,249",
+          "src/games/game021/main.ts:177,199,208-214,249",
+          "src/games/game021/main.ts:69-73,143,171-187"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read initial practice start handlers, cancel/back routing, result branch, assist controls and current handlers. Verified current handlers preserve training when showing confirmation. No browser test performed in this finding review.",
+        "evidence": [
+          "docs/game021/QA/practice-confirm-initial/main.ts.txt",
+          "src/games/game021/main.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1494,
+      "output_tokens": 215,
+      "cost_usd": 6.2748e-05,
+      "latency_seconds": 0.6162599460003548,
+      "log_file": "docs/game021/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game021",
+      "finding_id": "game021-reset-run-continuation",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:08:46.189612+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Reload creates an analytics context with run null. Initial replacement path reconstructs the board then calls end(reset) without restoring saved.runId, whereas resume and portal restore it. Therefore reset is not attributed to the original saved run. Gameplay replacement is still available, so this specific defect is not independently judged a major player-facing release risk; it still needs correction to meet continuation telemetry requirements. Current start restores saved.runId before end(reset). Root restoreRun validates UUID and sets context run/phase without emitting another run_start. Frozen integration must verify the actual reset event keeps the prior ID and new run_start creates a new one.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game021/QA/RESET_CONTINUATION_FINDING.json",
+          "docs/game021/QA/practice-confirm-initial/main.ts.txt:101,112",
+          "src/games/game021/main.ts:101,105",
+          "src/core/TelemetryService.ts:63-72",
+          "src/analytics/runtime.ts:63,69"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared initial replacement/resume/portal paths with current start and root telemetry get/restore methods plus analytics context creation. No external API or browser measurement performed.",
+        "evidence": [
+          "docs/game021/QA/practice-confirm-initial/main.ts.txt",
+          "src/games/game021/main.ts",
+          "src/core/TelemetryService.ts",
+          "src/analytics/runtime.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1500,
+      "output_tokens": 215,
+      "cost_usd": 6.3e-05,
+      "latency_seconds": 0.28757602000041516,
+      "log_file": "docs/game021/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game021",
+      "finding_id": "game021-full-column-keyboard-focus",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:12:29.084939+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Initial render leaves the selected full column disabled with tabindex0 and all remaining legal columns tabindex-1. focusColumn tries the disabled selected button. CPU-turn render can move focus outside the board, so Arrow/Enter do not reach board handler and Tab cannot regain a legal tabindex0 column. This blocks the specified keyboard interaction in an otherwise playable match. Current render replaces a full selected column with the first legal column before generating tabindex and CPU completion explicitly focuses it. Compiled CPU and same-device fill-column sequences still need measurement.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game021/QA/FULL_COLUMN_FOCUS_FINDING.json",
+          "docs/game021/QA/full-column-focus-initial/main.ts.txt:44-60",
+          "src/games/game021/main.ts:46-64,154-157,235-248"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read initial and frozen current render, focusColumn, CPU completion and board keydown routing. Confirmed current legal-column reassignment occurs before tabindex/disabled rendering. No browser operation performed; root owns current compiled probe.",
+        "evidence": [
+          "docs/game021/QA/full-column-focus-initial/main.ts.txt",
+          "src/games/game021/main.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1500,
+      "output_tokens": 217,
+      "cost_usd": 6.3e-05,
+      "latency_seconds": 1.8677860780007904,
+      "log_file": "docs/game021/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game022",
+      "finding_id": "g022-title-explanation-overwrites-save",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:23:44.636973+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The global live game starts as a different preview snapshot on reload, and save() uses display state rather than normal-run provenance. A title explanation can trigger persistence of that unrelated board. This loses a resumable deal and its existing run identity. Browser checks should confirm both reload and explicit Portal paths before and after narrowing the save boundary.",
+        "reviewer": "classic021-independent-game022-reviewer",
+        "evidence": [
+          "docs/game022/QA/independent/title-explanation-initial/main.ts.txt",
+          "docs/game022/QA/independent/TITLE_EXPLANATION_FINDING.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "LIVE_INTERACTION",
+        "description": "Reproduced original save overwrite using native new deal/draw/reload/title explanation then reload and Portal. Applied root-authorized narrow provenance guard. Four fixed regressions include restored normal explanations, and all preserve seed/UUID/position/history. Additional independent model simulation, typecheck, build and four-viewport full native fixture clear validate surrounding behavior.",
+        "evidence": [
+          "docs/game022/QA/independent/title-explanation-browser-initial/report.json",
+          "docs/game022/QA/independent/title-explanation-browser-fixed/report.json",
+          "docs/game022/QA/independent/model-probe.json",
+          "docs/game022/QA/independent/check-repair.txt",
+          "docs/game022/QA/independent/build-repair.txt",
+          "docs/game022/QA/independent/full-fixture-native/report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1519,
+      "output_tokens": 215,
+      "cost_usd": 6.3798e-05,
+      "latency_seconds": 0.23799279699960607,
+      "log_file": "docs/game022/QA/JEV_REVIEW_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game022",
+      "finding_id": "g022-touch-implicit-capture-transfer",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:46:38.123416+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The advertised finger drag fails from a normal card-center touch due to capture transfer; selectable-tap fallback remains available, so this blocks that input mode rather than the whole game.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json",
+          "docs/game022/QA/independent/touch-capture-initial/native-input-state.png",
+          "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read preserved main.ts pointerdown/move/capture-loss path; performed native CDP input trace with actual document event targets. Verified capture loss happens before destination pointerup and current drag is erased. No product source changed. Root to record hidden-answer Shadow before repair.",
+        "evidence": [
+          "docs/game022/QA/independent/touch-capture-initial/native-input-trace.json",
+          "docs/game022/QA/independent/touch-capture-initial/native-input-state.png",
+          "docs/game022/QA/independent/touch-capture-initial/main.ts.txt"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1653,
+      "output_tokens": 215,
+      "cost_usd": 6.9426e-05,
+      "latency_seconds": 0.3580732310001622,
+      "log_file": "docs/game022/QA/JEV_ROOT_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game022",
+      "finding_id": "g022-off-touch-action-conflicts-scroll",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T16:01:10.011271+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "CSS declaration directly conflicts with OFF native pan intent on cards. Narrow board remains reachable by gaps/wheel/focus; CDP cannot independently demonstrate native gap scrolling either, so no broad touch-scroll blockage is claimed.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game022/QA/independent/pan-style-initial/style.css.txt",
+          "docs/game022/QA/independent/pan-style-initial/gameTouchGuards.css.txt",
+          "docs/game022/QA/independent/pan-style-initial/pan-diagnostic.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Compared rendered computed touch-action card none vs gap auto, authored OFF JS cancellation, and shared injected guard selector specificity. Preserved raw ambiguous touch gesture outcome. No source edits.",
+        "evidence": [
+          "docs/game022/QA/independent/pan-style-initial/style.css.txt",
+          "docs/game022/QA/independent/pan-style-initial/gameTouchGuards.css.txt",
+          "docs/game022/QA/independent/pan-style-initial/pan-diagnostic.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1637,
+      "output_tokens": 217,
+      "cost_usd": 6.8754e-05,
+      "latency_seconds": 0.4995850519990199,
+      "log_file": "docs/game022/QA/JEV_ROOT_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game022",
+      "finding_id": "g022-suffix-move-fixture",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:04:38.619458+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Without reading Jev answers, inspect original fixture: its source suffix contains rank6 clubs and rank4 diamonds, which violates descending-by-one, and its proposed target is rank8 clubs. The model should return false. The repaired fixture supplies rank7 diamonds, rank6 clubs, rank5 diamonds onto rank8 spades; all identities remain unique and 19 model/persistence tests pass. This original error is confined to synthetic test data, not runtime legal-move behavior.",
+        "reviewer": "classic021-independent-game022-reviewer",
+        "evidence": [
+          "docs/game022/QA/MODEL_FIRST_RUN.txt",
+          "docs/game022/QA/SUFFIX_FIXTURE_FINDING.json",
+          "tests/unit/game022.test.ts:14",
+          "docs/game022/QA/independent/model-author-suite.txt",
+          "docs/game022/QA/independent/model-probe.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Independently checked original ranks/colours against descending and legal, then reran final tests and additional seeded model simulations.",
+        "evidence": [
+          "tests/unit/game022.test.ts:14",
+          "src/games/game022/Klondike.ts:89",
+          "docs/game022/QA/independent/model-author-suite.txt",
+          "docs/game022/QA/independent/model-probe.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1444,
+      "output_tokens": 213,
+      "cost_usd": 6.0648e-05,
+      "latency_seconds": 0.4300060339992342,
+      "log_file": "docs/game022/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game023",
+      "finding_id": "g023-practice320-missing-gesture",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:30:04.761408+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Full mixed mouse/tab and touch/key workflow repeatedly dropped previously unguessedり. Passive window capture showed detail2; the document filter rejected every click detail>1. Initial narrow interpretation as a collector issue is preserved in HYBRID_INTERPRETATIONS.json. Root correctly identified supported hybrid-device users can generate this event and authorized removing the blanket filter while retaining epoch/180ms/repeat protection. The unchanged original mixed320 sequence now completes, native same-key double-click adds exactly one selection, and pointerdown→Escape→release does not cross the phase. Dropping a legitimate different kana impairs an important game input.",
+        "reviewer": "classic022 independent Game023 native QA, with root independent source rationale; Shadow answers unread",
+        "evidence": [
+          "docs/game023/QA/independent/browser-native-events-final-failure.json",
+          "docs/game023/QA/independent/HYBRID_INTERPRETATIONS.json",
+          "docs/game023/QA/independent/revision-diff.patch",
+          "docs/game023/QA/independent/browser-revision-report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Captured original mixed native event sequence, retained before observations, applied root-authorized one-condition source repair, then verified mixed inputs/duplicates/phase release against a separate compiled build.",
+        "evidence": [
+          "docs/game023/QA/independent/browser-revision-report.json",
+          "docs/game023/QA/independent/revision-unit.txt",
+          "docs/game023/QA/independent/revision-check.txt"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1541,
+      "output_tokens": 213,
+      "cost_usd": 6.4722e-05,
+      "latency_seconds": 0.4737453400011873,
+      "log_file": "docs/game023/QA/JEV_REVIEW_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game023",
+      "finding_id": "g023-landscape-result-answer-scroll",
+      "checkpoint": "D",
+      "timestamp": "2026-10-07T15:56:42.615414+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The actual844x390 result image initially clipped the heading and answer above the dialog because native opening focused its first button and scrolled195px. This obscured the defining result. Root independently authorized initial heading focus and scrollTop0 after native opening. The final viewport image displays the full heading and answer, geometry gives scrollTop0/answer160.7..219.9px, and native Tab reaches the next button.",
+        "reviewer": "classic022 actual-image Game023 QA; Shadow answers unread",
+        "evidence": [
+          "docs/game023/QA/independent/844-revision-result-viewport.png",
+          "docs/game023/QA/independent/browser-revision-report.json",
+          "docs/game023/QA/independent/menu-revision-diff.patch",
+          "docs/game023/QA/independent/844-final-result-viewport.png",
+          "docs/game023/QA/independent/browser-final-report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "SCREENSHOT_REVIEW",
+        "description": "Viewed actual before/after viewport-only images; measured geometry and checked native Tab/control access on separate compiled revision.",
+        "evidence": [
+          "docs/game023/QA/independent/844-final-result-viewport.png",
+          "docs/game023/QA/independent/browser-final-report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": true,
+      "input_tokens": 1689,
+      "output_tokens": 215,
+      "cost_usd": 7.0938e-05,
+      "latency_seconds": 0.48156252699845936,
+      "log_file": "docs/game023/QA/JEV_REVIEW_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game024",
+      "finding_id": "024-portal-pagehide-snapshot",
+      "checkpoint": "A",
+      "timestamp": "2026-10-07T15:11:20.979724+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "CODE_INSPECTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Preserved initial persist excerpt writes a still-playing snake after recordEnd has set active false/reported true. Current validator requires active to match playing and rejects that original combination; SnakeSaveStore.read falls back to blankSave and loses saved BEST/run statistics as well as rejecting the abandoned run. This is a material persistence defect. Current captureSave keeps snapshot null when the run is inactive and snake is still playing, preserving stats across pagehide. Browser Portal→pagehide→reload still needs confirmation.",
+        "reviewer": "classic_review",
+        "evidence": [
+          "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+          "docs/game024/QA/FINDING_PORTAL_PAGEHIDE.json",
+          "src/games/game024/main.ts:23,40-45,84-90",
+          "src/games/game024/save.ts:35-47"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Read the retained original code excerpt and current Portal/end/pagehide/capture/validation/storage flow. Verified invalid original flags would fall back to blank stats and current capture omits abandoned playing snapshot. No browser execution.",
+        "evidence": [
+          "docs/game024/QA/FINDING_PORTAL_PAGEHIDE_BEFORE.json",
+          "src/games/game024/main.ts",
+          "src/games/game024/save.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1500,
+      "output_tokens": 215,
+      "cost_usd": 6.3e-05,
+      "latency_seconds": 0.40314229099749355,
+      "log_file": "docs/game024/QA/independent/JEV_PORTAL_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game024",
+      "finding_id": "024-clock-terminal-backlog-restore",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:23:32.679176+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The original independent reproduction demonstrated loss of persisted BEST/runs. Root authorized a narrow terminal-remainder capture correction; the same model/clock/save sequence now saves a valid result and retains BEST12/runs4. All26 focused tests, typecheck and production packaging pass. Browser verification remains pending.",
+        "reviewer": "classic023 independent reviewer, Jev answers unread",
+        "evidence": [
+          "docs/game024/QA/independent/CLOCK_RESULT_REPRO_BEFORE.json",
+          "docs/game024/QA/independent/clock-result-repro.mjs",
+          "docs/game024/QA/independent/unit-frozen.txt",
+          "docs/game024/QA/independent/CLOCK_RESULT_REPRO_AFTER.json",
+          "/workspace/classic-author-024/docs/game024/QA/AUTHOR_MODEL_BUILD_REVISION01.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "After root-authorized terminal remainder0 capture fix, executed the same actual module sequence: speed8, 0→500ms, first tick wall. Saved remainder0 validated; fresh-store reload retained BEST12/runs4 and reported result. Added actual lifecycle regression and verified26 tests/check/build. Browser result reload pending.",
+        "evidence": [
+          "docs/game024/QA/independent/CLOCK_RESULT_REPRO_AFTER.json",
+          "/workspace/classic-author-024/docs/game024/QA/unit-clock-save-after.txt",
+          "/workspace/classic-author-024/docs/game024/QA/check-clock-save-after.txt",
+          "/workspace/classic-author-024/docs/game024/QA/build-clock-save-after.txt"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1644,
+      "output_tokens": 215,
+      "cost_usd": 6.9048e-05,
+      "latency_seconds": 0.7077261379999982,
+      "log_file": "docs/game024/QA/independent/JEV_CLOCK_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game024",
+      "finding_id": "024-headless-focus-loss-collector",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T16:20:55.440341+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "Actual focus measurements showed no blur/visibilitychange trigger from headless Playwright newPage/bringToFront. A labeled delivered blur fixture paused the unchanged compiled game. The corrected collector passed all four viewports with native gameplay, pause, reload, practice and Portal checks; no product edit was needed. Physical-device focus behavior remains pending.",
+        "reviewer": "classic023 independent reviewer, Jev answers unread",
+        "evidence": [
+          "docs/game024/QA/independent/FOCUS_COLLECTOR_BEFORE.json",
+          "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json",
+          "docs/game024/QA/independent/native-revision01/report.json",
+          "docs/game024/QA/independent/native-revision01-focus-fixed/report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Recorded document.hidden/hasFocus/delivered event measurements, preserved initial4profile timeouts, changed only the collector to a labeled delivered-blur fixture, then completed4profile native rerunPASS with allcontexts/browserclosedfinally. Product source remained revision01.",
+        "evidence": [
+          "docs/game024/QA/independent/FOCUS_MEASUREMENTS.json",
+          "docs/game024/QA/independent/native-revision01/report.json",
+          "docs/game024/QA/independent/native-revision01-focus-fixed/report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1650,
+      "output_tokens": 213,
+      "cost_usd": 6.93e-05,
+      "latency_seconds": 0.48743256099987775,
+      "log_file": "docs/game024/QA/independent/JEV_FOCUS_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-consent-pointer-interception",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:13:35.633918+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The initial Analytics consent surface intercepted a sound-button click before QA chose a consent option. The common consent flow intentionally awaits that choice; updated author QA explicitly declines before interacting, and the supplied compiled report then records sound clicks and zero page errors across four viewports. This identifies an unhandled prerequisite in the QA sequence, not evidence that the product sound control is unavailable after the consent choice. The original consent-era PNG at the reused390-intermediate path was overwritten by later QA; this judgment uses the preserved timeout and later sequence/report, not an asserted review of the original screenshot.",
+        "reviewer": "classic024 independent readonly reviewer (no Jev logs/answers read)",
+        "evidence": [
+          "docs/game025/QA/CONSENT_FINDING.json",
+          "docs/game025/QA/browser-second.txt",
+          "tests/game025/browser.mjs",
+          "docs/game025/QA/browser/report.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "CODE_INSPECTION",
+        "description": "Independently inspected the original timeout, normal consent prerequisite in the updated browser script, and subsequent existing compiled output; did not launch another browser or alter product code.",
+        "evidence": [
+          "docs/game025/QA/browser-second.txt",
+          "tests/game025/browser.mjs",
+          "docs/game025/QA/browser/report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1511,
+      "output_tokens": 217,
+      "cost_usd": 6.3462e-05,
+      "latency_seconds": 0.34342120900328155,
+      "log_file": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-proof-start-association",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:16:35.379077+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The preserved synthetic wrong association accepted clicked start5 with a proof for start0. A proof is valid only for its specified start; accepting another safe first cell does not establish the requested no-guess claim from that cell. This boundary is used by snapshot restoration too, so exact association needs enforcement independently of the usual correct UI fallback index. Current initialize rejects differing starts before proof replay; targeted regression and all81 proof replays pass. Risk judgment concerns an unsupported guarantee if left unresolved, not evidence of a normal UI board having failed.",
+        "reviewer": "classic024 independent readonly reviewer (no Jev logs/answers read)",
+        "evidence": [
+          "docs/game025/QA/PROOF_START_FINDING.json",
+          "docs/game025/QA/proof-start-observed.json",
+          "src/games/game025/Mines.ts",
+          "tests/unit/game025.test.ts",
+          "docs/game025/QA/independent/MODEL_ADVERSARIAL.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Ran the current game025 unit file:19 tests passed, including wrong-start rejection. Independently replayed all81 proof records through current verifyProof.",
+        "evidence": [
+          "tests/unit/game025.test.ts",
+          "docs/game025/QA/independent/MODEL_ADVERSARIAL.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1508,
+      "output_tokens": 215,
+      "cost_usd": 6.3336e-05,
+      "latency_seconds": 0.41121389899853966,
+      "log_file": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-denied-write-stale-read",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:25:57.602555+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The synthetic denied-write execution demonstrated stale hints0 after writing current hints7. A SaveStore memory boundary must use current memory after write denial. The repaired memoryOnly latch does so; independent execution returned7 then8 across successive denied writes, and the actual regression passes. The live board was not shown to become unplayable because of this latent reader behavior, so I do not classify this as a demonstrated major release risk.",
+        "reviewer": "classic024 independent readonly reviewer; no Jev answers read",
+        "evidence": [
+          "docs/game025/QA/STORAGE_FINDING.json",
+          "docs/game025/QA/independent/MODEL_ADVERSARIAL.json",
+          "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+          "src/games/game025/Save.ts",
+          "tests/unit/game025.test.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Independently ran all22 game025 unit tests and executed real SaveStore with stale valid read backend plus successive denied writes, confirming current hints7 then8.",
+        "evidence": [
+          "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+          "tests/unit/game025.test.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1551,
+      "output_tokens": 215,
+      "cost_usd": 6.5142e-05,
+      "latency_seconds": 1.064477743999305,
+      "log_file": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-terminal-null-observer",
+      "checkpoint": "B",
+      "timestamp": "2026-10-07T15:25:58.747996+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "Game statistics/report flags previously depended on an optional observer ID and terminal restore required those flags, so the observer-unavailable path could lose both statistics and valid terminal saves. Gameplay results must work without the observer. The repaired local resultId ledger is separate from nullable Analytics runId. Independent won/lost JSON reloads kept runId null, reported true and the same local result ID, and duplicate reportResult calls left counts at1. The title restore option now uses resultId, while Analytics restoration remains conditional on runId.",
+        "reviewer": "classic024 independent readonly reviewer; no Jev answers read",
+        "evidence": [
+          "docs/game025/QA/OBSERVER_NULL_FINDING.json",
+          "src/games/game025/main.ts",
+          "src/games/game025/Save.ts",
+          "tests/unit/game025.test.ts",
+          "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Ran22 actual unit tests and independently generated won/lost own terminal model fixtures, saved with null observer ID, JSON-reloaded, then reapplied reportResult to verify unchanged counts and one ledger entry.",
+        "evidence": [
+          "docs/game025/QA/independent/REPAIR_ADVERSARIAL.json",
+          "tests/unit/game025.test.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1611,
+      "output_tokens": 215,
+      "cost_usd": 6.7662e-05,
+      "latency_seconds": 0.27223715799846104,
+      "log_file": "docs/game025/QA/JEV_SHADOW.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-primary-hover-contrast",
+      "checkpoint": "D",
+      "timestamp": "2026-10-07T16:34:01.080959+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The fresh normal pause screenshot shows the primary resume label washed out. The specific global button:hover background overrides the lower-specificity primary background while leaving white text unchanged; computed pair contrast is1.16:1. This affects the main resume action and other primary hover states, so the readability gate should not be closed without correcting and viewing the actual hovered action. Source and copied actual before image are preserved. The repaired .primary:hover keeps white text on dark#245a52. I independently viewed the fresh title-hover and pause-hover images; measured author computed colors yield7.75:1 contrast and both labels are legible.",
+        "reviewer": "classic024 independent Visual/source reviewer; no hidden answers read",
+        "evidence": [
+          "docs/game025/QA/independent/PRIMARY_HOVER_BEFORE.json",
+          "docs/game025/QA/independent/025-primary-hover-before.png",
+          "src/games/game025/style.css",
+          "docs/game025/QA/hover-note-final/report.json",
+          "docs/game025/QA/SOURCE_HASHES_HOVER_NOTE.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "SCREENSHOT_REVIEW",
+        "description": "The repaired .primary:hover keeps white text on dark#245a52. I independently viewed the fresh title-hover and pause-hover images; measured author computed colors yield7.75:1 contrast and both labels are legible. Read actual PNGs plus report and frozen-source rules; no additional API request or source edit.",
+        "evidence": [
+          "docs/game025/QA/hover-note-final/390-title-primary-hover.png",
+          "docs/game025/QA/hover-note-final/390-pause-primary-hover.png",
+          "docs/game025/QA/hover-note-final/390-generic-pan-note.png",
+          "docs/game025/QA/hover-note-final/report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": true,
+      "input_tokens": 1755,
+      "output_tokens": 215,
+      "cost_usd": 7.371e-05,
+      "latency_seconds": 0.43273206999947433,
+      "log_file": "docs/game025/QA/independent/JEV_VISUAL_FINAL_FINDINGS.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-beginner-pan-affordance",
+      "checkpoint": "D",
+      "timestamp": "2026-10-07T16:34:01.598791+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The beginner phone grid extends beyond its scroll window and normal touch evidence proves it pans. Static visible note and viewport label restrict that instruction to intermediate, so wording should describe any board that extends beyond the viewport. Existing native-emulated panning and taps work; this is an affordance mismatch, not a demonstrated progression block. Preserve generic note and accessible-label verification after the narrow wording change. The repaired note and viewport accessible label now describe whichever board extends beyond the screen. I independently viewed the fresh generic-pan image; author output confirms the generic text/aria and beginner scrollreach70px.",
+        "reviewer": "classic024 independent Visual/source reviewer; no hidden answers read",
+        "evidence": [
+          "docs/game025/QA/independent/BEGINNER_PAN_BEFORE.json",
+          "docs/game025/QA/independent/025-beginner-pan-note-before.png",
+          "docs/game025/QA/browser-pan-final/touch-pan.json",
+          "game025.html",
+          "docs/game025/QA/hover-note-final/report.json",
+          "docs/game025/QA/SOURCE_HASHES_HOVER_NOTE.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "SCREENSHOT_REVIEW",
+        "description": "The repaired note and viewport accessible label now describe whichever board extends beyond the screen. I independently viewed the fresh generic-pan image; author output confirms the generic text/aria and beginner scrollreach70px. Read actual PNGs plus report and frozen-source rules; no additional API request or source edit.",
+        "evidence": [
+          "docs/game025/QA/hover-note-final/390-title-primary-hover.png",
+          "docs/game025/QA/hover-note-final/390-pause-primary-hover.png",
+          "docs/game025/QA/hover-note-final/390-generic-pan-note.png",
+          "docs/game025/QA/hover-note-final/report.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1807,
+      "output_tokens": 218,
+      "cost_usd": 7.5894e-05,
+      "latency_seconds": 0.2614112789997307,
+      "log_file": "docs/game025/QA/independent/JEV_VISUAL_FINAL_FINDINGS.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-hidden-during-generation",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T15:31:42.957555+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "AUTOMATED_TEST",
+        "RELEASE_RISK_IF_UNRESOLVED": false,
+        "rationale": "The preserved execution of actual lifecycle source showed a visibility event ignored in generating and a delayed callback entering playing/opening the first safe cell/starting the clock while still hidden. This is a game-state boundary defect and requires a source fix. It affects explicit pause behavior and reference elapsed time; the turn-based board has no time limit and the only automatic opening was the already selected safe first cell, so evidence does not establish major progression loss or unplayability if unresolved. The narrow repair records generationPaused, retains a deferred exact-start first opening, completes hidden or previously blurred work into pause, and requires manual resume. Independent actual-source execution with actual Mines/Save confirms zero opened cells/clock while hidden and after becoming visible, valid prepared/pagehide saves, and exactly one opening plus clock start after manual resume.",
+        "reviewer": "classic024 independent source/automated reviewer; hidden Jev answers never read",
+        "evidence": [
+          "docs/game025/QA/independent/GENERATING_HIDDEN_FINDING.json",
+          "docs/game025/QA/independent/GENERATING_HIDDEN_BEFORE.json",
+          "docs/game025/QA/independent/GENERATING_HIDDEN_AFTER.json",
+          "src/games/game025/main.ts",
+          "src/games/game025/Save.ts",
+          "tests/unit/game025-generation-lifecycle.test.ts",
+          "tests/unit/game025.test.ts"
+        ]
+      },
+      "actual_next_action": {
+        "method": "AUTOMATED_TEST",
+        "description": "Rechecked final freeze hashes and ran26 candidate model/production-AST lifecycle tests. Independently extracted unchanged final source functions/handlers, executed hidden→completion→visible→manual-resume with actual Mines/Save, and validated deferred prepared save plus pagehide save and prior-blur completion. No browser launched, no product edits and no API retry.",
+        "evidence": [
+          "docs/game025/QA/independent/GENERATING_HIDDEN_AFTER.json",
+          "tests/unit/game025-generation-lifecycle.test.ts",
+          "tests/unit/game025.test.ts"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": false,
+      "input_tokens": 1618,
+      "output_tokens": 215,
+      "cost_usd": 6.7956e-05,
+      "latency_seconds": 0.3399314480011526,
+      "log_file": "docs/game025/QA/independent/JEV_HIDDEN_GENERATION.jsonl",
+      "valid_four_answer_response": true
+    },
+    {
+      "game_id": "game025",
+      "finding_id": "025-hidden-prepared-dom-timeout",
+      "checkpoint": "C",
+      "timestamp": "2026-10-07T16:39:13.435877+00:00",
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "codex_independent_judgment": {
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "LIVE_INTERACTION",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "rationale": "The passive diagnostic preserved native touchcell5 pointerdown/up, state generating and matched blocked Worker asset, then the same gesture compatibility click targeted the new cancel-generation button at identical coordinates and returned to title. The prepared fixture did not reach pause because that gesture cancelled its job. This is a product transition input boundary; it can prevent a legitimate first opening at coordinates under the new cancel action. The original two logs lack live trace, so their exact state is not reconstructed; this fresh reproduction independently establishes the defect. Raw capture queueMicrotask entries do not establish target-handler completion; phase snapshots, click target and subsequent state mutations provide the conclusion. The frozen repaired build was verified in one independent native touch AFTER run: that same compatibility click still targets cancel-generation but is blocked; its Worker timeout completes into paused prepared/save-valid state. The saved elapsed155.9ms remains identical while hidden, visible withoutresume and restored. Explicit native Resume opens cell5 once. Fresh cancel/resume/next and keyboard resume remain functional; terminal native tap leaves result shown.",
+        "reviewer": "classic024 independent browser/source reviewer; hidden answers unread",
+        "evidence": [
+          "docs/game025/QA/independent/HIDDEN_DOM_TIMEOUT_FINDING.json",
+          "docs/game025/QA/independent/HIDDEN_DOM_TRACE.json",
+          "docs/game025/QA/independent/COMPAT_CLICK_TRACE_REVIEW.json",
+          "src/games/game025/main.ts",
+          "docs/game025/QA/independent/HIDDEN_DOM_TRACE_AFTER.json",
+          "docs/game025/QA/SOURCE_HASHES_MENU_GESTURE.json",
+          "docs/game025/QA/independent/025-hidden-prepared-dom-timeout-initial-blind-judgment.json"
+        ]
+      },
+      "actual_next_action": {
+        "method": "LIVE_INTERACTION",
+        "description": "ONE bounded native Chromium touch run on frozen compiled-menu-gesture. Synthetic hidden property and blocked Worker are explicit test fixtures. No answer/model mutation or additional API. Browser closed in finally. Terminal compatibility click landed on menu container rather than a result action button; stale button cases are separately extracted-source tests.",
+        "evidence": [
+          "docs/game025/QA/independent/HIDDEN_DOM_TRACE_AFTER.json",
+          "docs/game025/QA/independent/MENU_DOM_AFTER_REVIEW.json",
+          "docs/game025/QA/independent/MENU_SOURCE_VERIFICATION.json"
+        ]
+      },
+      "agreement": {
+        "PRIMARY_CAUSE": false,
+        "NEXT_EVIDENCE": false,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": false
+      },
+      "codex_false_pass": false,
+      "release_risk_miss": true,
+      "input_tokens": 1675,
+      "output_tokens": 213,
+      "cost_usd": 7.035e-05,
+      "latency_seconds": 0.38191638400166994,
+      "log_file": "docs/game025/QA/independent/JEV_DOM_TIMEOUT.jsonl",
+      "valid_four_answer_response": true
+    }
+  ],
+  "limitations": [
+    "Selected findings, small sample; no efficacy/generalization or review-savings claim.",
+    "Independent classifications preserved; model disagreement never changes the reviewers judgment.",
+    "Human play/physical device evaluations absent.",
+    "Protocol deviations and evidence loss are described in JEV_USAGE_REPORT.md; unavailable historical observations not retroactively reconstructed."
+  ]
+}

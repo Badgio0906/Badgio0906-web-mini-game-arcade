@@ -1,0 +1,24 @@
+# 今回のJev利用と限界
+
+対象は2026-10-07の定番5作品バッチ。正本は開始base `af2edf70cdf8fe46175f4fcf38fec607dda997d0` のAGENTS.mdとdocs/JEV_REVIEW_RULES.md。今回ユーザー指示によりfinding時のShadow Reviewを適用。開始時の読込記録はQA/INSTRUCTION_READS.jsonl、独立担当の読込は各作品QAの記録。root読込開始の正確なUTCは別採取しておらずnullを保持し、記録作成時刻と区別する。以前のGame018監査の証明には流用しない。
+
+## 確認済み実利用
+
+[全件監査](QA/SHADOW_AUDIT.json)で、game/finding/checkpointごとに保存コピーを重複排除した**21件の実API request**を確認した。内訳はPortal1／021:3／022:4／023:2／024:3／025:8。すべてapi_attempted=true、AVAILABLE、http_status=200、requested_model=typesafe/jev-1.13、resolved_model=typesafe/jev-1.13-20260917。選択2問の全確率分布とnoul2問を型・範囲で検証し、4回答が有効だった。DRY_RUN／missing credentials／ローカル入力validation failureを実APIとして数えていない。
+
+問いは1問題の当時の観測に対するPRIMARY_CAUSE、CODEX_ACTION_REQUIRED、NEXT_EVIDENCE、RELEASE_RISK_IF_UNRESOLVED。解法、コード生成、牌／カード／地雷の正解、面白さ、Visual点数、公開許可を依頼していない。新しい権限・キーは作らず、既存キー／許可先だけを使用した。秘密・実プレイヤーの生IDは送信していない。
+
+別担当のコード・実画面・操作レビューはJevとは別工程。隠したモデル回答を見る前に独立判断を保存し、annotateで照合した。全21件に独立判断があり、PRIMARY_CAUSE一致16/21、NEXT_EVIDENCE一致7/21、追加作業信号一致21/21、risk信号一致12/21。risk比較の見逃しは3件（023横画面の答え隠れ／025primary hoverの読みにくさ／025生成中のtouch遷移）。いずれも通常QAで修正し、モデルを公開gateにしなかった。
+
+codex_false_passは今回0件。ただし独立判断は全件「追加作業が必要」の選択された小標本で、低信号でレビューを省略できたという証拠ではない。集計上の実usageはinput33,393／output4,516tokens、cost_usd0.001402506、欠測0。これはAPI報告値の合計で、Codex作業tokens／時間の削減量は計測していない。効果の一般化・自動修正・自動レビュー省略は採用しない。
+
+## 手順・証拠の不備
+
+- 024の初期quit/restart保存修正はbefore捕捉／Shadowより先に行われた。本人の当時記録で逸脱を保持。別のPortal→pagehide findingは当時beforeと1回のShadowを残した。過去の漏れを後付けAPIで実施済みにしない。
+- 025の初期consent入力fixtureに関するbefore画像の一部は出力先再使用で失われた。rawログと作者の不備記録を保持し、その画像を検証済み原本と扱わない。
+- 025の2本の追加hidden-generation probeは、当時DOM状態を残さずtimeout後に再試行し、Shadowが後になった。保存済みtimeoutから1件のunknown findingを送信した後、独立traceで旧タップのcompatibility clickが新cancelへ届く製品問題を実証・修正した。初期2回の原因を同じだったと断定しない。
+- 022最初の公開probeはworkflow全体SUCCESS確認前に始まり、空menuで操作timeoutした。正確な初回resource状態は欠測。当時は配信readiness確認としてJev対象外にしたが、HTTP200でも操作不能の原因が不明なら規則のfindingになり得るため、この除外は十分に裏付けられていない。追加の事後APIで埋めず、不履行の可能性として保持。期待commitのSUCCESS後の通常4画面は成功。
+- 024最終isolated画像をroot collectorが誤った出力先で上書きした。初回finding・before source・freeze・Shadowは保全したが、失われた最終isolated画像は復元していない。途中生成の旧hashレビューは原本の証明に使わず、残存root compiled画像を改めて独立Visual評価した。詳細は[provenance](../game024/QA/ARTIFACT_PROVENANCE_NOTE.json)。
+- 025独立fixture driverの1行末空白は保存した実行証跡にある。ステージ差分checkはこの箇所を報告した。製品ソースに空白エラーはなく、raw検証scriptを修正して当時と異なる記録にはしない。
+
+今後の提案は、最初の意味的timeoutで再試行を止め、操作イベント／DOM状態／resource応答をbeforeとして残すこと、immutableなrun固有出力先を使うこと、公開probeを期待SHAのworkflow SUCCESS後に始めること。今回の履歴は追記で実施済みに見せず保持する。
