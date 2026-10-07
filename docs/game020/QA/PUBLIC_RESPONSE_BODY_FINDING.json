@@ -1,0 +1,23 @@
+{
+  "finding_id": "g020-public-response-body-navigation",
+  "problem": "公開配信再照合でresponse.body取得がNetwork.getResponseBody Protocol errorになり終了する",
+  "expected": "公開entry/assetの実byteを取得し隔離buildと比較する",
+  "observed": [
+    "docs-only commit96d6e9eの公式Pages build/deploy success後に既存collectorを実行した",
+    "assets/portal/game015.webp,game016.webp,game018.webp,game019.webpのresponse.bodyがNo resource with given identifier foundになった",
+    "ブラウザAPIのmessageにResponse body is not available for a response that was navigated away fromとある",
+    "collectorはresponse callbackで非同期body取得promiseを配列へ入れる",
+    "Portalの020 cardへscroll後、020/018ページへ移動し、全移動後にPromise.all(pending)する",
+    "同じ公開runtimeで先の35file照合と4画面の通常操作は成功記録がある"
+  ],
+  "unknown": [
+    "body取得とnavigationの順序が今回例外へどう関係したか",
+    "配信検査の再現可能な取得順序"
+  ],
+  "evidence": [
+    "tests/game020/verify-assets.mjs",
+    "docs/game020/QA/pages-evidence-ci.json",
+    "docs/game020/QA/public-assets-final/report.json"
+  ],
+  "provenance": "actual final post-CI browser collector exception, quoted from tool output"
+}

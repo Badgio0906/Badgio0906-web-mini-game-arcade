@@ -1,6 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-07 UTC：**Game020「すっきり牌合わせ ～PAIR TILE～」を公開済み、追加承認されたGame018 revision03も安全に統合・公開済み。** 新作は24／48枚の古典牌合わせ、独自幾何学牌、時間制限・ミス罰なし、任意説明／8枚練習、ヒント／戻す／解ける残牌並べ替え。active19／historical20、010退役維持、次ID021は未着手。[020報告](game020/IMPLEMENTATION_REPORT.md)／[018統合追補](game018/revision03/PUBLICATION_INTEGRATION.md)。018は少年の全身・足首接合・選択値連動SPIN・ANGLE／射出方向の描画だけを採用し、物理／保存互換は不変。元018未commit作業は182fileとstatus／HEAD／branchを保全。本人未試遊の公開はユーザー明示承認済み、実機・主観評価は未実施。runtime `9e3c66d`、公式Pages run37625676913のbuild／deploy成功。公開020の4画面・018のPC／phone各2RUN・35配信fileの一致・Portal19掲載を確認。詳細は上記報告と020 QA/PUBLICATION.json。
+2026-10-07 UTC：**Game020「すっきり牌合わせ ～PAIR TILE～」を公開済み、追加承認されたGame018 revision03も安全に統合・公開済み。** 新作は24／48枚の古典牌合わせ、独自幾何学牌、時間制限・ミス罰なし、任意説明／8枚練習、ヒント／戻す／解ける残牌並べ替え。active19／historical20、010退役維持、次ID021は未着手。[020報告](game020/IMPLEMENTATION_REPORT.md)／[018統合追補](game018/revision03/PUBLICATION_INTEGRATION.md)。018は少年の全身・足首接合・選択値連動SPIN・ANGLE／射出方向の描画だけを採用し、物理／保存互換は不変。元018未commit作業は182fileとstatus／HEAD／branchを保全。本人未試遊の公開はユーザー明示承認済み、実機・主観評価は未実施。runtime `9e3c66d`、公式Pages run37625676913のbuild／deploy成功。公開020の4画面・018のPC／phone各2RUN・初回35／追補37配信fileの一致・Portal19掲載を確認。詳細は上記報告と020 QA/PUBLICATION.json。
 
 **020 Analytics Worker登録も後で許可され、typecheck／実ローカルD1の23確認を完了。** 020 ingest・匿名admin/Codex詳細・summary、021拒否を確認。認証／Secret／権限／D1 schema／広告／GA4／CREDIT設定は不変。`wrangler whoami`は未認証、Cloudflare APIは許可先外のため本番Worker deploy未実施。[Worker登録記録](game020/QA/WORKER_REGISTRATION_RESULT.json)／[本番反映blocker](game020/QA/WORKER_DEPLOY_BLOCKER.json)。Pages公開とWorker本番登録完了は別。候補表A22は編集しない。
 

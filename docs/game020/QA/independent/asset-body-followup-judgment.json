@@ -1,0 +1,32 @@
+{
+  "finding_id": "g020-public-response-body-navigation",
+  "recorded_at": "2026-10-07T13:28:54.460149+00:00",
+  "reviewer": "pair020_review (blind to Jev answers)",
+  "prior_independent_record": "docs/game020/QA/independent/asset-body-judgment.json",
+  "prior_record_preserved": true,
+  "observation_source": "Root contemporaneous task message: first targeted collector adjustment still failed on game016 thumbnail with same Protocol error. This agent did not run that test.",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "The first added per-page Promise.all(pending) does not establish a stable drain: Promise.all consumes the array entries present when called, while scroll-triggered lazy responses may register additional promises later. Therefore a goto can still invalidate an old response body. The reported same game016 CDP error is consistent with this remaining collector race; it is not evidence that the test-only adjustment changed the deployed runtime. The previous judgment said targeted verification was needed and did not claim that first adjustment had passed.",
+  "evidence": [
+    "docs/game020/QA/PUBLIC_RESPONSE_BODY_FINDING.json",
+    "docs/game020/QA/public-response-body-before.mjs",
+    "tests/game020/verify-assets.mjs",
+    "docs/game020/QA/independent/asset-body-judgment.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Re-read the first adjusted collector, confirmed only a fixed-array snapshot wait is added inside the loop, and preserved this follow-up separately. Reviewed the planned remedy conceptually: separate live Page objects per route avoid navigating away from any page with outstanding response-body reads; dynamic draining and targeted rerun are still required before claiming final collector success. No browser suites or product edits performed by this reviewer.",
+    "evidence": [
+      "tests/game020/verify-assets.mjs",
+      "docs/game020/QA/independent/asset-body-judgment.json"
+    ]
+  },
+  "final_root_cause": "Response-body collection remains subject to navigation lifetime and late response registration; a fixed snapshot Promise.all wait alone is insufficient. Separate live pages remove the navigation invalidation source and must be verified by the targeted collector run.",
+  "limitations": [
+    "Final separate-page implementation and targeted result were not yet observed at this record time.",
+    "No new Jev API request or answer access; same finding remains unresolved in the collector only."
+  ]
+}

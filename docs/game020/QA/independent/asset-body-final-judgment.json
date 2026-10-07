@@ -1,0 +1,38 @@
+{
+  "finding_id": "g020-public-response-body-navigation",
+  "recorded_at": "2026-10-07T13:30:08.523626+00:00",
+  "reviewer": "pair020_review (blind to Jev answers)",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "The collector consumed body promises from a reused Page after navigating away from lazy-loaded Portal responses. The browser error explicitly identifies response-body unavailability after navigation; it does not identify a bad HTTP status or content mismatch. The first per-page Promise.all snapshot still failed because late response registration can escape the captured array entries. Current helper now creates three distinct live Pages, retains their documents, waits for page network idle and dynamically drains newly registered promises before disposing pages. This removes the inspected resource-lifetime problem. The actual root targeted report verifies 37HTTP200 exact byte hashes and zero pageerrors on unchanged game runtime, supporting test-infrastructure rather than product-delivery diagnosis.",
+  "evidence": [
+    "docs/game020/QA/PUBLIC_RESPONSE_BODY_FINDING.json",
+    "docs/game020/QA/PUBLIC_RESPONSE_BODY_FOLLOWUP.json",
+    "docs/game020/QA/public-response-body-before.mjs",
+    "docs/game020/QA/public-response-body-first-drain.mjs",
+    "tests/game020/verify-assets.mjs",
+    "docs/game020/QA/public-after-evidence-ci/report.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected initial, first-drain and final collector lifecycles, then read the completed root targeted result and programmatically checked 37assets, all HTTP200, exact SHA equality, zero errors and body draining before disposal. Did not rerun a browser suite or perform API/product operations. Initial and first-drain judgments remain preserved.",
+    "evidence": [
+      "tests/game020/verify-assets.mjs",
+      "docs/game020/QA/PUBLIC_RESPONSE_BODY_FOLLOWUP.json",
+      "docs/game020/QA/public-after-evidence-ci/report.json"
+    ]
+  },
+  "final_root_cause": "A test collector allowed navigation to discard CDP response resources before asynchronous/lazily registered body reads completed. Keeping each route in its own live Page and draining dynamically before disposal resolved the collector failure in the targeted actual run.",
+  "reviewed_final_collector_sha256": "5c563d6e152a262cf356101cc33c8114a9ce54b149f981ab474ab23cee14f8d7",
+  "prior_judgments_preserved": [
+    "docs/game020/QA/independent/asset-body-judgment.json",
+    "docs/game020/QA/independent/asset-body-followup-judgment.json"
+  ],
+  "limitations": [
+    "The initial resource-lifetime race was not independently browser-traced by this agent; diagnosis uses preserved collector ordering and quoted actual error.",
+    "The PASS37 run was performed by root, not this reviewer; this reviewer inspected the actual result.",
+    "No Jev answers or new API requests, Analytics, secrets, Worker/D1, product edits or broad reruns."
+  ]
+}

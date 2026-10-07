@@ -1,0 +1,33 @@
+{
+  "finding_id": "g020-public-response-body-navigation",
+  "recorded_at": "2026-10-07T13:27:28.300377+00:00",
+  "reviewer": "pair020_review (blind to Jev answers)",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "The original collector starts response.body promises but only awaits all pending work after navigating index→020→018. Portal scrolling begins lazy image response collection shortly before the next navigation. The observed CDP error explicitly says response body is unavailable after navigation; this is loss of response-body access in the verification driver, not an HTTP404, a byte hash mismatch, or a game error. Existing exact35asset and native gameplay success records remain separate valid observations. Draining captured body promises before each next navigation directly addresses the inspected ordering problem; a targeted collector rerun is the next needed evidence.",
+  "evidence": [
+    "docs/game020/QA/PUBLIC_RESPONSE_BODY_FINDING.json",
+    "docs/game020/QA/public-response-body-before.mjs",
+    "tests/game020/verify-assets.mjs",
+    "docs/game020/QA/public-assets-final/report.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read the preserved pre-fix collector and contemporaneous error state, then inspected the current test-only diff: await Promise.all(pending) now runs inside each per-page loop before the next goto. No product edits or browser-suite reruns were performed by this reviewer. Targeted collector result is owned by root and was still pending at this independent code judgment.",
+    "evidence": [
+      "docs/game020/QA/public-response-body-before.mjs",
+      "tests/game020/verify-assets.mjs",
+      "docs/game020/QA/PUBLIC_RESPONSE_BODY_FINDING.json"
+    ]
+  },
+  "final_root_cause": "The asynchronous asset collector allowed navigation to overtake response-body consumption for lazy-loaded Portal images; the browser then discarded the old resource identifier. The error belongs to collection sequencing, not asset delivery content.",
+  "reviewed_before_sha256": "a01a95a554002ef024350e4f33626fee44cfc3882d5d78bdd735812647188b80",
+  "reviewed_current_sha256": "39204d7043ad4ea62060d5eb317da60ff9db8f783e2db6691625fd5667975c69",
+  "limitations": [
+    "The initial failed CDP resource lifetime was not independently traced in this agent; diagnosis uses the exact error quoted by the parent plus the preserved collector ordering.",
+    "This agent did not claim the targeted collector rerun passed before receiving its actual result.",
+    "No Jev answers, production Analytics API, secrets, Worker or D1 were accessed."
+  ]
+}

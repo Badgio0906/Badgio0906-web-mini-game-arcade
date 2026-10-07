@@ -29,7 +29,7 @@
 
 ## Jev実利用と素材
 
-8件で実API送信・HTTP200・resolved model・有効な4回答を各行で確認した。finding当時の観測を1問題ごとの4問へ送信し、回答を見ない独立判断と採った方法を後でannotateした。[実API証跡](QA/JEV_API_EVIDENCE.json)／[Shadow原本](QA/JEV_SHADOW.jsonl)／[集計](QA/JEV_SUMMARY.json)。Jevは公開・面白さ・画像評価を代行せず、PASSのために呼ばない。旧018の5件は当時の履歴をオフライン照合し、今回コピー・PASSのための再呼出はしない。小標本の一致率を一般的な有効性や作業節約率へ広げない。[対象外理由](QA/JEV_EXCLUSIONS.json)。
+9件で実API送信・HTTP200・resolved model・有効な4回答を各行で確認した。finding当時の観測を1問題ごとの4問へ送信し、回答を見ない独立判断と採った方法を後でannotateした。[実API証跡](QA/JEV_API_EVIDENCE.json)／[Shadow原本](QA/JEV_SHADOW.jsonl)／[集計](QA/JEV_SUMMARY.json)。Jevは公開・面白さ・画像評価を代行せず、PASSのために呼ばない。旧018の5件は当時の履歴をオフライン照合し、今回コピー・PASSのための再呼出はしない。小標本の一致率を一般的な有効性や作業節約率へ広げない。[対象外理由](QA/JEV_EXCLUSIONS.json)。
 
 素材は独自 `icons.ts` のコードSVG、システム字体、控えめなAudioService合成音、実プレイ画面のcrop／WebP thumbnail。ImageGen0、他サイト素材流用0。名称検索と米著作権局のルール／具体的表現の区別を参考にし、日本法・商標のクリアランス／権利ゼロは保証しない。[RIGHTS_NOTE](RIGHTS_NOTE.md)／[台帳](../../assets/portal/thumbnails/asset-index.json)。
 
@@ -44,3 +44,7 @@
 本番に既存Analytics endpointが含まれることと、新作020をWorkerが受理できることは別である。Worker本番deployは未認証／許可先不足で未実施のまま。020の本番集計対応完了は主張しない。
 
 本人の主観試遊、実機スマホ、音・FPS・長時間の快適さは未実施。ユーザーは本人未プレイ公開を明示承認済み。[試遊方法](HUMAN_PLAYTEST.md)。認証／ネットワークが整うまではWorker本番登録が残る。広告・GA4・CREDIT・新権限・次候補・Sheet編集は行わない。再現は [HANDOFF](HANDOFF.md)。
+
+### 公開記録commit後の照合追補
+
+公開証拠commit `96d6e9e765bad4d91af784542e7cc87a9020bb5c` の公式Pages run37628004882もbuild／deploy成功。[実CI](QA/pages-evidence-ci.json)。同じruntimeを再照合するcollectorで、遅延読込画像のresponse.body取得前に次entryへ移動しCDP resourceが失われる例外が出た。per-page Promise.allの初回修正もlate response登録を待ち切れず失敗したため、その原本と当時の観測を保存した。最終collectorはentryごとのPageを生かし、動的なbody取得待ちを終えてから閉じる。対象collectorの実行で**37fileのHTTP200・SHA256一致、pageerror0**を確認した。[最終照合](QA/public-after-evidence-ci/report.json)／[当時の観測](QA/PUBLIC_RESPONSE_BODY_FINDING.json)／[初回調整失敗](QA/PUBLIC_RESPONSE_BODY_FOLLOWUP.json)。製品コード・公開環境変数・Worker設定は追加変更せず、検証処理と記録だけを修正した。同一findingのJev送信は1回の4問、後続の失敗／独立追補は再送せず保全した。
