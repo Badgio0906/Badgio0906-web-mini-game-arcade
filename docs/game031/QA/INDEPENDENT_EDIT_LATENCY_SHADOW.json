@@ -1,0 +1,24 @@
+{
+  "finding_id": "031-edit-latency-initial-dirty",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source reviewer; Jev answers unread",
+  "rationale": "This is diagnostic attribution in game code, not evidence that the target remained visible for2seconds. World initializes all256chunks as dirty; onEdit timestamps every remaining dirty key, including untouched revision0chunks. Renderer then overwrites editDelayMs as each such key eventually meshes. The report actually records the edited target transition and1.6ms immediately after mining, then larger values as unrelated initialization work drains at unchanged worldrevision1. A limited instrumentation correction must mark only the edited cell chunk and its actual face-adjacent affected chunks, with current world/revision association; initializing distant chunks must not count as edit latency. New measurement should retain per-affected-chunk timing and distinguish target/neighbour latency from world-start queue time. No change to physics/world dimensions or speculative performance optimization is justified by this metric alone.",
+  "evidence": [
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json",
+    "src/games/game031/main.ts",
+    "src/games/game031/Render.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared report timestamps/revisions/target states with main.onEdit and Render.editedChunk/completion assignments and World.set affected-neighbor updates. Preserved the pre-change main/Render sources. Recommend targeted instrument attribution plus a repeat of one early mine while initial dirty work remains; no root-browser work performed here.",
+    "evidence": [
+      "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json",
+      "src/games/game031/main.ts",
+      "src/games/game031/Render.ts",
+      "src/games/game031/World.ts"
+    ]
+  }
+}

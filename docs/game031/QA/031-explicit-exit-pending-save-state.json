@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-explicit-exit-pending-save",
+  "problem": "Explicit save-and-exit shares an already pending older snapshot without capturing subsequent edits.",
+  "expected": "Saving and leaving should confirm that the current paused world, inventory and position were persisted.",
+  "observed": [
+    "save() returns savePromise immediately whenever a prior save is pending (main.ts:28).",
+    "The prior snapshot is captured before asynchronous SaveStore work (main.ts:29-30).",
+    "Playing may continue to edit while autosave is pending. pause()/exitTitle()/leave() can all receive the prior promise and exit on true without capturing the newer snapshot."
+  ],
+  "unknown": [
+    "Browser reproduction of a slow IndexedDB transaction plus edit/pause/explicit exit.",
+    "Actual timing of native transactions in supported mobile browsers."
+  ],
+  "provenance": "independent source-flow observation; not yet reproduced in browser; Jev answers not read",
+  "evidence": [
+    "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+    "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+  ]
+}

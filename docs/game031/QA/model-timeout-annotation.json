@@ -1,0 +1,24 @@
+{
+  "finding_id": "031-model-determinism-timeout",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source reviewer; Jev answers not read",
+  "rationale": "The determinism test performs 1,048,576 Vitest expect calls in a 5-second test. A separate plain traversal benchmark builds both exact full worlds in 212.70 ms, compares all 1,048,576 cells in 16.78 ms, and finds zero mismatches. The recorded timeout therefore does not establish a terrain determinism or generation-performance failure. Replace assertion-per-cell overhead with one aggregate assertion while preserving the full traversal and material/cave checks; do not simply suppress the test. No user-facing release risk is established by this test-infrastructure timeout alone.",
+  "evidence": [
+    "docs/game031/QA/model-first.json",
+    "tests/unit/game031-model.test.ts",
+    "src/games/game031/World.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read exact test loop, canonical terrain constructor/hash, and first recorded failure without opening JEV_SHADOW; independently ran an unasserted full comparison benchmark with the same seed and dimensions.",
+    "evidence": [
+      "docs/game031/QA/model-first.json",
+      "tests/unit/game031-model.test.ts",
+      "src/games/game031/World.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-10-07T23:43:23.115Z",
+  "findingId": "031-phone-lost-capture-test",
+  "answersVisible": false,
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Original trace contains pointerdown for DIG pointer10 but no lostpointercapture event after releasePointerCapture; QA waited without sending another pointer event. Input.ts releases the role on actual lostpointercapture. Need trigger subsequent pointerMove to process pending capture release, then assert trusted lostpointercapture and stopped digging. Until actual event is observed, this test does not establish a product defect.",
+  "evidence": [
+    "REPORT.json pointerTrace",
+    "src/games/game031/Input.ts document lostpointercapture listener"
+  ]
+}

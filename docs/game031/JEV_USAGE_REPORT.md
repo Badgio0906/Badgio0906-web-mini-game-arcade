@@ -1,0 +1,15 @@
+# Game031 Jev Shadow Review
+
+現行docs/JEV_REVIEW_RULES.md schema2に従い、実findingごとに4問。実API応答と独立Codex判断は別に残す。実装・画面レビュー・合否・面白さ・公開許可をJevへ委ねていない。秘密値・生保存・画像そのものを送っていない。
+
+QA/JEV_SHADOW.jsonlの各行でapi_attempted、status、http_status、resolved_model、4回答の型／範囲を確認する。AVAILABLEという文字や件数だけでは実API成功を証明しない。最終summaryは専用の新ファイルに生成し、過去summaryを上書きしない。
+
+当時の対象：決定性テストtimeout、明示終了と保存中編集、未対応版保存の置換導線、表面模様の反復、足元採掘と隣床支持の試験、phone領域overlap判定、gotcapture前のrelease試験、320px素材名とDIGの実重なり、配置候補の囲み込み、案内文とJumpの実重なり。メカニカルな型・signedzero・到達距離fixtureの修正や単純PASSは回数合わせで送らない。
+
+独立判断は回答を読まない別reviewerまたは先に固定した判断を保存。観測JSONの補助fieldがhelperで拒否された例は原本を保持し、許可schemaへ写した別fileでannotateした。過去ログを実施済みに見せる書換えはしない。検証済み追加修正には読み取り診断や通常入力の補助操作を用い、根拠は各実行REPORTへ残す。
+
+原因一致・routing一致・0.45以下・見逃し等はQAの最終JEV_SUMMARYファイルを参照。この少数finding集合は一般的有効性・費用節約・人間の正解を証明しない。本人の主観評価は0件。
+
+最終16行すべてapi_attempted=true、HTTP200、AVAILABLE、typesafe/jev-1.13-20260917で64回答が有効。独立判断16件あり、未レビューAVAILABLE0。QA/JEV_HTTP_VALIDITY_16.jsonとJEV_SUMMARY_16.json。原因一致12/16、routing一致5/16、追加調査必要16/16、0.45未満0、記録上のaction/risk見逃し0。選択されたfindingのみなので未発見問題を含む保証ではない。API報告usage/costはsummary、Codex全体usageは取得不可null。
+
+追加対象は390px案内と照準、画質待機の古いframe、初期dirtyを含めた遅延計測、Portal試験の旧URL形式／lazyload、Portalcatalog_version29と実30の不一致。すべて当時の観測で別findingを記録し、限られた修正後の証拠で閉じた。

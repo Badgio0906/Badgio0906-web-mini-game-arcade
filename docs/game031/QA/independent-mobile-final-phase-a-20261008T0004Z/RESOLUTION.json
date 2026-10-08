@@ -1,0 +1,222 @@
+{
+  "recordedAt": "2026-10-07T23:52:35.153Z",
+  "answersVisible": false,
+  "resolutions": [
+    {
+      "findingId": "031-phone-control-material-overlap",
+      "cause": "TEST_INFRA_BUG",
+      "change": "Measure actual palette button + label rectangles instead of enclosing materials rectangle.",
+      "result": [
+        {
+          "name": "portrait390",
+          "overlaps": []
+        },
+        {
+          "name": "landscape844",
+          "overlaps": []
+        },
+        {
+          "name": "narrow320",
+          "overlaps": []
+        }
+      ]
+    },
+    {
+      "findingId": "031-phone-lost-capture-test",
+      "cause": "TEST_INFRA_BUG",
+      "change": "Process pending capture with trusted touchMove before releasePointerCapture; after release process another trusted touchMove and check got/lost for the current pointerID.",
+      "trustedCaptureEvents": [
+        {
+          "type": "gotpointercapture",
+          "id": 5,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 286,
+          "y": 573
+        },
+        {
+          "type": "lostpointercapture",
+          "id": 5,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 286,
+          "y": 573
+        },
+        {
+          "type": "gotpointercapture",
+          "id": 9,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 286,
+          "y": 573
+        },
+        {
+          "type": "lostpointercapture",
+          "id": 9,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 286,
+          "y": 573
+        },
+        {
+          "type": "gotpointercapture",
+          "id": 10,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 287,
+          "y": 573
+        },
+        {
+          "type": "lostpointercapture",
+          "id": 10,
+          "pointerType": "touch",
+          "target": "dig",
+          "trusted": true,
+          "x": 288,
+          "y": 573
+        }
+      ],
+      "result": "DIG stayed stopped after actual capture loss."
+    },
+    {
+      "findingId": "031-narrow-material-label-touch-overlap",
+      "cause": "PRODUCT_BUG",
+      "change": "Root raised mobile joystick and actions via scoped CSS; QA resumes after resize before checking actual playing layout.",
+      "result": {
+        "name": "narrow320",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "materials": [
+          {
+            "id": "material-label",
+            "x": 125.34375,
+            "y": 338,
+            "width": 69.3125,
+            "height": 26,
+            "right": 194.65625,
+            "bottom": 364
+          },
+          {
+            "id": "1",
+            "x": 8,
+            "y": 369,
+            "width": 73,
+            "height": 62,
+            "right": 81,
+            "bottom": 431
+          },
+          {
+            "id": "2",
+            "x": 85,
+            "y": 369,
+            "width": 73,
+            "height": 62,
+            "right": 158,
+            "bottom": 431
+          },
+          {
+            "id": "3",
+            "x": 162,
+            "y": 369,
+            "width": 73,
+            "height": 62,
+            "right": 235,
+            "bottom": 431
+          },
+          {
+            "id": "4",
+            "x": 239,
+            "y": 369,
+            "width": 73,
+            "height": 62,
+            "right": 312,
+            "bottom": 431
+          },
+          {
+            "id": "5",
+            "x": 8,
+            "y": 435,
+            "width": 73,
+            "height": 63,
+            "right": 81,
+            "bottom": 498
+          },
+          {
+            "id": "6",
+            "x": 85,
+            "y": 435,
+            "width": 73,
+            "height": 63,
+            "right": 158,
+            "bottom": 498
+          },
+          {
+            "id": "7",
+            "x": 162,
+            "y": 435,
+            "width": 73,
+            "height": 63,
+            "right": 235,
+            "bottom": 498
+          },
+          {
+            "id": "8",
+            "x": 239,
+            "y": 435,
+            "width": 73,
+            "height": 63,
+            "right": 312,
+            "bottom": 498
+          }
+        ],
+        "controls": [
+          {
+            "id": "joystick",
+            "x": 18,
+            "y": 244,
+            "width": 80,
+            "height": 80,
+            "right": 98,
+            "bottom": 324
+          },
+          {
+            "id": "jump",
+            "x": 250,
+            "y": 210,
+            "width": 56,
+            "height": 54,
+            "right": 306,
+            "bottom": 264
+          },
+          {
+            "id": "dig",
+            "x": 188,
+            "y": 270,
+            "width": 56,
+            "height": 54,
+            "right": 244,
+            "bottom": 324
+          },
+          {
+            "id": "place",
+            "x": 250,
+            "y": 270,
+            "width": 56,
+            "height": 54,
+            "right": 306,
+            "bottom": 324
+          }
+        ],
+        "overlaps": []
+      }
+    }
+  ],
+  "tests": "No new Jev API calls by independent reviewer; all comparisons use observed DOM/state and trusted events. Physical iPhone/Android, human feel and author playtest not performed."
+}

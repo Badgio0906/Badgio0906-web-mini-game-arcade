@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-unsupported-save-ui-replacement",
+  "problem": "An unsupported stored generator is reported as storage failure, loses the visible export path, and is treated as absence of an existing world.",
+  "expected": "Unsupported saved versions must stay exportable, clearly explained, and not be overwritten as though no save existed.",
+  "observed": [
+    "setup catches all saveStore.load errors and leaves available null (main.ts:63).",
+    "download exports only engine snapshot or available, and never calls SaveStore.exportStoredBackup (main.ts:52).",
+    "With available null the title labels the action immediately-starting play, and new-world skips confirmation before begin(null) creates/saves a replacement.",
+    "SaveStore.exportStoredBackup supports retrieving unsupported raw stored data, but no UI invokes it."
+  ],
+  "unknown": [
+    "End-to-end browser fixture with stored generatorVersion2 and settings export/new-world action."
+  ],
+  "provenance": "independent source-flow observation; not yet reproduced in browser; Jev answers not read",
+  "evidence": [
+    "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+    "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+  ]
+}

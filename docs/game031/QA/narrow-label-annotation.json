@@ -1,0 +1,22 @@
+{
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "At actual playing state on 320\u00d7568, DIG and selected-material label are both visible and overlap12.66\u00d714px. CSS requires separating the input-control group from the material bar/label. Inputs still worked at390 portrait and844 landscape, and this small label-edge overlap has not established important-operation failure or a major progression blocker. Inspect small-width CSS positioning, apply limited fix, then verify screenshots and actual child rectangles at320/390/844.",
+  "finding_id": "031-narrow-material-label-touch-overlap",
+  "reviewer": "game031_browser_qa independent actual320playing DOM/PNG; Jevanswersunseen",
+  "evidence": [
+    "docs/game031/QA/narrow320-actual-playing-20261008T0000Z/REPORT.json",
+    "docs/game031/QA/narrow320-actual-playing-20261008T0000Z/playing.png",
+    "docs/game031/QA/narrow320-actual-playing-20261008T0000Z/INDEPENDENT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Measure actual visible child overlap at320width, preservebefore, then independently remeasure320/390/844 after limited mobile CSS separation.",
+    "evidence": [
+      "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

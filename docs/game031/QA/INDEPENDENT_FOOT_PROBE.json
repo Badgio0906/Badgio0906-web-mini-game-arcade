@@ -1,0 +1,66 @@
+{
+  "finding_id": "031-foot-mine-no-fall-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent reviewer; Jev log unread",
+  "observed_at": "2026-10-07T23:36:01.313566+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "rationale": "At the reported failure, the 0.6-wide AABB has Z extent18.4672–19.0672 and X extent18.3328–18.9328. It overlaps two floor voxels (18,19,18) and (18,19,19). The post-mining target is (18,18,18), consistent with the first floor cell being removed, but the neighboring floor voxel remains natural moss. The test incorrectly requires a fall after removing one of multiple supporting cells. Independently reconstructing the recorded coordinates and three reported mines keeps the player grounded when the neighboring support remains; removing the second support then causes a one-voxel fall. Do not weaken collision support rules to make this probe pass; center the body fully on the mined support or remove every intersecting support with normal input.",
+  "evidence": [
+    "docs/game031/QA/phase-a-extended-20261007T233412Z/REPORT.json",
+    "tests/game031/extended.mjs",
+    "src/games/game031/Physics.ts",
+    "src/games/game031/World.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read failure coordinates, the probe input sequence and AABB floor collision traversal. Independently ran a synthetic canonical-model reconstruction at the exact recorded coordinates with the three mined cells and compared retained versus removed neighbor support. This is model evidence, not a replacement for ordinary-input rerun.",
+    "evidence": [
+      "docs/game031/QA/phase-a-extended-20261007T233412Z/REPORT.json",
+      "tests/game031/extended.mjs",
+      "src/games/game031/Physics.ts"
+    ]
+  },
+  "reconstruction": {
+    "command": "node_modules/.bin/vite-node /tmp/game031-review-foot.ts",
+    "provenance": "synthetic model reconstruction using recorded failure coordinates; no browser/player-state injection",
+    "support": [
+      {
+        "x": 18,
+        "y": 19,
+        "z": 18,
+        "block": 0
+      },
+      {
+        "x": 18,
+        "y": 19,
+        "z": 19,
+        "block": 1
+      }
+    ],
+    "after_one_support_removed": {
+      "position": {
+        "x": 18.632800000000074,
+        "y": 19.99999900137044,
+        "z": 18.767199999999953
+      },
+      "grounded": true
+    },
+    "after_all_support_removed": {
+      "position": {
+        "x": 18.632800000000074,
+        "y": 18.999999001370437,
+        "z": 18.767199999999953
+      },
+      "grounded": true
+    }
+  },
+  "source_hashes": {
+    "src/games/game031/Physics.ts": "9c0e824aeff119308f3b53ebee632afd89d084176e12de0eeaa39a49b3bb3ab2",
+    "src/games/game031/World.ts": "a818e752b3f12b29116073d5398f3dba23b3c6d8b764d5d34ea281361147e774",
+    "tests/game031/extended.mjs": "016baca3e3f62c9c0b270ff958f4d1c56a404170f62038cd4c843904044570a7"
+  },
+  "final_root_cause": "Probe expects falling after mining one support while hidden body still overlaps an adjacent natural floor voxel."
+}

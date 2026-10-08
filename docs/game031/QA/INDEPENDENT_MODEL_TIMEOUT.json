@@ -1,0 +1,39 @@
+{
+  "finding_id": "031-model-determinism-timeout",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source reviewer; Jev answers not read",
+  "observed_at": "2026-10-07T23:28:19.105695+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "rationale": "The determinism test performs 1,048,576 Vitest expect calls in a 5-second test. A separate plain traversal benchmark builds both exact full worlds in 212.70 ms, compares all 1,048,576 cells in 16.78 ms, and finds zero mismatches. The recorded timeout therefore does not establish a terrain determinism or generation-performance failure. Replace assertion-per-cell overhead with one aggregate assertion while preserving the full traversal and material/cave checks; do not simply suppress the test. No user-facing release risk is established by this test-infrastructure timeout alone.",
+  "evidence": [
+    "docs/game031/QA/model-first.json",
+    "tests/unit/game031-model.test.ts",
+    "src/games/game031/World.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read exact test loop, canonical terrain constructor/hash, and first recorded failure without opening JEV_SHADOW; independently ran an unasserted full comparison benchmark with the same seed and dimensions.",
+    "evidence": [
+      "docs/game031/QA/model-first.json",
+      "tests/unit/game031-model.test.ts",
+      "src/games/game031/World.ts"
+    ]
+  },
+  "benchmark": {
+    "command": "node_modules/.bin/vite-node /tmp/game031-review-benchmark.ts",
+    "provenance": "independent local synthetic fixture, not player activity",
+    "generation_two_worlds_ms": 212.70340499999998,
+    "plain_comparison_ms": 16.784095999999977,
+    "compared_voxels": 1048576,
+    "mismatch": 0
+  },
+  "source_hashes": {
+    "docs/game031/QA/model-first.json": "fb249d6e060a63b3df4e71d59b334336c004e218c55ae7cdd656f2f66067e9ba",
+    "tests/unit/game031-model.test.ts": "c22f13378cadafb7e679ff073dcd324ec1ad89fd58e5055a1ef2fdb3bbc6d274",
+    "src/games/game031/World.ts": "a818e752b3f12b29116073d5398f3dba23b3c6d8b764d5d34ea281361147e774"
+  },
+  "final_root_cause": "Per-cell testing assertion overhead exceeds the default timeout; full plain equality comparison completes with zero mismatches."
+}

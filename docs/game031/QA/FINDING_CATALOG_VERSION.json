@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-portal-catalog-version",
+  "problem": "Portal impression metadata still declares active29 whiletheintegratedcatalogandrenderedheadercontain30activegames.",
+  "expected": "Catalogidentifier reflectsthecurrentcatalog whennew031isregistered.",
+  "observed": [
+    "src/portal/main.ts observationcallback contains catalog_version:active29-2026-10-08.",
+    "CurrentgameCatalog andheadercount30;new031entrypresent,010retired.",
+    "New031externalcollectionremainsdisabled."
+  ],
+  "unknown": [
+    "Whether otherconsumers depend ontheoldliteral identifier."
+  ],
+  "evidence": [
+    "src/portal/main.ts",
+    "src/data/gameCatalog.ts",
+    "index.html"
+  ],
+  "provenance": "source/staticmetadataobservation, noAnalyticsAPIreadorproductionevent"
+}

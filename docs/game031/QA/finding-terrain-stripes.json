@@ -1,0 +1,21 @@
+{
+  "finding_id": "031-repeating-terrain-stripes",
+  "problem": "Terrain surfaces display prominent repeated diagonal stripes rather than quiet irregular speckles.",
+  "expected": "Own calm material textures with subtle spots and face shading so editing target and terrain shape remain easy to read.",
+  "observed": [
+    "Actual prototype desktop-start.png shows repeated bright diagonal dotted bands across soil, wall and return platform.",
+    "Render texture authoring places55spots with modular17/13increments in32pixeltiles."
+  ],
+  "unknown": [
+    "Whether a less regular texture improves the frozen gameplay screenshots at phone scale."
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "evidence": [
+    "docs/game031/QA/phase-a-20261007T232821Z/desktop-start.png",
+    "src/games/game031/Render.ts"
+  ],
+  "provenance": "actualheadlessChromium screenshot; humanenjoymentunverified"
+}

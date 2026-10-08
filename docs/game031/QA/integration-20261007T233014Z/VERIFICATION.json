@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-07T23:30:14.505534+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "commands": [
+    {
+      "command": "npm test -- tests/unit/game031-integration.test.ts tests/unit/analyticsWorker.test.ts tests/unit/analytics-codex-fetch.test.ts tests/unit/classic-telemetry.test.ts tests/unit/game020-integration.test.ts tests/unit/classic-integration.test.ts tests/unit/catalog-build-entry.test.ts tests/unit/game010-retirement.test.ts tests/unit/catalog-telemetry.test.ts",
+      "status": "PASS",
+      "tests": 85,
+      "files": 9
+    },
+    {
+      "command": "npm run check",
+      "cwd": "analytics-worker",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "cwd": "analytics-worker",
+      "status": "PASS",
+      "events": 42,
+      "runs": 13,
+      "environment": "synthetic-local-only"
+    }
+  ],
+  "source_sha256": {
+    "src/data/gameCatalog.ts": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+    "src/data/gameVersions.ts": "9a6956bdd6eecce5c4bbf940c046fe6bbcd15eecf320fa32ab763c0daa46464a",
+    "src/analytics/remoteRegistration.ts": "f97cc0041c7d355fccbee7fbbb77781322df898e6b04d53b94470746ab8cca96",
+    "src/data/analyticsEnvelope.ts": "7f5f82e90a4cff47c1695d8eb608845a90802f09fb8f4e54572f5d3d038db316",
+    "analytics-worker/src/index.ts": "6bc3cbcf263201fa6217471c0346fd7d52fd4034f634bd68d02db31778b32001",
+    "analytics-worker/src/aggregate.ts": "2ec13aff0ae9a59f1f2ad19378cc3e1a1f3b983286243757a65e51b5e5696cc3",
+    "analytics-worker/src/types.ts": "f1eff43770349f5fb19c1c120b587f2e0d533334d8136e31ee0b8b01768e6525",
+    "analytics-worker/tests/local-d1.mjs": "efa5607fa5303c184c01aef1984f33de5754796461cfce77852f4e844c7aba61",
+    "scripts/fetch-analytics-context.mjs": "7f18a9014c73af386d35a3a063aa28bf61033d819afc2ab27ef3cde26ec09cfd",
+    "jev_export/game_profiles/game031.json": "977ff56460a5dd8baed6cfbe6fcd29589c990958a6f4147ebfbe5a44b267ae79",
+    "jev_export/game_profiles/catalog.json": "a1fc3d385dbf6cfc4d4a80ded2646c2634b4e927fc8f011b8d96be6f6b30f42c",
+    "tests/unit/game031-integration.test.ts": "e34cb496a68aa65df03d0be2dd33ef4836c394101fc6b54a8f9e0f83f1521234",
+    "index.html": "1518bd69178952a94099e1d817220524d041fcd25dfeb4a8ff4f2bda69fd3581",
+    "vite.config.ts": "14714de0c27e58e06379b8705430d4960c3ebea91669779895894487b9caeeab"
+  },
+  "production_api_calls": 0,
+  "new_credentials": false,
+  "finding_classification": "No unknown semantic failure observed. Expected registration-boundary updates were mechanical scope changes, not Jev findings. No PASS-only API call."
+}

@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-model-determinism-timeout",
+  "problem": "The full-size deterministic terrain test ends with a timeout before a usable completed comparison result.",
+  "expected": "Compare two 128x64x128 worlds for deterministic matching data and report the result.",
+  "observed": [
+    "Vitest reports 6609.664ms duration in the deterministic world case.",
+    "The default test timeout is 5000ms.",
+    "The test loop calls expect once for each of 1048576 voxels.",
+    "No voxel mismatch is recorded before the timeout."
+  ],
+  "unknown": [
+    "Whether terrain generation itself or test assertion overhead causes the timeout."
+  ],
+  "test_name": "Game031 voxel model generates final world deterministically",
+  "evidence": [
+    "docs/game031/QA/model-first.json"
+  ],
+  "provenance": "local automated synthetic fixture; no production analytics"
+}

@@ -1,0 +1,23 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Original trace contains pointerdown for DIG pointer10 but no lostpointercapture event after releasePointerCapture; QA waited without sending another pointer event. Input.ts releases the role on actual lostpointercapture. Need trigger subsequent pointerMove to process pending capture release, then assert trusted lostpointercapture and stopped digging. Until actual event is observed, this test does not establish a product defect.",
+  "finding_id": "031-touch-capture-release-probe",
+  "reviewer": "game031_browser_qa independent live DOM/touch reviewer; Jevanswersunseen",
+  "evidence": [
+    "docs/game031/QA/independent-mobile-after-20261007T2347Z/INDEPENDENT.json",
+    "docs/game031/QA/independent-mobile-after-20261007T2347Z/REPORT.json",
+    "docs/game031/QA/capture-event-probe-20261007T2356Z/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspect actual child bounds and touch event/capture sequence before limited test-only correction; preserve original and later observations separately.",
+    "evidence": [
+      "docs/game031/QA/independent-mobile-after-20261007T2347Z/REPORT.json",
+      "docs/game031/QA/capture-event-probe-20261007T2356Z/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

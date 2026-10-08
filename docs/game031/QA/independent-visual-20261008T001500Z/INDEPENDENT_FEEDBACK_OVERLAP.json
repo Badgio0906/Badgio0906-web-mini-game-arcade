@@ -1,0 +1,23 @@
+{
+  "finding_id": "031-feedback-jump-overlap",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent actual-image reviewer; Jev answers unread",
+  "rationale": "The overlap is objective in the actual portrait/320px captures, and the current responsive CSS places actions bottom180px with114px height while feedback bottom244px spans the upper button. Controls and text are independently readable in most areas and this does not demonstrate operation failure, but the requested non-overlapping mobile layout has not yet met the Visual readability gate. Move/limit the feedback area rather than shrinking or disabling controls, then review matched actual final-world screenshots.",
+  "evidence": [
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-playing.png",
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-320.png",
+    "src/games/game031/style.css"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed actual phone390 and320 captures; separately inspected layout CSS and preserved it before any change. Root should capture same views after a limited responsive-layout correction.",
+    "evidence": [
+      "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-playing.png",
+      "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-320.png"
+    ]
+  },
+  "observed_at": "2026-10-08T00:11:27.639773+00:00"
+}

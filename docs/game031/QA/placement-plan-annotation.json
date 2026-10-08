@@ -1,0 +1,26 @@
+{
+  "finding_id": "031-placement-plan-exhausted",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source/model/PNG reviewer; Jev answers unread",
+  "rationale": "Actual failure PNG reports body-overlap placement rejection, with103 mined and13 placed. The planner repeatedly fills nearest exposed surfaces from an unchanged pit position and never moves/returns. Reconstructing the recorded voxel removals and13 adjacent placements with recorded selected material2 yields354 candidate center aims, all rejected because the next cell intersects the hidden body; this is correct collision protection. Normal return-to-surface retains inventory/world/stats and exposes54 legal center aims in the synthetic reconstruction. The probe needs normal relocation and a build order that avoids enclosing the player, rather than disabling body-overlap checks or changing free sandbox rules. There is no demonstrated product placement failure beyond the expected local enclosure. Ordinary-input rerun must still validate return and50 total placements.",
+  "evidence": [
+    "docs/game031/QA/full-world-normal-20261007T234954Z/REPORT.json",
+    "docs/game031/QA/full-world-normal-20261007T234954Z/failure.png",
+    "tests/game031/browser-tools.mjs",
+    "src/games/game031/Engine.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected actual PNG, recorded target list, stationary nearest-first candidate planner and placement/body-overlap/return implementation. Reconstructed canonical world in a separate synthetic model fixture from recorded mines and placements; current and returned aim legality/conservation were checked. Proposed normal pause\u2192return-to-surface and moving/build-order rerun as next LIVE_INTERACTION evidence.",
+    "evidence": [
+      "docs/game031/QA/full-world-normal-20261007T234954Z/REPORT.json",
+      "docs/game031/QA/full-world-normal-20261007T234954Z/failure.png",
+      "tests/game031/browser-tools.mjs",
+      "src/games/game031/Engine.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

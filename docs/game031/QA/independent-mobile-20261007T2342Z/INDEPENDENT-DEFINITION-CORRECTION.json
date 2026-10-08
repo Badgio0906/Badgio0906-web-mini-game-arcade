@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-10-07T23:43:23.114Z",
+  "findingId": "031-phone-control-material-overlap",
+  "supersedes": "INDEPENDENT.json CODEX_ACTION_REQUIRED interpretation only; original evidence retained",
+  "answersVisible": false,
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "CODEX_ACTION_REQUIRED applies to correcting QA/runner as well as product source. QA erroneously checked the enclosing materials rectangle instead of its actual children, so a scoped test correction is required. Product layout correction is not required."
+}

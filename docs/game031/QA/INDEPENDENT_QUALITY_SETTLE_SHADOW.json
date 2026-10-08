@@ -1,0 +1,21 @@
+{
+  "finding_id": "031-quality-settle-stale-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_browser_qa independent originalobservation before Jevrecord; answersunread",
+  "rationale": "setQuality resets visibility but metric sampling updates on the next Render.frame. The predicate could read the preceding light-tier0 before the standard-tier frame. canonical voxel/dimensions/revision/inventory checks still passed; standard dirty-settle assertion was not demonstrated. Need wait for at least one frame after select, then wait for0 and assert final actual sample.",
+  "evidence": [
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json",
+    "tests/game031/input-platform.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared the fresh standard screenshot to the immediate predicate and renderer frame update. Added testonly fresh-frame wait, rerunpending; did not declare dirtysettlePASS from old0.",
+    "evidence": [
+      "docs/game031/QA/independent-input-platform-20261008T0023Z/QUALITY_SETTLE_LIMITATION.json",
+      "tests/game031/input-platform.mjs"
+    ]
+  }
+}

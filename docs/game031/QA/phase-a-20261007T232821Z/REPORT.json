@@ -1,0 +1,717 @@
+{
+  "at": "2026-10-07T23:28:22.050Z",
+  "base": "http://127.0.0.1:4311/game031.html",
+  "source": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "sourceStatus": " M analytics-worker/src/aggregate.ts\n M analytics-worker/src/index.ts\n M analytics-worker/src/types.ts\n M analytics-worker/tests/local-d1.mjs\n M index.html\n M jev_export/game_profiles/catalog.json\n M package-lock.json\n M package.json\n M scripts/fetch-analytics-context.mjs\n M src/analytics/remoteRegistration.ts\n M src/data/analyticsEnvelope.ts\n M src/data/gameCatalog.ts\n M src/data/gameVersions.ts\n M tests/unit/analytics-codex-fetch.test.ts\n M tests/unit/analyticsWorker.test.ts\n M tests/unit/classic-integration.test.ts\n M tests/unit/game020-integration.test.ts\n M vite.config.ts\n?? docs/game031/\n?? game031.html\n?? public/licenses/\n?? src/games/game031/\n?? tests/game031/\n?? tests/unit/game031-input.test.ts\n?? tests/unit/game031-integration.test.ts\n?? tests/unit/game031-model.test.ts\n?? tests/unit/game031-save.test.ts\n",
+  "steps": [
+    {
+      "step": "start",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 19.999999000157473,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 1.0335,
+          "found": []
+        },
+        "target": {
+          "x": 16,
+          "y": 21,
+          "z": 17,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 0,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:23.919Z",
+        "metrics": {
+          "frameMs": 29.100000001490116,
+          "fps": 34.3642611666252,
+          "calls": 9,
+          "triangles": 5804,
+          "chunks": 8,
+          "dirty": 0,
+          "meshMs": 0.3999999985098839,
+          "editDelayMs": 0,
+          "geometries": 9
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "step": "held-dig",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 19.999999000157473,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 2.450199999999998,
+          "found": [
+            1
+          ]
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:23.919Z",
+        "metrics": {
+          "frameMs": 43.600000001490116,
+          "fps": 22.935779815729887,
+          "calls": 7,
+          "triangles": 5800,
+          "chunks": 8,
+          "dirty": 0,
+          "meshMs": 0.3999999985098839,
+          "editDelayMs": 70.69999999552965,
+          "geometries": 9
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "step": "place",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 19.999999000157473,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 2.600099999999997,
+          "found": [
+            1
+          ]
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:23.919Z",
+        "metrics": {
+          "frameMs": 47.100000001490116,
+          "fps": 21.23142250463615,
+          "calls": 7,
+          "triangles": 5800,
+          "chunks": 8,
+          "dirty": 0,
+          "meshMs": 0.3999999985098839,
+          "editDelayMs": 70.69999999552965,
+          "geometries": 9
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "step": "jump",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 21.090432848157477,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 2.8671999999999938,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": false
+        },
+        "inventory": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 2.833399999999997,
+          "found": [
+            1
+          ]
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:23.919Z",
+        "metrics": {
+          "frameMs": 39.399999998509884,
+          "fps": 25.38071066085838,
+          "calls": 6,
+          "triangles": 5762,
+          "chunks": 8,
+          "dirty": 0,
+          "meshMs": 0.3999999985098839,
+          "editDelayMs": 70.69999999552965,
+          "geometries": 9
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "step": "saved-title",
+      "state": {
+        "state": "title",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 19.999999002382985,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 3.4999999999999956,
+          "found": [
+            1
+          ]
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 3,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:27.707Z",
+        "metrics": {
+          "frameMs": 93.29999999701977,
+          "fps": 10.71811361234665,
+          "calls": 7,
+          "triangles": 5800,
+          "chunks": 8,
+          "dirty": 0,
+          "meshMs": 0.3999999985098839,
+          "editDelayMs": 70.69999999552965,
+          "geometries": 9
+        },
+        "sessionBase": null
+      }
+    },
+    {
+      "step": "reloaded",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 16.5,
+            "y": 19.99999900046892,
+            "z": 20.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 3.5667999999999953,
+          "found": [
+            1
+          ]
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 32,
+          "y": 32,
+          "z": 32
+        },
+        "referenceHeight": 19,
+        "spawn": {
+          "x": 16.5,
+          "y": 20,
+          "z": 20.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 9,
+              "y": 7.6000000000000005,
+              "z": 10
+            },
+            "radius": 4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 22,
+              "y": 11.78,
+              "z": 21
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 18,
+              "y": 6.6499999999999995,
+              "z": 24
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 16,
+              "y": 16,
+              "z": 12
+            },
+            "radius": 2.6
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 3,
+        "saveError": "",
+        "lastSaved": "2026-10-07T23:28:28.278Z",
+        "metrics": {
+          "frameMs": 6.4000000059604645,
+          "fps": 156.24999985448085,
+          "calls": 3,
+          "triangles": 2566,
+          "chunks": 3,
+          "dirty": 6,
+          "meshMs": 1.5,
+          "editDelayMs": 0,
+          "geometries": 3
+        },
+        "sessionBase": {
+          "mined": 3,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 3.4999999999999956,
+          "found": [
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}

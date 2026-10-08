@@ -18,6 +18,13 @@ export interface Metrics {
   device_split: Record<string,number>; traffic_source_split: Record<string,number>;
   top_failure_reasons: { label: string; count: number }[]; top_exit_phases: { label: string; count: number }[];
 }
-export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; }
+/** Only interval session_summary deltas are summed; run_end never repeats them. */
+export interface SandboxSummary {
+  summary_count: number; active_seconds: number; blocks_mined: number; blocks_placed: number;
+  return_to_surface_count: number; max_depth: number | null; maximum_material_types_found: number | null;
+  quality_summary_counts: Record<string, number>; save_error_summary_counts: Record<string, number>;
+  coverage: 'observed-interval-deltas-only';
+}
+export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; sandbox_summary?: SandboxSummary; }
 export interface Period { from: string; to: string; }
 export interface AggregateDay { day: string; game_id: string; environment: string; game_version: string; rules_version: string; presentation_version: string; metrics: Record<string,number>; }

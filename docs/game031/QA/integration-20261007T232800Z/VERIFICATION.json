@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-07T23:27:23.166626+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "commands": [
+    {
+      "command": "npm test -- tests/unit/analyticsWorker.test.ts tests/unit/analytics-codex-fetch.test.ts tests/unit/classic-telemetry.test.ts",
+      "status": "PASS",
+      "tests": 55
+    },
+    {
+      "command": "npm run check",
+      "cwd": "analytics-worker",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "cwd": "analytics-worker",
+      "status": "PASS",
+      "events": 42,
+      "runs": 13,
+      "environment": "synthetic-local-only"
+    }
+  ],
+  "source_sha256": {
+    "src/data/analyticsEnvelope.ts": "61ff620179625894edef008e960ddddf0c009d476bb4859879f7ca8883faaca4",
+    "analytics-worker/src/index.ts": "6bc3cbcf263201fa6217471c0346fd7d52fd4034f634bd68d02db31778b32001",
+    "analytics-worker/src/aggregate.ts": "2ec13aff0ae9a59f1f2ad19378cc3e1a1f3b983286243757a65e51b5e5696cc3",
+    "analytics-worker/src/types.ts": "f1eff43770349f5fb19c1c120b587f2e0d533334d8136e31ee0b8b01768e6525",
+    "analytics-worker/tests/local-d1.mjs": "efa5607fa5303c184c01aef1984f33de5754796461cfce77852f4e844c7aba61",
+    "scripts/fetch-analytics-context.mjs": "7f18a9014c73af386d35a3a063aa28bf61033d819afc2ab27ef3cde26ec09cfd"
+  },
+  "production_api_calls": 0,
+  "new_credentials": false,
+  "finding_classification": "No unknown semantic failure observed. Expected registration-boundary updates are mechanical scope changes, not Jev findings."
+}

@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-quality-settle-stale-probe",
+  "problem": "The standard-quality report contains dirty31 despite the test awaiting dirty===0 immediately after setting the quality.",
+  "expected": "Fresh renderer observation demonstrates standard-quality queue has settled before the screenshot and assertion.",
+  "observed": [
+    "The light-tier observation was dirty0.",
+    "Immediately after standard selection the wait predicate returned, but recorded standard screenshot/read had dirty31.",
+    "Canonicalworlddimensions/revision/inventory/voxelhash matched acrossqualitytiers."
+  ],
+  "unknown": [
+    "Whether dirtyqueue fails to settle or the predicate reads a previous frame."
+  ],
+  "evidence": [
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json",
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/quality-standard.png",
+    "tests/game031/input-platform.mjs"
+  ],
+  "provenance": "actualbrowserqualityselection andrawstaleobservation; no productstateinjection"
+}

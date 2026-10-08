@@ -1,0 +1,22 @@
+{
+  "finding_id": "031-explicit-exit-pending-save",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "game031_review independent source reviewer; Jev answers unread",
+  "rationale": "save returns a pending older snapshot promise without guaranteeing a current snapshot, so a successful explicit-exit save may omit latest edits. Native browser fixture reproduction is still required; this classification is based on frozen source flow, not an already performed browser test. Both concern preservation of user-built local worlds, which is a required public-release boundary.",
+  "evidence": [
+    "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+    "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected and preserved exact main.ts save, title, import, export and explicit-exit flows plus SaveStore before any corrective edits. Identified the missing call-path guard. Browser fixture is proposed next evidence, not claimed completed.",
+    "evidence": [
+      "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+      "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

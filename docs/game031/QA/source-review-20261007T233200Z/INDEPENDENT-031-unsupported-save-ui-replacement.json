@@ -1,0 +1,26 @@
+{
+  "finding_id": "031-unsupported-save-ui-replacement",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "game031_review independent source reviewer; Jev answers unread",
+  "observed_at": "2026-10-07T23:30:37.172093+00:00",
+  "rationale": "Unsupported existing save cannot be exported via UI and is treated as absence of a saved world; unconfirmed start can overwrite it. Native browser fixture reproduction is still required; this classification is based on frozen source flow, not an already performed browser test. Both concern preservation of user-built local worlds, which is a required public-release boundary.",
+  "evidence": [
+    "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+    "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected and preserved exact main.ts save, title, import, export and explicit-exit flows plus SaveStore before any corrective edits. Identified the missing call-path guard. Browser fixture is proposed next evidence, not claimed completed.",
+    "evidence": [
+      "docs/game031/QA/source-review-20261007T233200Z/main.ts",
+      "docs/game031/QA/source-review-20261007T233200Z/Save.ts"
+    ]
+  },
+  "source_hashes": {
+    "src/games/game031/main.ts": "401c40779e53c8a4f1942a29b5bb1017d053837b3d199fd1351a2a9ecf982845",
+    "src/games/game031/Save.ts": "56a14ee84c63d16c222ddcf1473166b1f3a11e229ac1471b1d137793ae2b8546"
+  }
+}

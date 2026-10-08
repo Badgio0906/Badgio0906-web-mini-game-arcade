@@ -1,0 +1,20 @@
+{
+  "finding_id": "031-placement-plan-exhausted",
+  "problem": "The100mining/50placement ordinary-input probe cannot find another legal placement after its placement sequence.",
+  "expected": "Build50placements through normalcontrols while respecting body-overlap protection and finite reach.",
+  "observed": [
+    "Error: ordinaryplacementcannotreachmorecandidate",
+    "Recorded mined103 and placed13 before stop.",
+    "Player position{'x': 66.50039999999989, 'y': 40.99999900159888, 'z': 66.49960000000013}.",
+    "The planner tries nearest exposed solid targets around its unchanged position, then reports no valid candidate."
+  ],
+  "unknown": [
+    "Whether the player was enclosed by its own placement sequence.",
+    "Whether ordinary return-to-surface or movement exposes more placement surfaces."
+  ],
+  "evidence": [
+    "docs/game031/QA/full-world-normal-20261007T234954Z/REPORT.json",
+    "docs/game031/QA/full-world-normal-20261007T234954Z/failure.png"
+  ],
+  "provenance": "normal keyboardmouseinput withreadonlyplanner; no worldorplayerinjection"
+}

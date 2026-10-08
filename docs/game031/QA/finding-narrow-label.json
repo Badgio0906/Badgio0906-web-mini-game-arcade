@@ -1,0 +1,22 @@
+{
+  "finding_id": "031-narrow-material-label-touch-overlap",
+  "problem": "The selected material label overlaps part of the DIG touch button at320pixel width while playing.",
+  "expected": "The label/count region and DIG tap target must remain separately readable and usable.",
+  "observed": [
+    "320x568 actualplaying; both label and DIG visibilityvisible.",
+    "DIG rectangle x188\u2013244 y298\u2013352.",
+    "materiallabel rectangle x119.34\u2013200.66 y338\u2013364; intersection12.66x14pixels."
+  ],
+  "unknown": [
+    "Whether raising the mobile controls clears all portrait and short-landscape layouts."
+  ],
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "evidence": [
+    "docs/game031/QA/narrow320-actual-playing-20261008T0000Z/REPORT.json",
+    "docs/game031/QA/narrow320-actual-playing-20261008T0000Z/playing.png"
+  ],
+  "provenance": "actualChromium mobile-emulation DOM measurement/screenshot, notphysicalphone"
+}

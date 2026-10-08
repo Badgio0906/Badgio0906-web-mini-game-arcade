@@ -1,0 +1,24 @@
+{
+  "finding_id": "031-feedback-jump-overlap",
+  "problem": "The mobile play message overlaps the Jump button in the actual portrait play capture.",
+  "expected": "Feedback text and action controls remain visually distinct, with no overlapping message/control area at portrait phone and320px width.",
+  "observed": [
+    "In phone-playing.png the dark introductory-message strip runs behind the upper Jump button at the right; its right-hand text area and button overlap.",
+    "phone-320.png also places the message strip across the upper Jump button area.",
+    "Palette and lower DIG/PLACE buttons are distinct; this finding concerns the message versus Jump only."
+  ],
+  "unknown": [
+    "Final128-world portrait capture after any relevant CSS change; existing evidence is PhaseA32³."
+  ],
+  "evidence": [
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-playing.png",
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-320.png"
+  ],
+  "provenance": "independent actual recorded PNG review, not live manipulation; no Jev answers read",
+  "observed_at": "2026-10-08T00:11:27.639461+00:00",
+  "source_hashes": {
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-playing.png": "05dd2dd2d392561440841671cb3439048e6454351d4cbbd5c4c7be064ea50d60",
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-320.png": "88be9296a45297de4e9daa962be6b5176c357965e56e71f96626afab92102b82",
+    "src/games/game031/style.css": "d6f38748f3d82b5b370e48a3b094dc4ada9c95a9541a00b682c70f26528246c7"
+  }
+}

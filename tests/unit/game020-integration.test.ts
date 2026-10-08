@@ -43,7 +43,7 @@ describe('Game020 isolated common registration', () => {
       expect(isAnalyticsEnvelope(row)).toBe(true);
     }
     expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game010' })).toBe(false);
-    expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game031', page: 'game031.html' })).toBe(false);
+    expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), game_id: 'game032', page: 'game032.html' })).toBe(false);
     expect(isAnalyticsEnvelope({ ...fixture('tile_pair'), page: 'game020.html?secret=example' })).toBe(false);
     expect(sanitizeAnalyticsData({ event: 'hint', remaining: 12, tile_id: 1, board_id: 'user-specific', email: 'unused@example.test' }))
       .toEqual({ event: 'hint', remaining: 12 });

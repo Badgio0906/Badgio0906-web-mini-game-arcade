@@ -3,7 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import worker, { applyRetention } from '../../analytics-worker/src/index';
-import { computeMetrics, summarizeGames } from '../../analytics-worker/src/aggregate';
+import { computeMetrics, summarizeGames, summarizeSandbox } from '../../analytics-worker/src/aggregate';
 import { ANALYTICS_SCHEMA_VERSION, isAnalyticsBatch, sanitizeAnalyticsData, type AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
 import { gameCatalog, historicalGameCatalog } from '../../src/data/gameCatalog';
 import type { Database, D1Statement, Env } from '../../analytics-worker/src/types';
@@ -35,16 +35,38 @@ describe('Codex aggregate-only access',()=>{
    for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','user_agent'])expect(text).not.toContain(`"${key}"`);
    for(const id of [browser,visit,session,run,...events.map(row=>row.event_id)])expect(text).not.toContain(id);
   }
-  for(const request of [admin('/v1/admin/game/game031'),codex('/v1/codex/game/game031')])expect((await worker.fetch(request,e)).status).toBe(404);
-  expect((await worker.fetch(post([event({...base,game_id:'game031',page:'game031.html'})]),e)).status).toBe(400);
+  for(const request of [admin('/v1/admin/game/game032'),codex('/v1/codex/game/game032')])expect((await worker.fetch(request,e)).status).toBe(404);
+  expect((await worker.fetch(post([event({...base,game_id:'game032',page:'game032.html'})]),e)).status).toBe(400);
  });
- it.each(gameCatalog.filter(game=>game.releaseOrder>=21))('registers classic $id through strict ingest and anonymous aggregate detail',async game=>{
+ it.each(gameCatalog.filter(game=>game.releaseOrder>=21&&game.releaseOrder<=30))('registers classic $id through strict ingest and anonymous aggregate detail',async game=>{
   const e=env(),browser=randomUUID(),run=randomUUID(),base={game_id:game.id,page:game.id+'.html',browser_id:browser,run_id:run,rules_version:'1',presentation_version:'prototype-1'};
   const rows=[event({...base,data:{difficulty:'normal',first:true,assisted:false}}),event({...base,event_name:'specific_game_events',data:{event:'hint',hints:1,undos:0}}),event({...base,event_name:'run_end',data:{outcome:'clear',completed:true,seconds:12}})];
   expect((await worker.fetch(post(rows),e)).status).toBe(202);
   for(const req of [admin('/v1/admin/game/'+game.id),codex('/v1/codex/game/'+game.id)]){
    const response=await worker.fetch(req,e);expect(response.status).toBe(200);const text=await response.text();expect(JSON.parse(text).game.run_count).toBe(1);for(const id of [browser,run,...rows.map(row=>row.event_id)])expect(text).not.toContain(id);
   }
+ });
+ it('stores coarse031 interval deltas without duplicating run_end and returns anonymous detail',async()=>{
+  const e=env(),browser=randomUUID(),visit=randomUUID(),session=randomUUID(),run=randomUUID();
+  const base={game_id:'game031',page:'game031.html',browser_id:browser,visit_id:visit,session_id:session,run_id:run,rules_version:'1',presentation_version:'prototype-1'};
+  const summary={event:'session_summary',active_seconds:60,blocks_mined:14,blocks_placed:5,max_depth:12,material_types_found:3,return_to_surface_count:1,quality_tier:'light',save_error_code:'none'};
+  const rows=[event({...base,occurred_at:iso(-62000),data:{source:'title'}}),event({...base,occurred_at:iso(-2000),event_name:'specific_game_events',data:summary}),event({...base,occurred_at:iso(-1000),event_name:'run_end',data:{outcome:'quit',seconds:61}})];
+  const result=await worker.fetch(post(rows),e);expect(result.status).toBe(202);expect(await result.json()).toEqual({accepted:3,duplicates:0});
+  const stored=e.DB.sqlite.prepare("SELECT event_name,data_json FROM events WHERE game_id='game031' ORDER BY occurred_at").all();
+  expect(JSON.parse(String(stored[1].data_json))).toEqual(summary);
+  expect(JSON.parse(String(stored[2].data_json))).toEqual({outcome:'quit',seconds:61});
+  for(const req of [admin('/v1/admin/game/game031'),codex('/v1/codex/game/game031')]){
+   const response=await worker.fetch(req,e);expect(response.status).toBe(200);const text=await response.text(),detail=JSON.parse(text);expect(detail.game).toMatchObject({game_id:'game031',run_count:1,median_run_duration:61,sandbox_summary:{summary_count:1,active_seconds:60,blocks_mined:14,blocks_placed:5,return_to_surface_count:1,max_depth:12,maximum_material_types_found:3,coverage:'observed-interval-deltas-only'}});
+   for(const value of [browser,visit,session,run,...rows.map(row=>row.event_id)])expect(text).not.toContain(value);
+   for(const key of ['seed','world_id','browser_id','visit_id','session_id','run_id','event_id','player_path','save_file'])expect(text).not.toContain('"'+key+'"');
+  }
+  expect((await worker.fetch(post([event({...base,event_name:'specific_game_events',data:{...summary,seed:'private'}})]),e)).status).toBe(400);
+ });
+ it('sums sandbox interval deltas only and retains missing maxima as null',()=>{
+  const summary={event:'session_summary',active_seconds:60,blocks_mined:14,blocks_placed:5,max_depth:12,material_types_found:3,return_to_surface_count:1,quality_tier:'light',save_error_code:'none'};
+  const rows=[event({game_id:'game031',event_name:'specific_game_events',data:summary}),event({game_id:'game031',event_name:'specific_game_events',data:{...summary,active_seconds:61,blocks_mined:6,blocks_placed:2,max_depth:17,return_to_surface_count:0,save_error_code:'quota_exceeded'}}),event({game_id:'game031',event_name:'run_end',data:{outcome:'quit',blocks_mined:20,blocks_placed:7}}),event({game_id:'game030',event_name:'specific_game_events',data:summary})];
+  expect(summarizeSandbox(rows)).toEqual({summary_count:2,active_seconds:121,blocks_mined:20,blocks_placed:7,return_to_surface_count:1,max_depth:17,maximum_material_types_found:3,quality_summary_counts:{light:2},save_error_summary_counts:{quota_exceeded:1},coverage:'observed-interval-deltas-only'});
+  expect(summarizeSandbox([])).toMatchObject({summary_count:0,max_depth:null,maximum_material_types_found:null});
  });
  it('requires the dedicated token and isolates admin credentials in both directions',async()=>{
   const e=env();

@@ -1,0 +1,140 @@
+{
+  "startedAt": "2026-10-07T23:53:56.802Z",
+  "sourceCommit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "sourceHashes": {
+    "src/games/game031/Save.ts": "56a14ee84c63d16c222ddcf1473166b1f3a11e229ac1471b1d137793ae2b8546",
+    "src/games/game031/World.ts": "a818e752b3f12b29116073d5398f3dba23b3c6d8b764d5d34ea281361147e774",
+    "src/games/game031/Engine.ts": "b670af4f065a33fc58c30570c203f07b2f38ad8a8ee530cf23b4b9d724a28fd6",
+    "src/games/game031/Physics.ts": "9c0e824aeff119308f3b53ebee632afd89d084176e12de0eeaa39a49b3bb3ab2",
+    "tests/game031/storage-browser.mjs": "b89d8d1ddbf06787ed260208de0cdfe54ffff07e5b5fe6aa6b96497ed0c67478"
+  },
+  "provenance": "synthetic browser stress and explicit storage fault injection; not ordinary mining or production data",
+  "conditions": {
+    "browser": "headless Chromium",
+    "renderer": "SwiftShader launch flags; storage-only harness has no 3D rendering",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "origin": "http://127.0.0.1:4311",
+    "physicalPhone": false
+  },
+  "steps": [
+    {
+      "name": "native-roundtrip-1000",
+      "startedAt": "2026-10-07T23:53:57.243Z",
+      "result": "PASS",
+      "modifiedVoxels": 1000,
+      "modifiedChunks": 16,
+      "mined": 500,
+      "placed": 500,
+      "serializedBackupBytes": 7357,
+      "actualIndexedDBAllocatedBytes": null,
+      "generationAndEditsMs": 129,
+      "saveMs": 6.699999995529652,
+      "loadMs": 1,
+      "worldRestoreAndComparisonMs": 65.70000000298023
+    },
+    {
+      "name": "native-roundtrip-5000",
+      "startedAt": "2026-10-07T23:53:57.460Z",
+      "result": "PASS",
+      "modifiedVoxels": 5000,
+      "modifiedChunks": 32,
+      "mined": 2500,
+      "placed": 2500,
+      "serializedBackupBytes": 33963,
+      "actualIndexedDBAllocatedBytes": null,
+      "generationAndEditsMs": 37.69999999552965,
+      "saveMs": 3,
+      "loadMs": 1.6000000014901161,
+      "worldRestoreAndComparisonMs": 109.30000000447035
+    },
+    {
+      "name": "native-roundtrip-10000",
+      "startedAt": "2026-10-07T23:53:57.618Z",
+      "result": "PASS",
+      "modifiedVoxels": 10000,
+      "modifiedChunks": 48,
+      "mined": 5000,
+      "placed": 5000,
+      "serializedBackupBytes": 67068,
+      "actualIndexedDBAllocatedBytes": null,
+      "generationAndEditsMs": 94.89999999850988,
+      "saveMs": 2.3000000044703484,
+      "loadMs": 1.6999999955296516,
+      "worldRestoreAndComparisonMs": 38.80000000447035
+    },
+    {
+      "name": "revert-to-generated-terrain",
+      "startedAt": "2026-10-07T23:53:57.767Z",
+      "result": "PASS",
+      "editedThenRevertedVoxels": 1000,
+      "remainingDiffChunks": 0
+    },
+    {
+      "name": "save-snapshot-captured-before-later-edit",
+      "startedAt": "2026-10-07T23:53:57.801Z",
+      "result": "PASS",
+      "capturedRevision": 1,
+      "liveWorldRevision": 2
+    },
+    {
+      "name": "native-transaction-abort-old-world-held",
+      "startedAt": "2026-10-07T23:53:57.832Z",
+      "result": "PASS",
+      "code": "write_failed",
+      "previousWorldIdHeld": true,
+      "faultInjection": "Actual native tx.abort after put; not real data corruption"
+    },
+    {
+      "name": "quota-fault-in-native-transaction",
+      "startedAt": "2026-10-07T23:53:57.881Z",
+      "result": "PASS",
+      "code": "quota_exceeded",
+      "previousWorldIdHeld": true,
+      "faultInjection": "Synthetic error code on a truly aborted native transaction; actual quota exhaustion not exercised"
+    },
+    {
+      "name": "denied-open-fault-injection",
+      "startedAt": "2026-10-07T23:53:57.951Z",
+      "result": "PASS",
+      "code": "storage_denied",
+      "faultInjection": "SecurityError opening stub; actual browser permission denial not exercised"
+    },
+    {
+      "name": "native-open-blocked",
+      "startedAt": "2026-10-07T23:53:57.954Z",
+      "result": "PASS",
+      "code": "storage_blocked",
+      "nativeUpgradeBlocked": true,
+      "lateOpenObserved": true,
+      "faultInjection": "Separate native v1 connection holds v2 upgrade; factory redirects fixed SaveStore open to fixture DB"
+    },
+    {
+      "name": "corrupt-stored-data-preserved-and-exportable",
+      "startedAt": "2026-10-07T23:53:57.998Z",
+      "result": "PASS",
+      "code": "invalid_save",
+      "corruptRecordUntouched": true,
+      "explicitRestorationOfGoodBackup": true
+    },
+    {
+      "name": "bad-backup-import-keeps-existing-world",
+      "startedAt": "2026-10-07T23:53:58.003Z",
+      "result": "PASS",
+      "code": "unsupported_generator",
+      "oldWorldHeld": true
+    },
+    {
+      "name": "invalid-restored-position-safe-return",
+      "startedAt": "2026-10-07T23:53:58.006Z",
+      "result": "PASS",
+      "safeReturn": true,
+      "inventoryAndTerrainHeld": true
+    }
+  ],
+  "errors": [],
+  "result": "PASS",
+  "finishedAt": "2026-10-07T23:53:58.103Z"
+}

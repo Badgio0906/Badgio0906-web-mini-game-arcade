@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-natural-cave-route-probe",
+  "problem": "The normal-input cave exploration probe exhausted16iterations without satisfying its natural-air/body/cave condition.",
+  "expected": "Player reaches an actual generated cavern with ordinary inputs, not injectedposition or a manufactured count.",
+  "observed": [
+    "After ridge opening, player went from y49/z65.3 to y46/z63.9, then y45.26/z63.3 and y41/z63.3.",
+    "Later iterations continued mine-down with forward350ms; z stayed63.3 while y descendedto28.",
+    "The target at lowsteps was the forwardwall adjacent to theplayer; the script reported naturalcavenotreached."
+  ],
+  "unknown": [
+    "Whether the exploration path or natural-air acceptance condition is wrong, or the natural entrance/physics prevents ordinary entry."
+  ],
+  "evidence": [
+    "tests/game031/cave.mjs",
+    "docs/game031/QA/natural-cave-20261008T001630Z/REPORT.json",
+    "docs/game031/QA/natural-cave-20261008T001630Z/failure.png"
+  ],
+  "provenance": "normalkeyboardmouse inputs +readonly originalterraincomparison; no player/worldinjection"
+}

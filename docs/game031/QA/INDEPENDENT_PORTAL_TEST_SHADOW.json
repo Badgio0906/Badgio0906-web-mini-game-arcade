@@ -1,0 +1,25 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Actual Portal heading displays30GAMES and new031link exists. QA counted only hrefs matching gameNNN.html; catalog012\u2013014 use valid legacy directory routes, so27 is an incomplete count. Count .game-card[data-game-id] instead and scroll031 into view before checking its lazy thumbnail. Existing game UI/render/save/production-hook checks passed. Product source correction is unnecessary for this failure.",
+  "evidence": [
+    "REPORT.json portal.gameIds missing012/013/014",
+    "failure.png heading30GAMES",
+    "src/data/gameCatalog.ts legacyroutes012\u2013014",
+    "src/portal/main.ts data-game-id and loading lazy"
+  ],
+  "finding_id": "031-portal-test-route-count",
+  "reviewer": "game031_browser_qa independent originalsourceobservation before Jevdecisionread",
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared actualPortal30header/carddataset, legacydirectoryroutes, and regex-onlycounter; fixed testcountertoallgamecards and scroll/waitlazyimage, rerunpending.",
+    "evidence": [
+      "src/portal/main.ts",
+      "src/data/gameCatalog.ts",
+      "tests/game031/public-mobile.mjs",
+      "docs/game031/QA/compiled-preview-desktop-20261008T0038Z/REPORT.json"
+    ]
+  }
+}

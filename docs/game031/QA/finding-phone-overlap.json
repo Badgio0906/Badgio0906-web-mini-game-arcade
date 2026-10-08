@@ -1,0 +1,18 @@
+{
+  "finding_id": "031-phone-control-material-overlap",
+  "problem": "The portrait mobile layout probe reports intersection between control containers and the material region.",
+  "expected": "Movement andactioncontrols must not obstruct material names/counts/buttons or their tapareas.",
+  "observed": [
+    "390x844viewport, materialscontainer y614\u2013774, joystickbottom625, actionsbottom628.",
+    "Palettebuttons beginy645; the selectedmateriallabel appears centered in the screenshot.",
+    "The probe compares whole materialscontainer rectangle, notindividual rendered label or buttons."
+  ],
+  "unknown": [
+    "Whether any actual tappable child or visiblelabel is obstructed."
+  ],
+  "evidence": [
+    "docs/game031/QA/independent-mobile-20261007T2342Z/REPORT.json",
+    "docs/game031/QA/independent-mobile-20261007T2342Z/failure.png"
+  ],
+  "provenance": "independent CDPphone-emulation layout probe andactualPNG; no physicalphone"
+}

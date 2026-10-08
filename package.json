@@ -12,6 +12,15 @@
     "test:production": "playwright test --config playwright.production.config.ts",
     "check": "tsc --noEmit"
   },
-  "dependencies": { "phaser": "^3.90.0" },
-  "devDependencies": { "@playwright/test": "^1.56.1", "typescript": "^5.9.3", "vite": "^7.1.9", "vitest": "^3.2.4" }
+  "dependencies": {
+    "phaser": "^3.90.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/three": "0.186.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vitest": "^3.2.4"
+  }
 }

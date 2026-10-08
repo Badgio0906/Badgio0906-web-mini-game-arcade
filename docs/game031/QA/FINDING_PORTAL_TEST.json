@@ -1,0 +1,20 @@
+{
+  "finding_id": "031-portal-test-route-count",
+  "problem": "Compiled UI-only QA passed Game031 editing/save checks but failed Portal count; runner reports27 while visibleheader30 and031linkexists.",
+  "expected": "Allactivegames includinglegacyroutes counted correctly, actualnewthumbnailcheckedafterlazyload.",
+  "observed": [
+    "Header30GAMES and031link1 arepresent.",
+    "Test regex accepts onlygameNNN.html links and ignoresdirectoryroutes012\u2013014.",
+    "031thumbnail initiallyhasnaturalWidth0 nearbottomwithoutscroll."
+  ],
+  "unknown": [
+    "Whether actualgallery omissions or testselector/loadingtiming causesfailure."
+  ],
+  "evidence": [
+    "tests/game031/public-mobile.mjs",
+    "docs/game031/QA/compiled-preview-desktop-20261008T0038Z/REPORT.json",
+    "docs/game031/QA/compiled-preview-desktop-20261008T0038Z/failure.png",
+    "src/portal/main.ts"
+  ],
+  "provenance": "compiledbrowserPCnormal12mine5place/savehashPASS thenPortalassertionfailure, noproductionrequest"
+}

@@ -1,0 +1,26 @@
+{
+  "finding_id": "031-natural-cave-route-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source/model/actual-PNG reviewer; Jev answers unread",
+  "rationale": "The probe always mines the floor then walks forward, even after its Z movement stalls at63.3. The generated nearby cave remains above/behind this repeated descent: continuing foot mining takes the player toY28 while the cave center isY45/Z60. A model sequence confirms a natural route but requires clearing one upper wall lip, not continually digging the feet. After initial two ridge blocks and one floor block, walking the passage falls to feet43/Z63.3 where the head-level target is stone(64,44,62); bodytop44.8 cannot move through that wall. Mine that front upper stone and walk forward, reaching feet42/Z61.1, with both body voxels originally generated AIR and distance2.337 from the natural cave center criterion. This is correct collision behavior and a flawed unconditional descent route. Browser normal-input reproduction is still needed; no product generator/physics fix is established.",
+  "evidence": [
+    "tests/game031/cave.mjs",
+    "docs/game031/QA/natural-cave-20261008T001630Z/REPORT.json",
+    "docs/game031/QA/natural-cave-20261008T001630Z/failure.png",
+    "src/games/game031/World.ts",
+    "src/games/game031/Physics.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Viewed actual failed-cave PNG, read exact descent probe and generated cave/passages, and independently simulated Engine input/physics without direct voxel injection. Preserved the successful synthetic route and earlier incorrect-route attempt below. Proposed ordinary-input clearing the front upper lip then traversing as next LIVE_INTERACTION.",
+    "evidence": [
+      "tests/game031/cave.mjs",
+      "docs/game031/QA/natural-cave-20261008T001630Z/REPORT.json",
+      "src/games/game031/World.ts",
+      "src/games/game031/Physics.ts"
+    ]
+  }
+}

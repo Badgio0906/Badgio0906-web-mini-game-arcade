@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-07T23:34:01.203527+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "source_sha256": "46446c35dfb23a9b8487edf34e5a389f3e4272f77b1c2461c5a2fb15af5ee8ac",
+  "reviewer": "game031_review independent source reviewer; Jev log unread",
+  "scope": "Source review only; native-save browser results not yet inspected",
+  "changes_checked": [
+    "save(force) drains any prior pending save, then captures a current snapshot for explicit exit.",
+    "leave sets paused mode and resets engine input before force save; exitTitle sets paused mode before force save.",
+    "begin/import wait on existing savePromise before replacing worlds.",
+    "Unsupported/corrupt saved-data errors set storedBlocked, title New World requests confirmation, and download can export raw stored backup.",
+    "HUD depth now matches stats referenceHeight+1."
+  ],
+  "remaining_concern": "help() binds help-play directly to begin(available). When storedBlocked is true and available is null, the explanation-page Play button bypasses confirmNew and can replace the unsupported stored world. Thus the original unsupported-save finding is not completely closed on all entry paths.",
+  "unconfirmed": [
+    "Native delayed transaction persistence on explicit save-title/Portal.",
+    "Unsupported-save confirmation and raw download through actual browser.",
+    "User-built world preservation following failed replacement save."
+  ]
+}

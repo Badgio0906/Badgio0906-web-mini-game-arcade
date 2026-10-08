@@ -1,0 +1,42 @@
+{
+  "finding_id": "031-placement-plan-exhausted",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent source/model/PNG reviewer; Jev answers unread",
+  "observed_at": "2026-10-07T23:55:37.245636+00:00",
+  "rationale": "Actual failure PNG reports body-overlap placement rejection, with103 mined and13 placed. The planner repeatedly fills nearest exposed surfaces from an unchanged pit position and never moves/returns. Reconstructing the recorded voxel removals and13 adjacent placements with recorded selected material2 yields354 candidate center aims, all rejected because the next cell intersects the hidden body; this is correct collision protection. Normal return-to-surface retains inventory/world/stats and exposes54 legal center aims in the synthetic reconstruction. The probe needs normal relocation and a build order that avoids enclosing the player, rather than disabling body-overlap checks or changing free sandbox rules. There is no demonstrated product placement failure beyond the expected local enclosure. Ordinary-input rerun must still validate return and50 total placements.",
+  "evidence": [
+    "docs/game031/QA/full-world-normal-20261007T234954Z/REPORT.json",
+    "docs/game031/QA/full-world-normal-20261007T234954Z/failure.png",
+    "tests/game031/browser-tools.mjs",
+    "src/games/game031/Engine.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected actual PNG, recorded target list, stationary nearest-first candidate planner and placement/body-overlap/return implementation. Reconstructed canonical world in a separate synthetic model fixture from recorded mines and placements; current and returned aim legality/conservation were checked. Proposed normal pause→return-to-surface and moving/build-order rerun as next LIVE_INTERACTION evidence.",
+    "evidence": [
+      "docs/game031/QA/full-world-normal-20261007T234954Z/REPORT.json",
+      "docs/game031/QA/full-world-normal-20261007T234954Z/failure.png",
+      "tests/game031/browser-tools.mjs",
+      "src/games/game031/Engine.ts"
+    ]
+  },
+  "reconstruction": {
+    "provenance": "synthetic model from exact browser-reported coordinates and target records; not normal browser/human activity",
+    "currentReason": "自分の身体に重なる場所です",
+    "legalCenterAimFromFailurePosition": 0,
+    "candidateRejectedForBodyOverlap": 354,
+    "afterReturnLegalCenterAims": 54,
+    "returnPreservedInventory": true,
+    "returnPreservedDiffs": true,
+    "returnPreservedStats": true,
+    "fixture_correction": "First scratch reconstruction omitted recorded selected=2 and used Engine default1, incorrectly observing zero-stock material. That known fixture setup omission was corrected before these final measurements; it was not a product finding."
+  },
+  "source_hashes": {
+    "src/games/game031/Engine.ts": "b670af4f065a33fc58c30570c203f07b2f38ad8a8ee530cf23b4b9d724a28fd6",
+    "tests/game031/browser-tools.mjs": "27ec5ee7a2d2dfa517ffde8fa4d159a032ef227646f4e6386667426ef79ae02c"
+  },
+  "final_root_cause": "Stationary nearest-first placement automation fills surrounding cells and exhausts non-body-overlapping reachable placement candidates."
+}

@@ -1,0 +1,26 @@
+{
+  "finding_id": "031-edit-delay-metric-attribution",
+  "problem": "The reported edit delay grows from1.6ms to2082ms after one near-spawn mine without another world edit.",
+  "expected": "Edit-to-render timing should measure the chunk(s) actually changed by that edit, separately from untouched initial-world meshing.",
+  "observed": [
+    "Input-platform pointer-lock-mine reports worldrevision1 and editDelayMs1.6.",
+    "Later pointer-lock-escape reports sameworldrevision1 with editDelayMs415.4.",
+    "context-lost reports sameworldrevision1 with editDelayMs2082.4.",
+    "The initially opened world still had87 nearby dirty chunks before the mine."
+  ],
+  "unknown": [
+    "Whether the later metric represents actual changed-block visibility delay or completion of an unrelated initial dirty chunk."
+  ],
+  "measurements": {
+    "world_revision": 1,
+    "edit_delay_after_mine_ms": 1.6,
+    "edit_delay_later_ms": 2082.4,
+    "initial_nearby_dirty_chunks": 87
+  },
+  "evidence": [
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json",
+    "src/games/game031/main.ts",
+    "src/games/game031/Render.ts"
+  ],
+  "provenance": "independent interpretation of native pointer-lock browser report plus frozen source inspection; no Jev answers read"
+}

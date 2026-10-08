@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-10-07T23:47:25.252Z",
+  "findingId": "031-narrow320-material-label-control-overlap",
+  "answersVisible": false,
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "At actual playing state on 320×568, DIG and selected-material label are both visible and overlap12.66×14px. CSS requires separating the input-control group from the material bar/label. Inputs still worked at390 portrait and844 landscape, and this small label-edge overlap has not established important-operation failure or a major progression blocker. Inspect small-width CSS positioning, apply limited fix, then verify screenshots and actual child rectangles at320/390/844.",
+  "evidence": [
+    "REPORT.json visible DOM rectangles",
+    "playing.png",
+    "src/games/game031/style.css max-width550 mobile positioning"
+  ]
+}

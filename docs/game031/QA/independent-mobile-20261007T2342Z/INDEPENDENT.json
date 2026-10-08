@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-07T23:42:03.453Z",
+  "findingId": "031-phone-control-material-overlap",
+  "independentReview": true,
+  "answersVisible": false,
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": false,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Whole materials-container rectangle includes empty space on both sides of a centered material label. Actual label and all 8 material buttons do not overlap joystick, DIG, PLACE or jump. Product layout unchanged; QA rectangle assertion must check rendered children.",
+  "evidence": {
+    "materials": [
+      {
+        "id": "material-label",
+        "x": 154.34375,
+        "y": 614,
+        "right": 235.65625,
+        "bottom": 640,
+        "width": 81.3125,
+        "height": 26
+      },
+      {
+        "id": "1",
+        "x": 9.75,
+        "y": 645,
+        "right": 99.375,
+        "bottom": 707,
+        "width": 89.625,
+        "height": 62
+      },
+      {
+        "id": "2",
+        "x": 103.375,
+        "y": 645,
+        "right": 193,
+        "bottom": 707,
+        "width": 89.625,
+        "height": 62
+      },
+      {
+        "id": "3",
+        "x": 197,
+        "y": 645,
+        "right": 286.625,
+        "bottom": 707,
+        "width": 89.625,
+        "height": 62
+      },
+      {
+        "id": "4",
+        "x": 290.625,
+        "y": 645,
+        "right": 380.25,
+        "bottom": 707,
+        "width": 89.625,
+        "height": 62
+      },
+      {
+        "id": "5",
+        "x": 9.75,
+        "y": 711,
+        "right": 99.375,
+        "bottom": 774,
+        "width": 89.625,
+        "height": 63
+      },
+      {
+        "id": "6",
+        "x": 103.375,
+        "y": 711,
+        "right": 193,
+        "bottom": 774,
+        "width": 89.625,
+        "height": 63
+      },
+      {
+        "id": "7",
+        "x": 197,
+        "y": 711,
+        "right": 286.625,
+        "bottom": 774,
+        "width": 89.625,
+        "height": 63
+      },
+      {
+        "id": "8",
+        "x": 290.625,
+        "y": 711,
+        "right": 380.25,
+        "bottom": 774,
+        "width": 89.625,
+        "height": 63
+      }
+    ],
+    "controls": [
+      {
+        "id": "joystick",
+        "x": 18,
+        "y": 545,
+        "right": 98,
+        "bottom": 625,
+        "width": 80,
+        "height": 80
+      },
+      {
+        "id": "jump",
+        "x": 320,
+        "y": 514,
+        "right": 376,
+        "bottom": 568,
+        "width": 56,
+        "height": 54
+      },
+      {
+        "id": "dig",
+        "x": 258,
+        "y": 574,
+        "right": 314,
+        "bottom": 628,
+        "width": 56,
+        "height": 54
+      },
+      {
+        "id": "place",
+        "x": 320,
+        "y": 574,
+        "right": 376,
+        "bottom": 628,
+        "width": 56,
+        "height": 54
+      }
+    ],
+    "overlaps": []
+  }
+}

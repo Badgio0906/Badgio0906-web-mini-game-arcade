@@ -1,0 +1,28 @@
+{
+  "finding_id": "031-portal-catalog-version",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_integration independent source reviewer; Jev answers not read",
+  "rationale": "The Portal impression callback emits an outdated hardcoded catalog identifier while cards and header derive from the current30-entry gameCatalog. This is an implementation metadata mismatch. The existing sanitizer accepts active30-2026-10-08; runtime carries it into a gated coarse impression event and Worker stores it in data_json. Existing aggregates and admin/Codex query filters do not branch on catalog_version, and GA does not map game_card_impression. No gameplay, save, auth, ingestion schema or emission gate depends on active29. Minimal interpolation from gameCatalog.length corrects metadata without changing those rules. The wrong label degrades version evidence but does not itself cause operation-blocking or major release risk.",
+  "evidence": [
+    "src/portal/main.ts:46",
+    "src/portal/main.ts:34",
+    "src/data/gameCatalog.ts",
+    "src/data/analyticsEnvelope.ts:45",
+    "src/analytics/runtime.ts:78",
+    "src/core/GoogleAnalyticsService.ts",
+    "analytics-worker/src/index.ts:31",
+    "analytics-worker/src/index.ts:58",
+    "analytics-worker/src/aggregate.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read impression callback, actual catalog, primitive validator, runtime gate, GA mapping and Worker ingest/aggregate/query consumers. Confirmed no consumer depends on the old literal and validated the proposed value through the bundled existing validator. No source edits, browser or API operations.",
+    "evidence": [
+      "docs/game031/QA/INDEPENDENT_CATALOG_VERSION_EVIDENCE.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

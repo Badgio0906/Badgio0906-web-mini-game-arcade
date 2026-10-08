@@ -1,0 +1,18 @@
+{
+  "finding_id": "031-feedback-reticle-overlap",
+  "problem": "The revised390px portrait feedback message covers the central aiming reticle and mining progress indicator.",
+  "expected": "Feedback remains separate from the crosshair and mining progress as well as action controls.",
+  "observed": [
+    "Actual final-world phone-playing.png has the message band roughlyY412–459 while the central reticle is aroundY416 and progress aroundY444.",
+    "The phone-practice-edited.png shows the same center-screen overlap.",
+    "Earlier Jump-button overlap is gone;320px and landscape images leave the reticle clear."
+  ],
+  "unknown": [
+    "Matched after-images with feedback and aiming indicators visually separated at390px."
+  ],
+  "evidence": [
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-playing.png",
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-practice-edited.png"
+  ],
+  "provenance": "independent actual final-world screenshot review; Jev answers not read"
+}

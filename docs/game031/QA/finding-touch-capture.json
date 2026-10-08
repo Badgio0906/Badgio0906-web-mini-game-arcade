@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-touch-capture-release-probe",
+  "problem": "DIG progress remains active after the mobile probe releases pointer capture.",
+  "expected": "An actual lostpointercapture event clears the correspondingDIG input and progress.",
+  "observed": [
+    "The probe calls releasePointerCapture after trusted DIG pointerdown.",
+    "Final trace has pointerdownid10 targetDIG but no lostpointercapture or subsequent pointermove event.",
+    "The recorded digProgress remains0.7219999999999984."
+  ],
+  "unknown": [
+    "Whether capture loss is dispatched only when the next pointerevent is processed.",
+    "Whether handler clears DIG upon the actual event."
+  ],
+  "evidence": [
+    "docs/game031/QA/independent-mobile-after-20261007T2347Z/REPORT.json",
+    "docs/game031/QA/independent-mobile-after-20261007T2347Z/failure.png"
+  ],
+  "provenance": "CDPmobiletouchprobe; no realphone or production analytics"
+}

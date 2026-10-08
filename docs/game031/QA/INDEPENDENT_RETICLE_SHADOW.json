@@ -1,0 +1,22 @@
+{
+  "finding_id": "031-feedback-reticle-overlap",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "game031_review independent actual-image reviewer; Jev answers unread",
+  "rationale": "The actual message occupies the very aiming/progress region required to naturally target blocks, so the primary requested interaction feedback is obscured at390px. Keeping messages clear of buttons alone is insufficient. Objective bounds and a matched after-image should verify a limited position correction, preserving44px buttons and palette. This blocks final Visual readability acceptance because the crosshair/progress are the main substitute for absent hands/tools.",
+  "evidence": [
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-playing.png",
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-practice-edited.png",
+    "src/games/game031/style.css"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Opened actual matched128-world390/320/844 captures; observed390 reticle/progress overlap and preserved pre-change CSS. Root should verify message versus crosshair/progress/HUD/control bounds then capture the same390 view.",
+    "evidence": [
+      "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-playing.png",
+      "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-practice-edited.png"
+    ]
+  }
+}

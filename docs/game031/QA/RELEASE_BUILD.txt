@@ -1,0 +1,138 @@
+
+> orbit-shift@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 250 modules transformed.
+rendering chunks...
+[esbuild css minify]
+▲ [WARNING] Expected "{" but found "and(" [css-syntax-error]
+
+    <stdin>:20:24:
+      20 │ @media(max-height:500px)and(orientation:landscape){#result-distanc...
+         │                         ~~~~
+         ╵                         {
+
+
+▲ [WARNING] Expected "{" but found "and(" [css-syntax-error]
+
+    <stdin>:24:24:
+      24 │ @media(max-height:500px)and(orientation:landscape){#app[data-state...
+         │                         ~~~~
+         ╵                         {
+
+
+computing gzip size...
+dist/analytics-admin.html                           0.66 kB │ gzip:   0.38 kB
+dist/game010.html                                   0.84 kB │ gzip:   0.60 kB
+dist/game001.html                                   2.03 kB │ gzip:   0.95 kB
+dist/game008.html                                   2.38 kB │ gzip:   1.22 kB
+dist/game007.html                                   2.39 kB │ gzip:   1.23 kB
+dist/game031.html                                   2.45 kB │ gzip:   1.18 kB
+dist/game026.html                                   2.68 kB │ gzip:   1.26 kB
+dist/game027.html                                   2.81 kB │ gzip:   1.32 kB
+dist/index.html                                     2.83 kB │ gzip:   1.49 kB
+dist/game029.html                                   2.86 kB │ gzip:   1.39 kB
+dist/game011.html                                   2.89 kB │ gzip:   1.30 kB
+dist/game009.html                                   2.90 kB │ gzip:   1.42 kB
+dist/privacy.html                                   2.95 kB │ gzip:   1.62 kB
+dist/game017.html                                   3.01 kB │ gzip:   1.40 kB
+dist/game018.html                                   3.11 kB │ gzip:   1.50 kB
+dist/game028.html                                   3.25 kB │ gzip:   1.58 kB
+dist/game015.html                                   3.25 kB │ gzip:   1.72 kB
+dist/game024.html                                   3.29 kB │ gzip:   1.52 kB
+dist/assets/ai.worker-BhBYnmqb.js                   3.33 kB
+dist/game023.html                                   3.42 kB │ gzip:   1.59 kB
+dist/game022.html                                   3.45 kB │ gzip:   1.62 kB
+dist/game019.html                                   3.50 kB │ gzip:   1.60 kB
+dist/game025.html                                   3.62 kB │ gzip:   1.70 kB
+dist/game016.html                                   3.83 kB │ gzip:   1.64 kB
+dist/game020.html                                   3.97 kB │ gzip:   1.80 kB
+dist/game021.html                                   4.01 kB │ gzip:   1.80 kB
+dist/game004.html                                   4.25 kB │ gzip:   1.84 kB
+dist/game005.html                                   4.34 kB │ gzip:   1.90 kB
+dist/game006.html                                   4.53 kB │ gzip:   1.94 kB
+dist/game003.html                                   4.76 kB │ gzip:   2.07 kB
+dist/game030.html                                   4.96 kB │ gzip:   2.18 kB
+dist/assets/generator.worker-Df5ApihC.js            5.14 kB
+dist/game002.html                                   6.16 kB │ gzip:   2.63 kB
+dist/assets/privacy-BJ4_ZNFK.css                    0.29 kB │ gzip:   0.22 kB
+dist/assets/analytics-admin--2oM4p4k.css            1.95 kB │ gzip:   0.90 kB
+dist/assets/game029-CiPsBH5h.css                    4.90 kB │ gzip:   1.72 kB
+dist/assets/game031-D6YBqOx9.css                    4.97 kB │ gzip:   1.77 kB
+dist/assets/game028-DqyBSI1q.css                    5.12 kB │ gzip:   1.72 kB
+dist/assets/game024-BQI0oavl.css                    5.19 kB │ gzip:   1.73 kB
+dist/assets/game020-xTPSHt0X.css                    5.45 kB │ gzip:   1.99 kB
+dist/assets/game023-BTgFaDN8.css                    5.61 kB │ gzip:   2.05 kB
+dist/assets/game026-CtERVbYG.css                    5.77 kB │ gzip:   1.96 kB
+dist/assets/game025-CX6ZzStI.css                    5.79 kB │ gzip:   1.91 kB
+dist/assets/game009-P7eR18tm.css                    5.82 kB │ gzip:   1.87 kB
+dist/assets/index-Cpak1p5S.css                      5.84 kB │ gzip:   1.80 kB
+dist/assets/game030-CCp4Ma-Q.css                    6.15 kB │ gzip:   1.98 kB
+dist/assets/game027-xF1MYxBI.css                    6.20 kB │ gzip:   1.95 kB
+dist/assets/game022-D38DqI01.css                    6.72 kB │ gzip:   2.31 kB
+dist/assets/game021-fcZ-ZA6_.css                    7.16 kB │ gzip:   2.43 kB
+dist/assets/game019-kWCw-N9t.css                    7.36 kB │ gzip:   2.06 kB
+dist/assets/game017-CK5_77Tc.css                    8.00 kB │ gzip:   2.01 kB
+dist/assets/game008-Dw2mOtL-.css                    8.71 kB │ gzip:   2.51 kB
+dist/assets/game015-Bu7X2h1W.css                    9.50 kB │ gzip:   2.45 kB
+dist/assets/game018-DArPTEK8.css                   12.86 kB │ gzip:   2.84 kB
+dist/assets/game007-DWkwP6NZ.css                   13.11 kB │ gzip:   3.41 kB
+dist/assets/onboarding-XqeUbvR5.css                15.82 kB │ gzip:   3.17 kB
+dist/assets/game016-D9wh04Pe.css                   19.14 kB │ gzip:   4.05 kB
+dist/assets/game001-x-wgMjRp.css                   20.18 kB │ gzip:   4.90 kB
+dist/assets/game011-BJOEgnnK.css                   22.28 kB │ gzip:   4.42 kB
+dist/assets/game006-BPqktmAV.css                   30.75 kB │ gzip:   6.12 kB
+dist/assets/game003-wp6nuTYC.css                   32.40 kB │ gzip:   6.75 kB
+dist/assets/game002-CajVFlTd.css                   34.80 kB │ gzip:   7.17 kB
+dist/assets/game004-D15XFBkN.css                   37.98 kB │ gzip:   7.67 kB
+dist/assets/game005-BmVCnhaW.css                   47.96 kB │ gzip:   9.39 kB
+dist/assets/config-DB2ZWgcF.js                      0.06 kB │ gzip:   0.08 kB
+dist/assets/privacy-smWaNeai.js                     0.09 kB │ gzip:   0.11 kB
+dist/assets/modulepreload-polyfill-B5Qt9EMX.js      0.71 kB │ gzip:   0.40 kB
+dist/assets/StorageService-BriUR26K.js              0.87 kB │ gzip:   0.42 kB
+dist/assets/AudioService-jQ7Mxaav.js                0.99 kB │ gzip:   0.48 kB
+dist/analytics-legacy.js                            0.99 kB │ gzip:   0.58 kB
+dist/assets/RewardService-BCkL9LiK.js               1.37 kB │ gzip:   0.57 kB
+dist/assets/ai-C9iX5qDH.js                          1.86 kB │ gzip:   1.04 kB
+dist/assets/index-0MO0QiP6.js                       3.69 kB │ gzip:   1.64 kB
+dist/assets/TelemetryService-BhrpJljK.js            9.34 kB │ gzip:   3.53 kB
+dist/assets/gameCatalog-BSD0xyw6.js                 9.41 kB │ gzip:   3.92 kB
+dist/assets/game024-XsA8HDAx.js                    14.38 kB │ gzip:   6.08 kB
+dist/assets/analytics-admin-DwsaDJU7.js            14.64 kB │ gzip:   6.14 kB
+dist/assets/game004-CfWxy3Hb.js                    17.03 kB │ gzip:   6.48 kB
+dist/assets/game020-DdD7LmPk.js                    18.03 kB │ gzip:   7.39 kB
+dist/assets/game009-D5N2fAoQ.js                    18.33 kB │ gzip:   7.37 kB
+dist/assets/game026-CNGVBLXB.js                    19.01 kB │ gzip:   7.76 kB
+dist/assets/game029-DpFei59o.js                    20.71 kB │ gzip:   8.47 kB
+dist/assets/game007-ar-h1uUR.js                    21.20 kB │ gzip:   8.38 kB
+dist/assets/game011-SXywR2mr.js                    22.60 kB │ gzip:   8.43 kB
+dist/assets/game030-CIc9dHIZ.js                    22.96 kB │ gzip:   9.17 kB
+dist/assets/game028-Cu1LCpUH.js                    22.99 kB │ gzip:   8.70 kB
+dist/assets/game021-DWMbY-z9.js                    23.35 kB │ gzip:   8.95 kB
+dist/assets/game005-CH7j-d9F.js                    24.39 kB │ gzip:   9.13 kB
+dist/assets/game001-D9tivXP6.js                    25.44 kB │ gzip:   9.82 kB
+dist/assets/game023-DkA0Q9Hf.js                    25.57 kB │ gzip:  10.54 kB
+dist/assets/game008-B9LTi4cE.js                    25.88 kB │ gzip:  10.01 kB
+dist/assets/runtime-HZoQ7GpO.js                    26.09 kB │ gzip:   9.57 kB
+dist/assets/game017-CokL8LSB.js                    27.64 kB │ gzip:  10.65 kB
+dist/assets/game027-DLVSAkGL.js                    28.21 kB │ gzip:  10.97 kB
+dist/assets/game016-PFs3NRyv.js                    29.16 kB │ gzip:  10.30 kB
+dist/assets/game022-BQT0e1Up.js                    29.87 kB │ gzip:  11.01 kB
+dist/assets/onboarding-C7tjWO_Q.js                 31.72 kB │ gzip:  12.19 kB
+dist/assets/game002-CI4bisid.js                    34.15 kB │ gzip:  12.56 kB
+dist/assets/game003-CcP0nVmV.js                    43.65 kB │ gzip:  15.99 kB
+dist/assets/game006-BTaPuvOr.js                    44.56 kB │ gzip:  15.80 kB
+dist/assets/game019-CtfUPLsd.js                    62.43 kB │ gzip:  17.31 kB
+dist/assets/game018-BkYRcm8b.js                    62.62 kB │ gzip:  23.85 kB
+dist/assets/game015-BJobULwv.js                    65.77 kB │ gzip:  18.00 kB
+dist/assets/game025-Dzm4Wpqm.js                   346.60 kB │ gzip:  22.62 kB
+dist/assets/game031-YjghsC6P.js                   566.61 kB │ gzip: 147.58 kB
+dist/assets/phaser-Jt__PiWe.js                  1,208.08 kB │ gzip: 332.18 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.32s

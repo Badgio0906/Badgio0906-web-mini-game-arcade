@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-edit-latency-initial-dirty",
+  "problem": "Inputplatform renderer reports editDelayMs2082 during earlyworldsetup, while the minedblock is within5m.",
+  "expected": "The edit-to-visible metric measures geometry affected by thatedit rather than unrelated initialterrainbuilds.",
+  "observed": [
+    "Inputplatform context/quality report has editDelayMs around2082.",
+    "The edit handler currently loops over all world.dirty keys to assign an edit timestamp.",
+    "World starts with allchunksdirty; Render updates editDelayMs when each markedchunk is rebuilt."
+  ],
+  "unknown": [
+    "Whether the measured value reflects targetblockvisualdelay or unrelatedchunkcompletion; actualtargetupdatehasnotbeentimestampcorrelated."
+  ],
+  "evidence": [
+    "src/games/game031/main.ts",
+    "src/games/game031/Render.ts",
+    "docs/game031/QA/independent-input-platform-20261008T0023Z/REPORT.json"
+  ],
+  "provenance": "sourceobservation +actualsoftwareGPUmetrics, notphysicalperformanceclaim"
+}

@@ -1,0 +1,25 @@
+{
+  "finding_id": "031-foot-mine-no-fall-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent reviewer; Jev log unread",
+  "rationale": "At the reported failure, the 0.6-wide AABB has Z extent18.4672\u201319.0672 and X extent18.3328\u201318.9328. It overlaps two floor voxels (18,19,18) and (18,19,19). The post-mining target is (18,18,18), consistent with the first floor cell being removed, but the neighboring floor voxel remains natural moss. The test incorrectly requires a fall after removing one of multiple supporting cells. Independently reconstructing the recorded coordinates and three reported mines keeps the player grounded when the neighboring support remains; removing the second support then causes a one-voxel fall. Do not weaken collision support rules to make this probe pass; center the body fully on the mined support or remove every intersecting support with normal input.",
+  "evidence": [
+    "docs/game031/QA/phase-a-extended-20261007T233412Z/REPORT.json",
+    "tests/game031/extended.mjs",
+    "src/games/game031/Physics.ts",
+    "src/games/game031/World.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read failure coordinates, the probe input sequence and AABB floor collision traversal. Independently ran a synthetic canonical-model reconstruction at the exact recorded coordinates with the three mined cells and compared retained versus removed neighbor support. This is model evidence, not a replacement for ordinary-input rerun.",
+    "evidence": [
+      "docs/game031/QA/phase-a-extended-20261007T233412Z/REPORT.json",
+      "tests/game031/extended.mjs",
+      "src/games/game031/Physics.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

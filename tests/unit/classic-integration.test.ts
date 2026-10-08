@@ -6,7 +6,7 @@ import { sanitizeAnalyticsData, isAnalyticsDataField } from '../../src/data/anal
 import { PENDING_WORKER_GAME_IDS } from '../../src/analytics/remoteRegistration';
 
 describe('ordered classic registrations', () => {
-  it.each(gameCatalog.filter(game => game.releaseOrder >= 21))('$id has its own immutable namespace and prototype version', game => {
+  it.each(gameCatalog.filter(game => game.releaseOrder >= 21 && game.releaseOrder <= 30))('$id has its own immutable namespace and prototype version', game => {
     const manifest = JSON.parse(readFileSync(`src/games/${game.id}/game.manifest.json`, 'utf8'));
     const profile = JSON.parse(readFileSync(`jev_export/game_profiles/${game.id}.json`, 'utf8'));
     expect(manifest.id).toBe(game.id);

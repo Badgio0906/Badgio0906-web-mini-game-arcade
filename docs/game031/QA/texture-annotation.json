@@ -1,0 +1,21 @@
+{
+  "finding_id": "031-repeating-terrain-stripes",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game031_review independent actual PNG reviewer; Jev log unread",
+  "rationale": "The actual desktop-start image visibly shows strong same-angle diagonal bands repeated on the teal face, brown earth, and distant boundary wall. This dominates surface texture rather than providing quiet irregular speckles, and makes unlike materials share conspicuous striping. Target outline and material colors remain distinguishable, so the image alone does not establish operation failure or a serious data/release hazard. The requested restrained original material appearance still requires correction before the independent Visual acceptance review. Consent overlay is a separate screenshot/test setup issue and is not used as a product finding.",
+  "evidence": [
+    "docs/game031/QA/phase-a-20261007T232821Z/desktop-start.png",
+    "src/games/game031/Render.ts"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Opened and inspected actual recorded desktop prototype PNG; separately inspected atlas coordinate generation and noted its modular repeated coordinate pairing. Proposed visually quieter irregular deterministic speckles, then capture the same view without the consent overlay for before/after review.",
+    "evidence": [
+      "docs/game031/QA/phase-a-20261007T232821Z/desktop-start.png"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

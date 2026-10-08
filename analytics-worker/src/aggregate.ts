@@ -1,5 +1,5 @@
 import type { AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
-import type { GameMetrics, Metrics, Period, Ratio, StoredEvent } from './types';
+import type { GameMetrics, Metrics, Period, Ratio, StoredEvent, SandboxSummary } from './types';
 type Event = AnalyticsEnvelope;
 export function ratio(numerator: number, denominator: number): Ratio { return { numerator, denominator, rate: denominator ? numerator / denominator : null, sample_size_small: denominator < 20 }; }
 function unique<T>(rows: readonly T[], key: (row:T)=>string): T[] { const result=new Map<string,T>();for(const row of rows)if(!result.has(key(row)))result.set(key(row),row);return [...result.values()]; }
@@ -67,8 +67,19 @@ function funnel(rows:Event[], gameId:string):({step:string}&Ratio)[]{
  return [{step:'run_start',...ratio(starts.length,starts.length)},step('run_end',e=>e.event_name==='run_end')];
 }
 export function unpack(rows:StoredEvent[]):Event[]{return rows.map(({data_json,received_at,...row})=>{void received_at;return {...row,data:JSON.parse(data_json)};});}
+/** A session can report several non-overlapping intervals. World totals and run_end
+ * are intentionally excluded, so the same edited blocks cannot be counted twice. */
+export function summarizeSandbox(rows: Event[]): SandboxSummary {
+ const summaries=rows.filter(e=>e.game_id==='game031'&&e.event_name==='specific_game_events'&&subtype(e)==='session_summary');
+ const numeric=(key:string)=>summaries.map(e=>e.data[key]).filter((value):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>=0);
+ const sum=(key:string)=>numeric(key).reduce((total,value)=>total+value,0);
+ const max=(key:string)=>{const values=numeric(key);return values.length?Math.max(...values):null;};
+ const quality=summaries.filter(e=>['auto','light','standard'].includes(String(e.data.quality_tier)));
+ const errors=summaries.filter(e=>typeof e.data.save_error_code==='string'&&e.data.save_error_code!=='none');
+ return {summary_count:summaries.length,active_seconds:sum('active_seconds'),blocks_mined:sum('blocks_mined'),blocks_placed:sum('blocks_placed'),return_to_surface_count:sum('return_to_surface_count'),max_depth:max('max_depth'),maximum_material_types_found:max('material_types_found'),quality_summary_counts:countBy(quality,e=>String(e.data.quality_tier)),save_error_summary_counts:countBy(errors,e=>String(e.data.save_error_code)),coverage:'observed-interval-deltas-only'};
+}
 export function summarizeGames(events:Event[],period:Period,includeRetired=false,context=events):GameMetrics[]{
- const ids=Array.from({length:30},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
+ const ids=Array.from({length:31},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
  return ids.map(game_id=>{const rows=events.filter(e=>e.game_id===game_id);const versions=new Map<string,{game_version:string;rules_version:string;presentation_version:string;event_count:number}>();for(const e of rows){const key=`${e.game_version}:${e.rules_version}:${e.presentation_version}`;const v=versions.get(key)??{game_version:e.game_version,rules_version:e.rules_version,presentation_version:e.presentation_version,event_count:0};v.event_count++;versions.set(key,v);}
- return {...computeMetrics(rows,context,period),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
+ return {...computeMetrics(rows,context,period),...(game_id==='game031'?{sandbox_summary:summarizeSandbox(rows)}:{}),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
 }

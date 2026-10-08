@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-10-08T00:36:20.320Z",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "observed_literal": "active29-2026-10-08",
+  "current_catalog_count": 30,
+  "proposed_metadata_value": "active30-2026-10-08",
+  "validator_accepts_proposed_value": true,
+  "consumer_observations": {
+    "portal_card_and_header_source": "gameCatalog",
+    "worker": "Validated primitive stored in data_json; no catalog_version filter/group in current aggregate API",
+    "api_filters": [
+      "game_version",
+      "rules_version",
+      "presentation_version"
+    ],
+    "runtime_gate": "Granted consent AND remote enabled AND registered selected game",
+    "ga": "game_card_impression not mapped",
+    "pending031": "Gated off; existing registered games can carry stale label"
+  },
+  "prior_audit_scope_note": "INDEPENDENT_INTEGRATION_FINAL.json observed a prior source state in which src/portal/main.ts was unchanged. The proposed single Portal impression metadata correction is a now-authorized exception; follow-up should assert only the literal-to-interpolation change and preserve pending gates.",
+  "recorder_first_attempt": {
+    "result": "Known Node ESM ERR_MODULE_NOT_FOUND for extensionless telemetrySchema import; occurred before any evidence write",
+    "classification": "recording-tool module-resolution limitation, not product finding",
+    "resolution": "Bundled existing validator with installed esbuild; no product edits"
+  },
+  "limitations": [
+    "No Jev answers read",
+    "No production Analytics/API request or fixture sent",
+    "No browser observation",
+    "Product change not applied by reviewer"
+  ],
+  "source_sha256": {
+    "src/portal/main.ts": "810311e8e2bad0154f0ab609d7b11b42f1913eedd2079eb307dc63a50d0892ea",
+    "src/data/gameCatalog.ts": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+    "src/data/analyticsEnvelope.ts": "7f5f82e90a4cff47c1695d8eb608845a90802f09fb8f4e54572f5d3d038db316",
+    "src/analytics/runtime.ts": "405f135526da6dc267df17b2167a1422eb3879b84405342d86f79c2981e3680e",
+    "src/core/GoogleAnalyticsService.ts": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+    "analytics-worker/src/index.ts": "6bc3cbcf263201fa6217471c0346fd7d52fd4034f634bd68d02db31778b32001",
+    "analytics-worker/src/aggregate.ts": "2ec13aff0ae9a59f1f2ad19378cc3e1a1f3b983286243757a65e51b5e5696cc3"
+  }
+}

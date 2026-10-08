@@ -1,0 +1,109 @@
+{
+  "reviewer": "game031_review independent actual-image reviewer; Jev answers unread",
+  "observed_at": "2026-10-08T00:33:20.094082+00:00",
+  "base_commit": "dd31ed5818893c1e45c0af304a55f61aab7acc2d",
+  "scores": [
+    {
+      "item": "A",
+      "name": "Visual identity",
+      "score": 13,
+      "max": 15,
+      "reason": "Distinct first-person voxel scene, teal/warm-earth palette and restrained shared menu language; no avatar art or unrelated effects."
+    },
+    {
+      "item": "B",
+      "name": "Object appeal",
+      "score": 12,
+      "max": 15,
+      "reason": "Block surfaces have visible irregular speckles and face shading; actual edited and unsupported-bridge images make the construction objects tangible. Shapes remain intentionally simple."
+    },
+    {
+      "item": "C",
+      "name": "Background",
+      "score": 8,
+      "max": 10,
+      "reason": "Actual final-world horizon is open/fog-limited, while the reached cave has readable floor/ceiling and blue-gray depth. Sky and terrain are simple; no claim of rich generated scenery."
+    },
+    {
+      "item": "D",
+      "name": "UI integration",
+      "score": 9,
+      "max": 10,
+      "reason": "Final portrait/320/landscape feedback is separated from controls and aiming; material names/counts and selected outline fit the same calm style."
+    },
+    {
+      "item": "E",
+      "name": "Composition",
+      "score": 8,
+      "max": 10,
+      "reason": "World/central aim remain primary in final desktop and portrait captures, with grouped lower palette; 320px and short landscape devote substantial area to controls but remain legible."
+    },
+    {
+      "item": "F",
+      "name": "Gameplay readability",
+      "score": 13,
+      "max": 15,
+      "reason": "Matched after-images show clear reticle, progress region, target border and placement ghost; all eight named/count-bearing cards, buttons and selection are readable. Feedback no longer obstructs aim or Jump."
+    },
+    {
+      "item": "G",
+      "name": "Motion/effects",
+      "score": 7,
+      "max": 10,
+      "reason": "Actual recorded mining image contains progressive target-face cracks and the captured before/after edited scenes show concise changes without a hand/tool overlay. Static evidence supports restrained visible feedback; exact animation feel/sound timing was not independently experienced, so credit is limited."
+    },
+    {
+      "item": "H",
+      "name": "Finish",
+      "score": 12,
+      "max": 15,
+      "reason": "Actual title/settings and final playing layouts share coherent typography/buttons/spacing; initial repeat-stripe and mobile feedback conflicts were independently corrected. Simple sky and sometimes empty feedback strip remain prototype polish limitations."
+    }
+  ],
+  "total": 82,
+  "readability_F": 13,
+  "finish_H": 12,
+  "gate": "PASS",
+  "gate_scope": "Independent AI Visual gate for the technical prototype, not human enjoyment or publication permission. Source/build/functional/publication gates remain separate.",
+  "required_gate": {
+    "total": 80,
+    "F": 12,
+    "H": 12
+  },
+  "images_actually_viewed": [
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/portrait390.png",
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/narrow320.png",
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/landscape844.png",
+    "docs/game031/QA/full-world-normal-20261008T001400Z/desktop-edited.png",
+    "docs/game031/QA/natural-cave-20261008T002550Z/desktop-natural-cave.png",
+    "public/assets/portal/game031.webp",
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-move-look-dig.png",
+    "docs/game031/QA/independent-full-mobile-20261008T0017Z/phone-practice-edited.png",
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-title.png",
+    "docs/game031/QA/independent-mobile-final-phase-a-20261008T0004Z/phone-settings.png",
+    "docs/game031/QA/independent-building-20261007T2339Z/step-climbed.png",
+    "docs/game031/QA/independent-building-20261007T2339Z/bridge-support-removed.png"
+  ],
+  "matched_findings_closed": [
+    "031-feedback-jump-overlap",
+    "031-feedback-reticle-overlap"
+  ],
+  "closure_evidence": "The actual final-layout390/320/844PNG images were opened after the fixes. Their report records nonempty feedback and zero feedback overlap withHUD/crosshair/progress/actions/joystick/material cards. Before images and original findings remain intact.",
+  "remaining_limits": [
+    "Human fun/comfort and author playtest unperformed.",
+    "Physical iPhone/Android, heat, audio perception and motion-sickness testing unperformed.",
+    "Only recorded visual states were reviewed; no universal mobile display/performance guarantee.",
+    "Simple sky/plain geometry and residual empty feedback strip are nonblocking prototype polish limitations."
+  ],
+  "evidence_hashes": {
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/portrait390.png": "c7d65f6859b77f6808cde420b1b49bd320878f3328b6cdd95b7936d39275360e",
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/narrow320.png": "a8dca53f954f23534602302ec13085ba0a279eb900eb7917e05eb8bee2611706",
+    "docs/game031/QA/independent-final-layout-20261008T0036Z/landscape844.png": "45f79528b18825f0884919d1d3db4c37ec32471c77a3b65188d3eb9bc800e0ee",
+    "docs/game031/QA/full-world-normal-20261008T001400Z/desktop-edited.png": "cc48d266ed81b160f557126e9c5a26f2daa54bb23ac7d2d2a77cbf13da3cdb11",
+    "docs/game031/QA/natural-cave-20261008T002550Z/desktop-natural-cave.png": "ca912b0c23aa9bc47fddeffe02404ab8b78882242e2e644258cf820df8fee870",
+    "public/assets/portal/game031.webp": "819a4aad2b8b397fa800e372d132f4f9a11ec55e83cdf8797e587872d4e65297",
+    "src/games/game031/main.ts": "270361ca03948b4c1377cc8f0342d69378812ffd1bba212e4b5ea6445bf22a72",
+    "src/games/game031/Render.ts": "5076b0cb2f680de76970259777b8806abfef46ad440a6eb90680960175f60466",
+    "src/games/game031/style.css": "0cc1ab8ed54820d64751596058429a2577473ef47e154a4509ec9e45dec01971"
+  }
+}

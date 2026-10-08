@@ -1,0 +1,19 @@
+{
+  "finding_id": "031-foot-mine-no-fall-probe",
+  "problem": "The ordinary-input probe reports no expected drop after mining near the feet.",
+  "expected": "Mining the supporting voxel under the body causes a fall.",
+  "observed": [
+    "Error: footminingdidnotfall",
+    "Two-high horizontal opening was dug and player walked into it.",
+    "Probe movedright600ms, aimed nearfeet and minedonce, then waited700ms."
+  ],
+  "unknown": [
+    "Whether the ray selected the support voxel or a neighboring exposed face.",
+    "Whether the body remains supported by another solid voxel."
+  ],
+  "evidence": [
+    "docs/game031/QA/phase-a-extended-20261007T233412Z/REPORT.json",
+    "docs/game031/QA/phase-a-extended-20261007T233412Z/failure.png"
+  ],
+  "provenance": "ordinarykeyboardmousebrowserinput withreadonlyaimplanner"
+}

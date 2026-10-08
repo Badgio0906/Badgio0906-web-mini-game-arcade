@@ -1,0 +1,23 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "CODEX_ACTION_REQUIRED applies to correcting QA/runner as well as product source. QA erroneously checked the enclosing materials rectangle instead of its actual children, so a scoped test correction is required. Product layout correction is not required.",
+  "finding_id": "031-phone-control-material-overlap",
+  "reviewer": "game031_browser_qa independent live DOM/touch reviewer; Jevanswersunseen",
+  "evidence": [
+    "docs/game031/QA/independent-mobile-20261007T2342Z/INDEPENDENT-DEFINITION-CORRECTION.json",
+    "docs/game031/QA/independent-mobile-20261007T2342Z/REPORT.json",
+    "docs/game031/QA/independent-mobile-20261007T2342Z/INDEPENDENT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspect actual child bounds and touch event/capture sequence before limited test-only correction; preserve original and later observations separately.",
+    "evidence": [
+      "docs/game031/QA/independent-mobile-20261007T2342Z/REPORT.json",
+      "docs/game031/QA/independent-mobile-20261007T2342Z/INDEPENDENT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}
