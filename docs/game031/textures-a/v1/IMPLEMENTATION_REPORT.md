@@ -1,6 +1,6 @@
 # Game031 A案・提供8素材のテクスチャ更新
 
-2026-10-08。**実装・ローカル技術QA完了、公開確認前。公開完了は末尾の公開記録を参照。** 対象は既存Game031、名称「掘って、置くだけ。 / DIG & PLACE」。新作や候補表の消化ではない。基準main `2d745110e1a7a24660da16dd6529d8ca2d08a2bf`、専用worktree/branchで他15作業treeとGame018を保全。
+2026-10-08。**提供8素材の導入・技術QA・本番公開確認完了。公開記録は末尾を参照。** 対象は既存Game031、名称「掘って、置くだけ。 / DIG & PLACE」。新作や候補表の消化ではない。基準main `2d745110e1a7a24660da16dd6529d8ca2d08a2bf`、専用worktree/branchで他15作業treeとGame018を保全。
 
 ## 8素材の対応と出典
 
@@ -79,6 +79,12 @@ Chromium headless + ANGLE SwiftShaderソフトウェアGPU、1280×900、同世�
 
 ## 公開状態と未確認
 
-公開は技術QA完了後の既存公式Pages workflowで行う。現在は前版が公開中。期待commit、CI、全17新素材、JS/CSS/HTML/thumbnailの配信SHA、公開通常操作と旧保存の継続を別記録で確認後、この節へ追記する。
+runtime `b891ceae429a9df0bd87b43c04a520ae214114ff` をmainへpushし、[既存公式Pages run37729093975](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37729093975)のbuild/deploy成功を確認。[公開Game031](https://game100garage.com/game031.html)で新版を確認した。[公開証拠](QA/PUBLICATION.json)。この後の記録用commitは文書とQAスクリプトだけで、公開runtime sourceは不変。
+
+公開HTML/JS/CSS/thumbnail13ファイルのbytes/SHAを期待commitの同公開設定再現buildと比較し、hash付きJS/CSS名も公式CI出力と一致。公式artifact ZIPを直接取得した検査ではなく、CI-equivalent＋実配信照合である。[版照合](QA/publication/runtime/version/version.json)。全16WebP＋manifestの17ファイルはHTTP200/SHA一致、画像decodeと512/256寸法一致。[素材照合](QA/publication/runtime/assets/REPORT.json)。標準/軽量の両方でsupplied8と実8表面を確認した。[公開8表面画像](QA/publication/runtime/eight-surfaces-01/REPORT.json)は公式UIから合成表示fixtureを取り込んだ隔離試験で、通常採掘実績やサムネイルに使用していない。Mainも両静止画の8素材を実viewした。[観察記録](QA/publication/runtime/eight-surfaces-01/VISUAL_OBSERVATION.json)。
+
+公開PCは旧表示の合成保存3採掘/1配置を公式UIで取り込み地形・所持の一致を確認後、通常入力で11採掘/5配置を追加（合計14/6）、保存して再読込後も地形/所持/統計一致。[PC＋旧保存](QA/publication/runtime/desktop-old-save-01/REPORT.json)。公開スマホ相当は12採掘/5配置、3指move/look/DIG、ジャンプ/cancel、390縦/844横/320縦、保存reload一致を確認。[phone](QA/publication/runtime/phone-01/REPORT.json)。Portal30作品・Game031リンク・640×360新版thumbnail・Ads script1・解析同意UIを確認。ゲームpageerror0、試験のAnalytics request0。
+
+公開ブラウザでは既存Google Ads取得にERR_TUNNEL_CONNECTION_FAILEDが記録された。Cloudの許可先外による通信制約であり、広告コードは変更していない。広告配信成立は未確認。GitHub variables一覧は403のため新権限を作らず既に公開された設定で再現し、公式CI名/配信SHA一致を別証拠とした。15旧worktree/018未commitを[公開後も保全](QA/publication/PROTECTION_PUBLISHED.json)。
 
 本人試遊、物理iPhone/Androidの親指操作/発熱/音、長時間の人間の感想は未実施。提供素材の元生成契約/権利履歴を独立に確認できていない。深部岩の粗い模様は原本の特徴。全端末快適、完全シームレス、PBR完全対応の保証はしない。公開承認は人間評価済みを意味しない。

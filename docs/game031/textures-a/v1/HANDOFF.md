@@ -15,3 +15,5 @@
 世界X128/Y64/Z128、BlockID/seed/gen/save版1、全地形/所持/移動/採掘/配置の互換性を保持。presentationのみtextures-a-v1。原本8imageを読んだだけ、白紙/旧fallback、またはHTTP200だけを導入成功にしない。本人試遊/物理端末/音/酔いは未実施のまま引継ぐ。
 
 証拠はQA/before、after、comparison-final03、publicationへ分離。過去の失敗01/02や負荷測定を消さず、新しい実行先を作る。Jevは当時の実finding4問のみで、HTTP/bytes/buildの検査に呼ばない。利用の監査はJEV_EXECUTION_AUDIT/ JEV_SUMMARY。以前の8画像未受領記録は当時の状態として保持する。
+
+公開runtimeは`b891ceae429a9df0bd87b43c04a520ae214114ff`、公式CI37729093975成功。公開通常操作/旧保存/全素材/配信照合は[PUBLICATION](QA/PUBLICATION.json)。8表面の公開確認を再現する場合は`tests/game031/textures-a-public-gallery.mjs`へ`GAME031_EXPECTED_COMMIT`/proxy環境と新規`GAME031_QA_OUT`を渡す（公開URLはscript内で固定）。公式UIから隔離browser contextへ合成backupを取り込む表示試験で、実ユーザー保存/通常採掘実績/Portal thumbnailへ転用しない。文書追補のみのcommitでも公式CIを確認し、runtimeが変わらなければ同じ通常QAを重複実行しない。
