@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-08T15:21:21.206588+00:00",
+  "reviewer": "records_browser_qa",
+  "blind_to_Jev": true,
+  "cause": "TEST_INFRA_BUG",
+  "source_evidence": "portal-browser.mjs context.addInitScript unconditionally setItem all fixture keys on every document",
+  "observed_evidence": "failureUI shows game001 0\u70b9 after earlier cross-tab wrote8\u70b9. Initial fixture was0. Other row/game adapters remain valid. This matches init-script replay after browserBack, not stale adapter8.",
+  "action": "Seed only keys not yet present; record actual pageshow persisted flag separately from synthetic handler fixture. Preserve initialrun all failures/images.",
+  "evidence": [
+    "docs/records/QA/browser-portal-01/REPORT.json",
+    "docs/records/QA/browser-portal-01/failure.png",
+    "tests/records/portal-browser.mjs"
+  ]
+}

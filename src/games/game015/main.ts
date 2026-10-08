@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { drawKing } from './art';
 import { StorageService } from '../../core/StorageService';
@@ -6,6 +7,7 @@ import { createOnboarding } from '../../arcade/onboarding';
 import { createFallGame, paintFallPractice } from './FallBoard';
 import { FallAudio } from './audio';
 import type { FallEvent, FallResult, FallSnapshot } from './types';
+const recordSession = createGameRecordSession('game015');
 
 type Screen = 'title' | 'playing' | 'paused' | 'ending' | 'result';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -79,6 +81,7 @@ function screen(next: Screen): void {
   if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div></article>`;
   if (next === 'result' && result) {
     overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'scroll' ? 'TOO SLOW!' : result.outcome === 'impact' ? 'SPLAT!' : result.outcome === 'spike' ? 'SPIKES!' : result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'}</span><h2>${result.outcome === 'scroll' ? '天井に追いつかれました。' : result.outcome === 'impact' ? '落ちすぎました。' : result.outcome === 'spike' ? '針に当たりました。' : result.outcome === 'needle' ? '壁の針に当たりました。' : '鳥に当たりました。'}</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     overlay.querySelector<HTMLButtonElement>('#retry-button')?.focus({ preventScroll: true });
   }
 }
@@ -100,7 +103,7 @@ function event(e: FallEvent): void {
   if (e.type === 'milestone') { telemetry.trackEvent('milestone_reached', { runId, depth: e.depth }); milestoneMessage = e.message; milestoneUntil = controller.snapshot().time + 2; text('live-status', e.message); audio.tone(523, 1046, .2); }
 }
 const controller = createFallGame($('game-canvas'), { onUpdate: update, onEvent: event, onEnd(value) {
-  if (ended || disposed) return; ended = true; result = value; newBest = value.score > best; best = Math.max(best, value.score); storage.writeNumber('best', best);
+  if (ended || disposed) return; ended = true; result = value; newBest = value.score > best; best = Math.max(best, value.score); storage.writeNumber('best', best); recordSession.complete(value.score, { metadata: { duration_seconds: value.time, outcome: value.outcome } });
   if (newBest) telemetry.trackEvent('best_update', { runId, score: value.score, best });
   telemetry.trackEvent('death_reason', { runId, reason: value.outcome, depth: value.depth, fall_distance: value.fallDistance });
   audio.setPlaying(false); audio.tone(240, 42, .26, .04);
@@ -112,7 +115,7 @@ function start(retry = false): void {
   if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
   void audio.unlock(); runId = `game015-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = false; milestoneUntil = hazardNoticeUntil = 0; milestoneMessage = hazardMessage = '';
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start(); audio.setPlaying(true);
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start(); audio.setPlaying(true);
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); audio.setPlaying(false); telemetry.trackEvent('pause', { runId }); screen('paused'); }

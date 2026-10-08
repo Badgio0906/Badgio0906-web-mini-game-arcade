@@ -1,0 +1,818 @@
+{
+  "status": "PASS",
+  "recorded_at": "2026-10-08T14:51:26.098Z",
+  "base": "http://127.0.0.1:4328",
+  "provenance": "synthetic mocked API and automated real browser clicks; no production record/admin API or real secret",
+  "sourceHashes": {
+    "src/analytics-admin/records.ts": "a6c13c51265e1e80f0f33f1a160395ab0b3726673c1522f3f40d28ebcef24c78",
+    "src/analytics-admin/main.ts": "d51173f18a97ccd4151c89ddc74859d4c9f6d281c76e8188965afbe2eb9ce4ba",
+    "src/analytics-admin/style.css": "166f96b195efdc987c795d1d71f358f57edf15dee076096069920102c1a698cd",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732"
+  },
+  "evidence": [
+    {
+      "viewport": {
+        "width": 1365,
+        "height": 900
+      },
+      "passed": true,
+      "requests": [
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "accept"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "revoke"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "restore"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "reject"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/boards/game018.distance.r1.all-shoes/recalculate",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100&board_id=game018.distance.r1.all-shoes",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        }
+      ],
+      "write_count": 5,
+      "page_errors": [],
+      "fixture_only": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "passed": true,
+      "requests": [
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "accept"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "revoke"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "restore"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "reject"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/boards/game018.distance.r1.all-shoes/recalculate",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100&board_id=game018.distance.r1.all-shoes",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        }
+      ],
+      "write_count": 5,
+      "page_errors": [],
+      "fixture_only": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "passed": true,
+      "requests": [
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "accept"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "revoke"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "restore"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "reject"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/boards/game018.distance.r1.all-shoes/recalculate",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100&board_id=game018.distance.r1.all-shoes",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        }
+      ],
+      "write_count": 5,
+      "page_errors": [],
+      "fixture_only": true
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "passed": true,
+      "requests": [
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "accept"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "revoke"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "restore"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions/a8328e11-eaf4-4c90-8304-4e2e6a168de1/review",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": "reject"
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/boards/game018.distance.r1.all-shoes/recalculate",
+          "method": "POST",
+          "authorization_present": true,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100&board_id=game018.distance.r1.all-shoes",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/public/bests",
+          "method": "GET",
+          "authorization_present": false,
+          "query": "",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        },
+        {
+          "path": "/v1/records/admin/submissions",
+          "method": "GET",
+          "authorization_present": true,
+          "query": "?limit=100",
+          "cache_control": null,
+          "referrer_present": false,
+          "decision": null
+        }
+      ],
+      "write_count": 5,
+      "page_errors": [],
+      "fixture_only": true
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { AudioService } from '../../core/AudioService';
 import { StorageService } from '../../core/StorageService';
@@ -10,6 +11,7 @@ import { ChargeRun } from './ChargeRun';
 import { createAuthoredLevel } from './authoredLevel';
 import { recordClearStats, recordFallStats } from './stats';
 import type { ChargeEvent } from './chargeTypes';
+const recordSession = createGameRecordSession('game019');
 
 type State = 'title' | 'explanation' | 'playing' | 'practice' | 'paused' | 'result';
 const el = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -69,10 +71,11 @@ function finish(outcome: 'clear' | 'quit' | 'restart'): void {
   if (newBest) telemetry.trackEvent('best_update', { score: best / 10, best: best / 10, unit: 'meters', run_id: runId });
   telemetry.trackEvent('run_end', { outcome, score: s.maxHeight, seconds: Number(s.time.toFixed(2)), falls: s.falls, total_fall: s.totalFall, biggest_fall: s.biggestFall, jumps: s.jumps, phase: s.chapter, run_id: runId });
   recordFallStats(storage, s.totalFall);
+  recordSession.complete(Math.floor(s.maxHeight*10+1e-7)/10, { metadata: { duration_seconds: s.time, outcome } });
 }
 function beginRun(source = 'direct'): void {
   finish('restart'); input.reset(); practice = null; run = new ChargeRun(createAuthoredLevel(), onRunEvent); activeRun = true; runId++; runStartBest = best;
-  telemetry.trackEvent('run_start', { source, run_id: runId, level: 'authored-v2', air_control: 'none' });
+  recordSession.startRun(); telemetry.trackEvent('run_start', { source, run_id: runId, level: 'authored-v2', air_control: 'none' });
   telemetry.trackEvent('phase_reached', { phase: 'well', height: 0, run_id: runId });
   setState('playing'); menu.innerHTML = ''; board.resetCamera(); canvas.focus({ preventScroll: true }); void audio.unlock();
 }
@@ -99,11 +102,13 @@ function completePractice(): void {
 function showResult(): void {
   const s = run.snapshot(); setState('result');
   menu.innerHTML = `<span class="eyebrow">WELL → SEA → SPACE</span><h2>宇宙だ！ ……次はどこ？</h2><p class="result-height">${fmt(s.maxHeight)}</p><p>TOTAL FALL ${fmt(s.totalFall)}<br>転落 ${s.falls}回 ／ ${s.jumps}ジャンプ<br>TIME ${Math.floor(s.time / 60)}:${String(Math.floor(s.time % 60)).padStart(2, '0')} ／ BEST ${fmt(best / 10)}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">もう一度、井戸から</button><button id="title-button" type="button">タイトルへ</button><a href="./index.html">ゲームセンターへ</a></div>`;
+  recordSession.mount(menu);
   el('retry-button').onclick = () => { telemetry.trackEvent('retry'); beginRun('retry'); }; el('title-button').onclick = title;
 }
 function pause(): void {
   if (!active()) return; previous = state as 'playing' | 'practice'; setState('paused'); telemetry.trackEvent('pause', { mode: previous });
   menu.innerHTML = `<span class="eyebrow">TAKE A BREATH</span><h2>一時停止</h2><p>HEIGHT ${fmt(current().snapshot().height)}<br>TOTAL FALL ${fmt(current().totalFall)}</p><div class="menu-actions"><button id="resume-button" class="primary" type="button">続ける</button><button id="restart-button" type="button">最初からやり直す</button><button id="title-button" type="button">タイトルへ</button></div>`;
+  if (previous === 'playing') { saveBest(); const s = run.snapshot(); recordSession.complete(Math.floor(s.maxHeight*10+1e-7)/10, { metadata: { duration_seconds: s.time, outcome: 'milestone' } }); recordSession.mount(menu); }
   el('resume-button').onclick = resume; el('restart-button').onclick = confirmRestart; el('title-button').onclick = title;
 }
 function confirmRestart(): void {

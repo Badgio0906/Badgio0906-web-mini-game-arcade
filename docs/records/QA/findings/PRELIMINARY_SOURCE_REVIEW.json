@@ -1,0 +1,65 @@
+{
+  "reviewer": "records_review",
+  "recorded_at": "2026-10-08T14:53:05.340011+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "read_receipt_boundary": "Read during this reviewer turn before recorded_at; exact per-file first-read timestamps unavailable. No JEV_SHADOW/answers inspected. Sources ongoing and this is a preliminary snapshot, not final freeze.",
+  "source_sha256": {
+    "AGENTS.md": "35f796fc4047b94ce6e3f068cc46416777fcbe4630fc76a70db3b7982934bcd2",
+    "docs/PROJECT_CONTEXT.md": "b5a23d385bcde7ce2a608e534fff2a6eef6be707f0a1fce6e2511a225d4eaf55",
+    "docs/CURRENT_STATUS.md": "1540a761958fd36d777f72e7c51e83e356ba74e873ea4ac607d11eb0b8181881",
+    "docs/GAME_DEVELOPMENT_RULES.md": "a32fc77cf5c9507ae0b29af3739f7f6836836295d4af5cb7ba97a0d53c50fb50",
+    "docs/JEV_REVIEW_RULES.md": "18a86bc30258dff17494bf5d329df7fce6cebb62b2e325f611884ed9715b0361",
+    "docs/records/REQUEST.md": "19922629d61ab049c0d03d09e3c6c1e7ac36cd269d3d76e2ce54ed45d352beee",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732",
+    "src/records/RecordSharing.ts": "1e4b24a3d386e2c9b06bea288a8a12634e072d73b5ffbd05629375588633a81a",
+    "src/records/localRecords.ts": "6f60a08042765f15a6208b8b5c714db4c44829be952fe022d10abc4972afc200",
+    "src/records/PublicBests.ts": "003c13152319e6b94075669d11223d5dd65f0855777b291966e9985f5335b22b",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "analytics-worker/src/records.ts": "87133293a82ff218e35d8dd6d98f5774d987ec0d8f9b02ee942a585c4c7abce9",
+    "analytics-worker/migrations/0002_records.sql": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+    "src/analytics-admin/records.ts": "a6c13c51265e1e80f0f33f1a160395ab0b3726673c1522f3f40d28ebcef24c78",
+    "src/games/game015/main.ts": "2de5eb197bf6a2300d965321aa3acb1ee9a5beab61f779328423422caef6bda6",
+    "src/games/game019/main.ts": "be73f49db31c8e5f50d8a47ae7357b44e906eb9eb5ead734dec2ae4c8195967a",
+    "src/games/game029/main.ts": "18fbdb4abdb04e29eb29269c438afab7b62d3dd3a57f72c19ea66dda86e277d3"
+  },
+  "observations": [
+    {
+      "id": "015-marker-mismatch",
+      "source": "src/records/RecordSharing.ts storeCurrentRule uses sourceValueAtCapture; localRecords readScalar requires sourceStamp",
+      "impact": "all verified current015 marks still legacy"
+    },
+    {
+      "id": "manual-queue-off-reload",
+      "source": "Sharing constructor only loadsqueue whenenabled()",
+      "impact": "manual already-authorized failedsubmission droppedon nextpage withautoshareOFF"
+    },
+    {
+      "id": "cross-tab-receipt-overwrite",
+      "source": "private receipts initializedonce; persist overwriteskey; receiptstorageevent onlyrender",
+      "impact": "independenttabs canerase withdrawalreceipts"
+    },
+    {
+      "id": "029-restore-no-record-run",
+      "source": "game029 title restore callback lacks recordSession.startRun",
+      "impact": "finishedrestored validRUN cannotbesubmitted"
+    },
+    {
+      "id": "019-rounding-mismatch",
+      "source": "game019 saveBest floorsdecimeters; canonicalValue rounds",
+      "impact": "may differ0.1m local/public; reviewverifiedmark fix"
+    }
+  ],
+  "positive_code_observations": [
+    "Public API rebuilds small allowlisted board fields and does not return submission/run keys/receipt/IP/UA/AnalyticsIDs.",
+    "Recordsnamespace separate from admin/codexAnalytics; only admin token hashcomparison authorizes exactrecordsadmin routes.",
+    "Prepared bound SQL and D1 batched triggers update best andstabletie order, revoke/withdraw transition recompute.",
+    "8KiB requestbody/5second timeout; server integer/rules/mode/metadata validation; 120/min atomicD1globalquota and2000pending cap.",
+    "POST receipt random256bit onlyhashserver; withdrawalmark removesmetadata andsamekey replaycannotresurrect.",
+    "Client production+nonwebdriver check, no consent imports/identifiers; all bestGET usesomitcookies/referrer andonlypublicpath."
+  ],
+  "not_verified": [
+    "Livecontrols/visual/productiondeploy/realhumanplays notperformedbythisreviewer",
+    "Runtime unit/worker tests notexecutedbythisrevieweryet",
+    "Source freeze awaited"
+  ]
+}

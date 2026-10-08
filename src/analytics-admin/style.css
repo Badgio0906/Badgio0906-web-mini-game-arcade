@@ -2,3 +2,19 @@
 form button { max-width: 100%; white-space: normal; }
 #game-detail table { table-layout: fixed; white-space: normal; }
 #game-detail th, #game-detail td { overflow-wrap: anywhere; }
+#records-admin { margin-top: 40px; border-top: 1px solid #637893; }
+.records-controls { display: flex; flex-wrap: wrap; gap: 12px; }
+.records-controls select { max-width: 100%; }
+#records-status { min-height: 3em; line-height: 1.6; }
+.records-bests { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 12px; }
+.records-bests h3 { margin: 0 0 8px; }
+.records-bests p, .records-bests small { display: block; overflow-wrap: anywhere; }
+.records-display table { white-space: normal; min-width: 720px; }
+.records-display td { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 100px; }
+.records-display td button { display: block; margin-bottom: 8px; }
+.records-confirm { width: min(560px, calc(100% - 24px)); max-height: calc(100dvh - 24px); overflow: auto; color: #edf3ff; background: #101925; border: 1px solid #7ecbff; border-radius: 12px; }
+.records-confirm::backdrop { background: #050b15cc; }
+.records-confirm form { display: flex; align-items: stretch; padding: 16px; }
+.records-confirm h3, .records-confirm p, .records-confirm label { width: 100%; overflow-wrap: anywhere; }
+.records-confirm input { width: 100%; }
+@media(max-width: 600px) { .records-controls > * { width: 100%; } }

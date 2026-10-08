@@ -1,0 +1,28 @@
+{
+  "finding_id": "records-public-fetch-receiver",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent reviewer; Jev answers/log not inspected",
+  "rationale": "The isolated enabled browser saw zero GETs and Illegal invocation when native fetch was invoked as a PublicBests member; bound native fetch succeeded. This is a product receiver-binding error, not a CORS-only fixture defect. The inspected repaired default arrow wrapper calls the global fetch without the instance receiver. Browser regression for the actual repaired class remains required.",
+  "evidence": [
+    "docs/records/QA/findings/records-public-fetch-receiver.json",
+    "src/records/PublicBests.ts",
+    "docs/records/QA/browser-public-fetch-diagnostic-07/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected default fetcher storage and call receiver, diagnostic operator report and repaired arrow wrapper. Repeat enabled native-browser batch GET/cache test; no real production request needed.",
+    "evidence": [
+      "src/records/PublicBests.ts",
+      "docs/records/QA/browser-public-fetch-diagnostic-07/REPORT.json"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:38:03.244760+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/PublicBests.ts": "0690de438415763a8f2f17e59617c28c5b4179284472774c9211b28c1d68e839"
+  },
+  "bounds": "Judgment addresses root-recorded pre-fix observation; source hashes identify concurrently repaired source actually inspected. No fresh API/review execution or retroactive log insertion; browser evidence operator-authored, not personal human play."
+}

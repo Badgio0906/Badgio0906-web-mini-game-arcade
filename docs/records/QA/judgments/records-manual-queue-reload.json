@@ -1,0 +1,23 @@
+{
+  "finding_id": "records-manual-queue-reload",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "A manual share has explicit permission even when automatic sharing remains OFF. Constructor currently treats OFF as grounds to erase every persisted retry including automatic=false. This loses a valid same-key retry across navigation. It does not corrupt gameplay/BEST, so it is not independently classified as a major release-risk signal.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-manual-queue-reload.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-manual-queue-reload.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

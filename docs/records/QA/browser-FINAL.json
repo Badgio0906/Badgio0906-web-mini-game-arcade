@@ -1,0 +1,174 @@
+{
+  "at": "2026-10-08T15:55:52.461596+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "client_source_freeze": "CLIENT_SOURCE_FREEZE_04.json",
+  "source_mismatches": [],
+  "build_provenance": "browser-build-04/BUILD_PROVENANCE.json",
+  "normal_build_QA_harness_absent": true,
+  "transport": {
+    "report": "browser-sharing-08/REPORT.json",
+    "result": "PASS",
+    "checks": 49,
+    "manual_actual_Analytics_consent_followup": {
+      "report": "browser-sharing-manual-09/REPORT.json",
+      "checks": 13,
+      "result": "PASS",
+      "reason": "Earlier stand-alone harness wrote an unrelated fakeConsentkey. FollowupusesrealConsentServicekey game100garage:analytics-consent:v1=denied andaddscheck. Harness intentionallydoesnotimportAnalyticsruntime; actualnativegamesallusenormalConsentOFF."
+    }
+  },
+  "portal": {
+    "report": "browser-portal-04/REPORT.json",
+    "result": "PASS",
+    "checks": 82,
+    "viewports": [
+      "1300x900",
+      "390x844",
+      "320x720",
+      "844x390"
+    ],
+    "all30_thumbnails_decode": true,
+    "all30_cards_two_rows_immediately_below_images": true,
+    "no_031_world_payload_read": true,
+    "actual_browser_back": true,
+    "actual_bfcache_restore": false,
+    "bfcache_handler_synthetic_pageshow_persisted": true
+  },
+  "enabled_portal": {
+    "report": "browser-enabled-portal-02/REPORT.json",
+    "result": "PASS",
+    "checks": 26,
+    "visible_refresh_virtual_clock_61_seconds": true,
+    "hidden_visibility_fixture": "synthetic DOMvisibilityoverride, not OSbackground",
+    "only_mock_gets": true
+  },
+  "native": {
+    "selected_games": [
+      "game001",
+      "game004",
+      "game018",
+      "game019",
+      "game024",
+      "game029",
+      "game031"
+    ],
+    "cases": [
+      {
+        "game": "game001",
+        "device": "desktop",
+        "evidence": "browser-native-02/REPORT.json"
+      },
+      {
+        "game": "game004",
+        "device": "desktop",
+        "evidence": "browser-native-02/REPORT.json"
+      },
+      {
+        "game": "game018",
+        "device": "desktop",
+        "evidence": "browser-native-02/REPORT.json"
+      },
+      {
+        "game": "game019",
+        "device": "desktop",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game024",
+        "device": "desktop",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game029",
+        "device": "desktop",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game031",
+        "device": "desktop",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game001",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game004",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game018",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game019",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game024",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game029",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      },
+      {
+        "game": "game031",
+        "device": "phone",
+        "evidence": "browser-native-03/REPORT.json"
+      }
+    ],
+    "assertions": 84,
+    "normal_input": true,
+    "state_injection": false,
+    "not_all17scored_games_actually_played": true,
+    "production_backend_endpoint": "unset, sharepreparingbuttondisabled",
+    "posts": 0,
+    "page_errors": 0
+  },
+  "real_production_POSTs": 0,
+  "network_transport_fixture": "All requests intercepted; HTTPSproductionhostsimulated toexercisereal PRODbranch. ExplicitWebDriverfalse onlytransportfixture doesnotmean realhuman.",
+  "QA_visibility": "RepresentativePortal/nativeimagesactuallyviewed byrecords_browser_qa afterdecode; objectivecontainment/label/controlverification, not independenthumanfunapproval.",
+  "unperformed": [
+    "ActualproductionpublicGET/submission/withdrawal; backendcredentialblocker rootowns",
+    "PhysicaliPhone/Android",
+    "Authorhumanenjoyment",
+    "Actualbfcacherestore (nativebackpageshowpersistedfalse)"
+  ],
+  "retained_failures": [
+    "browser-sharing-01",
+    "browser-sharing-02",
+    "browser-sharing-03",
+    "browser-sharing-multitab-04",
+    "browser-sharing-05",
+    "browser-sharing-public-06",
+    "browser-public-fetch-diagnostic-07",
+    "browser-portal-01",
+    "browser-portal-02",
+    "browser-native-01",
+    "browser-native-02"
+  ],
+  "product_findings": [
+    "Cross-origin429Retry-After responseheader visibility",
+    "Detachedwithdrawreceipt andignoredcross-tabtombstoneevent",
+    "Nativefetch receiver illegalinvocation inPublicBests"
+  ],
+  "jev_blind": "NoJevanswersread bythisreviewer; rootownsShadowAPI/audit/annotation. OwnindependentreviewJSONwrittenfromcodeandobservations.",
+  "qa_final_script_hashes": {
+    "tests/records/harness.html": "691454afa2ae8b0575c1bd6746faa75a5d6a41b9d6e9e998b49648796905ef7c",
+    "tests/records/portal-browser.mjs": "98abb50352dbf54b9292515d09682f88d8fc123d1568c48d9171236e1bc08287",
+    "tests/records/public-fetch-diagnostic.mjs": "a1e04790cb9e32bc4a18a922ee599374f278dcbb083bf9dacd88f21440bd682d",
+    "tests/records/native-game-browser.mjs": "d10e67dbc4e375c0483ce5999eae7f22ea4e6e30fef9b9457541988837f5e3cf",
+    "tests/records/public-browser.mjs": "e729adb424b9009bc5a637c51824a26935bf5d735ee4b1e9e987dbcc5d0e8977",
+    "tests/records/build-public.mjs": "2c914a0de56681116521b65e1461fcfaae577a231034341063065a1daf88f180",
+    "tests/records/build-harness.mjs": "fd037202af28fb52683dbad4bf2292a6e9d9a781a4fac4119ac05595b0f42d39",
+    "tests/records/sharing-browser.mjs": "bb880c222b6590be4e4b1e05b66b166157777882617d7459a5929d66fad60ac7",
+    "tests/records/harness.ts": "beece6eb301cbfa7cdbeccb64e54c338b73402154c9f7e90eff72ea485d52fb2",
+    "tests/records/enabled-portal-browser.mjs": "35faa306ac73f4a47f985e13309bc672414bc729e4c6d4cb89aaf997b15f1695"
+  }
+}

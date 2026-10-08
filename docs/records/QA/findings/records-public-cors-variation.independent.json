@@ -1,0 +1,28 @@
+{
+  "finding_id": "records-public-cors-variation",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent (Jev answers not read)",
+  "rationale": "Public GET is cacheable, but json sets Vary: Origin only when allowed Origin is present. A no-Origin cache entry may be reused for browser Origin requests without Access-Control-Allow-Origin. This can prevent the main public-BEST feature from working depending on cache sequence.",
+  "evidence": [
+    "analytics-worker/src/records.ts",
+    "src/records/PublicBests.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspect response construction for public GET; ensure Vary: Origin for every origin-dependent cacheable variant and test no-Origin/allowed-Origin/denied-Origin variants in sequence.",
+    "evidence": [
+      "analytics-worker/src/records.ts",
+      "src/records/PublicBests.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:50:57.401074+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "analytics-worker/src/records.ts": "439f5d7912d6a7fea112fc624f8a68e8012decca5ec12721fac91b4eb7ed5652",
+    "src/records/PublicBests.ts": "003c13152319e6b94075669d11223d5dd65f0855777b291966e9985f5335b22b"
+  },
+  "bounds": "Independent source/spec inspection only; no live cache reproduction, production-player data, human feel assessment, or Jev answer inspection."
+}

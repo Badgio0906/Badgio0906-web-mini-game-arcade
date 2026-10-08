@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import {Fishing,NAMES,type Upgrade} from './Fishing';
 import {SaveStore,reportFinish,type Saved} from './Save';
@@ -9,6 +10,7 @@ import {TelemetryService} from '../../core/TelemetryService';
 import {uuid} from '../../analytics/runtime';
 import {analyticsConfig} from '../../analytics/config';
 import {practiceEvent} from './practiceEvents';
+const recordSession = createGameRecordSession('game029');
 const el=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
 const app=el('app'),canvas=el<HTMLCanvasElement>('water'),menu=el<HTMLDialogElement>('menu'),context=canvas.getContext('2d')!;
 let practice=false;
@@ -43,9 +45,9 @@ function title(initial=false):void {
   if(!initial)abandon();model=new Fishing();practice=false;
   show(`<p class="eyebrow">LOST & FOUND</p><h2 tabindex="-1">給湯室の<br>落としもの釣り</h2><p>おとして、ひろって、またおとして。<br>時間制限なし。今日は、何が釣れるかな。</p><div class="menu-actions">${available?'<button id="restore" class="primary">保存した釣りを続ける</button>':''}<button id="play" class="primary">すぐ遊ぶ</button><button id="explain">説明を見る</button><button id="practice">練習する</button></div><p>この端末のBEST ${saved.best}点 · ${saved.finishes}回帰宅<br>深度100m・回収3個から。途中は保存します。</p>`,'title');
   el('play').onclick=start;el('explain').onclick=help;el('practice').onclick=train;
-  if(available)el('restore').onclick=()=>{const a=available!;model=Fishing.restore(a.model)!;runId=a.runId;resultId=a.resultId;active=true;practice=false;if(runId)telemetry.restoreRun(runId);available=null;pause();};
+  if(available)el('restore').onclick=()=>{const a=available!;model=Fishing.restore(a.model)!;runId=a.runId;resultId=a.resultId;active=true;practice=false;if(runId)telemetry.restoreRun(runId);if(resultId)recordSession.resumeRun(resultId);available=null;pause();};
 }
-function start():void {abandon();model=new Fishing();active=true;practice=false;elapsed=0;resultId=uuid();telemetry.trackEvent('run_start',{mode:'normal'});runId=telemetry.getActiveRunId();closeMenu();state('playing');save();void audio.unlock();}
+function start():void {abandon();model=new Fishing();active=true;practice=false;elapsed=0;resultId=uuid();recordSession.startRun(resultId); telemetry.trackEvent('run_start',{mode:'normal'});runId=telemetry.getActiveRunId();closeMenu();state('playing');save();void audio.unlock();}
 function help():void {
   telemetry.trackEvent('tutorial_view');show('<h2 tabindex="-1">落として、巻き上げるだけ。</h2><ol><li>「糸を落とす」で自動下降。底で自動的に巻き上げます。</li><li>巻き上げ中は←→ / A D。スマホは水の中を左右にドラッグ。釣り針に触れた物を回収します。</li><li>水面へ戻ると回収物が点に。点で糸・回収枠・幅をRUN内だけ強化できます。</li><li>０個でも続けられます。「今日は帰る」で好きな時に終了。時間制限・即終了はありません。</li><li>途中保存からは休憩状態で再開。タイトルや一覧へ戻ると現在のRUNは終了します。</li></ol><p>糸は300m、回収枠8個、幅Lv.3が上限。残りの点は次のRUNへ持ち越しません。浅い所にもレア物が出ることがあります。</p><div class="menu-actions"><button id="play" class="primary">すぐ遊ぶ</button><button id="practice">練習する</button><button id="back">タイトルへ</button></div>','help');el('play').onclick=start;el('practice').onclick=train;el('back').onclick=()=>title(true);
 }
@@ -58,8 +60,9 @@ function pause():void {if(!active&&!practice)return;save();show('<h2 tabindex="-
 function finish():void {
   if(!active||practice||!model.finish()||!resultId)return;const score=model.state.score,before=saved.best;
   if(reportFinish(saved,resultId,score)){event('finish_run');telemetry.trackEvent('run_end',{outcome:'safe_exit',score,casts:model.state.casts,items:model.state.totalCaught,seconds:elapsed,completed:true});if(saved.best>before)telemetry.trackEvent('best_update',{score});}
+  recordSession.complete(score,{metadata:{duration_seconds:elapsed,outcome:'safe_exit'}});
   active=false;saved.model=null;saved.resultId=null;saved.runId=null;store.write(saved);runId=null;resultId=null;
-  show(`<h2 tabindex="-1">今日は、おつかれさま。</h2><p class="result-score">${score} <small>点</small></p><p>${model.state.casts}投 · ${model.state.totalCaught}個回収<br>最大深度 ${Math.round(model.state.maxReached)}m<br>最もレアな拾得物：${model.state.rarestKind?NAMES[model.state.rarestKind]:'なし'}<br>この端末のBEST ${saved.best}点</p><div class="menu-actions"><button id="retry" class="primary">もう一度釣る</button><button id="back">タイトルへ</button></div>`,'result');el('retry').onclick=()=>{telemetry.trackEvent('retry');start();};el('back').onclick=()=>title();
+  show(`<h2 tabindex="-1">今日は、おつかれさま。</h2><p class="result-score">${score} <small>点</small></p><p>${model.state.casts}投 · ${model.state.totalCaught}個回収<br>最大深度 ${Math.round(model.state.maxReached)}m<br>最もレアな拾得物：${model.state.rarestKind?NAMES[model.state.rarestKind]:'なし'}<br>この端末のBEST ${saved.best}点</p><div class="menu-actions"><button id="retry" class="primary">もう一度釣る</button><button id="back">タイトルへ</button></div>`,'result');recordSession.mount(menu);el('retry').onclick=()=>{telemetry.trackEvent('retry');start();};el('back').onclick=()=>title();
 }
 function tick(now:number):void {
   requestAnimationFrame(tick);if(!['playing','practice'].includes(screen)){last=0;return;}

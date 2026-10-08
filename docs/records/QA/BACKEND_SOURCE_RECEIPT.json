@@ -1,0 +1,52 @@
+{
+  "recorded_at": "2026-10-08T15:22:28.198696+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "backend_status": "local implementation and isolated D1 verified; production authentication unavailable, not deployed",
+  "files": {
+    "analytics-worker/src/records.ts": "da1b6a6023811a5adc72d83cc1dca0bf116cdf6d07d8697f2978515047e52c8a",
+    "analytics-worker/src/index.ts": "30774282e65c381c6e2ba49a1112dde083743e5e030e77f2e70027b73ff3ae07",
+    "analytics-worker/src/types.ts": "4de81ccf5420b95b32bf3550cb089a8b0e7832b521c2924b9fb10f435ccb246e",
+    "analytics-worker/migrations/0002_records.sql": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+    "analytics-worker/tests/records-local-d1.mjs": "6f01f537d59abea4d07d6364c49699013a2547464cf1f2192a6ee928b5923c21",
+    "analytics-worker/tests/records-test-wrapper.ts": "2b3fbc88455446493da789d2a9d594dd31bdc65ee1f76407ddd9bc5f09f632f9",
+    "analytics-worker/tests/wrangler.records.local.jsonc": "42cc137cd95c98ac9f3410d0a98d07a075575e7fa1a64b46fb9da47a07daed84",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732"
+  },
+  "typecheck": "PASS",
+  "records_evidence": "backend-d1-06.json",
+  "records_checks": 24,
+  "original_analytics_evidence": "analytics-original-regression.json",
+  "original_analytics_checks": 37,
+  "cloudflare_settings_changed": false,
+  "production_records_post": false,
+  "records_api_body_schema_version": 1,
+  "server_internal_ids_exposed_publicly": false,
+  "known_limitations": [
+    "Browser reported production/finalized metadata is not cryptographic proof of a genuine result.",
+    "Global120/min admission is durable service-wide protection, not per-user fairness or complete DoS protection.",
+    "Accepted candidates and compact replay/withdrawal tombstones need long-term D1 capacity monitoring.",
+    "All existing public boards are higher; lower semantics tested on non-public local SQL fixture."
+  ],
+  "read_context": {
+    "paths": [
+      "AGENTS.md",
+      "docs/PROJECT_CONTEXT.md",
+      "docs/CURRENT_STATUS.md",
+      "docs/GAME_DEVELOPMENT_RULES.md",
+      "docs/JEV_REVIEW_RULES.md",
+      "docs/records/REQUEST.md",
+      "analytics-worker/src/index.ts",
+      "analytics-worker/src/types.ts",
+      "analytics-worker/migrations/0001_events.sql",
+      "analytics-worker/tests/local-d1.mjs",
+      "analytics-worker/tests/wrangler.local.jsonc",
+      "analytics-worker/wrangler.jsonc"
+    ],
+    "initial_exact_read_timestamp": null,
+    "note": "Read in tool history before implementation; recorded_at is this evidence-write time, not an invented initial read time."
+  },
+  "body_read_timeout_ms": 5000,
+  "429_retry_after_seconds": 60,
+  "429_retry_after_cors_exposed": true,
+  "prior_source_receipt": "BACKEND_SOURCE_RECEIPT_BEFORE_429_EXPOSE.json"
+}

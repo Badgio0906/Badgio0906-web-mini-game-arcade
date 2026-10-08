@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import { createOnboarding } from '../../arcade/onboarding';
 import { calculateWorkdayScore } from './scoring';
 import './style.css';
@@ -8,6 +9,7 @@ import { AudioService } from '../../core/AudioService';
 import { requestRewardedCredit } from '../../core/RewardService';
 import { createWorkdayGame } from './WorkdayScene';
 import type { WorkdayEvent, WorkdayResult } from './WorkdayRun';
+const recordSession = createGameRecordSession('game002');
 
 type Screen = 'title' | 'playing' | 'paused' | 'result' | 'reward' | 'milestone';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -68,6 +70,7 @@ function setScreen(next: Screen, delayResult = false): void {
   } else if (state === 'result' && lastResult) {
     const result = lastResult;
     overlay.innerHTML = `<article class="result-card"><span class="result-game-title">ゆううつな月曜日<small>WORKDAY DODGE</small></span><h2>${result.outcome === 'clear' ? '出社成功！' : result.outcome === 'safe_exit' ? '今日は、ここまで。' : result.mode === 'commute' ? '出勤失敗……' : '旅は、ここでおしまい。'}</h2><p class="result-line">${result.outcome === 'clear' ? '無事到着。今日もおつかれさま！' : result.outcome === 'safe_exit' ? '旅のスコアを確定しました。自由にもう一度遊べます。' : 'ぶつかりおじさんに、ぶつかっちゃった。'}</p>${newBest ? '<span class="new-best">NEW BEST!</span>' : ''}<div class="result-distance"><b id="result-score">${result.score}</b><span>SCORE</span></div><dl class="dodge-details"><div><dt>到達距離</dt><dd id="result-distance">${result.distance} m</dd></div><div><dt>NICE DODGE</dt><dd>${result.dodges} 回</dd></div><div><dt>ボーナス</dt><dd>${result.bonusPercent}%</dd></div></dl><dl class="result-details"><div><dt>BEST SCORE</dt><dd id="result-score-best">${bestScore}</dd></div><div><dt>BEST m</dt><dd id="result-best">${best} m</dd></div><div><dt>TIME</dt><dd>${seconds(result.time)}</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl>${record()}<div class="result-actions">${credits.canPlay ? primary('retry-button', result.cleared ? 'もう一度、出勤する' : 'RETRY · もう一度') : primary('reward-button', '+3 CREDIT')}${resultTitleButton}</div><small>${credits.canPlay ? result.outcome === 'safe_exit' ? '安全に帰還。次は、どこまで行こう？' : result.mode === 'bike' ? 'バイクの旅は、あっという間。' : '次こそ、すいすい出社。' : 'NO CREDIT · 開発版：Rewarded Ad Stub'}</small></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delayResult) {
       overlay.hidden = true;
       resultTimer = window.setTimeout(() => { resultTimer = undefined; if (state === 'result') { overlay.hidden = false; trackRewardOffer(); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
@@ -132,7 +135,7 @@ const controller = createWorkdayGame($('game-canvas'), {
     newBest = result.distance > best || (result.cleared && (!cleared || !clearTimeMs || milliseconds < clearTimeMs));
     const newScoreBest = result.score > bestScore; bestScore = Math.max(bestScore, result.score); storage.writeNumber('bestScore', bestScore);
     newBest = newBest || newScoreBest;
-    best = Math.max(best, result.distance); storage.writeNumber('best', best);
+    best = Math.max(best, result.distance); storage.writeNumber('best', best); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     if (result.outcome === 'clear') {
       cleared = true; storage.writeBoolean('cleared', true);
       if (!clearTimeMs || milliseconds < clearTimeMs) { clearTimeMs = milliseconds; storage.writeNumber('clearTimeMs', clearTimeMs); }
@@ -154,7 +157,7 @@ function start(retry = false): void {
   void audio.unlock(); runId = `game002-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   quitLogged = false; shownMilestones.clear(); choiceEpoch += 1; choiceLocked = false; choicePointer = null; choiceKeyboard = null; lastResult = null; newBest = false;
   if (retry) telemetry.trackEvent('retry', { runId });
-  telemetry.trackEvent('run_start', { runId, credits: credits.credits });
+  recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits });
   setScreen('playing'); controller.start();
 }
 function pause(): void {

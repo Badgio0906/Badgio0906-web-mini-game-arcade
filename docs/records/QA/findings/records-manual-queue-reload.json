@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-manual-queue-reload",
+  "problem": "Explicit manual submission waiting for retry is removed on page construction when automatic sharing is OFF",
+  "expected": "Explicit manual sharing supports bounded same-key retry; automaticOFF must not imply manualoptin absent",
+  "observed": [
+    "Sharing constructor loads waiting queue only inside enabled() condition.",
+    "Manual submit queues an item with automatic=false.",
+    "Otherwise constructor writes an empty queue."
+  ],
+  "unknown": [
+    "Whether the same manually chosen submission survives navigation after network failure."
+  ],
+  "provenance": "actual independent source observations, not real player data"
+}

@@ -1,0 +1,23 @@
+{
+  "finding_id": "records-cross-tab-receipts",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Each tab loads withdrawal receipts once then writes a whole stale array. A later write by another tab can erase a receipt, preventing the posting browser from withdrawing an accepted record. The receipt storage listener only renders the in-memory list rather than synchronizing it. This is a withdrawal-capability/privacy issue.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-cross-tab-receipts.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-cross-tab-receipts.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

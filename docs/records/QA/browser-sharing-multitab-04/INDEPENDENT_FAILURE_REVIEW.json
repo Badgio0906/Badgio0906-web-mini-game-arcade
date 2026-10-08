@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-08T15:28:24.632736+00:00",
+  "reviewer": "records_browser_qa",
+  "blind_to_Jev": true,
+  "cause": "PRODUCT_BUG",
+  "problem": "Another actual tab retains accepted UI after withdrawal whilefirsttab sayswithdrawn",
+  "observed": "secondpage visible; persistedreceiptstatusaccepted and tombstonetrue; pending0; firsttabwithdrawn, onePOST/onewithdraw request",
+  "inspection": "withdraw holds receipt object, pre-request persist reloadReceipts replaces arrayentry withparsedobject. Post-response mutation touchesdetachedobject; persistwritesacceptedentry. Primary reads tombstonetowithdrawn but no changedreceiptstorageevent; storage listener ignoreswithdrawnprefix.",
+  "action": "Key-based latestreceiptupdate/tombstone-monotonicpersist andcross-tabtombstonelistener; repeat isolatedtwo-tab UI regression",
+  "risk": "Misleadingstatus/stalewithdrawcontrol, possible repeatedwithdraw requests; serverdataalreadytombstoned, notprovenrevival",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/browser-sharing-03/multitab-receipt-withdraw-monotonic-failure-state.json",
+    "docs/records/QA/browser-sharing-multitab-04/multitab-second-after-withdraw.json",
+    "docs/records/QA/browser-sharing-multitab-04/multitab-second-after-withdraw.png"
+  ]
+}

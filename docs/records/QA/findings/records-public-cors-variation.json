@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-public-cors-variation",
+  "problem": "Cacheable public response without Origin has no Vary Origin header",
+  "expected": "Public cache must separate response variation for absent and allowed Origin",
+  "observed": [
+    "Current records json response builder sets Vary only when request has allowed Origin.",
+    "Public GET uses cacheable response.",
+    "Existing tests use Origin and do not cover first response without Origin."
+  ],
+  "unknown": [
+    "Whether cache reuse can affect later browser CORS access."
+  ],
+  "provenance": "actual code inspection during implementation, not production player data"
+}

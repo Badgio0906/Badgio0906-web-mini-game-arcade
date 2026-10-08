@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-current-marker-race",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "CURRENT_RECORDS_KEY is a shared read/modify/write map with no atomic serialization. Two tabs that read before either writes can delete the other game entry, or replace a higher verified current-rule value with a lower one. Original BEST keys remain intact, but the core portal current-best representation regresses or becomes unavailable, violating explicit concurrent-tab protection.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "src/records/localRecords.ts",
+    "docs/records/QA/findings/records-current-marker-race.json",
+    "docs/records/QA/findings/records-current-marker-race.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-current-marker-race.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

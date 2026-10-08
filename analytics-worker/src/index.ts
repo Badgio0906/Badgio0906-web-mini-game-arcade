@@ -1,3 +1,4 @@
+import { handleRecords } from './records';
 import { ANALYTICS_MAX_BODY_BYTES, isAnalyticsBatch } from '../../src/data/analyticsEnvelope';
 import { computeMetrics, summarizeGames, unpack } from './aggregate';
 import type { AggregateDay, Database, Env, Period, StoredEvent } from './types';
@@ -90,6 +91,7 @@ export default {
  async fetch(request:Request,env:Env):Promise<Response>{
   const url=new URL(request.url),origin=request.headers.get('Origin'),cors=origin&&allowedOrigin(origin,env)?origin:undefined;
   try{
+   if(url.pathname.startsWith('/v1/records/'))return await handleRecords(request,env,cors);
    if(request.method==='GET'&&url.pathname==='/v1/health'){await env.DB.prepare('SELECT COUNT(*) AS ok FROM events WHERE 0').all();return response({status:'ok',schema_version:2,environment:env.ENVIRONMENT??'production'},200,cors);}
    if(url.pathname.startsWith('/v1/codex/')){
     // Deliberately GET-only, with no fallback to admin authentication or future admin routes.

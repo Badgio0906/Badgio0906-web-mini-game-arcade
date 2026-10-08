@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-019-reused-rule-key",
+  "problem": "Current frog ruleset eligibility cannot be established from saved BEST key alone",
+  "expected": "Portal compares only the same current ruleset; earlier saved data preserved separately",
+  "observed": [
+    "Source revision-02 spec states bestHeightDm key is preserved from v1.",
+    "Current charge-jump rules2 differ from old random/free-air-control rules1.",
+    "Stored best value has no explicit ruleset marker."
+  ],
+  "unknown": [
+    "Which current-result metadata can safely prove eligibility?"
+  ],
+  "provenance": "actual code inspection during implementation, not production player data"
+}

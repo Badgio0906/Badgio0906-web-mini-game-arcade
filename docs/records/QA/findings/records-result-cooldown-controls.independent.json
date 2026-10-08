@@ -1,0 +1,29 @@
+{
+  "finding_id": "records-result-cooldown-controls",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The old delayed result handler selected every overlay button and blindly re-enabled all after300ms, overriding sharing eligibility/preparing/sealed disabled state. Sharing click guards still prevent unauthorized submissions, so this is action-required UI-state inconsistency rather than independently classified major data/game/release risk. Current source scopes both delay queries to button:not(.record-share-controls button), preserving sharing state while leaving original game cooldown timing intact.",
+  "evidence": [
+    "src/games/game004/main.ts",
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-result-cooldown-controls.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Observed original all-button cooldown selectors before revision, then inspected scoped selectors excluding sharing descendants in both disable/re-enable branches. Actual result screenshot/button-state timing still requires browser QA; not executed by this reviewer.",
+    "evidence": [
+      "src/games/game004/main.ts",
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:23:02.066480+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/games/game004/main.ts": "51001bf0c0f04952fcc530396623d52970ad8e815b84264aa225f6af5ea94510",
+    "src/records/RecordSharing.ts": "744433230479e65c748c37a650434fecf1307a026226f65858b1deb6fc3c01f5"
+  },
+  "bounds": "Current hashes identify repaired source. Classification refers to actual pre-fix observation preserved in state and earlier reviewer message. No API/answers/live interaction."
+}

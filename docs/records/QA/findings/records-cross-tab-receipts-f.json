@@ -1,0 +1,15 @@
+{
+  "finding_id": "records-cross-tab-receipts-f",
+  "problem": "Per-entry storage still permits same-key withdrawn state regression and stale-permission manual dispatch",
+  "expected": "Withdrawal stays visibly withdrawn and manualqueuedrecords check latestOFF epoch before dispatch",
+  "observed": [
+    "After per-submission keys, persist reads same-key prior status and then conditionallywrites accepted.",
+    "Another tab can write withdrawn between thatread andwrite.",
+    "flush checks permissionEpoch in initial queuefilter but immediatelybeforefetch only checksautomaticenabled."
+  ],
+  "unknown": [
+    "Whether same-keywithdrawal state remains monotonic under interleavedtabs.",
+    "Whether manualpending permission revocation is checked atdispatch."
+  ],
+  "provenance": "new independent code observations after firstcross-tab revision; no realreceipt orplayerIDs"
+}

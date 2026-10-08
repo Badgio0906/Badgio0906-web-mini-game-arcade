@@ -1,0 +1,31 @@
+{
+  "finding_id": "records-queue-allowlist",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Restored queue objects are untrusted storage input. Partial validQueued checks accept unknown payload/metadata fields, then JSON.stringify sends them unchanged. Worker exact validation rejects later but cannot prevent already-transmitted forbidden fields. The stated no-AnalyticsID/worldmetadata egress boundary must be enforced before fetch.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "src/records/protocol.ts",
+    "analytics-worker/src/records.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected client restoration and serialization against Worker exact allowlists. Canonicalize or reject every extra key before fetch, including nested metadata, with outbound body inspection fixtures.",
+    "evidence": [
+      "src/records/RecordSharing.ts",
+      "src/records/protocol.ts",
+      "analytics-worker/src/records.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:57:17.241455+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "1e4b24a3d386e2c9b06bea288a8a12634e072d73b5ffbd05629375588633a81a",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "analytics-worker/src/records.ts": "1950fca9f8df8b55563ce9a17691cedb7c76f2ce7bc67aa690e95efb7d55e3bd"
+  },
+  "bounds": "Independent source inspection; stated concrete boundary examples are arithmetic/code consequences, not live/browser reproduction. No Jev answers read and no code modification. Test suggestions are next work, not claimed execution."
+}

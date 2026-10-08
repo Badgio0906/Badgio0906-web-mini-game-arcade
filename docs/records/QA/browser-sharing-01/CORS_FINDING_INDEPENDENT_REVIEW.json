@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-08T15:19:54.579131+00:00",
+  "reviewer": "records_browser_qa",
+  "blind_to_Jev": true,
+  "finding": "429 Retry-After10 response caused two attempted POSTs within2.3 seconds in cross-origin browser fixture",
+  "observation": "rate-limit-backoff-failure-state.json retains postCount2 and UI failed",
+  "inspection": "records.ts sets Allow-Origin/Vary and Retry-After on429 but no Access-Control-Expose-Headers; browser script reads response.headers.get(Retry-After)",
+  "judgment": "PRODUCT_BUG in cross-origin header visibility, requires CORS/transport fixture alignment and real-browser follow-up. Independent of arithmetic-unit-test success. Header cannot be read as non-safelisted response header without exposure.",
+  "evidence": [
+    "analytics-worker/src/records.ts",
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/browser-sharing-01/rate-limit-backoff-failure-state.json"
+  ],
+  "next": "AUTOMATED_TEST: cross-origin response exposure and 429 delay after limited change",
+  "not_a_human_playtest": true
+}

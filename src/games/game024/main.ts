@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
@@ -6,6 +7,7 @@ import { analyticsConfig } from '../../analytics/config';
 import { createSnake,enqueue,step,type Direction,type Speed } from './model';
 import { SnakeClock } from './clock';
 import { SnakeSaveStore, captureSave } from './save';
+const recordSession = createGameRecordSession('game024');
 const el = <T extends HTMLElement>(id:string) => document.getElementById(id) as T;
 const app=el('app'),canvas=el<HTMLCanvasElement>('board'),menu=el<HTMLDialogElement>('menu');
 const storage=new StorageService(undefined,'web-mini-arcade:v1:game024:');
@@ -42,6 +44,7 @@ function recordEnd(reason:'wall'|'self'|'clear'|'quit'|'restart'):void {
   saved.run.active=false;saved.run.reported=true;saved.stats.runs++;
   if(reason==='clear')saved.stats.clears++;
   if(reason==='quit'||reason==='restart'){saved.snapshot=null;saved.clock={remainder:0,elapsed:0};store.write(saved);}else persist();
+  if(speed===4 && !['quit','restart'].includes(reason))recordSession.complete(snake.foods,{modeId:'speed-4',metadata:{duration_seconds:clock.elapsed/1000,outcome:reason}});
   telemetry.trackEvent('run_end',{outcome:reason==='clear'?'clear':['wall','self'].includes(reason)?'fail':reason,reason,score:snake.foods,foods:snake.foods,length:snake.body.length,speed,seconds:Number((clock.elapsed/1000).toFixed(2)),completed:reason==='clear',unit:'foods'});
 }
 function title():void {
@@ -50,7 +53,7 @@ function title():void {
   el<HTMLSelectElement>('speed-choice').onchange=e=>{speed=Number((e.target as HTMLSelectElement).value) as Speed;saved.speed=speed;store.write(saved);render();};
   el('play-button').onclick=()=>{telemetry.trackEvent('tutorial_skip',{source:'title'});start();};el('explain-button').onclick=()=>explain(false);el('practice-button').onclick=practice;
 }
-function start():void {recordEnd('restart');training=false;snake=createSnake(seed());clock=new SnakeClock(speed);clearInput(); saved.run={id:null,active:true,reported:false,freshFoods:0};telemetry.trackEvent('run_start',{speed,source:phase,unit:'foods'});saved.run.id=telemetry.getActiveRunId();setPhase('playing');persist();void audio.unlock();}
+function start():void {recordEnd('restart');training=false;snake=createSnake(seed());clock=new SnakeClock(speed);clearInput(); saved.run={id:null,active:true,reported:false,freshFoods:0};telemetry.trackEvent('run_start',{speed,source:phase,unit:'foods'});saved.run.id=telemetry.getActiveRunId();recordSession.startRun(saved.run.id??undefined);setPhase('playing');persist();void audio.unlock();}
 function practice():void {recordEnd('quit');training=true;speed=4;snake=createSnake(24,8);snake.food={x:4,y:2};clock=new SnakeClock(4);clearInput();trainingEvent('practice_start');setPhase('practice');void audio.unlock();}
 function explain(inRun:boolean):void {
   if(!training)telemetry.trackEvent('tutorial_view',{source:phase});
@@ -67,7 +70,7 @@ function result():void {
   if(training){if(completed)trainingEvent('practice_complete',{foods:1});}
   else recordEnd(snake.outcome as 'wall'|'self'|'clear');
   const text=completed?'練習できました。':snake.outcome==='clear'?'盤面いっぱい、のびました。':snake.outcome==='wall'?'壁にぶつかりました。':'自分の身体にぶつかりました。';
-  show(`<p class="eyebrow">${training?'PRACTICE':'SNAKE'}</p><h2 id="menu-title">${text}</h2><p>餌 ${snake.foods}個 · 長さ ${snake.body.length}<br>${training?'練習の記録はBESTに入りません。':`${labels[speed]} · BEST ${saved.stats.best[speed]}個`}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">${training?'もう1回練習':'もう1回'}</button>${training?'<button id="practice-play" type="button">本番を遊ぶ</button>':''}<button id="result-title" type="button">タイトルへ</button></div>`,'result');persist();el('retry-button').onclick=retry;el('result-title').onclick=title;if(training)el('practice-play').onclick=()=>{speed=saved.speed;start();};
+  show(`<p class="eyebrow">${training?'PRACTICE':'SNAKE'}</p><h2 id="menu-title">${text}</h2><p>餌 ${snake.foods}個 · 長さ ${snake.body.length}<br>${training?'練習の記録はBESTに入りません。':`${labels[speed]} · BEST ${saved.stats.best[speed]}個`}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">${training?'もう1回練習':'もう1回'}</button>${training?'<button id="practice-play" type="button">本番を遊ぶ</button>':''}<button id="result-title" type="button">タイトルへ</button></div>`,'result');if(!training)recordSession.mount(menu);persist();el('retry-button').onclick=retry;el('result-title').onclick=title;if(training)el('practice-play').onclick=()=>{speed=saved.speed;start();};
 }
 function tick():boolean {
   if(!active())return false;const previous=snake.foods;snake=step(snake);
@@ -87,6 +90,6 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 window.addEventListener('pagehide',()=>{clock.pause();clearInput();persist();audio.destroy();},{once:true});
 function frame(now:number):void {if(clock.frame(now,tick)==='gap')pause();requestAnimationFrame(frame);}
 telemetry.trackEvent('game_open');
-if(saved.snapshot){if(saved.run.active&&saved.run.id)telemetry.restoreRun(saved.run.id);if(snake.outcome==='playing')pause(true);else result();}else title();
+if(saved.snapshot){if(saved.run.active&&saved.run.id){telemetry.restoreRun(saved.run.id);recordSession.resumeRun(saved.run.id);}if(snake.outcome==='playing')pause(true);else result();}else title();
 requestAnimationFrame(frame);
 if(import.meta.env.DEV)Object.defineProperty(window,'__game024',{get:()=>({phase,training,speed,snake:structuredClone(snake),elapsed:clock.elapsed,stats:structuredClone(saved.stats),run:structuredClone(saved.run),telemetry:telemetry.getEvents()})});

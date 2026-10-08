@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import { createTowerTraining } from './TowerTraining';
 import '../../arcade/onboarding.css';
 import { buildingTitle } from './resultFlavor';
@@ -9,6 +10,7 @@ import { AudioService } from '../../core/AudioService';
 import { requestRewardedCredit } from '../../core/RewardService';
 import { createTowerGame } from './TowerScene';
 import type { TowerChoice, TowerEvent, TowerResult, TowerSnapshot } from './contracts';
+const recordSession = createGameRecordSession('game003');
 
 type Screen = 'title' | 'playing' | 'paused' | 'result' | 'reward' | 'milestone';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -83,6 +85,7 @@ function setScreen(next: Screen, delay = false): void {
   } else if (next === 'result' && lastResult) {
     const result = lastResult;
     overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></span><h2>${result.outcome === 'fall' ? 'あと、もう少し。' : '塔が、崩れた。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.floors}</b><span>階数・スコア</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best} floors</dd></div><div><dt>HEIGHT</dt><dd>${result.height.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} <small>+${result.precisionScore}</small></dd></div><div><dt>芸術ペア</dt><dd>${result.artPairs}組 <small>+${result.artScore}</small></dd></div><div><dt>合計 BONUS</dt><dd>${result.bonusScore}<small id="result-bonus-best"> 新BEST ${bestBonus}</small></dd></div></dl><div class="result-flavor"><small>${result.cMode ? 'C国 MODE · 速度200% / PERFECT / 芸術点300% · 今回の称号' : '今回の称号'}</small><b id="building-title">${result.artPairs >= 5 ? '釣り合いの魔術師' : result.artPairs >= 2 ? '左右に事情のある建築士' : result.artPairs ? 'ちょっと攻めた大工' : buildingTitle(result.floors, result.cMode)}</b></div><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">新ルール v2 · 旧${legacyBest}階 / ${legacyBonus}点保持<br />${resultNote()}</small></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delay) {
       overlay.hidden = true;
       resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.hidden = false; trackRewardOffer(); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
@@ -131,7 +134,7 @@ const controller = createTowerGame($('game-canvas'), {
     if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
     ended = true; lastResult = result; newBest = result.floors > best;
     best = Math.max(best, result.floors); storage.writeNumber('rules2:best', best);
-    bestBonus = Math.max(bestBonus, result.bonusScore); storage.writeNumber('rules2:bestBonus', bestBonus);
+    bestBonus = Math.max(bestBonus, result.bonusScore); storage.writeNumber('rules2:bestBonus', bestBonus); recordSession.complete(result.floors, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     credits.consume(runId);
     telemetry.trackEvent('run_end', { runId, rulesVersion: 2, outcome: 'over', score: result.floors, time: result.time, artPairs: result.artPairs, artScore: result.artScore, bonusScore: result.bonusScore });
     telemetry.trackEvent('score', { runId, rulesVersion: 2, score: result.floors, best, newBest });
@@ -148,7 +151,7 @@ function start(retry = false): void {
   void audio.unlock(); runId = `game003-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   ended = false; lastResult = null; newBest = false; milestoneShown = false; choiceEpoch += 1; choiceLocked = false; choicePointer = null; choiceKeyboard = null;
   if (retry) telemetry.trackEvent('retry', { runId });
-  telemetry.trackEvent('run_start', { runId, rulesVersion: 2, credits: credits.credits });
+  recordSession.startRun(); telemetry.trackEvent('run_start', { runId, rulesVersion: 2, credits: credits.credits });
   setScreen('playing'); controller.start();
 }
 function drop(): void { if (state === 'playing' && !ended && controller.snapshot().phase === 'hanging') { void audio.unlock(); controller.drop(); } }

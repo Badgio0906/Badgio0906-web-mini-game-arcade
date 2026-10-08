@@ -1,0 +1,31 @@
+{
+  "finding_id": "records-019-rounding",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The original frog BEST uses floor(height*10+epsilon), whereas sharing rounds raw height*10. For 1.26m the original stored value is 12dm while the shared value is 13dm. The difference changes represented precision and violates the required consistent baseline rounding; severity is a 0.1m discrepancy rather than a gameplay or major privacy failure.",
+  "evidence": [
+    "src/games/game019/main.ts",
+    "src/records/RecordSharing.ts",
+    "src/records/protocol.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared saveBest floor and generic canonicalValue round. Use the original frog integer conversion for its result notification without altering physics or original BEST, and add fractional-height boundary coverage.",
+    "evidence": [
+      "src/games/game019/main.ts",
+      "src/records/RecordSharing.ts",
+      "src/records/protocol.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:57:17.241455+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/games/game019/main.ts": "be73f49db31c8e5f50d8a47ae7357b44e906eb9eb5ead734dec2ae4c8195967a",
+    "src/records/RecordSharing.ts": "1e4b24a3d386e2c9b06bea288a8a12634e072d73b5ffbd05629375588633a81a",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed"
+  },
+  "bounds": "Independent source inspection; stated concrete boundary examples are arithmetic/code consequences, not live/browser reproduction. No Jev answers read and no code modification. Test suggestions are next work, not claimed execution."
+}

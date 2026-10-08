@@ -1,0 +1,159 @@
+{
+  "at": "2026-10-08T15:46:23.065Z",
+  "provenance": "Seven selected games, final production build served by isolated routefulfill on simulated public host. Ordinary browser click/tap/keyboard input, passive saved-state reading where indicated. No debug APIs or world/model injection. Not all seventeen scored games real-played; not author or physical device enjoyment.",
+  "records": [
+    {
+      "game": "game001",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "optional share preparation disabled",
+          "pass": true
+        },
+        {
+          "name": "preparing status visible",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native retry remains playable",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game001-desktop-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game004",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "optional share preparation disabled",
+          "pass": true
+        },
+        {
+          "name": "preparing status visible",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "300ms game result delay never enables unavailable share",
+          "pass": true
+        },
+        {
+          "name": "memory retry works after shared controls addition",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game004-desktop-post-delay-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game018",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "optional share preparation disabled",
+          "pass": true
+        },
+        {
+          "name": "preparing status visible",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "optional share preparation disabled",
+          "pass": true
+        },
+        {
+          "name": "preparing status visible",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 1
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 1
+        }
+      ],
+      "images": [
+        "game018-desktop-result-0.png",
+        "game018-desktop-result-1.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game019",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "optional share preparation disabled",
+          "pass": true
+        },
+        {
+          "name": "preparing status visible",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native jump raised observed height",
+          "pass": true,
+          "maxMeters": 3.8
+        },
+        {
+          "name": "milestone share does not block resume",
+          "pass": true
+        },
+        {
+          "name": "height BEST persists",
+          "pass": false
+        }
+      ],
+      "images": [
+        "game019-desktop-pause-milestone.png",
+        "game019-desktop-failure.png"
+      ],
+      "result": "FAIL",
+      "error": "game019 height BEST persists",
+      "failureUI": "← ゲームセンターへ\nWELL TO SPACE\n井の中の蛙、大海を目指す\n音 ON\nⅡ\nHEIGHT\n0.0 m\nTHIS RUN\n0.0 m\nBEST\n3.7 m\nHOLD. RELEASE. HOPE.\n井の中の蛙、\n大海を目指す\nWELL TO SPACE\n\n溜めて、離して、祈る。\n落ちた分だけ、次の跳び方が分かる。\n\nすぐ遊ぶ\n説明を見る\n練習する\n\n目標は井戸の外、100m。落ちても続く。\n最高高度を保存。位置のセーブはありません。"
+    }
+  ],
+  "posts": 0,
+  "errors": [],
+  "result": "FAIL",
+  "failure": "game019 height BEST persists"
+}

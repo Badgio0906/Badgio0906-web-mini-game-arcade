@@ -1,0 +1,34 @@
+{
+  "finding_id": "records-019-reused-rule-key",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent (Jev answers not read)",
+  "rationale": "readScalar currently treats game019 bestHeightDm as current rules2 without a marker, while the revision-02 spec deliberately retains the v1 key. This can label old random/free-air-control progress as current authored charge progress. Current RUN output must be independently captured rather than elevating the entire reused old BEST.",
+  "evidence": [
+    "src/records/localRecords.ts",
+    "src/records/RecordSharing.ts",
+    "src/games/game019/main.ts",
+    "docs/game019/revision-02/IMPLEMENTATION_SPEC.md"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspect reused-key adapter and finalized RUN notification; isolate verified current-rule values while retaining the original scalar as legacy. Add old higher BEST/current lower result/reset regression coverage.",
+    "evidence": [
+      "src/records/localRecords.ts",
+      "src/records/RecordSharing.ts",
+      "src/games/game019/main.ts",
+      "docs/game019/revision-02/IMPLEMENTATION_SPEC.md"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:50:57.401074+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/localRecords.ts": "64a1c0fcb2e2573791b8b9830c778683d1b372c62d5d492b470c268fc88e1e0d",
+    "src/records/RecordSharing.ts": "ac090838a09f6ad7c9510b2ab58e096e55ba00803c9d8ba840354ebd3c59a7cf",
+    "src/games/game019/main.ts": "be73f49db31c8e5f50d8a47ae7357b44e906eb9eb5ead734dec2ae4c8195967a",
+    "docs/game019/revision-02/IMPLEMENTATION_SPEC.md": "1605901f76372279af7c45a6757760e16eed2d31360a900d860921854c8d178c"
+  },
+  "bounds": "Independent source/spec inspection only; no live cache reproduction, production-player data, human feel assessment, or Jev answer inspection."
+}

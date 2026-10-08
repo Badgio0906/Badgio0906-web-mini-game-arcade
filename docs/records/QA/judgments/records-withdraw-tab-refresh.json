@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-withdraw-tab-refresh",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The real isolated two-tab QA observed server-mock withdrawal success and first-tab withdrawn status while the second UI remained accepted. Code subscribes only to receipt-prefix updates, not the separately authoritative withdrawn-prefix marker. withdraw holds a receipt object across persist/reloadReceipts, which can replace array objects; mutating the stale reference after success need not change the persisted receipt. If that receipt string does not change there is no receipt storage event to trigger the other tab. Tombstone/server state already prevents resurrection; this observation is a required cross-tab UI correctness fix rather than independently classified actual deletion failure or major data loss.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-withdraw-tab-refresh.json",
+    "docs/records/QA/browser-sharing-03/REPORT.json",
+    "docs/records/QA/findings/records-withdraw-tab-refresh.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-withdraw-tab-refresh.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

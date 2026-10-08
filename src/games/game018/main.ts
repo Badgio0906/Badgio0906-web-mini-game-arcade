@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
@@ -12,6 +13,7 @@ import {RARE_LABELS} from './rarePresentation';
 import { SHOES, shoeFor } from './shoes';
 import { formatDistance, simulate } from './physics';
 import type { Inputs, Phase, PracticeStage, ShoeEvent, ShoeType } from './types';
+const recordSession = createGameRecordSession('game018');
 
 type Screen = 'title' | 'explanation' | 'practice' | 'practice-step-complete' | 'practice-complete' | 'selection' | 'playing' | 'paused' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -46,6 +48,7 @@ function setScreen(next: Screen): void {
     menu.innerHTML = '<span class="menu-eyebrow">' + shoeFor(r.inputs.shoeType).name + ' · LANDED</span><h2>靴、そこまで行く？</h2><div class="result-metrics"><div><span>飛距離</span><strong id="result-distance">' + formatDistance(r.distance) + '</strong></div><div><span>最高高度</span><strong>' + formatDistance(r.height) + '</strong></div><div><span>BREAK / COMBO</span><strong>' + r.breaks + ' / ' + r.maxBreakCombo + '</strong></div><div><span>SPIN / POWER</span><strong>' + r.spinRating + ' / ' + r.powerRating + '</strong></div></div><p class="specials">' + ([...(run.presentation.selected?[RARE_LABELS[run.presentation.selected]]:[]),...r.specials].join(' · ') || 'NEXT: 別の組み合わせを試そう。') + '</p><p class="score-breakdown">DISTANCE ' + s.distance.toLocaleString() + ' ＋ HEIGHT ' + s.height.toLocaleString() + ' ＋ BREAK ' + s.breaks.toLocaleString() + '<br/>SPIN ' + s.spin.toLocaleString() + ' ＋ MAX ' + s.justMax.toLocaleString() + ' ＋ SPECIAL ' + s.special.toLocaleString() + '</p><p class="total-label">TOTAL <strong id="result-score">' + s.total.toLocaleString() + '</strong></p><p class="menu-detail">BEST DISTANCE ' + formatDistance(bestDistance) + ' · SCORE ' + bestScore.toLocaleString() + '</p>' + actions(button('retry-button', 'もう一回', true) + button('change-shoe-button', '靴を変える') + '<a href="./index.html">ゲームセンター</a>');
   }
   if (next === 'reward') menu.innerHTML = '<h2>CREDITを補充</h2><p>開発用Stub。本番広告はありません。</p>' + actions(button('reward-confirm-button', '+3 CREDIT', true) + titleButton());
+  if (next === 'result') recordSession.mount(menu);
   sync();
 }
 function drawChoices(): void {
@@ -96,7 +99,7 @@ function onEvent(event: ShoeEvent): void {
     if (r.score.total > bestScore) telemetry.trackEvent('best_update', { runId, metric: 'score', score: r.score.total, best: r.score.total });
     bestDistance = Math.max(bestDistance, distance); bestScore = Math.max(bestScore, r.score.total);
     storage.writeNumber('bestDistanceDecimeters', Math.round(bestDistance * 10)); storage.writeNumber('bestScore', bestScore);
-    storage.writeNumber('shoeBestDecimeters:' + selected, Math.max(storage.readNumber('shoeBestDecimeters:' + selected, 0), Math.round(r.distance * 10)));
+    storage.writeNumber('shoeBestDecimeters:' + selected, Math.max(storage.readNumber('shoeBestDecimeters:' + selected, 0), Math.round(r.distance * 10))); recordSession.complete(r.distance, { modeId: 'all-shoes', metadata: { duration_seconds: run.time, outcome: 'clear' } });
     telemetry.trackEvent('run_end', { runId, outcome: 'clear', shoe: selected, score: r.score.total, distance: r.distance, max_height:r.height, landing_type:'landed', time: run.time }); telemetry.trackEvent('score', { runId, score: r.score.total, best: bestScore }); telemetry.trackEvent('run_duration', { runId, seconds: run.time, reason: 'landed' });
     audio.tone(660, 990, .18, 'triangle', 0, .04); setScreen('result');
   }
@@ -108,7 +111,7 @@ function start(retry = false): void {
   if (disposed || screen === 'playing' || screen === 'practice' || credits.rewardPending) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   runId = 'game018-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8); if (credits.enabled && !credits.consume(runId)) return;
-  ended = false;rareShownForRun='';shoeRecordAt=null;startShoeBest=storage.readNumber('shoeBestDecimeters:'+selected,0)/10; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
+  ended = false;rareShownForRun='';shoeRecordAt=null;startShoeBest=storage.readNumber('shoeBestDecimeters:'+selected,0)/10; if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, shoe: selected }); void audio.unlock(); setScreen('playing'); run.start(now(), selected); sync();
 }
 function quit(): void { if (ended || run.practice) return; ended = true; run.pause(true, now()); telemetry.trackEvent('quit', { runId, time: run.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', time: run.time }); }
 function pause(): void { if (screen === 'playing' || screen === 'practice') { previousScreen = screen; run.pause(true, now()); if (run.paused) { telemetry.trackEvent('pause', { runId }); setScreen('paused'); } } else if (screen === 'paused') { run.pause(false, now()); telemetry.trackEvent('resume', { runId }); setScreen(previousScreen); } }

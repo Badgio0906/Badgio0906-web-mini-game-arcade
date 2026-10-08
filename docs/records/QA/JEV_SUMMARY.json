@@ -1,0 +1,612 @@
+{
+  "schema_version": 2,
+  "thresholds": {
+    "codex_candidate": 0.45,
+    "risk_comparison_only": 0.5
+  },
+  "totals": {
+    "entries": 16,
+    "jev_invocations": 16,
+    "api_attempts_known": 16,
+    "dry_runs": 0,
+    "available": 16,
+    "jev_unavailable": 0,
+    "total_input_tokens": 22972,
+    "total_output_tokens": 3440,
+    "total_cost_usd": 0.000964824,
+    "usage_missing": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0
+    },
+    "average_latency_seconds": 0.356254759813055,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matched": 14,
+        "compared": 16,
+        "rate": 0.875
+      },
+      "NEXT_EVIDENCE": {
+        "matched": 8,
+        "compared": 16,
+        "rate": 0.5
+      }
+    },
+    "codex_action_confusion": {
+      "TP": 16,
+      "TN": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "codex_action_below_045": 0,
+    "below_045_independently_reviewed": 0,
+    "below_045_with_actual_problem": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 4,
+    "release_risk_compared": 16,
+    "human_routed": 0,
+    "human_routing_observed": 16,
+    "actual_human_actions": 0,
+    "actual_actions_recorded": 16,
+    "human_judgment_recorded": 0,
+    "unreviewed_available": 0
+  },
+  "groups": [
+    {
+      "game_id": "game004",
+      "log_schema_version": 2,
+      "provenance": "independent code inspection of result selector before scopedselector change; no production POST",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1436,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.0312e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.45501305200741626,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "actual code inspection during implementation, not production player data",
+      "entries": 2,
+      "jev_invocations": 2,
+      "api_attempts_known": 2,
+      "dry_runs": 0,
+      "available": 2,
+      "jev_unavailable": 0,
+      "total_input_tokens": 2838,
+      "total_output_tokens": 430,
+      "total_cost_usd": 0.00011919599999999999,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.32879570550721837,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 2,
+          "compared": 2,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 2,
+          "rate": 0.5
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 2,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 2,
+      "human_routed": 0,
+      "human_routing_observed": 2,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 2,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "actual code inspection of restoration branches, not real player record",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1444,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.0648e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.4552371470053913,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "actual independent source observations, not real player data",
+      "entries": 5,
+      "jev_invocations": 5,
+      "api_attempts_known": 5,
+      "dry_runs": 0,
+      "available": 5,
+      "jev_unavailable": 0,
+      "total_input_tokens": 7103,
+      "total_output_tokens": 1075,
+      "total_cost_usd": 0.000298326,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3051280057959957,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 5,
+          "compared": 5,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 3,
+          "compared": 5,
+          "rate": 0.6
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 5,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 5,
+      "human_routed": 0,
+      "human_routing_observed": 5,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 5,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "actual isolated browser UI fixture with synthetic candidate; no real record or secret",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1444,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.0648e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3989534660067875,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "current portal source lifecycle inspection; no production record",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1431,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.0102e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.2302052610029932,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "independent code observation",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1435,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.027e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.42197651699825656,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "new independent code observations after firstcross-tab revision; no realreceipt orplayerIDs",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1492,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.2664e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3839581969950814,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "real Chromium against isolated fully mocked endpoint",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1416,
+      "total_output_tokens": 217,
+      "total_cost_usd": 5.9472e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3900433169910684,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "real Chromium execution against fully mocked isolated HTTP fixture; no production POST",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1443,
+      "total_output_tokens": 213,
+      "total_cost_usd": 6.0606e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3411472660081927,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "portal",
+      "log_schema_version": 2,
+      "provenance": "real Chromium two-tab interaction with mocked endpoint; no production records",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1490,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.258e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.44031049399927724,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    }
+  ],
+  "limitations": [
+    "Agreement is against recorded independent Codex review, not universal ground truth.",
+    "Missing usage stays missing; sums are reported amounts only.",
+    "Historical human-only scores do not map to NEXT_EVIDENCE.",
+    "Smoke/synthetic/historical/new-game cohorts are distinct; no automatic gate or savings estimate."
+  ]
+}

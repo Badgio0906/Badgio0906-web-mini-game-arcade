@@ -1,0 +1,209 @@
+{
+  "reviewer": "records_review independent reviewer",
+  "reviewed_at": "2026-10-08T15:37:21.312226+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "status": "STATIC_REVIEW_PENDING_DEFAULT_NATIVE_FETCH_FIX_AND_BROWSER_GET_QA",
+  "method": "CODE_INSPECTION with exact source hashes; read existing isolated QA reports, no new execution or external API",
+  "source_freeze": "CLIENT_SOURCE_FREEZE_03.json",
+  "freeze_matches": {
+    "src/records/PublicBests.ts": false,
+    "src/records/RecordSharing.ts": true,
+    "src/records/localRecords.ts": true,
+    "src/records/submissionValidation.ts": true,
+    "src/records/PortalRecords.ts": false,
+    "src/records/protocol.ts": true,
+    "src/data/gameCatalog.ts": true,
+    "src/data/tagCatalog.ts": true,
+    "src/data/telemetryAnalytics.ts": true,
+    "src/data/recordDefinitions.ts": true,
+    "src/data/analyticsEnvelope.ts": true,
+    "src/data/telemetrySchema.ts": true,
+    "src/data/gameVersions.ts": true,
+    "src/portal/main.ts": true,
+    "src/analytics-admin/model.ts": true,
+    "src/analytics-admin/main.ts": true,
+    "src/analytics-admin/records.ts": true,
+    "src/analytics-admin/export.ts": true,
+    "index.html": true,
+    "privacy.html": true,
+    "src/portal/style.css": true,
+    "src/records/currentRules.ts": true,
+    "src/games/game004/main.ts": true,
+    "public/fonts/arcade-rounded-jp.woff2": true,
+    "assets/fonts/font-index.json": true
+  },
+  "source_sha256": {
+    "src/records/PublicBests.ts": "3e6923b7fc6e9773ad54a733525f893a27c3ce11da746c53b2d0162669a8aa8d",
+    "src/records/RecordSharing.ts": "07394d0e74c5be2b9dd5ab84926560711fd1796dd977a03a66004afd2e37853d",
+    "src/records/localRecords.ts": "69dcdad57883d3a5fc851bae984ff8801b8b3364e68e525c03a4aa219f3f9f16",
+    "src/records/submissionValidation.ts": "8c3a2e33b199785017983648aff59043d4deadc8f6ba8945d8e4b81fdb0f56e6",
+    "src/records/PortalRecords.ts": "b8228033c01e4942a5a9c09c8badec458d525e4af68d483a11a7a188247fff0f",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "src/data/gameCatalog.ts": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+    "src/data/tagCatalog.ts": "ce518e0a639ef3a30d62437c5a74543a61e224cf11bbf47b5e908093dae29583",
+    "src/data/telemetryAnalytics.ts": "ebf5e0a32a7783ae9c6487b1d893a924993ab77176d88f8563cb52a7ded9efa2",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732",
+    "src/data/analyticsEnvelope.ts": "7f5f82e90a4cff47c1695d8eb608845a90802f09fb8f4e54572f5d3d038db316",
+    "src/data/telemetrySchema.ts": "8538f75287ee1053a4af128233308a6cc0257ad9985cc27f584dd1c24e067a90",
+    "src/data/gameVersions.ts": "aefd217e74c134478acb086a68307e2bbf90c6d4010b39c8b7d905215dfa938c",
+    "src/portal/main.ts": "498ec89eaebd53f693ad255f6add090fc5d49d27668cff338d1da7aaefad08ac",
+    "src/analytics-admin/model.ts": "5454a6a015c7cf6a5c770c50bc405883b90a53c207ae5bfb531cd82704d8f808",
+    "src/analytics-admin/main.ts": "d51173f18a97ccd4151c89ddc74859d4c9f6d281c76e8188965afbe2eb9ce4ba",
+    "src/analytics-admin/records.ts": "8731c8619cedf67f21f4a67b09e2a345118d10cc7610e281c49e0317b7b66b4e",
+    "src/analytics-admin/export.ts": "67702fe13c379e6d51c69a6ff71ab8292832ba63dbf21e66479db296d3526380",
+    "index.html": "dca079542deb70203f271f7a22475cb147632991278f1304a1c4fb1d46371791",
+    "privacy.html": "4de11444e2565b52051aa9b25e9e921e74e030974c34793ad5367f395ebc2e4f",
+    "src/portal/style.css": "be6e44a93648f211294ddfdbbbe65a656af1cc158366ec54d2854979a652dc61",
+    "src/records/currentRules.ts": "9577a837acfc56a6a6f57208baec9064f4bb53ae6c2ff8b098677aae305d80ee",
+    "src/games/game004/main.ts": "51001bf0c0f04952fcc530396623d52970ad8e815b84264aa225f6af5ea94510",
+    "public/fonts/arcade-rounded-jp.woff2": "d5603c6d21b51b3856c2a08b547608da5d224e9dd3e5870e4f75468c107196f9",
+    "assets/fonts/font-index.json": "5fcc7b9bfc6a5f70fee07b4a990bf9fb4708a5f9f2bf60fa2e31ab33a3a67411"
+  },
+  "backend_receipt": "BACKEND_SOURCE_RECEIPT.json",
+  "backend_receipt_matches": {
+    "analytics-worker/src/records.ts": true,
+    "analytics-worker/src/index.ts": true,
+    "analytics-worker/src/types.ts": true,
+    "analytics-worker/migrations/0002_records.sql": true,
+    "analytics-worker/tests/records-local-d1.mjs": true,
+    "analytics-worker/tests/records-test-wrapper.ts": true,
+    "analytics-worker/tests/wrangler.records.local.jsonc": true,
+    "src/data/recordDefinitions.ts": true
+  },
+  "protected_baseline_checks": {
+    "package.json": {
+      "sha256": "0c378382434ddaf8bfb218bb4d7d2c9bbb81187a3cab02b36a000f45f13d20d7",
+      "unchanged_from_base": true
+    },
+    "package-lock.json": {
+      "sha256": "cca00c06299fdaa95bf415d386c4dd19bd45adb6826f75e91665692d31722aba",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/wrangler.jsonc": {
+      "sha256": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/migrations/0001_events.sql": {
+      "sha256": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+      "unchanged_from_base": true
+    },
+    "src/core/StorageService.ts": {
+      "sha256": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+      "unchanged_from_base": true
+    },
+    "src/core/ConsentService.ts": {
+      "sha256": "0591a950e1c7fd83a9bc34ca48d1e9ad87c8f72a397259ba0567e258fc0b7407",
+      "unchanged_from_base": true
+    },
+    "src/core/CreditService.ts": {
+      "sha256": "684408bdc2f3fccea6564ae18ef885dc52d89513b1b59ce6088165cc1216ab1a",
+      "unchanged_from_base": true
+    },
+    "src/core/GoogleAnalyticsService.ts": {
+      "sha256": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+      "unchanged_from_base": true
+    },
+    "src/analytics/config.ts": {
+      "sha256": "860625c8276d5770a8d39f6c202855da334c0b08701564762e03f8121dc32740",
+      "unchanged_from_base": true
+    },
+    "src/analytics/runtime.ts": {
+      "sha256": "405f135526da6dc267df17b2167a1422eb3879b84405342d86f79c2981e3680e",
+      "unchanged_from_base": true
+    },
+    "src/data/gameVersions.ts": {
+      "sha256": "aefd217e74c134478acb086a68307e2bbf90c6d4010b39c8b7d905215dfa938c",
+      "unchanged_from_base": true
+    },
+    "src/data/gameCatalog.ts": {
+      "sha256": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+      "unchanged_from_base": true
+    },
+    "src/data/tagCatalog.ts": {
+      "sha256": "ce518e0a639ef3a30d62437c5a74543a61e224cf11bbf47b5e908093dae29583",
+      "unchanged_from_base": true
+    }
+  },
+  "game_scope": {
+    "tracked_files": 221,
+    "unchanged_files": 204,
+    "changed_files": [
+      "src/games/game002/main.ts",
+      "src/games/game003/main.ts",
+      "src/games/game004/main.ts",
+      "src/games/game005/main.ts",
+      "src/games/game006/main.ts",
+      "src/games/game007/main.ts",
+      "src/games/game008/main.ts",
+      "src/games/game009/main.ts",
+      "src/games/game011/main.ts",
+      "src/games/game015/main.ts",
+      "src/games/game016/main.ts",
+      "src/games/game017/main.ts",
+      "src/games/game018/main.ts",
+      "src/games/game019/main.ts",
+      "src/games/game024/main.ts",
+      "src/games/game029/main.ts",
+      "src/games/game031/Save.ts"
+    ],
+    "assessment": "Main imports/start/result/mount/resume hooks only; 004 button cooldown narrowed to exclude sharing controls; 019 notification uses existing native floor-to-decimeter metric. 031Save adds lightweight metadata in existing transaction and removes it with world, without changing world format/generation/chunks. Source model/physics/render files and original BEST write semantics unchanged."
+  },
+  "verified_static_fixes": [
+    {
+      "issue": "withdrawal multi-tab receipt state",
+      "evidence": "RecordSharing.ts lines43,58-59,96-101",
+      "result": "Listens for receipt and tombstone storage events. Held and current receipt object updated after success. Every persisted receipt checks prior withdrawn status and separate monotonic tombstone. Server withdrawal receipt already protects duplicate replay."
+    },
+    {
+      "issue": "current-rule marker races",
+      "evidence": "currentRules.ts readwrite transaction; localRecords.ts readCurrentRule/sourceStamp",
+      "result": "Separate own IndexedDB store, per-game read-max-put in one transaction; original BEST read-only, world DB untouched. Latest original source stamp invalidates stale/deleted markers; legacy map read-only compatibility."
+    },
+    {
+      "issue": "queue privacy/permission",
+      "evidence": "RecordSharing.ts lines49-52,74-81; submissionValidation.ts",
+      "result": "Exact outbound field allowlist checked on restored queue; latest permission epoch and automatic flag checked immediately before POST. Random record-run ID and token independent of Analytics identifiers; resumed024/029 identity stays local."
+    },
+    {
+      "issue": "save/result compatibility",
+      "evidence": "Game004/Game019/Game024/Game029 diff against base; game031/Save.ts",
+      "result": "Existing completion and BEST methods remain; prefeature resumptions without explicit matching eligibility never promoted. Sealed per-result candidate keeps stable submission key."
+    }
+  ],
+  "remaining_observations": [
+    {
+      "issue": "Default native fetch receives PublicBests instance receiver",
+      "evidence": [
+        "src/records/PublicBests.ts constructor default fetch and this.fetcher call",
+        "browser-sharing-05/REPORT.json 42 checks pass but public GET fails",
+        "browser-sharing-public-06/REPORT.json GET count0/status failed",
+        "browser-public-fetch-diagnostic-07/REPORT.json unbound Illegal invocation, bound success"
+      ],
+      "classification": "PRODUCT_BUG",
+      "action_required": true,
+      "bounds": "No real API request made. Endpoint-disabled preparing build masks path; enabled API would fail native default GET in tested Chromium. Root notified immediately; freeze03 is not final all-functional pass."
+    }
+  ],
+  "existing_test_evidence": {
+    "ROOT_CHECKS.json": "Operator recorded check PASS, 76 test files/861 tests PASS, final build PASS endpoint unset. Reviewer did not execute these commands. recorded_at precedes unit-summary start and is metadata timing limitation, not invented reviewer execution time.",
+    "backend-d1-06.json": "Operator isolated local D1 PASS24; source receipt matches. No real production POST/deploy.",
+    "browser-sharing-05/REPORT.json": "42 passing fixture checks plus failed public GET. Overall FAIL preserved; no conversion into PASS."
+  },
+  "limitations": [
+    "Static scope/security verification is not human play or physical mobile testing.",
+    "Portal final images not yet reviewed in this final source audit; admin actual seven-image review is separate admin-fixture-03/INDEPENDENT_VISUAL_REVIEW.json.",
+    "No production Worker authentication, migration/deploy, or enabled public API confirmation by reviewer.",
+    "Origin/production metadata are not cryptographic proof of human records. Global quotas are bounded admission, not full per-user fairness/DoS guarantee.",
+    "Receipt cap200 intentionally blocks further submissions instead of dropping withdrawal credentials. Accepted/tombstone capacity requires operational monitoring.",
+    "Earlier review backend datatype snapshot was superseded before final review; PRE_FINAL_SECURITY_DELTA_01.json retains correction. No new API or retroactive log edit."
+  ],
+  "bounds": [
+    "No Jev answers or JEV_SHADOW.jsonl read. No Jev API calls, secrets, raw production Analytics, source edits, commit/push/deploy. Only reviewer documentation written.",
+    "No additional permission or publication authorization judgment delegated to this reviewer."
+  ],
+  "source_freeze_mismatch_context": "During this audit root concurrently applied the native fetch wrapper and bounded visible refresh repairs; PublicBests/PortalRecords hashes differ from frozen03. Old failure reports retained. These are expected identified scope changes, not a frozen03 PASS. Follow-up freeze04 needed.",
+  "post_observation_static_delta": {
+    "PublicBests": "Default fetch arrow wrapper inspected; no illegal instance receiver supplied to native fetch.",
+    "PortalRecords": "61second single visible-only batched timer; pagehide clear/pageshow restart, visible fetchedAt conditions inspected. No per-card polling or hidden HTTP."
+  }
+}

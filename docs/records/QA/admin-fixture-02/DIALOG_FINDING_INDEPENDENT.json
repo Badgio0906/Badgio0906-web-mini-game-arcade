@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-10-08T14:54:36Z",
+  "reviewer": "records_admin implementation agent; no Jev answers viewed",
+  "finding": "Confirmation dialog uses saved integer 1234 without unit while the candidate table and BEST display 123.4 m for the same board.",
+  "provenance": "Actual screenshot from browser with synthetic admin API fixture; no real player candidate or secret.",
+  "evidence": ["docs/records/QA/admin-fixture-02/confirmation-320x568.png", "src/analytics-admin/records.ts"],
+  "independent_primary_cause": "PRODUCT_BUG",
+  "action_required": true,
+  "next_evidence": "CODE_INSPECTION",
+  "release_risk_if_unresolved": true,
+  "rationale": "A destructive moderation confirmation should show the same scaled distance and unit as the candidate. Ambiguous raw integer makes the operator rederive the meaning at confirmation.",
+  "proposed_action": "Use adminRecordValue(board_id,value) in the confirmation description and separately label the saved integer. Retain endpoint/auth/state transitions unchanged and repeat same four viewport confirmation QA.",
+  "human_judgment": null
+}

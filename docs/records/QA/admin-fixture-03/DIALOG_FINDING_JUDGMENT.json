@@ -1,0 +1,13 @@
+{
+  "finding_id": "records-admin-confirm-units",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_admin; no Jev answers viewed",
+  "rationale": "The pre-fix confirmation interpolated item.value directly, unlike the board and candidate table that use adminRecordValue and the board storageScale. Destructive approval/revocation confirmation had an ambiguous distance. Limited label correction now shows 123.4 m and separately names saved integer1234. The four viewport fixture run and actual320px screenshot confirm the correction without changing API methods/state transitions or auth.",
+  "evidence": ["docs/records/QA/admin-fixture-02/confirmation-320x568.png", "docs/records/QA/admin-fixture-02/DIALOG_FINDING_INDEPENDENT.json", "src/analytics-admin/records.ts", "docs/records/QA/admin-fixture-03/REPORT.json", "docs/records/QA/admin-fixture-03/confirmation-320x568.png"],
+  "actual_next_action": { "method": "CODE_INSPECTION", "description": "Inspected proposal string and existing scale-aware formatter, changed confirmation string only, then repeated four viewport synthetic real-browser admin QA and checked actual corrected screenshot.", "evidence": ["src/analytics-admin/records.ts", "docs/records/QA/admin-fixture-03/REPORT.json", "docs/records/QA/admin-fixture-03/confirmation-320x568.png"] },
+  "final_root_cause": "Proposal description used raw stored integer with no unit instead of the existing board-aware formatter.",
+  "human_judgment": null
+}

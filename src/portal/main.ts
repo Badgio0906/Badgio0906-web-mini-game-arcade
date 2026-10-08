@@ -3,6 +3,8 @@ import { gameCatalog } from '../data/gameCatalog';
 import { TelemetryService } from '../core/TelemetryService';
 import { analyticsRuntime } from '../analytics/runtime';
 import { observeCardImpressions } from '../analytics/impressions';
+import { installPortalRecords } from '../records/PortalRecords';
+import { mountRecordSharingSettings } from '../records/RecordSharing';
 
 const telemetry = new TelemetryService(undefined, 'portal');
 telemetry.trackEvent('portal_open');
@@ -32,6 +34,8 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   content.append(title, english, tagline, tags, play); card.append(imageFrame, content); gallery.append(card);
 }
 document.getElementById('game-count')!.textContent = String(gameCatalog.length);
+installPortalRecords(gallery);
+mountRecordSharingSettings(document.getElementById('record-settings')!);
 
 const saveRecords = document.getElementById('save-play-records');
 saveRecords?.addEventListener('click', () => {

@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-permission-write-denied",
+  "problem": "Explicit automatic-sharing choice can be lost in-page when reads work but writes fail",
+  "expected": "Denied storage preserves current-page choice where possible without enabling future-page sharing",
+  "observed": [
+    "Constructor deniedStorage is set only if getItem throws.",
+    "setAutomatic updates memory but write catches and discards setItem failure.",
+    "enabled ignores memory when deniedStorage is false."
+  ],
+  "unknown": [
+    "In-page behavior under QuotaExceededError with readable storage."
+  ],
+  "provenance": "actual independent source observations, not real player data"
+}

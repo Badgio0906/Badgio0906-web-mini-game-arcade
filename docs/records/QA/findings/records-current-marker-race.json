@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-current-marker-race",
+  "problem": "Concurrent current-rule markers can replace another game or a higher current value",
+  "expected": "Current-rule markers retain both games and maximum verified value under concurrent tabs.",
+  "observed": [
+    "storeCurrentRule reads a whole map from one localStorage key and later writes the whole map.",
+    "Separate tabs can interleave reads before either writes.",
+    "015 and019 entries or samegame high andlow entries can replace one another."
+  ],
+  "unknown": [
+    "Whether the observed behavior reproduces with isolated concurrent browser sessions."
+  ],
+  "provenance": "independent code observation"
+}

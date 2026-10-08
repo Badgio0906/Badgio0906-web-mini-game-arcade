@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-manual-queue-reload",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "A manual share has explicit authorization even when automatic sharing remains OFF. Constructor currently treats OFF as grounds to erase every persisted retry including automatic=false. This loses a valid same-key retry across navigation. It does not corrupt gameplay/BEST, so it is not independently classified as a major release-risk signal.",
+  "evidence": [
+    "src/records/RecordSharing.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected constructor/manual enqueue/flush flow. Bounded manual retry restoration must distinguish an unchanged OFF preference from an explicit subsequent OFF transition; add navigation and OFF-event tests.",
+    "evidence": [
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:57:17.241455+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "1e4b24a3d386e2c9b06bea288a8a12634e072d73b5ffbd05629375588633a81a"
+  },
+  "bounds": "Independent source inspection; stated concrete boundary examples are arithmetic/code consequences, not live/browser reproduction. No Jev answers read and no code modification. Test suggestions are next work, not claimed execution."
+}

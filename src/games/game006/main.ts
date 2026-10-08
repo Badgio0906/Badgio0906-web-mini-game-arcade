@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { CreditService } from '../../core/CreditService';
@@ -7,6 +8,7 @@ import { requestRewardedCredit } from '../../core/RewardService';
 import { createParkingGame } from './ParkingScene';
 import { parkingTitle } from './resultFlavor';
 import type { ParkingChoice, ParkingEvent, ParkingSnapshot, ParkingResult, ParkingSlotKind } from './contracts';
+const recordSession = createGameRecordSession('game006');
 
 type Screen = 'explain' | 'practice' | 'practice-success' | 'title' | 'playing' | 'paused' | 'milestone' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -94,6 +96,7 @@ function setScreen(next: Screen, delayResult = false): void {
   } else if (next === 'result' && lastResult) {
     const result = lastResult;
     overlay.innerHTML = `<article class="ticket result-ticket"><div class="result-heading"><span class="result-game-title">ギリギリ駐車<small>PARK IT!</small></span><h2>${result.outcome === 'collision' ? 'あ、ぶつかった。' : '枠から、はみ出した。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.score}</b><span>SCORE V2</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST V2</dt><dd id="result-best">${best}</dd></div><div><dt>駐車成功</dt><dd>${result.parked} 台</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} 回</dd></div><div><dt>最大連続</dt><dd>${result.maxStreak} 回</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div></dl><div class="driver-title"><small>${result.mode === 'forbidden' ? '禁断駐車 · 今回の称号' : '今回の称号'}</small><b id="driver-title">${parkingTitle(result.parked)}</b></div><div class="ticket-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small>${credits.canPlay ? '次は、もう1台ぴたりと。' : 'NO CREDIT · 開発版 Rewarded Ad Stub'}</small></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delayResult) {
       overlay.hidden = true; resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.hidden = false; trackOffer(); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
     }
@@ -132,7 +135,7 @@ const controller = createParkingGame($('game-canvas'), {
   onEnd(result) {
     if (state === 'practice') { controller.pause(true); setScreen('practice-success'); overlay.innerHTML = `<article class="ticket"><h2>もう一度、試そう。</h2><p>${result.reason}</p>${primary('practice-repeat-button','同じ練習を再開')}${titleButton}</article>`; return; }
     if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best-rules-v2', best); credits.consume(runId);
+    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best-rules-v2', best); credits.consume(runId); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time, parked: result.parked, perfectCount: result.perfectCount, maxStreak: result.maxStreak, mode: result.mode, rulesVersion:2, failureCause:result.cause, brakeUsed:result.brakeUsed, slot:result.slotKind });
     telemetry.trackEvent('score', { runId, rulesVersion: 2, score: result.score, best, newBest, parked: result.parked }); telemetry.trackEvent('run_duration', { runId, rulesVersion: 2, seconds: result.time, reason: 'over', failure_reason: result.outcome });
     update(controller.snapshot()); resultAvailableAt = performance.now() + 300; setScreen('result', true);
@@ -143,7 +146,7 @@ function start(retry = false): void {
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || state === 'milestone' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game006-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false; milestoneShown = false; choiceEpoch += 1; choiceLocked = false; lastLayoutParked = ''; clearApprovals();
-  if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 2 }); telemetry.trackEvent('run_start', { runId, credits: credits.credits, rulesVersion: 2 }); setScreen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 2 }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits, rulesVersion: 2 }); setScreen('playing'); controller.start();
 }
 function act(): void {
   if ((state !== 'playing' && state !== 'practice') || state === 'playing' && ended) return;

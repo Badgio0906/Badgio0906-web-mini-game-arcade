@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { MAX_BACKUP_BYTES, parseBackup, SaveStore, validateSnapshot } from '../../src/games/game031/Save';
 import { type Snapshot } from '../../src/games/game031/Types';
 import { World } from '../../src/games/game031/World';
@@ -17,16 +17,16 @@ function snapshot(count=0,dimensions={x:128,y:64,z:128}):Snapshot {
 
 /** A transaction-contract fixture, not a substitute for the native browser IndexedDB QA. */
 function storageFixture(initial:unknown=null) {
-  let committed=structuredClone(initial),failNext=false,denied=false;
+  let committed=new Map<string,unknown>(initial===null?[]:[['current',structuredClone(initial)]]),failNext=false,denied=false;
   const calls:Array<{mode:string;key:string;operation:string}>=[];
   const db={objectStoreNames:{contains:()=>true},close:()=>{},onversionchange:null,
     transaction:(_store:string,mode:string)=>{
       const tx:any={oncomplete:null,onabort:null,onerror:null,error:null};
-      let pending:unknown,changed=false,request:any;
+      const pending=new Map(committed);let changed=false,request:any;
       tx.objectStore=()=>({
-        get:(key:string)=>{calls.push({mode,key,operation:'get'});request={result:structuredClone(committed),onsuccess:null};return request;},
-        put:(value:unknown,key:string)=>{calls.push({mode,key,operation:'put'});pending=structuredClone(value);changed=true;return {};},
-        delete:(key:string)=>{calls.push({mode,key,operation:'delete'});pending=null;changed=true;return {};},
+        get:(key:string)=>{calls.push({mode,key,operation:'get'});request={result:structuredClone(committed.get(key)),onsuccess:null};return request;},
+        put:(value:unknown,key:string)=>{calls.push({mode,key,operation:'put'});pending.set(key,structuredClone(value));changed=true;return {};},
+        delete:(key:string)=>{calls.push({mode,key,operation:'delete'});pending.delete(key);changed=true;return {};},
       });
       queueMicrotask(()=>{
         if(failNext){failNext=false;tx.error=new DOMException('fixture quota','QuotaExceededError');tx.onabort?.();return;}
@@ -43,10 +43,35 @@ function storageFixture(initial:unknown=null) {
     const request:any={result:db,onupgradeneeded:null,onsuccess:null,onerror:null,onblocked:null};
     queueMicrotask(()=>request.onsuccess?.());return request;
   }} as unknown as IDBFactory;
-  return {factory,calls,failNext:()=>{failNext=true;},deny:()=>{denied=true;},current:()=>structuredClone(committed)};
+  return {factory,calls,failNext:()=>{failNext=true;},deny:()=>{denied=true;},current:()=>structuredClone(committed.get('current')??null),metadata:()=>structuredClone(committed.get('record-current'))};
 }
 
 describe('Game031 coherent, versioned local save',()=>{
+  it('commits lightweight portal metadata with the same world transaction, preserving it on failure and deleting both keys',async()=>{
+    const f=storageFixture(),store=new SaveStore(f.factory),first=snapshot(1),next=snapshot(2);
+    await store.save(first);
+    expect(f.metadata()).toEqual({gameId:'game031',rulesetId:'1',schemaVersion:1,generatorVersion:1,blockVersion:1,revision:first.revision,savedAt:first.savedAt,mined:1,placed:0,maxDepth:0,activeSeconds:12});
+    expect(Object.keys(f.metadata() as object)).not.toContain('seed');expect(Object.keys(f.metadata() as object)).not.toContain('worldId');
+    f.failNext();await expect(store.save(next)).rejects.toMatchObject({code:'quota_exceeded'});
+    expect(f.current()).toEqual(first);expect((f.metadata() as {mined:number}).mined).toBe(1);
+    await store.remove();expect(f.current()).toBeNull();expect(f.metadata()).toBeUndefined();
+  });
+  it('notifies local portal listeners only after commit, with no saved-world detail',async()=>{
+    const events:Event[]=[],f=storageFixture(),store=new SaveStore(f.factory);
+    vi.stubGlobal('window',{dispatchEvent:(event:Event)=>{events.push(event);return true;}});
+    try {
+      await store.save(snapshot(1));expect(events.map(e=>e.type)).toEqual(['game100:records:changed']);
+      expect('detail' in events[0]).toBe(false);
+      f.failNext();await expect(store.save(snapshot(2))).rejects.toMatchObject({code:'quota_exceeded'});expect(events).toHaveLength(1);
+      await store.remove();expect(events).toHaveLength(2);
+    }finally{vi.unstubAllGlobals();}
+  });
+  it('an optional notification failure cannot fail a successfully committed world',async()=>{
+    const f=storageFixture(),store=new SaveStore(f.factory),s=snapshot(1);
+    vi.stubGlobal('window',{dispatchEvent:()=>{throw new Error('fixture listener failure');}});
+    try {await expect(store.save(s)).resolves.toBeUndefined();expect(await store.load()).toEqual(s);}
+    finally{vi.unstubAllGlobals();}
+  });
   it.each([1000,5000,10000])('restores %i final voxel differences and associated inventory exactly (synthetic fixture)',count=>{
     const source=snapshot(count),restored=parseBackup(JSON.stringify(source));
     expect(restored).toEqual(source);
@@ -58,7 +83,7 @@ describe('Game031 coherent, versioned local save',()=>{
     const f=storageFixture(),store=new SaveStore(f.factory),s=snapshot(1),expected=structuredClone(s);
     const saving=store.save(s);s.inventory[1]=999;s.chunks[0]!.cells[1]=8;s.stats.mined=999;
     await saving;expect(await store.load()).toEqual(expected);
-    expect(f.calls.filter(c=>c.operation==='put')).toEqual([{mode:'readwrite',key:'current',operation:'put'}]);
+    expect(f.calls.filter(c=>c.operation==='put')).toEqual([{mode:'readwrite',key:'current',operation:'put'},{mode:'readwrite',key:'record-current',operation:'put'}]);
   });
   it('failed transaction preserves the last successful coherent snapshot; later explicit save can succeed',async()=>{
     const old=snapshot(1),next=snapshot(2),f=storageFixture(old),store=new SaveStore(f.factory);

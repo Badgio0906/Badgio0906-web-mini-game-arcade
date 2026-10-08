@@ -1,0 +1,169 @@
+{
+  "reviewer": "records_review independent sub-agent",
+  "reviewed_at": "2026-10-08T15:20:04.932150+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "status": "REVIEW_PENDING_REMAINING_OBSERVATIONS_AND_BROWSER_QA",
+  "scope": "Independent code/security/privacy/queue/save-scope review. No production API/secret/SQL or Jev responses read. No source edits.",
+  "freeze_file": "docs/records/QA/CLIENT_SOURCE_FREEZE_01.json",
+  "freeze_matches": {
+    "src/records/PublicBests.ts": true,
+    "src/records/RecordSharing.ts": true,
+    "src/records/localRecords.ts": true,
+    "src/records/submissionValidation.ts": true,
+    "src/records/PortalRecords.ts": true,
+    "src/records/protocol.ts": true,
+    "src/data/gameCatalog.ts": true,
+    "src/data/tagCatalog.ts": true,
+    "src/data/telemetryAnalytics.ts": true,
+    "src/data/recordDefinitions.ts": true,
+    "src/data/analyticsEnvelope.ts": true,
+    "src/data/telemetrySchema.ts": true,
+    "src/data/gameVersions.ts": true,
+    "src/portal/main.ts": true,
+    "src/analytics-admin/model.ts": true,
+    "src/analytics-admin/main.ts": true,
+    "src/analytics-admin/records.ts": true,
+    "src/analytics-admin/export.ts": true,
+    "index.html": true,
+    "privacy.html": true,
+    "src/portal/style.css": true
+  },
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "9700aad1c6cf21caf1fa6aa40a076094f8131f794ee0be836b1b648f0422fc3c",
+    "src/records/PortalRecords.ts": "15bfd77241cdf04aa5d841e412163721d3d5d4e5a9adffdf2b77163773e4df12",
+    "src/records/PublicBests.ts": "5447713ee101e439ec42ae4df0b839da37e2647ec09133ae08fafb73bff3f968",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "src/records/submissionValidation.ts": "8c3a2e33b199785017983648aff59043d4deadc8f6ba8945d8e4b81fdb0f56e6",
+    "src/records/localRecords.ts": "6f60a08042765f15a6208b8b5c714db4c44829be952fe022d10abc4972afc200",
+    "analytics-worker/src/records.ts": "1950fca9f8df8b55563ce9a17691cedb7c76f2ce7bc67aa690e95efb7d55e3bd",
+    "analytics-worker/migrations/0002_records.sql": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+    "src/analytics-admin/records.ts": "8731c8619cedf67f21f4a67b09e2a345118d10cc7610e281c49e0317b7b66b4e"
+  },
+  "tracked_changed_files": [
+    "analytics-worker/src/index.ts",
+    "analytics-worker/src/types.ts",
+    "index.html",
+    "privacy.html",
+    "src/analytics-admin/main.ts",
+    "src/analytics-admin/style.css",
+    "src/games/game002/main.ts",
+    "src/games/game003/main.ts",
+    "src/games/game004/main.ts",
+    "src/games/game005/main.ts",
+    "src/games/game006/main.ts",
+    "src/games/game007/main.ts",
+    "src/games/game008/main.ts",
+    "src/games/game009/main.ts",
+    "src/games/game011/main.ts",
+    "src/games/game015/main.ts",
+    "src/games/game016/main.ts",
+    "src/games/game017/main.ts",
+    "src/games/game018/main.ts",
+    "src/games/game019/main.ts",
+    "src/games/game024/main.ts",
+    "src/games/game029/main.ts",
+    "src/games/game031/Save.ts",
+    "src/main.ts",
+    "src/portal/main.ts",
+    "src/portal/style.css",
+    "tests/unit/game031-save.test.ts"
+  ],
+  "game_scope": {
+    "tracked_src_games_and_game_files": 221,
+    "byte_identical_files": 204,
+    "changed_game_files": [
+      "src/games/game002/main.ts",
+      "src/games/game003/main.ts",
+      "src/games/game004/main.ts",
+      "src/games/game005/main.ts",
+      "src/games/game006/main.ts",
+      "src/games/game007/main.ts",
+      "src/games/game008/main.ts",
+      "src/games/game009/main.ts",
+      "src/games/game011/main.ts",
+      "src/games/game015/main.ts",
+      "src/games/game016/main.ts",
+      "src/games/game017/main.ts",
+      "src/games/game018/main.ts",
+      "src/games/game019/main.ts",
+      "src/games/game024/main.ts",
+      "src/games/game029/main.ts",
+      "src/games/game031/Save.ts"
+    ],
+    "assessment": "Diff inspections show records imports/start/result/mount/resume hooks in main files; 031Save adds lightweight local metadata atomically in same transaction. No gameplay model/physics/render/input files changed. Underlying legacy saves retained."
+  },
+  "protected_baseline_checks": {
+    "package.json": {
+      "sha256": "0c378382434ddaf8bfb218bb4d7d2c9bbb81187a3cab02b36a000f45f13d20d7",
+      "unchanged_from_base": true
+    },
+    "package-lock.json": {
+      "sha256": "cca00c06299fdaa95bf415d386c4dd19bd45adb6826f75e91665692d31722aba",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/wrangler.jsonc": {
+      "sha256": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/migrations/0001_events.sql": {
+      "sha256": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+      "unchanged_from_base": true
+    },
+    "src/core/StorageService.ts": {
+      "sha256": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+      "unchanged_from_base": true
+    },
+    "src/core/ConsentService.ts": {
+      "sha256": "0591a950e1c7fd83a9bc34ca48d1e9ad87c8f72a397259ba0567e258fc0b7407",
+      "unchanged_from_base": true
+    },
+    "src/core/CreditService.ts": {
+      "sha256": "684408bdc2f3fccea6564ae18ef885dc52d89513b1b59ce6088165cc1216ab1a",
+      "unchanged_from_base": true
+    },
+    "src/core/GoogleAnalyticsService.ts": {
+      "sha256": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+      "unchanged_from_base": true
+    },
+    "src/analytics/config.ts": {
+      "sha256": "860625c8276d5770a8d39f6c202855da334c0b08701564762e03f8121dc32740",
+      "unchanged_from_base": true
+    },
+    "src/analytics/runtime.ts": {
+      "sha256": "405f135526da6dc267df17b2167a1422eb3879b84405342d86f79c2981e3680e",
+      "unchanged_from_base": true
+    },
+    "src/data/gameVersions.ts": {
+      "sha256": "aefd217e74c134478acb086a68307e2bbf90c6d4010b39c8b7d905215dfa938c",
+      "unchanged_from_base": true
+    },
+    "src/data/gameCatalog.ts": {
+      "sha256": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+      "unchanged_from_base": true
+    },
+    "src/data/tagCatalog.ts": {
+      "sha256": "ce518e0a639ef3a30d62437c5a74543a61e224cf11bbf47b5e908093dae29583",
+      "unchanged_from_base": true
+    }
+  },
+  "confirmed": [
+    "No Analytics context/ID in record egress; 024existingobserverRUN identity is used locally only to match eligibility; record run_result_id generated separately.",
+    "Explicit defaultOFF/manual sharing; no historical BEST enumeration/upload. Cookie/referrer omission and redirect:error in record POST/withdraw.",
+    "Restored outgoing payload strict exact top-level/nested allowlist and numeric/rules/mode checks; extra fields rejected before transport.",
+    "Different receipts and pending entries stored by independent key; monotonic withdrawal prefix overrides stale accepted row on reread. Latest permissionEpoch checked immediately before everyPOST.",
+    "Write-denied setting has memoryAutomatic fallback and current-page limitations displayed; save/result/retry hooks are guarded and optional.",
+    "Record namespace exact admin paths retains admin-only hash auth; public/codex auth not repurposed. Public output whitelist excludes raw internal identifiers/receipt/metadata.",
+    "Prepared bound SQL/batched insertion/triggers maintain accepted max and stable ties; withdraw/revoke recompute; records additive migration independent events retention.",
+    "031metadata committed atomically with authoritativeworld; portal onlyreadsmetadata/getKeyexists, doesnotreadchunks/generateworld."
+  ],
+  "remaining_observations_sent_to_root": [
+    "CURRENT_RECORDS_KEY whole-map update canloseothergame marker orregresssamegame verifiedBEST underinterleavedtabs; requirements demand monotonic concurrent display.",
+    "004 delayedresult re-enables allbuttonsincluding initiallydisabledrecords controls; narrow/re-render needed ifconfirmed.",
+    "Backend assistance/outcome String coercion admits singleelementarrays despite declaredmetadata types; explicitstringchecks suggested."
+  ],
+  "limits": [
+    "BrowserQA has begun but reviewer has not driven browsercontrols. Final portal/result images awaited.",
+    "Root/agents tests/deploy results must be independently linked; this reviewer didnotexecute them.",
+    "This reviewisnot a humanfun/author/physicalmobile pass or releaseauthorization."
+  ]
+}

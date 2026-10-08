@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-08T15:36:36.269372+00:00",
+  "reviewer": "records_browser_qa",
+  "blind_to_Jev": true,
+  "cause": "PRODUCT_BUG",
+  "observed": "PublicBests refresh in productionbrowserfailed beforeanyGET; 0 GETs with mockAllow-Origin matchingactualWorker andtwofailedstates",
+  "diagnostic": "Defaultconstructorfetcher nativefetchstoredonclass, loadinvokesasthis.fetcher. Directnativefetchreceivercomparison showsunboundIllegalinvocation GET0; boundglobalThisGET1HTTP200. See diagnostic07.",
+  "earlier_CORS_guess": "Provisional, notconfirmed; mockCORS alignment retained becausematchesbackend but doesnotresolvethisfinding.",
+  "action": "PreserveinjectedfetchunitAPI but defaultnativefetchwrapper orboundfunction; re-run realbrowserpublicGET cache/stale/zero",
+  "evidence": [
+    "src/records/PublicBests.ts",
+    "docs/records/QA/browser-sharing-public-06/REPORT.json",
+    "docs/records/QA/browser-public-fetch-diagnostic-07/REPORT.json"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "finding_id": "records-withdraw-tab-refresh",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The real isolated two-tab QA observed server-mock withdrawal success and first-tab withdrawn status while the second UI remained accepted. Code subscribes only to receipt-prefix updates, not the separately authoritative withdrawn-prefix marker. withdraw holds a receipt object across persist/reloadReceipts, which can replace array objects; mutating the stale reference after success need not change the persisted receipt. If that receipt string does not change there is no receipt storage event to trigger the other tab. Tombstone/server state already prevents resurrection; this observation is a required cross-tab UI correctness fix rather than independently classified actual deletion failure or major data loss.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-withdraw-tab-refresh.json",
+    "docs/records/QA/browser-sharing-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected storage-event prefix filter, receipt reference capture, persist/reload replacement and withdrawal completion. Listen to authoritative tombstone-prefix updates and recheck tombstone before receipt writes, then repeat actual two-tab withdrawal QA preserving failed evidence. Reviewer did not personally execute the browser timeout.",
+    "evidence": [
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:27:49.692671+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "07394d0e74c5be2b9dd5ab84926560711fd1796dd977a03a66004afd2e37853d"
+  },
+  "bounds": "Independent code review plus operator observation state; no Jev answers, API request, code edits or human-play claim."
+}

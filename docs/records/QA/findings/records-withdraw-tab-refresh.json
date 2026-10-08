@@ -1,0 +1,18 @@
+{
+  "finding_id": "records-withdraw-tab-refresh",
+  "problem": "A successful withdrawal does not update another open tab from accepted to withdrawn",
+  "expected": "All open sharing UIs reflect withdrawal monotonically without reload.",
+  "observed": [
+    "Isolated browser fixture observed POST1/withdraw1, firsttab UI withdrawn, secondtab timedout30s waiting for withdrawn.",
+    "Sharing storage listener reloads on receiptprefix but does not listen to withdrawn tombstoneprefix.",
+    "withdraw takes a receipt object before persist reloads receipt objects."
+  ],
+  "unknown": [
+    "Whether listening for tombstone and rechecking it before receipt writes resolves cross-tab UI."
+  ],
+  "evidence": [
+    "docs/records/QA/browser-sharing-03/REPORT.json",
+    "src/records/RecordSharing.ts"
+  ],
+  "provenance": "real Chromium two-tab interaction with mocked endpoint; no production records"
+}

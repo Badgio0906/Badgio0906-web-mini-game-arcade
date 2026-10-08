@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-restored-run-eligibility",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Saved 024/029 gameplay resumes but createGameRecordSession keeps its independent runId only in memory. Complete requires runId; restoration paths never restore it. Therefore a newly eligible saved RUN loses sharing capability after reload. Unconditionally creating a new record identity on every restore would elevate prefeature saves and permit duplicate results; a local eligibility marker tied to the existing saved-result identity is required. This limits sharing of resumed results without damaging gameplay, original save, or exposing data, so independently classified as an action-required feature gap rather than a major release-risk signal.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "src/games/game024/main.ts",
+    "src/games/game029/main.ts",
+    "docs/records/QA/findings/records-restored-run-eligibility.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-restored-run-eligibility.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

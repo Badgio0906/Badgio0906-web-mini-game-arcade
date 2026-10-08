@@ -1,0 +1,26 @@
+{
+  "reviewed_at": "2026-10-08T15:23:02.066480+00:00",
+  "reviewer": "records_review independent source review",
+  "status": "STATIC_FIXES_VERIFIED_BROWSER_EVIDENCE_PENDING",
+  "source_sha256": {
+    "src/records/currentRules.ts": "9577a837acfc56a6a6f57208baec9064f4bb53ae6c2ff8b098677aae305d80ee",
+    "src/records/localRecords.ts": "69dcdad57883d3a5fc851bae984ff8801b8b3364e68e525c03a4aa219f3f9f16",
+    "src/records/RecordSharing.ts": "744433230479e65c748c37a650434fecf1307a026226f65858b1deb6fc3c01f5",
+    "src/games/game004/main.ts": "51001bf0c0f04952fcc530396623d52970ad8e815b84264aa225f6af5ea94510",
+    "src/games/game024/main.ts": "6142987e5921f3fe8336339acd91628c6f9109076ddcc1556a80351bcd8880ca",
+    "src/games/game029/main.ts": "dd7433c157f2c60531da78986ba343ca2e4199daa6109ee4bfc0cdc7cabe202f"
+  },
+  "fixes": [
+    "CurrentRuleMarkers moved to their own small IndexedDB markers store; one readwrite transaction per game performs read-max-put, serializing concurrent updates. OriginalgameBEST keys not written here and world031DB untouched.",
+    "Markers compare board/rules/mode and sourceValueAtCapture; source reset/deletion invalidates portal reading by current sourceStamp. Oldmap is read-only compatibility, not future writeauthority.",
+    "Completion fires samepagechanged event and a random cross-tab notice key. Portal storage listener rereads local records without polling.",
+    "004 delay selectors both exclude .record-share-controls buttons and retain original300msgamecooldown.",
+    "024/029 eligibility saved locally by existing local identity, separate randomly generated record-runID; resume only matching identity/rules marker, no prefeature promotion.",
+    "024observerRUN used to match the local savedcontinuation; not inserted into outbound record payload, so Analyticsidentifier egress avoided."
+  ],
+  "bounds": [
+    "These are code-inspection conclusions; concurrent IndexedDB timings, ordinaryresultbutton states, resumedRUN replay and Portalimages must be covered by QA.",
+    "ExistingoriginalgameBEST stale-tab semantics remain untouched; marker resets are intentionally not a redesign of oldgame storage.",
+    "Finalsourcefreeze02 not available at this inspection; reviewedSHA recorded and will needfinalmatching."
+  ]
+}

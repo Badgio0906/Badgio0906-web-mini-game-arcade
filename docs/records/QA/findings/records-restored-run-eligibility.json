@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-restored-run-eligibility",
+  "problem": "Saved RUN restoration lacks record-sharing eligibility continuity",
+  "expected": "A valid RUN created after feature introduction can retain its one-result identity across save/reload without promoting prefeature savedRUNs",
+  "observed": [
+    "Game024 and029 restore saved gameplay/telemetry RUN state but do not restore record session.",
+    "Record session RUN id is only held in memory.",
+    "complete ignores result if runId absent."
+  ],
+  "unknown": [
+    "How a new eligible savedRUN can resume its independent record identity without copying Analytics identifiers or uploading historicalBEST."
+  ],
+  "provenance": "actual code inspection of restoration branches, not real player record"
+}

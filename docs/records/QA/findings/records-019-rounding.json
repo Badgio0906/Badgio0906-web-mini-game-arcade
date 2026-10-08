@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-019-rounding",
+  "problem": "Frog shared integer conversion uses different rounding from existing localBEST",
+  "expected": "Local and public height use the same baseline precision rule",
+  "observed": [
+    "Game019 saveBest floors height multiplied by10.",
+    "Generic sharing canonicalValue rounds value multiplied byscale.",
+    "Result hook passes raw maxHeight."
+  ],
+  "unknown": [
+    "Whether a fractionalheight nearhalfdecimeter produces differing displayed values."
+  ],
+  "provenance": "actual independent source observations, not real player data"
+}

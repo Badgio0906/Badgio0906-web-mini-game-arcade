@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-public-fetch-receiver",
+  "problem": "Enabled browser public record fetch fails before sending HTTP",
+  "observed": [
+    "Actual enabled HTTPS fixture returned failed states with zeroGETs.",
+    "Isolated Chromium native fetch storedasobjectmember throws Illegal invocation.",
+    "The same diagnostic using bound nativefetch sendsGET and returns200."
+  ],
+  "expected": "Enabled public record fetch sends one anonymous batch GET.",
+  "unknown": [
+    "Whether targeted browser regression confirms the expected behavior after a bounded fix."
+  ],
+  "provenance": "real Chromium against isolated fully mocked endpoint"
+}

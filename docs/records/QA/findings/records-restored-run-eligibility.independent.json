@@ -1,0 +1,31 @@
+{
+  "finding_id": "records-restored-run-eligibility",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Saved 024/029 gameplay resumes but createGameRecordSession keeps its independent runId only in memory. Complete requires runId; restoration paths never restore it. Therefore a newly eligible saved RUN loses sharing capability after reload. Unconditionally creating a new record identity on every restore would elevate prefeature saves and permit duplicate results; a local eligibility marker tied to the existing saved-result identity is required. This limits sharing of resumed results without damaging gameplay, original save, or exposing data, so independently classified as an action-required feature gap rather than a major release-risk signal.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "src/games/game024/main.ts",
+    "src/games/game029/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read both restoration branches and result-session guard; verify separate local eligibility provenance, stable one-result deduplication and exclusion of prefeature saves. Test prefeature restore, eligible resume, repeatedreload and finished-result replay before release. These tests are recommended next work, not claimed executions.",
+    "evidence": [
+      "src/records/RecordSharing.ts",
+      "src/games/game024/main.ts",
+      "src/games/game029/main.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:02:11.285621+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "f928b4fd08c736ac292a9e57515adc88f51c7c345fa325c96e0230333823634c",
+    "src/games/game024/main.ts": "6142987e5921f3fe8336339acd91628c6f9109076ddcc1556a80351bcd8880ca",
+    "src/games/game029/main.ts": "dd7433c157f2c60531da78986ba343ca2e4199daa6109ee4bfc0cdc7cabe202f"
+  },
+  "bounds": "Static independent source inspection. No Jev answer inspection, browser play, player analytics or production post. Ongoing source snapshot, not final source freeze."
+}

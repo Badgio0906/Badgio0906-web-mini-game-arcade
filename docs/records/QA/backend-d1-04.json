@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "backend": "Wrangler workerd + isolated local D1 SQLite",
+  "environment": "synthetic fixtures, never production",
+  "checks": [
+    "disabled_default_and_missing_admin_safe",
+    "bounded_stream_body_timeout",
+    "all_public_boards_empty_null",
+    "cache_origin_vary_including_absent_origin",
+    "origin_query_content_type_size_json",
+    "strict_numeric_metadata_environment_conditions",
+    "zero_duplicate_and_run_conflict",
+    "higher_numeric_and_concurrent_atomic_best",
+    "tie_revocation_fallback_restore_reapproval",
+    "pending_hidden_then_admin_approval",
+    "receipt_withdrawal_idempotency_no_resurrection",
+    "moderation_idempotency_content_conflict",
+    "admin_codex_public_write_boundaries",
+    "recalculate",
+    "public_fields_no_internal_ids_or_credentials",
+    "synthetic_lower_sql_zero_and_fallback",
+    "pending_expiry_preserves_tombstone",
+    "transaction_failure_rollback",
+    "analytics_ingest_admin_codex_regression",
+    "analytics_retention_keeps_records",
+    "persistent_global_admission_limit_and_duplicate_bypass",
+    "pending_capacity_persistent2000"
+  ],
+  "count": 22,
+  "public_board_count": 17,
+  "real_production_post": false
+}

@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-queue-allowlist",
+  "problem": "Restored queue payload can contain extra data before Worker rejection",
+  "expected": "Outgoing record body contains only allowed result fields; noAnalyticsID or worldmetadata",
+  "observed": [
+    "validQueued checks core identifiers and numeric value but not exact payload/meta keys.",
+    "flush serializes restored q.payload unchanged.",
+    "Worker strict-schema rejection happens after outgoing transmission."
+  ],
+  "unknown": [
+    "Whether local corrupt/legacy extra fields are blocked before transmission."
+  ],
+  "provenance": "actual independent source observations, not real player data"
+}

@@ -2,6 +2,7 @@ import './style.css';
 import { aggregateExport } from './export';
 import { historicalGameCatalog } from '../data/gameCatalog';
 import { dateRange, formatValue, summaryUrl, coverageWarnings, type DatePreset } from './model';
+import { mountRecordsAdmin } from './records';
 
 type RecordData = Record<string, unknown>;
 const host = document.querySelector<HTMLElement>('#admin')!;
@@ -18,6 +19,9 @@ const form = host.querySelector<HTMLFormElement>('form')!;
 const status = host.querySelector<HTMLElement>('#status')!;
 const results = host.querySelector<HTMLElement>('#results')!;
 const exportButton = host.querySelector<HTMLButtonElement>('#export')!;
+const tokenInput = form.elements.namedItem('token') as HTMLInputElement;
+const recordsAdmin = mountRecordsAdmin(host, import.meta.env.VITE_RECORDS_ENDPOINT ?? '', () => tokenInput.value);
+tokenInput.addEventListener('input', () => recordsAdmin.clear());
 let current: unknown = null;
 let pending: AbortController | null = null;
 const endpoint = import.meta.env.VITE_TELEMETRY_ENDPOINT as string | undefined;
@@ -29,6 +33,7 @@ if (!endpoint) status.textContent = 'Telemetry endpointは未設定です。MANU
 });
 function clear() {
   pending?.abort(); pending = null;
+  recordsAdmin.clear();
   (form.elements.namedItem('token') as HTMLInputElement).value = '';
   current = null; results.replaceChildren(); results.hidden = true; exportButton.disabled = true;
   status.textContent = 'トークンと集計を消去しました。';

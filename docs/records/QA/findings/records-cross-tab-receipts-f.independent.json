@@ -1,0 +1,27 @@
+{
+  "finding_id": "records-cross-tab-receipts-f",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The earlier per-entry revision prevented different-key overwrites but still used a non-atomic read-then-write for the same receipt status. A simultaneous withdrawn write could be overwritten by a stale accepted write. Also manual queue dispatch did not recheck the permission epoch immediately before fetch. Both observations were independently reported before this checkpoint; they affect withdrawal-state fidelity and explicit stop semantics. Current frozen revision adds an independent monotonic withdrawal marker and the epoch check for every queued POST, which addresses these observed branches statically.",
+  "evidence": [
+    "docs/records/QA/findings/records-cross-tab-receipts-f.json",
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/CLIENT_SOURCE_FREEZE_01.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected old per-entry read/write and presend branches before root revision, then examined frozen revision: successful withdrawal writes a separate never-cleared withdrawn marker; reload reads that marker before status replacement; every POST rechecks latest stored permission epoch. Browser interleaving tests are still needed and not claimed here.",
+    "evidence": [
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:18:14.117890+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "9700aad1c6cf21caf1fa6aa40a076094f8131f794ee0be836b1b648f0422fc3c"
+  },
+  "bounds": "Pre-fix classification uses actual prior source observations preserved in state and chat. Hash identifies inspected repaired source, not original pre-fix source. No Jev answers, live user data, or API calls."
+}

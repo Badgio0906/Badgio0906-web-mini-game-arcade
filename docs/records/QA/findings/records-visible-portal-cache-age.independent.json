@@ -1,0 +1,29 @@
+{
+  "finding_id": "records-visible-portal-cache-age",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent reviewer; Jev answers/log not inspected",
+  "rationale": "Original active portal refresh depended on startup/pageshow/visibility transitions and could retain revoked records indefinitely in ready state. This violates bounded revocation visibility and does not communicate stale retrieval time continuously. Current inspected repair adds one61second visible-only batched refresh timer, clears it on pagehide/restarts on pageshow, and displays fetchedAt in the condition line. Failed fetch retains dated stale state. Controlled timer and revision/failure browser checks remain required.",
+  "evidence": [
+    "docs/records/QA/findings/records-visible-portal-cache-age.json",
+    "src/records/PortalRecords.ts",
+    "src/records/PublicBests.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected publicRefresh lifecycle and repaired61second visible-only batch timer and date text; verify a changed/null board appears after cache age, hidden-page requests stop, and stale values stay dated.",
+    "evidence": [
+      "src/records/PortalRecords.ts",
+      "src/records/PublicBests.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:38:03.244760+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/PortalRecords.ts": "b8228033c01e4942a5a9c09c8badec458d525e4af68d483a11a7a188247fff0f",
+    "src/records/PublicBests.ts": "0690de438415763a8f2f17e59617c28c5b4179284472774c9211b28c1d68e839"
+  },
+  "bounds": "Judgment addresses root-recorded pre-fix observation; source hashes identify concurrently repaired source actually inspected. No fresh API/review execution or retroactive log insertion; browser evidence operator-authored, not personal human play."
+}

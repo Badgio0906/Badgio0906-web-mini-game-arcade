@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { TelemetryService } from '../../core/TelemetryService';
@@ -7,6 +8,7 @@ import { createUnkoGame } from './UnkoBoard';
 import { answerLabel, SCORE_VERSION } from './UnkoRun';
 import { resultComment } from './resultFlavor';
 import type { UnkoEvent, UnkoResult, UnkoSnapshot } from './contracts';
+const recordSession = createGameRecordSession('game011');
 
 type Screen = 'title' | 'playing' | 'paused' | 'ending' | 'result';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -47,13 +49,14 @@ function screen(next: Screen): void {
     overlay.innerHTML = `<article class="result-ticket"><div class="result-intro"><span class="eyebrow">${result.outcome === 'timeout' ? 'TIME UP' : 'OOPS!'}</span><h2>${result.reason}</h2><p>${result.actual ? `あなたの回答：${answerLabel(result.actual)} · ` : ''}正解は <strong>${answerLabel(result.expected)}</strong></p></div><div class="result-score"><span>SCORE</span><strong id="result-score">${result.score}</strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>画像問題</dt><dd>${result.imageCorrect} / 10</dd></div><div><dt>テキスト問題</dt><dd>${result.textCorrect} / 10</dd></div><div><dt>FINAL MODE</dt><dd>${result.finalMode ? answerLabel(result.finalMode) : '—'}</dd></div><div><dt>FINAL STREAK</dt><dd>${result.finalStreak}${newFinal ? ' ↑' : ''}</dd></div><div><dt>BEST SCORE</dt><dd>${best}</dd></div><div><dt>BEST FINAL</dt><dd>${bestFinal}</dd></div></dl><p class="result-comment">${resultComment(result)}</p><div class="paired-actions">${primary('retry-button', 'もう一回')}${titleButton}</div></article>`;
     overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true });
   }
+  if (next === 'result') recordSession.mount(overlay.firstElementChild as HTMLElement);
 }
 const controller = createUnkoGame($('game-canvas'), {
   onUpdate(snapshot) { if (state !== 'title') update(snapshot); }, onEvent: sound,
   onEnd(value) {
     if (ended || disposed || state !== 'playing') return;
     ended = true; result = value; newBest = value.score > best; newFinal = value.finalStreak > bestFinal;
-    best = Math.max(best, value.score); bestFinal = Math.max(bestFinal, value.finalStreak); storage.writeNumber('best:v2', best); storage.writeNumber('bestFinalStreak', bestFinal);
+    best = Math.max(best, value.score); bestFinal = Math.max(bestFinal, value.finalStreak); storage.writeNumber('best:v2', best); storage.writeNumber('bestFinalStreak', bestFinal); recordSession.complete(value.score, { metadata: { duration_seconds: value.time, outcome: value.outcome } });
     telemetry.trackEvent('run_end', { runId, score_version: SCORE_VERSION, outcome: 'over', score: value.score, time: value.time, image_correct: value.imageCorrect, text_correct: value.textCorrect, final_mode: value.finalMode ?? 'none', final_streak: value.finalStreak, reason: value.outcome });
     telemetry.trackEvent('score', { runId, score_version: SCORE_VERSION, score: value.score, best, newBest, final_streak: value.finalStreak, best_final: bestFinal }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over' });
     screen('ending'); resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'ending') screen('result'); }, 200);
@@ -63,7 +66,7 @@ function start(retry = false): void {
   if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
   void audio.unlock(); runId = `game011-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = newFinal = false;
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, score_version: SCORE_VERSION }); screen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, score_version: SCORE_VERSION }); screen('playing'); controller.start();
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); if (ended) return; telemetry.trackEvent('pause', { runId }); screen('paused'); }

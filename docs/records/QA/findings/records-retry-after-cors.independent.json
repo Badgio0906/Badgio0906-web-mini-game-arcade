@@ -1,0 +1,29 @@
+{
+  "finding_id": "records-retry-after-cors",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Retry-After is not a CORS-safelisted response header. The Worker sets the header but does not expose it, so cross-origin headers.get returns null and the client defaults to its short exponential backoff. This matches the actual isolated browser observation of a second POST before10seconds. Server rate limiting remains enforced and retry count bounded; this is a required transport fix rather than independently judged major privacy/game/save risk.",
+  "evidence": [
+    "analytics-worker/src/records.ts",
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/findings/records-retry-after-cors.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected server response header construction and client Retry-After read; expose only Retry-After on appropriate responses and confirm actual cross-origin browser waits the configured interval. Browser timings in state were obtained by QA operator, not this reviewer.",
+    "evidence": [
+      "analytics-worker/src/records.ts",
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:21:06.685613+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "analytics-worker/src/records.ts": "da1b6a6023811a5adc72d83cc1dca0bf116cdf6d07d8697f2978515047e52c8a",
+    "src/records/RecordSharing.ts": "744433230479e65c748c37a650434fecf1307a026226f65858b1deb6fc3c01f5"
+  },
+  "bounds": "Independent source inspection; this reviewer did not run the concurrent or cross-origin timing browser test. No Jev answer/API use."
+}

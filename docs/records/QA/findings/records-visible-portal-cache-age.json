@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-visible-portal-cache-age",
+  "problem": "An already visible portal has no bounded refresh for a removed public best",
+  "observed": [
+    "Portal publicRefresh runs on startup/pageshow and visibilitychange.",
+    "There is no refresh timer while the page remains visible.",
+    "Normal state stays ready with oldvalues until another external lifecycleevent."
+  ],
+  "expected": "Revocations can update an active portal within a few minutes and dated stale information is visible.",
+  "unknown": [
+    "Whether targeted browser regression confirms the expected behavior after a bounded fix."
+  ],
+  "provenance": "current portal source lifecycle inspection; no production record"
+}

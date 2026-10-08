@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
@@ -7,6 +8,7 @@ import { requestRewardedCredit } from '../../core/RewardService';
 import { RainRun } from './RainRun';
 import { RainBoard, project, unproject, VIEW } from './RainBoard';
 import type { Phase, RainEvent } from './types';
+const recordSession = createGameRecordSession('game017');
 
 type Screen = 'title' | 'explanation' | 'practice' | 'practice-complete' | 'playing' | 'paused' | 'result' | 'practice-failure' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -39,6 +41,7 @@ function setScreen(next: Screen): void {
     menu.innerHTML = '<span class="menu-eyebrow">' + (next === 'result' ? 'GAME OVER' : 'PRACTICE · TRY AGAIN') + '</span><h2>雨はやっぱり雨だ……</h2><p>Rainy is still rainy...</p><p>' + reason + '</p>' + (next === 'result' ? '<p class="result-score" id="result-score">' + run.score + '</p><p>ROUND ' + run.round + ' · DRY STREAK ' + run.streak + '<br/>BEST ' + best + '</p>' : '<p>練習は終わりません。もう一度試そう。</p>') + actions(btn(next === 'result' ? 'retry-button' : 'practice-retry-button', next === 'result' ? 'もう一回' : 'もう一度やってみる', true) + titleButton() + (next === 'result' ? '<a href="./index.html">ゲームセンター</a>' : ''));
   }
   if (next === 'reward') menu.innerHTML = '<span class="menu-eyebrow">DEVELOPMENT STUB</span><h2>CREDITを補充</h2><p>開発用Stubです。実際の広告はありません。</p>' + actions(btn('reward-confirm-button', '+3 CREDIT', true) + titleButton());
+  if (next === 'result') recordSession.mount(menu);
   sync();
 }
 function sync(): void {
@@ -71,7 +74,7 @@ function onEvent(event: RainEvent): void {
   if (event.type === 'end') {
     audio.tone(290, 65, .22, 'sine', 0, .045);
     if (run.practice) { setScreen('practice-failure'); return; }
-    if (ended) return; ended = true; best = Math.max(best, event.result.score); storage.writeNumber('best', best);
+    if (ended) return; ended = true; best = Math.max(best, event.result.score); storage.writeNumber('best', best); recordSession.complete(event.result.score, { metadata: { duration_seconds: event.result.time, outcome: 'over' } });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', score: event.result.score, time: event.result.time, failure_reason: event.result.reason, round: event.result.round });
     telemetry.trackEvent('score', { runId, score: event.result.score, best }); telemetry.trackEvent('run_duration', { runId, seconds: event.result.time, reason: 'over' }); setScreen('result');
   }
@@ -83,7 +86,7 @@ function start(retry = false): void {
   if (!credits.canPlay) { setScreen('reward'); return; }
   runId = 'game017-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
   if (credits.enabled && !credits.consume(runId)) return;
-  ended = false; if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId }); void audio.unlock();
+  ended = false; if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); void audio.unlock();
   setScreen('playing'); run.start(now(), Math.floor(Math.random() * 0xffffffff)); sync();
 }
 function quit(): void {

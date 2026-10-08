@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-cross-tab-receipts",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "Each tab loads withdrawal receipts once then writes a whole stale array. A later write by another tab can erase a receipt, preventing the posting browser from withdrawing an accepted record. The receipt storage listener only renders the in-memory list rather than synchronizing it. This is a withdrawal-capability/privacy issue.",
+  "evidence": [
+    "src/records/RecordSharing.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected constructor, persist, getReceipts, withdraw and storage listeners. Require atomic or conflict-safe receipt/queue storage with withdrawal/tombstone convergence; validate with two independent contexts/tabs.",
+    "evidence": [
+      "src/records/RecordSharing.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T14:57:17.241455+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "1e4b24a3d386e2c9b06bea288a8a12634e072d73b5ffbd05629375588633a81a"
+  },
+  "bounds": "Independent source inspection; stated concrete boundary examples are arithmetic/code consequences, not live/browser reproduction. No Jev answers read and no code modification. Test suggestions are next work, not claimed execution."
+}

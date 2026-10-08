@@ -1,0 +1,26 @@
+{
+  "finding_id": "records-visible-portal-cache-age",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent reviewer; Jev answers/log not inspected",
+  "rationale": "Original active portal refresh depended on startup/pageshow/visibility transitions and could retain revoked records indefinitely in ready state. This violates bounded revocation visibility and does not communicate stale retrieval time continuously. Current inspected repair adds one61second visible-only batched refresh timer, clears it on pagehide/restarts on pageshow, and displays fetchedAt in the condition line. Failed fetch retains dated stale state. Controlled timer and revision/failure browser checks remain required.",
+  "evidence": [
+    "docs/records/QA/findings/records-visible-portal-cache-age.json",
+    "src/records/PortalRecords.ts",
+    "src/records/PublicBests.ts",
+    "docs/records/QA/findings/records-visible-portal-cache-age.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independent source inspection plus recorded isolated browser observation. Root applied a bounded native-fetch and active-page refresh correction. Final source04 and browser evidence are separately preserved; no human enjoyment or public API operation claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-visible-portal-cache-age.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_04.json",
+      "docs/records/QA/browser-sharing-08/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-result-cooldown-controls",
+  "problem": "Game004 result cooldown re-enables optional sharing controls with the existing game buttons",
+  "expected": "Record sharing stays disabled when the endpoint is not configured.",
+  "observed": [
+    "Result delay selects every button inside overlay.",
+    "After300ms delay assigns disabled=false to every selected button.",
+    "Record controls are mounted inside the same overlay and use disabled based on endpoint and result eligibility."
+  ],
+  "unknown": [
+    "Whether the delayed control visibly appears enabled in the actual result screen."
+  ],
+  "provenance": "independent code inspection of result selector before scopedselector change; no production POST"
+}

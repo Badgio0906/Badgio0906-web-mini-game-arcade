@@ -1,0 +1,38 @@
+{
+  "reviewer": "records_review independent sub-agent",
+  "reviewed_at": "2026-10-08T15:03:09.851113+00:00",
+  "scope": "Independent visual inspection of seven stored real-browser screenshots from synthetic mocked API fixture03. No live interaction by this reviewer, no human usability satisfaction, no actual production records.",
+  "source_sha256": {
+    "src/analytics-admin/records.ts": "8731c8619cedf67f21f4a67b09e2a345118d10cc7610e281c49e0317b7b66b4e",
+    "src/analytics-admin/main.ts": "d51173f18a97ccd4151c89ddc74859d4c9f6d281c76e8188965afbe2eb9ce4ba",
+    "src/analytics-admin/style.css": "166f96b195efdc987c795d1d71f358f57edf15dee076096069920102c1a698cd",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732"
+  },
+  "source_matches_capture": true,
+  "images": {
+    "admin-1365x900.png": "1ea004e871203307329bff54d53d1786420fceddfea118ed9e77d87a47157cff",
+    "admin-390x844.png": "51db188cb5643af156bdc019b5b358b91b1b9b72634225aadcc2116fdfdb80dc",
+    "admin-320x568.png": "42b283179a2d9a0edad0197477d72f04032bc421cc7199693bfcc21c0b7cdb75",
+    "admin-844x390.png": "68f22eed1294fbdde6389a0337238be4922690ba2d17939e7c19de9086d38e80",
+    "confirmation-390x844.png": "3207dfe52477db77b4c19cd17bd305c3cc460c34310c0cc0666a676127d5d2aa",
+    "confirmation-320x568.png": "ae942a0b999ca16e55aa967eb920962170914c60138397da0b53ce3eabf197aa",
+    "confirmation-844x390.png": "83266de8b48b871777766ddf151b1b27f3870622f08a79d7b0401f5a977cfafc"
+  },
+  "result": "PASS_WITH_LIMITS",
+  "visual_score": 82,
+  "readability_F": 13,
+  "finish_H": 12,
+  "observations": [
+    "Existing Analytics controls are visually separate above a divider; sharing controls and candidate data use consistent dark-panel styling.",
+    "1365 desktop retains legible headers, units and status; untrusted inspection markup is displayed as text rather than executing.",
+    "390 and320 portraits wrap title and board strings without card-width overflow; controls stack with readable labels and touch-sized height.",
+    "Candidate table is a horizontally scrolling region on small screens: hidden right columns must be reached by scrolling, not assumed simultaneously visible.",
+    "Confirmation shows actual scaled123.4m plus stored1234 integer, board and status; reason and confirm/cancel remain visible in320portrait and844shortlandscape.",
+    "Fixture tokens shown masked; this review does not inspect or reproduce any real secret."
+  ],
+  "limitations": [
+    "Report records automated interactions and requests; reviewer only inspected screenshot outputs and fixed-source hashes.",
+    "Physical mobile scrolling, virtual keyboard shrink, screen-reader and subjective ease not evaluated.",
+    "Production admin connection and real record moderation not observed."
+  ]
+}

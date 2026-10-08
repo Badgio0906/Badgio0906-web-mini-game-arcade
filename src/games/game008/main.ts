@@ -1,9 +1,11 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import {StorageService} from '../../core/StorageService';
 import {TelemetryService} from '../../core/TelemetryService';
 import {AudioService} from '../../core/AudioService';
 import {createCoffeeGame} from './CoffeeBoard';
 import type {CoffeeEvent,CoffeeResult,CoffeeSnapshot} from './contracts';
+const recordSession = createGameRecordSession('game008');
 type Screen='title'|'explain'|'playing'|'paused'|'choice'|'result'|'practice'|'practice-done';
 const $=(id:string)=>document.getElementById(id)!;
 const app=$('app'),overlay=$('overlay');const storage=new StorageService(undefined,'web-mini-arcade:v1:game008:');const telemetry=new TelemetryService(storage,'game008');const audio=new AudioService(storage);
@@ -18,6 +20,7 @@ function render(next:Screen){state=next;sync();overlay.hidden=['playing','practi
  if(state==='result'&&lastResult){const r=lastResult;content=`<small>コーヒーこぼすな / DELIVERY RULES 2</small><h2>${r.outcome==='delivered'?'お届けしました！':r.outcome==='timeout'?'時間切れ。':'あっ、こぼれた。'}</h2><p>${r.reason}</p><strong class="result-score">${r.score}<small>SCORE</small></strong><dl><div><dt>配達したコーヒー</dt><dd>${r.deliveries} 杯</dd></div><div><dt>配達した残量</dt><dd>${Math.floor(r.totalDeliveredRemaining)}%</dd></div><div><dt>余裕時間</dt><dd>${r.spareTime.toFixed(1)} s</dd></div><div><dt>歩いた距離</dt><dd>${r.distance} m</dd></div><div><dt>BEST</dt><dd>${best}</dd></div></dl><div class="menu-actions">${button('retry-button','もう1回',true)}${button('title-button','タイトル')}</div>`;}
  if(state==='practice-done')content=`<h2>${practiceCompleting?'練習できました！':'もう一度練習しよう。'}</h2><p>${practiceCompleting?'左右の支え、速度切替、危険の前の慎重歩きを体験しました。':'左右を短く支えてから、急ぐ→慎重にを切り替え、最初の段差を慎重に越えよう。'}<br>練習はBEST・配達記録に入りません。</p><div class="menu-actions">${button('play-button','本番へ',true)}${button('practice-button','もう一度練習')}${button('title-button','タイトル')}</div>`;
  overlay.innerHTML=content?`<article class="receipt">${content}</article>`:'';
+ if(state==='result')recordSession.mount(overlay.firstElementChild as HTMLElement);
  $('practice-note').hidden=state!=='practice';
 }
 function update(s:CoffeeSnapshot){$('score-value').textContent=String(s.score);$('mode-label').textContent=`${s.cupCount}杯 · ${s.pace==='rush'?'急ぐ':'慎重'}`;
@@ -35,8 +38,8 @@ function event(e:CoffeeEvent){if(state==='practice'){if(e.type==='hazard'&&e.haz
  telemetry.trackEvent('specific_game_events',data);
  if(e.type==='warning')audio.tone(430,550,.08,'sine',0,.015);if(e.type==='delivery')audio.tone(420,680,.15,'triangle',0,.025);
 }
-const controller=createCoffeeGame($('game-canvas'),{onUpdate:update,onEvent:event,onEnd(r){if(state==='practice'){render('practice-done');return;}if(ended||!['playing','choice'].includes(state))return;ended=true;lastResult=r;best=Math.max(best,r.score);storage.writeNumber('best-delivery-v2',best);telemetry.trackEvent('run_end',{runId,rulesVersion:2,outcome:r.outcome,score:r.score,distance:r.distance,time:r.time,deliveries:r.deliveries,remaining:r.totalDeliveredRemaining,spareTime:r.spareTime});resultGuard=performance.now()+250;render('result');}});
-function start(practice=false){void audio.unlock();controller.title();if(practice){practiceLeft=practiceRight=practiceRush=practiceCareful=practiceCompleting=false;practiceStep=0;practiceHazard=false;ended=true;telemetry.trackEvent('practice_start',{rulesVersion:2});render('practice');controller.start(true);}else{runId=`coffee-${Date.now()}`;ended=false;lastResult=null;telemetry.trackEvent('run_start',{runId,rulesVersion:2});render('playing');controller.start();}}
+const controller=createCoffeeGame($('game-canvas'),{onUpdate:update,onEvent:event,onEnd(r){if(state==='practice'){render('practice-done');return;}if(ended||!['playing','choice'].includes(state))return;ended=true;lastResult=r;best=Math.max(best,r.score);storage.writeNumber('best-delivery-v2',best); recordSession.complete(r.score, { metadata: { duration_seconds: r.time, outcome: r.outcome } });telemetry.trackEvent('run_end',{runId,rulesVersion:2,outcome:r.outcome,score:r.score,distance:r.distance,time:r.time,deliveries:r.deliveries,remaining:r.totalDeliveredRemaining,spareTime:r.spareTime});resultGuard=performance.now()+250;render('result');}});
+function start(practice=false){void audio.unlock();controller.title();if(practice){practiceLeft=practiceRight=practiceRush=practiceCareful=practiceCompleting=false;practiceStep=0;practiceHazard=false;ended=true;telemetry.trackEvent('practice_start',{rulesVersion:2});render('practice');controller.start(true);}else{runId=`coffee-${Date.now()}`;ended=false;lastResult=null;recordSession.startRun(); telemetry.trackEvent('run_start',{runId,rulesVersion:2});render('playing');controller.start();}}
 function pause(){if(state==='playing'||state==='practice'){pausedFrom=state;controller.pause(true);telemetry.trackEvent('pause',{runId,phase:state});render('paused');}else if(state==='paused'){render(pausedFrom);controller.pause(false);telemetry.trackEvent('resume',{runId,phase:pausedFrom});}}
 function title(){if(!ended&&['playing','paused','choice'].includes(state)){const s=controller.snapshot();telemetry.trackEvent('run_end',{runId,rulesVersion:2,outcome:'quit',score:s.score,time:s.time,distance:s.distance});ended=true;}controller.title();render('title');}
 app.addEventListener('click',e=>{const target=(e.target as Element).closest<HTMLButtonElement>('button');if(!target||target.disabled||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;const id=target.id;if(state==='result'&&performance.now()<resultGuard)return;switch(id){case'play-button':case'retry-button':start();break;case'practice-button':case'practice-retry-button':start(true);break;case'explain-button':telemetry.trackEvent('tutorial_view',{rulesVersion:2});render('explain');break;case'title-button':case'brand-button':title();break;case'pause-button':case'resume-button':pause();break;case'mute-button':audio.toggle();sync();break;case'decline-button':case'accept-button':if(state==='choice'){render('playing');controller.choose(id==='accept-button'?'accept':'decline');}break;}},{signal:listeners.signal});

@@ -1,3 +1,4 @@
+import { createGameRecordSession } from './records/RecordSharing';
 import { createOnboarding } from './arcade/onboarding';
 import './style.css';
 import { StorageService } from './core/StorageService';
@@ -9,6 +10,7 @@ import { InputService } from './core/InputService';
 import { createOrbitGame, getOrbitInspection } from './game/OrbitScene';
 import { playOrbitSound } from './game/playOrbitSound';
 import type { OrbitController, RunResult, RunSnapshot } from './game/contracts';
+const recordSession = createGameRecordSession('game001');
 
 type Screen = 'title' | 'playing' | 'paused' | 'result' | 'reward';
 const storage = new StorageService();
@@ -124,6 +126,7 @@ function setScreen(next: Screen): void {
   } else if (state === 'result' && lastResult) {
     overlay.innerHTML = `<div class="screen-card result-screen"><span class="eyebrow ${newBest ? 'new-best' : ''}">${newBest ? '↗ NEW PERSONAL BEST' : 'FLIGHT COMPLETE'}</span><h2>ONE MORE<span>?</span></h2><p class="death-reason"></p><div class="result-score"><span class="small-label">SCORE</span><strong>${number(lastResult.score)}</strong><span class="result-best">BEST ${number(best)}</span></div><div class="result-stats"><div><span>TIME</span><b>${clock(lastResult.time)}</b></div><div><span>MAX COMBO</span><b>×${Math.max(1, lastResult.maxCombo)}</b></div></div><button id="retry-button" class="primary-button" data-action="retry">RETRY <span aria-hidden="true">↻</span></button><button id="title-button" class="secondary-button" data-action="title">TITLE</button><p class="start-hint">${credits.enabled ? `${credits.credits} CREDIT LEFT · ` : ''}SPACE TO RETRY</p></div>`;
     overlay.querySelector('.death-reason')!.textContent = lastResult.reason || '赤い障害に接触';
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     element('status-text').textContent = 'NICE FLIGHT. GO ONE MORE.';
   } else if (state === 'reward') {
     const results = lastResult ? `<div class="reward-summary"><span>SCORE <b>${number(lastResult.score)}</b></span><span>BEST <b>${number(best)}</b></span><span>TIME <b>${clock(lastResult.time)}</b></span><span>MAX COMBO <b>×${Math.max(1, lastResult.maxCombo)}</b></span></div>` : '';
@@ -143,7 +146,7 @@ function startRun(retry = false): void {
   quitLogged = false;
   lastResult = undefined;
   newBest = false;
-  telemetry.trackEvent('run_start', { runId, credits: credits.credits });
+  recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits });
   setScreen('playing');
   controller.startRun();
   stage.focus({ preventScroll: true });
@@ -198,7 +201,7 @@ controller = createOrbitGame(element('game-canvas'), {
     lastResult = result;
     resultAvailableAt = performance.now() + 420;
     newBest = result.score > best;
-    if (newBest) { best = Math.floor(result.score); storage.writeNumber('best', best); }
+    if (newBest) { best = Math.floor(result.score); storage.writeNumber('best', best); } recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: 'over' } });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', reason: 'collision', score: result.score, time: result.time, maxCombo: result.maxCombo });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
     telemetry.trackEvent('score', { runId, score: result.score, best, newBest });

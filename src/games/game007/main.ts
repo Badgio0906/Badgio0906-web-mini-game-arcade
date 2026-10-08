@@ -1,9 +1,11 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { TelemetryService } from '../../core/TelemetryService';
 import { AudioService } from '../../core/AudioService';
 import { createElevatorGame } from './ElevatorBoard';
 import type { ElevatorEvent, ElevatorSnapshot, ElevatorResult } from './contracts';
+const recordSession = createGameRecordSession('game007');
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const app = $('app'), overlay = $('overlay');
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game007:');
@@ -34,6 +36,7 @@ function finish(result: ElevatorResult) {
   if (!ended) {
     ended = true;
     if (result.score > best) { best = result.score; storage.writeNumber('best:transport:v2', best); telemetry.trackEvent('specific_game_events', { event_type: 'best_updated', best, rulesVersion: 2 }); }
+    recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     telemetry.trackEvent('run_end', { runId, score: result.score, floor: result.floor, outcome: result.outcome, seconds: result.time, rulesVersion: 2, delivered: result.delivered, expired: result.expired });
   }
   screen('result');
@@ -53,12 +56,13 @@ function screen(next: Screen) {
     const r = lastResult!; const pass = r.score >= 550;
     overlay.innerHTML = `<article class="dispatch-note result-note"><h2>${training ? pass ? '練習完了！' : 'もう一度、空きを残そう' : '輸送記録'}</h2><p>${r.reason}</p><div class="result-score"><strong>${r.score}</strong><span>${training ? '練習点 · BESTへ保存しません' : '配達点 / RULES 2'}</span></div><p>${r.delivered}組配達 · 期限切れ ${r.expired}組<br>${r.floor}F / ${r.time.toFixed(1)}秒</p>${actions(training ? button('play-button', '本番へ', true) + button('practice-button', '再練習') + button('title-button', 'タイトル') : button('retry-button', 'もう一便', true) + button('title-button', 'タイトル'))}</article>`;
   }
+  if (next === 'result' && !training) recordSession.mount(overlay.firstElementChild as HTMLElement);
 }
 function start(practice = false, retry = false) {
   if (['playing', 'practice', 'paused', 'milestone'].includes(state)) return;
   training = practice; ended = practice; lastResult = null; void audio.unlock();
   if (practice) telemetry.trackEvent('practice_start', { rulesVersion: 2 });
-  else { runId++; ended = false; if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 2 }); telemetry.trackEvent('run_start', { runId, rulesVersion: 2, scenario: sequence % 3 }); }
+  else { runId++; ended = false; if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 2 }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, rulesVersion: 2, scenario: sequence % 3 }); }
   screen(practice ? 'practice' : 'playing'); controller.start(practice ? 0 : sequence++ % 3, practice);
 }
 function pause() { if (state === 'playing' || state === 'practice') { beforePause = state; controller.pause(true); if (!training) telemetry.trackEvent('pause', { runId }); screen('paused'); } else if (state === 'paused') { screen(beforePause); controller.pause(false); if (!training) telemetry.trackEvent('resume', { runId }); } }

@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import { createOnboarding } from '../../arcade/onboarding';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
@@ -8,6 +9,7 @@ import { requestRewardedCredit } from '../../core/RewardService';
 import { createSortGame } from './SortBoard';
 import { ruleText, sideText, type SortLanguage } from './localization';
 import type { SortEvent, SortResult, SortSnapshot } from './contracts';
+const recordSession = createGameRecordSession('game005');
 
 type Screen = 'title' | 'playing' | 'paused' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -77,6 +79,7 @@ function renderScreen(): void {
     const result = lastResult; const labels = ruleText(result.rule, language);
     const direction = sideText(result.expectedSide, language); const attribute = result.expectedSide === 'left' ? labels.left : labels.right;
     overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">右往左往の仕分け術<small>SORT SHIFT</small></span><h2>${result.outcome === 'timeout' ? t('時間切れ！', 'Time is up!') : t('そっちじゃなかった！', 'Wrong side!')}</h2></div><div class="result-score"><b id="result-score">${result.sorted}</b><span>${t('仕分け数', 'SORTED')}</span>${newBest ? `<mark class="new-best">${t('自己新記録', 'NEW BEST')}</mark>` : ''}</div><dl class="result-details"><div><dt>${t('自己最高', 'BEST')}</dt><dd id="result-best">${best}</dd></div><div><dt>${t('連続', 'COMBO')}</dt><dd>${result.combo}</dd></div><div><dt>${t('時間', 'TIME')}</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl><p class="result-reason">${result.outcome === 'timeout' ? t('仕分けの時間がなくなりました。', 'The parcel deadline expired.') : t(`${result.actualSide === 'left' ? '左' : '右'}を選びました。`, `You chose ${result.actualSide === 'left' ? 'LEFT' : 'RIGHT'}.`)}</p><div class="correct-direction">${t('正解は ', 'Correct: ')}${direction}<small>${labels.dimension} · ${attribute}</small></div><div class="result-actions">${credits.canPlay ? primary('retry-button', t('RETRY · もう1回', 'RETRY')) : primary('reward-button', '+3 CREDIT')}${titleButton()}</div><small class="result-note">${credits.canPlay ? t('次は、もう1個仕分けよう。', 'Sort one more next time.') : t('NO CREDIT · 開発版 Rewarded Ad Stub', 'NO CREDIT · Development Rewarded Ad Stub')}</small></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
   } else if (state === 'reward') {
     overlay.innerHTML = `<article class="start-card reward-card"><span class="eyebrow">${t('もう一度仕分けよう', 'ONE MORE SHIFT')}</span><h2>${t('もうひと仕分け？', 'One more shift?')}</h2><p>${t('開発版の補充ボタンで<br /><b>+3 CREDIT</b>', 'Use the development refill button<br /><b>+3 CREDIT</b>')}</p><div class="paired-actions">${primary('reward-button', '+3 CREDIT')}${titleButton()}</div>${stub()}<p id="reward-status" role="status"></p></article>`;
   }
@@ -111,7 +114,7 @@ const controller = createSortGame($('game-canvas'), {
   onUpdate(snapshot) { if (state === 'playing' || state === 'paused') update(snapshot); }, onEvent: sound,
   onEnd(result) {
     if (state !== 'playing' || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.sorted > best; best = Math.max(best, result.sorted); storage.writeNumber('best', best); credits.consume(runId);
+    ended = true; lastResult = result; newBest = result.sorted > best; best = Math.max(best, result.sorted); storage.writeNumber('best', best); credits.consume(runId); recordSession.complete(result.sorted, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.sorted, time: result.time }); telemetry.trackEvent('score', { runId, score: result.sorted, best, newBest }); telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
     telemetry.trackEvent('sorted_count', { runId, count: result.sorted, combo: result.combo }); telemetry.trackEvent('rule_change_count', { runId, count: result.ruleChanges });
     resultAvailableAt = performance.now() + 300; setScreen('result', true);
@@ -122,7 +125,7 @@ function start(retry = false): void {
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game005-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false;
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); telemetry.trackEvent('pause', { runId }); setScreen('paused'); }

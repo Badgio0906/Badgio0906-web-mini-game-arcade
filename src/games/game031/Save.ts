@@ -126,9 +126,20 @@ export class SaveStore {
   async exportStoredBackup():Promise<string|null> {const raw=await this.read();return raw===null?null:JSON.stringify(raw);}
   async save(snapshot:Snapshot):Promise<void> {
     const captured=validateSnapshot(snapshot);
-    await this.write(store=>{store.put(captured,'current');});
+    await this.write(store=>{
+      store.put(captured,'current');
+      // Small local-only portal metadata, committed atomically with the authoritative world.
+      store.put({gameId:'game031',rulesetId:'1',schemaVersion:captured.schemaVersion,generatorVersion:captured.generatorVersion,
+        blockVersion:captured.blockVersion,revision:captured.revision,savedAt:captured.savedAt,
+        mined:captured.stats.mined,placed:captured.stats.placed,maxDepth:captured.stats.maxDepth,activeSeconds:captured.stats.activeSeconds},'record-current');
+    });
+    this.notifyRecords();
   }
-  async remove():Promise<void> {await this.write(store=>{store.delete('current');});}
+  async remove():Promise<void> {await this.write(store=>{store.delete('current');store.delete('record-current');});this.notifyRecords();}
+  private notifyRecords():void {
+    // This local notification carries no world data and cannot turn a committed save into a failure.
+    try {if(typeof window!=='undefined')window.dispatchEvent(new Event('game100:records:changed'));}catch {/* Optional portal notification. */}
+  }
   private async write(change:(store:IDBObjectStore)=>void):Promise<void> {
     const db=await this.open();
     return new Promise((resolve,reject)=>{

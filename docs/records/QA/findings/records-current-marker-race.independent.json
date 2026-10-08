@@ -1,0 +1,29 @@
+{
+  "finding_id": "records-current-marker-race",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "CURRENT_RECORDS_KEY is a shared read/modify/write map with no atomic serialization. Two tabs that read before either writes can delete the other game entry, or replace a higher verified current-rule value with a lower one. Original BEST keys remain intact, but the core portal current-best representation regresses or becomes unavailable, violating explicit concurrent-tab protection.",
+  "evidence": [
+    "src/records/RecordSharing.ts",
+    "src/records/localRecords.ts",
+    "docs/records/QA/findings/records-current-marker-race.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected whole-map read/write and prior Math.max logic; atomic per-game read-max-write transaction is appropriate, with sourceStamp validation and read-only legacy-map compatibility. Verify concurrent samegame high/low and crossgame015/019 updates plus original-source reset/deletion.",
+    "evidence": [
+      "src/records/RecordSharing.ts",
+      "src/records/localRecords.ts"
+    ]
+  },
+  "reviewed_at": "2026-10-08T15:21:06.685613+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "source_sha256": {
+    "src/records/RecordSharing.ts": "744433230479e65c748c37a650434fecf1307a026226f65858b1deb6fc3c01f5",
+    "src/records/localRecords.ts": "69dcdad57883d3a5fc851bae984ff8801b8b3364e68e525c03a4aa219f3f9f16"
+  },
+  "bounds": "Independent source inspection; this reviewer did not run the concurrent or cross-origin timing browser test. No Jev answer/API use."
+}

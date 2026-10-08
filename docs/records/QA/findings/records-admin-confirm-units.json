@@ -1,0 +1,16 @@
+{
+  "finding_id": "records-admin-confirm-units",
+  "problem": "Record review confirmation uses unscaled baseline integer without unit",
+  "expected": "Destructive review confirmation shows same scaled value and unit as candidate table",
+  "observed": [
+    "Actual admin fixture screenshot shows table123.4m but confirmation value1234 withoutunit.",
+    "records admin confirmation formatter inserts raw value."
+  ],
+  "unknown": [
+    "Whether operator could interpret confirmation as different record magnitude."
+  ],
+  "evidence": [
+    "docs/records/QA/admin-fixture-02/confirmation-320x568.png"
+  ],
+  "provenance": "actual isolated browser UI fixture with synthetic candidate; no real record or secret"
+}

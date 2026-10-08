@@ -1,0 +1,25 @@
+{
+  "finding_id": "records-cross-tab-receipts-f",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "records_review independent sub-agent; Jev answers/log not inspected",
+  "rationale": "The earlier per-entry revision prevented different-key overwrites but still used a non-atomic read-then-write for the same receipt status. A simultaneous withdrawn write could be overwritten by a stale accepted write. Also manual queue dispatch did not recheck the permission epoch immediately before fetch. Both observations were independently reported before this checkpoint; they affect withdrawal-state fidelity and explicit stop semantics. Current frozen revision adds an independent monotonic withdrawal marker and the epoch check for every queued POST, which addresses these observed branches statically.",
+  "evidence": [
+    "docs/records/QA/findings/records-cross-tab-receipts-f.json",
+    "src/records/RecordSharing.ts",
+    "docs/records/QA/CLIENT_SOURCE_FREEZE_01.json",
+    "docs/records/QA/findings/records-cross-tab-receipts-f.independent.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected cited source and observed state; root applied a bounded correction. Raw independent record retains reasoning and proposed follow-up. Final source and separate test evidence are retained in QA. No personal live human review is claimed.",
+    "evidence": [
+      "docs/records/QA/findings/records-cross-tab-receipts-f.independent.json",
+      "docs/records/QA/CLIENT_SOURCE_FREEZE_03.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

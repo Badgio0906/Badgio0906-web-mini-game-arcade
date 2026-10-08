@@ -1,0 +1,236 @@
+{
+  "reviewer": "records_review independent sub-agent",
+  "reviewed_at": "2026-10-08T15:59:36.540245+00:00",
+  "base_commit": "249748d7a3b5ee8c832857435bf28643436f2392",
+  "result": "PASS_STATIC_AND_VISUAL_WITH_VERIFICATION_LIMITS",
+  "blockers_found_in_reviewed_scope": [],
+  "source_freeze": "CLIENT_SOURCE_FREEZE_04.json",
+  "freeze_matches": {
+    "src/records/PublicBests.ts": true,
+    "src/records/RecordSharing.ts": true,
+    "src/records/localRecords.ts": true,
+    "src/records/submissionValidation.ts": true,
+    "src/records/PortalRecords.ts": true,
+    "src/records/protocol.ts": true,
+    "src/data/gameCatalog.ts": true,
+    "src/data/tagCatalog.ts": true,
+    "src/data/telemetryAnalytics.ts": true,
+    "src/data/recordDefinitions.ts": true,
+    "src/data/analyticsEnvelope.ts": true,
+    "src/data/telemetrySchema.ts": true,
+    "src/data/gameVersions.ts": true,
+    "src/portal/main.ts": true,
+    "src/analytics-admin/model.ts": true,
+    "src/analytics-admin/main.ts": true,
+    "src/analytics-admin/records.ts": true,
+    "src/analytics-admin/export.ts": true,
+    "index.html": true,
+    "privacy.html": true,
+    "src/portal/style.css": true,
+    "src/records/currentRules.ts": true,
+    "src/games/game004/main.ts": true,
+    "public/fonts/arcade-rounded-jp.woff2": true,
+    "assets/fonts/font-index.json": true
+  },
+  "source_sha256": {
+    "src/records/PublicBests.ts": "0690de438415763a8f2f17e59617c28c5b4179284472774c9211b28c1d68e839",
+    "src/records/RecordSharing.ts": "07394d0e74c5be2b9dd5ab84926560711fd1796dd977a03a66004afd2e37853d",
+    "src/records/localRecords.ts": "69dcdad57883d3a5fc851bae984ff8801b8b3364e68e525c03a4aa219f3f9f16",
+    "src/records/submissionValidation.ts": "8c3a2e33b199785017983648aff59043d4deadc8f6ba8945d8e4b81fdb0f56e6",
+    "src/records/PortalRecords.ts": "b8228033c01e4942a5a9c09c8badec458d525e4af68d483a11a7a188247fff0f",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "src/data/gameCatalog.ts": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+    "src/data/tagCatalog.ts": "ce518e0a639ef3a30d62437c5a74543a61e224cf11bbf47b5e908093dae29583",
+    "src/data/telemetryAnalytics.ts": "ebf5e0a32a7783ae9c6487b1d893a924993ab77176d88f8563cb52a7ded9efa2",
+    "src/data/recordDefinitions.ts": "37f3c4f214a0c01e273f450bebbefd04f4729dca081c5a0036b8a5514f722732",
+    "src/data/analyticsEnvelope.ts": "7f5f82e90a4cff47c1695d8eb608845a90802f09fb8f4e54572f5d3d038db316",
+    "src/data/telemetrySchema.ts": "8538f75287ee1053a4af128233308a6cc0257ad9985cc27f584dd1c24e067a90",
+    "src/data/gameVersions.ts": "aefd217e74c134478acb086a68307e2bbf90c6d4010b39c8b7d905215dfa938c",
+    "src/portal/main.ts": "498ec89eaebd53f693ad255f6add090fc5d49d27668cff338d1da7aaefad08ac",
+    "src/analytics-admin/model.ts": "5454a6a015c7cf6a5c770c50bc405883b90a53c207ae5bfb531cd82704d8f808",
+    "src/analytics-admin/main.ts": "d51173f18a97ccd4151c89ddc74859d4c9f6d281c76e8188965afbe2eb9ce4ba",
+    "src/analytics-admin/records.ts": "8731c8619cedf67f21f4a67b09e2a345118d10cc7610e281c49e0317b7b66b4e",
+    "src/analytics-admin/export.ts": "67702fe13c379e6d51c69a6ff71ab8292832ba63dbf21e66479db296d3526380",
+    "index.html": "dca079542deb70203f271f7a22475cb147632991278f1304a1c4fb1d46371791",
+    "privacy.html": "4de11444e2565b52051aa9b25e9e921e74e030974c34793ad5367f395ebc2e4f",
+    "src/portal/style.css": "be6e44a93648f211294ddfdbbbe65a656af1cc158366ec54d2854979a652dc61",
+    "src/records/currentRules.ts": "9577a837acfc56a6a6f57208baec9064f4bb53ae6c2ff8b098677aae305d80ee",
+    "src/games/game004/main.ts": "51001bf0c0f04952fcc530396623d52970ad8e815b84264aa225f6af5ea94510",
+    "public/fonts/arcade-rounded-jp.woff2": "d5603c6d21b51b3856c2a08b547608da5d224e9dd3e5870e4f75468c107196f9",
+    "assets/fonts/font-index.json": "5fcc7b9bfc6a5f70fee07b4a990bf9fb4708a5f9f2bf60fa2e31ab33a3a67411"
+  },
+  "backend_receipt_matches": {
+    "analytics-worker/src/records.ts": true,
+    "analytics-worker/src/index.ts": true,
+    "analytics-worker/src/types.ts": true,
+    "analytics-worker/migrations/0002_records.sql": true,
+    "analytics-worker/tests/records-local-d1.mjs": true,
+    "analytics-worker/tests/records-test-wrapper.ts": true,
+    "analytics-worker/tests/wrangler.records.local.jsonc": true,
+    "src/data/recordDefinitions.ts": true
+  },
+  "protected_baseline_checks": {
+    "package.json": {
+      "sha256": "0c378382434ddaf8bfb218bb4d7d2c9bbb81187a3cab02b36a000f45f13d20d7",
+      "unchanged_from_base": true
+    },
+    "package-lock.json": {
+      "sha256": "cca00c06299fdaa95bf415d386c4dd19bd45adb6826f75e91665692d31722aba",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/wrangler.jsonc": {
+      "sha256": "b7e626b982deed6f66af7ac7ccab0130ad026551e8fc007ba63353103d6785dc",
+      "unchanged_from_base": true
+    },
+    "analytics-worker/migrations/0001_events.sql": {
+      "sha256": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+      "unchanged_from_base": true
+    },
+    "src/core/StorageService.ts": {
+      "sha256": "62ae0985c9767d7115fee3aa2dbc2a060c00d44e61e34d1a206b77d8d96e6159",
+      "unchanged_from_base": true
+    },
+    "src/core/ConsentService.ts": {
+      "sha256": "0591a950e1c7fd83a9bc34ca48d1e9ad87c8f72a397259ba0567e258fc0b7407",
+      "unchanged_from_base": true
+    },
+    "src/core/CreditService.ts": {
+      "sha256": "684408bdc2f3fccea6564ae18ef885dc52d89513b1b59ce6088165cc1216ab1a",
+      "unchanged_from_base": true
+    },
+    "src/core/GoogleAnalyticsService.ts": {
+      "sha256": "12763cec0bdfcb1f5c4166a858916b0700369c0755ef49440ea633307e19addf",
+      "unchanged_from_base": true
+    },
+    "src/analytics/config.ts": {
+      "sha256": "860625c8276d5770a8d39f6c202855da334c0b08701564762e03f8121dc32740",
+      "unchanged_from_base": true
+    },
+    "src/analytics/runtime.ts": {
+      "sha256": "405f135526da6dc267df17b2167a1422eb3879b84405342d86f79c2981e3680e",
+      "unchanged_from_base": true
+    },
+    "src/data/gameVersions.ts": {
+      "sha256": "aefd217e74c134478acb086a68307e2bbf90c6d4010b39c8b7d905215dfa938c",
+      "unchanged_from_base": true
+    },
+    "src/data/gameCatalog.ts": {
+      "sha256": "01aeca53102bd2d2b5b21f95152df196e47a63ca082df4ec87a0b87e9d46e59a",
+      "unchanged_from_base": true
+    },
+    "src/data/tagCatalog.ts": {
+      "sha256": "ce518e0a639ef3a30d62437c5a74543a61e224cf11bbf47b5e908093dae29583",
+      "unchanged_from_base": true
+    }
+  },
+  "game_scope": {
+    "tracked_files": 221,
+    "unchanged_files": 204,
+    "changed_files": [
+      "src/games/game002/main.ts",
+      "src/games/game003/main.ts",
+      "src/games/game004/main.ts",
+      "src/games/game005/main.ts",
+      "src/games/game006/main.ts",
+      "src/games/game007/main.ts",
+      "src/games/game008/main.ts",
+      "src/games/game009/main.ts",
+      "src/games/game011/main.ts",
+      "src/games/game015/main.ts",
+      "src/games/game016/main.ts",
+      "src/games/game017/main.ts",
+      "src/games/game018/main.ts",
+      "src/games/game019/main.ts",
+      "src/games/game024/main.ts",
+      "src/games/game029/main.ts",
+      "src/games/game031/Save.ts"
+    ],
+    "assessment": "Main imports/start/result/mount/resume hooks only; 004 button cooldown narrowed to exclude sharing controls; 019 notification uses existing native floor-to-decimeter metric. 031Save adds lightweight metadata in existing transaction and removes it with world, without changing world format/generation/chunks. Source model/physics/render files and original BEST write semantics unchanged."
+  },
+  "static_review": {
+    "sharing": "Independent final inspection verifies immediate latest permission epoch check before POST, strict restored outgoing allowlist, bounded queue and stable result dedup, independent random record-run identifiers, local-only saved continuation identity. Receipt/tombstone events update other tabs; receipt persistence rechecks monotonic withdrawn tombstone and withdrawal updates current array object.",
+    "markers": "Atomic per-game IndexedDB read-maximum-write transaction in separate records DB. Original BEST keys read-only; latest sourceStamp avoids stale legacy promotion. Existing world031 DB remains separate, lightweight031 record-current metadata written in same save transaction and removed with world.",
+    "public_get": "Final default arrow fetch wrapper avoids the Illegal invocation receiver issue. Batch cache coalesces pending calls and60second ready state; visible-only61second interval, pagehide cancellation/pageshow resume, visible fetchedAt and stale labels inspected. Anonymous whitelisted schema, no local identifiers/cookies/referrer, no per-card fetch.",
+    "scope": "Existing game score formulas/physics/render models and original BEST semantics retained; main record lifecycle hooks are authorized changes.004 delay excludes record controls and019 native decimeter flooring aligns previousBEST. Protected Analytics consent/ingest schema, CREDIT, GA4 config, dependencies, Worker wrangler, original migration and catalog/tags/gameVersions remain byte-identical. Additive record Worker routes/migration are separate from existing Analytics tables and authorization."
+  },
+  "visual_review": {
+    "method": "Actual stored browser screenshots opened with view_image by this reviewer; source/DOM inspection separately reported. No live browser operation or physical device by reviewer.",
+    "images": {
+      "browser-portal-04/portal-1300x900-world-record.png": "664153e68121950960c74f058cffb9c14834cbfd62eeb11b82f5606f324b066c",
+      "browser-portal-04/portal-390x844-long-record.png": "75f9db3563a0849904d317ef4647112288b1622a50fed878371f3332b051be91",
+      "browser-portal-04/portal-320x720-world-record.png": "7b4997c8e6313ee9bfa45373a65345639e71ad15af445a48140c97e90091bfae",
+      "browser-portal-04/portal-844x390-long-record.png": "7fc58974ba0bcc36383a98d7d7efbb2175e3d42a180125d64ce84684c648e6cb",
+      "browser-enabled-portal-02/enabled-320x720.png": "d11081dfc9a8cf60a8b3f665364559ee2a60e93f3137c69dc830ce69bbfc0658",
+      "browser-enabled-portal-02/enabled-1300x900.png": "50eab72e4eac3619fdf5255e55dc106f0b6f6f8fe1412a482dbf0ad8f3b5c0b1"
+    },
+    "visual_score": 84,
+    "readability_F": 13,
+    "finish_H": 12,
+    "gate": {
+      "overall_minimum": 80,
+      "F_minimum": 12,
+      "H_minimum": 12,
+      "met": true
+    },
+    "observations": [
+      "PC cards keep records immediately below thumbnail and before title. LocalBEST and sharedBEST labels are distinct, calm palette and original card identity maintained.",
+      "390px long integer test value remains inside record row with unit readable; title wraps naturally without colliding with tags or PLAY.",
+      "320px world031 shows this-world statistic and no-global-comparison correctly, two rows contained; description, tags, PLAY and sharing-settings entry fit without lateral overflow.",
+      "844x390 landscape retains readable two-row records and conditions in two-column cards; title flow remains independent below record separator.",
+      "Enabled320px shared long value wraps its unit to another line without clipping or label collision. Dated condition line wraps visibly, instead of hiding retrieval date only in tooltip. This is functional wrapping, not evidence of physical touch comfort.",
+      "Enabled1300px values/date/empty-state conditions remain aligned in three-column cards, thumbnails and game IDs still legible. No new flashing/background elements seen."
+    ],
+    "limitations": [
+      "Screenshots are selected scrolled card regions rather than a guarantee for every possible saved value/OS font.",
+      "No subjective human enjoyment or author approval inferred from visual score.",
+      "Physical iPhone/Android, accessibility screen-reader, mobile keyboard and OS background behavior not tested by reviewer."
+    ]
+  },
+  "operator_browser_evidence": {
+    "browser-portal-04/REPORT.json": {
+      "result": "PASS",
+      "checks": 82,
+      "errors": [],
+      "report_sha256": "a8bcedae5e22a5034ea15af9d0e2edad0eeaa724654b7f28cfc1a07a169cfb2b"
+    },
+    "browser-enabled-portal-02/REPORT.json": {
+      "result": "PASS",
+      "checks": 26,
+      "errors": [],
+      "report_sha256": "ab22e9b4ccb9aef5437c9ad30710028becfca9a2604e9e4364cf83c562f20640"
+    },
+    "browser-sharing-08/REPORT.json": {
+      "result": "PASS",
+      "checks": 49,
+      "errors": [],
+      "report_sha256": "17ba4abff2f6ef6123fb27cc5a2fc9e50b8105f4e3aa9eea038190afea275948"
+    },
+    "browser-sharing-manual-09/REPORT.json": {
+      "result": "PASS",
+      "checks": 13,
+      "errors": [],
+      "report_sha256": "3b3d843762342715d7c9be8a411866a9268bd36eb899c9a354d76de4c1cb9700"
+    }
+  },
+  "other_qa_evidence": {
+    "browser-FINAL.json": "Operator final aggregate: normal native input selected7games across14desktop/phone cases,84 assertions; no state injection, endpoint disabled/preparing,0POSTs/0pageerrors. Native02 first3cases and native03 remaining11 composed explicitly. Reviewer did not personally perform interactions.",
+    "backend-d1-06.json": "24 isolated D1 checks PASS, source receipt matches. No production deploy or fake production records.",
+    "ROOT_CHECKS.json": "Operator reports check/typecheck and861tests/76files plus final build PASS; reviewer did not execute tests.",
+    "admin_visual": "Separate actual seven-image independent review retained at admin-fixture-03/INDEPENDENT_VISUAL_REVIEW.json (82/F13/H12)."
+  },
+  "failure_resolution": [
+    "source03 findings native fetch receiver and active page refresh fixed in source04 and subsequently enabled browser testPASS26. Original failures remain stored; source03 report not relabeled as finalPASS.",
+    "Withdrawal/UI and atomic marker original failures fixed and isolated transportPASS49 supports static reasoning."
+  ],
+  "remaining_verification": [
+    "Production Worker authentication unavailable; actual production record migration/deploy/GET/submission/withdrawal unobserved. Preparing endpoint-disabled publication can only be reported as preparing, not live sharing.",
+    "Actual bfcache restore not observed; synthetic persisted pageshow fixture tests handler only.",
+    "Not all17scoredgames actually played;7representative games14cases, othergames source/unitcoverage.",
+    "Physical iPhone/Android and author human play remain unperformed."
+  ],
+  "bounds": [
+    "No Jev answers or JEV_SHADOW.jsonl read, no new API, no real production Analytics/record access or secrets.",
+    "No code changes, commit/push/deploy by reviewer. Only independent review documentation saved.",
+    "This review verifies scoped technical/visual evidence; user publication authorization and real deployment state belong to root."
+  ]
+}

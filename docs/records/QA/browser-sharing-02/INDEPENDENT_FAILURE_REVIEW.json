@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-08T15:24:30.397109+00:00",
+  "cause": "TEST_INFRA_BUG",
+  "reviewer": "records_browser_qa",
+  "evidence": "rate-limit-backoff-failure-state.json",
+  "observed": "429 header backoff PASS; next failed assertion expected queuepurge despiteuncheck() on uncheckedcheckbox",
+  "inspection": "Playwright locator.uncheck does not dispatch change if checkbox alreadyfalse. Sharing settings listener only implementsOFFonchange; no actual transition performed.",
+  "action": "Exercise explicitON thenOFF for queuepurge. Preserve prior failure and 429 success."
+}

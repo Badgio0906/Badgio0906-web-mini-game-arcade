@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-cross-tab-receipts",
+  "problem": "Receipt and queue whole-key writes can replace another tab’s independently added entries",
+  "expected": "Concurrent tabs preserve withdrawal capability and settingOFF stopspendingposts",
+  "observed": [
+    "Each tab loads receipt/queue arrays once.",
+    "persist rewrites entire shared storage keys.",
+    "receipt storageevent handler renders getReceipts but does not reload arrays."
+  ],
+  "unknown": [
+    "How simultaneous accepted responses and withdrawal propagate across tabs."
+  ],
+  "provenance": "actual independent source observations, not real player data"
+}

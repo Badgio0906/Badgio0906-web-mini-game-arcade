@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import { createOnboarding } from '../../arcade/onboarding';
 import { memoryComment } from './resultFlavor';
 import './style.css';
@@ -8,6 +9,7 @@ import { AudioService } from '../../core/AudioService';
 import { requestRewardedCredit } from '../../core/RewardService';
 import { createEchoGame } from './EchoBoard';
 import type { EchoEvent, EchoResult, EchoSnapshot } from './contracts';
+const recordSession = createGameRecordSession('game004');
 
 type Screen = 'title' | 'playing' | 'paused' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -62,9 +64,10 @@ function setScreen(next: Screen, delay = false): void {
     const result = lastResult; $('phase-label').textContent = 'CORRECT SEQUENCE'; $('phase-hint').textContent = '正しい順番を、もう一度'; app.dataset.phase = 'ended';
     const cells = result.sequence.map((cell, index) => `<span class="sequence-pill"><small>${index + 1}</small><b>${cell + 1}</b></span>`).join('');
     overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">あなたの短期記憶、無事ですか？<small>ECHO GRID</small></span><h2>あと、もう1 LEVEL。</h2></div><div class="result-score"><span>LEVEL</span><b id="result-score">${result.level}</b>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best}</dd></div><div><dt>CORRECT</dt><dd>${result.correctInputs}</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl><p class="result-reason">押したのは <b>${result.actualCell + 1}</b> · 次の正解は <b>${result.expectedCell + 1}</b></p><div class="correct-sequence" aria-label="正しい順番"><span class="sequence-label">正しい順番</span><div class="sequence-pills">${cells}</div></div><p id="memory-comment" class="result-flavor">${memoryComment(result.level)}<small>ゲーム内のネタです</small></p><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">${credits.canPlay ? '次は、もう1 LEVEL。' : 'NO CREDIT · 開発版 Rewarded Ad Stub'}</small></article>`;
+    recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delay) {
-      overlay.querySelectorAll<HTMLButtonElement>('button').forEach(button => { button.disabled = true; });
-      resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.querySelectorAll<HTMLButtonElement>('button').forEach(button => { button.disabled = false; }); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
+      overlay.querySelectorAll<HTMLButtonElement>('button:not(.record-share-controls button)').forEach(button => { button.disabled = true; });
+      resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.querySelectorAll<HTMLButtonElement>('button:not(.record-share-controls button)').forEach(button => { button.disabled = false; }); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
     }
   } else if (next === 'reward') {
     overlay.innerHTML = `<article class="start-card reward-card"><span class="eyebrow">ONE MORE ECHO</span><h2>もうひと記憶？</h2><p>開発版の補充ボタンで<br /><b>+3 CREDIT</b></p><div class="reward-actions">${primary('reward-button', '+3 CREDIT')}${titleButton}</div>${stub}<p id="reward-status" role="status"></p></article>`;
@@ -81,7 +84,7 @@ const controller = createEchoGame($('game-canvas'), {
   onEvent: sound,
   onEnd(result) {
     if (state !== 'playing' || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.level > best; best = Math.max(best, result.level); storage.writeNumber('best', best); credits.consume(runId);
+    ended = true; lastResult = result; newBest = result.level > best; best = Math.max(best, result.level); storage.writeNumber('best', best); credits.consume(runId); recordSession.complete(result.level, { metadata: { duration_seconds: result.time, outcome: 'over' } });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.level, time: result.time });
     telemetry.trackEvent('score', { runId, score: result.level, best, newBest });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
@@ -95,7 +98,7 @@ function start(retry = false): void {
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game004-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false;
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); telemetry.trackEvent('pause', { runId }); setScreen('paused'); }

@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-08T15:46:22.669044+00:00",
+  "reviewer": "records_browser_qa",
+  "cause": "TEST_INFRA_BUG",
+  "observed": "Game001 immediate state=result but getByRole countzero inhiddenoverlay duringexisting420msimpacteffect",
+  "inspection": "main.ts first setsresultstate/mountshare then overlay.hidden=true, delayedfalse420ms. Failureimage showsimpactfield notresult. PlaywrightgetByRole excludeshiddenelements.",
+  "action": "Waitvisiblesharebutton beforeassertdisabled/retry. NoGame001 orphysics/effectchange."
+}

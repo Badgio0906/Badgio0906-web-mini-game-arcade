@@ -1,0 +1,14 @@
+{
+  "finding_id": "records-retry-after-cors",
+  "problem": "Cross-origin rate-limited retries do not observe server wait header",
+  "expected": "Cross-origin429 waits the provided Retry-After duration before retry.",
+  "observed": [
+    "Browser QA mocked429 with Retry-After10 but observed twoPOSTs within2300ms.",
+    "The Worker429 has Retry-After but response does not expose that header to cross-origin browser code.",
+    "Client reads response.headers.get Retry-After for nextAt."
+  ],
+  "unknown": [
+    "Whether adding a permitted response header resolves the observed retry timing."
+  ],
+  "provenance": "real Chromium execution against fully mocked isolated HTTP fixture; no production POST"
+}

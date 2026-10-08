@@ -1,3 +1,4 @@
+import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { TelemetryService } from '../../core/TelemetryService';
@@ -10,6 +11,7 @@ import { loseTitle, loseComment } from './resultFlavor';
 import { createLoseOnboarding } from './onboarding';
 import { handLabel, handHiragana, handMarkup, hydrateHands, showHand, preloadHands } from './handVisual';
 import { HANDS, type Hand, type LoseEvent, type LoseResult, type LoseStage } from './types';
+const recordSession = createGameRecordSession('game016');
 
 type Screen = 'title' | 'explanation' | 'practice' | 'practice-complete' | 'playing' | 'paused' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -27,7 +29,7 @@ const titleButton = (): string => button('title-button', 'タイトル');
 const portalButton = (): string => `<a class="result-portal" href="${import.meta.env.BASE_URL}index.html">ゲームセンター</a>`;
 const run = new LoseRun(onEvent);
 const token = (): string => `${screenEpoch}/${state === 'playing' || state === 'paused' ? run.snapshot().epoch : state === 'practice' ? practice.snapshot().step : state}`;
-function setContent(signature: string, markup: string): void { if (contentSignature === signature) return; contentSignature = signature; tv.innerHTML = markup; hydrateHands(tv); }
+function setContent(signature: string, markup: string): void { if (contentSignature === signature) return; contentSignature = signature; tv.innerHTML = markup; hydrateHands(tv); if (state === 'result') recordSession.mount(tv.firstElementChild as HTMLElement); }
 function sync(): void {
   app.dataset.state = state; text('best-value', String(best)); text('mute-button', audio.muted ? '音 OFF' : '音 ON'); $('mute-button').setAttribute('aria-pressed', String(audio.muted));
   $('mute-button').setAttribute('aria-label', audio.muted ? '音声をオンにする' : '音声をミュート');
@@ -75,7 +77,7 @@ function onEvent(e: LoseEvent): void {
   if (e.type === 'question') { const id = `${e.question.number}/${e.question.id}`; if (id !== lastQuestion) { lastQuestion = id; telemetry.trackEvent('round_reached', { runId, round: e.question.number, phase: e.question.stage }); telemetry.trackEvent('opponent_hand', { runId, round: e.question.number, hand: e.question.opponentHand }); } }
   if (e.type === 'correct') { telemetry.trackEvent('player_hand', { runId, hand: e.feedback.playerHand }); telemetry.trackEvent('lose_success', { runId, streak: e.correct, score: e.score, points: e.feedback.points }); telemetry.trackEvent('response_latency_ms', { runId, ms: e.feedback.reactionMs }); if (e.correct > 30) telemetry.trackEvent('reflex_streak', { runId, streak: e.correct - 30 }); audio.tone(660, 990, .075, 'triangle', 0, .035); }
   if (e.type === 'end' && !ended) {
-    ended = true; result = e.result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best', best);
+    ended = true; result = e.result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best', best); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     telemetry.trackEvent(result.outcome === 'win' ? 'accidental_win' : result.outcome === 'draw' ? 'draw' : 'timeout', { runId, phase: result.stage, round: result.question.number });
     if (result.playerHand) telemetry.trackEvent('player_hand', { runId, hand: result.playerHand }); if (result.reactionMs !== null) telemetry.trackEvent('response_latency_ms', { runId, ms: result.reactionMs });
     telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time, failure_reason: result.outcome, phase: result.stage, streak: result.correct, reflex_streak: result.speedCorrect, highest_reflex_streak: result.highestReflexStreak, response_latency_total_ms: result.responseLatencyTotalMs, response_count: result.responseCount });
@@ -89,7 +91,7 @@ function start(retry = false): void {
   if (state === 'title') telemetry.trackEvent('tutorial_skip', { startMethod: 'immediate', completedBefore: !practice.needed() });
   const id = `game016-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; if (!wallet.start(id)) { screen('reward'); return; }
   runId = id; ended = false; result = null; newBest = false; lastQuestion = ''; reachedStages.clear(); void audio.unlock();
-  if (retry) telemetry.trackEvent('retry', { runId }); telemetry.trackEvent('run_start', { runId }); screenEpoch++; state = 'playing'; contentSignature = ''; run.start(performance.now()); sync(); draw();
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); screenEpoch++; state = 'playing'; contentSignature = ''; run.start(performance.now()); sync(); draw();
 }
 function pause(): void {
   if (state === 'playing') { if (run.pause(true, performance.now()) && !ended) { telemetry.trackEvent('pause', { runId }); screen('paused'); } }
