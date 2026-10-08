@@ -1,0 +1,42 @@
+{
+  "reviewer": "independent texture_review",
+  "observed_at": "2026-10-08T03:45:25.574648+00:00",
+  "base_commit": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf",
+  "source_hashes": {
+    "src/games/game031/SurfaceTextures.ts": "c95340dc38b7601c724bc26c7e7c367a1b3f113f578c865c3a6bf5b1986d4415",
+    "src/games/game031/Render.ts": "b99bc788e56ca0e91f7617f2c8d973d3b2283ecbcd1ad15d352166ec017ed4d3",
+    "tests/unit/game031-textures.test.ts": "bec33c3cf7667f681aedc4a5cff0cef809128e93555a6560b7d50e190aa5b38d",
+    "node_modules/three/src/renderers/webgl/WebGLTextures.js": "a1947fd09ac98b3a57e40018dc8eccfce9c40f2cf4b6200b3180a00af5406451",
+    "node_modules/three/src/textures/DataArrayTexture.js": "b9819be0501e2b3d3130901d65729ade61df657f2f77e283e2540769df0b8ac2"
+  },
+  "tests": {
+    "command": "npx vitest run tests/unit/game031-textures.test.ts && npm run check",
+    "tests": 15,
+    "passed": 15,
+    "typecheck": "PASS",
+    "external_calls": 0
+  },
+  "native_three_version": "0.186.1",
+  "native_inspection": {
+    "WebGLTextures.js:904": "DataArrayTexture selects TEXTURE_2D_ARRAY, not one 2D atlas.",
+    "WebGLTextures.js:234": "Unsigned-byte sRGB transfer selects SRGB8_ALPHA8. GPU sampling decodes base color to linear; no extra manual gamma code is added.",
+    "WebGLTextures.js:1168-1207": "Texture allocation/upload has discrete depth layers via texStorage3D/texSubImage3D or texImage3D with width,height,depth.",
+    "WebGLTextures.js:1391-1393": "generateMipmaps=true uses generateMipmap on that TEXTURE_2D_ARRAY target. Array filtering/mip generation preserve each layer rather than mixing adjacent atlas slots.",
+    "DataArrayTexture.js:79-93": "flipY defaults false; uploaded RGBA rows are mapped by per-face custom surfaceUv. wrapR defaults ClampToEdgeWrapping.",
+    "SurfaceTextures.ts": "10 layers cover AIR0/placeables1..8/boundary9. Supplied images are assigned only1..8; fallback/boundary remain procedural. min LinearMipmapLinear,mag Linear,RepeatS/T; bounded anisotropy light2/std4 capped hardware."
+  },
+  "render_inspection": [
+    "Basic and Standard share one surfaces.uniform; no per-voxel/material/renderer allocation. Chunk positions/normals carry constant BlockID per face.",
+    "Standard vertexColors false avoids old palette multiplying source colors and gray face-shadow plus real light double shading; Basic uses neutral grayscale face shades, not legacy material colors. Both base color white.",
+    "Successful tier swap disposes prior array once. All8decode validity checked before replacing. Aborted older epochs/destroyed results cannot alter latest uniform.",
+    "Canonical ASCII BASE_URL paths support normal root/subpath; no user Windows paths at runtime.",
+    "Current tests are JS/native-Three configuration and concurrency assertions, not direct driver pixel/mipmap proof. Actual GPU screenshot and shader console checks are separate browser QA."
+  ],
+  "observed_product_findings": [],
+  "limits": [
+    "No claim that static screenshots prove all movement shimmer or all physical devices.",
+    "No physical iPhone/Android or human enjoyment test here.",
+    "No Jev logs read and no API called."
+  ],
+  "test_finalized_at": "2026-10-08T03:46:00Z"
+}

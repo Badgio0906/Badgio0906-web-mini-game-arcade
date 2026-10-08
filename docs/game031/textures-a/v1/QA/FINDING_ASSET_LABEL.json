@@ -1,0 +1,10 @@
+{
+  "finding_id": "game031-textures-a-source-contact-label",
+  "problem": "Long source filenames overlap adjacent panels in the eight-material QA contact image.",
+  "expected": "The QA contact should let reviewers read each block name and source filename within its own panel.",
+  "observed": ["The source filename text is longer than the 256px panel in asset-contact-label-before.png.", "Neighboring label text overlaps; source image files and runtime manifest remain separate."],
+  "unknown": ["Whether a line-wrap or wider QA panel is the clearest way to preserve the exact filenames."],
+  "operation": "Inspect the actual eight-source QA contact image.",
+  "evidence": ["docs/game031/textures-a/v1/QA/asset-contact-label-before.png"],
+  "provenance": "Actual visual inspection of a development-only QA artifact, not gameplay."
+}

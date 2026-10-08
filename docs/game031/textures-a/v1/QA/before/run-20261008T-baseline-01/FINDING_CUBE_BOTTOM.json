@@ -1,0 +1,18 @@
+{
+  "finding_id": "game031-textures-a-cube-bottom-fixture",
+  "problem": "The negative-Y view intended to inspect the isolated stone cube shows a full-frame earth surface instead.",
+  "expected": "Each of the six face captures should show the same isolated stone cube at voxel 15,24,15.",
+  "observed": [
+    "The cube-negative-Y image is a brown earth surface, with no isolated stone cube visible.",
+    "The fixture has a full earth floor at voxel Y21 and places the viewing eye at Y20.6 for this capture.",
+    "Other cube face captures use viewpoints above the floor."
+  ],
+  "unknown": [
+    "Whether the floor obstructs the expected view or another render issue contributes."
+  ],
+  "operation": "Synthetic render fixture screenshot; no normal player position injection in game.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/before/run-20261008T-baseline-01/cube-face-ny.png"
+  ],
+  "provenance": "synthetic fixture, actual baseline Render with viewport 1280x900"
+}

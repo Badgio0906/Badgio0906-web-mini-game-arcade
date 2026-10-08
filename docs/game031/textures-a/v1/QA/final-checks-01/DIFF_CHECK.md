@@ -1,0 +1,5 @@
+# 差分確認
+
+コード/資料の差分checkは成功。実行時stdoutをそのまま保存したtypecheck.log、unit.log、unit-after-metadata.logだけにGitの末尾空行警告がある。証跡の生ログを整形して書き換えず、`.log`を除いた差分checkが成功することを別に確認した。これらは製品ソースやテスト失敗ではない。
+
+日本語原本ファイル名のstaging検査はGitのNUL区切り出力で行った。通常表示のquotePathをファイル名として解釈した初回scope検査のAssertionErrorは、NUL区切りで解消した。混入ファイルはない。

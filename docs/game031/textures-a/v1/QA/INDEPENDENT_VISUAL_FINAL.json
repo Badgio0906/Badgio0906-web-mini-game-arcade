@@ -1,0 +1,166 @@
+{
+  "reviewer": "texture_review independent agent",
+  "review_recorded_at": "2026-10-08T04:13:50.641662+00:00",
+  "result": "PASS_VISUAL_PROTOTYPE_GATE",
+  "total": 84,
+  "maximum": 100,
+  "criteria": [
+    {
+      "id": "A",
+      "name": "Identity",
+      "score": 13,
+      "max": 15,
+      "basis": "Actual first-person terrain and supplied blue-green/earth/mineral palette retain the quiet sandbox identity; no model/body/tool overlay."
+    },
+    {
+      "id": "B",
+      "name": "Objects/materials",
+      "score": 14,
+      "max": 15,
+      "basis": "Eight actual blocks now show user-provided granular/mottled/faceted imagery; chalk, cyan, amber-in-rock and purple-in-dark-rock distinguishable. Cube silhouettes stay flat/rectilinear."
+    },
+    {
+      "id": "C",
+      "name": "Background",
+      "score": 8,
+      "max": 10,
+      "basis": "Actual start and rendered underground/tunnel surfaces remain visible and calm. Plain sky and repeated finite boundary are simple rather than rich."
+    },
+    {
+      "id": "D",
+      "name": "UI integration",
+      "score": 9,
+      "max": 10,
+      "basis": "Actual390/320/landscape images retain8named/count-bearing cards with matching thumbnail samples and distinct selected framing; no newly clipped labels observed."
+    },
+    {
+      "id": "E",
+      "name": "Composition",
+      "score": 8,
+      "max": 10,
+      "basis": "Centered target and editable world remain focal. Short landscape still devotes a substantial fraction to controls/palette, an existing practical compromise."
+    },
+    {
+      "id": "F",
+      "name": "Readability",
+      "score": 14,
+      "max": 15,
+      "basis": "Matched after overlays show dark target outline over chalk, light angular crack over dark crystal, clear aim and contrasting valid/invalid ghosts. This score uses real screenshots after the recorded contrast fix."
+    },
+    {
+      "id": "G",
+      "name": "Motion/effects evidence",
+      "score": 6,
+      "max": 10,
+      "basis": "Progress-stage overlay and oblique camera keyframes retain readable textures. No continuous video perceptual evaluation, physical motion comfort or sound experience was performed; no credit inferred from shader source."
+    },
+    {
+      "id": "H",
+      "name": "Finish",
+      "score": 12,
+      "max": 15,
+      "basis": "Supplied material family, improved targets and faithful small icons feel coherent in viewed screens. Repeated macro motifs, especially amber/deepstone source coarseness and simple background limit polish; not a claim of seamless photorealism."
+    }
+  ],
+  "thresholds": {
+    "total_minimum": 80,
+    "F_minimum": 12,
+    "H_minimum": 12
+  },
+  "source_hashes": {
+    "src/games/game031/Render.ts": "af3dd79db6baed7a25eb1b63ff4940720b6cc2267da9d8176b525b1e77270c75",
+    "src/games/game031/SurfaceTextures.ts": "c740e3a1045e6f2f100f91384bf78a8f1eaa0c37e74eaab678eeb7e757656b3d",
+    "src/games/game031/main.ts": "a3f5e6bb32b46b512efb65c03f991316c723a39faeecea2bfcb4dfcc35290da3",
+    "src/games/game031/style.css": "6fe00a75ffab312d0bb338ecfe7c0cfbb2260d325545ceeacc3d0a7c56d0334e"
+  },
+  "opened_actual_image_evidence": [
+    "after/run-20261008T-candidate-03/desktop-standard-gallery.png",
+    "after/run-20261008T-candidate-03/desktop-standard-tunnel.png",
+    "after/run-20261008T-candidate-03/desktop-light-gallery.png",
+    "after/run-20261008T-candidate-03/phone-actual-game.png",
+    "after/run-20261008T-candidate-03/small-actual-game.png",
+    "after/run-20261008T-candidate-03/landscape-actual-game.png",
+    "after/run-20261008T-candidate-03/cube-face-px.png",
+    "after/run-20261008T-candidate-03/cube-face-nx.png",
+    "after/run-20261008T-candidate-03/cube-face-py.png",
+    "after/run-20261008T-candidate-03/cube-face-ny.png",
+    "after/run-20261008T-candidate-03/cube-face-pz.png",
+    "after/run-20261008T-candidate-03/cube-face-nz.png",
+    "after/overlays-02/desktop-id4-valid.png",
+    "after/overlays-02/desktop-id8-valid.png",
+    "after/overlays-02/desktop-id8-invalid.png",
+    "after/overlays-02/phone-id4-valid.png",
+    "after/overlays-02/phone-id8-valid.png",
+    "after/overlays-02/phone-id8-invalid.png",
+    "after/oblique-motion-01/standard-frame-0.png",
+    "after/oblique-motion-01/standard-frame-30.png",
+    "after/oblique-motion-01/standard-frame-60.png",
+    "after/oblique-motion-01/standard-frame-89.png",
+    "after/oblique-motion-01/light-frame-0.png",
+    "after/oblique-motion-01/light-frame-60.png",
+    "after/oblique-motion-01/light-frame-89.png"
+  ],
+  "evidence_sha256": {
+    "after/run-20261008T-candidate-03/desktop-standard-gallery.png": "86731a52af3c02fa27204354c465c46f1f534c010f464ee6968a8dee59115a80",
+    "after/run-20261008T-candidate-03/desktop-standard-tunnel.png": "1123a46ef15d563a2ae19d2d546f870df88b7b32ea30543f73a4c9361499426a",
+    "after/run-20261008T-candidate-03/desktop-light-gallery.png": "1a1bac784e5a60bf8659cd6309baafbd5447eb03d58711482b9a3b6f989a72a8",
+    "after/run-20261008T-candidate-03/phone-actual-game.png": "028e36acfc5cf9bd1fbb5cd5aac517c4174c408c87bf49b11aecce160b2fbc10",
+    "after/run-20261008T-candidate-03/small-actual-game.png": "eccd7ebc9b4e14fadd8349cde339293f29d119698f0dab097b61620110aac81b",
+    "after/run-20261008T-candidate-03/landscape-actual-game.png": "cca2a8cee0805369ea92e878a3a1cc45c46f7d924a0d2b1e5ffb02f3a0e6aa65",
+    "after/run-20261008T-candidate-03/cube-face-px.png": "4fc0c68658f30325ea4a6dd228130f438d94d818a10dba11f5937b3231a5c840",
+    "after/run-20261008T-candidate-03/cube-face-nx.png": "ce61b46dbbc03a6e4a0b06e050df17f9a5ec04d5c0da85f1df4943671d708fae",
+    "after/run-20261008T-candidate-03/cube-face-py.png": "01a2b3c6aace1f204edda82c05a05aa37b39dff83671044456d5cf63444a1e61",
+    "after/run-20261008T-candidate-03/cube-face-ny.png": "c3b757f00912cbf0675cfbcc5540d960f1867c8ba64cce72251dab0bf32ddbce",
+    "after/run-20261008T-candidate-03/cube-face-pz.png": "133b9dd721794aca10d51555b55dda452f68e3a97d8796e2b3f1790f26df076a",
+    "after/run-20261008T-candidate-03/cube-face-nz.png": "dc5563d17db8d5a7e1497e09271e0c599312271bc0e511748bf22f6e5a4f153c",
+    "after/overlays-02/desktop-id4-valid.png": "92d1fbf1d330b164552aea02149fab4fc0e599efd28448d6c99e1d1273507226",
+    "after/overlays-02/desktop-id8-valid.png": "fc8f15468161d76bf4cf18ee97519a4fafc0a49d7a5820f3a2589fe4db2269df",
+    "after/overlays-02/desktop-id8-invalid.png": "e4ec9c79edae28c7a27015516c935be12428f75ba479c1221f08ae3d2ac76512",
+    "after/overlays-02/phone-id4-valid.png": "4567b3198a1293b7772a553e72a6b697976709f572a51e495f29b93359901e77",
+    "after/overlays-02/phone-id8-valid.png": "855f232857705ba3e9458ea30cbe446915c4c7285a394f1ed1371fde9114e178",
+    "after/overlays-02/phone-id8-invalid.png": "f8174f7e48b6074d306254a8fbd9ab966d14bdb3342f45ab3a26118154f550a4",
+    "after/oblique-motion-01/standard-frame-0.png": "bafe4b420386a865447d9560322c123aacaadb430e1362a11df4f25a591366d3",
+    "after/oblique-motion-01/standard-frame-30.png": "9dfd1139ad8d114ab6ab43e82301a9143375aeed1ea28616f46b3ab68a904a88",
+    "after/oblique-motion-01/standard-frame-60.png": "3a200e2e3cc2ff74db87e64b9c1c2db24e6b2e00873aa872805bd0045a6cf439",
+    "after/oblique-motion-01/standard-frame-89.png": "e4ed3aa8073804a1dbaf46c1af6812a51baa750bd408325bca9d719405932ba4",
+    "after/oblique-motion-01/light-frame-0.png": "9653f7c6aab49757aab8f92f0eea0628c2edb7151d2faeff2036e33638ff16f1",
+    "after/oblique-motion-01/light-frame-60.png": "8a58dbc62b17fbecf8cad196d567745854849434a1228b1f6e0d48c783ccc54c",
+    "after/oblique-motion-01/light-frame-89.png": "c30153223596b7e17c37d224f3f177d9ca673729c3cd6cdf14c959ef44fd3f8b"
+  },
+  "comparison": [
+    "Before baseline02 gallery versus final candidate03 gallery uses identical eight positions and camera; supplied details replace procedural few-pixel patterns.",
+    "Original and processed contacts/repeat images were opened during initial review; user texture source variations remain recognizable.",
+    "All6actual cube faces contain stone rather than a missing/other material; original obstructed negative-Y image is preserved separately.",
+    "Final selected-mip linear filtering keyframes retain recognizable near texture and soft far tone separation; no blue contamination on chalk edges observed. This static review cannot prove absence of temporal flicker."
+  ],
+  "findings_closed_by_evidence": [
+    "game031-textures-a-dark-crack-contrast: original dark crack was unreadable; matched overlay02 confirms contrast correction.",
+    "game031-textures-a-cube-bottom-fixture: fixed fixture viewpoint has visible underside; no game UV issue established.",
+    "asset-contact-label-overflow: original before filenames collide; processed contact now wraps within panels."
+  ],
+  "performance_summary": {
+    "conditions": "Dedicated sequential1280x900 headless Chromium SwiftShader software GPU120post-dirty-zero frames, actual128×64×128 world, same pose/terrain/inventory and draw geometry.",
+    "original_pbr_standard_median_ms": 76.2,
+    "final_baseline_standard_median_ms": 23.6,
+    "final_after_standard_median_ms": 27.8,
+    "final_baseline_light_median_ms": 22.35,
+    "final_after_light_median_ms": 24.2,
+    "final_standard_p95_ms": 51.9,
+    "final_light_p95_ms": 53.6,
+    "interpretation": "Major initial slowdown mitigated by Lambert and bounded sampling; measured residual cost remains (+18%std/+8%light medians on this machine), not unchanged performance or all-phone guarantee.",
+    "evidence": "after/performance-actual-120-03/REPORT.json"
+  },
+  "independence": {
+    "renderer_implementation_by_reviewer": false,
+    "reviewer_live_normal_play": false,
+    "jev_log_read": false,
+    "jev_api_called": false,
+    "basis": "Actual images opened via view_image plus separate source/unit/native record inspection. Jev did not assign scores or authorize publication."
+  },
+  "limits": [
+    "Fixture/gallery/overlays/camera-path images are actual Render screenshots of synthetic scenes, not natural player accomplishments or production saved worlds. Actual DOM start screens use normal start clicks.",
+    "MP4 files exist, but reviewer inspected7keyframes and their report; did not watch full videos in realtime. No claim that temporal shimmer, motion sickness or physicalphone comfort is human-approved.",
+    "This is Visual prototype acceptance only. Normal-operation100mines/50placements, saving/backups, public bytes, CI, and publication gates are separate QA/root responsibilities.",
+    "No author enjoyment or physical iPhone/Android trial was performed. No PBR-complete, zero-rights-risk, fully-seamless, or real-crystal-geometry claim."
+  ]
+}

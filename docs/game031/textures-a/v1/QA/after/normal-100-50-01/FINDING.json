@@ -1,0 +1,19 @@
+{
+  "finding_id": "game031-textures-a-normal-foot-fall",
+  "problem": "Normal-operation regression reports no foot-mining fall before reaching its 100-mining phase.",
+  "expected": "The test moves away from the protected return pad, mines the block underfoot and observes gravity into the hole.",
+  "observed": [
+    "After normal movement, player X65.4332 Z67.6332, feetY48.999999; target voxel65,48,67 is boundary material9.",
+    "The mined counter is2 before and after the foot-mining attempt.",
+    "The run has29 dirty nearby chunks; lastframe88.9ms and targetdistance1.6117.",
+    "The test uses600ms KeyD and fixed-duration centering rather than checking whether the character has left the protected return pad."
+  ],
+  "unknown": [
+    "Whether movement timing under the software GPU leaves the character on the protected pad or another input/physics issue contributes."
+  ],
+  "provenance": "local normalkeyboardmouseinput + readonlyvoxelplanner; Chromium headless SwiftShader; no directworld/player mutation",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-01/REPORT.json",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-01/failure.png"
+  ]
+}

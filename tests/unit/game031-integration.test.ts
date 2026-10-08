@@ -9,7 +9,7 @@ import { fetchAnalyticsContext, parseOptions } from '../../scripts/fetch-analyti
 const summary = { event: 'session_summary', active_seconds: 60, blocks_mined: 14, blocks_placed: 5, max_depth: 12, material_types_found: 3, return_to_surface_count: 1, quality_tier: 'light', save_error_code: 'none' };
 const fixture: AnalyticsEnvelope = {
   schema_version: 2, event_id: '00000000-0000-4000-8000-000000000001', occurred_at: '2026-10-07T12:00:00.000Z',
-  game_id: 'game031', game_version: 'prototype-1', rules_version: '1', presentation_version: 'prototype-1',
+  game_id: 'game031', game_version: 'textures-a-v1', rules_version: '1', presentation_version: 'textures-a-v1',
   browser_id: '00000000-0000-4000-8000-000000000002', visit_id: 'synthetic-visit', session_id: 'synthetic-page', run_id: 'synthetic-run',
   event_name: 'specific_game_events', environment: 'synthetic', device_class: 'mobile', input_type: 'touch', page: 'game031.html', data: summary,
 };
@@ -21,7 +21,7 @@ describe('Game031 sandbox registration boundaries', () => {
     expect(NEXT_GAME_NUMBER).toBe(32);
     expect(gameCatalog.at(-1)).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31 });
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');
-    expect(gameVersions.game031).toEqual({ rules_version: '1', presentation_version: 'prototype-1' });
+    expect(gameVersions.game031).toEqual({ rules_version: '1', presentation_version: 'textures-a-v1' });
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
     expect(isAnalyticsEnvelope(fixture)).toBe(true);
     expect(isAnalyticsEnvelope({ ...fixture, game_id: 'game032', page: 'game032.html' })).toBe(false);

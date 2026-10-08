@@ -1,0 +1,15 @@
+# Asset processing review — separate from runtime Visual QA
+
+Role: asset preparation with independent original-content mapping. Source baseline: `2d745110e1a7a24660da16dd6529d8ca2d08a2bf`. This is an inspection of source/optimized texture panels; it does not assert that the game or public site has loaded them.
+
+- Opened original eight-image contact; confirmed stable IDs 1–8 by visible content and retained hashes. All eight are RGB 1254×1254 PNGs, no transparency.
+- Viewed original and processed 3×3 repetition panels. No conspicuous hard row/column edge justified repainting. Amber's edge RGB difference was somewhat larger than neighboring pixel differences; a 512px seam junction enlargement still showed continuous faceted rock rather than a single straight border. A numeric edge difference is not itself a visible-seam finding. Repeated distinctive amber clusters can be recognized, as expected for a repeated source image.
+- Viewed standard512 and light256 contacts. Moss/earth, slate/chalk, cyan crystal/amber mother-rock/purple crystal remain distinct; dark material retains visible internal facets. White chalk is bright but has subtle beige detail. Deep rock is intentionally the comparatively coarse provided image, without added whole-image blur or a homemade replacement.
+- Compared WebP qualities82/86/90/94 against the exact resized reference. Quality90 was adopted for a restrained transfer size while retaining pebble and facet detail. Numeric MAE/PSNR are in `asset-compression.json`, not human enjoyment or full runtime scores. No nearest-neighbor filter or extra color processing was applied by this tool.
+- Original PNGs total17,606,787 bytes. Eight standard WebPs total360,748 bytes; eight light WebPs112,120 bytes. The normalized manifest is4,883 bytes. First-tier transfer may additionally include manifest/request overhead; a later tier switch loads another tier. Download bytes and decoded GPU allocation are different.
+- Estimated 10-layer RGBA8 texture-array allocation with full mip chain: standard13,981,013 bytes (about13.33MiB), light3,495,253 bytes (about3.33MiB). This excludes drivers, decode buffers and transient old/new arrays during tier changes. Only BaseColor is included; no PBR map overhead.
+- Sixteen full image decode/hash/size checks and all eight preserved-source identity checks pass in `asset-validation.json`. Public sources contain no original PNGs or original source metadata fields.
+
+Evidence: `asset-original-contact.png`, `asset-standard-contact.png`, `asset-light-contact.png`, `asset-repeat-before.png`, `asset-repeat-after.png`, `asset-repeat-light.png`; source/output ledger under `assets/game031/textures-a/v1/`. Initial contact-label overlap is preserved in `asset-contact-label-before.png`; the image pixels and mapping were unaffected. Renderer texture-array sampling, six-face UV orientation, sRGB output, image-failure fallback, oblique filtering, memory disposal and actual in-game legibility require the separate runtime QA.
+
+No claim is made of full PBR, perfectly seamless appearance, author playtest, physical phone performance or legal zero risk.

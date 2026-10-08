@@ -1,0 +1,28 @@
+{
+  "finding_id": "game031-textures-a-post-dirty-performance",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "texture_review independent agent",
+  "rationale": "A source-scoped rendering performance regression is measured in the tested environment, not merely a failing test expectation: same viewport/world/pose/nearby-terrain hash, dirty queue zero, and unchanged draws/triangles show120frames standard median24.75→76.2ms/p9546.1→137.8ms and light23.75→44.95ms/p9550→87.6ms; isolated fixture measurements also worsen. These sustained frame times materially delay input/display on this software-GPU browser and can slow the unchanged .05-capped simulation. Thus unresolved risk is meaningful for this demonstrated environment, while it does not establish equivalent regression or failure on physical phones/hardware GPUs. Before-render source used nearest atlas/basic shading; initial supplied-source record has array trilinear+anisotropy2/4 and Standard lighting. Which component dominates still requires bounded source/profiling investigation.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/performance-actual-120-01/REPORT.json",
+    "docs/game031/textures-a/v1/QA/after/performance-matched-120-01/REPORT.json",
+    "docs/game031/textures-a/v1/QA/INDEPENDENT_SOURCE_AND_TESTS.json",
+    "src/games/game031/SurfaceTextures.ts",
+    "src/games/game031/Render.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read matched actual/synthetic120-frame summaries and earlier inspected renderer/filter configuration. Separately inspected current source now showing Lambert and anisotropy1/2; this is a later mitigation, not proof of the original mechanism. Require a fresh same-conditions comparison plus visual after-images to evaluate it; keep original slower measurements. Do not disable all mip filtering or silently shrink the saved world.",
+    "evidence": [
+      "docs/game031/textures-a/v1/QA/after/performance-actual-120-01/REPORT.json",
+      "docs/game031/textures-a/v1/QA/after/performance-matched-120-01/REPORT.json",
+      "src/games/game031/SurfaceTextures.ts",
+      "src/games/game031/Render.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

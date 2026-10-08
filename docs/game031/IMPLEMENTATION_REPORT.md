@@ -1,5 +1,7 @@
 # Game031「掘って、置くだけ。」技術QA済み試作
 
+**最新の表示更新:** [textures-a-v1・提供8素材の実装/QA/公開記録](textures-a/v1/IMPLEMENTATION_REPORT.md)。以下は初版実装・公開当時の記録。保存/世界/ルールの仕様は維持し、低解像度表面の説明は初版のもの。
+
 **試作公開済み:** https://game100garage.com/game031.html 。runtime `aead0cf218558cbe4ead9a8a4d15251c56070430`、公式Pages **37709128212** build/deploy成功。期待版の公開13file SHA一致後、PC／phone相当の通常操作と保存再読込を確認。[公開証拠](QA/PUBLICATION.json)。本人未試遊の技術QA済み試作。
 
 ## 実装と境界

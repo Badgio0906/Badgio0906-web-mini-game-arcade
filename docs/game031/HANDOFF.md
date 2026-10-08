@@ -1,5 +1,7 @@
 # Game031 再開・公開手順
 
+**現在の表示改修:** [textures-a-v1再現/最新状態](textures-a/v1/HANDOFF.md)／[報告](textures-a/v1/IMPLEMENTATION_REPORT.md)。提供8素材512/256、DataArrayTexture、標準Lambert/軽量Basic。世界/保存版1と物理を維持。以下は初版の引継ぎと公開履歴。
+
 正式game_idはgame031。ユーザー発案「掘って、置くだけ。 / DIG & PLACE」、候補表の実装へ数えない。026〜030と退役010のIDを維持。新作統合後Catalogはactive30/historical31、次032は未着手。
 
 読む順序：AGENTS→PROJECT_CONTEXT/CURRENT_STATUS→GAME_DEVELOPMENT_RULES→JEV_REVIEW_RULES→IMPLEMENTATION_SPEC/REPORT→TECHNICAL_QA/各REPORT→ANALYTICS_STATUS。開始時に現在HEAD/branch/statusとremote mainを調べ、他作業treeを保全する。元Game018 revision03を含む15worktreeのbaseline比較はtests/game031/check-protection.py、初期証拠はQA/BASELINE.json。

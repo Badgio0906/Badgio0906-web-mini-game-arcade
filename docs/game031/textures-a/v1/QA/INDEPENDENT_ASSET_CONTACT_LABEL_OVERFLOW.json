@@ -1,0 +1,28 @@
+{
+  "finding_id": "asset-contact-label-overflow",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent texture_review agent",
+  "observed_at": "2026-10-08T03:42:39.271919+00:00",
+  "review_source_commit": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf + uncommitted texture task",
+  "rationale": "The frozen image shows source filename labels bleeding horizontally into adjacent panels. Initial code inspection found a single unbounded draw.text source_file line at y24; labels were not constrained to the 256px panel. Later reading found measured wrapping already present, so this review is independent of Jev but is not asserted to predate the asset fix.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/asset-contact-label-before.png",
+    "scripts/game031/prepare-textures.py"
+  ],
+  "evidence_sha256": {
+    "docs/game031/textures-a/v1/QA/asset-contact-label-before.png": "7067b1319265131dfb0503d9e25588b7eb5d8fb98f310ff80933305cb4ded0aa"
+  },
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspect the contact renderer label width; constrain each filename to its own panel and recapture the artifact.",
+    "evidence": [
+      "scripts/game031/prepare-textures.py"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "TEST_INFRA_BUG",
+  "jev_log_read": false
+}

@@ -1,0 +1,31 @@
+{
+  "finding_id": "game031-textures-a-normal-foot-fall",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "texture_review independent agent",
+  "rationale": "The actual failure viewport says the return pad/boundary cannot be changed. Read-only failure state target65,48,67 is BlockID9. Unchanged protectedAt uses spawn64.5,49,68.5, covering voxelX63..65/Z67..69/Y48..51, so that target is correctly protected. Engine.update refuses non-breakable or protected targets before mutation. The test assumes fixed600ms KeyD moved outside the pad, then aims downward without validating target; it is actually still on the pad atX65.4332,Z67.6332. The unchanged main loop caps each frame dt at.05, so a nominal600ms action is not a reliable displacement threshold under88.9ms software-GPU frames. This observation does not show mining collision/fall failure. Rendering performance is a separate comparison concern; this classification is not a claim that performance is acceptable.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-01/failure.png",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-01/REPORT.json",
+    "tests/game031/extended.mjs:7",
+    "src/games/game031/World.ts:11",
+    "src/games/game031/Engine.ts:30",
+    "src/games/game031/main.ts:57",
+    "git diff2d74511 -- World.ts Engine.ts Physics.ts yielded no changes"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected failure viewport/state, protectedAt/spawn mapping, Engine protected-target guard, test fixed-duration movement, and unchanged physics source. The next focused test change should use normal movement until read-only current underfoot target is breakable outside the pad, then wait for centeredbody and mine/fall. Keep original failure and re-run in a new output directory; measure matched rendering performance separately.",
+    "evidence": [
+      "tests/game031/extended.mjs",
+      "src/games/game031/World.ts",
+      "src/games/game031/Engine.ts",
+      "src/games/game031/Physics.ts",
+      "src/games/game031/main.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

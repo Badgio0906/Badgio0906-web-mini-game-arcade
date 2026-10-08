@@ -1,0 +1,169 @@
+{
+  "reviewed_at": "2026-10-08T04:24:06.452412+00:00",
+  "reviewer": "independent texture_review agent",
+  "source_base_commit": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf",
+  "source_state": "base commit plus uncommitted textures-a final candidate; evidence is local QA / compiled preview, not a confirmed production deployment",
+  "method": {
+    "personally_drove_live_browser_controls": false,
+    "inspected_source_reports_and_actual_images": true,
+    "qa_operator": "separate QA agent; scripts drive Chromium through normal keyboard/mouse/CDP touch input",
+    "read_jev_logs": false,
+    "human_fun_confirmed": false
+  },
+  "technical_gameplay_assessment": "PASS for observed texture-integration regression scope. Not a human playtest, full original-game certification, or release authorization.",
+  "source_scope": {
+    "byte_identical_to_base": [
+      "Input.ts",
+      "Engine.ts",
+      "World.ts",
+      "Physics.ts",
+      "Save.ts",
+      "Blocks.ts",
+      "Types.ts",
+      "Ray.ts"
+    ],
+    "runtime_changes": "texture renderer, texture palette/status, CSS sizing and manifest rights; main input/world/save rules unchanged",
+    "qa_planner": "normal runner reads exposed development-only read/voxel API to choose targets; source has no direct player/world mutation in adapted runner. Production-shaped preview explicitly rejects debug API and uses ordinary controls + official backup export."
+  },
+  "desktop_normal": {
+    "report": "after/normal-100-50-03/REPORT.json",
+    "result": "PASS",
+    "target_mines": 100,
+    "target_placements": 50,
+    "actual_total_mined": 104,
+    "actual_total_placed": 50,
+    "intro_mines": 4,
+    "inventory_total": 54,
+    "conservation": "104 mined minus 50 placed equals 54 held; no count duplication in this run",
+    "fall": "normal support mining reduced body Y from about49 to48; two supporting cells under the existing0.6-wide body were explicitly inspected and mined",
+    "movement": "walked into a two-high mined horizontal opening; return pad reached through menu; Space lifted body above50",
+    "save_reload": {
+      "inventory_equal": true,
+      "stats_equal": true,
+      "revision": 154,
+      "save_revision": 154,
+      "save_error": ""
+    },
+    "errors": [],
+    "image_review": "desktop-edited.png shows textured wall/ghost, counter104/50, inventory13 earth+41stone, readable palette; target framing visible"
+  },
+  "mobile_normal": {
+    "report": "after/mobile-10-5-01/REPORT.json",
+    "result": "PASS",
+    "device": "Chromium headless touch emulation, not physical phone",
+    "mined": 10,
+    "placed": 5,
+    "inventory_total": 5,
+    "input_audit": "trusted pointerdown evidence for separate joystick/look/dig IDs in simultaneous sequence; current per-pointer roles verified in unchanged Input.ts",
+    "interruptions": "touchcancel digProgress0; actual trusted lostpointercapture via explicit DOM releasePointerCapture stops DIG; look crossing DIG did not mine; material tap did not rotate view. DOM-forced capture loss is a test-induced cancellation, not evidence of a physical-device occurrence.",
+    "rotation_resize": "report states paused+digProgress0 after landscape rotation and320px resize; normal resume preserved inventory/stats",
+    "practice": "12x12x8 separate practice mined1/placed1; main remained mined10/placed5, inventory[0,4,1,0,0,0,0,0,0,0], revision15 after practice",
+    "terrain_reload": {
+      "region": {
+        "x": 58,
+        "y": 42,
+        "z": 62
+      },
+      "sampledVoxels": 2197,
+      "beforeHash": "5f3c09aba82c335c1fa0ab32ee75952f83a4169500c6069cc9007eef9eb5d56c",
+      "afterHash": "5f3c09aba82c335c1fa0ab32ee75952f83a4169500c6069cc9007eef9eb5d56c"
+    },
+    "errors": [],
+    "image_review": "phone-extended-normal-input.png actual390x844: palette2rows, no control overlap, material names+count readable, target ghost/outline visible"
+  },
+  "compiled_preview": {
+    "report": "after/production-preview-desktop-01/REPORT.json",
+    "url": "http://127.0.0.1:4315/game031.html",
+    "expected_commit": null,
+    "result": "PASS",
+    "not_public_confirmation": true,
+    "dimensions": {
+      "x": 128,
+      "y": 64,
+      "z": 128
+    },
+    "versions": {
+      "schema": 1,
+      "generator": 1,
+      "blocks": 1
+    },
+    "distinct_successful_webp": 16,
+    "movement_and_jump": {
+      "horizontalDistance": 0.8663999999999135,
+      "verticalLift": 1.2413386186666528,
+      "yawChange": 0,
+      "counts": {
+        "mined": 0,
+        "placed": 0
+      }
+    },
+    "save_before": {
+      "counts": {
+        "mined": 11,
+        "placed": 5
+      },
+      "backupBytes": 688,
+      "terrainHash": "ddd18b785328909a4a4bf1fb55991c76d7c191f780ee337dee14298a92d5b312",
+      "inventoryHash": "ab1bef3dfd5f327ba4c61d74ef05ad57d88c92c372ab97cde663ac3c0595c845",
+      "inventoryTotal": 6,
+      "modifiedChunks": 4
+    },
+    "save_after": {
+      "counts": {
+        "mined": 11,
+        "placed": 5
+      },
+      "backupBytes": 688,
+      "terrainHash": "ddd18b785328909a4a4bf1fb55991c76d7c191f780ee337dee14298a92d5b312",
+      "inventoryHash": "ab1bef3dfd5f327ba4c61d74ef05ad57d88c92c372ab97cde663ac3c0595c845",
+      "inventoryTotal": 6,
+      "modifiedChunks": 4
+    },
+    "analytics_requests": [],
+    "portal": {
+      "game031_link": 1,
+      "active_game_links": 30,
+      "thumbnail": {
+        "loaded": true,
+        "naturalWidth": 640,
+        "naturalHeight": 360
+      },
+      "ad_script_present": 1,
+      "telemetry_settings_ui": true
+    },
+    "console_limits": "one external AdSense resource ERR_TUNNEL_CONNECTION_FAILED, no reported application pageerrors; this is not proof the ad network works in this sandbox"
+  },
+  "native_final_profile_lifecycle": "after/lifecycle-02/REPORT.json PASS: actual512px layer byte equality8IDs, six face normals/one repeatperface,12tier switches and80synthetic rebuilds stable1texture/6geometries; failedloadfallback/previousfulltier, stalejob, destroytested. Synthetic fixture allocation proof, not normal player edits.",
+  "old_save": "after/old-save-01/REPORT.json PASS for isolated synthetic pre-texture saved world; preserved inventory/mined3/placed1/4changedcells. No real production users’ saves accessed.",
+  "performance": "Dedicated sequential SwiftShader120frame matched terrain/dirty0 final profile median standard27.8ms versus baseline23.6ms; light24.2ms versus22.35ms. Large initial slowdown substantially reduced, residual overhead remains. Mobile32frame emulation timing is not a physical-phone guarantee. Normal-run dirty/edit latency report remains contextual, not replaced by only best matched timings.",
+  "limitations": [
+    "No own manual control driving; all operation conclusions rely on audited automated QA reports and actual screenshots/source.",
+    "Physical iPhone/Android touch feel, heat, audio and human enjoyment untested.",
+    "Normal100/50 is an automated read-only planned run, not100manually chosen digs; terrain gallery/overlays/lifecycle stress are synthetic fixtures separately labeled.",
+    "No live public expected-commit confirmation inspected by this agent yet. Parent handles CI/publishing and public validation.",
+    "Unchanged original rules such as all engine collision edge cases/long save stress rely on existing suite; this review does not assert a fresh exhaustive retest of every original spec item."
+  ],
+  "evidence_sha256": {
+    "tests/unit/game031-textures.test.ts": "0a8aafbe15b56e87fda550ae6164d2650c967c5c5e1b3319e1600c86fbd51c2b",
+    "tests/game031/textures-a-regression.mjs": "e8397830d0a2e72a85dc9cb7b10573a233a2387714ecdf1890c9d22df87c3d59",
+    "tests/game031/extended.mjs": "2f461638f30ef1ae8ccc85de09e945f48e9f90faa2c901e7efa770c0b2ce0e68",
+    "tests/game031/browser-tools.mjs": "732451bef390c8f296457fec1de02d808e3d80037dc9a23716ab901163613019",
+    "tests/game031/mobile.mjs": "edc6518bef95f502460ab63a31f7568e3d48f6f51dadc82e9e3921ec32bfdf53",
+    "tests/game031/textures-a-public.mjs": "bb75c20a7ae202e84c650686e797b1bd61f44d0cf2c5fb5e920f72981005a185",
+    "src/games/game031/Input.ts": "47f58e6a0fea3d42c518e8887c03ed7d6b359604bfd5e79877754b38898389c7",
+    "src/games/game031/Engine.ts": "b670af4f065a33fc58c30570c203f07b2f38ad8a8ee530cf23b4b9d724a28fd6",
+    "src/games/game031/World.ts": "a818e752b3f12b29116073d5398f3dba23b3c6d8b764d5d34ea281361147e774",
+    "src/games/game031/Physics.ts": "9c0e824aeff119308f3b53ebee632afd89d084176e12de0eeaa39a49b3bb3ab2",
+    "src/games/game031/Save.ts": "56a14ee84c63d16c222ddcf1473166b1f3a11e229ac1471b1d137793ae2b8546",
+    "src/games/game031/SurfaceTextures.ts": "c740e3a1045e6f2f100f91384bf78a8f1eaa0c37e74eaab678eeb7e757656b3d",
+    "src/games/game031/Render.ts": "af3dd79db6baed7a25eb1b63ff4940720b6cc2267da9d8176b525b1e77270c75",
+    "src/games/game031/main.ts": "a3f5e6bb32b46b512efb65c03f991316c723a39faeecea2bfcb4dfcc35290da3",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-03/REPORT.json": "7d2d8f46dd5eaa3d2d75babd53e9bb95974fb51b8589521dc234b550966e2bf3",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-03/desktop-edited.png": "e048c5087e51a94a397143aa6f432344b63f76b49f16594d33f0dea1de83d439",
+    "docs/game031/textures-a/v1/QA/after/mobile-10-5-01/REPORT.json": "5ca353e37e781a9141d2c0cb4af55347e4385d86b7920c876109d128cec802e0",
+    "docs/game031/textures-a/v1/QA/after/mobile-10-5-01/phone-extended-normal-input.png": "e4a039018ed98f621059a1d662fd1d1706537ab59ce603cfd65c9540b5bec893",
+    "docs/game031/textures-a/v1/QA/after/production-preview-desktop-01/REPORT.json": "01efea0c3aec95ff51cbd3d344b73f45609833b321b90c7cb815038384310592",
+    "docs/game031/textures-a/v1/QA/after/lifecycle-02/REPORT.json": "942ee18f2ca68d63436bf3f68574824b78b3861a82160a1ee040421595379961",
+    "docs/game031/textures-a/v1/QA/after/old-save-01/REPORT.json": "41e2256bc45564dc8ee0672d56277afe2ab0ade0059fe8ea394ccfc0d3b94db1"
+  }
+}

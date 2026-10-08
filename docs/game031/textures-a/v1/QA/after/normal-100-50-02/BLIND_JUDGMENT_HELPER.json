@@ -1,0 +1,24 @@
+{
+  "finding_id": "game031-textures-a-normal-foot-fall",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "texture_qa; blind to Jev answers",
+  "rationale": "The adapted test enumerates support with half-width .299, while canonical Physics uses BODY_WIDTH/2=.3 and epsilon .000001. At Z66.7004 the test omits Z67, though the collision body overlaps that support by .0004. The isolated pure-physics reproduction keeps the body at22.999999 after test-selected support removal and falls to19.999999 only after the omitted adjacent support is removed. This evidence establishes a test-support enumeration error; no movement/collision source change is warranted.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-02/REPORT.json",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-02/BLIND_SUPPORT_PROOF.json",
+    "src/games/game031/Physics.ts",
+    "tests/game031/textures-a-regression.mjs"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Replace test .299 half-width with canonical BODY_WIDTH/2 and .000001 bounds epsilon; log candidate support coordinates/target for each ordinary mine, then rerun unique03. Keep production physics unchanged.",
+    "evidence": [
+      "docs/game031/textures-a/v1/QA/after/normal-100-50-02/BLIND_SUPPORT_PROOF.json",
+      "tests/game031/textures-a-regression.mjs"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

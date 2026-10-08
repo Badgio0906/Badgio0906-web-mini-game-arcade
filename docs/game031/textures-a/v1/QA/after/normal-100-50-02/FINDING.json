@@ -1,0 +1,31 @@
+{
+  "finding_id": "game031-textures-a-normal-foot-fall",
+  "problem": "Foot-mining regression still reports no fall after revised ordinary movement and mining sequence.",
+  "expected": "After the player moves beyond the protected return pad and removes the actual support blocks by normal input, the body should fall into the hole.",
+  "observed": [
+    "Normal adaptive movement reached x67.6336/z66.7004, outside initial x64.5/z68.5 pad center.",
+    "Three blocks were mined using ordinary keyboard/mouse input; player remains grounded at y48.999999.",
+    "Last selected target is earth at x67/y47/z66, not protected block9; no browser error."
+  ],
+  "unknown": [
+    "Whether the sequence removed all solid cells intersecting the collision body.",
+    "Whether the failure is from test targeting/wait assumptions or product collision after texture update."
+  ],
+  "measurements": {
+    "mined": 3,
+    "placed": 0,
+    "player_x": 67.63359999999983,
+    "player_z": 66.70040000000012,
+    "player_y": 48.99999900121662,
+    "grounded": true,
+    "last_target_block": 2,
+    "frame_ms": 65.70000000298023,
+    "dirty": 0
+  },
+  "test_name": "textures-a-regression normal-100-50-02",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-02/REPORT.json",
+    "docs/game031/textures-a/v1/QA/after/normal-100-50-02/failure.png"
+  ],
+  "provenance": "local automated ordinarykeyboard/mouseinput with readonlyvoxelplanner; no world/playerstateinjection; new observation after initial B checkpoint"
+}

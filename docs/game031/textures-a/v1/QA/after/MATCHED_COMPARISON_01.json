@@ -1,0 +1,1064 @@
+{
+  "conditions": "1280x900 headless Chromium SwiftShader software GPU, deterministic synthetic fixture; early per-scene samples not dedicated benchmark and separate browser compatibility check briefly overlapped",
+  "before": "docs/game031/textures-a/v1/QA/before/run-20261008T-baseline-02/REPORT.json",
+  "after": "docs/game031/textures-a/v1/QA/after/run-20261008T-candidate-01/REPORT.json",
+  "result": "PASS",
+  "scenes": [
+    {
+      "file": "desktop-standard-gallery.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 4,
+        "medianMs": 48.69999999925494,
+        "p95Ms": 78.10000000149012,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 91.69999999925494,
+        "p95Ms": 158.29999999701977,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "desktop-standard-floor.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 8,
+        "medianMs": 31.74999999627471,
+        "p95Ms": 70,
+        "calls": 9,
+        "triangles": 12896,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 98.90000000596046,
+        "p95Ms": 98.90000000596046,
+        "calls": 9,
+        "triangles": 12896,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "desktop-standard-tunnel.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 4,
+        "medianMs": 25.199999999254942,
+        "p95Ms": 60.5,
+        "calls": 9,
+        "triangles": 14100,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 169.35000000149012,
+        "p95Ms": 312.20000000298023,
+        "calls": 9,
+        "triangles": 14100,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "desktop-standard-boundary.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 4,
+        "medianMs": 24.550000000745058,
+        "p95Ms": 30.099999994039536,
+        "calls": 5,
+        "triangles": 3756,
+        "geometries": 5,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 65.60000000149012,
+        "p95Ms": 65.60000000149012,
+        "calls": 5,
+        "triangles": 3756,
+        "geometries": 5,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-1.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 29.899999998509884,
+        "p95Ms": 66.20000000298023,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 29.600000001490116,
+        "p95Ms": 29.600000001490116,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-2.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 40.29999999701977,
+        "p95Ms": 50,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 98,
+        "p95Ms": 98,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-3.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 28.199999999254942,
+        "p95Ms": 68.5,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 13,
+        "p95Ms": 13,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-4.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 5,
+        "medianMs": 31.899999998509884,
+        "p95Ms": 67.70000000298023,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 174.60000000149012,
+        "p95Ms": 174.60000000149012,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-5.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 5,
+        "medianMs": 30.700000002980232,
+        "p95Ms": 53.29999999701977,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 117.29999999701977,
+        "p95Ms": 117.29999999701977,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-6.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 32.70000000298023,
+        "p95Ms": 73.09999999403954,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 73.20000000298023,
+        "p95Ms": 116.60000000149012,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-7.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 5,
+        "medianMs": 29.5,
+        "p95Ms": 44.899999998509884,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 111.20000000298023,
+        "p95Ms": 111.20000000298023,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "wall-standard-8.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 26.700000002980232,
+        "p95Ms": 46.5,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 93.09999999403954,
+        "p95Ms": 93.09999999403954,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "desktop-light-gallery.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 29,
+        "p95Ms": 74.79999999701977,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 69.60000000149012,
+        "p95Ms": 69.60000000149012,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "desktop-light-floor.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 31.850000001490116,
+        "p95Ms": 75,
+        "calls": 9,
+        "triangles": 12896,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 3,
+        "medianMs": 58.900000005960464,
+        "p95Ms": 70.39999999850988,
+        "calls": 9,
+        "triangles": 12896,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "desktop-light-tunnel.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 36.5,
+        "p95Ms": 49.399999998509884,
+        "calls": 9,
+        "triangles": 14100,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 60.75,
+        "p95Ms": 68.69999999552965,
+        "calls": 9,
+        "triangles": 14100,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "desktop-light-boundary.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 9,
+        "medianMs": 17.700000002980232,
+        "p95Ms": 43.099999994039536,
+        "calls": 5,
+        "triangles": 3756,
+        "geometries": 5,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 3,
+        "medianMs": 33,
+        "p95Ms": 61.79999999701977,
+        "calls": 5,
+        "triangles": 3756,
+        "geometries": 5,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-1.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 8,
+        "medianMs": 21.0,
+        "p95Ms": 66.5,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 69.09999999776483,
+        "p95Ms": 95.39999999850988,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-2.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 26.800000000745058,
+        "p95Ms": 54.899999998509884,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 40.95000000298023,
+        "p95Ms": 54.20000000298023,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-3.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 29.849999997764826,
+        "p95Ms": 59.69999999552965,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 67.89999999850988,
+        "p95Ms": 67.89999999850988,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-4.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 32.30000000447035,
+        "p95Ms": 46.69999999552965,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 42.850000001490116,
+        "p95Ms": 74.30000000447035,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-5.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 34.19999999925494,
+        "p95Ms": 66.10000000149012,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 56.100000001490116,
+        "p95Ms": 70.39999999850988,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-6.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 7,
+        "medianMs": 23.30000000447035,
+        "p95Ms": 43.29999999701977,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 71.89999999850988,
+        "p95Ms": 71.89999999850988,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-7.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 8,
+        "medianMs": 36.30000000074506,
+        "p95Ms": 42.30000000447035,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 10.900000005960464,
+        "p95Ms": 10.900000005960464,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "wall-light-8.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 6,
+        "medianMs": 27.0,
+        "p95Ms": 55.79999999701977,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 2,
+        "medianMs": 27.800000000745058,
+        "p95Ms": 45.600000001490116,
+        "calls": 7,
+        "triangles": 10252,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "light",
+          "activeTier": "light",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 256,
+          "gpuBytesEstimate": 3495254
+        }
+      }
+    },
+    {
+      "file": "cube-face-px.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 10,
+        "medianMs": 27.0,
+        "p95Ms": 53.399999998509884,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 9,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 1,
+        "medianMs": 171.79999999701977,
+        "p95Ms": 171.79999999701977,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 9,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "cube-face-nx.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 35,
+        "medianMs": 32,
+        "p95Ms": 55.29999999701977,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 16,
+        "medianMs": 100.19999999925494,
+        "p95Ms": 224.89999999850988,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "cube-face-py.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 58,
+        "medianMs": 32.399999998509884,
+        "p95Ms": 58.399999998509884,
+        "calls": 11,
+        "triangles": 12860,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 31,
+        "medianMs": 100.5,
+        "p95Ms": 184.69999999552965,
+        "calls": 11,
+        "triangles": 12860,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "cube-face-ny.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 88,
+        "medianMs": 28.649999998509884,
+        "p95Ms": 61.899999998509884,
+        "calls": 7,
+        "triangles": 7460,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 64,
+        "medianMs": 94.5,
+        "p95Ms": 209.5,
+        "calls": 7,
+        "triangles": 7460,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "cube-face-pz.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 117,
+        "medianMs": 23.399999998509884,
+        "p95Ms": 60.599999994039536,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 85,
+        "medianMs": 20.30000000447035,
+        "p95Ms": 186.59999999403954,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "cube-face-nz.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 143,
+        "medianMs": 23.400000005960464,
+        "p95Ms": 59,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 102,
+        "medianMs": 55.849999997764826,
+        "p95Ms": 184.69999999552965,
+        "calls": 9,
+        "triangles": 10160,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "phone-fixture-gallery.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 17,
+        "medianMs": 16.700000002980232,
+        "p95Ms": 21,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 9,
+        "medianMs": 23.400000005960464,
+        "p95Ms": 40.69999999552965,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "small-fixture-gallery.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 18,
+        "medianMs": 16.69999999552965,
+        "p95Ms": 17.100000001490116,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 18,
+        "medianMs": 16.700000002980232,
+        "p95Ms": 22.69999999552965,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    },
+    {
+      "file": "landscape-fixture-gallery.png",
+      "sameWorldPoseViewport": true,
+      "before": {
+        "frameSamples": 18,
+        "medianMs": 16.69999999552965,
+        "p95Ms": 16.799999997019768,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 1,
+        "suppliedState": null
+      },
+      "after": {
+        "frameSamples": 10,
+        "medianMs": 27.450000002980232,
+        "p95Ms": 54.399999998509884,
+        "calls": 9,
+        "triangles": 12960,
+        "geometries": 11,
+        "textures": 2,
+        "suppliedState": {
+          "status": "supplied",
+          "requestedTier": "standard",
+          "activeTier": "standard",
+          "suppliedCount": 8,
+          "errors": [],
+          "size": 512,
+          "gpuBytesEstimate": 13981014
+        }
+      }
+    }
+  ]
+}

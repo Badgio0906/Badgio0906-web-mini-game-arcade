@@ -1,0 +1,30 @@
+{
+  "finding_id": "game031-textures-a-post-dirty-performance",
+  "problem": "Fixed-world rendering frame times increase after supplied textures despite unchanged calls and triangle counts.",
+  "expected": "Texture improvements should keep digging/placement reasonably responsive in PC/mobile browser and not create major continuing rendering slowdown.",
+  "observed": [
+    "At1280x900 actual128x64x128 defaultspawn,120post-dirtyzero frames baseline standardmedian24.75ms/p9546.1ms, suppliedstandard76.2ms/p95137.8ms.",
+    "Lightactualbaseline23.75ms/p9550ms, suppliedlight44.95ms/p9587.6ms.",
+    "Standardcalls24/triangles9866/geometries24 andlight17/5644/17 match before andafter; nearbyvoxelhash andinventory match, posewithin1e-5.",
+    "Separate32world syntheticgallery/floor/tunnel120frames also slower inbothtiers.",
+    "Browser is headlessChromium withSwiftShader softwareGPU; normalhardwareperformance is unmeasured."
+  ],
+  "unknown": [
+    "How much of the difference is due toStandardMaterial lighting vs array texture filtering vssoftwareGPU-specific cost.",
+    "Whether physicaliPhone/Android shows a similar slowdown."
+  ],
+  "measurements": {
+    "baseline_standard_median_ms": 24.75,
+    "after_standard_median_ms": 76.2,
+    "baseline_light_median_ms": 23.75,
+    "after_light_median_ms": 44.95,
+    "width": 1280,
+    "height": 900,
+    "samples": 120
+  },
+  "provenance": "automatedlocalbrowser, sequentialseparateorigins,120framesafterdirtyqueuezero, no concurrentQAbrowser duringdedicated benchmark",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/performance-actual-120-01/REPORT.json",
+    "docs/game031/textures-a/v1/QA/after/performance-matched-120-01/REPORT.json"
+  ]
+}

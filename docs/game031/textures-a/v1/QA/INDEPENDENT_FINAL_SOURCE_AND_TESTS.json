@@ -1,0 +1,28 @@
+{
+  "reviewer": "texture_review independent agent",
+  "observed_at": "2026-10-08T04:10:36.437988+00:00",
+  "base_commit": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf",
+  "source_hashes": {
+    "src/games/game031/SurfaceTextures.ts": "c740e3a1045e6f2f100f91384bf78a8f1eaa0c37e74eaab678eeb7e757656b3d",
+    "src/games/game031/Render.ts": "af3dd79db6baed7a25eb1b63ff4940720b6cc2267da9d8176b525b1e77270c75",
+    "src/games/game031/main.ts": "a3f5e6bb32b46b512efb65c03f991316c723a39faeecea2bfcb4dfcc35290da3",
+    "src/games/game031/style.css": "6fe00a75ffab312d0bb338ecfe7c0cfbb2260d325545ceeacc3d0a7c56d0334e",
+    "tests/unit/game031-textures.test.ts": "0a8aafbe15b56e87fda550ae6164d2650c967c5c5e1b3319e1600c86fbd51c2b"
+  },
+  "tests": {
+    "command": "npx vitest run tests/unit/game031-textures.test.ts && npm run check",
+    "started_at": "2026-10-08T04:08:55Z",
+    "test_count": 15,
+    "pass_count": 15,
+    "typecheck": "PASS",
+    "external_api_calls": 0
+  },
+  "final_material": "standard MeshLambertMaterial, light MeshBasicMaterial; same supplied array layers",
+  "final_filter": "sRGB basecolor array; LinearFilter magnification; LinearMipmapNearestFilter minification (linear within selected mip, nearest mip level); mipmaps enabled; anisotropy capped std2/light1/hardwaremax",
+  "native_gpu_evidence": "after/lifecycle-01/REPORT.json verifies8actual512decodedlayerbytes, stable resourcecounts over12switches and80rebuilds. This originally exercised prior filtering profile; final filter affects sampling, not layer allocation/identity. oblique-motion-01 confirms final texture flags on liveGPU renderer.",
+  "remaining_limits": [
+    "Unit tests use syntheticPixelSurface mocks, not externalnetwork requests. Actualassetdecode/GPUvisual/lifecycle checks are browser evidence.",
+    "No PBR completeness/roughnessmap/emissionmap/normalmap claims; Lambert deliberately removes optional physical-lighting cost.",
+    "First explicit darkcontrast finding and slowerperformance01 retained separately; this latest record does not rewrite original judgments."
+  ]
+}

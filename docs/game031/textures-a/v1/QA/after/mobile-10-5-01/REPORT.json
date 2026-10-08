@@ -1,0 +1,5425 @@
+{
+  "at": "2026-10-08T04:18:46.213Z",
+  "source": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf",
+  "sourceHashes": {
+    "tests/game031/textures-a-verify-assets.mjs": "c336b79a2adbfb91cd2b8f585bbcf5dd8ec82846eac60ef6ef457f9815e8f662",
+    "tests/game031/public-mobile.mjs": "21caea8adba3b1b9f921b10ea8a055ec4cfd1fb5de161f6b67e27153a27acebd",
+    "tests/game031/layout.mjs": "307ecdbd03e39222fd3d58e8d2c087d834b037866ffaa1a3432e4c8233523ed8",
+    "tests/game031/check-protection.py": "9331c39801b5312a22c96e9744d2cd3c450d20a5ceb17c2f9fe8e7d10c76bada",
+    "tests/game031/textures-a-motion.mjs": "553e750cfdbf996f242e6f08dd426f0c9e1d229b52d5f80f58b4755ed1dc8f1c",
+    "tests/game031/building.mjs": "35cddceef02f45d351c3fcd2666689bab561fafc136495c912b1dead7ab6c680",
+    "tests/game031/cave.mjs": "8bb7defdac11e11b20aa2140d18afddcd9ec404e8d8ff9a7a8704a31514a2f09",
+    "tests/game031/textures-a-lifecycle.mjs": "345001e3a3e98e4cb1e46a0e0b6d3642b6e21958269942600b32c8c740c99c26",
+    "tests/game031/mobile.mjs": "edc6518bef95f502460ab63a31f7568e3d48f6f51dadc82e9e3921ec32bfdf53",
+    "tests/game031/browser-tools.mjs": "732451bef390c8f296457fec1de02d808e3d80037dc9a23716ab901163613019",
+    "tests/game031/extended.mjs": "2f461638f30ef1ae8ccc85de09e945f48e9f90faa2c901e7efa770c0b2ce0e68",
+    "tests/game031/native-save.mjs": "e0b3f661d8cc4671c823b60a20235e2fe4ba1c8d461b2962a5a05be35a9324ac",
+    "tests/game031/probe.mjs": "ba666feb0f9320b29bdbfd5d93a11b0c41c803b421bbd3a98f591352e36cd116",
+    "tests/game031/textures-a-detail.mjs": "13ce3972ecb3520ba195c33c81662eea15ad2a17e46697c3ac0641a0abbf3289",
+    "tests/game031/textures-a-compatibility.mjs": "66840558c827adaf07c861878607546eb6cc1d6e496a308a98b7290ed802e967",
+    "tests/game031/textures-a-fallback-ui.mjs": "26842b27e5e558eac18e3a15aed7206f702b991ebb93d8ff51bd30c94c31f7fb",
+    "tests/game031/textures-a-adjacent.mjs": "ccafda486a572a2a340121be47b75ba8c29d2474866c1b047ea65c088ef16c79",
+    "tests/game031/storage-browser.mjs": "b89d8d1ddbf06787ed260208de0cdfe54ffff07e5b5fe6aa6b96497ed0c67478",
+    "tests/game031/textures-a-actual-performance.mjs": "aac069906481cca33a91b432429f4de0e557918645875c5590d46e1d76485170",
+    "tests/game031/input-platform.mjs": "73da6b52f344e1f6da421e50216883336c6020d9ffcf4bf43a4999357fb5671a",
+    "tests/game031/textures-a-public.mjs": "bb75c20a7ae202e84c650686e797b1bd61f44d0cf2c5fb5e920f72981005a185",
+    "tests/game031/verify-public.mjs": "dc843f03c201cadc4ddfb32646d41b6d21d7e0c5353b4038309075ab49533774",
+    "tests/game031/textures-a-regression.mjs": "e8397830d0a2e72a85dc9cb7b10573a233a2387714ecdf1890c9d22df87c3d59",
+    "tests/game031/textures-a-capture.mjs": "a5ad5dc84c6cb7b3479af24f67f91d7e8acbd8b7bbf36a3cef655915b9fc22ea",
+    "src/games/game031/Blocks.ts": "21cd15f03bd8c5e51d66d39e248e8170ff0c988742062057ae594a31d073a0a8",
+    "src/games/game031/Save.ts": "56a14ee84c63d16c222ddcf1473166b1f3a11e229ac1471b1d137793ae2b8546",
+    "src/games/game031/Engine.ts": "b670af4f065a33fc58c30570c203f07b2f38ad8a8ee530cf23b4b9d724a28fd6",
+    "src/games/game031/game.manifest.json": "7e933923aaef7ae32aaf8610d9c384e0c60a84f70f7adae672092c0d5de48f9a",
+    "src/games/game031/style.css": "6fe00a75ffab312d0bb338ecfe7c0cfbb2260d325545ceeacc3d0a7c56d0334e",
+    "src/games/game031/main.ts": "a3f5e6bb32b46b512efb65c03f991316c723a39faeecea2bfcb4dfcc35290da3",
+    "src/games/game031/World.ts": "a818e752b3f12b29116073d5398f3dba23b3c6d8b764d5d34ea281361147e774",
+    "src/games/game031/Input.ts": "47f58e6a0fea3d42c518e8887c03ed7d6b359604bfd5e79877754b38898389c7",
+    "src/games/game031/SurfaceTextures.ts": "c740e3a1045e6f2f100f91384bf78a8f1eaa0c37e74eaab678eeb7e757656b3d",
+    "src/games/game031/Types.ts": "bc90dc5eec99ada1dd8428784eb2af84528e9cd1f68e389b6cc190605362b5bd",
+    "src/games/game031/Physics.ts": "9c0e824aeff119308f3b53ebee632afd89d084176e12de0eeaa39a49b3bb3ab2",
+    "src/games/game031/Ray.ts": "999349f5d4059a93119c847ca25e5f6c371400b8cb4828be6628ce18426eb18c",
+    "src/games/game031/Render.ts": "af3dd79db6baed7a25eb1b63ff4940720b6cc2267da9d8176b525b1e77270c75"
+  },
+  "device": "Chromium headless touch emulation, not physical phone",
+  "provenance": "CDP trusted touchStart/touchMove/touchEnd/touchCancel; readonly planner; no player/world injection",
+  "steps": [
+    {
+      "name": "phone-playing",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.99999900015747,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 1.0001000000000007,
+          "found": []
+        },
+        "target": {
+          "x": 64,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 0,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:18:47.996Z",
+        "metrics": {
+          "frameMs": 16.099999994039536,
+          "fps": 62.11180126523076,
+          "calls": 13,
+          "triangles": 3596,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.4000000059604645,
+          "editDelayMs": 0,
+          "geometries": 13,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-move-look-dig",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 66.2393832258747,
+            "y": 48.99999900015747,
+            "z": 68.53973986012876
+          },
+          "velocity": {
+            "x": 1.7994375292962648,
+            "y": 0,
+            "z": 0.0449953126464822
+          },
+          "yaw": -0.025,
+          "pitch": -0.0075,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 1,
+          "placed": 0,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 2.183299999999999,
+          "found": [
+            1
+          ]
+        },
+        "target": {
+          "x": 66,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.540605189758176
+        },
+        "digProgress": 0.6109999999999991,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 1,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:18:47.996Z",
+        "metrics": {
+          "frameMs": 16.600000008940697,
+          "fps": 60.240963822976134,
+          "calls": 15,
+          "triangles": 4112,
+          "chunks": 54,
+          "dirty": 0,
+          "meshMs": 0.5,
+          "editDelayMs": 2,
+          "geometries": 15,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-place",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 66.50947879902212,
+            "y": 48.99999900015747,
+            "z": 68.54649365655686
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.025,
+          "pitch": -0.0075,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 2,
+          "placed": 1,
+          "maxDepth": 9.998425269941436e-7,
+          "activeSeconds": 3.1832999999999965,
+          "found": [
+            1
+          ]
+        },
+        "target": {
+          "x": 66,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5473612873117784
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 3,
+        "saveRevision": 0,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:18:47.996Z",
+        "metrics": {
+          "frameMs": 16.599999994039536,
+          "fps": 60.24096387705205,
+          "calls": 14,
+          "triangles": 4112,
+          "chunks": 54,
+          "dirty": 0,
+          "meshMs": 0.29999999701976776,
+          "editDelayMs": 15.5,
+          "geometries": 15,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "placement-planner-exhausted-reachable-faces-return-normally",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 66.50947879902212,
+            "y": 46.9999990004154,
+            "z": 68.54649365655686
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 44.56539411544801,
+          "pitch": -0.7041585922241211,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          5,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 10,
+          "placed": 4,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 124.6451000000151,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 66,
+          "y": 48,
+          "z": 67,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 0.8589711321209412
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 14,
+        "saveRevision": 14,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:48.470Z",
+        "metrics": {
+          "frameMs": 26.69999998807907,
+          "fps": 37.45318353732122,
+          "calls": 15,
+          "triangles": 4576,
+          "chunks": 56,
+          "dirty": 0,
+          "meshMs": 0.3999999910593033,
+          "editDelayMs": 32.900000005960464,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-extended-normal-input",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": -0.8097833251953126,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 125.82850000001535,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 49,
+          "z": 66,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.17499943505789
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 14,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:53.604Z",
+        "metrics": {
+          "frameMs": 25.200000002980232,
+          "fps": 39.6825396778467,
+          "calls": 13,
+          "triangles": 3644,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.20000000298023224,
+          "editDelayMs": 26.100000008940697,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-touchcancel",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": -0.8097833251953126,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 127.0451000000156,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 49,
+          "z": 66,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.17499943505789
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 14,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:53.604Z",
+        "metrics": {
+          "frameMs": 16.799999997019768,
+          "fps": 59.52380953436874,
+          "calls": 13,
+          "triangles": 3644,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.20000000298023224,
+          "editDelayMs": 26.100000008940697,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-lost-capture",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": -0.8097833251953126,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 128.11170000001573,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 49,
+          "z": 66,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.17499943505789
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 14,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:53.604Z",
+        "metrics": {
+          "frameMs": 18.099999994039536,
+          "fps": 55.24861880272417,
+          "calls": 13,
+          "triangles": 3644,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.20000000298023224,
+          "editDelayMs": 26.100000008940697,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-role-stability",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.24,
+          "pitch": -1.45,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 128.8784000000155,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 48,
+          "z": 68,
+          "block": 9,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 1.6117437931671268
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 14,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:53.604Z",
+        "metrics": {
+          "frameMs": 16.900000005960464,
+          "fps": 59.17159761226685,
+          "calls": 11,
+          "triangles": 2620,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.20000000298023224,
+          "editDelayMs": 26.100000008940697,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        }
+      }
+    },
+    {
+      "name": "phone-reloaded",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.24,
+          "pitch": -1.45,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.0617000000154,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 48,
+          "z": 68,
+          "block": 9,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 1.6117437931671268
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:58.298Z",
+        "metrics": {
+          "frameMs": 7.199999988079071,
+          "fps": 138.88888911884507,
+          "calls": 6,
+          "triangles": 1180,
+          "chunks": 3,
+          "dirty": 50,
+          "meshMs": 1.7000000029802322,
+          "editDelayMs": 0,
+          "geometries": 6,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.04500000001542,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "name": "main-save-before-practice",
+      "saved": {
+        "state": "title",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.24,
+          "pitch": -1.45,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.04500000001542,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 48,
+          "z": 68,
+          "block": 9,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 1.6117437931671268
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:57.710Z",
+        "metrics": {
+          "frameMs": 8.100000008940697,
+          "fps": 123.45678998718645,
+          "calls": 11,
+          "triangles": 2620,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.20000000298023224,
+          "editDelayMs": 26.100000008940697,
+          "geometries": 32,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": null
+      },
+      "dbBefore": {
+        "name": "game100garage-game031",
+        "stores": [
+          "worlds"
+        ]
+      }
+    },
+    {
+      "name": "phone-practice",
+      "state": {
+        "state": "practice",
+        "training": true,
+        "player": {
+          "position": {
+            "x": 6.5,
+            "y": 5,
+            "z": 9.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": -0.6,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 0,
+          "placed": 0,
+          "maxDepth": 0,
+          "activeSeconds": 0,
+          "found": []
+        },
+        "target": null,
+        "digProgress": 0,
+        "dimensions": {
+          "x": 12,
+          "y": 8,
+          "z": 12
+        },
+        "referenceHeight": 4,
+        "spawn": {
+          "x": 6.5,
+          "y": 5,
+          "z": 9.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 3,
+              "y": 3,
+              "z": 4
+            },
+            "radius": 1.35
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 8,
+              "y": 3,
+              "z": 8
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 6,
+              "y": 2,
+              "z": 9
+            },
+            "radius": 0.95
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 6,
+              "y": 1,
+              "z": 3
+            },
+            "radius": 1.4
+          }
+        ],
+        "revision": 0,
+        "saveRevision": -1,
+        "saveError": "",
+        "lastSaved": "",
+        "metrics": {
+          "frameMs": 18.600000008940697,
+          "fps": 53.7634408343719,
+          "calls": 11,
+          "triangles": 2620,
+          "chunks": 25,
+          "dirty": 28,
+          "meshMs": 0.29999999701976776,
+          "editDelayMs": 0,
+          "geometries": 11,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": null
+      }
+    },
+    {
+      "name": "phone-practice-edited",
+      "state": {
+        "state": "practice",
+        "training": true,
+        "player": {
+          "position": {
+            "x": 6.5,
+            "y": 4.999999001701203,
+            "z": 9.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": -0.6,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 1,
+        "stats": {
+          "mined": 1,
+          "placed": 1,
+          "maxDepth": 9.98298797405539e-7,
+          "activeSeconds": 0.7666000000000001,
+          "found": [
+            1
+          ]
+        },
+        "target": {
+          "x": 6,
+          "y": 4,
+          "z": 7,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 2.8336497466810493
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 12,
+          "y": 8,
+          "z": 12
+        },
+        "referenceHeight": 4,
+        "spawn": {
+          "x": 6.5,
+          "y": 5,
+          "z": 9.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 3,
+              "y": 3,
+              "z": 4
+            },
+            "radius": 1.35
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 8,
+              "y": 3,
+              "z": 8
+            },
+            "radius": 1.2
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 6,
+              "y": 2,
+              "z": 9
+            },
+            "radius": 0.95
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 6,
+              "y": 1,
+              "z": 3
+            },
+            "radius": 1.4
+          }
+        ],
+        "revision": 2,
+        "saveRevision": -1,
+        "saveError": "",
+        "lastSaved": "",
+        "metrics": {
+          "frameMs": 16.700000002980232,
+          "fps": 59.880239510272034,
+          "calls": 4,
+          "triangles": 540,
+          "chunks": 1,
+          "dirty": 0,
+          "meshMs": 0.4000000059604645,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 5,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": null
+      }
+    },
+    {
+      "name": "phone-main-after-practice",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.24,
+          "pitch": -1.45,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.32830000001545,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 48,
+          "z": 68,
+          "block": 9,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 1.6117437931671268
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:20:59.979Z",
+        "metrics": {
+          "frameMs": 4.5,
+          "fps": 222.22222222222223,
+          "calls": 5,
+          "triangles": 1124,
+          "chunks": 2,
+          "dirty": 51,
+          "meshMs": 0.9000000059604645,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 6,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.31170000001543,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "name": "rotation-paused-and-cleared",
+      "state": {
+        "state": "paused",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.999999001701205,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": -0.24,
+          "pitch": -1.45,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.39500000001547,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 48,
+          "z": 68,
+          "block": 9,
+          "normal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "distance": 1.6117437931671268
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:21:00.071Z",
+        "metrics": {
+          "frameMs": 16.799999997019768,
+          "fps": 59.52380953436874,
+          "calls": 13,
+          "triangles": 3644,
+          "chunks": 19,
+          "dirty": 34,
+          "meshMs": 0.30000001192092896,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 14,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.31170000001543,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "name": "phone-landscape",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 49,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.44500000001548,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:21:00.377Z",
+        "metrics": {
+          "frameMs": 14.600000008940697,
+          "fps": 68.49315064298791,
+          "calls": 14,
+          "triangles": 4156,
+          "chunks": 29,
+          "dirty": 24,
+          "meshMs": 0.29999999701976776,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 15,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.31170000001543,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "name": "narrow-resize-paused-and-cleared",
+      "state": {
+        "state": "paused",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 48.99999900137044,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.52830000001552,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:21:00.535Z",
+        "metrics": {
+          "frameMs": 16.700000002980232,
+          "fps": 59.880239510272034,
+          "calls": 15,
+          "triangles": 4668,
+          "chunks": 48,
+          "dirty": 5,
+          "meshMs": 0.29999999701976776,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 20,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.31170000001543,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "name": "phone-320",
+      "state": {
+        "state": "playing",
+        "training": false,
+        "player": {
+          "position": {
+            "x": 64.5,
+            "y": 49,
+            "z": 68.5
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "yaw": 0,
+          "pitch": 0,
+          "grounded": true
+        },
+        "inventory": [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "selected": 2,
+        "stats": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.57820000001556,
+          "found": [
+            1,
+            2
+          ]
+        },
+        "target": {
+          "x": 64,
+          "y": 50,
+          "z": 65,
+          "block": 1,
+          "normal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "distance": 2.5
+        },
+        "digProgress": 0,
+        "dimensions": {
+          "x": 128,
+          "y": 64,
+          "z": 128
+        },
+        "referenceHeight": 48,
+        "spawn": {
+          "x": 64.5,
+          "y": 49,
+          "z": 68.5
+        },
+        "caves": [
+          {
+            "kind": "large",
+            "center": {
+              "x": 39,
+              "y": 19.200000000000003,
+              "z": 43
+            },
+            "radius": 8
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 89,
+              "y": 29.759999999999998,
+              "z": 85
+            },
+            "radius": 4.8
+          },
+          {
+            "kind": "small",
+            "center": {
+              "x": 72,
+              "y": 16.799999999999997,
+              "z": 96
+            },
+            "radius": 2.4
+          },
+          {
+            "kind": "medium",
+            "center": {
+              "x": 64,
+              "y": 45,
+              "z": 60
+            },
+            "radius": 4
+          }
+        ],
+        "revision": 15,
+        "saveRevision": 15,
+        "saveError": "",
+        "lastSaved": "2026-10-08T04:21:00.893Z",
+        "metrics": {
+          "frameMs": 16.700000002980232,
+          "fps": 59.880239510272034,
+          "calls": 15,
+          "triangles": 4668,
+          "chunks": 52,
+          "dirty": 0,
+          "meshMs": 0.3999999910593033,
+          "editDelayMs": 16.400000005960464,
+          "geometries": 20,
+          "textures": 1,
+          "surfaceState": {
+            "status": "supplied",
+            "requestedTier": "light",
+            "activeTier": "light",
+            "suppliedCount": 8,
+            "errors": [],
+            "size": 256,
+            "gpuBytesEstimate": 3495254
+          }
+        },
+        "sessionBase": {
+          "mined": 10,
+          "placed": 5,
+          "maxDepth": 2.0000009995846,
+          "activeSeconds": 129.31170000001543,
+          "found": [
+            1,
+            2
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "blockedAnalytics": [],
+  "layout": [
+    {
+      "name": "portrait390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "materials": [
+        {
+          "id": "material-label",
+          "x": 154.34375,
+          "y": 614,
+          "width": 81.3125,
+          "height": 26,
+          "right": 235.65625,
+          "bottom": 640
+        },
+        {
+          "id": "1",
+          "x": 9.75,
+          "y": 645,
+          "width": 89.625,
+          "height": 62,
+          "right": 99.375,
+          "bottom": 707
+        },
+        {
+          "id": "2",
+          "x": 103.375,
+          "y": 645,
+          "width": 89.625,
+          "height": 62,
+          "right": 193,
+          "bottom": 707
+        },
+        {
+          "id": "3",
+          "x": 197,
+          "y": 645,
+          "width": 89.625,
+          "height": 62,
+          "right": 286.625,
+          "bottom": 707
+        },
+        {
+          "id": "4",
+          "x": 290.625,
+          "y": 645,
+          "width": 89.625,
+          "height": 62,
+          "right": 380.25,
+          "bottom": 707
+        },
+        {
+          "id": "5",
+          "x": 9.75,
+          "y": 711,
+          "width": 89.625,
+          "height": 63,
+          "right": 99.375,
+          "bottom": 774
+        },
+        {
+          "id": "6",
+          "x": 103.375,
+          "y": 711,
+          "width": 89.625,
+          "height": 63,
+          "right": 193,
+          "bottom": 774
+        },
+        {
+          "id": "7",
+          "x": 197,
+          "y": 711,
+          "width": 89.625,
+          "height": 63,
+          "right": 286.625,
+          "bottom": 774
+        },
+        {
+          "id": "8",
+          "x": 290.625,
+          "y": 711,
+          "width": 89.625,
+          "height": 63,
+          "right": 380.25,
+          "bottom": 774
+        }
+      ],
+      "controls": [
+        {
+          "id": "joystick",
+          "x": 18,
+          "y": 520,
+          "width": 80,
+          "height": 80,
+          "right": 98,
+          "bottom": 600
+        },
+        {
+          "id": "jump",
+          "x": 320,
+          "y": 486,
+          "width": 56,
+          "height": 54,
+          "right": 376,
+          "bottom": 540
+        },
+        {
+          "id": "dig",
+          "x": 258,
+          "y": 546,
+          "width": 56,
+          "height": 54,
+          "right": 314,
+          "bottom": 600
+        },
+        {
+          "id": "place",
+          "x": 320,
+          "y": 546,
+          "width": 56,
+          "height": 54,
+          "right": 376,
+          "bottom": 600
+        }
+      ],
+      "feedback": {
+        "id": "feedback",
+        "x": 19.5,
+        "y": 153,
+        "width": 351,
+        "height": 47,
+        "right": 370.5,
+        "bottom": 200,
+        "text": "目的はありません。好きなところを掘って、好きなところに置くだけ。",
+        "visible": true
+      },
+      "feedbackOverlaps": [],
+      "overlaps": []
+    },
+    {
+      "name": "landscape844",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "materials": [
+        {
+          "id": "material-label",
+          "x": 387.34375,
+          "y": 225,
+          "width": 69.3125,
+          "height": 26,
+          "right": 456.65625,
+          "bottom": 251
+        },
+        {
+          "id": "1",
+          "x": 151.921875,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 215.9375,
+          "bottom": 319
+        },
+        {
+          "id": "2",
+          "x": 219.9375,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 283.953125,
+          "bottom": 319
+        },
+        {
+          "id": "3",
+          "x": 287.953125,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 351.96875,
+          "bottom": 319
+        },
+        {
+          "id": "4",
+          "x": 355.96875,
+          "y": 256,
+          "width": 64.03125,
+          "height": 63,
+          "right": 420,
+          "bottom": 319
+        },
+        {
+          "id": "5",
+          "x": 424,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 488.015625,
+          "bottom": 319
+        },
+        {
+          "id": "6",
+          "x": 492.015625,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 556.03125,
+          "bottom": 319
+        },
+        {
+          "id": "7",
+          "x": 560.03125,
+          "y": 256,
+          "width": 64.015625,
+          "height": 63,
+          "right": 624.046875,
+          "bottom": 319
+        },
+        {
+          "id": "8",
+          "x": 628.046875,
+          "y": 256,
+          "width": 64.03125,
+          "height": 63,
+          "right": 692.078125,
+          "bottom": 319
+        }
+      ],
+      "controls": [
+        {
+          "id": "joystick",
+          "x": 18,
+          "y": 153,
+          "width": 88,
+          "height": 88,
+          "right": 106,
+          "bottom": 241
+        },
+        {
+          "id": "jump",
+          "x": 774,
+          "y": 127,
+          "width": 56,
+          "height": 54,
+          "right": 830,
+          "bottom": 181
+        },
+        {
+          "id": "dig",
+          "x": 712,
+          "y": 187,
+          "width": 56,
+          "height": 54,
+          "right": 768,
+          "bottom": 241
+        },
+        {
+          "id": "place",
+          "x": 774,
+          "y": 187,
+          "width": 56,
+          "height": 54,
+          "right": 830,
+          "bottom": 241
+        }
+      ],
+      "feedback": {
+        "id": "feedback",
+        "x": 202.546875,
+        "y": 79,
+        "width": 438.90625,
+        "height": 30,
+        "right": 641.453125,
+        "bottom": 109,
+        "text": "世界と所持数を保ったまま、地上へ戻りました。",
+        "visible": true
+      },
+      "feedbackOverlaps": [],
+      "overlaps": []
+    },
+    {
+      "name": "narrow320",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "materials": [
+        {
+          "id": "material-label",
+          "x": 125.34375,
+          "y": 338,
+          "width": 69.3125,
+          "height": 26,
+          "right": 194.65625,
+          "bottom": 364
+        },
+        {
+          "id": "1",
+          "x": 8,
+          "y": 369,
+          "width": 73,
+          "height": 62,
+          "right": 81,
+          "bottom": 431
+        },
+        {
+          "id": "2",
+          "x": 85,
+          "y": 369,
+          "width": 73,
+          "height": 62,
+          "right": 158,
+          "bottom": 431
+        },
+        {
+          "id": "3",
+          "x": 162,
+          "y": 369,
+          "width": 73,
+          "height": 62,
+          "right": 235,
+          "bottom": 431
+        },
+        {
+          "id": "4",
+          "x": 239,
+          "y": 369,
+          "width": 73,
+          "height": 62,
+          "right": 312,
+          "bottom": 431
+        },
+        {
+          "id": "5",
+          "x": 8,
+          "y": 435,
+          "width": 73,
+          "height": 63,
+          "right": 81,
+          "bottom": 498
+        },
+        {
+          "id": "6",
+          "x": 85,
+          "y": 435,
+          "width": 73,
+          "height": 63,
+          "right": 158,
+          "bottom": 498
+        },
+        {
+          "id": "7",
+          "x": 162,
+          "y": 435,
+          "width": 73,
+          "height": 63,
+          "right": 235,
+          "bottom": 498
+        },
+        {
+          "id": "8",
+          "x": 239,
+          "y": 435,
+          "width": 73,
+          "height": 63,
+          "right": 312,
+          "bottom": 498
+        }
+      ],
+      "controls": [
+        {
+          "id": "joystick",
+          "x": 18,
+          "y": 244,
+          "width": 80,
+          "height": 80,
+          "right": 98,
+          "bottom": 324
+        },
+        {
+          "id": "jump",
+          "x": 250,
+          "y": 210,
+          "width": 56,
+          "height": 54,
+          "right": 306,
+          "bottom": 264
+        },
+        {
+          "id": "dig",
+          "x": 188,
+          "y": 270,
+          "width": 56,
+          "height": 54,
+          "right": 244,
+          "bottom": 324
+        },
+        {
+          "id": "place",
+          "x": 250,
+          "y": 270,
+          "width": 56,
+          "height": 54,
+          "right": 306,
+          "bottom": 324
+        }
+      ],
+      "feedback": {
+        "id": "feedback",
+        "x": 16,
+        "y": 153,
+        "width": 288,
+        "height": 29,
+        "right": 304,
+        "bottom": 182,
+        "text": "世界と所持数を保ったまま、地上へ戻りました。",
+        "visible": true
+      },
+      "feedbackOverlaps": [],
+      "overlaps": []
+    }
+  ],
+  "multiTouchEventTrace": [
+    {
+      "type": "pointermove",
+      "id": 1,
+      "pointerType": "mouse",
+      "target": "analytics-settings-host",
+      "trusted": true,
+      "x": 281,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 1,
+      "pointerType": "mouse",
+      "target": "analytics-settings-host",
+      "trusted": true,
+      "x": 281,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 1,
+      "pointerType": "mouse",
+      "target": "analytics-settings-host",
+      "trusted": true,
+      "x": 281,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "new-world",
+      "trusted": true,
+      "x": 195,
+      "y": 376.70001220703125
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "new-world",
+      "trusted": true,
+      "x": 195,
+      "y": 376.70001220703125
+    },
+    {
+      "type": "pointerup",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "new-world",
+      "trusted": true,
+      "x": 195,
+      "y": 376.70001220703125
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "new-world",
+      "trusted": true,
+      "x": 195,
+      "y": 376.70001220703125
+    },
+    {
+      "type": "pointerdown",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "joystick",
+      "trusted": true,
+      "x": 58,
+      "y": 560
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "joystick",
+      "trusted": true,
+      "x": 76,
+      "y": 560
+    },
+    {
+      "type": "pointermove",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "joystick",
+      "trusted": true,
+      "x": 76,
+      "y": 560
+    },
+    {
+      "type": "pointerdown",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 190,
+      "y": 240
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 200,
+      "y": 243
+    },
+    {
+      "type": "pointermove",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 200,
+      "y": 243
+    },
+    {
+      "type": "pointerdown",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "joystick",
+      "trusted": true,
+      "x": 76,
+      "y": 560
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "joystick",
+      "trusted": true,
+      "x": 76,
+      "y": 560
+    },
+    {
+      "type": "pointerup",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 200,
+      "y": 243
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 200,
+      "y": 243
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    }
+  ],
+  "captureLossTrace": [
+    {
+      "type": "pointerdown",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 287,
+      "y": 573
+    },
+    {
+      "type": "pointermove",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 287,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 288,
+      "y": 573
+    },
+    {
+      "type": "pointermove",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 288,
+      "y": 573
+    }
+  ],
+  "pointerTraceBeforeReload": [
+    {
+      "type": "lostpointercapture",
+      "id": 772,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 773,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 773,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointermove",
+      "id": 773,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 773,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 773,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 774,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 774,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 127.76850891113281,
+      "y": 200
+    },
+    {
+      "type": "pointermove",
+      "id": 774,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 127.76850891113281,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 774,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 127.76850891113281,
+      "y": 200
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 774,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 127.76850891113281,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 775,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 775,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 775,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 775,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 776,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 776,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 295,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 776,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 295,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 776,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 295,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 776,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 295,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 777,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 777,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 278.4317932128906,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 777,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 278.4317932128906,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 777,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 278.4317932128906,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 777,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 278.4317932128906,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 778,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 778,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 202.63006591796875
+    },
+    {
+      "type": "pointermove",
+      "id": 778,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 202.63006591796875
+    },
+    {
+      "type": "pointerup",
+      "id": 778,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 202.63006591796875
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 778,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 202.63006591796875
+    },
+    {
+      "type": "pointerdown",
+      "id": 779,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 779,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 779,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 779,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 780,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 780,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 291.9627685546875,
+      "y": 110
+    },
+    {
+      "type": "pointermove",
+      "id": 780,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 291.9627685546875,
+      "y": 110
+    },
+    {
+      "type": "pointerup",
+      "id": 780,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 291.9627685546875,
+      "y": 110
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 780,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 291.9627685546875,
+      "y": 110
+    },
+    {
+      "type": "pointerdown",
+      "id": 781,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 781,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 110
+    },
+    {
+      "type": "pointermove",
+      "id": 781,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 110
+    },
+    {
+      "type": "pointerup",
+      "id": 781,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 110
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 781,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 110
+    },
+    {
+      "type": "pointerdown",
+      "id": 782,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 782,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointermove",
+      "id": 782,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointerup",
+      "id": 782,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 782,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointerdown",
+      "id": 783,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 783,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointermove",
+      "id": 783,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointerup",
+      "id": 783,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 783,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 110
+    },
+    {
+      "type": "pointerdown",
+      "id": 784,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 784,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 197.3594207763672
+    },
+    {
+      "type": "pointermove",
+      "id": 784,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 197.3594207763672
+    },
+    {
+      "type": "pointerup",
+      "id": 784,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 197.3594207763672
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 784,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 197.3594207763672
+    },
+    {
+      "type": "pointerdown",
+      "id": 785,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 785,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 785,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 785,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 786,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 786,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200.1647186279297
+    },
+    {
+      "type": "pointermove",
+      "id": 786,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200.1647186279297
+    },
+    {
+      "type": "pointerup",
+      "id": 786,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200.1647186279297
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 786,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200.1647186279297
+    },
+    {
+      "type": "pointerdown",
+      "id": 787,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 787,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 101.18228149414062,
+      "y": 200
+    },
+    {
+      "type": "pointermove",
+      "id": 787,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 101.18228149414062,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 787,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 101.18228149414062,
+      "y": 200
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 787,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 101.18228149414062,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 788,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 788,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 788,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 788,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 789,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 789,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 203.9571075439453
+    },
+    {
+      "type": "pointermove",
+      "id": 789,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 203.9571075439453
+    },
+    {
+      "type": "pointerup",
+      "id": 789,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 203.9571075439453
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 789,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 203.9571075439453
+    },
+    {
+      "type": "pointerdown",
+      "id": 790,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 790,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointermove",
+      "id": 790,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 790,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 790,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 95,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 791,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 791,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 181.0774688720703,
+      "y": 200
+    },
+    {
+      "type": "pointermove",
+      "id": 791,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 181.0774688720703,
+      "y": 200
+    },
+    {
+      "type": "pointerup",
+      "id": 791,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 181.0774688720703,
+      "y": 200
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 791,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 181.0774688720703,
+      "y": 200
+    },
+    {
+      "type": "pointerdown",
+      "id": 792,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 792,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 792,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 792,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 793,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 793,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 273.47564697265625,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 793,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 273.47564697265625,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 793,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 273.47564697265625,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 793,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 273.47564697265625,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 794,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 794,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 794,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 794,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 794,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195.00001525878906,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 795,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 795,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 795,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 795,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 795,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 796,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 796,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 796,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 796,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 796,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 797,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 797,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 288.70013427734375
+    },
+    {
+      "type": "pointermove",
+      "id": 797,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 288.70013427734375
+    },
+    {
+      "type": "pointerup",
+      "id": 797,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 288.70013427734375
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 797,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 288.70013427734375
+    },
+    {
+      "type": "pointerdown",
+      "id": 798,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 798,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 798,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 798,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 799,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 799,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 799,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 799,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 800,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 195,
+      "y": 462.1000061035156
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 800,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 195,
+      "y": 462.1000061035156
+    },
+    {
+      "type": "pointerup",
+      "id": 800,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 195,
+      "y": 462.1000061035156
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 800,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 195,
+      "y": 462.1000061035156
+    },
+    {
+      "type": "pointerdown",
+      "id": 801,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 54.560001373291016,
+      "y": 676
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 801,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 54.560001373291016,
+      "y": 676
+    },
+    {
+      "type": "pointerup",
+      "id": 801,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 54.560001373291016,
+      "y": 676
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 801,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 54.560001373291016,
+      "y": 676
+    },
+    {
+      "type": "pointerdown",
+      "id": 802,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 802,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 802,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 802,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 802,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 803,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 803,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 803,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 803,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 803,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 804,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 804,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointermove",
+      "id": 804,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerup",
+      "id": 804,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 804,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 290
+    },
+    {
+      "type": "pointerdown",
+      "id": 805,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 200
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 805,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 253.913330078125
+    },
+    {
+      "type": "pointermove",
+      "id": 805,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 253.913330078125
+    },
+    {
+      "type": "pointerup",
+      "id": 805,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 253.913330078125
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 805,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 195,
+      "y": 253.913330078125
+    },
+    {
+      "type": "pointerdown",
+      "id": 806,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 806,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 806,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 806,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 807,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 807,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointercancel",
+      "id": 807,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 807,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 808,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 808,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointercancel",
+      "id": 808,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 808,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 287,
+      "y": 573
+    },
+    {
+      "type": "pointermove",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 287,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 288,
+      "y": 573
+    },
+    {
+      "type": "pointermove",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 288,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 809,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 288,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 810,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 190,
+      "y": 240
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 810,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointermove",
+      "id": 810,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 810,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 810,
+      "pointerType": "touch",
+      "target": "view",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 811,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 148.17999267578125,
+      "y": 676
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 811,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 148.17999267578125,
+      "y": 676
+    },
+    {
+      "type": "pointerup",
+      "id": 811,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 148.17999267578125,
+      "y": 676
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 811,
+      "pointerType": "touch",
+      "target": "",
+      "trusted": true,
+      "x": 148.17999267578125,
+      "y": 676
+    },
+    {
+      "type": "pointerdown",
+      "id": 812,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 812,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 812,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 812,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 813,
+      "pointerType": "touch",
+      "target": "pause-settings",
+      "trusted": true,
+      "x": 195,
+      "y": 514.0999755859375
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 813,
+      "pointerType": "touch",
+      "target": "pause-settings",
+      "trusted": true,
+      "x": 195,
+      "y": 514.0999755859375
+    },
+    {
+      "type": "pointerup",
+      "id": 813,
+      "pointerType": "touch",
+      "target": "pause-settings",
+      "trusted": true,
+      "x": 195,
+      "y": 514.0999755859375
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 813,
+      "pointerType": "touch",
+      "target": "pause-settings",
+      "trusted": true,
+      "x": 195,
+      "y": 514.0999755859375
+    },
+    {
+      "type": "pointerdown",
+      "id": 814,
+      "pointerType": "touch",
+      "target": "settings-back",
+      "trusted": true,
+      "x": 202.1999969482422,
+      "y": 483.5299987792969
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 814,
+      "pointerType": "touch",
+      "target": "settings-back",
+      "trusted": true,
+      "x": 202.1999969482422,
+      "y": 483.5299987792969
+    },
+    {
+      "type": "pointerup",
+      "id": 814,
+      "pointerType": "touch",
+      "target": "settings-back",
+      "trusted": true,
+      "x": 202.1999969482422,
+      "y": 483.5299987792969
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 814,
+      "pointerType": "touch",
+      "target": "settings-back",
+      "trusted": true,
+      "x": 202.1999969482422,
+      "y": 483.5299987792969
+    },
+    {
+      "type": "pointerdown",
+      "id": 815,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 815,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "pointerup",
+      "id": 815,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 815,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    }
+  ],
+  "terrainReload": {
+    "region": {
+      "x": 58,
+      "y": 42,
+      "z": 62
+    },
+    "sampledVoxels": 2197,
+    "beforeHash": "5f3c09aba82c335c1fa0ab32ee75952f83a4169500c6069cc9007eef9eb5d56c",
+    "afterHash": "5f3c09aba82c335c1fa0ab32ee75952f83a4169500c6069cc9007eef9eb5d56c"
+  },
+  "pointerTrace": [
+    {
+      "type": "pointerdown",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "pointerup",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 2,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "pointerdown",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 3,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "pointerup",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 4,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "pointerdown",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "practice",
+      "trusted": true,
+      "x": 195,
+      "y": 506.70001220703125
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "practice",
+      "trusted": true,
+      "x": 195,
+      "y": 506.70001220703125
+    },
+    {
+      "type": "pointerup",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "practice",
+      "trusted": true,
+      "x": 195,
+      "y": 506.70001220703125
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 5,
+      "pointerType": "touch",
+      "target": "practice",
+      "trusted": true,
+      "x": 195,
+      "y": 506.70001220703125
+    },
+    {
+      "type": "pointerdown",
+      "id": 6,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 6,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 6,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 6,
+      "pointerType": "touch",
+      "target": "dig",
+      "trusted": true,
+      "x": 286,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 7,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 7,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerup",
+      "id": 7,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 7,
+      "pointerType": "touch",
+      "target": "place",
+      "trusted": true,
+      "x": 348,
+      "y": 573
+    },
+    {
+      "type": "pointerdown",
+      "id": 8,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 8,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 8,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 8,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 359.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 9,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 9,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "pointerup",
+      "id": 9,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 9,
+      "pointerType": "touch",
+      "target": "save-title",
+      "trusted": true,
+      "x": 195,
+      "y": 566.0999755859375
+    },
+    {
+      "type": "pointerdown",
+      "id": 10,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 10,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "pointerup",
+      "id": 10,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 10,
+      "pointerType": "touch",
+      "target": "continue",
+      "trusted": true,
+      "x": 195,
+      "y": 350.70001220703125
+    },
+    {
+      "type": "pointerdown",
+      "id": 11,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 297.5,
+      "y": 216.5
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 11,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 297.5,
+      "y": 216.5
+    },
+    {
+      "type": "pointerup",
+      "id": 11,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 297.5,
+      "y": 216.5
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 11,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 297.5,
+      "y": 216.5
+    },
+    {
+      "type": "pointerdown",
+      "id": 12,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 808.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 12,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 808.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 12,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 808.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 12,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 808.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 13,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 297.5,
+      "y": 268.5
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 13,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 297.5,
+      "y": 268.5
+    },
+    {
+      "type": "pointerup",
+      "id": 13,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 297.5,
+      "y": 268.5
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 13,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 297.5,
+      "y": 268.5
+    },
+    {
+      "type": "pointerdown",
+      "id": 14,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 250.3699951171875
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 14,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 250.3699951171875
+    },
+    {
+      "type": "pointerup",
+      "id": 14,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 250.3699951171875
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 14,
+      "pointerType": "touch",
+      "target": "resume",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 250.3699951171875
+    },
+    {
+      "type": "pointerdown",
+      "id": 15,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 289.989990234375,
+      "y": 26
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 15,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 289.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerup",
+      "id": 15,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 289.989990234375,
+      "y": 26
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 15,
+      "pointerType": "touch",
+      "target": "pause",
+      "trusted": true,
+      "x": 289.989990234375,
+      "y": 26
+    },
+    {
+      "type": "pointerdown",
+      "id": 16,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 354.3699951171875
+    },
+    {
+      "type": "gotpointercapture",
+      "id": 16,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 354.3699951171875
+    },
+    {
+      "type": "pointerup",
+      "id": 16,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 354.3699951171875
+    },
+    {
+      "type": "lostpointercapture",
+      "id": 16,
+      "pointerType": "touch",
+      "target": "surface",
+      "trusted": true,
+      "x": 159.99000549316406,
+      "y": 354.3699951171875
+    }
+  ],
+  "frameTiming": {
+    "count": 32,
+    "averageMs": 19.26250000000002,
+    "averageFps": 51.91434133679424,
+    "p50Ms": 16.699999999999818,
+    "p95Ms": 33.40000000000009,
+    "maximumMs": 50,
+    "over50ms": 0
+  },
+  "result": "PASS"
+}

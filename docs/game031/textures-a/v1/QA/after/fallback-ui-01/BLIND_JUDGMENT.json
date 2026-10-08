@@ -1,0 +1,24 @@
+{
+  "finding_id": "game031-textures-a-fallback-ui-resume",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "texture_qa; blind to Jev answers",
+  "rationale": "The preserved screenshot and current pause markup expose #resume labelled 再開（ドラッグ視点） and #lock labelled 再開（マウス固定）. The test searches exact name 再開, which matches neither. App remained paused, with explicit fallback warning and no page errors. This is an incorrect test locator; functionality after the actual resume button still needs verification.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/fallback-ui-01/failure.png",
+    "docs/game031/textures-a/v1/QA/after/fallback-ui-01/REPORT.json",
+    "src/games/game031/main.ts",
+    "tests/game031/textures-a-fallback-ui.mjs"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Change only the owned test locator to existing #resume and rerun unique fallback-ui-02 for initial404 and corrupt tier decode, ordinary mining, saving and restoration.",
+    "evidence": [
+      "tests/game031/textures-a-fallback-ui.mjs",
+      "docs/game031/textures-a/v1/QA/after/fallback-ui-01/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

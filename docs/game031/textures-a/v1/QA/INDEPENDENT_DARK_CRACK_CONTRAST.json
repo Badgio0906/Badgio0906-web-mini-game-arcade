@@ -1,0 +1,28 @@
+{
+  "finding_id": "game031-textures-a-dark-crack-contrast",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "texture_review independent agent",
+  "rationale": "The actual matched viewport captures make a material-specific contrast defect visible. The crack line is clear on chalk but lost on the new dark-crystal material. This conflicts with the explicit request to preserve visible cracks over dark crystals; code inspection explains the common dark-green stroke, but the classification is based on the screenshots. It is not evidence of failed mining or save corruption, and the global progress indicator plus aim remain readable, hence not a major play-blocking release risk.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id8-valid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-valid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-invalid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id4-valid.png",
+    "src/games/game031/Render.ts"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Opened actual desktop and phone chalk4 versus dark8 valid/invalid overlay PNGs at the same progress. Require a minimal contrast treatment followed by matched new output screenshots before closing; retain all original evidence.",
+    "evidence": [
+      "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id8-valid.png",
+      "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-valid.png",
+      "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-invalid.png",
+      "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id4-valid.png"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+  "human_judgment": null
+}

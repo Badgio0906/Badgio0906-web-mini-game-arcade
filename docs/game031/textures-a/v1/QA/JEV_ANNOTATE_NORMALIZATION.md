@@ -1,0 +1,1 @@
+最初のannotateは入力schema検査で拒否。独立レビュー原本のobserved_at/source hash/jev_log_read等の監査fieldと、連携側finding_idの別名を含んでいたため。原本は変更せず、helperが許可するfieldとrecordの実finding_idへ限定した別コピーで注釈を保存する。新しいAPI呼出しやレビュー再実行ではない。

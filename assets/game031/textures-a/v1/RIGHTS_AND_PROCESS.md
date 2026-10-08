@@ -1,0 +1,13 @@
+# User texture intake and processing
+
+The eight PNGs were received in the user-uploaded `掘って、埋める用テクスチャ.zip` for Game031. The user expressly requested processing, optimization and use in this existing game's public texture update. Source filenames and SHA256 identities are in [source-map.json](source-map.json); byte-identical preserved originals are under `sources/`, outside `public/`.
+
+The actual image content was independently opened and reviewed before mapping. Number suffixes were not used as proof: ID1 green/teal moss, 2 warm earth, 3 slate, 4 chalk, 5 coarse dark slate, 6 cyan facets, 7 teal mother rock with amber veins, 8 dark mother rock with purple crystal. ID0 remains empty and ID9 remains the code-made boundary material; neither receives a supplied image.
+
+These are BaseColor images only. They are not measured surface, roughness, normal, height, AO or emission data. The coarse rectangular deep-rock appearance is present in the supplied original and retained rather than independently redrawn. No derived PBR maps were created.
+
+Conversion retains the entire image and orientation, uses Pillow Lanczos shrink to 512 or 256 pixels, and WebP quality90/method6. No crop, global blur, repaint, saturation shift or seam correction was applied: original and decoded 3×3 previews did not exhibit a conspicuous hard edge requiring correction. This observation is not a promise of mathematically perfect seamlessness under every viewing condition. RGB files are treated as sRGB BaseColor by the renderer; they are not individually color-multiplied to substitute the old block palette.
+
+The source generation provider, original prompt, third-party rights history and contractual ownership are not independently verified from filenames. Names containing `ChatGPT` are a supplied filename, not sufficient proof of generation provenance or rights clearance. No external site's texture was downloaded or claimed as a source, and no zero-risk legal guarantee is made. This ledger records the received file identity and user-authorized scope, rather than inventing a stock-asset license.
+
+Rebuild with Python3 and Pillow: `python3 scripts/game031/prepare-textures.py --input <folder-containing-originals>`. Identity is resolved using the reviewed hash; renamed originals work, missing/duplicate/hash-mismatched sources fail before writing. A preserved source with a different hash is not overwritten. Inputs are never moved or modified. Normal npm CI/build uses committed outputs and requires neither this script nor the user's Windows folder. `source-index.json` records original-to-output hashes and processing, while the public `manifest.json` contains only runtime-normalized metadata.

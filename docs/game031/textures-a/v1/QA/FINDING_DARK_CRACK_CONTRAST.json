@@ -1,0 +1,21 @@
+{
+  "finding_id": "game031-textures-a-dark-crack-contrast",
+  "problem": "The mining progress crack stroke is not discernible over dark-crystal surfaces in the actual overlay viewports.",
+  "expected": "On both light chalk and dark-crystal surfaces the stage-dependent crack remains distinguishable from the supplied material pattern and placement ghost.",
+  "observed": [
+    "At synthetic digProgress0.65, the dark green angular crack is clearly visible in desktop-id4-valid.png and phone-id4-valid.png.",
+    "In desktop-id8-valid.png, phone-id8-valid.png and phone-id8-invalid.png the outline and central aim remain visible, while the angular crack is essentially lost against the dark gray/purple rock and translucent placement ghost.",
+    "The same renderer uses a dark green crack material color0x16383c opacity0.8 for both materials."
+  ],
+  "unknown": [
+    "Whether a light crack stroke, contrast underlay, or another minimal outline treatment will provide enough contrast across both material groups."
+  ],
+  "operation": "Independent actual viewport screenshot review of isolated Render fixture with supplied textures and digProgress0.65.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id8-valid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-valid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/phone-id8-invalid.png",
+    "docs/game031/textures-a/v1/QA/after/overlays-01/desktop-id4-valid.png"
+  ],
+  "provenance": "synthetic progress/target fixture; actual Game031 Render + actual supplied textures; no production player data or natural mining claim."
+}

@@ -1,0 +1,28 @@
+{
+  "finding_id": "game031-textures-a-cube-bottom-fixture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent texture_review agent",
+  "observed_at": "2026-10-08T03:42:39.271919+00:00",
+  "review_source_commit": "2d745110e1a7a24660da16dd6529d8ca2d08a2bf + uncommitted texture task",
+  "rationale": "The actual baseline negative-Y viewport is an earth surface. The fixture camera body is Y19 and engine eye offset is 1.6, placing eye Y20.6 below the continuous earth floor at Y21. A ray toward the cube center Y24.5 intersects that floor before the cube. This fixture obstruction does not establish a game UV, voxel, or normal defect.",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/before/run-20261008T-baseline-01/cube-face-ny.png",
+    "tests/game031/textures-a-capture.mjs"
+  ],
+  "evidence_sha256": {
+    "docs/game031/textures-a/v1/QA/before/run-20261008T-baseline-01/cube-face-ny.png": "684140b6dd3d6431fe8696cf65cfccb31945d9617ef5f7969649c1fb086f7a9b"
+  },
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspect the fixture camera/floor geometry and recapture only the underside with the camera above the floor and below the isolated cube, or omit the fixture floor for this cube scenario.",
+    "evidence": [
+      "tests/game031/textures-a-capture.mjs"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "TEST_INFRA_BUG",
+  "jev_log_read": false
+}

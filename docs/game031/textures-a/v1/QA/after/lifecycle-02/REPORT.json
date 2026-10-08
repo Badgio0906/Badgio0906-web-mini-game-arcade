@@ -1,0 +1,203 @@
+{
+  "at": "2026-10-08T04:11:11.048Z",
+  "url": "http://127.0.0.1:4314",
+  "provenance": "synthetic isolated Render/SurfaceTextures fixture; no real saved world or production analytics",
+  "errors": [],
+  "steps": [
+    {
+      "step": "actual-layer-pixels-exact",
+      "decoded": [
+        {
+          "id": 1,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 2,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 3,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 4,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 5,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 6,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 7,
+          "size": 512,
+          "pixelBytes": 1048576
+        },
+        {
+          "id": 8,
+          "size": 512,
+          "pixelBytes": 1048576
+        }
+      ],
+      "textureMemory": 1
+    },
+    {
+      "step": "all-six-flat-normals-and-one-repeat-per-face",
+      "directions": [
+        "0,1,0",
+        "1,0,0",
+        "0,0,-1",
+        "0,-1,0",
+        "-1,0,0",
+        "0,0,1"
+      ],
+      "faces": 3104,
+      "blockFaceCounts": {
+        "1": 926,
+        "2": 73,
+        "3": 133,
+        "4": 204,
+        "5": 173,
+        "6": 7,
+        "7": 7,
+        "8": 8,
+        "9": 1573
+      }
+    },
+    {
+      "step": "quality-0",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-1",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-2",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-3",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-4",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-5",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-6",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-7",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-8",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-9",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-10",
+      "tier": "light",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "quality-11",
+      "tier": "standard",
+      "textures": 1,
+      "geometries": 6
+    },
+    {
+      "step": "80-synthetic-edit-rebuilds",
+      "geometries": 6,
+      "textures": 1,
+      "canonicalBlock": 3,
+      "editDelayMs": 0.5
+    },
+    {
+      "step": "initial-decode-failure-fallback",
+      "state": {
+        "status": "fallback",
+        "requestedTier": "standard",
+        "activeTier": null,
+        "suppliedCount": 0,
+        "errors": [
+          "3:load_failed",
+          "5:load_failed"
+        ],
+        "size": 32,
+        "gpuBytesEstimate": 54614
+      }
+    },
+    {
+      "step": "failed-switch-preserves-complete-eight",
+      "state": {
+        "status": "error",
+        "requestedTier": "light",
+        "activeTier": "standard",
+        "suppliedCount": 8,
+        "errors": [
+          "3:load_failed",
+          "5:load_failed"
+        ],
+        "size": 512,
+        "gpuBytesEstimate": 13981014
+      }
+    },
+    {
+      "step": "old-job-ignored",
+      "state": {
+        "status": "supplied",
+        "requestedTier": "light",
+        "activeTier": "light",
+        "suppliedCount": 8,
+        "errors": [],
+        "size": 256,
+        "gpuBytesEstimate": 3495254
+      }
+    },
+    {
+      "step": "destroy-pending-job-cannot-adopt",
+      "disposeEvents": 1
+    }
+  ],
+  "result": "PASS"
+}

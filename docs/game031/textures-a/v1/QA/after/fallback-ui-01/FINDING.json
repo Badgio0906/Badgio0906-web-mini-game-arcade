@@ -1,0 +1,19 @@
+{
+  "finding_id": "game031-textures-a-fallback-ui-resume",
+  "problem": "The fallback/save test times out on the resume button after leaving settings.",
+  "expected": "From the pause menu, test should activate resume and continue normal mining to check save behavior under texture load failure.",
+  "observed": [
+    "After syntheticHTTP404, app state ispaused and texture statefallback,count0,error6:load_failed.",
+    "The test searches accessiblebutton name exactly \u518d\u958b for30seconds.",
+    "The screenshotshows two resume buttons labelled \u518d\u958b\uff08\u30c9\u30e9\u30c3\u30b0\u8996\u70b9\uff09 and \u518d\u958b\uff08\u30de\u30a6\u30b9\u56fa\u5b9a\uff09.",
+    "Thereare no pageerrors; minedcount0 because testhasnotresumed."
+  ],
+  "unknown": [
+    "Whether selectingtheexisting\u30c9\u30e9\u30c3\u30b0\u8996\u70b9resumebutton is sufficient to continue this test or another issue remains."
+  ],
+  "provenance": "localactualGame031UI, syntheticHTTP404 interception, normalclicks; screenshotcapturedbeforeanyretry",
+  "evidence": [
+    "docs/game031/textures-a/v1/QA/after/fallback-ui-01/failure.png",
+    "docs/game031/textures-a/v1/QA/after/fallback-ui-01/REPORT.json"
+  ]
+}

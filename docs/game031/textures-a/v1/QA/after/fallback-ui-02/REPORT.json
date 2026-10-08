@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-08T04:27:31.193Z",
+  "provenance": "isolated local actual UI with synthetic HTTP404 and corrupt image interception; normal mine/save/reload. No production user storage.",
+  "cases": [
+    {
+      "test": "initial404",
+      "warning": "素材画像を読み込めません。簡易表示で遊べます。",
+      "normalMined": 1,
+      "inventory": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minedVoxelAfterReload": 0
+    },
+    {
+      "test": "failed-tier-decode",
+      "warning": "素材画像の切替に失敗。前の正常な素材を表示しています。",
+      "normalMined": 1,
+      "inventory": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minedVoxelAfterReload": 0
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}
