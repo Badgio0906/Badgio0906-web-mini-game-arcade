@@ -6,11 +6,11 @@ if(!out||!/^[a-f0-9]{40}$/.test(sha))throw Error('Unique output and expected com
 await mkdir(out,{recursive:false});
 const proxy=(()=>{if(!process.env.HTTPS_PROXY)return undefined;const p=new URL(process.env.HTTPS_PROXY);return{server:p.origin,...(p.username?{username:decodeURIComponent(p.username)}:{}),...(p.password?{password:decodeURIComponent(p.password)}:{})};})();
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',proxy,args:['--no-sandbox']});
-const report={at:new Date().toISOString(),expectedCommit:sha,url:'https://game100garage.com/',provenance:'Published HTML/JS via browser; four simulated viewports, disposable storage, one ordinary Game001 result per PC/phone. Not physical devices or author enjoyment. Production API remains disabled.',views:[],checks:[],errors:[],recordRequests:0,analyticsPosts:0};
+const report={at:new Date().toISOString(),expectedCommit:sha,url:'https://game100garage.com/',provenance:'Published HTML/JS via browser; four simulated viewports, disposable storage, one ordinary Game001 result per PC/phone. Not physical devices or author enjoyment. Production API remains disabled.',views:[],checks:[],errors:[],recordRequests:0,analyticsPosts:0,consoleErrors:[]};
 const check=(ok,name)=>{report.checks.push({name,pass:!!ok});if(!ok)throw Error(name);};let active;
 try{for(const viewport of[{width:1300,height:900},{width:390,height:844},{width:320,height:720},{width:844,height:390}]){
  const mobile=viewport.width!==1300,context=await browser.newContext({viewport,isMobile:mobile,hasTouch:mobile}),page=await context.newPage();active=page;
- page.on('pageerror',e=>report.errors.push(e.message));
+ page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error')report.consoleErrors.push({viewport:viewport.width,message:m.text()});});
  await context.route('**/*',route=>{const r=route.request();if(r.url().includes('/v1/records/')){report.recordRequests++;return route.abort();}if(r.method()==='POST'&&r.url().includes('analytics.game100garage.com')){report.analyticsPosts++;return route.abort();}return route.continue();});
  await page.goto(report.url+'?qa='+sha.slice(0,12),{waitUntil:'networkidle'});
  const deny=page.getByRole('button',{name:'許可しない',exact:true});if(await deny.count())await deny.click();
@@ -23,7 +23,7 @@ try{for(const viewport of[{width:1300,height:900},{width:390,height:844},{width:
  check(await page.locator('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]').count()===1,'AdSense script retained '+viewport.width);
  await page.locator('#record-sharing-settings').scrollIntoViewIfNeeded().catch(()=>{});
  const summary=page.getByText('あなたのBEST・記録共有設定',{exact:true});await summary.click();check(await page.locator('.record-sharing-settings input[type=checkbox]').isDisabled(),'sharing disabled '+viewport.width);
- await page.screenshot({path:out+`/portal-${viewport.width}x${viewport.height}.png`,fullPage:true});
+ const decoded=await page.locator('.game-image img').evaluateAll(async imgs=>{await Promise.all(imgs.map(async img=>{img.loading='eager';await img.decode().catch(()=>{});}));return imgs.length===30&&imgs.every(img=>img.complete&&img.naturalWidth>0);});check(decoded,'all30 published thumbnails decoded '+viewport.width);await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:out+`/portal-top-${viewport.width}x${viewport.height}.png`});await page.screenshot({path:out+`/portal-${viewport.width}x${viewport.height}.png`,fullPage:true});
  report.views.push({viewport,cards,scripts:await page.locator('script[src]').evaluateAll(list=>list.map(s=>new URL(s.src).pathname))});
  if(viewport.width===1300||viewport.width===390){
   const card=page.locator('[data-game-id=game001]');if(mobile)await card.tap();else{await card.focus();await page.keyboard.press('Enter');}

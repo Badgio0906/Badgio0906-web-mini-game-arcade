@@ -29,3 +29,13 @@ Jevは実findingごとのShadow routingにだけ使用。[実行監査](QA/JEV_E
 ## 続きの作業
 
 本番認証を使える既存環境でOPERATIONSのバックアップ/今回migration限定/Worker公開/管理境界/公開GET確認を行った後、限定records endpointを公式Pagesへ接続する。全体BESTの実データと実プレイヤー投稿受信は別途観測する。Global120新規/分はサービス量制限で、利用者ごとの公平性/完全な不正防止を保証しない。改ざんブラウザ/Origin偽装/値の捏造は検査と保留・取消の初期範囲。accepted候補と最小tombstoneは容量監視が必要。旧Godot bridge・実機・本人試遊は残作業。
+
+## 本番Pages公開確認（2026-10-09 日本時間）
+
+実装runtime commit `9b9d3f91ba38eca6aee5071705ee566dafba08c3` をmainへpushし、[公式Pages run37806261132](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37806261132) のbuild/deployが成功。[公開サイト](https://game100garage.com/) で個人表示を公開済み。共有バックエンドは本番未反映、「みんなのBEST」は準備中・共有OFF/無効の承認済み代替であり、完全な共有機能公開とは報告しない。
+
+[配信版](QA/publication/version-03/VERSION.json) は対象SHAの公式workflow成功、clean対象ソースbuildと公開110件のHTML/JS/CSS/font bytes一致で確認。Actions run ZIP・job logsはアクセス拒否のため公式artifact ZIP/CI asset一覧の直接照合は未確認。失敗 [version-01](QA/publication/version-01/BLOCKER.json)、[version-02](QA/publication/version-02/FAILURE.json) と [限定原因/除外理由](QA/publication/VALIDATION_NOTES.json) を保持。参照buildの空文字と未設定による最適化差だけを訂正し、製品/公式workflowは変更しなかった。
+
+[公開ブラウザ36項目](QA/publication/runtime-01/REPORT.json) は1300×900/390×844/320×720/844×390で30カードの2段直下表示・条件/例外・画像decode・リンク・AdSense保持・共有無効を確認。PCのEnter/phoneタップで実Game001へ進み通常結果の元BESTとPortalの値一致を確認。本番記録リクエスト0、Analytics POST0、page JS errors0。既存Ads通信の同型console errorは6回（確認ページ6回）、[追補](QA/publication/console-01/REPORT.json) でpagead2.googlesyndication.comのERR_TUNNEL_CONNECTION_FAILEDを確認。Ads script/configは維持し、広告配信自体は未確認。
+
+代表実画像： [PC](QA/publication/runtime-01/portal-top-1300x900.png)／[390px](QA/publication/runtime-01/portal-top-390x844.png)／[320px](QA/publication/runtime-01/portal-top-320x720.png)／[横画面](QA/publication/runtime-01/portal-top-844x390.png)。全ページ画像と通常結果/BEST更新画像も同じ出力に保存。本人の面白さ、物理iPhone/Android、実BFCache、本番全体GET/実投稿は未確認。後続は上記OPERATIONSに従い既存認証が使える環境で進める。

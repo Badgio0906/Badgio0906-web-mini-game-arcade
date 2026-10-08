@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-08T16:12:11.155926+00:00",
+  "observations": [
+    {
+      "stage": "official_logs",
+      "observation": "Run ZIP and job logs supported endpoints Forbidden",
+      "handling": "Stop log attempts, preserve sanitized blocker; verify successful expected-commit workflow metadata plus clean-source/public-byte comparison. No changes to credentials or network policy.",
+      "jev_applied": false,
+      "exclusion": "JEV_REVIEW_RULES: HTTP status is handled mechanically; no unknown product behavior."
+    },
+    {
+      "stage": "equivalent_build",
+      "observation": "Public game001 HTML differs from local build. Shared chunk first differing site is recordsBase input folding. Official workflow leaves VITE_RECORDS_ENDPOINT unset; local reference explicitly used empty string. Both resolve null but optimize differently.",
+      "independent_inspection_before_routing": true,
+      "handling": "Correct only reference build environment to unset; no app source or official workflow changes. Original byte-failure retained before repeat.",
+      "jev_applied": false,
+      "exclusion": "JEV_REVIEW_RULES: numerical comparisons/build results are handled by scripts. This is an exact known compile-input comparison, not a new uncertain gameplay/semantic finding."
+    }
+  ]
+}

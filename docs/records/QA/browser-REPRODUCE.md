@@ -27,3 +27,9 @@ All native and default Portal cases have zero record/Analytics POST and zero pag
 Failures remain intact. Three product findings were independently inspected without reading Jev answers: unreadable cross-origin `Retry-After`, stale cross-tab withdrawal status from a detached receipt object, and native `fetch` Illegal invocation. Root owns Shadow invocation and annotations. Other failures were fixture reseeding, clicking through the existing first-visit consent panel, unchecking an already-unchecked checkbox, Game001's existing 420 ms result reveal, and the existing difference between nearest display height and floored saved BEST in Game019. Their original reports, images and independent explanations remain available.
 
 No commit, push, deploy, source/game change, or real production record/API call was performed by this QA subtask. Root owns integration and publication verification.
+
+## 公開版の確認
+
+`tests/records/verify-public.mjs <expectedSHA> <successfulPagesRun> <uniqueOutput>` は公式expected-SHA workflow成功とclean source相当build、公開bytesを照合する。許可されたログ取得が可能な場合だけCI asset名も照合する（NODE_USE_ENV_PROXY=1が必要な環境あり）。
+
+`RECORDS_QA_OUT=<uniqueOutput> RECORDS_EXPECTED_COMMIT=<expectedSHA> node tests/records/public-browser.mjs` は実公開の4画面、30カード/画像、元BESTの通常結果とPortal反映を確認する。送信は停止し本番テスト投稿は行わない。物理スマホと人間の面白さは未確認。
