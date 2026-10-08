@@ -19,3 +19,7 @@ Three.js0.186.1は031pageのみ、正規データ128X/64Y/128Z、Block/schema/ge
 本番Worker認証が現環境にはないため031の外部収集はOFF。既存権限の環境でコード登録を公開→031匿名集計と認証を確認→031の停止だけ解除する。021〜030のpendingを根拠なく解除しない。本人/物理スマホ未試遊はHUMAN_PLAYTEST.mdのまま、AI技術QAから人間合格を作らない。
 
 公開commit/公式CI/配信照合/実操作はIMPLEMENTATION_REPORTとQA/PUBLICATIONで確認。新しい公開時は最新mainと公式workflowを再確認し、秘密値を表示しない。
+
+## 現在の公開状態
+
+Game031はruntime aead0cf／公式Pages37709128212で公開済み。13配信file一致後、PC11採掘5配置／phone12採掘5配置・保存reloadhash・Portal30確認。本番送信OFF、本人/実機未試遊。公開証拠QA/PUBLICATION.json。環境で再検証するときは設定済みproxyが必要ならNode24にNODE_USE_ENV_PROXY=1、公開PlaywrightrunnerにはGAME031_USE_PROXY=1（既存環境proxyを読んでcredentialを表示/保存しない）。独自proxy/新権限を作らない。

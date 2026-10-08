@@ -1,6 +1,6 @@
 # Game031「掘って、置くだけ。」技術QA済み試作
 
-公開先予定: https://game100garage.com/game031.html 。公開commit／公式CI／配信照合／本番通常操作は公開後の専用証拠を追記する。現時点は公開前。
+**試作公開済み:** https://game100garage.com/game031.html 。runtime `aead0cf218558cbe4ead9a8a4d15251c56070430`、公式Pages **37709128212** build/deploy成功。期待版の公開13file SHA一致後、PC／phone相当の通常操作と保存再読込を確認。[公開証拠](QA/PUBLICATION.json)。本人未試遊の技術QA済み試作。
 
 ## 実装と境界
 
@@ -45,4 +45,13 @@ compiled-preview-desktop-after-20261008T0036Zとcompiled-preview-phone-20261008T
 
 初回compiledPCはゲーム部分PASS後、旧URL形式だけを数えてlegacy3本を落とすPortal試験でFAIL。原本を保持してdata-game-id全cardとlazyimage通常scroll/waitへ試験を修正、再実行でPASS。Portal impressionの旧catalog_version29は現在gameCatalog.length由来へ限定更新、schema/認証/gate/広告は不変。
 
-公開操作・配信確認は次節に実際の結果だけ追記する。
+## 公開確認結果
+
+runtime aead0cfをmainへfast-forward push→公式Build and deploy arcade37709128212全成功。公式CI74hashnamedasset一覧と、同じ公開設定の期待commitクリーンbuildを照合し、index/game031/thumb/関連JS/CSSの13配信file SHA256が一致。現在artifact55,411,965bytesは直接ZIP取得をしていない（32MiBの既知転送制約等）。正確な検証方法と旧helper説明文の限定はQA/ARTIFACT_REFERENCE_METHOD.json。最初の直接Nodefetch DNS EAI_AGAINも保全し、既存設定proxy経由で一致を確認、サイト設定や権限を変えていない。
+
+公開PCは**11採掘/5配置・6所持・4変更Chunk**、phone相当は**12採掘/5配置・7所持・4変更Chunk**。どちらも正規backupを一時メモリで読んだ地形/所持hashと再読込が一致。PC移動約0.93m／jump1.17m、phone move/look/DIG複数指＋cancel/jump約1.17m、縦390/横844/縦320、Portal戻り30cards・031thumb640×360・既存Ads script1・同意UIを確認。DEV診断APIなし、pageerror0／Analytics request0。既存Ads外部通信の環境制約エラー各1件は保存し、広告コード変更で隠していない。作者本人・物理端末の試遊ではない。
+
+公開後PROTECTION_PUBLISHEDは15旧tree/未commit全て一致。資料・公開写真・proxy対応QA runnerのみ後続commitに保存し、runtime sourceの追加変更は行わない。後続公式CI/期待ファイルの再一致は最終チャットで報告する。
+
+
+差分検査はコード／設定が対象範囲のみと確認済み。保存したraw test stdoutにgit diff --checkのEOF空行警告5件があり、元の実行記録として保持した。ソースの空白問題やテスト失敗ではない。
