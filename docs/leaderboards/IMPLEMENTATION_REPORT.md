@@ -1,6 +1,6 @@
 # 全体BEST＋歴代TOP10 STEP 1実装報告
 
-2026-10-09 UTC。開始main `f8b8444dc1d942aba56f23199498226caa38fd22`、branch `codex/leaderboards-step1`。開始時dirtyなし、同環境worktree1件。GitHub mainとlocalHEAD一致を確認し、過去報告の他環境21treeがこの環境に存在すると推測していない。[開始](QA/START_STATE.json)／[正本読取](QA/READ_RECORD.json)。
+2026-10-09 UTC。開始main `f8b8444dc1d942aba56f23199498226caa38fd22`、開始branch `work` から作業branch `codex/leaderboards-step1` を作成。開始時dirtyなし、同環境worktree1件。GitHub mainとlocalHEAD一致を確認し、過去報告の他環境21treeがこの環境に存在すると推測していない。[開始](QA/START_STATE.json)／[正本読取](QA/READ_RECORD.json)。
 
 ## 実装
 
