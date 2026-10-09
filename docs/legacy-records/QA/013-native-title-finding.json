@@ -1,0 +1,18 @@
+{
+  "finding_id": "legacy013-native-title-scope",
+  "problem": "ネイティブTITLEへ戻った際に親の共有UIとRUN状態が残る経路がある",
+  "expected": "元ゲームのTITLE操作時も終了済み結果UIと中断RUNを解放する",
+  "observed": [
+    "native show_titleの追加処理はrecord_active=falseだけ",
+    "親はstart/framehidden/外側メニューイベント/pagehide時だけresetする",
+    "nativeTITLEではiframevisibleと外側イベント状態は変わらない"
+  ],
+  "unknown": [
+    "実操作で結果→TITLEの表示残留を確認できるか"
+  ],
+  "evidence": [
+    "tools/legacy-record-patches/game013/game_manager.gd.patch",
+    "src/records/LegacyGameRecords.ts"
+  ],
+  "provenance": "独立コード観察による状態遷移のfinding"
+}

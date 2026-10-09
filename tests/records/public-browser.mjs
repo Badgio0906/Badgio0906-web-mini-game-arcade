@@ -18,7 +18,7 @@ try{for(const viewport of[{width:1300,height:900},{width:390,height:844},{width:
  const cards=await page.locator('.game-card').evaluateAll(list=>list.map(c=>({id:c.dataset.gameId,rows:c.querySelectorAll('.card-records dl>div').length,direct:c.querySelector('.game-image').nextElementSibling===c.querySelector('.card-records'),text:c.querySelector('.card-records').innerText,href:c.href,overflow:c.querySelector('.card-records').scrollWidth>c.querySelector('.card-records').clientWidth+1})));
  check(cards.length===30&&cards.every(c=>c.rows===2&&c.direct&&!c.overflow),'two direct rows in all30 cards '+viewport.width);
  check(cards.filter(c=>c.text.includes('みんなのBEST')).every(c=>c.text.includes('準備中')),'scored public records preparing '+viewport.width);
- check(cards.filter(c=>['game012','game013','game014'].includes(c.id)).every(c=>c.text.includes('未対応（旧作品）')),'Godot technical exclusions '+viewport.width);
+ check(cards.filter(c=>['game012','game013','game014'].includes(c.id)).every(c=>c.text.includes('記録なし')&&c.text.includes('準備中')&&!c.text.includes('未対応（旧作品）')),'fresh Godot records absent and public preparing '+viewport.width);
  check(!cards.some(c=>c.id==='game010')&&cards.every(c=>/^https:\/\/game100garage.com\//.test(c.href)),'active links and retired protection '+viewport.width);
  check(await page.locator('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]').count()===1,'AdSense script retained '+viewport.width);
  await page.locator('#record-sharing-settings').scrollIntoViewIfNeeded().catch(()=>{});

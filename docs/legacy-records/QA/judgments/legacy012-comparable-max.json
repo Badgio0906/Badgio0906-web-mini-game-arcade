@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy012-comparable-max",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Returning normal before comparable old maximum lowers displayed012 BEST. Fixed by comparable max; no engine save write.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_012_CODE.md",
+    "docs/legacy-records/QA/protocol-01/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Fixed comparable maximum and tested concurrent atomic writers plus imported200 against weak2.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_012_CODE.md",
+      "docs/legacy-records/QA/protocol-01/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

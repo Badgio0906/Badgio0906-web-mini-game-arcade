@@ -16,8 +16,14 @@ describe('explicit record comparison definitions',()=>{
     expect(getRecordDefinition('game024')).toMatchObject({modeId:'speed-4',maxValue:397,assistancePolicy:'none'});
     expect(getRecordDefinition('game019')).toMatchObject({rulesetId:'2',maxValue:2000,storageScale:10});
   });
+  it('registers only comparable native legacy metrics with assistance excluded',()=>{
+    expect(getRecordDefinition('game012')).toMatchObject({metricId:'score',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:Number.MAX_SAFE_INTEGER,pendingAbove:1000000});
+    expect(getRecordDefinition('game013')).toMatchObject({metricId:'score',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:11400,pendingAbove:11400});
+    expect(getRecordDefinition('game014')).toMatchObject({metricId:'successes',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:25,pendingAbove:25});
+    expect(recordBoards.filter(b=>['game012','game013','game014'].includes(b.gameId)).map(b=>b.boardId)).toEqual(['game012.score.r1.normal','game013.score.r1.normal','game014.successes.r1.normal']);
+  });
   it('does not invent competitive records for unranked games or a score for retired game',()=>{
-    for(const id of ['game012','game013','game014','game020','game021','game022','game023','game025','game026','game027','game028','game030','game031'])expect(getRecordDefinition(id)?.publicEnabled).toBe(false);
+    for(const id of ['game020','game021','game022','game023','game025','game026','game027','game028','game030','game031'])expect(getRecordDefinition(id)?.publicEnabled).toBe(false);
     expect(getRecordDefinition('game029')).toMatchObject({publicEnabled:true,metricId:'score'});
   });
 });

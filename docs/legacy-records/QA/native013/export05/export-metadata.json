@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "game_id": "game013",
+  "slug": "tachibana-task-heaven",
+  "title": "タスク天国",
+  "repository": "https://github.com/Badgio0906/tachibana-task-heaven.git",
+  "pinned_revision": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
+  "actual_source_head": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
+  "source_archive_sha256": "a7b33f7b304751636382b168ee05a321d8b551af7a50ec668d8f1f29f3b210c8",
+  "isolated_project": "/workspace/legacy-records-native-later/game013-05/source/game013",
+  "output": "/workspace/legacy-records-native-later/game013-05/tachibana-task-heaven",
+  "source_overlays": [
+    {
+      "path": "tools/legacy-title-patches/tachibana-task-heaven/office_view.gd.patch",
+      "bytes": 654,
+      "sha256": "b4e79b32c9aa11e440dafa114d9e899876f6f48171dbcfa9d652a957449519c3"
+    },
+    {
+      "path": "tools/patch_legacy_start_choices.py",
+      "bytes": 4485,
+      "sha256": "d73bfdf91f3df2ee4112278f6da5a3a798cd96a98e637a0f834cad13b044a49b"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "bytes": 1276,
+      "sha256": "898e67592b7f666cc299d4cf9fb00edce69d826ef0911c23cd2a134bd414ecf4"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+      "bytes": 20,
+      "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+      "bytes": 1968,
+      "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+      "bytes": 19,
+      "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/game_manager.gd.patch",
+      "bytes": 3803,
+      "sha256": "4762e568113d71b55315a0ede90b08a685b0dfa339a26799d7cdcdc96c34cb40"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd",
+      "bytes": 5772,
+      "sha256": "9a3d2643668c6e585df7f95426b9eab138e90a2ab8e90c6756066d71ae52f003"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd.uid",
+      "bytes": 20,
+      "sha256": "ae14867000acea992f54963a601b7a8e8debf1c52d300c5f036e227e003329ba"
+    }
+  ],
+  "source_transformations": [
+    "Existing authorized title scripts and project name reproduced.",
+    "Existing Game013 optional first-play gate source revision reproduced (tools/patch_legacy_start_choices.py).",
+    "Game013 four known stage/tutorial JSON line endings restored to original packed CRLF; semantic data unchanged.",
+    "Exact official single-threaded custom Web templates selected in isolated export preset only."
+  ],
+  "regular_source_export": true,
+  "pck_resource_transplantation": false,
+  "original_source_written": false,
+  "public_written": false,
+  "commands": [
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game013-05/source/game013",
+        "--editor",
+        "--import",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game013-05/logs/game013/import.log",
+      "log_sha256": "e0afbcfbc4b8b18367fbbdfff690b2bd3f00140c6fe3223cbc907f2f76959b97",
+      "pass_count": 0
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game013-05/source/game013",
+        "--script",
+        "res://tests/test_current_records.gd"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game013-05/logs/game013/test_current_records.log",
+      "log_sha256": "50aabe1a25171f02890b77845b421f34870dcc4ce690f57292c601ea06f11d00",
+      "pass_count": 24
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game013-05/source/game013",
+        "--script",
+        "res://tests/test_game.gd"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game013-05/logs/game013/test_game.log",
+      "log_sha256": "c655be124549aaa340adcd9619b000eb00c558706f1adcd001d5ccf6de97d100",
+      "pass_count": 0
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game013-05/source/game013",
+        "--export-release",
+        "Web",
+        "/workspace/legacy-records-native-later/game013-05/tachibana-task-heaven/index.html"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game013-05/logs/game013/export.log",
+      "log_sha256": "7c7fc596a082bb4f10cc7e0f092b8447950718ddc10aa4590c6ab8c33e240924",
+      "pass_count": 0
+    }
+  ],
+  "audio_extras": [
+    {
+      "path": "audio.js",
+      "source_sha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52",
+      "sha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52"
+    },
+    {
+      "path": "audio/clear.wav",
+      "source_sha256": "3b649789b6fd4922c32b68816f751a12091f9b4ab565bd39f27ba209df0daf8a",
+      "sha256": "3b649789b6fd4922c32b68816f751a12091f9b4ab565bd39f27ba209df0daf8a"
+    },
+    {
+      "path": "audio/cymbal.wav",
+      "source_sha256": "9e51df8ed8342015f8c1da197949f40305dd8811c19bb849175b08ade3fa2cf0",
+      "sha256": "9e51df8ed8342015f8c1da197949f40305dd8811c19bb849175b08ade3fa2cf0"
+    },
+    {
+      "path": "audio/error.wav",
+      "source_sha256": "86607aa98993607afa20572d9fb96324b8aac35f94ce26f44055c1f14c0eed65",
+      "sha256": "86607aa98993607afa20572d9fb96324b8aac35f94ce26f44055c1f14c0eed65"
+    },
+    {
+      "path": "audio/fail.wav",
+      "source_sha256": "93694b5a070d6d696919979196912eae53f39140765835d716c7bcb3f7a5d901",
+      "sha256": "93694b5a070d6d696919979196912eae53f39140765835d716c7bcb3f7a5d901"
+    },
+    {
+      "path": "audio/kick.wav",
+      "source_sha256": "7f7f1e00311c9a20ce3411d42001a1dbe66e2d574383ebd829de33cfd3f0a6cc",
+      "sha256": "7f7f1e00311c9a20ce3411d42001a1dbe66e2d574383ebd829de33cfd3f0a6cc"
+    },
+    {
+      "path": "audio/omit.wav",
+      "source_sha256": "43b434ea518b855c32747ece6fa12001e552cef1bf2d38c97e800e72ec7bece0",
+      "sha256": "43b434ea518b855c32747ece6fa12001e552cef1bf2d38c97e800e72ec7bece0"
+    },
+    {
+      "path": "audio/stage_01.wav",
+      "source_sha256": "6485b372a6ceb3501c5ebf32aa0deb210e2d3903d4d9e2ef617250e525763ae4",
+      "sha256": "6485b372a6ceb3501c5ebf32aa0deb210e2d3903d4d9e2ef617250e525763ae4"
+    },
+    {
+      "path": "audio/stage_02.wav",
+      "source_sha256": "75e4b120d7c815a0955e758d30a2288667b3babce8658a613e6b80d46d8fa7a0",
+      "sha256": "75e4b120d7c815a0955e758d30a2288667b3babce8658a613e6b80d46d8fa7a0"
+    },
+    {
+      "path": "audio/stage_03.wav",
+      "source_sha256": "6062095c6ce666ca6e1738aacac32698c7485bc87ecc19aef3e8c6ff1b401dee",
+      "sha256": "6062095c6ce666ca6e1738aacac32698c7485bc87ecc19aef3e8c6ff1b401dee"
+    },
+    {
+      "path": "audio/tambourine.wav",
+      "source_sha256": "a6d75a84baa144f849a76f65279b1924734396789d546e4a4b23377785d75bf9",
+      "sha256": "a6d75a84baa144f849a76f65279b1924734396789d546e4a4b23377785d75bf9"
+    },
+    {
+      "path": "audio/tick.wav",
+      "source_sha256": "ad9a8a8ab393afadc217accb2ddb28a15b9e5199650133092a06412efaf57153",
+      "sha256": "ad9a8a8ab393afadc217accb2ddb28a15b9e5199650133092a06412efaf57153"
+    },
+    {
+      "path": "audio/triangle.wav",
+      "source_sha256": "a901f8b5573cb5f1eb4ecf3d15091ffda433f94e6d0163c755076f26d7bda20a",
+      "sha256": "a901f8b5573cb5f1eb4ecf3d15091ffda433f94e6d0163c755076f26d7bda20a"
+    },
+    {
+      "path": "audio/tutorial.wav",
+      "source_sha256": "0a4d28abeefbef7e30a355ffb5c04ca055047941acd3c9292957ecef831ca9d3",
+      "sha256": "0a4d28abeefbef7e30a355ffb5c04ca055047941acd3c9292957ecef831ca9d3"
+    },
+    {
+      "path": "audio/wind.wav",
+      "source_sha256": "736f6072549f8172fda84d163df6be548a96ed1beeca3f772f3365c6124bd8fb",
+      "sha256": "736f6072549f8172fda84d163df6be548a96ed1beeca3f772f3365c6124bd8fb"
+    }
+  ],
+  "runtime_files": [
+    {
+      "name": "audio/clear.wav",
+      "bytes": 132344,
+      "sha256": "3b649789b6fd4922c32b68816f751a12091f9b4ab565bd39f27ba209df0daf8a"
+    },
+    {
+      "name": "audio/cymbal.wav",
+      "bytes": 26504,
+      "sha256": "9e51df8ed8342015f8c1da197949f40305dd8811c19bb849175b08ade3fa2cf0"
+    },
+    {
+      "name": "audio/error.wav",
+      "bytes": 26504,
+      "sha256": "86607aa98993607afa20572d9fb96324b8aac35f94ce26f44055c1f14c0eed65"
+    },
+    {
+      "name": "audio/fail.wav",
+      "bytes": 132344,
+      "sha256": "93694b5a070d6d696919979196912eae53f39140765835d716c7bcb3f7a5d901"
+    },
+    {
+      "name": "audio/kick.wav",
+      "bytes": 26504,
+      "sha256": "7f7f1e00311c9a20ce3411d42001a1dbe66e2d574383ebd829de33cfd3f0a6cc"
+    },
+    {
+      "name": "audio/omit.wav",
+      "bytes": 26504,
+      "sha256": "43b434ea518b855c32747ece6fa12001e552cef1bf2d38c97e800e72ec7bece0"
+    },
+    {
+      "name": "audio/stage_01.wav",
+      "bytes": 2334404,
+      "sha256": "6485b372a6ceb3501c5ebf32aa0deb210e2d3903d4d9e2ef617250e525763ae4"
+    },
+    {
+      "name": "audio/stage_02.wav",
+      "bytes": 2452002,
+      "sha256": "75e4b120d7c815a0955e758d30a2288667b3babce8658a613e6b80d46d8fa7a0"
+    },
+    {
+      "name": "audio/stage_03.wav",
+      "bytes": 2385854,
+      "sha256": "6062095c6ce666ca6e1738aacac32698c7485bc87ecc19aef3e8c6ff1b401dee"
+    },
+    {
+      "name": "audio/tambourine.wav",
+      "bytes": 26504,
+      "sha256": "a6d75a84baa144f849a76f65279b1924734396789d546e4a4b23377785d75bf9"
+    },
+    {
+      "name": "audio/tick.wav",
+      "bytes": 26504,
+      "sha256": "ad9a8a8ab393afadc217accb2ddb28a15b9e5199650133092a06412efaf57153"
+    },
+    {
+      "name": "audio/triangle.wav",
+      "bytes": 26504,
+      "sha256": "a901f8b5573cb5f1eb4ecf3d15091ffda433f94e6d0163c755076f26d7bda20a"
+    },
+    {
+      "name": "audio/tutorial.wav",
+      "bytes": 526302,
+      "sha256": "0a4d28abeefbef7e30a355ffb5c04ca055047941acd3c9292957ecef831ca9d3"
+    },
+    {
+      "name": "audio/wind.wav",
+      "bytes": 88244,
+      "sha256": "736f6072549f8172fda84d163df6be548a96ed1beeca3f772f3365c6124bd8fb"
+    },
+    {
+      "name": "audio.js",
+      "bytes": 1716,
+      "sha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52"
+    },
+    {
+      "name": "index.apple-touch-icon.png",
+      "bytes": 8865,
+      "sha256": "a6e0348436992d9653a0f4ad8051730c2f91cbcbf79df562dd5a2eeec7058642"
+    },
+    {
+      "name": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    {
+      "name": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    {
+      "name": "index.html",
+      "bytes": 5796,
+      "sha256": "3c2d1664ce9bbd60a49b4e0007ea7196f1ffab0e753f4583cb749e6d3187f081"
+    },
+    {
+      "name": "index.icon.png",
+      "bytes": 10525,
+      "sha256": "a5759f021cfc283868c6473739c0dc4b3f68f905d800c4ae247c4e6bde2824de"
+    },
+    {
+      "name": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f"
+    },
+    {
+      "name": "index.pck",
+      "bytes": 5820732,
+      "sha256": "521ed5b4389b851c69fc6735acf113d8703e86593250f313565d0b0a1f2f6fcc"
+    },
+    {
+      "name": "index.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    {
+      "name": "index.wasm",
+      "bytes": 38034280,
+      "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547"
+    }
+  ],
+  "source_revision": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
+  "compiler": "4.5.1.stable.official.f62fdbde1",
+  "source_overlay": [
+    {
+      "path": "tools/legacy-title-patches/tachibana-task-heaven/office_view.gd.patch",
+      "bytes": 654,
+      "sha256": "b4e79b32c9aa11e440dafa114d9e899876f6f48171dbcfa9d652a957449519c3"
+    },
+    {
+      "path": "tools/patch_legacy_start_choices.py",
+      "bytes": 4485,
+      "sha256": "d73bfdf91f3df2ee4112278f6da5a3a798cd96a98e637a0f834cad13b044a49b"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "bytes": 1276,
+      "sha256": "898e67592b7f666cc299d4cf9fb00edce69d826ef0911c23cd2a134bd414ecf4"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+      "bytes": 20,
+      "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+      "bytes": 1968,
+      "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+      "bytes": 19,
+      "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/game_manager.gd.patch",
+      "bytes": 3803,
+      "sha256": "4762e568113d71b55315a0ede90b08a685b0dfa339a26799d7cdcdc96c34cb40"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd",
+      "bytes": 5772,
+      "sha256": "9a3d2643668c6e585df7f95426b9eab138e90a2ab8e90c6756066d71ae52f003"
+    },
+    {
+      "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd.uid",
+      "bytes": 20,
+      "sha256": "ae14867000acea992f54963a601b7a8e8debf1c52d300c5f036e227e003329ba"
+    }
+  ],
+  "threads_enabled": false
+}

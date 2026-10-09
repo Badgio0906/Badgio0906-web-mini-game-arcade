@@ -27,6 +27,27 @@ try{
  assert.equal((await request('/__records-test/disabled')).status,503);assert.equal((await request('/__records-test/unconfigured-admin')).status,503);pass('disabled_default_and_missing_admin_safe');
  const bodyStart=Date.now();assert.equal((await request('/__records-test/slow-body')).status,408);assert(Date.now()-bodyStart<8000);pass('bounded_stream_body_timeout');
  const emptyResponse=await publicGet();assert.equal(emptyResponse.status,200);assert.equal(emptyResponse.headers.get('Cache-Control'),'public, max-age=60, must-revalidate');assert.equal(emptyResponse.headers.get('Vary'),'Origin');const empty=await emptyResponse.json();assert.equal(empty.boards.length,recordBoards.filter(b=>b.publicEnabled).length);assert(empty.boards.every(b=>b.value===null&&b.status==='empty'));pass('all_public_boards_empty_null');
+ // New native boards use ordinary aggregation, exact normal mode, and no assistance.
+ const nativeBoards=['game012','game013','game014'].map(id=>recordBoards.find(b=>b.gameId===id));
+ assert(nativeBoards.every(Boolean));
+ assert.deepEqual(nativeBoards.map(b=>[b.boardId,b.metricId,b.rulesetId,b.modeId,b.assistancePolicy,b.maxValue]),[
+  ['game012.score.r1.normal','score','1','normal','none',Number.MAX_SAFE_INTEGER],
+  ['game013.score.r1.normal','score','1','normal','none',11400],
+  ['game014.successes.r1.normal','successes','1','normal','none',25]
+ ]);pass('native_legacy_board_registration_and_limits');
+ for(const board of nativeBoards){
+  const zeroNative=payload(0,board);assert.equal((await submit(zeroNative)).status,201);assert.equal((await best(board)).value,0);assert.equal((await best(board)).status,'accepted');
+  const duplicate=await submit(zeroNative);assert.equal(duplicate.status,200);assert.equal((await duplicate.json()).duplicate,true);
+  for(const value of [-1,0.5,board.maxValue+1,'1'])assert.equal((await submit({...payload(1,board),value})).status,400);
+  for(const patch of [{mode_id:'ojt'},{mode_id:'practice'},{assistance:'allowed'},{assistance:'ojt'},{finalized:false}]){
+   const p=payload(1,board);assert.equal((await submit({...p,allowed_result_metadata:{...p.allowed_result_metadata,...patch}})).status,400);
+  }
+  assert.equal((await submit({...payload(1,board),ruleset_id:'2'})).status,400);
+  assert.equal((await best(board)).value,0);pass(board.gameId+'_normal_zero_duplicate_bounds_mode_assistance');
+ }
+ for(const board of nativeBoards.slice(1)){assert.equal((await submit(payload(board.maxValue,board))).status,201);assert.equal((await best(board)).value,board.maxValue);}
+ const hugeNative=payload(Number.MAX_SAFE_INTEGER,nativeBoards[0]);assert.equal((await submit(hugeNative)).status,202);assert.equal((await best(nativeBoards[0])).value,0);
+ const storedHuge=sql(`SELECT value,status FROM record_submissions WHERE submission_key=${quote(hugeNative.submission_key)}`)[0].results[0];assert.deepEqual(storedHuge,{value:Number.MAX_SAFE_INTEGER,status:'pending'});pass('native_finite_maxima_and_012_pending_without_rounded_public_best');
  const noOrigin=await fetch(base+'/v1/records/public/bests');assert.equal(noOrigin.status,200);assert.equal(noOrigin.headers.get('Vary'),'Origin');assert.equal(noOrigin.headers.get('Access-Control-Allow-Origin'),null);const anotherOrigin=await request('/v1/records/public/bests',undefined,undefined,{Origin:'http://127.0.0.1:4321'});assert.equal(anotherOrigin.headers.get('Access-Control-Allow-Origin'),'http://127.0.0.1:4321');pass('cache_origin_vary_including_absent_origin');
  assert.equal((await request('/v1/records/public/bests?unknown=1')).status,400);assert.equal((await request('/v1/records/public/bests',undefined,undefined,{Origin:'https://invalid.example'})).status,403);
  assert.equal((await request('/v1/records/submissions',payload(),undefined,{'Content-Type':'text/plain'})).status,415);assert.equal((await request('/v1/records/submissions',' '.repeat(8193))).status,413);assert.equal((await submit('{oops')).status,400);pass('origin_query_content_type_size_json');

@@ -1,0 +1,16 @@
+{
+  "finding_id": "legacy014-binary-audit-reject",
+  "problem": "Strict whole runtime audit rejects014 PCK after approved full-source importer",
+  "expected": "Only enumerated record hooks/helpers/UID metadata and preserved current-title resources differ",
+  "observed": [
+    "012 and013 pass newmanifest full-runtime checks",
+    "014 runtime manifest/PCK bytes and source overlays validate via importer; original resources no removals and only4helper additions",
+    "Whole auditor reports014 index.pck missing orunexpected difference, listedproject.binary/main.gdc/uid/icon differences",
+    "Other014runtimejs/wasm/audio/HTML/icon bounded checks pass"
+  ],
+  "unknown": [
+    "Exact failed audit branch",
+    "Whether differences are unintended runtime changes or outdated comparison assumptions"
+  ],
+  "provenance": "Read-only strict packed resource audit of regular source export after import, no browser/human or production posts"
+}

@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy013-touch-pause-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Failed02 tap coordinates were not measured; exact cause remains inferred. Successful03-05 measured settled bounds/input positions after retry400ms support probe resize-stability correction, not a demonstrated native Pause defect.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+    "docs/legacy-records/QA/prototype013-05/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Recorded operation/canvas positions and normal touch Pause/OJT/resume success; kept failure evidence and unknown original tap.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+      "docs/legacy-records/QA/prototype013-05/REPORT.json"
+    ]
+  }
+}

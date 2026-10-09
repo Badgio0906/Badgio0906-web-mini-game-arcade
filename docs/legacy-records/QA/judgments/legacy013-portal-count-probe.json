@@ -1,0 +1,24 @@
+{
+  "finding_id": "legacy013-portal-count-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root independent source/retained screenshot review without Jev answers",
+  "rationale": "Immediate count on dynamic Portal after click raced card rendering. Screenshot retained shows correct Portal30; exact count-time state unmeasured. Waiting actual30card rendering passes full107checks with no product changes.",
+  "evidence": [
+    "docs/legacy-records/QA/safety-01/REPORT.json",
+    "docs/legacy-records/QA/safety-01/failure.png",
+    "docs/legacy-records/QA/safety-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Await actual .game-card length30 after navigation rather than instantaneous count. Full4viewport/3game shell/native safety checks pass, zeroPOST/errors.",
+    "evidence": [
+      "docs/legacy-records/QA/safety-01/REPORT.json",
+      "docs/legacy-records/QA/safety-01/failure.png",
+      "docs/legacy-records/QA/safety-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

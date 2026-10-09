@@ -1,0 +1,124 @@
+{
+  "recorded_at": "2026-10-09T02:31:42.167806+00:00",
+  "reviewer": "legacy_records_regression",
+  "base_commit": "488916c2966710d34233cd212ff970c5501b1091",
+  "scope": "Independent regression test updates only; no product/native changes, no browser execution, no API/commit/push/deploy",
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "35f796fc4047b94ce6e3f068cc46416777fcbe4630fc76a70db3b7982934bcd2"
+    },
+    {
+      "path": "docs/PROJECT_CONTEXT.md",
+      "sha256": "b5a23d385bcde7ce2a608e534fff2a6eef6be707f0a1fce6e2511a225d4eaf55"
+    },
+    {
+      "path": "docs/CURRENT_STATUS.md",
+      "sha256": "8b1f3d1aabe82e5b7a0aadaaf986d0c34441a2ea840e9aed6ab231e25618dd28"
+    },
+    {
+      "path": "docs/GAME_DEVELOPMENT_RULES.md",
+      "sha256": "a32fc77cf5c9507ae0b29af3739f7f6836836295d4af5cb7ba97a0d53c50fb50"
+    },
+    {
+      "path": "docs/JEV_REVIEW_RULES.md",
+      "sha256": "18a86bc30258dff17494bf5d329df7fce6cebb62b2e325f611884ed9715b0361"
+    },
+    {
+      "path": "src/data/recordDefinitions.ts",
+      "sha256": "7f82bbbcda75b86daa4f6c1f4797890e741ceee2269b4526bff42c63b62bbbac"
+    },
+    {
+      "path": "src/records/legacyStore.ts",
+      "sha256": "88fc0eb5c916a2acdf807282fe5385ed3fcc73c8119a425ae2cc6fe0e98a3ddf"
+    },
+    {
+      "path": "src/records/submissionValidation.ts",
+      "sha256": "8c3a2e33b199785017983648aff59043d4deadc8f6ba8945d8e4b81fdb0f56e6"
+    },
+    {
+      "path": "analytics-worker/src/records.ts",
+      "sha256": "da1b6a6023811a5adc72d83cc1dca0bf116cdf6d07d8697f2978515047e52c8a"
+    },
+    {
+      "path": "tests/unit/record-definitions.test.ts",
+      "sha256": "ca50a10077d743a70c9bd64e5457b2937f739e0e9a89d50bad8e19b492aea168"
+    },
+    {
+      "path": "tests/unit/records-client.test.ts",
+      "sha256": "ddf3b1d357176db4652072160299d99326e5be356d4e162616df495c611b9848"
+    },
+    {
+      "path": "tests/records/portal-browser.mjs",
+      "sha256": "e550841dd19a2f4171c4899eacc00e21d407e412a75ffc2beda860ac279e7e83"
+    },
+    {
+      "path": "tests/records/public-browser.mjs",
+      "sha256": "3811ad00cab0ed597b9a7143ea71f226a4c84f4e0b9de56920325bc1ac13790d"
+    },
+    {
+      "path": "analytics-worker/tests/records-local-d1.mjs",
+      "sha256": "941965ab309a50afaa136fe2754f07f2a8107f93032e92b25bd9e3f8413a1012"
+    }
+  ],
+  "reads": {
+    "instruction_files_read_during_this_turn": [
+      "AGENTS.md",
+      "docs/PROJECT_CONTEXT.md",
+      "docs/CURRENT_STATUS.md",
+      "docs/GAME_DEVELOPMENT_RULES.md",
+      "docs/JEV_REVIEW_RULES.md"
+    ],
+    "read_time_note": "Exact per-read clock was not collected. Tool read record is the source; recorded_at is report time, not claimed read timestamp. Large CURRENT_STATUS display was truncated; current summary and relevant rule/code/test sections were read."
+  },
+  "checks": {
+    "root_typecheck": {
+      "status": "PASS",
+      "log": "regression-root-check.log"
+    },
+    "root_tests": {
+      "status": "PASS",
+      "files": 77,
+      "tests": 872,
+      "log": "regression-root-tests.log"
+    },
+    "worker_typecheck": {
+      "status": "PASS",
+      "log": "regression-worker-check.log"
+    },
+    "worker_records_tests": {
+      "status": "PASS",
+      "checks": 29,
+      "public_boards": 20,
+      "report": "regression-worker-records.json",
+      "log": "regression-worker-records.log",
+      "environment": "isolated local D1 synthetic only, zero production requests"
+    },
+    "browser_script_syntax": {
+      "status": "PASS",
+      "scripts": [
+        "tests/records/portal-browser.mjs",
+        "tests/records/public-browser.mjs"
+      ]
+    },
+    "browser_execution": {
+      "status": "NOT_RUN",
+      "reason": "Parent owns serialized browser QA"
+    },
+    "worker_existing_analytics_tests": {
+      "status": "PASS",
+      "checks": 37,
+      "d1_event_count": 42,
+      "run_count": 13,
+      "report": "regression-worker-analytics.json",
+      "log": "regression-worker-analytics.log",
+      "environment": "synthetic local only, unchanged general Analytics test script"
+    }
+  },
+  "completed_at": "2026-10-09T02:32:43.604216+00:00",
+  "dependencies": {
+    "root": "Existing isolated task symlink reused read-only; no npm ci/install or shared dependency modification",
+    "worker": "Copied223MB existing dependency directory into task worker; no packages/lockfiles/config edits; removed private dependencycopy after tests"
+  },
+  "execution_note": "Initial worker log redirect used repository-root cwd and failed before npm ran; corrected to analytics-worker cwd. No product test failure was omitted."
+}

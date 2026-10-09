@@ -1,0 +1,17 @@
+{
+  "finding_id": "legacy012-comparable-max",
+  "problem": "比較可能な旧BESTと新結果のうち小さい新結果が表示される",
+  "expected": "元ゲームの同一ルールBESTを維持して表示する",
+  "observed": [
+    "mirrorにlegacy100とnormal2があるとnormal2が先に選ばれる",
+    "012の旧BESTはソース一致により比較可能と確認している"
+  ],
+  "unknown": [
+    "実ブラウザでの当該条件の確認は未実施"
+  ],
+  "evidence": [
+    "src/records/legacyStore.ts",
+    "independent reviewer legacy_source_audit source observation"
+  ],
+  "provenance": "今回の実装ソースに対する独立コード観察"
+}

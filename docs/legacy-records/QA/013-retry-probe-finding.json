@@ -1,0 +1,19 @@
+{
+  "finding_id": "legacy013-retry-probe-timeout",
+  "problem": "Game013結果画面で自動操作後にplaying状態にならずtimeoutする",
+  "expected": "結果画面のRETRY操作で新しい通常RUNが始まる",
+  "observed": [
+    "native通常結果70と共有準備中表示は確認できた",
+    "自動probeはboard座標620,579をクリックした",
+    "25秒後もplaying条件を満たさずtimeoutしfailure.pngを保存した"
+  ],
+  "unknown": [
+    "クリック位置と実RETRYボタンの対応",
+    "ネイティブRETRY自体に不具合があるか"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/prototype013-01/REPORT.json",
+    "docs/legacy-records/QA/prototype013-01/failure.png"
+  ],
+  "provenance": "実ブラウザで通常入力を自動実行したprobeの失敗"
+}

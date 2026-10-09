@@ -1,0 +1,113 @@
+{
+  "created_at": "2026-10-09T03:14:13.656973+00:00",
+  "reviewer": "legacy_toolchain",
+  "independent_of_jev": true,
+  "jev_api_called": false,
+  "jev_answers_or_logs_read": false,
+  "finding": "All optional/subpath/native operation assertions passed, but five engine loads produced two Unable to load a worklet module page errors each in a fake HTTPS origin served solely through Playwright route.fulfill.",
+  "failure_receipt": "docs/legacy-records/QA/optional-01/REPORT.json",
+  "diagnostic_receipts": [
+    "docs/legacy-records/QA/optional-diagnostic-01/REPORT.json",
+    "docs/legacy-records/QA/optional-diagnostic-02/REPORT.json"
+  ],
+  "confirmed_evidence": {
+    "initial_pageerror_count": 10,
+    "actual_addModule_attempts": [
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.position.worklet.js",
+        "status": "failed",
+        "error": "Unable to load a worklet's module."
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.worklet.js",
+        "status": "failed",
+        "error": "Unable to load a worklet's module."
+      }
+    ],
+    "worklet_route_hits": [],
+    "normal_request_route_count": 18,
+    "expected_js_and_files_present": true,
+    "url_subpath_correct": true,
+    "mime_map_application_javascript": true
+  },
+  "independent_primary_cause": "TEST_FIXTURE_ROUTING: Chromium AudioWorklet.addModule loads bypassed the Playwright context.route interception in this setup, so fake-origin modules never received the fixture JS responses. Engine files and their subpath URLs were correct.",
+  "independent_next_evidence": "Use a real same-origin local static HTTP server; record both worklet module responses and rerun the exact optional/native operation checks.",
+  "test_only_fix": {
+    "path": "tests/legacy-records/optional-browser.mjs",
+    "before_sha256": "7487c7321fafce0cd67eab5c67050617234718a7fb75c37a5eaaa371b253e2b0",
+    "after_sha256": "d5bc7752b7ef4a6ad2052536dc2c15bfce3bb38bd1ee2dd5e1208ea10762c149",
+    "changes": [
+      "Serve compiled dist through an ephemeral loopback-only HTTP server with subpath mapping and JavaScript/WASM MIME.",
+      "Retain explicit missing optional bridge and denied parent IndexedDB fixtures through scoped routing.",
+      "Reject POST and external-origin requests.",
+      "Assert ten actual worklet module GET responses: HTTP200 and application/javascript.",
+      "Close browser and local server after the run."
+    ],
+    "public_or_runtime_files_changed": false
+  },
+  "verification": {
+    "command": "LEGACY_QA_OUT=docs/legacy-records/QA/optional-02 node tests/legacy-records/optional-browser.mjs",
+    "status": "PASS",
+    "passed_checks": 14,
+    "failed_checks": 0,
+    "worklet_responses": [
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.position.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/tachibana-task-heaven/index.audio.position.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/tachibana-task-heaven/index.audio.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/finger-heart-challenge/index.audio.position.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/finger-heart-challenge/index.audio.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.position.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.position.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      },
+      {
+        "path": "/arcade/games/yokodori-days/index.audio.worklet.js",
+        "status": 200,
+        "content_type": "application/javascript"
+      }
+    ],
+    "page_errors": [],
+    "posts": 0,
+    "native_gameplay_operation": "Ordinary existing Enter/tap flow; missing bridge and denied mirror still reach native results without fabricated records.",
+    "real_audio_hearing": "NOT TESTED",
+    "real_mobile_or_human_fun": "NOT TESTED"
+  },
+  "release_risk_if_unresolved": "Original fixture could incorrectly report a product worklet failure or miss AudioWorklet resource transport; keep separate real deployment audio verification.",
+  "browser_ownership": "All contexts/browsers closed; ephemeral local server closed."
+}

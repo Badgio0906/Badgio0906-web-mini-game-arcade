@@ -1,0 +1,250 @@
+{
+  "created_at": "2026-10-09T02:01:15.782143+00:00",
+  "exporter": {
+    "path": "tools/export_legacy_records.py",
+    "sha256": "8647d8467f43e5eda0e46ccfd3abf6b46f7b0ef9b49e4922282c4bc188ace671"
+  },
+  "final_export_metadata": {
+    "schema_version": 1,
+    "game_id": "game012",
+    "slug": "yokodori-days",
+    "title": "お前の仕事は俺の仕事",
+    "repository": "https://github.com/Badgio0906/yokodori-days.git",
+    "pinned_revision": "50a97c339076d3bcadf38ad6be8acade16a8e882",
+    "actual_source_head": "50a97c339076d3bcadf38ad6be8acade16a8e882",
+    "source_archive_sha256": "7d0b910ff6c667f8f2bae61d00e5793831d48ca81746428c052931066512f345",
+    "isolated_project": "/workspace/legacy-records-toolchain/reproduce012-05/source/game012",
+    "output": "/workspace/legacy-records-toolchain/reproduce012-05/yokodori-days",
+    "source_overlays": [
+      {
+        "path": "tools/legacy-title-patches/yokodori-days/hud.gd.patch",
+        "bytes": 452,
+        "sha256": "494f34ec77a040d01ccaa9a4e2ad24a879b281094fa5341dd4c10944e3b953e5"
+      },
+      {
+        "path": "tools/legacy-title-patches/yokodori-days/title_screen.gd.patch",
+        "bytes": 1062,
+        "sha256": "14f7f7c45431bc106d9ccd73f063b3d7ed78e977f0105b19475095784a7a1211"
+      },
+      {
+        "path": "tools/legacy-record-patches/RecordBridge.gd",
+        "bytes": 1276,
+        "sha256": "898e67592b7f666cc299d4cf9fb00edce69d826ef0911c23cd2a134bd414ecf4"
+      },
+      {
+        "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+        "bytes": 20,
+        "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/game_manager.gd.patch",
+        "bytes": 605,
+        "sha256": "1d85f992a22bc4c737d348002af59a4e057afb1c3053d33e11966256034b02ce"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+        "bytes": 903,
+        "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/main.gd.patch",
+        "bytes": 500,
+        "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+      },
+      {
+        "path": "tools/legacy-record-patches/tests/test_bridge.gd",
+        "bytes": 3812,
+        "sha256": "ec6fae88c3f1f624d4d804ea7de236627f219e38a78bf91b2ee6251e0f4c9b0d"
+      },
+      {
+        "path": "tools/legacy-record-patches/tests/test_bridge.gd.uid",
+        "bytes": 20,
+        "sha256": "31064fe9d2c489f6dbb30facfd2be2b69367641967c16439c17f018a30e99546"
+      }
+    ],
+    "source_transformations": [
+      "Existing authorized title scripts and project name reproduced.",
+      "Game012 OFL line endings restored to original packed CRLF.",
+      "Exact official single-threaded custom Web templates selected in isolated export preset only."
+    ],
+    "regular_source_export": true,
+    "pck_resource_transplantation": false,
+    "original_source_written": false,
+    "public_written": false,
+    "commands": [
+      {
+        "command": [
+          "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+          "--headless",
+          "--path",
+          "/workspace/legacy-records-toolchain/reproduce012-05/source/game012",
+          "--editor",
+          "--import",
+          "--quit"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/legacy-records-toolchain/reproduce012-05/logs/game012/import.log",
+        "log_sha256": "693982bf9af2b5a7af532efb5ba946e2f0adea9e4cfb79d9d7072173acf88f75",
+        "pass_count": 0
+      },
+      {
+        "command": [
+          "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+          "--headless",
+          "--path",
+          "/workspace/legacy-records-toolchain/reproduce012-05/source/game012",
+          "--export-release",
+          "Web",
+          "/workspace/legacy-records-toolchain/reproduce012-05/yokodori-days/index.html"
+        ],
+        "exit_code": 0,
+        "log": "/workspace/legacy-records-toolchain/reproduce012-05/logs/game012/export.log",
+        "log_sha256": "f20dbc89e7ad45809060f07fd89374e7123597105c94a114709981890e783de7",
+        "pass_count": 0
+      }
+    ],
+    "audio_extras": [],
+    "runtime_files": [
+      {
+        "name": "index.apple-touch-icon.png",
+        "bytes": 11952,
+        "sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a"
+      },
+      {
+        "name": "index.audio.position.worklet.js",
+        "bytes": 2973,
+        "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+      },
+      {
+        "name": "index.audio.worklet.js",
+        "bytes": 7298,
+        "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+      },
+      {
+        "name": "index.html",
+        "bytes": 5544,
+        "sha256": "9b549f362ca11ba60c54a7f8340f588a708d71007e979090184c70e3afbfb489"
+      },
+      {
+        "name": "index.icon.png",
+        "bytes": 5702,
+        "sha256": "08808dd5397e9a502cb3624944151f87a9705b5b66b5c365c5ca4c6ab51525f5"
+      },
+      {
+        "name": "index.js",
+        "bytes": 305185,
+        "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f"
+      },
+      {
+        "name": "index.pck",
+        "bytes": 1135736,
+        "sha256": "f4cba461a715141eb5309583039b57dd1ee864b9d62f95057a974259942a317c"
+      },
+      {
+        "name": "index.png",
+        "bytes": 21443,
+        "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+      },
+      {
+        "name": "index.wasm",
+        "bytes": 38034280,
+        "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547"
+      }
+    ],
+    "source_revision": "50a97c339076d3bcadf38ad6be8acade16a8e882",
+    "compiler": "4.5.1.stable.official.f62fdbde1",
+    "source_overlay": [
+      {
+        "path": "tools/legacy-title-patches/yokodori-days/hud.gd.patch",
+        "bytes": 452,
+        "sha256": "494f34ec77a040d01ccaa9a4e2ad24a879b281094fa5341dd4c10944e3b953e5"
+      },
+      {
+        "path": "tools/legacy-title-patches/yokodori-days/title_screen.gd.patch",
+        "bytes": 1062,
+        "sha256": "14f7f7c45431bc106d9ccd73f063b3d7ed78e977f0105b19475095784a7a1211"
+      },
+      {
+        "path": "tools/legacy-record-patches/RecordBridge.gd",
+        "bytes": 1276,
+        "sha256": "898e67592b7f666cc299d4cf9fb00edce69d826ef0911c23cd2a134bd414ecf4"
+      },
+      {
+        "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+        "bytes": 20,
+        "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/game_manager.gd.patch",
+        "bytes": 605,
+        "sha256": "1d85f992a22bc4c737d348002af59a4e057afb1c3053d33e11966256034b02ce"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+        "bytes": 903,
+        "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+      },
+      {
+        "path": "tools/legacy-record-patches/game012/main.gd.patch",
+        "bytes": 500,
+        "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+      },
+      {
+        "path": "tools/legacy-record-patches/tests/test_bridge.gd",
+        "bytes": 3812,
+        "sha256": "ec6fae88c3f1f624d4d804ea7de236627f219e38a78bf91b2ee6251e0f4c9b0d"
+      },
+      {
+        "path": "tools/legacy-record-patches/tests/test_bridge.gd.uid",
+        "bytes": 20,
+        "sha256": "31064fe9d2c489f6dbb30facfd2be2b69367641967c16439c17f018a30e99546"
+      }
+    ],
+    "threads_enabled": false
+  },
+  "tested_source_receipt": "/workspace/legacy-records-toolchain/reproduce012-03/export-metadata.json",
+  "native_checks": 73,
+  "final_export_resources_identical_to_tested_prototype": true,
+  "earlier_attempts": [
+    {
+      "output": "reproduce012-01",
+      "result": "73 native checks passed; archive artifact icons produced three irrelevant UID entries; kept evidence and corrected private artifact import suppression."
+    },
+    {
+      "output": "reproduce012-02",
+      "result": "73 native checks passed; all packed resources match reviewed prototype."
+    },
+    {
+      "output": "reproduce012-03",
+      "result": "73 native checks passed; per-game receipt schema aligned."
+    },
+    {
+      "output": "reproduce012-04",
+      "result": "Exact official template SHA validation added; regular export matches reviewed prototype."
+    }
+  ],
+  "guards": {
+    "wrong_installed_godot_4_6_3_rejected_before_output_creation": true,
+    "output_in_arcade_repository_forbidden": true,
+    "nonempty_output_forbidden": true,
+    "official_templates_sha256_pinned": true
+  },
+  "scope": "Only Game012 executed; generic013/014 support implemented but not executed by this agent.",
+  "executed_guard_checks": [
+    {
+      "case": "inside_repository",
+      "exit_code": 1,
+      "rejected": true,
+      "guard_message_seen": true
+    },
+    {
+      "case": "nonempty_evidence",
+      "exit_code": 1,
+      "rejected": true,
+      "guard_message_seen": true
+    }
+  ],
+  "final_export_output": "/workspace/legacy-records-toolchain/reproduce012-05/yokodori-days",
+  "native_tests_note": "73 native checks belong to earlier repro03 with identical runtime helper/hook resources; final repro05 validates exporter guards/receipt and preserves exact compiled resources without repeating unchanged native tests.",
+  "comparison_method": "Existing read-only unpack function extracted by AST; avoided unrelated importer module import while parent changes it."
+}

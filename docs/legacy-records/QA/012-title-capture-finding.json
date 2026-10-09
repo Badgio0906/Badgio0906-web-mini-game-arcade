@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy012-black-title-capture",
+  "problem": "Named after native title screenshot captures black engine area unlike actual beforetitle",
+  "expected": "Same native title phase for honest before/after Visual comparison",
+  "observed": [
+    "Independent view_image of final012-browser01 after-desktop-title shows black game area while shell header/footer displayed",
+    "Before screenshot shows normal native title",
+    "Capture waits for native startup legacy_best event, emitted from native ready before initial draw",
+    "Subsequent same run native results/retry/Portal checks passed"
+  ],
+  "unknown": [
+    "Rendered readiness needed beyond startup snapshot",
+    "Whether later title frame is normal"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/final012-browser-01/after-desktop-title.png",
+    "docs/legacy-records/QA/final012-browser-01/REPORT.json"
+  ],
+  "provenance": "Independent Codex actual screenshot observation, isolated built browser input not human"
+}

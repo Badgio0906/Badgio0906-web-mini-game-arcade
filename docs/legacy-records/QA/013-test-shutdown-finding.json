@@ -1,0 +1,18 @@
+{
+  "finding_id": "legacy013-headless-audio-shutdown",
+  "problem": "追加のheadless保存テスト終了時にリソース解放エラーが残る",
+  "expected": "元ゲームのテストと追加保存テストが終了時エラーなく完了する",
+  "observed": [
+    "新規保存テスト24assertionは成功したが終了時6resources still in useが出る",
+    "deferred quitだけでは解放エラーが残る",
+    "verbose終了ログはAudioStreamWAVとPlaybackWAVの生存を示す"
+  ],
+  "unknown": [
+    "ブラウザの通常終了でも発生するか",
+    "元テストの終了手順と追加fixtureの差"
+  ],
+  "evidence": [
+    "legacy-records-native-later/game013-03/logs/game013/test_current_records-verbose-02.log"
+  ],
+  "provenance": "実headlessテストで観測した終了エラー。実ブラウザ操作ではない"
+}

@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy013-run-assistance-provenance",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Old original BEST has no OJT history; current OFF cannot certify an unassisted RUN. Preserve original preference/scoring and separate fresh normal with sticky whole-RUN OJT history.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_013_MODE.md",
+    "docs/legacy-records/QA/prototype013-05/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Sticky native OJT flag and separate ConfigFile normal/OJT, headless and live toggle/reload verified.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_013_MODE.md",
+      "docs/legacy-records/QA/prototype013-05/REPORT.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

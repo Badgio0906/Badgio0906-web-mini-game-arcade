@@ -10,6 +10,7 @@ export default defineConfig({
     configureServer(server) {
       server.middlewares.use((request, _response, next) => {
         if (request.url?.split('?')[0].endsWith('/analytics-legacy.js')) request.url = '/src/analytics/legacy.ts';
+        if (request.url?.split('?')[0].endsWith('/legacy-records.js')) request.url = '/src/records/legacyEntry.ts';
         next();
       });
     },
@@ -20,9 +21,10 @@ export default defineConfig({
         ...Object.fromEntries(readdirSync(process.cwd())
           .filter(file => /^(index|privacy|analytics-admin|game00[1-9]|game01[0156789]|game02[0-9]|game03[01])\.html$/.test(file))
           .map(file => [file.replace('.html', ''), resolve(process.cwd(), file)])),
+        'legacy-records': resolve(process.cwd(), 'src/records/legacyEntry.ts'),
         'analytics-legacy': resolve(process.cwd(), 'src/analytics/legacy.ts'),
       },
-      output: { entryFileNames: chunk => chunk.name === 'analytics-legacy' ? 'analytics-legacy.js' : 'assets/[name]-[hash].js' },
+      output: { entryFileNames: chunk => ['analytics-legacy','legacy-records'].includes(chunk.name) ? `${chunk.name}.js` : 'assets/[name]-[hash].js' },
     },
   },
 });

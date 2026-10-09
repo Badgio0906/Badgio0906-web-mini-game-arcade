@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy014-heart-probe-timeout",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_records_regression",
+  "rationale": "Failure was on pinned before export, normalFailure0/hand3. Initial input-time state missing; wait-to-input race plausible not proven. Probe resolves focus/coordinates before wait and captures actual key/touch state; later ordinary success1/failure/retry pass.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_014_PROBE.md",
+    "docs/legacy-records/QA/prototype014-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Retained initial failure; test-only observation/input staging change, no scoring or timing modification.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_014_PROBE.md",
+      "docs/legacy-records/QA/prototype014-03/REPORT.json"
+    ]
+  }
+}

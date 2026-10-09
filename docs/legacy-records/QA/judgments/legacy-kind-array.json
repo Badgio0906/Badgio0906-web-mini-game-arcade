@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy-kind-array",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit",
+  "rationale": "String coercion admits array kind and falls through result handler. Exact primitive string validation required, without overstating bypass of origin/frame/session.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_012_CODE.md",
+    "docs/legacy-records/QA/protocol-01/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Added typed kind check; malformed array/object/numeric/unknown-field messages rejected by unit and real browser fixture.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_012_CODE.md",
+      "docs/legacy-records/QA/protocol-01/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

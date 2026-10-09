@@ -1,0 +1,37 @@
+import{chromium}from'@playwright/test';import{readFile,mkdir,writeFile}from'node:fs/promises';import{resolve,extname}from'node:path';
+const out=process.env.LEGACY_QA_OUT,dist=process.env.LEGACY_HARNESS_DIST;if(!out||!dist)throw Error('unique QA out and harness dist required');await mkdir(out,{recursive:false});
+const report={at:new Date().toISOString(),provenance:'Synthetic primitive bridge/permission/IDB fixtures in isolated browser origins. Engine disabled for deterministic protocol tests; actual native play is separate. No real external requests.',checks:[],posts:[],errors:[]};
+const check=(p,name)=>{report.checks.push({name,pass:!!p});if(!p)throw Error(name);};
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});let page;
+try{const context=await browser.newContext();page=await context.newPage();
+ // Only fixture bypasses webdriver, on isolated fulfilled hosts, to exercise existing production share policy.
+ await context.addInitScript(()=>Object.defineProperty(navigator,'webdriver',{get:()=>false}));
+ await context.route('**/*',async r=>{const req=r.request(),u=new URL(req.url());if(u.hostname==='record-fixture.example'){
+  if(req.method()==='POST'){const p=req.postDataJSON();report.posts.push(p);return r.fulfill({json:{submission_key:p.submission_key,status:'accepted',received_at:new Date().toISOString()}});}return r.fulfill({json:{}});
+ }if(u.origin!=='https://game100garage.com')return r.abort();
+ if(u.pathname.endsWith('/game.html'))return r.fulfill({contentType:'text/html',body:'<!doctype html><script src="/games/native-record-bridge.js"></script>'});
+ try{return r.fulfill({body:await readFile(resolve(dist,'.'+u.pathname)),contentType:({'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json'})[extname(u.pathname)]||'application/octet-stream'});}catch{return r.fulfill({status:404,body:'missingfixture'});}});
+ page.on('pageerror',e=>report.errors.push(e.message));page.on('dialog',d=>void d.accept());await page.goto('https://game100garage.com/tests/legacy-records/harness.html');await page.waitForFunction(()=>window.__LEGACY_FIXTURE__);
+ const f=()=>page.frames().find(f=>f.url().includes('game.html'));
+ const launch=async()=>{await page.evaluate(()=>window.__LEGACY_FIXTURE__.launch());await page.waitForFunction(()=>document.querySelector('iframe').contentWindow.GAME100_RECORD_BRIDGE);await page.waitForTimeout(40);};await launch();
+ await page.evaluate(async()=>{await Promise.all([10,100,50,5,99].map(v=>window.__LEGACY_FIXTURE__.mirror('game012','normal',v)));await window.__LEGACY_FIXTURE__.mirror('game012','legacy',200);await window.__LEGACY_FIXTURE__.mirror('game012','normal',2);});check((await page.evaluate(()=>window.__LEGACY_FIXTURE__.read('game012'))).value===200,'atomic maxima + comparable oldBEST never decreases');
+ await page.evaluate(()=>window.__LEGACY_FIXTURE__.mirror('game013','legacy',900));let read=await page.evaluate(()=>window.__LEGACY_FIXTURE__.read('game013'));check(read.status==='legacy'&&read.value===900,'old013 mixed-mode BEST not normal');await page.evaluate(()=>window.__LEGACY_FIXTURE__.mirror('game013','normal',0));check((await page.evaluate(()=>window.__LEGACY_FIXTURE__.read('game013'))).value===0,'valid normal013 zero not replaced by legacy900');
+ const method=(name,args)=>f().evaluate(({name,args})=>window.GAME100_RECORD_BRIDGE[name](...args),{name,args});
+ // historic data never produces an HTTPcandidate, even after enabling sharing.
+ await method('legacyBest',['game012',200]);check(report.posts.length===0,'historic startupBEST never posted');
+ const setAuto=async value=>{await page.evaluate(value=>{localStorage.setItem('game100:records:sharing:v1',JSON.stringify({schema:1,automatic:value,epoch:crypto.randomUUID()}));window.dispatchEvent(new StorageEvent('storage',{key:'game100:records:sharing:v1'}));},value);};
+ const run=await method('startRun',['game012','1','normal',false]);await setAuto(true);await method('finishRun',['game012',run,'1','normal',7,false]);await page.waitForTimeout(100);check(report.posts.length===0,'OFF at start cannot retro-auto-post after ON');
+ const enabled=await method('startRun',['game012','1','normal',false]);await method('finishRun',['game012',enabled,'1','normal',8,false]);await page.waitForTimeout(120);check(report.posts.length===1&&report.posts[0].value===8,'new ON-era finalized result shared once');await method('finishRun',['game012',enabled,'1','normal',8,false]);await page.waitForTimeout(40);check(report.posts.length===1,'duplicate result ignored');
+ // Inject invalid/stale/foreign-source data as explicit synthetic attacks, never game facts.
+ const active=await method('startRun',['game012','1','normal',false]);const session=await f().evaluate(()=>new URLSearchParams(location.search).get('records_session'));
+ const good={channel:'game100-native-record',schema:1,game_id:'game012',session,kind:'result',ruleset_id:'1',mode_id:'normal',practice:false,value:300,run_result_id:active};
+ await page.evaluate(p=>window.postMessage(p,location.origin),good);await f().evaluate(p=>parent.postMessage({...p,kind:['result']},location.origin),good);await f().evaluate(p=>parent.postMessage({...p,value:'300'},location.origin),good);await f().evaluate(p=>parent.postMessage({...p,session:'stale'},location.origin),good);await f().evaluate(p=>parent.postMessage({...p,game_id:'game013'},location.origin),good);await f().evaluate(p=>parent.postMessage({...p,browser_id:'fixture'},location.origin),good);await page.waitForTimeout(80);check(report.posts.length===1,'wrong window/type/session/game/unknownfield rejected');
+ await method('cancelRun',['game012']);check(await page.locator('#legacy-record-result').isHidden(),'native scope end clears result UI');await f().evaluate(p=>parent.postMessage(p,location.origin),good);await page.waitForTimeout(60);check(report.posts.length===1,'abandonedRUN cannot finalize');
+ const practice=await method('startRun',['game012','1','normal',true]);await method('finishRun',['game012',practice,'1','normal',999,false]);await page.waitForTimeout(80);check(report.posts.length===1,'practice-at-start cannot become normal at result');
+ const abandoned=await method('startRun',['game012','1','normal',false]);await launch();await f().evaluate(p=>parent.postMessage(p,location.origin),{...good,run_result_id:abandoned});await page.waitForTimeout(60);check(report.posts.length===1,'reload changes page session and rejects previousRUN');
+ const epochRun=await method('startRun',['game012','1','normal',false]);await setAuto(false);await setAuto(true);await method('finishRun',['game012',epochRun,'1','normal',9,false]);await page.waitForTimeout(80);check(report.posts.length===1,'OFF then ON permission epoch cannot revive oldRUN');
+ check(report.posts.every(p=>!['browser_id','session_id','visit_id','world_id','seed'].some(k=>k in p)),'shared submissions do not contain Analytics IDs');
+ await page.reload();await page.waitForFunction(()=>window.__LEGACY_FIXTURE__);check((await page.evaluate(()=>window.__LEGACY_FIXTURE__.read('game012'))).value===200,'individual maximum survives browser reload');
+ check(report.errors.length===0,'no script exceptions');report.status='PASS';await context.close();}
+catch(e){report.status='FAIL';report.error=e.message;if(page)await page.screenshot({path:out+'/failure.png'}).catch(()=>{});throw e;}
+finally{await writeFile(out+'/REPORT.json',JSON.stringify(report,null,2));await browser.close();}

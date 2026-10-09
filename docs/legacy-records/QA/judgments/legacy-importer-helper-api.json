@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy-importer-helper-api",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain",
+  "rationale": "Importer refactor removed GAMES/ROOT/digest/wrapper imports needed by historical read-only title tools. Compatibility API restored while current importing remains provenance guarded.",
+  "evidence": [
+    "docs/legacy-records/QA/EXPORTER_REVIEW.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read-only imports and unpack validated, three published PCK hashes unchanged by that check.",
+    "evidence": [
+      "docs/legacy-records/QA/EXPORTER_REVIEW.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

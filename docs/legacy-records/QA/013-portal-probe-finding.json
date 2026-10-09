@@ -1,0 +1,16 @@
+{
+  "finding_id": "legacy013-portal-count-probe",
+  "problem": "Immediate card-count assertion after native-shell Portal click failed although capture shows Portal content",
+  "expected": "Return click leads to Portal with30 activecards",
+  "observed": [
+    "Safety script passed12PC/phone practice and12phone native result/retry/Portal",
+    "13 phone390x844 shell practice/menu checks succeeded then .game-card.count() immediately after click was not30",
+    "Retained failure image shows actual100Garage Portal heading30GAMES andcards1/2",
+    "NoJSerror/POST in failure report; no count-time snapshot recorded"
+  ],
+  "unknown": [
+    "Count at assertion versus completed rendering",
+    "Whether explicit UI readiness resolves comparison"
+  ],
+  "provenance": "Compiled frontend ordinary tap; screenshot after failing assertion, phone simulation not actualuser"
+}

@@ -1,0 +1,16 @@
+{
+  "finding_id": "legacy013-reexport-resource-drift",
+  "problem": "再exportで意図したbridge以外のpackedresourceも変わる",
+  "expected": "元ステージ、画像、操作条件を保って記録通知だけを追加する",
+  "observed": [
+    "stage01/02/03/tutorial JSONとimported icontextureが元公開PCKと異なる",
+    "JS/WASM/audio workletは一致し削除resourceはない"
+  ],
+  "unknown": [
+    "差分の具体的内容と影響範囲"
+  ],
+  "evidence": [
+    "legacy-records-native-later/game013-04/resource-audit.json"
+  ],
+  "provenance": "独立export担当が観測した実コードimportまたは実PCK差分"
+}

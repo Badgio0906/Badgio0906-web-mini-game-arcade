@@ -1,0 +1,1643 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-10-09T03:05:18.398171+00:00",
+  "purpose": "Response/log structural audit only; answer contents not used to revise independent classifications",
+  "source": {
+    "path": "docs/legacy-records/QA/JEV_SHADOW.jsonl",
+    "sha256_at_read": "8c77a58fcfff6ea156517b7be364fb0fd0454bab8087b07b2da594d2b077fcb7",
+    "rows": 18,
+    "helper_path": "tools/jev-shadow.py",
+    "helper_sha256": "8f0a6268625bc9fbb8b218fb450d8a25f39ec09926c58a5813dacafbd37413db",
+    "helper_parser": "choice_answer + parse_response + secret_free",
+    "reconstructed_raw_shape_note": "Stored normalized selected/probabilities/noul reconstructed as parser input; raw vendor response body is intentionally not retained."
+  },
+  "rows": [
+    {
+      "row": 1,
+      "timestamp": "2026-10-09T01:45:51.719351+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-run-assistance-provenance",
+      "checkpoint": "A",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 2,
+      "timestamp": "2026-10-09T01:50:37.101929+00:00",
+      "game_id": "game012",
+      "finding_id": "legacy012-comparable-max",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 3,
+      "timestamp": "2026-10-09T01:50:37.545832+00:00",
+      "game_id": "game012",
+      "finding_id": "legacy-storage-error-vs-absence",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 4,
+      "timestamp": "2026-10-09T01:51:15.242538+00:00",
+      "game_id": "game012",
+      "finding_id": "legacy-kind-array",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 5,
+      "timestamp": "2026-10-09T02:02:31.158312+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-headless-audio-shutdown",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 6,
+      "timestamp": "2026-10-09T02:04:10.400667+00:00",
+      "game_id": "game012",
+      "finding_id": "legacy-importer-helper-api",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 7,
+      "timestamp": "2026-10-09T02:04:10.828897+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-reexport-resource-drift",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 8,
+      "timestamp": "2026-10-09T02:10:20.725625+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-retry-probe-timeout",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 9,
+      "timestamp": "2026-10-09T02:12:10.362783+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-native-title-scope",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 10,
+      "timestamp": "2026-10-09T02:12:52.085612+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-splash-title-capture",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 11,
+      "timestamp": "2026-10-09T02:14:03.300726+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-touch-pause-probe",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 12,
+      "timestamp": "2026-10-09T02:27:40.203920+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-phone-result-compression",
+      "checkpoint": "D",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 13,
+      "timestamp": "2026-10-09T02:32:55.520955+00:00",
+      "game_id": "game014",
+      "finding_id": "legacy014-heart-probe-timeout",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 14,
+      "timestamp": "2026-10-09T02:33:33.320933+00:00",
+      "game_id": "game014",
+      "finding_id": "legacy014-export-icon-drift",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 0.9900000000000001,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 15,
+      "timestamp": "2026-10-09T02:34:29.733088+00:00",
+      "game_id": "game014",
+      "finding_id": "legacy014-retry-ui-check",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 16,
+      "timestamp": "2026-10-09T02:38:54.213610+00:00",
+      "game_id": "game014",
+      "finding_id": "legacy014-binary-audit-reject",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 17,
+      "timestamp": "2026-10-09T02:50:52.303660+00:00",
+      "game_id": "game013",
+      "finding_id": "legacy013-portal-count-probe",
+      "checkpoint": "B",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": true,
+      "completed_api_response_evidence": true
+    },
+    {
+      "row": 18,
+      "timestamp": "2026-10-09T02:56:18.438364+00:00",
+      "game_id": "game012",
+      "finding_id": "legacy012-black-title-capture",
+      "checkpoint": "C",
+      "schema_version": 2,
+      "api_attempted": true,
+      "status": "AVAILABLE",
+      "http_status": 200,
+      "requested_model": "typesafe/jev-1.13",
+      "resolved_model": "typesafe/jev-1.13-20260917",
+      "error_present": false,
+      "valid_four_answers": true,
+      "helper_response_parser_pass": true,
+      "helper_secret_scan_pass": true,
+      "answer_structures": {
+        "PRIMARY_CAUSE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "actual_choice_keys": [
+            "CONTENT_OR_SPEC_ISSUE",
+            "PRODUCT_BUG",
+            "TEST_INFRA_BUG",
+            "UNKNOWN",
+            "VISUAL_OR_FEEL_ISSUE"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "CODEX_ACTION_REQUIRED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        },
+        "NEXT_EVIDENCE": {
+          "expected_type": "choice",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "expected_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "actual_choice_keys": [
+            "AUTOMATED_TEST",
+            "CODE_INSPECTION",
+            "HUMAN_FEEL_TEST",
+            "LIVE_INTERACTION",
+            "NO_FURTHER_EVIDENCE",
+            "SCREENSHOT_REVIEW",
+            "UNKNOWN"
+          ],
+          "exact_choice_keys": true,
+          "selected_registered": true,
+          "all_probabilities_finite_numeric_nonboolean_unit_interval": true,
+          "probability_sum": 1.0,
+          "sum_within_helper_tolerance_0_02": true,
+          "valid": true
+        },
+        "RELEASE_RISK_IF_UNRESOLVED": {
+          "expected_type": "noul",
+          "normalized_object": true,
+          "normalized_keys_exact": true,
+          "noul_finite_numeric_nonboolean_unit_interval": true,
+          "valid": true
+        }
+      },
+      "independent_judgment_recorded": false,
+      "completed_api_response_evidence": true
+    }
+  ],
+  "secret_audit": {
+    "helper_whole_log_scan_pass": true,
+    "injected_runtime_key_available_for_exact_value_comparison": true,
+    "exact_injected_runtime_key_absent": true,
+    "helper_secret_patterns_absent": true,
+    "secret_values_or_matches_written": false,
+    "limitation": "Checks exact currently injected OpenRouter credential and helper secret patterns. This is not a proof against unknown credentials or arbitrary personal information not recognized by these checks."
+  },
+  "totals": {
+    "rows": 18,
+    "expected_rows": 18,
+    "completed_api_response_evidence": 18,
+    "valid_answer_sets": 18,
+    "valid_individual_answers": 72,
+    "independent_judgments_recorded_at_read": 17,
+    "independent_judgments_pending_at_read": 1
+  },
+  "evidence_limit": "Metainfo plus parser-valid answers support completed API calls as recorded by the audited helper. The log is not an independent vendor receipt or packet capture; row count alone was not used. Response validity is separate from independent judgment annotation or Jev usefulness.",
+  "actions": {
+    "new_jev_api_calls": 0,
+    "original_log_modified": false,
+    "summary_or_annotations_modified": false,
+    "product_code_modified": false
+  },
+  "status": "PASS"
+}

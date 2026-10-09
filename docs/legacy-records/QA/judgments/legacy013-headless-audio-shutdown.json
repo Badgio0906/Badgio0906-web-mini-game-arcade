@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy013-headless-audio-shutdown",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_native_013_014 / root",
+  "rationale": "Original plus bridge headless assertions passed but newly added test quit while native audio objects remained pending. Fixture cleanup explicitly stops/releases audio then deferred quit; game audio unchanged.",
+  "evidence": [
+    "docs/legacy-records/QA/native013/export06/resource-audit.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Fixed only headless fixture teardown and reran original154 +new25 clean checks.",
+    "evidence": [
+      "docs/legacy-records/QA/native013/export06/resource-audit.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

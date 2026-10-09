@@ -1,0 +1,18 @@
+{
+  "finding_id": "legacy013-splash-title-capture",
+  "problem": "titleという名前のQA画像がGodot起動splashを写している",
+  "expected": "前後ともnativeタイトルの同じフェーズを比較する",
+  "observed": [
+    "before-desktop-title.pngはタスク天国のタイトル",
+    "prototype013-02 after-desktop-title.pngはGodotロゴと起動進行",
+    "probeのboot待機はHTMLstatus hiddenと固定350msだけ"
+  ],
+  "unknown": [
+    "Nativeタイトル準備の待機条件を追加したときの画面と操作成功"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/prototype013-02/after-desktop-title.png",
+    "tests/legacy-records/prototype013.mjs"
+  ],
+  "provenance": "独立レビュアーが今回生成した実ブラウザ画像を確認"
+}

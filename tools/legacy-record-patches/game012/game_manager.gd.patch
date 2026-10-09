@@ -1,0 +1,21 @@
+--- a/scripts/game_manager.gd
++++ b/scripts/game_manager.gd
+@@ -23,6 +23,9 @@
+ 
+ var state: GameState = GameState.TITLE
+ var scores := HighScoreManager.new()
++var record_bridge := preload("res://scripts/RecordBridge.gd").new()
++var record_result_id: String = ""
++var record_finished: bool = false
+ var score: int = 0
+ var run_best_at_start: int = 0
+ var stolen_tasks: int = 0
+@@ -51,6 +54,8 @@
+ 
+ func start_game() -> void:
+ 	state = GameState.PLAYING
++	record_result_id = record_bridge.start_run("game012")
++	record_finished = false
+ 	score = 0
+ 	run_best_at_start = scores.high_score
+ 	stolen_tasks = 0

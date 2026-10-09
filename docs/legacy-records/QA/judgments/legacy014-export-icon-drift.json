@@ -1,0 +1,23 @@
+{
+  "finding_id": "legacy014-export-icon-drift",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain / legacy_source_audit",
+  "rationale": "Exact source icon unchanged, imported packed128icon and128/180externalicons differ3pixels RGB1/alpha0. Precise cause UNKNOWN, all character/hand/art/audio resources unchanged.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_014_CODE.md",
+    "docs/legacy-records/QA/VISUAL_014.md",
+    "docs/legacy-records/QA/native014/export01/resource-audit.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Read-only pixel bounds and independent native before/after visuals; no old PCK/cache transplant or new art.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_014_CODE.md",
+      "docs/legacy-records/QA/VISUAL_014.md",
+      "docs/legacy-records/QA/native014/export01/resource-audit.json"
+    ]
+  }
+}

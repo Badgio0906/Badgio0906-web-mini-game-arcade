@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "game_id": "game012",
+  "created_at": "2026-10-09T01:49:45.003933+00:00",
+  "base_commit": "488916c2966710d34233cd212ff970c5501b1091",
+  "compiler": "4.5.1.stable.official.f62fdbde1",
+  "private_project": "/workspace/legacy-records-toolchain/prototype-012",
+  "private_full_export": "/workspace/legacy-records-toolchain/build-prototype-012-02",
+  "public_replaced": false,
+  "original_source_modified": false,
+  "pck_manually_patched": false,
+  "source_overlay": [
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "sha256": "898e67592b7f666cc299d4cf9fb00edce69d826ef0911c23cd2a134bd414ecf4"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/game_manager.gd.patch",
+      "sha256": "1d85f992a22bc4c737d348002af59a4e057afb1c3053d33e11966256034b02ce"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+      "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/main.gd.patch",
+      "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+    },
+    {
+      "path": "tools/legacy-record-patches/tests/test_bridge.gd",
+      "sha256": "ec6fae88c3f1f624d4d804ea7de236627f219e38a78bf91b2ee6251e0f4c9b0d"
+    }
+  ],
+  "native_contract": {
+    "startup": "legacyBest only from actual native ConfigFile read: saved nonnegative integer including zero; missing=-1; corrupt or denied read=storageError(game012).",
+    "run": "startRun(game012,1,normal,false) once at start_game; JS-generated result_id retained.",
+    "result": "finishRun only from game_finished callback; once flag prevents repeated emission; original intermediate scores.record remains unchanged.",
+    "optional": "Native/non-web/missing JS bridge yields empty result identity and no calls. Original saving and inputs do not depend on mirror success."
+  },
+  "packed_resources": {
+    "current_count": 118,
+    "export_count": 120,
+    "unchanged_existing": 114,
+    "changed": [
+      {
+        "name": ".godot/uid_cache.bin",
+        "before_sha256": "c2f045423fdaeefae267c0fb15c03cf4aee310d302577a5ef637921460691d62",
+        "after_sha256": "5418e37b2b735086699a228e1f9789abcbfe7460ca004ec9940669a5f01229bb"
+      },
+      {
+        "name": "scripts/game_manager.gdc",
+        "before_sha256": "961ed899fcc144ce776138d844cbe38f2f58fa59439a254d7dc121090b8381d7",
+        "after_sha256": "81fd9095a8f49d6d458fd9368c37ad89f3489a3ed3f0332ed4234450f305b6b7"
+      },
+      {
+        "name": "scripts/high_score_manager.gdc",
+        "before_sha256": "f022488b586d25dedea65c0c4ab93f0891c60cf4e59ead062cc52d6f5b409843",
+        "after_sha256": "ebd899f14c3d6bada746065e6f29d4bf6e3b27ab6b627be4a08a3d04d5c4197e"
+      },
+      {
+        "name": "scripts/main.gdc",
+        "before_sha256": "118296cf3f878717e4aeaeaa26b29b9ec6c85782ae3b472e124b171f6a4153f3",
+        "after_sha256": "3401ce63652658bc36d653aed475584881afd99a960c9b4a16632423e5d4779d"
+      }
+    ],
+    "added": [
+      {
+        "name": "scripts/RecordBridge.gd.remap",
+        "sha256": "c98912748e12dee7766b4de34a26a0968b6ee834e78d498d687466c956e5fdac"
+      },
+      {
+        "name": "scripts/RecordBridge.gdc",
+        "sha256": "787e73d1a52e4b167b81ee1715134502cbcc376a2df7f28c8fc5cd423f6964ca"
+      }
+    ],
+    "removed": [],
+    "expected_changes": [
+      "scripts/game_manager.gdc",
+      "scripts/high_score_manager.gdc",
+      "scripts/main.gdc",
+      ".godot/uid_cache.bin (new helper/test UID entries)"
+    ],
+    "expected_additions": [
+      "scripts/RecordBridge.gd.remap",
+      "scripts/RecordBridge.gdc"
+    ],
+    "all_other_current_resources_byte_identical": true
+  },
+  "export_files": [
+    {
+      "name": "index.apple-touch-icon.png",
+      "bytes": 11952,
+      "sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.html",
+      "bytes": 5544,
+      "sha256": "9b549f362ca11ba60c54a7f8340f588a708d71007e979090184c70e3afbfb489",
+      "current_byte_identical": false
+    },
+    {
+      "name": "index.icon.png",
+      "bytes": 5702,
+      "sha256": "08808dd5397e9a502cb3624944151f87a9705b5b66b5c365c5ca4c6ab51525f5",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.pck",
+      "bytes": 1135736,
+      "sha256": "f4cba461a715141eb5309583039b57dd1ee864b9d62f95057a974259942a317c",
+      "current_byte_identical": false
+    },
+    {
+      "name": "index.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "current_byte_identical": true
+    },
+    {
+      "name": "index.wasm",
+      "bytes": 38034280,
+      "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+      "current_byte_identical": true
+    }
+  ],
+  "native_tests": [
+    {
+      "kind": "original_native",
+      "log": "/workspace/legacy-records-toolchain/test-game012-native-02.log",
+      "pass_count": 60,
+      "all_tests_passed": true,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "kind": "bridge_native",
+      "log": "/workspace/legacy-records-toolchain/test-bridge012-04.log",
+      "pass_count": 13,
+      "all_tests_passed": true,
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "earlier_test_cleanup_observation": {
+    "logs": [
+      "test-bridge012-02.log",
+      "test-bridge012-03.log",
+      "test-bridge012-verbose.log"
+    ],
+    "assertions_passed": true,
+    "warning": "Headless fixture stopped audio and quit immediately; verbose identified game_over.wav AudioStream playback retained. Added same 0.2s audio cleanup wait as original native test; final log has no ERROR/WARNING. No product change."
+  },
+  "browser_testing": "NOT RUN; root owns integration/browser review",
+  "commands": [
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path /workspace/legacy-records-toolchain/prototype-012 --editor --import --quit",
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path /workspace/legacy-records-toolchain/prototype-012 --script res://tests/test_game.gd",
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path /workspace/legacy-records-toolchain/prototype-012 --script res://tests/test_bridge.gd",
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path /workspace/legacy-records-toolchain/prototype-012 --export-release Web /workspace/legacy-records-toolchain/build-prototype-012-02/index.html"
+  ]
+}

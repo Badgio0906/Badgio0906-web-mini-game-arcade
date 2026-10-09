@@ -28,7 +28,7 @@ export function installPortalRecords(gallery:HTMLElement){
   }
   const localRefresh=async()=>{
     const rev=++localRevision;
-    await Promise.all([...cards].map(async([id,views])=>{const d=getRecordDefinition(id)!,record=await readLocalRecord(id);if(rev!==localRevision)return;views.local.textContent=record.status==='record'&&record.value!==undefined?formatRecordValue(record.value,d):record.status==='none'?'記録なし':record.status==='legacy'?'現行記録なし':'取得できません';views.local.title=record.detail??'';}));
+    await Promise.all([...cards].map(async([id,views])=>{const d=getRecordDefinition(id)!,record=await readLocalRecord(id);if(rev!==localRevision)return;views.local.textContent=record.status==='record'&&record.value!==undefined?formatRecordValue(record.value,d):record.status==='none'?'記録なし':record.status==='legacy'?(record.value!==undefined?`旧BEST ${formatRecordValue(record.value,d)}（条件不明）`:'現行記録なし'):'取得できません';views.local.title=record.detail??'';}));
   };
   const publicRefresh=async()=>{const state=await api.refresh();for(const[id,views]of cards){const def=getRecordDefinition(id)!;views.everyone.textContent=publicStateLabel(state,def);const date=def.publicEnabled&&state.fetchedAt?`取得日時：${new Date(state.fetchedAt).toLocaleString('ja-JP')}`:'';views.everyone.title=date;views.condition.textContent=`${def.metricLabel} · ${def.modeLabel}${date?` · ${date}`:''}`;}};
   const refresh=()=>{void localRefresh();void publicRefresh();};refresh();

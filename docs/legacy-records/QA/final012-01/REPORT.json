@@ -1,0 +1,108 @@
+{
+  "created_at": "2026-10-09T02:30:36.062841+00:00",
+  "compiler": "4.5.1.stable.official.f62fdbde1",
+  "private_output": "/workspace/legacy-records-toolchain/final012-01/yokodori-days",
+  "source_overlay": [
+    {
+      "path": "tools/legacy-title-patches/yokodori-days/hud.gd.patch",
+      "bytes": 452,
+      "sha256": "494f34ec77a040d01ccaa9a4e2ad24a879b281094fa5341dd4c10944e3b953e5"
+    },
+    {
+      "path": "tools/legacy-title-patches/yokodori-days/title_screen.gd.patch",
+      "bytes": 1062,
+      "sha256": "14f7f7c45431bc106d9ccd73f063b3d7ed78e977f0105b19475095784a7a1211"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "bytes": 1395,
+      "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+      "bytes": 20,
+      "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/game_manager.gd.patch",
+      "bytes": 605,
+      "sha256": "1d85f992a22bc4c737d348002af59a4e057afb1c3053d33e11966256034b02ce"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+      "bytes": 903,
+      "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/main.gd.patch",
+      "bytes": 500,
+      "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+    },
+    {
+      "path": "tools/legacy-record-patches/tests/test_bridge.gd",
+      "bytes": 4075,
+      "sha256": "06779b9b9d8ff00defc32ff86d895529ab2a3f6527e8e71b64eec7edf113d109"
+    },
+    {
+      "path": "tools/legacy-record-patches/tests/test_bridge.gd.uid",
+      "bytes": 20,
+      "sha256": "31064fe9d2c489f6dbb30facfd2be2b69367641967c16439c17f018a30e99546"
+    }
+  ],
+  "public_written": false,
+  "original_source_written": false,
+  "pck_transplantation": false,
+  "tests": [
+    {
+      "name": "import.log",
+      "exit_code": 0,
+      "pass_count": 0
+    },
+    {
+      "name": "test_bridge.log",
+      "exit_code": 0,
+      "pass_count": 14
+    },
+    {
+      "name": "test_game.log",
+      "exit_code": 0,
+      "pass_count": 60
+    },
+    {
+      "name": "export.log",
+      "exit_code": 0,
+      "pass_count": 0
+    }
+  ],
+  "compared_against_current_private012_public_prototype": {
+    "changed": [
+      "scripts/RecordBridge.gdc"
+    ],
+    "added": [],
+    "removed": []
+  },
+  "browser_playtest": "Parent owns final actual browser checks; this subtask ran native fixtures only.",
+  "binary_audit_update": {
+    "path": "tests/fourteen-game/audit-legacy-migration.mjs",
+    "sha256": "5f44bb3976b9618eda4408059e261861c993a295813d88512352059ed2ae66da",
+    "syntax_check": "PASS",
+    "full_current_manifest_run": "Pending final parent import; manifest remains old title-only while private prototypes are present.",
+    "actual_function_smoke_receipt": "docs/legacy-records/QA/final012-01/audit-functions-01.json",
+    "fixed_icon_exceptions": {
+      "game013": {
+        "ctex256_and_icon256_pixels": 10,
+        "apple180_pixels": 8
+      },
+      "game014": {
+        "ctex128_and_icon128_pixels": 3,
+        "apple180_pixels": 3
+      },
+      "all": {
+        "max_rgb_delta": 1,
+        "alpha_delta": 0,
+        "numeric_cause": "UNKNOWN",
+        "other_artifacts": "FAIL_CLOSED"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "description": "Pinned Godot4.5.1 exports with authorized title revisions and Game013 optional first-play practice; engine/audio/unrelated resources preserved.",
+  "description": "Pinned Godot4.5.1 full source exports with versioned optional native-record overlays; original game assets/rules/saves retained.",
   "schemaVersion": 2,
   "godotVersion": "4.5.1",
   "threadsEnabled": false,
@@ -10,54 +10,20 @@
       "titleJa": "お前の仕事は俺の仕事",
       "repository": "https://github.com/Badgio0906/yokodori-days.git",
       "revision": "50a97c339076d3bcadf38ad6be8acade16a8e882",
-      "sourceExport": "build/web",
+      "sourceExport": "regular-source-export+versioned-record-overlay",
       "route": "./games/yokodori-days/index.html",
       "originalDocument": "./games/yokodori-days/game.html",
       "runtimeFiles": [
         {
-          "source": "build/web/index.html",
-          "path": "public/games/yokodori-days/game.html",
-          "bytes": 5544,
-          "sourceSha256": "3c9825c464306dd422b9a1e72ef74507c4501fb54f247e1096b86ed575cabc6d",
-          "sha256": "1ebb9de8f888d1a4b01d2df6b9529a73c47944d35ec84fc75d5dd1e98c5c7bea",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "build/web/index.js",
-          "path": "public/games/yokodori-days/index.js",
-          "bytes": 305185,
-          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
-          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "source": "index.apple-touch-icon.png",
+          "path": "public/games/yokodori-days/index.apple-touch-icon.png",
+          "bytes": 11952,
+          "sourceSha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+          "sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
           "byteIdentical": true
         },
         {
-          "source": "build/web/index.pck",
-          "path": "public/games/yokodori-days/index.pck",
-          "bytes": 1133664,
-          "sourceSha256": "98d9716f32121d9f4f370615ac4708067d670ed218ad60af44691d4300a9f6af",
-          "sha256": "90822e65cb9496923ecb7ef17a9055a520b7aecb69cb81482d47c58f39a7ae63",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "build/web/index.wasm",
-          "path": "public/games/yokodori-days/index.wasm",
-          "bytes": 38034280,
-          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "byteIdentical": true
-        },
-        {
-          "source": "build/web/index.audio.worklet.js",
-          "path": "public/games/yokodori-days/index.audio.worklet.js",
-          "bytes": 7298,
-          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "byteIdentical": true
-        },
-        {
-          "source": "build/web/index.audio.position.worklet.js",
+          "source": "index.audio.position.worklet.js",
           "path": "public/games/yokodori-days/index.audio.position.worklet.js",
           "bytes": 2973,
           "sourceSha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
@@ -65,15 +31,23 @@
           "byteIdentical": true
         },
         {
-          "source": "build/web/index.png",
-          "path": "public/games/yokodori-days/index.png",
-          "bytes": 21443,
-          "sourceSha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
-          "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+          "source": "index.audio.worklet.js",
+          "path": "public/games/yokodori-days/index.audio.worklet.js",
+          "bytes": 7298,
+          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
           "byteIdentical": true
         },
         {
-          "source": "build/web/index.icon.png",
+          "source": "index.html",
+          "path": "public/games/yokodori-days/game.html",
+          "bytes": 5595,
+          "sourceSha256": "d67ffc68dad823e90d757a4bfc2f9d45dbe1eb0055b2ec4f70376be7a25082a8",
+          "sha256": "c2eedacce74af32d5b49f14feb3dfc461ea3b9faf56cc110ce9c50a739dfad77",
+          "byteIdentical": false
+        },
+        {
+          "source": "index.icon.png",
           "path": "public/games/yokodori-days/index.icon.png",
           "bytes": 5702,
           "sourceSha256": "08808dd5397e9a502cb3624944151f87a9705b5b66b5c365c5ca4c6ab51525f5",
@@ -81,11 +55,35 @@
           "byteIdentical": true
         },
         {
-          "source": "build/web/index.apple-touch-icon.png",
-          "path": "public/games/yokodori-days/index.apple-touch-icon.png",
-          "bytes": 11952,
-          "sourceSha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
-          "sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+          "source": "index.js",
+          "path": "public/games/yokodori-days/index.js",
+          "bytes": 305185,
+          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.pck",
+          "path": "public/games/yokodori-days/index.pck",
+          "bytes": 1135800,
+          "sourceSha256": "46a9ae5df324babdea9833427da0aeeb80813cf99fd3b787636032335f21f412",
+          "sha256": "46a9ae5df324babdea9833427da0aeeb80813cf99fd3b787636032335f21f412",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.png",
+          "path": "public/games/yokodori-days/index.png",
+          "bytes": 21443,
+          "sourceSha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+          "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.wasm",
+          "path": "public/games/yokodori-days/index.wasm",
+          "bytes": 38034280,
+          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
           "byteIdentical": true
         }
       ],
@@ -100,16 +98,16 @@
       "shellFiles": [
         {
           "path": "public/games/yokodori-days/index.html",
-          "bytes": 9586,
-          "sha256": "a16dd7139a6d9ef9c0a3eeb29a5625978110b3a3daade4e4c51737873efa1c1c"
+          "bytes": 9328,
+          "sha256": "b4d16eeed1d3d355f0e35f55fc9cd6f8038a42436ffdc6ac455c591c6194c8ad"
         },
         {
           "path": "public/games/yokodori-days/portal-return.css",
-          "bytes": 1061,
-          "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
+          "bytes": 1651,
+          "sha256": "033a9dc3a21330f645079c36689d69b9597f0d59bac4ec55cd8f8f91f391a1be"
         }
       ],
-      "runtimeBytes": 39528041,
+      "runtimeBytes": 39530228,
       "titleRevision": {
         "compiler": "4.5.1.stable.official.f62fdbde1",
         "patches": [
@@ -134,7 +132,56 @@
           }
         ],
         "unchangedPackedResourceCount": 115
-      }
+      },
+      "sourceOverlay": [
+        {
+          "path": "tools/legacy-title-patches/yokodori-days/hud.gd.patch",
+          "bytes": 452,
+          "sha256": "494f34ec77a040d01ccaa9a4e2ad24a879b281094fa5341dd4c10944e3b953e5"
+        },
+        {
+          "path": "tools/legacy-title-patches/yokodori-days/title_screen.gd.patch",
+          "bytes": 1062,
+          "sha256": "14f7f7c45431bc106d9ccd73f063b3d7ed78e977f0105b19475095784a7a1211"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd",
+          "bytes": 1395,
+          "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+          "bytes": 20,
+          "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+        },
+        {
+          "path": "tools/legacy-record-patches/game012/game_manager.gd.patch",
+          "bytes": 605,
+          "sha256": "1d85f992a22bc4c737d348002af59a4e057afb1c3053d33e11966256034b02ce"
+        },
+        {
+          "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+          "bytes": 903,
+          "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+        },
+        {
+          "path": "tools/legacy-record-patches/game012/main.gd.patch",
+          "bytes": 500,
+          "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+        },
+        {
+          "path": "tools/legacy-record-patches/tests/test_bridge.gd",
+          "bytes": 4075,
+          "sha256": "06779b9b9d8ff00defc32ff86d895529ab2a3f6527e8e71b64eec7edf113d109"
+        },
+        {
+          "path": "tools/legacy-record-patches/tests/test_bridge.gd.uid",
+          "bytes": 20,
+          "sha256": "31064fe9d2c489f6dbb30facfd2be2b69367641967c16439c17f018a30e99546"
+        }
+      ],
+      "compiler": "4.5.1.stable.official.f62fdbde1",
+      "recordsBridgeSchema": 1
     },
     {
       "id": "game013",
@@ -142,94 +189,12 @@
       "titleJa": "タスク天国",
       "repository": "https://github.com/Badgio0906/tachibana-task-heaven.git",
       "revision": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
-      "sourceExport": "docs",
+      "sourceExport": "regular-source-export+versioned-record-overlay",
       "route": "./games/tachibana-task-heaven/index.html",
       "originalDocument": "./games/tachibana-task-heaven/game.html",
       "runtimeFiles": [
         {
-          "source": "docs/index.html",
-          "path": "public/games/tachibana-task-heaven/game.html",
-          "bytes": 5796,
-          "sourceSha256": "c667f5262621ec2916ffbab8a2d2b2697cb8415e971fc6c3cd889f93b114ebcd",
-          "sha256": "990a3975d2a3016afa344c26a79505b3cfc6e7fa55bba881b7ea745c2b2e8f96",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "docs/index.js",
-          "path": "public/games/tachibana-task-heaven/index.js",
-          "bytes": 305185,
-          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
-          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.pck",
-          "path": "public/games/tachibana-task-heaven/index.pck",
-          "bytes": 5815344,
-          "sourceSha256": "e4b1b02a397748f45faa1061c7cb073c1d79c03c5a963ced448eb891e3de626a",
-          "sha256": "ff66ea36f195e6a352a94084c3d8b2d51d5b61ce5dd7dfaa9a06aa2bfd2a253b",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "docs/index.wasm",
-          "path": "public/games/tachibana-task-heaven/index.wasm",
-          "bytes": 38034280,
-          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.audio.worklet.js",
-          "path": "public/games/tachibana-task-heaven/index.audio.worklet.js",
-          "bytes": 7298,
-          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.audio.position.worklet.js",
-          "path": "public/games/tachibana-task-heaven/index.audio.position.worklet.js",
-          "bytes": 2973,
-          "sourceSha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
-          "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.png",
-          "path": "public/games/tachibana-task-heaven/index.png",
-          "bytes": 21443,
-          "sourceSha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
-          "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.icon.png",
-          "path": "public/games/tachibana-task-heaven/index.icon.png",
-          "bytes": 10521,
-          "sourceSha256": "ea0cdf110b6be911faa2547fc0dc3d70f2f7d94072dd56bcbe32f7d1a317cf60",
-          "sha256": "ea0cdf110b6be911faa2547fc0dc3d70f2f7d94072dd56bcbe32f7d1a317cf60",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/index.apple-touch-icon.png",
-          "path": "public/games/tachibana-task-heaven/index.apple-touch-icon.png",
-          "bytes": 8862,
-          "sourceSha256": "b939545aba9037020eb9802b562d51c3d45dcbed515248976b6e63e961dbbcd5",
-          "sha256": "b939545aba9037020eb9802b562d51c3d45dcbed515248976b6e63e961dbbcd5",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/audio.js",
-          "path": "public/games/tachibana-task-heaven/audio.js",
-          "bytes": 1716,
-          "sourceSha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52",
-          "sha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52",
-          "byteIdentical": true
-        },
-        {
-          "source": "docs/audio/clear.wav",
+          "source": "audio/clear.wav",
           "path": "public/games/tachibana-task-heaven/audio/clear.wav",
           "bytes": 132344,
           "sourceSha256": "3b649789b6fd4922c32b68816f751a12091f9b4ab565bd39f27ba209df0daf8a",
@@ -237,7 +202,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/cymbal.wav",
+          "source": "audio/cymbal.wav",
           "path": "public/games/tachibana-task-heaven/audio/cymbal.wav",
           "bytes": 26504,
           "sourceSha256": "9e51df8ed8342015f8c1da197949f40305dd8811c19bb849175b08ade3fa2cf0",
@@ -245,7 +210,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/error.wav",
+          "source": "audio/error.wav",
           "path": "public/games/tachibana-task-heaven/audio/error.wav",
           "bytes": 26504,
           "sourceSha256": "86607aa98993607afa20572d9fb96324b8aac35f94ce26f44055c1f14c0eed65",
@@ -253,7 +218,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/fail.wav",
+          "source": "audio/fail.wav",
           "path": "public/games/tachibana-task-heaven/audio/fail.wav",
           "bytes": 132344,
           "sourceSha256": "93694b5a070d6d696919979196912eae53f39140765835d716c7bcb3f7a5d901",
@@ -261,7 +226,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/kick.wav",
+          "source": "audio/kick.wav",
           "path": "public/games/tachibana-task-heaven/audio/kick.wav",
           "bytes": 26504,
           "sourceSha256": "7f7f1e00311c9a20ce3411d42001a1dbe66e2d574383ebd829de33cfd3f0a6cc",
@@ -269,7 +234,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/omit.wav",
+          "source": "audio/omit.wav",
           "path": "public/games/tachibana-task-heaven/audio/omit.wav",
           "bytes": 26504,
           "sourceSha256": "43b434ea518b855c32747ece6fa12001e552cef1bf2d38c97e800e72ec7bece0",
@@ -277,7 +242,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/stage_01.wav",
+          "source": "audio/stage_01.wav",
           "path": "public/games/tachibana-task-heaven/audio/stage_01.wav",
           "bytes": 2334404,
           "sourceSha256": "6485b372a6ceb3501c5ebf32aa0deb210e2d3903d4d9e2ef617250e525763ae4",
@@ -285,7 +250,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/stage_02.wav",
+          "source": "audio/stage_02.wav",
           "path": "public/games/tachibana-task-heaven/audio/stage_02.wav",
           "bytes": 2452002,
           "sourceSha256": "75e4b120d7c815a0955e758d30a2288667b3babce8658a613e6b80d46d8fa7a0",
@@ -293,7 +258,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/stage_03.wav",
+          "source": "audio/stage_03.wav",
           "path": "public/games/tachibana-task-heaven/audio/stage_03.wav",
           "bytes": 2385854,
           "sourceSha256": "6062095c6ce666ca6e1738aacac32698c7485bc87ecc19aef3e8c6ff1b401dee",
@@ -301,7 +266,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/tambourine.wav",
+          "source": "audio/tambourine.wav",
           "path": "public/games/tachibana-task-heaven/audio/tambourine.wav",
           "bytes": 26504,
           "sourceSha256": "a6d75a84baa144f849a76f65279b1924734396789d546e4a4b23377785d75bf9",
@@ -309,7 +274,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/tick.wav",
+          "source": "audio/tick.wav",
           "path": "public/games/tachibana-task-heaven/audio/tick.wav",
           "bytes": 26504,
           "sourceSha256": "ad9a8a8ab393afadc217accb2ddb28a15b9e5199650133092a06412efaf57153",
@@ -317,7 +282,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/triangle.wav",
+          "source": "audio/triangle.wav",
           "path": "public/games/tachibana-task-heaven/audio/triangle.wav",
           "bytes": 26504,
           "sourceSha256": "a901f8b5573cb5f1eb4ecf3d15091ffda433f94e6d0163c755076f26d7bda20a",
@@ -325,7 +290,7 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/tutorial.wav",
+          "source": "audio/tutorial.wav",
           "path": "public/games/tachibana-task-heaven/audio/tutorial.wav",
           "bytes": 526302,
           "sourceSha256": "0a4d28abeefbef7e30a355ffb5c04ca055047941acd3c9292957ecef831ca9d3",
@@ -333,11 +298,91 @@
           "byteIdentical": true
         },
         {
-          "source": "docs/audio/wind.wav",
+          "source": "audio/wind.wav",
           "path": "public/games/tachibana-task-heaven/audio/wind.wav",
           "bytes": 88244,
           "sourceSha256": "736f6072549f8172fda84d163df6be548a96ed1beeca3f772f3365c6124bd8fb",
           "sha256": "736f6072549f8172fda84d163df6be548a96ed1beeca3f772f3365c6124bd8fb",
+          "byteIdentical": true
+        },
+        {
+          "source": "audio.js",
+          "path": "public/games/tachibana-task-heaven/audio.js",
+          "bytes": 1716,
+          "sourceSha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52",
+          "sha256": "78c9443672ade372e5ba4a8643ecdf78092a8f50cde7a36c93a0ece5cde77e52",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.apple-touch-icon.png",
+          "path": "public/games/tachibana-task-heaven/index.apple-touch-icon.png",
+          "bytes": 8865,
+          "sourceSha256": "a6e0348436992d9653a0f4ad8051730c2f91cbcbf79df562dd5a2eeec7058642",
+          "sha256": "a6e0348436992d9653a0f4ad8051730c2f91cbcbf79df562dd5a2eeec7058642",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.audio.position.worklet.js",
+          "path": "public/games/tachibana-task-heaven/index.audio.position.worklet.js",
+          "bytes": 2973,
+          "sourceSha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+          "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.audio.worklet.js",
+          "path": "public/games/tachibana-task-heaven/index.audio.worklet.js",
+          "bytes": 7298,
+          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.html",
+          "path": "public/games/tachibana-task-heaven/game.html",
+          "bytes": 5847,
+          "sourceSha256": "ae6468af6266a357d95e3e00f70d1a40c95f9e3b8b3b13c741156f523e0e0400",
+          "sha256": "44b925c060910716d8653f2802cfda896bb10d7f3a83a516142977b3b0e7a083",
+          "byteIdentical": false
+        },
+        {
+          "source": "index.icon.png",
+          "path": "public/games/tachibana-task-heaven/index.icon.png",
+          "bytes": 10525,
+          "sourceSha256": "a5759f021cfc283868c6473739c0dc4b3f68f905d800c4ae247c4e6bde2824de",
+          "sha256": "a5759f021cfc283868c6473739c0dc4b3f68f905d800c4ae247c4e6bde2824de",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.js",
+          "path": "public/games/tachibana-task-heaven/index.js",
+          "bytes": 305185,
+          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.pck",
+          "path": "public/games/tachibana-task-heaven/index.pck",
+          "bytes": 5820604,
+          "sourceSha256": "2397d3d61f4fff5628d155c3b0df8ee2275da34fe1674ea8c50e4a2684ae0e43",
+          "sha256": "2397d3d61f4fff5628d155c3b0df8ee2275da34fe1674ea8c50e4a2684ae0e43",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.png",
+          "path": "public/games/tachibana-task-heaven/index.png",
+          "bytes": 21443,
+          "sourceSha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+          "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.wasm",
+          "path": "public/games/tachibana-task-heaven/index.wasm",
+          "bytes": 38034280,
+          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
           "byteIdentical": true
         }
       ],
@@ -352,16 +397,16 @@
       "shellFiles": [
         {
           "path": "public/games/tachibana-task-heaven/index.html",
-          "bytes": 9556,
-          "sha256": "92697c8ca7abf365ff92ae63ab45ee09662007e041cf44397431653df9b6ca46"
+          "bytes": 9298,
+          "sha256": "0a0351d0a30488299e6141c4cadd3fdb9a2b5d1a6daa9fb59ece9c981d80bb71"
         },
         {
           "path": "public/games/tachibana-task-heaven/portal-return.css",
-          "bytes": 1061,
-          "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
+          "bytes": 1651,
+          "sha256": "033a9dc3a21330f645079c36689d69b9597f0d59bac4ec55cd8f8f91f391a1be"
         }
       ],
-      "runtimeBytes": 52450440,
+      "runtimeBytes": 52455758,
       "titleRevision": {
         "compiler": "4.5.1.stable.official.f62fdbde1",
         "patches": [
@@ -393,7 +438,56 @@
         ],
         "unchangedResourceCount": 82,
         "packageSha256": "ff66ea36f195e6a352a94084c3d8b2d51d5b61ce5dd7dfaa9a06aa2bfd2a253b"
-      }
+      },
+      "sourceOverlay": [
+        {
+          "path": "tools/legacy-title-patches/tachibana-task-heaven/office_view.gd.patch",
+          "bytes": 654,
+          "sha256": "b4e79b32c9aa11e440dafa114d9e899876f6f48171dbcfa9d652a957449519c3"
+        },
+        {
+          "path": "tools/patch_legacy_start_choices.py",
+          "bytes": 4485,
+          "sha256": "d73bfdf91f3df2ee4112278f6da5a3a798cd96a98e637a0f834cad13b044a49b"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd",
+          "bytes": 1395,
+          "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+          "bytes": 20,
+          "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+        },
+        {
+          "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+          "bytes": 1968,
+          "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+        },
+        {
+          "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+          "bytes": 19,
+          "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+        },
+        {
+          "path": "tools/legacy-record-patches/game013/game_manager.gd.patch",
+          "bytes": 3841,
+          "sha256": "afcb1540625b598608e7a483ef6597643ff90965d5541c7533f01685b9dc2502"
+        },
+        {
+          "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd",
+          "bytes": 5948,
+          "sha256": "c17e82a4d6d97c28fecd0382ed7ab63b8e06f9ac3dfb4c316f8c971e6ac4c80e"
+        },
+        {
+          "path": "tools/legacy-record-patches/game013/tests/test_current_records.gd.uid",
+          "bytes": 20,
+          "sha256": "ae14867000acea992f54963a601b7a8e8debf1c52d300c5f036e227e003329ba"
+        }
+      ],
+      "compiler": "4.5.1.stable.official.f62fdbde1",
+      "recordsBridgeSchema": 1
     },
     {
       "id": "game014",
@@ -401,54 +495,20 @@
       "titleJa": "指ハートチャレンジ",
       "repository": "https://github.com/Badgio0906/finger-heart-challenge.git",
       "revision": "36877d55bb44a41087a61bfd38f3ec395040cb3c",
-      "sourceExport": "web",
+      "sourceExport": "regular-source-export+versioned-record-overlay",
       "route": "./games/finger-heart-challenge/index.html",
       "originalDocument": "./games/finger-heart-challenge/game.html",
       "runtimeFiles": [
         {
-          "source": "web/index.html",
-          "path": "public/games/finger-heart-challenge/game.html",
-          "bytes": 5778,
-          "sourceSha256": "24e659b3030f40199d8b871852d2c85a7cd6d4017206b56ba1d4d216ab747805",
-          "sha256": "e0104c6f11ff3eb127eac45dbdb809ae77702023693c32adf00d8e879f3fa5b5",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "web/index.js",
-          "path": "public/games/finger-heart-challenge/index.js",
-          "bytes": 305185,
-          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
-          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "source": "index.apple-touch-icon.png",
+          "path": "public/games/finger-heart-challenge/index.apple-touch-icon.png",
+          "bytes": 7975,
+          "sourceSha256": "4b8fe06397d37b8377b978a08b57a3b379da918fcbe29d5f7bf1a4aaaff7fb84",
+          "sha256": "4b8fe06397d37b8377b978a08b57a3b379da918fcbe29d5f7bf1a4aaaff7fb84",
           "byteIdentical": true
         },
         {
-          "source": "web/index.pck",
-          "path": "public/games/finger-heart-challenge/index.pck",
-          "bytes": 11055064,
-          "sourceSha256": "2b8242d2a67e32490dd8a1133c71ba646a2cd87d24713968149bcff617323ad9",
-          "sha256": "e4c6791c03800df3a1686d2f41f0da4bc83e83127bc867b24276936f4fe82a81",
-          "byteIdentical": false,
-          "transformation": "Authorized title revision and optional start-choice shell; Game013 first-play gate change only"
-        },
-        {
-          "source": "web/index.wasm",
-          "path": "public/games/finger-heart-challenge/index.wasm",
-          "bytes": 38034280,
-          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
-          "byteIdentical": true
-        },
-        {
-          "source": "web/index.audio.worklet.js",
-          "path": "public/games/finger-heart-challenge/index.audio.worklet.js",
-          "bytes": 7298,
-          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
-          "byteIdentical": true
-        },
-        {
-          "source": "web/index.audio.position.worklet.js",
+          "source": "index.audio.position.worklet.js",
           "path": "public/games/finger-heart-challenge/index.audio.position.worklet.js",
           "bytes": 2973,
           "sourceSha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
@@ -456,7 +516,47 @@
           "byteIdentical": true
         },
         {
-          "source": "web/index.png",
+          "source": "index.audio.worklet.js",
+          "path": "public/games/finger-heart-challenge/index.audio.worklet.js",
+          "bytes": 7298,
+          "sourceSha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+          "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.html",
+          "path": "public/games/finger-heart-challenge/game.html",
+          "bytes": 5829,
+          "sourceSha256": "8771bde31008bdc263b4fe4d6d15526ba5119589db3c9752b0847a7f07800610",
+          "sha256": "cba3258fcce00ade0bde16ec610a656d848fa4126826be8fdc4f4d90d84d4a69",
+          "byteIdentical": false
+        },
+        {
+          "source": "index.icon.png",
+          "path": "public/games/finger-heart-challenge/index.icon.png",
+          "bytes": 3543,
+          "sourceSha256": "db20e5cf8453258d2d03fa8908db2f88752c8657b312106715833c5d45bc7fd6",
+          "sha256": "db20e5cf8453258d2d03fa8908db2f88752c8657b312106715833c5d45bc7fd6",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.js",
+          "path": "public/games/finger-heart-challenge/index.js",
+          "bytes": 305185,
+          "sourceSha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.pck",
+          "path": "public/games/finger-heart-challenge/index.pck",
+          "bytes": 11057348,
+          "sourceSha256": "919df13a26af54c86ee961c31072f98f1a42b0f0bcb97c1fc77e1d4ce4d863df",
+          "sha256": "919df13a26af54c86ee961c31072f98f1a42b0f0bcb97c1fc77e1d4ce4d863df",
+          "byteIdentical": true
+        },
+        {
+          "source": "index.png",
           "path": "public/games/finger-heart-challenge/index.png",
           "bytes": 21443,
           "sourceSha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
@@ -464,19 +564,11 @@
           "byteIdentical": true
         },
         {
-          "source": "web/index.icon.png",
-          "path": "public/games/finger-heart-challenge/index.icon.png",
-          "bytes": 3554,
-          "sourceSha256": "31cacf7a9453151a9a53e34d3a7cfa2e47068c5396c8996b1e26cde87821e320",
-          "sha256": "31cacf7a9453151a9a53e34d3a7cfa2e47068c5396c8996b1e26cde87821e320",
-          "byteIdentical": true
-        },
-        {
-          "source": "web/index.apple-touch-icon.png",
-          "path": "public/games/finger-heart-challenge/index.apple-touch-icon.png",
-          "bytes": 7976,
-          "sourceSha256": "67e4c70de9b197805378608970d92963262850572c2d860a0629996a3710fb27",
-          "sha256": "67e4c70de9b197805378608970d92963262850572c2d860a0629996a3710fb27",
+          "source": "index.wasm",
+          "path": "public/games/finger-heart-challenge/index.wasm",
+          "bytes": 38034280,
+          "sourceSha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+          "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
           "byteIdentical": true
         }
       ],
@@ -491,16 +583,16 @@
       "shellFiles": [
         {
           "path": "public/games/finger-heart-challenge/index.html",
-          "bytes": 9580,
-          "sha256": "3ce9cb2e2255ac8cbbf599028fa6b48b12b7bddeac214bf8a9275706ac4c1773"
+          "bytes": 9322,
+          "sha256": "2d7ebd59b077f1729a05e79df1e7b90540551e5c4033b6aa40caf56dca0c0d20"
         },
         {
           "path": "public/games/finger-heart-challenge/portal-return.css",
-          "bytes": 1061,
-          "sha256": "a43d28301ff923067c09f5163ae7765b06331dc1c028fbfd21288ea1609f087f"
+          "bytes": 1651,
+          "sha256": "033a9dc3a21330f645079c36689d69b9597f0d59bac4ec55cd8f8f91f391a1be"
         }
       ],
-      "runtimeBytes": 49443551,
+      "runtimeBytes": 49445874,
       "titleRevision": {
         "compiler": "4.5.1.stable.official.f62fdbde1",
         "patches": [
@@ -519,7 +611,51 @@
           }
         ],
         "unchangedPackedResourceCount": 36
-      }
+      },
+      "sourceOverlay": [
+        {
+          "path": "tools/legacy-title-patches/finger-heart-challenge/main.gd.patch",
+          "bytes": 974,
+          "sha256": "3deb2999ce7d897deca8e22e200872dac6315bbc54396d5e8580f55880974406"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd",
+          "bytes": 1395,
+          "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+        },
+        {
+          "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+          "bytes": 20,
+          "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+        },
+        {
+          "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+          "bytes": 1968,
+          "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+        },
+        {
+          "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+          "bytes": 19,
+          "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+        },
+        {
+          "path": "tools/legacy-record-patches/game014/main.gd.patch",
+          "bytes": 2248,
+          "sha256": "b112e78396347ff3ba4d6804e3fee1ca1bc55abfaa930a275d6c2c570f9085c6"
+        },
+        {
+          "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd",
+          "bytes": 5355,
+          "sha256": "1c341729a3de460e6c58f0777f5e5185cc4a608debd6a2ae8c3f04b8cff964f4"
+        },
+        {
+          "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd.uid",
+          "bytes": 20,
+          "sha256": "4965530f53a73116403f1e4c1dcdd51d7a1ae91ff265f54cfd33ca75c6ef5127"
+        }
+      ],
+      "compiler": "4.5.1.stable.official.f62fdbde1",
+      "recordsBridgeSchema": 1
     }
   ],
   "godotLicense": {
@@ -530,5 +666,10 @@
     "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
     "byteIdentical": true
   },
-  "totalRuntimeBytes": 141422032
+  "totalRuntimeBytes": 141431860,
+  "recordsBridge": {
+    "path": "public/games/native-record-bridge.js",
+    "sha256": "abc097e373fc619aa6b9235c0ab865f5737f5d50919fb2a916d5306f9b859ce1",
+    "schemaVersion": 1
+  }
 }

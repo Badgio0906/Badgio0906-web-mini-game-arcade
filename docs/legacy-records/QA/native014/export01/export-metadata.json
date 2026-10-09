@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "game_id": "game014",
+  "slug": "finger-heart-challenge",
+  "title": "指ハートチャレンジ",
+  "repository": "https://github.com/Badgio0906/finger-heart-challenge.git",
+  "pinned_revision": "36877d55bb44a41087a61bfd38f3ec395040cb3c",
+  "actual_source_head": "36877d55bb44a41087a61bfd38f3ec395040cb3c",
+  "source_archive_sha256": "f566d94c18d8cd00d3f94fc79b6c63bcb54ea3b07b6cdfb182dd2197ff76e64f",
+  "isolated_project": "/workspace/legacy-records-native-later/game014-01/source/game014",
+  "output": "/workspace/legacy-records-native-later/game014-01/finger-heart-challenge",
+  "source_overlays": [
+    {
+      "path": "tools/legacy-title-patches/finger-heart-challenge/main.gd.patch",
+      "bytes": 974,
+      "sha256": "3deb2999ce7d897deca8e22e200872dac6315bbc54396d5e8580f55880974406"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "bytes": 1395,
+      "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+      "bytes": 20,
+      "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+      "bytes": 1968,
+      "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+      "bytes": 19,
+      "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/main.gd.patch",
+      "bytes": 2248,
+      "sha256": "b112e78396347ff3ba4d6804e3fee1ca1bc55abfaa930a275d6c2c570f9085c6"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd",
+      "bytes": 5355,
+      "sha256": "1c341729a3de460e6c58f0777f5e5185cc4a608debd6a2ae8c3f04b8cff964f4"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd.uid",
+      "bytes": 20,
+      "sha256": "4965530f53a73116403f1e4c1dcdd51d7a1ae91ff265f54cfd33ca75c6ef5127"
+    }
+  ],
+  "source_transformations": [
+    "Existing authorized title scripts and project name reproduced.",
+    "Exact official single-threaded custom Web templates selected in isolated export preset only."
+  ],
+  "regular_source_export": true,
+  "pck_resource_transplantation": false,
+  "original_source_written": false,
+  "public_written": false,
+  "commands": [
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game014-01/source/game014",
+        "--editor",
+        "--import",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game014-01/logs/game014/import.log",
+      "log_sha256": "960541046add20bec3875913ef951346b01a88ddc5c2bf1414bdbbcfafb55c9b",
+      "pass_count": 0
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game014-01/source/game014",
+        "--script",
+        "res://tests/game_test.gd"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game014-01/logs/game014/game_test.log",
+      "log_sha256": "bb204452ea8671e21989aa80896dab4fcf1d082a90d4bb873ec4b4bac3c8da5a",
+      "pass_count": 0
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game014-01/source/game014",
+        "--script",
+        "res://tests/test_current_records.gd"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game014-01/logs/game014/test_current_records.log",
+      "log_sha256": "bbe326c92d258094451786a979b732e39f7ad80d722fce06159519a5aa59b873",
+      "pass_count": 68
+    },
+    {
+      "command": [
+        "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/legacy-records-native-later/game014-01/source/game014",
+        "--export-release",
+        "Web",
+        "/workspace/legacy-records-native-later/game014-01/finger-heart-challenge/index.html"
+      ],
+      "exit_code": 0,
+      "log": "/workspace/legacy-records-native-later/game014-01/logs/game014/export.log",
+      "log_sha256": "f418cae7cf874e027bdca93462e0f9bcc4dabacb4aa61445f49f5f1fc41a5cbe",
+      "pass_count": 0
+    }
+  ],
+  "audio_extras": [],
+  "runtime_files": [
+    {
+      "name": "index.apple-touch-icon.png",
+      "bytes": 7975,
+      "sha256": "4b8fe06397d37b8377b978a08b57a3b379da918fcbe29d5f7bf1a4aaaff7fb84"
+    },
+    {
+      "name": "index.audio.position.worklet.js",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    {
+      "name": "index.audio.worklet.js",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    {
+      "name": "index.html",
+      "bytes": 5778,
+      "sha256": "8771bde31008bdc263b4fe4d6d15526ba5119589db3c9752b0847a7f07800610"
+    },
+    {
+      "name": "index.icon.png",
+      "bytes": 3543,
+      "sha256": "db20e5cf8453258d2d03fa8908db2f88752c8657b312106715833c5d45bc7fd6"
+    },
+    {
+      "name": "index.js",
+      "bytes": 305185,
+      "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f"
+    },
+    {
+      "name": "index.pck",
+      "bytes": 11057348,
+      "sha256": "919df13a26af54c86ee961c31072f98f1a42b0f0bcb97c1fc77e1d4ce4d863df"
+    },
+    {
+      "name": "index.png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    {
+      "name": "index.wasm",
+      "bytes": 38034280,
+      "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547"
+    }
+  ],
+  "source_revision": "36877d55bb44a41087a61bfd38f3ec395040cb3c",
+  "compiler": "4.5.1.stable.official.f62fdbde1",
+  "source_overlay": [
+    {
+      "path": "tools/legacy-title-patches/finger-heart-challenge/main.gd.patch",
+      "bytes": 974,
+      "sha256": "3deb2999ce7d897deca8e22e200872dac6315bbc54396d5e8580f55880974406"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd",
+      "bytes": 1395,
+      "sha256": "5d66c1c17c5a2105372f2a34470e89865fd3f92b2d257b15df1421f78b0f956a"
+    },
+    {
+      "path": "tools/legacy-record-patches/RecordBridge.gd.uid",
+      "bytes": 20,
+      "sha256": "431d80eaf412c6e19c2fc0e4a9532b00c7cf829edd7479271d87fd3ba15c3dd7"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd",
+      "bytes": 1968,
+      "sha256": "d2376fc6d456000ae5d3ff8eae4947edb0200c4b79a04691cde011cbe9aacd2c"
+    },
+    {
+      "path": "tools/legacy-record-patches/CurrentRecordSave.gd.uid",
+      "bytes": 19,
+      "sha256": "6010f06f3edc97a3459b8dd148e584ca69bad2d2a2392838bc0a4be8caabc80e"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/main.gd.patch",
+      "bytes": 2248,
+      "sha256": "b112e78396347ff3ba4d6804e3fee1ca1bc55abfaa930a275d6c2c570f9085c6"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd",
+      "bytes": 5355,
+      "sha256": "1c341729a3de460e6c58f0777f5e5185cc4a608debd6a2ae8c3f04b8cff964f4"
+    },
+    {
+      "path": "tools/legacy-record-patches/game014/tests/test_current_records.gd.uid",
+      "bytes": 20,
+      "sha256": "4965530f53a73116403f1e4c1dcdd51d7a1ae91ff265f54cfd33ca75c6ef5127"
+    }
+  ],
+  "threads_enabled": false
+}

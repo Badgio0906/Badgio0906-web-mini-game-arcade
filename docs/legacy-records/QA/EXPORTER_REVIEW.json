@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-10-09T02:06:51.280154+00:00",
+  "reviewer": "legacy_toolchain",
+  "independent_of_jev": true,
+  "jev_logs_read": false,
+  "finding": {
+    "observation": "rename_legacy_titles import failed at from import_legacy_games import GAMES after importer refactoring removed old module API.",
+    "observed_error": "ImportError: cannot import name GAMES from import_legacy_games",
+    "observed_at_utc": null,
+    "time_precision": "Exact original tool-call wall-clock timestamp was not available in this delegated context; original tool output records the error. Report created_at timestamps the present independent verification, not the earlier failure.",
+    "cause": "Refactored importer no longer exported compatibility names required by existing title/start-choice read-only helper modules.",
+    "independent_action": "Parent restored GAMES/ROOT/digest/wrapper compatibility; delegated reviewer re-imported modules without invoking main and verified source/runtime hashes unchanged.",
+    "classification": "TOOLING_COMPATIBILITY_REGRESSION",
+    "release_relevance": "Current regular exporter is independent of old imports, but read-only historical auditing and title helpers should remain usable.",
+    "evidence_context": "Observed when comparing reproduce012-05 export with the reviewed prototype; the immediate error was sent to the parent before compatibility restoration."
+  },
+  "verification": {
+    "rename_legacy_titles_import": true,
+    "import_legacy_games_GAMES_ROOT_digest_wrapper_exported": true,
+    "unpack_callable": true,
+    "main_executed": false,
+    "three_public_pck_hashes_unchanged": true
+  },
+  "isolated_source_preprocessing": {
+    "game013_known_json_files": [
+      "data/stage_01.json",
+      "data/stage_02.json",
+      "data/stage_03.json",
+      "data/tutorial.json"
+    ],
+    "change": "LF to original CRLF only, performed inside new private git archive before import/export",
+    "original_files_modified": false,
+    "scoring_changed": false,
+    "author_next_export": "Native013/014 agent owns rerun01305 and receipt; this reviewer did not execute013."
+  },
+  "icon_read_only_assessment": {
+    "changed_pixels": 10,
+    "total_pixels": 65536,
+    "max_rgb_delta": 1,
+    "max_alpha_delta": 0,
+    "source_svg_changed": false,
+    "numeric_cause": "UNKNOWN; platform/rasterizer rounding remains a hypothesis, not established fact",
+    "old_pck_or_import_cache_transplant": false,
+    "visual_acceptance": "Parent accepted minor exact-source reimport deviation subject to independent Visual review."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "finding_id": "legacy013-reexport-resource-drift",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain / legacy_source_audit",
+  "rationale": "Known JSON byte drift was LF versus originalCRLF, semantics equal. Restored known4files line endings only in isolated archive. Tiny exact-source icon raster differences bounded; precise numeric cause UNKNOWN.",
+  "evidence": [
+    "docs/legacy-records/QA/EXPORTER_REVIEW.json",
+    "docs/legacy-records/QA/native013/export06/resource-audit.json",
+    "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Compared all resources, stage JSON exact, minoricon within10pixelsRGB1/alpha0 and source unchanged; actual native visuals independently reviewed.",
+    "evidence": [
+      "docs/legacy-records/QA/EXPORTER_REVIEW.json",
+      "docs/legacy-records/QA/native013/export06/resource-audit.json",
+      "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md"
+    ]
+  }
+}

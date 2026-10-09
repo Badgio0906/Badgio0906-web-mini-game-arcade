@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy014-retry-ui-check",
+  "problem": "Phone native retry resumes but immediate optional result-hidden assertion fails",
+  "expected": "Native retry clears optional prior result controls",
+  "observed": [
+    "Modified014 PC native1 result/retry/reload/Portal passed",
+    "Phone390x844 native1 result and retry state0 score0 confirmed",
+    "Immediate parent #legacy-record-result.isHidden check after iframe state wait returnedfalse",
+    "Probe did not wait for asynchronous parent bridge delivery or log message timestamps at failure"
+  ],
+  "unknown": [
+    "Whether parent UI clears after message delivery",
+    "Actual native start notification timing after successful retry",
+    "Whether a product lifecycle gap exists"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/prototype014-02/REPORT.json",
+    "docs/legacy-records/QA/prototype014-02/failure.png"
+  ],
+  "provenance": "Ordinary touchscreen native retry in Chromium phone simulation; not physical device"
+}

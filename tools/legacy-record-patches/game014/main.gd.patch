@@ -1,0 +1,59 @@
+--- a/scripts/main.gd
++++ b/scripts/main.gd
+@@ -51,8 +51,22 @@
+ var retry_button: Button
+ var clear_texture: Texture2D
+ var failure_texture: Texture2D
++var record_bridge := preload("res://scripts/RecordBridge.gd").new()
++var current_record_save := preload("res://scripts/CurrentRecordSave.gd").new()
++var record_result_id := ""
++var record_finished := false
++var record_debug_excluded := false
+ 
+ func _ready() -> void:
++	var args := OS.get_cmdline_args()
++	record_debug_excluded = OS.is_debug_build() and ("--script" in args or "-s" in args)
++	if OS.is_debug_build():
++		for arg in OS.get_cmdline_user_args():
++			if arg == "--verify" or arg.begins_with("--capture="): record_debug_excluded = true
++	if not record_debug_excluded:
++		var saved := current_record_save.load_best("game014.normal.r1", 25)
++		if saved.status == "error": record_bridge.storage_error("game014")
++		else: record_bridge.current_best("game014", saved.value)
+ 	rng.randomize()
+ 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+ 	if OS.has_feature("web"):
+@@ -84,6 +98,7 @@
+ 	_layout()
+ 	_next_hand()
+ 	hand_timer.start()
++	_record_start()
+ 
+ func _label(text_value: String, font_size: int, color: Color = INK) -> Label:
+ 	var label := Label.new()
+@@ -408,6 +423,7 @@
+ 	end_message.text = "これであなたも指ハートマスター" if cleared else "指ハートマスターへの道は遠い"
+ 	end_progress.text = "全5段階クリア！  25 / 25" if cleared else "STAGE %d / 5 ・ 成功 %d / 25" % [stage + 1, score]
+ 	end_screen.show()
++	_record_finish()
+ 	# Publish after the newly visible container has laid out its retry button.
+ 	_publish_state.call_deferred()
+ 
+@@ -425,3 +441,17 @@
+ 	character.rotation = 0.0
+ 	game_state = GameState.JUDGING
+ 	_resume()
++	_record_start()
++
++func _record_start() -> void:
++	record_finished = false
++	record_result_id = ""
++	if not record_debug_excluded:
++		record_result_id = record_bridge.start_run("game014")
++
++func _record_finish() -> void:
++	if record_finished or record_debug_excluded: return
++	record_finished = true
++	var saved := current_record_save.save_best("game014.normal.r1", score, 25)
++	if saved.status == "error": record_bridge.storage_error("game014")
++	record_bridge.finish_run("game014", record_result_id, score)

@@ -1,6 +1,7 @@
 import { getRecordDefinition } from '../data/recordDefinitions';
 import { wordById } from '../games/game023/words';
 import { readCurrentRule } from './currentRules';
+import { readLegacyMirror } from './legacyStore';
 
 export interface LocalRecord {
   status: 'record' | 'none' | 'legacy' | 'unavailable';
@@ -148,7 +149,7 @@ async function readWorldMetadata(): Promise<LocalRecord> {
 /** Stateless, read-only adapters: deletion/reset takes effect on the next read. */
 export async function readLocalRecord(gameId: string): Promise<LocalRecord> {
   const def=getRecordDefinition(gameId);if(!def)return bad('記録定義がありません');
-  if(['game012','game013','game014'].includes(gameId))return bad('この旧作品の記録はポータル未対応です');
+  if(['game012','game013','game014'].includes(gameId)){const result=await readLegacyMirror(gameId as 'game012'|'game013'|'game014');return {...result,label:def.localLabel};}
   let result:LocalRecord;
   if(gameId==='game031')result=await readWorldMetadata();
   else try{const backend=window.localStorage;result=scalarKeys[gameId]?await readScalar(gameId,backend):readJSON(gameId,backend);}catch{result=bad();}

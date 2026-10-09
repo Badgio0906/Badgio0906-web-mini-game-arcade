@@ -1,0 +1,9 @@
+{
+  "finding_id": "legacy013-run-assistance-provenance",
+  "problem": "終了時のOJT設定だけでは通常RUNの比較条件を確認できない",
+  "expected": "補助なしとして比較する記録はRUN全体でOJTを使っていないことを確認できる",
+  "observed": ["元ソースではPauseからOJTを切り替えられる", "結果のBEST保存にはモード履歴がない", "保存されたojt_modeは現在の設定で、BEST取得時の設定ではない"],
+  "unknown": ["新しい記録連携でRUN途中の補助使用をどう区別するか", "ブラウザでのOJT途中切替の確認は未実施"],
+  "evidence": ["pinned ddc854b scripts/game_manager.gd:183-187,375-380,396-399", "docs/legacy-records/SOURCE_AUDIT_013_014.md"],
+  "provenance": "実ソースの独立コード観察。実プレイ再現・合成結果ではない"
+}

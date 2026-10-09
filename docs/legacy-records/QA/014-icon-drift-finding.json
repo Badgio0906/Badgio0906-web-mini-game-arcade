@@ -1,0 +1,15 @@
+{
+  "finding_id": "legacy014-export-icon-drift",
+  "problem": "Exact pinned014 source regular export has tiny icon raster differences against current original delivery",
+  "expected": "Preserve original game assets and identify any rebuild differences",
+  "observed": [
+    "Compiled main hook and4helper resources added; all other character/scene/audio resources byteidentical except imported app icon and UID cache",
+    "Source icon.svg unchanged; packed128x128 icon differs3pixels bymaximumRGB1/255 withalphaidentical",
+    "External index.icon.png128x128 andapple-touch180x180 differ3pixels each maximumRGB1/255 alphaidentical; loadingimageexact"
+  ],
+  "unknown": [
+    "Exact numerical raster cause",
+    "Independent visibility assessment"
+  ],
+  "provenance": "Read-only packed/external source export hash and image numeric comparison, not human or gameplay observation"
+}

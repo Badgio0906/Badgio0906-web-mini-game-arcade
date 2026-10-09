@@ -1,0 +1,104 @@
+--- a/scripts/game_manager.gd
++++ b/scripts/game_manager.gd
+@@ -44,12 +44,26 @@
+ var status_elapsed := 0.0
+ var fade_overlay: ColorRect
+ var result_started := 0.0
++var record_bridge := preload("res://scripts/RecordBridge.gd").new()
++var current_record_save := preload("res://scripts/CurrentRecordSave.gd").new()
++var record_result_id := ""
++var record_active := false
++var record_finished := false
++var record_ojt_used := false
++var record_debug_excluded := false
+ 
+ func _ready() -> void:
+ 	settings = Loader.read_json("res://data/settings.json")
+ 	font = load("res://assets/fonts/NotoSansJP-Regular.otf")
+ 	test_mode = OS.is_debug_build() and "--verify" in OS.get_cmdline_user_args()
+ 	if not test_mode: load_preferences()
++	# Verification scripts and synthetic captures never create current records.
++	var args := OS.get_cmdline_args()
++	record_debug_excluded = OS.is_debug_build() and ("--script" in args or "-s" in args or test_mode)
++	if OS.is_debug_build():
++		for arg in OS.get_cmdline_user_args():
++			if arg.begins_with("--capture="): record_debug_excluded = true
++	if _record_allowed(): _record_load()
+ 	for i in range(1, 5):
+ 		var action := "task_%d" % i
+ 		if not InputMap.has_action(action): InputMap.add_action(action)
+@@ -162,6 +176,8 @@
+ 	buttons.append(node)
+ 
+ func show_title() -> void:
++	record_active = false
++	record_bridge.cancel_run("game013")
+ 	audio.stop()
+ 	state = "title"
+ 	judge_text = ""
+@@ -182,6 +198,7 @@
+ 
+ func toggle_ojt() -> void:
+ 	ojt_mode = not ojt_mode
++	if record_active and ojt_mode: record_ojt_used = true
+ 	save_preferences()
+ 	if state == "help": show_help()
+ 	elif state == "paused": show_pause_buttons()
+@@ -212,6 +229,13 @@
+ 	stage_index = index
+ 	stage = Loader.load_stage(index)
+ 	if index <= 1: scoring = Score.new(settings)
++	if index <= 1:
++		record_active = index == 1 and _record_allowed()
++		record_finished = false
++		record_ojt_used = ojt_mode
++		record_result_id = ""
++		if record_active:
++			record_result_id = record_bridge.start_run("game013", "1", "ojt" if record_ojt_used else "normal")
+ 	rhythm = Rhythm.new(scoring)
+ 	rhythm.offset_seconds = float(settings.input_offset_ms) / 1000.0
+ 	rhythm.judged.connect(on_judged)
+@@ -376,6 +400,7 @@
+ 	result_started = wall_time
+ 	best_score = maxi(best_score, scoring.score)
+ 	save_preferences()
++	_record_finish()
+ 	audio.play_effect("clear" if clear else "fail")
+ 	if not clear: audio.play_effect("wind")
+ 	clear_buttons()
+@@ -427,3 +452,35 @@
+ 		scoring.best_combo = 84
+ 		show_result(true)
+ 	elif which == "fail": show_result(false)
++
++# Only original show_result finalizes the three-stage standard RUN.
++func _record_allowed() -> bool:
++	return not test_mode and not record_debug_excluded
++
++func _record_load() -> void:
++	var old := ConfigFile.new()
++	var error := old.load("user://task_heaven.cfg")
++	if error == ERR_FILE_NOT_FOUND:
++		record_bridge.legacy_best("game013", -1)
++	elif error != OK:
++		record_bridge.storage_error("game013")
++	else:
++		var legacy: Variant = old.get_value("game", "best", null)
++		if typeof(legacy) == TYPE_INT and legacy >= 0:
++			record_bridge.legacy_best("game013", legacy)
++		else:
++			record_bridge.storage_error("game013")
++	var current := current_record_save.load_best("game013.normal.r1", 11400)
++	if current.status == "error":
++		record_bridge.storage_error("game013")
++	else:
++		record_bridge.current_best("game013", current.value)
++
++func _record_finish() -> void:
++	if not record_active or record_finished or not _record_allowed(): return
++	record_finished = true
++	record_active = false
++	var mode := "ojt" if record_ojt_used else "normal"
++	var saved := current_record_save.save_best("game013.%s.r1" % mode, scoring.score, 11400)
++	if saved.status == "error": record_bridge.storage_error("game013")
++	record_bridge.finish_run("game013", record_result_id, scoring.score, "1", mode)

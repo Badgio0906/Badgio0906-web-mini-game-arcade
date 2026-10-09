@@ -1,0 +1,50 @@
+{
+  "provenance": "local importer validation/mismatch fixture only, no originals/gameplay/network modifications",
+  "checks": [
+    {
+      "command": [
+        "tools/import_legacy_games.py",
+        "--exports"
+      ],
+      "expected_success": true,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "command": [
+        "tools/import_legacy_games.py",
+        "--exports"
+      ],
+      "expected_success": true,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "verified importer rerun retains identical wrappers/bridge/current packs/audio/font/license/manifest",
+      "pass": true
+    },
+    {
+      "command": [
+        "tools/import_legacy_games.py"
+      ],
+      "expected_success": false,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "command": [
+        "tools/import_legacy_games.py",
+        "--exports"
+      ],
+      "expected_success": false,
+      "actual_exit": 1,
+      "pass": true
+    },
+    {
+      "name": "invalid overlay rejects before any public file write",
+      "pass": true
+    }
+  ],
+  "public_files_checked": 54,
+  "status": "PASS"
+}

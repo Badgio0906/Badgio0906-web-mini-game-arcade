@@ -1,0 +1,13 @@
+--- a/scripts/main.gd
++++ b/scripts/main.gd
+@@ -37,6 +37,10 @@
+ 			game.handle_enter()
+ 
+ func _on_game_finished(final_score: int, high: int, record: bool) -> void:
++	# Final result only, once per native RUN. Intermediate best saves stay unchanged.
++	if not game.record_finished:
++		game.record_finished = true
++		game.record_bridge.finish_run("game012", game.record_result_id, final_score)
+ 	game_over_screen.score = final_score
+ 	game_over_screen.high = high
+ 	game_over_screen.new_record = record

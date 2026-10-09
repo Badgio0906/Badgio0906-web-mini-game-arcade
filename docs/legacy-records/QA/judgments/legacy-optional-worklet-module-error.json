@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy-optional-worklet-module-error",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain blind source/diagnostic/localserver verification",
+  "rationale": "AudioWorklet module loads bypassed Playwright context route on the fake HTTPS subpath: normal eighteen requests matched routes, neither of two worklets did. Files and JavaScript MIME existed. A real ephemeral localhost server serving the same compiled bytes yielded ten observed200 worklet responses and zero pageerrors across all five loads. Product exports/source/audio unchanged.",
+  "evidence": [
+    "docs/legacy-records/QA/OPTIONAL_WORKLET_REVIEW.json",
+    "docs/legacy-records/QA/optional-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Instrumented failing fixture without discarding original; replaced fake resource route with real ephemeral local HTTP /arcade staticserver. Kept deliberately absent child bridge and denied parent mirror tests.14 checks pass, noPOST, native GAME OVER/retry unchanged. All browsers/servers closed.",
+    "evidence": [
+      "docs/legacy-records/QA/OPTIONAL_WORKLET_REVIEW.json",
+      "docs/legacy-records/QA/optional-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

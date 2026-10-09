@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy014-heart-probe-timeout",
+  "problem": "Browser baseline heart-stop probe observed failure0 instead of expected success1",
+  "expected": "Press once while original readonly observer shows running HEART and obtain native success1",
+  "observed": [
+    "Before any014 modified-export operations, baseline pinned public export013-independent014 input probe timed out waiting for score1",
+    "Failure screenshot original Failure result0; existing readonly observer state3 hand3",
+    "Probe waits for hand0 then fetches canvas boundingBox, focusescanvas, and sends Space; actual input-time hand was not recorded"
+  ],
+  "unknown": [
+    "Whether heart changed between wait and actual input",
+    "Actual input-time hand/state",
+    "Source or environment timing contribution"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/prototype014-01/REPORT.json",
+    "docs/legacy-records/QA/prototype014-01/failure.png",
+    "tests/legacy-records/prototype014.mjs"
+  ],
+  "provenance": "PC Chromium ordinary key input into pinned before014 export; no product mutation or physical user"
+}

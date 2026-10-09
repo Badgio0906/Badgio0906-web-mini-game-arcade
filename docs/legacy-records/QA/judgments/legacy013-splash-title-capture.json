@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy013-splash-title-capture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Named title capture showed Godot splash, unlike before actual title. HTML hidden +fixed350ms was insufficient. Actual readonly native title state wait added.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+    "docs/legacy-records/QA/prototype013-05/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Retained erroneous capture; recaptured genuine before/after native-title images after phase readiness.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+      "docs/legacy-records/QA/prototype013-05/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

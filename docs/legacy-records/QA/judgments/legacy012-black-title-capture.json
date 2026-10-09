@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy012-black-title-capture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit independent file/pixel recheck; root separately viewed actual title",
+  "rationale": "Initial independent reviewer reported black after-title from tool display. Subsequent SHA/pixel/OCR and actual view inspection established the old and new desktop title files are all identical and have normal visible native title pixels. Initial review observation was incorrect, not a demonstrated product or capture-readiness defect. Exact cause of the mistaken tool interpretation is unknown. Preserve original finding/API record and explicit correction rather than validate a nonexistent capture bug.",
+  "evidence": [
+    "docs/legacy-records/QA/VISUAL_012.md",
+    "docs/legacy-records/QA/capture012-01/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Independent reviewer inspected actual PNG files/pixels and before/after phone/Portal images; root viewed valid native title. Documented correction, original phone clipping, exact18px wrapper change and human/physical device limits. No product fix was needed for the withdrawn black-title assertion.",
+    "evidence": [
+      "docs/legacy-records/QA/VISUAL_012.md",
+      "docs/legacy-records/QA/capture012-01/REPORT.json"
+    ]
+  }
+}

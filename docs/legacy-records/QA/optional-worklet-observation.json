@@ -1,0 +1,19 @@
+{
+  "finding_id": "legacy-optional-worklet-module-error",
+  "problem": "Optional/subpath browser probe records repeated audio-worklet module loading exceptions despite normal native gameplay and record checks passing.",
+  "expected": "Compiled native startup/subpath/missing optional bridge and parent mirror denial should preserve native gameplay without unexpected script exceptions.",
+  "observed": [
+    "Optional probe passes all three subpath startup/return checks and native GAME OVER under deliberately absent child bridge and denied parent mirror.",
+    "The final no-script-exceptions assertion fails with ten identical Unable to load a worklet module messages.",
+    "Other earlier native browser suites reported no script exceptions."
+  ],
+  "unknown": [
+    "Exact failing URL, operation/context and cause are not yet recorded.",
+    "Whether this represents a source/runtime defect, subpath limitation or probe route fixture issue is unresolved."
+  ],
+  "test_name": "tests/legacy-records/optional-browser.mjs",
+  "evidence": [
+    "docs/legacy-records/QA/optional-01/REPORT.json"
+  ],
+  "provenance": "Isolated Chromium compiled GET fixtures; no production calls."
+}

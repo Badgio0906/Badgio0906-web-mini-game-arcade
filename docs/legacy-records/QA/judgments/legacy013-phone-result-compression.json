@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy013-phone-result-compression",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Actual disabled sharing strip75px reduced canvas274 to199 and small native result controls. Legacy-only unavailable status now18px; canvas256, independent phone81/F12/H12. Configured branch preserves existing common controls.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+    "docs/legacy-records/QA/prototype013-05/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Compact only unavailable legacy status; independent actual image re-review, PC/phone native retry/title/reload checks.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+      "docs/legacy-records/QA/prototype013-05/REPORT.json"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

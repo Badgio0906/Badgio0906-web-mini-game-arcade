@@ -1,0 +1,16 @@
+{
+  "finding_id": "legacy-importer-helper-api",
+  "problem": "旧export監査utilityのimportが失敗する",
+  "expected": "旧監査utilityが必要な読取helperを引き続きimportできる",
+  "observed": [
+    "rename_legacy_titles.py imports GAMES,ROOT,digest,wrapper fromimport_legacy_games",
+    "新import入口はこれらのsymbolを提供していない"
+  ],
+  "unknown": [
+    "差分の具体的内容と影響範囲"
+  ],
+  "evidence": [
+    "tools/rename_legacy_titles.py:17"
+  ],
+  "provenance": "独立export担当が観測した実コードimportまたは実PCK差分"
+}

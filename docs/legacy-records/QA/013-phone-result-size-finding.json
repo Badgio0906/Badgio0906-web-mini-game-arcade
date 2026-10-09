@@ -1,0 +1,19 @@
+{
+  "finding_id": "legacy013-phone-result-compression",
+  "problem": "Optional record result strip leaves much smaller native result controls on phone landscape",
+  "expected": "Keep original game and retry readable while adding outside record status",
+  "observed": [
+    "Independent actual screenshot review measured original title canvas height274px, normal result canvas199px after75px record strip",
+    "844x390 phone result native retry button around84x17px; OJT line uses18px and leaves256px canvas",
+    "Sharing endpoint unset; result button disabled and separate preparing status visible"
+  ],
+  "unknown": [
+    "Smallest usable result controls after compact optional status",
+    "Configured endpoint control layout"
+  ],
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "provenance": "Independent Codex screenshot review of compiled013 browser actual normal input; not physical phone or human feel"
+}

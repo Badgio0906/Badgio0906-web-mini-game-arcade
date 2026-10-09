@@ -16,9 +16,9 @@
 |008|コーヒーこぼすな|P`best-delivery-v2`; old距離best|配達点 点・高|2 / all / 本番・追加杯含む|main onEnd r.score|読取可 / 対象|
 |009|印鑑どこですか|P`bestRules2`; old best保持|スコア 点・高|2 / all / 本番・整頓含む|main onEnd result.score|読取可 / 対象|
 |011|ウンコかウコンか|P`best:v2`, bestFinalStreak別|最高スコア 点・高|2 / all / 本番・FINAL含む|main onEnd value.score|読取可 / 対象|
-|012|お前の仕事は俺の仕事|Godot `user://high_score.cfg` `[scores] best`|スコア（未対応）|pinned export / 不明|Godot game_manager.game_finished|未対応 / 技術未対応。公開shellに結果通知なし、Godot filesystem同期/parseを安全に代行するbridgeなし|
-|013|タスク天国|Godot `user://task_heaven.cfg` `[game] best`＋ojt_mode|スコア（未対応）|pinned export / OJT未分離|Godot game_manager.save_preferences|未対応 / 技術未対応。score/modeとfilesystemブラウザbridgeなし|
-|014|指ハートチャレンジ|持続BEST保存をsourceで確認できず|到達段階（未対応）|pinned export|Godot main.gdのみ|未対応 / 技術未対応。QA限定 __fingerHeartは本番結果APIではない|
+|012|お前の仕事は俺の仕事|Godot `user://high_score.cfg` `[scores] best`（変更なし）＋確認済み小型mirror|最高スコア 点・高|1 / normal / 通常|native game_finished 確定1回|読取可 / 任意共有準備対応。得点規則一致の旧BESTを個人最大へ保持、過去BESTは投稿しない|
+|013|タスク天国|元 `task_heaven.cfg` を保持＋`game100_records_v1.cfg` `[game013.normal.r1]` / OJT別|補助なしスコア 点・高（0–11400）|1 / normal / RUN全体OJT未使用|native show_result 確定1回、途中stage除外|読取可 / 任意共有準備対応。旧混合BESTは条件不明、OJT ON→OFFも通常に昇格しない|
+|014|指ハートチャレンジ|新 `game100_records_v1.cfg` `[game014.normal.r1]`＋確認済み小型mirror|元成功回数 回・高（0–25）|1 / normal / 通常|native _finish 確定1回|読取可 / 任意共有準備対応。元永続BESTなし、成功判定/段階/間隔維持|
 |015|落下キング|P`best` scalarが旧版から再利用|最大深度 m・高|03 / all / 本番|main onEnd value.score（整数m）|旧key単独は版不明legacy。導入後currentrules表示snapshotで読取 / 対象|
 |016|負けじゃんけん|P`best`|最高スコア 点・高|1 / all / 本番|main finish event result.score|読取可 / 対象|
 |017|雨って避けたら濡れないよね|P`best`|最高スコア 点・高|1 / all / 本番|main end event.result.score|読取可 / 対象|
@@ -39,7 +39,7 @@
 
 ## 調査根拠と残る制約
 
-Nativeの保存・確定根拠は各 `src/games/gameNNN/main.ts` と上表の `save.ts` / `Save.ts` / `persistence.ts`。定義値は現行 `src/data/gameVersions.ts` を照合。012–014は `tools/import_legacy_games.py` のpinned commit（012 50a97c3、013 ddc854b、014 36877d5）と実在する `/workspace/legacy-games/*/scripts/*.gd` の読取で確認した。再現可能なrepo内根拠は同importer pin、公開index/game.html（通知なし）、既存title-patch（バイナリ移植対象外）。未対応を設計上対象外とは分ける。今後元Godotで明示browser result bridge・mode/rules metadataを追加して正式exportできれば対応可能。今回バイナリ改変/移植はしない。
+Nativeの保存・確定根拠は各 `src/games/gameNNN/main.ts` と上表の保存module。012–014は原本pin（012 50a97c3、013 ddc854b、014 36877d5）と追跡済み `tools/legacy-record-patches/` を正規Godot4.5.1で全source exportし、公式JavaScriptBridge固定primitive通知を追加した。詳細と再現は [旧Godot記録連携](../legacy-records/IMPLEMENTATION_REPORT.md) / [正規export](../legacy-records/GODOT_EXPORT.md)。正本ConfigFileをnative自身が読む。Portalは小型IDB mirrorだけを取得し、Engine/FSを起動・解析しない。実際のゲーム起動前は旧native保存BESTをまだ連携できないため「記録なし」、拒否/破損は「取得できません」。公開共有は現行共通API未設定のため「準備中」。バイナリresource移植による改修は行わない。
 
 未知版、破損、保存拒否は0へ置換しない。数値0の既存キーがあるときは有効記録として読む（保存キーの存在だけで初プレイを断定しない）。除去後は無cacheで元保存を再読取。031は同transactionのmetadataだけが正本、旧worldがあるかはgetKeyによる存在検査（chunks未読）と区別。表示用snapshotの版不一致はlegacyとし、既存保存を削除しない。
 

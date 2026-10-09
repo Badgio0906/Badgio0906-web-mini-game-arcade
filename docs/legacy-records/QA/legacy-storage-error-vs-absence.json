@@ -1,0 +1,17 @@
+{
+  "finding_id": "legacy-storage-error-vs-absence",
+  "problem": "記録DBを開けない場合が記録なしに分類される",
+  "expected": "保存なしと取得不能を区別する",
+  "observed": [
+    "open(false)は拒否、blocked、timeout、初期DB欠如でnullを返す",
+    "readLegacyMirrorはnullを一律status:noneとしている"
+  ],
+  "unknown": [
+    "実ブラウザでの当該条件の確認は未実施"
+  ],
+  "evidence": [
+    "src/records/legacyStore.ts",
+    "independent reviewer legacy_source_audit source observation"
+  ],
+  "provenance": "今回の実装ソースに対する独立コード観察"
+}

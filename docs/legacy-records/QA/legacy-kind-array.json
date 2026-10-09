@@ -1,0 +1,17 @@
+{
+  "finding_id": "legacy-kind-array",
+  "problem": "メッセージ種別に配列が渡ると文字列変換によって検証を通る",
+  "expected": "kindは許可されたプリミティブ文字列だけを受け付ける",
+  "observed": [
+    "validateLegacyMessageはString(p.kind)で許可種別を検査する",
+    "kind:[result]は検証を通りdispatchの厳密比較とは違う枝に進む"
+  ],
+  "unknown": [
+    "structured clone配列を使ったブラウザ実測は未実施"
+  ],
+  "evidence": [
+    "src/records/legacyProtocol.ts",
+    "src/records/LegacyGameRecords.ts"
+  ],
+  "provenance": "独立コードレビューの実観察"
+}

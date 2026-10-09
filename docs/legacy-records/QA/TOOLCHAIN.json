@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "stage": "toolchain_and_regular_source_web_baseline",
+  "created_at": "2026-10-09T01:45:09.180113+00:00",
+  "owner": "legacy_toolchain",
+  "source_commit": "488916c2966710d34233cd212ff970c5501b1091",
+  "read_instructions": {
+    "paths": [
+      "AGENTS.md",
+      "docs/PROJECT_CONTEXT.md",
+      "docs/CURRENT_STATUS.md",
+      "docs/GAME_DEVELOPMENT_RULES.md",
+      "tools/rename_legacy_titles.py",
+      "tools/patch_legacy_start_choices.py",
+      "tools/import_legacy_games.py"
+    ],
+    "read_window_utc": "2026-10-09T01:39:00Z/2026-10-09T01:41:00Z",
+    "note": "Read in this delegated subtask; parent separately reads task-wide request and Jev rules."
+  },
+  "network": {
+    "environment_status": "observations_current:true,enforced,revision155",
+    "inherited_proxy_used": true,
+    "credentials_printed": false,
+    "policy_modified": false,
+    "release_source": "https://api.github.com/repos/godotengine/godot/releases/tags/4.5.1-stable",
+    "official_tag": "4.5.1-stable"
+  },
+  "assets": [
+    {
+      "name": "Godot_v4.5.1-stable_export_templates.tpz",
+      "id": 304632106,
+      "size": 1355592535,
+      "digest": "sha256:1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86",
+      "url": "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz",
+      "observed_sha256": "1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86",
+      "digest_match": true,
+      "observed_sha512": "8a65c73541184fbcf1a7afedb37c9c15ed0f3babdaafe36ff47ccc515548ac84bc7563ba5b94c253e6085b121ac608b7e03d35dfc0b2c8c690a646a8755b57e5",
+      "sha512_sums_match": true
+    },
+    {
+      "name": "Godot_v4.5.1-stable_linux.x86_64.zip",
+      "id": 304632577,
+      "size": 69572744,
+      "digest": "sha256:02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd",
+      "url": "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip",
+      "observed_sha256": "02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd",
+      "digest_match": true,
+      "observed_sha512": "5bccbed65a94b82c7c319fdb15719ee8113a6e503976cc54e16f1c61fe95f3d74e5e40b8449b5bb89ff7f424574c20af01a4f5ef08b389e4dc338b245185b0b9",
+      "sha512_sums_match": true
+    },
+    {
+      "name": "SHA512-SUMS.txt",
+      "id": 304636261,
+      "size": 4965,
+      "digest": "sha256:3e330c660b0d6dc21e57508ae34ba0f77d66007173ea3d9e99adc7af37a6d4c7",
+      "url": "https://github.com/godotengine/godot/releases/download/4.5.1-stable/SHA512-SUMS.txt",
+      "observed_sha256": "3e330c660b0d6dc21e57508ae34ba0f77d66007173ea3d9e99adc7af37a6d4c7",
+      "digest_match": true,
+      "observed_sha512": "76be6b2b2117a7cc18f7874978a8cc06d37c8a99e983bb510be92373bc39aca200f7e68e6694e90fd772afeb44e2b6a6f2da9dd8972f22e6b1edbc3efbaa1eb4",
+      "sha512_sums_match": true
+    }
+  ],
+  "editor": {
+    "path": "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64",
+    "version": "4.5.1.stable.official.f62fdbde1",
+    "sha256": "db07cae7de644278a1884d4552bdf2bca3f5d30131b18faf3a0c4d730080b199"
+  },
+  "selected_templates": [
+    {
+      "name": "version.txt",
+      "sha256": "5382abe0a6be4fcce63cb24a92d3f0cffec78645418cb87c9608784cdf26b97e",
+      "bytes": 13
+    },
+    {
+      "name": "web_debug.zip",
+      "sha256": "88d9a38bfbcb101b97b181a96177f64bd6532760ff6e433e713f7c4eccd8c7d3",
+      "bytes": 10074979
+    },
+    {
+      "name": "web_dlink_debug.zip",
+      "sha256": "63357c099a2580987b767f925c39d6df8e5120538bc7c2176de987d0dedbba9a",
+      "bytes": 11389891
+    },
+    {
+      "name": "web_dlink_nothreads_debug.zip",
+      "sha256": "c30b861031414f84d1ed9073cbf53cd27144d8a118b6dc49ce997b455915b466",
+      "bytes": 11305515
+    },
+    {
+      "name": "web_dlink_nothreads_release.zip",
+      "sha256": "68162ae9249ca3b7ce53dde8cdfab59463bd6518dca9123df41e5cc8fb1bd454",
+      "bytes": 10947557
+    },
+    {
+      "name": "web_dlink_release.zip",
+      "sha256": "6e568a94ea0359b2360a9c26aab2841024d339ca3e1ce9821ab547a013e51059",
+      "bytes": 10959236
+    },
+    {
+      "name": "web_nothreads_debug.zip",
+      "sha256": "db624373952bdbffef4476b248fb70e89a483b525ac6de4438bee31ca2924728",
+      "bytes": 9992965
+    },
+    {
+      "name": "web_nothreads_release.zip",
+      "sha256": "7f6c5efc9952f6f02509adfb92298161c0152a1f6a81c0bf9b9f4f913676e9c8",
+      "bytes": 9436583
+    },
+    {
+      "name": "web_release.zip",
+      "sha256": "ef452674396ab92109524af17a877365796508165d7d6518cf4a9095ca84a8bc",
+      "bytes": 9430004
+    }
+  ],
+  "baseline": {
+    "game_id": "game012",
+    "isolated_project": "/workspace/legacy-records-toolchain/baseline/yokodori-days",
+    "output": "/workspace/legacy-records-toolchain/build-baseline-012",
+    "source_original": "/workspace/legacy-games/yokodori-days",
+    "pinned_revision": "50a97c339076d3bcadf38ad6be8acade16a8e882",
+    "original_writes": false,
+    "public_writes": false,
+    "source_transformations": [
+      "Applied existing tools/legacy-title-patches/yokodori-days/hud.gd.patch and title_screen.gd.patch.",
+      "Applied existing config/name title rename to お前の仕事は俺の仕事.",
+      "Restored exact source OFL CRLF line endings: git blob uses LF; delivered original resource uses CRLF.",
+      "Kept tests/test_game.gd and tests/capture.gd for exact UID cache; existing export exclude_filter remains unchanged.",
+      "Selected the same official single-threaded Web templates through isolated export_presets custom_template paths."
+    ],
+    "first_baseline_observation": {
+      "receipt": "/workspace/legacy-records-toolchain/baseline-comparison.json",
+      "differences": [
+        "assets/fonts/OFL.txt: line endings only.",
+        ".godot/uid_cache.bin: two excluded test script UID entries missing."
+      ],
+      "followup": "Corrected isolated source metadata before regular re-export; no packed resource transplantation."
+    },
+    "current_resource_count": 118,
+    "export_resource_count": 118,
+    "changed_packed_resources": [],
+    "added_packed_resources": [],
+    "removed_packed_resources": [],
+    "all_resources_byte_identical": true,
+    "container_pck_byte_identical": false,
+    "container_difference_reason": "Current published PCK was previously repacked. Regular export container layout/order/header differs, but all 118 unpacked resources are exactly identical. HTML difference is only PCK file size.",
+    "files": [
+      {
+        "name": "index.apple-touch-icon.png",
+        "bytes": 11952,
+        "sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+        "current_sha256": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+        "byte_identical": true
+      },
+      {
+        "name": "index.audio.position.worklet.js",
+        "bytes": 2973,
+        "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+        "current_sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+        "byte_identical": true
+      },
+      {
+        "name": "index.audio.worklet.js",
+        "bytes": 7298,
+        "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+        "current_sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+        "byte_identical": true
+      },
+      {
+        "name": "index.html",
+        "bytes": 5544,
+        "sha256": "1ebb9de8f888d1a4b01d2df6b9529a73c47944d35ec84fc75d5dd1e98c5c7bea",
+        "current_sha256": "1ebb9de8f888d1a4b01d2df6b9529a73c47944d35ec84fc75d5dd1e98c5c7bea",
+        "byte_identical": true
+      },
+      {
+        "name": "index.icon.png",
+        "bytes": 5702,
+        "sha256": "08808dd5397e9a502cb3624944151f87a9705b5b66b5c365c5ca4c6ab51525f5",
+        "current_sha256": "08808dd5397e9a502cb3624944151f87a9705b5b66b5c365c5ca4c6ab51525f5",
+        "byte_identical": true
+      },
+      {
+        "name": "index.js",
+        "bytes": 305185,
+        "sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+        "current_sha256": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+        "byte_identical": true
+      },
+      {
+        "name": "index.pck",
+        "bytes": 1133664,
+        "sha256": "4b1930d7cb2ca72c127e78d66dd8016b36d25a936f194740fd601cb73599caff",
+        "current_sha256": "90822e65cb9496923ecb7ef17a9055a520b7aecb69cb81482d47c58f39a7ae63",
+        "byte_identical": false
+      },
+      {
+        "name": "index.png",
+        "bytes": 21443,
+        "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+        "current_sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+        "byte_identical": true
+      },
+      {
+        "name": "index.wasm",
+        "bytes": 38034280,
+        "sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+        "current_sha256": "6498359ba889796a0d95a2f71113ac184badc0f2d84cf28f4103c7e399d2d547",
+        "byte_identical": true
+      }
+    ],
+    "import_success": true,
+    "export_success": true,
+    "browser_not_run": true
+  },
+  "reproduce_commands": [
+    "Download only the official release assets listed above using the inherited proxy. Verify SHA256 against release API digest and SHA512 against the official SHA512-SUMS.txt.",
+    "git -C /workspace/legacy-games/yokodori-days archive 50a97c339076d3bcadf38ad6be8acade16a8e882 | tar -x -C <isolatedproject>",
+    "Apply the two existing title patches and config/name rename inside the isolated project only.",
+    "Normalize isolated assets/fonts/OFL.txt to CRLF (matches original packed OFL).",
+    "Set isolated custom_template/debug and custom_template/release to the verified official web_nothreads_debug.zip and web_nothreads_release.zip.",
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path <isolatedproject> --editor --import --quit",
+    "/workspace/legacy-records-toolchain/editor/Godot_v4.5.1-stable_linux.x86_64 --headless --path <isolatedproject> --export-release Web <isolatedbuild>/index.html",
+    "Compare each unpacked resource with current public PCK using existing tools/rename_legacy_titles.py unpack (read only).",
+    "Copy the full regular export only after parent bridge implementation and QA; do not transplant PCK resources."
+  ],
+  "logs": [
+    "/workspace/legacy-records-toolchain/import-baseline.log",
+    "/workspace/legacy-records-toolchain/export-baseline.log",
+    "/workspace/legacy-records-toolchain/import-baseline-02.log",
+    "/workspace/legacy-records-toolchain/export-baseline-02.log"
+  ],
+  "scope_status": "READY_EXACT_TOOLCHAIN_BASELINE_RESOURCE_MATCH; no browser/Jev/publicfile/commit/push/deploy performed"
+}

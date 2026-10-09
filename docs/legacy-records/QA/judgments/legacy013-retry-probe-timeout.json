@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy013-retry-probe-timeout",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Original probe board620,579 lies above actual retry rect376,615,302,61. Corrected inner coordinate527,645. Retained failure; no native retry timing change.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+    "docs/legacy-records/QA/prototype013-05/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Source rectangle and probe mapping inspected; corrected probe passed native PC/phone retry.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_013_CODE_VISUAL.md",
+      "docs/legacy-records/QA/prototype013-05/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

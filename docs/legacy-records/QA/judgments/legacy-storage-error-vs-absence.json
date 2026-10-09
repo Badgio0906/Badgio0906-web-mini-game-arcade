@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy-storage-error-vs-absence",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_source_audit",
+  "rationale": "Denied/error/blocked IDB was classified as missing. Discriminated open outcome preserves absence versus unavailable.",
+  "evidence": [
+    "docs/legacy-records/QA/REVIEW_012_CODE.md"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Added typed open outcome and tests for absent-aborted creation versus errors/blocked/refusal. tests/unit/legacy-records.test.ts.",
+    "evidence": [
+      "docs/legacy-records/QA/REVIEW_012_CODE.md"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-09T02:23:10.535641+00:00",
+  "baseline": "488916c2966710d34233cd212ff970c5501b1091",
+  "source_pins": {
+    "game013": "ddc854b67c6c4efe17e0777ec7de1ce01d4f1ac0",
+    "game014": "36877d55bb44a41087a61bfd38f3ec395040cb3c"
+  },
+  "read_provenance": {
+    "exact_per_file_timestamps_available": false,
+    "current_agent_reads": "AGENTS, PROJECT_CONTEXT/CURRENT_STATUS summaries, GAME_DEVELOPMENT_RULES, JEV_REVIEW_RULES, request013/014 sections and source audit read in this delegated turn; not evidence of earlier-task reads"
+  },
+  "game013": {
+    "status": "private exact4.5.1 export and native tests PASS; actual browser pending root",
+    "original_checks": 154,
+    "new_checks": 25,
+    "source_and_public_written": false,
+    "output_receipt": "native013/export-metadata.json",
+    "resources": "native013/resource-audit.json",
+    "initial_fixture_shutdown_failure": "native013/game013-02-test-current.log and game013-03-test-current.log; active native audio streams after rapid synthetic results; fixture now stops and clears streams then waits0.25sec; product audio unchanged",
+    "latest_export_receipt": "native013/export06/export-metadata.json",
+    "latest_resource_audit": "native013/export06/resource-audit.json",
+    "source_only_json_byte_preservation": "Pinned JSON normalized back to delivered CRLF in isolated source; original source repository remains untouched; every stage/tutorial JSON now byteidentical",
+    "scope_end": "Native TITLE calls optional fixed cancelRun, clearing wrapper RUN/result scope without recording an abandoned RUN"
+  },
+  "game014": {
+    "status": "Exact4.5.1 isolated fullsource export + original/new native tests PASS; actual browser pending root",
+    "sequence_note": "Initial untested014draft preceded rootclarification; it was held unchanged with noexport/tests. Rootexplicit013browsergatePASS authorized further014 implementation, then tests and fullsource export01 were performed. No014completion was claimed before013gate.",
+    "original_checks": 12156,
+    "new_checks": 68,
+    "export_receipt": "native014/export01/export-metadata.json",
+    "resource_audit": "native014/export01/resource-audit.json",
+    "current_authority": "user://game100_records_v1.cfg schema1 game014.normal.r1 best0..25; total original finalized success count",
+    "browser_or_public_verified_by_this_agent": false
+  },
+  "browser_or_jev_api_performed": false,
+  "commit_push_deploy_performed": false
+}

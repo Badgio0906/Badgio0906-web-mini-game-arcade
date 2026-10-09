@@ -1,0 +1,27 @@
+--- a/scripts/high_score_manager.gd
++++ b/scripts/high_score_manager.gd
+@@ -7,10 +7,23 @@
+ 
+ func load_score() -> void:
+ 	var config := ConfigFile.new()
+-	if config.load(save_path) == OK:
++	var load_error := config.load(save_path)
++	var bridge := preload("res://scripts/RecordBridge.gd").new()
++	if load_error == OK:
+ 		var value: Variant = config.get_value("scores", "best", 0)
+ 		if value is int:
+ 			high_score = maxi(0, value)
++			# Mirror only a genuine existing ConfigFile read; never synthesize a RUN.
++			if value >= 0 and config.has_section_key("scores", "best"):
++				bridge.legacy_best("game012", value)
++			else:
++				bridge.storage_error("game012")
++		else:
++			bridge.storage_error("game012")
++	elif load_error == ERR_FILE_NOT_FOUND:
++		bridge.legacy_best("game012", -1)
++	else:
++		bridge.storage_error("game012")
+ 
+ func record(score: int) -> bool:
+ 	if score <= high_score: return false

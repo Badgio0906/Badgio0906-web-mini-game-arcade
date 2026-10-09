@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-10-09T02:40:53.601223+00:00",
+  "reviewer": "legacy_toolchain",
+  "jev_answers_read": false,
+  "finding_source": "docs/legacy-records/QA/RESOURCE_AUDIT_FAILED_01.json",
+  "independent_primary_cause": "Audit incorrectly treated every original UID-cache entry as a runtime identity. Old Game014 cache retained exported-excluded documentation, QA and old Web-output PNG identities.",
+  "rejection_branch": "if([...beforeUids].some(([path,value])=>afterUids.get(path)!==value)) return false; this executed before addedUidPaths/titleRevision checks.",
+  "product_drift": "No unexpected runtime resource drift identified. Original script/scene/asset UID identities remain exact; all changed/removed image UIDs are proven excluded nonruntime editor metadata.",
+  "fix_scope": [
+    "Game014 only.",
+    "Only PNG paths under res://docs/, res://tests/artifacts/, res://web/.",
+    "Pinned original export preset must exactly contain exclude_filter=\"tests/*,tools/*,web/*,docs/*\".",
+    "Image, .import, .remap and MD5-derived imported .ctex paths must be absent from BOTH original and rebuilt PCK maps.",
+    "Enumerate every changed/removed/added ignored editor UID; preserve strict runtime UID comparison and strict new helper/test allowlist.",
+    "No skip of titleRevision resource SHA comparison; it passed unchanged after UID-metadata correction."
+  ],
+  "observed_uid_delta_counts": {
+    "changed": 7,
+    "removed": 46,
+    "added": 3
+  },
+  "original_runtime_uid_identities_preserved": true,
+  "validation": {
+    "command": "LEGACY_BINARY_REPORT=docs/legacy-records/QA/RESOURCE_AUDIT_02.json node tests/fourteen-game/audit-legacy-migration.mjs",
+    "result": "PASS",
+    "exports": 3,
+    "original_files": 42,
+    "issues": [],
+    "audit_script_sha256": "f4a19833932e87ea708280a4ae3ca608b541860c8a1e75f0c4a7999db6ab8b8d"
+  },
+  "original_or_public_written": false,
+  "independent_action": "Correct the overly strict audit metadata comparison, then rerun the complete source/resource audit to a new output; preserve the original failed report.",
+  "release_risk_if_unresolved": "Validation would remain blocked even though runtime inputs/resources were preserved; do not remove all UID checks to force a pass.",
+  "this_review_action_overwrote_prior_failure_or_history": false,
+  "prior_default_output_handling": "Parent reported the first audit used its historical default output, then copied the failed report to RESOURCE_AUDIT_FAILED_01.json and restored that historical file from HEAD before this independent review. This rerun explicitly uses a new LEGACY_BINARY_REPORT path."
+}

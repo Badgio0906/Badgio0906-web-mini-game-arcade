@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy013-touch-pause-probe",
+  "problem": "スマホ相当の再挑戦直後の自動Pauseタップがpausedを確認できない",
+  "expected": "通常再挑戦後のPause操作ができる",
+  "observed": [
+    "PC通常70・OJT ON/OFF・reload/Portalは成功",
+    "phone通常70とnative再挑戦も成功",
+    "再挑戦直後のboard1208,47タップ後25秒でpaused待機timeout",
+    "failure画像にはplaying画面とPauseボタンが見える"
+  ],
+  "unknown": [
+    "共有UI解放後のcanvasリサイズとタップ座標の時点対応",
+    "通常のタップでもPauseしないか"
+  ],
+  "evidence": [
+    "docs/legacy-records/QA/prototype013-02/REPORT.json",
+    "docs/legacy-records/QA/prototype013-02/failure.png"
+  ],
+  "provenance": "390px高さ横スマホ相当の実タッチprobe。実機ではない"
+}

@@ -1,0 +1,21 @@
+{
+  "finding_id": "legacy014-retry-ui-check",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root plus independent legacy_source_audit evidence",
+  "rationale": "Native retry reached state0/score0 before instantaneous parent hidden assertion. Parent postMessage delivery is asynchronous; wait for hidden matched actual lifecycle. First failing delivery timestamp unrecorded; no native change.",
+  "evidence": [
+    "docs/legacy-records/QA/VISUAL_014.md",
+    "docs/legacy-records/QA/prototype014-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Probe waits for parent hidden within5seconds; PC/phone/320/landscape all normal retry checks pass.",
+    "evidence": [
+      "docs/legacy-records/QA/VISUAL_014.md",
+      "docs/legacy-records/QA/prototype014-03/REPORT.json"
+    ]
+  }
+}
