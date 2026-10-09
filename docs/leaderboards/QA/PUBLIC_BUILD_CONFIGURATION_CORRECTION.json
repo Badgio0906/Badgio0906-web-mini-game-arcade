@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-09T11:38:39.994846+00:00",
+  "initial_public_verification": "FAIL before accepting published status",
+  "cause": "Local comparison build used telemetry origin instead of the existing publicly compiled /v1/events endpoint; product source and official workflow are unchanged",
+  "local_initial_endpoint": "https://analytics.game100garage.com",
+  "published_existing_endpoint": "https://analytics.game100garage.com/v1/events",
+  "ga4_public_measurement_id": null,
+  "records_endpoint_in_official_workflow": false,
+  "action": "Rebuild comparison from expected commit with the exact publicly visible existing telemetry endpoint and repeat complete served-byte checks; do not alter production config",
+  "evidence": "First difference in downloaded public runtime literal; import hash propagation accounts for HTML differences",
+  "jev": "Simple build variable configuration mismatch; no Jev diagnosis needed"
+}

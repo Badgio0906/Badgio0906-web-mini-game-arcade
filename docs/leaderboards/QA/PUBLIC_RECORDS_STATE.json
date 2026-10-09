@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-09T11:38:53.801Z",
+  "methods": [
+    "GET"
+  ],
+  "production_mutations": false,
+  "checks": [
+    {
+      "path": "/v1/health",
+      "status": 200,
+      "error": null,
+      "health": "ok"
+    },
+    {
+      "path": "/v1/records/public/bests",
+      "status": 404,
+      "error": "not_found",
+      "health": null
+    },
+    {
+      "path": "/v1/records/public/leaderboard?board_id=game001.score.r1.all",
+      "status": 404,
+      "error": "not_found",
+      "health": null
+    }
+  ],
+  "records_runtime_enabled": false,
+  "synthetic_records_sent": 0,
+  "actual_player_receiving_not_confirmed": true
+}

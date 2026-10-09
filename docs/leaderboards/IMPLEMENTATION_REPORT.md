@@ -33,7 +33,7 @@ Jev実finding3件だけHTTP200・4問、独立判断／実対応を記録。コ�
 
 ## 本番・公開状態
 
-コード実装済み、ローカル検証済み。公式Pages公開はこの報告の後続証拠で確定する。
+コード実装済み、ローカルD1検証済み、GitHub Pages公開済み。runtime `b63c8194033bdd9bd6e46547ce28185e0ac65e97`、[公式workflow 37924667044](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37924667044) のbuild／deploy成功。配信164file SHA一致、公開4viewport・34項目PASS、20TOP10／30card・準備中／閉じる／Esc／focus復帰／誤起動なし／資格発行なし／recordGET・POST0を確認。[公開証跡](QA/PUBLICATION.json)。後続の報告commitはruntime無変更、証跡は実装SHAを基準とする。初回照合の差は比較用buildの既存telemetry URLから`/v1/events`が欠けた設定誤り。公開値を確認して比較だけ修正、全面再照合成功。製品／本番解析設定の変更ではない。[設定訂正](QA/PUBLIC_BUILD_CONFIGURATION_CORRECTION.json)。
 
 本番読み取りは今回既存Cloudflare認証で成功。対象Worker／D1／DBbinding一致、adminSecretあり。D1適用履歴は0001だけ、records表なし。既存Analytics Worker version16ad6d54は稼働、recordsBEST／TOP10は404、RECORDS_ENABLED OFF、公式Pages workflowにrecords endpoint未接続。STEP1では本番D1migration／Workerdeploy／フラグON／synthetic投稿を行っていない。Workerランキング本番稼働済み／実プレイヤー記録受信済みではない。[読み取り証跡](QA/PRODUCTION_READINESS.json)。
 

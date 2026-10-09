@@ -16,13 +16,17 @@
 |portal-browser-04|root fixture endpoint設定違いで4項目時点FAIL、製品変更なし|
 |portal-browser-05|固定最終source・buildで118項目／4viewport|
 |FINAL_SOURCE_MANIFEST|build前sourceSHA、run中変更なし、fixture配信fileSHA|
-|DEFAULT_BUILD_MANIFEST|公式相当endpoint未設定buildfileSHA|
-|preparing-browser-01|実HTTP・backend準備中18項目／4viewport|
+|DEFAULT_BUILD_MANIFEST／INITIAL|最終公式相当records未接続・既存telemetry /v1/events buildSHA。誤設定の初期比較buildは別保存|
+|preparing-browser-01／02／03|実HTTP・backend準備中18／18／22項目、4viewport|
 |legacy-regression-01／02|旧3作PC/phone6RUN。初回testURL置換の誤りを保存、修正後実HTTP36項目成功|
 |game015-regression-01|015の旧BEST／新結果／rules03／保存／Portal／retry|
 |native-regression-01|既存7作品×PC/phoneの通常操作・保存・結果回帰|
 |FONT_COVERAGE|元1106glyph保持＋必要な専1glyph|
 |PRESERVATION|ゲーム本体・固定Godotexport・Analytics・広告/CREDIT・ID・旧migration不変|
+|PUBLICATION／publication-02|runtime b63c819・公式37924667044成功、公開164file SHA一致|
+|public-browser-01|公開HTTPS4viewport・34項目、record通信／POST／資格発行なし|
+|publication-01／PUBLIC_BUILD_CONFIGURATION_CORRECTION|初回比較の既存解析URL設定差を保持。製品／本番設定変更なし、全面再照合成功|
+|PUBLIC_RECORDS_STATE|公開後health200、recordsBEST／TOP10は404、未有効|
 |JEV_SHADOW／SUMMARY|実finding3件、HTTP200・4問、独立判断。公開合否の委任なし|
 
 再現コマンド（root）。出力先は一意の新pathに変える。
@@ -37,7 +41,7 @@ VITE_RECORDS_ENDPOINT=https://records-fixture.test npm run build -- --outDir /tm
 LEADERBOARDS_FIXTURE_DIST=/tmp/leaderboards-fixture-new LEADERBOARDS_QA_OUT=/tmp/qa-enabled-new node tests/leaderboards/portal-browser.mjs
 VITE_RECORDS_ENDPOINT=https://records-fixture.test RECORDS_HARNESS_DIST=/tmp/leaderboards-share-new node --experimental-strip-types tests/records/build-harness.mjs
 RECORDS_HARNESS_DIST=/tmp/leaderboards-share-new RECORDS_QA_OUT=/tmp/qa-share-new node tests/leaderboards/sharing-browser.mjs
-VITE_TELEMETRY_ENDPOINT=https://analytics.game100garage.com node tests/records/build-public.mjs
+VITE_TELEMETRY_ENDPOINT=https://analytics.game100garage.com/v1/events node tests/records/build-public.mjs
 # 別terminal：python3 -m http.server 8813 --bind 127.0.0.1 --directory dist
 LEADERBOARDS_BASE_URL=http://127.0.0.1:8813 LEADERBOARDS_QA_OUT=/tmp/qa-preparing-new node tests/leaderboards/preparing-browser.mjs
 RECORDS_SITE_DIST=dist RECORDS_QA_OUT=/tmp/qa-native-new node tests/records/native-game-browser.mjs
@@ -52,3 +56,10 @@ npm test
 ```
 
 wranglertestsの8807/8808/8810portは同時に重ねない。Node24とChromium `/usr/bin/chromium`が必要。既存scriptsのdefault結果先を使って過去の証拠を上書きしない。以前のbrowser03はhashmanifestなしだったため最終05で固定buildを補完した。root04の設定誤りはFIXTURE_CONFIGURATION_CORRECTIONを参照。
+
+公開照合は成功した公式runと実装SHAを指定する。出力先は一意path、records fixtureを本番へ送らない。
+
+```sh
+node --use-env-proxy tests/leaderboards/verify-public.mjs <40hex-runtime-sha> <official-run-id> /tmp/qa-published-new
+LEADERBOARDS_BASE_URL=https://game100garage.com/ LEADERBOARDS_QA_OUT=/tmp/qa-public-browser-new node tests/leaderboards/preparing-browser.mjs
+```
