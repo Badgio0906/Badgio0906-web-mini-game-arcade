@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy-public-native-frame-reference",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain blind code/receipt review; root actual public repro",
+  "rationale": "Waited actual canvas visibility before status-hidden / snapshot-frame selection; added undefined guard. Native bridge events prove actual game startup, first failure did not show product input failure.",
+  "evidence": [
+    "docs/legacy-records/QA/PUBLIC_FRAME_REVIEW.json",
+    "docs/legacy-records/QA/public-native-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Waited actual canvas visibility before status-hidden / snapshot-frame selection; added undefined guard. Native bridge events prove actual game startup, first failure did not show product input failure. Independent code review followed by published6native runs,36checks, zeroPOST/pageerror; before failure retained. Product/runtime untouched.",
+    "evidence": [
+      "docs/legacy-records/QA/PUBLIC_FRAME_REVIEW.json",
+      "docs/legacy-records/QA/public-native-03/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

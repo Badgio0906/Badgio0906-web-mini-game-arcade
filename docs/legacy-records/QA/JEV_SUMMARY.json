@@ -5,35 +5,35 @@
     "risk_comparison_only": 0.5
   },
   "totals": {
-    "entries": 19,
-    "jev_invocations": 19,
-    "api_attempts_known": 19,
+    "entries": 21,
+    "jev_invocations": 21,
+    "api_attempts_known": 21,
     "dry_runs": 0,
-    "available": 19,
+    "available": 21,
     "jev_unavailable": 0,
-    "total_input_tokens": 29037,
-    "total_output_tokens": 4095,
-    "total_cost_usd": 0.001219554,
+    "total_input_tokens": 32165,
+    "total_output_tokens": 4525,
+    "total_cost_usd": 0.00135093,
     "usage_missing": {
       "input_tokens": 0,
       "output_tokens": 0,
       "cost_usd": 0
     },
-    "average_latency_seconds": 0.35693290147709805,
+    "average_latency_seconds": 0.36105971757344724,
     "agreement": {
       "PRIMARY_CAUSE": {
-        "matched": 12,
-        "compared": 19,
-        "rate": 0.631578947368421
+        "matched": 13,
+        "compared": 21,
+        "rate": 0.6190476190476191
       },
       "NEXT_EVIDENCE": {
-        "matched": 10,
-        "compared": 19,
-        "rate": 0.5263157894736842
+        "matched": 12,
+        "compared": 21,
+        "rate": 0.5714285714285714
       }
     },
     "codex_action_confusion": {
-      "TP": 19,
+      "TP": 21,
       "TN": 0,
       "FP": 0,
       "FN": 0
@@ -43,15 +43,115 @@
     "below_045_with_actual_problem": 0,
     "codex_false_pass": 0,
     "release_risk_miss": 2,
-    "release_risk_compared": 19,
+    "release_risk_compared": 21,
     "human_routed": 0,
-    "human_routing_observed": 19,
+    "human_routing_observed": 21,
     "actual_human_actions": 0,
-    "actual_actions_recorded": 19,
+    "actual_actions_recorded": 21,
     "human_judgment_recorded": 0,
     "unreviewed_available": 0
   },
   "groups": [
+    {
+      "game_id": "game012",
+      "log_schema_version": 2,
+      "provenance": "Actual published GET resources, disposable browser native saves, no production POST.",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1558,
+      "total_output_tokens": 217,
+      "total_cost_usd": 6.5436e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.4130795119854156,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "game012",
+      "log_schema_version": 2,
+      "provenance": "Actual published native ordinary input on disposable initially empty save context; no production POST.",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1570,
+      "total_output_tokens": 213,
+      "total_cost_usd": 6.594e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3874494289921131,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
     {
       "game_id": "game012",
       "log_schema_version": 2,

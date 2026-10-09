@@ -1,11 +1,60 @@
 {
-  "status": "NOT_YET_PUBLISHED",
-  "reason": "Technical QA and independent scope reviews complete or finishing; expected-commit official workflow/public verification not yet executed.",
+  "status": "PUBLISHED_VERIFIED",
+  "reason": "Expected runtime official build/deploy,164servedbyteSHA, actual HTTPS native6runs36checks and Portal4viewports36checks verified.",
   "routes": [
     "https://game100garage.com/games/yokodori-days/index.html",
     "https://game100garage.com/games/tachibana-task-heaven/index.html",
     "https://game100garage.com/games/finger-heart-challenge/index.html"
   ],
   "records_backend": "preparing-disabled",
-  "author_playtest": "not performed; prototype publication authorized"
+  "author_playtest": "not performed; prototype publication authorized",
+  "runtime_commit": "48d8003875b99b2a5d208072c6ddf14dbcb61dea",
+  "official_workflow": {
+    "id": 37878543797,
+    "url": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37878543797",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "conclusion": "success"
+      },
+      {
+        "name": "deploy",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "served_byte_check": {
+    "status": "PASS",
+    "file_count": 164,
+    "reference": "public-version-01/VERSION.json",
+    "method": "expected-commit-source-and-public-bytes",
+    "official_artifact_downloaded": false
+  },
+  "native_browser": {
+    "report": "public-native-03/REPORT.json",
+    "status": "PASS",
+    "runs": 6,
+    "checks": 36,
+    "production_posts": 0,
+    "pageerrors": 0,
+    "physical_devices": false
+  },
+  "portal_browser": {
+    "report": "public-portal-01/REPORT.json",
+    "status": "PASS",
+    "viewports": 4,
+    "checks": 36,
+    "active_cards": 30,
+    "all30_thumbnails_decoded": true
+  },
+  "known_limits": [
+    "Physical devices/author enjoyment/audio hearing untested",
+    "012 original phone clipping and014 original landscape smallUI retained",
+    "Public records endpoint remains preparing-disabled; no backend deploy/migration/authchanges",
+    "Cloud thirdparty resource errors retained and separately attributed"
+  ],
+  "independent_public_visual": "PUBLIC_VISUAL_REVIEW.md",
+  "preservation": "PRESERVATION_FINAL.json:21 original worktrees/source/dirty files unchanged",
+  "resource_console_note": "Native12/Portal6 console errors have no per-event URL capture. A separate published Portal request verifies one identical proxy-error on existing pagead2.googlesyndication.com Ads script; script retained and JS pageerror0. Ad delivery and attribution of every earlier console line are unverified."
 }

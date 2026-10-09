@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-09T03:26:29.617432+00:00",
+  "reviewer": "legacy_toolchain",
+  "scope": "Independent source/report review only; no Jev logs/answers, API requests, browser execution or public source changes.",
+  "classification": "TEST_ORACLE_NATIVE_ZERO_SAVE_SEMANTICS",
+  "expected_public_commit": "48d8003875b99b2a5d208072c6ddf14dbcb61dea",
+  "original_source_pin": "50a97c339076d3bcadf38ad6be8acade16a8e882",
+  "evidence": [
+    {
+      "path": "docs/legacy-records/QA/public-native-02/REPORT.json",
+      "sha256": "e9e4b54e660ce8df4071cdcfd08fe8f1eb93fea372f482650ca38afdae91ef69"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/high_score_manager.gd.patch",
+      "sha256": "b60110d09d09a63d4451d5bcfd8f4ab6fd753c1db53206afb6d1fed7b30881bf"
+    },
+    {
+      "path": "tools/legacy-record-patches/game012/main.gd.patch",
+      "sha256": "d81c7b9f55be63abacff237c9b2de9f6156638ea4ddaeedd67208cbfe646d59b"
+    },
+    {
+      "path": "src/records/LegacyGameRecords.ts",
+      "sha256": "7c38684f9e54b5ccc04e1221a92284e498329419df4dd4f3674de50743bd14ae"
+    },
+    {
+      "path": "src/records/legacyStore.ts",
+      "sha256": "88fc0eb5c916a2acdf807282fe5385ed3fcc73c8119a425ae2cc6fe0e98a3ddf"
+    },
+    {
+      "path": "tests/legacy-records/public-native.mjs",
+      "sha256": "af05fc8fb438ac164368ffc958d90ed65b499c6640cc284624a2496c31430ca3"
+    }
+  ],
+  "confirmed_facts": [
+    "public-native-02 observed real normal finalized Game012 result0 and successful native retry. Native reload emitted legacy_best=-1, not current score0. No browser pageerror, console error or production POST was recorded.",
+    "Pinned original scripts/high_score_manager.gd starts high_score=0. Its actual method name is record(score), whose first branch returns false for score<=high_score. Thus fresh score0 does not create high_score.cfg.",
+    "Pinned original game_manager.gd calls scores.record(score) on successful score increments; gameplay and intermediate native saving remain unchanged by reviewed hooks.",
+    "The bridge overlay sends legacy_best>=0 only after a genuine existing ConfigFile scores/best read. ERR_FILE_NOT_FOUND sends missing sentinel-1. It must not fabricate native saved0.",
+    "Final native game_finished callback separately emits genuine once-per-RUN result0. Parent LegacyGameRecords handles result with mirrorNativeBest(...,normal,0). legacyStore maintains nonnegative confirmed normal values including0; later missing native sentinel-1 never lowers/erases that normal maximum."
+  ],
+  "cause_judgment": "The old test expected native startup BEST to equal every final result. That assertion is wrong for a fresh original Game012 zero run, because original native saving deliberately ignores non-improvements against initial0. The observed missing sentinel is preserved native behavior, not evidence of lost positive save or product corruption.",
+  "proposed_minimal_oracle": "For a fresh disposable Game012 context with genuine result0, permit legacy_best=-1 at native reload. Continue requiring Portal confirmed0 and its reload persistence. Other games and positive Game012 scores still require native stored value; do not generally accept missing saves.",
+  "concurrent_root_test_fix": "Working-tree test already contains game012 && result.value===0 && legacy_best===-1 exception, plus existing Portal value and reload checks. No reviewer test edit.",
+  "limits": [
+    "public-native-02 failed before Portal persisted0 verification; parent mirror implementation supports it but actual public-browser completion remains unverified in that run.",
+    "This review did not rerun the test or test native positive-score persistence.",
+    "Fresh0 exception must not be broadened to corrupt/denied storage or positive-score missing saves."
+  ],
+  "changes_by_reviewer": [
+    "Only this QA receipt."
+  ]
+}

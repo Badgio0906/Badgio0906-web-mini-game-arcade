@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-09T03:25:18.853335+00:00",
+  "reviewer": "legacy_toolchain",
+  "scope": "Independent read-only source/report/actual screenshot review. No Jev answers/logs, API calls, browser execution, or public changes.",
+  "classification": "TEST_HARNESS_FRAME_READINESS_RACE",
+  "source_commit": "48d8003875b99b2a5d208072c6ddf14dbcb61dea",
+  "expected_public_commit": "48d8003875b99b2a5d208072c6ddf14dbcb61dea",
+  "evidence": [
+    {
+      "path": "tests/legacy-records/public-native.mjs",
+      "source": "git HEAD",
+      "sha256": "667025b4983f39de3c24773024e728e269920cc2bdf142e460dda8c87e15824d",
+      "observation": "boot waits only status:hidden before synchronously finding /game.html Frame. It then sleeps500ms without reacquiring Frame. Game012 later waits native legacy_best, then key() uses the earlier Frame."
+    },
+    {
+      "path": "tests/legacy-records/public-native.mjs",
+      "source": "working tree read during review; root-owned concurrent fix",
+      "sha256": "006d9710f633d0d388fb91496ba5d7c8bc89ca3c1e69319a8ede1ded6fea8e7b",
+      "observation": "Now additionally waits canvas:visible before status:hidden and explicitly rejects missing Frame. This is a later test fix, not evidence that the failed invocation used those waits."
+    },
+    {
+      "path": "docs/legacy-records/QA/public-native-01/REPORT.json",
+      "sha256": "a19f87432865020ec2cb05522a3522067a53875627c94045924fc7dcbae832f1",
+      "observed_at": "2026-10-09T03:19:56.085Z",
+      "error": "Cannot read properties of undefined (reading 'locator')",
+      "checks": 0,
+      "completed_runs": 0,
+      "pageerrors": 0,
+      "console_errors": 0,
+      "production_post_requests": 0,
+      "native_message": {
+        "game_id": "game012",
+        "kind": "legacy_best",
+        "value": -1,
+        "meaning": "Native ConfigFile absence sentinel; not zero score or finalized result."
+      }
+    },
+    {
+      "path": "docs/legacy-records/QA/public-native-01/failure.png",
+      "sha256": "4af35270c6bfb3544ec4d890bfc679e360da29192e7011e8aeb30b8cfa623ebd",
+      "actually_viewed": true,
+      "observation": "Game012 normal title is rendered with character, instructions and Enter-start button inside Portal wrapper. Screenshot is after the test exception; no input or final result success is evidenced."
+    },
+    {
+      "path": "docs/legacy-records/QA/public-version-01/VERSION.json",
+      "sha256": "0668bd2cb9a94e62ac7839ae3137f8ad6e6892cf53d93397c13cbdc81d112bc2",
+      "observation": "Separate published-version verification receipt inspected read-only. This review did not repeat HTTPS probes or CI/deployment."
+    }
+  ],
+  "cause_judgment": {
+    "confirmed": "The failing operation dereferenced undefined test Frame; original boot saves a one-time Frame lookup before later native-readiness waiting. A hidden-element wait can also resolve for an element not yet present. Later loading cannot mutate that undefined local variable.",
+    "supported": "A readiness race is the narrow cause consistent with both source structure and observed error. The actual native title and legacy_best message establish that native startup eventually succeeded.",
+    "not_confirmed": "Frame URL/readiness at the lookup was not recorded. Do not assert about:blank, network timing, or product input failure from this receipt."
+  },
+  "minimal_test_fix_proposal": [
+    "Wait for iframe canvas visible before status:hidden and reject missing content Frame (already present in root working tree).",
+    "Optionally bind Frame to exact iframe contentFrame and await expected game.html URL; reacquire at readiness boundary instead of relying on fixed sleep.",
+    "Continue existing real Enter/tap/result/retry/reload checks; do not synthesize product events.",
+    "On a future failure, record iframe/frame URLs, canvas presence/visibility and status presence/text alongside native messages before retrying."
+  ],
+  "unverified": [
+    "No completed published game run, final native record, retry, persistence or mobile input was tested by the failed first invocation.",
+    "Later root test fix requires a fresh unique-output real public-browser run; this review did not run it.",
+    "Physical devices, human enjoyment and actual audio hearing are outside this review."
+  ],
+  "changes_by_reviewer": [
+    "Only this independent QA receipt. No test or product code edited."
+  ]
+}

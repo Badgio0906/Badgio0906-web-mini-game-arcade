@@ -1,0 +1,22 @@
+{
+  "finding_id": "legacy012-public-zero-save-expectation",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "legacy_toolchain blind code/receipt review; root actual public repro",
+  "rationale": "Original record(score) only writes when score exceeds initial0. Public fresh0 correctly retains missing-file sentinel while confirmed normal0 persists independently in Portal. Test-only exception is restricted to012 result0 / genuine missing legacy signal; positive values/other games remain exact. Original finding state called the method save_if_better incorrectly; this name is corrected here without rewriting the sent observation.",
+  "evidence": [
+    "docs/legacy-records/QA/PUBLIC_ZERO_SAVE_REVIEW.json",
+    "docs/legacy-records/QA/public-native-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Original record(score) only writes when score exceeds initial0. Public fresh0 correctly retains missing-file sentinel while confirmed normal0 persists independently in Portal. Test-only exception is restricted to012 result0 / genuine missing legacy signal; positive values/other games remain exact. Original finding state called the method save_if_better incorrectly; this name is corrected here without rewriting the sent observation. Independent code review followed by published6native runs,36checks, zeroPOST/pageerror; before failure retained. Product/runtime untouched.",
+    "evidence": [
+      "docs/legacy-records/QA/PUBLIC_ZERO_SAVE_REVIEW.json",
+      "docs/legacy-records/QA/public-native-03/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

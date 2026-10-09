@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-09T03:31:25.867496+00:00",
+  "scope": "Explicit correction to two newly recorded action-description counts; original annotations/API log preserved. No API or re-review performed.",
+  "findings": [
+    "legacy-public-native-frame-reference",
+    "legacy012-public-zero-save-expectation"
+  ],
+  "original_log_action_description": "published6native runs,33checks",
+  "correct_actual_report": "public-native-03/REPORT.json has6runs/36checks PASS; both judgment files now reference36.",
+  "reason": "Root hard-coded33 instead of reading final actual36 count before the first annotation. Helper refused second annotation because recorded independent judgments are immutable; no manual raw-log rewrite.",
+  "judgment_choices_and_risk_changed": false,
+  "api_responses_or_comparison_changed": false,
+  "evidence": "docs/legacy-records/QA/public-native-03/REPORT.json"
+}

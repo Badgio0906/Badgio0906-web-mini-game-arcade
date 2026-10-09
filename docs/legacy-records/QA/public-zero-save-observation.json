@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy012-public-zero-save-expectation",
+  "problem": "Published native result0 is confirmed, but the probe reload check expecting native startupBEST0 instead receives the missing-file sentinel.",
+  "expected": "Public validation should establish correct preserved native saving and stable Portal record after an actual finalized RUN.",
+  "observed": [
+    "Game012 normal final result0 arrived; preparing status and retry clearing passed.",
+    "After retry and parent reload, legacy_best reports value -1; the probe expecting value0 fails.",
+    "No pageerrors, consoleerrors or POST attempts are recorded.",
+    "Original high_score_manager.gd initializes high_score0; save_if_better returns false when score is not higher."
+  ],
+  "unknown": [
+    "Portal persisted zero has not yet been checked in this public run because the native assertion stopped execution.",
+    "Whether the observed missing-file signal disagrees with original zero-score saving semantics requires independent code/receipt review."
+  ],
+  "test_name": "tests/legacy-records/public-native.mjs",
+  "evidence": [
+    "docs/legacy-records/QA/public-native-02/REPORT.json"
+  ],
+  "provenance": "Actual published native ordinary input on disposable initially empty save context; no production POST."
+}

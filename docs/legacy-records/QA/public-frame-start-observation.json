@@ -1,0 +1,20 @@
+{
+  "finding_id": "legacy-public-native-frame-reference",
+  "problem": "Published native browser probe stops before input because its selected frame reference is undefined.",
+  "expected": "The public probe should wait for the native iframe/navigation to be ready before sending ordinary game input.",
+  "observed": [
+    "Public file verification for164 files and expected-commit build/deploy passed.",
+    "First Game012 desktop public run throws TypeError reading locator of undefined at public-native.mjs key helper.",
+    "Probe boot selects page.frames().find(url includes /game.html) after status wait hidden. First key helper later uses that previously selected reference."
+  ],
+  "unknown": [
+    "Actual iframe URL and readiness at the instant the reference was selected were not recorded.",
+    "Published native appearance and loaded events at failure are retained in failure image/report for independent inspection."
+  ],
+  "test_name": "tests/legacy-records/public-native.mjs",
+  "evidence": [
+    "docs/legacy-records/QA/public-native-01/REPORT.json",
+    "docs/legacy-records/QA/public-native-01/failure.png"
+  ],
+  "provenance": "Actual published GET resources, disposable browser native saves, no production POST."
+}

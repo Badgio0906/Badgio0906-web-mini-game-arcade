@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-09T03:36:32.440066+00:00",
+  "old_checker": "Ephemeral /tmp/preserve-legacy.py allowlist built before new task files were tracked",
+  "observed": "All21 other worktrees/head/branches/dirty SHA passed; own now-tracked task report/log/test files were rejected by obsolete scope allowlist after first runtime commit. Old combined ads flag false was a scope-label artifact, not an observed ads change.",
+  "preserved_failure": "PRESERVATION_POSTCOMMIT_SCOPE_01.json",
+  "corrected_method": "Tracked tests/legacy-records/check-preservation.py compares original base and separately checks immutable worktrees, protected game/config paths, approved task paths; always writes a new receipt.",
+  "jev_exclusion": "Deterministic named-path allowlist mismatch; no unresolved semantic finding/routing required. No API call for this file-list predicate.",
+  "original_prepublication_success_restored_from": "runtime48d8003:PRESERVATION.json",
+  "new_receipt": "PRESERVATION_FINAL.json"
+}

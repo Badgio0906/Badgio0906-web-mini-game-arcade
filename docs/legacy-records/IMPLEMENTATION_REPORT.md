@@ -1,6 +1,6 @@
 # Godot012–014 共通記録連携 — 実装・QA・公開報告
 
-2026-10-09。作業base488916c、専用worktree/branch `codex/legacy-godot-records`。依頼正本は [REQUEST](REQUEST.md)、既存作業保全は [BASELINE](QA/BASELINE.json)、読込時刻/commit/hashは [READ_RECORD](QA/READ_RECORD.json)。公開結果は最後の [PUBLICATION](QA/PUBLICATION.json) と配信版照合を参照。公開前の段階では完了と断定しない。
+2026-10-09。作業base488916c、専用worktree/branch `codex/legacy-godot-records`。依頼正本は [REQUEST](REQUEST.md)、既存作業保全は [BASELINE](QA/BASELINE.json)／最終 [保全確認](QA/PRESERVATION_FINAL.json)、読込時刻/commit/hashは [READ_RECORD](QA/READ_RECORD.json)。公開結果は最後の [PUBLICATION](QA/PUBLICATION.json) と配信版照合を参照。公開前の段階では完了と断定しない。
 
 ## 変更と互換
 
@@ -36,6 +36,25 @@
 
 ## Jevと残課題
 
-Jevは観測finding19件だけ、実API19/HTTP200、resolved model `typesafe/jev-1.13-20260917`、型/choice確率/noulを検証した4回答×19。独立判断と実対応は [JEV_SHADOW](QA/JEV_SHADOW.jsonl)、[集計](QA/JEV_SUMMARY.json)、judgmentsに保存。PRIMARY一致12/19、NEXT10/19、Codex追加作業TP19/TN0、risk見逃し2。黒titleの当時の誤観測と後続撤回も含む。実API/有効回答は [呼出監査](QA/JEV_INVOCATION_AUDIT_02.json)で個別確認。小標本・全件findingであり一般的有効性/開発節約率を断定しない。公開判定・画像採点・Human楽しさ評価はJevへ委託しない。本番ゲーム・CIはJev APIを呼ばない。
+Jevは観測finding21件だけ、実API21/HTTP200、resolved model `typesafe/jev-1.13-20260917`、型/choice確率/noulを検証した4回答×21。独立判断と実対応は [JEV_SHADOW](QA/JEV_SHADOW.jsonl)、[集計](QA/JEV_SUMMARY.json)、judgmentsに保存。PRIMARY一致13/21、NEXT12/21、Codex追加作業TP21/TN0、risk見逃し2。黒titleの当時の誤観測と後続撤回も含む。実API/有効回答は [呼出監査](QA/JEV_INVOCATION_AUDIT_03.json)で個別確認。小標本・全件findingであり一般的有効性/開発節約率を断定しない。公開判定・画像採点・Human楽しさ評価はJevへ委託しない。本番ゲーム・CIはJev APIを呼ばない。
 
 本人試遊と物理端末/音評価、012元phone切れ/014横画面の旧native小文字、共有API本番有効化（既存認証・migration/Worker/endpointの別作業）が残る。本番共有無効は不具合を隠すための架空成功ではなく依頼の許容代替。作者未試遊の試作公開はユーザー承認済み。
+
+
+## 公開確認
+
+runtime **48d8003875b99b2a5d208072c6ddf14dbcb61dea** をmainへfast-forward push。公式 [Build and deploy arcade37878543797](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37878543797) のbuild/deploy成功。公開164file（HTML/JS/CSS/font/3作PCK/WASM/worklets/橋/管理shell等）を期待commitのclean-source・同公開設定buildとSHA256照合。[VERSION](QA/public-version-01/VERSION.json)。公式artifactZIPそのものは取得しておらず、CI成功＋期待source＋配信byte照合という方法を明記する。
+
+- [012 お前の仕事は俺の仕事](https://game100garage.com/games/yokodori-days/index.html)
+- [013 タスク天国](https://game100garage.com/games/tachibana-task-heaven/index.html)
+- [014 指ハートチャレンジ](https://game100garage.com/games/finger-heart-challenge/index.html)
+
+[公開native](QA/public-native-03/REPORT.json)は実HTTPS GETからPC/phone各3作品、6RUN/36checks成功。012/013各0点、014各実成功1回を通常入力で得て、確定結果/再挑戦/native保存条件/再起動/Portal表示・再読込を確認。012初回0は元record(score)がcfgを作らないため欠存通知-1を正しく維持、確定normal0のmirror/Portal再読込は別経路で検証。正得点の旧cfg400引継ぎは先のpinned-before実試遊で確認している。public0の検証をpublic400実績とは称さない。
+
+[公開Portal](QA/public-portal-01/REPORT.json)は4viewport/30cards/全30thumbnaildecode/新3作未プレイ・準備中/Ads script/同意・共有無効、既存Game001PC/phone通常結果→Portal一致を36checksで確認。ここまでのpublicnative/PortalはPOST0・JS pageerror0。console resource-errorはnative12件/Portal6件残り個別URLは未計測。別Portal GET1回では既存Ads scriptのpagead2.googlesyndication.comがCloud proxyで拒否され同種エラーになることを確認（[通信確認](QA/public-network-01/REPORT.json)）。全18件のURL同定や広告の配信成功とはしない。
+
+公開probe初回frame待機競合とfresh0に対するnative保存oracle不整合は、失敗01/02を保存し、独立 [Frame](QA/PUBLIC_FRAME_REVIEW.json)／[0点保存](QA/PUBLIC_ZERO_SAVE_REVIEW.json) とテストだけの修正で03成功。原観測stateのsave_if_betterというメソッド名はroot誤記で実原本はrecord(score)、通常保存条件は同じ。API原ログを事後改変しない。2annotation action説明の33checksはroot誤記、実36という [明示訂正](QA/ANNOTATION_CORRECTIONS.json)を別保存、原注釈はhelperの不変guardに従って保持。[空白差分](QA/DIFF_WHITESPACE.json)はliteral unified.patch文法と原出力log末尾だけの警告、製品source差分は該当2形式を除いてPASS。
+
+公開は承認済みの技術QA試作であり、本人・実機・人間Feelは未確認。公開版みんなのBEST／共有は準備中・送信無効、Cloudflare側の有効化は別途必要。active30、historical31、010退役、次032未着手を維持。後続の証拠/test/docs保存commitはruntime変更を含まない。
+
+公開画像の独立確認は [PUBLIC_VISUAL_REVIEW](QA/PUBLIC_VISUAL_REVIEW.md)。最終21他treeのHEAD/branch/未commit/dirty SHAは [PRESERVATION_FINAL](QA/PRESERVATION_FINAL.json)すべてPASS。初期checkerの公開後task-file whitelist誤判定も [明示訂正](QA/PRESERVATION_SCOPE_CORRECTION.json)と失敗receiptを保持、広告等の実変更に読み替えない。新しい保全checkerはGitへ保存した。

@@ -11,3 +11,7 @@
 個人BESTはnative ConfigFile正本→確認済み小型IDB mirror。旧012比較可能、旧013条件不明、OJT別、014successes0..25。初回Portal訪問だけでは旧native保存を読めず、最初のゲーム起動時に引き継ぐ。本番みんなのBEST準備中・sharingOFF、Cloudflare権限を新設しない。別途有効化時は3通常boardと既存17boardの整合、公開API/permission/送信停止/重複・撤回を実際に検証する。
 
 未実施: 作者本人、実機、音の聴覚・人間Feel、設定済み本番共有。012の元phone切れ・横14の元UI小文字は維持範囲の制約。今後ゲームUI改修を別依頼で行う場合はbeforeを保存して限定scopeを定める。
+
+公開確認済みruntimeは48d8003/公式37878543797、164bytefile照合、publicnative6RUN36＋Portal4view36。完了証跡はPUBLICATION/IMPLEMENTATION_REPORT、public-native.mjsは実iframe canvas可視待ちを行い、012fresh0のnativecfg欠存とconfirmed mirror0を分離して検証する。第三者Ads拒否はpublic-network.mjsでquery/header/IDを保存せず確認する。
+
+同じ既存tree環境の保全再確認は `python3 tests/legacy-records/check-preservation.py --output /new/QA/PRESERVATION.json`。BASELINEとのHEAD/branch/status/dirtyhashと対象差分、保護source/configを別に比較し、既存receiptを上書きしない。別環境では当時の21treeを再現したと称さず、新環境開始時baselineを新規取得してユーザー作業を保護する。
