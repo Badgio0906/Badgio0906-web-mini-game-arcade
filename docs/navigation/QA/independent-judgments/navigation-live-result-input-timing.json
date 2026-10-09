@@ -1,0 +1,32 @@
+{
+  "finding_id": "navigation-live-result-input-timing",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The first live probe failed before reaching the result and delivered the correct final common JS with no exception/POST. Existing021 TurnGate.resetInput stamps performance.now and rejects the first humanDrop for220ms;023 mode stamps an180ms overlay gate that rejects physical button clicks. The test issued initial play or first drop immediately, so a protected transition input could be ignored. These game gates are unchanged between08531b12 and79d89c0. Correcting only the probe to wait240ms before initial play and after start respects ordinary input eligibility without model/save/timer injection. Accepted live two-case report reaches both results, preserves game focus and returns through44px header controls. This is test timing, not evidence of broken result navigation or stale runtime.",
+  "evidence": [
+    "docs/navigation/QA/navigation-live-result-input-timing.json",
+    "docs/navigation/QA/public-results-final/REPORT.json",
+    "src/games/game021/model.ts",
+    "src/games/game021/main.ts",
+    "src/games/game023/main.ts",
+    "tests/navigation/public-results.mjs",
+    "docs/navigation/QA/public-results-accepted/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected unchanged220ms/180ms gates and corrected ordinary-input test diff; inspected completed actual-live two-case PASS report and both result screenshots. Verified delivered navigation SHA256 matches current source. No browser run or runtime source edit by reviewer.",
+    "evidence": [
+      "src/games/game021/model.ts",
+      "src/games/game023/main.ts",
+      "tests/navigation/public-results.mjs",
+      "docs/navigation/QA/public-results-accepted/REPORT.json",
+      "docs/navigation/QA/public-results-accepted/game021-844-result.png",
+      "docs/navigation/QA/public-results-accepted/game023-844-result.png"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

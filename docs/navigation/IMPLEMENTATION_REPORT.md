@@ -32,7 +32,7 @@
 
 テスト基盤の修正：Godot wrapper自身がindex.htmlなのでURL末尾だけの待機は到着確認にならない。正確なportal URLへ変更。旧leaderboard probeの「共有準備中」「ゲームセンターへ」期待は今回の本番接続／名称と合わないため、新しいnavigation probeで現行状態を検証。fixture用API endpointと配信用endpointを分けた。並列browser実行中の単体5件timeoutは原ログ [UNIT_TIMEOUT_INITIAL](QA/UNIT_TIMEOUT_INITIAL.log) に保存し、直列・testTimeout30000の再実行で887件／79file合格。015の明示20秒timeoutは上書きしない。テスト実装の閾値は変更していない。
 
-Jev Shadowは実観測15件・60回答・HTTP200。通常の独立レビューを省略せず、最初の独立source reviewでもpointer blockerを見逃していた事実を記録した。rootリンク／028説明findingにrisk miss2。focus031のrisk判断はannotation後に独立reviewerが範囲を狭めたため、原ログを保持し [比較訂正](QA/JEV_COMPARISON_CORRECTION.json) に別記した。[Jev集計](QA/JEV_SUMMARY.json)。自動修正／公開gateには使っていない。
+Jev Shadowは実観測16件・64回答・HTTP200。通常の独立レビューを省略せず、最初の独立source reviewでもpointer blockerを見逃していた事実を記録した。rootリンク／028説明findingにrisk miss2。focus031のrisk判断はannotation後に独立reviewerが範囲を狭めたため、原ログを保持し [比較訂正](QA/JEV_COMPARISON_CORRECTION.json) に別記した。[Jev集計](QA/JEV_SUMMARY.json)。自動修正／公開gateには使っていない。
 
 ## 画像
 
@@ -60,4 +60,10 @@ runtime commit [`08531b12`](https://github.com/Badgio0906/Badgio0906-web-mini-ga
 
 J／KのShadow送信前に独立reviewerが旧scroll回復probeを完了していた手順逸脱を [TIMING_DEVIATION](QA/JEV_TIMING_DEVIATION.json) に明記。runtime修正はShadow送信後。最初のTEST_INFRA判断も残し、initial viewport位置の要件を確認したPRODUCT_BUG判断を [独立follow-up](QA/independent-judgments/navigation-result-header-scroll-followup.json) として別記した。Jev比較はこの最終follow-upを用い、旧判断は書換えない。[公開証拠](QA/PUBLICATION.json)。
 
-結果表示時scroll復帰の修正版は、最終build／独立12caseを合格後に公式Pagesへ再反映する。配信確認を次節へ追記する。
+## 最終scroll修正版の公開
+
+runtime [`79d89c0f`](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/commit/79d89c0f164a09630c22dfa5b7c66f173aac3cdd)、公式 [Pages37958362072](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37958362072) のbuild／deployがsuccess（通常npm test／offline Jev／build成功）。新SHAの [166file配信SHA](QA/public-version-final/VERSION.json) がすべて一致。公開021／023の844px実touch操作から結果へ進み、wheelなしでinitial return hit／44px／元result focus維持／実tap帰還も2case合格。[公開結果](QA/public-results-accepted/REPORT.json)。普通のscript URLから取得したnavigation JS実body hashも両caseで新sourceと一致しており、qaクエリ付きbyte照合だけに依存していない。
+
+最初のlive結果probeは既存180ms overlay／220ms turnの直後に入力して、023title開始が無効／021最初の一手が無効となった。原 [FAIL](QA/public-results-final/REPORT.json)を保存し、testのみ240msの通常待機を加えた。game gate／時計／modelを変更・bypassしていない。新SHAで全30作品の公開PLAY／帰還を再実行し249check／POST0／例外0合格。[最終公開ナビ](QA/public-navigation-final/REPORT.json)／[最終公開証拠](QA/PUBLICATION_FINAL.json)。Portal／ranking sourceは初回132caseの公開確認後も不変。
+
+最終runtime79d89c0の配信・操作確認を完了し、残りはこの記録を保存する文書更新のみ。本人試遊・物理端末・音・全作品の全結果完走は未実施であり、自動QAから補完していない。

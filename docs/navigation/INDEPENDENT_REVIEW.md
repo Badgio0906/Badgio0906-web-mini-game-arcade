@@ -126,3 +126,11 @@ passive focusin traceは021844のresult retry-buttonをscrollY158、023844のmen
 同じfinding_idの [dated follow-up判断](QA/independent-judgments/navigation-result-header-scroll-followup.json) を別filenameで残した。初期viewport位置のlimited PRODUCT_BUG／required=true／next=AUTOMATED_TEST／risk=falseが最終判断。初回TEST_INFRA file、original2FAIL、probe004 timeout、事前の通常scroll回復結果はすべて保持し、silent rewriteしない。manual recovery12はShadow記録より先だったことも明示する。既存13判断は変更していない。
 
 [final checkpoint](QA/result-states/FINAL_CHECKPOINT.json) は最新sourceの実検証12と、旧checkpointの42unique result証拠を区別する。残りnative全resultやphysical notchの実確認を主張しない。この担当の最終result navigation検証範囲に未解決の実帰還blockerはない。
+
+## 最終公開版：live result probeの入力待ち
+
+commit `79d89c0f164a09630c22dfa5b7c66f173aac3cdd` の [公開166file照合](QA/public-version-final/VERSION.json) はPASS。最初の [live result report](QA/public-results-final/REPORT.json) はresultへ到達する前に失敗した原本として保持する。独立に読んだ021のTurnGateはstart後220ms、023のoverlay gateは180msの通常入力保護を持ち、08531b12から79d89c0でこのgame sourceは変更されていない。probeの最初の操作が早過ぎたため、021は7手のうち6手、023はtitleのままになった。
+
+`tests/navigation/public-results.mjs` の修正はinitial play前／start後に240ms待つだけで、既存gateを尊重し、普通のtapとactual return検証を保つ。[再検証live report](QA/public-results-accepted/REPORT.json) は **2case PASS／errors0／POST0**。844×390の021／023はheader anchor y20／y19、height44、hit true、focus retry-button／menu-title、scrollY0、実帰還成功。配信JS hashは最新sourceの `768044947dd03f1fe6dcde3fb7c8613ea5a708d8894f4743c3bf3061d45e664c` と一致する。公開resultの2画像も実際に開いた。この担当は追加browser実行やruntime編集をしていない。
+
+16件目 [live-result-input-timing判断](QA/independent-judgments/navigation-live-result-input-timing.json) はJev回答を読まず **TEST_INFRA_BUG／required=true／next=CODE_INSPECTION／risk=false** と記録した。初回の到達失敗をresult帰還不具合と混同せず、既存の15finding判断とresult-scroll follow-upを変更しない。

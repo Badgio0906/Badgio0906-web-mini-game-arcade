@@ -5,35 +5,35 @@
     "risk_comparison_only": 0.5
   },
   "totals": {
-    "entries": 15,
-    "jev_invocations": 15,
-    "api_attempts_known": 15,
+    "entries": 16,
+    "jev_invocations": 16,
+    "api_attempts_known": 16,
     "dry_runs": 0,
-    "available": 15,
+    "available": 16,
     "jev_unavailable": 0,
-    "total_input_tokens": 21735,
-    "total_output_tokens": 3237,
-    "total_cost_usd": 0.00091287,
+    "total_input_tokens": 23196,
+    "total_output_tokens": 3452,
+    "total_cost_usd": 0.000974232,
     "usage_missing": {
       "input_tokens": 0,
       "output_tokens": 0,
       "cost_usd": 0
     },
-    "average_latency_seconds": 0.4700190560666594,
+    "average_latency_seconds": 0.48496087831249923,
     "agreement": {
       "PRIMARY_CAUSE": {
         "matched": 12,
-        "compared": 15,
-        "rate": 0.8
+        "compared": 16,
+        "rate": 0.75
       },
       "NEXT_EVIDENCE": {
         "matched": 4,
-        "compared": 15,
-        "rate": 0.26666666666666666
+        "compared": 16,
+        "rate": 0.25
       }
     },
     "codex_action_confusion": {
-      "TP": 15,
+      "TP": 16,
       "TN": 0,
       "FP": 0,
       "FN": 0
@@ -43,11 +43,11 @@
     "below_045_with_actual_problem": 0,
     "codex_false_pass": 0,
     "release_risk_miss": 2,
-    "release_risk_compared": 15,
+    "release_risk_compared": 16,
     "human_routed": 0,
-    "human_routing_observed": 15,
+    "human_routing_observed": 16,
     "actual_human_actions": 0,
-    "actual_actions_recorded": 15,
+    "actual_actions_recorded": 16,
     "human_judgment_recorded": 0,
     "unreviewed_available": 0
   },
@@ -431,6 +431,56 @@
           "matched": 1,
           "compared": 1,
           "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-published-browser-result-probe-failure; game models unchanged",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1461,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.1362e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.709088212000097,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
         }
       },
       "codex_action_confusion": {

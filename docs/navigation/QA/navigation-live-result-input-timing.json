@@ -1,0 +1,18 @@
+{
+  "finding_id": "navigation-live-result-input-timing",
+  "problem": "Live result probe sends the first game action before ordinary controls accept it",
+  "expected": "Ordinary live inputs should reach result before checking navigation",
+  "observed": [
+    "Game021 tap sequence ends with6 moves rather than7 and remains playing",
+    "Game023 tap on title play leaves title open; next kana tap reports hidden",
+    "Delivered common navigation JavaScript hash matches final source in both cases",
+    "No script exception and no POST observed"
+  ],
+  "unknown": [
+    "Initial ordinary input intervals and existing game input gates"
+  ],
+  "evidence": [
+    "docs/navigation/QA/public-results-final/REPORT.json"
+  ],
+  "provenance": "actual-published-browser-result-probe-failure; game models unchanged"
+}

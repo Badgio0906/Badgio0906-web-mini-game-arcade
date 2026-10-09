@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-09T16:22:15.030Z",
+  "expected_commit": "79d89c0f164a09630c22dfa5b7c66f173aac3cdd",
+  "cases": [
+    {
+      "id": "game021",
+      "errors": [],
+      "navigation_response_sha256": "768044947dd03f1fe6dcde3fb7c8613ea5a708d8894f4743c3bf3061d45e664c",
+      "pass": false,
+      "failure": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#app[data-state=\"result\"]') to be visible\u001b[22m\n"
+    },
+    {
+      "id": "game023",
+      "errors": [],
+      "navigation_response_sha256": "768044947dd03f1fe6dcde3fb7c8613ea5a708d8894f4743c3bf3061d45e664c",
+      "pass": false,
+      "failure": "locator.tap: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-kana][aria-disabled=\"false\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-kana=\"あ\" class=\"kana-key\" aria-label=\"あ、未選択\" aria-disabled=\"false\" data-game-interaction=\"\" data-result=\"unselected\">…</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying tap action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    29 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying tap action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+    }
+  ],
+  "posts": 0,
+  "provenance": "Actual published 844x390 mobile viewport. Ordinary two-player drops/kana guesses; no model or save injection, manual scroll recovery, production score sharing, or analytics writes. Disposable local saves, consent denied. Actual navigation response bytes checked.",
+  "result": "FAIL"
+}

@@ -20,8 +20,10 @@ try{for(const id of ['game021','game023']){
   const response=p.waitForResponse(r=>new URL(r.url()).pathname==='/arcade-navigation.js');
   await p.goto(base+id+'.html?qa='+sha.slice(0,12),{waitUntil:'domcontentloaded'});item.navigation_response_sha256=digest(await(await response).body());
   if(item.navigation_response_sha256!==expectedNav)throw Error('Published ordinary script URL is stale');
-  if(id==='game021'){await p.locator('#mode-select').selectOption('two');await p.locator('#start-button').tap();for(const col of [0,1,0,1,0,1,0]){await p.locator(`[data-column="${col}"]`).tap();await p.waitForTimeout(240)}}
-  else{await p.locator('#play-button').tap();for(let n=0;n<22&&await p.locator('#app').getAttribute('data-state')!=='result';n++){await p.locator('[data-kana][aria-disabled="false"]').first().tap();await p.waitForTimeout(240)}}
+  // Respect existing 180ms overlay and 220ms turn gates; never bypass them.
+  await p.waitForTimeout(240);
+  if(id==='game021'){await p.locator('#mode-select').selectOption('two');await p.locator('#start-button').tap();await p.waitForTimeout(240);for(const col of [0,1,0,1,0,1,0]){await p.locator(`[data-column="${col}"]`).tap();await p.waitForTimeout(240)}}
+  else{await p.locator('#play-button').tap();await p.waitForTimeout(240);for(let n=0;n<22&&await p.locator('#app').getAttribute('data-state')!=='result';n++){await p.locator('[data-kana][aria-disabled="false"]').first().tap();await p.waitForTimeout(240)}}
   await p.waitForSelector('#app[data-state="result"]');
   const a=p.locator('.arcade-game-header .arcade-portal-return');item.geometry=await a.evaluate(a=>{const r=a.getBoundingClientRect();return {x:r.x,y:r.y,height:r.height,hit:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('a')===a,focus:document.activeElement?.id,scrollY}});
   if(item.geometry.y<0||item.geometry.height<44||!item.geometry.hit||item.geometry.focus!==(id==='game021'?'retry-button':'menu-title'))throw Error('Result header visibility/focus changed');
