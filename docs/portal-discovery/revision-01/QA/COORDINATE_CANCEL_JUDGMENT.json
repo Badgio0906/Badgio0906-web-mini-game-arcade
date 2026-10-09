@@ -1,0 +1,41 @@
+{
+  "finding_id": "favorite-coordinate-cancel",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "The original combined assertion omitted which measurement differed. Measured rerun establishes correct star cancellation, unchanged scrollY9437 and positions1..30, identical44x44 size, and only about0.79px diagonal bbox difference. Existing unchanged card:hover translates2px over150ms, so exact bbox equality sampled mid-transition incorrectly rejects a successful cancellation. Preserve exact document order/position/scroll checks; use settled geometry or a bounded existing-hover allowance. Independent same-coordinate mouse/touch cancellation after190ms CSS settlement is exactly stable at1440/390/320. No game launch, lost important control, changed card ranking or major release risk is observed.",
+  "evidence": [
+    "docs/portal-discovery/revision-01/QA/FINDING_COORDINATE_CANCEL.json",
+    "docs/portal-discovery/revision-01/QA/browser-local/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/browser-measured/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/browser-local/failure.png",
+    "src/portal/style.css",
+    "tests/portal-discovery/browser.mjs",
+    "docs/portal-discovery/revision-01/QA/independent-accepted/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/browser-final/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Read initial raw failure, test and actual screenshot; inspected existing hover timing and separate measured values. Then independently ran settled same-coordinate cancellation through ordinary mouse/touch at all3 widths, retaining strict equality for bbox/size/scroll/order. All3 pass; product unchanged.",
+    "evidence": [
+      "docs/portal-discovery/revision-01/QA/FINDING_COORDINATE_CANCEL.json",
+      "docs/portal-discovery/revision-01/QA/browser-local/REPORT.json",
+      "docs/portal-discovery/revision-01/QA/browser-measured/REPORT.json",
+      "docs/portal-discovery/revision-01/QA/browser-local/failure.png",
+      "src/portal/style.css",
+      "tests/portal-discovery/browser.mjs",
+      "docs/portal-discovery/revision-01/QA/independent-accepted/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null,
+  "supplemental_numeric_evidence": {
+    "report": "docs/portal-discovery/revision-01/QA/browser-final/REPORT.json",
+    "viewport": "320x720",
+    "observed": "Parent final first rerun fails only strict dimensions equality:44 to43.99998474121094. starfalse, scrollY9271, card.offsetTop9601 and positions are unchanged; diagonal bbox delta about1.15px lies inside existing2px hover translation.",
+    "assessment": "Same TEST_INFRA_BUG: do not require exact float serialization equality for transformed DOMRects. A0.01px dimension tolerance is below a visible pixel and preserves exact order/document-layout/scroll requirements.",
+    "actual_next_action": "Read the retained failed numerical report and corrected test. Parent corrected full integration rerun is pending; independent settled same-coordinate3width results already PASS."
+  }
+}

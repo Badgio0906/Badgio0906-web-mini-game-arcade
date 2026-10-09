@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "checks": [
+    {
+      "manifest": "SOURCE_MANIFEST.json",
+      "count": 5,
+      "mismatches": [
+        "tests/portal-discovery/browser.mjs"
+      ],
+      "productMismatches": []
+    },
+    {
+      "manifest": "BUILD_MANIFEST.json",
+      "count": 330,
+      "mismatches": [],
+      "productMismatches": []
+    }
+  ],
+  "snapshot": "/tmp/portal-comfort-independent-y6o7bg6i/dist",
+  "note": "Source manifest includes changing QA runner; that mismatch is explicitly separated from unchanged product source."
+}

@@ -1,0 +1,31 @@
+{
+  "finding_id": "independent-opaque-storage-initialization",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "Seven identical SecurityErrors correspond to seven initial pages, including six before the synthetic denied-getter case. A minimal about:blank-only diagnostic reproduces the same localStorage error and stack without any old/new portal resources loaded; the standalone initializer accesses localStorage in an opaque origin. Guarding only location.origin null removes that diagnostic error. Same immutable product with guarded fixture then passes74 checks with zero page/console errors and zero writes, including actual denied-getter memory behavior. This is a QA lifecycle error, not regression in favorite storage, records or analytics. No unrelated runtime patch is needed.",
+  "evidence": [
+    "docs/portal-discovery/revision-01/QA/FINDING_INDEPENDENT_OPAQUE_STORAGE.json",
+    "docs/portal-discovery/revision-01/QA/independent-final/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/OPAQUE_STORAGE_DIAGNOSTIC.json",
+    "docs/portal-discovery/revision-01/QA/opaque-storage-diagnostic.mjs",
+    "docs/portal-discovery/revision-01/QA/independent-comfort-probe.mjs",
+    "docs/portal-discovery/revision-01/QA/independent-accepted/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "After raw finding was shared and parent acknowledged the Jev record, ran an independent about:blank-only diagnostic: original initializer1 SecurityError, origin-null guard0. Kept failing first report, added one fixture guard and reran all74 checks. Portal resources were absent during the diagnostic, so the failure is product-source independent; no old-game baseline or runtime edits are needed.",
+    "evidence": [
+      "docs/portal-discovery/revision-01/QA/FINDING_INDEPENDENT_OPAQUE_STORAGE.json",
+      "docs/portal-discovery/revision-01/QA/independent-final/REPORT.json",
+      "docs/portal-discovery/revision-01/QA/OPAQUE_STORAGE_DIAGNOSTIC.json",
+      "docs/portal-discovery/revision-01/QA/opaque-storage-diagnostic.mjs",
+      "docs/portal-discovery/revision-01/QA/independent-comfort-probe.mjs",
+      "docs/portal-discovery/revision-01/QA/independent-accepted/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

@@ -1,0 +1,18 @@
+{
+  "finding_id": "independent-opaque-storage-initialization",
+  "problem": "Independent revised-behavior probe fails its final page-error assertion despite prior ordinary discovery/favorite checks passing.",
+  "expected": "A denied-consent local fixture completes with zero page exceptions.",
+  "observed": [
+    "All3 widths reached revised-behavior controls and reload checks.",
+    "The browser captured SecurityError messages stating localStorage access denied for this document.",
+    "Final runner assertion failed on pageErrors; console errors and POST attempts are zero."
+  ],
+  "unknown": [
+    "Which page lifecycle and script produced the localStorage errors."
+  ],
+  "evidence": [
+    "docs/portal-discovery/revision-01/QA/independent-final/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/independent-final/failure.png"
+  ],
+  "provenance": "Actual independent compiled-browser probe; product source untouched."
+}

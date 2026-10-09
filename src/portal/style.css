@@ -26,7 +26,12 @@
 
 /* Discovery controls use the catalog's tags; cards retain their original DOM. */
 .game-card[hidden],.game-empty[hidden]{display:none}
-.game-discovery{margin:0 0 26px;padding:18px 20px;border:2px solid var(--ink);background:var(--cream);box-shadow:3px 4px 0 var(--ink)}
+.discovery-panel{margin:0 0 14px;border:2px solid var(--ink);background:var(--cream);box-shadow:3px 4px 0 var(--ink)}
+.discovery-panel>summary{min-height:48px;padding:12px 18px;font-size:15px;font-weight:700;line-height:1.6;cursor:pointer;overflow-wrap:anywhere}
+.discovery-panel>summary:focus-visible{outline:3px solid #426eba;outline-offset:3px}
+.discovery-panel[open]>summary{border-bottom:1px dashed #26394955}
+#discovery-selection-summary{font-size:11px;font-weight:500;line-height:1.8;margin-left:8px}
+.game-discovery{padding:18px 20px;background:var(--cream)}
 .discovery-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
 .discovery-heading h2{font-size:20px;margin:0;line-height:1.5}
 .game-discovery button,.game-discovery summary{min-height:44px;font:inherit;color:var(--ink);cursor:pointer}
@@ -46,8 +51,8 @@
 #tag-picker summary{padding:11px 0;font-size:13px;font-weight:700}
 .tag-options{max-height:272px;overflow-y:auto;padding:4px 4px 12px;overscroll-behavior:contain}
 .favorites-help,#favorites-storage-notice{font-size:11px;line-height:1.8;margin:12px 0}
-.game-discovery .gallery-count{margin:12px 0 0;text-align:right}
-.game-discovery .gallery-count b{display:inline;font-size:25px;line-height:1.2}
+.discovery-results{margin:0 0 18px;text-align:right}
+.discovery-results b{display:inline;font-size:25px;line-height:1.2}
 .game-card-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:58px;padding:6px 10px;cursor:default;border-bottom:1px solid #26394944}
 .game-development-status{font-size:12px;line-height:1.6;font-weight:700;border:2px solid var(--ink);border-radius:5px;padding:4px 10px}
 .game-development-status--trial{background:#f8d3c2}
@@ -57,6 +62,6 @@
 .favorite-button[aria-pressed=true]{background:var(--yellow);border:2px solid var(--ink)}
 .favorite-button:hover{box-shadow:1px 2px 0 var(--ink)}
 .game-empty{padding:24px 16px;margin:0 0 26px;background:var(--cream);border:2px dashed var(--ink);font-size:14px;line-height:1.9;text-align:center}
-@media(max-width:540px){.game-discovery{padding:14px 12px}.discovery-heading h2{font-size:18px}.game-discovery button{font-size:12px;padding-left:10px;padding-right:10px}.game-discovery button[aria-pressed=true]{padding-left:9px;padding-right:9px}.game-discovery .gallery-count b{font-size:24px}.game-card-meta{padding:6px 12px}.tag-options{max-height:244px}}
+@media(max-width:540px){.game-discovery{padding:14px 12px}.discovery-heading h2{font-size:18px}.game-discovery button{font-size:12px;padding-left:10px;padding-right:10px}.game-discovery button[aria-pressed=true]{padding-left:9px;padding-right:9px}.discovery-results b{font-size:24px}.game-card-meta{padding:6px 12px}.tag-options{max-height:244px}}
 @media(min-width:901px){.game-discovery{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2fr);column-gap:24px}.game-discovery>:not(fieldset){grid-column:1/-1}}
 @media(max-width:540px){.prototype-extra{display:none}}

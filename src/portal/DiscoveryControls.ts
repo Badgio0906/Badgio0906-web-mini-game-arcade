@@ -36,6 +36,9 @@ export function mountDiscoveryControls(games: readonly GameCatalogEntry[], onCha
     document.getElementById('tag-match-description')!.textContent = mode === 'or'
       ? '選択タグのどれかが一致'
       : '選択タグすべてが一致';
+    const compact = document.getElementById('discovery-selection-summary')!;
+    compact.textContent = [tags.size ? `${mode.toUpperCase()}：${[...tags].map(id => tagLabels[id]).join('・')}` : '', [...statuses].map(status => developmentStatusLabels[status]).join('・')].filter(Boolean).join(' ／ ');
+    compact.hidden = !compact.textContent;
     selected.replaceChildren();
     if (!tags.size) selected.textContent = 'なし（すべてのタグ）';
     for (const id of tags) {

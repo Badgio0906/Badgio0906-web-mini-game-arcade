@@ -21,12 +21,24 @@ const knownIds = new Set(gameCatalog.map(game => game.id));
 let favoriteStorage: FavoriteStorage | undefined;
 try { favoriteStorage = window.localStorage; } catch { /* Keep favorites in memory when storage is unavailable. */ }
 let favorites = readFavorites(favoriteStorage, knownIds);
+// Freeze ranking for this page load. Editing favorites must never move a card
+// away from the pointer; even later filter changes use this loaded ordering.
+const orderingFavorites = new Set(favorites);
 let selection: DiscoverySelection = { tags: [], mode: 'or', statuses: [] };
 let refreshImpressions = () => {};
 
+const renderFavorites = () => {
+  for (const game of gameCatalog) {
+    const button = favoriteButtons.get(game.id)!;
+    button.setAttribute('aria-pressed', String(favorites.has(game.id)));
+    button.setAttribute('aria-label', `${game.titleJa}${favorites.has(game.id) ? 'のお気に入りを解除' : 'をお気に入りに追加'}`);
+    button.textContent = favorites.has(game.id) ? '★' : '☆';
+  }
+};
+
 const applyDiscovery = () => {
   const matchingIds = new Set(filterCatalog(selection.tags, selection.mode, selection.statuses).map(game => game.id));
-  const ordered = prioritizeFavorites(gameCatalog, favorites);
+  const ordered = prioritizeFavorites(gameCatalog, orderingFavorites);
   const focused = document.activeElement;
   let position = 0;
   // Visible cards first; retained hidden nodes are never included in analytics positions.
@@ -39,15 +51,12 @@ const applyDiscovery = () => {
     else card.dataset.cardPosition = String(++position);
     if (card !== cursor) gallery.insertBefore(card, cursor);
     cursor = card.nextElementSibling;
-    const button = favoriteButtons.get(game.id)!;
-    button.setAttribute('aria-pressed', String(favorites.has(game.id)));
-    button.setAttribute('aria-label', `${game.titleJa}${favorites.has(game.id) ? 'のお気に入りを解除' : 'をお気に入りに追加'}`);
-    button.textContent = favorites.has(game.id) ? '★' : '☆';
   }
   // Moving an existing node can clear focus. Restore it without scrolling the page.
   if (focused instanceof HTMLElement && focused.isConnected && !focused.closest('[hidden]') && document.activeElement !== focused) focused.focus({ preventScroll: true });
   document.getElementById('game-count')!.textContent = `${position} / ${gameCatalog.length}`;
   document.getElementById('game-empty')!.hidden = position !== 0;
+  renderFavorites();
   refreshImpressions();
 };
 for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrder)) {
@@ -77,7 +86,7 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
     const notice = document.getElementById('favorites-storage-notice')!;
     notice.hidden = saved;
     notice.textContent = saved ? '' : 'お気に入りを保存できないため、このページを開いている間だけ有効です。';
-    applyDiscovery();
+    renderFavorites();
   });
   meta.append(status, favorite); favoriteButtons.set(game.id, favorite);
   const imageFrame = document.createElement('div'); imageFrame.className = 'game-image';
@@ -98,7 +107,7 @@ mountRecordSharingSettings(document.getElementById('record-settings')!);
 mountDiscoveryControls(gameCatalog, next => { selection = next; applyDiscovery(); });
 window.addEventListener('storage', event => {
   if (event.key !== FAVORITES_KEY && event.key !== null) return;
-  favorites = readFavorites(favoriteStorage, knownIds); applyDiscovery();
+  favorites = readFavorites(favoriteStorage, knownIds); renderFavorites();
 });
 
 const saveRecords = document.getElementById('save-play-records');

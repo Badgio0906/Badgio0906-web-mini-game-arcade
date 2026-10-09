@@ -1,0 +1,148 @@
+
+> orbit-shift@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ✓ tests/unit/gameplay.test.ts (7 tests) 4484ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 1)  1333ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 17)  1536ms
+   ✓ difficulty and fair pattern generation > safe reactive policy survives ten minutes with bounded object lists (seed 77)  1510ms
+ ✓ tests/unit/workday-escalation.test.ts (7 tests) 8300ms
+   ✓ Workday milestone and endless journey > five seeded walking and biking journeys pass 5000m with bounded visible resources and only two offers  8034ms
+ ✓ tests/unit/game010.test.ts (8 tests) 4550ms
+   ✓ Game010 rules2 meaning/corrections/minutes > meaning beats allclick/last-only/no action/boss-only over30 distinct shuffled meetings  4247ms
+ ✓ tests/unit/game006-unbraked-compat.test.ts (1 test) 4048ms
+   ✓ replays identical legal inputs and varying frame steps with exact old unbraked pose and outcome  4042ms
+ ✓ tests/unit/game031-save.test.ts (44 tests) 5216ms
+   ✓ Game031 coherent, versioned local save > commits lightweight portal metadata with the same world transaction, preserving it on failure and deleting both keys  620ms
+   ✓ Game031 coherent, versioned local save > restores 1000 final voxel differences and associated inventory exactly (synthetic fixture)  310ms
+   ✓ Game031 coherent, versioned local save > restores 5000 final voxel differences and associated inventory exactly (synthetic fixture)  473ms
+   ✓ Game031 coherent, versioned local save > restores 10000 final voxel differences and associated inventory exactly (synthetic fixture)  307ms
+ ✓ tests/unit/game006.test.ts (8 tests) 1662ms
+   ✓ PARK IT! geometry and ordinary gauge play > tenth success previews and freezes one choice; narrow mode doubles only subsequent points and resets on retry  329ms
+   ✓ PARK IT! geometry and ordinary gauge play > grades actual offset precision, caps consecutive Perfect bonus and bounds retained objects over60 successes  886ms
+ ✓ tests/unit/game017.test.ts (23 tests) 2282ms
+   ✓ playable layout generator > independently checks every returned segment over early, wind, large-rain and saturated rounds  2215ms
+ ✓ tests/unit/game011.test.ts (11 tests) 1310ms
+   ✓ UNKO or UKON explicit phases, real deadlines and public-input scoring > more than five thousand independent placements per phase approach50:50 and permit repeated same-side answers  1243ms
+ ✓ tests/unit/game022.test.ts (17 tests) 1725ms
+   ✓ legal play and undo preserve all 52 identities over seeded action sequences  1655ms
+ ✓ tests/unit/game031-textures.test.ts (15 tests) 1096ms
+ ✓ tests/unit/game006-revision.test.ts (9 tests) 1004ms
+   ✓ Parking v2 slots and shape distance > both shared-obstacle routes are reachable at all generated side/mode choices  302ms
+ ✓ tests/unit/game015.test.ts (27 tests) 20889ms
+   ✓ authored descending routes and bounded endless generation > public steering/braking safely crosses1000m without freezing and continues5000m with bounded arrays and all material types  5311ms
+   ✓ continuous downward pursuit and randomized fair choices > every generated row has a hazard-free landing envelope and a reachable next decision through varied widths/lanes  463ms
+   ✓ continuous downward pursuit and randomized fair choices > ordinary DROP/steer/brake survives changing routes and scrolling across sixty-four independent seeds  14306ms
+ ✓ tests/unit/game020-model.test.ts (13 tests) 907ms
+   ✓ original guaranteed-solvable layouts > regular has original geometry, repeated icon choices, and a legal complete witness for 200 seeds  522ms
+ ✓ tests/unit/game002.test.ts (8 tests) 1046ms
+   ✓ WORKDAY DODGE model > five seeded reactive runs reach 1000m, cover all four opponent types and keep generation bounded  1003ms
+ ✓ tests/unit/game027-match.test.ts (1 test) 477ms
+   ✓ all three CPU levels run repeated settled shots with unique adjudication and valid ball-in-hand  475ms
+ ✓ tests/unit/analytics-codex-fetch.test.ts (16 tests) 736ms
+ ✓ tests/unit/game031-model.test.ts (17 tests) 556ms
+   ✓ Game031 voxel model > generates the final X128 Y64 Z128 deterministically, with all materials and cave sizes  415ms
+ ✓ tests/unit/game018.test.ts (31 tests) 553ms
+   ✓ deterministic physics and genuine score > lands every sampled extreme finite input within the bounded simulation horizon  307ms
+stdout | tests/unit/catalog-telemetry.test.ts > catalog identity and future tag filtering > keeps legacy routes/tags attached to the actual title and preserves020 and appends registered games
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > rejects corrupt/unknown/nonfinite/object data and copies valid records
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > retains cross-page game records in a bounded400window without changing200memory
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > local telemetry boundary > recovers from corrupt and denied storage without stale resurrection
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > preserves a later page departure after quitting and beginning another run
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > counts a restarted ascent as interrupted rather than completed
+
+
+stdout | tests/unit/catalog-telemetry.test.ts > retained-window analytics > does not double count quits/deaths or fabricate unreported positions and durations
+
+
+ ✓ tests/unit/catalog-telemetry.test.ts (7 tests) 238ms
+ ✓ tests/unit/game021-model.test.ts (36 tests) 400ms
+   ✓ Game021 bounded tactical CPU > strong always returns a legal column or null when terminal  351ms
+ ✓ tests/unit/game025-generation-lifecycle.test.ts (3 tests) 293ms
+ ✓ tests/unit/game018-revision02.test.ts (7 tests) 335ms
+ ✓ tests/unit/analyticsWorker.test.ts (29 tests) 188ms
+ ✓ tests/unit/game025-menu-gesture.test.ts (3 tests) 229ms
+ ✓ tests/unit/game003.test.ts (9 tests) 201ms
+ ✓ tests/unit/analytics-client.test.ts (9 tests) 165ms
+stdout | tests/unit/game008.test.ts > Game008 delivery rules 2 > deadline lies between careful-only and rush-only traversal; mixed policy delivers and has less spill
+{"careful":{"distance":128,"score":0,"time":32.00416666666517,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":0.0003164663249067682,"liquidVelocity":0.001991189612405887,"surfaceTilt":-0.00002845097715483872,"spilling":false,"spillRate":0}],"outcome":"timeout","reason":"配達の時間に間に合いませんでした。","deliveries":0,"totalDeliveredRemaining":0,"spareTime":0,"rulesVersion":2},"rush":{"distance":180,"score":1788,"time":22.50416666666571,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":40.8323458848966,"liquidAngle":0.00810969001498917,"liquidVelocity":0.07739252629943917,"surfaceTilt":0.001430245083535558,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":40.8323458848966,"spareTime":9.49583333333429,"rulesVersion":2},"mixed":{"distance":180,"score":2110,"time":29.24999999999866,"cupCount":1,"cups":[{"id":0,"name":"コーヒー","remaining":100,"liquidAngle":-0.0070284658945135615,"liquidVelocity":-0.0016635166385906659,"surfaceTilt":-0.0007740142523649535,"spilling":false,"spillRate":0}],"outcome":"delivered","reason":"配達できました。","deliveries":1,"totalDeliveredRemaining":100,"spareTime":2.7500000000013394,"rulesVersion":2}}
+
+ ✓ tests/unit/game025.test.ts (23 tests) 294ms
+ ✓ tests/unit/game008.test.ts (5 tests) 280ms
+ ✓ tests/unit/game027-physics.test.ts (14 tests) 184ms
+ ✓ tests/unit/game023-model.test.ts (20 tests) 195ms
+ ✓ tests/unit/game019-level.test.ts (7 tests) 407ms
+ ✓ tests/unit/game016.test.ts (10 tests) 119ms
+ ✓ tests/unit/tower-escalation.test.ts (4 tests) 131ms
+ ✓ tests/unit/game026.test.ts (27 tests) 159ms
+ ✓ tests/unit/revision-features.test.ts (10 tests) 107ms
+ ✓ tests/unit/game005.test.ts (6 tests) 104ms
+stdout | tests/unit/game007.test.ts > Game007 transport rules v2 > three scenarios reward planning and do not make always-light or always-full optimal
+POLICY_RESULTS [{"scenario":0,"greedy":1190,"light":1180,"planning":2940},{"scenario":1,"greedy":2430,"light":1440,"planning":1880},{"scenario":2,"greedy":1760,"light":1410,"planning":3340}]
+
+ ✓ tests/unit/game007.test.ts (8 tests) 99ms
+stdout | tests/unit/game027-qa-planner.test.ts > new QA planner opens a fresh deterministic rack through legal native-equivalent actions and reaches a normal terminal
+{"provenance":"new pure-model planner diagnostic; not original failed browser world","trace":[{"n":1,"strategy":"break","ball":1,"first":1,"pockets":[],"legalEight":false,"foul":null},{"n":2,"strategy":"clear-pocket","ball":6,"first":6,"pockets":[6],"legalEight":false,"foul":null},{"n":3,"strategy":"legal-cluster-contact","ball":1,"first":1,"pockets":[],"legalEight":false,"foul":null},{"n":4,"strategy":"clear-pocket","ball":15,"first":15,"pockets":[],"legalEight":false,"foul":null},{"n":5,"strategy":"clear-pocket","ball":5,"first":5,"pockets":[5],"legalEight":false,"foul":null},{"n":6,"strategy":"clear-pocket","ball":2,"first":2,"pockets":[2],"legalEight":false,"foul":null},{"n":7,"strategy":"clear-pocket","ball":3,"first":3,"pockets":[3],"legalEight":false,"foul":null},{"n":8,"strategy":"legal-cluster-contact","ball":1,"first":1,"pockets":[],"legalEight":false,"foul":null},{"n":9,"strategy":"clear-pocket","ball":15,"first":15,"pockets":[],"legalEight":false,"foul":null},{"n":10,"strategy":"legal-cluster-contact","ball":7,"first":7,"pockets":[],"legalEight":false,"foul":null},{"n":11,"strategy":"clear-pocket","ball":13,"first":13,"pockets":[13],"legalEight":false,"foul":null},{"n":12,"strategy":"clear-pocket","ball":15,"first":15,"pockets":[15],"legalEight":false,"foul":null},{"n":13,"strategy":"clear-pocket","ball":14,"first":14,"pockets":[14],"legalEight":false,"foul":null},{"n":14,"strategy":"clear-pocket","ball":11,"first":11,"pockets":[11],"legalEight":false,"foul":null},{"n":15,"strategy":"clear-pocket","ball":12,"first":12,"pockets":[12],"legalEight":false,"foul":null},{"n":16,"strategy":"legal-cluster-contact","ball":9,"first":9,"pockets":[],"legalEight":false,"foul":null},{"n":17,"strategy":"clear-pocket","ball":4,"first":4,"pockets":[4],"legalEight":false,"foul":null},{"n":18,"strategy":"clear-pocket","ball":1,"first":1,"pockets":[1],"legalEight":false,"foul":null},{"n":19,"strategy":"clear-pocket","ball":7,"first":7,"pockets":[],"legalEight":false,"foul":null},{"n":20,"strategy":"clear-pocket","ball":10,"first":10,"pockets":[10],"legalEight":false,"foul":null},{"n":21,"strategy":"clear-pocket","ball":9,"first":9,"pockets":[],"legalEight":false,"foul":null},{"n":22,"strategy":"clear-pocket","ball":7,"first":7,"pockets":[7],"legalEight":false,"foul":null},{"n":23,"strategy":"clear-pocket","ball":8,"first":8,"pockets":[8],"legalEight":true,"foul":null}],"winner":1}
+
+ ✓ tests/unit/game027-qa-planner.test.ts (1 test) 95ms
+ ✓ tests/unit/game030.test.ts (39 tests) 68ms
+ ✓ tests/unit/game003-art.test.ts (5 tests) 53ms
+ ✓ tests/unit/game027-save-input.test.ts (11 tests) 47ms
+ ✓ tests/unit/game015-practice.test.ts (9 tests) 47ms
+ ✓ tests/unit/game024.test.ts (26 tests) 27ms
+ ✓ tests/unit/arcade-credits.test.ts (5 tests) 24ms
+ ✓ tests/unit/game029.test.ts (27 tests) 39ms
+ ✓ tests/unit/records-client.test.ts (9 tests) 37ms
+ ✓ tests/unit/game004.test.ts (6 tests) 31ms
+ ✓ tests/unit/leaderboards-client.test.ts (9 tests) 35ms
+ ✓ tests/unit/sort-localization.test.ts (3 tests) 18ms
+ ✓ tests/unit/records-admin.test.ts (4 tests) 26ms
+ ✓ tests/unit/game009.test.ts (8 tests) 31ms
+ ✓ tests/unit/classic-telemetry.test.ts (10 tests) 10ms
+ ✓ tests/unit/participant-identity.test.ts (6 tests) 12ms
+ ✓ tests/unit/game031-input.test.ts (14 tests) 19ms
+ ✓ tests/unit/services.test.ts (17 tests) 14ms
+ ✓ tests/unit/arcade-practice.test.ts (24 tests) 13ms
+ ✓ tests/unit/game019-surfaces.test.ts (4 tests) 12ms
+ ✓ tests/unit/game031-integration.test.ts (5 tests) 13ms
+ ✓ tests/unit/game019-charge.test.ts (7 tests) 16ms
+ ✓ tests/unit/classic-integration.test.ts (12 tests) 10ms
+ ✓ tests/unit/analytics-admin.test.ts (6 tests) 11ms
+ ✓ tests/unit/game019-practice-charge.test.ts (3 tests) 20ms
+ ✓ tests/unit/game018-shoe-pose.test.ts (4 tests) 10ms
+ ✓ tests/unit/game028-model.test.ts (24 tests) 11ms
+ ✓ tests/unit/game020-integration.test.ts (3 tests) 7ms
+ ✓ tests/unit/game028-save-input.test.ts (23 tests) 15ms
+ ✓ tests/unit/game016-practice.test.ts (3 tests) 9ms
+ ✓ tests/unit/record-local.test.ts (11 tests) 13ms
+ ✓ tests/unit/game027-rules.test.ts (13 tests) 7ms
+ ✓ tests/unit/game023-persistence.test.ts (7 tests) 11ms
+ ✓ tests/unit/portal-discovery.test.ts (32 tests) 9ms
+ ✓ tests/unit/legacy-records.test.ts (9 tests) 9ms
+ ✓ tests/unit/game016-wallet.test.ts (2 tests) 8ms
+ ✓ tests/unit/record-definitions.test.ts (5 tests) 10ms
+ ✓ tests/unit/game010-retirement.test.ts (2 tests) 6ms
+ ✓ tests/unit/game022-persistence.test.ts (2 tests) 5ms
+ ✓ tests/unit/analytics-version-history.test.ts (2 tests) 4ms
+ ✓ tests/unit/game019-telemetry.test.ts (3 tests) 4ms
+ ✓ tests/unit/catalog-build-entry.test.ts (1 test) 6ms
+ ✓ tests/unit/game019-stats.test.ts (3 tests) 4ms
+
+ Test Files  80 passed (80)
+      Tests  919 passed (919)
+   Start at  23:48:39
+   Duration  32.12s (transform 3.49s, setup 0ms, collect 7.67s, tests 65.85s, environment 16ms, prepare 6.30s)
+

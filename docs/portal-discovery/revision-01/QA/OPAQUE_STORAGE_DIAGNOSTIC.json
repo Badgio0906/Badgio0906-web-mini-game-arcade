@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "provenance": "About:blank only; no portal runtime or network resource loaded. Reproduces initial fixture independently of old/new product source.",
+  "cases": [
+    {
+      "guarded": false,
+      "url": "about:blank",
+      "errors": [
+        {
+          "message": "Failed to read the 'localStorage' property from 'Window': Access is denied for this document.",
+          "stack": "SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.\n    at <anonymous>:2:111\n    at <anonymous>:3:7",
+          "url": "about:blank"
+        }
+      ]
+    },
+    {
+      "guarded": true,
+      "url": "about:blank",
+      "errors": []
+    }
+  ],
+  "result": "PASS"
+}

@@ -16,13 +16,13 @@ UI初期OR、タグ未選択なら全active。ORは選択のどれか、ANDは�
 
 状態未選択／両方選択は両状態、一方のみならその状態。状態内の選択は常にORで、通常タグのAND／ORとは独立。最終条件は掲載active AND 状態条件 AND 通常タグ条件。完成版0件でも状態を選べ、0件説明が表示される。
 
-件数は表示対象 / active総数 GAMES。0件時は状態・タグを減らす／すべて解除を案内。すべて解除はタグ・状態を解除し、modeをORへ戻す。お気に入りは解除しない。タグ候補は開閉でき、閉じても選択済みの解除chipとOR／ANDが見える。操作はbuttonのaria-pressed、選択チェック、文字で区別し、44px以上の高さを確保する。
+件数は表示対象 / active総数 GAMES。0件時は状態・タグを減らす／すべて解除を案内。すべて解除はタグ・状態を解除し、modeをORへ戻す。お気に入りは解除しない。絞り込み欄全体は同じ位置で初期折畳み。閉じても件数と選択タグ名・OR／AND・状態が見える。開くと選択済みの解除chipと、別に開閉できるタグ候補を表示する。操作はbuttonのaria-pressed、選択チェック、文字で区別し、44px以上の高さを確保する。
 
 ## お気に入り保存と表示順
 
-キーは`game100garage:favorites:v1`、値は`["game003","game019"]`等のJSON配列。activeのstable IDだけを復元し、未知・退役・非文字列・重複を無視する。壊れたJSON、Storageへのアクセス拒否、容量不足でページを壊さない。保存失敗時はページ内で変更を保持し、再読込では保持できないことをUIに表示する。通常は再読込・ブラウザ終了後も同じブラウザで保持する。別タブのstorage変更も表示へ反映する。
+キーは`game100garage:favorites:v1`、値は`["game003","game019"]`等のJSON配列。activeのstable IDだけを復元し、未知・退役・非文字列・重複を無視する。壊れたJSON、Storageへのアクセス拒否、容量不足でページを壊さない。保存失敗時はページ内で変更を保持し、再読込では保持できないことをUIに表示する。通常は再読込・ブラウザ終了後も同じブラウザで保持する。別タブのstorage変更も☆／★へ反映するが、そのページの並び順は維持する。
 
-絞り込まれた対象内で、お気に入り→非お気に入りの順。両グループ内はreleaseOrder昇順。登録／解除は即時反映し、非お気に入りや新作を消さない。お気に入りだけを表示する機能、アカウント、サーバー同期は実装しない。
+絞り込まれた対象内で、お気に入り→非お気に入りの順。両グループ内はreleaseOrder昇順。登録／解除は☆／★と保存だけ即時反映し、表示順は次の再読み込みで更新する。ページ読込時のお気に入りを並び用snapshotとして保持し、後続filter／clearでも未反映の変更を並び順に混ぜない。非お気に入りや新作を消さない。お気に入りだけを表示する機能、アカウント、サーバー同期は実装しない。
 
 カード先頭の独立metadata領域に開発状態badgeと☆／★buttonを置く。badgeは通常タグ4件枠と別DOM、trialはcoral系・completeはyellow系で文字でも区別。favoriteはaria-pressedとゲーム名を含む追加／解除aria-labelを持ち、リンク内部へネストしない。既存黄色PLAYと補助TOP10の順序・優先度を保持する。
 
@@ -38,7 +38,7 @@ UI初期OR、タグ未選択なら全active。ORは選択のどれか、ANDは�
 
 - `npm test`、`npm run check`、`npm run build`。新規pure unitは`tests/unit/portal-discovery.test.ts`。混在trial/completeは合成fixtureであり、実ゲームの完成宣言ではない。
 - `tests/portal-discovery/browser.mjs`は固定production buildを模擬HTTPS root／repository subpathで、または実公開URLで検証する。必須viewport1440×900・390×844・320×720。ローカルBEST／TOP10はempty API fixture、liveは匿名public GET。広告sourceを変更せずQAのみ第三者script実行を省略し、analytics POSTはQA内で204応答して本番へ転送しない。records等のPOSTは遮断し、attemptがあれば失敗とする。
-- 実施結果、初回失敗と補正、独立実画像／操作、配信版確認は[実装報告](portal-discovery/IMPLEMENTATION_REPORT.md)に集約。自動viewport確認は物理スマホ、人間の探しやすさ／面白さ／完成判断の実測ではない。
+- 初回機能の結果は[実装報告](portal-discovery/IMPLEMENTATION_REPORT.md)、折畳み／再読込時並替えの結果は[revision-01](portal-discovery/revision-01/IMPLEMENTATION_REPORT.md)に集約。自動viewport確認は物理スマホ、人間の探しやすさ／面白さ／完成判断の実測ではない。
 
 再現には新規環境で`npm ci`とChromiumを準備し、`/tmp`や稼働中serverに依存しない。公開ビルドは既存Actions Variablesの設定を使う。現在の公開frontendで確認した非秘密configはGA4空、telemetry `https://analytics.game100garage.com/v1/events`、records `https://analytics.game100garage.com`。設定変更を意味しない。
 

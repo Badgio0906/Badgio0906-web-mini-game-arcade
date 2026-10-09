@@ -1,0 +1,24 @@
+{
+  "finding_id": "favorite-coordinate-cancel",
+  "problem": "The same-coordinate favorite cancellation probe fails its combined geometry, scroll and position equality assertion on mobile.",
+  "expected": "Register and cancel at the same visible button position without moving cards, scrolling or launching.",
+  "observed": [
+    "Compiled PC1440 completed the scenario successfully.",
+    "At390px the combined assertion failed after the second touch.",
+    "No page/console errors or nonanalytics POST attempts.",
+    "Initial assertion omitted the individual measurements."
+  ],
+  "unknown": [
+    "Which of pressed state, geometry, scroll or positions differed.",
+    "Whether delayed browser scrolling from the previous locator tap affected the measured geometry."
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/portal-discovery/revision-01/QA/browser-local/REPORT.json",
+    "docs/portal-discovery/revision-01/QA/browser-local/failure.png"
+  ],
+  "provenance": "Compiled production build via local HTTPS fixture, ordinary mobile touch emulation."
+}

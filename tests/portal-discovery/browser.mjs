@@ -80,6 +80,9 @@ try{
   await page.waitForFunction(()=>[...document.querySelectorAll('.card-records dd')].every(e=>!e.textContent.includes('読み込み中')));
   check(await page.locator('.card-records').count()===30&&await page.locator('.leaderboard-button').count()===20,'records30 and ranking20 installed',{viewport});
   await snapshot('initial');
+  check(!(await page.locator('#discovery-panel').evaluate(d=>d.open))&&!(await page.locator('#clear-filters').isVisible()),'entire filter panel initially collapsed',{viewport});
+  check((await page.locator('#discovery-panel > summary').boundingBox()).height>=44&&await page.locator('#game-count').isVisible(),'compact panel target and always-visible count',{viewport});
+  await click(page.locator('#discovery-panel > summary'));
   await click(page.locator('#tag-picker summary'));
   await click(tag('puzzle'));await click(tag('brain-training'));
   check((await visible()).length===9,'OR puzzle/brain-training union9',{viewport});
@@ -87,6 +90,10 @@ try{
   check(JSON.stringify(await visible())===JSON.stringify(['game020','game021','game022','game025','game030']),'AND intersection5',{viewport});
   if(await page.locator('#tag-picker').evaluate(d=>d.open))await click(page.locator('#tag-picker summary'));
   check((await page.locator('#selected-tags').innerText()).includes('パズル')&&(await page.locator('#selected-tags').innerText()).includes('脳トレ')&&(await page.locator('[data-mode=and]').getAttribute('aria-pressed'))==='true','selection/mode visible with picker closed',{viewport});
+  await click(page.locator('#discovery-panel > summary'));
+  check((await page.locator('#discovery-selection-summary').innerText()).includes('AND：パズル・脳トレ')&&!(await page.locator('#clear-filters').isVisible())&&(await visible()).length===5,'closed panel preserves selected conditions and results',{viewport});
+  await snapshot('collapsed-selected');
+  await click(page.locator('#discovery-panel > summary'));
   await click(state('trial'));check((await visible()).length===5,'trial AND normal tag conditions',{viewport});
   await click(state('complete'));check((await visible()).length===5,'both states independent of tag AND',{viewport});
   await click(state('trial'));check((await visible()).length===0&&await page.locator('#game-empty').isVisible(),'complete-only empty state',{viewport});
@@ -95,7 +102,14 @@ try{
   const eventCount=()=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)||'[]').filter(e=>['game_launch','game_card_click'].includes(e.name)).length,key);
   const before=await eventCount();
   await click(fav('game019'));await click(fav('game003'));await click(fav('game015'));
-  check(JSON.stringify((await visible()).slice(0,3))===JSON.stringify(['game003','game015','game019']),'favorites release order 003/015/019',{viewport});
+  check(JSON.stringify(await visible())===JSON.stringify(all),'favorite registration leaves loaded release order unchanged',{viewport});
+  const beforeCancel=await fav('game015').boundingBox(), stable=await page.evaluate(()=>({scrollY,cardTop:document.querySelector('[data-game-id=game015]').offsetTop,positions:[...document.querySelectorAll('.game-card')].map(c=>c.dataset.cardPosition)}));
+  if(viewport.width===1440)await page.mouse.click(beforeCancel.x+beforeCancel.width/2,beforeCancel.y+beforeCancel.height/2);else await page.touchscreen.tap(beforeCancel.x+beforeCancel.width/2,beforeCancel.y+beforeCancel.height/2);
+  const afterCancel=await fav('game015').boundingBox(), afterStable=await page.evaluate(()=>({scrollY,cardTop:document.querySelector('[data-game-id=game015]').offsetTop,positions:[...document.querySelectorAll('.game-card')].map(c=>c.dataset.cardPosition)})), pressed=await fav('game015').getAttribute('aria-pressed');
+  // The existing 150ms card hover animation translates by at most2px.
+  // Compare stable layout/scroll/order and allow only that pre-existing transform.
+  check(pressed==='false'&&Math.abs(afterCancel.x-beforeCancel.x)<=2&&Math.abs(afterCancel.y-beforeCancel.y)<=2&&Math.abs(afterCancel.width-beforeCancel.width)<0.01&&Math.abs(afterCancel.height-beforeCancel.height)<0.01&&JSON.stringify(afterStable)===JSON.stringify(stable),'same-coordinate cancellation preserves card geometry scroll and positions',{viewport,beforeCancel,afterCancel,stable,afterStable,pressed});
+  await click(fav('game015'));
   check((await visible()).length===30&&(await visible()).at(-1)==='game031','non-favorites / latest031 remain',{viewport});
   check(await eventCount()===before&&page.url()===url,'favorite buttons never launch or send card clicks',{viewport});
   check(await page.locator('#game-count').innerText()==='30 / 30','favorite does not reduce count',{viewport});
@@ -105,13 +119,15 @@ try{
   // Capture references again after actual reload; all subsequent filters/sorts must retain them.
   await page.evaluate(()=>{window.qaCards=[...document.querySelectorAll('.game-card')];window.qaRecords=[...document.querySelectorAll('.card-records')];window.qaRankings=[...document.querySelectorAll('.leaderboard-button')]});
   await fav('game015').focus();await page.keyboard.press('Enter');
-  check(JSON.stringify((await visible()).slice(0,2))===JSON.stringify(['game003','game019'])&&await fav('game015').evaluate(b=>document.activeElement===b),'keyboard unfavorite / focus retained',{viewport});
+  check(JSON.stringify((await visible()).slice(0,3))===JSON.stringify(['game003','game015','game019'])&&await fav('game015').getAttribute('aria-pressed')==='false'&&await fav('game015').evaluate(b=>document.activeElement===b),'keyboard unfavorite retains loaded order and focus',{viewport});
+  check(!(await page.locator('#discovery-panel').evaluate(d=>d.open)),'reload closes full filter panel',{viewport});
+  await click(page.locator('#discovery-panel > summary'));
   await click(fav('game025'));if(!(await page.locator('#tag-picker').evaluate(d=>d.open)))await click(page.locator('#tag-picker summary'));
   await tag('puzzle').focus();await page.keyboard.press('Enter');
-  check((await visible()).length===6&&(await visible())[0]==='game025','favorite prioritized after tag filter',{viewport});
+  check((await visible()).length===6&&(await visible())[0]==='game007','pending favorite does not reorder after tag filter',{viewport});
   await tag('brain-training').focus();await page.keyboard.press('Enter');
   await page.locator('[data-mode=and]').focus();await page.keyboard.press('Enter');
-  check((await visible()).length===5&&(await visible())[0]==='game025','keyboard tag and AND',{viewport});
+  check((await visible()).length===5&&(await visible())[0]==='game020','keyboard AND keeps loaded favorite snapshot',{viewport});
   const positions=await page.locator('.game-card').evaluateAll(cs=>cs.map(c=>({hidden:c.hidden,pos:c.dataset.cardPosition})));
   check(positions.filter(x=>!x.hidden).every((x,i)=>x.pos===String(i+1))&&positions.filter(x=>x.hidden).every(x=>x.pos===undefined),'positions count visible nodes only',{viewport});
   await page.locator('#game-discovery').scrollIntoViewIfNeeded();await snapshot('filtered');
@@ -141,6 +157,12 @@ try{
   await click(state('trial'));await page.locator('[data-game-id=game019]').scrollIntoViewIfNeeded();await page.waitForTimeout(1250);
   check((await impressions()).length===impressionBaseline+1,'observer rebuild preserves impression dedup',{viewport});
   await clear();
+  check(JSON.stringify((await visible()).slice(0,3))===JSON.stringify(['game003','game015','game019']),'clear keeps loaded snapshot despite pending changes',{viewport});
+  await page.reload({waitUntil:'domcontentloaded'});await page.locator('.game-card').first().waitFor();
+  check(JSON.stringify((await visible()).slice(0,3))===JSON.stringify(['game003','game019','game025'])&&(await visible()).length===30,'next reload applies registration and removal together',{viewport});
+  await click(page.locator('#discovery-panel > summary'));await click(page.locator('#tag-picker summary'));await click(tag('puzzle'));
+  check((await visible())[0]==='game025'&&(await visible()).length===6,'loaded favorite prioritized inside tag results',{viewport});
+  await clear();
   const launchBefore=await eventCount();await click(page.locator('[data-game-id=game001] .game-play'));
   await page.waitForURL(new URL('./game001.html',url).href);await page.locator('.arcade-game-header .arcade-portal-return').waitFor();
   check(await eventCount()===launchBefore+2,'PLAY emits exactly one launch and card click',{viewport});
@@ -160,7 +182,7 @@ try{
    check(order.length===30&&!order.includes('game010'),'storage variant remains30 '+variant.name);
    if(variant.name==='unknown-retired')check(order[0]==='game019','known favorite restored / unknown ignored');
    if(variant.name==='corrupt')check(order[0]==='game001','corrupt JSON harmless');
-   if(variant.denied){await p.locator('[data-game-id=game019] .favorite-button').tap();check(await p.locator('#favorites-storage-notice').isVisible()&&await p.locator('.game-card').first().getAttribute('data-game-id')==='game019','quota failure in-memory favorite with honest notice')}
+   if(variant.denied){await p.locator('[data-game-id=game019] .favorite-button').tap();check(await p.locator('#favorites-storage-notice').isVisible()&&await p.locator('.game-card').first().getAttribute('data-game-id')==='game001'&&await p.locator('[data-game-id=game019] .favorite-button').getAttribute('aria-pressed')==='true','quota failure keeps position and visible notice outside collapsed panel')}
    await c.close();
   }
  }

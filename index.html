@@ -18,16 +18,19 @@
       </header>
       <main>
         <div class="gallery-intro"><p>すぐ遊べて、なぜかもう一回やりたくなる。<br />ちょっと変なミニゲーム置き場。</p></div>
-        <section id="game-discovery" class="game-discovery" aria-labelledby="discovery-title">
-          <div class="discovery-heading"><h2 id="discovery-title">ゲームを絞り込む</h2><button type="button" id="clear-filters">すべて解除</button></div>
+        <details id="discovery-panel" class="discovery-panel">
+          <summary>ゲームを絞り込む<span id="discovery-selection-summary" hidden></span></summary>
+          <section id="game-discovery" class="game-discovery" aria-labelledby="discovery-title">
+          <div class="discovery-heading"><h2 id="discovery-title">条件を選ぶ</h2><button type="button" id="clear-filters">すべて解除</button></div>
           <fieldset><legend>状態</legend><div class="filter-buttons" id="development-filters"></div></fieldset>
           <fieldset><legend>タグ条件</legend><div class="filter-buttons" id="tag-match-modes"><button type="button" data-mode="or" aria-pressed="true">✓ OR</button><button type="button" data-mode="and" aria-pressed="false">AND</button></div><p id="tag-match-description">選択タグのどれかが一致</p></fieldset>
           <div class="selected-tags"><span>選択中：</span><div id="selected-tags"></div></div>
           <details id="tag-picker"><summary>タグを選ぶ</summary><div class="filter-buttons tag-options" id="tag-options"></div></details>
-          <p class="favorites-help">★ お気に入りは先頭へ。そのほかのゲームも続けて表示します。<br />お気に入りはこのブラウザに保存されます。</p>
-          <p id="favorites-storage-notice" role="status" hidden></p>
-          <p class="gallery-count" role="status" aria-live="polite" aria-atomic="true"><b id="game-count">30 / 30</b> GAMES</p>
-        </section>
+          <p class="favorites-help">★ お気に入りはこのブラウザに保存されます。<br />並び順は再読み込み時に更新します。ほかのゲームも続けて表示します。</p>
+          </section>
+        </details>
+        <p id="favorites-storage-notice" role="status" hidden></p>
+        <p class="gallery-count discovery-results" role="status" aria-live="polite" aria-atomic="true"><b id="game-count">30 / 30</b> GAMES</p>
         <p id="game-empty" class="game-empty" hidden>該当するゲームがありません。<br />状態やタグを減らすか「すべて解除」を押してください。</p>
         <section id="game-gallery" class="game-gallery" aria-label="遊べるミニゲーム一覧"></section>
         <section id="record-settings" aria-label="BESTと記録共有の説明・設定"></section>
