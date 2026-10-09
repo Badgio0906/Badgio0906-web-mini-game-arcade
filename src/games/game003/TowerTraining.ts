@@ -80,7 +80,7 @@ export function createTowerTraining(storage: StorageService, telemetry: Telemetr
   }, { capture: true, ...options });
   document.addEventListener('keyup', e => { if (active) e.stopImmediatePropagation(); }, { capture: true, ...options });
   dialog.addEventListener('cancel', e => { e.preventDefault(); close(); }, options);
-  const nav = document.createElement('a'); nav.className = 'arcade-portal-back'; nav.href = `${import.meta.env.BASE_URL}index.html`; nav.textContent = '← ゲームセンターへ';
+  const nav = document.createElement('a'); nav.className = 'arcade-portal-back arcade-portal-return'; nav.href = `${import.meta.env.BASE_URL}index.html`; nav.textContent = '← ゲーム一覧へ';
   nav.addEventListener('click', () => telemetry.trackEvent('return_to_portal'), options); app.querySelector('header')!.prepend(nav);
   if (!arcadeConfig.creditsEnabled) document.body.classList.add('arcade-unlimited');
   const choices = document.createElement('div'); choices.className = 'tower-start-options';

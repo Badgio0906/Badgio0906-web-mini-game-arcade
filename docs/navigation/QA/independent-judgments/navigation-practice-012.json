@@ -1,0 +1,25 @@
+{
+  "finding_id": "navigation-practice-012",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "Original shell keydown excludes button targets but not anchors. The game012 Enter path prevents default and calls answer(0), so Enter on the return anchor can answer practice and suppress navigation. The shared keyboard guard is necessary and requires practice-state verification.",
+  "evidence": [
+    "public/games/yokodori-days/index.html:66",
+    "public/arcade-navigation.js",
+    "docs/navigation/QA/navigation-practice-012.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "public/games/yokodori-days/index.html:66",
+      "public/arcade-navigation.js",
+      "docs/navigation/QA/navigation-practice-012.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

@@ -42,7 +42,7 @@ function mode(next: State): void {
 function show(html: string, next: State): void {
   // State/inert guards isolate the board. A nonmodal dialog leaves the shared
   // consent panel and settings reachable without changing analytics UI or logic.
-  mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>'; if (!menu.open) menu.show();
+  mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>'; if (!menu.open) menu.show();
   el('menu-portal-link').onclick = returnToPortal;
 }
 function sync(): void {

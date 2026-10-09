@@ -24,7 +24,7 @@ function event(name:EventName,data:Record<string,string|number|boolean>={}):void
 function save():void {if(!training())store.write({save_version:1,stats,active:retained&&resultId?snapshot(race,resultId,runId,reported):null});}
 function mode(next:string):void {scheduler.cancel();gate.transition();state=next;app.dataset.state=next;render();}
 function show(html:string,next:string):void {
-  mode(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>';
+  mode(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';
   if(!menu.open)menu.show();menu.scrollTop=0;menu.querySelector<HTMLElement>('h2')?.setAttribute('tabindex','-1');menu.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});
   el('menu-portal').onclick=()=>{if(retained&&!race.complete)pause(false);event('return_to_portal',{source:state});};
 }

@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-09T15:16:38.716Z",
+  "steps": [
+    {
+      "name": "delayed-save-before-portal",
+      "touch": false,
+      "revision": 2,
+      "mined": 1,
+      "placed": 1,
+      "result": "PASS"
+    },
+    {
+      "name": "reload-and-return-to-surface",
+      "touch": false,
+      "result": "PASS"
+    },
+    {
+      "name": "save-failure-stays-in-world-then-keyboard-exit",
+      "touch": false,
+      "result": "PASS"
+    },
+    {
+      "name": "delayed-save-before-portal",
+      "touch": true,
+      "revision": 3,
+      "mined": 3,
+      "placed": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "reload-and-return-to-surface",
+      "touch": true,
+      "result": "PASS"
+    },
+    {
+      "name": "save-failure-stays-in-world-then-keyboard-exit",
+      "touch": true,
+      "result": "PASS"
+    }
+  ],
+  "minedTargets": [
+    {
+      "x": 64,
+      "y": 48,
+      "z": 66,
+      "block": 1,
+      "normal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "distance": 2.2095229493417397
+    }
+  ],
+  "placedTargets": [
+    {
+      "x": 61,
+      "y": 48,
+      "z": 71,
+      "block": 1,
+      "normal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "distance": 4.597385208575069
+    }
+  ],
+  "errors": [],
+  "provenance": "Ordinary PC/touch mining and placement with read-only debug observation; injected IndexedDB completion delay/failure are explicitly synthetic. Disposable local saves.",
+  "placementRepositions": 0,
+  "result": "PASS"
+}

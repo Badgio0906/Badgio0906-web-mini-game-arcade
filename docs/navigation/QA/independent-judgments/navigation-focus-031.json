@@ -1,0 +1,25 @@
+{
+  "finding_id": "navigation-focus-031",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "Source confirms Input.keyDown only excludes editable fields and consumes Space/WASD/arrows on an anchor. Focused return must not trigger jumping or movement; this requires a runtime regression check after the shared guard. This observation requires correction but does not by itself establish inability to play/return or major data loss; native Enter return is separately preserved.",
+  "evidence": [
+    "src/games/game031/Input.ts:226",
+    "public/arcade-navigation.js",
+    "docs/navigation/QA/navigation-focus-031.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "src/games/game031/Input.ts:226",
+      "public/arcade-navigation.js",
+      "docs/navigation/QA/navigation-focus-031.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

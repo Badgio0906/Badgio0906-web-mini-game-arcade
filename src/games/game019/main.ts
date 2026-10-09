@@ -101,7 +101,7 @@ function completePractice(): void {
 }
 function showResult(): void {
   const s = run.snapshot(); setState('result');
-  menu.innerHTML = `<span class="eyebrow">WELL → SEA → SPACE</span><h2>宇宙だ！ ……次はどこ？</h2><p class="result-height">${fmt(s.maxHeight)}</p><p>TOTAL FALL ${fmt(s.totalFall)}<br>転落 ${s.falls}回 ／ ${s.jumps}ジャンプ<br>TIME ${Math.floor(s.time / 60)}:${String(Math.floor(s.time % 60)).padStart(2, '0')} ／ BEST ${fmt(best / 10)}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">もう一度、井戸から</button><button id="title-button" type="button">タイトルへ</button><a href="./index.html">ゲームセンターへ</a></div>`;
+  menu.innerHTML = `<span class="eyebrow">WELL → SEA → SPACE</span><h2>宇宙だ！ ……次はどこ？</h2><p class="result-height">${fmt(s.maxHeight)}</p><p>TOTAL FALL ${fmt(s.totalFall)}<br>転落 ${s.falls}回 ／ ${s.jumps}ジャンプ<br>TIME ${Math.floor(s.time / 60)}:${String(Math.floor(s.time % 60)).padStart(2, '0')} ／ BEST ${fmt(best / 10)}</p><div class="menu-actions"><button id="retry-button" class="primary" type="button">もう一度、井戸から</button><button id="title-button" type="button">タイトルへ</button><a href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></div>`;
   recordSession.mount(menu);
   el('retry-button').onclick = () => { telemetry.trackEvent('retry'); beginRun('retry'); }; el('title-button').onclick = title;
 }

@@ -185,12 +185,14 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     if (!header) return;
     const existing = header.querySelector<HTMLAnchorElement>('.arcade-portal-back,#portal-link');
     if (existing) {
-      existing.classList.add('arcade-portal-back');
+      existing.classList.add('arcade-portal-back', 'arcade-portal-return');
+      if (existing.textContent !== '← ゲーム一覧へ') existing.textContent = '← ゲーム一覧へ';
+      if (existing.getAttribute('href') !== `${import.meta.env.BASE_URL}index.html`) existing.href = `${import.meta.env.BASE_URL}index.html`;
       // Game011 owns telemetry on its existing portal link.
       if (existing.id !== 'portal-link' && !existing.dataset.arcadeNavInstalled) { existing.dataset.arcadeNavInstalled = 'true'; existing.addEventListener('click', () => telemetry.trackEvent('return_to_portal'), options); }
       return;
     }
-    const back = document.createElement('a'); back.className = 'arcade-portal-back'; back.href = `${import.meta.env.BASE_URL}index.html`; back.textContent = '← ゲームセンターへ';
+    const back = document.createElement('a'); back.className = 'arcade-portal-back arcade-portal-return'; back.href = `${import.meta.env.BASE_URL}index.html`; back.textContent = '← ゲーム一覧へ';
     back.dataset.arcadeNavInstalled = 'true'; back.addEventListener('click', () => telemetry.trackEvent('return_to_portal'), options); header.prepend(back);
   }
   if (!arcadeConfig.creditsEnabled) document.body.classList.add('arcade-unlimited');

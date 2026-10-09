@@ -1,0 +1,13 @@
+{
+  "finding_id": "navigation-initialization-wait",
+  "problem": "Game001 navigation never completes browser initialization",
+  "expected": "Game001 must load and respond to normal navigation",
+  "observed": [
+    "Two browser runs timed out waiting for DOMContentLoaded at 30000ms",
+    "Vite returned the HTML successfully"
+  ],
+  "unknown": [
+    "Cause of unresponsive browser document"
+  ],
+  "provenance": "actual-browser-initial-candidate-observation"
+}

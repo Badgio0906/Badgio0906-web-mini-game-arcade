@@ -52,7 +52,7 @@ function mode(next: State): void {
 function focusKey(): void { keyboard.querySelector<HTMLButtonElement>('[aria-disabled="false"]')?.focus({ preventScroll: true }); }
 function show(html: string, next: State): void {
   mode(next);
-  menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>';
+  menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';
   if (!menu.open) menu.show();
   el('menu-portal-link').onclick = returnToPortal;
   // Native opening may scroll to the first action; show the heading/answer first.

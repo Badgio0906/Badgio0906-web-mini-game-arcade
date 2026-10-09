@@ -4,3 +4,5 @@
 @media(max-width:360px){main{padding:15px 0}.hud{gap:4px;margin-inline:5px}.hud>span{gap:3px}.hud strong{font-size:12px}.hud{font-size:10px}header{padding:10px}.intro h1{font-size:27px}.board-panel{padding:8px 2px 0}#board{gap:1px}.column{padding:4px 0 5px;gap:4px}.slot{font-size:15px}.controls button{padding:9px 11px}dialog{padding:19px}.settings{padding:12px}}
 @media(max-height:480px) and (min-width:650px){main{padding-top:12px}.intro{margin-bottom:10px}.intro h1{font-size:26px}.eyebrow{display:none}#board-caption{margin:4px 0 10px}.play-area{grid-template-columns:minmax(0,430px) 1fr;gap:25px}.hud{max-width:430px}.board-panel{padding:7px 9px 0}.column{gap:4px;padding-top:3px;padding-bottom:5px}.slot{font-size:19px}.board-base{padding:7px}.guide h2{font-size:20px}.guide p{margin-bottom:9px}.sprig{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Keep the normal-flow header available above tall title/pause menus. */
+dialog#menu{top:calc((100dvh + 65px - 64px)/2);max-height:calc(100dvh - 65px - 64px - 16px)}

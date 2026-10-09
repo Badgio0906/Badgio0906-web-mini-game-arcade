@@ -1,0 +1,15 @@
+{
+  "finding_id": "navigation-compiled-probe-selectors",
+  "problem": "Compiled menu probe cannot locate Game028 explanation/practice controls",
+  "expected": "Compiled probe opens the ordinary explanation/practice controls for each selected game",
+  "observed": [
+    "All eight Game028 explanation/practice cases time out waiting for #explain-button or #practice-button",
+    "Existing Game028 title source uses IDs explain and practice",
+    "Other40 cases finish with return success"
+  ],
+  "unknown": [],
+  "evidence": [
+    "docs/navigation/QA/menus-compiled/REPORT.json"
+  ],
+  "provenance": "actual-compiled-browser-probe-failure"
+}

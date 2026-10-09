@@ -46,7 +46,7 @@ function persist(): void { if (training || !current)
 function abandon(reason: 'quit' | 'restart'): void { if (current) {
     track('run_end', { outcome: reason, shots: match.shots.reduce((a, b) => a + b, 0), fouls: match.fouls.reduce((a, b) => a + b, 0) });
 } current = null; saved.snapshot = null; store.write(saved); invalidate(); }
-function show(html: string, next: Phase): void { setPhase(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>'; if (!menu.open)
+function show(html: string, next: Phase): void { setPhase(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>'; if (!menu.open)
     menu.show(); menu.scrollTop = 0; menu.querySelector<HTMLElement>('h2')?.setAttribute('tabindex', '-1'); menu.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true }); el('menu-portal').onclick = portal; }
 function title(): void {
     abandon('quit');

@@ -2,15 +2,15 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" />
     <meta name="theme-color" content="#fff3df" />
     <meta name="description" content="左右にひょいっと、ぶつからず出社せよ！3レーンの街を歩いて1000m先のオフィスを目指す、無料ブラウザゲーム WORKDAY DODGE。PC・スマートフォン対応。" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2334594b'/%3E%3Crect x='13' y='26' width='38' height='26' rx='4' fill='%23f4c678'/%3E%3Cpath d='M24 26v-8h16v8' fill='none' stroke='%23f4c678' stroke-width='5'/%3E%3Cpath d='M13 37h38' stroke='%2334594b' stroke-width='3'/%3E%3C/svg%3E" />
     <title>ゆううつな月曜日 ～WORKDAY DODGE～</title>
-  </head>
+  <link rel="stylesheet" href="./arcade-navigation.css"/><script src="./arcade-navigation.js"></script></head>
   <body>
     <div id="app" data-state="title">
-      <header class="topbar">
+      <header class="topbar arcade-game-header">
         <button class="brand" id="brand-button" type="button" aria-label="ゆううつな月曜日 タイトルに戻る"><span class="brand-case" aria-hidden="true">▰</span><span class="brand-title">ゆううつな月曜日<small>WORKDAY DODGE</small></span></button>
         <div class="top-actions"><span class="credit-label">CREDIT <strong id="credit-count">3</strong><span id="credit-dots" aria-hidden="true">● ● ●</span></span><button id="mute-button" type="button" aria-label="音声をミュート" title="音声">音 ON</button></div>
       </header>
@@ -31,7 +31,7 @@
           <div class="game-footer"><span id="hint">← → / A D ・ 左右をタップ</span><button id="how-button" type="button">遊び方</button></div>
         </section>
       </main>
-      <footer class="site-footer"><span>WORKDAY DODGE</span><span>ひと通勤、約 1〜2 分。</span><a href="/">ORBIT SHIFT →</a></footer>
+      <footer class="site-footer"><span>WORKDAY DODGE</span><span>ひと通勤、約 1〜2 分。</span><a href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></footer>
     </div>
     <dialog id="how-dialog"><button id="close-how-button" class="dialog-close" type="button" aria-label="説明を閉じる">×</button><span class="eyebrow">HOW TO COMMUTE</span><h2>前を見て、ひょいっと。</h2><p><b>← → / A D</b> または <b>画面の左・右をタップ</b>で、1 レーンずつ移動。</p><p>前から来る人を避けよう。<b>黄色い矢印</b>は、相手の次の動き。2 人組にも、必ず通れる道がある。</p><p>1000 m で <b>出勤するか、旅に出るか</b>を選択。<br />旅の2000 mでは、安全に終了・徒歩・バイクを選べます。<b>バイクは2倍速。</b><br />ぶつかると CREDIT を 1 消費。0 になったら開発版 Reward Stub で +3 CREDIT。</p><button id="how-ok-button" class="primary" type="button">わかった！</button></dialog>
     <script type="module" src="/src/games/game002/main.ts"></script>

@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-09T15:13:03.108Z",
+  "expectedCommit": "cf06ae936b97fec591123bbf51bb6ff4817e349a",
+  "provenance": "Local HTTP compiled candidate GET resources (source FINAL_SOURCE_MANIFEST), disposable native/browser saves, ordinary Enter/Space/tap/click. Original readonly013 phase and opt-in014 qa observer only; no forced game state. Phone emulation, not physical devices or human enjoyment. Consent denied, webdriver retained, every POST blocked.",
+  "checks": [
+    {
+      "name": "native finalized normal result game012-desktop",
+      "pass": true,
+      "value": 0
+    }
+  ],
+  "runs": [],
+  "posts": 0,
+  "errors": [],
+  "consoleErrors": [],
+  "status": "FAIL",
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('記録共有：準備中', { exact: true }) to be visible\u001b[22m\n",
+  "failureState": {
+    "messages": [
+      {
+        "channel": "game100-native-record",
+        "schema": 1,
+        "game_id": "game012",
+        "kind": "legacy_best",
+        "ruleset_id": "1",
+        "mode_id": "normal",
+        "practice": false,
+        "value": -1
+      },
+      {
+        "channel": "game100-native-record",
+        "schema": 1,
+        "game_id": "game012",
+        "kind": "start",
+        "ruleset_id": "1",
+        "mode_id": "normal",
+        "practice": false
+      },
+      {
+        "channel": "game100-native-record",
+        "schema": 1,
+        "game_id": "game012",
+        "kind": "result",
+        "ruleset_id": "1",
+        "mode_id": "normal",
+        "practice": false,
+        "value": 0
+      }
+    ]
+  }
+}

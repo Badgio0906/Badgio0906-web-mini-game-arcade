@@ -1,0 +1,33 @@
+{
+  "finding_id": "navigation-pointer-guards",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "Window-capture pointer suppression prevents game026 gate.down/release and game031 menuPress from seeing a fresh gesture. Their capture click validators then reject physical clicks. Initial browser reports reproduce this blocker. Current document-bubble initiating-event suppression permits validators to run, and release propagation preserves window cleanup. Game031 six-scenario save031-final retest passes; latest frozen game026/031 retests must be checked before a complete resolution verdict.",
+  "evidence": [
+    "public/arcade-navigation.js",
+    "src/games/game026/main.ts:108",
+    "src/games/game031/main.ts:70",
+    "src/games/game006/main.ts:229",
+    "docs/navigation/QA/portal/REPORT.json",
+    "docs/navigation/QA/save031/REPORT.json",
+    "docs/navigation/QA/save031-final/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "public/arcade-navigation.js",
+      "src/games/game026/main.ts:108",
+      "src/games/game031/main.ts:70",
+      "src/games/game006/main.ts:229",
+      "docs/navigation/QA/portal/REPORT.json",
+      "docs/navigation/QA/save031/REPORT.json",
+      "docs/navigation/QA/save031-final/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

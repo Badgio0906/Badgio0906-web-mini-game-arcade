@@ -1,0 +1,32 @@
+{
+  "finding_id": "navigation-safe-area-top",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The previous source uses viewport-fit=cover in26 active native pages, while common header styling reserves only horizontal safe insets. This fails to address the explicit top-cutout requirement. No actual physical cutout failure is observed, so the source observation alone does not establish a major release-blocking risk. Browser-native viewport-fit=contain is a focused correction because the browser fits both layout and100dvh content inside the safe viewport, avoiding a header-only margin that could push bottom controls outside fixed-height layouts. The added normal-flow top inset fallback is0 on ordinary viewports. Physical notch behavior remains unverified.",
+  "evidence": [
+    "docs/navigation/QA/navigation-safe-area-top.json",
+    "public/arcade-navigation.css",
+    "game001.html",
+    "game022.html",
+    "game031.html",
+    "src/games/game019/style.css",
+    "src/games/game031/style.css"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected old top-safe-inset omission, viewport-fit declarations, fixed-height main/canvas budgets and the contain correction. No physical notch test or runtime editing claimed.",
+    "evidence": [
+      "public/arcade-navigation.css",
+      "game001.html",
+      "game031.html",
+      "src/games/game018/style.css",
+      "src/games/game019/style.css",
+      "src/games/game031/style.css"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

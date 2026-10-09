@@ -1,0 +1,24 @@
+{
+  "finding_id": "navigation-menu-028",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The observed phone explanation panel covers the return anchor center, preventing the required header navigation. Current CSS budgets dialog height/position below a 60px header and above the 64px consent footer, giving the long explanation a scrollable region. Inspect targeted portrait/landscape hit-testing and actual return before resolution; title/practice captures alone are insufficient.",
+  "evidence": [
+    "docs/navigation/QA/navigation-menu-028.json",
+    "src/games/game028/style.css",
+    "docs/navigation/QA/interaction-mobile-completion/failure.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected header and dialog breakpoint geometry and the actual browser finding; narrow explanation browser checks are being executed separately. No runtime edits.",
+    "evidence": [
+      "src/games/game028/style.css",
+      "docs/navigation/QA/navigation-menu-028.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

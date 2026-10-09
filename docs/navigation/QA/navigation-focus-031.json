@@ -1,0 +1,13 @@
+{
+  "finding_id": "navigation-focus-031",
+  "problem": "Focused portal navigation receives gameplay shortcuts",
+  "expected": "Focused portal link keyboard input must not jump/move/place blocks",
+  "observed": [
+    "Game031 Input.keyDown handles Space/Arrow/WASD from focused anchor",
+    "Input guard only excludes INPUT/TEXTAREA/SELECT"
+  ],
+  "unknown": [
+    "Runtime effect across play states"
+  ],
+  "provenance": "actual-source-inspection-before-navigation-change"
+}

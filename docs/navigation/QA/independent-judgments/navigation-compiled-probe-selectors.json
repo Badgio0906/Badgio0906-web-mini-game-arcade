@@ -1,0 +1,26 @@
+{
+  "finding_id": "navigation-compiled-probe-selectors",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "All eight028 explanation/practice timeout failures request nonexistent #explain-button/#practice-button while existing title source uses #explain/#practice. This is a probe selector mismatch, not evidence that the ordinary product controls are missing or inaccessible. Corrected menus.mjs aliases both naming schemes and retains ordinary clicks, four widths, actual return and48-case completion validation. The failed report is retained separately and the corrected compiled probe must finish before acceptance.",
+  "evidence": [
+    "docs/navigation/QA/navigation-compiled-probe-selectors.json",
+    "docs/navigation/QA/menus-compiled/REPORT.json",
+    "tests/navigation/menus.mjs",
+    "src/games/game028/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the compiled probe selectors against actual game028 title control IDs; verified corrected aliases and48-case complete-result guard. No product/runtime changes or claim of running this compiled probe.",
+    "evidence": [
+      "tests/navigation/menus.mjs",
+      "src/games/game028/main.ts",
+      "docs/navigation/QA/navigation-compiled-probe-selectors.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

@@ -16,11 +16,13 @@ const gallery = document.getElementById('game-gallery')!;
 let cardPosition = 0;
 for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrder)) {
   const card = document.createElement('article');
-  const imageLink = document.createElement('a'), playLink = document.createElement('a');
-  imageLink.className = 'game-image-link'; playLink.className = 'game-copy-link';
-  imageLink.href = playLink.href = game.route;
+  const imageLink = document.createElement('a'), playLink = document.createElement('a'), copyLink = document.createElement('a');
+  imageLink.className = 'game-image-link'; playLink.className = 'game-play'; copyLink.className = 'game-copy-link';
+  imageLink.href = playLink.href = copyLink.href = game.route;
+  playLink.textContent = '▶ PLAY — ゲームを遊ぶ';
   imageLink.tabIndex = -1; imageLink.setAttribute('aria-hidden', 'true');
   playLink.setAttribute('aria-label', `${game.titleJa}を遊ぶ`);
+  copyLink.setAttribute('aria-label', `${game.titleJa}を遊ぶ`);
   card.className = 'game-card'; card.dataset.gameId = game.id; card.dataset.cardPosition = String(++cardPosition);
   card.setAttribute('aria-label', game.titleJa);
   card.addEventListener('click', event => {
@@ -37,10 +39,9 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   const title = document.createElement('h2'); title.textContent = game.titleJa;
   const english = document.createElement('span'); english.className = 'game-english'; english.textContent = game.titleEn;
   const tagline = document.createElement('p'); tagline.textContent = game.tagline;
-  const play = document.createElement('span'); play.className = 'game-play'; play.innerHTML = 'PLAY <span aria-hidden="true">↗</span>';
   const tags = document.createElement('ul'); tags.className = 'game-tags'; tags.setAttribute('aria-label', 'ゲームのタグ');
   for (const tag of game.tags.slice(0, 4)) { const badge = document.createElement('li'); badge.className = 'game-tag'; badge.dataset.tagId = tag.id; badge.textContent = tag.label; tags.append(badge); }
-  content.append(title, english, tagline, tags, play); imageLink.append(imageFrame); playLink.append(content); card.append(imageLink, playLink); gallery.append(card);
+  content.append(title, english, tagline, tags); imageLink.append(imageFrame); copyLink.append(content); card.append(imageLink, playLink, copyLink); gallery.append(card);
 }
 document.getElementById('game-count')!.textContent = String(gameCatalog.length);
 installPortalRecords(gallery);

@@ -1,0 +1,18 @@
+{
+  "finding_id": "navigation-safe-area-top",
+  "problem": "Cover-mode headers have no top safe-area allowance",
+  "expected": "Shared top-left return stays outside display cutouts while retaining normal-flow header space",
+  "observed": [
+    "26 active native HTML files declare viewport-fit=cover",
+    "Shared header rule reserves safe-area-inset-left and right only",
+    "No native game style contains safe-area-inset-top"
+  ],
+  "unknown": [
+    "Physical device cutout geometry",
+    "Whether additional top allowance shifts long nonmodal menu clearance"
+  ],
+  "evidence": [
+    "public/arcade-navigation.css"
+  ],
+  "provenance": "actual-final-source-inspection; no physical-cutout observation"
+}

@@ -24,7 +24,7 @@ let pointer:{id:number;epoch:number}|null=null;
 function event(action:string):void {if(active&&!practice)telemetry.trackEvent('specific_game_events',{event:action,depth:Math.round(model.state.depth),score:model.state.score,items:model.state.bag.length,casts:model.state.casts});}
 function save():void {if(active&&!practice){saved.model=structuredClone(model.state);saved.runId=runId;saved.resultId=resultId;store.write(saved);}}
 function state(next:string):void {epoch.next();keys.clear();pointer=null;accumulator=0;last=0;screen=next;app.dataset.state=next;render();}
-function show(html:string,next:string):void {state(next);menu.innerHTML=html+'<p><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=()=>abandon(true);menu.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});menu.scrollTop=0;}
+function show(html:string,next:string):void {state(next);menu.innerHTML=html+'<p><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=()=>abandon(true);menu.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});menu.scrollTop=0;}
 function closeMenu():void{if(menu.open)menu.close();}
 function render():void {
   const s=model.state;draw(context,model,practice);el('depth').textContent=`${Math.round(s.depth)} m`;el('bag').textContent=`${s.bag.length} / ${s.capacity}`;el('score').textContent=String(s.score);el('balance').textContent=String(s.balance);el('best').textContent=String(saved.best);

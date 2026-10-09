@@ -25,7 +25,7 @@ function trainingEvent(name:EventName,data:Record<string,string|number|boolean>=
 function persist():void { if(training)return; saved=captureSave(saved,snake,speed,{remainder:clock.remainder,elapsed:clock.elapsed});store.write(saved); }
 function clearInput():void {held.clear();snake={...snake,queue:[]};}
 function setPhase(next:Phase):void {phase=next;app.dataset.state=next;el<HTMLButtonElement>('pause-button').disabled=!active();el<HTMLButtonElement>('restart-button').disabled=!active();el<HTMLButtonElement>('help-button').disabled=!active();for(const b of document.querySelectorAll<HTMLButtonElement>('[data-dir]')) b.disabled=!active(); if(active()){if(menu.open)menu.close();clock.resume();}else{clock.pause();clearInput();} render();}
-function show(html:string,next:Phase):void {setPhase(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=portal; menu.querySelector<HTMLButtonElement>('button')?.focus({preventScroll:true});}
+function show(html:string,next:Phase):void {setPhase(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=portal; menu.querySelector<HTMLButtonElement>('button')?.focus({preventScroll:true});}
 function draw():void {
   const size=Math.max(1,Math.floor(canvas.getBoundingClientRect().width*(devicePixelRatio||1)));
   if(canvas.width!==size){canvas.width=size;canvas.height=size;}

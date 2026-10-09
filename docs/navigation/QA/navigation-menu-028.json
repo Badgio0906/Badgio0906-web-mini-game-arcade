@@ -1,0 +1,20 @@
+{
+  "finding_id": "navigation-menu-028",
+  "problem": "Phone explanation overlaps header return",
+  "expected": "Portal return remains visible and clickable during explanation",
+  "observed": [
+    "390x844 header anchor at x8 y5 height44",
+    "Explanation dialog covers lower portion of header anchor and center hit is false"
+  ],
+  "unknown": [
+    "Short landscape and narrow phone explanation state"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/navigation/QA/interaction-mobile-completion/failure.png"
+  ],
+  "provenance": "actual-browser-final-candidate-observation"
+}

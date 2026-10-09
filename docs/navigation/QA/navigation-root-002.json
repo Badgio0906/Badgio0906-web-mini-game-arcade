@@ -1,0 +1,12 @@
+{
+  "finding_id": "navigation-root-002",
+  "problem": "Footer return points to domain root",
+  "expected": "All portal-return links must resolve under repository subpath",
+  "observed": [
+    "game002.html footer anchor href is / and text ORBIT SHIFT \u2192"
+  ],
+  "unknown": [
+    "Served subpath behavior"
+  ],
+  "provenance": "actual-source-inspection-before-navigation-change"
+}

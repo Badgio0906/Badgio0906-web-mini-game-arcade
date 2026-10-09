@@ -10,9 +10,9 @@
 <style>
 .legacy-play-area{position:relative;overflow:auto}.legacy-start{box-sizing:border-box;min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff2d7;font:16px/1.7 system-ui,'Yu Gothic',sans-serif;color:#263949}.legacy-card{max-width:640px;width:100%;text-align:center}.legacy-card h1{font-size:clamp(25px,5vw,38px);line-height:1.4}.legacy-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.legacy-card button{min-width:110px;min-height:48px;padding:9px 15px;border:1px solid #263949;border-radius:8px;background:#fff7e9;font:inherit;color:inherit;touch-action:manipulation}.legacy-card .primary{background:#263949;color:#fff}.legacy-card button:focus-visible{outline:3px solid #bc573e;outline-offset:3px}.legacy-sample{border:2px solid #263949;padding:20px;margin:15px 0;font-size:26px;background:#fff}.legacy-feedback{min-height:54px}.legacy-pads{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.legacy-pads button{min-width:0}.legacy-pads button.lit{background:#f5bc44}.legacy-native[hidden],.legacy-start[hidden]{display:none}#legacy-menu-return{margin-left:auto;min-height:44px;padding:8px;border:1px solid #263949;border-radius:6px;background:transparent;color:inherit;font:inherit}#legacy-game-frame[hidden]{display:none}@media(max-height:450px){.legacy-start{padding:10px}.legacy-card h1{margin:6px}.legacy-card p{margin:8px}.legacy-sample{padding:8px;margin:8px 0}.legacy-feedback{min-height:25px}}
 </style>
-</head>
+<link rel="stylesheet" href="../../arcade-navigation.css"/><script src="../../arcade-navigation.js"></script></head>
 <body class="legacy-page" data-game="game014">
-  <header class="legacy-navigation"><a id="legacy-portal-return" href="../../index.html" target="_top">← ゲームセンターへ</a><button id="legacy-menu-return" type="button" hidden>遊び方・練習</button></header>
+  <header class="legacy-navigation arcade-game-header"><a id="legacy-portal-return" class="arcade-portal-return" href="../../index.html" target="_top">← ゲーム一覧へ</a><button id="legacy-menu-return" type="button" hidden>遊び方・練習</button></header>
   <main class="legacy-play-area"><section id="legacy-start" class="legacy-start" aria-label="開始方法を選択"></section><iframe id="legacy-game-frame" hidden title="指ハートチャレンジのゲーム画面" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></main>
 
 <script>

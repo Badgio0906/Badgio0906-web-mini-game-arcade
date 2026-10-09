@@ -1,0 +1,13 @@
+{
+  "finding_id": "navigation-menu-021",
+  "problem": "Title menu intercepts header return",
+  "expected": "Left-upper header return must be clickable from the title menu",
+  "observed": [
+    "320x720 header return rect x8 y10 width116 height44",
+    "elementFromPoint at return center resolves to dialog#menu"
+  ],
+  "unknown": [
+    "Other state and viewport clipping"
+  ],
+  "provenance": "actual-browser-initial-candidate-observation"
+}

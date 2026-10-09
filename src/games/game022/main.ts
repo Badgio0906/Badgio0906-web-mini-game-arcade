@@ -49,7 +49,7 @@ function mode(next: State): void {
  sync();
 }
 function show(html: string, next: State): void {
- mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>';
+ mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';
  if (!menu.open) menu.show();
  el('menu-portal-link').onclick = returnToPortal;
  // A nonmodal dialog and inert board leave shared consent and privacy reachable.

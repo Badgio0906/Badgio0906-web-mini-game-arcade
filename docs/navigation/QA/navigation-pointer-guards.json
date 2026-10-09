@@ -1,0 +1,15 @@
+{
+  "finding_id": "navigation-pointer-guards",
+  "problem": "Physical return clicks do not leave some games",
+  "expected": "Pointer return must execute native save/exit behavior once",
+  "observed": [
+    "Game026 desktop PLAY launches and single launch/card telemetry succeed; return wait times out at12000ms",
+    "Game031 after ordinary mine/place and header click remains in playing state; return wait times out15000ms",
+    "Header is visible and focused in captured screenshots"
+  ],
+  "unknown": [
+    "Which event handlers reject the return gesture",
+    "Keyboard versus pointer differences"
+  ],
+  "provenance": "actual-browser-initial-candidate-observation"
+}

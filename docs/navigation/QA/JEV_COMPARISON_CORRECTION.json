@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-09T15:25:23.619326+00:00",
+  "finding_id": "navigation-focus-031",
+  "reason": "Reviewer narrowed release risk after the initial annotation had already been recorded. Preserve original log and capture revised judgment as follow-up.",
+  "initial_independent_release_risk": false,
+  "corrected_independent_release_risk": false,
+  "corrected_rationale": "Source confirms Input.keyDown only excludes editable fields and consumes Space/WASD/arrows on an anchor. Focused return must not trigger jumping or movement; this requires a runtime regression check after the shared guard. This observation requires correction but does not by itself establish inability to play/return or major data loss; native Enter return is separately preserved.",
+  "log_preserved": true,
+  "codex_false_pass_unchanged": false,
+  "release_risk_miss_unchanged": false,
+  "human_judgment": null
+}

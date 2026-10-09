@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain"/>
   <meta name="theme-color" content="#eaf0e7"/>
   <meta name="description" content="すっきり牌合わせ ～PAIR TILE～。同じ柄の自由な牌をひと組ずつ。時間制限なし、ヒント・戻す・並べ替えで落ち着いて遊べる100ガレの牌合わせ。"/>
   <title>すっきり牌合わせ ～PAIR TILE～ | 100ガレ ～GAME100 GARAGE～</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='4' width='48' height='56' rx='9' fill='%23fffaf0' stroke='%23336c66' stroke-width='4'/%3E%3Ccircle cx='32' cy='30' r='14' fill='none' stroke='%23336c66' stroke-width='4'/%3E%3Ccircle cx='32' cy='30' r='3' fill='%23336c66'/%3E%3C/svg%3E"/>
-</head>
+<link rel="stylesheet" href="./arcade-navigation.css"/><script src="./arcade-navigation.js"></script></head>
 <body>
 <div id="app" data-state="title">
-  <header><a id="portal-link" href="./index.html">← 100ガレへ</a><span class="brand">PAIR TILE<small>すっきり牌合わせ</small></span><nav><button id="mute-button" type="button">音 ON</button><button id="pause-button" type="button" disabled>休憩</button></nav></header>
+  <header class="arcade-game-header"><a id="portal-link" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a><span class="brand">PAIR TILE<small>すっきり牌合わせ</small></span><nav><button id="mute-button" type="button">音 ON</button><button id="pause-button" type="button" disabled>休憩</button></nav></header>
   <main>
     <section class="intro"><p class="eyebrow">ひと組ずつ、すっきり。</p><h1>すっきり牌合わせ</h1><p id="board-caption">時間を気にせず、形を見つけよう。</p></section>
     <section class="stats" aria-label="盤面の状態"><div><span>残りの牌</span><strong id="remaining-value">24</strong></div><div><span>この盤面のペア</span><strong id="pairs-value">0</strong></div><div><span>クリアした盤面</span><strong id="clear-value">0</strong></div></section>

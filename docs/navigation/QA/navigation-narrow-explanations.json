@@ -1,0 +1,21 @@
+{
+  "finding_id": "navigation-narrow-explanations",
+  "problem": "Narrow explanation dialogs intercept portal return in two games",
+  "expected": "The header return stays visible and clickable in explanation at320 pixels",
+  "observed": [
+    "Game023 at320x720: return x8 y10 h44; dialog x14 y16 h688; center hit resolves to dialog#menu",
+    "Game024 at320x720: return x8 y8 h44; dialog x14 y15 h690; center hit resolves to dialog#menu",
+    "Other54 cases in the independent narrow suite report no coverage failure"
+  ],
+  "unknown": [
+    "Game023 and024 header/menu breakpoint height relationships"
+  ],
+  "viewport": {
+    "width": 320,
+    "height": 720
+  },
+  "evidence": [
+    "docs/navigation/QA/explanation-narrow/REPORT.json"
+  ],
+  "provenance": "actual-independent-browser-narrow-explanation-observation"
+}

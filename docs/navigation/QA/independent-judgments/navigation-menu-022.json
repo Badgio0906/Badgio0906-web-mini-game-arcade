@@ -1,0 +1,26 @@
+{
+  "finding_id": "navigation-menu-022",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The phone explanation dialog physically covers the header anchor and mobile CSS orders the return after the brand. This is a product geometry/hit-testing failure of required return navigation. Source correction puts the return first and budgets menu height/position between header and consent footer at the applicable breakpoints. The long explanation state still requires targeted final browser verification; practice/title success alone is insufficient.",
+  "evidence": [
+    "docs/navigation/QA/navigation-menu-022.json",
+    "docs/navigation/QA/interaction-release/failure.png",
+    "src/games/game022/style.css",
+    "docs/navigation/QA/interaction-mobile-completion/practice-game022-390.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently read mobile header/dialog CSS and reviewed actual initial failure plus corrected phone practice screenshot; requested targeted explanation state regression confirmation. No runtime edits or independent browser execution claimed.",
+    "evidence": [
+      "src/games/game022/style.css",
+      "docs/navigation/QA/interaction-release/failure.png",
+      "docs/navigation/QA/interaction-mobile-completion/practice-game022-390.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

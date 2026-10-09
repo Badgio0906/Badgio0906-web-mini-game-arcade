@@ -1,0 +1,25 @@
+{
+  "finding_id": "navigation-menu-027",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The tall title dialog in short landscape covered the header return center. The changed dialog inset/max-height reserves header and footer space; source and final layout checks support the correction. Important return navigation would remain unavailable at that viewport without the fix.",
+  "evidence": [
+    "src/games/game027/style.css",
+    "docs/navigation/QA/navigation-menu-027.json",
+    "docs/navigation/QA/layout-final/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "src/games/game027/style.css",
+      "docs/navigation/QA/navigation-menu-027.json",
+      "docs/navigation/QA/layout-final/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

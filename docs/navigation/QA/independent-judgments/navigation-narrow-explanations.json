@@ -1,0 +1,28 @@
+{
+  "finding_id": "navigation-narrow-explanations",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The independently executed56-case narrow suite had54 passes and actual023/024320 explanation dialog obstruction failures. Anchor height is44px but its center hits dialog#menu. This is product dialog sizing/placement, not an unavailable selector. The source correction reserves72px/68px header budgets respectively plus64px consent footer and16px gap. A new complete fixed-source suite is required before accepting resolution.",
+  "evidence": [
+    "docs/navigation/QA/explanation-narrow/REPORT.json",
+    "docs/navigation/QA/explanation-narrow/game023-320-explanation.png",
+    "docs/navigation/QA/explanation-narrow/game024-320-explanation.png",
+    "src/games/game023/style.css",
+    "src/games/game024/style.css"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Executed independent Chromium56-case explanation/header hit/actual return suite, preserving both failures; inspected narrow CSS fixes and started a separate complete-source rerun. No runtime edits.",
+    "evidence": [
+      "docs/navigation/QA/explanation-narrow/review.mjs",
+      "docs/navigation/QA/explanation-narrow/REPORT.json",
+      "src/games/game023/style.css",
+      "src/games/game024/style.css"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

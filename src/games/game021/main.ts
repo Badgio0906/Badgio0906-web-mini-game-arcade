@@ -36,7 +36,7 @@ function screen(next: Screen): void {
 }
 function show(html: string, next: Screen): void {
   screen(next);
-  menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html">← 100ガレへ</a></p>';
+  menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal-link" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';
   menu.querySelectorAll('button').forEach(button => button.setAttribute('data-game-control', ''));
   el('menu-portal-link').onclick = portal;
   if (!menu.open) menu.show();

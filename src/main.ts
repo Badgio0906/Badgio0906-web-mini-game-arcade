@@ -31,8 +31,8 @@ let controller: OrbitController;
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.innerHTML = `
-  <header class="site-header">
-    <a class="brand" href="./" aria-label="ORBIT SHIFT タイトルへ"><span class="brand-mark" aria-hidden="true">◉</span><span>MINI GAME<br><b>ARCADE</b></span></a>
+  <header class="site-header arcade-game-header">
+    <button type="button" class="brand" aria-label="ORBIT SHIFT ゲーム内タイトルへ"><span class="brand-mark" aria-hidden="true">◉</span><span>MINI GAME<br><b>ARCADE</b></span></button>
     <div class="header-center"><span class="status-dot"></span> FREE TO PLAY <span class="header-divider">/</span> GAME 001</div>
     <div class="edition">ORBIT SHIFT <span>v0.1</span></div>
   </header>
@@ -256,7 +256,7 @@ const input = new InputService(stage, onAction, pauseRun);
 document.addEventListener('visibilitychange', () => { if (document.hidden && state === 'playing') pauseRun(); });
 window.addEventListener('blur', () => { if (state === 'playing') pauseRun(); });
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-document.querySelector<HTMLAnchorElement>('.brand')!.addEventListener('click', event => {
+document.querySelector<HTMLButtonElement>('.brand')!.addEventListener('click', event => {
   event.preventDefault(); if (credits.rewardPending) return;
   recordQuit(); controller.showTitle(); lastResult = undefined; newBest = false; setScreen('title');
 });

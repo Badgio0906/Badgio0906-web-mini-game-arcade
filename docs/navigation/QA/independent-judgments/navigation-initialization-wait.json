@@ -1,0 +1,27 @@
+{
+  "finding_id": "navigation-initialization-wait",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The first candidate assigned existing.textContent unconditionally inside installNavigation, while updateChrome is driven by a subtree childList MutationObserver. The assignment schedules another update even when the text is already correct, explaining document initialization starvation. The current equality guard breaks that feedback loop. A frozen browser rerun is still required to establish recovery.",
+  "evidence": [
+    "src/arcade/onboarding.ts:183",
+    "src/arcade/onboarding.ts:217",
+    "docs/navigation/QA/navigation-initialization-wait.json",
+    "docs/navigation/QA/layout-final/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "src/arcade/onboarding.ts:183",
+      "src/arcade/onboarding.ts:217",
+      "docs/navigation/QA/navigation-initialization-wait.json",
+      "docs/navigation/QA/layout-final/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

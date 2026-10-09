@@ -1,0 +1,362 @@
+{
+  "schema_version": 2,
+  "thresholds": {
+    "codex_candidate": 0.45,
+    "risk_comparison_only": 0.5
+  },
+  "totals": {
+    "entries": 12,
+    "jev_invocations": 12,
+    "api_attempts_known": 12,
+    "dry_runs": 0,
+    "available": 12,
+    "jev_unavailable": 0,
+    "total_input_tokens": 17091,
+    "total_output_tokens": 2592,
+    "total_cost_usd": 0.000717822,
+    "usage_missing": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0
+    },
+    "average_latency_seconds": 0.48180504991666834,
+    "agreement": {
+      "PRIMARY_CAUSE": {
+        "matched": 11,
+        "compared": 12,
+        "rate": 0.9166666666666666
+      },
+      "NEXT_EVIDENCE": {
+        "matched": 3,
+        "compared": 12,
+        "rate": 0.25
+      }
+    },
+    "codex_action_confusion": {
+      "TP": 12,
+      "TN": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "codex_action_below_045": 0,
+    "below_045_independently_reviewed": 0,
+    "below_045_with_actual_problem": 0,
+    "codex_false_pass": 0,
+    "release_risk_miss": 2,
+    "release_risk_compared": 12,
+    "human_routed": 0,
+    "human_routing_observed": 12,
+    "actual_human_actions": 0,
+    "actual_actions_recorded": 12,
+    "human_judgment_recorded": 0,
+    "unreviewed_available": 0
+  },
+  "groups": [
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-browser-final-candidate-observation",
+      "entries": 2,
+      "jev_invocations": 2,
+      "api_attempts_known": 2,
+      "dry_runs": 0,
+      "available": 2,
+      "jev_unavailable": 0,
+      "total_input_tokens": 2922,
+      "total_output_tokens": 432,
+      "total_cost_usd": 0.000122724,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.523938636000139,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 2,
+          "compared": 2,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 2,
+          "rate": 0.5
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 2,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 2,
+      "human_routed": 0,
+      "human_routing_observed": 2,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 2,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-browser-initial-candidate-observation",
+      "entries": 4,
+      "jev_invocations": 4,
+      "api_attempts_known": 4,
+      "dry_runs": 0,
+      "available": 4,
+      "jev_unavailable": 0,
+      "total_input_tokens": 5627,
+      "total_output_tokens": 862,
+      "total_cost_usd": 0.000236334,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.43536723174992176,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 3,
+          "compared": 4,
+          "rate": 0.75
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 4,
+          "rate": 0.25
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 4,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 4,
+      "human_routed": 0,
+      "human_routing_observed": 4,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 4,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-compiled-browser-probe-failure",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1435,
+      "total_output_tokens": 217,
+      "total_cost_usd": 6.027e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.7012489529997765,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-final-source-inspection; no physical-cutout observation",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1437,
+      "total_output_tokens": 217,
+      "total_cost_usd": 6.0354e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.5156015500001558,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-independent-browser-narrow-explanation-observation",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1525,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.405e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.3771814040001118,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "shared",
+      "log_schema_version": 2,
+      "provenance": "actual-source-inspection-before-navigation-change",
+      "entries": 3,
+      "jev_invocations": 3,
+      "api_attempts_known": 3,
+      "dry_runs": 0,
+      "available": 3,
+      "jev_unavailable": 0,
+      "total_input_tokens": 4145,
+      "total_output_tokens": 649,
+      "total_cost_usd": 0.00017409,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.4660941643333369,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 3,
+          "compared": 3,
+          "rate": 1.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 0,
+          "compared": 3,
+          "rate": 0.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 3,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 1,
+      "release_risk_compared": 3,
+      "human_routed": 0,
+      "human_routing_observed": 3,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 3,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    }
+  ],
+  "limitations": [
+    "Agreement is against recorded independent Codex review, not universal ground truth.",
+    "Missing usage stays missing; sums are reported amounts only.",
+    "Historical human-only scores do not map to NEXT_EVIDENCE.",
+    "Smoke/synthetic/historical/new-game cohorts are distinct; no automatic gate or savings estimate."
+  ]
+}

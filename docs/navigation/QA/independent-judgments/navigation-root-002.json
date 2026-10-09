@@ -1,0 +1,23 @@
+{
+  "finding_id": "navigation-root-002",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The original footer href / resolves to the host root rather than the repository prefix. Under a subpath this leaves the requested arcade. Current relative index.html fixes the source target; root and subpath navigation require browser verification.",
+  "evidence": [
+    "game002.html:34",
+    "docs/navigation/QA/navigation-root-002.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the implicated source and existing browser observation/report references; no runtime edits and no claim of independently executing those browser runs.",
+    "evidence": [
+      "game002.html:34",
+      "docs/navigation/QA/navigation-root-002.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

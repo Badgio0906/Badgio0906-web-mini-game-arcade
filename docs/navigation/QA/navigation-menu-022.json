@@ -1,0 +1,21 @@
+{
+  "finding_id": "navigation-menu-022",
+  "problem": "Smartphone explanation panel covers the portal return",
+  "expected": "Header portal return stays visible and clickable in explanation state at 390 and 320 pixels",
+  "observed": [
+    "390x844 source anchor x266 y10 width116 height44",
+    "After Explain, menu covers x12 y14 width366 height816 and center hit is not the anchor",
+    "Mobile header CSS places brand before the portal anchor"
+  ],
+  "unknown": [
+    "Other explanation menus and short landscape coverage"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/navigation/QA/interaction-release/failure.png"
+  ],
+  "provenance": "actual-browser-final-candidate-observation"
+}

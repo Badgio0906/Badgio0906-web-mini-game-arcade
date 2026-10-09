@@ -41,6 +41,10 @@ Visualはゲームごとのidentityと瞬時の判読性を優先する。既存
 
 ## 新規ゲームの登録
 
+- ポータルカードはサムネイル→個人／全体BEST→黄色PLAY→タイトル／紹介／タグ→補助TOP10。ゲームを遊ぶ操作を最も目立たせ、非競争作品にはTOP10の空枠を作らない。リンクとランキングbuttonを入れ子にせず、計測は1操作1回を保つ。
+- 一覧への帰還は左上の通常フローヘッダーに **← ゲーム一覧へ**。`arcade-game-header`／`arcade-portal-return` と `public/arcade-navigation.css`／`.js` を使用し、44px以上・safe-area・390／320／844pxでもゲーム操作を覆わない。Godot shellは階層に合う相対URLを使い生成templateも同期する。
+- ゲーム内タイトル／リトライ／練習の戻りとは区別し、固有の終了・保存処理を維持する。モーダルがヘッダーをinertにする場合は共通部品が同じヘッダー位置で元リンクへクリックを渡す。keyboard shortcutを隔離し、pointer captureでのfresh-gesture検証とrelease cleanupを止めない。通常click／tap／Enterで実際の到着を検証する。[設計とQA](navigation/IMPLEMENTATION_REPORT.md)／[全作品調査表](navigation/GAME_NAVIGATION_MATRIX.md)。
+
 - native gameは`gameNNN.html`、`src/games/gameNNN/`、固有manifest、対象テストを用意する。001の既存構造は移動しない。
 - [カタログschema](../src/data/gameCatalog.ts)の`id/titleJa/titleEn/tagline/thumbnail/route/releaseOrder`に従う。Genre／Core Mechanic／Skillは固有manifestで記録する。
 - [Vite入力](../vite.config.ts)は現在番号を列挙するregex。新HTMLだけ作ってビルドに入ると仮定しない。
@@ -100,3 +104,4 @@ finding発生時は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)の正本に従い、1
 経過時間は明示した作業開始から対象scopeの完了までの壁時計。休止／外部接続待ちは別記録。並列worker時間を足して開発時間にしない。修正は実行ごとに記録し、事前修正を一つの公開commitへまとめても失わない。[過去baseline](development-baseline/BASELINE_2026-10-05.json)は確認分の下限で、完全な使用量データではない。
 
 CURRENT_STATUSへ最新報告と残課題をリンクし、根拠のない「全ゲーム合格」「人間合格」「Jev評価済み」を書かない。runtime変更・保存・公開先・本番機能を変えたときだけ該当正本を更新し、全履歴を複製しない。
+新native HTMLのviewportは `viewport-fit=contain` を基本とし、切り欠きの内側のviewportで既存100dvhのプレイ領域・下部操作を計算する。`cover`を採用する場合はheaderだけでなく全viewport高さ予算にもsafe-areaを反映し、物理端末で確認する。

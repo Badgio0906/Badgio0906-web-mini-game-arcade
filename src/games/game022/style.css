@@ -3,3 +3,8 @@
 /* Cards pan with drag off; only enabled card dragging reserves the gesture. */
 #card-board .card,#card-board .empty-pile{touch-action:pan-x pan-y}
 #card-board.drag-enabled .card{touch-action:none}
+/* Keep long explanation panels below the return header and above consent. */
+.arcade-game-header > .arcade-portal-return{order:-1}
+dialog#menu{inset:calc((100dvh + 87px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 87px - 64px - 16px)}
+@media(max-width:650px){dialog#menu{inset:calc((100dvh + 112px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 112px - 64px - 16px)}}
+@media(max-height:480px) and (min-width:651px){dialog#menu{inset:calc((100dvh + 63px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 63px - 64px - 16px)}}

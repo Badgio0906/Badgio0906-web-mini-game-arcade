@@ -33,8 +33,8 @@ export function installPortalRecords(gallery:HTMLElement){
     const row=(label:string)=>{const pair=document.createElement('div'),name=document.createElement('dt'),value=document.createElement('dd');name.textContent=label;pair.append(name,value);list.append(pair);return value;};
     const local=row(def.localLabel),everyone=row(def.publicEnabled?'みんなのBEST':'全体比較');local.textContent='読み込み中';everyone.textContent=publicStateLabel(api.getState(),def);
     const condition=document.createElement('p');condition.className='record-condition';condition.textContent=`${def.metricLabel} · ${def.modeLabel}`;
-    box.append(list,condition);card.querySelector('.game-image-link')!.after(box);card.querySelector('.game-copy-link')?.setAttribute('aria-describedby',box.id);
-    if(def.publicEnabled){const button=document.createElement('button');button.type='button';button.className='leaderboard-button';button.textContent='TOP10を見る';button.setAttribute('aria-label',`${card.getAttribute('aria-label')}のTOP10を見る`);button.setAttribute('aria-haspopup','dialog');button.addEventListener('click',()=>dialog.open(def,button));box.append(button);}cards.set(id,{local,everyone,condition});
+    box.append(list,condition);card.querySelector('.game-image-link')!.after(box);card.querySelector('.game-copy-link')?.setAttribute('aria-describedby',box.id);card.querySelector('.game-play')?.setAttribute('aria-describedby',box.id);
+    if(def.publicEnabled){const button=document.createElement('button');button.type='button';button.className='leaderboard-button';button.textContent='🏆 TOP10を見る';button.setAttribute('aria-label',`${card.getAttribute('aria-label')}のTOP10を見る`);button.setAttribute('aria-haspopup','dialog');button.addEventListener('click',()=>dialog.open(def,button));card.append(button);}cards.set(id,{local,everyone,condition});
   }
   const localRefresh=async()=>{
     const rev=++localRevision;

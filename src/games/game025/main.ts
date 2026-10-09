@@ -36,7 +36,7 @@ function mode(next: string): void {
   if (playable() && menu.open) menu.close(); render();
 }
 function show(html: string, next: string): void {
-  mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html">← 100ガレへ</a></p>'; if (!menu.open) menu.show();
+  mode(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>'; if (!menu.open) menu.show();
   el('menu-portal').onclick = () => { cancelJob(); stopClock(); save(); telemetry.trackEvent('return_to_portal', { source: state }); };
   menu.querySelector<HTMLElement>('button')?.focus();
 }

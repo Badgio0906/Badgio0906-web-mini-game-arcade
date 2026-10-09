@@ -26,7 +26,7 @@ const reachedStages = new Set<LoseStage>();
 const text = (id: string, value: string): void => { const e = $(id); if (e && e.textContent !== value) e.textContent = value; };
 const button = (id: string, label: string, primary = false): string => `<button id="${id}" type="button" class="${primary ? 'primary' : ''}">${label}</button>`;
 const titleButton = (): string => button('title-button', 'タイトル');
-const portalButton = (): string => `<a class="result-portal" href="${import.meta.env.BASE_URL}index.html">ゲームセンター</a>`;
+const portalButton = (): string => `<a class="result-portal arcade-portal-return" href="./index.html">← ゲーム一覧へ</a>`;
 const run = new LoseRun(onEvent);
 const token = (): string => `${screenEpoch}/${state === 'playing' || state === 'paused' ? run.snapshot().epoch : state === 'practice' ? practice.snapshot().step : state}`;
 function setContent(signature: string, markup: string): void { if (contentSignature === signature) return; contentSignature = signature; tv.innerHTML = markup; hydrateHands(tv); if (state === 'result') recordSession.mount(tv.firstElementChild as HTMLElement); }
