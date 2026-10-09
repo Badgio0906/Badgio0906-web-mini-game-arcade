@@ -24,10 +24,12 @@ ON143項目PASS：health200、BEST200・20board、TOP10全20board200・空配列
 
 既存公式workflowに `VITE_RECORDS_ENDPOINT` を追加。GA4／Telemetry行は維持。GitHub Actions Variablesのread／set APIは実際に403で、変数登録は実行できなかった。値が存在しないとは推測せず、**Variables優先・空時のみ指定公開originを使う式**を採用し、build前にoriginが `https://analytics.game100garage.com` と完全一致することを確認する。公開URLはSecretではない。空のVariableだけではfallbackを停止できないため、停止手順を別途残す。[権限制限](QA/GITHUB_VARIABLES.json)。
 
-endpoint接続build・root check・887tests/79files PASS。公式Pagesのbuild/deploy・配信JS・実画面は公開後証拠で確定する。STEP1の公開済み準備中画面と今回の接続画面を混同しない。
+**公式Pages公開済み。** 接続commit `8eb302482af5fcb540245ca6067480a9bd5e666d`、[公式workflow37933537264](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37933537264) のtest／endpoint検査／build／deploy成功。対象commit source・公開既知envで生成したbuildと配信164ファイルのSHA一致（公式artifact ZIPは未取得）。配信JSへ正しいrecords originが反映され、[公開4viewport132項目PASS](QA/public-browser-01/REPORT.json)：PCで全20TOP10、全30カード／画像・非競争例外・012〜014のboard・010退役、リンクとbutton分離、見出しfocus／Esc戻し／close／再開閉、解析OFFの公開GETだけ、共有初期OFF／資格生成なし、PC／phone通常Game001結果→個人BEST一致。POST試行0／JS例外0。[配信版](QA/publication-01/VERSION.json)／[公開集約](QA/PUBLICATION.json)／[目視の範囲](QA/VISUAL_REVIEW.md)。root check・887tests/79files・endpoint有効buildもPASS。
 
 ## QAと未確認
 
 [元runtime／game／Catalog／ID／0001〜0003を保持](QA/SOURCE_PRESERVATION.json)。既存records実localD129項目、Analytics37項目、固定endpoint有効buildで8作品×PC／phone16ケースPASS（自動結果共有対象外・全POST遮断）。[通常操作](QA/native-enabled-01/REPORT.json)。実ローカルD1 transport成功／rollback5項目、独立SQL／lexer／設定レビューを実施。[独立レビュー](QA/INDEPENDENT_DEPLOYMENT_REVIEW.md)／[再現](QA/README.md)。Jevはmigration finding1件のみ実HTTP200、SQL／認証／合否はCodex自身で検証。独立担当が診断後に回答を見たため最終分類を盲検とは表現しない。CLI引数・未許可PRAGMA・結果保存pathの単純なtest設定失敗は別原本で保持。
+
+公開画面検証後も[本番最終状態](QA/FINAL_PRODUCTION_STATE.json)でevents8,474／daily59、参加者0／投稿0とWorker ONを再確認。
 
 **実プレイヤー投稿受信は未確認。** 自動QAの本番スコアは0件。ユーザー本人の新しい通常RUNで共有→同ブラウザ再RUN1枠→BEST=TOP1→receipt撤回を確認する。実機／音／人間Feelの確認とは別。追加のCloudflare認証・DB／Secret設定は今回範囲で完了し、GitHub Variable登録は任意の管理整理として残る。[次の操作](HANDOFF.md)。

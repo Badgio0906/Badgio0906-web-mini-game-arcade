@@ -18,6 +18,9 @@
 |JEV_SHADOW／SUMMARY|実finding1件、HTTP200。公開／数値／SQL判定は委任しない|
 |SOURCE_PRESERVATION|STEP1基準からsrc/public/Worker src/旧migrationほかbyte不変|
 |native-enabled-01|固定endpoint有効build・8作品×PC/phone16ケースPASS、全POST遮断|
+|PUBLICATION／publication-01|公式37933537264 test/build/deploy・配信164file SHA一致|
+|public-browser-01／VISUAL_REVIEW|公開4viewport132項目・PC全20TOP10・初期OFF・POST0・通常001個人BEST一致|
+|FINAL_PRODUCTION_STATE|公開画面確認後records ON・参加者/投稿0・events8474/day59|
 |CANDIDATE_BUILD_MANIFEST|endpoint ONの固定candidate配信hash、ブラウザ中編集なし|
 
 ```sh
