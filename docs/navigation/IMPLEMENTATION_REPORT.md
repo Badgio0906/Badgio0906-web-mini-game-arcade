@@ -32,13 +32,13 @@
 
 テスト基盤の修正：Godot wrapper自身がindex.htmlなのでURL末尾だけの待機は到着確認にならない。正確なportal URLへ変更。旧leaderboard probeの「共有準備中」「ゲームセンターへ」期待は今回の本番接続／名称と合わないため、新しいnavigation probeで現行状態を検証。fixture用API endpointと配信用endpointを分けた。並列browser実行中の単体5件timeoutは原ログ [UNIT_TIMEOUT_INITIAL](QA/UNIT_TIMEOUT_INITIAL.log) に保存し、直列・testTimeout30000の再実行で887件／79file合格。015の明示20秒timeoutは上書きしない。テスト実装の閾値は変更していない。
 
-Jev Shadowは実観測12件・48回答・HTTP200。通常の独立レビューを省略せず、最初の独立source reviewでもpointer blockerを見逃していた事実を記録した。rootリンク／028説明findingにrisk miss2。focus031のrisk判断はannotation後に独立reviewerが範囲を狭めたため、原ログを保持し [比較訂正](QA/JEV_COMPARISON_CORRECTION.json) に別記した。[Jev集計](QA/JEV_SUMMARY.json)。自動修正／公開gateには使っていない。
+Jev Shadowは実観測15件・60回答・HTTP200。通常の独立レビューを省略せず、最初の独立source reviewでもpointer blockerを見逃していた事実を記録した。rootリンク／028説明findingにrisk miss2。focus031のrisk判断はannotation後に独立reviewerが範囲を狭めたため、原ログを保持し [比較訂正](QA/JEV_COMPARISON_CORRECTION.json) に別記した。[Jev集計](QA/JEV_SUMMARY.json)。自動修正／公開gateには使っていない。
 
 ## 画像
 
-![PCポータル](QA/portal-release/portal-root-1300.png)
+![公開PCポータル](QA/public-images/portal-1300.png)
 
-![スマホポータル](QA/portal-release/portal-root-390.png)
+![公開スマホポータル](QA/public-images/portal-390.png)
 
 ゲーム別の最終初期PC／390／320／横画面画像は `QA/layout-safe-final/`、練習modal画像は `QA/interaction-release/`。公開版画像は公開QAの出力へ保存する。
 
@@ -52,4 +52,12 @@ Jev Shadowは実観測12件・48回答・HTTP200。通常の独立レビュー�
 
 `npm run check`／本番records endpointによる `npm run build` が成功。単体 `npm test -- --maxWorkers=1 --no-file-parallelism --testTimeout=30000` は887tests／79files合格、offline Jev25tests合格。再現コマンドは [HANDOFF](HANDOFF.md)、原ログは [UNIT](QA/UNIT_ACCEPTED.log)／[CHECK](QA/CHECK_FINAL.log)／[BUILD](QA/BUILD_FINAL.log)／[OFFLINE_JEV](QA/OFFLINE_JEV.log)。buildの既存large chunk警告は残る。compiled menu probe初回は028のselectorを誤り8timeout／40PASS。正式IDのaliasに修正し、元 [FAIL](QA/menus-compiled/REPORT.json) を残した。
 
-公式公開のcommit／workflow／配信byte照合は公開完了後に追記する。
+runtime commit [`08531b12`](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/commit/08531b12e96457bf0109102fb3d41f3fac1533b8)、公式 [Pages run37954786879](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/37954786879) のbuild／deployがsuccess。CIの通常 `npm test` も成功。公開URL [game100garage.com](https://game100garage.com/)、GitHub repository Pages URLも同domainへredirectしHTTP200。[URL確認](QA/PUBLIC_URLS.json)。
+
+最初の配信照合はlocal referenceのビルド環境がCIと異なりgame001 asset hashで停止した。原 [FAIL](QA/public-version/FAIL.log)を保存。Actions Variables API readは利用できず、公開frontendの既存設定を確認するとGA4空／telemetry `/v1/events`有効だった。recordsだけ指定したbuild、およびGA4／telemetryを両方空にしたbuildは一致しない。既存公開値を明示した同SHAの [CI相当build](QA/BUILD_CI_REFERENCE.log) で、HTML／JS／CSS／font／Godot runtime／shell／共通navigationの166fileすべて実byte SHAが一致。[VERSION](QA/public-version-accepted/VERSION.json)。環境設定・製品sourceは変更していない。公式artifact ZIPそのものは取得せず、期待SHAの公式run成功＋clean同SHAの同設定build＋公開byteを照合した。
+
+公開版の [実PLAY／帰還](QA/public-navigation/REPORT.json) は249check合格。PC／390pxで30作品すべてを黄色PLAYから実起動し、headerから正確なindex.htmlへ帰還した。320／844pxの代表操作と全card構造／色／TOP10条件も合格、POST0／例外0。公開 [live TOP10／BEST／共有設定](QA/public-ranking/REPORT.json) も132check合格。20boardの匿名GET・modal focus／Esc／閉じる・非共有個人BEST・任意共有初期OFF・参加資格未作成・広告設定・30thumbnail decode・通常001結果のlocal BEST帰還を確認。POST0／例外0。BEST読み込み完了後のPC／phone公開画像も保存した。結果状態の追加QAは [原44case](QA/result-states/REPORT.json)、[旧scroll回復12case](QA/result-states-recovery/REPORT.json)、[最終scroll修正12case](QA/result-states-accepted/REPORT.json) を分けた。11 native作品の42 unique結果viewで通常操作→実帰還を確認（002のphone／320px idle結果は26秒内に到達せず、残り16 native作品の結果はこのsuiteでは未試行。Godot3結果／031保存失敗は別QA）。原44は36PASS／2画面外FAIL／6未到達を保持。004の誤canvas selectorは通常digit入力へ直し、021／023の844pxではメニュー表示時に通常headerへ即時scroll復帰する限定修正を加えた。最終12caseはwheel操作なしでinitial hit／44px／実帰還が合格、元result focusも維持した。常時overlay／stickyは追加していない。
+
+J／KのShadow送信前に独立reviewerが旧scroll回復probeを完了していた手順逸脱を [TIMING_DEVIATION](QA/JEV_TIMING_DEVIATION.json) に明記。runtime修正はShadow送信後。最初のTEST_INFRA判断も残し、initial viewport位置の要件を確認したPRODUCT_BUG判断を [独立follow-up](QA/independent-judgments/navigation-result-header-scroll-followup.json) として別記した。Jev比較はこの最終follow-upを用い、旧判断は書換えない。[公開証拠](QA/PUBLICATION.json)。
+
+結果表示時scroll復帰の修正版は、最終build／独立12caseを合格後に公式Pagesへ再反映する。配信確認を次節へ追記する。

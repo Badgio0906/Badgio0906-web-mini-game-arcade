@@ -27,6 +27,11 @@
       if (link.parentElement !== modal) link.remove();
     });
     const source = document.querySelector('.arcade-game-header a.arcade-portal-return');
+    // Board/keypad interaction can scroll the normal-flow header offscreen.
+    // Restore its reserved row when a nonmodal menu is shown; keep game focus.
+    if (!modal && source && document.querySelector('dialog[open]') && source.getBoundingClientRect().top < 0) {
+      source.closest('.arcade-game-header').scrollIntoView({block: 'start', behavior: 'instant'});
+    }
     if (!modal || !source) return;
     let link = modal.querySelector('.arcade-modal-return');
     if (!link) {

@@ -1,0 +1,19 @@
+{
+  "finding_id": "navigation-result-header-scroll",
+  "problem": "Normal result views have header return above viewport after ordinary game inputs at short landscape",
+  "expected": "Common return remains reachable from result state through ordinary navigation",
+  "observed": [
+    "game021844x390 result: anchor y=-138 height44; header y=-158; dialog y=73 height=245; elementFromPoint hit false",
+    "game023844x390 result: anchor y=-347 height44; header y=-366; dialog y=80 height=238; elementFromPoint hit false"
+  ],
+  "unknown": [
+    "Normal-flow document scroll versus hidden/obstructed header",
+    "Ordinary scroll/focus recovery and actual return from observed result view"
+  ],
+  "evidence": [
+    "docs/navigation/QA/result-states/REPORT.json",
+    "docs/navigation/QA/result-states/game021-844-fail.png",
+    "docs/navigation/QA/result-states/game023-844-fail.png"
+  ],
+  "provenance": "actual compiled-preview ordinary two-player drops/kana guesses; initial observation before targeted scroll recovery; no fixture"
+}

@@ -6,7 +6,7 @@
 
 `public/arcade-navigation.css`／`.js`を各active HTMLのゲームentrypointより先に読み込む。通常headerは `.arcade-game-header`、ポータルanchorは `.arcade-portal-return`。物理HTMLを持たない001／003の生成箇所も参照。Godot wrapperは `tools/legacy-record-shells`とpublic側の双方を同期し、manifestのshell hashを更新する。runtimeFilesは変更しない。
 
-pointer captureのfresh-gesture検証を遮断しない。開始gestureだけdocument bubbleで隔離し、releaseはheld-input cleanupへ渡す。native HTMLはviewport-fit=containを基本とし、safeなviewport内で既存高さ予算を使う。native modalの代理anchorは元anchorへclickを渡し、save／quit hookを通す。nonmodal dialogには代理anchorを置かないため、長い説明がheaderを覆わないmenu寸法が必要。
+pointer captureのfresh-gesture検証を遮断しない。開始gestureだけdocument bubbleで隔離し、releaseはheld-input cleanupへ渡す。native HTMLはviewport-fit=containを基本とし、safeなviewport内で既存高さ予算を使う。native modalの代理anchorは元anchorへclickを渡し、save／quit hookを通す。nonmodal menuを開いたときにheaderが負の画面座標なら、headerへ即時scroll復帰する（focusは変更しない）。nonmodal dialogには代理anchorを置かないため、長い説明がheaderを覆わないmenu寸法が必要。
 
 ## 再現コマンド
 
@@ -16,7 +16,7 @@ Node24、`npm ci`。`npm run dev -- --host 127.0.0.1`を起動し、新しい出
 npm run check
 npm test
 python3 -m unittest discover -s tests/jev -p 'test_*.py' -v
-VITE_RECORDS_ENDPOINT=https://analytics.game100garage.com npm run build
+VITE_GA4_MEASUREMENT_ID='' VITE_TELEMETRY_ENDPOINT=https://analytics.game100garage.com/v1/events VITE_RECORDS_ENDPOINT=https://analytics.game100garage.com npm run build
 NAV_QA_OUT=/tmp/navigation-layout node tests/navigation/layout.mjs
 NAV_QA_OUT=/tmp/navigation-interactions node tests/navigation/interactions.mjs
 NAV_QA_OUT=/tmp/navigation-portal node tests/navigation/portal.mjs

@@ -1,0 +1,45 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Published byte mismatch: game001.html
++ actual - expected
+
++ 'd9c4e186372a06cb724d3fbc6e582f0c5d0d2d818da91bfd0ea6920f0a171128'
+- '67137c746d1a57ac64850edab3fbc9c24ec19e6c02ddab8952c2e3bd0b249341'
+
+    at file:///workspace/Badgio0906-web-mini-game-arcade/tests/leaderboards/verify-public.mjs:31:395
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Promise.all (index 1)
+    at async file:///workspace/Badgio0906-web-mini-game-arcade/tests/leaderboards/verify-public.mjs:31:24 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'd9c4e186372a06cb724d3fbc6e582f0c5d0d2d818da91bfd0ea6920f0a171128',
+  expected: '67137c746d1a57ac64850edab3fbc9c24ec19e6c02ddab8952c2e3bd0b249341',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node tests/leaderboards/verify-public.mjs 08531b12e96457bf0109102fb3d41f3fac1533b8 37954786879 docs/navigation/QA/public-version
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at file:///workspace/Badgio0906-web-mini-game-arcade/tests/navigation/verify-public.mjs:7:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 22895,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v24.19.0

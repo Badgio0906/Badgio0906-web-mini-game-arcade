@@ -1,0 +1,28 @@
+{
+  "finding_id": "navigation-result-header-scroll",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; dated follow-up 2026-10-09; JEV_SHADOW answers not read",
+  "rationale": "Preserves the first TEST_INFRA_BUG assessment in navigation-result-header-scroll.json. Ordinary scroll recovery proved actual exit was available, but the clarified requirement is a confirmable upper-left return in the initial result view. That initial-view position is a limited product UI issue: normal gameplay document scroll remained when a nonmodal result opened. It does not establish inaccessible exit, lost save, hidden header, or major progress failure; risk remains false. Parent added a bounded immediate scroll of the existing normal-flow header only when an open nonmodal dialog exists and the anchor top is negative. No sticky overlay, focus change, gameplay input, or save/exit change. Actual new immutable compiled test confirms initial result header geometry and original game focus across12 cases.",
+  "evidence": [
+    "docs/navigation/QA/navigation-result-header-scroll.json",
+    "docs/navigation/QA/independent-judgments/navigation-result-header-scroll.json",
+    "public/arcade-navigation.js",
+    "docs/navigation/QA/result-states-accepted/REPORT.json",
+    "docs/navigation/QA/result-states/COMPILED_SNAPSHOT_CHECK.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspected bounded scroll restoration and ran004/021/023 result states at all four widths on a new immutable compiled snapshot.12/12 initial hit/on-screen/44px/actual return PASS without mouse-wheel recovery. Passive focusin trace captures021 retry focus at scrollY158 and023 heading focus at scrollY366 before restoration; the same controls remain focused after initial header is restored to y20/y19. Source529 and compiled HTML before/after mismatch0,166 snapshot/dist files mismatch0, errors0, POST0. Earlier manual-recovery12 happened before Shadow recording; retained separately and never presented as post-fix evidence.",
+    "evidence": [
+      "docs/navigation/QA/result-states/accepted.mjs",
+      "docs/navigation/QA/result-states-accepted/REPORT.json",
+      "docs/navigation/QA/result-states-accepted/game021-844-result.png",
+      "docs/navigation/QA/result-states-accepted/game023-844-result.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

@@ -92,3 +92,37 @@ cover-modeの26 active native HTMLにtop safe-area対応が欠けていたこと
 7findingについてJevの回答を読まずに独立判断を [independent-judgments](QA/independent-judgments/) へJSONで記録した。判定は実source／browser観測に基づき、Jev scoreから引用したものではない。
 
 本担当による実機、人間Feel／音／酔い、全ゲーム全phase、BFCache、複数modal同時openのtop-layer順序は未確認。source上のsave hook保全を、保存拒否の実ブラウザ試験と混同していない。公開判定はこの限定レビューと別の統合QA／配信確認に従う。
+
+## 公開byte検証の参照build環境
+
+13件目 [public-byte-mismatch](QA/independent-judgments/navigation-public-byte-mismatch.json) は、Jev回答を読まずに **TEST_INFRA_BUG／required=true／next=CODE_INSPECTION／risk=false** と判断した。最初のHTML hash不一致だけではstale deliveryと参照build環境の不一致を区別できない。独立に `.github/workflows/pages.yml` と `src/analytics/config.ts` を読み、CIがGA4／telemetry／records値をcompileに渡すことを確認した。既存公開runtimeから分かるtelemetry endpointとempty GA4を用いて同じ08531b12 sourceを再buildした後の [actual HTTP byte report](QA/public-version-accepted/VERSION.json) は166 file PASS。初回 [failure原本](QA/public-version/FAIL.log) は残す。official artifact ZIPとrepository Variablesを直接取得できたという主張にはしない。
+
+529-file runtime manifestはcommit `08531b12e96457bf0109102fb3d41f3fac1533b8` 後も独立に再照合してmismatch0。blind判断は計13 file。既存12判断は変更していない。
+
+## 独立compiled検証：利用可能なresult／exit state
+
+commit08531b12のproduction参照build完了後、`dist` をimmutableな `/tmp/navigation-result-dist-08531b12` へcopyし、local8814で独立検証した。001／002／004／005／015／016／018／021／023／024／029の11ゲーム×4viewport（1300×900、390×844、320×720、844×390）、計44case。通常PLAY後のidle collision／deadline、018の3回のstop、021の同端末2人の7手、023の通常かな選択、029の1投後の帰宅controlを用いた。game model、local save、時計を注入していない。consent denied、POST／外部requestをblock、contextは使い捨て。
+
+最初の [result-states report](QA/result-states/REPORT.json) は **COMPLETE／36PASS／2FAIL／6UNREACHED** のまま保持する。004の4caseはprobeが存在しないcanvasをfocusしたtimeout。002 mobile2caseは26秒以内にidle collisionを得られず、playingのまま未到達。021／023の844px resultは通常board／kana操作によってdocumentがscrollしており、normal-flow headerのanchorがy=-138／-347、height44で画面外になった。dialogはy73／80、height245／238であり、dialogによるheader遮蔽と混同しない。この初期画面内測定をPASSへ書き換えない。
+
+別の [targeted recovery report](QA/result-states-recovery/REPORT.json) は **COMPLETE／12PASS**。004を正しい通常digit inputへ改めた4viewport、021／023の4viewportを確認した。021／023の844pxでは、dialog外の左端で通常mouse wheelを上へ1回送り、document上端へ戻すとheaderの44px controlがhitし、通常Enterで実portal帰還が成功した。headerは非表示／removeされておらず、要求どおりnormal-flowでscrollとともに移動していた。sticky／fixed overlayを追加するruntime修正は行っていない。
+
+[combined scope summary](QA/result-states/SUMMARY.json) は44unique case中、**42のactual result returnを検証、002 mobile2case未到達**。これは全nativeゲームのクリアclaimではない。残り16nativeゲームのresultは今回未プレイとして明記し、legacy3と031 exit／save-failureは別担当の既存QAと区別する。全27nativeの全result到達済みとは報告しない。初回44・別再検証12の両方で529sourceの開始／終了mismatch0、frozen compiled HTML hashの開始／終了mismatch0、page error0、POST0。
+
+実際に開いたresult画像は001320、004844、005320、015844、018320、029390、021／023844の初期画面外2枚と通常scroll回復後2枚の計10枚。returnの見え方を実画像で確認した。score共有controlは操作せず、全bodyの視覚／Feel評価には広げない。
+
+[remaining native source review](QA/result-states/SOURCE_REVIEW.json) は、未プレイ16ゲームのresult／clear／sandbox exit codeがmenu／overlayを更新しても既存header returnをremove／条件付きhideしないことのsource support。026の2〜4人順位tableと030のstage20を含む短いresultMenuも独立に読んだ。両者はbounded内容とscroll可能なnonmodal dialogを用い、既存header／leave handlerを維持する。実resultのhit／帰還PASSをsourceだけから付与しない。
+
+14件目 [result-header-scroll](QA/independent-judgments/navigation-result-header-scroll.json)、15件目 [result-probe-004](QA/independent-judgments/navigation-result-probe-004.json) をJev回答を読まず記録した。前者は最初のviewport測定と通常帰還可否の切り分け、後者はnative DOMに合わないprobe selectorであり、両者はTEST_INFRA_BUG／required=true／risk=false。original raw findingと最初の失敗reportは保持する。独立判断は計15file、既存判断は変更していない。
+
+## Result header初期位置：最後のsource correctionと実再検証
+
+上記の最初のTEST_INFRA判断は保存する。通常scrollで実帰還できることと、resultを開いた直後に左上returnを確認できる要件は分ける。後者を満たすため、実装担当は共通scriptへ、**native modalなし／nonmodal dialog[open]あり／既存header anchor.top<0** の場合だけnormal-flow headerを即座にscrollIntoViewする小さな補正を加えた。focus、exit hook、native click、ゲームstateは変更せず、sticky／fixed overlayを追加しない。独立にsourceを読み、instant scrollでscroll listenerの再始動loopを避け、正のtopになれば再補正しないことを確認した。
+
+新しいbuild完了後の別immutable snapshot `/tmp/navigation-result-dist-menu-scroll`（local8815）で004／021／023×4widthを再実行した。[final accepted12](QA/result-states-accepted/REPORT.json) は **COMPLETE／12PASS／0FAIL／0UNREACHED**。今回はwheelなどの手動scroll回復を許さず、result初期状態でon-screen／hit／44px以上を要求した。各caseで通常Enterまたはtapの実portal帰還まで成功した。
+
+passive focusin traceは021844のresult retry-buttonをscrollY158、023844のmenu-titleをscrollY366でcaptureし、共通補正後も各ゲームが選んだ同じcontrolのfocusを保った。header anchorはそれぞれy20／y19、44px、hit trueとなった。finalの021／023844実画像2枚も開いて確認した。source529の開始／終了mismatch0、compiled HTMLの開始／終了mismatch0、snapshotと現在distの166file照合mismatch0、page errors0、POST0。
+
+同じfinding_idの [dated follow-up判断](QA/independent-judgments/navigation-result-header-scroll-followup.json) を別filenameで残した。初期viewport位置のlimited PRODUCT_BUG／required=true／next=AUTOMATED_TEST／risk=falseが最終判断。初回TEST_INFRA file、original2FAIL、probe004 timeout、事前の通常scroll回復結果はすべて保持し、silent rewriteしない。manual recovery12はShadow記録より先だったことも明示する。既存13判断は変更していない。
+
+[final checkpoint](QA/result-states/FINAL_CHECKPOINT.json) は最新sourceの実検証12と、旧checkpointの42unique result証拠を区別する。残りnative全resultやphysical notchの実確認を主張しない。この担当の最終result navigation検証範囲に未解決の実帰還blockerはない。

@@ -1,0 +1,19 @@
+{
+  "finding_id": "navigation-result-probe-004",
+  "problem": "Result-state probe cannot focus its requested canvas after ordinary start of game004",
+  "expected": "Ordinary game004 input reaches available terminal result for navigation verification",
+  "observed": [
+    "All four widths start game004 and reach playing/recall, then locator(canvas).first().focus times out after9000ms",
+    "game004.html uses div#game-canvas; EchoBoard creates native buttons#cell-0..8"
+  ],
+  "unknown": [
+    "Correct ordinary native board input and resulting terminal state"
+  ],
+  "evidence": [
+    "docs/navigation/QA/result-states/REPORT.json",
+    "docs/navigation/QA/result-states/review.mjs",
+    "game004.html",
+    "src/games/game004/EchoBoard.ts"
+  ],
+  "provenance": "actual independent Chromium probe failure; source selector observation; no model injection"
+}

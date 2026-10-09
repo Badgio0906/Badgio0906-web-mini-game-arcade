@@ -1,0 +1,27 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null,
+  "finding_id": "navigation-result-header-scroll",
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "rationale": "The original strict on-screen result measurements are valid: ordinary game inputs had scrolled the document, placing the normal-flow header above the viewport. They did not establish display:none, overlay occlusion, or inaccessible return. User asks a reserved normal-flow header; a persistent fixed overlay is excluded. A separate ordinary wheel upward at the left page edge restores the44px hit target, followed by actual Enter navigation in both021/023844 cases. The probe needed to distinguish initial viewport visibility from ordinary return accessibility. Original two strict failures remain recorded; no claim they were on-screen before scrolling.",
+  "evidence": [
+    "docs/navigation/QA/navigation-result-header-scroll.json",
+    "docs/navigation/QA/result-states/REPORT.json",
+    "docs/navigation/QA/result-states-recovery/REPORT.json",
+    "docs/navigation/QA/result-states/SUMMARY.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Executed separate targeted12-case compiled probe. Ordinary document-scroll recovery for021/023844 succeeded, then actual anchor Enter arrived at portal. No runtime source change.",
+    "evidence": [
+      "docs/navigation/QA/navigation-result-header-scroll.json",
+      "docs/navigation/QA/result-states/REPORT.json",
+      "docs/navigation/QA/result-states-recovery/REPORT.json",
+      "docs/navigation/QA/result-states/SUMMARY.json"
+    ]
+  }
+}

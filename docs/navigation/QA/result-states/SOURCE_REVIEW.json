@@ -1,0 +1,109 @@
+{
+  "kind": "SOURCE_INSPECTION_ONLY",
+  "actual_browser_result_pass": false,
+  "files": [
+    "src/games/game003/main.ts",
+    "src/games/game006/main.ts",
+    "src/games/game007/main.ts",
+    "src/games/game008/main.ts",
+    "src/games/game009/main.ts",
+    "src/games/game011/main.ts",
+    "src/games/game017/main.ts",
+    "src/games/game019/main.ts",
+    "src/games/game020/main.ts",
+    "src/games/game022/main.ts",
+    "src/games/game025/main.ts",
+    "src/games/game026/main.ts",
+    "src/games/game027/main.ts",
+    "src/games/game028/main.ts",
+    "src/games/game030/main.ts",
+    "src/games/game031/main.ts",
+    "game003.html",
+    "game006.html",
+    "game007.html",
+    "game008.html",
+    "game009.html",
+    "game011.html",
+    "game017.html",
+    "game019.html",
+    "game020.html",
+    "game022.html",
+    "game025.html",
+    "game026.html",
+    "game027.html",
+    "game028.html",
+    "game030.html",
+    "game031.html"
+  ],
+  "supporting_invariant": "The existing common return is outside per-state menu/overlay HTML replacements. Result/clear/sandbox exit code does not remove or conditionally hide that header anchor. Shared keyboard guard and initiating-pointer bubble guard continue across states; generated menu anchors use shared return class. Header is deliberately normal flow and can scroll with the document; source permanence is not viewport hit-test evidence.",
+  "unplayed": [
+    {
+      "gameId": "game003",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game006",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game007",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game008",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game009",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game011",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game017",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game019",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game020",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game022",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game025",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game026",
+      "observation": "results() builds bounded2..4-player rank table, short totals and two controls; show() updates only #menu, calls nonmodal show(), preserves static header, resets menu scrollTop. Result menu geometry not reached in this suite. Same capture pointer validators remain active for actual physical anchor input."
+    },
+    {
+      "gameId": "game027",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game028",
+      "observation": "Result/clear UI replaces menu or overlay content while static common header remains. Existing return/save handlers are retained. This is source support only; no actual terminal-state completion or geometry PASS in this suite."
+    },
+    {
+      "gameId": "game030",
+      "observation": "resultMenu() has stage name, code length/best/hints and three controls; stage20 changes heading/next control but does not add unbounded text. show() updates only #menu and preserves header, nonmodal show() with scrollTop0. Actual stage-clear result not reached in this suite."
+    },
+    {
+      "gameId": "game031",
+      "observation": "Sandbox has no terminal win/result; separate parent save031-release6 tests cover actual exit/delayed-save/failure recovery. This reviewer does not claim an ordinary completed game."
+    }
+  ],
+  "dynamic_menu_css": {
+    "game026": "Centered nonmodal dialog; max-height calc(100dvh -28px), overflow auto; bounded rank rows. No actual result hit-test assertion from source.",
+    "game030": "Centered nonmodal dialog; max-height88dvh (90dvh short landscape), overflow auto; fixed amount of result content. No actual result hit-test assertion from source."
+  }
+}

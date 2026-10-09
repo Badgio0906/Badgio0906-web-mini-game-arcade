@@ -1,0 +1,27 @@
+{
+  "finding_id": "navigation-public-byte-mismatch",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "rationale": "The original hash mismatch alone did not distinguish stale delivery from a build-reference error. The successful expected-SHA CI build defines GA4, telemetry and records environment values. Analytics config embeds the telemetry environment in compiled modules, affecting dependent chunk names and HTML bytes. Parent rebuilt the same committed source with the existing publicly observable telemetry endpoint and empty GA4. The accepted actual HTTP comparison now matches every listed published file byte. This supports an incorrect local reference-build environment, not a product navigation failure. It remains important to resolve the deployment evidence gap, but no actual unusable control or stale source was observed in this finding.",
+  "evidence": [
+    "docs/navigation/QA/navigation-public-byte-mismatch.json",
+    "docs/navigation/QA/public-version/FAIL.log",
+    ".github/workflows/pages.yml",
+    "src/analytics/config.ts",
+    "docs/navigation/QA/public-version-accepted/VERSION.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently compared CI build environment declaration and analytics config; inspected accepted expected-SHA HTTP byte report PASS. No source change or production write. Did not claim official artifact ZIP or repository Variables access.",
+    "evidence": [
+      ".github/workflows/pages.yml",
+      "src/analytics/config.ts",
+      "docs/navigation/QA/public-version-accepted/VERSION.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

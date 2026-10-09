@@ -1,0 +1,29 @@
+{
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review subagent; JEV_SHADOW answers not read",
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null,
+  "finding_id": "navigation-result-probe-004",
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "rationale": "The probe requests a nonexistent canvas. Actual game004 source has a div containing native cell buttons and a normal digit keyboard handler. Start/recall worked; focusing canvas timed out in all four widths. Correcting only the probe to two ordinary digit1 presses uses differing adjacent initial cues to reach a mistake result without reading/injecting the answer. All four actual result header hit/44px/return checks then passed. No product control or terminal-state defect was observed.",
+  "evidence": [
+    "docs/navigation/QA/navigation-result-probe-004.json",
+    "game004.html",
+    "src/games/game004/EchoBoard.ts",
+    "docs/navigation/QA/result-states/recovery.mjs",
+    "docs/navigation/QA/result-states-recovery/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspected game004.html and EchoBoard.ts, then corrected a separate probe only; all four ordinary terminal-state retests succeeded. Preserved original selector timeout evidence.",
+    "evidence": [
+      "docs/navigation/QA/navigation-result-probe-004.json",
+      "game004.html",
+      "src/games/game004/EchoBoard.ts",
+      "docs/navigation/QA/result-states/recovery.mjs",
+      "docs/navigation/QA/result-states-recovery/REPORT.json"
+    ]
+  }
+}

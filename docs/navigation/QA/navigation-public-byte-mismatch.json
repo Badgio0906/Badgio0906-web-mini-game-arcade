@@ -1,0 +1,18 @@
+{
+  "finding_id": "navigation-public-byte-mismatch",
+  "problem": "Published HTML byte hash differs from local reference build after successful official deployment",
+  "expected": "Expected source build and published HTML/JavaScript bytes match",
+  "observed": [
+    "Official08531b12 build/deploy successful",
+    "game001.html actual hash d9c4e186372a06cb724d3fbc6e582f0c5d0d2d818da91bfd0ea6920f0a171128 differs from local67137c746d1a57ac64850edab3fbc9c24ec19e6c02ddab8952c2e3bd0b249341",
+    "HTML diff shows different game001/runtime/TelemetryService asset names, same shared navigation refs",
+    "Local build supplied records endpoint only; officialworkflow defines GA4 and telemetry env entries also"
+  ],
+  "unknown": [
+    "Build environment entries versus stale delivery or source mismatch"
+  ],
+  "evidence": [
+    "docs/navigation/QA/public-version/FAIL.log"
+  ],
+  "provenance": "actual-published-HTTP-byte-verifier-observation"
+}
