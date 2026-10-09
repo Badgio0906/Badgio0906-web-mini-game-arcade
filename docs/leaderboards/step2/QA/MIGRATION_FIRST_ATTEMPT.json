@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-09T12:27:17.625568+00:00",
+  "command": "npx wrangler d1 migrations apply DB --remote",
+  "wrangler_version": "4.42.0",
+  "database_id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7",
+  "requested": [
+    "0002_records.sql",
+    "0003_leaderboards.sql"
+  ],
+  "exit_code": 1,
+  "failed_migration": "0002_records.sql",
+  "error": "incomplete input: SQLITE_ERROR",
+  "cloudflare_error_code": 7500,
+  "0003_not_attempted": true,
+  "worker_deployed": false,
+  "postfailure_schema": "next read-only verification required"
+}

@@ -1,0 +1,198 @@
+{
+  "at": "2026-10-09T12:37:41.379Z",
+  "database_id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7",
+  "method": "One REST SQL request per normalized original migration plus its ledger INSERT",
+  "source_migrations_unchanged": true,
+  "score_submissions": 0,
+  "before_migrations": [
+    "0001_events.sql"
+  ],
+  "before_counts": {
+    "events_count": 8474,
+    "daily_aggregates_count": 59
+  },
+  "applied": [
+    {
+      "name": "0002_records.sql",
+      "source_sha256": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+      "transport_sha256": "3765eead68b29fbc2f597f8bcd64fe5ff68573ab2f867cdf345ed65aa5a27679",
+      "sql_statements": 12,
+      "ledger_verified": true
+    },
+    {
+      "name": "0003_leaderboards.sql",
+      "source_sha256": "ec811bd7ee747649d739f92b6def1465ee9616ad93bfe58d8f727d1927c2221f",
+      "transport_sha256": "c6c838c80b1647c3b6789e0d78831b1a8ae8bac4615b95a2f31499be1cfb3215",
+      "sql_statements": 19,
+      "ledger_verified": true
+    }
+  ],
+  "after_migrations": [
+    "0001_events.sql",
+    "0002_records.sql",
+    "0003_leaderboards.sql"
+  ],
+  "after_counts": {
+    "events_count": 8474,
+    "daily_aggregates_count": 59
+  },
+  "schema": [
+    {
+      "type": "index",
+      "name": "idx_events_browser_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_game_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_name_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_occurred",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_session",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_visit",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "record_candidates",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "index",
+      "name": "record_leaderboard_top",
+      "tbl_name": "record_participant_bests"
+    },
+    {
+      "type": "index",
+      "name": "record_participant_boards",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "index",
+      "name": "record_participant_candidates",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "index",
+      "name": "record_pending_expiry",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "table",
+      "name": "_cf_KV",
+      "tbl_name": "_cf_KV"
+    },
+    {
+      "type": "table",
+      "name": "d1_migrations",
+      "tbl_name": "d1_migrations"
+    },
+    {
+      "type": "table",
+      "name": "daily_aggregates",
+      "tbl_name": "daily_aggregates"
+    },
+    {
+      "type": "table",
+      "name": "events",
+      "tbl_name": "events"
+    },
+    {
+      "type": "table",
+      "name": "record_admission",
+      "tbl_name": "record_admission"
+    },
+    {
+      "type": "table",
+      "name": "record_bests",
+      "tbl_name": "record_bests"
+    },
+    {
+      "type": "table",
+      "name": "record_boards",
+      "tbl_name": "record_boards"
+    },
+    {
+      "type": "table",
+      "name": "record_leaderboard_revisions",
+      "tbl_name": "record_leaderboard_revisions"
+    },
+    {
+      "type": "table",
+      "name": "record_moderation",
+      "tbl_name": "record_moderation"
+    },
+    {
+      "type": "table",
+      "name": "record_participant_admission",
+      "tbl_name": "record_participant_admission"
+    },
+    {
+      "type": "table",
+      "name": "record_participant_bests",
+      "tbl_name": "record_participant_bests"
+    },
+    {
+      "type": "table",
+      "name": "record_participants",
+      "tbl_name": "record_participants"
+    },
+    {
+      "type": "table",
+      "name": "record_submissions",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "trigger",
+      "name": "record_admission_check",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "trigger",
+      "name": "record_insert_best",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "trigger",
+      "name": "record_participant_admission_check",
+      "tbl_name": "record_participants"
+    },
+    {
+      "type": "trigger",
+      "name": "record_participant_admission_count",
+      "tbl_name": "record_participants"
+    },
+    {
+      "type": "trigger",
+      "name": "record_participant_status_bests",
+      "tbl_name": "record_participants"
+    },
+    {
+      "type": "trigger",
+      "name": "record_status_best",
+      "tbl_name": "record_submissions"
+    },
+    {
+      "type": "trigger",
+      "name": "record_submission_identity_immutable",
+      "tbl_name": "record_submissions"
+    }
+  ],
+  "foreign_key_violations": 0,
+  "result": "PASS"
+}

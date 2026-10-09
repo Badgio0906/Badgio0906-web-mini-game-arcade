@@ -1,0 +1,215 @@
+{
+  "at": "2026-10-09T12:21:37.257Z",
+  "database": {
+    "uuid": "122c6f47-1f9e-4863-9b3d-54b066f17cc7",
+    "name": "game100garage-production",
+    "version": "production",
+    "file_size": 6639616
+  },
+  "worker": {
+    "name": "game100-analytics",
+    "bindings": [
+      {
+        "name": "AGGREGATE_RETENTION_MONTHS",
+        "type": "plain_text",
+        "text": "13"
+      },
+      {
+        "name": "ANALYTICS_ADMIN_TOKEN",
+        "type": "secret_text"
+      },
+      {
+        "name": "ANALYTICS_CODEX_TOKEN",
+        "type": "secret_text"
+      },
+      {
+        "database_id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7",
+        "id": "122c6f47-1f9e-4863-9b3d-54b066f17cc7",
+        "name": "DB",
+        "type": "d1"
+      },
+      {
+        "name": "ENVIRONMENT",
+        "type": "plain_text",
+        "text": "production"
+      },
+      {
+        "name": "RAW_RETENTION_DAYS",
+        "type": "plain_text",
+        "text": "90"
+      }
+    ],
+    "deployments": [
+      {
+        "id": "4860fd73-5557-491e-b328-fd4f95d96ce6",
+        "created_on": "2026-10-07T13:30:14.478734Z",
+        "versions": [
+          {
+            "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "4b569434-6e42-4079-8fe7-e15b9d3dce47",
+        "created_on": "2026-10-07T04:33:06.0704Z",
+        "versions": [
+          {
+            "version_id": "015965c8-22c5-4df6-a799-0a63589fd812",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "7a16b468-7e98-4ae0-9bbe-862b12578c96",
+        "created_on": "2026-10-07T04:11:20.004324Z",
+        "versions": [
+          {
+            "version_id": "14d311fd-863b-4c43-960b-51fc49b608f6",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "f33eb7fb-3590-412f-a31b-245a27c197a9",
+        "created_on": "2026-10-07T04:10:12.060432Z",
+        "versions": [
+          {
+            "version_id": "c07578de-811c-40ec-becf-c5b2a66521f0",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "760a79cd-dda1-4e69-a3dc-64c76a3ed670",
+        "created_on": "2026-10-07T04:08:00.061928Z",
+        "versions": [
+          {
+            "version_id": "a978569e-d405-4340-90a6-c03fb15d6030",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "f893500d-da8f-4a58-b559-d2f21a401817",
+        "created_on": "2026-10-07T04:03:36.112417Z",
+        "versions": [
+          {
+            "version_id": "0b782ad9-6af1-435a-97f0-e304fa5870dc",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "610501cd-c85b-4085-828f-488b44e551cb",
+        "created_on": "2026-10-07T04:02:38.529543Z",
+        "versions": [
+          {
+            "version_id": "0383a98d-043e-41d0-aba7-de47afbb8c1f",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "4c35fd3c-eb47-4511-a873-96a771af1a30",
+        "created_on": "2026-10-07T03:34:23.056619Z",
+        "versions": [
+          {
+            "version_id": "09f3ac2b-86cd-4e69-8b7b-992d7046873b",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "3133c24f-3bf7-477c-bac7-0c2a91ccc5ce",
+        "created_on": "2026-10-06T13:25:13.724658Z",
+        "versions": [
+          {
+            "version_id": "8f99414b-fb71-43c8-a91b-ebee2a39bc85",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "id": "be3bf8a9-7e15-428a-be6c-e4ce44d0f2c8",
+        "created_on": "2026-10-06T13:18:56.16635Z",
+        "versions": [
+          {
+            "version_id": "5609a14a-beaa-4443-8c6b-38ef54e459f1",
+            "percentage": 100
+          }
+        ]
+      }
+    ],
+    "schedules": {
+      "schedules": [
+        {
+          "cron": "17 3 * * *",
+          "created_on": "2026-10-06T13:18:58.408802Z",
+          "modified_on": "2026-10-07T13:30:18.370076Z"
+        }
+      ]
+    }
+  },
+  "tables": [
+    {
+      "type": "index",
+      "name": "idx_events_browser_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_game_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_name_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_occurred",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_session",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_visit",
+      "tbl_name": "events"
+    },
+    {
+      "type": "table",
+      "name": "_cf_KV",
+      "tbl_name": "_cf_KV"
+    },
+    {
+      "type": "table",
+      "name": "d1_migrations",
+      "tbl_name": "d1_migrations"
+    },
+    {
+      "type": "table",
+      "name": "daily_aggregates",
+      "tbl_name": "daily_aggregates"
+    },
+    {
+      "type": "table",
+      "name": "events",
+      "tbl_name": "events"
+    }
+  ],
+  "applied_migrations": [
+    "0001_events.sql"
+  ],
+  "data_preservation_baseline": {
+    "events_count": 8474,
+    "daily_aggregates_count": 59
+  },
+  "auth": "Existing Cloudflare read access succeeded; write rights not yet established",
+  "production_mutations": false
+}

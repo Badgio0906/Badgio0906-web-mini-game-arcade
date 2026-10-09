@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-09T12:25:33.397Z",
+  "method": "D1 Time Travel current bookmark",
+  "status": "CONFIRMED",
+  "private_recovery_record": "/workspace/private-leaderboards-step2/backup-recovery.json",
+  "bookmark_disclosed": false,
+  "raw_data_export": false,
+  "reason": "D1 production Time Travel API returned a valid restorable current bookmark. Optional raw export is unnecessary for this additive migration.",
+  "restoration_not_executed": true,
+  "rollback_impact": "DB restore affects all writes after the selected point, including Analytics. Review later writes first; use records OFF/Worker rollback for functional rollback, never DROP records tables.",
+  "migrations_sha256": {
+    "0001_events.sql": "21cd3545e9b051dc36f96c2ccc65a58fc9c73abd5644f9c53814aaa40cfaf219",
+    "0002_records.sql": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+    "0003_leaderboards.sql": "ec811bd7ee747649d739f92b6def1465ee9616ad93bfe58d8f727d1927c2221f"
+  }
+}

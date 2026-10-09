@@ -1,0 +1,575 @@
+{
+  "at": "2026-10-09T12:47:29.217Z",
+  "provenance": "Eight selected games, records-enabled final production build served by isolated routefulfill on simulated public host. Ordinary browser click/tap/keyboard input, passive saved-state reading where indicated. No debug APIs or world/model injection. Not all seventeen scored games real-played; not author or physical device enjoyment.",
+  "records": [
+    {
+      "game": "game001",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native retry remains playable",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game001-desktop-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game004",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "300ms game result delay never enables automated share",
+          "pass": true
+        },
+        {
+          "name": "memory retry works after shared controls addition",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game004-desktop-post-delay-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game015",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native depth finalized",
+          "pass": true,
+          "depth": 0
+        },
+        {
+          "name": "fallking native retry",
+          "pass": true
+        },
+        {
+          "name": "fallking pause remains playable",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game015-desktop-depth-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game018",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 1
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 1
+        }
+      ],
+      "images": [
+        "game018-desktop-result-0.png",
+        "game018-desktop-result-1.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game019",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native jump raised observed height",
+          "pass": true,
+          "maxMeters": 5.4
+        },
+        {
+          "name": "milestone share does not block resume",
+          "pass": true
+        },
+        {
+          "name": "height BEST raw decimeters persist exactly",
+          "pass": true,
+          "bestDm": 54
+        }
+      ],
+      "images": [
+        "game019-desktop-pause-milestone.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game024",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "ordinary slow-speed food scored",
+          "pass": true
+        },
+        {
+          "name": "active snake save restores exact state",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "other speed retains separate mode",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game024-desktop-slow-result.png",
+        "game024-desktop-speed-six-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game029",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "fishing active save exact restored",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "fishing optional share does not block retry",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game029-desktop-finish-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game031",
+      "device": "desktop",
+      "checks": [
+        {
+          "name": "ordinary mining before metadata save",
+          "pass": true,
+          "mined": 3
+        },
+        {
+          "name": "031 saved metadata portal value agrees with native counter",
+          "pass": true
+        },
+        {
+          "name": "031 native save counter resumes",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game031-desktop-light-mined.png",
+        "game031-desktop-portal-world-record.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game001",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native retry remains playable",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game001-phone-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game004",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "300ms game result delay never enables automated share",
+          "pass": true
+        },
+        {
+          "name": "memory retry works after shared controls addition",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game004-phone-post-delay-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game015",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native depth finalized",
+          "pass": true,
+          "depth": 0
+        },
+        {
+          "name": "fallking native retry",
+          "pass": true
+        },
+        {
+          "name": "fallking pause remains playable",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game015-phone-depth-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game018",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 0
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "ordinary shoe result positive",
+          "pass": true,
+          "run": 1
+        },
+        {
+          "name": "result retry works",
+          "pass": true,
+          "run": 1
+        }
+      ],
+      "images": [
+        "game018-phone-result-0.png",
+        "game018-phone-result-1.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game019",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "native jump raised observed height",
+          "pass": true,
+          "maxMeters": 5.4
+        },
+        {
+          "name": "milestone share does not block resume",
+          "pass": true
+        },
+        {
+          "name": "height BEST raw decimeters persist exactly",
+          "pass": true,
+          "bestDm": 54
+        }
+      ],
+      "images": [
+        "game019-phone-pause-milestone.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game024",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "ordinary slow-speed food scored",
+          "pass": true
+        },
+        {
+          "name": "active snake save restores exact state",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "other speed retains separate mode",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game024-phone-slow-result.png",
+        "game024-phone-speed-six-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game029",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "fishing active save exact restored",
+          "pass": true
+        },
+        {
+          "name": "automated result share disabled",
+          "pass": true
+        },
+        {
+          "name": "automated result excluded from sharing",
+          "pass": true
+        },
+        {
+          "name": "share button readable containment",
+          "pass": true
+        },
+        {
+          "name": "fishing optional share does not block retry",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game029-phone-finish-result.png"
+      ],
+      "result": "PASS"
+    },
+    {
+      "game": "game031",
+      "device": "phone",
+      "checks": [
+        {
+          "name": "ordinary mining before metadata save",
+          "pass": true,
+          "mined": 3
+        },
+        {
+          "name": "031 saved metadata portal value agrees with native counter",
+          "pass": true
+        },
+        {
+          "name": "031 native save counter resumes",
+          "pass": true
+        }
+      ],
+      "images": [
+        "game031-phone-light-mined.png",
+        "game031-phone-portal-world-record.png"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "posts": 0,
+  "errors": [],
+  "result": "PASS"
+}

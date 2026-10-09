@@ -1,5 +1,7 @@
 # 共有記録の運用・有効化
 
+2026-10-09 JST STEP2：本番0001〜0003適用、Workerrecords ON、既存Analytics／Secret／DB保持。最新の [本番接続報告](../leaderboards/step2/IMPLEMENTATION_REPORT.md) と [停止／再開](../leaderboards/step2/HANDOFF.md) を優先する。以下の未適用手順は当時の履歴。
+
 2026-10-09 STEP1追補：TOP10・参加者識別の現行仕様と本番順序は [leaderboards/HANDOFF](../leaderboards/HANDOFF.md)。今回の既存Cloudflare認証は読み取り成功、対象D1には0001だけ、recordsは未適用／OFF。0002だけを適用する以下の旧手順は履歴であり、今後は0002＋0003の対象限定・Time Travel確認を行う。旧未識別submissionを保持し、新公開BESTとTOP10は同じ確認済み所有者の集合から取得する。
 
 ## 今回の環境

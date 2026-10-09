@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-09T12:36:55.851Z",
+  "result": "PASS",
+  "backend": "Actual local workerd/D1 through Wrangler4.42",
+  "production_mutations": false,
+  "synthetic_only": true,
+  "checks": [
+    "0002_records.sql: failed batch rolls back schema and ledger",
+    "0002_records.sql: real D1 successful migration preserves Analytics and ledger",
+    "0003_leaderboards.sql: failed batch rolls back schema and ledger",
+    "0003_leaderboards.sql: real D1 successful migration preserves Analytics and ledger",
+    "D1 supported foreign-key check passes"
+  ]
+}

@@ -23,10 +23,16 @@ jobs:
       - run: npm test
       - name: Offline Jev helper contract tests (no API calls)
         run: python3 -m unittest discover -s tests/jev -p 'test_*.py' -v
+      - name: Validate production records endpoint
+        env:
+          VITE_RECORDS_ENDPOINT: ${{ vars.VITE_RECORDS_ENDPOINT || 'https://analytics.game100garage.com' }}
+        run: test "$VITE_RECORDS_ENDPOINT" = 'https://analytics.game100garage.com'
       - run: npm run build
         env:
           VITE_GA4_MEASUREMENT_ID: ${{ vars.VITE_GA4_MEASUREMENT_ID }}
           VITE_TELEMETRY_ENDPOINT: ${{ vars.VITE_TELEMETRY_ENDPOINT }}
+          # Prefer Actions Variables; existing integration cannot manage Variables.
+          VITE_RECORDS_ENDPOINT: ${{ vars.VITE_RECORDS_ENDPOINT || 'https://analytics.game100garage.com' }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

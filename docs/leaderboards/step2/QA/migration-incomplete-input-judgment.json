@@ -1,0 +1,25 @@
+{
+  "finding_id": "production-migration-incomplete-input",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "root with step2_review source/SQLite evidence; not a claimed blind final agent classification",
+  "rationale": "Failure observation required inspection of remotequery and compound parser paths. Actual failedtransaction left productionunchanged. Complete lexical CASE/END boundary spacing preserves original files and semantics; real localD1 success/rollback and actualproductionledger verification passed. Exact internalserverparser implementation remains unobserved. Agent viewed Jev output after code/SQLite tests, so finalclassification is not blind.",
+  "evidence": [
+    "MIGRATION_FIRST_ATTEMPT.json",
+    "MIGRATION_POST_FAILURE.json",
+    "MIGRATION_TRANSPORT_LOCAL_D1.json",
+    "MIGRATION_APPLIED.json",
+    "INDEPENDENT_DEPLOYMENT_REVIEW.md"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspect remoteCLI/parser; validate protected-token normalization and originalhashes, real localD1 schema+ledgerrollback; apply unchangedmigrationsemantics in one REST request each, verifyproductionledger and Analytics counts",
+    "evidence": [
+      "MIGRATION_TRANSPORT_LOCAL_D1.json",
+      "MIGRATION_APPLIED.json"
+    ]
+  },
+  "final_root_cause": "UNKNOWN"
+}

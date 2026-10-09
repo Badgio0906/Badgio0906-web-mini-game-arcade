@@ -1,5 +1,7 @@
 # 全体BEST＋歴代TOP10 STEP 1実装報告
 
+2026-10-09 JST：続く [STEP2本番接続報告](step2/IMPLEMENTATION_REPORT.md) で本番DB／Worker／Pagesの接続状態を確認する。本書のSTEP1未有効化は当時の状態。
+
 2026-10-09 UTC。開始main `f8b8444dc1d942aba56f23199498226caa38fd22`、開始branch `work` から作業branch `codex/leaderboards-step1` を作成。開始時dirtyなし、同環境worktree1件。GitHub mainとlocalHEAD一致を確認し、過去報告の他環境21treeがこの環境に存在すると推測していない。[開始](QA/START_STATE.json)／[正本読取](QA/READ_RECORD.json)。
 
 ## 実装

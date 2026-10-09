@@ -1,5 +1,7 @@
 # STEP 1再開・本番接続
 
+2026-10-09 JST STEP2追補：本番0002／0003適用・Workerrecords ONまで確認済み。現行状態・停止・残確認は [STEP2報告](step2/IMPLEMENTATION_REPORT.md)／[接続後手順](step2/HANDOFF.md)。下のSTEP1のOFF／未適用記述は当時の履歴。
+
 実装／QA／Pages公開／Worker稼働／実投稿受信は [IMPLEMENTATION_REPORT](IMPLEMENTATION_REPORT.md) で別々に確認する。検証fixtureを本番へ投稿しない。秘密キーをチャットへ貼らない。認証は既存CloudflareアカウントのSecret管理または既存CLI認証を使う。
 
 ## 確認済みの接続状態

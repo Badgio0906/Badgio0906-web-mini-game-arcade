@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-09T12:29:29.188Z",
+  "reads_only": true,
+  "results": [
+    {
+      "name": "multiline single SELECT",
+      "status": 200,
+      "success": true,
+      "error_codes": [],
+      "error_message": [],
+      "result": [
+        {
+          "success": true,
+          "results": [
+            {
+              "newline_probe": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "singleline CASE comma",
+      "status": 200,
+      "success": true,
+      "error_codes": [],
+      "error_message": [],
+      "result": [
+        {
+          "success": true,
+          "results": [
+            {
+              "CASE WHEN 1 THEN 1 ELSE 0 END": 1,
+              "next": 2
+            }
+          ]
+        },
+        {
+          "success": true,
+          "results": [
+            {
+              "after": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BEGIN readonly transaction",
+      "status": 400,
+      "success": false,
+      "error_codes": [
+        7500
+      ],
+      "error_message": [
+        "To execute a transaction, please use the state.storage.transaction() or state.storage.transactionSync() APIs instead of the SQL BEGIN TRANSACTION or SAVEPOINT statements. The JavaScript API is safer because it will automatically roll back on exceptions, and because it interacts correctly with Durable Objects' automatic atomic write coalescing."
+      ],
+      "result": []
+    }
+  ]
+}

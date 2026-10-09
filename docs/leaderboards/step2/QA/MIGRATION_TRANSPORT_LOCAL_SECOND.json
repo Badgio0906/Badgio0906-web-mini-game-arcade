@@ -1,0 +1,7 @@
+{
+  "result": "FAIL",
+  "production_mutations": false,
+  "cause": "D1 does not authorize SQLite PRAGMA integrity_check; migration success and rollback assertions had already passed",
+  "correction": "Keep supported foreign_key_check and real migration/ledger assertions; do not claim D1 integrity_check",
+  "product_source_changed": false
+}

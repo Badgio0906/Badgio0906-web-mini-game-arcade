@@ -1,0 +1,586 @@
+{
+  "at": "2026-10-09T12:43:48.689Z",
+  "mode": "on",
+  "base": "https://analytics.game100garage.com",
+  "checks": [
+    {
+      "name": "GET /v1/health HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Existing Analytics health compatible",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/admin/summary HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/admin/submissions HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "Configured existing Codex credential available, value hidden",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/admin/summary HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/admin/submissions HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/codex/summary?from=2026-10-09T11%3A43%3A49.324Z&to=2026-10-09T12%3A43%3A49.324Z HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Existing Codex aggregate reader works; credential preserved",
+      "pass": true
+    },
+    {
+      "name": "OPTIONS /v1/events HTTP 204",
+      "pass": true
+    },
+    {
+      "name": "Existing Analytics CORS preserved",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/events HTTP 405",
+      "pass": true
+    },
+    {
+      "name": "OPTIONS /v1/records/submissions HTTP 204",
+      "pass": true
+    },
+    {
+      "name": "Sharing header allowed by exact production Origin",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 403",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Public response production CORS",
+      "pass": true
+    },
+    {
+      "name": "BEST schema and exactly 20 registered boards",
+      "pass": true
+    },
+    {
+      "name": "Public BEST contains no internal identity/secret fields",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game001.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game001.score.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game001.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game001.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game001.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game001.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game002.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game002.score.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game002.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game002.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game002.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game002.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game003.floors.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game003.floors.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game003.floors.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game003.floors.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game003.floors.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game003.floors.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game004.level.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game004.level.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game004.level.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game004.level.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game004.level.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game004.level.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game005.sorted.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game005.sorted.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game005.sorted.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game005.sorted.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game005.sorted.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game005.sorted.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game006.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game006.score.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game006.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game006.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game006.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game006.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game007.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game007.score.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game007.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game007.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game007.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game007.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game008.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game008.score.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game008.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game008.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game008.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game008.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game009.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game009.score.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game009.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game009.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game009.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game009.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game011.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game011.score.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game011.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game011.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game011.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game011.score.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game012.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game012.score.r1.normal HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game012.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game012.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game012.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game012.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game013.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game013.score.r1.normal HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game013.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game013.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game013.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game013.score.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game014.successes.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game014.successes.r1.normal HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game014.successes.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game014.successes.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game014.successes.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game014.successes.r1.normal",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game015.depth.r03.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game015.depth.r03.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game015.depth.r03.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game015.depth.r03.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game015.depth.r03.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game015.depth.r03.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game016.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game016.score.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game016.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game016.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game016.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game016.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game017.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game017.score.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game017.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game017.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game017.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game017.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game018.distance.r1.all-shoes",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game018.distance.r1.all-shoes HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game018.distance.r1.all-shoes",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game018.distance.r1.all-shoes",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game018.distance.r1.all-shoes",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game018.distance.r1.all-shoes",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game019.height.r2.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game019.height.r2.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game019.height.r2.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game019.height.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game019.height.r2.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game019.height.r2.all",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game024.foods.r1.speed-4",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game024.foods.r1.speed-4 HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game024.foods.r1.speed-4",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game024.foods.r1.speed-4",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game024.foods.r1.speed-4",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game024.foods.r1.speed-4",
+      "pass": true
+    },
+    {
+      "name": "BEST comparison metadata game029.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game029.score.r1.all HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "TOP10 schema and rules game029.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "TOP10 only permitted public fields game029.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "BEST equals TOP1, revision aligned game029.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "Only normal public response cached game029.score.r1.all",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/participants HTTP 405",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=unknown HTTP 404",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game001.score.r1.all&limit=11 HTTP 400",
+      "pass": true
+    }
+  ],
+  "synthetic_submissions": 0,
+  "participant_registrations": 0,
+  "analytics_posts": 0,
+  "public_boards": 20,
+  "empty_boards": 20,
+  "nonempty_boards": 0,
+  "result": "PASS"
+}

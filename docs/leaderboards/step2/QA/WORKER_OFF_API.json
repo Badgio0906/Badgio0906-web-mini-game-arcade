@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-09T12:42:11.932Z",
+  "mode": "off",
+  "base": "https://analytics.game100garage.com",
+  "checks": [
+    {
+      "name": "GET /v1/health HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Existing Analytics health compatible",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/admin/summary HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/admin/submissions HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "Configured existing Codex credential available, value hidden",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/admin/summary HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/admin/submissions HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/codex/summary?from=2026-10-09T11%3A42%3A12.895Z&to=2026-10-09T12%3A42%3A12.895Z HTTP 200",
+      "pass": true
+    },
+    {
+      "name": "Existing Codex aggregate reader works; credential preserved",
+      "pass": true
+    },
+    {
+      "name": "OPTIONS /v1/events HTTP 204",
+      "pass": true
+    },
+    {
+      "name": "Existing Analytics CORS preserved",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/events HTTP 405",
+      "pass": true
+    },
+    {
+      "name": "OPTIONS /v1/records/submissions HTTP 204",
+      "pass": true
+    },
+    {
+      "name": "Sharing header allowed by exact production Origin",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 403",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 401",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/bests HTTP 503",
+      "pass": true
+    },
+    {
+      "name": "Public response production CORS",
+      "pass": true
+    },
+    {
+      "name": "OFF returns preparing, uncached",
+      "pass": true
+    },
+    {
+      "name": "GET /v1/records/public/leaderboard?board_id=game001.score.r1.all HTTP 503",
+      "pass": true
+    },
+    {
+      "name": "OFF TOP10 remains preparing",
+      "pass": true
+    }
+  ],
+  "synthetic_submissions": 0,
+  "participant_registrations": 0,
+  "analytics_posts": 0,
+  "result": "PASS"
+}

@@ -1,0 +1,18 @@
+{
+  "finding_id": "production-migration-incomplete-input",
+  "problem": "Local validated records migration returns incomplete input during production CLI apply",
+  "expected": "Apply unchanged0002 followed by0003 on verified targetD1, preserveexistingAnalytics and ledger",
+  "observed": [
+    "Wrangler4.42 lists only0002 and0003 pending",
+    "TimeTravelcurrentbookmarkconfirmed beforeapply",
+    "CLIapply0002 exits1 with incomplete input SQLITE_ERROR code7500",
+    "0003notattempted; Workerupdateandactivationhalted"
+  ],
+  "unknown": [
+    "Postfailure schema and migrationledger state",
+    "Which layer parses multi-statement SQL and trigger bodies",
+    "Safe application path retaining original migration files and transactions"
+  ],
+  "operation": "wrangler d1 migrations apply DB --remote",
+  "provenance": "Actual authorized productionmigrationCLI, no score submissions; localfullSQL verification separate"
+}

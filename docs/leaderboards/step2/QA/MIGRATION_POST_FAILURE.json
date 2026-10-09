@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-09T12:27:18.762Z",
+  "tables": [
+    {
+      "type": "index",
+      "name": "idx_events_browser_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_game_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_name_time",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_occurred",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_session",
+      "tbl_name": "events"
+    },
+    {
+      "type": "index",
+      "name": "idx_events_visit",
+      "tbl_name": "events"
+    },
+    {
+      "type": "table",
+      "name": "_cf_KV",
+      "tbl_name": "_cf_KV"
+    },
+    {
+      "type": "table",
+      "name": "d1_migrations",
+      "tbl_name": "d1_migrations"
+    },
+    {
+      "type": "table",
+      "name": "daily_aggregates",
+      "tbl_name": "daily_aggregates"
+    },
+    {
+      "type": "table",
+      "name": "events",
+      "tbl_name": "events"
+    }
+  ],
+  "migrations": [
+    {
+      "name": "0001_events.sql"
+    }
+  ],
+  "data_counts": {
+    "events_count": 8474,
+    "daily_aggregates_count": 59
+  },
+  "reads_only": true
+}
