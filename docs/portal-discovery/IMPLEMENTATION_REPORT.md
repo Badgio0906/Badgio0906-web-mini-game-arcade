@@ -1,6 +1,6 @@
 # Portal discovery 実装・検証報告
 
-2026-10-10 JST。対象は100ガレ ～GAME100 GARAGE～のポータル。タグOR／AND、開発状態、ブラウザのお気に入り優先表示を追加した。仕様は[PORTAL_DISCOVERY](../PORTAL_DISCOVERY.md)、作者判断と実画像・境界の独立レビューは[INDEPENDENT_REVIEW](INDEPENDENT_REVIEW.md)。この報告の公開欄は公式Pages公開後に実測へ更新する。
+2026-10-10 JST。対象は100ガレ ～GAME100 GARAGE～のポータル。タグOR／AND、開発状態、ブラウザのお気に入り優先表示を追加した。仕様は[PORTAL_DISCOVERY](../PORTAL_DISCOVERY.md)、作者判断と実画像・境界の独立レビューは[INDEPENDENT_REVIEW](INDEPENDENT_REVIEW.md)。公式Pagesと独自ドメインで公開版も確認済み。
 
 ## Git安全確認と変更範囲
 
@@ -37,7 +37,7 @@ favoriteは`game100garage:favorites:v1`にstable IDの配列を保存。登録�
 - 対象3file **41/41 PASS**。[TARGET_TESTS](QA/TARGET_TESTS.log)。型check／production build PASS。[CHECK_FINAL](QA/CHECK_FINAL.log)／[BUILD_FINAL](QA/BUILD_FINAL.log)。public common script/CSSのVite bundle注意と大きいchunk警告は開始版にもあった既存警告。common assetsは実配信照合で別確認する。
 - offline Jev helper **25/25 PASS**。[JEV_OFFLINE](QA/JEV_OFFLINE.log)。runtimeへJevを接続せず、自動修正／公開Gateを有効化しない。
 - 密度調整前のcompiledブラウザは **176項目 PASS**。[browser-observer-corrected](QA/browser-observer-corrected/REPORT.json)。1440×900・390×844・320×720、repository subpath320。click／tap／Enter、OR9／AND5、状態複合／empty／clear、favorite順／focus／復元／非favoriteと031保持、Records30／TOP10競争20、共有設定、consent設定、position／retained node／observer dedup、実001PLAY帰還・003card帰還、JSON/unknown/quotaの境界を含む。page/console error0、records等POST attempt0。analyticsの既存POSTはQA内で応答し、本番へ転送0。
-- 最終密度調整後もcompiled **176/176 PASS**。[browser-final](QA/browser-final/REPORT.json)。独立追加 **32/32 PASS**。[independent-boundaries-accepted](QA/independent-boundaries-accepted/REPORT.json)。クロスタブ／clear反映、hidden favoriteとfilterの維持、全integration node identity、031 Space／Enter／Tab、chip focus、Storage getter／read拒否を実操作で確認した。最終1440／390／320画像は文字clip／重なり／横overflowなし、初期thumbnailの一部以上が見え、44px操作を保持。[独立最終Visual](QA/INDEPENDENT_VISUAL_FINAL.json)。公開結果は後述へ追記する。source固定は[SOURCE_FINAL_MANIFEST](QA/SOURCE_FINAL_MANIFEST.json)、compiled全330file固定は[BUILD_FINAL_MANIFEST](QA/BUILD_FINAL_MANIFEST.json)。元phaseのmanifest／画像を保持する。
+- 最終密度調整後もcompiled **176/176 PASS**。[browser-final](QA/browser-final/REPORT.json)。独立追加 **32/32 PASS**。[independent-boundaries-accepted](QA/independent-boundaries-accepted/REPORT.json)。クロスタブ／clear反映、hidden favoriteとfilterの維持、全integration node identity、031 Space／Enter／Tab、chip focus、Storage getter／read拒否を実操作で確認した。最終1440／390／320画像は文字clip／重なり／横overflowなし、初期thumbnailの一部以上が見え、44px操作を保持。[独立最終Visual](QA/INDEPENDENT_VISUAL_FINAL.json)。公開版は **128/128 PASS**。[public-browser](QA/public-browser/REPORT.json)。1440／390／320で同じ機能・既存連携を実操作し、error0・records等POST attempt0、analyticsはQA内で応答し本番転送0。source固定は[SOURCE_FINAL_MANIFEST](QA/SOURCE_FINAL_MANIFEST.json)、compiled全330file固定は[BUILD_FINAL_MANIFEST](QA/BUILD_FINAL_MANIFEST.json)。元phaseのmanifest／画像を保持する。
 
 ### 初回failureと限定対応
 
@@ -54,7 +54,13 @@ findingごとにJev Shadowを実際に8 findings各1 request／4問（8/8 AVAILA
 
 ## 公開
 
-公開前段階。公式`Build and deploy arcade`でmainを公開し、成功run／commit、匿名public GETと実操作、配信file hashを確認して追記する。Workerのdeploy／D1 migrationは不要。
+実装commit **`fbb9f6fdbb6c93d054e16d826aede716c703e337`**をmainへ通常fast-forward pushした。公式[Build and deploy arcade run 38004492659](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38004492659)のbuild／deployはともにsuccess。[OFFICIAL_WORKFLOW](QA/OFFICIAL_WORKFLOW.json)にexact SHA／job／step結果を保持。workflowと本番configを変更していない。既存v4 ActionsのNode24強制移行案内とubuntu-latest移行予定はGitHub基盤のannotationで、本機能による警告ではない。
+
+公開URLは **https://game100garage.com/**。GitHub Pages aliasも同URLへHTTP200でredirectし、新filter markupを確認。[PUBLIC_URLS](QA/PUBLIC_URLS.json)。公開版3viewport **128項目 PASS**、全30trial／全active・タグOR／AND・状態複合・empty／clear・favorite登録／解除／並び／復元・非favorite／031保持・既存Records／TOP10／共有／consent／impression／実001PLAY帰還と003card帰還を確認した。page／console exception0、records等POST attempt0。本番score／participant／analyticsへのQA POSTは転送していない。実公開anonymous BEST／ranking GETを使い、スコアを捏造していない。
+
+exact commitのCI同等buildと **166配信fileのSHA256が一致**。[VERSION](QA/public-version/VERSION.json)。全HTML・JS／CSS・font・Godotruntime／PCK／WASM／bridge／shell／common navigationを含む。公式artifactZIPはdownloadせず、成功公式runのexact SHA、clean source、同一公開configのbuild、配信byteで版を確認した。動作確認のJS response hashも[public-browser](QA/public-browser/REPORT.json)に保存した。Worker deploy／D1 migrationは行っていない。
+
+この後は公開証拠・文書だけを別commitでmainへ保存し、同じ公式workflowの成功まで確認する。製品sourceは上記runtime commitから変更しない。
 
 ## 残る範囲
 
@@ -63,3 +69,7 @@ findingごとにJev Shadowを実際に8 findings各1 request／4問（8/8 AVAILA
 ## 最終ローカル画像
 
 [PC初期](QA/browser-final/1440-initial.png)／[390px初期](QA/browser-final/390-initial.png)／[320px初期](QA/browser-final/320-initial.png)／[スマホ絞り込み](QA/browser-final/390-filtered.png)／[お気に入り](QA/browser-final/390-favorites.png)／[0件](QA/browser-final/390-empty.png)
+
+## 実公開画像
+
+[PC](QA/public-browser/1440-initial.png)／[390px](QA/public-browser/390-initial.png)／[320px](QA/public-browser/320-initial.png)／[スマホAND](QA/public-browser/390-filtered.png)／[お気に入り](QA/public-browser/390-favorites.png)／[完成版0件](QA/public-browser/390-empty.png)
