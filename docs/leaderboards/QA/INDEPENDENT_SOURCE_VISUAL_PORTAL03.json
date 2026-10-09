@@ -1,0 +1,53 @@
+{
+  "reviewer": "independent_qa",
+  "at": "2026-10-09T11:23:45.355794+00:00",
+  "status": "STATIC_PANEL_VISUAL_PASS",
+  "provenance": "Independently viewed all eight supplied portal-browser-03 PNGs with view_image. Synthetic fixture API + Chromium viewport emulation; no real player score or physical device.",
+  "source_at_review_sha256": {
+    "src/records/LeaderboardDialog.ts": "047fc7f924d1e14c4a90ebec7f23a3e2fd67a1e7db4a6f61c4bd79f7e2d84fa7",
+    "src/records/PortalRecords.ts": "45246b35110433cf8ad866031853ba028645eff76dcc8c2692e94a60e5c7141b",
+    "src/records/Leaderboards.ts": "36a53ee68515f14692e3627c24f532a6116decc5cf7c2a002dc2a5de245d768e",
+    "src/records/PublicBests.ts": "1c04d81927ccfdc3c7d8009851d4347303fee2525b7c7a7a14656dcfd16f6604",
+    "src/records/ParticipantIdentity.ts": "57d3cf1d311edd422be710539d7825e23aad6c8f58471057b1f92c658b6e76ed",
+    "src/records/RecordSharing.ts": "178e15eb0770252eba057fb221b9f32c5787e65f2dacfb54659f222e7329057c",
+    "src/records/protocol.ts": "f3e6d109795e67d20dd211cb48d37d98a9a693bf586c7b22b467547272acbfed",
+    "src/portal/main.ts": "e14d08d6635fc000d9af1e7a1d3a1c002b6d75465bfa752a25885ed67e7756fe",
+    "src/portal/style.css": "c6dd84bb58832c9b81861a18d0acfa4f12a5db30a9bf7d678c35b9a17637649b"
+  },
+  "image_sha256": {
+    "docs/leaderboards/QA/portal-browser-03/ranking-1300x900.png": "19cc1dd2856031dd9dd3eedcad5fb7d70c7a6e6949b34b2608870576503d584a",
+    "docs/leaderboards/QA/portal-browser-03/ranking-390x844.png": "8568fa8334bbb0e21236f11560c5f0a3a05d34620817da9cb67e4638300939f7",
+    "docs/leaderboards/QA/portal-browser-03/ranking-320x720.png": "a0ba0c38a462d74cb810b804c68500b9698066949f90b5dc46f45439fceb4974",
+    "docs/leaderboards/QA/portal-browser-03/ranking-844x390.png": "3d65783ac56b947a38de6ae2ce25b7bb3492e25f4f77b34f9af23782c59965be",
+    "docs/leaderboards/QA/portal-browser-03/long-1300x900.png": "f3c6dedea3a5fe6ec8460f008df7f123575b7c7e33a024f0f6c6948ba6e01b3b",
+    "docs/leaderboards/QA/portal-browser-03/long-390x844.png": "f7f6916852bea58be62eb07a0062897f31b91d337cd881658a6bd52cc9983f44",
+    "docs/leaderboards/QA/portal-browser-03/long-320x720.png": "1896fea7596ed1deaf6fd8d4bfe31af051d0097a0ca0f9a8043cdd7da7a15ce2",
+    "docs/leaderboards/QA/portal-browser-03/long-844x390.png": "24ecfac0baed5f616ffcc312342140bb9fdd30646770d8d62ff9a9dbff32bd61"
+  },
+  "scores": {
+    "F_readability": {
+      "score": 14,
+      "maximum": 15,
+      "reason": "Rank, anonymous label, score/unit and tie text readable on all four widths; long decimal values fit320px; title wraps with close still visible."
+    },
+    "H_production_value": {
+      "score": 13,
+      "maximum": 15,
+      "reason": "Cream/yellow/dark outlines match existing portal. Uniform row spacing, orderly dividers and clear personal-best box. 12digit anonymous codes intentionally functional rather than expressive."
+    }
+  },
+  "total_100": null,
+  "observations": [
+    "All eight images keep close button visible. Portrait title wraps; landscape reserves header while content scrolls.",
+    "320px long scaled dm scores visibly fit and retain tenths; unit remains visible.",
+    "Ranks and scores use clear weight differences; equal900scores labelled同点 on both rows.",
+    "Partial bottom row is consistent with scrollable content; it is not evidence of horizontal numeric clipping.",
+    "Synthetic labels/huge values are QA fixtures and are not evidence of actual production intake."
+  ],
+  "limitations": [
+    "Static panel assessment only; actual motion was not viewed by this reviewer, so no complete eight-category100/motion score is invented.",
+    "Images were supplied by portal tester; source-at-review hashes are separate from exact image hashes. Capture-to-source equality needs the main-agent frozen build manifest.",
+    "Native dialog keyboard/inert/scroll QA in portal REPORT.json is tester evidence, not this reviewer performing browser interaction.",
+    "No human play/physical mobile/screenreader output review."
+  ]
+}

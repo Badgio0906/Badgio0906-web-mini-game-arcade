@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "at": "2026-10-09T11:21:33.266Z",
+  "backend": "Node24 SQLite + actual bundled handleRecords, isolated synthetic in-memory database",
+  "limitations": [
+    "Not Cloudflare workerd/D1 API runtime",
+    "Concurrent API coroutines use a serial synchronous SQLite connection",
+    "No network, browser, real score verification, real production receipts, or visual evaluation"
+  ],
+  "source_sha256": {
+    "analytics-worker/migrations/0002_records.sql": "7b4efac95c3ef7f1a0c3382d97e5f0d8faef32a3cc9f19bd83127eb7a679ce80",
+    "analytics-worker/migrations/0003_leaderboards.sql": "ec811bd7ee747649d739f92b6def1465ee9616ad93bfe58d8f727d1927c2221f",
+    "analytics-worker/src/records.ts": "af501ec7d333323202536c144b759d092f45564919734ce9d62a5e75033b9461",
+    "src/data/recordDefinitions.ts": "7f82bbbcda75b86daa4f6c1f4797890e741ceee2269b4526bff42c63b62bbbac"
+  },
+  "checks": [
+    "additive_migration_legacy_ledger_best_receipt_preserved",
+    "raw_double_migration_rejected_without_duplicate_objects",
+    "legacy_unattributed_excluded_from_both_public_views",
+    "three_runs_one_participant_slot",
+    "one_participant_100_additional_runs_one_slot",
+    "over_eleven_participants_fixed_top10_ties_zero_preserved_in_ledger",
+    "public_best_top1_same_projection_revision",
+    "spoof_owner_label_invalid_credential_run_cross_owner_lost_owner_wrong_receipt_denied",
+    "participant_best_independent_board_wrong_mode_rules_rejected",
+    "lower_sql_zero_and_cancel_fallback_one_owner",
+    "cancel_withdraw_next_best_tombstone_no_restore",
+    "participant_disabled_atomic_projection_refresh_reenable",
+    "concurrent_registration_one_stable_label_serial_sqlite_adapter",
+    "trigger_atomic_rollback_preserves_ledger_projection_revision",
+    "query_strict_public_minimal_fields_no_credentials_receipts_ids"
+  ],
+  "count": 15
+}

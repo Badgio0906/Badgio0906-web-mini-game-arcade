@@ -1,5 +1,7 @@
 # 共有記録 API と検査
 
+2026-10-09追補：現行参加者認証・TOP10・旧未識別記録の扱いは [leaderboards/API](../leaderboards/API.md)／[DATABASE](../leaderboards/DATABASE.md)。公開BESTの形を維持し、適格条件を確認済みactive参加者のaccepted記録へ揃える。POST participantsで登録し、既存投稿本文を変えずX-Record-Credential headerで認証する。以下の「名前・順位一覧もない」「accepted全候補」の記述は初版の履歴で、新TOP10／新公開集合は上記追補が正本。
+
 対象は既存 Analytics Worker に追加した `/v1/records/*` のみ。`/v1/events`、`/v1/admin/*`、`/v1/codex/*` の認証・集計・保持仕様を変更しない。正本の board は [recordDefinitions](../../src/data/recordDefinitions.ts)。現在の本番 Worker は未更新、`RECORDS_ENABLED` は未設定であり、下記はローカル D1 で検証した実装仕様。
 
 ## 経路

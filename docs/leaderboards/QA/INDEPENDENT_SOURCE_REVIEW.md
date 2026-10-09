@@ -1,0 +1,38 @@
+# Independent source / SQL / authentication review
+
+Reviewer: independent_qa (implementation files were not edited). 2026-10-09 UTC.
+
+This review reads the actual STEP 1 sources, not Jev decisions. Synthetic test data was used exclusively in memory. No Cloudflare account, real database, remote API, fixture production submission, deployment, or commit was performed by this reviewer.
+
+## Executed evidence
+
+`node tests/leaderboards/independent-sql-auth.mjs` passed 15 grouped checks. [Exact sources and checks](INDEPENDENT_SOURCE_SQL_AUTH.json) record SHA-256 for migrations 0002/0003, Worker records code, and recordDefinitions. The script bundles the actual `handleRecords`, supplies an isolated Node 24 SQLite adapter with transactional batch behavior, and invokes actual Request/Response handlers. It independently verifies legacy preservation and exclusion, one slot for repeated RUNs, >11 participants, fixed TOP10, ties and zero in the ledger, same BEST/TOP1 revision, spoof rejection, invalid credentials, cross-owner RUN conflicts, withdrawal receipt isolation, cancellation/withdrawal fallback, disabled participant transitions, registration idempotency, rollback, strict queries, and minimal public fields.
+
+This is SQLite plus the actual handler, not Cloudflare workerd/D1 runtime. Concurrent handler coroutines are serialized at the SQLite connection; the implementation owner's local D1 tests remain necessary. An initial adapter implementation yielded inside a transaction and caused overlapping transaction errors during concurrent registration. That fixture defect was corrected by making the SQLite batch synchronously atomic before the reported successful run.
+
+## Observed finding: LB-INDEPENDENT-LOCAL-READ-CANCEL
+
+At 11:16 UTC, `npx vitest run --config tests/leaderboards/independent-vitest.config.ts` failed its single independent regression. Source: `src/records/LeaderboardDialog.ts`. The failing observation predates the source hash capture; the exact failed-source hash was not captured and is not asserted. The source changed during concurrent implementation, so the later successful-source hash cannot be reused as failed-source evidence.
+
+The test opens the Game012 dialog, reconciles a bulk public BEST refresh while the browser's local-record lookup is unresolved, then resolves that lookup with BEST 123. Expected: the modal eventually shows 123. Observed: `あなたのBEST：読み込み中` remains. Public reconciliation increments the same generation checked by the personal-record callback, without replacing that personal lookup. Legacy mirrors and current-rule markers use asynchronous browser storage, so this is a relevant interleaving. Real-browser frequency was not measured. The finding was sent to the main agent before proposing or applying any implementation fix; the main agent owns Jev Shadow routing and the limited correction.
+
+At 11:20 UTC, after the implementation owner separated dialog-open lifetime from ranking-refresh lifetime, the same regression passed. A second independent test also passed: close Game012, open Game013, resolve the new BEST 456, then resolve the older BEST 123; 456 remains displayed. The two-test successful source SHA-256 is `047fc7f924d1e14c4a90ebec7f23a3e2fd67a1e7db4a6f61c4bd79f7e2d84fa7`. Independent judgment (without reading Jev): PRODUCT_BUG; CODEX_ACTION_REQUIRED=true; NEXT_EVIDENCE=AUTOMATED_TEST; RELEASE_RISK_IF_UNRESOLVED=false (required personal-BEST field can remain loading, but ranking/close operations still function). Actual next action: automated cancellation/interleaving regression and close/reopen stale-result isolation.
+
+This test uses a deliberately small DOM double solely for async lifetime behavior. It is not evidence of native modal focus, keyboard handling, geometry, scroll behavior, or visual quality.
+
+## Source inspection
+
+The submission body rejects unknown owner/public-name fields. Server ownership comes only from a registered, active credential hash, and attributed content hashes bind the owner. Registration names are server-generated independently of authentication material. Published responses project allowed fields; public GET rejects a credential header. Legacy submissions remain ownerless and do not enter either public view. Trigger updates, status changes, and participant enable/disable changes maintain the same reconstructible participant projection. Withdrawal tombstones do not enter the restore transition.
+
+The frontend retains receipts and RUN IDs and binds queued data to the original credential fingerprint. Credentials are created through sharing permission rather than public ranking reads, and the ranking request has no identifier headers. Native dialog code uses `showModal`, focuses the heading, restores the opening button on close, and applies a body overflow lock. Source inspection alone does not prove browser behavior. The gallery changes preserve the event names for impressions/launch and keep the ranking button outside game links. No changes were present in the ConsentService, Worker index, Analytics sender, GA4, AdSense settings, CREDIT, or game scoring code in the reviewed tracked diff.
+
+The initial no-Web-Locks fallback was a synchronous localStorage read/write sequence per document; separate contexts were not made atomic by that sequence. The main agent proactively closed this source-only limitation: new allocation without Web Locks fails closed with an explicit result notice; an existing credential remains reusable. This was not claimed as a separately browser-reproduced finding. Independent tests at 11:23 UTC verify that no-lock allocation leaves storage empty, prior credentials remain usable, and permission revoked before the lock callback prevents allocation. Combined independent dialog/identity suite: 5/5 passing. Storage-denied credentials remain page-local, as documented.
+
+## Scope limits
+
+All eight initial portal-browser-03 and all eight final frozen-source portal-browser-05 ranking/long-score PNGs were independently viewed. [Static visual review](INDEPENDENT_SOURCE_VISUAL.json) records exact image hashes, source-at-review hashes, concrete observations and F14/15, H13/15. Full eight-category100/motion score is not asserted because actual motion was not observed by this reviewer; static panel appearance passed. The final review independently matches all 282 source-file hashes and all 156 enabled-build file hashes against [the pre-build fixed manifest](FINAL_SOURCE_MANIFEST.json), then records exact final image hashes. Root-owned final browser QA passed 118 checks; this is tester evidence rather than this reviewer performing those browser interactions. The misconfigured endpoint in intermediate portal-browser-04 was corrected in build configuration only; its failed evidence and correction remain preserved. Physical phone behavior, screen-reader output, real production credentials, real player intake, and score authenticity were not verified. The report is a technical source/SQL/authentication assessment; it is not a deployment or human acceptance claim.
+
+
+## Final fixed-source verdict
+
+On the final fixed source and enabled fixture build, this reviewer found no unresolved implementation blocker in the assessed source, authentication, projection, cancellation, and static-panel scope. The independent SQLite/API checker passed15 grouped checks; the independent frontend suite passed5 tests. The previously observed personal-BEST cancellation finding was independently retested after correction. Static visual assessment remains PASS, F14/15 and H13/15, with no invented full-game motion score. This does not authorize or prove real Cloudflare production intake, human acceptance, or physical-device behavior.

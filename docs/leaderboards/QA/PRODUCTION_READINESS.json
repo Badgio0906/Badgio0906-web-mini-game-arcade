@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-09T11:11:07.005Z",
+  "production_mutations": false,
+  "checks": [
+    {
+      "kind": "public",
+      "path": "/v1/health",
+      "status": 200,
+      "health": "ok"
+    },
+    {
+      "kind": "public",
+      "path": "/v1/records/public/bests",
+      "status": 404,
+      "error": "not_found"
+    },
+    {
+      "kind": "public",
+      "path": "/v1/records/public/leaderboard?board_id=game001.score.r1.all",
+      "status": 404,
+      "error": "not_found"
+    },
+    {
+      "kind": "target_d1_identity",
+      "status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "kind": "worker_settings",
+      "status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "kind": "worker_deployments",
+      "status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "kind": "read_only_schema_query",
+      "status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "kind": "read_only_schema_query",
+      "status": 200,
+      "success": true,
+      "error_codes": []
+    }
+  ],
+  "target_database_name": "game100garage-production",
+  "correct_database": true,
+  "worker_records_enabled": false,
+  "worker_db_binding_matches": true,
+  "worker_admin_secret_present": true,
+  "worker_deployments": [
+    {
+      "id": "4860fd73-5557-491e-b328-fd4f95d96ce6",
+      "created_on": "2026-10-07T13:30:14.478734Z",
+      "versions": [
+        {
+          "version_id": "16ad6d54-bf8d-4f39-be0f-f2176a83e57f",
+          "percentage": 100
+        }
+      ]
+    },
+    {
+      "id": "4b569434-6e42-4079-8fe7-e15b9d3dce47",
+      "created_on": "2026-10-07T04:33:06.0704Z",
+      "versions": [
+        {
+          "version_id": "015965c8-22c5-4df6-a799-0a63589fd812",
+          "percentage": 100
+        }
+      ]
+    }
+  ],
+  "production_tables": [
+    "d1_migrations",
+    "daily_aggregates",
+    "events"
+  ],
+  "applied_migrations": [
+    {
+      "name": "0001_events.sql"
+    }
+  ]
+}

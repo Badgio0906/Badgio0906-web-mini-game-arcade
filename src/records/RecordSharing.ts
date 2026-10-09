@@ -5,10 +5,11 @@ import { canonicalValue, shareEnvironment, type RecordSubmission } from './proto
 import { recordsEndpoint } from './PublicBests';
 import { safeSubmission } from './submissionValidation';
 import { storeCurrentRule } from './currentRules';
+import { ParticipantIdentity, credentialFingerprint } from './ParticipantIdentity';
 
 const SETTINGS_KEY='game100:records:sharing:v1', QUEUE_PREFIX='game100:records:pending:v1:', RECEIPT_PREFIX='game100:records:receipt:v1:', WITHDRAWN_PREFIX='game100:records:withdrawn:v1:';
 const CHANGED='game100:records:changed', DAY=86400000;
-interface Queued { payload:RecordSubmission; createdAt:number; attempts:number; nextAt:number; automatic:boolean; permissionEpoch:string; }
+interface Queued { payload:RecordSubmission; createdAt:number; attempts:number; nextAt:number; automatic:boolean; permissionEpoch:string; credentialHash:string; }
 interface Receipt { key:string; receipt:string; gameId:string; boardId:string; status:string; receivedAt:string; }
 interface Candidate { payload:RecordSubmission; sealed:boolean; status:string; }
 function validReceipt(input:unknown):input is Receipt {if(!input||typeof input!=='object')return false;const r=input as Partial<Receipt>;return typeof r.key==='string'&&/^[a-f0-9-]{36}$/.test(r.key)&&typeof r.receipt==='string'&&/^[a-f0-9]{64}$/.test(r.receipt)&&typeof r.gameId==='string'&&typeof r.boardId==='string'&&typeof r.status==='string'&&typeof r.receivedAt==='string';}
@@ -26,6 +27,8 @@ const labels:Record<string,string>={unsent:'未送信',sending:'送信中',accep
 
 /** Independent from Analytics consent/observer/identifiers. At most one payload per finalized RUN. */
 class Sharing {
+  private identity=new ParticipantIdentity();
+  private registeredCredentialHash?:string;
   private queue:Queued[]=[];
   private receipts:Receipt[]=[];
   private memoryAutomatic=false;
@@ -49,10 +52,11 @@ class Sharing {
   private validQueued(input:unknown):input is Queued {
     if(!input||typeof input!=='object')return false;const q=input as Queued,p=q.payload;
     if(!p||typeof p!=='object'||!Number.isFinite(q.createdAt)||Date.now()-q.createdAt>DAY||q.createdAt>Date.now()+60000||!Number.isInteger(q.attempts)||q.attempts<0||q.attempts>=5||typeof q.automatic!=='boolean'||!Number.isFinite(q.nextAt))return false;
-    return q.permissionEpoch===storedEpoch()&&safeSubmission(p)!==null;
+    return typeof q.credentialHash==='string'&&/^[a-f0-9]{64}$/.test(q.credentialHash)&&q.permissionEpoch===storedEpoch()&&safeSubmission(p)!==null;
   }
   enabled():boolean { return this.deniedStorage ? this.memoryAutomatic : autoEnabled(); }
-  storageLimited():boolean{return this.storageWarning||this.deniedStorage;}
+  storageLimited():boolean{return this.storageWarning||this.deniedStorage||this.identity.storageLimited();}
+  identityUnavailable():boolean{return this.identity.unavailable();}
   setAutomatic(enabled:boolean) {this.memoryAutomatic=enabled;this.deniedStorage=!write(SETTINGS_KEY,{schema:1,automatic:enabled,epoch:crypto.randomUUID()});if(this.deniedStorage)this.storageWarning=true;if(!enabled)this.stop();notices();}
   private stop(){this.epoch++;this.controller?.abort();clearTimeout(this.timer);for(const q of this.queue)remove(QUEUE_PREFIX+q.payload.submission_key);for(const q of entries(QUEUE_PREFIX,200))if(q&&typeof q==='object'&&(q as Queued).payload?.submission_key)remove(QUEUE_PREFIX+(q as Queued).payload.submission_key);this.queue=[];for(const c of this.candidates.values())if(c.status==='sending')c.status='failed';}
   private reloadReceipts(){const found=entries(RECEIPT_PREFIX,200).filter(validReceipt);for(const r of found){if(read<boolean>(WITHDRAWN_PREFIX+r.key,false))r.status='withdrawn';const index=this.receipts.findIndex(old=>old.key===r.key);if(index<0)this.receipts.push(r);else if(this.receipts[index].status!=='withdrawn')this.receipts[index]=r;}this.receipts=this.receipts.slice(-200);}
@@ -63,8 +67,14 @@ class Sharing {
     if(!recordsEndpoint||!isProduction()||(automatic&&!this.enabled()))return;
     if(candidate.sealed&&candidate.status!=='failed')return;
     this.reloadReceipts();if(this.queue.length>=50||entries(QUEUE_PREFIX,50).length>=50||this.receipts.length>=200){candidate.status='failed';notices();return;}
-    candidate.sealed=true;candidate.status='sending';
-    if(!this.queue.some(q=>q.payload.submission_key===candidate.payload.submission_key)){const q={payload:candidate.payload,createdAt:Date.now(),attempts:0,nextAt:Date.now(),automatic,permissionEpoch:storedEpoch()};this.queue.push(q);if(!write(QUEUE_PREFIX+candidate.payload.submission_key,q))this.storageWarning=true;}
+    const permissionEpoch=storedEpoch(),epoch=this.epoch;
+    const permitted=()=>epoch===this.epoch&&permissionEpoch===storedEpoch()&&(!automatic||this.enabled());
+    candidate.sealed=true;candidate.status='sending';notices();
+    const credential=await this.identity.forSharing(permitted);
+    if(!credential||!permitted()){candidate.status='failed';notices();return;}
+    const credentialHash=await credentialFingerprint(credential);
+    if(!permitted()){candidate.status='failed';notices();return;}
+    if(!this.queue.some(q=>q.payload.submission_key===candidate.payload.submission_key)){const q={payload:candidate.payload,createdAt:Date.now(),attempts:0,nextAt:Date.now(),automatic,permissionEpoch,credentialHash};this.queue.push(q);if(!write(QUEUE_PREFIX+candidate.payload.submission_key,q))this.storageWarning=true;}
     this.persist();await this.flush();
   }
   private async flush(){
@@ -78,7 +88,23 @@ class Sharing {
         try {
           // Recheck current cross-tab permission immediately before sending.
           if(q.permissionEpoch!==storedEpoch()||(q.automatic&&!this.enabled())){remove(QUEUE_PREFIX+q.payload.submission_key);this.queue.shift();continue;}
-          const response=await fetch(`${recordsEndpoint}/v1/records/submissions`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q.payload),credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',redirect:'error',signal:this.controller.signal});
+          const credential=this.identity.current();
+          if(!credential||await credentialFingerprint(credential)!==q.credentialHash){const c=this.candidates.get(q.payload.submission_key);if(c)c.status='rejected';remove(QUEUE_PREFIX+q.payload.submission_key);this.queue.shift();continue;}
+          if(q.permissionEpoch!==storedEpoch()||epoch!==this.epoch||(q.automatic&&!this.enabled()))continue;
+          if(this.registeredCredentialHash!==q.credentialHash){
+            const registration=await fetch(`${recordsEndpoint}/v1/records/participants`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({schema_version:1,credential}),credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',redirect:'error',signal:this.controller.signal});
+            if(!registration.ok){
+              if(registration.status===429||registration.status>=500){const retry=Number(registration.headers.get('Retry-After'));q.nextAt=Date.now()+Math.max(1000*2**q.attempts,Number.isFinite(retry)?Math.min(retry*1000,DAY):0);throw Error('registration_retry');}
+              const c=this.candidates.get(q.payload.submission_key);if(c)c.status='rejected';remove(QUEUE_PREFIX+q.payload.submission_key);this.queue.shift();continue;
+            }
+            const text=await registration.text();if(text.length>2048)throw Error('invalid_registration');
+            const d=JSON.parse(text) as {schema_version?:unknown;public_label?:unknown};
+            if(d.schema_version!==1||typeof d.public_label!=='string'||!/^ガレージ住人 [0-9]{12}$/.test(d.public_label))throw Error('invalid_registration');
+            this.registeredCredentialHash=q.credentialHash;
+          }
+          // Consent can change while registration is in flight. No score follows OFF.
+          if(q.permissionEpoch!==storedEpoch()||epoch!==this.epoch||(q.automatic&&!this.enabled())||this.identity.current()!==credential)continue;
+          const response=await fetch(`${recordsEndpoint}/v1/records/submissions`,{method:'POST',headers:{'Content-Type':'application/json','X-Record-Credential':credential},body:JSON.stringify(q.payload),credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',redirect:'error',signal:this.controller.signal});
           if(response.ok){
             const d=await response.json() as Record<string,unknown>;
             if(d.submission_key!==q.payload.submission_key||!['accepted','pending','withdrawn','rejected','revoked'].includes(String(d.status))||typeof d.received_at!=='string')throw Error('invalid_receipt_response');
@@ -127,8 +153,8 @@ export function createGameRecordSession(gameId:string){
       dispose();active?.remove();const def=getRecordDefinition(gameId);if(!def?.publicEnabled)return;
       const controls=document.createElement('div');controls.className='record-share-controls';controls.dataset.recordGame=gameId;const button=document.createElement('button');button.type='button';
       const current=candidate;const status=document.createElement('p');status.setAttribute('role','status');
-      const render=()=>{button.textContent='この記録を共有';button.disabled=!recordsEndpoint||!current||current.sealed&&current.status!=='failed';status.textContent=!recordsEndpoint?'記録共有：準備中':!current?'練習・自動検証などの記録は共有対象外です。':labels[current.status]??'確認中';};
-      button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();if(!current||!recordsEndpoint)return;if(!confirm('このゲームの記録を、みんなのBESTへ送信します。名前は公開しません。共有しなくてもゲームと個人記録はそのまま利用できます。送信しますか？'))return;void service().submit(current,false).then(()=>{persistRun();render();});persistRun();render();});
+      const render=()=>{button.textContent='この記録を共有';button.disabled=!recordsEndpoint||!current||current.sealed&&current.status!=='failed';status.textContent=!recordsEndpoint?'記録共有：準備中':service().identityUnavailable()?'このブラウザでは共有参加情報を安全に作れません。新しいブラウザでお試しください。':!current?'練習・自動検証などの記録は共有対象外です。':labels[current.status]??'確認中';};
+      button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();if(!current||!recordsEndpoint)return;if(!confirm('このゲームの記録を、みんなのBEST・TOP10へ送信します。自動発行の「ガレージ住人」名が公開されます。共有しなくてもゲームと個人記録はそのまま利用できます。送信しますか？'))return;void service().submit(current,false).then(()=>{persistRun();render();});persistRun();render();});
       controls.addEventListener('keydown',event=>event.stopPropagation());controls.addEventListener('click',event=>event.stopPropagation());
       const change=()=>{if(!controls.isConnected){window.removeEventListener(CHANGED,change);return;}persistRun();render();};window.addEventListener(CHANGED,change);dispose=()=>window.removeEventListener(CHANGED,change);render();if(!recordsEndpoint&&options.compactWhenUnavailable){controls.classList.add("record-share-preparing");controls.append(status);}else controls.append(button,status);host.append(controls);active=controls;
     }catch{/* optional UI only */}}, clear
@@ -137,9 +163,9 @@ export function createGameRecordSession(gameId:string){
 
 export function mountRecordSharingSettings(host:HTMLElement){
   const details=document.createElement('details');details.className='record-sharing-settings';const summary=document.createElement('summary');summary.textContent='あなたのBEST・記録共有設定';details.append(summary);
-  const explanation=document.createElement('p');explanation.textContent='あなたのBESTはこのブラウザの記録です。みんなのBESTは収集開始後に共有・受付された同じ条件の最高記録です。全プレイヤーの過去記録や完全な不正防止を意味しません。解析の許可と記録共有は別です。';
+  const explanation=document.createElement('p');explanation.textContent='あなたのBESTはこのブラウザの記録です。みんなのBESTは収集開始後に共有・受付された同じ条件の最高記録です。TOP10は共有資格情報を持つ同じブラウザにつき1枠です。PCとスマホや保存削除後は別参加者になり得ます。全プレイヤーの過去記録や完全な不正防止を意味しません。解析の許可と記録共有は別です。';
   const label=document.createElement('label'),checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=service().enabled();checkbox.disabled=!recordsEndpoint;label.append(checkbox,document.createTextNode('今後の新しい記録を自動共有する（初期OFF）'));
-  const notice=document.createElement('p');notice.setAttribute('role','status');const policy=document.createElement('p');policy.textContent='OFFにすると以後の自動送信と待機キューを停止します。送信済み記録は別の撤回操作で扱います。ブラウザ保存を消すと、この端末から撤回できなくなります。撤回情報は最大200件まで端末内に保持します。';const privacy=document.createElement('a');privacy.href='./privacy.html';privacy.textContent='プライバシーと保存方針';
+  const notice=document.createElement('p');notice.setAttribute('role','status');const policy=document.createElement('p');policy.textContent='OFFにすると以後の自動送信と待機キューを停止します。送信済み記録は別の撤回操作で扱います。共有時だけ専用のランダム資格情報を保存し、自動発行の「ガレージ住人」名で参加します。保存を消すと同じ参加者として継続できず、撤回情報も失われます。撤回情報は最大200件まで端末内に保持します。';const privacy=document.createElement('a');privacy.href='./privacy.html';privacy.textContent='プライバシーと保存方針';
   const list=document.createElement('ul');
   const render=()=>{checkbox.checked=service().enabled();notice.textContent=recordsEndpoint?'共有は任意です。過去のBESTをまとめて送信することはありません。':'みんなのBEST・記録共有は準備中です。個人記録は共有せず利用できます。';if(service().storageLimited())notice.textContent+=' この環境では設定・撤回情報を保存できません。このページ内の選択だけを維持し、別ページ・別タブでは引き継げない場合があります。';list.replaceChildren();for(const r of service().getReceipts()){const li=document.createElement('li');li.textContent=`${r.gameId}：${labels[r.status]??'確認中'} `;if(r.status!=='withdrawn'){const button=document.createElement('button');button.type='button';button.textContent='この投稿を撤回';button.disabled=!recordsEndpoint;button.addEventListener('click',async()=>{if(!confirm('共有側のこの投稿を撤回します。個人BESTは消しません。続けますか？'))return;button.disabled=true;const ok=await service().withdraw(r.key);if(ok)render();else{notice.textContent='撤回できませんでした。接続状態を確認して再試行してください。';button.disabled=false;}});li.append(button);}list.append(li);}};
   checkbox.addEventListener('change',()=>{if(checkbox.checked&&!confirm('今後この機能で確定した新しい記録を自動共有します。過去の記録は送信しません。許可しますか？')){checkbox.checked=false;return;}service().setAutomatic(checkbox.checked);render();});

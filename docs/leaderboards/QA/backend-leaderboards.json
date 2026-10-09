@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "backend": "Wrangler workerd + isolated local D1",
+  "synthetic_only": true,
+  "production_mutated": false,
+  "checks": [
+    "stable_unique_server_labels_registration_idempotency",
+    "concurrent_first_registration_one_owner_label",
+    "invalid_credentials_owner_label_impersonation_refused",
+    "credential_cors_preflight",
+    "strict_query_empty_no_dummy",
+    "legacy_preserved_excluded_no_owner_inference",
+    "C600_A500_B400_D200_one_slot_best_equals_top1",
+    "15participants_exact_top10",
+    "100runs_one_slot_no_downgrade_run_and_owner_dedup",
+    "credential_loss_new_identity_cannot_claim_old_run",
+    "revoke2800_other2600_own_next2100",
+    "receipt_owner_withdraw_fallback_no_resurrection",
+    "restore_requires_reapproval",
+    "zero_is_valid",
+    "ties_stable_time_id_values_unchanged",
+    "pending_never_ranks",
+    "concurrent_revoke_post_atomic_best",
+    "failed_batch_rolls_back_projection_revision",
+    "participant_disable_reenable_rebuild",
+    "recalculate_rebuilds_from_source_ledger",
+    "public_no_internal_ids_credentials_receipts_reason",
+    "lower_nextbest_mode_rules_independent",
+    "durable_registration_limit_retry_bypass",
+    "tracked_migrations_no_double_application"
+  ],
+  "count": 24
+}

@@ -31,6 +31,15 @@ export class PublicBests {
   private pending?: Promise<PublicBestState>;
   constructor(private readonly base = recordsEndpoint, private readonly fetcher: typeof fetch = (...args) => fetch(...args)) { if (!base) this.state.status = 'preparing'; }
   getState(): PublicBestState { return this.state; }
+  acceptLeaderboardSnapshot(boardId: string, revision: number, value: number | null, generatedAt: string): boolean {
+    const def = recordBoards.find(d => d.boardId === boardId), current = this.state.boards.get(boardId);
+    if (!def || current && (current.revision > revision || current.revision === revision && current.value !== value)) return false;
+    const boards = new Map(this.state.boards);
+    boards.set(boardId,{game_id:def.gameId,board_id:boardId,metric_id:def.metricId,value,unit:def.unit,mode_label:def.modeLabel,
+      ruleset_id:def.rulesetId,status:value===null?'empty':'accepted',collected_since:current?.collected_since??generatedAt,revision});
+    this.state = {...this.state,boards,status:this.state.status==='stale'?'stale':'ready',fetchedAt:this.state.fetchedAt??generatedAt};
+    return true;
+  }
   refresh(): Promise<PublicBestState> {
     if (!this.base) return Promise.resolve(this.state);
     if (this.pending) return this.pending;
@@ -45,7 +54,11 @@ export class PublicBests {
       if (response.status === 503) { this.state = {status:'preparing',boards:new Map()}; return this.state; }
       if (!response.ok || Number(response.headers.get('Content-Length') || 0) > 65536) throw Error('public_fetch_failed');
       const body = await response.text(); if (body.length > 65536) throw Error('public_response_too_large');
-      this.state = {status:'ready',boards:validatePublicBests(JSON.parse(body)),fetchedAt:new Date().toISOString()}; this.lastFetch=Date.now();
+      const boards = validatePublicBests(JSON.parse(body));
+      for (const [id, current] of this.state.boards) {
+        if ((boards.get(id)?.revision ?? -1) < current.revision) boards.set(id,current);
+      }
+      this.state = {status:'ready',boards,fetchedAt:new Date().toISOString()}; this.lastFetch=Date.now();
     } catch { this.state = {...this.state,status:this.state.boards.size ? 'stale' : 'failed'}; }
     finally { clearTimeout(timer); }
     return this.state;

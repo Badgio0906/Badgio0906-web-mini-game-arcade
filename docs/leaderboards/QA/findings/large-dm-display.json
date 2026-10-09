@@ -1,0 +1,15 @@
+{
+  "finding_id": "large-dm-display",
+  "problem": "TOP10 display rounds different safe integer decimeter scores to the same tenth-metre value",
+  "expected": "Different stored dm scores differing by1 remain different one-decimal metre values",
+  "observed": [
+    "320px max-safe score fixture rows4 and5 store different dm integers but both display a value ending098.8m"
+  ],
+  "unknown": [
+    "Exact numerical formatting path at safe integer boundary"
+  ],
+  "evidence": [
+    "docs/leaderboards/QA/portal-browser-02/long-320x720.png"
+  ],
+  "provenance": "synthetic safe integer ranking values, Chromium rendered UI"
+}

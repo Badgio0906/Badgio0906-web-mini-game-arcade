@@ -1,0 +1,22 @@
+{
+  "finding_id": "local-best-loading-after-refresh",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent_qa agent",
+  "rationale": "One cancellation generation covered both ranking refresh and personal local read, dropping delayed personal result. Separate open lifecycle from ranking refresh; independent delayed read and close/reopen cases pass.",
+  "evidence": [
+    "tests/leaderboards/independent-dialog.test.ts",
+    "docs/leaderboards/QA/INDEPENDENT_SOURCE_REVIEW.md"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "One cancellation generation covered both ranking refresh and personal local read, dropping delayed personal result. Separate open lifecycle from ranking refresh; independent delayed read and close/reopen cases pass.",
+    "evidence": [
+      "tests/leaderboards/independent-dialog.test.ts",
+      "docs/leaderboards/QA/INDEPENDENT_SOURCE_REVIEW.md"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

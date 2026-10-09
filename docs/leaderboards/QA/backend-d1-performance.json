@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "backend": "Wrangler isolated local D1 SQLite, synthetic only",
+  "production_mutated": false,
+  "migration": {
+    "preexisting_submissions_receipts_best_events_daily_aggregates_preserved": true,
+    "unattributed_has_no_projection": true,
+    "direct_double_application_refused": true,
+    "failed_file_transaction_rolled_back": true
+  },
+  "selection": "derived participant BEST projection: indexed TOP10 avoids all-ledger read; source remains reconstructible",
+  "measurements": [
+    {
+      "submission_count": 500,
+      "participant_count": 50,
+      "derived_top10": {
+        "result_rows": 10,
+        "meta": {
+          "duration": 1
+        },
+        "query_plan": [
+          "MATERIALIZE t",
+          "SEARCH pb USING INDEX record_leaderboard_top (board_id=?)",
+          "SEARCH p USING INDEX sqlite_autoindex_record_participants_1 (participant_id=?)",
+          "SEARCH r USING INDEX sqlite_autoindex_record_leaderboard_revisions_1 (board_id=?)",
+          "SCAN t LEFT-JOIN"
+        ],
+        "workerd_meta": {
+          "served_by": "miniflare.db",
+          "duration": 0,
+          "changes": 0,
+          "last_row_id": 0,
+          "changed_db": false,
+          "size_after": 29220864,
+          "rows_read": 31,
+          "rows_written": 0
+        },
+        "rows_read_available": true
+      },
+      "aggregate_each_read_baseline": {
+        "meta": {
+          "duration": 1
+        }
+      },
+      "load_fixture": {
+        "wall_ms": 941,
+        "meta": {
+          "duration": 12
+        }
+      }
+    },
+    {
+      "submission_count": 5000,
+      "participant_count": 50,
+      "derived_top10": {
+        "result_rows": 10,
+        "meta": {
+          "duration": 0
+        },
+        "query_plan": [
+          "MATERIALIZE t",
+          "SEARCH pb USING INDEX record_leaderboard_top (board_id=?)",
+          "SEARCH p USING INDEX sqlite_autoindex_record_participants_1 (participant_id=?)",
+          "SEARCH r USING INDEX sqlite_autoindex_record_leaderboard_revisions_1 (board_id=?)",
+          "SCAN t LEFT-JOIN"
+        ],
+        "workerd_meta": {
+          "served_by": "miniflare.db",
+          "duration": 0,
+          "changes": 0,
+          "last_row_id": 0,
+          "changed_db": false,
+          "size_after": 29220864,
+          "rows_read": 31,
+          "rows_written": 0
+        },
+        "rows_read_available": true
+      },
+      "aggregate_each_read_baseline": {
+        "meta": {
+          "duration": 6
+        }
+      },
+      "load_fixture": {
+        "wall_ms": 1042,
+        "meta": {
+          "duration": 161
+        }
+      }
+    },
+    {
+      "submission_count": 50000,
+      "participant_count": 500,
+      "derived_top10": {
+        "result_rows": 10,
+        "meta": {
+          "duration": 1
+        },
+        "query_plan": [
+          "MATERIALIZE t",
+          "SEARCH pb USING INDEX record_leaderboard_top (board_id=?)",
+          "SEARCH p USING INDEX sqlite_autoindex_record_participants_1 (participant_id=?)",
+          "SEARCH r USING INDEX sqlite_autoindex_record_leaderboard_revisions_1 (board_id=?)",
+          "SCAN t LEFT-JOIN"
+        ],
+        "workerd_meta": {
+          "served_by": "miniflare.db",
+          "duration": 1,
+          "changes": 0,
+          "last_row_id": 0,
+          "changed_db": false,
+          "size_after": 29220864,
+          "rows_read": 31,
+          "rows_written": 0
+        },
+        "rows_read_available": true
+      },
+      "aggregate_each_read_baseline": {
+        "meta": {
+          "duration": 64
+        }
+      },
+      "load_fixture": {
+        "wall_ms": 2767,
+        "meta": {
+          "duration": 1924
+        }
+      }
+    }
+  ],
+  "limits": "Local D1 timings/rows are not production SLOs. CLI wall time includes Wrangler startup; SQL meta reports engine work. Local runtime may omit rows_read; if unavailable the report records that limitation explicitly, with indexed query plans and result-row counts, and production telemetry remains a handoff check."
+}

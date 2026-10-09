@@ -1,0 +1,128 @@
+{
+  "at": "2026-10-09T11:15:17.992Z",
+  "provenance": "Production source build on mocked HTTPS portal + public API. Synthetic local fixtures only. Desktop Chromium mobile viewports; not physical devices.",
+  "checks": [
+    {
+      "pass": true,
+      "name": "30 active cards",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "20 target board buttons",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "no nested anchor button",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "only one batch BEST GET before open",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "noncompetitive no ranking button",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "TOP10 does not launch game",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "heading receives opening focus",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "personal zero shown with sharing OFF",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "background link inert",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "BEST reconciles to top1",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "same values explicitly marked tied",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "Tab reaches close",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": false,
+      "name": "Tab stays in modal",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    }
+  ],
+  "requests": [
+    {
+      "pathname": "/v1/records/public/bests",
+      "query": "",
+      "authorization": false,
+      "cookie": false
+    },
+    {
+      "pathname": "/v1/records/public/leaderboard",
+      "query": "?board_id=game001.score.r1.all",
+      "authorization": false,
+      "cookie": false
+    }
+  ],
+  "errors": [],
+  "views": [],
+  "result": "FAIL",
+  "error": "Tab stays in modal"
+}

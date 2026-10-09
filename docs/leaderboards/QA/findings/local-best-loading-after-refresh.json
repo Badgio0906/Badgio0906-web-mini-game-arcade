@@ -1,0 +1,16 @@
+{
+  "finding_id": "local-best-loading-after-refresh",
+  "problem": "Personal BEST remains loading when public ranking reconciliation precedes delayed local record read",
+  "expected": "Modal eventually displays browser personal BEST even if public BEST refresh completes during local read",
+  "observed": [
+    "Independent test opensGame012, callsreconcile, resolves local record123; personal label stays読み込み中 indefinitely"
+  ],
+  "unknown": [
+    "Frequency on real browser IndexedDB"
+  ],
+  "test_name": "tests/leaderboards/independent-dialog.test.ts",
+  "evidence": [
+    "tests/leaderboards/independent-dialog.test.ts"
+  ],
+  "provenance": "independent synthetic delayed local adapter test"
+}

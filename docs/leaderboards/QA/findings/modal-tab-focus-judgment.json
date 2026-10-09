@@ -1,0 +1,20 @@
+{
+  "finding_id": "modal-tab-focus",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "portal agent; routing answers hidden",
+  "rationale": "Recorded activeElement DIV leaderboard-content is a Chromium keyboard-scrollable container inside dialog. Initial assertion incorrectly required close button only. Background is inert; no product focus escape occurred.",
+  "evidence": [
+    "docs/leaderboards/QA/portal-browser-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Recorded exact activeElement and checked focus containment at fourviewports; fixed test oracle without product change.",
+    "evidence": [
+      "docs/leaderboards/QA/portal-browser-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

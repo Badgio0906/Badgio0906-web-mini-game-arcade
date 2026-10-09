@@ -1,0 +1,19 @@
+{
+  "finding_id": "modal-tab-focus",
+  "problem": "TOP10 modal keyboard Tab does not remain on its only focusable close button",
+  "expected": "Keyboard navigation is contained within the open modal and never returns to background cards",
+  "observed": [
+    "Opening focuses heading. First Tab focuses Close. Second Tab does not remain on Close. Background inert check passed."
+  ],
+  "unknown": [
+    "Exact activeElement after second Tab and browser-native focus behaviour"
+  ],
+  "viewport": {
+    "width": 1300,
+    "height": 900
+  },
+  "evidence": [
+    "docs/leaderboards/QA/portal-browser-01/REPORT.json"
+  ],
+  "provenance": "local synthetic ranking fixture, real Chromium keyboard input"
+}

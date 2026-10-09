@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-09T11:24:21.977Z",
+  "provenance": "Production source build on mocked HTTPS portal + public API. Synthetic local fixtures only. Desktop Chromium mobile viewports; not physical devices.",
+  "checks": [
+    {
+      "pass": true,
+      "name": "30 active cards",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "20 target board buttons",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": true,
+      "name": "no nested anchor button",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    },
+    {
+      "pass": false,
+      "name": "only one batch BEST GET before open",
+      "viewport": {
+        "width": 1300,
+        "height": 900
+      }
+    }
+  ],
+  "requests": [],
+  "errors": [],
+  "views": [],
+  "result": "FAIL",
+  "error": "only one batch BEST GET before open"
+}

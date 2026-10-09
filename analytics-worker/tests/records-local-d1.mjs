@@ -18,12 +18,14 @@ const best=async board=>(await (await publicGet()).json()).boards.find(b=>b.boar
 const higher=recordBoards.find(b=>b.publicEnabled&&b.direction==='higher'&&b.maxValue>1000&&b.pendingAbove>1000);
 assert(higher,'a normal score board is required');
 const payload=(value=10,b=higher)=>({schema_version:1,submission_key:randomUUID(),run_result_id:randomUUID(),game_id:b.gameId,board_id:b.boardId,ruleset_id:b.rulesetId,game_build:'synthetic-local-fixture',environment:'production',value,withdrawal_receipt:randomBytes(32).toString('hex'),allowed_result_metadata:{finalized:true,mode_id:b.modeId,assistance:'none',duration_ms:2000,outcome:'complete'}});
-const submit=p=>request('/v1/records/submissions',p);
+const fixtureCredential=randomBytes(32).toString('hex');
+const submit=p=>request('/v1/records/submissions',p,undefined,{'X-Record-Credential':fixtureCredential});
 const review=(id,decision,operation_key=randomUUID())=>request(`/v1/records/admin/submissions/${id}/review`,{operation_key,decision,reason:'local synthetic verification'},fixtureAdmin);
 const adminRows=async query=>(await (await adminGet(query)).json()).submissions;
 const checks=[];const pass=name=>checks.push(name);
 try{
  let ready=false;for(let n=0;n<120;n++){try{if((await request('/v1/health')).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,250));}assert(ready,'local Worker failed to start (fixture values withheld)');
+ assert.equal((await request('/v1/records/participants',{schema_version:1,credential:fixtureCredential})).status,200);
  assert.equal((await request('/__records-test/disabled')).status,503);assert.equal((await request('/__records-test/unconfigured-admin')).status,503);pass('disabled_default_and_missing_admin_safe');
  const bodyStart=Date.now();assert.equal((await request('/__records-test/slow-body')).status,408);assert(Date.now()-bodyStart<8000);pass('bounded_stream_body_timeout');
  const emptyResponse=await publicGet();assert.equal(emptyResponse.status,200);assert.equal(emptyResponse.headers.get('Cache-Control'),'public, max-age=60, must-revalidate');assert.equal(emptyResponse.headers.get('Vary'),'Origin');const empty=await emptyResponse.json();assert.equal(empty.boards.length,recordBoards.filter(b=>b.publicEnabled).length);assert(empty.boards.every(b=>b.value===null&&b.status==='empty'));pass('all_public_boards_empty_null');
@@ -67,7 +69,7 @@ try{
  const secretText=JSON.stringify(await (await publicGet()).json());for(const term of ['submission_key','run_result_id','receipt','content_hash','metadata','inspection_reason','browser_id','session_id','visit_id',fixtureAdmin,fixtureCodex,zero.submission_key])assert(!secretText.includes(term));pass('public_fields_no_internal_ids_or_credentials');
  // A synthetic-only lower board proves SQL comparison without inventing a public game metric.
  sql("INSERT INTO record_boards VALUES('fixture.lower','fixture','time','fixture','fixture','lower',1000,0,'2026-01-01T00:00:00Z')");
- const insertFixture=(board,value)=>`INSERT INTO record_submissions VALUES(${quote(randomUUID())},${quote(randomUUID())},${quote(randomUUID())},${quote(board)},${value},'2026-01-01T00:00:00Z','accepted','{}','fixturehash','fixturehash',1,NULL,NULL)`;
+ const insertFixture=(board,value)=>`INSERT INTO record_submissions VALUES(${quote(randomUUID())},${quote(randomUUID())},${quote(randomUUID())},${quote(board)},${value},'2026-01-01T00:00:00Z','accepted','{}','fixturehash','fixturehash',1,NULL,NULL,(SELECT participant_id FROM record_participants LIMIT 1))`;
  sql([900,100,500,0].map(value=>insertFixture('fixture.lower',value)).join(';'));assert.equal(sql("SELECT s.value FROM record_bests b JOIN record_submissions s ON s.id=b.submission_id WHERE b.board_id='fixture.lower'")[0].results[0].value,0);sql("UPDATE record_submissions SET status='revoked' WHERE board_id='fixture.lower' AND value=0");assert.equal(sql("SELECT s.value FROM record_bests b JOIN record_submissions s ON s.id=b.submission_id WHERE b.board_id='fixture.lower'")[0].results[0].value,100);pass('synthetic_lower_sql_zero_and_fallback');
  const expired=payload(pendingBoard.pendingAbove+2,pendingBoard);assert.equal((await submit(expired)).status,202);sql(`UPDATE record_submissions SET expires_at='2000-01-01T00:00:00Z' WHERE submission_key=${quote(expired.submission_key)}`);await publicGet();const expiredRow=sql(`SELECT status,metadata_json FROM record_submissions WHERE submission_key=${quote(expired.submission_key)}`)[0].results[0];assert.deepEqual(expiredRow,{status:'rejected',metadata_json:'{}'});pass('pending_expiry_preserves_tombstone');
  // Trigger rejection verifies D1 atomic batch rollback (no new submission/BEST revision).

@@ -1,5 +1,7 @@
 # 記録共有のプライバシーと保存
 
+2026-10-09追補：共有参加時だけ解析IDと別の32byteランダム資格情報を専用ブラウザ保存に作る。サーバーは検証hashと非公開参加者UUID、独立生成の12桁「ガレージ住人」名を保持。公開BEST／TOP10は同じ所有者確認済みaccepted集合、TOP10は資格情報を保持するブラウザ単位1枠。別端末／保存削除後は別参加者になり得る。自由入力名・ログイン・IP／fingerprint生成なし。OFFでも再参加用資格情報は保持するが投稿には使わず、閲覧には送らない。資格情報を失った待機RUNを別所有者へ再送しない。旧未識別レコードはNULL ownerのまま保持し公開集合に含めない。詳細は [仕様](../leaderboards/IMPLEMENTATION_SPEC.md)。
+
 解析同意と独立、初期自動共有OFF。公開GETはcookie/Authorization/referrer/個人BESTなし。個別POSTは機能導入後の確定した対象RUNだけで、旧BESTの遡及共有なし。Analyticsのbrowser/visit/session/runIDは送らず、独立したランダムsubmission_key/run_result_idを使う。ゲーム024の既存RUN IDと029のresultIdは保存RUNの照合に端末内だけで使い、投稿値へコピーしない。ワールドseed/配置/画像/保存本文は送らない。
 
 任意手動確認・将来の自動許可・撤回は別操作。OFFでは現在の送信待ち・再試行を破棄、別タブ変更も送信直前のpermission epochで確認。既に届いた投稿は通信abortだけでは消えず、receiptを用いた撤回が必要。receiptは32byteランダム、HTTPS本文、端末内だけで保持しサーバーはハッシュを保存。公開/管理GETへreceiptを返さない。端末保存を消した場合の制約をPrivacyとUIへ記載。
