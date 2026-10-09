@@ -1,0 +1,29 @@
+{
+  "finding_id": "filtered-ranking-target",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "game025 intentionally has publicEnabled:false in the unchanged record definitions. All five games in the active puzzle AND brain-training intersection are noncompetitive and therefore correctly lack TOP10. The timeout is an invalid selector assumption, not missing required ranking UI. Removing one normal tag constraint and using visible competitive game007 tests retained ranking after filtering without changing the product contract. QA must finish its corrected run; this observation does not establish a major player-facing release failure.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_RANKING_TARGET.json",
+    "docs/portal-discovery/QA/browser-initial/REPORT.json",
+    "src/data/recordDefinitions.ts",
+    "src/portal/PortalRecords.ts",
+    "tests/portal-discovery/browser.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read recordDefinitions and existing publicEnabled guard in PortalRecords; cross-checked the actual five visible AND IDs and corrected ordinary chip-removal/game007 selector. Reviewed the retained failure separately from future corrected browser results.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_RANKING_TARGET.json",
+      "docs/portal-discovery/QA/browser-initial/REPORT.json",
+      "src/data/recordDefinitions.ts",
+      "src/portal/PortalRecords.ts",
+      "tests/portal-discovery/browser.mjs"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

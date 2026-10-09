@@ -74,6 +74,13 @@ Phaserは001〜003・006だけが必要。他native gameで共有engineを取得
 
 019は方向×小中大の精密上昇。転落は同じrunで復帰し、死亡扱いしない。100mの海岸床はrun内だけの足場。再開位置の保存はなく、新runは底から開始。BESTは0.1m単位、練習と本番の計測は隔離する。[仕様](docs/game019/IMPLEMENTATION_SPEC.md)。
 
-[Catalog](src/data/gameCatalog.ts)と[tag definitions](src/data/tagCatalog.ts)に全19本の安定ID／日本語タグを持つ。カードは先頭4件、フィルタUIは未実装。Jev用profile／schema／明示的synthetic sampleを[jev_export](jev_export/)に保存。runtimeからJevを呼ばない。
+[Catalog](src/data/gameCatalog.ts)と[tag definitions](src/data/tagCatalog.ts)が安定ID／日本語タグの正本。通常タグはカード先頭4件、絞り込み候補はactive作品で使用する全タグ。状態フィルターと通常タグOR／ANDを別々に判定し、最終条件をANDで結合する。お気に入りはブラウザ内のstable game IDで保存し、対象一覧の先頭へ優先する（非お気に入りを消さない）。[詳細仕様・検証](docs/PORTAL_DISCOVERY.md)。Jev用profile／schema／明示的synthetic sampleを[jev_export](jev_export/)に保存。runtimeからJevを呼ばない。
+
+### 試遊版／完成版の作者判断
+
+- `developmentStatus: 'trial' | 'complete'` は、掲載状態の `status: 'active' | 'retired'` と別概念。新規ゲームは原則 `trial`（試遊版）。retiredを完成／未完成の判定に使用しない。
+- **作者本人が実際に試遊し、ユーザーが「完成版にしてください」「GameXXXは完成でよい」等の完成判断を明示した場合だけ** `complete`（完成版）へ変更する。該当ID・本人の宣言・根拠資料を記録し、カタログの状態指定を更新する。
+- CI、QA、Jev、自動テスト、技術的完成、公開成功、「イイ感じ」「面白くなった」だけでCodexがcompleteにしない。本人の完成判断を確認できない既存ゲームもtrialを維持する。
+- complete後の改修は可能。再公開やテスト結果だけで状態を自動変更しない。
 
 AdSenseの所有確認scriptは別PRでroot HTML headだけへ追加する。広告枠やRewardServiceへ接続しない。所有確認・審査の成立はコード設置の公開とは別に確認する。

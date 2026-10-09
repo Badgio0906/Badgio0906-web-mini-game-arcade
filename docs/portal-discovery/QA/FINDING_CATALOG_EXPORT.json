@@ -1,0 +1,9 @@
+{
+  "finding_id": "catalog-export-development-state",
+  "problem": "Two existing integration tests report that the checked-in catalog export differs from the runtime catalog.",
+  "expected": "The checked-in export and runtime gameCatalog describe the same games and fields.",
+  "observed": ["npm test: 917 passed, 2 failed, 80 test files.", "game020-integration and game031-integration deep equality diffs show developmentStatus trial present in runtime and absent in exported entries."],
+  "unknown": ["Whether consumers need the added metadata or a compatibility projection."],
+  "evidence": ["docs/portal-discovery/QA/UNIT_INITIAL.log"],
+  "provenance": "Actual unit-test observations of the current working tree; no synthetic game results."
+}

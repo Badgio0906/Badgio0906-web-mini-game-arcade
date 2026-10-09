@@ -1,0 +1,29 @@
+{
+  "finding_id": "mobile-discovery-density",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "Actual320x720 image has collapsed filters but panel y210..672; initial viewport exposes only a sliver of first card metadata. Actual390 image reaches the upper thumbnail area. State and mode legends and explanatory wrapping add vertical cost, and long vertical neutral header wording extends header height to126px. Controls remain readable and games reachable by scrolling; this is initial visual prioritization and density, not broken play. Concise mode controls with adjacent explanation, inline legends, and retaining FREE PLAY while hiding only the secondary BROWSER GAMES mark on narrow screens are limited corrections consistent with the request. Recheck actual final widths, controls44, text clarity and overflow before accepting.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_MOBILE_DISCOVERY_DENSITY.json",
+    "docs/portal-discovery/QA/browser-observer-corrected/390-initial.png",
+    "docs/portal-discovery/QA/browser-observer-corrected/320-initial.png",
+    "src/portal/style.css",
+    "index.html"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed actual390x844 and320x720 before-correction initial screenshots independently; reported exact panel/card visibility to parent before mobile density modification. Read proposed limited control/header diff, without editing source. Final images pending.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_MOBILE_DISCOVERY_DENSITY.json",
+      "docs/portal-discovery/QA/browser-observer-corrected/390-initial.png",
+      "docs/portal-discovery/QA/browser-observer-corrected/320-initial.png",
+      "src/portal/style.css",
+      "index.html"
+    ]
+  },
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE",
+  "human_judgment": null
+}

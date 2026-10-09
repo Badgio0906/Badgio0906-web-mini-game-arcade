@@ -1,0 +1,907 @@
+{
+  "criterion": "Explicit existing-game completion decision attributable to the human author; excludes purpose/future requirements, technical implementation completion, publication/CI, human favorable evaluation, third-party/AI visual ratings, content state such as game clear. No Jev log read.",
+  "recorded_at": "2026-10-09T23:11:20.611233+00:00",
+  "base_commit": "2eb7b3cb09e43ada47cf44aad701809f283cdde0",
+  "search_scope": "Repository root and docs Markdown/plain-text; excluded QA, navigation, own new review directory, Jev-named files and jev directories. Targeted canonical request/HUMAN_PLAYTEST/PROJECT_CONTEXT/CURRENT_STATUS passages additionally read.",
+  "searched_files": 371,
+  "files": [
+    "AGENTS.md",
+    "GAME_COMMON_SPEC.md",
+    "README.md",
+    "docs/CONTEXT_REORGANIZATION_REPORT.md",
+    "docs/CURRENT_STATUS.md",
+    "docs/FIVE_GAME_REVIEW.md",
+    "docs/GAME001_LESSONS.md",
+    "docs/GAME001_SPEC.md",
+    "docs/GAME002_LESSONS.md",
+    "docs/GAME002_TO_005_SPEC.md",
+    "docs/GAME003_LESSONS.md",
+    "docs/GAME004_LESSONS.md",
+    "docs/GAME005_LESSONS.md",
+    "docs/GAME006_LESSONS.md",
+    "docs/GAME007_LESSONS.md",
+    "docs/GAME008_LESSONS.md",
+    "docs/GAME009_LESSONS.md",
+    "docs/GAME010_LESSONS.md",
+    "docs/GAME011_LESSONS.md",
+    "docs/GAME019_BEFORE_REDESIGN.md",
+    "docs/GAME019_JUMP_DESIGN_RESEARCH.md",
+    "docs/GAME_DESIGN_DATASET.md",
+    "docs/GAME_DEVELOPMENT_RULES.md",
+    "docs/GAME_FEEL_REVIEW.md",
+    "docs/PROJECT_BRIEF.md",
+    "docs/PROJECT_CONTEXT.md",
+    "docs/QA_REVIEW.md",
+    "docs/TEN_GAME_REVIEW.md",
+    "docs/TITLE_AND_UI_REVISION_REPORT.md",
+    "docs/VISUAL_LIBRARY.md",
+    "docs/VISUAL_REDESIGN_REPORT.md",
+    "docs/analytics/ADMIN_DASHBOARD.md",
+    "docs/analytics/ARCHITECTURE.md",
+    "docs/analytics/CODEX_ANALYTICS_ACCESS.md",
+    "docs/analytics/EVENTS.md",
+    "docs/analytics/MANUAL_SETUP.md",
+    "docs/analytics/PRIVACY_BOUNDARY.md",
+    "docs/analytics/REPORT.md",
+    "docs/analytics/UTM_RULES.md",
+    "docs/archive/GAME_COMMON_SPEC_2026-10-04.md",
+    "docs/classic-batch-two/ADDITIONAL_INSTRUCTIONS.md",
+    "docs/classic-batch-two/HANDOFF.md",
+    "docs/classic-batch-two/IMPLEMENTATION_REPORT.md",
+    "docs/classic-batch-two/REQUEST.md",
+    "docs/classic-batch-two/RIGHTS_NOTE.md",
+    "docs/classic-five/AMENDMENTS.md",
+    "docs/classic-five/HANDOFF.md",
+    "docs/classic-five/IMPLEMENTATION_REPORT.md",
+    "docs/classic-five/REQUEST.md",
+    "docs/classic-five/RIGHTS_NOTE.md",
+    "docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md",
+    "docs/eleven-game/HUMAN_PLAYTEST.md",
+    "docs/eleven-game/IMPLEMENTATION_REPORT.md",
+    "docs/eleven-game/IMPLEMENTATION_SPEC.md",
+    "docs/eleven-game/art/ASSET_PIPELINE_DECISIONS.md",
+    "docs/eleven-game/art/GAME010_FOREGROUND_BRIEF.md",
+    "docs/eleven-game/art/GAME011_VISUAL_BRIEF.md",
+    "docs/eleven-game/art/IMAGEGEN_LOG.md",
+    "docs/eleven-game/art/PORTAL_VISUAL_BRIEF.md",
+    "docs/eleven-game/art/READABILITY_GAME007_008.md",
+    "docs/eleven-game/art/THUMBNAILS.md",
+    "docs/eleven-game/reviews/DESIGN_RISK_REVIEW.md",
+    "docs/eleven-game/reviews/FINAL_NATIVE_REVIEW_PLAN.md",
+    "docs/eleven-game/reviews/FINAL_VISUAL_SCORECARD.md",
+    "docs/eleven-game/reviews/GAME007_008_READABILITY.md",
+    "docs/eleven-game/reviews/GAME010_VISUAL.md",
+    "docs/eleven-game/reviews/GAME011_FEEL.md",
+    "docs/eleven-game/reviews/GAME011_VISUAL.md",
+    "docs/eleven-game/reviews/ONBOARDING_FEEL.md",
+    "docs/eleven-game/reviews/PORTAL_VISUAL.md",
+    "docs/game015/ART_DIRECTION.md",
+    "docs/game015/ASSET_INDEX.md",
+    "docs/game015/GAMEPLAY_TUNING.md",
+    "docs/game015/GAME_FEEL_REVIEW.md",
+    "docs/game015/HUMAN_PLAYTEST.md",
+    "docs/game015/IMPLEMENTATION_REPORT.md",
+    "docs/game015/IMPLEMENTATION_SPEC.md",
+    "docs/game015/REVISION_GAMEPLAY.md",
+    "docs/game015/VISUAL_REVIEW.md",
+    "docs/game015/revision-01/GAME_FEEL_REVIEW.md",
+    "docs/game015/revision-01/IMPLEMENTATION_REPORT.md",
+    "docs/game015/revision-01/QA_REPORT.md",
+    "docs/game015/revision-01/REQUEST.md",
+    "docs/game015/revision-02/GAME_FEEL_REVIEW.md",
+    "docs/game015/revision-02/IMPLEMENTATION_REPORT.md",
+    "docs/game015/revision-02/IMPLEMENTATION_SPEC.md",
+    "docs/game015/revision-02/VISUAL_REVIEW.md",
+    "docs/game015/revision-03/IMPLEMENTATION_REPORT.md",
+    "docs/game015/revision-03/IMPLEMENTATION_SPEC.md",
+    "docs/game016/GAMEPLAY_REPORT.md",
+    "docs/game016/GAME_FEEL_REVIEW.md",
+    "docs/game016/HUMAN_PLAYTEST.md",
+    "docs/game016/IMAGEGEN_LOG.md",
+    "docs/game016/IMPLEMENTATION_REPORT.md",
+    "docs/game016/IMPLEMENTATION_SPEC.md",
+    "docs/game016/VISUAL_BRIEF.md",
+    "docs/game016/VISUAL_REVIEW.md",
+    "docs/game017/CONTINUATION.md",
+    "docs/game017/GAME_FEEL_REVIEW.md",
+    "docs/game017/HUMAN_PLAYTEST.md",
+    "docs/game017/IMPLEMENTATION_REPORT.md",
+    "docs/game017/IMPLEMENTATION_SPEC.md",
+    "docs/game017/LESSONS.md",
+    "docs/game017/PUBLICATION.md",
+    "docs/game017/VISUAL_REVIEW.md",
+    "docs/game018/GAME_FEEL_REVIEW.md",
+    "docs/game018/HUMAN_PLAYTEST.md",
+    "docs/game018/IMPLEMENTATION_REPORT.md",
+    "docs/game018/IMPLEMENTATION_SPEC.md",
+    "docs/game018/LESSONS.md",
+    "docs/game018/PUBLICATION.md",
+    "docs/game018/PUBLICATION_HANDOFF.md",
+    "docs/game018/PUBLICATION_HANDOFF_PREVIOUS.md",
+    "docs/game018/VISUAL_BRIEF.md",
+    "docs/game018/VISUAL_REVIEW.md",
+    "docs/game018/revision01/IMPLEMENTATION_REPORT.md",
+    "docs/game018/revision03/IMPLEMENTATION_REPORT.md",
+    "docs/game018/revision03/PUBLICATION_INTEGRATION.md",
+    "docs/game018/revision03/VISUAL_REVIEW.md",
+    "docs/game019/GAME_FEEL_REVIEW.md",
+    "docs/game019/HUMAN_PLAYTEST.md",
+    "docs/game019/IMPLEMENTATION_REPORT.md",
+    "docs/game019/IMPLEMENTATION_SPEC.md",
+    "docs/game019/LESSONS.md",
+    "docs/game019/VISUAL_REVIEW.md",
+    "docs/game019/revision-02/ASSET_REPORT.md",
+    "docs/game019/revision-02/GAME_FEEL_REVIEW.md",
+    "docs/game019/revision-02/HUMAN_PLAYTEST.md",
+    "docs/game019/revision-02/IMPLEMENTATION_REPORT.md",
+    "docs/game019/revision-02/IMPLEMENTATION_SPEC.md",
+    "docs/game019/revision-02/LESSONS.md",
+    "docs/game019/revision-02/LEVEL_DESIGN.md",
+    "docs/game019/revision-02/PROTOTYPE_FEEL_REVIEW.md",
+    "docs/game019/revision-02/QA_REPORT.md",
+    "docs/game019/revision-02/VISUAL_BRIEF.md",
+    "docs/game019/revision-02/VISUAL_REVIEW.md",
+    "docs/game020/GAME_FEEL_REVIEW.md",
+    "docs/game020/HANDOFF.md",
+    "docs/game020/HUMAN_PLAYTEST.md",
+    "docs/game020/IMPLEMENTATION_REPORT.md",
+    "docs/game020/IMPLEMENTATION_SPEC.md",
+    "docs/game020/RIGHTS_NOTE.md",
+    "docs/game020/VISUAL_BRIEF.md",
+    "docs/game020/VISUAL_REVIEW.md",
+    "docs/game021/GAME_FEEL_REVIEW.md",
+    "docs/game021/HUMAN_PLAYTEST.md",
+    "docs/game021/IMPLEMENTATION_REPORT.md",
+    "docs/game021/IMPLEMENTATION_SPEC.md",
+    "docs/game021/RIGHTS_NOTE.md",
+    "docs/game021/VISUAL_REVIEW.md",
+    "docs/game022/GAME_FEEL_REVIEW.md",
+    "docs/game022/HANDOFF.md",
+    "docs/game022/HUMAN_PLAYTEST.md",
+    "docs/game022/IMPLEMENTATION_REPORT.md",
+    "docs/game022/IMPLEMENTATION_SPEC.md",
+    "docs/game022/VISUAL_BRIEF.md",
+    "docs/game022/VISUAL_REVIEW.md",
+    "docs/game023/GAME_FEEL_REVIEW.md",
+    "docs/game023/HANDOFF.md",
+    "docs/game023/HUMAN_PLAYTEST.md",
+    "docs/game023/IMPLEMENTATION_REPORT.md",
+    "docs/game023/IMPLEMENTATION_SPEC.md",
+    "docs/game023/RIGHTS_NOTE.md",
+    "docs/game023/VISUAL_REVIEW.md",
+    "docs/game024/GAME_FEEL_REVIEW.md",
+    "docs/game024/HANDOFF.md",
+    "docs/game024/HUMAN_PLAYTEST.md",
+    "docs/game024/IMPLEMENTATION_REPORT.md",
+    "docs/game024/IMPLEMENTATION_SPEC.md",
+    "docs/game024/RIGHTS_NOTE.md",
+    "docs/game024/VISUAL_REVIEW.md",
+    "docs/game025/GAME_FEEL_REVIEW.md",
+    "docs/game025/HUMAN_PLAYTEST.md",
+    "docs/game025/IMPLEMENTATION_REPORT.md",
+    "docs/game025/IMPLEMENTATION_SPEC.md",
+    "docs/game025/RIGHTS_NOTE.md",
+    "docs/game025/VISUAL_REVIEW.md",
+    "docs/game026/HANDOFF.md",
+    "docs/game026/HUMAN_PLAYTEST.md",
+    "docs/game026/IMPLEMENTATION_REPORT.md",
+    "docs/game026/IMPLEMENTATION_SPEC.md",
+    "docs/game026/RIGHTS_NOTE.md",
+    "docs/game026/VISUAL_BRIEF.md",
+    "docs/game027/HANDOFF.md",
+    "docs/game027/HUMAN_PLAYTEST.md",
+    "docs/game027/IMPLEMENTATION_REPORT.md",
+    "docs/game027/IMPLEMENTATION_SPEC.md",
+    "docs/game027/RIGHTS_NOTE.md",
+    "docs/game027/SHOT_RULE_TABLE.md",
+    "docs/game028/GAME_FEEL_REVIEW.md",
+    "docs/game028/HANDOFF.md",
+    "docs/game028/HUMAN_PLAYTEST.md",
+    "docs/game028/IMPLEMENTATION_REPORT.md",
+    "docs/game028/IMPLEMENTATION_SPEC.md",
+    "docs/game028/RIGHTS_NOTE.md",
+    "docs/game028/VISUAL_REVIEW.md",
+    "docs/game029/HANDOFF.md",
+    "docs/game029/HUMAN_PLAYTEST.md",
+    "docs/game029/IMPLEMENTATION_REPORT.md",
+    "docs/game029/IMPLEMENTATION_SPEC.md",
+    "docs/game029/RIGHTS_NOTE.md",
+    "docs/game030/GAME_FEEL_REVIEW.md",
+    "docs/game030/HANDOFF.md",
+    "docs/game030/HUMAN_PLAYTEST.md",
+    "docs/game030/IMPLEMENTATION_REPORT.md",
+    "docs/game030/IMPLEMENTATION_SPEC.md",
+    "docs/game030/RIGHTS_NOTE.md",
+    "docs/game030/VISUAL_BRIEF.md",
+    "docs/game030/VISUAL_REVIEW.md",
+    "docs/game031/ANALYTICS_STATUS.md",
+    "docs/game031/FUTURE_ENTRY.md",
+    "docs/game031/GAME_FEEL_REVIEW.md",
+    "docs/game031/HANDOFF.md",
+    "docs/game031/HUMAN_PLAYTEST.md",
+    "docs/game031/IMPLEMENTATION_REPORT.md",
+    "docs/game031/IMPLEMENTATION_SPEC.md",
+    "docs/game031/INPUT_NOTES.md",
+    "docs/game031/MODEL_NOTES.md",
+    "docs/game031/RIGHTS_NOTE.md",
+    "docs/game031/SAVE_NOTES.md",
+    "docs/game031/TECHNICAL_QA.md",
+    "docs/game031/VISUAL_REVIEW.md",
+    "docs/game031/textures-a/v1/ASSET_INTAKE.md",
+    "docs/game031/textures-a/v1/HANDOFF.md",
+    "docs/game031/textures-a/v1/IMPLEMENTATION_REPORT.md",
+    "docs/game031/textures-a/v1/REQUEST.md",
+    "docs/game031/textures-a/v1/SOURCE_ASSETS.md",
+    "docs/handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md",
+    "docs/handoff/sources/PUBLICATION_HANDOFF_UPLOADED_2026-10-05.md",
+    "docs/handoff/sources/SITE_OPERATIONS_MEMO_2026-10-05.md",
+    "docs/integration-2026-10-05/IMPLEMENTATION_REPORT.md",
+    "docs/integration-2026-10-05/INDEPENDENT_REVIEW.md",
+    "docs/integration-2026-10-05/REQUEST.txt",
+    "docs/integration-2026-10-05/SCOPE.md",
+    "docs/leaderboards/API.md",
+    "docs/leaderboards/DATABASE.md",
+    "docs/leaderboards/HANDOFF.md",
+    "docs/leaderboards/IMPLEMENTATION_REPORT.md",
+    "docs/leaderboards/IMPLEMENTATION_SPEC.md",
+    "docs/leaderboards/step2/HANDOFF.md",
+    "docs/leaderboards/step2/IMPLEMENTATION_REPORT.md",
+    "docs/legacy-games/MIGRATION.md",
+    "docs/legacy-games/title-revision/IMPLEMENTATION_REPORT.md",
+    "docs/legacy-records/GODOT_BRIDGE.md",
+    "docs/legacy-records/GODOT_EXPORT.md",
+    "docs/legacy-records/HANDOFF.md",
+    "docs/legacy-records/IMPLEMENTATION_REPORT.md",
+    "docs/legacy-records/IMPLEMENTATION_SPEC.md",
+    "docs/legacy-records/NATIVE_RECORD_SAVE.md",
+    "docs/legacy-records/REQUEST.md",
+    "docs/legacy-records/SOURCE_AUDIT_013_014.md",
+    "docs/migration/GAME011_REVIEW.md",
+    "docs/migration/IMPLEMENTATION_REPORT.md",
+    "docs/migration/reviews/GAME011_DESIGN_RISKS.md",
+    "docs/records/ADMIN_GUIDE.md",
+    "docs/records/API_AND_VALIDATION.md",
+    "docs/records/GAME_RECORD_MATRIX.md",
+    "docs/records/GAME_RESULT_INTEGRATION.md",
+    "docs/records/IMPLEMENTATION_REPORT.md",
+    "docs/records/OPERATIONS.md",
+    "docs/records/PRIVACY_AND_RETENTION.md",
+    "docs/records/REQUEST.md",
+    "docs/reviews/GAME002_FEEL.md",
+    "docs/reviews/GAME002_QA.md",
+    "docs/reviews/GAME003_FEEL.md",
+    "docs/reviews/GAME003_QA.md",
+    "docs/reviews/GAME004_FEEL.md",
+    "docs/reviews/GAME004_QA.md",
+    "docs/reviews/GAME005_FEEL.md",
+    "docs/reviews/GAME005_QA.md",
+    "docs/revisions/GAME002_TITLE_UI_REVIEW.md",
+    "docs/revisions/GAME003_TITLE_UI_REVIEW.md",
+    "docs/revisions/GAME004_TITLE_UI_REVIEW.md",
+    "docs/revisions/GAME005_TITLE_UI_REVIEW.md",
+    "docs/revisions/TITLE_UI_QA.md",
+    "docs/revisions/TITLE_UI_SPEC.md",
+    "docs/seven-games-2026-10-06/PR_DESCRIPTION.md",
+    "docs/seven-games-2026-10-06/REPORT.md",
+    "docs/seven-games-2026-10-06/REQUEST.txt",
+    "docs/seven-games-2026-10-06/TELEMETRY.md",
+    "docs/seven-games-2026-10-06/game003/BEFORE.md",
+    "docs/seven-games-2026-10-06/game003/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game003/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game003/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game003/LESSONS.md",
+    "docs/seven-games-2026-10-06/game003/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game006/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game006/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game006/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game006/INDEPENDENT_REVIEW.md",
+    "docs/seven-games-2026-10-06/game006/LESSONS.md",
+    "docs/seven-games-2026-10-06/game006/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game007/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game007/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game007/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game007/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game008/ASSET_REPORT.md",
+    "docs/seven-games-2026-10-06/game008/GAME_FEEL_REVIEW.md",
+    "docs/seven-games-2026-10-06/game008/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game008/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game008/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game008/LESSONS.md",
+    "docs/seven-games-2026-10-06/game008/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game008/VISUAL_REVIEW.md",
+    "docs/seven-games-2026-10-06/game009/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game009/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game009/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game009/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game010/HUMAN_PLAYTEST.md",
+    "docs/seven-games-2026-10-06/game010/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game010/IMPLEMENTATION_SPEC.md",
+    "docs/seven-games-2026-10-06/game010/SCENARIO_STRUCTURE.md",
+    "docs/seven-games-2026-10-06/game010/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/game018/IMPLEMENTATION_REPORT.md",
+    "docs/seven-games-2026-10-06/game018/VISUAL_BRIEF.md",
+    "docs/seven-games-2026-10-06/independent/010/CONTENT_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/010/GAME_FEEL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/010/VISUAL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/018/GAME_FEEL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/018/POSE_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/018/QA_REPORT.md",
+    "docs/seven-games-2026-10-06/independent/018/SOURCE_OBSERVATIONS.md",
+    "docs/seven-games-2026-10-06/independent/018/VISUAL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/game003/INDEPENDENT_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/game007/GAME_FEEL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/game007/VISUAL_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/game009/INDEPENDENT_REVIEW.md",
+    "docs/seven-games-2026-10-06/independent/game009/initial/FAILURE.md",
+    "docs/start-choices/IMPLEMENTATION_REPORT.md",
+    "docs/ten-game/CONCEPT_DESIGNER_LEARNING.md",
+    "docs/ten-game/DESIGN_DECISIONS.md",
+    "docs/ten-game/HUMAN_PLAYTEST.md",
+    "docs/ten-game/IMPLEMENTATION_SPEC.md",
+    "docs/ten-game/art/GAME002_JOURNEY_VISUAL_BRIEF.md",
+    "docs/ten-game/art/GAME006_VISUAL_BRIEF.md",
+    "docs/ten-game/art/GAME007_VISUAL_BRIEF.md",
+    "docs/ten-game/art/GAME008_VISUAL_BRIEF.md",
+    "docs/ten-game/art/GAME009_VISUAL_BRIEF.md",
+    "docs/ten-game/art/GAME010_VISUAL_BRIEF.md",
+    "docs/ten-game/art/IMAGEGEN_LOG.md",
+    "docs/ten-game/art/TEN_GAME_VISUAL_NOTES.md",
+    "docs/ten-game/reviews/GAME002_EXPANSION_FEEL.md",
+    "docs/ten-game/reviews/GAME002_EXPANSION_VISUAL.md",
+    "docs/ten-game/reviews/GAME003_EXPANSION_FEEL.md",
+    "docs/ten-game/reviews/GAME003_EXPANSION_VISUAL.md",
+    "docs/ten-game/reviews/GAME005_LOCALIZATION_FEEL.md",
+    "docs/ten-game/reviews/GAME005_LOCALIZATION_VISUAL.md",
+    "docs/ten-game/reviews/GAME006_FEEL.md",
+    "docs/ten-game/reviews/GAME006_VISUAL.md",
+    "docs/ten-game/reviews/GAME007_FEEL.md",
+    "docs/ten-game/reviews/GAME007_VISUAL.md",
+    "docs/ten-game/reviews/GAME008_FEEL.md",
+    "docs/ten-game/reviews/GAME008_VISUAL.md",
+    "docs/ten-game/reviews/GAME009_FEEL.md",
+    "docs/ten-game/reviews/GAME009_VISUAL.md",
+    "docs/ten-game/reviews/GAME010_FEEL.md",
+    "docs/ten-game/reviews/GAME010_VISUAL.md",
+    "docs/ten-game/reviews/REVIEW_PROTOCOL.md",
+    "docs/visual/GAME002_VISUAL_BRIEF.md",
+    "docs/visual/GAME002_VISUAL_REVIEW.md",
+    "docs/visual/GAME003_VISUAL_BRIEF.md",
+    "docs/visual/GAME003_VISUAL_REVIEW.md",
+    "docs/visual/GAME004_VISUAL_BRIEF.md",
+    "docs/visual/GAME004_VISUAL_REVIEW.md",
+    "docs/visual/GAME005_VISUAL_BRIEF.md",
+    "docs/visual/GAME005_VISUAL_REVIEW.md",
+    "docs/visual/IMAGEGEN_LOG.md",
+    "docs/visual/THUMBNAILS.md",
+    "docs/visual/VISUAL_QA.md",
+    "docs/visual/VISUAL_REDESIGN_SPEC.md",
+    "docs/visual/before/README.md"
+  ],
+  "completion_text_hits": [
+    {
+      "path": "GAME_COMMON_SPEC.md",
+      "line": 3,
+      "text": "2026-10-05、019統合候補のコードと記録から整理。最新の公開結果は統合報告を優先する。完成した100ゲーム用SDKではなく、現在使っている小さな境界を記述する。現状と例外は [CURRENT_STATUS](docs/CURRENT_STATUS.md)、工程は [GAME_DEVELOPMENT_RULES](docs/GAME_DEVELOPMENT_RULES.md)。以前の10本DRAFTは [archive](docs/archive/GAME_COMMON_SPEC_2026-10-04.md)、11本の練習候補は[履歴草案](docs/eleven-game/COMMON_SPEC_NEXT_DRAFT.md)に保持する。"
+    },
+    {
+      "path": "GAME_COMMON_SPEC.md",
+      "line": 25,
+      "text": "requestRewardedCredit(adapter)は0／非pendingのみ受け付け、granted:trueで+3。拒否・例外で増やさず再要求可、多重要求を防ぐ。[RewardService](src/core/RewardService.ts)は約900msの開発用Stubで、本番広告ではない。011の広告UI等、全ゲームのenabled実UIが完成済みとは扱わない。"
+    },
+    {
+      "path": "GAME_COMMON_SPEC.md",
+      "line": 63,
+      "text": "保存・音・Rewardエラーを扱い、必要assetのdecode前に回答時計を走らせない等の固有対策を入れる。一般的な致命エラー復旧UI、本番広告SDKエラー、オフラインqueueは完成済みではない。実機60fpsは目標で、browser viewport検証を実機FPSへ換算しない。"
+    },
+    {
+      "path": "docs/GAME001_LESSONS.md",
+      "line": 5,
+      "text": "## 今回完成した範囲"
+    },
+    {
+      "path": "docs/GAME001_LESSONS.md",
+      "line": 35,
+      "text": "OrbitRunの角度・半径・衝突境界、2軌道の生成パターン、Near Miss候補の判定、速度カーブ、円形Graphics演出はORBIT SHIFT固有です。Game001の画面構成や140ms切替を、すべてのジャンルの固定基準にしません。今回のcontracts.tsも、完成済みの100ゲーム用SDKではありません。"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 17,
+      "text": "**実際にブラウザで遊べる完成度の高いゲームを1本完成させること**"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 673,
+      "text": "完成したゲームロジックを確認し、"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 751,
+      "text": "# 32. 完成条件"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 753,
+      "text": "単に「動く」だけでは完成としない。"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 776,
+      "text": "完成後、以下をユーザーに報告する。"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 853,
+      "text": "- 100ゲーム用の完成済み共通フレームワーク"
+    },
+    {
+      "path": "docs/GAME001_SPEC.md",
+      "line": 863,
+      "text": "「技術的に完成した」"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1576,
+      "text": "Game002〜005完成後、ユーザーが実際にプレイする。"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1615,
+      "text": "# 80. 5ゲーム完成後"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1617,
+      "text": "Game001〜Game005が完成した時点で、"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1652,
+      "text": "5ゲーム完成後、"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1753,
+      "text": "# 86. 最終完成条件"
+    },
+    {
+      "path": "docs/GAME002_TO_005_SPEC.md",
+      "line": 1773,
+      "text": "さらに全4ゲーム完成後、"
+    },
+    {
+      "path": "docs/GAME011_LESSONS.md",
+      "line": 67,
+      "text": "画像・font・PortalリンクはVite BASE_URLに従う。CSSの短横画面は対象左/回答右、縦画面は対象/文章の下に左右回答。画像は切り取らず、回答領域は44px以上。状態ごとの主画面幅と結果cardを調整し、独立QAが実際の結果を8サイズで確認した。キーとprimaryタッチの準備releaseも実ブラウザで検証済み。素材採用や技術的なgeometry成功を完成Visual Gateとは扱わない。"
+    },
+    {
+      "path": "docs/GAME019_JUMP_DESIGN_RESEARCH.md",
+      "line": 15,
+      "text": "以下は資料から抽象化した**Game019の設計仮説**。本家の全マップを解析した事実、人間による試遊結果、完成後の合格判定ではない。"
+    },
+    {
+      "path": "docs/GAME_DEVELOPMENT_RULES.md",
+      "line": 17,
+      "text": "ゲーム実装では実装者だけで完成扱いしない。サブエージェントが使える場合は必要なレビューを委任し、同じファイルの同時編集を避ける。使えない場合は実装→Feel→Visual→QA→修正→再検証を明示的に分け、独立workerで実施したと偽らない。"
+    },
+    {
+      "path": "docs/GAME_DEVELOPMENT_RULES.md",
+      "line": 38,
+      "text": "Visualはゲームごとのidentityと瞬時の判読性を優先する。既存の評価gateは80/100以上、可読性Fと完成感H各12/15以上。数値は実画像を見た結果だけを付け、CSS変更・素材の存在だけで加点しない。Jevの文章判断からVisual点を生成しない。"
+    },
+    {
+      "path": "docs/PROJECT_BRIEF.md",
+      "line": 59,
+      "text": "完成したゲームから共通要素を抽出し、"
+    },
+    {
+      "path": "docs/PROJECT_BRIEF.md",
+      "line": 485,
+      "text": "共通仕様完成後、"
+    },
+    {
+      "path": "docs/PROJECT_BRIEF.md",
+      "line": 560,
+      "text": "Game001は完成品であると同時に、"
+    },
+    {
+      "path": "docs/analytics/ARCHITECTURE.md",
+      "line": 27,
+      "text": "[設定手順](MANUAL_SETUP.md)、[管理画面と母数](ADMIN_DASHBOARD.md)、[イベント](EVENTS.md)、[プライバシー境界](PRIVACY_BOUNDARY.md)。コード完成と本番収集開始は別。実行結果と公開状態は[報告](REPORT.md)を参照。"
+    },
+    {
+      "path": "docs/analytics/MANUAL_SETUP.md",
+      "line": 3,
+      "text": "現時点ではGA4 Measurement IDと本番Telemetry endpointの未設定時、外部解析はdisabled。アダプター・Worker・D1 migration・管理画面のコード完成と、本番収集開始は別に扱う。本番設定と実送信確認を行うまで「導入完了」「本番データ収集済み」と記載しない。実行結果は統合QA・CURRENT_STATUSが正本。"
+    },
+    {
+      "path": "docs/analytics/REPORT.md",
+      "line": 31,
+      "text": "Cloud runtimeでCloudflare token/DB binding/GA Measurement IDの準備なし。API許可も既存GitHub/site/OpenRouter中心。Worker本番未deploy、D1本番未作成/未migration、custom domain/admin secret未設定。GA adapterは完成、Measurement ID未設定。GitHub Variables一覧はintegration403で直接読めないため、公開bundle/通信の実測を公開QAで照合する。鍵の要求で作業を停止しない。"
+    },
+    {
+      "path": "docs/analytics/REPORT.md",
+      "line": 33,
+      "text": "[一度きりの設定](MANUAL_SETUP.md)。Worker/D1のコード・実ローカル検証完成を本番収集開始へ読み替えない。Google/Cloudflare本番収集・cron・CF負荷、実機iPhoneのSafari callout/音/FPSは未確認。raw欠測・同意拒否・旧Godotの内部・page_exit欠測を推定しない。本人の015/019好評価を維持し、今回の自動操作を新たな人間合格にしない。"
+    },
+    {
+      "path": "docs/archive/GAME_COMMON_SPEC_2026-10-04.md",
+      "line": 5,
+      "text": "更新：2026-10-04。Game001〜010の実装と独立レビューから抽出した **DRAFT**。v0.1の5本で得た基準を保ち、§11に今回の10本から得たv0.2候補を追加した。Game001の過去の人間A〜Jは合格、今回の人間A〜Nは未実施。人間の結果を受けて改訂する。完成済みの 100 ゲーム用 SDK や全ジャンルへの固定契約ではない。"
+    },
+    {
+      "path": "docs/archive/GAME_COMMON_SPEC_2026-10-04.md",
+      "line": 148,
+      "text": "新作の美術は Art Directorの仕様→実画像生成→最適化実素材確認→実装→独立Game Feel→独立Visual→QAの順。画像が存在するだけで採点しない。Visualは合計80/100以上、可読性Fと完成感Hは各12/15以上。各ゲームの構図・意味のある動作・読める実入力を根拠とする。"
+    },
+    {
+      "path": "docs/classic-batch-two/ADDITIONAL_INSTRUCTIONS.md",
+      "line": 315,
+      "text": "・今回の完成済み026〜030。"
+    },
+    {
+      "path": "docs/eleven-game/IMPLEMENTATION_REPORT.md",
+      "line": 45,
+      "text": "Art brief→実第一者ImageGen→原本/optimized実view→素材採用を実施した。[実3回のpromptとoutput](art/IMAGEGEN_LOG.md)、[採用pipeline](art/ASSET_PIPELINE_DECISIONS.md)、[asset audit](art/ASSET_AUDIT.json)へ根拠を保存。011は20×256²RGBA/224,332B、010は2×1200×300RGBA/68,680B、計22枚293,012B。既存56画像のhash保持はProducerのaudit証拠。素材採用は完成gameのVisual点ではない。"
+    },
+    {
+      "path": "docs/eleven-game/IMPLEMENTATION_SPEC.md",
+      "line": 37,
+      "text": "4. Game011を完成させる"
+    },
+    {
+      "path": "docs/eleven-game/IMPLEMENTATION_SPEC.md",
+      "line": 1316,
+      "text": "118. 完成条件"
+    },
+    {
+      "path": "docs/eleven-game/IMPLEMENTATION_SPEC.md",
+      "line": 1389,
+      "text": "として完成させること。"
+    },
+    {
+      "path": "docs/eleven-game/art/ASSET_PIPELINE_DECISIONS.md",
+      "line": 27,
+      "text": "Portal thumbはactual runtime完成後の証拠。先に生成posterを作ってthumbがあると言わない。001〜010の既存saved画像は仮のsource候補で、007/008/010改修とprototype-credit/offを誤表示しない新candidateを最終captureへ使う。thumbnail11はgameを一覧へ揃えるだけの資産で、game11×VisualPASSの代用ではない。"
+    },
+    {
+      "path": "docs/eleven-game/art/GAME010_FOREGROUND_BRIEF.md",
+      "line": 37,
+      "text": "Rootのexclusive browser release後に旧保存画像と新1440×900/390×844のLISTEN/WORK/cueを比較する。手の質、指の形、人物とのline/shading/視点、状態の即読取、顔/cueを覆わないことを独立確認。80/F12/H12以上を目安に、他人物と同等のcraftを必須とする。素材の採用は完成画面PASSではない。"
+    },
+    {
+      "path": "docs/game015/ART_DIRECTION.md",
+      "line": 97,
+      "text": "Rootがexclusive browser slotを指定した後、PC1440×900相当とphone390×844のactualplayをview。total80/100以上、F読みやすさ/H完成感は各12/15以上。Pixel artは情報量ではなく、下記の実意図で評価する。quality scoreはplayableactualができるまで未採点。"
+    },
+    {
+      "path": "docs/game015/IMPLEMENTATION_SPEC.md",
+      "line": 649,
+      "text": "Game015完成後、"
+    },
+    {
+      "path": "docs/game015/IMPLEMENTATION_SPEC.md",
+      "line": 802,
+      "text": "完成後、"
+    },
+    {
+      "path": "docs/game015/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "2026-10-04。**現行PASS 84/100 · F可読性13/15 · H完成感13/15**。初回正式評価83/F12を保存し、末尾の限定HUD再確認でFのみ+1とした。Rootのexclusive slotでPC1440×900 / portrait phone390×844の全体確認、その後320×568 / 844×390のHUD再確認を実操作・実画像で行った。全browser/context閉鎖済み、両工程のHTTP/page errorsは`[]`。実装・素材author・独立Game Feel・QAとは別の数値評価で、人間の楽しさ/実機FPS/公開合格ではない。"
+    },
+    {
+      "path": "docs/game016/VISUAL_BRIEF.md",
+      "line": 76,
+      "text": "素材承認後の独立VisualはRootのexclusive browser slotで実PC1440×900/phone390×844、title/説明/実練習/本番各phase/feedback/result/portal actual thumbnailを確認する。普通の入力で到達した状態と明示fixture/source診断を区別する。80/100以上、F可読性/H完成感各12/15以上、3silhouetteの区別と現在ルール/時間/固定3padの同時読取を必須とする。QA/Feelとの同時browserは開かない。Phase到達が未確認なら限界を記載し、source閲覧だけでnative PASSを作らない。人間の混乱/反射/笑い/再プレイ・実機FPSは別の未実施項目。"
+    },
+    {
+      "path": "docs/game016/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "2026-10-05。**PASS86/100 · F可読性13/15 · H完成感13/15。Blockerなし。** 初回実画像でTV内のsecondary button文字が背景に埋もれるfindingを出し、限定文字色修正後の実PC/phone画像で解消を確認した。素材承認、独立Feel、QAとは別のVisual評価で、人間の楽しさ/実機性能/公開合格を意味しない。Visual用browserは一度も開かず、QAのexclusive slotを使用していない。"
+    },
+    {
+      "path": "docs/game017/IMPLEMENTATION_REPORT.md",
+      "line": 11,
+      "text": "独立Feel：PCとphoneで実入力の練習失敗・復帰、本番6連続CLEAR、風／大粒／7ラウンド失敗とretryを確認。独立Visual：81/100、可読性F13/15、完成感H12/15。独立QAのShift modifier不一致は修正し通常入力との限定再検証に合格。レビュー実プレイのhashと最終Shift差分は各レビュー文書に区別して記載。"
+    },
+    {
+      "path": "docs/game017/IMPLEMENTATION_SPEC.md",
+      "line": 19,
+      "text": "既存ゲームを壊さずGame017を完成・テスト・統合してください。"
+    },
+    {
+      "path": "docs/game017/IMPLEMENTATION_SPEC.md",
+      "line": 1050,
+      "text": "必要なものだけGame017完成時に更新する。"
+    },
+    {
+      "path": "docs/game017/IMPLEMENTATION_SPEC.md",
+      "line": 1066,
+      "text": "以下を満たすまで完成扱いにしない。"
+    },
+    {
+      "path": "docs/game017/IMPLEMENTATION_SPEC.md",
+      "line": 1091,
+      "text": "完成後、以下を報告。"
+    },
+    {
+      "path": "docs/game017/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "2026-10-05。**PASS 81/100、F可読性13/15、H完成感12/15。未解決のVisual blockerなし。** 実装者とは別のVisual reviewerが実画面画像を確認した。人間の楽しさ、実機操作、視点移動の快適さ、公開可否の合格ではない。"
+    },
+    {
+      "path": "docs/game017/VISUAL_REVIEW.md",
+      "line": 28,
+      "text": "|H Production value|15|12|主人公・実盤面・入力UI・説明／練習／結果・正直なgameplay thumbnailが統合。壊れた素材や操作を隠すoverlayは見当たらない。小画面のmenu art縮小、簡素な背景・表情・演出が完成感の上限|"
+    },
+    {
+      "path": "docs/game017/VISUAL_REVIEW.md",
+      "line": 37,
+      "text": "**ルート／dash／成功。** 実thumbnail原本のyellow pathはnavy輪郭があり、赤地点と建物に埋もれない。自由線の先端を丸く示し、完成済みでない経路を完成画面へ合成していない。[PC dash](QA/final-native/desktop-dash.png)では元の横道路へ戻り、黄色線と主人公の後方の薄い残像が同じ場に見える。[phone clear](QA/final-native/phone-clear.png)は1000／streak1とDRY CLEARで成功を区別する。canvas内English／日本語は小さいため、下のDOM statusの同じ意味の文字も確認した。5秒の描き心地や移動との厳密一致はFeel／QAが所有する。"
+    },
+    {
+      "path": "docs/game018/IMPLEMENTATION_SPEC.md",
+      "line": 14,
+      "text": "既存ゲームを壊さずGame018を完成・テスト・統合してください。"
+    },
+    {
+      "path": "docs/game018/IMPLEMENTATION_SPEC.md",
+      "line": 1512,
+      "text": "Game018完成後、"
+    },
+    {
+      "path": "docs/game018/IMPLEMENTATION_SPEC.md",
+      "line": 1523,
+      "text": "37. 完成条件"
+    },
+    {
+      "path": "docs/game018/IMPLEMENTATION_SPEC.md",
+      "line": 1526,
+      "text": "以下を満たすまで完成扱いにしない。"
+    },
+    {
+      "path": "docs/game018/IMPLEMENTATION_SPEC.md",
+      "line": 1641,
+      "text": "既存プロジェクトと矛盾しない範囲は自律的に判断して完成まで進めてください。"
+    },
+    {
+      "path": "docs/game018/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "2026-10-05。**PASS 85/100、F可読性13/15、H完成感13/15。未解決のVisual blockerなし。** 実装者とは別のVisual reviewerが実画像を確認した。人間の楽しさ、実機操作、音、公開可否の合格ではない。"
+    },
+    {
+      "path": "docs/game018/revision03/VISUAL_REVIEW.md",
+      "line": 5,
+      "text": "**今回のANGLE/SPIN・確定後表示のVisual gateはPASS：88/100、F可読性13/15、H完成感13/15。** この点数は確認したsetup画面の評価であり、全演出・人間の面白さ・実機・公開の合格へ拡張しない。"
+    },
+    {
+      "path": "docs/game019/revision-02/IMPLEMENTATION_SPEC.md",
+      "line": 9,
+      "text": "3. flat prototypeで連続チャージ入力だけを完成し、空中補正0／弱補正を比較。"
+    },
+    {
+      "path": "docs/game019/revision-02/IMPLEMENTATION_SPEC.md",
+      "line": 51,
+      "text": "## 検証／完成条件"
+    },
+    {
+      "path": "docs/game019/revision-02/PROTOTYPE_FEEL_REVIEW.md",
+      "line": 5,
+      "text": "集約は [SUMMARY](QA/prototype-independent/SUMMARY.json)。判定は**技術・設計gate PASS**、空中補正は**0を採用**。人間の「楽しい」「もう一回跳びたい」、実機の親指／音／FPSは未実施であり、このPASSに含めない。試作だけで完成ゲーム全体のFeel／Visual／QAを合格にしない。"
+    },
+    {
+      "path": "docs/game019/revision-02/VISUAL_BRIEF.md",
+      "line": 11,
+      "text": "独立Visualは完成後の実PC／phone画像から判定する。threshold80/100、F/H各12/15。サムネイルを更新するなら実playのcanvasからcropし、原本とhashを台帳に残す。人間の親指・音・体感の判定は未実施と分ける。"
+    },
+    {
+      "path": "docs/game019/revision-02/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "**Visual PASS：83/100、F（可読性）12/15、H（完成感）12/15。** 実装者とは別の reviewer が、固定ソースから通常キー／native touch操作で撮影された実画面を `view_image` で確認した。素材の存在、CSS差分、モデル到達性だけで採点していない。ゲームの操作QA、公開、人間の面白さの判定とは独立した結果。"
+    },
+    {
+      "path": "docs/game020/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "**84/100、F（可読性）13/15、H（完成感）13/15、Visual gate PASS。** `pair020_review`が実装担当とは独立に通常ブラウザ操作で撮影し、実PNGを`view_image`で見て採点した。Jev回答、CSSの存在、生成回数から点を作っていない。作者の主観評価・実機評価ではない。"
+    },
+    {
+      "path": "docs/game020/VISUAL_REVIEW.md",
+      "line": 28,
+      "text": "|H. Production value|15|13|title／練習／盤面／結果に完成した同じ卓の見た目と十分な文字サイズを統合。実機・音聴感は未確認。|"
+    },
+    {
+      "path": "docs/game021/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "**83/100、F可読性13/15、H完成感13/15、Visual gate PASS。** `classic_review`が実PNGをview_imageで読み、compiled通常入力を実施して採点。Jev文章、CSSや素材の存在だけから点を作っていない。作者の主観評価・実機iPhone評価ではない。"
+    },
+    {
+      "path": "docs/game021/VISUAL_REVIEW.md",
+      "line": 26,
+      "text": "|H Production value|15|13|実play／練習成功／結果／pauseが統一された完成UI。|"
+    },
+    {
+      "path": "docs/game022/VISUAL_REVIEW.md",
+      "line": 3,
+      "text": "**83/100、F可読性13/15、H完成感13/15、Visual gate PASS。** `classic_review`が実PNGをview_imageで読み、root compiled通常入力を実施して独立採点。Jev文章、CSSや素材の存在だけから点を作っていない。"
+    },
+    {
+      "path": "docs/game022/VISUAL_REVIEW.md",
+      "line": 23,
+      "text": "初回preliminaryは修正前32px露出・DEV既知配札画像で82/F12/H13。最終は実通常画像と44px実測・到達操作によりFを13とした。DEV fixtureは通常randomの完成・難易度を保証しない。"
+    },
+    {
+      "path": "docs/game030/IMPLEMENTATION_REPORT.md",
+      "line": 15,
+      "text": "再現：linked dependenciesまたはnpm ci、npm run check、対象Vitest、独立vite build、npx vite preview --config tests/game030/vite.config.ts --port4930、GAME030_BASE/GAME030_REPORT指定でnode tests/game030/native.mjs。出力先は既存ディレクトリを拒否しsourcehash/run単位、一時4930serverを引継ぎ前提にしない。公開commit/URL/配信/Sheetは親の完成後証拠へリンクする。"
+    },
+    {
+      "path": "docs/handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md",
+      "line": 146,
+      "text": "②の初期実測では旧URL `https://badgio0906.github.io/Badgio0906-web-mini-game-arcade/index.html`から**HTTPのdomainへ301転送**が出た。その後の③メモはHTTPS完了を明示するため、新タスクでは正式HTTPS URLを基準にし、昔のHTTP転送を現在の完成状態として固定しない。今回のCloudは公開URLへのCONNECT403で、HTTPS・現在のredirect・www動作を直接再検証できていない。設定完了はユーザー提供記録、公開PC/phone検証は未実施と区別する。"
+    },
+    {
+      "path": "docs/handoff/WEB_MINI_GAME_ARCADE_HANDOFF_2026-10-05.md",
+      "line": 216,
+      "text": "その後の要求は過去10〜20事例をGit／testlogs／修正記録から抽出し、Jev送信前にGT設定・payloadから分離し、原因choiceとCODEX_ACTION_REQUIRED／HUMAN_VISUAL_FEEL_REQUIRED／RELEASE_BLOCKING_IF_UNRESOLVEDを判定、noul0.5、FP/FN／特にrelease FALSE PASSを集計する方式。この**10〜20歴史ケース検証の完成証拠は未取得**。017/018の17checkpointをこれが完了したものとしない。"
+    },
+    {
+      "path": "docs/leaderboards/IMPLEMENTATION_REPORT.md",
+      "line": 28,
+      "text": "- 固定source282件とenabledbuild156件のhashを独立照合。最終8画像の静的UI独立合格、可読性14/15・完成感13/15。全ゲーム動きの100点評価・人間Feelとしては報告しない。"
+    },
+    {
+      "path": "docs/legacy-records/REQUEST.md",
+      "line": 41,
+      "text": "1. 重要：既存の完成物を壊さない"
+    },
+    {
+      "path": "docs/records/OPERATIONS.md",
+      "line": 9,
+      "text": "2026-10-08の作業開始時、承認済みのCloudflare認証は利用できなかった（rootによる既存wrangler認証確認）。新規login、アカウント、広い権限、Secret、remote migration、Worker deploy、productionフラグ変更は行っていない。コードと加算型migrationは完成・ローカル検証対象、本番の「みんなのBEST」稼働とは区別する。"
+    },
+    {
+      "path": "docs/records/REQUEST.md",
+      "line": 44,
+      "text": "「表示欄だけ完成、サーバー未接続」を完全実装とは報告しない。"
+    },
+    {
+      "path": "docs/records/REQUEST.md",
+      "line": 47,
+      "text": "利用可能な部分を完成させ、不足箇所を正確に分けて報告する。"
+    },
+    {
+      "path": "docs/records/REQUEST.md",
+      "line": 1081,
+      "text": "コード、migration、ローカルQA、個人BESTまで完成させる。"
+    },
+    {
+      "path": "docs/records/REQUEST.md",
+      "line": 1306,
+      "text": "ただし、機能公開、実データ受信、人間の満足度を同じ「完成」にまとめない。"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/REQUEST.txt",
+      "line": 118,
+      "text": "今回は「ゲームロジックが動くから、絵はこの程度でよい」という完成判定を禁止します。"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/REQUEST.txt",
+      "line": 832,
+      "text": "通常便の面白さを先に完成させ、特別便で基本の弱さを隠さないでください。"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/REQUEST.txt",
+      "line": 1105,
+      "text": "変更や脱線に惑わされず議事録を完成させる」"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/game010/IMPLEMENTATION_REPORT.md",
+      "line": 9,
+      "text": "正答欄100、3欄完成100、正しい訂正対応30、連続完成20×連続数、未採用案／雑談の記録はunique発言ごと25減。聞き返しは各議題2回、採点上の罰なし。読んでいる間は進行停止、再開後は同じ発言の読解時間を確保。本文表示3.8–7秒は設計仮説、実人間の読解時間は未測定。2欄以上の誤記を大きな失敗とし、2回で終了。1欄誤記では続行。"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/independent/game003/INDEPENDENT_REVIEW.md",
+      "line": 42,
+      "text": "| H production | 13/15 | 通常／芸術／練習／失敗／保存まで完成した実画面。文字や操作のclipなし。音と実機の触感は未確認。 |"
+    },
+    {
+      "path": "docs/seven-games-2026-10-06/independent/game007/VISUAL_REVIEW.md",
+      "line": 16,
+      "text": "|H Production value|12/15|題名/説明/任意実練習/配達/追加便の選択/結果が一貫した業務票として完成。簡素なかご・小text・代表人数絵が上限。|"
+    },
+    {
+      "path": "docs/ten-game/CONCEPT_DESIGNER_LEARNING.md",
+      "line": 28,
+      "text": "下表は既知の設計を比較するための地図。001/004は既存の主構造、002/003/005/006〜010は今回の実装ソースとmanifestを照合した。ソース完成、実ブラウザの独立確認、人間テストを区別する。"
+    },
+    {
+      "path": "docs/ten-game/IMPLEMENTATION_SPEC.md",
+      "line": 728,
+      "text": "今回の10ゲーム完成後、"
+    },
+    {
+      "path": "docs/ten-game/IMPLEMENTATION_SPEC.md",
+      "line": 847,
+      "text": "77. 10ゲーム完成後"
+    },
+    {
+      "path": "docs/ten-game/IMPLEMENTATION_SPEC.md",
+      "line": 873,
+      "text": "技術的な完成より、"
+    },
+    {
+      "path": "docs/ten-game/art/GAME006_VISUAL_BRIEF.md",
+      "line": 31,
+      "text": "実生成原本と最適化済み`car-compact.webp`をArt Directorが実際に確認し、正投影・車種差・透明余白・全車輪を承認。3台合計52,134bytes。これは素材承認であり、完成画面のVisual Gate合格ではない。"
+    },
+    {
+      "path": "docs/ten-game/art/GAME007_VISUAL_BRIEF.md",
+      "line": 31,
+      "text": "原本と最適化済み会社員・台車をArt Directorが実際に確認し承認。元画像の透明部分には不可視RGB色があるが、採用WebPは透明で、足と台車の全車輪を含む。7個合計88,394bytes。原本/索引`assets/game007/`、配信`public/assets/game007/`。素材承認のみで、完成Visual Gateは別。"
+    },
+    {
+      "path": "docs/ten-game/art/GAME008_VISUAL_BRIEF.md",
+      "line": 29,
+      "text": "原本と最適化済み街路をArt Directorが実際に確認し承認。中央下の空間と元の3:2比率を維持。配信1枚67,398bytes、目標80KB以下、上限120KB。原本/索引は`assets/game008/`、採用分`public/assets/game008/`。生成画像の参照承認であり、動く液体の完成度はまだ独立評価していない。"
+    },
+    {
+      "path": "docs/ten-game/art/GAME009_VISUAL_BRIEF.md",
+      "line": 33,
+      "text": "生成原本とstaging最適化の赤丸/青四角をArt Directorが実際に見て承認した。色と印面形が明確で、木の台座を全て含む。11個合計149,816bytes。初回素材承認時はMainの長時間ブラウザ確認を妨げないよう`assets/game009/staging/`で待機した。その後Mainが開いた書込みwindowで同じ採用画像をpublicへ配置した。素材承認は完成Visual Gateではない。"
+    },
+    {
+      "path": "docs/ten-game/art/GAME010_VISUAL_BRIEF.md",
+      "line": 33,
+      "text": "生成原本とstaging最適化のglance/questionをArt Directorが実際に見て承認した。顔・手・姿勢の差が明確で、同じcanvasと座席anchorに収まる。6枚合計92,040bytes。初回素材承認時はMainの長時間ブラウザ確認を妨げないよう`assets/game010/staging/`で待機した。その後Mainが開いた書込みwindowで同じ採用画像をpublicへ配置した。素材承認は実際の予兆時間/完成Visual Gateではない。"
+    },
+    {
+      "path": "docs/ten-game/art/TEN_GAME_VISUAL_NOTES.md",
+      "line": 22,
+      "text": "| Game | Art Directorが実際に見たもの | 素材承認 / 容量 | 完成画面・独立Gate |"
+    },
+    {
+      "path": "docs/ten-game/art/TEN_GAME_VISUAL_NOTES.md",
+      "line": 31,
+      "text": "素材の承認は、完成ゲームの80点や面白さを宣言するものではない。使った第一者画像生成ツールの実出力を確認した。利用可能でない「skillを読んだ/実行した」とは記録しない。実プロンプト・出力ID・bbox・最適化の詳細は[IMAGEGEN_LOG](IMAGEGEN_LOG.md)と各asset-indexへ記録されている。新しい採用WebP31枚は合計489,854bytes。既存25枚は保存した。未使用原本や試行画像をproductionへ入れない。"
+    },
+    {
+      "path": "docs/ten-game/art/TEN_GAME_VISUAL_NOTES.md",
+      "line": 96,
+      "text": "完成後のcanonicalはDesktop1920×1080とMobile390×844。小さい/横長画面はQAで別途確認。タイトル、通常プレイ、失敗/終了、特殊選択と受諾後の実画面を取得する。独立Visual ReviewerがA〜Hを実画面から採点し、80以上・Gameplay Readability12/15以上・Production Value12/15以上でPASS。最大3回後も不合格なら`HUMAN ART REVIEW REQUIRED`。"
+    },
+    {
+      "path": "docs/visual/GAME004_VISUAL_REVIEW.md",
+      "line": 22,
+      "text": "| H Production Value | 13 / 15 | コンセプトを参照したコードのキー、筐体、HUD、紙プレートの材料が統一。一枚の装置画像に偽の九ボタンを載せる構成ではなく、実際の操作面が完成した機器として見える。 |"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 103,
+      "text": "**ゲームの個性・世界観・完成度が向上する部分**"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 276,
+      "text": "動きやエフェクトが完成度向上に寄与しているか。"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 280,
+      "text": "試作品ではなく完成品に見えるか。"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 1094,
+      "text": "完成後、"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 1328,
+      "text": "# 62. 完成条件"
+    },
+    {
+      "path": "docs/visual/VISUAL_REDESIGN_SPEC.md",
+      "line": 1405,
+      "text": "**既存のGame002〜005とゲーム内容は同じだが、見た瞬間の完成度は明確に一段以上高い状態**"
+    }
+  ]
+}

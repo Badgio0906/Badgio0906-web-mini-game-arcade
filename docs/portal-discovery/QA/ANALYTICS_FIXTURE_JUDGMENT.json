@@ -1,0 +1,29 @@
+{
+  "finding_id": "consenting-browser-analytics-writes",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "The fixture grants analytics consent and uses the configured production endpoint while aborting every non-GET request. Existing consent-gated upload attempts consequently produce ERR_FAILED despite zero page exceptions. Correct QA acknowledges only the exact existing analytics host/path locally with204 and appropriate CORS, records those mocked attempts, and continues blocking all other POSTs. This preserves analytics behavior without forwarding synthetic events or records to production. QA must finish its corrected run; this observation does not establish a major player-facing release failure.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_ANALYTICS_FIXTURE.json",
+    "docs/portal-discovery/QA/browser-initial/REPORT.json",
+    "src/core/TelemetryUploadService.ts",
+    "src/analytics/config.ts",
+    "tests/portal-discovery/browser.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read consent-gated uploader and initial failure fixture, then inspected the corrected route: exact analytics host plus/v1/events receives local204, all other non-GETs remain blocked/countable. No production request or browser launched by this reviewer.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_ANALYTICS_FIXTURE.json",
+      "docs/portal-discovery/QA/browser-initial/REPORT.json",
+      "src/core/TelemetryUploadService.ts",
+      "src/analytics/config.ts",
+      "tests/portal-discovery/browser.mjs"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

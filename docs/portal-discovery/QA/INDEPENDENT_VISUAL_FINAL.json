@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "reviewer": "independent navigation_review",
+  "scope": "Actual final Portal discovery screenshots and source; limited UI review, no all-game A-H/Feel regrading",
+  "result": "PASS for tested UI scope; no observed blocking overlap or clipping",
+  "images": [
+    "docs/portal-discovery/QA/independent-boundaries-accepted/1440-independent-initial.png",
+    "docs/portal-discovery/QA/independent-boundaries-accepted/390-independent-initial.png",
+    "docs/portal-discovery/QA/independent-boundaries-accepted/320-independent-initial.png",
+    "docs/portal-discovery/QA/independent-boundaries-accepted/390-getter.png",
+    "docs/portal-discovery/QA/independent-boundaries-accepted/390-favorites-read.png"
+  ],
+  "observations": [
+    "PC1440 state and mode conditions occupy two columns, selected chips and collapsed tag picker remain directly below. Four first-row thumbnails visible rather than metadata only.",
+    "390 and320 FREE PLAY mark and inline legends reduce initial height. Both show first thumbnail start; trial status and favorite star visible and legible.",
+    "OR/AND use adjacent concise explanation; active option remains checkmarked yellow. Trial pink, favorite star cream/yellow, card cream and PLAY yellow retain distinct roles.",
+    "All three measured viewport widths have no horizontal overflow; tested visible controls meet44px minimum height.",
+    "Denied getter state shows an explicit memory-only notice while filters and favorite sorting remain operational; expanded tags remain bounded by their own scroll area.",
+    "The expanded scrollable tag picker screenshot happens to show its lower candidate rows after ordinary interaction; no native hidden-card layout leakage."
+  ],
+  "limitations": [
+    "Initial viewport still requires normal scrolling to reach PLAY beneath thumbnail and BEST; collapsed discovery no longer hides all game imagery.",
+    "Storage denial and clear are explicit synthetic environment fixtures; browser inputs are ordinary click/Space/Enter/Tab.",
+    "Mobile screenshots and touch capability are Chromium emulation, not physical notch/device testing.",
+    "No new gameplay completion, human author acceptance, or subjective game Feel is asserted."
+  ],
+  "source_manifest": "docs/portal-discovery/QA/SOURCE_FINAL_MANIFEST.json",
+  "compiled_manifest": "docs/portal-discovery/QA/BUILD_FINAL_MANIFEST.json"
+}

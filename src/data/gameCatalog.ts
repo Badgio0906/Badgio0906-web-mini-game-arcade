@@ -1,7 +1,11 @@
 import { tagsFor, type GameTag, type TagId } from './tagCatalog.ts';
+export type GameDevelopmentStatus = 'trial' | 'complete';
+export type TagMatchMode = 'or' | 'and';
+export const developmentStatusLabels: Readonly<Record<GameDevelopmentStatus, string>> = Object.freeze({ trial: '試遊版', complete: '完成版' });
 export interface GameCatalogEntry {
   readonly id: string;
   readonly status: 'active' | 'retired';
+  readonly developmentStatus: GameDevelopmentStatus;
   readonly titleJa: string;
   readonly titleEn: string;
   readonly tagline: string;
@@ -75,6 +79,11 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
 
 const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
+// Add an override only after the author explicitly declares completion following
+// their own playtest. Publication, CI/QA success and positive feedback do not qualify.
+// No such declaration is recorded for the current games; new games default to trial.
+const developmentStatusByGame: Readonly<Partial<Record<string, GameDevelopmentStatus>>> = Object.freeze({});
+
 export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
   { id: 'game016', titleJa: '負けじゃんけん ～LOSE TO WIN～', titleEn: 'LOSE TO WIN', tagline: '勝ったら負け。負ければ勝ち。', thumbnail: './assets/portal/game016.webp', route: './game016.html', releaseOrder: 16 },
@@ -93,13 +102,23 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   {"id": "game029", "titleJa": "給湯室の落としもの釣り ～LOST & FOUND～", "titleEn": "LOST & FOUND", "tagline": "おとして、ひろって、またおとして。", "thumbnail": "./assets/portal/game029.webp", "route": "./game029.html", "releaseOrder": 29},
   {"id": "game030", "titleJa": "コンセントどこ？ ～PLUG ROUTE～", "titleEn": "PLUG ROUTE", "tagline": "つないで、とどけて、ぴったりで。", "thumbnail": "./assets/portal/game030.webp", "route": "./game030.html", "releaseOrder": 30},
   { id: "game031", titleJa: "掘って、置くだけ。", titleEn: "DIG & PLACE", tagline: "目的はありません。好きなところを掘って、好きなところに置くだけ。", thumbnail: "./assets/portal/game031.webp", route: "./game031.html", releaseOrder: 31 },
-].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'active'));
 export const retiredGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'retired'));
 export const NEXT_GAME_NUMBER = Math.max(...historicalGameCatalog.map(game => Number(game.id.slice(4)))) + 1;
 
-export function filterCatalog(tagIds: readonly TagId[] = []): readonly GameCatalogEntry[] {
-  return gameCatalog.filter(game => tagIds.every(id => game.tags.some(tag => tag.id === id)));
+/** State selection is independent of normal-tag OR/AND; retirement always wins. */
+export function filterGames(catalog: readonly GameCatalogEntry[], tagIds: readonly TagId[] = [], mode: TagMatchMode = 'and', statuses: readonly GameDevelopmentStatus[] = []): readonly GameCatalogEntry[] {
+  return catalog.filter(game => game.status === 'active'
+    && (!statuses.length || statuses.includes(game.developmentStatus))
+    && (!tagIds.length || (mode === 'or'
+      ? tagIds.some(id => game.tags.some(tag => tag.id === id))
+      : tagIds.every(id => game.tags.some(tag => tag.id === id)))));
+}
+
+/** Keep the historical one-argument AND behavior; the portal explicitly uses OR. */
+export function filterCatalog(tagIds: readonly TagId[] = [], mode: TagMatchMode = 'and', statuses: readonly GameDevelopmentStatus[] = []): readonly GameCatalogEntry[] {
+  return filterGames(gameCatalog, tagIds, mode, statuses);
 }

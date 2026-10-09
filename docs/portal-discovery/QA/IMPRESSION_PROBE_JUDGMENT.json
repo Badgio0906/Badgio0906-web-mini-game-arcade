@@ -1,0 +1,37 @@
+{
+  "finding_id": "post-filter-impression-probe",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "The initial assertion did not capture exact count/position and grants consent before applying the wind filter. Existing observer records after50% exposure for1second, once per consenting visit, and rebuilding it deliberately preserves the seen set. It is therefore invalid to require a second/current-position impression if game019 already qualified earlier in the same visit. Source inspection supports a timing-dependent probe setup; deny then filter then grant creates the needed fresh consenting exposure, and count/position logging is necessary evidence. The original report alone does not prove either an incorrect product position or that an earlier exposure actually happened. Preserve initial failure and accept the fixture diagnosis only with the corrected measured browser report. No major player-facing failure is established.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_IMPRESSION_PROBE.json",
+    "docs/portal-discovery/QA/browser-corrected/REPORT.json",
+    "src/analytics/impressions.ts",
+    "src/analytics/runtime.ts",
+    "src/portal/main.ts",
+    "tests/portal-discovery/browser.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected observer one-second/50percent/seen/consent gates, runtime visit seen-set persistence and rebuild closures. Confirmed corrected probe filters while denied before granting, logs baseline and recorded positions, then tests dedup separately. Runtime remained unchanged; corrected actual count/position result pending.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_IMPRESSION_PROBE.json",
+      "docs/portal-discovery/QA/browser-corrected/REPORT.json",
+      "src/analytics/impressions.ts",
+      "src/analytics/runtime.ts",
+      "src/portal/main.ts",
+      "tests/portal-discovery/browser.mjs"
+    ]
+  },
+  "human_judgment": null,
+  "followup_actual_evidence": {
+    "report": "docs/portal-discovery/QA/browser-observer-corrected/REPORT.json",
+    "result": "PASS",
+    "checks": 176,
+    "observed": "No runtime impression changes. Corrected denied-filter-grant sequence records019 position1 exactly once at all4 viewports. Desktop baseline1 had prior position2; current consenting exposure adds position1. Other widths baseline0 adds position1. Observer rebuild dedup passes. Zero page/console errors and zero nonanalytics POST attempts. This verifies the corrected fixture and unchanged product behavior; it does not reconstruct the missing first-failure count."
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

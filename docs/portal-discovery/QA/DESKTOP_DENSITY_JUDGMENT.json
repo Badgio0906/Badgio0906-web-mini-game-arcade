@@ -1,0 +1,27 @@
+{
+  "finding_id": "desktop-discovery-density",
+  "PRIMARY_CAUSE": "VISUAL_OR_FEEL_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "Actual1440x900 initial screenshot shows the39 expanded tag candidates consuming the panel y214..830. Only status/favorite tops appear at the viewport bottom; thumbnail, BEST and PLAY are below it. The controls work and scrolling reaches the games, so this is visual prioritization rather than unavailable play. Initial picker collapse and horizontal PC state/mode layout are an appropriate limited correction; preserve selected chips/mode and expandable tag access. This does not establish a major inaccessible-action release risk.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_DESKTOP_DISCOVERY_DENSITY.json",
+    "docs/portal-discovery/QA/browser-initial/1440-initial.png",
+    "docs/portal-discovery/QA/browser-initial/1440-filtered.png",
+    "docs/portal-discovery/QA/browser-initial/1440-empty.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Viewed all three actual initial compiled PC screenshots independently. Initial and filtered expanded controls hide game actions below900px; empty state is clear, with selected tags and mode visible. Sent the concrete visual finding to parent before runtime layout correction. Corrected screenshots still required.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_DESKTOP_DISCOVERY_DENSITY.json",
+      "docs/portal-discovery/QA/browser-initial/1440-initial.png",
+      "docs/portal-discovery/QA/browser-initial/1440-filtered.png",
+      "docs/portal-discovery/QA/browser-initial/1440-empty.png"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "VISUAL_OR_FEEL_ISSUE"
+}

@@ -1,0 +1,40 @@
+{
+  "finding_id": "independent-consent-initialization",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "The reviewer standalone context.addInitScript destructures favkey/denial but its initial call omitted the argument, so denied-consent seeding did not run. Existing consent unknown-state correctly displays the choice panel, which can cover upper controls until ordinary consent dismissal. Pass the missing initScript argument and use the ordinary Deny control when storage getter denial deliberately prevents consent loading. This corrects only QA setup; product remains unchanged. Preserve the initial failed run and rerun all independent checks in a new output directory.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_INDEPENDENT_CONSENT_FIXTURE.json",
+    "docs/portal-discovery/QA/independent-boundaries/REPORT.json",
+    "docs/portal-discovery/QA/independent-boundaries/failure.png",
+    "docs/portal-discovery/QA/independent-boundary-probe.mjs",
+    "src/analytics/consentUI.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read actual screenshot and click trace, then inspected standalone addInitScript call and existing consent unknown-state behavior. Supplied missing initScript argument and added ordinary Deny action for deliberately storage-denied contexts. Only docs/QA runner edited; fresh independent run pending.",
+    "evidence": [
+      "docs/portal-discovery/QA/FINDING_INDEPENDENT_CONSENT_FIXTURE.json",
+      "docs/portal-discovery/QA/independent-boundaries/REPORT.json",
+      "docs/portal-discovery/QA/independent-boundaries/failure.png",
+      "docs/portal-discovery/QA/independent-boundary-probe.mjs",
+      "src/analytics/consentUI.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null,
+  "followup_actual_evidence": {
+    "report": "docs/portal-discovery/QA/independent-boundaries-accepted/REPORT.json",
+    "complete": true,
+    "result": "PASS",
+    "checks": 32,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "POSTorOtherWriteAttempts": 0,
+    "sourceChange": "none",
+    "timing_note": "Reviewer sent raw finding before fixing the runner, then diagnosed and fixed it before parent record-complete acknowledgment arrived. Jev answers/log never read; exact helper-versus-local-edit timing not inferred."
+  }
+}

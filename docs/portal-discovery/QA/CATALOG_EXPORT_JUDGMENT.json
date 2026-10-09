@@ -1,0 +1,34 @@
+{
+  "finding_id": "catalog-export-development-state",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev log/answers not read",
+  "rationale": "Runtime gameCatalog correctly adds developmentStatus for the requested trial/complete feature. The two existing integration assertions legitimately require the checked-in developer catalog export to equal that source. Their original diff is a stale generated data artifact: the current working tree export is already synchronized by the implementer, while HEAD and retained UNIT_INITIAL.log show the original missing field. export-jev-data.mjs serializes gameCatalog and retiredGameCatalog directly; no compatibility projection or field-removal contract exists. Consumers in this repository are developer export/integration checks; Portal imports the TypeScript source, and game/Worker/analytics envelope does not import this export. Synchronize catalog metadata, keep valid equality tests and existing profile/Telemetry schema intact. This does not show a major player-facing failure, unusable navigation, progress loss, or production submission problem; failing CI still needs correction before completion.",
+  "evidence": [
+    "docs/portal-discovery/QA/FINDING_CATALOG_EXPORT.json",
+    "docs/portal-discovery/QA/UNIT_INITIAL.log",
+    "tests/unit/game020-integration.test.ts:61",
+    "tests/unit/game031-integration.test.ts:62",
+    "src/data/gameCatalog.ts",
+    "tools/export-jev-data.mjs:56",
+    "docs/data/JEV_PREPARATION.md",
+    "jev_export/game_profiles/catalog.json",
+    "src/portal/main.ts",
+    "src/data/analyticsEnvelope.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read source metadata requirements, exact original failure, generator and repository consumers. Verified generator exports active and retired catalog directly; profiles are separately shaped and do not carry the entire catalog entry. Observed current implementer diff adds31 trial fields only in catalog.json (30 active plus retired010). Recommended targeted catalog synchronization and rerun the failing integration checks; did not edit runtime/export or run a generator/test.",
+    "evidence": [
+      "tools/export-jev-data.mjs:43",
+      "tools/export-jev-data.mjs:56",
+      "tests/unit/game020-integration.test.ts:61",
+      "tests/unit/game031-integration.test.ts:62",
+      "jev_export/game_profiles/catalog.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

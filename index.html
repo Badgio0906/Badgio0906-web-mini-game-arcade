@@ -14,15 +14,26 @@
     <div class="arcade-shell">
       <header class="arcade-header">
         <div class="portal-brand"><span class="arcade-token" aria-hidden="true">▶</span><div><h1>100ガレ ～GAME100 GARAGE～</h1><small>GAME100 GARAGE</small></div></div>
-        <span class="prototype-mark">試作版 · FREE PLAY</span>
+        <span class="prototype-mark">FREE PLAY<span class="prototype-extra"> · BROWSER GAMES</span></span>
       </header>
       <main>
-        <div class="gallery-intro"><p>すぐ遊べて、なぜかもう一回やりたくなる。<br />ちょっと変なミニゲーム置き場。</p><span class="gallery-count"><b id="game-count">30</b> GAMES</span></div>
+        <div class="gallery-intro"><p>すぐ遊べて、なぜかもう一回やりたくなる。<br />ちょっと変なミニゲーム置き場。</p></div>
+        <section id="game-discovery" class="game-discovery" aria-labelledby="discovery-title">
+          <div class="discovery-heading"><h2 id="discovery-title">ゲームを絞り込む</h2><button type="button" id="clear-filters">すべて解除</button></div>
+          <fieldset><legend>状態</legend><div class="filter-buttons" id="development-filters"></div></fieldset>
+          <fieldset><legend>タグ条件</legend><div class="filter-buttons" id="tag-match-modes"><button type="button" data-mode="or" aria-pressed="true">✓ OR</button><button type="button" data-mode="and" aria-pressed="false">AND</button></div><p id="tag-match-description">選択タグのどれかが一致</p></fieldset>
+          <div class="selected-tags"><span>選択中：</span><div id="selected-tags"></div></div>
+          <details id="tag-picker"><summary>タグを選ぶ</summary><div class="filter-buttons tag-options" id="tag-options"></div></details>
+          <p class="favorites-help">★ お気に入りは先頭へ。そのほかのゲームも続けて表示します。<br />お気に入りはこのブラウザに保存されます。</p>
+          <p id="favorites-storage-notice" role="status" hidden></p>
+          <p class="gallery-count" role="status" aria-live="polite" aria-atomic="true"><b id="game-count">30 / 30</b> GAMES</p>
+        </section>
+        <p id="game-empty" class="game-empty" hidden>該当するゲームがありません。<br />状態やタグを減らすか「すべて解除」を押してください。</p>
         <section id="game-gallery" class="game-gallery" aria-label="遊べるミニゲーム一覧"></section>
         <section id="record-settings" aria-label="BESTと記録共有の説明・設定"></section>
         <details class="play-records"><summary>この端末のプレイ記録</summary><p>この端末で確認できる最近の記録をJSONで保存できます。解析への同意と、外部計測の設定がある場合だけ、新しいプレイデータを送信します。</p><button type="button" id="save-play-records">プレイ記録を保存</button></details>
       </main>
-      <footer class="arcade-footer"><span>試作版 · 遊ぶ回数に制限はありません。<br />ひとつ選んで、気軽にどうぞ。</span><span>INSERT CURIOSITY · PLAY AGAIN</span></footer>
+      <footer class="arcade-footer"><span>遊ぶ回数に制限はありません。<br />ひとつ選んで、気軽にどうぞ。</span><span>INSERT CURIOSITY · PLAY AGAIN</span></footer>
     </div>
     <noscript>ゲーム一覧を表示するにはJavaScriptを有効にしてください。</noscript>
     <script type="module" src="/src/portal/main.ts"></script>

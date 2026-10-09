@@ -1,0 +1,29 @@
+{
+  "finding_id": "browser-runner-module-resolution",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent navigation_review; Jev answers/log not read",
+  "rationale": "Native Node24 ESM cannot resolve the extensionless browser-source tagCatalog import. TypeScript explicitly uses Bundler resolution and Vite/check/unit succeeded. The standalone runner imported a runtime module graph it cannot load before launching Chromium. Reading canonical tagCatalog.ts directly for expected IDs fixes the QA import without altering runtime resolution or reducing the browser checks. QA must finish its corrected run; this observation does not establish a major player-facing release failure.",
+  "evidence": [
+    "docs/portal-discovery/QA/BROWSER_LAUNCH_INITIAL.log",
+    "docs/portal-discovery/QA/FINDING_BROWSER_IMPORT.json",
+    "tsconfig.json",
+    "src/portal/discovery.ts",
+    "tests/portal-discovery/browser.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read the retained native Node error, TypeScript Bundler configuration, source import and corrected runner. Confirmed direct canonical tagCatalog.ts reference with locally computed active tag options; no browser run performed by this reviewer yet.",
+    "evidence": [
+      "docs/portal-discovery/QA/BROWSER_LAUNCH_INITIAL.log",
+      "docs/portal-discovery/QA/FINDING_BROWSER_IMPORT.json",
+      "tsconfig.json",
+      "src/portal/discovery.ts",
+      "tests/portal-discovery/browser.mjs"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

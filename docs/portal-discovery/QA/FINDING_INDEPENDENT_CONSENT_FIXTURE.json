@@ -1,0 +1,18 @@
+{
+  "finding_id": "independent-consent-initialization",
+  "problem": "Independent boundary probe stops at AND control because existing analytics consent panel intercepts the pointer.",
+  "expected": "A deliberately denied-consent fixture executes ordinary discovery input without analytics writes.",
+  "observed": [
+    "Only3 independent checks completed before AND click timeout.",
+    "Actual failure screenshot shows existing consent panel open over the AND control.",
+    "Captured pointer trace identifies analytics-settings-host as interception target."
+  ],
+  "unknown": [
+    "Whether denied consent initialization reached the browser script."
+  ],
+  "evidence": [
+    "docs/portal-discovery/QA/independent-boundaries/REPORT.json",
+    "docs/portal-discovery/QA/independent-boundaries/failure.png"
+  ],
+  "provenance": "Actual independent compiled-browser probe; initial failed report retained."
+}
