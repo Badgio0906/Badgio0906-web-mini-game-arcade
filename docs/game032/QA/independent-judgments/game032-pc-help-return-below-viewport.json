@@ -1,0 +1,23 @@
+{
+  "finding_id": "game032-pc-help-return-below-viewport",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "fishing_independent_qa (blind to Jev answers)",
+  "rationale": "Independent live probe scrolled the help dialog to its maximum. At 1280x900 the duplicate dialog Portal link began at878.281px and ended at922.281px, and its center had no element hit. The help practice/play/back controls remained inside the viewport and actual practice click worked. Phone/320/landscape lower help controls and practice taps worked. This is a product dialog sizing issue, not proof that the game or all Portal returns are blocked: the common header return remains available and previous ordinary Portal runs succeeded.",
+  "evidence": [
+    "docs/game032/QA/candidate-03/dialog-reachability-01/REPORT.json",
+    "docs/game032/QA/candidate-03/dialog-reachability-01/pc-help-scrolled.png",
+    "src/games/game032/style.css"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Scrolled each help dialog to maximum, measured all four lower target rectangles and center hit targets, and clicked/tapped Practice normally where reachable. Preserved raw PC geometry and screenshot before requesting the main agent layout correction.",
+    "evidence": [
+      "docs/game032/QA/candidate-03/dialog-reachability-01/REPORT.json",
+      "docs/game032/QA/candidate-03/dialog-reachability-01/pc-help-scrolled.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

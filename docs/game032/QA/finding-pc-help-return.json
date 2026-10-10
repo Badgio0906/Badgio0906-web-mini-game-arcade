@@ -1,0 +1,12 @@
+{
+  "finding_id":"game032-pc-help-return-below-viewport",
+  "problem":"The lower Portal return in scrolled PC help dialog is outside the viewport",
+  "observed":["At1280x900 after scrolling menu to its maximum, menu-portal y878.281 height44 bottom922.281", "Center hit-test at y900.281 finds no target, and full visibility is false", "Other lower PC help buttons have valid center hits; phone320/390 and844 landscape lower help targets have valid hits", "Desktop media sets top160 while default max-height remains viewport minus90"],
+  "expected":"After scrolling the help dialog, all lower actions including its Portal return should be reachable inside the actual viewport",
+  "operation":"Open help, scroll its internal menu to bottom, measure target geometry and center elementFromPoint before attempting normal action",
+  "viewport":{"width":1280,"height":900},
+  "measurements":{"return_y":878.281,"return_height":44,"return_bottom":922.281,"viewport_height":900},
+  "evidence":["docs/game032/QA/candidate-03/dialog-reachability-01/REPORT.json", "docs/game032/QA/candidate-03/dialog-reachability-01/pc-help-scrolled.png", "src/games/game032/style.css"],
+  "unknown":["Whether changing only desktop max-height fixes all lower targets without disturbing phone and short-landscape layouts"],
+  "provenance":"Independent actualbrowser geometry and normal button interaction; screenshot and raw report preserved before any correction"
+}

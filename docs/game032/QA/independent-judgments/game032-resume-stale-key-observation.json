@@ -1,0 +1,24 @@
+{
+  "finding_id": "game032-resume-stale-key-observation",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "fishing_independent_qa (blind to Jev answers)",
+  "rationale": "Run01 asserted the rendered data-phase immediately after resuming with a blocked Space release. Failure capture, after a screenshot advanced rendering, already showed idle. Independent retry changed only the runner to advance one rendered frame; resume, stale release, fresh cast and catch passed without any product edit. Model pause/cancellation boundaries also independently pass. The assertion compared a stale DOM frame, not a cast caused by the stale release.",
+  "evidence": [
+    "docs/game032/QA/candidate-01/browser-independent-01/REPORT.json",
+    "docs/game032/QA/candidate-01/browser-independent-01/pc-failure-state.json",
+    "docs/game032/QA/candidate-01/browser-independent-02/REPORT.json",
+    "tests/game032/browser.mjs"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Preserved original failure screenshot/state, then reran in a new evidence directory with a 20ms rendered-frame wait after resume. PC pause/cancel/freshness and practice catch passed; run02 later stopped at an unrelated first-cast no-bite expectation.",
+    "evidence": [
+      "docs/game032/QA/candidate-01/browser-independent-01/pc-failure-state.json",
+      "docs/game032/QA/candidate-01/browser-independent-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

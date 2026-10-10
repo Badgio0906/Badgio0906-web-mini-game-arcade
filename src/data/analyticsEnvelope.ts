@@ -33,7 +33,7 @@ export interface AnalyticsEnvelope {
   data: Record<string, AnalyticsPrimitive>;
 }
 export interface AnalyticsBatch { schema_version: 2; events: AnalyticsEnvelope[]; }
-export const ANALYTICS_ACTIVE_GAME_IDS = ['portal', ...Array.from({ length: 31 }, (_, i) => `game${String(i + 1).padStart(3, '0')}`).filter(id => id !== 'game010')];
+export const ANALYTICS_ACTIVE_GAME_IDS = ['portal', ...Array.from({ length: 32 }, (_, i) => `game${String(i + 1).padStart(3, '0')}`).filter(id => id !== 'game010')];
 const names = new Set<string>(ANALYTICS_EVENT_NAMES);
 const games = new Set(ANALYTICS_ACTIVE_GAME_IDS);
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -51,6 +51,13 @@ function record(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === 'object' && !Array.isArray(value) && (Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null);
 }
 export function isAnalyticsDataField(key: string, value: unknown): value is AnalyticsPrimitive {
+  if (key === 'spot_id') return typeof value === 'string' && ['shallows','rocks','shade','pool'].includes(value);
+  if (key === 'fish_id') return typeof value === 'string' && ['oikawa','ugui','yamame','amago','nijimasu','iwana','lord'].includes(value);
+  if (key === 'distance' && typeof value === 'string') return ['near','medium','far'].includes(value);
+  if (['size_cm','max_size_cm'].includes(key)) return typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 1000;
+  if (key === 'fish_count') return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= 1000;
+  if (key === 'window_ms') return typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 60000;
+  if (['rare','big'].includes(key)) return typeof value === 'boolean';
   if (key === 'quality_tier') return typeof value === 'string' && ['auto', 'light', 'standard'].includes(value);
   if (key === 'save_error_code') return typeof value === 'string' && ['none', 'storage_unavailable', 'storage_denied', 'quota_exceeded', 'open_failed', 'read_failed', 'write_failed', 'invalid_save', 'unsupported_schema', 'unsupported_generator', 'unsupported_blocks', 'unsupported_dimensions', 'backup_too_large'].includes(value);
   if (['active_seconds', 'blocks_mined', 'blocks_placed', 'material_types_found', 'return_to_surface_count'].includes(key)) return typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 1e12 && (key === 'active_seconds' || Number.isInteger(value));

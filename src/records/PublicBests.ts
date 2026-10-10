@@ -1,5 +1,6 @@
 import { recordBoards } from '../data/recordDefinitions';
 import { recordsBase } from './protocol';
+import { isPublicRecordRegistered } from './remoteRegistration';
 
 export const recordsEndpoint = recordsBase(import.meta.env.VITE_RECORDS_ENDPOINT);
 export interface PublicBoard {
@@ -22,7 +23,7 @@ export function validatePublicBests(input: unknown): Map<string, PublicBoard> {
     // Rebuild allowed fields; never expose accidental server internal metadata.
     out.set(b.board_id, {game_id:b.game_id,board_id:b.board_id,metric_id:b.metric_id,value:b.value,unit:b.unit,mode_label:b.mode_label,ruleset_id:b.ruleset_id,status:b.status,collected_since:b.collected_since,revision:b.revision});
   }
-  if (out.size !== recordBoards.length) throw Error('missing_public_board');
+  if (recordBoards.some(def => isPublicRecordRegistered(def.gameId) && !out.has(def.boardId))) throw Error('missing_public_board');
   return out;
 }
 export class PublicBests {

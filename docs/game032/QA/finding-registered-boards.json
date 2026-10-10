@@ -1,0 +1,18 @@
+{
+  "finding_id": "game032-production-board-registration",
+  "problem": "Adding the new record definition may invalidate existing public BEST responses before the Worker is updated.",
+  "expected": "Existing twenty public records remain readable while the new game is registered in stages.",
+  "observed": [
+    "Source PublicBests validator requires the number of returned boards to equal the local record definition count.",
+    "The current source adds a twenty-first board, whereas the production readiness report identifies twenty boards.",
+    "This environment has no ready Cloudflare credentials and the Worker host is outside its network allowlist."
+  ],
+  "unknown": [
+    "Whether selective registration handling currently exists in another record component."
+  ],
+  "evidence": [
+    "src/records/PublicBests.ts",
+    "docs/leaderboards/step2/IMPLEMENTATION_REPORT.md"
+  ],
+  "provenance": "source inspection and environment readiness, not a new production API request"
+}

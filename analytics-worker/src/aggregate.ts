@@ -1,5 +1,5 @@
 import type { AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
-import type { GameMetrics, Metrics, Period, Ratio, StoredEvent, SandboxSummary } from './types';
+import type { GameMetrics, Metrics, Period, Ratio, StoredEvent, SandboxSummary, FishingSummary } from './types';
 type Event = AnalyticsEnvelope;
 export function ratio(numerator: number, denominator: number): Ratio { return { numerator, denominator, rate: denominator ? numerator / denominator : null, sample_size_small: denominator < 20 }; }
 function unique<T>(rows: readonly T[], key: (row:T)=>string): T[] { const result=new Map<string,T>();for(const row of rows)if(!result.has(key(row)))result.set(key(row),row);return [...result.values()]; }
@@ -78,8 +78,28 @@ export function summarizeSandbox(rows: Event[]): SandboxSummary {
  const errors=summaries.filter(e=>typeof e.data.save_error_code==='string'&&e.data.save_error_code!=='none');
  return {summary_count:summaries.length,active_seconds:sum('active_seconds'),blocks_mined:sum('blocks_mined'),blocks_placed:sum('blocks_placed'),return_to_surface_count:sum('return_to_surface_count'),max_depth:max('max_depth'),maximum_material_types_found:max('material_types_found'),quality_summary_counts:countBy(quality,e=>String(e.data.quality_tier)),save_error_summary_counts:countBy(errors,e=>String(e.data.save_error_code)),coverage:'observed-interval-deltas-only'};
 }
+/** Read existing primitive events; count RUN totals separately from landed events.
+ * Practice is excluded even from synthetic fixtures. No absent summary becomes zero.
+ */
+export function summarizeFishing(events:Event[]):FishingSummary {
+ const rows=events.filter(e=>e.game_id==='game032'&&e.data.mode!=='practice'&&e.data.practice!==true);
+ const casts=rows.filter(e=>e.event_name==='specific_game_events'&&subtype(e)==='cast_released');
+ const specific=(name:string)=>rows.filter(e=>e.event_name==='specific_game_events'&&subtype(e)===name);
+ const groups=(list:Event[],field:string,allowed:string[])=>countBy(list.filter(e=>typeof e.data[field]==='string'&&allowed.includes(e.data[field] as string)),e=>String(e.data[field]));
+ const hooked=specific('fish_hooked'),landed=specific('fish_landed');
+ const completed=unique(rows.filter(e=>e.run_id!==null&&e.event_name==='run_end'&&e.data.mode==='standard'&&e.data.outcome==='complete'&&e.data.completed===true),runKey);
+ const measuredFish=completed.filter(e=>typeof e.data.fish_count==='number'&&Number.isSafeInteger(e.data.fish_count)&&e.data.fish_count>=0);
+ const measuredScore=completed.filter(e=>typeof e.data.score==='number'&&Number.isSafeInteger(e.data.score)&&e.data.score>=0);
+ return {cast_count:casts.length,spot_cast_counts:groups(casts,'spot_id',['shallows','rocks','shade','pool']),cast_distance_counts:groups(casts,'distance',['near','medium','far']),
+  hook_fail_reason_counts:{early:specific('bite_hook_fail_early').length,late:specific('bite_hook_fail_late').length},
+  fish_hooked_counts:groups(hooked,'fish_id',['oikawa','ugui','yamame','amago','nijimasu','iwana','lord']),fish_landed_counts:groups(landed,'fish_id',['oikawa','ugui','yamame','amago','nijimasu','iwana','lord']),
+  landed_event_count:landed.length,escaped_event_count:specific('fish_escaped').length,completed_outing_count:completed.length,
+  measured_fish_outing_count:measuredFish.length,average_fish_per_completed_outing:measuredFish.length?measuredFish.reduce((sum,e)=>sum+Number(e.data.fish_count),0)/measuredFish.length:null,
+  measured_score_outing_count:measuredScore.length,average_score:measuredScore.length?measuredScore.reduce((sum,e)=>sum+Number(e.data.score),0)/measuredScore.length:null,
+  sample_size_small:completed.length<20,coverage:'observed-standard-events-only'};
+}
 export function summarizeGames(events:Event[],period:Period,includeRetired=false,context=events):GameMetrics[]{
- const ids=Array.from({length:31},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
+ const ids=Array.from({length:32},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
  return ids.map(game_id=>{const rows=events.filter(e=>e.game_id===game_id);const versions=new Map<string,{game_version:string;rules_version:string;presentation_version:string;event_count:number}>();for(const e of rows){const key=`${e.game_version}:${e.rules_version}:${e.presentation_version}`;const v=versions.get(key)??{game_version:e.game_version,rules_version:e.rules_version,presentation_version:e.presentation_version,event_count:0};v.event_count++;versions.set(key,v);}
- return {...computeMetrics(rows,context,period),...(game_id==='game031'?{sandbox_summary:summarizeSandbox(rows)}:{}),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
+ return {...computeMetrics(rows,context,period),...(game_id==='game031'?{sandbox_summary:summarizeSandbox(rows)}:{}),...(game_id==='game032'?{fishing_summary:summarizeFishing(rows)}:{}),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
 }

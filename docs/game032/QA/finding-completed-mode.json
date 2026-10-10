@@ -1,0 +1,10 @@
+{
+  "finding_id":"game032-completed-mode-aggregate",
+  "problem":"Completed outing aggregation filters for a mode field absent from the controller run_end payload",
+  "observed":["main.ts run_start includes mode standard, while completed run_end includes outcome score fish_count max_size_cm completed but no mode", "analytics/runtime.ts sends sanitized data from each event separately and does not copy run_start mode to later events", "summarizeFishing selects completed run_end with data.mode exactly standard before calculating average catch and score"],
+  "expected":"A valid completed standard outing should be eligible for observed completed-outing count and average-score/catch aggregation when its external registration is enabled",
+  "operation":"Source comparison of Game032 controller completion and Worker aggregation before enabling production registration",
+  "evidence":["src/games/game032/main.ts", "src/analytics/runtime.ts", "analytics-worker/src/aggregate.ts"],
+  "unknown":["Whether another upstream layer adds this mode value", "Whether the narrow correction belongs in the new game payload or aggregate eligibility"],
+  "provenance":"Main source inspection after full root tests; no observed production telemetry and current032 transmission remains disabled"
+}

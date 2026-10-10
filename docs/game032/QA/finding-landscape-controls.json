@@ -1,0 +1,12 @@
+{
+  "finding_id": "game032-landscape-controls-below-viewport",
+  "problem": "Short landscape river scene stretches with journal and main action appears below the initial viewport",
+  "observed": ["Independent actual image landscape-bite.png shows canvas ending near y350 followed by solid green river-shell blank space until y500", "In 844x390 browser receipt action bounding box y564 height44; it needs document scroll before use", "The desktop journal is still displayed at this width and its min-content height stretches the scene grid row"],
+  "expected": "In short landscape, the fishing scene and main action should share the available viewport with no blank stretched scene",
+  "operation": "Start practice, cast to visible main bite and inspect 844x390 layout",
+  "viewport": {"width":844,"height":390},
+  "measurements": {"action_y":564,"action_height":44,"viewport_height":390,"canvas_height":210},
+  "evidence": ["docs/game032/QA/candidate-02/browser-independent-01/landscape-bite.png", "docs/game032/QA/candidate-02/browser-independent-01/REPORT.json", "src/games/game032/style.css"],
+  "unknown": ["Which compact scene/header/status arrangement preserves sufficient river visibility while fitting the main controls"],
+  "provenance": "Independent Visual actual screenshot observation after candidate02 browser pass; product source still frozen when recorded"
+}

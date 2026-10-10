@@ -1,4 +1,5 @@
 import './share.css';
+import { isPublicRecordRegistered } from './remoteRegistration';
 import { getRecordDefinition } from '../data/recordDefinitions';
 import { gameVersions } from '../data/gameVersions';
 import { canonicalValue, shareEnvironment, type RecordSubmission } from './protocol';
@@ -51,7 +52,7 @@ class Sharing {
   }
   private validQueued(input:unknown):input is Queued {
     if(!input||typeof input!=='object')return false;const q=input as Queued,p=q.payload;
-    if(!p||typeof p!=='object'||!Number.isFinite(q.createdAt)||Date.now()-q.createdAt>DAY||q.createdAt>Date.now()+60000||!Number.isInteger(q.attempts)||q.attempts<0||q.attempts>=5||typeof q.automatic!=='boolean'||!Number.isFinite(q.nextAt))return false;
+    if(!p||typeof p!=='object'||!isPublicRecordRegistered(p.game_id)||!Number.isFinite(q.createdAt)||Date.now()-q.createdAt>DAY||q.createdAt>Date.now()+60000||!Number.isInteger(q.attempts)||q.attempts<0||q.attempts>=5||typeof q.automatic!=='boolean'||!Number.isFinite(q.nextAt))return false;
     return typeof q.credentialHash==='string'&&/^[a-f0-9]{64}$/.test(q.credentialHash)&&q.permissionEpoch===storedEpoch()&&safeSubmission(p)!==null;
   }
   enabled():boolean { return this.deniedStorage ? this.memoryAutomatic : autoEnabled(); }
@@ -64,7 +65,7 @@ class Sharing {
   remember(candidate:Candidate){this.candidates.set(candidate.payload.submission_key,candidate);while(this.candidates.size>100)this.candidates.delete(this.candidates.keys().next().value!);}
   getReceipts():readonly Receipt[]{this.reloadReceipts();return this.receipts;}
   async submit(candidate:Candidate,automatic:boolean){
-    if(!recordsEndpoint||!isProduction()||(automatic&&!this.enabled()))return;
+    if(!recordsEndpoint||!isProduction()||!isPublicRecordRegistered(candidate.payload.game_id)||(automatic&&!this.enabled()))return;
     if(candidate.sealed&&candidate.status!=='failed')return;
     this.reloadReceipts();if(this.queue.length>=50||entries(QUEUE_PREFIX,50).length>=50||this.receipts.length>=200){candidate.status='failed';notices();return;}
     const permissionEpoch=storedEpoch(),epoch=this.epoch;
@@ -136,10 +137,10 @@ export function createGameRecordSession(gameId:string){
   const persistRun=()=>{if(identity&&isProduction())write(activeKey,{schema:1,identity,runId,started,rulesetId:getRecordDefinition(gameId)?.rulesetId,candidate});};
   const clear=()=>{candidate=undefined;runId=undefined;identity=undefined;dispose();dispose=()=>{};active?.remove();active=undefined;};
   return {
-    startRun(localIdentity?:string,options:{requireAutomaticAtStart?:boolean}={}){try{clear();strictAutomatic=!!options.requireAutomaticAtStart;automaticAtStart=service().enabled();startEpoch=storedEpoch();runId=crypto.randomUUID();started=Date.now();identity=localIdentity;persistRun();}catch{/* records cannot break gameplay */}},
-    resumeRun(localIdentity:string){try{clear();if(!isProduction())return;const saved=read<Record<string,unknown>>(activeKey,{});const def=getRecordDefinition(gameId);if(saved.schema!==1||saved.identity!==localIdentity||saved.rulesetId!==def?.rulesetId||typeof saved.runId!=='string'||!/^[a-f0-9-]{36}$/.test(saved.runId)||typeof saved.started!=='number'||!Number.isFinite(saved.started)||saved.started>Date.now())return;runId=saved.runId;started=saved.started;identity=localIdentity;if(saved.candidate&&typeof saved.candidate==='object'){const old=saved.candidate as Candidate;const payload=safeSubmission(old.payload);if(payload&&payload.run_result_id===runId&&typeof old.sealed==='boolean'&&typeof old.status==='string'){candidate={payload,sealed:old.sealed,status:old.status};service().remember(candidate);}}}catch{/* malformed/old eligibility never grants sharing */}},
+    startRun(localIdentity?:string,options:{requireAutomaticAtStart?:boolean}={}){try{clear();if(!isPublicRecordRegistered(gameId))return;strictAutomatic=!!options.requireAutomaticAtStart;automaticAtStart=service().enabled();startEpoch=storedEpoch();runId=crypto.randomUUID();started=Date.now();identity=localIdentity;persistRun();}catch{/* records cannot break gameplay */}},
+    resumeRun(localIdentity:string){try{clear();if(!isProduction()||!isPublicRecordRegistered(gameId))return;const saved=read<Record<string,unknown>>(activeKey,{});const def=getRecordDefinition(gameId);if(saved.schema!==1||saved.identity!==localIdentity||saved.rulesetId!==def?.rulesetId||typeof saved.runId!=='string'||!/^[a-f0-9-]{36}$/.test(saved.runId)||typeof saved.started!=='number'||!Number.isFinite(saved.started)||saved.started>Date.now())return;runId=saved.runId;started=saved.started;identity=localIdentity;if(saved.candidate&&typeof saved.candidate==='object'){const old=saved.candidate as Candidate;const payload=safeSubmission(old.payload);if(payload&&payload.run_result_id===runId&&typeof old.sealed==='boolean'&&typeof old.status==='string'){candidate={payload,sealed:old.sealed,status:old.status};service().remember(candidate);}}}catch{/* malformed/old eligibility never grants sharing */}},
     complete(value:number,options:ResultOptions={}){try{
-      const def=getRecordDefinition(gameId);if(!def?.publicEnabled||options.practice||!runId||(options.modeId??def.modeId)!==def.modeId)return;
+      const def=getRecordDefinition(gameId);if(!def?.publicEnabled||!isPublicRecordRegistered(gameId)||options.practice||!runId||(options.modeId??def.modeId)!==def.modeId)return;
       const integer=canonicalValue(value,def.storageScale,def.maxValue);if(integer===null)return;
       if(isProduction())void storeCurrentRule(gameId,integer);
       if(!isProduction()||candidate?.sealed)return;
@@ -153,10 +154,10 @@ export function createGameRecordSession(gameId:string){
       dispose();active?.remove();const def=getRecordDefinition(gameId);if(!def?.publicEnabled)return;
       const controls=document.createElement('div');controls.className='record-share-controls';controls.dataset.recordGame=gameId;const button=document.createElement('button');button.type='button';
       const current=candidate;const status=document.createElement('p');status.setAttribute('role','status');
-      const render=()=>{button.textContent='この記録を共有';button.disabled=!recordsEndpoint||!current||current.sealed&&current.status!=='failed';status.textContent=!recordsEndpoint?'記録共有：準備中':service().identityUnavailable()?'このブラウザでは共有参加情報を安全に作れません。新しいブラウザでお試しください。':!current?'練習・自動検証などの記録は共有対象外です。':labels[current.status]??'確認中';};
-      button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();if(!current||!recordsEndpoint)return;if(!confirm('このゲームの記録を、みんなのBEST・TOP10へ送信します。自動発行の「ガレージ住人」名が公開されます。共有しなくてもゲームと個人記録はそのまま利用できます。送信しますか？'))return;void service().submit(current,false).then(()=>{persistRun();render();});persistRun();render();});
+      const render=()=>{button.textContent='この記録を共有';button.disabled=!recordsEndpoint||!isPublicRecordRegistered(gameId)||!current||current.sealed&&current.status!=='failed';status.textContent=!recordsEndpoint||!isPublicRecordRegistered(gameId)?'記録共有：準備中':service().identityUnavailable()?'このブラウザでは共有参加情報を安全に作れません。新しいブラウザでお試しください。':!current?'練習・自動検証などの記録は共有対象外です。':labels[current.status]??'確認中';};
+      button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();if(!current||!recordsEndpoint||!isPublicRecordRegistered(gameId))return;if(!confirm('このゲームの記録を、みんなのBEST・TOP10へ送信します。自動発行の「ガレージ住人」名が公開されます。共有しなくてもゲームと個人記録はそのまま利用できます。送信しますか？'))return;void service().submit(current,false).then(()=>{persistRun();render();});persistRun();render();});
       controls.addEventListener('keydown',event=>event.stopPropagation());controls.addEventListener('click',event=>event.stopPropagation());
-      const change=()=>{if(!controls.isConnected){window.removeEventListener(CHANGED,change);return;}persistRun();render();};window.addEventListener(CHANGED,change);dispose=()=>window.removeEventListener(CHANGED,change);render();if(!recordsEndpoint&&options.compactWhenUnavailable){controls.classList.add("record-share-preparing");controls.append(status);}else controls.append(button,status);host.append(controls);active=controls;
+      const change=()=>{if(!controls.isConnected){window.removeEventListener(CHANGED,change);return;}persistRun();render();};window.addEventListener(CHANGED,change);dispose=()=>window.removeEventListener(CHANGED,change);render();if((!recordsEndpoint||!isPublicRecordRegistered(gameId))&&options.compactWhenUnavailable){controls.classList.add("record-share-preparing");controls.append(status);}else controls.append(button,status);host.append(controls);active=controls;
     }catch{/* optional UI only */}}, clear
   };
 }

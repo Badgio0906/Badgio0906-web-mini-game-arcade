@@ -1,0 +1,26 @@
+{
+  "reviewer": "fishing_integration independent code and local API checks (Jev responses not read)",
+  "CODEX_ACTION_REQUIRED": true,
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "finding_id": "game032-production-board-registration",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "rationale": "The previous strict public snapshot cardinality required every frontend definition. A new21st definition with the deployed20-board backend would fail the entire snapshot and remove existing public BEST displays. A032-only pending gate is necessary during staggered rollout; all20 existing boards remain mandatory and fetch/sharing permissions remain separate from Analytics. This is a release transition finding, not an observed defect in the previously deployed20-board build.",
+  "evidence": [
+    "a6ee162:src/records/PublicBests.ts (pre-change strict out.size equality)",
+    "tests/unit/game032-integration.test.ts (20-board ready, missing registered board rejection, pending TOP10 no fetch, no new sharing identity)",
+    "docs/game032/QA/integration-01/unit.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independently read client validator and registration flow, implemented selective032 pending gates, and ran real code against20/21-board snapshots and no-fetch/no-storage tests; existing records client/leaderboard regressions passed.",
+    "evidence": [
+      "src/records/remoteRegistration.ts",
+      "src/records/PublicBests.ts",
+      "src/records/Leaderboards.ts",
+      "src/records/PortalRecords.ts",
+      "src/records/RecordSharing.ts",
+      "docs/game032/QA/integration-01/unit.txt"
+    ]
+  }
+}

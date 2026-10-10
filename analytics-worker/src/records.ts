@@ -68,6 +68,7 @@ async function submit(request:Request,env:Env,origin:string) {
  if(data.game_id!==board.gameId||data.ruleset_id!==board.rulesetId||!whole(data.value,board.maxValue))return error('invalid_record_conditions',400,origin);
  const meta=data.allowed_result_metadata;
  if(!obj(meta)||!exact(meta,['finalized','mode_id','assistance','duration_ms','outcome'])||meta.finalized!==true||meta.mode_id!==board.modeId||typeof meta.assistance!=='string'||!['none','allowed'].includes(meta.assistance)||!whole(meta.duration_ms,86400000)||typeof meta.outcome!=='string'||!['complete','quit','milestone'].includes(meta.outcome))return error('invalid_result_metadata',400,origin);
+ if(board.gameId==='game032'&&(meta.outcome!=='complete'||(meta.duration_ms as number)<300000))return error('invalid_fishing_outing',400,origin);
  if(board.assistancePolicy==='none'&&meta.assistance!=='none')return error('assistance_not_allowed',400,origin);
  const metadata=JSON.stringify({finalized:true,mode_id:meta.mode_id,assistance:meta.assistance,duration_ms:meta.duration_ms,outcome:meta.outcome});
  const credential=request.headers.get('X-Record-Credential');let participant:Participant|undefined;

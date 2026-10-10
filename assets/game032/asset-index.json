@@ -1,0 +1,405 @@
+{
+  "background": {
+    "file": "river-panorama.webp",
+    "width": 1536,
+    "height": 1024,
+    "water_y": [
+      0.38,
+      0.72
+    ],
+    "near_bank_y": [
+      0.78,
+      0.91
+    ]
+  },
+  "angler": {
+    "idle": {
+      "file": "angler-idle.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        146.0,
+        80.5
+      ],
+      "source_rect": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 5,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "walk-left": {
+      "file": "angler-walk-left.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        139.0,
+        91.0
+      ],
+      "source_rect": [
+        384,
+        0,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 6,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "walk-right": {
+      "file": "angler-walk-right.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        131.0,
+        95.5
+      ],
+      "source_rect": [
+        768,
+        0,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 7,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "ready": {
+      "file": "angler-ready.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        117.5,
+        65.5
+      ],
+      "source_rect": [
+        1152,
+        0,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 5,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "cast": {
+      "file": "angler-cast.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        175.5,
+        40.0
+      ],
+      "source_rect": [
+        0,
+        512,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 9,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "hook": {
+      "file": "angler-hook.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        141.5,
+        25.0
+      ],
+      "source_rect": [
+        384,
+        512,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 9,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "reel": {
+      "file": "angler-reel.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        134.5,
+        72.0
+      ],
+      "source_rect": [
+        768,
+        512,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 9,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    },
+    "land": {
+      "file": "angler-land.webp",
+      "width": 192,
+      "height": 256,
+      "feet_anchor": [
+        96,
+        239
+      ],
+      "rod_hand": [
+        136.5,
+        71.5
+      ],
+      "source_rect": [
+        1152,
+        512,
+        384,
+        512
+      ],
+      "baseline_adjust_px": 9,
+      "notes": "One distinct illustrated pose; walking uses the two distinct walk poses."
+    }
+  },
+  "fish": {
+    "oikawa": {
+      "file": "fish-oikawa.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        0,
+        0,
+        768,
+        325
+      ]
+    },
+    "ugui": {
+      "file": "fish-ugui.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        768,
+        0,
+        1536,
+        325
+      ]
+    },
+    "yamame": {
+      "file": "fish-yamame.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        0,
+        325,
+        768,
+        650
+      ]
+    },
+    "amago": {
+      "file": "fish-amago.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        768,
+        325,
+        1536,
+        650
+      ]
+    },
+    "iwana": {
+      "file": "fish-iwana.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        0,
+        650,
+        768,
+        1024
+      ]
+    },
+    "nijimasu": {
+      "file": "fish-nijimasu.webp",
+      "width": 384,
+      "height": 192,
+      "direction": "right",
+      "source_rect": [
+        768,
+        650,
+        1536,
+        1024
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "assets/game032/originals/angler-atlas.png",
+      "bytes": 1918197,
+      "sha256": "e40daa9403ccbff2fbbeeb79638966d3e64af9fabc958557841a2d9ad21de41a",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/game032/originals/fish-atlas.png",
+      "bytes": 2471365,
+      "sha256": "292f9e978f91ee328a0b3ac3a543ad231886684c64b2f1327b889f0317c892cc",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/game032/originals/river-panorama.png",
+      "bytes": 3781124,
+      "sha256": "1723b47e40b63a251bd61123fbf295deeb106c392d334563030205a09cdcbfa7",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    {
+      "path": "public/assets/game032/angler-cast.webp",
+      "bytes": 25428,
+      "sha256": "d5745d7668d0a86a8a0c6b3be041461c1bb206a2f4c2e94fb6a042e1453be4f7",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-hook.webp",
+      "bytes": 25200,
+      "sha256": "a32b9e3a3f933da9ba6208cefdf5b56a134467e73875c89f8b2b4060c6320dbd",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-idle.webp",
+      "bytes": 22402,
+      "sha256": "fbf4efb67c4fee987e32752cb1138cc6f82bd267b9595c4e9615b251fff1b99c",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-land.webp",
+      "bytes": 24564,
+      "sha256": "cd76bbdb215c761bb9410e438f1ee92235a42a4b5f1be7bacfdf4495496b9b4d",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-ready.webp",
+      "bytes": 23944,
+      "sha256": "1148ec59e3916a78d47d2d8e5fcbfae933444ee1a5698cb6d212eac2a918b1de",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-reel.webp",
+      "bytes": 24192,
+      "sha256": "34699ef03127c0836cfbc9ee2adc609f6b2b7d7d76f2e1d6d509d65d17c3be58",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-walk-left.webp",
+      "bytes": 23188,
+      "sha256": "2850cafa7e05bb346990369c15e26afb8070f49fbe701be5757104e1357edfb4",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/angler-walk-right.webp",
+      "bytes": 22862,
+      "sha256": "0193f468f643785497a5ed2d5ad9c2b8e80d8a0b8715aa4c85b83c3a0160df0c",
+      "width": 192,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-amago.webp",
+      "bytes": 60548,
+      "sha256": "0d8aca830c91a5cb88769a6f7d43daefbfbf4f21ae0499e802c4acfb0fb38b2e",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-iwana.webp",
+      "bytes": 60998,
+      "sha256": "c1cd5922c4ff3cc7848021347a37a33629433fbaf1098692d782705a65375d00",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-nijimasu.webp",
+      "bytes": 63178,
+      "sha256": "7826f64208d5faeb2ae724f9b8ccde127831c1237834ba2e3ced85ae3b189a96",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-oikawa.webp",
+      "bytes": 51052,
+      "sha256": "a2d0712799f4e00377ba7dd81a28f792ec4701df42f25f733b63c5712d2eebed",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-ugui.webp",
+      "bytes": 51618,
+      "sha256": "212cbc0b0e0dc90a436d527c5f4ea56b9bcf65aa9277b8db50d0e5dbf24d0d71",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/fish-yamame.webp",
+      "bytes": 59926,
+      "sha256": "0c40d74c43b1f53af5a8536164fb9969dd2f7286a64eaa7ec538f35ebbca891f",
+      "width": 384,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/game032/river-panorama.webp",
+      "bytes": 641516,
+      "sha256": "f5a465ffe91acbc7c1c083d117f0cc7770e33139daa21fe3688c69b505c19d5d",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    }
+  ]
+}

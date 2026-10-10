@@ -51,12 +51,13 @@ const entries: readonly Entry[] = [
   ['game029','score','帰宅時スコア','点','1',true,undefined,1,1000000000],
   ['game030','stages','クリア済ステージ','ステージ','1',false,'あなたの記録',1,20],
   ['game031','mined','採掘数','個','1',false,'この世界の記録'],
+  ['game032','score','総合スコア','点','1',true,undefined,1,100000,50000,'standard','5分釣行'],
 ];
 export const recordDefinitions: readonly RecordDefinition[] = Object.freeze(entries.map(([gameId,metricId,metricLabel,unit,rulesetId,publicEnabled,localLabel,scale,max,pending,modeId,modeLabel]) => Object.freeze({
   gameId, metricId, metricLabel, unit, direction: 'higher' as const,
   storageScale: scale ?? 1, displayPrecision: scale === 10 ? 1 : 0,
   rulesetId, modeId: modeId ?? 'all', modeLabel: modeLabel ?? '全モード',
-  assistancePolicy: ['game012','game013','game014','game024'].includes(gameId) ? 'none' as const : 'allowed' as const,
+  assistancePolicy: ['game012','game013','game014','game024','game032'].includes(gameId) ? 'none' as const : 'allowed' as const,
   localLabel: localLabel ?? 'あなたのBEST', publicEnabled,
   boardId: `${gameId}.${metricId}.r${rulesetId}.${modeId ?? 'all'}`,
   maxValue: max ?? Number.MAX_SAFE_INTEGER, pendingAbove: pending ?? Math.min(max ?? Number.MAX_SAFE_INTEGER,1000000),

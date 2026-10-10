@@ -16,15 +16,15 @@ const fixture: AnalyticsEnvelope = {
 
 describe('Game031 sandbox registration boundaries', () => {
   it('registers only the implemented new ID and retains retired010 and existing versions', () => {
-    expect(gameCatalog).toHaveLength(30);
-    expect(historicalGameCatalog).toHaveLength(31);
-    expect(NEXT_GAME_NUMBER).toBe(32);
-    expect(gameCatalog.at(-1)).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31 });
+    expect(gameCatalog).toHaveLength(31);
+    expect(historicalGameCatalog).toHaveLength(32);
+    expect(NEXT_GAME_NUMBER).toBe(33);
+    expect(gameCatalog.find(game => game.id === 'game031')).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31 });
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');
     expect(gameVersions.game031).toEqual({ rules_version: '1', presentation_version: 'textures-a-v1' });
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
     expect(isAnalyticsEnvelope(fixture)).toBe(true);
-    expect(isAnalyticsEnvelope({ ...fixture, game_id: 'game032', page: 'game032.html' })).toBe(false);
+    expect(isAnalyticsEnvelope({ ...fixture, game_id: 'game033', page: 'game033.html' })).toBe(false);
     expect(isAnalyticsEnvelope({ ...fixture, game_id: 'game010', page: 'game010.html' })).toBe(false);
   });
   it('keeps coarse summaries and strips worlds, locations, files, private identities and free text', () => {
@@ -42,7 +42,7 @@ describe('Game031 sandbox registration boundaries', () => {
   it('fetches031 only via anonymous Codex GET and rejects reserved032 without network access', async () => {
     const now = new Date('2026-10-07T12:00:00.000Z'), token = 'local-game031-fixture-only';
     expect(parseOptions(['--game', 'game031']).game).toBe('game031');
-    expect(() => parseOptions(['--game', 'game032'])).toThrow('invalid_game');
+    expect(() => parseOptions(['--game', 'game033'])).toThrow('invalid_game');
     const result = await fetchAnalyticsContext(['--game', 'game031', '--days', '7', '--environment', 'synthetic'], { ANALYTICS_CODEX_TOKEN: token }, async (url: URL, options: RequestInit) => {
       expect(url.pathname).toBe('/v1/codex/game/game031');
       expect(options.method).toBe('GET');
@@ -60,6 +60,6 @@ describe('Game031 sandbox registration boundaries', () => {
     expect(manifest.timeLimit).toBeNull();
     expect(profile.currentManifest).toEqual(manifest);
     expect(catalog.gameCatalog).toEqual(gameCatalog);
-    expect(catalog.gameCount).toBe(30);
+    expect(catalog.gameCount).toBe(31);
   });
 });

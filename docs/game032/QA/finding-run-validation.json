@@ -1,0 +1,17 @@
+{
+  "finding_id": "game032-completed-outing-validation",
+  "problem": "The generic record validation admits an unfinished Game032 outing.",
+  "expected": "Only a finalized full five-minute standard outing is eligible for Game032 public score records.",
+  "observed": [
+    "Local submission validation accepts mode standard, duration_ms 2000, and outcome quit when finalized is true.",
+    "The Worker uses the same generic duration and outcome allowance for the new board."
+  ],
+  "unknown": [
+    "Whether a Game032-specific completion check exists elsewhere in the sharing path."
+  ],
+  "evidence": [
+    "src/records/submissionValidation.ts",
+    "analytics-worker/src/records.ts"
+  ],
+  "provenance": "source inspection, not a production score submission"
+}

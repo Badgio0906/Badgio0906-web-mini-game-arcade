@@ -30,6 +30,15 @@ try{
  const bodyStart=Date.now();assert.equal((await request('/__records-test/slow-body')).status,408);assert(Date.now()-bodyStart<8000);pass('bounded_stream_body_timeout');
  const emptyResponse=await publicGet();assert.equal(emptyResponse.status,200);assert.equal(emptyResponse.headers.get('Cache-Control'),'public, max-age=60, must-revalidate');assert.equal(emptyResponse.headers.get('Vary'),'Origin');const empty=await emptyResponse.json();assert.equal(empty.boards.length,recordBoards.filter(b=>b.publicEnabled).length);assert(empty.boards.every(b=>b.value===null&&b.status==='empty'));pass('all_public_boards_empty_null');
  // New native boards use ordinary aggregation, exact normal mode, and no assistance.
+ const fishingBoard=recordBoards.find(board=>board.gameId==='game032');assert(fishingBoard);
+ const fishing=(value=0)=>{const p=payload(value,fishingBoard);p.allowed_result_metadata.duration_ms=300000;return p;};
+ for(const change of [{duration_ms:299999},{outcome:'quit'},{outcome:'milestone'},{mode_id:'practice'},{assistance:'allowed'}]){const p=fishing(10);Object.assign(p.allowed_result_metadata,change);assert.equal((await submit(p)).status,400);}
+ const fishingZero=fishing();assert.equal((await submit(fishingZero)).status,201);assert.equal((await best(fishingBoard)).value,0);
+ const fishingHigher=fishing(1200);assert.equal((await submit(fishingHigher)).status,201);assert.equal((await best(fishingBoard)).value,1200);
+ assert.equal((await submit(fishing(fishingBoard.maxValue+1))).status,400);
+ const fishingPending=fishing(fishingBoard.pendingAbove+1);assert.equal((await submit(fishingPending)).status,202);assert.equal((await best(fishingBoard)).value,1200);
+ const fishingRanking=await request('/v1/records/public/leaderboard?board_id='+encodeURIComponent(fishingBoard.boardId));assert.equal(fishingRanking.status,200);const fishingTop=await fishingRanking.json();assert.equal(fishingTop.entries[0].value,1200);assert.equal(fishingTop.entries.length,1);
+ pass('game032_completed_five_minute_zero_best_top10_pending_and_practice_duration_assistance_guards');
  const nativeBoards=['game012','game013','game014'].map(id=>recordBoards.find(b=>b.gameId===id));
  assert(nativeBoards.every(Boolean));
  assert.deepEqual(nativeBoards.map(b=>[b.boardId,b.metricId,b.rulesetId,b.modeId,b.assistancePolicy,b.maxValue]),[

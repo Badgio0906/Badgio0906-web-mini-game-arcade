@@ -1,0 +1,16 @@
+{
+  "finding_id": "game032-same-species-latest-catch",
+  "problem": "The latest-catch card may show an earlier fish after catching the same species again.",
+  "expected": "The handout displays the size and points of the most recently landed fish.",
+  "observed": [
+    "The render branch updates latest-fish only if the fishId changes.",
+    "Two catches of the same species can have different sizeCm and points."
+  ],
+  "unknown": [
+    "Whether another rendering path refreshes the card for a same-species catch."
+  ],
+  "evidence": [
+    "src/games/game032/main.ts render()"
+  ],
+  "provenance": "independent source review before fix"
+}

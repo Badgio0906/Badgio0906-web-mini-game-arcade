@@ -1,0 +1,25 @@
+{
+  "finding_id": "game032-short-landscape-grid-stretch",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "fishing_visual (independent; did not read Jev answers)",
+  "reviewed_at": "2026-10-10T07:16:32.996557+00:00",
+  "rationale": "Actual 844x390 captures show the river image ends at y350 but its surrounding shell continues as a large empty green rectangle because a tall journal stretches the grid row. The independently measured action control is y564,height44, wholly below the 390px viewport. Short-landscape CSS sets canvas to210px but does not remove the desktop journal/grid stretch. This breaks at-a-glance fishing interaction on a required viewport and blocks the visual gate until corrected.",
+  "evidence": [
+    "docs/game032/QA/candidate-02/browser-independent-01/landscape-bite.png",
+    "docs/game032/QA/candidate-02/browser-independent-01/landscape-land.png",
+    "docs/game032/QA/candidate-02/browser-independent-01/REPORT.json",
+    "src/games/game032/style.css"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read CSS after viewing screenshots and checking independent control geometry. Identified default grid item stretch, journal min-content height and unchanged 844px two-column rule as the cause. Requested a narrow viewport height-budget correction; did not edit runtime.",
+    "evidence": [
+      "src/games/game032/style.css",
+      "docs/game032/QA/candidate-02/browser-independent-01/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

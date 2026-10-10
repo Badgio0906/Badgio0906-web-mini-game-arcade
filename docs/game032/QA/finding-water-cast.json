@@ -1,0 +1,20 @@
+{
+  "finding_id": "game032-near-cast-water-position",
+  "problem": "The near-cast float is drawn at the foreground shore instead of open water.",
+  "expected": "Every valid cast lands visibly on the river surface, with near and far distance distinguishable.",
+  "observed": [
+    "Fixed-build PC bite screenshot shows the line and float around foreground rocks and grass below the open river.",
+    "The HUD reports the main bite while the float blends with shore foliage."
+  ],
+  "unknown": [
+    "How viewport cropping changes the relationship between the cast coordinates and river image."
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "evidence": [
+    "docs/game032/QA/candidate-01/browser-independent-02/pc-bite.png"
+  ],
+  "provenance": "independent review of an actual game screenshot before renderer correction"
+}

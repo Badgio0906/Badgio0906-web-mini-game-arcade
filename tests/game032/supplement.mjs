@@ -1,0 +1,36 @@
+import {chromium} from '@playwright/test';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+const base=process.env.GAME032_QA_URL??'http://127.0.0.1:4432',out=process.env.GAME032_QA_OUT;
+if(!out)throw Error('Unique GAME032_QA_OUT required');await mkdir(out,{recursive:false});
+const report={kind:'independent focused supplement; virtual-clock timer/layout and browser CDP touch, not human/physical device',started_at:new Date().toISOString(),source_hashes:{},checks:[],errors:[],post_attempts:0};
+for(const f of ['main.ts','FishingModel.ts','Save.ts','Projection.ts','style.css','RiverSound.ts'])report.source_hashes[f]=createHash('sha256').update(await readFile(`src/games/game032/${f}`)).digest('hex');
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+let page,current='startup',cdp;
+const widths=[{name:'landscape',width:844,height:390},{name:'pc',width:1280,height:900},{name:'phone',width:390,height:844},{name:'small',width:320,height:740}];
+function check(ok,name,data={}){report.checks.push({name,passed:!!ok,...data});if(!ok)throw Error(name);}
+async function shot(name){await page.screenshot({path:path.join(out,`${current}-${name}.png`),fullPage:true});}
+async function setup(viewport){const context=await browser.newContext({viewport,hasTouch:viewport.name!=='pc'});await context.route('**/*',async r=>{if(r.request().method()==='POST'){report.post_attempts++;await r.abort();}else await r.continue();});page=await context.newPage();page.on('pageerror',e=>report.errors.push({viewport:current,message:e.message}));await page.goto(`${base}/game032.html`);const deny=page.getByRole('button',{name:'許可しない',exact:true});if(await deny.count())await deny.click();await page.waitForFunction(()=>!document.querySelector('#play')?.disabled);await page.clock.install();cdp=await context.newCDPSession(page);return context;}
+async function touch(id,down){if(down){const r=await page.locator(`#${id}`).boundingBox();await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:r.x+r.width/2,y:r.y+r.height/2,id:1}]});}else await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
+async function phase(){return page.locator('#river').getAttribute('data-phase');}
+try{
+for(const v of widths){current=v.name;const context=await setup(v);await page.locator('#practice').click();await page.clock.runFor(30);await page.evaluate(()=>scrollTo(0,0));
+ const geometry=await page.evaluate(()=>{const rect=id=>{const r=document.getElementById(id).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom,right:r.right};};const shell=document.querySelector('.river-shell').getBoundingClientRect();return {viewport:{width:innerWidth,height:innerHeight},shellHeight:shell.height,canvas:rect('river'),buttons:Object.fromEntries(['action','left','right','pause'].map(id=>[id,rect(id)]))};});
+ check(Math.abs(geometry.shellHeight-geometry.canvas.height)<=1,`${current}: shell height equals canvas`,geometry);
+ for(const [id,r] of Object.entries(geometry.buttons))check(r.y>=0&&r.x>=0&&r.bottom<=v.height&&r.right<=v.width,`${current}: entire ${id} in initial viewport`,{rect:r});
+ await shot('play');await page.locator('#pause').click();await shot('pause');await page.locator('#pause-title').click();await page.locator('#explain').click();await shot('help');await page.locator('#practice').click();
+ if(current==='pc'){await page.locator('#river').focus();const places=[];places.push(await page.locator('#spot').innerText());await page.keyboard.down('ArrowRight');for(const t of [1100,1100,1100]){await page.clock.runFor(t);places.push(await page.locator('#spot').innerText());}await page.keyboard.up('ArrowRight');check(places.join(',')==='浅瀬,岩陰,木陰,深み','PC continuous arrow movement reaches four spots',{places});}
+ if(current==='phone'){await touch('right',true);await page.clock.runFor(1100);await touch('right',false);check(await page.locator('#spot').innerText()==='岩陰','phone CDP touch moves right to rocks');await touch('left',true);await page.clock.runFor(1100);await touch('left',false);check(await page.locator('#spot').innerText()==='浅瀬','phone CDP touch returns shallow');
+  let reached=false;for(let attempt=1;attempt<=6&&!reached;attempt++){await touch('action',true);await page.clock.runFor(180);await touch('action',false);for(let n=0;n<200;n++){const p=await phase();if(p==='bite'){reached=true;break;}if(p==='failed'){await shot(`no-catch-${attempt}`);report.checks.push({name:'phone ordinary no-catch',passed:true,status:await page.locator('#status').innerText()});for(let j=0;j<30&&await phase()!=='idle';j++)await page.clock.runFor(100);break;}await page.clock.runFor(100);}}
+  check(reached,'phone touch cast reaches visible bite');await shot('bite');await touch('action',true);await touch('action',false);check(await phase()==='fight','phone touch HOOK taps into fight');await shot('fight');let held=false;
+  for(let n=0;n<400&&await phase()==='fight';n++){const pulling=await page.locator('#river').getAttribute('data-pulling')==='true';if(!pulling&&!held){await touch('action',true);held=true;}if(pulling&&held){await touch('action',false);held=false;}await page.clock.runFor(100);}if(held)await touch('action',false);check(await phase()==='landed','phone entirely touch cast/hook/reel lands');await shot('land');
+  check(await page.evaluate(()=>localStorage.getItem('web-mini-arcade:v1:game032:best:standard:r1'))===null,'entirely touch practice still excludes BEST');}
+ if(current==='pc'){await page.locator('#river').screenshot({path:path.join(out,'actual-canvas.png')});}
+ await context.close();
+}
+current='result-layout';const resultContext=await setup(widths[1]);await page.locator('#play').click();await page.clock.runFor(300000);check(await page.locator('#app').getAttribute('data-state')==='result','zero-catch genuine 300-active-second result layout fixture');
+for(const v of widths){current=v.name;await page.setViewportSize(v);await page.clock.runFor(30);await shot('result');const buttons=await page.evaluate(()=>['again','result-title','menu-portal'].map(id=>({id,exists:!!document.getElementById(id),display:getComputedStyle(document.getElementById(id)).display})));check(buttons.every(b=>b.exists&&b.display!=='none'),`${current}: result actions exist and display`,{buttons});}
+await resultContext.close();check(report.post_attempts===0,'supplement attempted zero POST');
+}catch(e){report.failure={viewport:current,message:e.message};if(page&&!page.isClosed()){await shot('failure');await writeFile(path.join(out,`${current}-failure-state.json`),JSON.stringify(await page.evaluate(()=>({state:document.querySelector('#app')?.dataset.state,phase:document.querySelector('#river')?.dataset.phase,status:document.querySelector('#status')?.textContent})),null,2));}process.exitCode=1;}
+finally{report.finished_at=new Date().toISOString();report.success=!report.failure&&report.errors.length===0;await writeFile(path.join(out,'REPORT.json'),JSON.stringify(report,null,2));await browser.close();console.log(JSON.stringify({out,checks:report.checks.length,passed:report.checks.filter(c=>c.passed).length,success:report.success,failure:report.failure}));}

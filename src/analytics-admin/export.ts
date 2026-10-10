@@ -21,6 +21,13 @@ function metrics(value: unknown): Data {
   for (const key of ['top_failure_reasons','top_exit_phases']) result[key] = list(data[key]).map(value => { const entry = object(value); return { label: text(entry.label), count: number(entry.count) }; });
   return result;
 }
+function fishingSummary(value:unknown):Data {
+  const summary=object(value),safeCounts=(field:string,allowed:string[])=>split(summary[field],allowed);
+  return {cast_count:number(summary.cast_count),spot_cast_counts:safeCounts('spot_cast_counts',['shallows','rocks','shade','pool']),cast_distance_counts:safeCounts('cast_distance_counts',['near','medium','far']),
+    hook_fail_reason_counts:safeCounts('hook_fail_reason_counts',['early','late']),fish_hooked_counts:safeCounts('fish_hooked_counts',['oikawa','ugui','yamame','amago','nijimasu','iwana','lord']),fish_landed_counts:safeCounts('fish_landed_counts',['oikawa','ugui','yamame','amago','nijimasu','iwana','lord']),
+    ...Object.fromEntries(['landed_event_count','escaped_event_count','completed_outing_count','measured_fish_outing_count','average_fish_per_completed_outing','measured_score_outing_count','average_score'].map(key=>[key,number(summary[key])])),
+    sample_size_small:typeof summary.sample_size_small==='boolean'?summary.sample_size_small:null,coverage:summary.coverage==='observed-standard-events-only'?summary.coverage:null};
+}
 /** Explicit aggregate projection: unknown nested properties and raw event/identity fields never survive. */
 export function aggregateExport(value: unknown): Data {
   const source = object(value);
@@ -34,7 +41,7 @@ export function aggregateExport(value: unknown): Data {
     history: { granularity: history.granularity === 'UTC-calendar-day' ? 'UTC-calendar-day' : null, partial_edge_days: typeof history.partial_edge_days === 'boolean' ? history.partial_edge_days : null, daily: list(history.daily).map(value => { const day = object(value); return { day: text(day.day), game_id: /^game\d{3}$/.test(String(day.game_id)) ? day.game_id : null, environment: ['production','synthetic','qa','development'].includes(String(day.environment)) ? day.environment : null, game_version: text(day.game_version), rules_version: text(day.rules_version), presentation_version: text(day.presentation_version), metrics: Object.fromEntries(['event_count','observed_browser_count','visit_count','portal_view_count','game_card_impressions','game_card_clicks','game_starts','run_count','run_end_count','best_updates','client_error_count'].map(key => [key, number(object(day.metrics)[key])])) }; }) },
     games: list(source.games).filter(value => /^game\d{3}$/.test(String(object(value).game_id))).map(value => {
       const game = object(value);
-      return { game_id: game.game_id, status: game.status === 'retired' ? 'retired' : 'active', ...metrics(game), measurement_coverage: text(game.measurement_coverage, 1000), versions: list(game.versions).map(value => { const version = object(value); return { game_version: text(version.game_version), rules_version: text(version.rules_version), presentation_version: text(version.presentation_version), event_count: number(version.event_count) }; }), funnel: list(game.funnel).map(value => { const step = object(value); return { step: text(step.step), ...ratio(step) }; }) };
+      return { ...(game.game_id==='game032'&&game.fishing_summary?{fishing_summary:fishingSummary(game.fishing_summary)}:{}), game_id: game.game_id, status: game.status === 'retired' ? 'retired' : 'active', ...metrics(game), measurement_coverage: text(game.measurement_coverage, 1000), versions: list(game.versions).map(value => { const version = object(value); return { game_version: text(version.game_version), rules_version: text(version.rules_version), presentation_version: text(version.presentation_version), event_count: number(version.event_count) }; }), funnel: list(game.funnel).map(value => { const step = object(value); return { step: text(step.step), ...ratio(step) }; }) };
     }),
   };
 }

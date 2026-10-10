@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-10 JST：**Game032「川辺で、ひとやすみ。」実装・技術QA完了、試作の公式公開確認待ち。** 4地点／距離チャージ／前・本アタリ／巻きと緩め／7魚種／5分本番・無制限練習／完了個人BEST。ImageGen実3回・15WebP1.18MB・実canvas thumbnail。check・962/84・build、独立12／browser93＋33／最終通常72、Visual85/F13/H13、Jev実8HTTP200／32有効回答＋独立判断。032本番Worker権限・許可先不足につき外部Analytics／共有／TOP10は準備中、旧20board維持。既存277source・21tree／018未commit保全、広告／CREDIT／GA4／D1schema不変。本人／実機／聴感未確認。active31/historical32、010退役、次033未着手。[報告](game032/IMPLEMENTATION_REPORT.md)／[再開](game032/HANDOFF.md)。
+
 2026-10-10 JST：**Portal操作改善を公式公開済み。** 絞り込み欄全体は同位置で初期折畳み、closed時も条件summary・件数・empty案内を表示。favoriteは☆／★とbrowserstorageのみ即時更新し、表示順は再読み込み時に反映。filter／clear／cross-tabでもpage-load時の並びを保持。root919/80・check/build成功、固定3width＋subpath208／独立74成功。runtime86e70b7／公式Pages38006965327 build・deploy成功、実公開3width152checks・166配信file SHA一致、page／console error0・本番POST0。ゲーム／広告／Telemetry schema／Worker/D1不変。[改修報告](portal-discovery/revision-01/IMPLEMENTATION_REPORT.md)。
 
 2026-10-10 JST：**Portal discoveryを公式公開済み。** active30は作者の明示完成宣言が確認できないため全trial。状態独立＋通常39タグOR/AND、browserfavorite優先→各群releaseOrder、非favoriteと新作を保持。既存DOM/Records/TOP10/Telemetryとvisible position／observer dedup維持。root919/80・check/build・compiled176・独立32・公開128（1440/390/320）・offlineJev25 PASS。runtime fbb9f6f／公式Pages38004492659 build/deploy success、166配信file SHA一致。ゲーム本体/AdSense/Worker/D1/GA4/CREDIT/保存不変。完成判断は本人の実試遊後明示のみ、実機／人間の探しやすさ・完成判断は未実施。[仕様](PORTAL_DISCOVERY.md)／[報告](portal-discovery/IMPLEMENTATION_REPORT.md)／[公開証拠](portal-discovery/QA/PUBLICATION.json)／[独立](portal-discovery/INDEPENDENT_REVIEW.md)。

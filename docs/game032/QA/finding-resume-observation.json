@@ -1,0 +1,18 @@
+{
+  "finding_id": "game032-resume-stale-key-observation",
+  "problem": "The first browser assertion after pause/resume does not see the expected idle phase.",
+  "expected": "A stale Space release after returning from pause must not cast or keep charging.",
+  "observed": [
+    "Browser check immediately after resume and stale Space release found a non-idle data-phase.",
+    "The later failure screenshot and state collection report practice and idle.",
+    "No page error or POST was recorded."
+  ],
+  "unknown": [
+    "Whether the assertion ran before a rendered frame or an unwanted cast occurred."
+  ],
+  "evidence": [
+    "docs/game032/QA/candidate-01/browser-independent-01/REPORT.json",
+    "docs/game032/QA/candidate-01/browser-independent-01/pc-failure-state.json"
+  ],
+  "provenance": "independent fixed-build browser QA; failed attempt preserved"
+}

@@ -25,6 +25,15 @@ export interface SandboxSummary {
   quality_summary_counts: Record<string, number>; save_error_summary_counts: Record<string, number>;
   coverage: 'observed-interval-deltas-only';
 }
-export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; sandbox_summary?: SandboxSummary; }
+/** Coarse observations only; no raw identities or guessed fish appearances. */
+export interface FishingSummary {
+  cast_count:number; spot_cast_counts:Record<string,number>; cast_distance_counts:Record<string,number>;
+  hook_fail_reason_counts:Record<string,number>; fish_hooked_counts:Record<string,number>; fish_landed_counts:Record<string,number>;
+  landed_event_count:number; escaped_event_count:number; completed_outing_count:number;
+  measured_fish_outing_count:number; average_fish_per_completed_outing:number|null;
+  measured_score_outing_count:number; average_score:number|null; sample_size_small:boolean;
+  coverage:'observed-standard-events-only';
+}
+export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; sandbox_summary?: SandboxSummary; fishing_summary?: FishingSummary; }
 export interface Period { from: string; to: string; }
 export interface AggregateDay { day: string; game_id: string; environment: string; game_version: string; rules_version: string; presentation_version: string; metrics: Record<string,number>; }

@@ -1,0 +1,22 @@
+{
+  "finding_id": "game032-same-species-latest-catch",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "fishing_independent_qa (blind to Jev answers)",
+  "rationale": "Independent source read found latest-fish rebuilding gated only by fishId inequality. Two catches with the same species but different measured size/points bypass that branch, leaving the previous catch details in the journal. The gameplay score and catch list are separately updated; this is a bounded misleading journal display, not inability to fish or a proven release-critical failure.",
+  "evidence": [
+    "docs/game032/INDEPENDENT_QA.md",
+    "src/games/game032/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read original journal update branch and reported it before product edits; verified main agent subsequently changed the gate to catch count rather than species. Browser same-species fixture remains a further check.",
+    "evidence": [
+      "docs/game032/INDEPENDENT_QA.md",
+      "src/games/game032/main.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

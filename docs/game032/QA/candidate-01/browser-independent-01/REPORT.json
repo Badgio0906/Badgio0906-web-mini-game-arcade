@@ -1,0 +1,38 @@
+{
+  "kind": "independent browser automation; virtual active clock; synthetic QA, not human/physical device",
+  "url": "http://127.0.0.1:4432",
+  "source_hashes": {
+    "src/games/game032/main.ts": "55a1653b6736ea38eedf0874fe063ea835dcd8527a72e4318550d6fd24070275",
+    "src/games/game032/FishingModel.ts": "7b88d4016a0d5baa31a059bd8aa83b3d32320cf626e0c124526c1668c3ffb626",
+    "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+    "game032.html": "03b691b3928ce1dae930f7db5f2cfb88e5214cc3d7e4fb31c354036fb35283c2"
+  },
+  "started_at": "2026-10-10T07:03:45.306Z",
+  "checks": [
+    {
+      "name": "pc: optional practice starts",
+      "passed": true
+    },
+    {
+      "name": "pc: Escape pauses held charge",
+      "passed": true
+    },
+    {
+      "name": "pc: pause freezes clock",
+      "passed": true
+    },
+    {
+      "name": "pc: resume does not inherit held charge",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "post_attempts": 0,
+  "viewport_cases": [],
+  "failure": {
+    "viewport": "pc",
+    "message": "pc: resume does not inherit held charge"
+  },
+  "finished_at": "2026-10-10T07:03:48.385Z",
+  "success": false
+}

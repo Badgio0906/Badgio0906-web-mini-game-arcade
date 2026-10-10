@@ -1,0 +1,25 @@
+{
+  "finding_id": "game032-completed-mode-aggregate",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "fishing_integration independently read controller, TelemetryService/runtime and aggregate; no Jev answers/API/browser",
+  "rationale": "Confirmed at controller SHA256 7d7aed2061d901ba590ce5c5be9b48a494f357603fdec24ae551a923d7f9bd63: run_start emits mode standard but both completed and quit run_end omit it. TelemetryService only adds game/game_id/session_id; runtime PageContext stores no mode, and external data copies only this event plus phase/attribution. summarizeFishing explicitly requires mode standard on a completed run_end. A synthetic fixture matching that omission yields completed_outing_count0 and null catch/score averages despite one landed event; adding standard to completion restores count1/average1/score170 and still excludes practice/quit. This is an actual source contract mismatch, not a live production observation. Game032 external transport is currently OFF, while gameplay, local BEST and ranking eligibility use independent paths, so this finding alone does not cause an immediate unsafe prototype release; source correction is required before Analytics registration/enablement. Minimal fix is explicit mode standard on both standard run_end payloads; do not infer missing modes or loosen practice protection.",
+  "evidence": [
+    "src/games/game032/main.ts SHA256 7d7aed2061d901ba590ce5c5be9b48a494f357603fdec24ae551a923d7f9bd63",
+    "src/core/TelemetryService.ts:47-49",
+    "src/analytics/runtime.ts PageContext/record/send",
+    "analytics-worker/src/aggregate.ts summarizeFishing",
+    "tests/unit/game032-aggregate-mode.test.ts",
+    "docs/game032/QA/independent-judgments/game032-completed-mode-aggregate-test.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Read actual source data flow, then ran one focused synthetic aggregate reproduction: omitted per-event mode loses completion metrics; explicit standard restores them; practice and quit remain excluded. No product source edits, browser interaction or production request. Proposed adding mode standard to completion and quit run_end only, with main responsible for frozen-candidate change and verification.",
+    "evidence": [
+      "tests/unit/game032-aggregate-mode.test.ts",
+      "docs/game032/QA/independent-judgments/game032-completed-mode-aggregate-test.txt"
+    ]
+  }
+}

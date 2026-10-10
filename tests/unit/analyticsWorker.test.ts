@@ -3,7 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import worker, { applyRetention } from '../../analytics-worker/src/index';
-import { computeMetrics, summarizeGames, summarizeSandbox } from '../../analytics-worker/src/aggregate';
+import { computeMetrics, summarizeGames, summarizeSandbox, summarizeFishing } from '../../analytics-worker/src/aggregate';
 import { ANALYTICS_SCHEMA_VERSION, isAnalyticsBatch, sanitizeAnalyticsData, type AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
 import { gameCatalog, historicalGameCatalog } from '../../src/data/gameCatalog';
 import type { Database, D1Statement, Env } from '../../analytics-worker/src/types';
@@ -35,8 +35,17 @@ describe('Codex aggregate-only access',()=>{
    for(const key of ['browser_id','visit_id','session_id','run_id','event_id','ip','user_agent'])expect(text).not.toContain(`"${key}"`);
    for(const id of [browser,visit,session,run,...events.map(row=>row.event_id)])expect(text).not.toContain(id);
   }
-  for(const request of [admin('/v1/admin/game/game032'),codex('/v1/codex/game/game032')])expect((await worker.fetch(request,e)).status).toBe(404);
-  expect((await worker.fetch(post([event({...base,game_id:'game032',page:'game032.html'})]),e)).status).toBe(400);
+  for(const request of [admin('/v1/admin/game/game033'),codex('/v1/codex/game/game033')])expect((await worker.fetch(request,e)).status).toBe(404);
+  expect((await worker.fetch(post([event({...base,game_id:'game033',page:'game033.html'})]),e)).status).toBe(400);
+ });
+ it('accepts032 coarse fishing events and anonymous admin/Codex aggregates without accepting033',async()=>{
+  const e=env(),browser=randomUUID(),visit=randomUUID(),session=randomUUID(),run=randomUUID();
+  const base={game_id:'game032',page:'game032.html',game_version:'prototype-1',rules_version:'1',presentation_version:'prototype-1',browser_id:browser,visit_id:visit,session_id:session,run_id:run};
+  const rows=[event({...base,data:{mode:'standard'}}),event({...base,event_name:'specific_game_events',data:{event:'cast_released',mode:'standard',spot_id:'shallows',distance:'medium',charge_ms:700}}),event({...base,event_name:'specific_game_events',data:{event:'fish_landed',mode:'standard',fish_id:'yamame',size_cm:24.5,points:170,rare:false,big:false}}),event({...base,event_name:'run_end',data:{mode:'standard',outcome:'complete',score:170,fish_count:1,max_size_cm:24.5,seconds:300,completed:true}})];
+  const response=await worker.fetch(post(rows),e);expect(response.status).toBe(202);expect(await response.json()).toEqual({accepted:4,duplicates:0});
+  for(const request of [admin('/v1/admin/game/game032'),codex('/v1/codex/game/game032')]){const result=await worker.fetch(request,e);expect(result.status).toBe(200);const text=await result.text();expect(JSON.parse(text).game).toMatchObject({game_id:'game032',run_count:1,median_run_duration:300,fishing_summary:{cast_count:1,spot_cast_counts:{shallows:1},cast_distance_counts:{medium:1},fish_landed_counts:{yamame:1},completed_outing_count:1,average_fish_per_completed_outing:1,average_score:170,sample_size_small:true}});for(const raw of [browser,visit,session,run,...rows.map(row=>row.event_id)])expect(text).not.toContain(raw);}
+  expect((await worker.fetch(post([event({...base,data:{event:'fish_landed',fish_id:'free text'}})]),e)).status).toBe(400);
+  expect((await worker.fetch(codex('/v1/codex/game/game033'),e)).status).toBe(404);
  });
  it.each(gameCatalog.filter(game=>game.releaseOrder>=21&&game.releaseOrder<=30))('registers classic $id through strict ingest and anonymous aggregate detail',async game=>{
   const e=env(),browser=randomUUID(),run=randomUUID(),base={game_id:game.id,page:game.id+'.html',browser_id:browser,run_id:run,rules_version:'1',presentation_version:'prototype-1'};
@@ -170,5 +179,14 @@ describe('external analytics boundary',()=>{
   e.DB.sqlite.prepare('INSERT INTO daily_aggregates VALUES(?,?,?,?,?,?,?)').run('2020-01-01','game019','production','1','1','1','{}');
   await applyRetention(e.DB,e,now);expect(e.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM events').get()?.n).toBe(1);const archives=e.DB.sqlite.prepare('SELECT * FROM daily_aggregates').all();expect(archives).toHaveLength(1);expect(JSON.stringify(archives)).not.toContain(old.browser_id);expect(JSON.parse(String(archives[0].metrics_json)).run_count).toBe(1);
   await applyRetention(e.DB,e,now+86400000);expect(e.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM daily_aggregates WHERE day = ?').get(old.occurred_at.slice(0,10))?.n).toBe(1);
+ });
+});
+
+describe('fishing aggregate evidence boundary',()=>{
+ it('excludes practice and never doubles landed event counts with RUN totals; missing remains null',()=>{
+  const common={game_id:'game032',page:'game032.html'};
+  const rows=[event({...common,event_name:'specific_game_events',data:{event:'fish_landed',mode:'standard',fish_id:'oikawa'}}),event({...common,event_name:'run_end',data:{mode:'standard',completed:true,outcome:'complete',fish_count:2,score:99}}),event({...common,run_id:'run2',event_name:'run_end',data:{mode:'standard',completed:false,outcome:'quit',fish_count:8,score:999}}),event({...common,run_id:'practice',event_name:'run_end',data:{mode:'practice',completed:true,outcome:'complete',fish_count:88,score:99999}}),event({...common,event_name:'specific_game_events',data:{event:'fish_landed',mode:'practice',fish_id:'lord'}})];
+  expect(summarizeFishing(rows)).toMatchObject({landed_event_count:1,fish_landed_counts:{oikawa:1},completed_outing_count:1,average_fish_per_completed_outing:2,average_score:99,sample_size_small:true});
+  expect(summarizeFishing([])).toMatchObject({completed_outing_count:0,average_fish_per_completed_outing:null,average_score:null});
  });
 });

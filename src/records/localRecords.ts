@@ -1,3 +1,4 @@
+import { validateFishingBest } from '../games/game032/Save';
 import { getRecordDefinition } from '../data/recordDefinitions';
 import { wordById } from '../games/game023/words';
 import { readCurrentRule } from './currentRules';
@@ -23,7 +24,7 @@ const scalarKeys: Readonly<Record<string,string>> = {
 };
 const jsonKeys: Readonly<Record<string,string>> = {
   game021:'state',game022:'session',game023:'question',game024:'state',game025:'snapshot',
-  game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',
+  game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',
 };
 export const localRecordStorageKeys: readonly string[] = Object.freeze([
   ...Object.values(scalarKeys), ...Object.entries(jsonKeys).map(([id,key])=>prefix(id)+key),
@@ -107,6 +108,9 @@ function readJSON(gameId: string, backend: Storage): LocalRecord {
     case 'game027':value=object(stats)?stats.games:undefined;break;
     case 'game028':value=object(stats)?stats.bestRally:undefined;break;
     case 'game029':value=data.best;break;
+    case 'game032':{
+      const best=validateFishingBest(data);return best?{status:'record',value:best.score}:bad('保存された釣行記録の形式が不正です');
+    }
     case 'game030':{
       const progress=data.progress;
       if(!object(progress)||!Array.isArray(progress.best)||progress.best.length!==20||!progress.best.every(n=>n===null||typeof n==='number'&&Number.isFinite(n)&&n>0))return bad();

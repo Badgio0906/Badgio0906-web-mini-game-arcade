@@ -16,7 +16,7 @@ const knownIds = new Set(active.map(game => game.id));
 
 describe('normal tag filtering preserves legacy AND and excludes retirement', () => {
   it('no tags returns all active games for both modes', () => {
-    expect(filterCatalog()).toHaveLength(30);
+    expect(filterCatalog()).toHaveLength(31);
     for (const mode of ['or', 'and'] as const) expect(ids(filterGames(fixture, [], mode))).toEqual(['alpha', 'beta', 'gamma']);
   });
   it('OR with one tag matches it', () => expect(ids(filterGames(fixture, ['puzzle'], 'or'))).toEqual(['alpha', 'beta']));

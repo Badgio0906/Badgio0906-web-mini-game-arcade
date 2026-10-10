@@ -1,0 +1,23 @@
+{
+  "finding_id": "game032-desktop-help-dialog-bottom",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "fishing_visual (independent; no Jev answers read)",
+  "reviewed_at": "2026-10-10T07:27:34.641060+00:00",
+  "rationale": "Actual source/screens prompted a request to test scroll reachability rather than assuming failure. Independent max-scroll/elementFromPoint probe then confirms only PC help duplicate menu-portal is outside viewport(y878..922 with900px viewport, centerHit false). CSS fixed top160 with max-height(vh-90) permits this. Product layout needs a bounded dialog fix; release-critical navigation failure is not established because unchanged common header return and all help primary buttons remain reachable.",
+  "evidence": [
+    "docs/game032/QA/candidate-03/dialog-reachability-01/REPORT.json",
+    "docs/game032/QA/candidate-03/dialog-reachability-01/pc-help-scrolled.png",
+    "src/games/game032/style.css"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Requested actual max-scroll geometry and hit testing after spotting potential footer/top-height overlap in screenshots. Independent QA confirmed PC duplicate Portal is offscreen while other3widths and actual primarypractice actions work.",
+    "evidence": [
+      "docs/game032/QA/candidate-03/dialog-reachability-01/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

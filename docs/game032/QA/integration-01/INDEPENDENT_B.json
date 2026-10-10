@@ -1,0 +1,26 @@
+{
+  "reviewer": "fishing_integration independent code and local API checks (Jev responses not read)",
+  "CODEX_ACTION_REQUIRED": true,
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "finding_id": "game032-completed-outing-validation",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "rationale": "Existing general record validators intentionally accept short durations and quit/milestone outcomes for other boards. Applying that generic eligibility alone to032 would permit unfinished/short standard outings on a board defined only for completed five-minute outings. The new game requires an extra per-game outcome and minimum-duration guard; old boards retain their existing eligibility. This is not a claim that such a032 record was submitted in production.",
+  "evidence": [
+    "a6ee162:src/records/submissionValidation.ts",
+    "a6ee162:analytics-worker/src/records.ts",
+    "tests/unit/game032-integration.test.ts",
+    "analytics-worker/tests/records-local-d1.mjs",
+    "docs/game032/QA/integration-01/worker-records.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Implemented032-only client/server minimum300000ms and complete-outcome validation. Real local workerd+D1 accepted completedzero/higher score and one-person TOP10, hid pendingscore, and rejected short duration, quit/milestone, practice mode, assistance and above-limit fixtures; all prior29 record check categories retained.",
+    "evidence": [
+      "src/records/submissionValidation.ts",
+      "analytics-worker/src/records.ts",
+      "docs/game032/QA/integration-01/worker-records.txt",
+      "docs/game032/QA/integration-01/unit.txt"
+    ]
+  }
+}

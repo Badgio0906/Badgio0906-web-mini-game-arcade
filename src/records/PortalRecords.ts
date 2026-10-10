@@ -1,3 +1,4 @@
+import { isPublicRecordRegistered } from './remoteRegistration';
 import { getRecordDefinition, type RecordDefinition } from '../data/recordDefinitions';
 import { readLocalRecord, type LocalRecord } from './localRecords';
 import { createLeaderboardDialog } from './LeaderboardDialog';
@@ -16,6 +17,7 @@ export function localRecordLabel(record: LocalRecord, definition: RecordDefiniti
 }
 export function publicStateLabel(state:PublicBestState, definition:RecordDefinition):string {
   if(!definition.publicEnabled)return ['game012','game013','game014'].includes(definition.gameId)?'未対応（旧作品）':'全体比較なし';
+  if(!isPublicRecordRegistered(definition.gameId))return '準備中';
   const board=state.boards.get(definition.boardId);
   if(state.status==='preparing')return '準備中';
   if(state.status==='loading')return '読み込み中';

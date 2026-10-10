@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "game032",
+  "title": "川辺で、ひとやすみ。",
+  "titleJa": "川辺で、ひとやすみ。",
+  "titleEn": "RIVER SIDE FISHING",
+  "tagline": "清流で、のんびり一釣行。",
+  "tags": [
+    {
+      "id": "fishing",
+      "label": "釣り"
+    },
+    {
+      "id": "chill",
+      "label": "チル"
+    },
+    {
+      "id": "nature",
+      "label": "自然"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    },
+    {
+      "id": "timing",
+      "label": "タイミング"
+    }
+  ],
+  "genre": "chill-fishing",
+  "controls": {
+    "summary": "A/Dまたは左右で移動、Space長押しと離す操作でキャスト、本アタリで合わせ、魚の引きが弱い時に巻く",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": 300,
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "4釣り場とキャスト距離を選び、前アタリと本アタリを見分け、巻く／緩める判断で5分の釣果を積む",
+  "description": "4釣り場とキャスト距離を選び、前アタリと本アタリを見分け、巻く／緩める判断で5分の釣果を積む",
+  "failureModes": "早合わせ・遅合わせ・過剰なテンションでその魚を逃す。釣行は継続する",
+  "route": "./game032.html",
+  "thumbnail": "./assets/portal/game032.webp",
+  "design": {
+    "thumbnailDescription": "川辺で、ひとやすみ。の実プレイ画面。生成素材の透明な清流、自然光、統一した釣り人と7魚種、静かな水面と判読可能なUI",
+    "majorVisuals": "生成素材の透明な清流、自然光、統一した釣り人と7魚種、静かな水面と判読可能なUI",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "Sparse standard fishing events and existing lifecycle; practice excluded from production. External Analytics and record transport remain OFF for032 until its existing production Worker registration is independently verified. Anonymous fishing_summary only; no raw player IDs.",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game032/game.manifest.json",
+    "details": "src/games/game032/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game032",
+    "titleJa": "川辺で、ひとやすみ。",
+    "titleEn": "RIVER SIDE FISHING",
+    "genre": "chill-fishing",
+    "coreMechanic": "choose river spot, charge cast, distinguish nibble from bite, hook and alternate reeling with release",
+    "skill": "spot and distance selection, hook timing, readable fish tension",
+    "score": "total fishing score in one completed five-minute standard outing",
+    "failure": "early/late hooks and excessive tension lose that fish; outing continues",
+    "timeLimit": 300,
+    "expected_run_seconds": 300,
+    "creditMode": "free",
+    "rules_version": "1",
+    "presentation_version": "prototype-1",
+    "recordBoard": "game032.score.r1.standard",
+    "practice": "untimed independent outing; no local BEST, ranking candidate or production RUN",
+    "save": "validated local-only standard:r1 score; original games unchanged",
+    "inputs": {
+      "keyboard": "A/D or arrows move; Space hold/release cast; Space/Enter hook or hold reel; Escape pause",
+      "touch": "left/right buttons; one phase-labelled CAST/HOOK/REEL action; hold release with pointercancel cleanup"
+    },
+    "prototypeStatus": "trial; technical QA distinct from author enjoyment",
+    "telemetry": "existing lifecycle + specific_game_events sparse fishing observations; external OFF until actual Worker registration",
+    "rights": "original gameplay, generated natural art with provenance; no third-party fishing game assets/code"
+  }
+}
