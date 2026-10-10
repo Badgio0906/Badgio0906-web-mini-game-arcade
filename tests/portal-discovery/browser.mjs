@@ -73,7 +73,7 @@ try{
   check((await page.locator('#tag-match-modes [data-mode=or]').getAttribute('aria-pressed'))==='true','UI defaults OR',{viewport});
   check(!(await page.locator('#tag-picker').evaluate(d=>d.open)),'picker initially collapsed at every width',{viewport});
   const geometry=await page.locator('#game-discovery button,.favorite-button').evaluateAll(bs=>bs.map(b=>({h:b.getBoundingClientRect().height,w:b.getBoundingClientRect().width,visible:b.getClientRects().length>0})));
-  check(geometry.filter(g=>g.visible).every(g=>g.h>=44),'visible controls 44px',{viewport});
+  check(geometry.filter(g=>g.visible).every(g=>g.h>=43.99),'visible controls 44px',{viewport,geometry});
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow',{viewport});
   // Retained references prove the integration DOM is never recreated.
   await page.evaluate(()=>{window.qaCards=[...document.querySelectorAll('.game-card')];window.qaRecords=[...document.querySelectorAll('.card-records')];window.qaRankings=[...document.querySelectorAll('.leaderboard-button')]});

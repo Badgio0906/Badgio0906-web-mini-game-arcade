@@ -17,7 +17,7 @@ runtime変更はindex.html、src/portal/DiscoveryControls.ts、main.ts、style.c
 - 固定source／dist hashはQA/SOURCE_MANIFEST.jsonとBUILD_MANIFEST.json、測定probe修正後はSOURCE_FINAL_MANIFEST.json。ブラウザは1440×900、390×844、320×720、repository subpath320を通常mouse／tap／keyboard入力で検証し208checks PASS（QA/browser-accepted）。page／console errors0、非analytics POST0。同座標解除、reloadだけ並替え、OR／AND／状態／empty／clear、既存node、Records／sharing／TOP10、PLAY／card launch、consent／observer／dedupを確認した。
 - 独立source／実画像／操作レビューはINDEPENDENT_REVIEW.md。固定buildの3width、同座標解除・cross-tab・keyboard・reload・storage取得拒否など74checks PASS、page／console errors0・POST0（QA/independent-accepted）。Jevはfinding発生時のみ使用し、全PASSをAPIへ送らない。
 
-公開CIと公開ブラウザ／配信版照合は後続記録へ追記する。物理スマホと作者本人の主観評価は今回未実施で、自動viewport結果とは区別する。
+公開CIと公開ブラウザ／配信版照合は下記「公式公開」へ記録した。物理スマホと作者本人の主観評価は今回未実施で、自動viewport結果とは区別する。
 
 ### 初回同座標probeの測定
 
@@ -34,3 +34,15 @@ PCは完了、390pxでbbox完全一致の初回assertが失敗した。測定を
 Jev Shadowは2finding／2実API／HTTP200で有効回答。独立Codexは両件をTEST_INFRA_BUGと判定し、主原因の選択はJevと2件とも不一致、次の証拠は2件一致。追加作業判定に見逃し0、重大risk見逃し0。回答を修正・公開Gateには使わず、実測／独立レビュー／再テストを継続した。QA/JEV_SUMMARY.jsonに母数・費用・限界を保持する。
 
 最終統合QA/browser-acceptedは全208checks成功。既存hoverの2px範囲と0.01px未満の寸法計算誤差以外は、同座標解除でcard offsetTop／scroll／positionsを厳密に比較した。完成した公開前候補に未解決findingなし。
+
+## 公式公開
+
+runtime commit `86e70b707e5fabaec871aafe4d4c3405d62cf417`をmainへ通常push。公式[Build and deploy arcade run38006965327](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38006965327) のbuild／deploy成功。既存ActionsのNode20非推奨／ubuntu-latest移行案内は設定変更せず保持。QA/OFFICIAL_WORKFLOW.jsonへ正確なSHAとjob結果を保存。
+
+QA/public-version/VERSION.jsonで期待SHAの公式CI・clean製品source・既存公開frontend設定のproduction buildを確認し、公開HTML／JS／CSS／font／3legacy runtime／共通navigationの166fileのSHA-256が一致。公式artifactZIP自体の直接照合ではないことをprovenanceへ明記した。第三者ads実行や本番synthetic Analytics／Records POSTは検証に不要で行わない。
+
+公開初回QA/public-browserはPC完了後390pxの44px target比較でFAILし、実寸詳細を含めていなかった。target比較に0.01px未満のbbox数値誤差許容と全geometry記録を追加したQA/public-browser-measuredは全152checks成功。再測定の各幅のvisible target最小値はすべて44pxであり、初回未記録値は推測で補完しない。初回画像／原本は保持、製品変更なし。
+
+公開1440×900／390×844／320×720で閉panel・選択条件・status／OR／AND／empty／clear・favorite追加解除と同位置取消・reload並替え・非favorite／新作保持・Records／TOP10／sharing／consent／observer・PLAY／card launchを通常操作で152checks PASS。page／console errors0、records／その他POST0、Analytics POSTはQA内204で本番へ転送なし。公開証拠はQA/PUBLICATION.json、public-browser-measured/REPORT.json、public-version/VERSION.json。
+
+再開時は現行mainとdocs/PORTAL_DISCOVERY.mdを確認する。今回未解決blockerなし。runtime86e70b7以後の記録／probeの測定補正は製品source／distを変更しない。
