@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-10T07:41:16.218717+00:00",
+  "stage": "public verifier first attempt",
+  "error": "EAI_AGAIN api.github.com in nested Node verifier",
+  "cause_observed": "--use-env-proxy was on parent Node only; nested execFileSync uses process.execPath without flags and NODE_USE_ENV_PROXY was unset",
+  "action": "set NODE_USE_ENV_PROXY=1 for inherited managed proxy; use a new evidence directory",
+  "product_change": false
+}

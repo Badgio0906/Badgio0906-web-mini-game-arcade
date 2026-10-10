@@ -22,6 +22,18 @@ npm test
 
 Browser runnerは/usr/bin/chromiumとPlaywrightを使う。4画面・普通のkeyboard/CDP touch・実DOMに従う釣り操作、virtual clockで5分結果、別の明示的scripted-RNG同種魚表示fixtureを含む。人間の300秒釣行や物理指操作とは区別。POSTをabortし、同意は拒否する。公開版を試す場合はproxy/networkと環境が利用可能か先に確認し、拒否を回避しない。サーバー／/workspace外一時ログを成果の根拠にせず、各QAのsource hash／保存画像／REPORTを見る。
 
+## 公開済みの検証
+
+runtime44a7608／公式Pages38034974805成功、186file配信SHA一致と公開4画面72通常操作を確認。[公開証拠](QA/PUBLICATION.json)。追加指示のOpenAI ImageGen実3call／原本／モデル系統metadata／Art Director比較はART_DIRECTIONとassets/game032/provenance.jsonを参照。正確な生成モデル版は非公開。再現browserは新しい一意な証拠先を使う。
+
+```sh
+# managed proxyが必要なら親子Nodeへ継承する。禁止hostを迂回しない。
+NODE_USE_ENV_PROXY=1 node tests/game032/verify-public.mjs <expected-runtime-sha> <official-run-id> docs/game032/QA/new-public-version
+GAME032_QA_URL=https://game100garage.com GAME032_QA_OUT=docs/game032/QA/new-public-browser GAME032_EXPECTED_SHA=<expected-runtime-sha> node tests/game032/publication-browser.mjs
+```
+
+Byte verifierはexpectedcommit HEADのclean runtimeと同公開設定で作ったdistが前提。資料commit後の現在HEADをhistoric44として偽らず、現HEADの対応CIを指定するか44の別checkoutで再現する。公開browserは解析同意拒否、POST禁止、許可外infraGET abortとし、集計／広告配信成功の確認にしない。
+
 ## 登録待ち
 
 本番D1/Workerに032がまだ登録されていない。既存20boardは保持し、032だけ`src/records/remoteRegistration.ts`と`src/analytics/remoteRegistration.ts`で停止。Cloudflare認証と許可先が用意された環境で最新mainを読み、既存登録と衝突しないことを確認してWorkerコードを公開→032と認証集計を確認→032 gate解除。Secret・新しい認証を勝手に作らない。D1schema/migration追加は不要。実RUNを捏造して登録確認しない。コード対応・本番登録・外部送信ON・実プレイヤー観測を別状態で報告する。

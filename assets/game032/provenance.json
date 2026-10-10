@@ -1,12 +1,12 @@
 {
   "game_id": "game032",
-  "base_commit": "a6ee162",
+  "base_commit": "a6ee162c3988214e1556719f3802ebc14b57efd0",
   "role": "Art Director / asset production",
   "generation_tool": "image_gen.imagegen",
   "resolved_model": null,
   "usage_tokens": null,
   "cost": null,
-  "model_omission_reason": "The tool response supplied image_url and output_hint only; exact model/version and cost were not returned.",
+  "model_omission_reason": "The image_gen.imagegen tool response exposed image_url and output_hint only and no model selector. Original PNG C2PA metadata reports softwareAgent ChatGPT/version gpt-image and claim generator OpenAI Media Service API. This is a reported model family, not an exact model revision; GPT Image 2.5 and global-latest claims are unverified.",
   "reference_images": [],
   "generation_count": 3,
   "outputs": [
@@ -18,7 +18,16 @@
       "prompt": "Create an ORIGINAL finished background illustration for a premium tranquil 2D browser river fishing game. Wide panoramic landscape, approximately 1536x1024 or landscape 3:2 composition. NO TEXT, NO UI, NO PEOPLE, NO FISHING EQUIPMENT, NO LOGOS. Soft painterly illustration with refined natural detail, transparent jade and pale turquoise Japanese mountain stream in summer / early autumn, warm dappled sunlight, mossy slate rocks, elegant trees, distant wooded hills, wind-touched grasses, luminous clear shallow water. Readable game camera: river occupies middle horizontal band between y=0.28 and y=0.72, continuous walkable near-bank gravel/earth strip along lower y=0.74 to 0.91. Four recognizable fishing spots arranged horizontally: left clear shallow gravel riffles, mid-left mossy boulder pool, mid-right leafy overhang and quiet deep jade pool, right inflow stream joining main river with gentle foam. These 4 spots must all remain visible in a landscape crop, no dominant foreground tree blocks water. Sky and far forest occupy upper quarter. NO vast mountains dominating scene. Perspective roughly from slightly elevated far side? Ensure NEAR bank is foreground lower frame, far bank background. Plenty unobstructed open river surface for bobber and subtle ripple animation. Very high quality illustrated scenery, calm, cozy but not childish, natural handcrafted brushwork, not flat geometric or pixel art, not photorealism. Painterly coherent palette warm sage, jade, blue slate, muted golden light. Crisp details at game scale, quiet scene, no dramatic spectacle, no manufactured buildings. It must be actual reusable background artwork, not a mock-up game screenshot.",
       "status": "generated_successfully_and_visually_inspected",
       "decision": "adopted",
-      "notes": "Source artwork, not a game screenshot. Actual water region .38–.72 and bank .78–.91; original requested .28 start but art remains suitable."
+      "notes": "Source artwork, not a game screenshot. Actual water region .38–.72 and bank .78–.91; original requested .28 start but art remains suitable.",
+      "original_sha256": "1723b47e40b63a251bd61123fbf295deeb106c392d334563030205a09cdcbfa7",
+      "embedded_c2pa_created_at": "2026-10-10T06:51:31.094421705Z",
+      "embedded_c2pa_software_agent": {
+        "name": "ChatGPT",
+        "version": "gpt-image"
+      },
+      "embedded_c2pa_claim_generator": "OpenAI Media Service API",
+      "c2pa_cryptographic_signature_validated": false,
+      "metadata_scope": "Read and parsed original PNG embedded CBOR action assertion; certificate strings observed. Did not independently validate certificate/signature chain."
     },
     {
       "id": "angler-atlas",
@@ -28,7 +37,16 @@
       "prompt": "Create ORIGINAL production 2D game sprite atlas, transparent background, landscape 1536x1024. EXACTLY eight separated full-body versions of SAME adult fisher in 4 COLUMNS x 2 ROWS, equal cell grid; every figure entirely inside its own cell with generous transparent spacing and same visual size, feet aligned at bottom of cell. Natural anatomically correct male adult outdoors angler, warm beige bucket hat, sage green long-sleeve overshirt/jacket over cream shirt, warm brown straight trousers, dark ankle hiking boots, quiet appealing face small, premium soft painterly illustrated 2D matching serene jade river scenery. Side 3/4 view, all characters facing RIGHT. Natural human anatomy, exactly 2 arms 2 legs each, recognizable hands no grotesque fingers, comfortable compact silhouette. NO fishing rod, NO fishing line, NO fish, NO scenery, NO labels or numbers, NO UI. Hands mime holding an invisible rod grip roughly at chest/waist; code will attach actual rod later. Top row left to right: 1 standing relaxed idle right hand forward at mid-chest and left hand near waist, 2 walking with left foot forward and arms modestly bent, 3 walking right foot forward, 4 preparing cast with both hands chest-high and torso slightly rotated. Bottom row left to right: 5 release cast with hands extended diagonally right and slight forward lean, 6 hook upward gesture hands rising near shoulder while planted boots, 7 reeling with two hands close together in front of chest, 8 proud quiet landed catch pose empty hands slightly lifted but NO visible fish. Calm natural poses, refined texture and soft shaded fabric, clean transparent alpha edges, not photorealistic, not a stick figure, not chibi. All figures consistent clothing, proportions, light from upper left, moderate detail usable at 100–160px character display. NO duplicated limbs, no missing ankles, no cropped boots.",
       "status": "generated_successfully_and_visually_inspected",
       "decision": "adopted",
-      "notes": "Eight distinct poses, one illustrated frame per pose; walk uses two different poses. Not a claimed eight-frame looping animation per action. Rod/line are deliberately omitted for joint-correct code rendering."
+      "notes": "Eight distinct poses, one illustrated frame per pose; walk uses two different poses. Not a claimed eight-frame looping animation per action. Rod/line are deliberately omitted for joint-correct code rendering.",
+      "original_sha256": "e40daa9403ccbff2fbbeeb79638966d3e64af9fabc958557841a2d9ad21de41a",
+      "embedded_c2pa_created_at": "2026-10-10T06:52:57.259376596Z",
+      "embedded_c2pa_software_agent": {
+        "name": "ChatGPT",
+        "version": "gpt-image"
+      },
+      "embedded_c2pa_claim_generator": "OpenAI Media Service API",
+      "c2pa_cryptographic_signature_validated": false,
+      "metadata_scope": "Read and parsed original PNG embedded CBOR action assertion; certificate strings observed. Did not independently validate certificate/signature chain."
     },
     {
       "id": "fish-atlas",
@@ -38,7 +56,16 @@
       "prompt": "Create ORIGINAL production game artwork sheet with SIX different Japanese freshwater fish, isolated on TRANSPARENT background. Landscape1536x1024. Exact grid: 2 COLUMNS x 3 ROWS, one fish per cell, all FULL SIDE VIEW and facing RIGHT, generous transparent margins; all six silhouettes fully visible including every tail and fin. No shadows beneath fish, no water or scenery, NO TEXT, NO LABELS, NO NUMBERS, NO UI, no people. Premium calm painterly 2D illustration, natural scientifically plausible fish body and elegant subtle brush texture, clean alpha edges, coordinated with jade river and outdoor fisherman illustrated game. Refined highlights on scales, clear species identification, not photorealistic, not exaggerated monster/cartoon. Cells ordered LEFT TO RIGHT then TOP TO BOTTOM: 1 Oikawa (Japanese pale chub), slender silvery slim body with muted blue/rose iridescence and modest forked tail. 2 Ugui (Japanese dace), elongated olive gray silver body, single muted gold side stripe, subtle orange fin edges. 3 Yamame (landlocked cherry salmon), silver pale golden body with dark blue oval vertical parr marks and scattered black spots, small adipose fin. 4 Amago (red-spotted masu trout), silver pale gold with dark parr marks AND visibly delicate red spots, orange-cream fin edges. 5 Iwana (Japanese char), dark olive-brown upper body with distinct pale cream/yellow small round spots, warm yellow lower body and rounded tail. 6 Nijimasu (rainbow trout), silvery teal upper body, beautiful muted rose lateral stripe and small black speckling especially dorsal/tail. Ensure fish shapes varied but scale consistent, each whole fish centered, attractive and wholesome on small catch cards at 160px width. Natural closed/slightly open mouths, one visible eye each, no grotesque teeth. The final sheet MUST contain exactly six full isolated fish artworks.",
       "status": "generated_successfully_and_visually_inspected",
       "decision": "adopted",
-      "notes": "Six distinct right-facing species illustrations; matching painterly palette. Not a certified biological field guide."
+      "notes": "Six distinct right-facing species illustrations; matching painterly palette. Not a certified biological field guide.",
+      "original_sha256": "292f9e978f91ee328a0b3ac3a543ad231886684c64b2f1327b889f0317c892cc",
+      "embedded_c2pa_created_at": "2026-10-10T06:54:08.926310281Z",
+      "embedded_c2pa_software_agent": {
+        "name": "ChatGPT",
+        "version": "gpt-image"
+      },
+      "embedded_c2pa_claim_generator": "OpenAI Media Service API",
+      "c2pa_cryptographic_signature_validated": false,
+      "metadata_scope": "Read and parsed original PNG embedded CBOR action assertion; certificate strings observed. Did not independently validate certificate/signature chain."
     }
   ],
   "distribution": "Only optimized WebP derivatives under public/assets/game032 are distributed; generated originals under assets/game032/originals remain evidence.",
@@ -53,5 +80,89 @@
     "Optimized light-background angler contact sheet",
     "Optimized fish contact sheet"
   ],
-  "independent_review": "Asset author inspection only. Independent integrated game Visual review is performed separately by main/reviewer."
+  "independent_review": "Asset author inspection only. Independent integrated game Visual review is performed separately by main/reviewer.",
+  "reported_model_family": "gpt-image",
+  "capability_discovery": {
+    "initial_discovery": {
+      "timing": "Before the first actual generation call in this agent turn",
+      "source": "Actual functions.exec call enumerating ALL_TOOLS and filtering imagegen/image_generation/image generation; result contains image_gen__imagegen and descriptions",
+      "chosen_callable": "tools.image_gen__imagegen",
+      "tool_contract_name": "image_gen.imagegen",
+      "tool_schema_model_selector": false,
+      "available_outputs": [
+        "image_url",
+        "output_hint"
+      ],
+      "reason": "User requires OpenAI image generation; chose the directly exposed built-in generator instead of unrelated Canva capabilities. Three actual successful calls, not proposed tool use.",
+      "discovery_timestamp": "not captured; ordering confirmed by actual agent tool history"
+    },
+    "posthoc_audit": {
+      "audit_at_utc": "2026-10-10T07:40:50.822264+00:00",
+      "sources": [
+        "Current ALL_TOOLS discovery",
+        "skills.list cloud authority all results (next_cursor null)",
+        "skills.list executor authority (empty)",
+        "Preserved generated PNG C2PA assertions",
+        "Original tool result keys from actual successful first generation"
+      ],
+      "skills_result": "No dedicated general image generation skill in available cloud/executor catalogs; pet skill is for Work Pets and is inapplicable. This skills inventory was checked during the current audit, not claimed as an initial pre-generation read.",
+      "latest_scope": "The current exposed OpenAI image_gen.imagegen capability was used. A selectable exact GPT Image version and independent global-latest comparison are not available in its contract; no claim of GPT Image 2.5."
+    }
+  },
+  "director_integrated_comparison": {
+    "scope": "Art Director/source-author inspection of saved actual game screenshots and actual game-derived thumbnail; distinct from independent Visual/QA and human playtest.",
+    "view_method": "tools.view_image for all seven images on 2026-10-10; visual inspection of the returned pixels.",
+    "images": [
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/pc-bite.png",
+        "sha256": "9f0b2e4e273f773a25bb95d6e7b01a4f5f09cedff8e1529f2ec268c7114681d0"
+      },
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/pc-land.png",
+        "sha256": "10e70248a2a7b1ee164ab090908e175dd49ceda0998d080cc2073395fa34e25b"
+      },
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/phone-bite.png",
+        "sha256": "69a9cf3ad16081379afc77a518d395dc2c366c2e40a163a9f02e8056d0a79b72"
+      },
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/phone-land.png",
+        "sha256": "9e868e1e6fcf6ae20066ebf2356a68301fe7d1987cf26cf8aaed60f73b9ef6db"
+      },
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/small-land.png",
+        "sha256": "c8f4ebc83492d440d7bc668337d3d0963b62a3734c6169e04ba95f91a6d55f11"
+      },
+      {
+        "path": "docs/game032/QA/release-candidate/ordinary-browser-01/landscape-land.png",
+        "sha256": "f189c79c92cb7b34b9d403b9ac45990320fff1a2abd156d8e9a0d4ff8c9019c3"
+      },
+      {
+        "path": "public/assets/portal/game032.webp",
+        "sha256": "9fd83d26f1ba06c8b7980ed32b3cf45d405728281b7669050605c488747b22ee"
+      }
+    ],
+    "observations": [
+      "Rendered PC and phone water/rocks/leaves preserve original generated painterly detail and palette; scene is not reduced to generic SVG/CSS shapes.",
+      "Transparent angler retains hat, sage clothes, brown trousers, boots and natural limbs at game scale. Rod begins at the selected pose hand, consistent with per-pose atlas anchors and observed runtime code.",
+      "PC catch card uses generated Oikawa art with full silhouette/fins; 320 screenshot shows Amago catch as illustrated fish near angler. Portrait catch art is smaller and calm.",
+      "Desktop retains broad scenic context. Phone crop retains foreground angler/bank, water and hook state; short landscape necessarily shows a shallower band and smaller character. It is not an attempt to show the entire panorama at tiny size.",
+      "Cream panels and dark-green text harmonize with scenery; overlays occupy compact areas and do not replace the fisher with disconnected body parts.",
+      "Actual Portal thumbnail derives from a real integrated canvas and contains the real generated scenery, angler and rod; no fabricated extra assets."
+    ],
+    "director_decision": "Retain current adopted artwork; no genuine asset quality problem requiring regeneration observed in these images.",
+    "regeneration_required": false,
+    "additional_image_generation_calls": 0,
+    "limitations": [
+      "This is saved-pixel comparison, not new live play or actual physical-phone touch/thermal/audio review.",
+      "It does not independently prove every animation trajectory or original fish biological accuracy.",
+      "Main independent Visual/QA and human enjoyment assessment remain separate."
+    ]
+  },
+  "audit_hash_check": {
+    "files_verified": 18,
+    "all_sha256_match": true,
+    "new_asset_changes": false,
+    "generated_calls_total": 3
+  }
 }

@@ -30,3 +30,23 @@ contact sheetは素材確認用であり実ゲーム画面でもPortal thumbnail
 ## Rights
 
 [素材のRIGHTS_NOTE](../../assets/game032/RIGHTS_NOTE.md)。外部ゲーム素材や既成キャラクターを参照・流用していない。権利リスクのゼロ保証は行わない。
+
+## 追加指示に対する能力・モデル確認（事後監査）
+
+最初の生成より前に、本agentの実tool履歴で`ALL_TOOLS`を検索し、組込みOpenAI画像生成`image_gen__imagegen`（契約名`image_gen.imagegen`）の利用可能性を確認した。その後、背景・釣り人atlas・魚atlasの順で3回を実行し、すべて実画像と保存済みPNGを得た。初回tool結果のkeyは`image_url`と`output_hint`。モデルを指定するパラメーターはこのtool契約に存在しない。最初のdiscoveryの時刻そのものは記録しておらず、先後関係は実tool履歴で確認できる。
+
+追加指示後の2026-10-10に、現tool一覧・cloud/executorのskill一覧を再確認した。一般の専用ImageGen Skillは当該一覧に存在せず、Work Pets専用skillは対象外。**このskill一覧確認を生成開始前に実施したとは主張しない。** 現在公開されている組込み生成経路を選んだことと、全世界で最新の特定モデル版を選択・比較できたことは区別する。
+
+原本PNGのC2PA assertionを読み、CBORの`softwareAgent`をparseした。3点すべてが`name=ChatGPT`、`version=gpt-image`、claim generatorに`OpenAI Media Service API`を含む。原本に記録されたcreated時刻は背景06:51:31.094421705Z／釣り人06:52:57.259376596Z／魚06:54:08.926310281Z（日本時間15時台）。これはmetadataの時刻であって、tool呼出開始・終了の独自計測値ではない。metadataの読み取りは確認済みだが、C2PA証明書・署名chainの暗号学的検証は未実施。
+
+確認できるのはOpenAI GPT Image**系統表記**まで。正確なresolved model revisionはtoolにも原本にも露出していないため`null`を保持し、**GPT Image 2.5使用済み・全体最新モデル確認済みとは書かない。** 利用したOpenAI生成tool、3回の実生成、正確なprompt、原本・派生18点のSHA256を[provenance](../../assets/game032/provenance.json)に記録した。API keyを表示・保存していない。
+
+## Art Directorによる統合画面比較
+
+追加指示後に保存済み実ゲーム画像`QA/release-candidate/ordinary-browser-01/`のPC bite／land、390px phone bite／land、320px land、横画面landを`view_image`で実viewした。さらに配信の`public/assets/portal/game032.webp`をviewし、生成原本と比較。各画面のSHA256をprovenanceに記録した。
+
+原本の透明な水・苔岩・木々の密度は実ゲームにも保持され、主な絵がSVG/CSS仮図形に置き換わっていない。人物の帽子・服・手足・ブーツは自然な輪郭のまま、手の位置へ竿が接続される。PC釣果カードではオイカワの尾・ひれを含む生成魚が表示され、320px画面の釣果はアマゴの模様が読める。穏やかな紙色と青緑UIは背景と調和し、キャラを切断した説明カードへ置き換えない。phoneは岸・人物・水面・ウキを残すcrop、short landscapeは上下の狭い範囲と小さい人物となる。実thumbnailも実canvasからの景色と人物・竿で、架空の豪華画面を合成していない。
+
+**素材担当の判断：採用済み美術を維持。これらの実画像では再生成を必要とする具体的な素材品質問題を認めなかった。** 新しい生成API呼出は0、runtime／配信画像の変更は0。川・人物・魚が主要生成素材、竿・糸・水面波紋・HUDはゲームの可変表示としてコードで補う。
+
+この比較は素材作者／Art Directorの確認。独立Visualレビュー、実ブラウザ入力QA、本人の面白さ確認、実機の触感・発熱・音質とは別であり、それらを追加実施した扱いにしない。単一のsaved screenshotからすべての中間アニメーションや生物学的正確性が合格したとも主張しない。

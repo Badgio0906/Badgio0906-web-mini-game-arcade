@@ -1,0 +1,74 @@
+{
+  "observed_at": "2026-10-10T07:44:43.189332+00:00",
+  "game_id": "game032",
+  "title": "川辺で、ひとやすみ。 ～RIVER SIDE FISHING～",
+  "public_url": "https://game100garage.com/game032.html",
+  "runtime_commit": "44a7608cdd43066dc970b62278ce7f2f7ae97438",
+  "official_workflow": {
+    "id": 38034974805,
+    "url": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38034974805",
+    "build": "success",
+    "deploy": "success"
+  },
+  "served_byte_verification": {
+    "evidence": "public-version-02/VERSION.json",
+    "files": 186,
+    "result": "PASS",
+    "first_attempt": "public-version-01/FAILURE.json",
+    "kind": "expected-commit-source-and-public-bytes"
+  },
+  "ordinary_public_browser": {
+    "evidence": "public-browser-01/REPORT.json",
+    "checks": 72,
+    "viewports": [
+      {
+        "name": "pc",
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "name": "phone",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "name": "small",
+        "width": 320,
+        "height": 740
+      },
+      {
+        "name": "landscape",
+        "width": 844,
+        "height": 390
+      }
+    ],
+    "page_errors": 0,
+    "post_attempts": 0,
+    "virtual_clock_or_model_rng_injection": false,
+    "result": "PASS"
+  },
+  "portal": {
+    "active_cards": 31,
+    "game032_play_link": "./game032.html",
+    "actual_canvas_thumbnail": "assets/portal/game032.webp",
+    "ads_script": "retained"
+  },
+  "art": {
+    "actual_imagegen_calls": 3,
+    "tool": "image_gen.imagegen",
+    "metadata_family": "gpt-image",
+    "resolved_revision": null,
+    "primary_assets_generated": true,
+    "director_integrated_comparison": "docs/game032/ART_DIRECTION.md",
+    "independent_visual": "85/100 F13/H13 PASS"
+  },
+  "production_registration": {
+    "analytics": "pending; external032 disabled",
+    "shared_best_top10": "pending; preparing UI",
+    "worker_deployed": false,
+    "reason": "Cloudflare credential absent and relevant hosts outside managed allowed network; no bypass/new permissions"
+  },
+  "preservation": "PRESERVATION_PUBLIC.json",
+  "human_or_physical_device_playtest": false,
+  "limits": "Browser automation is real input in headless Chromium, not human subjective play or physical phones. Consent rejected and infrastructure GET requests intentionally aborted; no production data or advertisement delivery verification. Exact ImageGen model revision unexposed; C2PA metadata read without cryptographic chain validation."
+}
