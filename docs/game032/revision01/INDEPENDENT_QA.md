@@ -71,3 +71,19 @@ GAME032_QA_URL=http://127.0.0.1:4433 GAME032_QA_OUT=docs/game032/revision01/QA/i
 PC／320pxを含む全画面の`*-charging-bait/lure.png`は押下中、`*-casting-transient-bait/lure.png`は離した直後の実キャスト中に撮影した。単に着水後の画像をキャストと称していない。4端点・中央は`*-aim-*-corner.png`／`*-aim-middle.png`。
 
 最新サムネイル原本は [candidate04実2匹画面](QA/independent-browser-04/pc-game-layout-two-fish.png)、rect・SHA・source・取得方法は [metadata](QA/independent-browser-04/pc-game-layout-two-fish.json)。前candidate02由来の画像と区別する。独立技術QAは最新candidate04、deadline／BESTの技術確認は同一モデル・保存のcandidate02が証拠。本人の面白さ、実機、音の聴感、公開配信の実確認はこのローカルQAの合格へ読み替えない。
+
+## 公開版 — 通常操作とPortal補足
+
+親から公式Pages成功・期待runtime `829f0148595863a42d34a4bcff928025e0aeb941` の193配信ファイルSHA一致の連絡を受けた後、`https://game100garage.com/`を独立ブラウザで実操作した。配信193ファイルの確認は親の別証拠であり、本担当が同じ検証を実行したとは称していない。
+
+```sh
+GAME032_QA_URL=https://game100garage.com GAME032_QA_OUT=docs/game032/revision01/QA/public-browser-NEW node tests/game032/revision01/candidate03-browser.mjs
+```
+
+公開4画面の通常操作 **154/154成功**：[公開通常操作原本](QA/public-browser-01/REPORT.json)。全画面で水面4端点＋中央選択、充電／投げる／着水、餌とルアー各1匹の取り込み、合計8匹の通常練習釣果、水槽2匹／実時間の魚移動／Pause停止／再開、操作領域hit／clip、練習BEST除外、Portal帰還を確認した。仮想時計・RNG・モデル注入なし、本番の架空RUNや300秒fixtureを送っていない。runtime・HTML・manifest・WebP・font・runnerの前後hash不変、pageerror0、POST0。
+
+続けて別の読み取り専用ブラウザ補足を実施し、**43/43成功**：[Portal／取消原本](QA/public-browser-01/PORTAL_REPORT.json)。全4画面で31カード、新サムネイル640×360実decode・公開画像SHAとruntime原本の一致、PLAY実遷移、既存AdSenseスクリプト残存、公開BEST「準備中」を確認。スマホ相当3画面は実CDP touchCancelで充電を投げずに破棄、PCは通常Space＋Escapeで充電取消／Pause後、新しい再開入力が投げを持ち越さないことを確認。練習BEST未保存、取消後のPortal実帰還も成功。JavaScript pageerror・POSTとも0。
+
+新Portalカードは `*-portal-new-thumb.png`、取消直後は `*-cancel-resume.png`。公開版の2匹実画面・投げ先・充電・キャスト・取り込みも同じ [公開証拠ディレクトリ](QA/public-browser-01/) に保存した。全context／browserを終了済み。補足はQA用inlineコマンドのみで、本番コード・コミット済みrunnerの変更なし。
+
+各新contextで解析同意を拒否し、POSTを監視・停止。許可先外のAnalytics／広告GETはabortし、偽の正常応答を与えていない。従って広告配信の成功、Analytics本番受信、管理集計の取得は未確認。作者の主観試遊、実機スマホ、音の聴感、長時間の端末負荷も未確認のまま。

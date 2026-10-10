@@ -13,7 +13,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-generated-manifest-mismatch",
@@ -25,7 +31,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-lure-bite-cue",
@@ -37,7 +49,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-deadline-clock-fixture",
@@ -49,7 +67,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-landscape-aim-label",
@@ -61,7 +85,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-phone-aquarium-detail",
@@ -73,7 +103,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-near-left-bank",
@@ -85,7 +121,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-water-endpoint-roundtrip",
@@ -97,7 +139,13 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     },
     {
       "finding_id": "r01-water-endpoint-roundtrip",
@@ -109,9 +157,18 @@
       "resolved_model": "typesafe/jev-1.13-20260917",
       "valid_answers": 4,
       "independent_judgment_recorded": true,
-      "pass": true
+      "pass": true,
+      "answer_schema_checks": {
+        "PRIMARY_CAUSE": true,
+        "NEXT_EVIDENCE": true,
+        "CODEX_ACTION_REQUIRED": true,
+        "RELEASE_RISK_IF_UNRESOLVED": true
+      }
     }
   ],
   "all_valid": true,
-  "scope": "9 actualrequests/36answers, separate unit and browser endpoint checkpoints; schema rejected preAPI invocation is excluded; noPASS/quota calls, nofun or releasepermit delegation"
+  "scope": "9 actualrequests/36answers, separate unit and browser endpoint checkpoints; schema rejected preAPI invocation is excluded; noPASS/quota calls, nofun or releasepermit delegation",
+  "answer_validation": "choice selected allowed; complete choice probability keys/finite0..1/sum tolerance; two finite0..1 noul. Helper also validates responses beforeAVAILABLE.",
+  "helper_sha256": "8f0a6268625bc9fbb8b218fb450d8a25f39ec09926c58a5813dacafbd37413db",
+  "schema_verified_at": "2026-10-10T08:59:25.916266+00:00"
 }

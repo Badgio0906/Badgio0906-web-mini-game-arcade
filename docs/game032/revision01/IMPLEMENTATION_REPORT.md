@@ -1,6 +1,6 @@
 # Game032 revision01 — 少年・2釣法・水槽
 
-2026-10-10 JST。実装/独立QA済み、公式公開確認は次工程。base e3d7338c8fa0f073e0e3ad7ba419375eed3ad0cd。
+2026-10-10 JST。公式試作公開・実URL確認済み。base e3d7338c8fa0f073e0e3ad7ba419375eed3ad0cd。
 
 背景の生成画像を維持し、麦わら帽子の独自2D少年へ置換。人物は歩かず、クリック/タップ/矢印で川面を選ぶ。準備して離す入力と投げ先を分離し、チャージ長で選択点が変わらない。左右の向きは変えても足位置は固定。
 
@@ -24,6 +24,14 @@ Save.ts、旧BEST key/5field/r1/旧scoreは不変。元背景、旧魚6、Save�
 
 外部Analytics/032共有/TOP10は準備中・無効。新たな権限やbackend設定は作っていない。methodは端末内釣果と内部eventにあり、既存sanitizerが除外するため方式別本番集計は未対応。架空RUN/本番POSTなし。
 
-Jevはfinding時だけ実schema2 Shadowで使い、回答に依存しない別agentのコード/実画面/通常操作を維持。API成否/4回答/独立判断/採否はQA/JEV_SHADOW.jsonl/JEV_SUMMARY.json/JEV_AUDIT.json。面白さ/画像評価/公開許可をJevへ任せていない。
+Jevはfinding時だけ実schema2 Shadowで9request/36有効回答（全api_attempted=true/HTTP200/resolved model確認）を使い、回答に依存しない別agentのコード/実画面/通常操作を維持。API成否/4回答/独立判断/採否はQA/JEV_SHADOW.jsonl/JEV_SUMMARY.json/JEV_AUDIT.json。面白さ/画像評価/公開許可をJevへ任せていない。独立原因一致8/9、次証拠一致5/9、false-pass/risk-miss0。ただし全9件で独立追加作業が必要で、低routing値の省略候補0件。少数・問題選択済み標本からレビュー削減や一般的有効性を断定しない。
 
 実機iPhone/Android、音の聴感、作者本人の面白さは未確認。試作公開の承認範囲で進める。[HUMAN_PLAYTEST](HUMAN_PLAYTEST.md)／[再現](HANDOFF.md)。active31/historical32、010退役、次033未着手。
+
+## 公式公開確認
+
+runtime **829f0148595863a42d34a4bcff928025e0aeb941** をmainへpush。公式Pages **38039708161** のbuild/deploy successを確認し、検証したCI相当production buildと公開193fileのSHAが一致（032art22+新thumbを含む）。公開URL：https://game100garage.com/game032.html 。
+
+公開通常4画面 **154/154**、餌/ルアー計8匹は実clockのキーボード/マウス/CDPtouchによる実釣果。別Portal/取消補足 **43/43**：31card・032PLAY実遷移・新640×360thumb decode/配信SHA・AdSense残存・032BEST準備中・3touch cancel/PC Escapeからのfresh resume。pageerror/POST0、source/画像/font/runnerhash不変。ネットワーク方針で遮断した既存backend GETのERR_FAILEDをJavaScript製品例外と混同しない。
+
+出力はQA/public-browser-01、配信一致はQA/public-version-01/VERSION.json、公開概要はQA/PUBLICATION.json。失敗の削除や人間評価の捏造なし。公開・本番登録・実ユーザー受信は別状態で、032Analytics/共有は引き続きOFF/登録待ち。
