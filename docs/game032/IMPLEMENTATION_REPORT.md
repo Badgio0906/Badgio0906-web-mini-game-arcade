@@ -1,5 +1,7 @@
 # Game032 — 実装・試作公開報告
 
+最新改修：[revision01 — 少年・2釣法・水槽](revision01/IMPLEMENTATION_REPORT.md)。以下はprototype-1公開時の履歴。
+
 2026-10-10 JST。**実装・技術QA・公式試作公開の照合完了。** https://game100garage.com/game032.html 。runtime commit `44a7608cdd43066dc970b62278ce7f2f7ae97438`、[公式Pages run38034974805](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38034974805)のbuild／deploy成功。186配信file SHA一致・公開4画面72項目／page error0／POST0。[公開証拠](QA/PUBLICATION.json)／[配信版](QA/public-version-02/VERSION.json)／[公開操作](QA/public-browser-01/REPORT.json)。開始時base `a6ee162c3988214e1556719f3802ebc14b57efd0`、専用branch `codex/game032-river-fishing`。
 
 ## 実装

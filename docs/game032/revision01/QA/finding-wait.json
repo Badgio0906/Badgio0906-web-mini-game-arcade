@@ -1,0 +1,15 @@
+{
+  "finding_id": "r01-bait-wait-bound-oracle",
+  "problem": "Bait maximum-wait test rejects elapsed time after charge and flight",
+  "expected": "Nibble opportunity by12active seconds in waiting",
+  "observed": [
+    "New model suite:33 pass,1failure.",
+    "After charge1.25s and flight.9s, bait waited12s. Snapshot elapsed14.149999999999837.",
+    "Assertion expects total elapsed<14. Productphase reached nibble."
+  ],
+  "unknown": [
+    "Whether timing implementation or test reference interval needs adjustment"
+  ],
+  "test_name": "bounded waiting test at tests/unit/game032-model.test.ts:18",
+  "provenance": "synthetic deterministic model fixture, not production play"
+}

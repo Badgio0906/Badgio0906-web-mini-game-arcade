@@ -1,0 +1,17 @@
+{
+  "finding_id": "revision01-water-endpoint-precision",
+  "reviewed_at": "2026-10-10T08:47:04.970566+00:00",
+  "jev_answers_read": false,
+  "primary_cause": "PRODUCT_BUG",
+  "codex_action_required": true,
+  "next_evidence": "AUTOMATED_TEST",
+  "release_blocker": false,
+  "reason": "Projection output at legal targetPower1 yields y23.359999999999 below its advertised waterFar23.36, so the direct inverse hit test rejects its own valid endpoint. The selection/drawing inverse contract is inconsistent, even though difference is microscopic and most interior points work. Fix interpolation endpoints algebraically, preserve strict endpoint tests and independently round-trip every viewport; do not weaken assertions or claim all ordinary taps failed.",
+  "evidence": [
+    "src/games/game032/Projection.ts",
+    "tests/unit/game032-projection.test.ts"
+  ],
+  "outcome": "Parent-owned exact interpolation and bounded0.001CSSpx inverse tolerance verified by unchanged exact-corner ordinary browser inputs in all4 viewports, plus midpoint/catches. No runner inset, RNG/model/time injection or assertion weakening. Root separately preserves strict unit endpoint and1pxoutside rejection tests.",
+  "reverified_at": "2026-10-10T08:53:49.741043+00:00",
+  "retest_evidence": "docs/game032/revision01/QA/independent-browser-04/REPORT.json"
+}

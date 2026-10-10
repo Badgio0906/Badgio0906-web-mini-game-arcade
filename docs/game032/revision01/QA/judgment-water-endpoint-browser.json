@@ -1,0 +1,22 @@
+{
+  "finding_id": "r01-water-endpoint-roundtrip",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision01_qa independent agent; Jevanswers unread",
+  "rationale": "Exact corners failed after browser coordinate translation despite unit round-trip success. Recorded measurement supports finite precision issue; rawclientX/Y not recorded so a specific internal representation is not asserted.",
+  "evidence": [
+    "independent-browser-coordinate-judgment/JUDGMENT.json",
+    "independent-browser-03/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Bounded .001CSSpx hit tolerance then clamp towater;1pxoutside stillrejected. Same exactcorners, no inset, now all4views pass154checks with source frozen.",
+    "evidence": [
+      "independent-browser-04/REPORT.json",
+      "root-tests-candidate04.txt"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,0 +1,17 @@
+{
+  "finding_id": "r01-lure-bite-cue",
+  "problem": "Lure bite instruction describes a float although selectedmethod has no float",
+  "expected": "Onscreenbite instruction readable for chosen bait orlure method",
+  "observed": [
+    "pc-lure-bite andphone-lure-bite show methodルアー,amberlureinwater.",
+    "Status says 本アタリ！ ウキが沈んだら、合わせよう。"
+  ],
+  "unknown": [
+    "Whether other method-specific messages also mismatch"
+  ],
+  "evidence": [
+    "independent-browser-01/pc-lure-bite.png",
+    "src/games/game032/main.ts"
+  ],
+  "provenance": "independentVisual actualscreenshots"
+}

@@ -29,7 +29,7 @@
   ],
   "genre": "chill-fishing",
   "controls": {
-    "summary": "A/Dまたは左右で移動、Space長押しと離す操作でキャスト、本アタリで合わせ、魚の引きが弱い時に巻く",
+    "summary": "川面をクリック／タップまたは矢印で狙い、固定位置で投げる。餌＋浮き／ルアーを選択、ルアーは1回ずつ引く、本アタリで合わせ、弱い引きで巻く",
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": 300,
@@ -38,16 +38,16 @@
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "4釣り場とキャスト距離を選び、前アタリと本アタリを見分け、巻く／緩める判断で5分の釣果を積む",
-  "description": "4釣り場とキャスト距離を選び、前アタリと本アタリを見分け、巻く／緩める判断で5分の釣果を積む",
+  "mainMechanics": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ",
+  "description": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ",
   "failureModes": "早合わせ・遅合わせ・過剰なテンションでその魚を逃す。釣行は継続する",
   "route": "./game032.html",
   "thumbnail": "./assets/portal/game032.webp",
   "design": {
-    "thumbnailDescription": "川辺で、ひとやすみ。の実プレイ画面。生成素材の透明な清流、自然光、統一した釣り人と7魚種、静かな水面と判読可能なUI",
-    "majorVisuals": "生成素材の透明な清流、自然光、統一した釣り人と7魚種、静かな水面と判読可能なUI",
+    "thumbnailDescription": "川辺で、ひとやすみ。の実プレイ画面。既存の美麗清流背景、独自2D麦わら帽子少年6ポーズ、7魚種とImageGen写真調水槽、静かな水面と判読可能なUI",
+    "majorVisuals": "既存の美麗清流背景、独自2D麦わら帽子少年6ポーズ、7魚種とImageGen写真調水槽、静かな水面と判読可能なUI",
     "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
-    "referenceImageUse": "No new user reference for this game in this task.",
+    "referenceImageUse": "User countryside cartoon boy reference is broad illustrative taste only; new original straw-hat teal/cream boy, no face/clothes/emblem/net/basket copied. Actual ImageGen originals/provenance in assets/game032/revision01.",
     "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
   },
   "telemetryCoverage": "Sparse standard fishing events and existing lifecycle; practice excluded from production. External Analytics and record transport remain OFF for032 until its existing production Worker registration is independently verified. Anonymous fishing_summary only; no raw player IDs.",
@@ -62,21 +62,21 @@
     "titleJa": "川辺で、ひとやすみ。",
     "titleEn": "RIVER SIDE FISHING",
     "genre": "chill-fishing",
-    "coreMechanic": "choose river spot, charge cast, distinguish nibble from bite, hook and alternate reeling with release",
-    "skill": "spot and distance selection, hook timing, readable fish tension",
+    "coreMechanic": "choose water target while stationary; bait float waiting or click-retrieve lure; hook and alternate reel with release; catches swim in photographic generated aquarium",
+    "skill": "water target and method selection, lure rhythm, hook timing, readable fish tension",
     "score": "total fishing score in one completed five-minute standard outing",
     "failure": "early/late hooks and excessive tension lose that fish; outing continues",
     "timeLimit": 300,
     "expected_run_seconds": 300,
     "creditMode": "free",
     "rules_version": "1",
-    "presentation_version": "prototype-1",
+    "presentation_version": "prototype-2",
     "recordBoard": "game032.score.r1.standard",
     "practice": "untimed independent outing; no local BEST, ranking candidate or production RUN",
-    "save": "validated local-only standard:r1 score; original games unchanged",
+    "save": "existing validated local-only standard:r1 score unchanged; aquarium shows current outing catches and is not persistent",
     "inputs": {
-      "keyboard": "A/D or arrows move; Space hold/release cast; Space/Enter hook or hold reel; Escape pause",
-      "touch": "left/right buttons; one phase-labelled CAST/HOOK/REEL action; hold release with pointercancel cleanup"
+      "keyboard": "arrows aim; Space/Enter press-release cast, click retrieve lure, hook, hold reel; Escape pause",
+      "touch": "tap/drag water target; bait/lure selector and phase-labelled single action; pointercancel cleanup"
     },
     "prototypeStatus": "trial; technical QA distinct from author enjoyment",
     "telemetry": "existing lifecycle + specific_game_events sparse fishing observations; external OFF until actual Worker registration",

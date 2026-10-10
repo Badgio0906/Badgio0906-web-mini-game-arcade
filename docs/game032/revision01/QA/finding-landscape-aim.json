@@ -1,0 +1,25 @@
+{
+  "finding_id": "r01-landscape-aim-label",
+  "problem": "Selected left water target is not visible in short landscape screenshots",
+  "expected": "All selected far/near water targets visible beforecast",
+  "observed": [
+    "At844x390 landscape left-far andleft-near images white selectedmarker isnotvisible.",
+    "Scene label approxx24..268/y94..135. Projected target/water band approxy111..133.",
+    "PC/phone targetmarker visible in correspondingcases."
+  ],
+  "unknown": [
+    "Whether scene label geometry and/or target projection needs change"
+  ],
+  "evidence": [
+    "independent-browser-01/landscape-aim-left-far.png"
+  ],
+  "provenance": "independent Visual actualview fixedcandidate01",
+  "measurements": {
+    "viewport_width": 844,
+    "viewport_height": 390,
+    "label_y_min": 94,
+    "label_y_max": 135,
+    "water_y_min": 111,
+    "water_y_max": 133
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "finding_id": "r01-near-left-bank",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "revision01_visual independent agent; Jevanswers unread",
+  "rationale": "Original artwork and actual left-near marker agree on non-water vegetation atsource .67; selectable destination conflicts with river targeting.",
+  "evidence": [
+    "../VISUAL_REVIEW.md",
+    "INDEPENDENT_VISUAL.json",
+    "independent-browser-02/landscape-aim-left-near.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Inspected originalart/projection, reduced sourcewaterband to.45\u2013.58 and capped shallowcrop; independent actualcorners/middle4views nowwater andmonotonic.",
+    "evidence": [
+      "independent-browser-04/landscape-aim-left-near-corner.png",
+      "independent-browser-04/REPORT.json",
+      "../VISUAL_REVIEW.md"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

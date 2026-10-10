@@ -1,0 +1,18 @@
+{
+  "finding_id": "revision01-browser-water-endpoint-coordinates",
+  "reviewed_at": "2026-10-10T08:49:44.343883+00:00",
+  "jev_answers_read": false,
+  "primary_cause": "PRODUCT_BUG",
+  "codex_action_required": true,
+  "next_evidence": "AUTOMATED_TEST",
+  "release_blocker": false,
+  "reason": "Exact normalized near-corner ordinary mouse input returns power1.80577e-7 rather than0, while subsequent exact far-corner input leaves previous target unchanged. This is an observed valid-boundary pointer mapping rejection, distinct from the fixed pure interpolation. Finite input/global-to-canvas coordinate translation is strongly supported by tiny near-edge deviation; raw pointer client coordinates were not recorded, so Float32 source is not asserted as observed. A bounded0.001CSSpx tolerance in hit-testing with normalized clamping is reasonable; preserve exact endpoint browser targets, permit \u00b10.00002px unit cases and retain rejection1px outsidebank.",
+  "evidence": [
+    "docs/game032/revision01/QA/independent-browser-03/REPORT.json",
+    "docs/game032/revision01/QA/independent-browser-03/pc-failure.json",
+    "src/games/game032/Projection.ts"
+  ],
+  "outcome": "Parent-owned exact interpolation and bounded0.001CSSpx inverse tolerance verified by unchanged exact-corner ordinary browser inputs in all4 viewports, plus midpoint/catches. No runner inset, RNG/model/time injection or assertion weakening. Root separately preserves strict unit endpoint and1pxoutside rejection tests.",
+  "reverified_at": "2026-10-10T08:53:49.741240+00:00",
+  "retest_evidence": "docs/game032/revision01/QA/independent-browser-04/REPORT.json"
+}

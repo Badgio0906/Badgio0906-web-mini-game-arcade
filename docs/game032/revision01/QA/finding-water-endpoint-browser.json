@@ -1,0 +1,26 @@
+{
+  "finding_id": "r01-water-endpoint-roundtrip",
+  "problem": "Exact far-corner browser input is ignored while exact near-corner succeeds",
+  "expected": "Mouse/touch selection of visible water endpoints works after DOM coordinate translation",
+  "observed": [
+    "ActualPC1280x900 candidate03 tap at right-far corner leaves oldleft-near selection.",
+    "Requested screenx841.9456/y333.193125, localy132.24, river936x441.",
+    "Left-near exactpower0 wasaccepted but reportedpower1.805773851728392e-7; JavaScriptendpoint unit tests pass."
+  ],
+  "unknown": [
+    "Whether browser input finite-coordinate precision and strict interval comparison causes this rejection"
+  ],
+  "evidence": [
+    "independent-browser-03/REPORT.json",
+    "independent-browser-03/pc-failure.png",
+    "src/games/game032/Projection.ts"
+  ],
+  "provenance": "Actual ordinary real-clock mouse input on frozen candidate03; failed capture and source receipt preserved",
+  "measurements": {
+    "viewport_width": 1280,
+    "viewport_height": 900,
+    "requested_y": 333.193125,
+    "local_y": 132.24,
+    "near_power_observed": 1.805773851728392e-07
+  }
+}

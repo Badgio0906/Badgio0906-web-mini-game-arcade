@@ -1,0 +1,269 @@
+{
+  "game_id": "game032",
+  "revision": "revision01",
+  "base_commit": "e3d7338c8fa0f073e0e3ad7ba419375eed3ad0cd",
+  "role": "Art Director / asset author",
+  "generation_tool": "image_gen.imagegen",
+  "resolved_model": null,
+  "exact_model_reason": "Tool exposed image_url and output_hint only, with no model selector. Exact model revision and latest-model ranking are not verified.",
+  "generation_count": 2,
+  "reference_scope": "User attachment informs only general friendly hand-drawn 2D childhood countryside tone. It was not passed as input. Red shirt, fish emblem, basket, net, face, silhouette and character proportions not copied.",
+  "outputs": [
+    {
+      "id": "boy-atlas",
+      "source": "/workspace/generated_images/exec-1f83826b-c607-4c8d-bace-a679fb6071d6.png",
+      "prompt": "ORIGINAL production transparent 2D cartoon game sprite atlas. EXACTLY SIX full-body poses of ONE identical ORIGINAL friendly countryside BOY aged about 10, wearing a wide straw sunhat with a muted teal ribbon and two little loose straw tips, sage/teal short-sleeved pocket shirt with plain cream side panel (NO logo or emblem), sandy beige knee shorts, simple navy low shoes, short dark curly hair peeking from hat, slim youthful believable child proportions with head about 1/4 of body height. Distinct face with slightly round nose, expressive black dot/oval eyes, soft closed smile. Warm clean hand-drawn outline, flat storybook cel coloring, small restrained shadows, gentle appealing illustrative simplicity, NOT pixel art, NOT adult, NOT photorealistic, NOT copied from any existing children's character. Transparent background alpha, no scenery, no text, NO fishing rod, no line, no net/basket/fish/tools. Same right-facing three-quarter view and exactly same proportions/outfit in all six. Layout EXACT 3 COLUMNS x 2 ROWS equal cells, landscape atlas 1536x1024, each character completely within cell with generous empty margin, strawhat and shoes completely visible. SAME planted feet baseline in each cell; body at most80%cellheight. Top row left-to-right: IDLE relaxed standing hands comfortably in front at waist, READY cast hands holding invisible rodgrip raised near right shoulder, CAST hands extended diagonally up to the right, rightward slightlean. Bottom row left-to-right: HOOK hands together lifted near head like lifting invisible rod, REEL hands comfortably near chest with second hand beside grip turning imaginary reel, LAND happy proud standing with both hands near belly/chest, empty hands to overlay actual caught fish. Proper anatomy exactly two arms and legs each, hands clearly connected to wrists, no double fingers/extra limbs. Each pose has clearly visible forward dominant gripping hand where game code will attach rod. Same feet location and consistent light from upper left, poses distinct but quiet. Full isolated transparent sprites, NO checkerboard printed background.",
+      "started": {
+        "current_time": "2026-10-10 08:19:01 UTC"
+      },
+      "completed": {
+        "current_time": "2026-10-10 08:19:40 UTC"
+      },
+      "transparent_background": true,
+      "status": "generated_successfully",
+      "decision": "adopted"
+    },
+    {
+      "id": "aquarium",
+      "source": "/workspace/generated_images/exec-47e9da24-350d-4aec-bfd2-1fdf03c3813c.png",
+      "prompt": "Create a beautiful PHOTOREALISTIC original aquarium photograph as browser-game side-panel artwork, square 1024x1024 composition. A SMALL CLEAN RECTANGULAR GLASS FRESHWATER AQUARIUM photographed STRAIGHT ON from front, no perspective tilt, centered and occupying nearly entire image. Thin elegant charcoal/teal top and bottom rim, vertical side glass lines, filled almost to top with transparent pale cyan freshwater, clear readable rectangular underwater viewing window. Fine pale sand acrossbottom, just a few small rounded river stones at lower corners, sparse modest short aquatic plants ONLY at bottomleft and bottomright. Leave MIDDLE AND UPPER 75% of water completely OPEN, translucent pale aqua water with a very subtle natural darkening towards edges; this is where live animated fish will later be added by game code. NO FISH, NO animals, NO people, NO hands, NO text, NO labels, NO logos, NO icons, NO bubbles, NO decorative ruins. Soft actual aquarium glass reflections confined to edges so open underwater area remains unobstructed. Tank sits on muted light beige wood shelf in warmly lit peaceful room, cropped with verysmall room margin. Water surface horizontal near top15%, substrate around bottom15%; front-view tank viewing window x=8%-92%, y=16%-82%. Realistic transparent glass, clearwater, gentle daylight from upperleft, subtle detailed sand/pebbles but NOT murky, NOT stylized illustration, NOT digitalcartoon, not huge industrial aquarium. Cohesive quiet sage/palegold/teal palette. Finished photographic graphic with empty water ready for 2D fish compositing, no UI.",
+      "started": {
+        "current_time": "2026-10-10 08:20:00 UTC"
+      },
+      "completed": {
+        "current_time": "2026-10-10 08:20:30 UTC"
+      },
+      "transparent_background": false,
+      "status": "generated_successfully",
+      "decision": "adopted"
+    }
+  ],
+  "usage_tokens": null,
+  "cost": null,
+  "source_sha256": {
+    "assets/game032/revision01/originals/aquarium.png": "7f3b56e77b99cb80d96ab135a2ea6b3535cce735510b85ebfe949917b5be8af2",
+    "assets/game032/revision01/originals/boy-atlas.png": "dc64f5123b2daac4c45fffb31ba76c38563fff035ce51e6cae19a1bb73f52c3c"
+  },
+  "source_dimensions": {
+    "boy-atlas": [
+      1536,
+      1024
+    ],
+    "aquarium": [
+      1254,
+      1254
+    ]
+  },
+  "reviewed_materials": [
+    "assets/game032/revision01/originals/boy-atlas.png",
+    "assets/game032/revision01/originals/aquarium.png",
+    "assets/game032/revision01/boy-anchor-sheet.webp",
+    "public/assets/game032/aquarium.webp"
+  ],
+  "source_metadata_scope": "No precise model metadata returned by the tool. PNG model metadata is not independently audited for these two revision01 originals.",
+  "read_references": [
+    "AGENTS.md",
+    "docs/PROJECT_CONTEXT.md",
+    "docs/CURRENT_STATUS.md (current Game032 entry)",
+    "docs/GAME_DEVELOPMENT_RULES.md",
+    "assets/game032/asset-index.json",
+    "assets/game032/optimize.py",
+    "assets/game032/provenance.json"
+  ],
+  "integrated_art_review": {
+    "observed_at": "2026-10-10T17:33:43+09:00",
+    "reviewer": "Art Director / asset author (not independent Visual)",
+    "viewed_actual_game_screenshots": [
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-bait-land.png",
+        "sha256": "80e162a3eb360b5e9e16e6e7a9188205c97dc73af856e62f8dfd1e49b58880e9"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-lure-land.png",
+        "sha256": "466d7b4f334d6fdafcf9faf1d8d82f5f5b9faadb5bd7fc7d2aafd77620fe9e6a"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-aim-left-near.png",
+        "sha256": "077a342c55358e565a0411303607bb38ec56398f7c2f3e647125fec50be91e25"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-aim-left-far.png",
+        "sha256": "0112ce93745e381245634c0078c0e74923807180dee3467c5d16a666af0cd793"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-aim-right-near.png",
+        "sha256": "a4f57b5d31ddac126e3af474cfa3dc51329f47367496a8a74ae22480f16088d6"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/pc-aim-right-far.png",
+        "sha256": "dbb808340e70f5089fb5e1a2073fa051b49d6b478693a83b69184882139b7d1e"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/phone-bait-land.png",
+        "sha256": "8eb1681e5173a413b2c884e471870fc9cec2701f4935f22af4002636af9a1e1e"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/phone-lure-land.png",
+        "sha256": "001fbe5191030b6d7357291a4813294a4cc8211624478f0ae019003b3c6549ec"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/phone-lure-bite.png",
+        "sha256": "43ea7b58b77bb8880cd63174c5ce5153db1f3feb2612478da3b17ef32bf02117"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/phone-aim-left-near.png",
+        "sha256": "5e9909375e9b3e09a80349a8e85d6287ea73dee042ff72083d9c1a3e8485c3e7"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/phone-aim-right-far.png",
+        "sha256": "81f3c7c04cfe83abae04903aa67aa4735aabfb7aeba9fb733225ab3f64a41e53"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/small-bait-land.png",
+        "sha256": "3649c593394b2d238061dc9b41c0fbf984d9023539c37d5209c76bbb5ce48235"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/small-lure-land.png",
+        "sha256": "5646d66c8cd2bbcb7ce7f187aba9c8ca4ff5db9033fcc77e7baba798592c75fe"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/small-bait-bite.png",
+        "sha256": "8a2a8977e421f7ea5c765905f0c658bb818b6af96cd758f5599941c6de8b7c00"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/small-aim-left-far.png",
+        "sha256": "dee7c68c7205f7ba7a4263a53635325a90f499c1bc431e1fc486d0f2db29eea9"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/small-aim-right-near.png",
+        "sha256": "eca55927f1d28c3a26f39da7538c256d3408547bb414ee951e2a559ba3baef82"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/landscape-bait-land.png",
+        "sha256": "63607636c1af8fdb06d8017aae25e3dac8a465f2b98935baff04faceb5c13c7a"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/landscape-lure-land.png",
+        "sha256": "f8e976394de9b3ac9b6ce34df83823a3cb89af7c1eb25c63c2f247b550da1e02"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/landscape-bait-bite.png",
+        "sha256": "352e6daa6ae05b60ab633d85a326715b240eb8d473a2560c5bbb6966b984f1e3"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/landscape-aim-left-near.png",
+        "sha256": "14cbab8b5334803939aa87436770071e6785381b9b7dbcb38a8afd3a4b651832"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-01/landscape-aim-right-far.png",
+        "sha256": "d07f11a44db24cf5bb736a8d90e6faf9f2de570409149e6b8a0ebb688006b64e"
+      }
+    ],
+    "source_manifest": "docs/game032/revision01/QA/independent-browser-01/ART_SOURCE.json",
+    "browser_source_unchanged": true,
+    "technical_report_success_at_view": false,
+    "decision": "adopted; no regeneration required",
+    "limits": [
+      "Static screenshots do not prove sustained swimming animation or all six pose transitions.",
+      "Phone aquarium fish approximately12-18CSSpx long, species detail limited.",
+      "No physical-device or human aesthetic assessment."
+    ]
+  },
+  "final_integrated_art_review": {
+    "observed_at": "2026-10-10T17:55:06+09:00",
+    "time_precision": "Verified clock after final actual-image review and documentation; not exact per-image view timestamp.",
+    "reviewer": "Art Director / asset author; independent Visual separate",
+    "candidate": "candidate04 / independent-browser-04",
+    "viewed_actual_game_screenshots": [
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/pc-charging-bait.png",
+        "sha256": "023ed4b592d0bf5b757d3bbafdbd0af1644d947d2800cbb66fa55bbdebd7ddc1"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/pc-casting-transient-bait.png",
+        "sha256": "1698a1a9ffa69161ee3f21c85810657f9fdeb9a37c156a1f18f8c24f20c2bf84"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/pc-charging-lure.png",
+        "sha256": "768aa0350737e325d0c3bad3777a721e654223aed53cf7cb917110025e1ac0eb"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/pc-casting-transient-lure.png",
+        "sha256": "055293d14d3a6e291442f38afb7b7e4ec1fbb4d536277c7e687d5ea93addfc3d"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/pc-lure-land.png",
+        "sha256": "39f4bc85d774489155ce64841bc3452c0cd8b0041566eb031222463ce1641c5d"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/phone-charging-bait.png",
+        "sha256": "a35649373bf9acc02b6711e1819bbf4f4bb85c516736447632062523cce90f07"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/phone-casting-transient-lure.png",
+        "sha256": "015fbaa1267fd57ff444dc9050123315c86d8a2ba1ab3b95136839f08421f8f5"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/phone-lure-land.png",
+        "sha256": "4dc1ffaa9f60641289b12b18a116004d941269f8c172652f81d9f29f78474a3b"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/phone-aim-left-near-corner.png",
+        "sha256": "47214125c469811868855da61beeba359ff0f61f9f3f8dbd404431adf3c5c9f0"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/small-charging-lure.png",
+        "sha256": "582e340c25385f660bfdf1df072919a9d89a2aa8d811e16fc0525e740a9b3b00"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/small-casting-transient-lure.png",
+        "sha256": "20449e3124757bd6ca0840affafc5417e66947c5db8f8b2d77d5354081e1da6f"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/small-lure-land.png",
+        "sha256": "83131def3af372aec8b2d9ac9995a101fb6e727b210f301c98eb1c096b86435b"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/small-aim-left-near-corner.png",
+        "sha256": "0235036ecdbac7ab5b5ca60d692bb64ed3c134b490b2e87e0f746ae149abda6e"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-charging-lure.png",
+        "sha256": "a2eed93631a79daa79f8d25c14865e30f0633205dad281bf4a5942d82f7ef6da"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-casting-transient-lure.png",
+        "sha256": "1c4d991407d56d32552e30a74db7c8610015f0eefb8f3cc7754e3525c86e5350"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-aim-left-near-corner.png",
+        "sha256": "736886f66ea905602c00336ff499a5595ca6c3678612de588177c2b5a7c9d55c"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-aim-right-far-corner.png",
+        "sha256": "85dfa4d2555858754078e73e2c5639b723bfad78a9c27eed3ef561b995f12378"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-lure-land.png",
+        "sha256": "0569427ff1448d6c2564206153bfc80222db533192285091ccc4a6aa42028d24"
+      },
+      {
+        "path": "docs/game032/revision01/QA/independent-browser-04/landscape-tank-two.png",
+        "sha256": "aa0c13f6e04238049aabdf912abb4a4c83ff2ba7a18a2bc7db525c6b15d6c83d"
+      }
+    ],
+    "actual_thumbnail": {
+      "path": "assets/portal/thumbnails/game032-revision01.webp",
+      "sha256": "07d5162e8b130ef45aa86d1e5c4146f8881128bbf3634dfac80a2415dadf5d9d",
+      "width": 640,
+      "height": 360
+    },
+    "technical_report_success_at_view": true,
+    "technical_report_source_unchanged": true,
+    "technical_report_checks": 154,
+    "decision": "adopted; no additional generation; mobilefishvisibility improved; ready/cast hand connection retained",
+    "limits": [
+      "Static views do not establish sustained swimming motion, human aesthetic preference, physical-device display, or smooth continuous animation."
+    ]
+  }
+}

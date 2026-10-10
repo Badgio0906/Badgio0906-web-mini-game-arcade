@@ -1,0 +1,19 @@
+{
+  "finding_id": "r01-phone-aquarium-detail",
+  "problem": "Fish in narrowphone aquarium are small enough that shape details are difficult to see",
+  "expected": "Caught fish visuallyreadable swimming inside photoaquarium on320/390mobile as well asdesktop",
+  "observed": [
+    "ArtDirector actualviews320/390 record fish approximately12\u201318CSSpx long.",
+    "PC tank fish around50px andfishtextlabels remainreadable onphone.",
+    "Currentdrawing useswaterwidth*.24 commonfish and*.31 largefish."
+  ],
+  "unknown": [
+    "Whether constrained minimumsize withfitinsidewater improves readability without overcrowding12fish"
+  ],
+  "evidence": [
+    "independent-browser-01/phone-lure-land.png",
+    "independent-browser-01/small-lure-land.png",
+    "src/games/game032/Aquarium.ts"
+  ],
+  "provenance": "actual savedphonepictures+source artdirector/rootobservation, notphysicalphonehumanreport"
+}

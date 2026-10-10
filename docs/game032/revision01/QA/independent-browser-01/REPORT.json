@@ -1,0 +1,1913 @@
+{
+  "kind": "independent real-clock keyboard/mouse/CDP-touch acceptance; separate labeled virtual-clock deadline fixture",
+  "base": "http://127.0.0.1:4433",
+  "started_at": "2026-10-10T08:30:29.587Z",
+  "source_hashes": {
+    "game032.html": "fd0a40d7bcf2dd634a425eb3c405b1bf2a4a651ac47937cd50061b66bd5140c1",
+    "src/games/game032/main.ts": "235ec9cfd2d3ccd10dc606b3cf3a782b7475f3c0dbbb308a7571717e15395110",
+    "src/games/game032/FishingModel.ts": "5bbc9467e3e46cc4c46c110d7211ff84f0b0ab10423b6ad912188afe01ebbe39",
+    "src/games/game032/Projection.ts": "edbaf253b8c97ec5724fe6439e1ec6d812e91cb0cf5ed65da9cdd0075a54868d",
+    "src/games/game032/Aquarium.ts": "e8477b07e7a2c19a769819a13605a029fee9e40ea8a74c984840b65d9ec5028f",
+    "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+    "src/games/game032/style.css": "0bac1d77a0cf50cdc897287cbdfbede2f47225a012604eb8af9d2b39073cd07c"
+  },
+  "checks": [
+    {
+      "name": "pc: lower help Portal visible and hit-testable",
+      "passed": true,
+      "bottom": 774.3125,
+      "height": 900,
+      "hit": true
+    },
+    {
+      "name": "pc: actual help Portal return",
+      "passed": true
+    },
+    {
+      "name": "pc: optional practice",
+      "passed": true
+    },
+    {
+      "name": "pc: no horizontal overflow",
+      "passed": true,
+      "width": 1280,
+      "height": 900,
+      "scroll": 1280,
+      "targets": {
+        "method-bait": {
+          "x": 516,
+          "y": 673.734375,
+          "w": 120,
+          "h": 44,
+          "bottom": 717.734375,
+          "right": 636
+        },
+        "method-lure": {
+          "x": 644,
+          "y": 673.734375,
+          "w": 120,
+          "h": 44,
+          "bottom": 717.734375,
+          "right": 764
+        },
+        "action": {
+          "x": 445,
+          "y": 779.734375,
+          "w": 390,
+          "h": 50,
+          "bottom": 829.734375,
+          "right": 835
+        },
+        "aquarium": {
+          "x": 995,
+          "y": 282.953125,
+          "w": 244,
+          "h": 244,
+          "bottom": 526.953125,
+          "right": 1239
+        },
+        "river": {
+          "x": 28,
+          "y": 200.953125,
+          "w": 936,
+          "h": 441,
+          "bottom": 641.953125,
+          "right": 964
+        }
+      }
+    },
+    {
+      "name": "pc: 44px visible method-bait",
+      "passed": true,
+      "x": 516,
+      "y": 673.734375,
+      "w": 120,
+      "h": 44,
+      "bottom": 717.734375,
+      "right": 636
+    },
+    {
+      "name": "pc: 44px visible method-lure",
+      "passed": true,
+      "x": 644,
+      "y": 673.734375,
+      "w": 120,
+      "h": 44,
+      "bottom": 717.734375,
+      "right": 764
+    },
+    {
+      "name": "pc: 44px visible action",
+      "passed": true,
+      "x": 445,
+      "y": 779.734375,
+      "w": 390,
+      "h": 50,
+      "bottom": 829.734375,
+      "right": 835
+    },
+    {
+      "name": "pc: side aquarium retained",
+      "passed": true,
+      "x": 995,
+      "y": 282.953125,
+      "w": 244,
+      "h": 244,
+      "bottom": 526.953125,
+      "right": 1239
+    },
+    {
+      "name": "pc: water selection left-near",
+      "passed": true,
+      "point": {
+        "x": 197.22879999999998,
+        "y": 453.99952500000006,
+        "localX": 169.22879999999998,
+        "localY": 253.04640000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.12000000704872836",
+        "targetPower": "0.12000009674570247",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position left-near",
+      "passed": true
+    },
+    {
+      "name": "pc: water selection right-far",
+      "passed": true,
+      "point": {
+        "x": 779.0464,
+        "y": 353.785125,
+        "localX": 751.0464,
+        "localY": 152.83200000000002,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999831078933",
+        "targetPower": "0.8499999946647592",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position right-far",
+      "passed": true
+    },
+    {
+      "name": "pc: water selection left-far",
+      "passed": true,
+      "point": {
+        "x": 197.22879999999998,
+        "y": 353.785125,
+        "localX": 169.22879999999998,
+        "localY": 152.83200000000002,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.12000000704872836",
+        "targetPower": "0.8499999946647592",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position left-far",
+      "passed": true
+    },
+    {
+      "name": "pc: water selection right-near",
+      "passed": true,
+      "point": {
+        "x": 779.0464,
+        "y": 453.99952500000006,
+        "localX": 751.0464,
+        "localY": 253.04640000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999831078933",
+        "targetPower": "0.12000009674570247",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position right-near",
+      "passed": true
+    },
+    {
+      "name": "pc: background crop unchanged after all aims",
+      "passed": true
+    },
+    {
+      "name": "pc: invalid bank tap does not change aim",
+      "passed": true
+    },
+    {
+      "name": "pc: keyboard changes aim without walking",
+      "passed": true
+    },
+    {
+      "name": "pc: water selection keyboard-return",
+      "passed": true,
+      "point": {
+        "x": 779.0464,
+        "y": 453.99952500000006,
+        "localX": 751.0464,
+        "localY": 253.04640000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999831078933",
+        "targetPower": "0.12000009674570247",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position keyboard-return",
+      "passed": true
+    },
+    {
+      "name": "pc: cancel charge does not cast",
+      "passed": true,
+      "input": "synthetic DOM mouse pointercancel"
+    },
+    {
+      "name": "pc: water selection bait-final",
+      "passed": true,
+      "point": {
+        "x": 598.2112,
+        "y": 447.13552500000003,
+        "localX": 570.2112,
+        "localY": 246.18240000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.6299999766491466",
+        "targetPower": "0.16999997403516104",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position bait-final",
+      "passed": true
+    },
+    {
+      "name": "pc: aim marker visible at selected canvas point",
+      "passed": true,
+      "preview": [
+        247,
+        234,
+        203,
+        255
+      ]
+    },
+    {
+      "name": "pc: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "pc: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "pc: float lands at same selected point",
+      "passed": true,
+      "pixel": [
+        195,
+        121,
+        82,
+        255
+      ],
+      "point": {
+        "x": 598.2112,
+        "y": 447.13552500000003,
+        "localX": 570.2112,
+        "localY": 246.18240000000003,
+        "width": 936,
+        "height": 441
+      }
+    },
+    {
+      "name": "pc: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "pc: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "pc: first catch added to tank",
+      "passed": true
+    },
+    {
+      "name": "pc: real caught fish earns points",
+      "passed": true
+    },
+    {
+      "name": "pc: tank fish moves over real seconds",
+      "passed": true
+    },
+    {
+      "name": "pc: lure method selected",
+      "passed": true
+    },
+    {
+      "name": "pc: water selection lure-final",
+      "passed": true,
+      "point": {
+        "x": 771.184,
+        "y": 355.15792500000003,
+        "localX": 743.184,
+        "localY": 154.20480000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "false",
+        "method": "lure",
+        "targetX": "0.8500000267044335",
+        "targetPower": "0.8399999747465263",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "pc: fixed model shore position lure-final",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "pc: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "pc: lure does not attract or withdraw without fresh clicks",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "pc: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "pc: second actual catch appears in tank",
+      "passed": true
+    },
+    {
+      "name": "pc: practice does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "pc: pause freezes tank pixels and outing time",
+      "passed": true
+    },
+    {
+      "name": "pc: menu gesture cannot start cast or inherit reel",
+      "passed": true
+    },
+    {
+      "name": "pc: resume retains both fish",
+      "passed": true
+    },
+    {
+      "name": "pc: resume restarts fish motion",
+      "passed": true
+    },
+    {
+      "name": "pc: resize retains aquarium contents",
+      "passed": true
+    },
+    {
+      "name": "pc: new standard excludes practice catch and aquarium",
+      "passed": true
+    },
+    {
+      "name": "pc: partial standard does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "pc: common Portal return actually arrives",
+      "passed": true
+    },
+    {
+      "name": "phone: lower help Portal visible and hit-testable",
+      "passed": true,
+      "bottom": 786.3125,
+      "height": 844,
+      "hit": true
+    },
+    {
+      "name": "phone: actual help Portal return",
+      "passed": true
+    },
+    {
+      "name": "phone: optional practice",
+      "passed": true
+    },
+    {
+      "name": "phone: no horizontal overflow",
+      "passed": true,
+      "width": 390,
+      "height": 844,
+      "scroll": 390,
+      "targets": {
+        "method-bait": {
+          "x": 71,
+          "y": 518.953125,
+          "w": 120,
+          "h": 44,
+          "bottom": 562.953125,
+          "right": 191
+        },
+        "method-lure": {
+          "x": 199,
+          "y": 518.953125,
+          "w": 120,
+          "h": 44,
+          "bottom": 562.953125,
+          "right": 319
+        },
+        "action": {
+          "x": 12,
+          "y": 635.953125,
+          "w": 366,
+          "h": 50,
+          "bottom": 685.953125,
+          "right": 378
+        },
+        "aquarium": {
+          "x": 282,
+          "y": 197.953125,
+          "w": 90,
+          "h": 160,
+          "bottom": 357.953125,
+          "right": 372
+        },
+        "river": {
+          "x": 12,
+          "y": 149.953125,
+          "w": 256,
+          "h": 360,
+          "bottom": 509.953125,
+          "right": 268
+        }
+      }
+    },
+    {
+      "name": "phone: 44px visible method-bait",
+      "passed": true,
+      "x": 71,
+      "y": 518.953125,
+      "w": 120,
+      "h": 44,
+      "bottom": 562.953125,
+      "right": 191
+    },
+    {
+      "name": "phone: 44px visible method-lure",
+      "passed": true,
+      "x": 199,
+      "y": 518.953125,
+      "w": 120,
+      "h": 44,
+      "bottom": 562.953125,
+      "right": 319
+    },
+    {
+      "name": "phone: 44px visible action",
+      "passed": true,
+      "x": 12,
+      "y": 635.953125,
+      "w": 366,
+      "h": 50,
+      "bottom": 685.953125,
+      "right": 378
+    },
+    {
+      "name": "phone: side aquarium retained",
+      "passed": true,
+      "x": 282,
+      "y": 197.953125,
+      "w": 90,
+      "h": 160,
+      "bottom": 357.953125,
+      "right": 372
+    },
+    {
+      "name": "phone: water selection left-near",
+      "passed": true,
+      "point": {
+        "x": 58.2848,
+        "y": 369.373125,
+        "localX": 46.2848,
+        "localY": 219.42000000000002,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.1200000068971089",
+        "targetPower": "0.1199998643663196",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position left-near",
+      "passed": true
+    },
+    {
+      "name": "phone: water selection right-far",
+      "passed": true,
+      "point": {
+        "x": 217.41439999999997,
+        "y": 297.10312500000003,
+        "localX": 205.41439999999997,
+        "localY": 147.15000000000003,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999915985835",
+        "targetPower": "0.8500000616516733",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position right-far",
+      "passed": true
+    },
+    {
+      "name": "phone: water selection left-far",
+      "passed": true,
+      "point": {
+        "x": 58.2848,
+        "y": 297.10312500000003,
+        "localX": 46.2848,
+        "localY": 147.15000000000003,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.1200000068971089",
+        "targetPower": "0.8500000616516733",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position left-far",
+      "passed": true
+    },
+    {
+      "name": "phone: water selection right-near",
+      "passed": true,
+      "point": {
+        "x": 217.41439999999997,
+        "y": 369.373125,
+        "localX": 205.41439999999997,
+        "localY": 219.42000000000002,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999915985835",
+        "targetPower": "0.1199998643663196",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position right-near",
+      "passed": true
+    },
+    {
+      "name": "phone: background crop unchanged after all aims",
+      "passed": true
+    },
+    {
+      "name": "phone: invalid bank tap does not change aim",
+      "passed": true
+    },
+    {
+      "name": "phone: cancel charge does not cast",
+      "passed": true,
+      "input": "CDP touchCancel"
+    },
+    {
+      "name": "phone: water selection bait-final",
+      "passed": true,
+      "point": {
+        "x": 167.9552,
+        "y": 364.423125,
+        "localX": 155.9552,
+        "localY": 214.47000000000003,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.6300000009082614",
+        "targetPower": "0.16999998766966556",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position bait-final",
+      "passed": true
+    },
+    {
+      "name": "phone: aim marker visible at selected canvas point",
+      "passed": true,
+      "preview": [
+        247,
+        234,
+        203,
+        255
+      ]
+    },
+    {
+      "name": "phone: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "phone: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "phone: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "phone: float lands at same selected point",
+      "passed": true,
+      "pixel": [
+        195,
+        121,
+        82,
+        255
+      ],
+      "point": {
+        "x": 167.9552,
+        "y": 364.423125,
+        "localX": 155.9552,
+        "localY": 214.47000000000003,
+        "width": 256,
+        "height": 360
+      }
+    },
+    {
+      "name": "phone: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "phone: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "phone: first catch added to tank",
+      "passed": true
+    },
+    {
+      "name": "phone: real caught fish earns points",
+      "passed": true
+    },
+    {
+      "name": "phone: tank fish moves over real seconds",
+      "passed": true
+    },
+    {
+      "name": "phone: lure method selected",
+      "passed": true
+    },
+    {
+      "name": "phone: water selection lure-final",
+      "passed": true,
+      "point": {
+        "x": 215.26399999999998,
+        "y": 298.09312500000004,
+        "localX": 203.26399999999998,
+        "localY": 148.14000000000004,
+        "width": 256,
+        "height": 360
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "false",
+        "method": "lure",
+        "targetX": "0.8500000351951237",
+        "targetPower": "0.8399998520359852",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "phone: fixed model shore position lure-final",
+      "passed": true
+    },
+    {
+      "name": "phone: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "phone: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "phone: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "phone: lure does not attract or withdraw without fresh clicks",
+      "passed": true
+    },
+    {
+      "name": "phone: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "phone: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "phone: second actual catch appears in tank",
+      "passed": true
+    },
+    {
+      "name": "phone: practice does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "phone: pause freezes tank pixels and outing time",
+      "passed": true
+    },
+    {
+      "name": "phone: menu gesture cannot start cast or inherit reel",
+      "passed": true
+    },
+    {
+      "name": "phone: resume retains both fish",
+      "passed": true
+    },
+    {
+      "name": "phone: resume restarts fish motion",
+      "passed": true
+    },
+    {
+      "name": "phone: resize retains aquarium contents",
+      "passed": true
+    },
+    {
+      "name": "phone: new standard excludes practice catch and aquarium",
+      "passed": true
+    },
+    {
+      "name": "phone: partial standard does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "phone: common Portal return actually arrives",
+      "passed": true
+    },
+    {
+      "name": "small: lower help Portal visible and hit-testable",
+      "passed": true,
+      "bottom": 684.03125,
+      "height": 740,
+      "hit": true
+    },
+    {
+      "name": "small: actual help Portal return",
+      "passed": true
+    },
+    {
+      "name": "small: optional practice",
+      "passed": true
+    },
+    {
+      "name": "small: no horizontal overflow",
+      "passed": true,
+      "width": 320,
+      "height": 740,
+      "scroll": 320,
+      "targets": {
+        "method-bait": {
+          "x": 46,
+          "y": 438.734375,
+          "w": 110,
+          "h": 44,
+          "bottom": 482.734375,
+          "right": 156
+        },
+        "method-lure": {
+          "x": 164,
+          "y": 438.734375,
+          "w": 110,
+          "h": 44,
+          "bottom": 482.734375,
+          "right": 274
+        },
+        "action": {
+          "x": 12,
+          "y": 555.734375,
+          "w": 296,
+          "h": 50,
+          "bottom": 605.734375,
+          "right": 308
+        },
+        "aquarium": {
+          "x": 224,
+          "y": 192.953125,
+          "w": 78,
+          "h": 145,
+          "bottom": 337.953125,
+          "right": 302
+        },
+        "river": {
+          "x": 12,
+          "y": 145.953125,
+          "w": 200,
+          "h": 280,
+          "bottom": 425.953125,
+          "right": 212
+        }
+      }
+    },
+    {
+      "name": "small: 44px visible method-bait",
+      "passed": true,
+      "x": 46,
+      "y": 438.734375,
+      "w": 110,
+      "h": 44,
+      "bottom": 482.734375,
+      "right": 156
+    },
+    {
+      "name": "small: 44px visible method-lure",
+      "passed": true,
+      "x": 164,
+      "y": 438.734375,
+      "w": 110,
+      "h": 44,
+      "bottom": 482.734375,
+      "right": 274
+    },
+    {
+      "name": "small: 44px visible action",
+      "passed": true,
+      "x": 12,
+      "y": 555.734375,
+      "w": 296,
+      "h": 50,
+      "bottom": 605.734375,
+      "right": 308
+    },
+    {
+      "name": "small: side aquarium retained",
+      "passed": true,
+      "x": 224,
+      "y": 192.953125,
+      "w": 78,
+      "h": 145,
+      "bottom": 337.953125,
+      "right": 302
+    },
+    {
+      "name": "small: water selection left-near",
+      "passed": true,
+      "point": {
+        "x": 48.16,
+        "y": 316.613125,
+        "localX": 36.16,
+        "localY": 170.66000000000003,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.11999999909173875",
+        "targetPower": "0.11999995244013843",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position left-near",
+      "passed": true
+    },
+    {
+      "name": "small: water selection right-far",
+      "passed": true,
+      "point": {
+        "x": 172.48,
+        "y": 260.40312500000005,
+        "localX": 160.48,
+        "localY": 114.45000000000003,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999745686849",
+        "targetPower": "0.849999841467127",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position right-far",
+      "passed": true
+    },
+    {
+      "name": "small: water selection left-far",
+      "passed": true,
+      "point": {
+        "x": 48.16,
+        "y": 260.40312500000005,
+        "localX": 36.16,
+        "localY": 114.45000000000003,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.11999999909173875",
+        "targetPower": "0.849999841467127",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position left-far",
+      "passed": true
+    },
+    {
+      "name": "small: water selection right-near",
+      "passed": true,
+      "point": {
+        "x": 172.48,
+        "y": 316.613125,
+        "localX": 160.48,
+        "localY": 170.66000000000003,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8599999745686849",
+        "targetPower": "0.11999995244013843",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position right-near",
+      "passed": true
+    },
+    {
+      "name": "small: background crop unchanged after all aims",
+      "passed": true
+    },
+    {
+      "name": "small: invalid bank tap does not change aim",
+      "passed": true
+    },
+    {
+      "name": "small: cancel charge does not cast",
+      "passed": true,
+      "input": "CDP touchCancel"
+    },
+    {
+      "name": "small: water selection bait-final",
+      "passed": true,
+      "point": {
+        "x": 133.83999999999997,
+        "y": 312.76312500000006,
+        "localX": 121.83999999999999,
+        "localY": 166.81000000000003,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.6299999782017299",
+        "targetPower": "0.17000003170657513",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position bait-final",
+      "passed": true
+    },
+    {
+      "name": "small: aim marker visible at selected canvas point",
+      "passed": true,
+      "preview": [
+        247,
+        234,
+        203,
+        255
+      ]
+    },
+    {
+      "name": "small: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "small: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "small: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "small: float lands at same selected point",
+      "passed": true,
+      "pixel": [
+        195,
+        121,
+        82,
+        255
+      ],
+      "point": {
+        "x": 133.83999999999997,
+        "y": 312.76312500000006,
+        "localX": 121.83999999999999,
+        "localY": 166.81000000000003,
+        "width": 200,
+        "height": 280
+      }
+    },
+    {
+      "name": "small: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "small: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "small: first catch added to tank",
+      "passed": true
+    },
+    {
+      "name": "small: real caught fish earns points",
+      "passed": true
+    },
+    {
+      "name": "small: tank fish moves over real seconds",
+      "passed": true
+    },
+    {
+      "name": "small: lure method selected",
+      "passed": true
+    },
+    {
+      "name": "small: water selection lure-final",
+      "passed": true,
+      "point": {
+        "x": 170.79999999999998,
+        "y": 261.173125,
+        "localX": 158.79999999999998,
+        "localY": 115.22000000000004,
+        "width": 200,
+        "height": 280
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "false",
+        "method": "lure",
+        "targetX": "0.8500000181652252",
+        "targetPower": "0.8399999841467131",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "small: fixed model shore position lure-final",
+      "passed": true
+    },
+    {
+      "name": "small: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "small: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "small: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "small: lure does not attract or withdraw without fresh clicks",
+      "passed": true
+    },
+    {
+      "name": "small: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "small: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "small: second actual catch appears in tank",
+      "passed": true
+    },
+    {
+      "name": "small: practice does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "small: pause freezes tank pixels and outing time",
+      "passed": true
+    },
+    {
+      "name": "small: menu gesture cannot start cast or inherit reel",
+      "passed": true
+    },
+    {
+      "name": "small: resume retains both fish",
+      "passed": true
+    },
+    {
+      "name": "small: resume restarts fish motion",
+      "passed": true
+    },
+    {
+      "name": "small: resize retains aquarium contents",
+      "passed": true
+    },
+    {
+      "name": "small: new standard excludes practice catch and aquarium",
+      "passed": true
+    },
+    {
+      "name": "small: partial standard does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "small: common Portal return actually arrives",
+      "passed": true
+    },
+    {
+      "name": "landscape: lower help Portal visible and hit-testable",
+      "passed": true,
+      "bottom": 331.3125,
+      "height": 390,
+      "hit": true
+    },
+    {
+      "name": "landscape: actual help Portal return",
+      "passed": true
+    },
+    {
+      "name": "landscape: optional practice",
+      "passed": true
+    },
+    {
+      "name": "landscape: no horizontal overflow",
+      "passed": true,
+      "width": 844,
+      "height": 390,
+      "scroll": 844,
+      "targets": {
+        "method-bait": {
+          "x": 308,
+          "y": 237.953125,
+          "w": 110,
+          "h": 44,
+          "bottom": 281.953125,
+          "right": 418
+        },
+        "method-lure": {
+          "x": 426,
+          "y": 237.953125,
+          "w": 110,
+          "h": 44,
+          "bottom": 281.953125,
+          "right": 536
+        },
+        "action": {
+          "x": 227,
+          "y": 322.546875,
+          "w": 390,
+          "h": 44,
+          "bottom": 366.546875,
+          "right": 617
+        },
+        "aquarium": {
+          "x": 690,
+          "y": 93.953125,
+          "w": 131,
+          "h": 110,
+          "bottom": 203.953125,
+          "right": 821
+        },
+        "river": {
+          "x": 16,
+          "y": 86.953125,
+          "w": 657,
+          "h": 146,
+          "bottom": 232.953125,
+          "right": 673
+        }
+      }
+    },
+    {
+      "name": "landscape: 44px visible method-bait",
+      "passed": true,
+      "x": 308,
+      "y": 237.953125,
+      "w": 110,
+      "h": 44,
+      "bottom": 281.953125,
+      "right": 418
+    },
+    {
+      "name": "landscape: 44px visible method-lure",
+      "passed": true,
+      "x": 426,
+      "y": 237.953125,
+      "w": 110,
+      "h": 44,
+      "bottom": 281.953125,
+      "right": 536
+    },
+    {
+      "name": "landscape: 44px visible action",
+      "passed": true,
+      "x": 227,
+      "y": 322.546875,
+      "w": 390,
+      "h": 44,
+      "bottom": 366.546875,
+      "right": 617
+    },
+    {
+      "name": "landscape: side aquarium retained",
+      "passed": true,
+      "x": 690,
+      "y": 93.953125,
+      "w": 131,
+      "h": 110,
+      "bottom": 203.953125,
+      "right": 821
+    },
+    {
+      "name": "landscape: water selection left-near",
+      "passed": true,
+      "point": {
+        "x": 134.7856,
+        "y": 129.585125,
+        "localX": 118.78559999999999,
+        "localY": 42.632000000000026,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.11999999774386245",
+        "targetPower": "0.11999982720640802",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position left-near",
+      "passed": true
+    },
+    {
+      "name": "landscape: water selection right-far",
+      "passed": true,
+      "point": {
+        "x": 543.1768,
+        "y": 113.598125,
+        "localX": 527.1768,
+        "localY": 26.645000000000003,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8600000341517291",
+        "targetPower": "0.8500001532846392",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position right-far",
+      "passed": true
+    },
+    {
+      "name": "landscape: water selection left-far",
+      "passed": true,
+      "point": {
+        "x": 134.7856,
+        "y": 113.598125,
+        "localX": 118.78559999999999,
+        "localY": 26.645000000000003,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.11999999774386245",
+        "targetPower": "0.8500001532846392",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position left-far",
+      "passed": true
+    },
+    {
+      "name": "landscape: water selection right-near",
+      "passed": true,
+      "point": {
+        "x": 543.1768,
+        "y": 129.585125,
+        "localX": 527.1768,
+        "localY": 42.632000000000026,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.8600000341517291",
+        "targetPower": "0.11999982720640802",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position right-near",
+      "passed": true
+    },
+    {
+      "name": "landscape: background crop unchanged after all aims",
+      "passed": true
+    },
+    {
+      "name": "landscape: invalid bank tap does not change aim",
+      "passed": true
+    },
+    {
+      "name": "landscape: cancel charge does not cast",
+      "passed": true,
+      "input": "CDP touchCancel"
+    },
+    {
+      "name": "landscape: water selection bait-final",
+      "passed": true,
+      "point": {
+        "x": 416.2444,
+        "y": 128.490125,
+        "localX": 400.2444,
+        "localY": 41.53700000000002,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.6299999723954937",
+        "targetPower": "0.1699998829462767",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position bait-final",
+      "passed": true
+    },
+    {
+      "name": "landscape: aim marker visible at selected canvas point",
+      "passed": true,
+      "preview": [
+        247,
+        234,
+        203,
+        255
+      ]
+    },
+    {
+      "name": "landscape: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "landscape: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "landscape: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "landscape: float lands at same selected point",
+      "passed": true,
+      "pixel": [
+        195,
+        121,
+        82,
+        255
+      ],
+      "point": {
+        "x": 416.2444,
+        "y": 128.490125,
+        "localX": 400.2444,
+        "localY": 41.53700000000002,
+        "width": 657,
+        "height": 146
+      }
+    },
+    {
+      "name": "landscape: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "landscape: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "landscape: first catch added to tank",
+      "passed": true
+    },
+    {
+      "name": "landscape: real caught fish earns points",
+      "passed": true
+    },
+    {
+      "name": "landscape: tank fish moves over real seconds",
+      "passed": true
+    },
+    {
+      "name": "landscape: lure method selected",
+      "passed": true
+    },
+    {
+      "name": "landscape: water selection lure-final",
+      "passed": true,
+      "point": {
+        "x": 537.6579999999999,
+        "y": 113.817125,
+        "localX": 521.6579999999999,
+        "localY": 26.864000000000004,
+        "width": 657,
+        "height": 146
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "false",
+        "method": "lure",
+        "targetX": "0.8500000362751527",
+        "targetPower": "0.8400000724618295",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "landscape: fixed model shore position lure-final",
+      "passed": true
+    },
+    {
+      "name": "landscape: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "landscape: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "landscape: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "landscape: lure does not attract or withdraw without fresh clicks",
+      "passed": true
+    },
+    {
+      "name": "landscape: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "landscape: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "landscape: second actual catch appears in tank",
+      "passed": true
+    },
+    {
+      "name": "landscape: practice does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "landscape: pause freezes tank pixels and outing time",
+      "passed": true
+    },
+    {
+      "name": "landscape: menu gesture cannot start cast or inherit reel",
+      "passed": true
+    },
+    {
+      "name": "landscape: resume retains both fish",
+      "passed": true
+    },
+    {
+      "name": "landscape: resume restarts fish motion",
+      "passed": true
+    },
+    {
+      "name": "landscape: resize retains aquarium contents",
+      "passed": true
+    },
+    {
+      "name": "landscape: new standard excludes practice catch and aquarium",
+      "passed": true
+    },
+    {
+      "name": "landscape: partial standard does not write BEST",
+      "passed": true
+    },
+    {
+      "name": "landscape: common Portal return actually arrives",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: water selection standard",
+      "passed": true,
+      "point": {
+        "x": 212.9536,
+        "y": 453.99952500000006,
+        "localX": 184.9536,
+        "localY": 253.04640000000003,
+        "width": 936,
+        "height": 441
+      },
+      "data": {
+        "gameInteraction": "",
+        "phase": "idle",
+        "pulling": "true",
+        "method": "bait",
+        "targetX": "0.13999999748481498",
+        "targetPower": "0.12000009674570247",
+        "playerX": "0.14",
+        "lureProgress": "0"
+      }
+    },
+    {
+      "name": "deadline-fixture: fixed model shore position standard",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: method change locked during active cast",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: calm hold and pull release lands",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: ordinary real-clock standard catch before deadline fixture",
+      "passed": true
+    },
+    {
+      "name": "deadline-fixture: explicit virtual-clock300seconds reaches result",
+      "passed": false
+    }
+  ],
+  "views": [
+    {
+      "viewport": {
+        "name": "pc",
+        "width": 1280,
+        "height": 900
+      },
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "phone",
+        "width": 390,
+        "height": 844
+      },
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "small",
+        "width": 320,
+        "height": 740
+      },
+      "passed": true
+    },
+    {
+      "viewport": {
+        "name": "landscape",
+        "width": 844,
+        "height": 390
+      },
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "console_errors": [
+    {
+      "view": "pc",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "pc",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "pc",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "pc",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "phone",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "phone",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "phone",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "phone",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "phone",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "small",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "small",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "small",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "small",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "landscape",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "landscape",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "landscape",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "landscape",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "view": "landscape",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "post_attempts": 0,
+  "blocked_infrastructure": [
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    },
+    {
+      "host": "pagead2.googlesyndication.com",
+      "path": "/pagead/js/adsbygoogle.js"
+    },
+    {
+      "host": "analytics.game100garage.com",
+      "path": "/v1/records/public/bests"
+    }
+  ],
+  "failure": {
+    "view": "deadline-fixture",
+    "message": "explicit virtual-clock300seconds reaches result"
+  },
+  "finished_at": "2026-10-10T08:32:45.584Z",
+  "end_source_hashes": {
+    "game032.html": "fd0a40d7bcf2dd634a425eb3c405b1bf2a4a651ac47937cd50061b66bd5140c1",
+    "src/games/game032/main.ts": "235ec9cfd2d3ccd10dc606b3cf3a782b7475f3c0dbbb308a7571717e15395110",
+    "src/games/game032/FishingModel.ts": "5bbc9467e3e46cc4c46c110d7211ff84f0b0ab10423b6ad912188afe01ebbe39",
+    "src/games/game032/Projection.ts": "edbaf253b8c97ec5724fe6439e1ec6d812e91cb0cf5ed65da9cdd0075a54868d",
+    "src/games/game032/Aquarium.ts": "e8477b07e7a2c19a769819a13605a029fee9e40ea8a74c984840b65d9ec5028f",
+    "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+    "src/games/game032/style.css": "0bac1d77a0cf50cdc897287cbdfbede2f47225a012604eb8af9d2b39073cd07c"
+  },
+  "source_unchanged": true,
+  "success": false,
+  "limits": "Automated real-clock headless browser and emulated touch, not human fun, physical phones, hearing or thermal performance. One separately labeled virtual-clock deadline fixture; PC pointercancel is synthetic DOM, mobile cancellation uses CDP touchCancel. Backend/ads network requests blocked, never answered as fake production data."
+}

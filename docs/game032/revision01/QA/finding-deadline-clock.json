@@ -1,0 +1,18 @@
+{
+  "finding_id": "r01-deadline-clock-fixture",
+  "problem": "Virtual300second advancement after realstandard catch doesnotshow result",
+  "expected": "300activeforegroundseconds completes standard outing andopensresult",
+  "observed": [
+    "Afterrealstandardcatch runnerinstalled page.clock mid-session thenrunFor300000.",
+    "State playing/phase landed/time4:49/count1/tank1; nopageerrors.",
+    "Fourrealviewportcases and8practicecatches passed beforefailure."
+  ],
+  "unknown": [
+    "Whether active clock implementation or virtualfixture scheduling caused failure"
+  ],
+  "evidence": [
+    "independent-browser-01/deadline-fixture-failure.json",
+    "independent-browser-01/REPORT.json"
+  ],
+  "provenance": "browserordinaryinput followed by separatelyidentifiedvirtualclockfixture"
+}

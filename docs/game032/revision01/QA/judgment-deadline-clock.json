@@ -1,0 +1,22 @@
+{
+  "finding_id": "r01-deadline-clock-fixture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision01_qa independent agent; Jevanswers unread",
+  "rationale": "Only clock installed after registered RAF failed; original failure preserved and normal sessions progressed.",
+  "evidence": [
+    "independent-clock-judgment/JUDGMENT.json",
+    "independent-browser-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Clock installed before navigation: technical300active seconds, result/BEST/retry/reload pass; no product timer fix.",
+    "evidence": [
+      "independent-clock-judgment/JUDGMENT.json",
+      "independent-browser-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

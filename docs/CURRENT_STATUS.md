@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-10 JST：**Game032 revision01の実装・独立QA完了、公開確認準備中。** 固定2D麦わら少年/直接投げ先/餌＋浮きと手動誘引ルアー/実釣果の写真調水槽。背景素材・旧魚・Save不変、新ImageGen実2回。check・988/85・build、固定4画面154/154と別300秒/BEST fixture、失敗保全。032外部Analytics/オンラインは準備中・OFF、他作品/Worker/D1/広告/CREDIT/GA4不変。本人/実機/聴感未確認。[改修報告](game032/revision01/IMPLEMENTATION_REPORT.md)。
+
 2026-10-10 JST：**Game032「川辺で、ひとやすみ。」を公式URLへ試作公開済み。** runtime44a7608／Pages38034974805 build・deploy成功、186配信file SHA一致・公開4画面通常72／page error0・POST0。4地点／距離チャージ／前・本アタリ／巻きと緩め／7魚種／5分本番・無制限練習／完了個人BEST。OpenAI ImageGen実3回・15WebP1.18MB・実canvas thumb、原本metadataはgpt-image系統まで確認（具体的モデル版非公開）、Art Directorの実統合比較完了。check・962/84・build、独立12／browser93＋33／最終通常72、Visual85/F13/H13、Jev実8HTTP200／32有効回答＋独立判断。032本番Worker権限・許可先不足につき外部Analytics／共有／TOP10は準備中、旧20board維持。既存277source・21tree＋STEP2／018未commit182file保全、広告／CREDIT／GA4／D1schema不変。本人／実機／聴感未確認。active31/historical32、010退役、次033未着手。[報告](game032/IMPLEMENTATION_REPORT.md)／[再開](game032/HANDOFF.md)。
 
 2026-10-10 JST：**Portal操作改善を公式公開済み。** 絞り込み欄全体は同位置で初期折畳み、closed時も条件summary・件数・empty案内を表示。favoriteは☆／★とbrowserstorageのみ即時更新し、表示順は再読み込み時に反映。filter／clear／cross-tabでもpage-load時の並びを保持。root919/80・check/build成功、固定3width＋subpath208／独立74成功。runtime86e70b7／公式Pages38006965327 build・deploy成功、実公開3width152checks・166配信file SHA一致、page／console error0・本番POST0。ゲーム／広告／Telemetry schema／Worker/D1不変。[改修報告](portal-discovery/revision-01/IMPLEMENTATION_REPORT.md)。

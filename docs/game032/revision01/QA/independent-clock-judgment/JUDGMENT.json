@@ -1,0 +1,19 @@
+{
+  "finding_id": "revision01-deadline-clock",
+  "reviewed_at": "2026-10-10T08:37:05.328586+00:00",
+  "independent": true,
+  "jev_answers_read": false,
+  "codex_action_required": true,
+  "primary_cause": "TEST_INFRA_BUG",
+  "next_evidence": "AUTOMATED_TEST",
+  "release_blocker": false,
+  "reason": "Four ordinary real-clock viewport flows and a real-clock standard catch advanced normally. Failure occurs only after installing fake clock after page requestAnimationFrame registration: runFor300000 leaves4:49 landed1, withno pageerror and frozen source. Retest installing clock before navigation; no runtime change authorized from this fixture failure alone.",
+  "evidence": [
+    "docs/game032/revision01/QA/independent-browser-01/REPORT.json",
+    "docs/game032/revision01/QA/independent-browser-01/deadline-fixture-failure.json",
+    "tests/game032/revision01/independent-browser.mjs"
+  ],
+  "outcome": "QA runner clock registration was moved before navigation; technical standard catch, full300active seconds, result, BEST, retry and reload succeed. No runtime fix was made for this clock fixture failure. Candidate02 separately includes parent-owned visual/UI fixes.",
+  "reverified_at": "2026-10-10T08:43:04.973170+00:00",
+  "retest_evidence": "docs/game032/revision01/QA/independent-browser-02/REPORT.json"
+}

@@ -1,0 +1,21 @@
+{
+  "finding_id": "r01-bait-wait-bound-oracle",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision01_model independent agent; Jevanswers unread",
+  "rationale": "The new assertion measured totalelapsed includingcharge1.25+flight.9+wait12. Waiting-relative assertion verifies12 independently. Productwaitunchanged.",
+  "evidence": [
+    "tests/unit/game032-model.test.ts",
+    "docs/game032/revision01/MODEL.md"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "independently inspected referenceinterval/export contract then boundedfix andtargetedtest PASS",
+    "evidence": [
+      "tests/unit/game032-model.test.ts"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

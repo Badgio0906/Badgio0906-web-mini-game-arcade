@@ -1,0 +1,25 @@
+{
+  "finding_id": "r01-water-endpoint-roundtrip",
+  "problem": "Projected far endpoint is rejected by the shared water hit-test at a shallow viewport",
+  "expected": "Every selected point including maximum depth round-trips through targetPoint and aimFromPoint",
+  "observed": [
+    "Projection unit test at650x146, x.06/power1 returnsnull fromaimFromPoint.",
+    "Computed y23.359999999999996 is below waterFar23.36; hit-test rejects y<waterFar.",
+    "Twelve other projection tests pass."
+  ],
+  "unknown": [
+    "Whether endpoint interpolation must change without expanding selectable bank area"
+  ],
+  "evidence": [
+    "QA/projection-candidate03.txt",
+    "tests/unit/game032-projection.test.ts",
+    "src/games/game032/Projection.ts"
+  ],
+  "provenance": "Actual unit-test failure on source after narrower source-backed waterband; no browser or production fixture",
+  "measurements": {
+    "width": 650,
+    "height": 146,
+    "far": 23.36,
+    "y": 23.359999999999996
+  }
+}

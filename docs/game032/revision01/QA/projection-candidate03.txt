@@ -1,0 +1,34 @@
+
+ RUN  v3.2.7 /workspace/arcade-game032-revision01
+
+ ❯ tests/unit/game032-projection.test.ts (13 tests | 1 failed) 16ms
+   ✓ river artwork and casting coordinates > 980x441: all casts visibly land inside generated water 2ms
+   ✓ river artwork and casting coordinates > 362x363: all casts visibly land inside generated water 1ms
+   ✓ river artwork and casting coordinates > 292x265: all casts visibly land inside generated water 1ms
+   ✓ river artwork and casting coordinates > 808x210: all casts visibly land inside generated water 1ms
+   ✓ direct water aiming shared landing coordinates > 932x441 preview/hit-test return the same selected point 1ms
+   ✓ direct water aiming shared landing coordinates > 244x360 preview/hit-test return the same selected point 1ms
+   ✓ direct water aiming shared landing coordinates > 188x280 preview/hit-test return the same selected point 1ms
+   × direct water aiming shared landing coordinates > 650x146 preview/hit-test return the same selected point 5ms
+     → expected null not to be null
+   ✓ direct water aiming shared landing coordinates > bank and invalid coordinates are not silently converted to water 0ms
+   ✓ source-backed water band stays visible in shallow and tall crops > 932x441 shows both river edges above foreground vegetation 0ms
+   ✓ source-backed water band stays visible in shallow and tall crops > 244x360 shows both river edges above foreground vegetation 0ms
+   ✓ source-backed water band stays visible in shallow and tall crops > 188x280 shows both river edges above foreground vegetation 0ms
+   ✓ source-backed water band stays visible in shallow and tall crops > 650x146 shows both river edges above foreground vegetation 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game032-projection.test.ts > direct water aiming shared landing coordinates > 650x146 preview/hit-test return the same selected point
+AssertionError: expected null not to be null
+ ❯ tests/unit/game032-projection.test.ts:13:182
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  08:45:13
+   Duration  224ms (transform 40ms, setup 0ms, collect 40ms, tests 16ms, environment 0ms, prepare 53ms)
+

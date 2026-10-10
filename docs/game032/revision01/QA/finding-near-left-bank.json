@@ -1,0 +1,27 @@
+{
+  "finding_id": "r01-near-left-bank",
+  "problem": "Selected near-left destination marker appears on vegetation rather than river water",
+  "expected": "Selectable cast destinations lie on visible river water in every viewport",
+  "observed": [
+    "Independent reviewer viewed original river artwork and candidate02 landscape left-near screenshot.",
+    "Marker corresponds approximately to source x303/y660, where the original image shows leafy river-bank vegetation.",
+    "Projection uses a common near bound of image height multiplied by .67."
+  ],
+  "unknown": [
+    "Extent of non-water destinations in other viewport crops",
+    "Whether crop and water bounds require adjustment together"
+  ],
+  "evidence": [
+    "independent-browser-02/landscape-aim-left-near.png",
+    "public/assets/game032/river-panorama.webp",
+    "src/games/game032/Projection.ts"
+  ],
+  "provenance": "Independent Visual inspection of actual screenshots and original artwork before any correction",
+  "measurements": {
+    "viewport_width": 844,
+    "viewport_height": 390,
+    "source_target_x": 303,
+    "source_target_y": 660,
+    "source_height": 1024
+  }
+}

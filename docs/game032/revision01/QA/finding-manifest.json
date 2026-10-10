@@ -1,0 +1,17 @@
+{
+  "finding_id": "r01-generated-manifest-mismatch",
+  "problem": "Manifest consistency test differs between new Game032 manifest and generated catalog copy",
+  "expected": "Generated catalog and source game032 manifest match current prototype metadata",
+  "observed": [
+    "Target suite15pass1failure at game032-integration.test.ts:59.",
+    "Source manifest says direct water targeting,bait/lure,prototype-2; compared generated entry says movement,charge cast,prototype-1."
+  ],
+  "unknown": [
+    "Which generated-data update path is required and what other files that command touches"
+  ],
+  "evidence": [
+    "tests/unit/game032-integration.test.ts:59",
+    "src/games/game032/game.manifest.json"
+  ],
+  "provenance": "local automated integration assertion afterrequestedrevision"
+}

@@ -1,0 +1,22 @@
+{
+  "finding_id": "r01-landscape-aim-label",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "revision01_visual independent agent; Jevanswers unread",
+  "rationale": "Opaque scene label covered the selected left water markers in short landscape.",
+  "evidence": [
+    "../VISUAL_REVIEW.md",
+    "independent-browser-02/landscape-aim-left-near.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Moved label to bank; independent actual left-near/far markers visible. New separate source-water issue retained separately.",
+    "evidence": [
+      "../VISUAL_REVIEW.md",
+      "independent-browser-02/landscape-aim-left-near.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

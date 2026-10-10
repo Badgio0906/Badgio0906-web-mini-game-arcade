@@ -1,0 +1,22 @@
+{
+  "finding_id": "r01-lure-bite-cue",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision01_visual independent agent; Jevanswers unread",
+  "rationale": "Actual lure bite displayed float text; mode-specific visible instructions needed.",
+  "evidence": [
+    "../VISUAL_REVIEW.md",
+    "independent-browser-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Method-specific nibble/bite messages now shown in allfour actual lure screenshots.",
+    "evidence": [
+      "../VISUAL_REVIEW.md",
+      "independent-browser-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

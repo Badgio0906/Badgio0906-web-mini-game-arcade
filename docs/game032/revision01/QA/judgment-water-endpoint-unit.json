@@ -1,0 +1,23 @@
+{
+  "finding_id": "r01-water-endpoint-roundtrip",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision01_qa independent agent; Jevanswers unread",
+  "rationale": "Legal far endpoint failed strict inverse contract due subtraction rounding. Independent inspection retained strict round-trip assertions; no broad operation-failure claim.",
+  "evidence": [
+    "independent-endpoint-judgment/JUDGMENT.json",
+    "projection-candidate03.txt",
+    "root-tests-candidate03-final.txt"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Endpoint-exact interpolation, strict13projection tests plus root987 pass; later distinct actual-browser precision observation was recorded atC before its fix.",
+    "evidence": [
+      "root-tests-candidate03-final.txt",
+      "independent-endpoint-judgment/JUDGMENT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}
