@@ -4,7 +4,7 @@
 
 ## 最終固定候補の通常操作
 
-2026-10-10 18:45:10〜18:47:37 JST（09:45:10〜09:47:37 UTC）、固定production-reference preview `http://127.0.0.1:4444` に対して [独立runner](../../../tests/game032/revision02/qa.mjs) を実行した。最終 [REPORT](QA/independent-browser-05/REPORT.json) は **390チェック成功**。開始・終了で34ファイル（Game032 runtime・HTML・全22配信WebP・font）のSHAとrunner SHAを照合し、不変だった。context／browserは終了済み。
+2026-10-10 18:45:10〜18:47:37 JST（09:45:10〜09:47:37 UTC）、固定production-reference preview `http://127.0.0.1:4444` に対して [独立runner](../../../tests/game032/revision02/qa.mjs) を実行した。最終 [REPORT](QA/independent-browser-05/REPORT.json) は **合計390チェック成功**（4画面の通常操作379、明示的API利用不可fixture9、全体のpageerror／POST確認2）。開始・終了で34ファイル（Game032 runtime・HTML・全22配信WebP・font）のSHAとrunner SHAを照合し、不変だった。context／browserは終了済み。
 
 PC1280×900／スマホ相当390×844／320×740／横844×390の4画面で、通常のマウス・Space・CDPタッチにより、本番で各1匹を取り込んだ。時計・乱数・モデル・正常API回答を注入していない。別途、各画面の練習でルアーを1回ずつ引いて各1匹を取り込んだ。計4本番魚と4練習魚の操作証拠であり、人間の自然な認知・反応・面白さを判定したものではない。
 
@@ -31,7 +31,7 @@ PC1280×900／スマホ相当390×844／320×740／横844×390の4画面で、�
 
 ## 明示的な仮想時計の締切fixture
 
-[独立deadline runner](../../../tests/game032/revision02/deadline-fixture.mjs) はPlaywrightの仮想時計をnavigationより前に導入した別の技術試験で、 [REPORT](QA/deadline-fixture-01/REPORT.json) の27項目が成功。モデル・乱数・API正常回答は注入していない。通常QA390項目や人間の実時間5分プレイへ加算／読み替えない。
+[独立deadline runner](../../../tests/game032/revision02/deadline-fixture.mjs) はPlaywrightの仮想時計をnavigationより前に導入した別の技術試験で、 [REPORT](QA/deadline-fixture-01/REPORT.json) の27項目が成功。モデル・乱数・API正常回答は注入していない。上の通常操作379項目や人間の実時間5分プレイへ加算／読み替えない。
 
 - 実ボタンからnative全画面の本番釣行を開始し、300仮想秒で結果へ進む。
 - 魚を一匹も釣らない技術fixtureのscore0が完了BESTの既存形式へ保存され、魚記録キーが変わらない。
@@ -58,3 +58,7 @@ GAME032_QA_URL=http://127.0.0.1:PORT GAME032_QA_OUT=docs/game032/revision02/QA/i
 ```
 
 公開確認でもURLを置き換えて同じ通常入力方式を利用できる。既存出力へ上書き不可。本番へ架空RUNを送信しない。公開確認の成否は別の公開receiptで記録する。
+
+## 公開確認
+
+同じcommitted runnerでの公開確認とPortal28項目は [PUBLIC_QA](PUBLIC_QA.md) に記録した。公開成功を実機／人間の今回追加機能の合格へ読み替えない。

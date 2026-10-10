@@ -20,4 +20,4 @@ before失敗01〜04と原因調査probeは残した。製品修正は曖昧な�
 
 ## 公開
 
-候補QA/差分レビュー完了後に対象差分をcommitし、公式Pagesで公開する。現時点は公開確認前。この節とQA/PUBLICATIONは実公開の確認後に更新する。
+runtime `5eb81b95ae8b4d14f98931f44ada7dec4b4440c3` をmainへpushし、公式[Pages run 38043219921](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38043219921) のbuild/deploy成功を確認。[公開URL](https://game100garage.com/game032.html) の193ファイルが期待commitのCI相当buildとSHA一致した。公式artifact ZIPの直接照合は行っていない。独立[公開QA](PUBLIC_QA.md)390項目（通常379・非対応API fixture9・全体2）とPortal28項目が成功。実際の4標準釣果で即保存/再読込、4練習釣果で除外、全画面/戻りを確認。pageerror/POST0、意図的GET遮断由来console8を区別。31作品/010退役/サムネイル/PLAY/帰還/既存広告scriptと同意UIを確認。24worktreeの公開後保全も成功。[公開証拠](QA/PUBLICATION.json)。本人のrevision02試遊・物理実機・聴感は未確認。

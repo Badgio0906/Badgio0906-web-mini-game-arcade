@@ -8,6 +8,6 @@
 
 Jevは実findingだけ4質問Shadow、QA/JEV_SHADOW.jsonlにstatus/実送信/model/有効回答を保持。独立判断の後にannotateし、単純PASS/面白さ/公開許可を代行させない。過去findingは消さない。
 
-次033や他作品へ着手しない。公開証拠はIMPLEMENTATION_REPORT/QA/PUBLICATIONへ追記。実機とrevision02の本人評価はHUMAN_PLAYTESTに未実施として残す。
+runtime5eb81b9／Pages38043219921成功、193配信file SHA一致・公開390/Portal28成功。公開証拠はIMPLEMENTATION_REPORT、PUBLIC_QA、QA/PUBLICATION.json。次033や他作品へ着手しない。実機とrevision02の本人評価はHUMAN_PLAYTESTに未実施として残す。
 
 全画面から結果への遷移は `GAME032_QA_URL=http://127.0.0.1:4444 GAME032_QA_OUT=docs/game032/revision02/QA/<一意> node tests/game032/revision02/deadline-fixture.mjs`。明示した仮想時計で600秒を進める技術fixture、通常操作/人間試遊と区別する。

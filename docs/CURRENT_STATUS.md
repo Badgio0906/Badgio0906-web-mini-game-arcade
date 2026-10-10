@@ -1,6 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-10 JST：**Game032 revision02の記録/全画面を実装・公開準備中。** 7魚種最大サイズ/日時・直近100匹を即時端末保存、練習除外、記録/今回の全画面水槽と釣り場全画面/休憩。check・1019/86・build・offline25、固定4画面390/POST・pageerror0、独立Visual86/F13/H13。旧BEST/モデル/原素材不変、24tree/018未commit保全、032外部Analytics/オンラインOFF。本人のrevision01は「そこそこイイ感じ」、新revision02/物理実機/聴感は未確認。次033未着手。[報告](game032/revision02/IMPLEMENTATION_REPORT.md)。
+2026-10-10 JST：**Game032 revision02の記録/全画面を公式公開・公開操作確認済み。** 7魚種最大サイズ/日時・直近100匹を即時端末保存、練習除外、記録/今回の全画面水槽と釣り場全画面/休憩。check・1019/86・build・offline25、固定4画面390＋期限fixture27、独立Visual86/F13/H13。runtime5eb81b9／公式Pages38043219921 build/deploy成功、公開193file SHA一致、独立公開390（通常379＋非対応fixture9＋全体2）/Portal28・POST/pageerror0。旧BEST/モデル/原素材不変、24tree/018未commit保全、032外部Analytics/オンラインOFF。本人のrevision01は「そこそこイイ感じ」、新revision02/物理実機/聴感は未確認。次033未着手。[報告](game032/revision02/IMPLEMENTATION_REPORT.md)／[公開証拠](game032/revision02/QA/PUBLICATION.json)。
 
 2026-10-10 JST：**Game032 revision01を公式試作公開・公開操作確認済み。** 固定2D麦わら少年/直接投げ先/餌＋浮きと手動誘引ルアー/実釣果の写真調水槽。背景素材・旧魚・Save不変、新ImageGen実2回。check・988/85・build・offlineJev25、固定4画面154＋別300秒/BEST、公開通常154＋Portal/取消43、pageerror/POST0。runtime829f014／公式Pages38039708161 build/deploy成功、公開193file SHA一致。独立Visual85/F13/H13、Jev実9HTTP200/36有効回答と独立判断、失敗保全。032外部Analytics/オンラインは準備中・OFF、他作品/Worker/D1/広告/CREDIT/GA4不変、21旧tree/018未commit保全。本人/実機/聴感未確認。[改修報告](game032/revision01/IMPLEMENTATION_REPORT.md)。
 
