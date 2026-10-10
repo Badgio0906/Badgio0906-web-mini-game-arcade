@@ -38,8 +38,8 @@
     "label": "標準",
     "basis": "design assessment; human difficulty feedback pending"
   },
-  "mainMechanics": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ",
-  "description": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ",
+  "mainMechanics": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ。魚種ごとの最大サイズ・日時と直近100匹を端末に保存、水槽鑑賞／釣り場全画面を任意選択",
+  "description": "4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ。魚種ごとの最大サイズ・日時と直近100匹を端末に保存、水槽鑑賞／釣り場全画面を任意選択",
   "failureModes": "早合わせ・遅合わせ・過剰なテンションでその魚を逃す。釣行は継続する",
   "route": "./game032.html",
   "thumbnail": "./assets/portal/game032.webp",
@@ -56,7 +56,7 @@
     "manifest": "src/games/game032/game.manifest.json",
     "details": "src/games/game032/"
   },
-  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "humanEvaluation": "User reported revision01 enjoyment as moderately good on2026-10-10; revision02 records/fullscreen and physical-device comfort not yet human tested; no completion declaration.",
   "currentManifest": {
     "id": "game032",
     "titleJa": "川辺で、ひとやすみ。",
@@ -70,12 +70,12 @@
     "expected_run_seconds": 300,
     "creditMode": "free",
     "rules_version": "1",
-    "presentation_version": "prototype-2",
+    "presentation_version": "prototype-3",
     "recordBoard": "game032.score.r1.standard",
     "practice": "untimed independent outing; no local BEST, ranking candidate or production RUN",
-    "save": "existing validated local-only standard:r1 score unchanged; aquarium shows current outing catches and is not persistent",
+    "save": "Existing standard:r1 BEST unchanged; landed standard fish save immediately to independent local schema1 records: species largest size and date, latest date/count, latest100 catches. Practice excluded. Saved species/current outing aquarium and optional river fullscreen; no external date upload.",
     "inputs": {
-      "keyboard": "arrows aim; Space/Enter press-release cast, click retrieve lure, hook, hold reel; Escape pause",
+      "keyboard": "arrows aim; Space/Enter press-release cast, click retrieve lure, hook, hold reel; Escape pause; Escape exits river fullscreen before normal pause",
       "touch": "tap/drag water target; bait/lure selector and phase-labelled single action; pointercancel cleanup"
     },
     "prototypeStatus": "trial; technical QA distinct from author enjoyment",

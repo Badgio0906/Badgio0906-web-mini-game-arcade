@@ -1,0 +1,17 @@
+{
+  "finding_id": "revision02-full-pause-access",
+  "problem": "Fullscreen fishing stage covers the existing pause control and has higher stacking order than its pause menu.",
+  "expected": "Fullscreen fishing retains an accessible pause control and visible pause menu.",
+  "observed": [
+    "#pause is in the heading outside #fishing-stage.",
+    "#app.river-full #fishing-stage has z-index 40; existing #menu dialog has z-index 20."
+  ],
+  "unknown": [
+    "Actual browser stacking has not yet been tested."
+  ],
+  "evidence": [
+    "game032.html: heading and fishing-stage",
+    "src/games/game032/style.css: dialog and river-full"
+  ],
+  "provenance": "actual-source-inspection"
+}

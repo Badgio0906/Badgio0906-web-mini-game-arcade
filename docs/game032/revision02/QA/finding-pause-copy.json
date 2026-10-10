@@ -1,0 +1,15 @@
+{
+  "finding_id": "revision02-pause-record-copy",
+  "problem": "Pause instructions describe only completed outings as recordable while landed-fish records are also saved immediately.",
+  "expected": "Instructions distinguish completed-outing BEST from per-fish local records that survive interrupted outings.",
+  "observed": [
+    "pause() displays: 5分を終えた釣行だけが記録対象です。",
+    "fish_landed calls catchRecords.record() in standard mode before outing completion."
+  ],
+  "unknown": [],
+  "evidence": [
+    "src/games/game032/main.ts: pause() and processEvents()",
+    "src/games/game032/CatchRecords.ts: record()"
+  ],
+  "provenance": "actual-source-inspection"
+}

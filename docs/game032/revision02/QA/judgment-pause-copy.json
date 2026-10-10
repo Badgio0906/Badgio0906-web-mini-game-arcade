@@ -1,0 +1,22 @@
+{
+  "finding_id": "revision02-pause-record-copy",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision02_visual independent; did not read Jev answers",
+  "rationale": "Pause copy conflated completed outing BEST with immediate per-fish saves. Direct source confirms separate conditions.",
+  "evidence": [
+    "docs/game032/revision02/VISUAL_REVIEW.md",
+    "src/games/game032/main.ts:pause and processEvents",
+    "src/games/game032/CatchRecords.ts:record"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected save timing and replaced pause text to explicitly distinguish BEST vs per-fish records; typecheck and1019 tests pass.",
+    "evidence": [
+      "docs/game032/revision02/QA/CHECKS.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

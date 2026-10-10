@@ -1,0 +1,23 @@
+{
+  "finding_id": "revision02-root-clip-oracle",
+  "problem": "Fullscreen button acceptance fails an ancestor bounding-box check although the button is inside the viewport and hit-test returns the button.",
+  "expected": "Fullscreen controls are visible, reachable and unclipped.",
+  "observed": [
+    "method-bait rect y749.61..793.61 in 900px viewport; height44; center-hit true.",
+    "Geometry oracle reports inside=false for HTML with overflow:hidden; all other control checks passed.",
+    "Actual screenshot shows the complete button."
+  ],
+  "unknown": [
+    "Whether HTML bounding box correctly represents viewport clipping of fixed fullscreen content."
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "test_name": "revision02 independent-browser-01 control(method-bait)",
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-01/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-01/pc-failure.png"
+  ],
+  "provenance": "actual-browser-ordinary-input"
+}

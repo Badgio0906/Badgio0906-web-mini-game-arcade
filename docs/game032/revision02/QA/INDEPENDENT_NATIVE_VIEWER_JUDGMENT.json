@@ -1,0 +1,21 @@
+{
+  "finding_id": "r02-native-viewer-layering",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "revision02_qa independent actual-browser reviewer (Jev answers not accessed)",
+  "rationale": "Actual nativefullscreen viewer hasopenDOM/visibleCSS/centerhit butviewport,fullpage,element,CDPsurfaces do notshowviewer. ExplicitunsupportedAPIfallback does. Labelledcausal DOMclose/showModal afterfullscreen settled makesactualnativeviewer visible; same fixedsource. Thus nativeapp enteringtoplayer aftermodal is supportedcause, not mere180msdelay orfullPagescreenshotartifact. Mode isvisuallymissing onnativebrowser andmustfixbeforepublication.",
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-01/pc-empty-gallery.png",
+    "docs/game032/revision02/QA/independent-viewer-probe-01/REPORT.json",
+    "docs/game032/revision02/QA/independent-viewer-probe-02/REPORT.json",
+    "docs/game032/revision02/QA/independent-viewer-probe-03/REPORT.json",
+    "docs/game032/revision02/QA/independent-viewer-probe-03/technical-dom-reopen-after-native-viewport.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Require actualordinaryopeningnativeviewer afterlimitedproductorderingfix, verifyvisualPNG/controls andsavedrealcatchgallery across4viewports. Causalmanualreopenfixture notproductpass.",
+    "evidence": []
+  }
+}

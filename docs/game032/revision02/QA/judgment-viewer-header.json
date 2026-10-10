@@ -1,0 +1,22 @@
+{
+  "finding_id": "revision02-viewer-portal-overlap",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision02_visual independent actual screen reviewer; no Jev answers read",
+  "rationale": "Actual fallback screenshot Portal proxy covered aquarium heading. Reserved top row corrects identity without changing shared navigation. Subsequent native PC/phone screenshots show heading below it.",
+  "evidence": [
+    "docs/game032/revision02/VISUAL_REVIEW.md",
+    "docs/game032/revision02/QA/independent-viewer-probe-02/unsupported-api-fixture-viewport.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Reserved60px header row in Game032 only; checked actual native PC and390px phone viewer screenshots, heading and close readable.",
+    "evidence": [
+      "docs/game032/revision02/QA/independent-browser-03/phone-empty-gallery-viewport.png",
+      "docs/game032/revision02/QA/independent-browser-02/pc-gallery-viewport.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

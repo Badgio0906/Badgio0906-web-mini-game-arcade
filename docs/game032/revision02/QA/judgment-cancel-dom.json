@@ -1,0 +1,24 @@
+{
+  "finding_id": "revision02-cancel-dom-observation",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision02_qa independent actual-browser reviewer (Jev answers not accessed)",
+  "rationale": "ImmediatepostCDPtouchCancel DOMdatasetread failed, but preservedfailurestateandPNG showidle withnoaccidentalcast. Handler updatespuremodel.cancelInput andreadonlyphaseDOM ispaintedonnextRAF, notsynchronouslyinhandler. Waitforidleboundone-secondandvalidateclockreal, no productchangejusttimingoracle.",
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-04/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-04/phone-failure.json",
+    "docs/game032/revision02/QA/independent-browser-04/phone-failure.png",
+    "src/games/game032/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Observe model cancellation through bounded next-frame DOM phase wait then100ms stability. Same product source finalcandidate05 mobile cancel, fresh input and all390checks pass.",
+    "evidence": [
+      "tests/game032/revision02/qa.mjs",
+      "docs/game032/revision02/QA/independent-browser-05/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

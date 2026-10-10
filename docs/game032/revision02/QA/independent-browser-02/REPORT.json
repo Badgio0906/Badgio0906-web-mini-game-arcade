@@ -1,0 +1,777 @@
+{
+  "runner_hash": "eb437823f8e550dfecb86ee2fa73ed8efa54b0229cb518f89d47740c46c898e6",
+  "kind": "independent real-clock ordinary mouse/keyboard/CDP-touch acceptance; separate explicit unsupported-FullscreenAPI fixture",
+  "base": "http://127.0.0.1:4444",
+  "started_at": "2026-10-10T09:37:27.455Z",
+  "source_hashes": {
+    "game032.html": "b456c8c8fd2f861016a54027f6079b6dd6988ff4f6407619d9fd042ceaca5111",
+    "src/games/game032/Aquarium.ts": "76456ce5120ec6e5a1d6d4818384e3ddee8ce65bf35ee0315e4ce612b4061d4f",
+    "src/games/game032/CatchRecords.ts": "72ac054571f7eedec99a2005470feb637ed86aca50490f98f2716aa31f9d5d65",
+    "src/games/game032/FishViews.ts": "ff6a4984324e1896db7ca1dd0cd2dde55b0d38d5932769677acba8efc56f039b",
+    "src/games/game032/FishingModel.ts": "5bbc9467e3e46cc4c46c110d7211ff84f0b0ab10423b6ad912188afe01ebbe39",
+    "src/games/game032/Projection.ts": "e24985f8e746c4db5c978eac2579087f2e295b3dc45c98dc5bc91ea8343fbd20",
+    "src/games/game032/RiverSound.ts": "6522d1a29b4d4a07491e8c54acc9ea4aa96190be66b3c144ad9f491606e8ae96",
+    "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+    "src/games/game032/game.manifest.json": "e844636bc62634c74fd362c9b11732ba3ee0e6c3d17814d9c67f2d0264e58a03",
+    "src/games/game032/main.ts": "810fa66977ef8950055a8758b38a6c7b90a18efee1b3c9cbff833a348efe5d3d",
+    "src/games/game032/style.css": "7c42af48b347f8a1fdb916c99ce2c60aa32996a328f915fd3f84d5652f544270",
+    "public/assets/game032/angler-cast.webp": "d5745d7668d0a86a8a0c6b3be041461c1bb206a2f4c2e94fb6a042e1453be4f7",
+    "public/assets/game032/angler-hook.webp": "a32b9e3a3f933da9ba6208cefdf5b56a134467e73875c89f8b2b4060c6320dbd",
+    "public/assets/game032/angler-idle.webp": "fbf4efb67c4fee987e32752cb1138cc6f82bd267b9595c4e9615b251fff1b99c",
+    "public/assets/game032/angler-land.webp": "cd76bbdb215c761bb9410e438f1ee92235a42a4b5f1be7bacfdf4495496b9b4d",
+    "public/assets/game032/angler-ready.webp": "1148ec59e3916a78d47d2d8e5fcbfae933444ee1a5698cb6d212eac2a918b1de",
+    "public/assets/game032/angler-reel.webp": "34699ef03127c0836cfbc9ee2adc609f6b2b7d7d76f2e1d6d509d65d17c3be58",
+    "public/assets/game032/angler-walk-left.webp": "2850cafa7e05bb346990369c15e26afb8070f49fbe701be5757104e1357edfb4",
+    "public/assets/game032/angler-walk-right.webp": "0193f468f643785497a5ed2d5ad9c2b8e80d8a0b8715aa4c85b83c3a0160df0c",
+    "public/assets/game032/aquarium.webp": "b7e37d6020d2f190f35ba6d7ba72aef45b12a8e86a91c2bbd286a626850228b8",
+    "public/assets/game032/boy-cast.webp": "2f48998a28b55edb42232e7a2e6ca2b0fac38be2641cd03585b1572230ed2a1f",
+    "public/assets/game032/boy-hook.webp": "08933b1a45846a9b546e758b75d8ee92231ad7db6850cbef72b68d5b767afecc",
+    "public/assets/game032/boy-idle.webp": "acdc6bfbd5cec4745722b2fb2b78554eb660ec8a51f6c8584d27d2171f4a6da9",
+    "public/assets/game032/boy-land.webp": "35e515f0670ad7ddc609979111ebb89ce123436bd9debe7515918a7baa187633",
+    "public/assets/game032/boy-ready.webp": "9ce8a3493ff31c49f6e424da2936745f27c4611d0b4e828a184b9655750ec4be",
+    "public/assets/game032/boy-reel.webp": "ab11f9d62d4d5a3f01e0befde34dcf5037f26252c5dafe9bebb6d7ee7808d547",
+    "public/assets/game032/fish-amago.webp": "0d8aca830c91a5cb88769a6f7d43daefbfbf4f21ae0499e802c4acfb0fb38b2e",
+    "public/assets/game032/fish-iwana.webp": "c1cd5922c4ff3cc7848021347a37a33629433fbaf1098692d782705a65375d00",
+    "public/assets/game032/fish-nijimasu.webp": "7826f64208d5faeb2ae724f9b8ccde127831c1237834ba2e3ced85ae3b189a96",
+    "public/assets/game032/fish-oikawa.webp": "a2d0712799f4e00377ba7dd81a28f792ec4701df42f25f733b63c5712d2eebed",
+    "public/assets/game032/fish-ugui.webp": "212cbc0b0e0dc90a436d527c5f4ea56b9bcf65aa9277b8db50d0e5dbf24d0d71",
+    "public/assets/game032/fish-yamame.webp": "0c40d74c43b1f53af5a8536164fb9969dd2f7286a64eaa7ec538f35ebbca891f",
+    "public/assets/game032/river-panorama.webp": "f5a465ffe91acbc7c1c083d117f0cc7770e33139daa21fe3688c69b505c19d5d",
+    "public/fonts/arcade-rounded-jp.woff2": "1512ff300bff6733c8a17b4474a548a59f188547a3682013270f96056ce37186"
+  },
+  "checks": [
+    {
+      "name": "pc: title record view without starting outing",
+      "passed": true
+    },
+    {
+      "name": "pc: empty record view creates no fake catches",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped viewer-close",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 1153.984375,
+      "y": 60,
+      "bottom": 104,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: empty record returns to title",
+      "passed": true
+    },
+    {
+      "name": "pc: title aquarium available without outing",
+      "passed": true
+    },
+    {
+      "name": "pc: empty saved aquarium invents no fish",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped viewer-close",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 1153.984375,
+      "y": 60,
+      "bottom": 104,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped gallery-saved",
+      "passed": true,
+      "w": 102.015625,
+      "h": 44,
+      "x": 533.984375,
+      "y": 125,
+      "bottom": 169,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIV",
+          "id": "viewer-body",
+          "inside": true
+        },
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped gallery-current",
+      "passed": true,
+      "w": 102.015625,
+      "h": 44,
+      "x": 644,
+      "y": 125,
+      "bottom": 169,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIV",
+          "id": "viewer-body",
+          "inside": true
+        },
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: actual viewport capture contains photographic aquarium water empty-gallery",
+      "passed": true,
+      "sample_location": {
+        "x": 640,
+        "y": 362.59375
+      },
+      "samples": [
+        [
+          125,
+          196,
+          203,
+          255
+        ],
+        [
+          126,
+          197,
+          203,
+          255
+        ],
+        [
+          124,
+          197,
+          203,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "pc: viewer heading visible and uncovered by Portal proxy",
+      "passed": true,
+      "w": 120,
+      "h": 36,
+      "x": 16,
+      "y": 64,
+      "bottom": 100,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: river full viewport mode entered",
+      "passed": true
+    },
+    {
+      "name": "pc: native fullscreen app or supported CSS fallback",
+      "passed": true,
+      "native": "app"
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped river-fullscreen",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 649.5,
+      "y": 8,
+      "bottom": 52,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped river-pause",
+      "passed": true,
+      "w": 50.015625,
+      "h": 44,
+      "x": 766.515625,
+      "y": 8,
+      "bottom": 52,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped records-open",
+      "passed": true,
+      "w": 74.015625,
+      "h": 44,
+      "x": 463.46875,
+      "y": 8,
+      "bottom": 52,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped aquarium-open",
+      "passed": true,
+      "w": 98.015625,
+      "h": 44,
+      "x": 544.484375,
+      "y": 8,
+      "bottom": 52,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped method-bait",
+      "passed": true,
+      "w": 120,
+      "h": 44,
+      "x": 516,
+      "y": 749.609375,
+      "bottom": 793.609375,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped method-lure",
+      "passed": true,
+      "w": 120,
+      "h": 44,
+      "x": 644,
+      "y": 749.609375,
+      "bottom": 793.609375,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped action",
+      "passed": true,
+      "w": 390,
+      "h": 50,
+      "x": 445,
+      "y": 842,
+      "bottom": 892,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: river fullscreen gives scene space without sidebar",
+      "passed": true
+    },
+    {
+      "name": "pc: accessible fullriver Pause stops current outing",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped resume",
+      "passed": true,
+      "w": 332,
+      "h": 44,
+      "x": 614,
+      "y": 130.34375,
+      "bottom": 174.34375,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "menu",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: fullriver Pause clock frozen",
+      "passed": true
+    },
+    {
+      "name": "pc: fullriver Pause resumes same full screen outing",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh bite input hooks",
+      "passed": true
+    },
+    {
+      "name": "pc: calm reel and pull-release lands",
+      "passed": true
+    },
+    {
+      "name": "pc: standard landed fish saved immediately before outing completes",
+      "passed": true,
+      "saved": {
+        "schemaVersion": 1,
+        "species": [
+          {
+            "fishId": "ugui",
+            "name": "ウグイ",
+            "maxSizeCm": 23.3,
+            "caughtAt": "2026-10-10T09:37:42.414Z",
+            "latestCaughtAt": "2026-10-10T09:37:42.414Z",
+            "count": 1,
+            "largestCatch": {
+              "fishId": "ugui",
+              "name": "ウグイ",
+              "sizeCm": 23.3,
+              "points": 112,
+              "rare": false,
+              "big": false,
+              "spotId": "shallows",
+              "distance": "near",
+              "method": "bait"
+            }
+          }
+        ],
+        "recent": [
+          {
+            "caughtAt": "2026-10-10T09:37:42.414Z",
+            "catch": {
+              "fishId": "ugui",
+              "name": "ウグイ",
+              "sizeCm": 23.3,
+              "points": 112,
+              "rare": false,
+              "big": false,
+              "spotId": "shallows",
+              "distance": "near",
+              "method": "bait"
+            },
+            "ordinal": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "pc: species count and largest/history timestamps agree",
+      "passed": true
+    },
+    {
+      "name": "pc: catch timestamp is actual current wall-clock",
+      "passed": true
+    },
+    {
+      "name": "pc: incomplete outing does not save completed BEST",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer opens from records-open",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped viewer-close",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 1153.984375,
+      "y": 60,
+      "bottom": 104,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: caught species has dedicated record",
+      "passed": true
+    },
+    {
+      "name": "pc: record species and largest exact size",
+      "passed": true,
+      "text": "ウグイ\n\n最大 23.3 cm\n\n最大の魚を釣った日時\n2026/10/10 9:37:42\n\n釣った数 1匹\n最後に釣った日時\n2026/10/10 9:37:42"
+    },
+    {
+      "name": "pc: record largest catch exact ISO datetime",
+      "passed": true,
+      "dates": [
+        "2026-10-10T09:37:42.414Z",
+        "2026-10-10T09:37:42.414Z"
+      ],
+      "caught_at": "2026-10-10T09:37:42.414Z"
+    },
+    {
+      "name": "pc: records explain local-device storage",
+      "passed": true
+    },
+    {
+      "name": "pc: record viewing pauses active fishing phase and clock",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: records close restores active standard outing",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer opens from aquarium-open",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped viewer-close",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 1153.984375,
+      "y": 60,
+      "bottom": 104,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: saved-gallery contains genuine caught species",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer fish swims while fishing paused",
+      "passed": true
+    },
+    {
+      "name": "pc: aquarium viewer does not spend outing time",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped gallery-saved",
+      "passed": true,
+      "w": 102.015625,
+      "h": 44,
+      "x": 533.984375,
+      "y": 125,
+      "bottom": 169,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIV",
+          "id": "viewer-body",
+          "inside": true
+        },
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped gallery-current",
+      "passed": true,
+      "w": 102.015625,
+      "h": 44,
+      "x": 644,
+      "y": 125,
+      "bottom": 169,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIV",
+          "id": "viewer-body",
+          "inside": true
+        },
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: current outing selector shows genuine fish",
+      "passed": true
+    },
+    {
+      "name": "pc: actual viewport capture contains photographic aquarium water gallery",
+      "passed": true,
+      "sample_location": {
+        "x": 640,
+        "y": 362.59375
+      },
+      "samples": [
+        [
+          125,
+          196,
+          203,
+          255
+        ],
+        [
+          126,
+          197,
+          203,
+          255
+        ],
+        [
+          124,
+          197,
+          203,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "pc: viewer heading visible and uncovered by Portal proxy",
+      "passed": true,
+      "w": 120,
+      "h": 36,
+      "x": 16,
+      "y": 64,
+      "bottom": 100,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: gallery return retains full river preference",
+      "passed": true
+    },
+    {
+      "name": "pc: visible fullscreen exit restores normal layout",
+      "passed": true
+    },
+    {
+      "name": "pc: native fullscreen exited",
+      "passed": true
+    },
+    {
+      "name": "pc: reload keeps exact species max date and catch history",
+      "passed": true
+    },
+    {
+      "name": "pc: caught species has dedicated record",
+      "passed": true
+    },
+    {
+      "name": "pc: record species and largest exact size",
+      "passed": true,
+      "text": "ウグイ\n\n最大 23.3 cm\n\n最大の魚を釣った日時\n2026/10/10 9:37:42\n\n釣った数 1匹\n最後に釣った日時\n2026/10/10 9:37:42"
+    },
+    {
+      "name": "pc: record largest catch exact ISO datetime",
+      "passed": true,
+      "dates": [
+        "2026-10-10T09:37:42.414Z",
+        "2026-10-10T09:37:42.414Z"
+      ],
+      "caught_at": "2026-10-10T09:37:42.414Z"
+    },
+    {
+      "name": "pc: records explain local-device storage",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: reload title gallery keeps saved species",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped action",
+      "passed": true,
+      "w": 390,
+      "h": 50,
+      "x": 445,
+      "y": 842,
+      "bottom": 892,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped method-lure",
+      "passed": true,
+      "w": 120,
+      "h": 44,
+      "x": 644,
+      "y": 749.609375,
+      "bottom": 793.609375,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped river-fullscreen",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 649.5,
+      "y": 8,
+      "bottom": 52,
+      "inside": true,
+      "hit": true,
+      "clips": []
+    },
+    {
+      "name": "pc: fresh press charges",
+      "passed": true
+    },
+    {
+      "name": "pc: fresh release casts",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer opens from aquarium-open",
+      "passed": true
+    },
+    {
+      "name": "pc: 44px visible center-hit and ancestor-unclipped viewer-close",
+      "passed": true,
+      "w": 110.015625,
+      "h": 44,
+      "x": 1153.984375,
+      "y": 60,
+      "bottom": 104,
+      "inside": true,
+      "hit": true,
+      "clips": [
+        {
+          "tag": "DIALOG",
+          "id": "fish-viewer",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "pc: viewer interrupts active lure waiting without stale cast or timeout",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer closes via fresh visible button",
+      "passed": true
+    },
+    {
+      "name": "pc: viewer restores in-progress lure rather than restart",
+      "passed": true
+    }
+  ],
+  "views": [
+    {
+      "viewport": {
+        "name": "pc",
+        "width": 1280,
+        "height": 900
+      },
+      "native_fullscreen_element": "app"
+    }
+  ],
+  "errors": [],
+  "console_errors": [],
+  "post_attempts": 0,
+  "blocked_infrastructure": [],
+  "failure": {
+    "view": "pc",
+    "message": "No bite after complete lure retrieval"
+  },
+  "finished_at": "2026-10-10T09:37:57.327Z",
+  "end_source_hashes": {
+    "game032.html": "b456c8c8fd2f861016a54027f6079b6dd6988ff4f6407619d9fd042ceaca5111",
+    "src/games/game032/Aquarium.ts": "76456ce5120ec6e5a1d6d4818384e3ddee8ce65bf35ee0315e4ce612b4061d4f",
+    "src/games/game032/CatchRecords.ts": "72ac054571f7eedec99a2005470feb637ed86aca50490f98f2716aa31f9d5d65",
+    "src/games/game032/FishViews.ts": "ff6a4984324e1896db7ca1dd0cd2dde55b0d38d5932769677acba8efc56f039b",
+    "src/games/game032/FishingModel.ts": "5bbc9467e3e46cc4c46c110d7211ff84f0b0ab10423b6ad912188afe01ebbe39",
+    "src/games/game032/Projection.ts": "e24985f8e746c4db5c978eac2579087f2e295b3dc45c98dc5bc91ea8343fbd20",
+    "src/games/game032/RiverSound.ts": "6522d1a29b4d4a07491e8c54acc9ea4aa96190be66b3c144ad9f491606e8ae96",
+    "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+    "src/games/game032/game.manifest.json": "e844636bc62634c74fd362c9b11732ba3ee0e6c3d17814d9c67f2d0264e58a03",
+    "src/games/game032/main.ts": "810fa66977ef8950055a8758b38a6c7b90a18efee1b3c9cbff833a348efe5d3d",
+    "src/games/game032/style.css": "7c42af48b347f8a1fdb916c99ce2c60aa32996a328f915fd3f84d5652f544270",
+    "public/assets/game032/angler-cast.webp": "d5745d7668d0a86a8a0c6b3be041461c1bb206a2f4c2e94fb6a042e1453be4f7",
+    "public/assets/game032/angler-hook.webp": "a32b9e3a3f933da9ba6208cefdf5b56a134467e73875c89f8b2b4060c6320dbd",
+    "public/assets/game032/angler-idle.webp": "fbf4efb67c4fee987e32752cb1138cc6f82bd267b9595c4e9615b251fff1b99c",
+    "public/assets/game032/angler-land.webp": "cd76bbdb215c761bb9410e438f1ee92235a42a4b5f1be7bacfdf4495496b9b4d",
+    "public/assets/game032/angler-ready.webp": "1148ec59e3916a78d47d2d8e5fcbfae933444ee1a5698cb6d212eac2a918b1de",
+    "public/assets/game032/angler-reel.webp": "34699ef03127c0836cfbc9ee2adc609f6b2b7d7d76f2e1d6d509d65d17c3be58",
+    "public/assets/game032/angler-walk-left.webp": "2850cafa7e05bb346990369c15e26afb8070f49fbe701be5757104e1357edfb4",
+    "public/assets/game032/angler-walk-right.webp": "0193f468f643785497a5ed2d5ad9c2b8e80d8a0b8715aa4c85b83c3a0160df0c",
+    "public/assets/game032/aquarium.webp": "b7e37d6020d2f190f35ba6d7ba72aef45b12a8e86a91c2bbd286a626850228b8",
+    "public/assets/game032/boy-cast.webp": "2f48998a28b55edb42232e7a2e6ca2b0fac38be2641cd03585b1572230ed2a1f",
+    "public/assets/game032/boy-hook.webp": "08933b1a45846a9b546e758b75d8ee92231ad7db6850cbef72b68d5b767afecc",
+    "public/assets/game032/boy-idle.webp": "acdc6bfbd5cec4745722b2fb2b78554eb660ec8a51f6c8584d27d2171f4a6da9",
+    "public/assets/game032/boy-land.webp": "35e515f0670ad7ddc609979111ebb89ce123436bd9debe7515918a7baa187633",
+    "public/assets/game032/boy-ready.webp": "9ce8a3493ff31c49f6e424da2936745f27c4611d0b4e828a184b9655750ec4be",
+    "public/assets/game032/boy-reel.webp": "ab11f9d62d4d5a3f01e0befde34dcf5037f26252c5dafe9bebb6d7ee7808d547",
+    "public/assets/game032/fish-amago.webp": "0d8aca830c91a5cb88769a6f7d43daefbfbf4f21ae0499e802c4acfb0fb38b2e",
+    "public/assets/game032/fish-iwana.webp": "c1cd5922c4ff3cc7848021347a37a33629433fbaf1098692d782705a65375d00",
+    "public/assets/game032/fish-nijimasu.webp": "7826f64208d5faeb2ae724f9b8ccde127831c1237834ba2e3ced85ae3b189a96",
+    "public/assets/game032/fish-oikawa.webp": "a2d0712799f4e00377ba7dd81a28f792ec4701df42f25f733b63c5712d2eebed",
+    "public/assets/game032/fish-ugui.webp": "212cbc0b0e0dc90a436d527c5f4ea56b9bcf65aa9277b8db50d0e5dbf24d0d71",
+    "public/assets/game032/fish-yamame.webp": "0c40d74c43b1f53af5a8536164fb9969dd2f7286a64eaa7ec538f35ebbca891f",
+    "public/assets/game032/river-panorama.webp": "f5a465ffe91acbc7c1c083d117f0cc7770e33139daa21fe3688c69b505c19d5d",
+    "public/fonts/arcade-rounded-jp.woff2": "1512ff300bff6733c8a17b4474a548a59f188547a3682013270f96056ce37186"
+  },
+  "runner_unchanged": true,
+  "source_unchanged": true,
+  "success": false,
+  "limits": "Ordinary real-clock keyboard/mouse/CDP-touch operation; no clock, RNG, model or API-response injection. Smartphone emulation is not physical-device tactile/heating/audio confirmation; human fun and browser-native fullscreen behavior on iOS remain unverified."
+}

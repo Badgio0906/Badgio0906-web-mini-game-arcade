@@ -1,0 +1,24 @@
+{
+  "finding_id": "revision02-lure-focus-input",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision02_qa independent reviewer (Jev answers not accessed)",
+  "rationale": "Viewer restores prior interactive aquarium-open focus as normal accessibility. Runner sent gameplaySpace whilethatbuttonfocused. Main intentionallydoesnotrouteSpace onotherinteractivebuttons to game; probe showsSpace reopensviewer thenexplicitriverfocusSpace advanceslureprogress. Correcttestfocus, preservebuttonsemantics andphysics.",
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-02/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-02/pc-lure-no-bite.png",
+    "docs/game032/revision02/QA/independent-focus-probe-01/REPORT.json",
+    "src/games/game032/main.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Focus river before gameplaypulses afterviewerreturn, rerun unchangedfrozenruntime across4views.",
+    "evidence": [
+      "docs/game032/revision02/QA/independent-focus-probe-01/REPORT.json",
+      "docs/game032/revision02/QA/independent-browser-03/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

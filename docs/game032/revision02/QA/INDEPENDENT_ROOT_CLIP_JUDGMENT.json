@@ -1,0 +1,19 @@
+{
+  "finding_id": "r02-root-clip-oracle",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "revision02_qa independent reviewer (Jev answers not accessed)",
+  "rationale": "Actual fullviewport screenshot shows method/action controls and centerhit istrue; failing fieldonlyHTMLancestor.inside. RootHTMLoverflow clipsviewport, not its retainednormalflow borderbox, while fullstage isfixed. Runner already checks viewport containment andshould notapplynonrootancestor borderbox logictoHTML. No runtime failure observed.",
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-01/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-01/pc-failure.png",
+    "tests/game032/revision02/qa.mjs"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Correct only rootHTMLclipping oracle; keep viewport,centerhit,andallnonrootancestorclipping assertions. Reexecute unchangedfrozenruntime inuniqueoutafter Shadow.",
+    "evidence": []
+  }
+}

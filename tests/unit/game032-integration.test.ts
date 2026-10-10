@@ -26,7 +26,7 @@ describe('Game032 new registration preserves existing discovery and records',()=
     expect(gameCatalog).toHaveLength(31);expect(historicalGameCatalog).toHaveLength(32);expect(NEXT_GAME_NUMBER).toBe(33);
     expect(gameCatalog.at(-1)).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'trial',difficulty:'standard'});
     expect(historicalGameCatalog.find(g=>g.id==='game010')?.status).toBe('retired');
-    expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-2'});
+    expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-3'});
     expect(recordBoards).toHaveLength(21);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
     expect([...PENDING_RECORD_GAME_IDS]).toEqual(['game032']);expect(isPublicRecordRegistered('game018')).toBe(true);expect(isPublicRecordRegistered('game032')).toBe(false);
     for(let n=21;n<=32;n++)expect(PENDING_WORKER_GAME_IDS.has(`game${String(n).padStart(3,'0')}`)).toBe(true);

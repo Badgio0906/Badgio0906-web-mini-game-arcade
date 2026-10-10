@@ -1,0 +1,19 @@
+{
+  "finding_id": "revision02-cancel-dom-observation",
+  "problem": "Immediate DOM phase assertion fails after mobile touchcancel but captured failure state is idle.",
+  "expected": "Touchcancel cancels held cast without accidental launch.",
+  "observed": [
+    "183rd check read DOM phase immediately after CDP touchCancel and failed idle equality.",
+    "Captured following screenshot/state reports idle, no launched cast.",
+    "Handler calls model.cancelInput; phase dataset is refreshed in animation frame."
+  ],
+  "unknown": [
+    "Whether bounded next-frame observation consistently confirms cancellation."
+  ],
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-04/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-04/phone-failure.json",
+    "src/games/game032/main.ts: pointercancel handler and render"
+  ],
+  "provenance": "actual-browser-mobile-cdp-touch"
+}

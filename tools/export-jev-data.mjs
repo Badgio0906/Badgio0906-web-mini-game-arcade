@@ -24,7 +24,7 @@ const design = {
   game018: ["物理・距離競技", "Space / タップで角度→自然な足首ひねりと靴の回転preview→パワーを決定", "5種の既存靴の角度・スピン・パワーを試す。JUSTは炎/速度線/擬音、正規条件で一度のレア演出", "距離の伸びない設定・JUSTタイミングずれ。レア落選は失敗や得点減ではない", "固定長の自然な少年キック、飛距離mの主HUD、漫画発射と宇宙船の1050msカットイン"],
   game019: ['チャージ精密・上昇', '左右を押しながらSpace / JUMPを溜め、離して跳ぶ。空中修正なし', '短い跳躍で位置を整え、溜め量と方向を覚えて手作り井戸100mから予測可能な風の空200mへ登る', '溜め不足・過剰・壁や梁で失敗し地形に応じて後退。同じRUNで再登りできる', '緑の大きな目のカエルと3チャージ姿勢、井戸のランドマーク、旗の風、海・鳥・宇宙'],
   game020: ['穏やかな重なり牌合わせ', 'クリック / タップ / キーボードで同柄の空いた牌を2枚選ぶ', '上が塞がれず左右どちらかが空いた同柄2枚を取り、自分のペースで独自盤面を片付ける', '無効選択は罰なし。詰まりは戻す・解法検証済み並べ替えで継続。時間切れ・ミス終了なし', '独自の幾何学アイコン、手触りのある軽い影、明確な重なり'],
-  game032: ['清流・チル釣り', '川面をクリック／タップまたは矢印で狙い、固定位置で投げる。餌＋浮き／ルアーを選択、ルアーは1回ずつ引く、本アタリで合わせ、弱い引きで巻く', '4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ', '早合わせ・遅合わせ・過剰なテンションでその魚を逃す。釣行は継続する', '既存の美麗清流背景、独自2D麦わら帽子少年6ポーズ、7魚種とImageGen写真調水槽、静かな水面と判読可能なUI'],
+  game032: ['清流・チル釣り', '川面をクリック／タップまたは矢印で狙い、固定位置で投げる。餌＋浮き／ルアーを選択、ルアーは1回ずつ引く、本アタリで合わせ、弱い引きで巻く', '4地点の投げ先と2釣法を選び、待ち／誘引・合わせ・巻く／緩めるで5分の釣果を積む。釣果は横の水槽で泳ぐ。魚種ごとの最大サイズ・日時と直近100匹を端末に保存、水槽鑑賞／釣り場全画面を任意選択', '早合わせ・遅合わせ・過剰なテンションでその魚を逃す。釣行は継続する', '既存の美麗清流背景、独自2D麦わら帽子少年6ポーズ、7魚種とImageGen写真調水槽、静かな水面と判読可能なUI'],
 };
 const difficultyLabels = { standard: '標準', rising: 'じわじわ難化', hard: '高難度' };
 await Promise.all(['game_profiles','retired_game_profiles','design_notes','telemetry_samples','analytics_summary'].map(folder => mkdir(`jev_export/${folder}`, { recursive: true })));
@@ -51,7 +51,7 @@ for (const game of gameCatalog) {
       uiPolicy: 'Responsive native input; portal shows four primary tag badges; explanation/practice remain optional.' },
     telemetryCoverage: game.id === 'game032' ? 'Sparse standard fishing events and existing lifecycle; practice excluded from production. External Analytics and record transport remain OFF for032 until its existing production Worker registration is independently verified. Anonymous fishing_summary only; no raw player IDs.' : game.releaseOrder >= 12 && game.releaseOrder <= 14 ? 'legacy shell only; native Godot game loop does not report runs, scores or deaths' : 'native event schema; fields and coverage vary by game; unreported values stay unknown',
     sourceEvidence: { catalog: 'src/data/gameCatalog.ts', manifest: manifest ? source : null, details: game.id === 'game001' ? 'src/game and src/main.ts' : game.releaseOrder >= 12 && game.releaseOrder <= 14 ? game.route : `src/games/${game.id}/` },
-    humanEvaluation: 'pending; do not infer fun or real-device comfort from synthetic QA', currentManifest: manifest };
+    humanEvaluation: game.id === 'game032' ? 'User reported revision01 enjoyment as moderately good on2026-10-10; revision02 records/fullscreen and physical-device comfort not yet human tested; no completion declaration.' : 'pending; do not infer fun or real-device comfort from synthetic QA', currentManifest: manifest };
   await writeFile(`jev_export/game_profiles/${game.id}.json`, JSON.stringify(profile, null, 2) + '\n');
 }
 await writeFile('jev_export/game_profiles/catalog.json', JSON.stringify({ schemaVersion: 1, gameCount: gameCatalog.length, gameCatalog, retiredGameCatalog, tagCatalog }, null, 2) + '\n');

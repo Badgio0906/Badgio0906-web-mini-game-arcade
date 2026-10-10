@@ -1,0 +1,14 @@
+{
+  "finding_id": "revision02-viewer-portal-overlap",
+  "problem": "Common Portal-return link covers the aquarium viewer heading.",
+  "expected": "Fullscreen viewer identifies the aquarium and keeps Portal return and viewer close readable.",
+  "observed": [
+    "API-unavailable fixture viewport screenshot shows full tank and visible close/scope buttons.",
+    "Fixed Portal-return link at top-left covers most \u5ddd\u8fba\u306e\u6c34\u69fd heading."
+  ],
+  "unknown": [],
+  "evidence": [
+    "docs/game032/revision02/QA/independent-viewer-probe-02/unsupported-api-fixture-viewport.png"
+  ],
+  "provenance": "explicit-fullscreen-unavailable-browser-fixture"
+}

@@ -1,0 +1,65 @@
+{
+  "observed_at": "2026-10-10T09:29:15.754674+00:00",
+  "kind": "source observation before frozenbuild, not actualbrowser reproduction",
+  "sources": {
+    "game032.html": {
+      "sha256": "6a5d0c0c3343953596e522a074765278734434409be111b8bad29df1b20842c2",
+      "relevant_lines": [
+        {
+          "line": 4,
+          "text": "<main><div class=\"heading\"><div><p class=\"eyebrow\">A LITTLE TIME BY THE RIVER</p><h1>川辺で、ひとやすみ。</h1></div><button id=\"pause\">ひと休み</button></div>"
+        },
+        {
+          "line": 5,
+          "text": "<div id=\"fishing-stage\"><nav class=\"view-tools\" aria-label=\"表示と記録\"><button id=\"records-open\">魚の記録</button><button id=\"aquarium-open\">水槽を眺める</button><button id=\"river-fullscreen\">釣り場を全画面</button></nav><section class=\"hud\" aria-label=\"釣行の記録\"><span>釣行 <strong id=\"time\">5:00</strong></span><span>釣果 <strong id=\"count\">0 匹</strong></span><span>得点 <strong id=\"score\">0</strong></span><span>あなたのBEST <strong id=\"best\">—</strong></span></section>"
+        }
+      ]
+    },
+    "src/games/game032/style.css": {
+      "sha256": "168ecd385a2bb61a30cee422e68daf2bb682af46f4d4d5d1d854de2202b41e4c",
+      "relevant_lines": [
+        {
+          "line": 2,
+          "text": "*{box-sizing:border-box}body{margin:0;background:#f6f3e9;color:#203e3e;font-family:'Arcade Rounded',system-ui,sans-serif}button,a{font:inherit}button{border:1px solid #cccbb8;background:#f7f2e2;color:#254c46;border-radius:10px;min-height:44px;padding:9px 18px;cursor:pointer}button:hover{background:#e4eadc}button:disabled{opacity:.55;cursor:default}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #b98635;outline-offset:3px}.primary,button[aria-pressed=true]{background:#315e57;border-color:#315e57;color:#fffaf0}.primary:hover{background:#244e47}.arcade-game-header{background:#f6f3e9!important}.arcade-game-header>span{font-size:10px;letter-spacing:.13em}main{max-width:1330px;margin:auto;padding:14px 28px 8px}.heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}h1{font-size:clamp(22px,3vw,34px);letter-spacing:.025em;margin:2px 0}h2{font-size:21px;margin:0 0 12px}.eyebrow{font-family:system-ui,sans-serif;font-size:10px;letter-spacing:.2em;color:#678078;margin:0 0 7px}.hud{display:flex;justify-content:space-between;gap:12px;padding:12px 2px 16px;font-size:12px;color:#657b70;border-top:1px solid #d9dbc9}.hud strong{font-size:18px;color:#274e48;margin-left:7px;font-variant-numeric:tabular-nums}.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start}.river-shell{position:relative;border-radius:16px;overflow:hidden;background:#516e61;box-shadow:0 5px 18px #38504720;isolation:isolate}.river-shell canvas{display:block;width:100%;height:clamp(330px,49vh,530px);touch-action:none;outline-offset:-5px;cursor:crosshair}.scene-label{position:absolute;top:15px;left:15px;display:flex;flex-direction:column;gap:3px;max-width:calc(100% - 30px);background:#f5f4e9eb;color:#304c42;padding:9px 14px;border-radius:8px;pointer-events:none;font-size:15px;box-shadow:0 2px 8px #1c343518}.scene-label span+span{font-size:11px;color:#617363}#practice-banner{position:absolute;left:15px;bottom:14px;background:#fff9e9e6;color:#385d49;border-radius:7px;padding:7px 12px;font-size:12px;pointer-events:none}#loading{position:absolute;inset:0;display:grid;place-content:center;background:#506e66;color:white}#loading[hidden]{display:none}.journal{border:1px solid #d9d6c6;background:#fbf8ef;border-radius:14px;padding:16px 12px}.journal-note{font-size:10px;line-height:1.8;color:#718271;border-top:1px solid #d9dbc9;padding-top:10px;margin-bottom:0}#aquarium{display:block;width:100%;height:auto;aspect-ratio:1;pointer-events:none;border-radius:7px}.tank-count{font-size:11px;line-height:1.6;margin:7px 0}#latest-fish p{font-size:12px;line-height:1.6;margin:8px 0}#collection{display:grid;gap:5px;font-size:11px}#collection>div{display:flex;justify-content:space-between}.casting-ui{padding-top:13px;text-align:center}.method-controls{display:flex;gap:8px;justify-content:center;margin-bottom:8px}.method-controls button{min-width:120px;font-size:13px;padding:8px 14px}#status{font-size:14px;min-height:25px;margin:0 0 6px;line-height:1.6}.controls{display:flex;justify-content:center}.controls button{height:50px;width:min(100%,390px)}.meters{height:23px;font-size:12px}.meters label{display:flex;align-items:center;justify-content:center;gap:12px}.meters label[hidden]{display:none}meter{width:180px;height:14px;accent-color:#5d8973}#tension{accent-color:#b77e44}.key-note,.save-note{font-size:11px;line-height:1.8;color:#768578;margin:9px 0}.save-note{text-align:center}footer{text-align:center;font-size:10px;color:#7c8978;padding:10px}dialog{position:fixed;inset:65px 16px auto auto;border:1px solid #d6d5c1;box-shadow:0 10px 45px #172f3e30;border-radius:18px;background:#fbf8eeef;color:#294a44;padding:28px;width:min(390px,calc(100vw - 32px));max-height:calc(100dvh - 90px);overflow:auto;z-index:20}dialog p,dialog li{font-size:13px;line-height:1.95}dialog ol{padding-left:20px}.menu-actions{display:grid;gap:10px;margin:19px 0}.menu-actions button{width:100%}.menu-return{border-top:1px solid #dedbc7;padding-top:14px}.menu-return a{display:block;min-height:44px;padding:10px 0;color:#315b51}.result-number{font-size:35px;font-variant-numeric:tabular-nums;color:#315e57}.catch-list{display:grid;gap:8px}.catch-list>div{display:flex;gap:12px;align-items:center}.catch-list img{width:65px;height:38px;object-fit:contain}.subtle{font-size:11px!important;color:#718275}#app[data-state=title] .casting-ui,#app[data-state=help] .casting-ui{visibility:hidden}#app[data-state=result] .controls{visibility:hidden}"
+        },
+        {
+          "line": 3,
+          "text": "@media(min-width:1100px){dialog{right:calc((100vw - min(100vw,1330px))/2 + 305px);top:160px;max-height:calc(100dvh - 244px)}}"
+        },
+        {
+          "line": 4,
+          "text": "@media(max-width:800px){main{padding:8px 12px 4px}.heading{margin-bottom:6px}h1{font-size:23px}.heading .eyebrow{font-size:8px}.game-layout{grid-template-columns:minmax(0,1fr) 102px;gap:8px}.journal{padding:7px 5px;align-self:stretch}.journal .eyebrow{font-size:7px;letter-spacing:.03em}.journal h2{font-size:13px;margin:5px 0}#aquarium{height:160px;aspect-ratio:auto}.journal-note{display:none}#latest-fish p{font-size:10px}#collection{font-size:9px}.tank-count{font-size:9px}.river-shell canvas{height:clamp(285px,43dvh,360px)}.hud{padding:8px 0;font-size:10px;gap:6px}.hud strong{font-size:14px;margin-left:3px}.scene-label{top:8px;left:8px;right:8px;padding:5px 7px;font-size:12px}.scene-label span+span{font-size:9px}dialog{left:50%;right:auto;top:140px;transform:translateX(-50%);padding:20px;max-height:calc(100dvh - 164px)}.casting-ui{padding-top:9px}#status{font-size:12px;min-height:39px;margin-bottom:3px}.key-note{font-size:9px}.save-note{font-size:10px}.controls button{padding:7px 8px;font-size:13px}.arcade-game-header>span{display:none}.heading>button{padding:6px 9px;font-size:11px}footer{padding:6px;font-size:9px}#practice-banner{left:5px;right:5px;bottom:6px;font-size:9px;padding:5px 6px}}"
+        },
+        {
+          "line": 5,
+          "text": "@media(max-width:350px){h1{font-size:20px}.eyebrow{letter-spacing:.12em}.game-layout{grid-template-columns:minmax(0,1fr) 90px;gap:6px}.hud span:last-child{font-size:9px}.river-shell canvas{height:280px}.journal h2{font-size:12px}#aquarium{height:145px}dialog{top:125px;max-height:calc(100dvh - 147px)}.key-note{margin-bottom:0}.method-controls button{min-width:110px}}"
+        },
+        {
+          "line": 6,
+          "text": "@media(max-height:500px) and (min-width:600px){main{padding:7px 16px}.heading{display:block;position:relative;height:0;margin:0}.heading>div{display:none}.heading>button{position:absolute;right:0;top:-51px;height:44px}.hud{padding:6px 0;font-size:10px}.hud strong{font-size:15px}.game-layout{grid-template-columns:minmax(0,1fr) 145px;gap:10px;align-items:stretch}.river-shell canvas{height:clamp(110px,calc(100dvh - 244px),190px)}.journal{padding:6px}.journal .eyebrow,.journal h2,.journal-note,#latest-fish,#collection{display:none}#aquarium{height:110px;aspect-ratio:auto}.tank-count{font-size:9px;margin:1px 0}.scene-label{top:6px;left:8px;padding:4px 6px;font-size:12px}.scene-label span+span{font-size:9px}.casting-ui{padding-top:5px}.method-controls{margin-bottom:3px}.method-controls button{font-size:11px;padding:5px 12px;min-width:110px}.controls button{height:44px;font-size:12px;padding:6px 10px}#status{font-size:11px;min-height:17px;margin-bottom:2px}.meters{height:18px}.key-note,.save-note,footer{display:none}dialog{top:65px;max-height:calc(100dvh - 82px)}#practice-banner{bottom:5px;left:8px;font-size:8px;padding:3px 6px}}"
+        },
+        {
+          "line": 13,
+          "text": "#app.river-full #fishing-stage{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;background:#f6f3e9;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));gap:4px;height:100dvh}"
+        },
+        {
+          "line": 17,
+          "text": "html:has(#app.river-full){overflow:hidden}#app:fullscreen{width:100%;height:100%;background:#f6f3e9}#app.river-full #menu{top:12px;max-height:calc(100dvh - 24px)}"
+        }
+      ]
+    },
+    "src/games/game032/FishViews.ts": {
+      "sha256": "739ee43a725443ba9cc113bee43c5ff43d3a51950c85ef0f6cea5c63f21de74a",
+      "relevant_lines": []
+    },
+    "src/games/game032/main.ts": {
+      "sha256": "bd356c3b1ab7846d3ec2baafabac1446cd0cfd5d1fbbcbfc5d955e8e8af6226a",
+      "relevant_lines": [
+        {
+          "line": 34,
+          "text": "function show(html:string,next:string){changeScreen(next);menu.innerHTML=html+'<p class=\"menu-return\"><a id=\"menu-portal\" class=\"arcade-portal-return\" href=\"./index.html\">← ゲーム一覧へ</a></p>';menu.show();menu.scrollTop=0;el('menu-title').tabIndex=-1;el('menu-title').focus({preventScroll:true});el('menu-portal').onclick=leave;}"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "finding_id": "revision02-gallery-capture-visibility",
+  "problem": "An aquarium-viewer screenshot shows the normal river scene instead of the viewer despite open=true reported by the runner.",
+  "expected": "Opening aquarium displays fullscreen tank, header, scope buttons and close control.",
+  "observed": [
+    "pc-empty-gallery.png shows the ordinary river and sidebar, no viewer header or aquarium scope controls.",
+    "Runner observed fish-viewer.open=true and gallery canvas fishCount=0."
+  ],
+  "unknown": [
+    "Actual rendered visibility/element-hit after native fullscreen transition.",
+    "Whether screenshot compositing timing or viewer display causes this discrepancy."
+  ],
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-01/pc-empty-gallery.png",
+    "docs/game032/revision02/QA/independent-browser-01/REPORT.json"
+  ],
+  "provenance": "actual-browser-screenshot-review"
+}

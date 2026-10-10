@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-10 JST：**Game032 revision02の記録/全画面を実装・公開準備中。** 7魚種最大サイズ/日時・直近100匹を即時端末保存、練習除外、記録/今回の全画面水槽と釣り場全画面/休憩。check・1019/86・build・offline25、固定4画面390/POST・pageerror0、独立Visual86/F13/H13。旧BEST/モデル/原素材不変、24tree/018未commit保全、032外部Analytics/オンラインOFF。本人のrevision01は「そこそこイイ感じ」、新revision02/物理実機/聴感は未確認。次033未着手。[報告](game032/revision02/IMPLEMENTATION_REPORT.md)。
+
 2026-10-10 JST：**Game032 revision01を公式試作公開・公開操作確認済み。** 固定2D麦わら少年/直接投げ先/餌＋浮きと手動誘引ルアー/実釣果の写真調水槽。背景素材・旧魚・Save不変、新ImageGen実2回。check・988/85・build・offlineJev25、固定4画面154＋別300秒/BEST、公開通常154＋Portal/取消43、pageerror/POST0。runtime829f014／公式Pages38039708161 build/deploy成功、公開193file SHA一致。独立Visual85/F13/H13、Jev実9HTTP200/36有効回答と独立判断、失敗保全。032外部Analytics/オンラインは準備中・OFF、他作品/Worker/D1/広告/CREDIT/GA4不変、21旧tree/018未commit保全。本人/実機/聴感未確認。[改修報告](game032/revision01/IMPLEMENTATION_REPORT.md)。
 
 2026-10-10 JST：**Game032「川辺で、ひとやすみ。」を公式URLへ試作公開済み。** runtime44a7608／Pages38034974805 build・deploy成功、186配信file SHA一致・公開4画面通常72／page error0・POST0。4地点／距離チャージ／前・本アタリ／巻きと緩め／7魚種／5分本番・無制限練習／完了個人BEST。OpenAI ImageGen実3回・15WebP1.18MB・実canvas thumb、原本metadataはgpt-image系統まで確認（具体的モデル版非公開）、Art Directorの実統合比較完了。check・962/84・build、独立12／browser93＋33／最終通常72、Visual85/F13/H13、Jev実8HTTP200／32有効回答＋独立判断。032本番Worker権限・許可先不足につき外部Analytics／共有／TOP10は準備中、旧20board維持。既存277source・21tree＋STEP2／018未commit182file保全、広告／CREDIT／GA4／D1schema不変。本人／実機／聴感未確認。active31/historical32、010退役、次033未着手。[報告](game032/IMPLEMENTATION_REPORT.md)／[再開](game032/HANDOFF.md)。

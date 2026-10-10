@@ -1,0 +1,21 @@
+{
+  "finding_id": "revision02-mobile-pause-target",
+  "problem": "Fullscreen fishing Pause target is narrower than the minimum44px mobile touch target.",
+  "expected": "Fullscreen Pause remains at least44x44 CSSpx on phone.",
+  "observed": [
+    "390x844 actual mobile viewport: river-pause width34 height44.",
+    "Button visible withinviewport and centerhit true; other toolbar controls passed."
+  ],
+  "unknown": [
+    "320px and landscape behavior before adjustment."
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-03/REPORT.json",
+    "docs/game032/revision02/QA/independent-browser-03/phone-failure.png"
+  ],
+  "provenance": "actual-browser-mobile-cdp-touch"
+}

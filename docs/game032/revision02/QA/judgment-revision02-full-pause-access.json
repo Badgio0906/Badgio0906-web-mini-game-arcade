@@ -1,0 +1,21 @@
+{
+  "finding_id": "revision02-full-pause-access",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "revision02_qa independent source reviewer (Jev answers not accessed)",
+  "rationale": "Fullriver fixedstage z40 covers outside heading Pause; nonmodal #menu.show() with inherited z20 would be under stage. Mobile users need a reachable Pause and reliable paused/result menu before publication. This is confirmed code structure/layering, actual rendering verification still required.",
+  "evidence": [
+    "docs/game032/revision02/QA/INDEPENDENT_FULL_PAUSE_SOURCE.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Added fullriver Pause/menu stacking, independently observed actual pause/resume and frozen clock in candidate02.",
+    "evidence": [
+      "docs/game032/revision02/QA/independent-browser-02/pc-fullscreen-pause.png",
+      "docs/game032/revision02/QA/independent-browser-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

@@ -1,5 +1,7 @@
 # Game032 — 再開
 
+現在の追加改修は[revision02](revision02/HANDOFF.md)。魚記録/鑑賞/全画面、旧BEST互換。ユーザーからrevision01の楽しさは「そこそこイイ感じ」と報告済み。revision02の本人評価・実機確認は未実施。以下は初版の履歴として維持。
+
 対象：川辺で、ひとやすみ。 ～RIVER SIDE FISHING～。仕様[IMPLEMENTATION_SPEC](IMPLEMENTATION_SPEC.md)、純粋モデル[MODEL_SPEC](MODEL_SPEC.md)、統合[INTEGRATION](INTEGRATION.md)、素材[ART_DIRECTION](ART_DIRECTION.md)、公開状況[IMPLEMENTATION_REPORT](IMPLEMENTATION_REPORT.md)。作者の実試遊は[HUMAN_PLAYTEST](HUMAN_PLAYTEST.md)で未実施として扱う。
 
 ## 再現

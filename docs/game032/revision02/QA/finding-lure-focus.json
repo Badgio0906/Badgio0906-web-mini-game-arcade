@@ -1,0 +1,19 @@
+{
+  "finding_id": "revision02-lure-focus-input",
+  "problem": "Practice lure remains at zero retrieval progress after fourteen keyboard pulses following closing aquarium viewer.",
+  "expected": "Fresh gameplay retrieve input advances lure and permits a bite after viewing interruption.",
+  "observed": [
+    "After viewer close, app state practice, phase waiting, method lure, lureProgress0.",
+    "Screenshot focus outline is on aquarium-open button restored after viewer.",
+    "Runner sends Space pulses without refocusing river/action after closing viewer."
+  ],
+  "unknown": [
+    "Whether gameplay retrieval responds after explicit river focus."
+  ],
+  "evidence": [
+    "docs/game032/revision02/QA/independent-browser-02/pc-lure-no-bite.png",
+    "docs/game032/revision02/QA/independent-browser-02/pc-lure-no-bite.json",
+    "tests/game032/revision02/qa.mjs:lureBite"
+  ],
+  "provenance": "actual-browser-ordinary-keyboard-input"
+}

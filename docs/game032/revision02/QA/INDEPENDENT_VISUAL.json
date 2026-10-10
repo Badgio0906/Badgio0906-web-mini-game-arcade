@@ -1,0 +1,263 @@
+{
+  "recorded_at": "2026-10-10T09:51:12.461378+00:00",
+  "base_commit": "5ecaa9dd4ac39fbd6b83849e1ecd6c7f352d0d6c",
+  "reviewer": "revision02_visual independent subagent",
+  "instructions_read": [
+    "AGENTS.md",
+    "docs/PROJECT_CONTEXT.md",
+    "docs/CURRENT_STATUS.md",
+    "docs/GAME_DEVELOPMENT_RULES.md",
+    "docs/JEV_REVIEW_RULES.md"
+  ],
+  "reading_note": "Read current working-tree documents together before source review; batch timestamp is not reconstructed per-file timing. JEV answers/API logs not inspected. No browser started alongside independent QA.",
+  "source_review": [
+    "game032.html",
+    "src/games/game032/FishViews.ts",
+    "src/games/game032/CatchRecords.ts",
+    "src/games/game032/main.ts",
+    "src/games/game032/style.css",
+    "src/games/game032/Aquarium.ts"
+  ],
+  "status": "PASS independent actual-image review of final fixed candidate",
+  "source_findings": [
+    {
+      "finding_id": "r02-pause-record-description",
+      "observed": "Pause states only completed five-minute outings are record targets; caught species persistence now occurs immediately including interrupted standard outings.",
+      "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "CODE_INSPECTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "reported_before_fix_at": "2026-10-10T09:26:49.845690+00:00",
+      "evidence": [
+        "src/games/game032/main.ts pause()",
+        "src/games/game032/main.ts processEvents()",
+        "src/games/game032/CatchRecords.ts record()"
+      ],
+      "rationale": "Ambiguous old record explanation conflicts with newly requested immediate fish records; score BEST policy remains completion-only. Not observed inability or data loss.",
+      "post_fix_source_check": {
+        "observed_at": "2026-10-10T09:34:14.493757+00:00",
+        "observed": "pause() now explicitly separates completed BEST/shared score from immediately retained caught fish records.",
+        "resolved_in_source": true
+      },
+      "resolved_in_final_candidate": true,
+      "post_fix_evidence": [
+        "QA/independent-browser-05/pc-gallery-swim-start.png",
+        "QA/independent-browser-05/pc-gallery-swim-next.png",
+        "QA/independent-browser-05/pc-records.png",
+        "QA/independent-browser-05/pc-fullscreen-standard-landed.png",
+        "QA/independent-browser-05/phone-gallery-viewport.png",
+        "QA/independent-browser-05/phone-records.png",
+        "QA/independent-browser-05/phone-fullscreen-ready.png",
+        "QA/independent-browser-05/small-gallery-viewport.png",
+        "QA/independent-browser-05/small-records.png",
+        "QA/independent-browser-05/small-fullscreen-ready.png",
+        "QA/independent-browser-05/small-fullscreen-pause.png",
+        "QA/independent-browser-05/landscape-gallery-viewport.png",
+        "QA/independent-browser-05/landscape-records.png",
+        "QA/independent-browser-05/landscape-fullscreen-ready.png"
+      ]
+    },
+    {
+      "finding_id": "r02-gallery-screenshot-mismatch",
+      "observed": "Actual pc-empty-gallery.png does not show requested fullscreen gallery; automation checked viewer.open=true but no gallery screenshot content/centerhit acceptance.",
+      "PRIMARY_CAUSE": "UNKNOWN",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "LIVE_INTERACTION",
+      "RELEASE_RISK_IF_UNRESOLVED": true,
+      "reported_before_fix_at": "2026-10-10T09:34:14.493757+00:00",
+      "evidence": [
+        "QA/independent-browser-01/pc-empty-gallery.png",
+        "QA/independent-browser-01/REPORT.json",
+        "src/games/game032/FishViews.ts open() and requestNative()"
+      ],
+      "rationale": "Requested new viewer is absent from the actual screenshot. Needs reproduce and fullscreen/top-layer/capture timing discrimination; risk=true reflects a reproducibly hidden core requested view, not a final proven root cause.",
+      "final_cause": null,
+      "followup_judgment": {
+        "at": "2026-10-10T09:37:08.637730+00:00",
+        "PRIMARY_CAUSE": "PRODUCT_BUG",
+        "CODEX_ACTION_REQUIRED": true,
+        "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+        "RELEASE_RISK_IF_UNRESOLVED": true,
+        "evidence": [
+          "QA/independent-viewer-probe-03/ordinary-original-order-viewport.png",
+          "QA/independent-viewer-probe-03/technical-dom-reopen-after-native-viewport.png",
+          "QA/independent-viewer-probe-03/REPORT.json"
+        ],
+        "rationale": "Same native app/dialog state/geometry, but native settled then explicit technical reopen paints gallery. Supports native/dialog top-layer order bug rather than accepting screenshot oracle as sufficient. Technical reopen is diagnosis, not ordinary-input acceptance."
+      },
+      "resolved_in_final_candidate": true,
+      "post_fix_evidence": [
+        "QA/independent-browser-05/pc-gallery-swim-start.png",
+        "QA/independent-browser-05/pc-gallery-swim-next.png",
+        "QA/independent-browser-05/pc-records.png",
+        "QA/independent-browser-05/pc-fullscreen-standard-landed.png",
+        "QA/independent-browser-05/phone-gallery-viewport.png",
+        "QA/independent-browser-05/phone-records.png",
+        "QA/independent-browser-05/phone-fullscreen-ready.png",
+        "QA/independent-browser-05/small-gallery-viewport.png",
+        "QA/independent-browser-05/small-records.png",
+        "QA/independent-browser-05/small-fullscreen-ready.png",
+        "QA/independent-browser-05/small-fullscreen-pause.png",
+        "QA/independent-browser-05/landscape-gallery-viewport.png",
+        "QA/independent-browser-05/landscape-records.png",
+        "QA/independent-browser-05/landscape-fullscreen-ready.png"
+      ]
+    },
+    {
+      "finding_id": "r02-viewer-header-proxy-overlap",
+      "reported_before_fix_at": "2026-10-10T09:37:08.637730+00:00",
+      "observed": "Fixed top-left Portal return proxy covers most of full-gallery title in actual API-unavailable screenshot and technical native reopen screenshot; close remains visible.",
+      "PRIMARY_CAUSE": "PRODUCT_BUG",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "evidence": [
+        "QA/independent-viewer-probe-02/unsupported-api-fixture-viewport.png",
+        "QA/independent-viewer-probe-03/technical-dom-reopen-after-native-viewport.png"
+      ],
+      "rationale": "Viewer header identity is obscured; main aquarium and exit button remain available. Need game-scoped header/proxy layout fix and all-view screenshot review.",
+      "resolved_in_final_candidate": true,
+      "post_fix_evidence": [
+        "QA/independent-browser-05/pc-gallery-swim-start.png",
+        "QA/independent-browser-05/pc-gallery-swim-next.png",
+        "QA/independent-browser-05/pc-records.png",
+        "QA/independent-browser-05/pc-fullscreen-standard-landed.png",
+        "QA/independent-browser-05/phone-gallery-viewport.png",
+        "QA/independent-browser-05/phone-records.png",
+        "QA/independent-browser-05/phone-fullscreen-ready.png",
+        "QA/independent-browser-05/small-gallery-viewport.png",
+        "QA/independent-browser-05/small-records.png",
+        "QA/independent-browser-05/small-fullscreen-ready.png",
+        "QA/independent-browser-05/small-fullscreen-pause.png",
+        "QA/independent-browser-05/landscape-gallery-viewport.png",
+        "QA/independent-browser-05/landscape-records.png",
+        "QA/independent-browser-05/landscape-fullscreen-ready.png"
+      ]
+    },
+    {
+      "finding_id": "r02-full-pause-minimum-width",
+      "reported_before_fix_at": null,
+      "timing_note": "Reported by message after candidate03 failure and before parent CSS fix. Exact message delivery timestamp not exposed; kept null rather than reconstructed.",
+      "observed": "Candidate03 phone pause was34x44CSSpx, inside and center-hit true.",
+      "PRIMARY_CAUSE": "PRODUCT_BUG",
+      "CODEX_ACTION_REQUIRED": true,
+      "NEXT_EVIDENCE": "CODE_INSPECTION",
+      "RELEASE_RISK_IF_UNRESOLVED": false,
+      "evidence": [
+        "QA/independent-browser-03/phone-failure.png",
+        "QA/independent-browser-03/REPORT.json"
+      ],
+      "rationale": "Usable but minimum44CSSpx tap width was unmet; needs scoped minimum width rather than unrelated game changes.",
+      "resolved_in_final_candidate": true,
+      "post_fix_evidence": [
+        "QA/independent-browser-05/phone-fullscreen-ready.png",
+        "QA/independent-browser-05/small-fullscreen-ready.png",
+        "QA/independent-browser-05/REPORT.json"
+      ]
+    }
+  ],
+  "actual_screen_review": {
+    "reviewed_at": "2026-10-10T09:51:12.461378+00:00",
+    "source_hashes": {
+      "game032.html": "b456c8c8fd2f861016a54027f6079b6dd6988ff4f6407619d9fd042ceaca5111",
+      "src/games/game032/Aquarium.ts": "76456ce5120ec6e5a1d6d4818384e3ddee8ce65bf35ee0315e4ce612b4061d4f",
+      "src/games/game032/CatchRecords.ts": "72ac054571f7eedec99a2005470feb637ed86aca50490f98f2716aa31f9d5d65",
+      "src/games/game032/FishViews.ts": "ff6a4984324e1896db7ca1dd0cd2dde55b0d38d5932769677acba8efc56f039b",
+      "src/games/game032/FishingModel.ts": "5bbc9467e3e46cc4c46c110d7211ff84f0b0ab10423b6ad912188afe01ebbe39",
+      "src/games/game032/Projection.ts": "e24985f8e746c4db5c978eac2579087f2e295b3dc45c98dc5bc91ea8343fbd20",
+      "src/games/game032/RiverSound.ts": "6522d1a29b4d4a07491e8c54acc9ea4aa96190be66b3c144ad9f491606e8ae96",
+      "src/games/game032/Save.ts": "31437a4d20635cc1a65aef1c70f025f1df65a0b3d730743068fee5ffda1e45ef",
+      "src/games/game032/game.manifest.json": "e844636bc62634c74fd362c9b11732ba3ee0e6c3d17814d9c67f2d0264e58a03",
+      "src/games/game032/main.ts": "810fa66977ef8950055a8758b38a6c7b90a18efee1b3c9cbff833a348efe5d3d",
+      "src/games/game032/style.css": "c671bc9dd56b705f8b235f53f8393bdc9cb938208abd626b709b37e7ad25c3c7",
+      "public/assets/game032/angler-cast.webp": "d5745d7668d0a86a8a0c6b3be041461c1bb206a2f4c2e94fb6a042e1453be4f7",
+      "public/assets/game032/angler-hook.webp": "a32b9e3a3f933da9ba6208cefdf5b56a134467e73875c89f8b2b4060c6320dbd",
+      "public/assets/game032/angler-idle.webp": "fbf4efb67c4fee987e32752cb1138cc6f82bd267b9595c4e9615b251fff1b99c",
+      "public/assets/game032/angler-land.webp": "cd76bbdb215c761bb9410e438f1ee92235a42a4b5f1be7bacfdf4495496b9b4d",
+      "public/assets/game032/angler-ready.webp": "1148ec59e3916a78d47d2d8e5fcbfae933444ee1a5698cb6d212eac2a918b1de",
+      "public/assets/game032/angler-reel.webp": "34699ef03127c0836cfbc9ee2adc609f6b2b7d7d76f2e1d6d509d65d17c3be58",
+      "public/assets/game032/angler-walk-left.webp": "2850cafa7e05bb346990369c15e26afb8070f49fbe701be5757104e1357edfb4",
+      "public/assets/game032/angler-walk-right.webp": "0193f468f643785497a5ed2d5ad9c2b8e80d8a0b8715aa4c85b83c3a0160df0c",
+      "public/assets/game032/aquarium.webp": "b7e37d6020d2f190f35ba6d7ba72aef45b12a8e86a91c2bbd286a626850228b8",
+      "public/assets/game032/boy-cast.webp": "2f48998a28b55edb42232e7a2e6ca2b0fac38be2641cd03585b1572230ed2a1f",
+      "public/assets/game032/boy-hook.webp": "08933b1a45846a9b546e758b75d8ee92231ad7db6850cbef72b68d5b767afecc",
+      "public/assets/game032/boy-idle.webp": "acdc6bfbd5cec4745722b2fb2b78554eb660ec8a51f6c8584d27d2171f4a6da9",
+      "public/assets/game032/boy-land.webp": "35e515f0670ad7ddc609979111ebb89ce123436bd9debe7515918a7baa187633",
+      "public/assets/game032/boy-ready.webp": "9ce8a3493ff31c49f6e424da2936745f27c4611d0b4e828a184b9655750ec4be",
+      "public/assets/game032/boy-reel.webp": "ab11f9d62d4d5a3f01e0befde34dcf5037f26252c5dafe9bebb6d7ee7808d547",
+      "public/assets/game032/fish-amago.webp": "0d8aca830c91a5cb88769a6f7d43daefbfbf4f21ae0499e802c4acfb0fb38b2e",
+      "public/assets/game032/fish-iwana.webp": "c1cd5922c4ff3cc7848021347a37a33629433fbaf1098692d782705a65375d00",
+      "public/assets/game032/fish-nijimasu.webp": "7826f64208d5faeb2ae724f9b8ccde127831c1237834ba2e3ced85ae3b189a96",
+      "public/assets/game032/fish-oikawa.webp": "a2d0712799f4e00377ba7dd81a28f792ec4701df42f25f733b63c5712d2eebed",
+      "public/assets/game032/fish-ugui.webp": "212cbc0b0e0dc90a436d527c5f4ea56b9bcf65aa9277b8db50d0e5dbf24d0d71",
+      "public/assets/game032/fish-yamame.webp": "0c40d74c43b1f53af5a8536164fb9969dd2f7286a64eaa7ec538f35ebbca891f",
+      "public/assets/game032/river-panorama.webp": "f5a465ffe91acbc7c1c083d117f0cc7770e33139daa21fe3688c69b505c19d5d",
+      "public/fonts/arcade-rounded-jp.woff2": "1512ff300bff6733c8a17b4474a548a59f188547a3682013270f96056ce37186"
+    },
+    "source_unchanged": true,
+    "evidence": [
+      "QA/independent-browser-05/pc-gallery-swim-start.png",
+      "QA/independent-browser-05/pc-gallery-swim-next.png",
+      "QA/independent-browser-05/pc-records.png",
+      "QA/independent-browser-05/pc-fullscreen-standard-landed.png",
+      "QA/independent-browser-05/phone-gallery-viewport.png",
+      "QA/independent-browser-05/phone-records.png",
+      "QA/independent-browser-05/phone-fullscreen-ready.png",
+      "QA/independent-browser-05/small-gallery-viewport.png",
+      "QA/independent-browser-05/small-records.png",
+      "QA/independent-browser-05/small-fullscreen-ready.png",
+      "QA/independent-browser-05/small-fullscreen-pause.png",
+      "QA/independent-browser-05/landscape-gallery-viewport.png",
+      "QA/independent-browser-05/landscape-records.png",
+      "QA/independent-browser-05/landscape-fullscreen-ready.png",
+      "QA/independent-browser-05/REPORT.json"
+    ],
+    "views": [
+      "PC 1280x900",
+      "phone-equivalent390x844",
+      "small320x740",
+      "short-landscape844x390"
+    ],
+    "observed": [
+      "Native gallery now visibly paints actual caught fish in photographic tank; empty view invents no fish.",
+      "Viewer titles are below the original Portal proxy row and close buttons remain visible; no overlap in reviewed four views.",
+      "Species cards differentiate caught and uncaught, show max cm and separate largest-catch/latest timestamps in local-device time. On short landscape dates are in scrollable card content; screenshot shows max first, exact dates are independently checked by QA DOM.",
+      "Fullscreen river preserves original background and stationary strawhat boy, water target, bait/lure method controls, current status and cast/reel action. Visible exit and pause retained.",
+      "320px fullriver exit label wraps two lines but remains readable; pause minimum44CSSpx confirmed by independent QA geometry.",
+      "PC gallery real-clock start/next pair shows fish moves laterally against identical tank frame, without stretching fish or photographic tank.",
+      "Portrait gallery retains square photo without distortion, with deliberate cream empty space; short landscape is height-limited, fish remain small but identifiable with species/size legend."
+    ],
+    "acceptance": "PASS within actual image and technical evidence scope; no remaining blocking visual issue"
+  },
+  "human_fun_judgment": null,
+  "score": {
+    "A_visual_identity": 13,
+    "B_character_object_appeal": 13,
+    "C_background_quality": 9,
+    "D_UI_integration": 9,
+    "E_composition": 8,
+    "F_gameplay_readability": 13,
+    "G_motion_effects": 8,
+    "H_production_value": 13,
+    "total": 86,
+    "F_max": 15,
+    "H_max": 15,
+    "score_note": "Scores assigned from reviewed actual captures and real-clock frame pair, not Jev values or mere asset existence."
+  },
+  "release_blocked_by_visual": false,
+  "qa_evidence_summary": {
+    "success": true,
+    "checks": 390,
+    "errors": 0,
+    "post_attempts": 0,
+    "source_unchanged": true,
+    "kind": "independent real-clock ordinary mouse/keyboard/CDP-touch acceptance; separate explicit unsupported-FullscreenAPI fixture"
+  },
+  "limits": [
+    "Reviewer did not conduct human playtest, physical iPhone/Android touch/fullscreen or audio assessment.",
+    "Browser ordinary operation is independent QA evidence; Visual reviewer inspected source, actual PNGs and time-separated frames, not concurrent live browser.",
+    "Prior user modest positive fun feedback concerns revision01 and does not prove new revision02 features are human-validated.",
+    "New records begin with revision02 catches; historical catches without retained species/size/date cannot be reconstructed from BEST.",
+    "Short landscape keeps square tank contained; it is smaller than portrait due available height."
+  ]
+}
