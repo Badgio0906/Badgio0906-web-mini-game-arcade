@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { gameCatalog, historicalGameCatalog, hiddenGameCatalog, retiredGameCatalog, gameDisplayNumbers, filterGames, displayNumbersFor } from '../../src/data/gameCatalog';
-import { prioritizeFavorites } from '../../src/portal/discovery';
+import { prioritizeFavorites, readFavorites, saveFavorites } from '../../src/portal/discovery';
 const expected = [1,2,3,5,6,8,9,11,12,13,14,15,16,17,18,19,20,22,23,24,25,27,31,32].map(n=>`game${String(n).padStart(3,'0')}`);
 describe('author catalog reorganization',()=>{
  it('preserves stable identities and contiguous display identity despite sorting/filtering',()=>{
@@ -10,6 +10,11 @@ describe('author catalog reorganization',()=>{
   for(const game of prioritizeFavorites(gameCatalog,new Set(['game032','game019']))) expect(gameDisplayNumbers.get(game.id)).toBe(displayNumbersFor(historicalGameCatalog).get(game.id));
   for(const game of filterGames(gameCatalog,['physics'],'or')) expect(gameDisplayNumbers.get(game.id)).toBe(displayNumbersFor(historicalGameCatalog).get(game.id));
   for(const game of historicalGameCatalog) expect(game.releaseOrder).toBe(Number(game.id.slice(4)));
+ });
+ it('retains hidden favorites in storage while never placing their cards',()=>{
+  let raw='["game026","game032"]';const storage={getItem:()=>raw,setItem:(_key:string,value:string)=>{raw=value;}};
+  const ids=new Set(historicalGameCatalog.map(g=>g.id));const favorites=readFavorites(storage,ids);favorites.add('game019');saveFavorites(storage,favorites);
+  expect(JSON.parse(raw)).toEqual(['game026','game032','game019']);expect(prioritizeFavorites(gameCatalog,favorites).some(g=>g.id==='game026')).toBe(false);
  });
  it('distinguishes hidden playable URLs and retired lightweight notice',()=>{
   expect(hiddenGameCatalog.map(g=>g.id)).toEqual(['game026','game028','game029','game030']);

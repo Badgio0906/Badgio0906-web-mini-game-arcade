@@ -1,5 +1,5 @@
 import './style.css';
-import { developmentStatusLabels, filterCatalog, gameCatalog, gameDisplayNumbers } from '../data/gameCatalog';
+import { developmentStatusLabels, filterCatalog, gameCatalog, gameDisplayNumbers, historicalGameCatalog } from '../data/gameCatalog';
 import { TelemetryService } from '../core/TelemetryService';
 import { analyticsRuntime } from '../analytics/runtime';
 import { observeCardImpressions } from '../analytics/impressions';
@@ -17,7 +17,7 @@ analytics?.consent.subscribe(state=>{if(state==='granted')telemetry.trackEvent('
 const gallery = document.getElementById('game-gallery')!;
 const cards = new Map<string, HTMLElement>();
 const favoriteButtons = new Map<string, HTMLButtonElement>();
-const knownIds = new Set(gameCatalog.map(game => game.id));
+const knownIds = new Set(historicalGameCatalog.map(game => game.id));
 let favoriteStorage: FavoriteStorage | undefined;
 try { favoriteStorage = window.localStorage; } catch { /* Keep favorites in memory when storage is unavailable. */ }
 let favorites = readFavorites(favoriteStorage, knownIds);
