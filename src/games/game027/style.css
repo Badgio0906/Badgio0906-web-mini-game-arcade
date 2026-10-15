@@ -23,3 +23,6 @@ dialog#menu{inset:calc((100dvh + 52px - 64px)/2) auto auto 50%;max-height:calc(1
 @media(max-width:340px) and (orientation:portrait){#turn-title{font-size:14px}.table-wrap{max-width:calc((100dvh - 408px)*.55)}}
 @media(max-height:520px) and (min-width:600px){main{grid-template-rows:26px 50px auto}#turn-banner{grid-column:1 / -1;grid-row:2;width:100%;min-height:45px;margin-bottom:5px;padding:3px 8px}#turn-title{font-size:16px}#turn-detail{font-size:10px}.table-wrap,.hud,.shot-controls{grid-row:3}.table-wrap{max-width:calc((100dvh - 206px)*1.82)}}
 @media(prefers-reduced-motion:reduce){#turn-banner{animation:none!important}}
+
+/* A definite grid-item width prevents canvas intrinsic resize from shrinking its parent. */
+.table-wrap{width:100%;min-width:0}

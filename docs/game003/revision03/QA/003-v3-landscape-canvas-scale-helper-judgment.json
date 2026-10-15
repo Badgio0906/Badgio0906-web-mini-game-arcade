@@ -1,0 +1,23 @@
+{
+  "finding_id": "003-v3-landscape-canvas-scale",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "rationale": "The actual 844x390 main capture uses about150x180 CSS pixels for the entire playfield, compared with roughly680px-wide score and action rows. The first building is about36px wide and the mass label roughly3-4px high; silhouette and mass information essential to the irregular building puzzle become impractical to inspect. This is an objective responsive layout failure. A new larger landscape scene with actual controls and menu images must be checked before this viewport can pass.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage2-unique/final-four-widths/003-844-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/final-four-widths/003-320-playing.png",
+    "src/games/game003/style.css"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Actually viewed main images at1440/390/320/844 and compared field and object scale. Reported the short-landscape collapse to Main before receiving the implementation worker correction. The two-column correction is awaiting a new fixed candidate and screenshot.",
+    "evidence": [
+      "docs/catalog-reorganization/QA/stage2-unique/final-four-widths/003-844-playing.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "reviewer": "Art Director worker, separate from Game003 code implementation; creator of static Game003 city/facade images, so integrated visual judgment is separate from self-adoption of those assets. No Jev answers read.",
+  "human_judgment": null
+}

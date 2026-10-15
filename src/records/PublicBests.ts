@@ -51,7 +51,21 @@ export class PublicBests {
   private async load(): Promise<PublicBestState> {
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 10000);
     try {
-      const response = await this.fetcher(`${this.base}/v1/records/public/bests`, {method:'GET', credentials:'omit', referrerPolicy:'no-referrer', cache:'no-cache', redirect:'error', signal:controller.signal});
+      const path=`${this.base}/v1/records/public/bests`;
+      const options:RequestInit={method:'GET',credentials:'omit',referrerPolicy:'no-referrer',cache:'no-cache',redirect:'error',signal:controller.signal};
+      // The query is the caller's vocabulary; an expanded Worker must not return
+      // board IDs an older already-open page cannot validate.
+      const query=new URLSearchParams({boards:recordBoards.map(board=>board.boardId).join(',')});
+      let response=await this.fetcher(`${path}?${query}`,options);
+      // The currently published Worker predates negotiation and rejects queries.
+      // Only that exact legacy error permits one no-query fallback. Its 20-board
+      // response still passes the normal pending-board-aware validation below.
+      if(response.status===400){
+        const text=await response.text();if(text.length>1024)throw Error('public_query_failed');
+        let legacy=false;try{legacy=JSON.parse(text)?.error==='invalid_query';}catch{/* fail closed */}
+        if(!legacy)throw Error('public_query_failed');
+        response=await this.fetcher(path,options);
+      }
       if (response.status === 503) { this.state = {status:'preparing',boards:new Map()}; return this.state; }
       if (!response.ok || Number(response.headers.get('Content-Length') || 0) > 65536) throw Error('public_fetch_failed');
       const body = await response.text(); if (body.length > 65536) throw Error('public_response_too_large');

@@ -13,3 +13,5 @@
 - 練習は独立worldで、移動と回転を使い2棟を実着地。BEST/credit/runイベントと独立。
 
 旧C国自動振れ倍率は手動空間構築へ全面改修するため廃止。旧保存は保持し、その旧比較ルールのrecordを新得点へ混入しない。
+
+依存採用比較（インストール済みminified配布物、最終Vite chunkではない）: Matter.js 83,476 bytes/gzip25,860、旧Game003のPhaser1196122/gzip314910。Canvas＋Matterは専用SAT/接触/摩擦/sleepを備え、自前でcompound solverを組むより既知の安定性を利用できる。Phaser表示依存をこのゲームから外し、MatterをGame034とも共有する。実測根拠 `QA/ENGINE_SIZE.json`。

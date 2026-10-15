@@ -1,0 +1,12 @@
+{
+  "finding_id":"stage2-old-record-queue-validation",
+  "PRIMARY_CAUSE":"PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED":true,
+  "NEXT_EVIDENCE":"CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED":true,
+  "reviewer":"snake_billiards agent; independent from common records implementation; Jev answers/log unread",
+  "rationale":"The observed game-level validation/registration would reject otherwise valid historical-board candidates after a rules replacement, and the restore constructor removes rejected queue entries. This threatens retained old candidates. At fixed commit 5bd5f03, validators now resolve the exact historical board and queue registration is board-level; independent source tracing plus 28 tests show old-rule payloads stay valid, new-board rules cannot be mixed into them, old 20-board responses stay accepted, and old local BEST bytes are unchanged.",
+  "evidence":["docs/catalog-reorganization/RECORDS_MIGRATION_REVIEW.md","docs/catalog-reorganization/QA/RECORDS_STAGE2_FIXED_UNIT.txt","src/records/RecordSharing.ts: Sharing constructor/validQueued/submit","src/records/submissionValidation.ts: safeSubmission","tests/unit/record-rule-migration.test.ts"],
+  "actual_next_action":{"method":"CODE_INSPECTION","description":"Inspected fixed stage2 source and diff without Jev answers, followed by independent isolated execution of migration/local/client/definitions tests: 28 passed. Full production queue transport not exercised.","evidence":["docs/catalog-reorganization/RECORDS_MIGRATION_REVIEW.md","docs/catalog-reorganization/QA/RECORDS_STAGE2_FIXED_UNIT.txt"]},
+  "final_root_cause":"PRODUCT_BUG"
+}

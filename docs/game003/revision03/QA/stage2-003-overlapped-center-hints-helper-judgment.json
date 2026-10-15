@@ -1,0 +1,26 @@
+{
+  "finding_id": "stage2-003-overlapped-center-hints",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "rationale": "Actual main screenshots show two instructional text layers in the same bottom strip: the canvas centre-of-mass explanation and DOM foundation-centre label. Both become difficult to read, especially on mobile. Source confirms the canvas y680 text and DOM bottom38px label. Removing one duplicate layer is an implementation correction; a new rendered view is required. The control buttons and primary falling object remain distinct, so this isolated supplementary hint overlap is not classified as a major unresolved release risk.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage2-unique/desktop-initial/003-1440-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/final-four-widths/003-390-playing.png",
+    "src/games/game003/TowerScene.ts:30",
+    "src/games/game003/style.css:59",
+    "src/games/game003/main.ts:64"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "After actually viewing the overlapping text, independently traced the canvas and DOM text positions, reported both layers and locations to Main without modifying implementation. Main reports duplicate canvas hint removal; visual retest remains pending.",
+    "evidence": [
+      "src/games/game003/TowerScene.ts:30",
+      "src/games/game003/style.css:59"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "reviewer": "Art Director worker, separate from Game003 code implementation; creator of static Game003 city/facade images, so integrated visual judgment is separate from self-adoption of those assets. No Jev answers read.",
+  "human_judgment": null
+}

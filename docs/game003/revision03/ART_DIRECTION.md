@@ -6,4 +6,4 @@
 
 形状/重心・密度定義は `src/games/game003/buildings.ts`。rendererも同じ矩形和でclipし、図柄の透明輪郭を物理輪郭として扱わない。輪郭を矩形より張り出させない。全ビルの●が実mass center。
 
-ImageGen制作と原本/採用hash記録はroot Art担当。現時点で新画像は未受領であり、生成済とは報告しない。fallbackの手描き窓パターンは検証用。最終Visual/実画像統合確認/実画面thumbnailはまだ未実施。
+ImageGen制作と原本/採用hash記録はroot Art担当。Art担当から2画像を受領し指定pathへ統合。実viewで10別ファサード/低contrast都市背景を確認。fallbackの手描き窓パターンは読込失敗時用。最終実ゲームVisual/実画面thumbnailはまだ未実施。
