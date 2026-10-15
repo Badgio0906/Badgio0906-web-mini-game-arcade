@@ -22,7 +22,8 @@ const onboarding = createOnboarding({ gameId: 'game005', storage, telemetry });
 const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
 const listeners = new AbortController();
 let state: Screen = 'title'; let runId = ''; let lastResult: SortResult | null = null;
-let best = storage.readNumber('best', 0); let newBest = false; let ended = true;
+const legacyBest = storage.readNumber('best', 0);
+let best = storage.readNumber('best-rules-v2', 0); let newBest = false; let ended = true;
 let resultAvailableAt = 0; let rewardOfferVisible = false; let disposed = false;
 let resultTimer: ReturnType<typeof window.setTimeout> | undefined;
 const primary = (id: string, text: string) => `<button id="${id}" type="button" class="primary">${text}<span aria-hidden="true">→</span></button>`;
@@ -39,7 +40,7 @@ function sync(): void {
   $('mute-button').setAttribute('aria-label', audio.muted ? t('音声をオンにする', 'Enable sound') : t('音声をミュート', 'Mute sound')); $('mute-button').setAttribute('aria-pressed', String(audio.muted));
   const button = $<HTMLButtonElement>('pause-button'); button.disabled = state !== 'playing' && state !== 'paused'; button.textContent = state === 'paused' ? '▶' : 'Ⅱ'; button.setAttribute('aria-label', state === 'paused' ? t('再開', 'Resume') : t('一時停止', 'Pause'));
   for (const [lang, id] of [['ja','language-ja-button'], ['en','language-en-button']] as const) { $(id).setAttribute('aria-pressed', String(language === lang)); $<HTMLButtonElement>(id).disabled = credits.rewardPending; }
-  writeText('sorted-label', t('仕分け数', 'SORTED')); writeText('combo-label', t('連続', 'COMBO')); writeText('best-label', t('自己最高', 'BEST'));
+  writeText('sorted-label', t('得点 V2', 'SCORE V2')); writeText('combo-label', t('連続', 'COMBO')); writeText('best-label', t('自己最高', 'BEST'));
   writeText('controls-label', t('← → / A D / 左右をタップ', '← → / A D / TAP LEFT OR RIGHT')); writeText('site-note', t('仕分ける前に、今のルール。', 'Check the rule before sorting.'));
   $('stage').setAttribute('aria-label', t('仕分けレーン。画面の左半分で左へ、右半分で右へ', 'Sorting lane. Tap its left or right half to sort.'));
   $('brand-button').setAttribute('aria-label', t('右往左往の仕分け術 タイトルに戻る', 'SORT SHIFT · Return to title'));
@@ -59,9 +60,9 @@ function sync(): void {
 }
 function writeText(id: string, value: string): void { const element = $(id); if (element && element.textContent !== value) element.textContent = value; }
 function update(snapshot: SortSnapshot): void {
-  writeText('score-value', String(snapshot.sorted)); writeText('combo-value', String(snapshot.combo));
+  writeText('score-value', String(snapshot.score)); writeText('combo-value', String(snapshot.combo));
   if (app.dataset.phase !== snapshot.phase) app.dataset.phase = snapshot.phase;
-  writeText('phase-label', state === 'paused' ? t('一時停止', 'PAUSED') : snapshot.phase === 'rule_change' ? t('ルール変更！', 'RULE CHANGE!') : snapshot.phase === 'dispatch' ? t('仕分け成功 ✓', 'SORTED ✓') : snapshot.phase === 'sorting' ? t('左？右？', 'LEFT OR RIGHT?') : t('ルールを確認', 'CHECK THE RULE'));
+  writeText('phase-label', state === 'paused' ? t('一時停止', 'PAUSED') : snapshot.phase === 'miss' ? t('ミス · あと' + snapshot.lives + '回', 'MISS · ' + snapshot.lives + ' lives') : snapshot.phase === 'rule_change' ? t('ルール変更！', 'RULE CHANGE!') : snapshot.phase === 'dispatch' ? t('仕分け成功 ✓', 'SORTED ✓') : snapshot.phase === 'sorting' ? t('左？右？', 'LEFT OR RIGHT?') : t('ルールを確認', 'CHECK THE RULE'));
   writeText('turn-label', snapshot.phase === 'rule_change' ? t('ルールが変わる！', 'The rule is changing!') : snapshot.phase === 'dispatch' ? t('ナイス仕分け！', 'Nicely sorted!') : t('今のルールで、左？右？', 'With this rule: left or right?'));
   writeText('phase-hint', snapshot.phase === 'rule_change' ? t('新しい左右の条件を確認しよう。', 'Check the new left and right conditions.') : t('荷物の条件と、今のルールを見比べよう。', 'Compare the parcel with the current rule.'));
   writeText('rule-change-count', `${snapshot.ruleChanges} ${t('回ルール変更', 'RULE CHANGES')}`);
@@ -69,16 +70,16 @@ function update(snapshot: SortSnapshot): void {
 /** Renders the current view without touching the run, practice progress or result gate. */
 function renderScreen(): void {
   if (state === 'playing') {
-    overlay.innerHTML = `<article class="play-card"><span class="eyebrow">${t('見て → 仕分け → 次へ', 'LOOK → SORT → REPEAT')}</span><h2 id="turn-label"></h2><p id="phase-hint"></p><p>${t('← → / A D<br />または画面の左・右をタップ', '← → / A D<br />or tap the left or right half')}</p><b id="rule-change-count"></b></article>`; update(controller.snapshot()); return;
+    overlay.innerHTML = `<article class="play-card"><span class="eyebrow">${t('見て → 仕分け → 次へ', 'LOOK → SORT → REPEAT')}</span><h2 id="turn-label"></h2><p id="phase-hint"></p><p>${t('基本100＋速さ最大50点。<br />4連続ごと倍率+0.25（最大×2.75）、フィーバー×2。', 'Base 100 + speed up to 50.<br />Every 4 combo adds ×0.25 (max ×2.75); fever ×2.')}</p><b id="rule-change-count"></b></article>`; update(controller.snapshot()); return;
   }
   if (state === 'title') {
-    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">${t('仕分けの準備はいい？', 'READY FOR YOUR SHIFT?')}</span><h2 class="game-title">右往左往の仕分け術<small>SORT SHIFT</small></h2><p>${t('荷物を見て、今のルールで左か右へ。', 'Read the rule. Send each parcel left or right.')}</p><div class="mini-best">${t('自己最高', 'BEST')} <b>${best}</b> ${t('個', 'SORTED')}</div>${credits.canPlay ? primary('play-button', t('PLAY · 仕分け開始', 'PLAY · Start sorting')) : primary('reward-button', '+3 CREDIT')}<small class="input-note">${t('← → / A D / 画面の左・右をタップ', '← → / A D / TAP LEFT OR RIGHT')}</small>${credits.canPlay ? '' : stub()}</article>`;
+    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">${t('仕分けの準備はいい？', 'READY FOR YOUR SHIFT?')}</span><h2 class="game-title">右往左往の仕分け術<small>SORT SHIFT</small></h2><p>${t('3ミスで終了。8連続で6秒フィーバー！<br />速さ加点・コンボ倍率・フィーバー×2。', '3 misses end the shift. 8 combo starts 6s fever!<br />Speed bonus · combo multiplier · fever ×2.')}</p><div class="mini-best">${t('自己最高', 'BEST')} <b>${best}</b> ${t('点', 'PTS')}${legacyBest ? ` · ${t('旧BEST', 'LEGACY BEST')} ${legacyBest}` : ''}</div>${credits.canPlay ? primary('play-button', t('PLAY · 仕分け開始', 'PLAY · Start sorting')) : primary('reward-button', '+3 CREDIT')}<small class="input-note">${t('← → / A D / 画面の左・右をタップ', '← → / A D / TAP LEFT OR RIGHT')}</small>${credits.canPlay ? '' : stub()}</article>`;
   } else if (state === 'paused') {
     overlay.innerHTML = `<article class="start-card pause-card"><span class="eyebrow">${t('ひと息つこう', 'TAKE A SHORT BREAK')}</span><h2>${t('ひと休み。', 'Take a break.')}</h2><p>${t('荷物も時間も停止中。準備ができたら再開。', 'Parcels and the clock are paused. Resume when ready.')}</p><div class="paired-actions">${primary('resume-button', t('RESUME · 再開', 'RESUME'))}${titleButton()}</div></article>`;
   } else if (state === 'result' && lastResult) {
     const result = lastResult; const labels = ruleText(result.rule, language);
     const direction = sideText(result.expectedSide, language); const attribute = result.expectedSide === 'left' ? labels.left : labels.right;
-    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">右往左往の仕分け術<small>SORT SHIFT</small></span><h2>${result.outcome === 'timeout' ? t('時間切れ！', 'Time is up!') : t('そっちじゃなかった！', 'Wrong side!')}</h2></div><div class="result-score"><b id="result-score">${result.sorted}</b><span>${t('仕分け数', 'SORTED')}</span>${newBest ? `<mark class="new-best">${t('自己新記録', 'NEW BEST')}</mark>` : ''}</div><dl class="result-details"><div><dt>${t('自己最高', 'BEST')}</dt><dd id="result-best">${best}</dd></div><div><dt>${t('連続', 'COMBO')}</dt><dd>${result.combo}</dd></div><div><dt>${t('時間', 'TIME')}</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl><p class="result-reason">${result.outcome === 'timeout' ? t('仕分けの時間がなくなりました。', 'The parcel deadline expired.') : t(`${result.actualSide === 'left' ? '左' : '右'}を選びました。`, `You chose ${result.actualSide === 'left' ? 'LEFT' : 'RIGHT'}.`)}</p><div class="correct-direction">${t('正解は ', 'Correct: ')}${direction}<small>${labels.dimension} · ${attribute}</small></div><div class="result-actions">${credits.canPlay ? primary('retry-button', t('RETRY · もう1回', 'RETRY')) : primary('reward-button', '+3 CREDIT')}${titleButton()}</div><small class="result-note">${credits.canPlay ? t('次は、もう1個仕分けよう。', 'Sort one more next time.') : t('NO CREDIT · 開発版 Rewarded Ad Stub', 'NO CREDIT · Development Rewarded Ad Stub')}</small></article>`;
+    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">右往左往の仕分け術<small>SORT SHIFT</small></span><h2>${result.outcome === 'timeout' ? t('時間切れ！', 'Time is up!') : t('そっちじゃなかった！', 'Wrong side!')}</h2></div><div class="result-score"><b id="result-score">${result.score}</b><span>${t('得点 V2', 'SCORE V2')}</span>${newBest ? `<mark class="new-best">${t('自己新記録', 'NEW BEST')}</mark>` : ''}</div><dl class="result-details"><div><dt>${t('自己最高', 'BEST')}</dt><dd id="result-best">${best}</dd></div><div><dt>${t('最大連続', 'MAX COMBO')}</dt><dd>${result.maxCombo}</dd></div><div><dt>${t('時間', 'TIME')}</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>${t('仕分け数', 'SORTED')}</dt><dd>${result.sorted}</dd></div></dl><p class="result-reason">${result.outcome === 'timeout' ? t('仕分けの時間がなくなりました。', 'The parcel deadline expired.') : t(`${result.actualSide === 'left' ? '左' : '右'}を選びました。`, `You chose ${result.actualSide === 'left' ? 'LEFT' : 'RIGHT'}.`)}</p><div class="correct-direction">${t('正解は ', 'Correct: ')}${direction}<small>${labels.dimension} · ${attribute}</small></div><div class="result-actions">${credits.canPlay ? primary('retry-button', t('RETRY · もう1回', 'RETRY')) : primary('reward-button', '+3 CREDIT')}${titleButton()}</div><small class="result-note">${credits.canPlay ? t('次は、コンボでフィーバーを目指そう。', 'Aim for another fever next time.') : t('NO CREDIT · 開発版 Rewarded Ad Stub', 'NO CREDIT · Development Rewarded Ad Stub')}</small></article>`;
     recordSession.mount(overlay.firstElementChild as HTMLElement);
   } else if (state === 'reward') {
     overlay.innerHTML = `<article class="start-card reward-card"><span class="eyebrow">${t('もう一度仕分けよう', 'ONE MORE SHIFT')}</span><h2>${t('もうひと仕分け？', 'One more shift?')}</h2><p>${t('開発版の補充ボタンで<br /><b>+3 CREDIT</b>', 'Use the development refill button<br /><b>+3 CREDIT</b>')}</p><div class="paired-actions">${primary('reward-button', '+3 CREDIT')}${titleButton()}</div>${stub()}<p id="reward-status" role="status"></p></article>`;
@@ -107,6 +108,7 @@ function changeLanguage(next: SortLanguage): void {
 }
 function sound(event: SortEvent): void {
   if (event.type === 'correct') { const pitch = 390 + Math.min(event.combo, 12) * 30; audio.tone(pitch, pitch * 1.3, 0.08, 'sine', 0, 0.045); if (event.combo > 4) audio.tone(pitch * 1.5, pitch * 1.5, 0.06, 'triangle', 0.025, 0.015); }
+  if (event.type === 'fever' && event.active) { audio.tone(660, 990, .22, 'triangle', 0, .04); }
   if (event.type === 'rule_change') { audio.tone(520, 620, 0.12, 'triangle', 0, 0.035); audio.tone(700, 880, 0.14, 'sine', 0.11, 0.03); }
   if (event.type === 'mistake' || event.type === 'timeout') { audio.tone(230, 145, 0.18, 'triangle', 0, 0.04); audio.tone(160, 110, 0.16, 'sine', 0.06, 0.025); }
 }
@@ -114,8 +116,9 @@ const controller = createSortGame($('game-canvas'), {
   onUpdate(snapshot) { if (state === 'playing' || state === 'paused') update(snapshot); }, onEvent: sound,
   onEnd(result) {
     if (state !== 'playing' || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.sorted > best; best = Math.max(best, result.sorted); storage.writeNumber('best', best); credits.consume(runId); recordSession.complete(result.sorted, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.sorted, time: result.time }); telemetry.trackEvent('score', { runId, score: result.sorted, best, newBest }); telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
+    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best-rules-v2', best); credits.consume(runId); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
+    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time }); telemetry.trackEvent('score', { runId, score: result.score, best, newBest }); telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
+    if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 2, score: result.score, best });
     telemetry.trackEvent('sorted_count', { runId, count: result.sorted, combo: result.combo }); telemetry.trackEvent('rule_change_count', { runId, count: result.ruleChanges });
     resultAvailableAt = performance.now() + 300; setScreen('result', true);
   },
@@ -125,7 +128,7 @@ function start(retry = false): void {
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game005-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false;
-  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits }); setScreen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, rulesVersion: 2, credits: credits.credits }); setScreen('playing'); controller.start();
 }
 function pause(): void {
   if (state === 'playing') { controller.pause(true); telemetry.trackEvent('pause', { runId }); setScreen('paused'); }
@@ -133,7 +136,7 @@ function pause(): void {
 }
 function recordQuit(): void {
   if ((state !== 'playing' && state !== 'paused') || ended) return; ended = true; const snapshot = controller.snapshot();
-  telemetry.trackEvent('quit', { runId, score: snapshot.sorted, time: snapshot.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: snapshot.sorted, time: snapshot.time }); telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
+  telemetry.trackEvent('quit', { runId, score: snapshot.score, time: snapshot.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: snapshot.score, time: snapshot.time }); telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
 }
 function title(): void { if (credits.rewardPending || (state === 'result' && performance.now() < resultAvailableAt)) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }
 async function reward(): Promise<void> {

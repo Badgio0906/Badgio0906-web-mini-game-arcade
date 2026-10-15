@@ -75,11 +75,13 @@
       "whole-rectangle parking",
       "choose safe or challenge bay",
       "one-use finite braking on committed arc",
-      "rectangle near-miss clearance"
+      "rectangle near-miss clearance",
+      "one steering reversal per complete run, exact continuous piecewise circular arcs"
     ],
     "primary_input": [
       "single-action",
-      "two-stage timing"
+      "two-stage timing",
+      "C key or dedicated steering correction button"
     ],
     "skill_axes": [
       "timing",
@@ -105,8 +107,8 @@
     "primary_score": "precision and perfect-streak × forbidden 2 × challenge 1.4; successful no-brake +10%, successful near misses capped20",
     "secondary_score": "successfully parked cars",
     "escalation_mechanic": "After ten successes, one frozen choice offers permanently narrow forbidden spaces or ordinary parking.",
-    "risk_reward": "After 3 initial cars, choose distinct safe or challenge before angle; successful challenge ×1.4, forbidden choice after10 still ×2. Brake only reduces committed travel.",
+    "risk_reward": "After 3 initial cars, choose distinct safe or challenge before angle; successful challenge ×1.4, forbidden choice after10 still ×2. Brake only reduces committed travel. Correction reverses signed curvature once per RUN with no automatic score bonus; brake still reduces travel on that route.",
     "visual_identity": "generated top-down Japanese daily cars, code-exact parking bays, warm asphalt, thin driver console",
-    "rulesVersion": 2
+    "rulesVersion": 3
   }
 }

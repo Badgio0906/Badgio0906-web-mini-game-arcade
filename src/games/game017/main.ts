@@ -3,168 +3,30 @@ import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
 import { TelemetryService } from '../../core/TelemetryService';
-import { CreditService } from '../../core/CreditService';
-import { requestRewardedCredit } from '../../core/RewardService';
-import { RainRun } from './RainRun';
-import { RainBoard, project, unproject, VIEW } from './RainBoard';
-import type { Phase, RainEvent } from './types';
-const recordSession = createGameRecordSession('game017');
-
-type Screen = 'title' | 'explanation' | 'practice' | 'practice-complete' | 'playing' | 'paused' | 'result' | 'practice-failure' | 'reward';
-const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
-const storage = new StorageService(undefined, 'web-mini-arcade:v1:game017:');
-const telemetry = new TelemetryService(storage, 'game017'), audio = new AudioService(storage), credits = new CreditService(storage, telemetry);
-const app = $('app'), menu = $('menu'), canvas = $<HTMLCanvasElement>('rain-canvas'), abort = new AbortController();
-const board = new RainBoard(canvas), run = new RainRun(onEvent);
-let screen: Screen = 'title', previousScreen: Screen = 'playing', best = storage.readNumber('best', 0), ended = true, runId = '', epoch = 0, frame = 0, disposed = false, lastRainSound = 0, lastDrawSound = 0;
-let drag: { id: number; epoch: number } | null = null;
-const origins = new Map<number, { epoch: number; approved: boolean }>();
-const zoom = document.createElement('canvas'); zoom.width = 152; zoom.height = 128; zoom.style.width = '100%'; zoom.style.height = '100%'; $('pointer-loupe').append(zoom);
-const zoomContext = zoom.getContext('2d')!;
-const btn = (id: string, label: string, primary = false): string => '<button id="' + id + '" class="' + (primary ? 'primary' : '') + '" type="button">' + label + '</button>';
-const titleButton = (): string => btn('title-button', 'タイトル');
-const text = (id: string, value: string): void => { const e = $(id); if (e.textContent !== value) e.textContent = value; };
-const now = (): number => performance.now();
-const phaseLabels: Record<Phase, string> = { warning: 'CLOUDS GATHER', rain: 'RAIN IS HERE', rise: '超加速！', plan: 'WORLD STOP · PLAN', lower: 'LET’S RUN', dash: 'シュシュン！', clear: 'DRY CLEAR', over: 'RAINY…' };
-
-function stopDrag(): void { const old = drag; drag = null; if (old && canvas.hasPointerCapture(old.id)) canvas.releasePointerCapture(old.id); $('pointer-loupe').hidden = true; }
-function setScreen(next: Screen): void {
-  stopDrag(); epoch++; screen = next; app.dataset.state = screen; menu.hidden = next === 'playing' || next === 'practice';
-  if (document.activeElement instanceof HTMLElement && menu.contains(document.activeElement)) document.activeElement.blur();
-  const actions = (markup: string): string => '<div class="menu-actions">' + markup + '</div>';
-  if (next === 'title') menu.innerHTML = '<span class="menu-eyebrow">A VERY DRY THEORY</span><h1>雨って避けたら<br/>濡れないよね<small>～RAINSHIFT～</small></h1><p>雨を止めて、道を描いて、<br/>シュシュン！ と右端まで。</p>' + actions(btn('play-button', 'すぐ遊ぶ', true) + btn('tutorial-explain-button', '説明を見る') + btn('tutorial-again-button', '練習する')) + '<p class="menu-detail">クリック／タップ → ドラッグ<br/>無料・回数制限なしの試作版</p>';
-  if (next === 'explanation') menu.innerHTML = '<span class="menu-eyebrow">HOW TO STAY DRY</span><h2>雨？ 当たらなければ晴れです。</h2><ol><li>雨が来たら、道路か「超加速」をタップ。</li><li>世界が止まったら、黄色い主人公からドラッグ。</li><li>赤い着地点を避け、右のGOALへ。計画は5秒。</li></ol><p>薄い雨は今回は届きません。<br/>線が途切れたら、先端から続きを描けます。</p>' + actions(btn('tutorial-practice-button', 'やってみる', true) + titleButton());
-  if (next === 'practice-complete') menu.innerHTML = '<span class="menu-eyebrow">PRACTICE COMPLETE</span><h2>DRY CLEAR！</h2><p>雨って実質、晴れと同じよな。<br/>同じ操作で、次は本番の通りへ。</p>' + actions(btn('tutorial-start-button', '本番へ', true) + titleButton()) + '<p class="menu-detail">練習はSCORE・BEST・CREDITに影響しません。</p>';
-  if (next === 'paused') menu.innerHTML = '<span class="menu-eyebrow">WORLD PAUSED</span><h2>雨も時計も、お休み。</h2><p>描いた線と残り時間を保持しています。<br/>再開後は、線の先端から描けます。</p>' + actions(btn('resume-button', '続きから', true) + titleButton());
-  if (next === 'result' || next === 'practice-failure') {
-    const reason = run.result?.reason === 'rain' ? '赤い雨の着地点に触れました。' : run.result?.reason === 'activation' ? '雨が来たら、タップで止めよう。' : '線がGOALまで届いていませんでした。';
-    menu.innerHTML = '<span class="menu-eyebrow">' + (next === 'result' ? 'GAME OVER' : 'PRACTICE · TRY AGAIN') + '</span><h2>雨はやっぱり雨だ……</h2><p>Rainy is still rainy...</p><p>' + reason + '</p>' + (next === 'result' ? '<p class="result-score" id="result-score">' + run.score + '</p><p>ROUND ' + run.round + ' · DRY STREAK ' + run.streak + '<br/>BEST ' + best + '</p>' : '<p>練習は終わりません。もう一度試そう。</p>') + actions(btn(next === 'result' ? 'retry-button' : 'practice-retry-button', next === 'result' ? 'もう一回' : 'もう一度やってみる', true) + titleButton() + (next === 'result' ? '<a href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a>' : ''));
-  }
-  if (next === 'reward') menu.innerHTML = '<span class="menu-eyebrow">DEVELOPMENT STUB</span><h2>CREDITを補充</h2><p>開発用Stubです。実際の広告はありません。</p>' + actions(btn('reward-confirm-button', '+3 CREDIT', true) + titleButton());
-  if (next === 'result') recordSession.mount(menu);
-  sync();
-}
-function sync(): void {
-  const real = !run.practice && screen !== 'title' && screen !== 'explanation';
-  text('score-value', String(real ? run.score : 0)); text('round-value', String(real ? run.round : 1)); text('streak-value', String(real ? run.streak : 0)); text('best-value', String(best));
-  text('mute-button', audio.muted ? '音 OFF' : '音 ON'); $('mute-button').setAttribute('aria-pressed', String(audio.muted));
-  const pausable = screen === 'playing' || screen === 'practice' || screen === 'paused';
-  $<HTMLButtonElement>('pause-button').disabled = !pausable; $('pause-button').setAttribute('aria-label', screen === 'paused' ? '再開' : '一時停止'); text('pause-button', screen === 'paused' ? '▶' : 'Ⅱ');
-  $<HTMLButtonElement>('accelerate-button').disabled = !(screen === 'playing' || screen === 'practice') || run.phase !== 'rain';
-  $<HTMLButtonElement>('erase-button').disabled = !(screen === 'playing' || screen === 'practice') || run.phase !== 'plan';
-  app.dataset.phase = run.phase; app.dataset.round = String(run.round);
-  const remaining = run.remaining(now()); text('timer-value', remaining === null ? run.phase === 'rise' || run.phase === 'lower' ? '↻' : 'READY' : remaining.toFixed(1) + 's');
-  const step = run.phase === 'warning' || run.phase === 'rain' ? 1 : run.phase === 'rise' ? 2 : run.phase === 'plan' ? run.route.length > 1 ? 4 : 3 : 5;
-  text('phase-label', (run.practice && screen === 'practice' ? '練習 ' + step + '/5 · ' : '') + phaseLabels[run.phase]);
-  const message = run.feedback || (run.phase === 'warning' ? '雲が集まっています。雨が降ったらタップ！' : run.phase === 'rain' ? '今！ 道路か超加速ボタンをタップ。' : run.phase === 'plan' ? '赤い着地点を避けて、主人公からGOALへドラッグ。' : run.phase === 'dash' ? '描いた線に沿って、超高速移動！' : run.phase === 'clear' ? 'Rainy is basically sunny. ' + (run.closeCalls ? 'CLOSE CALL ×' + run.closeCalls : '雨って実質、晴れと同じよな') : run.phase === 'over' ? run.result?.reason === 'rain' ? '赤い雨の着地点に触れました。' : run.result?.reason === 'activation' ? '雨が来たら、タップで止めよう。' : '線がGOALまで届いていませんでした。' : '視点が移る間、計画の時計は止まります。');
-  text('live-status', message);
-}
-function onEvent(event: RainEvent): void {
-  if (event.type === 'phase') {
-    stopDrag(); epoch++;
-    if (event.phase === 'rise') { audio.tone(150, 1300, .16, 'sawtooth', 0, .025); if (!run.practice) telemetry.trackEvent('phase_reached', { runId, phase: 'acceleration' }); }
-    if (event.phase === 'dash') for (let i = 0; i < 3; i++) audio.tone(1100, 160, .13, 'triangle', i * .25, .025);
-    if (event.phase === 'warning' && !run.practice && !ended) telemetry.trackEvent('round_reached', { runId, round: run.round });
-  }
-  if (event.type === 'clear') {
-    audio.tone(660, 990, .18, 'triangle', 0, .04);
-    if (run.practice) { telemetry.trackEvent('practice_complete'); telemetry.trackEvent('tutorial_step_complete', { step: 5 }); setScreen('practice-complete'); }
-    else telemetry.trackEvent('milestone_reached', { runId, round: event.round, score: event.score, close_calls: event.closeCalls });
-  }
-  if (event.type === 'end') {
-    audio.tone(290, 65, .22, 'sine', 0, .045);
-    if (run.practice) { setScreen('practice-failure'); return; }
-    if (ended) return; ended = true; best = Math.max(best, event.result.score); storage.writeNumber('best', best); recordSession.complete(event.result.score, { metadata: { duration_seconds: event.result.time, outcome: 'over' } });
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: event.result.score, time: event.result.time, failure_reason: event.result.reason, round: event.result.round });
-    telemetry.trackEvent('score', { runId, score: event.result.score, best }); telemetry.trackEvent('run_duration', { runId, seconds: event.result.time, reason: 'over' }); setScreen('result');
-  }
-}
-function explain(): void { quit(); telemetry.trackEvent('tutorial_view'); telemetry.trackEvent('tutorial_start', { practiceAgain: storage.readBoolean('tutorialCompleted', false) }); setScreen('explanation'); }
-function start(retry = false): void {
-  if (disposed || screen === 'playing' || screen === 'practice' || credits.rewardPending) return;
-  if (screen === 'title') telemetry.trackEvent('tutorial_skip', { startMethod: 'immediate', completedBefore: storage.readBoolean('tutorialCompleted', false) });
-  if (!credits.canPlay) { setScreen('reward'); return; }
-  runId = 'game017-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-  if (credits.enabled && !credits.consume(runId)) return;
-  ended = false; if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); void audio.unlock();
-  setScreen('playing'); run.start(now(), Math.floor(Math.random() * 0xffffffff)); sync();
-}
-function quit(): void {
-  if (ended || run.practice) return;
-  ended = true; run.pause(true, now()); telemetry.trackEvent('quit', { runId, score: run.score, time: run.time }); telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: run.score, time: run.time });
-}
-function pause(): void {
-  if (screen === 'playing' || screen === 'practice') { previousScreen = screen; run.pause(true, now()); if (run.paused) { telemetry.trackEvent('pause', { runId }); setScreen('paused'); } }
-  else if (screen === 'paused') { run.pause(false, now()); telemetry.trackEvent('resume', { runId }); setScreen(previousScreen); }
-}
-function accelerate(): void { if (screen === 'playing' || screen === 'practice') { void audio.unlock(); run.activate(now()); sync(); } }
-function localPoint(event: PointerEvent) {
-  const rect = canvas.getBoundingClientRect(), scale = Math.min(rect.width / VIEW.width, rect.height / VIEW.height);
-  const left = rect.left + (rect.width - VIEW.width * scale) / 2, top = rect.top + (rect.height - VIEW.height * scale) / 2;
-  return { ...unproject((event.clientX - left) / scale, (event.clientY - top) / scale), viewX: (event.clientX - left) / scale, viewY: (event.clientY - top) / scale, rect, scale };
-}
-function loupe(event: PointerEvent): void {
-  if (event.pointerType !== 'touch') return;
-  const p = localPoint(event), box = $('pointer-loupe'), stage = $('board-wrap').getBoundingClientRect();
-  box.hidden = false; box.style.left = Math.max(0, Math.min(stage.width - 76, event.clientX - stage.left - 90)) + 'px'; box.style.top = Math.max(0, event.clientY - stage.top - 96) + 'px';
-  zoomContext.fillStyle = '#edf3df'; zoomContext.fillRect(0, 0, zoom.width, zoom.height);
-  zoomContext.drawImage(canvas, p.viewX - 45, p.viewY - 40, 112, 80, 0, 0, zoom.width, zoom.height);
-}
-app.addEventListener('pointerdown', e => { if (origins.size > 64) origins.clear(); origins.set(e.pointerId, { epoch, approved: e.isPrimary && e.button === 0 && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey }); }, { capture: true, signal: abort.signal });
-app.addEventListener('click', e => {
-  const id = (e as PointerEvent).pointerId, origin = origins.get(id); origins.delete(id);
-  if (origin !== undefined && (!origin.approved || origin.epoch !== epoch)) { e.preventDefault(); e.stopImmediatePropagation(); }
-}, { capture: true, signal: abort.signal });
-canvas.addEventListener('pointerdown', e => {
-  if (!e.isPrimary || e.button !== 0 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || screen !== 'playing' && screen !== 'practice') return;
-  e.preventDefault(); void audio.unlock();
-  if (run.phase === 'rain') { accelerate(); return; }
-  if (run.phase !== 'plan') return;
-  const point = localPoint(e), tail = run.route[run.route.length - 1], projected = project(tail, 0, run.camera);
-  const nearVisibleTail = Math.hypot(point.viewX - projected.x, point.viewY - projected.y) * point.scale <= 28;
-  if (!run.append(nearVisibleTail ? tail : point, now(), true)) { sync(); return; }
-  drag = { id: e.pointerId, epoch }; canvas.setPointerCapture(e.pointerId); loupe(e);
-}, { signal: abort.signal });
-canvas.addEventListener('pointermove', e => { if (!drag || drag.id !== e.pointerId || drag.epoch !== epoch) return; e.preventDefault(); const accepted = run.append(localPoint(e), now()); if (accepted && now() - lastDrawSound > 90) { lastDrawSound = now(); audio.tone(450, 600, .035, 'sine', 0, .008); } if (drag) loupe(e); sync(); }, { signal: abort.signal });
-canvas.addEventListener('pointerup', e => { if (drag?.id !== e.pointerId) return; run.append(localPoint(e), now()); stopDrag(); }, { signal: abort.signal });
-canvas.addEventListener('pointercancel', stopDrag, { signal: abort.signal }); canvas.addEventListener('lostpointercapture', stopDrag, { signal: abort.signal });
-app.addEventListener('click', e => {
-  if (e.button !== 0 || e.altKey || e.ctrlKey || e.metaKey || credits.rewardPending) return;
-  const target = (e.target as Element).closest<HTMLButtonElement | HTMLAnchorElement>('button,a'); if (!target || target instanceof HTMLButtonElement && target.disabled) return;
-  if (target instanceof HTMLAnchorElement) { quit(); telemetry.trackEvent('return_to_portal', { runId }); return; }
-  switch (target.id) {
-    case 'play-button': start(); break;
-    case 'retry-button': start(true); break;
-    case 'tutorial-explain-button': explain(); break;
-    case 'tutorial-again-button': telemetry.trackEvent('practice_start'); setScreen('practice'); run.start(now(), 1, true); sync(); break;
-    case 'tutorial-practice-button': telemetry.trackEvent('practice_start'); setScreen('practice'); run.start(now(), 1, true); sync(); break;
-    case 'tutorial-start-button': storage.writeBoolean('tutorialCompleted', true); telemetry.trackEvent('tutorial_complete'); start(); break;
-    case 'practice-retry-button': if (run.result?.reason === 'activation') run.start(now(), 1, true); else run.retryPractice(now()); setScreen('practice'); break;
-    case 'title-button': quit(); setScreen('title'); break;
-    case 'pause-button': case 'resume-button': pause(); break;
-    case 'mute-button': audio.toggle(); sync(); break;
-    case 'accelerate-button': accelerate(); break;
-    case 'erase-button': stopDrag(); run.resetRoute(now()); sync(); break;
-    case 'reward-confirm-button': { const pending = credits.requestRewardedCredit(requestRewardedCredit); menu.querySelectorAll<HTMLButtonElement>('button').forEach(b => { b.disabled = true; }); void pending.then(granted => { if (!disposed) setScreen(granted ? 'title' : 'reward'); }); break; }
-  }
-}, { signal: abort.signal });
-const held = new Set<string>();
-document.addEventListener('keydown', e => {
-  if (e.repeat || held.has(e.code)) { if (e.code === 'Space' || e.code === 'Enter') e.preventDefault(); return; } held.add(e.code);
-  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
-  if (e.code === 'Escape') { e.preventDefault(); pause(); }
-  if (e.code === 'Space' && !(e.target as Element).closest('button,a') && run.phase === 'rain') { e.preventDefault(); accelerate(); }
-}, { signal: abort.signal });
-document.addEventListener('keyup', e => held.delete(e.code), { signal: abort.signal });
-function blur(): void { held.clear(); stopDrag(); if (screen === 'playing' || screen === 'practice') pause(); }
-window.addEventListener('blur', blur, { signal: abort.signal }); document.addEventListener('visibilitychange', () => { if (document.hidden) blur(); }, { signal: abort.signal });
-window.addEventListener('pagehide', e => { if (e.persisted) blur(); else quit(); }, { signal: abort.signal });
-function tick(time: number): void {
-  if (screen === 'playing' || screen === 'practice') run.settle(time);
-  board.render(run, time, screen === 'title' || screen === 'explanation'); sync();
-  if ((screen === 'playing' || screen === 'practice') && run.phase === 'rain' && time - lastRainSound > 200) { lastRainSound = time; audio.tone(1100, 570, .08, 'triangle', 0, .009); }
-  frame = requestAnimationFrame(tick);
-}
-telemetry.trackEvent('game_open'); setScreen('title'); frame = requestAnimationFrame(tick);
-if (import.meta.env.DEV) (window as unknown as { __arcadeDebug: unknown }).__arcadeDebug = Object.freeze({ gameId: 'game017', state: () => screen, snapshot: () => run.snapshot(now()), inspection: () => ({ rain: run.scene.rain.map(r => ({ ...r, impact: { ...r.impact } })), safeRoute: run.scene.safeRoute.map(p => ({ ...p })), wind: { ...run.scene.wind }, attempts: run.scene.attempts, rejected: run.scene.rejected, fallback: run.scene.fallback }), telemetry: () => telemetry.getEvents() });
-if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; cancelAnimationFrame(frame); stopDrag(); abort.abort(); audio.destroy(); board.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });
+import { RelayRun, type RelayEvent } from './RelayRun';
+import { RelayBoard } from './RelayBoard';
+const $=<T extends HTMLElement>(id:string)=>document.getElementById(id) as T;
+const storage=new StorageService(undefined,'web-mini-arcade:v1:game017:'),audio=new AudioService(storage),telemetry=new TelemetryService(storage,'game017'),recordSession=createGameRecordSession('game017');
+const app=$('app'),menu=$('menu'),canvas=$<HTMLCanvasElement>('rain-canvas'),abort=new AbortController(),run=new RelayRun(onEvent),board=new RelayBoard(canvas);
+let screen='title',beforePause='playing',best=storage.readNumber('bestRelayV2',0),guard=0,frame=0,last=performance.now(),runId=0,finished=false;const oldBest=storage.readNumber('best',0),held=new Set<string>(),pointers=new Map<number,number>();
+const button=(id:string,text:string)=>`<button id="${id}" type="button">${text}</button>`;
+function clearInput(){held.clear();pointers.clear();}
+function active(){return screen==='playing'||screen==='practice';}
+function show(){app.dataset.state=screen;guard=performance.now()+220;clearInput();menu.hidden=active();if(screen==='title')menu.innerHTML=`<small>RAIN SHELTER RELAY / RULES 2</small><h1>雨って避けたら<br>濡れないよね</h1><p>雨が弱まる瞬間に、次の屋根へ。<br>待つ場所と、走り出すタイミングが勝負。</p><div class="menu-actions">${button('play-button','すぐ遊ぶ')}${button('explain-button','説明を見る')}${button('practice-button','練習する')}</div><p class="record-note">雨宿り BEST ${best} ／旧ルール BEST ${oldBest}</p>`;
+else if(screen==='explanation')menu.innerHTML=`<h2>屋根から屋根へ</h2><p>左右キー／A・D／画面ボタンで移動。<br>Space／ダッシュボタンで短いダッシュ。<br>再使用まで1.7秒。空中の操作は不要です。</p><p>雨の変化は1秒前から予告。小雨に走ると乾いたまま進めます。屋根の緑枠内は回復、濡れ100で終了。ゴールは11地点先。</p><p>前進距離×乾き具合、初めて着く屋根、乾いた連続到達が得点。往復や放置では加点されません。</p><div class="menu-actions">${button('practice-button','練習する')}${button('play-button','すぐ遊ぶ')}${button('title-button','タイトル')}</div>`;
+else if(screen==='paused')menu.innerHTML=`<h2>雨もひと休み</h2><p>移動・雨・濡れ具合を停止中。</p><div class="menu-actions">${button('resume-button','再開')}${button('title-button','タイトル')}</div>`;
+else if(screen==='practice-complete')menu.innerHTML=`<h2>次の屋根に到着！</h2><p>小雨を待ち、ダッシュで雨宿り。<br>練習の得点と記録は保存しません。</p><div class="menu-actions">${button('play-button','本番へ')}${button('practice-button','もう一度練習')}${button('title-button','タイトル')}</div>`;
+else if(screen==='result'){const r=run.snapshot().result!;menu.innerHTML=`<h2>${r.outcome==='arrived'?'ゴールまで雨宿り成功！':'今日はここまで。'}</h2><strong class="result-score">${r.score}点</strong><p>${r.distance}m ／ ${r.shelters}地点到達<br>濡れ具合 ${r.wet}% ／ ${r.time.toFixed(1)}秒</p><p>雨宿り BEST ${best}<br>旧ルール BEST ${oldBest}</p><div class="menu-actions">${button('retry-button','もう一度')}${button('title-button','タイトル')}</div>`;recordSession.mount(menu);}
+sync();}
+function sync(){const s=run.snapshot();$('score-value').textContent=String(s.practice?0:s.score);$('distance-value').textContent=`${s.distance}m`;$('shelter-value').textContent=String(s.reached);$('best-value').textContent=String(best);$('wet-value').textContent=`${Math.round(s.wet)}%`;$<HTMLMeterElement>('wet-meter').value=s.wet;$('rain-label').textContent=`${s.weather.direction?'↙ ':''}${s.weather.label}`;$('rain-forecast').textContent=`${s.weather.next}まで ${s.weather.until.toFixed(1)}秒`;$('weather-panel').classList.toggle('weather-warning',s.weather.warning);$('safety-label').textContent=s.sheltered?'雨宿り中・回復':'雨に注意';$('dash-button').textContent=s.cooldown>0?`ダッシュ ${s.cooldown.toFixed(1)}秒`:'ダッシュ / Space';$<HTMLButtonElement>('dash-button').disabled=!active()||s.cooldown>0;$<HTMLButtonElement>('pause-button').disabled=!active()&&screen!=='paused';$('mute-button').textContent=audio.muted?'音 OFF':'音 ON';$('controls').hidden=!active();$('live-status').textContent=s.practice?'練習：小雨を見て、右隣の屋根へダッシュ。濡れても最初からやり直せます。':s.wet>75?'かなり濡れています。緑の枠の屋根で回復しよう。':'左右で移動 / Spaceでダッシュ / 緑の枠の中で回復';}
+function start(practice=false){void audio.unlock();if(!practice&&screen==='result')telemetry.trackEvent('retry',{run_id:runId,rulesVersion:2});finished=false;runId++;run.start(practice,1);screen=practice?'practice':'playing';if(practice)telemetry.trackEvent('practice_start',{rulesVersion:2});else {recordSession.startRun();telemetry.trackEvent('run_start',{run_id:runId,rulesVersion:2});}last=performance.now();show();}
+function quit(){if((screen==='playing'||screen==='paused'&&beforePause==='playing')&&!finished){finished=true;const s=run.snapshot();telemetry.trackEvent('quit',{run_id:runId,rulesVersion:2,score:s.score,seconds:s.time});telemetry.trackEvent('run_end',{run_id:runId,rulesVersion:2,outcome:'quit',score:s.score,seconds:s.time});}screen='title';show();}
+function pause(){if(active()){beforePause=screen;if(screen==='playing')telemetry.trackEvent('pause',{run_id:runId,rulesVersion:2});screen='paused';show();}else if(screen==='paused'){screen=beforePause;if(screen==='playing')telemetry.trackEvent('resume',{run_id:runId,rulesVersion:2});last=performance.now();show();}}
+function dash(){if(!active()||performance.now()<guard)return;run.dash();sync();}
+function onEvent(e:RelayEvent){if(e.type==='shelter'){audio.tone(680,980,.13,'triangle',0,.025);if(screen==='playing')telemetry.trackEvent('specific_game_events',{rulesVersion:2,run_id:runId,...e});}if(e.type==='dash')audio.tone(180,510,.11,'sine',0,.018);if(e.type==='practice_complete'){screen='practice-complete';telemetry.trackEvent('practice_complete',{rulesVersion:2});show();}if(e.type==='end'&&screen==='playing'&&!finished){finished=true;const improved=e.result.score>best;best=Math.max(best,e.result.score);storage.writeNumber('bestRelayV2',best);telemetry.trackEvent('score',{run_id:runId,rulesVersion:2,score:e.result.score,best,newBest:improved});if(improved)telemetry.trackEvent('best_update',{run_id:runId,rulesVersion:2,score:e.result.score,best});recordSession.complete(e.result.score,{metadata:{duration_seconds:e.result.time,outcome:e.result.outcome==='arrived'?'complete':'failure'}});telemetry.trackEvent('run_end',{rulesVersion:2,run_id:runId,...e.result});screen='result';show();}}
+app.addEventListener('click',e=>{const b=(e.target as Element).closest<HTMLButtonElement>('button');if(!b||b.disabled||performance.now()<guard)return;switch(b.id){case'play-button':case'retry-button':start();break;case'practice-button':start(true);break;case'explain-button':screen='explanation';show();break;case'title-button':quit();break;case'pause-button':case'resume-button':pause();break;case'mute-button':audio.toggle();sync();break;case'dash-button':dash();break;}},{signal:abort.signal});
+for(const [id,direction] of [['left-button',-1],['right-button',1]] as const){const b=$(id);b.addEventListener('pointerdown',e=>{if(!active()||performance.now()<guard||e.button!==0||!e.isPrimary)return;e.preventDefault();pointers.set(e.pointerId,direction);b.setPointerCapture(e.pointerId);},{signal:abort.signal});for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,e=>{pointers.delete((e as PointerEvent).pointerId);},{signal:abort.signal});}
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.code==='Escape'&&!e.repeat){e.preventDefault();pause();return;}if(!active()||performance.now()<guard)return;if((e.target as Element).closest('a,input'))return;if(['ArrowLeft','ArrowRight','KeyA','KeyD','Space'].includes(e.code)){e.preventDefault();if(e.repeat)return;if(e.code==='Space'){if(!e.repeat&&!held.has(e.code))dash();}held.add(e.code);}},{signal:abort.signal});document.addEventListener('keyup',e=>held.delete(e.code),{signal:abort.signal});
+function blur(){clearInput();if(active())pause();}window.addEventListener('blur',blur,{signal:abort.signal});document.addEventListener('visibilitychange',()=>{if(document.hidden)blur();},{signal:abort.signal});window.addEventListener('pagehide',e=>{if(e.persisted)blur();else if(active()||screen==='paused')quit();},{signal:abort.signal});
+function tick(now:number){const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;if(active()&&now>=guard){const left=held.has('ArrowLeft')||held.has('KeyA')||[...pointers.values()].includes(-1),right=held.has('ArrowRight')||held.has('KeyD')||[...pointers.values()].includes(1);run.step(dt,Number(right)-Number(left));}board.render(run.snapshot(),now);sync();frame=requestAnimationFrame(tick);}telemetry.trackEvent('game_open',{rulesVersion:2});show();frame=requestAnimationFrame(tick);
+if(import.meta.env.DEV)(window as unknown as {__arcadeDebug:unknown}).__arcadeDebug=Object.freeze({gameId:'game017',state:()=>screen,snapshot:()=>run.snapshot(),inspection:()=>run.snapshot(),telemetry:()=>telemetry.getEvents()});if(import.meta.hot)import.meta.hot.dispose(()=>{cancelAnimationFrame(frame);clearInput();abort.abort();board.destroy();audio.destroy();});

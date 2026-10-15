@@ -1,6 +1,6 @@
 export type SortSide = 'left' | 'right';
 export type SortDimension = 'shape' | 'brightness' | 'size' | 'symbol';
-export type SortPhase = 'sorting' | 'dispatch' | 'rule_change' | 'ended';
+export type SortPhase = 'sorting' | 'dispatch' | 'rule_change' | 'miss' | 'ended';
 export interface SortParcel {
   id: number;
   shape: 'round' | 'angular';
@@ -16,6 +16,14 @@ export interface SortRule {
   rightLabel: string;
 }
 export interface SortSnapshot {
+  score: number;
+  mistakes: number;
+  lives: number;
+  maxCombo: number;
+  feverRemaining: number;
+  feverGauge: number;
+  multiplier: number;
+  lastPoints: number;
   sorted: number;
   combo: number;
   time: number;
@@ -29,6 +37,14 @@ export interface SortSnapshot {
   lastSide: SortSide | null;
 }
 export interface SortResult {
+  score: number;
+  mistakes: number;
+  lives: number;
+  maxCombo: number;
+  feverRemaining: number;
+  feverGauge: number;
+  multiplier: number;
+  lastPoints: number;
   sorted: number;
   combo: number;
   time: number;
@@ -42,7 +58,8 @@ export interface SortResult {
   reason: string;
 }
 export type SortEvent =
-  | { type: 'correct'; combo: number; side: SortSide }
+  | { type: 'correct'; combo: number; side: SortSide; points: number }
+  | { type: 'fever'; active: boolean }
   | { type: 'rule_change'; rule: SortRule; count: number }
   | { type: 'mistake'; expected: SortSide; actual: SortSide }
   | { type: 'timeout'; expected: SortSide };

@@ -1,73 +1,9 @@
 {
-  "id": "game009",
-  "title": "印鑑どこですか ～STAMP HUNT～",
-  "subtitle": "26種類の道具、さっきここにあった。",
-  "genre": [
-    "visual-search",
-    "observation",
-    "risk-management"
-  ],
-  "core_mechanic": [
-    "find requested functional item kind and visible features",
-    "painted SVG silhouette hit-testing and physical paper occlusion",
-    "same desk reused for3 prompts",
-    "optional modest-cost tidying"
-  ],
-  "primary_input": [
-    "object click/tap",
-    "paper folded edge",
-    "native Tab/Enter"
-  ],
-  "skill_axes": [
-    "shape-recognition",
-    "visual-search",
-    "position-memory",
-    "risk-management"
-  ],
-  "expected_run_seconds": {
-    "beginner": 75,
-    "experienced": 75
-  },
-  "duration_note": "75seconds active run; human search and physical touch ease remain unmeasured",
-  "primary_score": "correct objects100 + search speed0–30 + scattered desk0–15; mistakes cost2seconds, tidy2.5seconds",
-  "secondary_score": "correct discoveries, errors, lifts and tidies",
-  "escalation_mechanic": "Desk object count9 then16 after6 discoveries and24 after12;3 prompts reuse the same desk.",
-  "risk_reward": "Tidy removes paper covers and aligns artwork, costs2.5seconds and only the small future scatter bonus.",
-  "visual_identity": "26 project-authored distinct SVG tools, original warm desk and folded paper occlusion",
-  "rulesVersion": 2,
-  "practice": {
-    "optional_from_first_title": true,
-    "production_score_and_best_isolated": true,
-    "required_actions": [
-      "find calculator",
-      "lift folded paper edge then find scissors",
-      "tidy then find pen"
-    ]
-  },
-  "score_persistence": {
-    "storage_prefix": "web-mini-arcade:v1:game009:",
-    "current_best_key": "bestRules2",
-    "legacy_best_key": "best",
-    "legacy_best_preserved": true,
-    "mute_preserved": true,
-    "rulesVersion": 2
-  },
-  "telemetry": {
-    "destination": "existing local TelemetryService only",
-    "rulesVersion": 2,
-    "lifecycle_events": [
-      "run_start",
-      "run_end",
-      "practice_start",
-      "practice_complete"
-    ],
-    "specific_game_events": [
-      "correct",
-      "mistake",
-      "paper_lift",
-      "tidy",
-      "timeout"
-    ],
-    "correction_tracking": false
-  }
+ "id":"game009","title":"印鑑どこですか ～STAMP HUNT～","titleJa":"印鑑どこですか","titleEn":"STAMP HUNT","subtitle":"手掛かりを読んで、机の小さな謎を解こう。",
+ "genre":["puzzle","observation","visual-search"],"core_mechanic":["12 distinct clue-based desk puzzles","two to three actual actions per discovery","paper, drawer, box, memo, phone, calendar, book, clasp, envelope, cup, tray and number-box interactions"],"primary_input":["click","tap","Tab and Enter"],"skill_axes":["clue-reading","observation","sequence-reasoning"],
+ "expected_run_seconds":90,"duration_note":"90 active seconds; practice does not expire; human timing evaluation pending","rulesVersion":3,
+ "primary_score":"200 discovery + 50 per prerequisite action + speed 0–50; hint reduces this discovery by30; wrong item costs2 seconds",
+ "practice":{"production_score_and_best_isolated":true,"required_actions":["lift a paper and find pen","open drawer then stamp box and find stamp"]},
+ "score_persistence":{"storage_prefix":"web-mini-arcade:v1:game009:","current_best_key":"bestRules3","legacy_best_keys":["best","bestRules2"],"legacy_best_preserved":true,"mute_preserved":true,"rulesVersion":3},
+ "visual_identity":"warm desk, project-authored SVG office tools and animated container illustrations","human_playtest_status":"pending","jev_mode":"development-only-shadow"
 }

@@ -90,3 +90,10 @@ body{background:repeating-linear-gradient(90deg,#f4dfb900 0 59px,#3d334f0b 59px 
 @media(max-width:700px) and (min-height:501px){#app[data-state="result"] .sort-controls{display:none}#app[data-state="result"] .workbench{gap:8px}#app[data-state="result"] .site-footer{padding-top:4px;padding-bottom:4px;margin-top:0}}@media(max-width:360px) and (min-height:501px){#app:is([data-state="paused"],[data-state="result"]) .workbench{gap:8px}#app[data-state="result"] .result-card{padding-top:5px;padding-bottom:4px}#app[data-state="result"] .conveyor{height:69px}}
 
 @media(max-width:360px) and (min-height:501px){#app[data-state="paused"] .workbench{gap:3px}#app[data-state="paused"] .layout{padding-bottom:0}}
+
+.shift-status{min-height:24px;padding:3px 8px;background:#3d334f;color:#fff4d5;font-size:12px;font-weight:800;text-align:center;border-radius:3px}.sort-board[data-fever="true"] .shift-status{background:#7e3212;color:#fff2a4}.sort-board[data-fever="true"] .conveyor{box-shadow:inset 0 0 0 3px #f9bb38}.sort-board[data-phase="miss"] .correction-label{display:block;background:#fff4d5;color:#7a2525}.shift-status{overflow-wrap:anywhere}@media(max-width:360px),(max-height:500px){.shift-status{font-size:10px;min-height:20px;padding:2px 4px}}
+
+/* Let the complete landscape board follow the scorebar in document flow. */
+@media(max-height:500px){.workbench{height:auto;min-height:0;align-items:flex-start}.control-panel{align-self:flex-start}}
+/* Result cards use two columns on narrow views; record sharing spans both. */
+.result-card>.record-share-controls{grid-column:1/-1;width:100%;min-width:0}

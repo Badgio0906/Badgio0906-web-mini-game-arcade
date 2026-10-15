@@ -18,18 +18,20 @@ export interface ParkingSnapshot {
   time: number; alive: boolean; phase: ParkingPhase; pending: 'forbidden' | null; mode: ParkingMode;
   steeringDegrees: number; power: number; lockedSteering: number | null; lockedPower: number | null;
   grade: ParkingGrade | null; pose: ParkingPose; streakMultiplier: number; modeMultiplier: number;
-  outcome: ParkingOutcome | null; rulesVersion: 2; slotKind: ParkingSlotKind; slotMultiplier: number;
+  outcome: ParkingOutcome | null; rulesVersion: 3; slotKind: ParkingSlotKind; slotMultiplier: number;
+  correctionUsed: boolean; correctionDistance: number | null;
   brakeUsed: boolean; braking: boolean; nearMisses: number; nearMissPoints: number; noBrakePoints: number;
   precision: ParkingPrecision | null; minClearance: number | null;
 }
 export interface ParkingResult {
   score: number; parked: number; perfectCount: number; maxStreak: number; time: number; mode: ParkingMode;
   outcome: ParkingOutcome; reason: string; cause: ParkingFailureCause; pose: ParkingPose; contact: Point | null;
-  steeringDegrees: number; power: number; rulesVersion: 2; slotKind: ParkingSlotKind; brakeUsed: boolean;
+  steeringDegrees: number; power: number; rulesVersion: 3; slotKind: ParkingSlotKind; brakeUsed: boolean; correctionUsed: boolean;
 }
 export type ParkingEvent =
   | { type: 'angle'; steeringDegrees: number }
   | { type: 'launch'; power: number }
+  | { type: 'correction'; distance: number; curvature: number }
   | { type: 'brake'; distance: number; remaining: number; speed: number }
   | { type: 'slot_choice'; slot: ParkingSlotKind; multiplier: number }
   | { type: 'near_miss'; count: number; points: number; clearance: number }
@@ -50,6 +52,7 @@ export interface ParkingHooks {
 export interface ParkingController {
   start: () => void; startPractice: (step: number) => void; title: () => void; act: () => boolean; choose: (choice: ParkingChoice) => boolean;
   chooseSlot: (choice: ParkingSlotKind) => boolean;
+  correct: () => boolean;
   pause: (value: boolean) => void; snapshot: () => ParkingSnapshot;
   inspection: () => ParkingInspection; destroy: () => void;
 }

@@ -13,12 +13,12 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
     "presentation_version": "1"
   },
   "game005": {
-    "rules_version": "1",
-    "presentation_version": "1"
+    "rules_version": "2",
+    "presentation_version": "2"
   },
   "game006": {
-    "rules_version": "2",
-    "presentation_version": "1"
+    "rules_version": "3",
+    "presentation_version": "3"
   },
   "game007": {
     "rules_version": "2",
@@ -29,8 +29,8 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
     "presentation_version": "1"
   },
   "game009": {
-    "rules_version": "2",
-    "presentation_version": "1"
+    "rules_version": "3",
+    "presentation_version": "3"
   },
   "game011": {
     "rules_version": "2",
@@ -45,8 +45,8 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
     "presentation_version": "1"
   },
   "game017": {
-    "rules_version": "1",
-    "presentation_version": "1"
+    "rules_version": "2",
+    "presentation_version": "2"
   },
   "game019": {
     "rules_version": "2",

@@ -39,14 +39,14 @@ describe('SORT SHIFT parcel rules', () => {
   it('four rule dimensions and both directions match domain labels across three seeded 128-parcel runs', () => {
     for (const seed of [1,17,77]) {
       const emitted: SortEvent[] = []; const run = new SortRun(e => emitted.push(e), seeded(seed)); run.start();
-      const seen = new Set<string>(); const traits = new Set<string>(); let lastDecision = 5;
+      const seen = new Set<string>(); const traits = new Set<string>();
       for (let n = 0; n < 128; n++) {
         ready(run); const state = run.inspection(); const expected = answer(state);
         expect(state.expectedSide).toBe(expected);
         expect(state.rule.dimension).toBe(['shape','brightness','size','symbol'][Math.floor(n / 8) % 4]);
         expect(state.rule.inverted).toBe(Math.floor(n / 32) % 2 === 1);
         seen.add(`${state.rule.dimension}:${state.rule.inverted}`); traits.add(`${state.rule.dimension}:${state.parcel![state.rule.dimension]}`);
-        expect(state.decisionSeconds).toBeLessThanOrEqual(lastDecision); expect(state.decisionSeconds).toBeGreaterThanOrEqual(1.3); lastDecision = state.decisionSeconds;
+        expect(state.decisionSeconds).toBeLessThanOrEqual(4.8); expect(state.decisionSeconds).toBeGreaterThanOrEqual(1.04);
         expect(run.input(expected)).toBe(true); expect(run.snapshot().sorted).toBe(n + 1);
       }
       expect(seen.size).toBe(8); expect(traits.size).toBe(8);
@@ -66,16 +66,22 @@ describe('SORT SHIFT parcel rules', () => {
     ready(run); expect(run.snapshot().sorted).toBe(8); expect(run.inspection().parcel).not.toBeNull();
   });
 
-  it('wrong side and deadline produce separate immediate single terminal outcomes with honest correct-direction feedback', () => {
+  it('wrong side and deadline each consume three lives with honest correct-direction feedback', () => {
     for (const outcome of ['wrong','timeout'] as const) {
       const events: SortEvent[] = []; const run = new SortRun(e => events.push(e), () => 0); run.start();
-      if (outcome === 'wrong') run.input('right');
-      else { for (let i = 0; i < 95; i++) run.step(.05); expect(run.snapshot().alive).toBe(true); run.step(.05); }
+      for (let miss = 1; miss <= 3; miss++) {
+        ready(run);
+        if (outcome === 'wrong') run.input('right');
+        else until(run, () => run.snapshot().phase !== 'sorting');
+        expect(run.snapshot().lives).toBe(3 - miss);
+        expect(run.snapshot().alive).toBe(miss < 3);
+        if (miss < 3) expect(run.result()).toBeNull();
+      }
       expect(run.snapshot()).toMatchObject({alive:false,phase:'ended',sorted:0});
       expect(run.result()).toMatchObject({outcome,expectedSide:'left',actualSide:outcome==='wrong'?'right':null});
       expect(run.result()!.correctSummary.length).toBeGreaterThan(0);
       for (let i = 0; i < 20; i++) { expect(run.input('left')).toBe(false); run.step(.05); }
-      expect(events.filter(e => e.type === outcome || e.type === 'mistake')).toHaveLength(1);
+      expect(events.filter(e => e.type === outcome || e.type === 'mistake')).toHaveLength(3);
     }
   });
 
@@ -85,7 +91,7 @@ describe('SORT SHIFT parcel rules', () => {
     const remaining = run.snapshot().remaining; run.step(NaN); run.step(Infinity); run.step(-1); expect(run.snapshot().remaining).toBe(remaining);
     run.step(10); expect(run.snapshot().time).toBeCloseTo(.05,8);
     expect(run.input('invalid' as SortSide)).toBe(false); expect(run.snapshot().alive).toBe(true);
-    run.input('right'); const result = run.result()!; result.rule.inverted = true; result.parcel.shape = 'angular';
+    for (let n = 0; n < 3; n++) { ready(run); run.input('right'); } const result = run.result()!; result.rule.inverted = true; result.parcel.shape = 'angular';
     expect(run.result()).toMatchObject({rule:{inverted:false},parcel:{shape:'round'},expectedSide:'left'});
     run.reset(); expect(run.snapshot()).toMatchObject({alive:false,sorted:0,ruleChanges:0}); run.start(); expect(run.snapshot()).toMatchObject({alive:true,sorted:0,phase:'sorting'});
   });

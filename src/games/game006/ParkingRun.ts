@@ -177,6 +177,9 @@ export class ParkingRun {
   private driveDistance = 0;
   private driven = 0;
   private speed = 0;
+  private correctionOrigin: ParkingPose | null = null;
+  private correctionStart = 0;
+  private correctedCurvature = 0;
   private brakingTime = 0;
   private brakeSpeed = 0;
   private nearCandidates = new Map<number, number>();
@@ -192,18 +195,19 @@ export class ParkingRun {
     return { score: 0, parked: 0, perfectCount: 0, perfectStreak: 0, maxStreak: 0, time: 0, alive: false,
       phase: 'angle', pending: null, mode: 'normal', steeringDegrees: -STEERING_LIMIT_DEGREES, power: 0,
       lockedSteering: null, lockedPower: null, grade: null, pose: { ...this.layout.start }, streakMultiplier: 1, modeMultiplier: 1, outcome: null,
-      rulesVersion: 2, slotKind: 'safe', slotMultiplier: 1, brakeUsed: false, braking: false, nearMisses: 0, nearMissPoints: 0, noBrakePoints: 0, precision: null, minClearance: null };
+      rulesVersion: 3, correctionUsed: false, correctionDistance: null, slotKind: 'safe', slotMultiplier: 1, brakeUsed: false, braking: false, nearMisses: 0, nearMissPoints: 0, noBrakePoints: 0, precision: null, minClearance: null };
   }
   reset(): void {
     this.layout = createParkingLayout(0, 'normal'); this.state = this.initial(); this.options = [];
     this.phaseTime = this.driveDistance = this.driven = this.speed = this.brakingTime = this.brakeSpeed = 0;
+    this.correctionOrigin = null; this.correctionStart = this.correctedCurvature = 0;
     this.contact = this.ending = null; this.offered = false; this.layoutRoll = 0; this.practice = false; this.nearCandidates.clear();
   }
   start(): void { this.reset(); this.state.alive = true; }
   /** Dedicated practice fixtures use the identical gauges/physics but never enter the production run. */
   startPractice(step: number): void {
     this.start(); this.practice = true;
-    if (step >= 2) { this.options = createParkingOptions(3, 'normal'); this.layout = copyLayout(this.options[0].layout); this.state.phase = 'slot-choice'; }
+    if (step === 2) { this.options = createParkingOptions(3, 'normal'); this.layout = copyLayout(this.options[0].layout); this.state.phase = 'slot-choice'; }
   }
   act(): boolean {
     const s = this.state;
@@ -214,6 +218,21 @@ export class ParkingRun {
     s.lockedPower = s.power; this.driveDistance = distanceFor(s.power); this.driven = 0; this.phaseTime = 0; s.phase = 'driving';
     this.speed = this.driveDistance / (1.1 + this.driveDistance / MAX_DISTANCE * 0.35);
     this.emit({ type: 'launch', power: s.power }); return true;
+  }
+  /** One steering reversal for the whole run. Position and heading stay continuous. */
+  correct(): boolean {
+    const s = this.state;
+    if (!s.alive || s.phase !== 'driving' || s.correctionUsed || s.braking || this.driven <= 0) return false;
+    const original = curvatureFor(s.lockedSteering!);
+    this.correctedCurvature = Math.abs(original) < 1e-5 ? .0014 : -original;
+    this.correctionOrigin = { ...s.pose }; this.correctionStart = this.driven;
+    s.correctionUsed = true; s.correctionDistance = this.driven;
+    this.emit({ type: 'correction', distance: this.driven, curvature: this.correctedCurvature }); return true;
+  }
+  private pathPose(distance: number): ParkingPose {
+    return this.correctionOrigin && distance >= this.correctionStart
+      ? poseAlongArc(this.correctionOrigin, this.correctedCurvature, distance - this.correctionStart)
+      : poseAlongArc(this.layout.start, curvatureFor(this.state.lockedSteering ?? this.state.steeringDegrees), distance);
   }
   brake(): boolean {
     const s = this.state;
@@ -248,7 +267,7 @@ export class ParkingRun {
     }
   }
   private drive(dt: number): void {
-    const s = this.state; const k = curvatureFor(s.lockedSteering!);
+    const s = this.state; const k = this.correctionOrigin ? this.correctedCurvature : curvatureFor(s.lockedSteering!);
     let increment = dt * this.speed;
     if (s.braking) {
       const before = Math.min(BRAKE_SECONDS, this.brakingTime); const after = Math.min(BRAKE_SECONDS, before+dt);
@@ -259,7 +278,7 @@ export class ParkingRun {
     const pieces = Math.max(1, Math.ceil((nextDistance - this.driven) / 0.5), Math.ceil(Math.abs(k * (nextDistance - this.driven)) / (0.25 * RAD)));
     const from = this.driven;
     for (let i = 1; i <= pieces; i++) {
-      const d = from + (nextDistance - from) * i / pieces; const pose = poseAlongArc(this.layout.start, k, d);
+      const d = from + (nextDistance - from) * i / pieces; const pose = this.pathPose(d);
       const obstacle = this.layout.obstacles.find(o => sweptCarTouches(s.pose, pose, o)); const previous = s.pose;
       s.pose = pose; this.driven = d;
       if (obstacle) { this.contact = intersectionCenter(hull([...rectangleCorners(previous), ...rectangleCorners(pose)]), rectangleCorners(obstacle)); this.finish('collision', '隣の車に接触！', 'collision'); return; }
@@ -278,7 +297,7 @@ export class ParkingRun {
       if (this.options.some(o => o.kind !== s.slotKind && containsCar(o.layout.slot, s.pose))) { this.finish('outside', '指定した枠ではありません。薄い線の枠は対象外です。', 'unselected'); return; }
       const error = local(s.pose, this.layout.slot); const angleError = Math.abs(s.pose.rotation - this.layout.slot.rotation);
       const { distance: targetTravel } = routeFor(this.layout);
-      const steeringCanFit = containsCar(this.layout.slot, poseAlongArc(this.layout.start, k, targetTravel));
+      const steeringCanFit = containsCar(this.layout.slot, this.pathPose(targetTravel));
       const distanceDominates = Math.abs(error.y) > Math.max(Math.abs(error.x) * 1.25, (this.layout.slot.height - CAR_HEIGHT) / 2);
       const cause: ParkingFailureCause = steeringCanFit ? this.driven < targetTravel ? 'short' : 'long' : distanceDominates ? error.y > 0 ? 'short' : 'long' : angleError > 6*RAD || Math.abs(error.x)>Math.abs(error.y) ? 'angle' : 'outside';
       const reason = cause === 'short' ? s.brakeUsed ? 'ブレーキが早く、枠の手前で止まりました。' : '強さが足りず、枠に届きませんでした。' : cause === 'long' ? '強すぎて、枠を通り過ぎました。' : cause === 'angle' ? '角度が合わず、枠からはみ出しました。' : '枠に収まりませんでした。強さと角度を確認してください。';
@@ -301,6 +320,7 @@ export class ParkingRun {
     this.layout = this.options.length ? copyLayout(this.options[0].layout) : createParkingLayout(s.parked, s.mode, this.layoutRoll);
     s.pose = { ...this.layout.start }; s.lockedSteering = s.lockedPower = null; s.steeringDegrees = -STEERING_LIMIT_DEGREES; s.power = 0; s.grade = null;
     s.slotKind = 'safe'; s.slotMultiplier = 1; s.brakeUsed = s.braking = false; s.nearMisses = s.nearMissPoints = s.noBrakePoints = 0; s.precision = null; s.minClearance = null;
+    this.correctionOrigin = null; this.correctionStart = this.correctedCurvature = 0;
     this.phaseTime = this.driven = this.driveDistance = this.speed = this.brakingTime = 0; this.nearCandidates.clear();
     s.phase = this.options.length ? 'slot-choice' : 'angle';
   }
@@ -315,15 +335,15 @@ export class ParkingRun {
     s.alive = false; s.phase = 'ended'; s.outcome = outcome; s.braking = false; this.nearCandidates.clear(); s.nearMisses = s.nearMissPoints = s.noBrakePoints = 0;
     this.ending = { score: s.score, parked: s.parked, perfectCount: s.perfectCount, maxStreak: s.maxStreak, time: s.time, mode: s.mode,
       outcome, reason, cause, pose: { ...s.pose }, contact: this.contact ? { ...this.contact } : null, steeringDegrees: s.lockedSteering ?? s.steeringDegrees, power: s.lockedPower ?? s.power,
-      rulesVersion: 2, slotKind: s.slotKind, brakeUsed: s.brakeUsed };
+      rulesVersion: 3, slotKind: s.slotKind, brakeUsed: s.brakeUsed, correctionUsed: s.correctionUsed };
     this.emit({ type: 'failure', outcome, cause, brakeUsed: s.brakeUsed, slot: s.slotKind });
   }
   snapshot(): ParkingSnapshot { return { ...this.state, pose: { ...this.state.pose }, precision: this.state.precision ? { ...this.state.precision } : null }; }
   result(): ParkingResult | null { return this.ending ? { ...this.ending, pose: { ...this.ending.pose }, contact: this.ending.contact ? { ...this.ending.contact } : null } : null; }
   inspection(): ParkingInspection {
-    const s = this.state; const k = curvatureFor(s.lockedSteering ?? s.steeringDegrees);
+    const s = this.state;
     const distance = s.phase === 'angle' ? MAX_DISTANCE : distanceFor(s.lockedPower ?? s.power);
-    const projection = Array.from({ length: 41 }, (_, i) => poseAlongArc(this.layout.start, k, distance * i / 40));
+    const projection = Array.from({ length: 41 }, (_, i) => this.pathPose(distance * i / 40));
     return { ...this.snapshot(), layout: copyLayout(this.layout), options: this.options.map(o => ({ kind: o.kind, layout: copyLayout(o.layout) })),
       projection, endpoint: { ...projection[projection.length - 1] }, contact: this.contact ? { ...this.contact } : null, driveDistance: this.driveDistance, driven: this.driven, phaseTime: this.phaseTime };
   }

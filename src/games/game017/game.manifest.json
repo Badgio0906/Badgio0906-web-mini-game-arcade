@@ -1,45 +1,8 @@
 {
-  "id": "game017",
-  "title": "雨って避けたら濡れないよね ～RAINSHIFT～",
-  "titleJa": "雨って避けたら濡れないよね ～RAINSHIFT～",
-  "titleEn": "RAINSHIFT",
-  "subtitle": "雨？ 当たらなければ晴れです。",
-  "genre": [
-    "route-planning",
-    "arcade",
-    "endless"
-  ],
-  "core_mechanic": [
-    "time-stop",
-    "continuous-freehand-route",
-    "projected-xyz-camera"
-  ],
-  "primary_input": [
-    "click",
-    "tap",
-    "pointer-drag"
-  ],
-  "planning_seconds": 5,
-  "camera_transition_seconds": 0.55,
-  "dash_seconds": 1.4,
-  "collision_policy": "continuous-swept-circle against displayed forecast footprints of rain arriving during this dash",
-  "difficulty": "bounded rain density, visible wind from round 4, large drops from round 6; validated safe route with 12 world-unit margin",
-  "credit_policy": "consume-once-at-run-start-when-enabled",
-  "prototype": {
-    "unlimited_play": true,
-    "advertising": false
-  },
-  "tutorial": "five observed phases, recoverable failure, separate score and completion",
-  "human_playtest_status": "pending",
-  "jev_mode": "development-only-shadow",
-  "skill_axes": [
-    "spatial-planning",
-    "continuous-route-control",
-    "risk-recognition"
-  ],
-  "expected_run_seconds": [
-    20,
-    120
-  ],
-  "expected_run_seconds_note": "design target, not human measured"
+ "id":"game017","title":"雨って避けたら濡れないよね ～雨宿りリレー～","titleJa":"雨って避けたら濡れないよね","titleEn":"RAIN SHELTER RELAY","subtitle":"次の屋根へ。走るなら、小雨のいま。",
+ "genre":["action","timing","risk-management"],"core_mechanic":["side-view shelter relay","visible rain cycle with one-second warning","wetness recovery under five shelter kinds","short dash and1.7 second recharge"],"primary_input":["ArrowLeft/ArrowRight","A/D","Space dash","dedicated touch controls"],"skill_axes":["weather-observation","timing","risk-management"],"rulesVersion":2,
+ "expected_run_seconds":[45,180],"expected_run_seconds_note":"design hypothesis, not human measured","primary_score":"new forward distance weighted by dryness, first shelter arrival, dry streak and difficult rain bonus; no backtracking or idle awards",
+ "failure":"wetness100; finish after11 shelter arrivals","practice":"real move and dash to first shelter, automatic recovery on soaking; zero score and no record submission",
+ "score_persistence":{"storage_prefix":"web-mini-arcade:v1:game017:","current_best_key":"bestRelayV2","legacy_best_key":"best","legacy_best_preserved":true,"rulesVersion":2},
+ "prototype":{"unlimited_play":true,"advertising":false},"human_playtest_status":"pending","jev_mode":"development-only-shadow"
 }

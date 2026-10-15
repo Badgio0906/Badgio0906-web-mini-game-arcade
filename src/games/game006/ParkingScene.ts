@@ -69,6 +69,9 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
       if (!run.act()) return false;
       hooks.onUpdate(run.snapshot()); this.draw(); return true;
     }
+    correct(): boolean {
+      if (!run.correct()) return false; hooks.onUpdate(run.snapshot()); this.draw(); return true;
+    }
     choose(choice: ParkingChoice): boolean {
       if (!run.choose(choice)) return false;
       hooks.onUpdate(run.snapshot()); this.draw(); return true;
@@ -150,7 +153,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
       for (let i = 0; i < 2; i++) { const option = view.options[i]; this.bayLabels[i].setVisible(!!option && s.phase !== 'parked'); if (option) this.bayLabels[i].setText(option.kind === 'safe' ? '安全 ×1' : '挑戦 ×1.4').setPosition(option.layout.slot.x, option.layout.slot.y-82).setAlpha(s.phase === 'slot-choice' || s.slotKind === option.kind ? 1 : .45); }
       this.hud.setVisible(false);
       this.hud.setText(`SCORE ${s.score}    ${s.parked}台    ${s.mode === 'forbidden' ? '禁断 ×2' : 'V2'}${s.slotKind === 'challenge' ? ' ×1.4' : ''}`);
-      this.feedback.setText(s.phase === 'slot-choice' ? '枠を指定してから、角度を決めよう' : s.phase === 'driving' ? s.brakeUsed ? '制動中 · 再加速できません' : '必要なら、もう一度入力でブレーキ' : s.phase === 'parked' ? `余裕 ${s.precision?.margin.toFixed(1)}px · ${s.noBrakePoints ? 'NO BRAKE +' + s.noBrakePoints : 'BRAKE'}${s.nearMissPoints ? ' · ギリギリ！ +' + s.nearMissPoints : ''}` : view.options.length ? `指定：${s.slotKind === 'safe' ? '安全枠' : '挑戦枠'} · 薄い枠は対象外` : '角度 → 強さ → 任意ブレーキ');
+      this.feedback.setText(s.phase === 'slot-choice' ? '枠を指定してから、角度を決めよう' : s.phase === 'driving' ? s.brakeUsed ? '制動中 · 再加速できません' : s.correctionUsed ? '切り返し使用済み · 必要ならブレーキ' : 'Cで切り返し / SPACEでブレーキ' : s.phase === 'parked' ? `余裕 ${s.precision?.margin.toFixed(1)}px · ${s.noBrakePoints ? 'NO BRAKE +' + s.noBrakePoints : 'BRAKE'}${s.nearMissPoints ? ' · ギリギリ！ +' + s.nearMissPoints : ''}` : view.options.length ? `指定：${s.slotKind === 'safe' ? '安全枠' : '挑戦枠'} · 薄い枠は対象外` : '角度 → 強さ → 任意ブレーキ');
       if (s.alive && (s.phase === 'angle' || s.phase === 'power')) {
         this.path(view.projection, s.phase === 'angle' ? 0.22 : 0.42);
         if (s.phase === 'power') {
@@ -187,6 +190,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
     startPractice: step => { if (destroyed) return; paused = false; pendingStart = false; if (scene) scene.begin(step); else pendingPractice = step; },
     title: () => { if (destroyed) return; paused = false; pendingStart = false; pendingPractice = null; if (scene) scene.title(); else run.reset(); },
     act: () => !destroyed && !paused && !!scene && scene.act(),
+    correct: () => !destroyed && !paused && !!scene && scene.correct(),
     choose: choice => !destroyed && !paused && !!scene && scene.choose(choice),
     chooseSlot: choice => !destroyed && !paused && !!scene && scene.chooseSlot(choice),
     pause: value => { paused = value; }, snapshot: () => run.snapshot(), inspection: () => run.inspection(),

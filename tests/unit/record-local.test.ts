@@ -21,8 +21,8 @@ describe('read-only local record adapters',()=>{
   });
   it('does not substitute legacy keys and rereads after source deletion',async()=>{
     saved.set(p('game006')+'best','800');expect((await readLocalRecord('game006')).status).toBe('legacy');
-    saved.set(p('game006')+'best-rules-v2','100');expect((await readLocalRecord('game006')).value).toBe(100);
-    saved.delete(p('game006')+'best-rules-v2');expect((await readLocalRecord('game006')).status).toBe('legacy');
+    saved.set(p('game006')+'best-rules-v3','100');expect((await readLocalRecord('game006')).value).toBe(100);
+    saved.delete(p('game006')+'best-rules-v3');expect((await readLocalRecord('game006')).status).toBe('legacy');
     saved.clear();expect((await readLocalRecord('game006')).status).toBe('none');
   });
   it('retains old015 BEST and reads only separate revision04 BEST',async()=>{

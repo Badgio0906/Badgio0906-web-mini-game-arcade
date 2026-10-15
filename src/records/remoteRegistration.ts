@@ -3,7 +3,7 @@ import { getRecordDefinition, recordBoards } from '../data/recordDefinitions';
  * registration has been verified. Definitions remain shared with Worker local tests.
  * This is separate from Analytics consent/registration and never disables old boards.
  */
-export const PENDING_RECORD_GAME_IDS: ReadonlySet<string> = new Set(['game002','game003','game015','game024','game032']);
+export const PENDING_RECORD_GAME_IDS: ReadonlySet<string> = new Set(['game002','game003','game005','game006','game009','game015','game017','game024','game032']);
 export function isPublicRecordRegistered(gameId: string): boolean {
   return !PENDING_RECORD_GAME_IDS.has(gameId);
 }

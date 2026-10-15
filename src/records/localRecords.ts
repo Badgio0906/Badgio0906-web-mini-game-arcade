@@ -12,15 +12,15 @@ export interface LocalRecord {
 }
 export const CURRENT_RECORDS_KEY = 'game100:records:current:v1';
 const prefix = (id: string) => `web-mini-arcade:v1:${id}:`;
-const previousScalarKeys: Readonly<Record<string, readonly string[]>> = { game002:['bestScore','best'], game003:['rules2:best','best'], game015:['best'] };
+const previousScalarKeys: Readonly<Record<string, readonly string[]>> = { game005:['best'], game006:['best-rules-v2','best'], game009:['bestRules2','best'], game017:['best'], game002:['bestScore','best'], game003:['rules2:best','best'], game015:['best'] };
 const scalarKeys: Readonly<Record<string,string>> = {
   game001:'orbit-shift:v1:best', game002:prefix('game002')+'bestScoreV2',
   game003:prefix('game003')+'rules3:best', game004:prefix('game004')+'best',
-  game005:prefix('game005')+'best', game006:prefix('game006')+'best-rules-v2',
+  game005:prefix('game005')+'best-rules-v2', game006:prefix('game006')+'best-rules-v3',
   game007:prefix('game007')+'best:transport:v2', game008:prefix('game008')+'best-delivery-v2',
-  game009:prefix('game009')+'bestRules2', game011:prefix('game011')+'best:v2',
+  game009:prefix('game009')+'bestRules3', game011:prefix('game011')+'best:v2',
   game015:prefix('game015')+'bestR04', game016:prefix('game016')+'best',
-  game017:prefix('game017')+'best', game018:prefix('game018')+'bestDistanceDecimeters',
+  game017:prefix('game017')+'bestRelayV2', game018:prefix('game018')+'bestDistanceDecimeters',
   game019:prefix('game019')+'bestHeightDm', game020:prefix('game020')+'clearedBoards',
 };
 const jsonKeys: Readonly<Record<string,string>> = {

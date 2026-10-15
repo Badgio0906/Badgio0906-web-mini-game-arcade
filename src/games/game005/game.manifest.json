@@ -24,12 +24,23 @@
     "beginner": 45,
     "experienced": 100
   },
-  "primary_score": "correctly sorted parcels",
+  "primary_score": "sum round((100 + 0..50 speed bonus) × combo multiplier × fever multiplier)",
   "secondary_score": "consecutive correct combo",
   "visual_identity": "colorful purple-ink factory, illustrated round and angular light and dark products, routing signs",
   "decision_seconds_bounds": [
     1.3,
     4.8
   ],
-  "rule_change_seconds": 0.95
+  "rule_change_seconds": 0.95,
+  "rulesVersion": 2,
+  "combo_multiplier": "1 + min(7, floor((combo-1)/4)) × 0.25",
+  "fever": {
+    "trigger": 8,
+    "duration_seconds": 6,
+    "score_multiplier": 2,
+    "dispatch_seconds": 0.12,
+    "decision_multiplier": 0.8,
+    "recharge": "eight correct answers after expiry; mistake resets charge"
+  },
+  "failure": "third wrong answer or timeout ends the run; previous two allow continuation"
 }

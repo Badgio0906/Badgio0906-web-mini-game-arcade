@@ -6,7 +6,7 @@ import { SortRun } from './SortRun';
 export function createSortGame(parent: HTMLElement, hooks: SortHooks, readLanguage: () => SortLanguage = () => 'ja'): SortController {
   const root = document.createElement('div');
   root.className = 'sort-board';
-  root.innerHTML = `<div class="rule-strip"><b class="rule-dimension"></b><div class="rule-routing"><span class="rule-left"></span><span class="rule-right"></span></div></div>
+  root.innerHTML = `<div class="shift-status" role="status"></div><div class="rule-strip"><b class="rule-dimension"></b><div class="rule-routing"><span class="rule-left"></span><span class="rule-right"></span></div></div>
     <div class="conveyor"><div class="belt-lines" aria-hidden="true"></div><div class="parcel"><span class="parcel-symbol"></span><small class="parcel-id"></small></div><div class="rule-banner" hidden></div><div class="correction-label" hidden></div><div class="trait-hint"></div></div>
     <div class="decision-meter"><div class="decision-track"><div class="decision-fill"></div></div><span class="decision-time"></span></div>
     <div class="sort-controls"><button type="button" class="sort-input" id="left-button" aria-label="LEFT に仕分け">← LEFT</button><button type="button" class="sort-input" id="right-button" aria-label="RIGHT に仕分け">RIGHT →</button></div>`;
@@ -26,6 +26,8 @@ export function createSortGame(parent: HTMLElement, hooks: SortHooks, readLangua
   const available = (): boolean => !destroyed && !paused && !title && run.alive && run.phase === 'sorting' && !document.querySelector('dialog[open]');
   function draw(): void {
     const snapshot = run.snapshot(); const language = readLanguage(); const text = ruleText(snapshot.rule, language);
+    root.dataset.fever = String(snapshot.feverRemaining > 0 && !title);
+    find('.shift-status').textContent = title ? language === 'ja' ? '3ミスで終了 · 8連続で6秒フィーバー' : '3 misses end the shift · 8 combo starts 6s fever' : `${language === 'ja' ? '残り' : 'LIVES'} ${snapshot.lives}/3 · ${snapshot.feverRemaining > 0 ? `FEVER ${snapshot.feverRemaining.toFixed(1)}s` : `FEVER ${snapshot.feverGauge}/8`} · ×${snapshot.multiplier.toFixed(2)}${snapshot.lastPoints ? ` · +${snapshot.lastPoints}` : ''}`;
     const current = snapshot.parcel ?? (title ? { id: -1, shape: 'round', brightness: 'light', size: 'large', symbol: 'circle' } as const : null);
     const key = [language, title, paused, snapshot.phase, snapshot.rule.label, current?.id, snapshot.lastSide, snapshot.alive].join('|');
     if (key !== signature) {
@@ -43,8 +45,8 @@ export function createSortGame(parent: HTMLElement, hooks: SortHooks, readLangua
       } else traits.textContent = language === 'ja' ? '新しいルールを確認！' : 'Check the new rule!';
       banner.hidden = title || (snapshot.phase !== 'rule_change' && snapshot.phase !== 'dispatch');
       banner.textContent = snapshot.phase === 'rule_change' ? language === 'ja' ? snapshot.rule.inverted ? 'ルール変更 · 左右反転！' : 'ルール変更 · 条件が変わる！' : snapshot.rule.inverted ? 'RULE CHANGE · REVERSE!' : 'RULE CHANGE · NEW ATTRIBUTE!' : language === 'ja' ? '次の荷物' : 'NEXT PARCEL';
-      correction.hidden = title || snapshot.alive;
-      const result = run.result(); correction.textContent = result ? `${language === 'ja' ? '正解は ' : 'Correct: '}${sideText(result.expectedSide, language)} · ${attributeText(result.parcel, result.rule.dimension, language)}` : '';
+      correction.hidden = title || (snapshot.alive && snapshot.phase !== 'miss');
+      const result = run.feedback(); correction.textContent = result ? `${language === 'ja' ? '正解は ' : 'Correct: '}${sideText(result.expectedSide, language)} · ${attributeText(result.parcel, result.rule.dimension, language)}` : '';
       const disabled = !available(); leftButton.disabled = rightButton.disabled = disabled;
       leftButton.classList.toggle('is-answer', !title && !snapshot.alive && run.result()?.expectedSide === 'left');
       rightButton.classList.toggle('is-answer', !title && !snapshot.alive && run.result()?.expectedSide === 'right');

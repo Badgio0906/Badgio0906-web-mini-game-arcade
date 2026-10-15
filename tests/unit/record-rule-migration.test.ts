@@ -4,7 +4,7 @@ import { isPublicBoardRegistered, isPublicRecordRegistered } from '../../src/rec
 import { safeSubmission } from '../../src/records/submissionValidation';
 import { validatePublicBests } from '../../src/records/PublicBests';
 import { readLocalRecord } from '../../src/records/localRecords';
-const prior=['game002.score.r1.all','game003.floors.r2.all','game015.depth.r03.all','game024.foods.r1.speed-4'];
+const prior=['game005.sorted.r1.all','game006.score.r2.all','game009.score.r2.all','game017.score.r1.all','game002.score.r1.all','game003.floors.r2.all','game015.depth.r03.all','game024.foods.r1.speed-4'];
 afterEach(()=>vi.unstubAllGlobals());
 describe('separate new rules preserve historical records',()=>{
  it('keeps old board payloads valid and registered without accepting a mixed new rule',()=>{

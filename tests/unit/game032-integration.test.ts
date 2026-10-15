@@ -10,14 +10,14 @@ import { publicStateLabel } from '../../src/records/PortalRecords';
 import { Leaderboards } from '../../src/records/Leaderboards';
 import { safeSubmission } from '../../src/records/submissionValidation';
 import { createGameRecordSession } from '../../src/records/RecordSharing';
-import { isPublicRecordRegistered, PENDING_RECORD_GAME_IDS } from '../../src/records/remoteRegistration';
+import { isPublicRecordRegistered, isPublicBoardRegistered, PENDING_RECORD_GAME_IDS } from '../../src/records/remoteRegistration';
 import { isRemoteGameRegistered, PENDING_WORKER_GAME_IDS } from '../../src/analytics/remoteRegistration';
 import { sanitizeAnalyticsData, isAnalyticsEnvelope, type AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
 import { aggregateExport } from '../../src/analytics-admin/export';
 import { parseOptions, fetchAnalyticsContext } from '../../scripts/fetch-analytics-context.mjs';
 
 const best = (score:number) => ({ game_id:'game032', rules_version:'1', save_version:1, mode_id:'standard', score });
-const publicFixture = (includeNew=false) => ({schema_version:1,definition_version:'1',cache_ttl_seconds:60,generated_at:'2026-10-10T00:00:00Z',boards:recordBoards.filter(d=>includeNew||!PENDING_RECORD_GAME_IDS.has(d.gameId)||['game002.score.r1.all','game003.floors.r2.all','game015.depth.r03.all','game024.foods.r1.speed-4'].includes(d.boardId)).map(d=>({game_id:d.gameId,board_id:d.boardId,metric_id:d.metricId,value:null,unit:d.unit,mode_label:d.modeLabel,ruleset_id:d.rulesetId,status:'empty',collected_since:'2026-10-09T00:00:00Z',revision:0}))});
+const publicFixture = (includeNew=false) => ({schema_version:1,definition_version:'1',cache_ttl_seconds:60,generated_at:'2026-10-10T00:00:00Z',boards:recordBoards.filter(d=>includeNew||isPublicBoardRegistered(d.boardId)).map(d=>({game_id:d.gameId,board_id:d.boardId,metric_id:d.metricId,value:null,unit:d.unit,mode_label:d.modeLabel,ruleset_id:d.rulesetId,status:'empty',collected_since:'2026-10-09T00:00:00Z',revision:0}))});
 const envelope:AnalyticsEnvelope = {schema_version:2,event_id:'00000000-0000-4000-8000-000000000001',occurred_at:'2026-10-10T00:00:00.000Z',game_id:'game032',game_version:'prototype-1',rules_version:'1',presentation_version:'prototype-1',browser_id:'00000000-0000-4000-8000-000000000002',visit_id:'synthetic-visit',session_id:'synthetic-page',run_id:'synthetic-run',event_name:'specific_game_events',environment:'synthetic',device_class:'mobile',input_type:'touch',page:'game032.html',data:{event:'fish_landed',mode:'standard',fish_id:'yamame',spot_id:'rocks',size_cm:24.5,points:160,rare:false,big:false}};
 afterEach(()=>vi.unstubAllGlobals());
 
@@ -27,8 +27,8 @@ describe('Game032 new registration preserves existing discovery and records',()=
     expect(gameCatalog.at(-1)).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'complete',difficulty:'standard'});
     expect(historicalGameCatalog.find(g=>g.id==='game010')?.status).toBe('retired');
     expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-3'});
-    expect(recordBoards).toHaveLength(25);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
-    expect([...PENDING_RECORD_GAME_IDS]).toEqual(['game002','game003','game015','game024','game032']);expect(isPublicRecordRegistered('game018')).toBe(true);expect(isPublicRecordRegistered('game032')).toBe(false);
+    expect(recordBoards).toHaveLength(29);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
+    expect([...PENDING_RECORD_GAME_IDS]).toEqual(['game002','game003','game005','game006','game009','game015','game017','game024','game032']);expect(isPublicRecordRegistered('game018')).toBe(true);expect(isPublicRecordRegistered('game032')).toBe(false);
     for(let n=21;n<=32;n++)expect(PENDING_WORKER_GAME_IDS.has(`game${String(n).padStart(3,'0')}`)).toBe(true);
     expect(isRemoteGameRegistered('game032')).toBe(false);expect(isRemoteGameRegistered('game020')).toBe(true);
   });

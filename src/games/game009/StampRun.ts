@@ -1,52 +1,22 @@
-import { ITEMS, itemName } from './items';
+import { ITEMS } from './items';
+import { PUZZLES, validatePuzzle } from './puzzles';
 import type { DeskLayout, DeskObject, StampEvent, StampInspection, StampRequest, StampResult, StampSnapshot } from './contracts';
-export const RUN_SECONDS = 75;
-export const matchesRequest = (object: DeskObject, request: StampRequest): boolean => object.kind === request.kind && (request.color === undefined || object.color === request.color) && (request.capped === undefined || object.capped === request.capped);
-export function calculateDeskLayout(objects: readonly DeskObject[], availableWidth: number): DeskLayout {
- const width = Math.max(220, Number.isFinite(availableWidth) ? availableWidth : 300); const columns = width < 500 ? 4 : width < 780 ? 6 : 8; const cell = width / columns;
- return { width, height: Math.ceil(objects.length / columns) * cell + 12, bounds: objects.map((object,index)=>({id:object.id,left:(index%columns)*cell+2,top:Math.floor(index/columns)*cell+4,width:cell-4,height:cell-4})) };
-}
+export const RUN_SECONDS=90;
+export const matchesRequest=(o:DeskObject,r:StampRequest):boolean=>o.kind===r.kind&&(r.color===undefined||r.color===o.color)&&(r.capped===undefined||r.capped===o.capped);
+export function calculateDeskLayout(objects:readonly DeskObject[],availableWidth:number):DeskLayout {const width=Math.max(220,Number.isFinite(availableWidth)?availableWidth:300),columns=width<500?3:4,cell=width/columns;return {width,height:Math.ceil(objects.length/columns)*cell,bounds:objects.map((o,i)=>({id:o.id,left:i%columns*cell+3,top:Math.floor(i/columns)*cell+3,width:cell-6,height:cell-6}))};}
 export class StampRun {
- private correct=0; private score=0; private time=0; private remaining=RUN_SECONDS; private alive=false; private phase: StampSnapshot['phase']='searching'; private feedback=0; private searchTime=0; private roundId=0; private deskId=0; private objects: DeskObject[]=[]; private lifted=new Set<number>(); private tidyState=false; private request: StampRequest={kind:'calculator',text:'電卓を取ってください',sample:true}; private lastPicked:number|null=null; private lastPoints=0; private errors=0; private lifts=0; private tidies=0; private note=''; private practice=false; private practiceStep=0; private practiceDone=false; private ending:StampResult|null=null;
- constructor(private readonly emit:(event:StampEvent)=>void=()=>{}, private readonly random:()=>number=Math.random){this.makeDesk();}
- start(practice=false):void {this.correct=this.score=this.time=this.feedback=this.searchTime=this.roundId=this.deskId=this.errors=this.lifts=this.tidies=this.lastPoints=0;this.remaining=RUN_SECONDS;this.alive=true;this.phase='searching';this.lastPicked=null;this.note='';this.practice=practice;this.practiceStep=0;this.practiceDone=false;this.ending=null;this.makeDesk();this.nextRequest();}
- private makeDesk():void {
-  this.deskId++;this.lifted.clear();this.tidyState=false;
-  const count=this.practice?9:this.correct<6?9:this.correct<12?16:24;
-  const offset=this.practice?15:(this.deskId*7)%ITEMS.length;
-  const kinds=Array.from({length:count},(_,i)=>ITEMS[(offset+i)%ITEMS.length].kind);
-  if(this.practice){kinds[0]='calculator';kinds[1]='scissors';kinds[2]='pen';}
-  if(!this.practice&&this.correct>=12){kinds[count-1]='pen';kinds[count-2]='pen';}
-  this.objects=kinds.map((kind,index)=>({id:this.deskId*100+index,kind,color:kind==='highlighter'?'yellow':kind==='binder'?'black':kind==='pen'?'blue':'natural',capped:kind==='pen'&&index%2===0,rotation:this.practice?0:(this.random()-.5)*18,placement:index,paper:this.practice?index===1?1:null:this.correct>=6&&index%7===1?index:null}));
- }
- private nextRequest():void {
-  this.roundId++;this.phase='searching';this.searchTime=0;this.lastPicked=null;this.lastPoints=0;
-  let item:DeskObject;
-  if(this.practice)item=this.objects[this.practiceStep===0?0:this.practiceStep===1?1:2];
-  else item=this.objects[(this.roundId*5+this.deskId)%this.objects.length];
-  const features=!this.practice&&this.correct>=9;
-  this.request={kind:item.kind,text:`${itemName(item.kind)}を取ってください`,sample:this.correct<6||this.practice};
-  if(features&&item.kind==='highlighter'){this.request.color=item.color;this.request.text='黄色い蛍光ペンを取ってください';}
-  if(features&&item.kind==='binder'){this.request.color=item.color;this.request.text='黒いダブルクリップを取ってください';}
-  if(features&&item.kind==='pen'){this.request.color=item.color;this.request.capped=item.capped;this.request.text=`キャップ${item.capped?'付き':'なし'}の青いペンを取ってください`;}
-  if(!this.objects.some(o=>matchesRequest(o,this.request)))throw new Error('Request without an actual match');
-  this.note=this.practice?['電卓を探して取ろう。','折れた紙の端をめくり、はさみを取ろう。','「整頓する」を使ってから、ペンを取ろう。'][this.practiceStep]:'同じ条件なら、どれでも正解。';
- }
- pick(id:number):boolean {
-  if(!this.alive||this.phase!=='searching')return false;const object=this.objects.find(o=>o.id===id);if(!object)return false;
-  if(object.paper!==null&&!this.lifted.has(object.paper)&&!this.tidyState){this.note='まず紙の折れた端をめくろう。';return false;}
-  if(this.practice&&this.practiceStep===2&&!this.tidyState){this.note='まず「整頓する」を押してみよう。';return false;}
-  this.lastPicked=id;
-  if(!matchesRequest(object,this.request)){this.errors++;this.remaining=Math.max(0,this.remaining-2);this.note='違う物です。時間 −2秒。';this.emit({type:'mistake',kind:object.kind,objectId:id,penaltySeconds:2});if(this.remaining<=0)this.finish();return true;}
-  this.lastPoints=100+Math.max(0,Math.round(30-this.searchTime*2))+(this.tidyState?0:Math.min(15,Math.floor(this.objects.length/3)));
-  this.score+=this.lastPoints;this.correct++;this.phase='feedback';this.feedback=.45;this.note=`見つけた！ +${this.lastPoints}`;
-  this.emit({type:'correct',kind:object.kind,objectId:id,points:this.lastPoints,searchMs:Math.round(this.searchTime*1000),correct:this.correct});return true;
- }
- lift(paper:number):boolean {if(!this.alive||this.phase!=='searching'||this.tidyState||this.lifted.has(paper)||!this.objects.some(o=>o.paper===paper))return false;this.lifted.add(paper);this.lifts++;this.note='紙を持ち上げた。下の物を探そう。';this.emit({type:'paper_lift',paper,count:this.lifts});return true;}
- tidy():boolean {if(!this.alive||this.phase!=='searching'||this.tidyState)return false;this.tidyState=true;for(const o of this.objects)if(o.paper!==null)this.lifted.add(o.paper);this.remaining=Math.max(0,this.remaining-2.5);this.tidies++;this.note='整頓！時間 −2.5秒。散乱ボーナスだけ減少。';this.emit({type:'tidy',costSeconds:2.5,count:this.tidies});if(this.remaining<=0&&!this.practice)this.finish();return true;}
- step(seconds:number):void {if(!this.alive||!Number.isFinite(seconds)||seconds<=0)return;const dt=Math.min(.05,seconds);this.time+=dt;if(!this.practice)this.remaining=Math.max(0,this.remaining-dt);if(this.phase==='feedback'){this.feedback-=dt;if(this.feedback<=1e-8){if(this.practice){this.practiceStep++;if(this.practiceStep>=3){this.practiceDone=true;this.alive=false;this.phase='ended';this.emit({type:'practice_complete'});return;}}else if(this.correct%3===0)this.makeDesk();this.nextRequest();}}else this.searchTime+=dt;if(this.remaining<=0&&!this.practice)this.finish();}
- private finish():void {if(!this.alive)return;this.alive=false;this.phase='ended';this.note='おつかれさま！';this.ending={score:this.score,correct:this.correct,time:this.time,errors:this.errors,lifts:this.lifts,tidies:this.tidies,outcome:'timeout',reason:'75秒の机仕事が終了。'};this.emit({type:'timeout'});}
- snapshot():StampSnapshot {return {round:this.correct+1,roundId:this.roundId,deskId:this.deskId,correct:this.correct,score:this.score,time:this.time,remaining:this.remaining,alive:this.alive,phase:this.phase,request:{...this.request},objects:this.objects.map(o=>({...o})),liftedPapers:[...this.lifted],tidy:this.tidyState,multiplier:this.tidyState?1:1.1,lastPicked:this.lastPicked,lastPoints:this.lastPoints,errors:this.errors,lifts:this.lifts,tidies:this.tidies,note:this.note,practice:this.practice,practiceStep:this.practiceStep,practiceDone:this.practiceDone};}
- inspection():StampInspection {const s=this.snapshot();return {...s,matchingIds:s.objects.filter(o=>matchesRequest(o,s.request)).map(o=>o.id),layout:null};}
+ private correct=0;private score=0;private time=0;private remaining=RUN_SECONDS;private alive=false;private phase:StampSnapshot['phase']='searching';private feedback=0;private searchTime=0;private roundId=0;private objects:DeskObject[]=[];private done=new Set<string>();private lastPicked:number|null=null;private lastPoints=0;private errors=0;private lifts=0;private tidies=0;private note='';private practice=false;private practiceDone=false;private ending:StampResult|null=null;private offset=0;private puzzleIndex=0;private hinted=false;
+ constructor(private readonly emit:(event:StampEvent)=>void=()=>{},private readonly random:()=>number=Math.random){if(!PUZZLES.every(validatePuzzle))throw Error('Invalid desk puzzle');this.makeDesk();}
+ private get puzzle(){return PUZZLES[this.puzzleIndex];}
+ start(practice=false):void {this.correct=this.score=this.time=this.feedback=this.searchTime=this.roundId=this.errors=this.lifts=this.tidies=this.lastPoints=0;this.remaining=RUN_SECONDS;this.alive=true;this.phase='searching';this.lastPicked=null;this.practice=practice;this.practiceDone=false;this.ending=null;this.offset=practice?0:Math.min(11,Math.max(0,Math.floor(this.random()*12)));this.makeDesk();}
+ private makeDesk():void {this.puzzleIndex=(this.correct+this.offset)%PUZZLES.length;this.roundId++;this.done.clear();this.hinted=false;this.lastPicked=null;this.lastPoints=0;this.searchTime=0;this.phase='searching';const target=this.puzzle.target;const others=ITEMS.filter(i=>i.kind!==target);const kinds=[target,...Array.from({length:5},(_,i)=>others[(i*3+this.correct)%others.length].kind)];this.objects=kinds.map((kind,i)=>({id:this.roundId*100+i,kind,color:kind==='pen'?'blue':'natural',capped:kind==='pen',rotation:0,placement:i,paper:null}));this.note=this.puzzle.clue;}
+ interact(id:string):boolean {if(!this.alive||this.phase!=='searching')return false;const action=this.puzzle.actions.find(a=>a.id===id);if(!action||this.done.has(id)||(action.requires&&!this.done.has(action.requires)))return false;this.done.add(id);this.note=action.clue;this.lifts++;this.emit({type:'desk_action',action:id,puzzle:this.puzzle.id});return true;}
+ pick(id:number):boolean {if(!this.alive||this.phase!=='searching')return false;const o=this.objects.find(o=>o.id===id);if(!o)return false;if(o.kind===this.puzzle.target&&this.done.size!==this.puzzle.actions.length)return false;this.lastPicked=id;if(o.kind!==this.puzzle.target){this.errors++;if(!this.practice)this.remaining=Math.max(0,this.remaining-2);this.note='依頼の物とは違います。手掛かりを確かめよう。';this.emit({type:'mistake',kind:o.kind,objectId:id,penaltySeconds:this.practice?0:2});if(this.remaining<=0)this.finish();return true;}this.lastPoints=200+this.puzzle.actions.length*50+Math.max(0,Math.round(50-this.searchTime*2))-(this.hinted?30:0);if(!this.practice)this.score+=this.lastPoints;this.correct++;this.phase='feedback';this.feedback=.65;this.note=`発見！ ${this.practice?'':`+${this.lastPoints}点`}`;this.emit({type:'correct',kind:o.kind,objectId:id,points:this.practice?0:this.lastPoints,searchMs:Math.round(this.searchTime*1000),correct:this.correct});return true;}
+ lift(id:number):boolean {const action=this.puzzle.actions[id];return action?this.interact(action.id):false;}
+ tidy():boolean {if(!this.alive||this.phase!=='searching'||this.hinted)return false;this.hinted=true;this.tidies++;this.note=this.puzzle.hint;this.emit({type:'tidy',costSeconds:0,count:this.tidies});return true;}
+ step(seconds:number):void {if(!this.alive||!Number.isFinite(seconds)||seconds<=0)return;const dt=Math.min(.05,seconds);this.time+=dt;if(!this.practice)this.remaining=Math.max(0,this.remaining-dt);if(this.phase==='feedback'){this.feedback-=dt;if(this.feedback<=1e-8){if(this.practice&&this.correct>=2){this.practiceDone=true;this.alive=false;this.phase='ended';this.emit({type:'practice_complete'});return;}this.makeDesk();}}else this.searchTime+=dt;if(this.remaining<=0&&!this.practice)this.finish();}
+ private finish():void {if(!this.alive)return;this.alive=false;this.phase='ended';this.ending={score:this.score,correct:this.correct,time:this.time,errors:this.errors,lifts:this.lifts,tidies:this.tidies,outcome:'timeout',reason:'90秒の机の謎解きが終了。'};this.emit({type:'timeout'});}
+ snapshot():StampSnapshot {const p=this.puzzle;return {puzzle:{id:p.id,title:p.title,clue:p.clue,hint:p.hint,actions:p.actions.map(a=>({...a,done:this.done.has(a.id)})),targetVisible:this.done.size===p.actions.length,progress:this.done.size,steps:p.actions.length+1},round:this.correct+1,roundId:this.roundId,deskId:this.roundId,correct:this.correct,score:this.score,time:this.time,remaining:this.remaining,alive:this.alive,phase:this.phase,request:{kind:p.target,text:p.objective,sample:false},objects:this.objects.map(o=>({...o})),liftedPapers:[],tidy:this.hinted,multiplier:1,lastPicked:this.lastPicked,lastPoints:this.lastPoints,errors:this.errors,lifts:this.lifts,tidies:this.tidies,note:this.note,practice:this.practice,practiceStep:this.correct,practiceDone:this.practiceDone};}
+ inspection():StampInspection {const s=this.snapshot();return {...s,matchingIds:s.objects.filter(o=>o.kind===s.request.kind).map(o=>o.id),layout:null};}
  result():StampResult|null{return this.ending?{...this.ending}:null;}
 }
