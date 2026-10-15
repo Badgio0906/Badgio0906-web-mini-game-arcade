@@ -10,7 +10,7 @@
 
 ## 再検証
 
-`npm ci`、`npm run check`、`npm test`、`npm run build`。Workerは `analytics-worker` の既存手順を使う。今回のlocal D1/独立review/本番GETはQAの証拠にあり、本番への架空score/event POSTは実施していない。
+`npm ci`、`npm run check`、`npm test`、`npm run build`。最終固定aa9716cでcheck・1090tests/102files・公開設定build成功。Workerは `analytics-worker` の既存手順を使う。今回のlocal D1/独立review/本番GETはQAの証拠にあり、本番への架空score/event POSTは実施していない。
 
 公式Pagesは `.github/workflows/pages.yml`。defaultローカルbuildは公式の公開VITE設定と異なることがある。必要なら、公開runtimeから既知の公開設定だけをメモリで読んで再現する（設定値を出力しない）：
 
@@ -27,3 +27,9 @@ PUBLIC_BUILD_ROOT="$PWD" PUBLIC_BUILD_LOG=/tmp/arcade-unique-build.log node test
 ## 残す人間評価
 
 今回改修9作と新3作の本人試遊、物理スマホ、音の実機聴感、連続FPSは未評価。完成版認定は追加しない。具体的に試す点は最終報告F。得点/BEST/物理/通常入力の技術合格を、面白さの断定へ変換しない。
+
+## 最終正式公開
+
+4工程とも公式公開済み。第4工程release `9f655a98df410a7dcc3660321afa6ea195e10115`、Pages38767797394 build/deploy成功。配信177file SHA一致、公開12作品×4幅48case/2714checks成功（error/POST0・source不変）。[配信](QA/live-final/PUBLICATION_SHA.json)／[公開操作](QA/live-final-browser/REPORT.json)／[実API14GET](QA/WORKER_FINAL_PUBLIC_GET.json)。記録・報告だけの後続commitでもruntime57dce249とbuild入力が同一であることを確認する。公開後の報告追補に新しいゲーム改修は含めない。
+
+[公開一覧4幅122checks](QA/live-final-catalog/REPORT.json)も成功。27作品・完成9・hidden/retired旧URLとお気に入り/番号/帰還を実公開で確認、pageerror/POST0。全工程の公開後確認完了。

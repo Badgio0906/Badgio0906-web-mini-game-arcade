@@ -80,3 +80,5 @@
 ## 監査後の統合追補
 
 上記は監査時点の未完了を保存した記録。現在の固有通常QA、12実画面thumbnail、独立Visual、compiled48組、Portal27件のroot/subpath150項目は完了した。source差分・初回collector failureを [FINAL_SOURCE_CHAIN](QA/FINAL_SOURCE_CHAIN.json) と [最終報告](FINAL_REPORT.md) へ接続。各工程の正式公開結果は [PUBLICATION](PUBLICATION.md) を優先する。人間評価は引き続き未実施。
+
+最終追補：第1～第4工程の公式公開と公開後確認が完了。第4工程9f655a98／Pages38767797394成功、固定1090tests/102files・check/build、配信177file一致、公開48組/2714checksと一覧122checks成功。監査時点の残りは解消し、本人/物理端末/実機聴感/連続FPSだけを未評価として残す。

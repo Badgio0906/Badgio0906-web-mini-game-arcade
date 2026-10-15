@@ -37,7 +37,7 @@ TypeScript、Viteの静的MPA、HTML／CSSが基盤。Phaserは必要なゲー�
 | [src/data/gameCatalog.ts](../src/data/gameCatalog.ts) | ポータルの登録データ。表示名・route・thumbnailの実装上の正本 |
 | [src/portal](../src/portal/) | 一覧の表示・入力 |
 | [src/game](../src/game/)／[src/main.ts](../src/main.ts) | Game001。既存フォルダを改名しない |
-| [src/games](../src/games/) | 002〜011・015〜030の固有モデル・描画・UI・manifest |
+| [src/games](../src/games/) | 002〜011・015〜035の固有モデル・描画・UI・manifest |
 | [public/games](../public/games/) | 012〜014の固定Godot Web出力と帰還shell |
 | [public/assets](../public/assets/) | 採用した配信画像・実画面サムネイル |
 | [assets](../assets/) | 生成原本・採用記録・font／画像の出典とライセンス |
@@ -46,7 +46,7 @@ TypeScript、Viteの静的MPA、HTML／CSSが基盤。Phaserは必要なゲー�
 
 001〜003・006はPhaser。004・005・007〜011・015〜019はPhaserを要求しない。012〜014は新規のGodot開発ではなく既存exportの移行であり、UI・操作・保存・音を維持する。[移行構造](legacy-games/MIGRATION.md)。
 
-アカウント、本番広告、オンラインランキングはゲームロジックに接続されていない。端末内の最大400イベントとJSON出力に加え、同意連動の外部解析コードは導入済みだが、GA4／Worker／D1の本番設定は未完了でproduction inactive。Telemetryはゲーム内イベントであり、Codexの料金・使用量を取得する仕組みではない。
+個人BESTと任意共有の記録サービスを持ち、既存Worker／D1の本番GETは確認済み。比較版のboardと旧保存を維持し、記録共有・Analytics同意・client pendingを別々に管理する。最新の登録済み範囲は [CURRENT_STATUS](CURRENT_STATUS.md) と [記録互換性](catalog-reorganization/RECORDS_ROLLOUT_COMPATIBILITY.md) が正本。端末内最大400イベントとJSON出力、同意連動の外部解析コードがあり、ゲームごとの送信許可を無差別解除しない。Telemetryはゲーム内イベントであり、Codexの料金・使用量を取得する仕組みではない。
 
 Jev integration：OpenRouter Decisions、`typesafe/jev-1.13`、Shadow Mode。1 findingずつ4質問で次の証拠へroutingする開発toolで、自動Gateではない。詳細の正本は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)。
 

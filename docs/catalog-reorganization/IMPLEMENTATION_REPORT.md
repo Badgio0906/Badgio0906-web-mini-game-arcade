@@ -1,5 +1,7 @@
 # 一覧再編と4工程開発 — 2026-10-15 JST
 
+2026-10-16 JST最終追補：一覧再編・既存9改修・新作3本の全4工程を公式公開し、公開後確認も完了。[A～F最終報告](FINAL_REPORT.md)／[工程別公開記録](PUBLICATION.md)／[次タスクへの引継ぎ](HANDOFF.md)が現在の正本。以下の候補・未実施記述は作成時点の履歴として保持する。
+
 開始main: `4b32be51d8673906347cf69a3175d79ff5ed1c3c`、branch `work`、未commit変更なし、worktreeは本checkoutのみ。active31/historical32、033–035未使用。公開指示はユーザー添付「第1～第4工程 一括実装・品質管理・本番公開指示書」。全文は同dir REQUEST.txt。
 
 ## 第1工程
@@ -26,3 +28,6 @@ Matter.js（新003、今後034の実物理）を採用。10種compoundを同じ�
 上の候補記録は当時の状態。第2工程は25deef9、3工程はe2d59dbで公式公開と配信照合まで完了。現在の最終runtimeは57dce24（active27/historical35）。005combo/fever、006実切返し、009固有12問題、017雨宿りリレー、新033100秒花火、新0348現場Matter解体、新0353endカーリングを実装。全12対象の固有通常QA・独立コード/技術Visual・実画面thumbnailを確認。完成認定は本人指定9作品だけを維持する。
 
 旧8board/BEST/save/eligible候補は保持し、現行比較版を分離。既存記録Workerを非破壊更新し旧default20/current query32/new11boardsを確認、Game032recordsと021～035Analyticsの既存pending方針を維持。完成9作＋008のsrc/HTML差分は開始mainから空。新3作への外部Analyticsは明示OFF。詳細と各工程の実配信・失敗原本・人間未評価は [最終報告](FINAL_REPORT.md)、[公開記録](PUBLICATION.md)、[Visual](VISUAL_REVIEW.md)、[source chain](QA/FINAL_SOURCE_CHAIN.json) を正本とする。
+
+
+第4工程も公式Pages38767797394のbuild/deployが成功。release9f655a98、canonical runtime57dce249。最終集約1090tests/102files・check/build成功、公開配信177fileのSHA一致。全工程の最新結果は上記FINAL_REPORT/PUBLICATIONを参照。

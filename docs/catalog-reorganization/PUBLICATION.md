@@ -1,6 +1,6 @@
 # 公開記録
 
-第1工程の実装source f28ce3d。ローカル固定buildと独立レビューを実施。公式 `.github/workflows/pages.yml` へ通常main pushを行い、workflowと公開配信を確認する。成功後にrun URLとSHAを追記。
+**全4工程の公式公開・配信照合・公開操作を完了。** 最新第4工程はrelease9f655a98／Pages38767797394成功、配信177file一致・公開48組/2714checks・一覧122checks成功。公開27作品、完成版9作品。以下は工程ごとの候補固定と正式公開の履歴で、候補段階の未来形を現在の未完了と混同しない。第1工程実装sourceはf28ce3d。
 
 ## 第1工程 — 公式公開成功
 
@@ -33,3 +33,11 @@ canonical runtime `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。check・1078tests
 最終compiled12作品×4幅は [44受理case](QA/final-release-build/REPORT.json) と [033のactive modal帰還4case/198checks](QA/final-release-modal-return-retest/REPORT.json) で全48組を確認。初回4failureはcollectorが背面header linkを選んだためで、active dialog link選択へcollectorだけ限定修正。source前後一致/error0/POST0。Portalは [root4幅＋subpath150checks](QA/final-catalog-root-subpath/REPORT.json) でactive27/complete9/hidden4/retired4を確認。[統合source chain](QA/FINAL_SOURCE_CHAIN.json)。後追いの実終了関数12testも最終CIへ含める。
 
 最終集約候補 `aa9716c357a6a185ca917b1a4e9ab06cca682b2c` でcheck・**1090tests/102files**・公開設定build成功。実終了関数12件を全体へ含めて確認済み。[実行記録](QA/FINAL_CHECK_TEST_BUILD.txt)。runtimeは57dce249と同一。
+
+## 第4工程 — 公式公開成功
+
+公開commit `9f655a98df410a7dcc3660321afa6ea195e10115`、branch `work`から通常main push。[公式Pages 38767797394](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38767797394) は **build/deployともsuccess**。公式CIでもnpm test・offline Jev契約テスト・buildを通過。固定候補の実行数は1090tests/102files、offline Jevは25件。[workflow証拠](QA/STAGE4_OFFICIAL_WORKFLOW.json)。runtimeは57dce249から不変。[公開一覧](https://game100garage.com/)へ27作品を反映、新作[033](https://game100garage.com/game033.html)／[034](https://game100garage.com/game034.html)／[035](https://game100garage.com/game035.html)を公開。公開後の配信照合・通常操作結果を続けて記録する。
+
+[配信177ファイルSHA全一致](QA/live-final/PUBLICATION_SHA.json)。[公開12作品×4幅48case/2714checks](QA/live-final-browser/REPORT.json) は全件成功、source不変・pageerror0・POST0。広告/記録APIのbrowser内fixtureと、[実記録API14GET](QA/WORKER_FINAL_PUBLIC_GET.json)を分離して確認した。新3の固有通常完走は上記固定43deb/差分照合の証拠で、今回の短い公開smokeを全RUN再実施とは呼ばない。
+
+[公開Portal4幅122checks](QA/live-final-catalog/REPORT.json)もすべて成功。active27/complete9/表示001～027、hidden4/retired4の直接URLと一覧帰還、filter・番号・hiddenお気に入り保存を確認し、pageerror0・POST0。全4工程の公式公開と必要な公開後確認を完了した。本人/物理端末/実機聴感/連続FPSは未評価として残す。

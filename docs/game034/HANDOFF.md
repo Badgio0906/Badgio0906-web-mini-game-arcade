@@ -1,5 +1,7 @@
 # 再開手順
 
+2026-10-16 JST最終追補：本作は第4工程release `9f655a98df410a7dcc3660321afa6ea195e10115`／Pages38767797394で公式公開済み。最終check・1090tests/102files・公開設定build、公開12作品×4幅48組、一覧4幅122項目、配信177file SHA一致を確認。固有通常RUNのsourceと差分、公開URL、未実施の本人/物理端末/実機聴感は [一括最終報告](../catalog-reorganization/FINAL_REPORT.md)／[公開記録](../catalog-reorganization/PUBLICATION.md)／[引継ぎ正本](../catalog-reorganization/HANDOFF.md)を優先する。以前の公開準備記述は各時点の履歴。
+
 1. 共通catalog/新比較記録定義とVite033–035をrootが統合。Game034 namespace `web-mini-arcade:v1:game034:`、key `best-rules-v1`、score全8面累積/上限20000、rule1。
 2. Art担当の3材atlasと背景を実viewし固定build。fallback配色は生成物の代わりとして完成扱いにしない。
 3. 通常入力でtitle/説明/練習/選択/3制限/解体/slow/pause/結果/8面完了/RETRY/BEST reload/ミュート/帰還をPC1440・390・320・844横で確認。canvas候補だけでなく44px DOM候補buttonも入力経路。

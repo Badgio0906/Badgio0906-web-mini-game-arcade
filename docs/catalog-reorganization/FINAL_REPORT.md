@@ -1,6 +1,6 @@
-# 一覧再編・9作品改修・新作3作品 — 最終報告（最終公開確認待ち）
+# 一覧再編・9作品改修・新作3作品 — 最終報告
 
-**2026-10-16 JST更新。第1～第3工程は公式Pages公開・実公開操作・配信確認済み。第3工程のtouch再QAも全16組を確認して完了。第4工程も固定版のcheck/test/build・新3の通常4画面QA・技術Visual・最終compiled48組・Portal確認を完了し、最後のCI集約確認と公式公開を準備中。記録Workerの非破壊更新は本番反映済み。** 確認できた項目だけを順次更新する。作者本人の新ルール試遊は全改修・新作とも未実施。
+**2026-10-16 JST更新。第1～第4工程の公式Pages公開・実公開操作・配信確認を完了。最終公開版は全12作品×4画面の48case/2714項目、配信177ファイルのSHA全一致、公開一覧122項目を確認した。公開作品は27、完成版は本人指定の9作品。最終固定版のcheck・1090tests/102files・公開設定再現buildも成功。記録Workerの非破壊更新と本番14GET確認も完了した。** 作者本人の新ルール試遊は全改修・新作とも未実施。
 
 ## A. ゲーム一覧
 
@@ -10,7 +10,7 @@
 | 非公開3作品 | Game004/007/021をretired。元URLは404ではなく終了案内と「ゲーム一覧へ」。 | [004](https://game100garage.com/game004.html)／[007](https://game100garage.com/game007.html)／[021](https://game100garage.com/game021.html)を4画面で確認済み。 |
 | 非表示4作品 | Game026/028/029/030をhidden。検索・絞込み・お気に入り優先表示にも再掲しない。元URLのゲームと保存は維持。 | [026](https://game100garage.com/game026.html)／[028](https://game100garage.com/game028.html)／[029](https://game100garage.com/game029.html)／[030](https://game100garage.com/game030.html)のゲームUI・帰還を確認済み。 |
 | 既存例外 | Game010はretired維持、[旧URL](https://game100garage.com/game010.html)の終了案内を確認。Game008は公開一覧へ維持。 | ソース、素材、旧BEST、旧URLのIDを削除・付替えしない。retiredは公開サイトから本体を起動しない意味で、公開GitHubのソースまで秘匿するものではない。 |
-| 作品数 | 第1工程公開版はactive24/hidden4/retired4/historical32。新作追加後の実装はactive27/hidden4/retired4/historical35。 | 最終候補はroot4画面＋repository subpathの150項目を確認し、active27/complete9/hidden4/retired4/historical35を検証済み。**現在の公開一覧24と、最終候補27を混同しない。** 新3のPages公開後に27を配信確認する。 |
+| 作品数 | 第1工程時点のactive24/historical32から、新作3作品を加え、現在の公開版はactive27/complete9/hidden4/retired4/historical35。 | 固定版root4画面＋repository subpathの150項目に加え、[最終実公開一覧122項目](QA/live-final-catalog/REPORT.json)もすべて成功。4画面で27作品・001～027、完成版9、hidden/retired直接URL・帰還・お気に入りを確認済み。 |
 
 表示番号はactiveだけを元releaseOrder順で導出する。内部gameId、releaseOrder、route、保存、ランキング、Analytics IDは維持。フィルターとお気に入りで番号は変わらない。[番号・URL正本](DISPLAY_NUMBER_MATRIX.md)。
 
@@ -22,9 +22,9 @@
 | 004 | game005 | 013 | game016 | 022 | game027 |
 | 005 | game006 | 014 | game017 | 023 | game031 |
 | 006 | game008 | 015 | game018 | 024 | game032 |
-| 007 | game009 | 016 | game019 | 025 | game033（公開待ち） |
-| 008 | game011 | 017 | game020 | 026 | game034（公開待ち） |
-| 009 | game012 | 018 | game022 | 027 | game035（公開待ち） |
+| 007 | game009 | 016 | game019 | 025 | game033 |
+| 008 | game011 | 017 | game020 | 026 | game034 |
+| 009 | game012 | 018 | game022 | 027 | game035 |
 
 第1工程は通常操作150項目の固定QAと独立レビュー、実公開4画面、hidden/retired直接URL、完成版filter、hiddenお気に入り保存を確認。pageerror0・POST0。詳細は[公開記録](PUBLICATION.md)、[独立レビュー](INDEPENDENT_REVIEW.md)。
 
@@ -50,13 +50,13 @@
 
 ## C. 新作3作品
 
-| 対象・コンセプト | 技術・操作と得点 | 素材・実画面 | 記録・保存 | 実施済み／公開待ち |
+| 対象・コンセプト | 技術・操作と得点 | 素材・実画面 | 記録・保存 | 実施・公開確認 |
 |---|---|---|---|---|
-| [Game033 夜空に、ひと発。](../game033/IMPLEMENTATION_REPORT.md) ～FIREWORK MAKER～ | Canvas、1ボタン長押し→離して発射。100秒、実開花高度と目標の誤差、連続成功、残光内の連鎖、特別開花。最大900粒子/6飛行。 | ImageGen夜景・川、動的な光/煙/残光/水面反射。架空の背景花火を得点にしない。実画面由来の最終thumbnailを採用・Art実view済み。技術Visual86/100（F13/H12）合格。通常QAは下欄。 | rules1、`game033.score.r1.standard`。完了本番のみBEST、練習別run。専用best保存、mute保持。 | 単体5件・独立コード済み。連続press制限とresume後Space focusを限定修正。[初回desktop/phone](../game033/QA/43deb-native-01/report.json)と[modal scrollを修正したcollectorの320/844再QA](../game033/QA/43deb-native-02/report.json)を合わせ全4幅の通常フロー成功。phone通常100秒で65560点/BEST/retry、結果4幅。ゲームsource変更なし。技術Visual合格、Pages/配信確認待ち。全4幅で100秒完走したとは数えない。 |
-| [Game034 ちいさな解体屋](../game034/IMPLEMENTATION_REPORT.md) ～DEMOLITION DAY～ | Canvas＋Matter.js、8玩具建築。最大3部品を選んで除去し実崩壊。目標範囲への収まり・低下・小屋無接触・少ない操作・難度から採点。slowは同じ物理の進む実時間だけを減速。 | ImageGen作業場/3材atlas、同じ物理poseで実部品を描画。実ゲーム画面と最終thumbnailをArt実view済み。技術Visual83/100（F12/H12）合格。 | rules1、`game034.score.r1.all`、8現場合計完了のみBEST。途中やり直しは累計へ二重加算しない。練習別world。 | 単体8件成功、104 simulationと独立全cut列挙。最終現場clean解なしをタンク位置25pxの変更で修正、全25選択を独立再列挙しclean1解確認。固定43debの[通常4画面で全8現場](../game034/QA/stage4-43deb-four-widths-clean/report.json)を完了、各10034点/BEST、source不変・pageerror/HTTPerror/POST0。技術Visual合格、Pages待ち。 |
-| [Game035 1ミリカーリング](../game035/IMPLEMENTATION_REPORT.md) ～MINI CURLING～ | Canvas固有120Hz、等質量/全色同一摩擦の円形衝突。逆方向へdragして離す投球、3エンド各3投。寄せ・排除・ガード・残り投球・好配置連続による独自採点。 | ImageGen氷面と赤青花崗岩stone。動的ハウス・予測線・影・滑走跡。[実画面](../game035/QA/browser-2026-10-15T14-18-29-447Z/phone-aim.png)。 | rules1、`game035.score.r1.main`。全石の位置/速度、投球/エンド/内訳/ledgerを保存。練習と途中退出はBESTへ加算しない。 | 単体11件、100全9投match成功。実装担当の固定production4幅とPC4853点に加え、[独立最終4幅](../game035/QA/independent-tower/stage4-smoke/report.json)で各3end完了・保存・source一致/errorPOST0を確認。[実投球連番](../game035/QA/independent-tower/stage4-smoke/MOTION_G.json)で128.293px移動。BFCache限定修正の合成lifecycleも成功。技術Visual87/100（F13/H13）合格、Pages/配信確認待ち。 |
+| [Game033 夜空に、ひと発。](../game033/IMPLEMENTATION_REPORT.md) ～FIREWORK MAKER～ | Canvas、1ボタン長押し→離して発射。100秒、実開花高度と目標の誤差、連続成功、残光内の連鎖、特別開花。最大900粒子/6飛行。 | ImageGen夜景・川、動的な光/煙/残光/水面反射。架空の背景花火を得点にしない。実画面由来の最終thumbnailを採用・Art実view済み。技術Visual86/100（F13/H12）合格。通常QAは下欄。 | rules1、`game033.score.r1.standard`。完了本番のみBEST、練習別run。専用best保存、mute保持。 | 単体5件・独立コード済み。連続press制限とresume後Space focusを限定修正。[初回desktop/phone](../game033/QA/43deb-native-01/report.json)と[modal scrollを修正したcollectorの320/844再QA](../game033/QA/43deb-native-02/report.json)を合わせ全4幅の通常フロー成功。phone通常100秒で65560点/BEST/retry、結果4幅。ゲームsource変更なし。技術Visual合格、公式公開・配信と4画面の実公開操作確認済み。全4幅で100秒完走したとは数えない。 |
+| [Game034 ちいさな解体屋](../game034/IMPLEMENTATION_REPORT.md) ～DEMOLITION DAY～ | Canvas＋Matter.js、8玩具建築。最大3部品を選んで除去し実崩壊。目標範囲への収まり・低下・小屋無接触・少ない操作・難度から採点。slowは同じ物理の進む実時間だけを減速。 | ImageGen作業場/3材atlas、同じ物理poseで実部品を描画。実ゲーム画面と最終thumbnailをArt実view済み。技術Visual83/100（F12/H12）合格。 | rules1、`game034.score.r1.all`、8現場合計完了のみBEST。途中やり直しは累計へ二重加算しない。練習別world。 | 単体8件成功、104 simulationと独立全cut列挙。最終現場clean解なしをタンク位置25pxの変更で修正、全25選択を独立再列挙しclean1解確認。固定43debの[通常4画面で全8現場](../game034/QA/stage4-43deb-four-widths-clean/report.json)を完了、各10034点/BEST、source不変・pageerror/HTTPerror/POST0。技術Visual合格、公式公開・配信と4画面の実公開操作確認済み。 |
+| [Game035 1ミリカーリング](../game035/IMPLEMENTATION_REPORT.md) ～MINI CURLING～ | Canvas固有120Hz、等質量/全色同一摩擦の円形衝突。逆方向へdragして離す投球、3エンド各3投。寄せ・排除・ガード・残り投球・好配置連続による独自採点。 | ImageGen氷面と赤青花崗岩stone。動的ハウス・予測線・影・滑走跡。[実画面](../game035/QA/browser-2026-10-15T14-18-29-447Z/phone-aim.png)。 | rules1、`game035.score.r1.main`。全石の位置/速度、投球/エンド/内訳/ledgerを保存。練習と途中退出はBESTへ加算しない。 | 単体11件、100全9投match成功。実装担当の固定production4幅とPC4853点に加え、[独立最終4幅](../game035/QA/independent-tower/stage4-smoke/report.json)で各3end完了・保存・source一致/errorPOST0を確認。[実投球連番](../game035/QA/independent-tower/stage4-smoke/MOTION_G.json)で128.293px移動。BFCache限定修正の合成lifecycleも成功。技術Visual87/100（F13/H13）合格、公式公開・配信と4画面の実公開操作確認済み。 |
 
-[033/034独立コード](NEW033_034_INDEPENDENT_REVIEW.md)、[035独立コード](../game035/INDEPENDENT_CODE_REVIEW_TOWER.md)。035の初期通常9投と音修正後fixtureは異なるsourceとして保持し、今回の独立最終4幅と[stage4 source照合](../game035/QA/independent-tower/AUTHOR_STAGE4_SOURCE_PARITY.json)へ接続した。初期版と同一sourceの証拠に書換えない。新3作品の公開予定URLは[033](https://game100garage.com/game033.html)／[034](https://game100garage.com/game034.html)／[035](https://game100garage.com/game035.html)。**まだ今回のPages公開・配信照合を実施したURLではない。**
+[033/034独立コード](NEW033_034_INDEPENDENT_REVIEW.md)、[035独立コード](../game035/INDEPENDENT_CODE_REVIEW_TOWER.md)。035の初期通常9投と音修正後fixtureは異なるsourceとして保持し、今回の独立最終4幅と[stage4 source照合](../game035/QA/independent-tower/AUTHOR_STAGE4_SOURCE_PARITY.json)へ接続した。初期版と同一sourceの証拠に書換えない。新3作品の公開URLは[033](https://game100garage.com/game033.html)／[034](https://game100garage.com/game034.html)／[035](https://game100garage.com/game035.html)。最終release `9f655a98df410a7dcc3660321afa6ea195e10115`の公式Pages公開、配信SHAと各4画面の実公開操作を確認済み。
 
 OpenAI ImageGenをArt Directorが実際に**8回使用し、8生成すべて成功**。003背景/外装、017雨景、033夜景、034背景/材、035氷/石atlasを制作し、WebPへ最適化、原本・prompt・hash・採用先を[素材台帳](../../assets/reorganization-2026-10-15/asset-index.json)へ記録。GPT Image系統まで確認、具体的backendモデル版はtool非公開。Codex/ImageGenの料金・tokenは取得不可で`null`、推定しない。生成原本をそのまま本番配信せず、静的素材の採用確認と統合ゲームのVisual判定を分ける。
 
@@ -68,12 +68,12 @@ OpenAI ImageGenをArt Directorが実際に**8回使用し、8生成すべて成�
 
 | 項目 | 実装・確認した範囲 | 残る検証・境界 |
 |---|---|---|
-| Catalog・タグ・番号・お気に入り | active/hidden/retiredを区別し、完成版9だけ反映。一覧全体で一意な連続番号、タグOR/AND・件数・お気に入り保存と並べ替えを維持。内部IDとURL不変。 | 第1工程公開済み。新3追加後active27の最終公開照合待ち。 |
-| Vite・共通導線 | 033～035物理HTML/entry/manifestとCatalogを追加。帰還、説明、独立練習、結果/リトライ、44px・4画面の固有対応を実装。 | 第2工程固定1031tests/92files、第3工程固定1045tests/95filesのcheck/test/build成功。第4工程canonical source57dce249でcheck/1078tests・101files/公開設定build成功、実終了関数のVM12testsも別途成功。最終CIへ同12testsを加えた1090tests/102filesは実行前の予定値で、まだ合格数としない。compiled48組とPortal150項目も完了。最終配信照合は公開後に実施する。 |
+| Catalog・タグ・番号・お気に入り | active/hidden/retiredを区別し、完成版9だけ反映。一覧全体で一意な連続番号、タグOR/AND・件数・お気に入り保存と並べ替えを維持。内部IDとURL不変。 | 新3を含むactive27を公式公開済み。最終実公開一覧122項目もすべて成功。 |
+| Vite・共通導線 | 033～035物理HTML/entry/manifestとCatalogを追加。帰還、説明、独立練習、結果/リトライ、44px・4画面の固有対応を実装。 | 第2工程固定1031tests/92files、第3工程固定1045tests/95filesのcheck/test/build成功。第4工程canonical runtime57dce249の先行1078tests・101filesに実終了関数のVM12testsを統合し、最終固定aa9716c357a6a185ca917b1a4e9ab06cca682b2cでcheck・**1090tests/102files・公開設定再現buildすべて成功**。compiled48組とPortal150項目も完了。最終公開版は配信177ファイル全一致、実公開48組/2714項目・一覧122項目も成功。 |
 | 個人BEST・新版board | ルールが変わる8作は新版キー/board、027は既存ルール保持。旧board8本、旧BEST、旧元saveを保持。旧payloadは正確なboard条件で検証し新ルールへ付替えない。 | [移行独立レビュー](RECORDS_MIGRATION_REVIEW.md)。実共有投稿による新版受信は未実施。 |
 | 旧共有候補・待機queue | 旧boardのqueueはboard-level登録/検証で保持。改修8作のeligible slotを`:rules-<版>`へ分離し旧rawを上書きしない。未改修のkey不変。実factoryを使う独立1test（8ID）で旧raw保持/newslot/POST0を確認。 | 従来の期限/共有OFF/withdraw等の取消方針は維持。未送信の旧候補を無断で新boardへ再送しない。 |
-| 全体BEST・TOP10 | 既存Worker/DBを保持して加算登録。Worker **7089fcf1-38cc-4a7d-8414-d32f41c86c48**反映済み。default旧20、requested32、今回11新boardのTOP10を含む14GETすべて成功。 | 全TOP10は現時点空。テスト参加者/得点/Analyticsの本番POSTなし。新frontendのオンラインgateは今回8改修＋新3だけ更新、Game032の既存pendingを維持。 |
-| 旧画面のAPI互換 | 無指定GETは明示的な旧20だけ、更新frontendは既知board queryを指定。known/unique/最大64、subset SQL。旧Workerの400 invalid_queryだけ一度fallback。実local D1 34項目/単体18件/check両系成功。 | [互換報告](RECORDS_ROLLOUT_COMPATIBILITY.md)、[本番Worker証拠](QA/WORKER_PUBLICATION.json)。開いた旧タブが未知の新boardを受けてランキング全失敗する問題を防止。 |
+| 全体BEST・TOP10 | 既存Worker/DBを保持して加算登録。Worker **7089fcf1-38cc-4a7d-8414-d32f41c86c48**反映済み。default旧20、requested32、今回11新boardのTOP10を含む14GETすべて成功。 | 最終本番14GETでも成功し、今回新11boardのTOP10は確認時点で空。テスト参加者/得点/Analyticsの本番POSTなし。新frontendのオンラインgateは今回8改修＋新3だけ更新、Game032の既存pendingを維持。 |
+| 旧画面のAPI互換 | 無指定GETは明示的な旧20だけ、更新frontendは既知board queryを指定。known/unique/最大64、subset SQL。旧Workerの400 invalid_queryだけ一度fallback。実local D1 34項目/単体18件/check両系成功。 | [互換報告](RECORDS_ROLLOUT_COMPATIBILITY.md)、[本番Worker反映証拠](QA/WORKER_PUBLICATION.json)、[最終本番14GET](QA/WORKER_FINAL_PUBLIC_GET.json)。開いた旧タブが未知の新boardを受けてランキング全失敗する問題を防止。 |
 | Analytics・広告等 | 新版と新3のイベント/登録準備を追加。Analytics同意と記録共有を分離し、既存021～032と新033～035の外部Analytics pendingを維持。既存CREDIT/広告/GA4同意方針を維持。 | Worker側受入準備とclient送信許可を混同しない。未同意・練習を無差別送信しない。広告実配信/実機聴感は未確認。 |
 
 Workerの更新は既存DBの復旧点・対象を確認したrootが担当し、既存migration再適用やDB初期化、新account作成、管理Secret上書きなし。本番への書込みはWorker deployと加算登録に限定。ゲーム公開とオンライン登録・個人BESTの成否は独立して報告する。
@@ -88,7 +88,7 @@ Workerの更新は既存DBの復旧点・対象を確認したrootが担当し�
 | Codex | 実装・独立レビュー・QAを担当 | tokens **`null`**、料金 **`null`**（取得不可） | Jevの料金や呼出し数から推定しない。 |
 | OpenAI ImageGen | 8回、8生成成功 | tokens **`null`**、料金 **`null`**（取得不可） | GPT Image系統。具体的backendモデル版はtool非公開。 |
 
-Jevのlatencyは各API呼出しの実測時間の合計で、タスク全体の経過時間やCodexの作業時間ではない。全体wall timeは`null`。取得不可を0円・0tokenと扱わず、Jev費用を開発全体の費用へ置き換えない。最終CI予定の1090tests/102filesは、この使用量追記の時点でも未実行の予定値のままとする。
+Jevのlatencyは各API呼出しの実測時間の合計で、タスク全体の経過時間やCodexの作業時間ではない。全体wall timeは`null`。取得不可を0円・0tokenと扱わず、Jev費用を開発全体の費用へ置き換えない。使用量とCI結果は別の証拠で、最終CIはその後固定aa9716cで1090tests/102filesの実成功を確認した。
 
 ## E. 公開・実行証拠
 
@@ -97,14 +97,16 @@ Jevのlatencyは各API呼出しの実測時間の合計で、タスク全体の�
 | 第1工程 | branch `work`、通常main push、公開commit `6e371613edfff6123f997259630acbbd98f0c4da`。[公式Pages 38749424619](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38749424619) build/deploy success。 | [公開サイト](https://game100garage.com/)。固定distとHTML/JS/CSS110fileのSHA一致、実公開4画面・hidden/retired・一覧filter/帰還確認。 |
 | 第2工程 | 固定runtime `d0252d9`、公開commit **`25deef9f88aeabdda83d8bcbb5f0494587260176`**。[公式Pages 38760415500](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38760415500) **build/deploy success**。 | 5作の実公開4画面20case/1210項目成功、pageerror0/POST0/source一致。フォントを含む配信155ファイルのSHA全一致。[公開操作](QA/live-stage2-browser/REPORT.json)／[配信SHA](QA/live-stage2-reproduced-public-config/PUBLICATION_SHA.json)。 |
 | 第3工程 | 公開source **`e2d59dba1a1131a07701dad9c998a4f9a6b5d7c3`**。[公式Pages 38764230402](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38764230402) **build/deploy success**。固定check/build、a323の1045tests・95files、006表示1語の限定再確認を継承。 | [配信157ファイルSHA全一致](QA/live-stage3/PUBLICATION_SHA.json)。実公開[初回report](QA/live-stage3-browser/REPORT.json)の受理10case＋[touch再QA6case/326項目](QA/live-stage3-transition-retest/REPORT.json)で全16組完了、source一致・pageerror0/POST0。初回6失敗とtap時刻未採録を保持、009180ms/017220ms guard衝突は推定。collectorだけ通常300ms間隔へ修正。 |
-| 第4工程 | canonical source **`57dce24977e4d3c7dfd42e99315c67fa07bb0243`** を固定、check/1078tests・101files/公開設定build成功。通常033全4幅・phone100秒、034全4幅×8現場、035独立全4幅×3end完了。43debとの差は035quit1eventのみと照合。**技術Visual・最終compiled48組・Portal確認完了、最後のCI集約/Pages待ち。** | 最終compiledは受理44組＋033帰還の限定再QA4組/198項目で全48組。Portal root4画面＋subpath150項目成功。12実thumbnail採用済み、Worker fingerprint一致。新3の公式workflow/公開URL/配信SHAは後からrootが追記。 |
-| Worker | source `43deb6cd50348dada54acb7469fefd12b54ac93c`、version `7089fcf1-38cc-4a7d-8414-d32f41c86c48`。公式Pagesとは別のrootによる限定本番反映。 | [公開API](https://analytics.game100garage.com/v1/records/public/bests)、default20/requested32/new11TOP10の14GET成功。[証拠](QA/WORKER_PUBLICATION.json)。 |
+| 第4工程 | 公開release **`9f655a98df410a7dcc3660321afa6ea195e10115`**。[公式Pages 38767797394](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38767797394) **build/deploy success**。canonical runtime `57dce24977e4d3c7dfd42e99315c67fa07bb0243`を継承し、最終固定aa9716cでcheck/1090tests・102files/公開設定再現buildも実成功。 | [配信177ファイルSHA全一致](QA/live-final/PUBLICATION_SHA.json)。[全12作品×4画面48case/2714項目](QA/live-final-browser/REPORT.json)成功、failure0/error0/writes0/source不変。[最終公開一覧122項目](QA/live-final-catalog/REPORT.json)もすべて成功、pageerror0/POST試行0。27作品・完成9・表示001～027・直接URL・帰還・お気に入りを確認。 |
+| Worker | source `43deb6cd50348dada54acb7469fefd12b54ac93c`、version `7089fcf1-38cc-4a7d-8414-d32f41c86c48`。公式Pagesとは別のrootによる限定本番反映。 | [公開API](https://analytics.game100garage.com/v1/records/public/bests)、default20/requested32/new11TOP10の14GET成功。[初回反映証拠](QA/WORKER_PUBLICATION.json)／[最終本番14GET成功・POST0](QA/WORKER_FINAL_PUBLIC_GET.json)。 |
 
-最終固定57dce249の[source chain](QA/FINAL_SOURCE_CHAIN.json)は、初回compiled[受理44組・4失敗原本](QA/final-release-build/REPORT.json)と、[033のmodal帰還再QA4組/198項目](QA/final-release-modal-return-retest/REPORT.json)を分離し、全48のgame×viewport組を受理。初回4件はcollectorがopen dialogのリンクでなく背面headerを選択し、collectorだけをdialog link優先へ修正した。製品source変更なし、独立判断/Jev注釈あり、source不変・pageerror0/POST0。[最終Portal](QA/final-catalog-root-subpath/REPORT.json)はroot4幅＋subpath計150項目、27作品と完成/hidden/retiredの内訳を確認した。最終CI予定の1090/102はまだ実行結果へ読み替えない。
+最終固定57dce249の[source chain](QA/FINAL_SOURCE_CHAIN.json)は、初回compiled[受理44組・4失敗原本](QA/final-release-build/REPORT.json)と、[033のmodal帰還再QA4組/198項目](QA/final-release-modal-return-retest/REPORT.json)を分離し、全48のgame×viewport組を受理。初回4件はcollectorがopen dialogのリンクでなく背面headerを選択し、collectorだけをdialog link優先へ修正した。製品source変更なし、独立判断/Jev注釈あり、source不変・pageerror0/POST0。[最終Portal](QA/final-catalog-root-subpath/REPORT.json)はroot4幅＋subpath計150項目、27作品と完成/hidden/retiredの内訳を確認した。最終固定aa9716cの[実行ログ](QA/FINAL_CHECK_TEST_BUILD.txt)でcheck/1090tests・102files/公開設定再現buildの実成功も確認した。先行1078＋別12の個別結果を二重加算していない。通常033全4幅・phone100秒、034全4幅×8現場、035独立全4幅×3endの証拠を継承し、43debとの差は035quit1eventのみと照合した。12実thumbnail採用済み、Worker fingerprintも一致。
+
+最終公開release `9f655a98df410a7dcc3660321afa6ea195e10115`では公式Pagesのbuild/deployと、jobsのnpm test・offline契約・build成功を確認。公式raw logの読取りは403のため、公式ログからテスト件数を抽出したとは扱わない。**1090tests/102filesは固定aa9716cのローカル実行ログによる実測**。配信177ファイルと全12作品×4画面48case/2714項目、公開一覧122項目を別途実確認し、ブラウザのsource不変・error0・writes0を確認した。これらの公開操作確認を、長時間RUNや人間の試遊の再実行とは数えない。
 
 第2工程の配信照合では、初回のlocal既定環境buildとの不一致61件を失敗原本として保持した。GitHub Variables/artifact読取が利用できないため、公開runtimeで確認できるVITE3設定だけをメモリ内で照合して同一sourceを再buildし、155ファイル完全一致を確認。ゲームsource変更や追加deployで比較先を合わせたものではない。
 
-本報告準備時点でPRは作成していない。既存作業をreset/clean/force pushせず、未完成作品を合格扱いで一斉公開しない。各工程の最終CI・SHA・公開URL結果は[PUBLICATION](PUBLICATION.md)を正本として更新する。
+本タスクではPRは作成していない。既存作業をreset/clean/force pushせず、未完成作品を合格扱いで一斉公開しない。各工程の最終CI・SHA・公開URL結果は[PUBLICATION](PUBLICATION.md)を正本として更新する。
 
 ## F. 人間評価・残課題
 
@@ -112,4 +114,4 @@ Jevのlatencyは各API呼出しの実測時間の合計で、タスク全体の�
 - 本人の**新ルール試遊、物理スマホの指操作、実機の音聴感はすべて未確認**。PC/phone viewportやtouch-capable Chromiumを物理端末と呼ばない。035のdragはmouse PointerEventによる技術証拠。合成pagehide/pageshowを実BFCache navigationと呼ばない。
 - 高速バイクの人間の回避、建築の傾きと支え合い、仕分けのfever目標、切返しの救済感、机の手掛かりを読む発見、雨の待ち時、015の怪鳥の通過窓と移動床からDROPする判断、蛇の盤面変化、ターンの直感性、花火の高度/連鎖、解体の工夫、カーリングの配置戦略を本人に試してもらう。AIだけで「面白くなった」と断定しない。
 - 実装と独立コードレビューを分離し、Jevはfinding分類と次の証拠へのShadowとして利用。失敗原本・修正・再検証を保持し、API疎通や一致率を公開許可/Visual/Feel評価へ置き換えない。統合Visualの未判定項目へ数値を付けない。
-- 第1～第3工程の一覧再編/改修は対応するQA・公式公開・実公開操作・配信照合を完了し、改修9作の技術Visualも合格。第4工程も固定check/1078tests・101files/build、別VM12tests、通常4幅QA・技術Visual・compiled48組・Portal150項目を確認済み。最後のCI集約1090/102の実結果と公式Pages公開/配信照合はrootの次工程。未実行の予定数を合格とせず、公開後の証拠でE欄を更新する。
+- 第1～第4工程の一覧再編/改修/新作は、対応するQA・公式公開・実公開操作・配信照合を完了。対象12作品の技術Visualも合格。最終固定aa9716cのcheck/1090tests・102files/build、通常4幅QA・compiled48組・Portal150項目に加え、最終実公開48組/2714項目・配信177ファイル全一致・公開一覧122項目を確認済み。本人評価・物理端末・実聴感と、実共有投稿による新版受信は未実施のまま残す。

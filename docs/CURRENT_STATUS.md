@@ -1,6 +1,8 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-16 JST：第4工程の最終統合QA完了。canonical runtime `57dce24`、compiled12作品×4幅の48組（初回44＋033帰還のcollector限定再確認4）、Portal root4幅＋subpath150項目でactive27/complete9/hidden4/retired4を確認。source不変・pageerror0・POST0。最終CIと公式Pages公開の実結果は[公開記録](catalog-reorganization/PUBLICATION.md)を参照。本人/物理端末/実音は未評価。
+2026-10-16 JST：**第1～第4工程を公式公開済み。active27 / complete9 / hidden4 / retired4 / historical35、表示001～027。** 第4工程release `9f655a98df410a7dcc3660321afa6ea195e10115`／Pages38767797394 build/deploy成功。canonical runtime57dce249、最終check・1090tests/102files・公開設定build成功、配信177file SHA一致。公開12作品×4幅48case/2714checksと公開一覧4幅122checks・error0/POST0/source不変を確認。旧BEST/旧save/旧board/候補を保持し、完成9本と008を含む対象外ゲーム本体・Godot出力は空差分。新作[033](https://game100garage.com/game033.html)／[034](https://game100garage.com/game034.html)／[035](https://game100garage.com/game035.html)。今回改修/新作の本人・物理端末・実機聴感・連続FPSは未評価、完成版認定は追加しない。[最終報告](catalog-reorganization/FINAL_REPORT.md)／[公開記録](catalog-reorganization/PUBLICATION.md)／[引継ぎ](catalog-reorganization/HANDOFF.md)。
+
+2026-10-16 JST：第4工程の最終統合QA完了。canonical runtime `57dce24`、compiled12作品×4幅の48組（初回44＋033帰還のcollector限定再確認4）、Portal root4幅＋subpath150項目でactive27/complete9/hidden4/retired4を確認。source不変・pageerror0・POST0。最終固定aa9716cでcheck・1090tests/102files・公開設定build成功。公式Pages公開の実結果は[公開記録](catalog-reorganization/PUBLICATION.md)を参照。本人/物理端末/実音は未評価。
 
 2026-10-16 JST：**第3工程005/006/009/017も公式公開・実配信確認済み。** e2d59db／Pages38764230402 build/deploy成功、配信157file SHA一致、公開4作品×4幅を10初回＋6限定追補で確認・error/POST0。全12targetの実画面thumbnail完成。第4工程は固定57dce24でcheck・1078tests/101files・公開設定build成功。033通常100秒65560/4幅、034各幅8現場10034点、035独立4幅3end/motion/復元は確認済み。最終統合4幅・Portal27件・独立Visual集約後に新3作品を公開する。[公開記録](catalog-reorganization/PUBLICATION.md)。
 

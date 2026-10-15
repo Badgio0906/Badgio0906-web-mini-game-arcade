@@ -1,5 +1,7 @@
 # FIREWORK MAKER 再開地点
 
+2026-10-16 JST最終追補：本作は第4工程release `9f655a98df410a7dcc3660321afa6ea195e10115`／Pages38767797394で公式公開済み。最終check・1090tests/102files・公開設定build、公開12作品×4幅48組、一覧4幅122項目、配信177file SHA一致を確認。固有通常RUNのsourceと差分、公開URL、未実施の本人/物理端末/実機聴感は [一括最終報告](../catalog-reorganization/FINAL_REPORT.md)／[公開記録](../catalog-reorganization/PUBLICATION.md)／[引継ぎ正本](../catalog-reorganization/HANDOFF.md)を優先する。以前の公開準備記述は各時点の履歴。
+
 モデル／描画／HTML／入力／保存／音と単体5件は実装済み。共通登録と固定production buildはroot統合済み、固定43debで通常入力QAまで完了した。collectorは `tests/game033/native.mjs`、手順は[QA](QA.md)。DEVだけのreadonly診断は `window.__fireworkInspection()`。productionには出さない。
 
 確認対象：通常入力で練習3成功、100秒本番終了、BEST保存、pause／blur／pointercancelで溜め解放、320pxと844pxの操作可視、4連続八重咲きとCHAINの可読性。高品質背景実素材は導入済み。サムネイルは実ゲーム画像から生成し、架空の完成画面を作らない。
