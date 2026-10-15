@@ -1,5 +1,5 @@
 import './style.css';
-import { developmentStatusLabels, filterCatalog, gameCatalog } from '../data/gameCatalog';
+import { developmentStatusLabels, filterCatalog, gameCatalog, gameDisplayNumbers } from '../data/gameCatalog';
 import { TelemetryService } from '../core/TelemetryService';
 import { analyticsRuntime } from '../analytics/runtime';
 import { observeCardImpressions } from '../analytics/impressions';
@@ -92,7 +92,7 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   const imageFrame = document.createElement('div'); imageFrame.className = 'game-image';
   const image = document.createElement('img'); image.src = game.thumbnail; image.alt = `${game.titleJa}のゲーム画面`;
   image.width = 640; image.height = 360; image.decoding = 'async'; image.loading = game.releaseOrder <= 4 ? 'eager' : 'lazy';
-  const number = document.createElement('span'); number.className = 'game-number'; number.textContent = String(game.releaseOrder).padStart(2, '0');
+  const number = document.createElement('span'); number.className = 'game-number'; number.textContent = gameDisplayNumbers.get(game.id)!;
   imageFrame.append(image, number);
   const content = document.createElement('div'); content.className = 'game-copy';
   const title = document.createElement('h2'); title.textContent = game.titleJa;

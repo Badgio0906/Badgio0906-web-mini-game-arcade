@@ -16,7 +16,7 @@ const knownIds = new Set(active.map(game => game.id));
 
 describe('normal tag filtering preserves legacy AND and excludes retirement', () => {
   it('no tags returns all active games for both modes', () => {
-    expect(filterCatalog()).toHaveLength(31);
+    expect(filterCatalog()).toHaveLength(gameCatalog.length);
     for (const mode of ['or', 'and'] as const) expect(ids(filterGames(fixture, [], mode))).toEqual(['alpha', 'beta', 'gamma']);
   });
   it('OR with one tag matches it', () => expect(ids(filterGames(fixture, ['puzzle'], 'or'))).toEqual(['alpha', 'beta']));
@@ -39,7 +39,7 @@ describe('normal tag filtering preserves legacy AND and excludes retirement', ()
 });
 
 describe('development state is distinct from tags and retirement', () => {
-  it('current games default to trial without an author declaration', () => expect(historicalGameCatalog.every(game => game.developmentStatus === 'trial')).toBe(true));
+  it('only the nine author-declared games are complete', () => expect(historicalGameCatalog.filter(game => game.developmentStatus === 'complete').map(game => game.id)).toEqual(['game001','game016','game018','game019','game020','game022','game023','game025','game032']));
   it('no selected state includes trial and complete', () => expect(ids(filterGames(fixture))).toEqual(['alpha', 'beta', 'gamma']));
   it('trial only', () => expect(ids(filterGames(fixture, [], 'or', ['trial']))).toEqual(['alpha', 'gamma']));
   it('complete only', () => expect(ids(filterGames(fixture, [], 'or', ['complete']))).toEqual(['beta']));

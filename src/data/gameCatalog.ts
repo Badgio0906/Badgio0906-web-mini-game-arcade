@@ -4,7 +4,7 @@ export type TagMatchMode = 'or' | 'and';
 export const developmentStatusLabels: Readonly<Record<GameDevelopmentStatus, string>> = Object.freeze({ trial: '試遊版', complete: '完成版' });
 export interface GameCatalogEntry {
   readonly id: string;
-  readonly status: 'active' | 'retired';
+  readonly status: 'active' | 'hidden' | 'retired';
   readonly developmentStatus: GameDevelopmentStatus;
   readonly titleJa: string;
   readonly titleEn: string;
@@ -82,8 +82,16 @@ const difficultyBands = ['standard','standard','standard','standard','standard',
 
 // Add an override only after the author explicitly declares completion following
 // their own playtest. Publication, CI/QA success and positive feedback do not qualify.
-// No such declaration is recorded for the current games; new games default to trial.
-const developmentStatusByGame: Readonly<Partial<Record<string, GameDevelopmentStatus>>> = Object.freeze({});
+// Author's explicit playtest completion declaration: catalog-reorganization/IMPLEMENTATION_REPORT.md.
+const developmentStatusByGame: Readonly<Partial<Record<string, GameDevelopmentStatus>>> = Object.freeze({
+  game001: 'complete', game016: 'complete', game018: 'complete',
+  game019: 'complete', game020: 'complete', game022: 'complete',
+  game023: 'complete', game025: 'complete', game032: 'complete',
+});
+const publicationStatusByGame: Readonly<Record<string, 'hidden' | 'retired'>> = Object.freeze({
+  game004: 'retired', game007: 'retired', game010: 'retired', game021: 'retired',
+  game026: 'hidden', game028: 'hidden', game029: 'hidden', game030: 'hidden',
+});
 
 export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
@@ -104,10 +112,11 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   {"id": "game030", "titleJa": "コンセントどこ？ ～PLUG ROUTE～", "titleEn": "PLUG ROUTE", "tagline": "つないで、とどけて、ぴったりで。", "thumbnail": "./assets/portal/game030.webp", "route": "./game030.html", "releaseOrder": 30},
   { id: "game031", titleJa: "掘って、置くだけ。", titleEn: "DIG & PLACE", tagline: "目的はありません。好きなところを掘って、好きなところに置くだけ。", thumbnail: "./assets/portal/game031.webp", route: "./game031.html", releaseOrder: 31 },
   { id: "game032", titleJa: "川辺で、ひとやすみ。", titleEn: "RIVER SIDE FISHING", tagline: "清流で、のんびり一釣行。", thumbnail: "./assets/portal/game032.webp", route: "./game032.html", releaseOrder: 32 },
-].map(game => Object.freeze({ ...game, status: game.id === 'game010' ? 'retired' as const : 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'active'));
+export const hiddenGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'hidden'));
 export const retiredGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'retired'));
 export const NEXT_GAME_NUMBER = Math.max(...historicalGameCatalog.map(game => Number(game.id.slice(4)))) + 1;
 
@@ -124,3 +133,11 @@ export function filterGames(catalog: readonly GameCatalogEntry[], tagIds: readon
 export function filterCatalog(tagIds: readonly TagId[] = [], mode: TagMatchMode = 'and', statuses: readonly GameDevelopmentStatus[] = []): readonly GameCatalogEntry[] {
   return filterGames(gameCatalog, tagIds, mode, statuses);
 }
+
+/** Display identity is derived once from the full active release order, never filtered/sorted cards. */
+export function displayNumbersFor(catalog: readonly GameCatalogEntry[]): ReadonlyMap<string, string> {
+  return new Map(catalog.filter(game => game.status === 'active')
+    .slice().sort((a, b) => a.releaseOrder - b.releaseOrder)
+    .map((game, index) => [game.id, String(index + 1).padStart(3, '0')]));
+}
+export const gameDisplayNumbers = displayNumbersFor(historicalGameCatalog);
