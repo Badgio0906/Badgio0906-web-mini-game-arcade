@@ -146,6 +146,7 @@ const controller = createWorkdayGame($('game-canvas'), {
     const outcome = result.outcome === 'clear' ? 'clear' : result.outcome === 'safe_exit' ? 'safe_exit' : 'over';
     telemetry.trackEvent('run_end', { runId, outcome, score: result.score, distance: result.distance, dodges: result.dodges, bonusPercent: result.bonusPercent, time: result.time });
     telemetry.trackEvent('score', { runId, score: result.score, best: bestScore, newBest: newScoreBest, distance: result.distance, dodges: result.dodges, bonusPercent: result.bonusPercent });
+    if (newScoreBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 2, score: result.score, best: bestScore });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: outcome });
     telemetry.trackEvent('distance_reached', { runId, distance: result.distance, cleared: result.cleared });
     resultAvailableAt = performance.now() + 300; setScreen('result', true);

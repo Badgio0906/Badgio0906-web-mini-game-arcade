@@ -47,6 +47,7 @@ function snapshot(): Snapshot | null { if (training || !current)
 function persist(): void { if (training || !current)
     return; saved.snapshot = snapshot(); store.write(saved); }
 function abandon(reason: 'quit' | 'restart'): void { if (current) {
+    track('quit', { reason, source: phase, shots: match.shots.reduce((a, b) => a + b, 0) });
     track('run_end', { outcome: reason, shots: match.shots.reduce((a, b) => a + b, 0), fouls: match.fouls.reduce((a, b) => a + b, 0) });
 } current = null; saved.snapshot = null; store.write(saved); invalidate(); }
 function show(html: string, next: Phase): void { setPhase(next); menu.innerHTML = html + '<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>'; if (!menu.open)

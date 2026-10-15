@@ -47,6 +47,8 @@ function recordEnd(reason:'wall'|'self'|'clear'|'quit'|'restart'):void {
   if(reason==='clear')saved.stats.clears++;
   if(reason==='quit'||reason==='restart'){saved.snapshot=null;saved.clock={remainder:0,elapsed:0};store.write(saved);}else persist();
   if(speed===4 && !['quit','restart'].includes(reason))recordSession.complete(snake.foods,{modeId:'speed-4',metadata:{duration_seconds:clock.elapsed/1000,outcome:reason}});
+  if(reason==='quit'||reason==='restart')telemetry.trackEvent('quit',{reason,source:phase,score:snake.foods,unit:'foods',speed});
+  else telemetry.trackEvent('score',{score:snake.foods,foods:snake.foods,length:snake.body.length,speed,unit:'foods',outcome:reason});
   telemetry.trackEvent('run_end',{outcome:reason==='clear'?'clear':['wall','self'].includes(reason)?'fail':reason,reason,score:snake.foods,foods:snake.foods,length:snake.body.length,speed,seconds:Number((clock.elapsed/1000).toFixed(2)),completed:reason==='clear',unit:'foods'});
 }
 function title():void {

@@ -138,6 +138,7 @@ const controller = createTowerGame($('game-canvas'), {
     credits.consume(runId);
     telemetry.trackEvent('run_end', { runId, rulesVersion: 3, outcome: 'over', score: result.floors, time: result.time, artPairs: result.artPairs, artScore: result.artScore, bonusScore: result.bonusScore });
     telemetry.trackEvent('score', { runId, rulesVersion: 3, score: result.floors, best, newBest });
+    if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 3, score: result.floors, best });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
     telemetry.trackEvent('tower_height', { runId, height: result.height, floors: result.floors });
     telemetry.trackEvent('perfect_count', { runId, count: result.perfectCount, maxCombo: result.maxCombo, precisionScore: result.precisionScore, cMode: result.cMode, perfectMultiplier: result.perfectMultiplier });
