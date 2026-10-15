@@ -52,6 +52,9 @@ const entries: readonly Entry[] = [
   ['game030','stages','クリア済ステージ','ステージ','1',false,'あなたの記録',1,20],
   ['game031','mined','採掘数','個','1',false,'この世界の記録'],
   ['game032','score','総合スコア','点','1',true,undefined,1,100000,50000,'standard','5分釣行'],
+  ['game033','score','花火大会スコア','点','1',true,undefined,1,1000000,100000,'standard','100秒花火大会'],
+  ['game034','score','8現場の合計','点','1',true,undefined,1,20000,20000,'all','全8現場'],
+  ['game035','score','3エンド合計','点','1',true,undefined,1,15000,15000,'main','3エンド'],
 ];
 const define = (source: readonly Entry[]): readonly RecordDefinition[] => Object.freeze(source.map(([gameId,metricId,metricLabel,unit,rulesetId,publicEnabled,localLabel,scale,max,pending,modeId,modeLabel]) => Object.freeze({
   gameId, metricId, metricLabel, unit, direction: 'higher' as const,

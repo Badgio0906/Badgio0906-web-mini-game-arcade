@@ -23,17 +23,17 @@ afterEach(()=>vi.unstubAllGlobals());
 
 describe('Game032 new registration preserves existing discovery and records',()=>{
   it('keeps032 author-complete and leaves010 retired and old boards available',()=>{
-    expect(gameCatalog).toHaveLength(24);expect(historicalGameCatalog).toHaveLength(32);expect(NEXT_GAME_NUMBER).toBe(33);
-    expect(gameCatalog.at(-1)).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'complete',difficulty:'standard'});
+    expect(gameCatalog).toHaveLength(27);expect(historicalGameCatalog).toHaveLength(35);expect(NEXT_GAME_NUMBER).toBe(36);
+    expect(gameCatalog.find(g=>g.id==='game032')).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'complete',difficulty:'standard'});
     expect(historicalGameCatalog.find(g=>g.id==='game010')?.status).toBe('retired');
     expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-3'});
-    expect(recordBoards).toHaveLength(29);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
-    expect([...PENDING_RECORD_GAME_IDS]).toEqual(['game002','game003','game005','game006','game009','game015','game017','game024','game032']);expect(isPublicRecordRegistered('game018')).toBe(true);expect(isPublicRecordRegistered('game032')).toBe(false);
+    expect(recordBoards).toHaveLength(32);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
+    expect([...PENDING_RECORD_GAME_IDS]).toEqual(['game032']);expect(isPublicRecordRegistered('game018')).toBe(true);expect(isPublicRecordRegistered('game032')).toBe(false);
     for(let n=21;n<=32;n++)expect(PENDING_WORKER_GAME_IDS.has(`game${String(n).padStart(3,'0')}`)).toBe(true);
     expect(isRemoteGameRegistered('game032')).toBe(false);expect(isRemoteGameRegistered('game020')).toBe(true);
   });
-  it('accepts currently served20 without breaking any old BEST; missing old board still fails',async()=>{
-    const fixture=publicFixture(),validated=validatePublicBests(fixture);expect(validated.size).toBe(20);
+  it('accepts the negotiated registered catalog without breaking old BEST; missing old board still fails',async()=>{
+    const fixture=publicFixture(),validated=validatePublicBests(fixture);expect(validated.size).toBe(recordBoards.length-1);
     expect(publicStateLabel({status:'ready',boards:validated},getRecordDefinition('game018')!)).toBe('まだ記録なし');
     expect(publicStateLabel({status:'ready',boards:validated},getRecordDefinition('game032')!)).toBe('準備中');
     expect(()=>validatePublicBests({...fixture,boards:fixture.boards.slice(1)})).toThrow('missing_public_board');
@@ -79,8 +79,8 @@ describe('validated local completed standard BEST',()=>{
 });
 
 describe('anonymous fishing Analytics allowlist and Codex CLI',()=>{
-  it('accepts implemented032 coarse fishing primitives; excludes unused033 and private/free text',()=>{
-    expect(isAnalyticsEnvelope(envelope)).toBe(true);expect(isAnalyticsEnvelope({...envelope,game_id:'game033',page:'game033.html'})).toBe(false);
+  it('accepts implemented032 coarse fishing primitives; excludes unused036 and private/free text',()=>{
+    expect(isAnalyticsEnvelope(envelope)).toBe(true);expect(isAnalyticsEnvelope({...envelope,game_id:'game036',page:'game036.html'})).toBe(false);
     expect(sanitizeAnalyticsData({...envelope.data,player_name:'private',fish_id:'free text',spot_id:'made-up',max_size_cm:-1,fish_count:1.5,window_ms:Infinity})).toEqual({event:'fish_landed',mode:'standard',size_cm:24.5,points:160,rare:false,big:false});
     expect(isAnalyticsEnvelope({...envelope,data:{...envelope.data,spot_id:'free text'}})).toBe(false);
     expect(isAnalyticsEnvelope({...envelope,data:{event:'cast_released',distance:'medium',charge_ms:650,spot_id:'shallows'}})).toBe(true);
@@ -92,7 +92,7 @@ describe('anonymous fishing Analytics allowlist and Codex CLI',()=>{
     expect((exported.games as {fishing_summary:unknown}[])[0].fishing_summary).toMatchObject({cast_count:2,spot_cast_counts:{rocks:2},average_score:null,sample_size_small:true});
   });
   it('requests032 through aggregate Codex GET with no raw ID/secret URL fields',async()=>{
-    expect(parseOptions(['--game','game032']).game).toBe('game032');expect(()=>parseOptions(['--game','game033'])).toThrow('invalid_game');
+    expect(parseOptions(['--game','game032']).game).toBe('game032');expect(()=>parseOptions(['--game','game036'])).toThrow('invalid_game');
     const token='local-synthetic-fixture-only';const result=await fetchAnalyticsContext(['--game','game032','--environment','synthetic'],{ANALYTICS_CODEX_TOKEN:token},async(url:URL,options:RequestInit)=>{
       expect(url.pathname).toBe('/v1/codex/game/game032');expect(url.href).not.toContain(token);expect(options.method).toBe('GET');return Response.json({schema_version:1,environment:'synthetic',period:{from:url.searchParams.get('from'),to:url.searchParams.get('to')},game:{game_id:'game032',run_count:0}});
     },new Date('2026-10-10T00:00:00Z'));expect(result.data.game.game_id).toBe('game032');

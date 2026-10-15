@@ -1,3 +1,4 @@
+import { historicalGameCatalog } from '../../src/data/gameCatalog';
 import type { AnalyticsEnvelope } from '../../src/data/analyticsEnvelope';
 import type { GameMetrics, Metrics, Period, Ratio, StoredEvent, SandboxSummary, FishingSummary } from './types';
 type Event = AnalyticsEnvelope;
@@ -99,7 +100,7 @@ export function summarizeFishing(events:Event[]):FishingSummary {
   sample_size_small:completed.length<20,coverage:'observed-standard-events-only'};
 }
 export function summarizeGames(events:Event[],period:Period,includeRetired=false,context=events):GameMetrics[]{
- const ids=Array.from({length:32},(_,i)=>`game${String(i+1).padStart(3,'0')}`).filter(id=>includeRetired||id!=='game010');
+ const ids=historicalGameCatalog.filter(game=>includeRetired||game.status!=='retired').map(game=>game.id);
  return ids.map(game_id=>{const rows=events.filter(e=>e.game_id===game_id);const versions=new Map<string,{game_version:string;rules_version:string;presentation_version:string;event_count:number}>();for(const e of rows){const key=`${e.game_version}:${e.rules_version}:${e.presentation_version}`;const v=versions.get(key)??{game_version:e.game_version,rules_version:e.rules_version,presentation_version:e.presentation_version,event_count:0};v.event_count++;versions.set(key,v);}
- return {...computeMetrics(rows,context,period),...(game_id==='game031'?{sandbox_summary:summarizeSandbox(rows)}:{}),...(game_id==='game032'?{fishing_summary:summarizeFishing(rows)}:{}),game_id,status:game_id==='game010'?'retired':'active',versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
+ return {...computeMetrics(rows,context,period),...(game_id==='game031'?{sandbox_summary:summarizeSandbox(rows)}:{}),...(game_id==='game032'?{fishing_summary:summarizeFishing(rows)}:{}),game_id,status:historicalGameCatalog.find(game=>game.id===game_id)!.status,versions:[...versions.values()],funnel:funnel(rows,game_id),measurement_coverage:['game012','game013','game014'].includes(game_id)?'legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured':rows.length?'consented observed events; missing endpoints and milestones remain unknown':'not_measured'};});
 }

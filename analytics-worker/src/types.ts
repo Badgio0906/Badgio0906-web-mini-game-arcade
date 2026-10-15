@@ -34,6 +34,6 @@ export interface FishingSummary {
   measured_score_outing_count:number; average_score:number|null; sample_size_small:boolean;
   coverage:'observed-standard-events-only';
 }
-export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; sandbox_summary?: SandboxSummary; fishing_summary?: FishingSummary; }
+export interface GameMetrics extends Metrics { game_id: string; status: 'active' | 'hidden' | 'retired'; versions: { game_version: string; rules_version: string; presentation_version: string; event_count: number }[]; funnel: ({step:string} & Ratio)[]; measurement_coverage: string; sandbox_summary?: SandboxSummary; fishing_summary?: FishingSummary; }
 export interface Period { from: string; to: string; }
 export interface AggregateDay { day: string; game_id: string; environment: string; game_version: string; rules_version: string; presentation_version: string; metrics: Record<string,number>; }

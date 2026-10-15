@@ -1,0 +1,56 @@
+{
+  "id": "game033",
+  "titleJa": "夜空に、ひと発。",
+  "titleEn": "FIREWORK MAKER",
+  "tagline": "押して、離して。夜空に重ねる、100秒の花火大会。",
+  "thumbnail": "./assets/portal/game033.webp",
+  "route": "./game033.html",
+  "releaseOrder": 33,
+  "status": "active",
+  "developmentStatus": "trial",
+  "tags": [
+    {
+      "id": "timing",
+      "label": "タイミング"
+    },
+    {
+      "id": "score-attack",
+      "label": "スコアアタック"
+    },
+    {
+      "id": "chill",
+      "label": "チル"
+    },
+    {
+      "id": "precision",
+      "label": "精密操作"
+    }
+  ],
+  "difficulty": "standard",
+  "currentManifest": {
+    "id": "game033",
+    "titleJa": "夜空に、ひと発。",
+    "titleEn": "FIREWORK MAKER",
+    "genre": "one-button-fireworks",
+    "coreMechanic": "hold to charge height, release to launch toward the current target; overlap blooms for a chain",
+    "skill": "release timing, altitude matching, flight-time prediction, chain rhythm",
+    "score": "100-second session score: correct altitude, consecutive success, overlapping blooms and special double-ring flowers",
+    "failure": "a missed target resets combo; every session reaches the final result",
+    "timeLimit": 100,
+    "expected_run_seconds": 101,
+    "creditMode": "free",
+    "rules_version": "1",
+    "presentation_version": "1",
+    "recordBoard": "game033.score.r1.standard",
+    "practice": "untimed independent simulation, three successful target blooms; no BEST/ranking/run events",
+    "save": "web-mini-arcade:v1:game033:best; only completed standard sessions",
+    "inputs": {
+      "keyboard": "hold Space/Enter to charge; release to launch",
+      "touch": "hold the launch button; release to launch; cancellation never launches"
+    },
+    "particleLimit": 900,
+    "prototypeStatus": "trial, awaiting author playtest and physical mobile/sound evaluation",
+    "telemetry": "lifecycle and sparse bloom events only; external OFF pending registration",
+    "rights": "original mechanics and dynamic particles; real ImageGen night-river background, provenance in assets/reorganization-2026-10-15/asset-index.json"
+  }
+}

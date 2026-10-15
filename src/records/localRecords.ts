@@ -21,11 +21,12 @@ const scalarKeys: Readonly<Record<string,string>> = {
   game009:prefix('game009')+'bestRules3', game011:prefix('game011')+'best:v2',
   game015:prefix('game015')+'bestR04', game016:prefix('game016')+'best',
   game017:prefix('game017')+'bestRelayV2', game018:prefix('game018')+'bestDistanceDecimeters',
+  game033:prefix('game033')+'best', game034:prefix('game034')+'best-rules-v1',
   game019:prefix('game019')+'bestHeightDm', game020:prefix('game020')+'clearedBoards',
 };
 const jsonKeys: Readonly<Record<string,string>> = {
   game021:'state',game022:'session',game023:'question',game024:'state-shifting-v2',game025:'snapshot',
-  game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',
+  game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',game035:'state',
 };
 export const localRecordStorageKeys: readonly string[] = Object.freeze([
   ...Object.values(scalarKeys), ...Object.entries(jsonKeys).map(([id,key])=>prefix(id)+key),
@@ -111,6 +112,10 @@ function readJSON(gameId: string, backend: Storage): LocalRecord {
     case 'game027':value=object(stats)?stats.games:undefined;break;
     case 'game028':value=object(stats)?stats.bestRally:undefined;break;
     case 'game029':value=data.best;break;
+    case 'game035':{
+      if(data.game_id!=='game035'||data.rules_version!=='1')return old();
+      value=data.best;break;
+    }
     case 'game032':{
       const best=validateFishingBest(data);return best?{status:'record',value:best.score}:bad('保存された釣行記録の形式が不正です');
     }

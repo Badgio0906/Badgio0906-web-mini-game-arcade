@@ -1,0 +1,33 @@
+{
+  "id": "game035",
+  "title": "1ミリカーリング ～MINI CURLING～",
+  "titleEn": "MINI CURLING",
+  "tagline": "寄せる。弾く。次の一投を、守る。",
+  "genre": "curling physics score attack",
+  "coreMechanic": "3 ends of up to 3 pull-and-release throws; equal-mass frictional stone collisions; house proximity, opponent removal, guards and preserved throws score",
+  "skillAxes": [
+    "direction",
+    "power",
+    "collision planning",
+    "guard placement"
+  ],
+  "runSecondsDesignTarget": 90,
+  "timeLimit": null,
+  "inputs": {
+    "throw": "mouse/touch drag backward from any ice position, release; under12 model pixels cancels",
+    "keyboard": "left/right aim; up/down power; Space throws",
+    "pause": "button/Escape; blur/hidden auto-pause; explicit resume"
+  },
+  "practice": "Empty house, isolated repeated single-throw objective; reach house for completion; no BEST or production run",
+  "physics": "Canvas 480x760; fixed120Hz; radius18 equal mass stones, restitution0.94, friction150px/s² shared by all stones; no decorative collider mismatch",
+  "scoring": "Per stone round(1000*max(0,1-distance/128)); each opponent outside house radius146 adds150; aligned guard150; unused throw100 if a stone in house; consecutive favorable ends +200/+400; max validation15000",
+  "save": "web-mini-arcade:v1:game035:state; full world including velocities, end/throw/score ledger, reported flag and observer run; explicit paused reload; denied writes stay memory-only",
+  "creditMode": "free",
+  "ads": "none in game logic",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "ice-arena-1",
+  "telemetry": "game_open/run_start/run_end/retry/pause/resume/score/best_update/return_to_portal and one throw milestone; remote disabled pending root registration; training excluded",
+  "art": "OpenAI ImageGen ice-arena plus red/blue polished granite stone sprites supplied by Art Director; procedural dynamic target, reflections and guide lines; see asset index",
+  "humanReview": "author/physical-device/audio-feel review pending"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "game034",
+  "titleJa": "ちいさな解体屋",
+  "titleEn": "DEMOLITION DAY",
+  "tagline": "支えを選んで、ころんと解体。8つの玩具をきれいに崩そう。",
+  "thumbnail": "./assets/portal/game034.webp",
+  "route": "./game034.html",
+  "releaseOrder": 34,
+  "status": "active",
+  "developmentStatus": "trial",
+  "tags": [
+    {
+      "id": "physics",
+      "label": "物理"
+    },
+    {
+      "id": "puzzle",
+      "label": "パズル"
+    },
+    {
+      "id": "architecture",
+      "label": "建築"
+    },
+    {
+      "id": "decision",
+      "label": "判断"
+    }
+  ],
+  "difficulty": "standard",
+  "currentManifest": {
+    "id": "game034",
+    "title": "ちいさな解体屋 ～DEMOLITION DAY～",
+    "titleEn": "DEMOLITION DAY",
+    "tagline": "壊すのは、ちいさな支え。崩れるのは、あなたの読みどおり？",
+    "genre": [
+      "physics",
+      "puzzle",
+      "demolition"
+    ],
+    "core_mechanic": [
+      "select up to three actual toy supports or joining beams",
+      "remove selected bodies and simulate gravity and contacts",
+      "mass-weighted target containment and actual downward displacement",
+      "protect adjacent hut and minimize removed locations",
+      "eight distinct architectural sites"
+    ],
+    "primary_input": [
+      "mouse",
+      "touch",
+      "candidate buttons",
+      "Space executes"
+    ],
+    "skill_axes": [
+      "centre of mass",
+      "structural reasoning",
+      "risk-management"
+    ],
+    "expected_run_seconds": {
+      "designTarget": 120,
+      "measured": null
+    },
+    "primary_score": "sum of eight finalized site scores, completed-run BEST only",
+    "physics": "Matter.js fixed120Hz SAT rectangles; friction/sleep; grounded unselected feet static; loose beams and upper blocks dynamic; eight seconds of simulated collapse",
+    "score": "Containment mass fraction350 + actual lowering mass fraction400 + untouched hut150 + successful low-cut economy60/120/180; site difficulty multiplier1.00 to1.56. Max per-site1685, full-run bounded20000.",
+    "practice": "Isolated first site and collapse result, no production records/credits/run_start/end",
+    "rules_version": 1,
+    "presentation_version": 1,
+    "save_compatibility": "New web-mini-arcade:v1:game034:best-rules-v1; best and mute persist. An unfinished route is not submitted as a completed run. No old game storage altered.",
+    "analytics": "remoteCollectionEnabled false pending explicit production registration; local minimal events only",
+    "art": "OpenAI ImageGen toy-workshop background and three-surface material atlas provided by Art Director; actual dynamic blocks and cut indicators drawn from real physics poses",
+    "human_evaluation": "Not yet performed"
+  }
+}

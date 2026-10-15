@@ -76,9 +76,12 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game030: ["puzzle", "precision", "brain-training"],
   game031: ["search", "architecture", "endless"],
   game032: ["fishing", "chill", "nature", "score-attack", "timing"],
+  game033: ['timing','score-attack','chill','precision'],
+  game034: ['physics','puzzle','architecture','decision'],
+  game035: ['physics','precision','short','score-attack'],
 };
 
-const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
 // Add an override only after the author explicitly declares completion following
 // their own playtest. Publication, CI/QA success and positive feedback do not qualify.
@@ -112,6 +115,9 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   {"id": "game030", "titleJa": "コンセントどこ？ ～PLUG ROUTE～", "titleEn": "PLUG ROUTE", "tagline": "つないで、とどけて、ぴったりで。", "thumbnail": "./assets/portal/game030.webp", "route": "./game030.html", "releaseOrder": 30},
   { id: "game031", titleJa: "掘って、置くだけ。", titleEn: "DIG & PLACE", tagline: "目的はありません。好きなところを掘って、好きなところに置くだけ。", thumbnail: "./assets/portal/game031.webp", route: "./game031.html", releaseOrder: 31 },
   { id: "game032", titleJa: "川辺で、ひとやすみ。", titleEn: "RIVER SIDE FISHING", tagline: "清流で、のんびり一釣行。", thumbnail: "./assets/portal/game032.webp", route: "./game032.html", releaseOrder: 32 },
+  { id: 'game033', titleJa: '夜空に、ひと発。', titleEn: 'FIREWORK MAKER', tagline: '押して、離して。夜空に重ねる、100秒の花火大会。', thumbnail: './assets/portal/game033.webp', route: './game033.html', releaseOrder: 33 },
+  { id: 'game034', titleJa: 'ちいさな解体屋', titleEn: 'DEMOLITION DAY', tagline: '支えを選んで、ころんと解体。8つの玩具をきれいに崩そう。', thumbnail: './assets/portal/game034.webp', route: './game034.html', releaseOrder: 34 },
+  { id: 'game035', titleJa: '1ミリカーリング', titleEn: 'MINI CURLING', tagline: '寄せる。弾く。次の一投を、守る。', thumbnail: './assets/portal/game035.webp', route: './game035.html', releaseOrder: 35 },
 ].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */

@@ -133,7 +133,8 @@ function service(){return sharing??=new Sharing();}
 
 export function createGameRecordSession(gameId:string){
   let runId:string|undefined,started=0,candidate:Candidate|undefined,active:HTMLElement|undefined,dispose:()=>void=()=>{},identity:string|undefined,strictAutomatic=false,automaticAtStart=false,startEpoch='';
-  const activeKey=`game100:records:eligible:v1:${gameId}`;
+  const revised=['game002','game003','game005','game006','game009','game015','game017','game024'].includes(gameId);
+  const activeKey=`game100:records:eligible:v1:${gameId}${revised?`:rules-${getRecordDefinition(gameId)?.rulesetId}`:''}`;
   const persistRun=()=>{if(identity&&isProduction())write(activeKey,{schema:1,identity,runId,started,rulesetId:getRecordDefinition(gameId)?.rulesetId,candidate});};
   const clear=()=>{candidate=undefined;runId=undefined;identity=undefined;dispose();dispose=()=>{};active?.remove();active=undefined;};
   return {

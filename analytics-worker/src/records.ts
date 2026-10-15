@@ -1,6 +1,28 @@
-import { recordBoards } from '../../src/data/recordDefinitions';
+import { recordBoards, type RecordDefinition } from '../../src/data/recordDefinitions';
 import type { Env, Database } from './types';
 const boards = () => recordBoards.filter(board => board.publicEnabled);
+/** No-query contract for frontends published before board negotiation existed.
+ * These exact 20 IDs were read from production on 2026-10-15. Keep this list
+ * independent of current game rules and retain every historical board in D1. */
+export const LEGACY_PUBLIC_BEST_BOARD_IDS:readonly string[]=Object.freeze([
+ 'game001.score.r1.all','game002.score.r1.all','game003.floors.r2.all','game004.level.r1.all',
+ 'game005.sorted.r1.all','game006.score.r2.all','game007.score.r2.all','game008.score.r2.all',
+ 'game009.score.r2.all','game011.score.r2.all','game012.score.r1.normal','game013.score.r1.normal',
+ 'game014.successes.r1.normal','game015.depth.r03.all','game016.score.r1.all','game017.score.r1.all',
+ 'game018.distance.r1.all-shoes','game019.height.r2.all','game024.foods.r1.speed-4','game029.score.r1.all',
+]);
+/** Return the requested known subset, never expand a caller's board vocabulary. */
+export function selectPublicBestBoards(url:URL):readonly RecordDefinition[]|null {
+ const query:[string,string][]=[];url.searchParams.forEach((value,key)=>query.push([key,value]));
+ let ids:readonly string[]=LEGACY_PUBLIC_BEST_BOARD_IDS;
+ if(query.length){
+  if(query.length!==1||query[0][0]!=='boards'||!query[0][1]||query[0][1].length>8192)return null;
+  ids=query[0][1].split(',');
+  if(ids.length>64||new Set(ids).size!==ids.length)return null;
+ }
+ const available=boards(),selected=ids.map(id=>available.find(board=>board.boardId===id));
+ return selected.every((board):board is RecordDefinition=>!!board)?selected:null;
+}
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const RECEIPT = /^[0-9a-f]{64}$/;
 const MAX_BODY = 8192;
@@ -99,13 +121,13 @@ async function withdraw(request:Request,env:Env,origin:string) {
  await env.DB.prepare("UPDATE record_submissions SET status='withdrawn',metadata_json='{}',inspection_reason='user_withdrawal',expires_at=NULL WHERE submission_key=? AND status<>'withdrawn'").bind(data.submission_key).run();
  return json({status:'withdrawn'},200,origin);
 }
-async function publicBests(env:Env,origin?:string) {
+async function publicBests(env:Env,selected:readonly RecordDefinition[],origin?:string) {
  // Both public views read the same projection in one SQLite statement/snapshot.
  const rows=(await env.DB.prepare(`SELECT b.board_id,b.collected_since,COALESCE(r.revision,0) AS revision,
   (SELECT pb.value FROM record_participant_bests pb JOIN record_participants p ON p.participant_id=pb.participant_id AND p.status='active'
    WHERE pb.board_id=b.board_id ORDER BY pb.rank_value,pb.received_at,pb.submission_id LIMIT 1) AS value
-  FROM record_boards b LEFT JOIN record_leaderboard_revisions r ON r.board_id=b.board_id WHERE b.public_enabled=1`).all<{board_id:string;collected_since:string;revision:number;value:number|null}>()).results;
- return json({schema_version:1,definition_version:'1',generated_at:new Date().toISOString(),cache_ttl_seconds:60,boards:boards().map(board=>{const row=rows.find(r=>r.board_id===board.boardId);return {game_id:board.gameId,board_id:board.boardId,metric_id:board.metricId,value:row?.value??null,unit:board.unit,mode_label:board.modeLabel,ruleset_id:board.rulesetId,status:row?.value!==null&&row?.value!==undefined?'accepted':'empty',collected_since:row?.collected_since??null,revision:row?.revision??0};})},200,origin,true);
+  FROM record_boards b LEFT JOIN record_leaderboard_revisions r ON r.board_id=b.board_id WHERE b.public_enabled=1 AND b.board_id IN (${selected.map(()=>'?').join(',')})`).bind(...selected.map(board=>board.boardId)).all<{board_id:string;collected_since:string;revision:number;value:number|null}>()).results;
+ return json({schema_version:1,definition_version:'1',generated_at:new Date().toISOString(),cache_ttl_seconds:60,boards:selected.map(board=>{const row=rows.find(r=>r.board_id===board.boardId);return {game_id:board.gameId,board_id:board.boardId,metric_id:board.metricId,value:row?.value??null,unit:board.unit,mode_label:board.modeLabel,ruleset_id:board.rulesetId,status:row?.value!==null&&row?.value!==undefined?'accepted':'empty',collected_since:row?.collected_since??null,revision:row?.revision??0};})},200,origin,true);
 }
 async function publicLeaderboard(env:Env,url:URL,origin?:string) {
  const query:[string,string][]=[];url.searchParams.forEach((value,key)=>query.push([key,value]));
@@ -163,13 +185,15 @@ export async function handleRecords(request:Request,env:Env,origin?:string):Prom
  if(!isAdmin&&request.headers.has('Authorization'))return error('authorization_not_allowed',401,origin);
  if(env.RECORDS_ENABLED!=='true')return error('records_preparing',503,origin);
  if(request.headers.has('X-Record-Credential')&&path!=='/v1/records/submissions')return error('credential_not_allowed',400,origin);
- if(path!=='/v1/records/admin/submissions'&&path!=='/v1/records/public/leaderboard'&&url.search)return error('invalid_query',400,origin);
+ if(path!=='/v1/records/admin/submissions'&&path!=='/v1/records/public/leaderboard'&&path!=='/v1/records/public/bests'&&url.search)return error('invalid_query',400,origin);
+ const selected=path==='/v1/records/public/bests'?selectPublicBestBoards(url):null;
+ if(path==='/v1/records/public/bests'&&!selected)return error('invalid_query',400,origin);
  if(!isAdmin&&request.method!=='GET'&&!origin)return error('invalid_origin',403);
  await initialize(env.DB);
  await env.DB.prepare("UPDATE record_submissions SET status='rejected',metadata_json='{}',inspection_reason='pending_expired',expires_at=NULL WHERE status='pending' AND expires_at<=?").bind(new Date().toISOString()).run();
  if(path==='/v1/records/participants')return request.method==='POST'?register(request,env,origin!):error('method_not_allowed',405,origin);
  if(path==='/v1/records/public/leaderboard')return request.method==='GET'?publicLeaderboard(env,url,origin):error('method_not_allowed',405,origin);
- if(path==='/v1/records/public/bests')return request.method==='GET'?publicBests(env,origin):error('method_not_allowed',405,origin);
+ if(path==='/v1/records/public/bests')return request.method==='GET'?publicBests(env,selected!,origin):error('method_not_allowed',405,origin);
  if(path==='/v1/records/submissions')return request.method==='POST'?submit(request,env,origin!):error('method_not_allowed',405,origin);
  if(path==='/v1/records/submissions/withdraw')return request.method==='POST'?withdraw(request,env,origin!):error('method_not_allowed',405,origin);
  if(path==='/v1/records/admin/submissions'){
