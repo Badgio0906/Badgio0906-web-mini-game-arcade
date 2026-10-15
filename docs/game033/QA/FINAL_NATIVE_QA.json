@@ -1,0 +1,77 @@
+{
+  "source": "43deb6cd50348dada54acb7469fefd12b54ac93c",
+  "source_root": "/workspace/arcade-stage4",
+  "scope": "Author automated native-input QA; does not replace independent Visual/Feel or human play/audio",
+  "source_files_equal_between_runs": true,
+  "source_unchanged": true,
+  "accepted_cases": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "passed": true,
+      "check_groups": 8,
+      "pageerrors": 0,
+      "post_attempts": 0,
+      "write_attempts": 0
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "passed": true,
+      "check_groups": 13,
+      "pageerrors": 0,
+      "post_attempts": 0,
+      "write_attempts": 0
+    },
+    {
+      "name": "narrow",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "check_groups": 8,
+      "pageerrors": 0,
+      "post_attempts": 0,
+      "write_attempts": 0
+    },
+    {
+      "name": "landscape",
+      "width": 844,
+      "height": 390,
+      "passed": true,
+      "check_groups": 8,
+      "pageerrors": 0,
+      "post_attempts": 0,
+      "write_attempts": 0
+    }
+  ],
+  "natural_result": {
+    "run": "43deb-native-01",
+    "viewport": "390x844",
+    "seconds_active": 100,
+    "score": 65560,
+    "blooms": 86,
+    "launches": 86,
+    "perfect": 85,
+    "max_combo": 86,
+    "max_chain": 7,
+    "measurement_method": "Result screenshot inspected by author; state/result/BEST/retry assertions in native collector",
+    "image": "43deb-native-01/phone-result.png",
+    "result_rotation_viewports": [
+      "1440x900",
+      "320x568",
+      "844x390"
+    ]
+  },
+  "original_failure_preserved": "43deb-native-01/report.json",
+  "explanation_scroll_followup": "43deb-native-02/report.json",
+  "independent_scroll_judgment": "033-native-explanation-scroll-judgment.json",
+  "jev_annotation": "033-native-explanation-scroll-annotated-judgment.json",
+  "remaining": [
+    "independent Visual/Feel decisions",
+    "human fun and physical device/audio review",
+    "release decision by root"
+  ],
+  "author_native_qa_passed": true
+}

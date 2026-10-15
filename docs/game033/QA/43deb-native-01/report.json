@@ -1,0 +1,101 @@
+{
+  "base": "http://127.0.0.1:4174/",
+  "source_root": "/workspace/arcade-stage4",
+  "source": "43deb6cd50348dada54acb7469fefd12b54ac93c",
+  "started_at": "2026-10-15T15:40:05.570Z",
+  "source_files": {
+    "game033.html": "335a9f379a0f9b368a6116ac45fc7ccda81a07ef8d9d09d990f1f63f990717b0",
+    "src/games/game033/FireworkRun.ts": "c80dfc37d189f4333c9a5935d4f2d2b67859511abcf0c2aaba84b2fccdd747d8",
+    "src/games/game033/game.manifest.json": "33cb6da8bfdab184cbdd97152df38162fd91ee7f07a36aee8cd3fc60ec9a49cc",
+    "src/games/game033/main.ts": "c1e632ad2e21bb5c1e890c9dc35aa4d3d64fbcc106f09c87ae5951b310e54011",
+    "src/games/game033/renderer.ts": "695319c853ca10ce2910d6e57cda5a130ee3b543aebfed62b15b33fe0f1f378f",
+    "src/games/game033/style.css": "92a383023e6a8fc62fdfb19262cc4a9bcdc7e0a7c87738d64602a94c2a37a7fc"
+  },
+  "scope": "normal keyboard/native touch and visible target marker; no model mutation or result forcing",
+  "consent_fixture": "analytics denied before first document",
+  "network_policy": "all non-GET requests aborted; external analytics/ads GET mocked offline",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "errors": [],
+      "posts": [],
+      "blockedWrites": [],
+      "checks": [
+        "visible 44px actions",
+        "visible 44px actions",
+        "visible 44px actions",
+        "practice normal input and BEST excluded",
+        "visible 44px actions",
+        "visible 44px actions",
+        "pause freezes clock and charge; resumed Space/touch launches",
+        "normal portal return"
+      ],
+      "screenshots": [
+        "desktop-title.png",
+        "desktop-explanation.png",
+        "desktop-practice.png",
+        "desktop-play.png",
+        "desktop-play-motion-a.png",
+        "desktop-play-motion-b.png",
+        "desktop-pause.png"
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "posts": [],
+      "blockedWrites": [],
+      "checks": [
+        "visible 44px actions",
+        "visible 44px actions",
+        "visible 44px actions",
+        "practice normal input and BEST excluded",
+        "visible 44px actions",
+        "visible 44px actions",
+        "pause freezes clock and charge; resumed Space/touch launches",
+        "visible 44px actions",
+        "visible 44px actions",
+        "visible 44px actions",
+        "visible 44px actions",
+        "normal 100-second result, saved BEST, three result rotations and retry",
+        "normal portal return"
+      ],
+      "screenshots": [
+        "phone-title.png",
+        "phone-explanation.png",
+        "phone-practice.png",
+        "phone-play.png",
+        "phone-play-motion-a.png",
+        "phone-play-motion-b.png",
+        "phone-pause.png",
+        "phone-result.png",
+        "phone-result-desktop.png",
+        "phone-result-narrow.png",
+        "phone-result-landscape.png"
+      ],
+      "passed": true
+    },
+    {
+      "name": "narrow",
+      "width": 320,
+      "height": 568,
+      "errors": [],
+      "posts": [],
+      "blockedWrites": [],
+      "checks": [
+        "visible 44px actions"
+      ],
+      "screenshots": [
+        "narrow-title.png"
+      ],
+      "passed": false
+    }
+  ],
+  "failure": "Error: visible action タイトル {\"id\":\"\",\"text\":\"タイトル\",\"x\":38,\"y\":542.765625,\"w\":244,\"h\":44,\"active\":true}",
+  "finished_at": "2026-10-15T15:42:16.277Z"
+}

@@ -1,0 +1,12 @@
+{
+  "finding_id":"records-revised-run-eligibility-key",
+  "PRIMARY_CAUSE":"PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED":true,
+  "NEXT_EVIDENCE":"CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED":true,
+  "reviewer":"snake_billiards independent reviewer; common eligibility implementation and Jev answers/log unread",
+  "rationale":"A game-only persistent eligible slot lets a new-rule startRun overwrite a saved old-rule candidate even when historical boards and queued payloads survive. The current factory adds :rules-<current ruleset> only for the eight games whose scoring/rules changed. persistRun and resumeRun share that selected key; clear only resets memory and UI, and does not remove the old key. The eight games have current definitions, so the suffix is defined. Unmodified games keep the exact previous key. Independent execution of record-eligibility-preservation.test.ts passed: all eight real factory startRun calls preserved old raw JSON verbatim, wrote a separate current slot, and made zero fetches. This proves preservation at the persistent-run boundary, not a production submission or human playtest.",
+  "evidence":["src/records/RecordSharing.ts:createGameRecordSession revised/activeKey/persistRun/resumeRun/clear","tests/unit/record-eligibility-preservation.test.ts","independent vitest run 2026-10-15T14:54:52Z: 1 file / 1 test PASS, covering 8 revised game IDs"],
+  "actual_next_action":{"method":"CODE_INSPECTION","description":"Read the changed key selection and all read/write/clear uses without Jev logs, checked unchanged-game else branch and current definitions, then independently ran the real-factory preservation test successfully.","evidence":["src/records/RecordSharing.ts","tests/unit/record-eligibility-preservation.test.ts"]},
+  "final_root_cause":"PRODUCT_BUG"
+}

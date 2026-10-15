@@ -1,0 +1,29 @@
+{
+  "provenance": "synthetic PageTransitionEvent lifecycle fixture in fixed production build; not actual BFCache navigation or acoustic review",
+  "trace": [
+    {
+      "ok": true,
+      "message": "persisted pagehide freezes game"
+    },
+    {
+      "ok": true,
+      "message": "persisted pagehide preserves live AudioContext"
+    },
+    {
+      "ok": true,
+      "message": "gesture after persisted restore still makes tones"
+    },
+    {
+      "ok": true,
+      "message": "second persisted pagehide also keeps audio"
+    },
+    {
+      "ok": true,
+      "message": "nonpersisted pagehide closes AudioContext"
+    }
+  ],
+  "audio": {
+    "closed": 1,
+    "oscillators": 1
+  }
+}

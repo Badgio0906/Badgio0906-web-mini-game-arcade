@@ -1,0 +1,27 @@
+{
+  "finding_id": "033-native-explanation-scroll-geometry",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain; independent source and raw evidence read; Jev answer not read",
+  "rationale": "Initial 320x568 help-modal geometry rejects its last 44px title button at y542.765625, bottom586.765625, because it requires every long-modal button to fit in the viewport simultaneously. Product dialog CSS explicitly limits height to viewport minus94px and enables overflow:auto; 44px controls in a longer native scroll container are not required to be simultaneously visible. The prepared collector correctly scopes actionable controls to the open modal, scrolls each control into view, and checks both viewport and dialog inner clip bounds while preserving size checks. The initial evidence does not establish an unreachable control. A new native320/844 scroll-reachability run is still pending and must detect any actual clipped/unreachable action; this judgment does not claim that pending run passed.",
+  "evidence": [
+    "docs/game033/QA/43deb-native-01/report.json",
+    "src/games/game033/style.css:1",
+    "src/games/game033/main.ts:30",
+    "tests/game033/native.mjs:35",
+    "tests/game033/native.mjs:48"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independently read the failed raw geometry, native modal CSS and help actions, then reviewed prepared collector change: scrollIntoViewIfNeeded followed by viewport and dialog-inner-bound checks for each visible enabled modal control. Runtime is unchanged. Runner will execute the limited native320/844 rerun after the browser slot is released; actual scroll measurements and final pass remain pending.",
+    "evidence": [
+      "docs/game033/QA/43deb-native-01/report.json",
+      "tests/game033/native.mjs:35",
+      "tests/game033/native.mjs:48"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

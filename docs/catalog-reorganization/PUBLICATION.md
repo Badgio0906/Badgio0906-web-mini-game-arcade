@@ -21,3 +21,13 @@ main commit `6e371613edfff6123f997259630acbbd98f0c4da`、branch `work`から通�
 ## 第3工程 — 公開候補の固定
 
 固定a323 sourceでcheck・1045tests/95files・build、005/006独立4幅475項目＋限定22項目、009/017独立4幅8case644項目を確認。006CSS疑似要素の比較版prefix1語だけV3へ追補し、新title写真で再確認。第3工程4作品のゲーム性を追加変更せず、[source chain](QA/STAGE3_SOURCE_CHAIN.json) に差分を限定。[005/006 Visual](STAGE3_005_006_VISUAL_REVIEW.md) と [009/017 Visual](STAGE3_009_017_VISUAL_REVIEW.md) は4作品とも技術基準通過、人間評価は未実施。実画面4thumbnailを採用。公式build設定を再現して最終build後、mainの通常pushへ進む。
+
+## 第3工程 — 公式公開成功
+
+公開commit `e2d59dba1a1131a07701dad9c998a4f9a6b5d7c3`。[公式Pages 38764230402](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/38764230402) build/deploy success。[配信157file SHA一致](QA/live-stage3/PUBLICATION_SHA.json)。公開4作品×4幅は[初回10受理case](QA/live-stage3-browser/REPORT.json)＋[touch6case追補/326checks](QA/live-stage3-transition-retest/REPORT.json)で全16組を確認、source不変・pageerror/POST0。初回reportの6timeoutは失敗のまま保持。main直後の即時pauseをcollectorが送り、画面遷移guardと衝突する推定を独立調査し、collectorの入力間隔のみ300msへ変更して再確認。正確な初回tap時刻は未記録。元stateの両作品220msという記述は009180ms/017220msへ独立source読みにより訂正し、API送信済stateは保持した。[独立判断](QA/LIVE_TRANSITION_TIMING_INDEPENDENT_JUDGMENT.json)。ゲームsourceへの追補変更なし。
+
+## 第4工程 — 最終候補の固定
+
+canonical runtime `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。check・1078tests/101files・公開設定を再現したbuild成功。通常の固有QAは033全4幅/phone自然100秒65560、034全4幅×8現場10034、035独立全4幅3end/投球中保存再開を確認。3作の独立技術Visual合格、全12実画面thumbnailを採用。
+
+最終compiled12作品×4幅は [44受理case](QA/final-release-build/REPORT.json) と [033のactive modal帰還4case/198checks](QA/final-release-modal-return-retest/REPORT.json) で全48組を確認。初回4failureはcollectorが背面header linkを選んだためで、active dialog link選択へcollectorだけ限定修正。source前後一致/error0/POST0。Portalは [root4幅＋subpath150checks](QA/final-catalog-root-subpath/REPORT.json) でactive27/complete9/hidden4/retired4を確認。[統合source chain](QA/FINAL_SOURCE_CHAIN.json)。後追いの実終了関数12testも最終CIへ含める。

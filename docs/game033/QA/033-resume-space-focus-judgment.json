@@ -1,0 +1,23 @@
+{
+  "finding_id": "033-resume-space-focus",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent desk_rain worker; no Game033 implementation and no Jev answers read",
+  "rationale": "Source inspection: clicking #pause opens the modal while #pause owns focus; resume closes the dialog without focusing #launch. Native dialog focus restoration can therefore restore #pause. The Space/Enter listener explicitly returns for any button other than #launch, so the next Space can activate Pause instead of charging. This is a source-based predicted input path, not a browser reproduction. Explicit launch focus after resume/start and a native keyboard check are required.",
+  "evidence": [
+    "src/games/game033/main.ts:pause",
+    "src/games/game033/main.ts:resume",
+    "src/games/game033/main.ts:window keydown listener"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Traced native pause click, dialog opening/close, absence of launch focus, and focused-button exclusion in Space handler; reported before a source edit. Browser reproduction not yet performed.",
+    "evidence": [
+      "src/games/game033/main.ts:pause/resume/window keydown",
+      "docs/catalog-reorganization/NEW033_034_INDEPENDENT_REVIEW.md"
+    ]
+  },
+  "human_judgment": null
+}

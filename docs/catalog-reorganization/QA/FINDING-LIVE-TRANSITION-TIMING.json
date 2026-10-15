@@ -1,0 +1,16 @@
+{
+  "finding_id": "stage3-live-transition-input-timing",
+  "problem": "The shared public compiled smoke times out waiting for pause on touch viewports after the main screen has loaded.",
+  "expected": "A normal enabled pause action reaches the paused screen on the published009/017 builds.",
+  "observed": [
+    "Live16case smoke has10successfulcases;009/017touch390/320/844each reach main but the pause wait times out20000ms.",
+    "Pageerrors/write attempts are0;source hashes are unchanged.",
+    "The production collector sends tap after main screenshot/geometry without an explicit transition settle interval.",
+    "009/017source sets a220ms input guard in show and ignores click while performance.now is below it.",
+    "The separate a323native four-width collector already passed pause/resume on both games."
+  ],
+  "unknown": [
+    "Whether the early pause tap is being ignored by the transition guard, or a runtime pause fault exists."
+  ],
+  "provenance": "published native touch smoke, fixed source inspection, previous independent native QA"
+}

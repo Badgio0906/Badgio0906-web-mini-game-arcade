@@ -1,0 +1,21 @@
+{
+  "finding_id": "035-independent-bfcache-audio",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "game003/034 worker, independent of game035 implementation and Jev answers",
+  "rationale": "Persisted pagehide closed the retained AudioContext. Since AudioService.unlock does not recreate a closed context, BFCache restoration could not resume tones. Author changed cleanup to nonpersisted pagehide only and removed once so subsequent navigation remains handled. Browser-specific BFCache/audio listening remains pending.",
+  "evidence": [
+    "src/games/game035/main.ts",
+    "src/core/AudioService.ts",
+    "docs/game035/QA/independent-tower/unit.log"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected the lifecycle and AudioService retained-context behavior, asked implementation owner for the limited fix, then checked the updated event.persisted guard.",
+    "evidence": [
+      "src/games/game035/main.ts"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > requires a deliberate backward pull; direction and power follow the drag 2ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > uses exact linear friction stopping distance and the same deceleration for both colors 1ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > transfers momentum, separates contacts and resolves a stone chain 4ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > rejects a second throw while stones move and caps the end at three 2ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > scores actual closeness, removal, guard and saved throws separately 0ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > straight maximal power overshoots an empty house whereas a measured throw scores 0ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > completes exactly three scored ends, awards continuous favorable positions and never double scores 5ms
+ ✓ tests/unit/game035-model.test.ts > Game035 mini curling physics and strategy > runs 100 mixed-angle full nine-shot matches with bounded finite settlement 224ms
+ ✓ tests/unit/game035-model.test.ts > Game035 durable complete-world save > round-trips an in-flight shot, continues identically and keeps stats atomic 2ms
+ ✓ tests/unit/game035-model.test.ts > Game035 durable complete-world save > rejects malformed body, nonfinite velocity, mismatched score and flags 0ms
+ ✓ tests/unit/game035-model.test.ts > Game035 durable complete-world save > survives denied writes in memory 0ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  14:22:15
+   Duration  740ms (transform 108ms, setup 0ms, collect 109ms, tests 244ms, environment 0ms, prepare 127ms)
+

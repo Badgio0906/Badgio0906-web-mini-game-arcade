@@ -20,3 +20,9 @@
 002バイク1000m別加速/区間積分スコア、003十形状の実compound物理/左右回転/接触重心芸術点、015十二経路/巡回鳥/移動床、024毎回3–7再抽選の実障害物盤面/安全生成/保存、027正本phaseから独立turn表示/CPU予兆。各固有報告を参照。003の初回本番に架空demoを描く独立findingをtitleModeで限定修正し、Jev Shadowと独立再確認を保存。保存は002 bestScoreV2/bestDistanceV2、003 rules3:best/bonus、015bestR04、024state-shifting-v2。新boardは旧boardを保存して別登録、未登録中は準備中。旧queueもboard別検証で保持し、新ルールへ付け替えない。
 
 Matter.js（新003、今後034の実物理）を採用。10種compoundを同じ描画clipと接触形状に使用し、120simulation単体で確認。Phaser新規参照を増やさずCanvas描画。ImageGen背景/専用facadeを実統合、原本・prompt・hashはassetsの台帳。
+
+## 第2～第4工程の最終実装
+
+上の候補記録は当時の状態。第2工程は25deef9、3工程はe2d59dbで公式公開と配信照合まで完了。現在の最終runtimeは57dce24（active27/historical35）。005combo/fever、006実切返し、009固有12問題、017雨宿りリレー、新033100秒花火、新0348現場Matter解体、新0353endカーリングを実装。全12対象の固有通常QA・独立コード/技術Visual・実画面thumbnailを確認。完成認定は本人指定9作品だけを維持する。
+
+旧8board/BEST/save/eligible候補は保持し、現行比較版を分離。既存記録Workerを非破壊更新し旧default20/current query32/new11boardsを確認、Game032recordsと021～035Analyticsの既存pending方針を維持。完成9作＋008のsrc/HTML差分は開始mainから空。新3作への外部Analyticsは明示OFF。詳細と各工程の実配信・失敗原本・人間未評価は [最終報告](FINAL_REPORT.md)、[公開記録](PUBLICATION.md)、[Visual](VISUAL_REVIEW.md)、[source chain](QA/FINAL_SOURCE_CHAIN.json) を正本とする。

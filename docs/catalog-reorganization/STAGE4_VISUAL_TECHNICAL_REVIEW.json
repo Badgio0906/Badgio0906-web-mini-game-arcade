@@ -1,0 +1,122 @@
+{
+  "sourceCommit": "43deb6cd50348dada54acb7469fefd12b54ac93c",
+  "reviewer": "Art Director worker。033〜035のゲーム実装には不参加。3作品の主静的素材は自担当制作のため、素材そのものの自己採用を第三者承認とは呼ばず、実統合画面・操作情報・配置の判定と分離する。",
+  "method": "実際のdesktop/phone/narrow/landscape画像と動作連番をview_imageで開き、別workerが固定ソースで取得した通常入力・readonly状態前後と照合。collectorを本レビュアーが実行した／連続動画を視聴したという主張はしない。",
+  "rubric": "A15/B15/C10/D10/E10/F15/G10/H15。合計80以上、F/H各12以上。Gは実連番と状態前後の技術的な状態伝達に限定。",
+  "games": [
+    {
+      "id": "game033",
+      "scores": {
+        "A": 14,
+        "B": 12,
+        "C": 10,
+        "D": 9,
+        "E": 8,
+        "F": 13,
+        "G": 8,
+        "H": 12
+      },
+      "total": 86,
+      "status": "PASS_TECHNICAL_VISUAL",
+      "visual": "写真調の夜景、広い紺の空、水面と琥珀色の街灯に、細い明朝体のタイトルと柔らかい発射buttonがまとまる。四幅とも目標輪・開花文字・時間・score・chargeの識別が可能。花火の初期開花は小さく控えめで、煙と残光は淡いが、夜景を覆わず動的粒子として認識できる。320の長い結果見出しは折り返し、短い横画面はスクロールを伴う構成。",
+      "motion": "desktop/phone/narrowのmotion-a/bで粒子輪の拡大と減光、上昇rocket、対応する水面の小さい反射が変わることを実見。通常100秒の実結果65560点、86発/85ぴったり/最大86combo/7chainを実画面とQAに照合。0.18秒待機と採取overheadを含む実連番であり、連続滑らかさや花火音の快感は未評価。",
+      "evidence": [
+        "docs/game033/QA/43deb-native-01/desktop-play.png",
+        "docs/game033/QA/43deb-native-01/desktop-play-motion-a.png",
+        "docs/game033/QA/43deb-native-01/desktop-play-motion-b.png",
+        "docs/game033/QA/43deb-native-01/phone-play.png",
+        "docs/game033/QA/43deb-native-01/phone-play-motion-a.png",
+        "docs/game033/QA/43deb-native-01/phone-play-motion-b.png",
+        "docs/game033/QA/43deb-native-02/narrow-play.png",
+        "docs/game033/QA/43deb-native-02/narrow-play-motion-a.png",
+        "docs/game033/QA/43deb-native-02/narrow-play-motion-b.png",
+        "docs/game033/QA/43deb-native-02/landscape-play.png",
+        "docs/game033/QA/43deb-native-01/phone-result-narrow.png",
+        "docs/game033/QA/43deb-native-01/phone-result-landscape.png"
+      ],
+      "qa": [
+        "docs/game033/QA/43deb-native-01/report.json",
+        "docs/game033/QA/43deb-native-01/source-verification.json",
+        "docs/game033/QA/43deb-native-02/report.json"
+      ],
+      "limits": "初回320説明末尾がviewport外でcollector停止した記録は保持。通常scrollで説明actionへ到達する追補QAを使用し、失敗原本を成功へ書き換えていない。"
+    },
+    {
+      "id": "game034",
+      "scores": {
+        "A": 13,
+        "B": 12,
+        "C": 9,
+        "D": 9,
+        "E": 8,
+        "F": 12,
+        "G": 8,
+        "H": 12
+      },
+      "total": 83,
+      "status": "PASS_TECHNICAL_VISUAL",
+      "visual": "暖かい木工工房とsage壁、木・terracotta・tealの小さな建材が一致した玩具世界。背景小物を端に置き、操作対象の家を中央下へ配置。支柱の選択×印、黄色い解体範囲、守る小屋、選択数と本文buttonが4幅で見える。建材と木の机のコントラストは控えめ、建物自体も小さいためFは12点に留めるが、代替の44px以上の部品buttonと名前で操作可能。",
+      "motion": "desktop-playing→desktop-motion-bで実材の下方向の移動を実見し、同じ姿勢画像の使い回しでないことを確認。四幅の選択→実崩壊→8現場完了の画面をQAと照合。黄色範囲内質量・低く崩した質量・小屋無事・除去数が結果内訳として見える。G8は実pose/結果の技術的伝達だけで、崩壊の気持ちよさは未評価。",
+      "evidence": [
+        "docs/game034/QA/stage4-43deb-four-widths-clean/desktop-playing.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/desktop-motion-b.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/phone-selection.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/phone-playing.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/narrow-playing.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/landscape-playing.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/phone-complete.png",
+        "docs/game034/QA/stage4-43deb-four-widths-clean/landscape-complete.png"
+      ],
+      "qa": [
+        "docs/game034/QA/stage4-43deb-four-widths-clean/report.json"
+      ],
+      "limits": "初回consentを処理していない画像は不採用。通常の拒否操作後のclean画像だけを最終Visualとthumbに使用し、旧原本・独立finding・撤回台帳を保持。素材作者のため素材単体の第三者承認ではない。"
+    },
+    {
+      "id": "game035",
+      "scores": {
+        "A": 13,
+        "B": 13,
+        "C": 9,
+        "D": 9,
+        "E": 9,
+        "F": 13,
+        "G": 8,
+        "H": 13
+      },
+      "total": 87,
+      "status": "PASS_TECHNICAL_VISUAL",
+      "visual": "淡い氷の質感、青いboard、赤青の花崗岩stone、低彩度targetが静かなスポーツ画面として統一。真上の投影で距離と予測方向を読みやすくした。四幅でmain/title/resultを実見。短い横画面のarenaは小さいが、targetとstoneは残り、数値や44px操作を場外へ分けている。小画面の長い結果dialogは内部scrollが必要になるが、QAの通常操作で帰還まで到達。",
+      "motion": "towerの新desktop-motion-a/bを実見。通常投球後の赤id10は(240,523.56)→(240,395.266875)、128.293px移動。通常pauseで保存状態をreadし、resume後の実physics0.441667秒を測定。速度-323.6→-257.35と赤stoneの軌跡・待機文言が実画面に対応。G8は減速を伴う実移動と状態伝達の技術点。衝突の快感、実機drag、連続FPS、聴感は未評価。",
+      "evidence": [
+        "docs/game035/QA/browser-2026-10-15T14-18-29-447Z/desktop-aim.png",
+        "docs/game035/QA/browser-2026-10-15T14-18-29-447Z/phone-aim.png",
+        "docs/game035/QA/browser-2026-10-15T14-18-29-447Z/small-aim.png",
+        "docs/game035/QA/browser-2026-10-15T14-18-29-447Z/landscape-aim.png",
+        "docs/game035/QA/independent-tower/stage4-smoke/desktop-motion-a.png",
+        "docs/game035/QA/independent-tower/stage4-smoke/desktop-motion-b.png",
+        "docs/game035/QA/independent-tower/stage4-smoke/phone-result.png",
+        "docs/game035/QA/independent-tower/stage4-smoke/narrow-result.png",
+        "docs/game035/QA/independent-tower/stage4-smoke/landscape-result.png"
+      ],
+      "qa": [
+        "docs/game035/QA/independent-tower/stage4-smoke/MOTION_G.json",
+        "docs/game035/QA/independent-tower/stage4-smoke/report.json"
+      ],
+      "limits": "初回実装者の静止QAを投球motionへ代用せず、別tower workerの43deb通常投球画像とreadonly前後を追加で使用。"
+    }
+  ],
+  "humanJudgment": null,
+  "finalStatus": "3作品とも実確認範囲の技術Visual基準を満たす。人間の面白さ・実機・連続FPS・聴感は全て未実施。",
+  "thumbnails": {
+    "targets": [
+      "game033",
+      "game034",
+      "game035"
+    ],
+    "method": "実playのcrop/contain640x360WebP。創作画面や生成背景そのものをthumbと偽らない。",
+    "provenance": "assets/portal/thumbnails/reorganization-2026-10-15/VALIDATION.json",
+    "allTwelveTargetThumbsVerified": true,
+    "protectedEntriesAndOutputsUnchanged": 23
+  }
+}

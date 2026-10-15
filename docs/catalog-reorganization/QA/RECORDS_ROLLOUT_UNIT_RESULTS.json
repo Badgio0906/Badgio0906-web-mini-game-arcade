@@ -1,0 +1,14 @@
+{
+  "command": "npx vitest run tests/unit/records-rollout-selection.test.ts tests/unit/record-rule-migration.test.ts tests/unit/records-client.test.ts",
+  "status": "PASS",
+  "files": 3,
+  "tests": 18,
+  "observed_start_utc": "2026-10-15T14:40:02Z",
+  "duration_ms_reported": 950,
+  "checks": {
+    "frontend_typescript": "PASS: npm run check",
+    "worker_typescript": "PASS: npm --prefix analytics-worker run check",
+    "diff_whitespace": "PASS: git diff --check (owned files)"
+  },
+  "provenance": "actual command results from current task; not a fabricated test run"
+}

@@ -1,0 +1,33 @@
+{
+  "finding_id": "stage3-live-transition-input-timing",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "runner_fall; independent reader, not Game009/Game017 runtime author; no Jev response read; no browser launched for this review",
+  "rationale": "The initial live production collector waits only for data-state playing, captures the main screen and reads geometry, then issues one native pause tap with no minimum transition interval. In the fixed source, Game009 show() sets a180ms guard and Game017 show() sets a220ms guard; their delegated click handlers return while performance.now()<guard. data-state becomes playing before either guard expires. Thus waiting for the state and completing screenshots/DOM reads does not establish input readiness. Initial failed390 images show an unobscured active main screen, including009 clock69.9seconds after a20second wait and017 normal sheltered gameplay; there is no paused overlay or blocking consent popup. A collector-only diff adds300ms before play and pause, with no product changes. The six previously failing touch cases all then pass326checks, with resume/title controls recorded in production-pause geometry for each case, no failures/errors/writes and identical009/017 source hashes across and within runs. This supports an automated-input timing failure rather than an unusable pause control. The exact rejected click timestamp was not logged in the initial run, so guard collision is inferred from the control flow and bounded collector-only retest rather than claimed as direct event-time measurement. This judgment does not approve human Feel or publication.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/live-stage3-browser/REPORT.json",
+    "docs/catalog-reorganization/QA/live-stage3-browser/COLLECTOR.mjs:86",
+    "docs/catalog-reorganization/QA/live-stage3-browser/prod-009-390-FAILED.png",
+    "docs/catalog-reorganization/QA/live-stage3-browser/prod-017-390-FAILED.png",
+    "/workspace/arcade-stage3-final/src/games/game009/main.ts:15",
+    "/workspace/arcade-stage3-final/src/games/game009/main.ts:29",
+    "/workspace/arcade-stage3-final/src/games/game017/main.ts:15",
+    "/workspace/arcade-stage3-final/src/games/game017/main.ts:27",
+    "docs/catalog-reorganization/QA/live-stage3-transition-retest/COLLECTOR.mjs:86",
+    "docs/catalog-reorganization/QA/live-stage3-transition-retest/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Independently reviewed the initial raw failed images and reports, compared the two captured collector sources, traced the180ms/220ms guards in fixed runtime source, and reviewed the completed root-run live production retest. Only two300ms collector waits changed. All009/017 touch widths390/320/844 passed, including native pause and portal return; source hashes are identical, pageerror/write0. Preserved the original failed report. No runtime edits or independent browser execution were performed by this reviewer.",
+    "evidence": [
+      "docs/catalog-reorganization/QA/live-stage3-browser/REPORT.json",
+      "docs/catalog-reorganization/QA/live-stage3-transition-retest/REPORT.json",
+      "docs/catalog-reorganization/QA/live-stage3-browser/COLLECTOR.mjs",
+      "docs/catalog-reorganization/QA/live-stage3-transition-retest/COLLECTOR.mjs"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

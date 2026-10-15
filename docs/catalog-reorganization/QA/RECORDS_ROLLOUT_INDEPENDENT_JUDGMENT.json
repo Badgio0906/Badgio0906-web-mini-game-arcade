@@ -1,0 +1,24 @@
+{
+  "finding_id": "records-rollout-board-selection",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "root independent code review, not rollout implementation author; no Jev response read",
+  "rationale": "The pre-rollout client rejects unknown board IDs, so broadcasting newly expanded definitions to no-query callers would fail all old public BEST refreshes. An explicit caller board vocabulary plus the fixed legacy default preserves old clients. Reviewed known/unique/64 bound, SQL placeholders, unchanged additive initialization and the exact old invalid_query-only single frontend fallback. New unit and isolated D1 evidence cover old default, arbitrary known subsets and complete current selection.",
+  "evidence": [
+    "src/records/PublicBests.ts",
+    "analytics-worker/src/records.ts",
+    "tests/unit/records-rollout-selection.test.ts",
+    "docs/catalog-reorganization/QA/RECORDS_ROLLOUT_LOCAL_D1.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently traced strict response validation, default/selected Worker response paths, safe bound SQL and legacy query fallback after implementation.",
+    "evidence": [
+      "src/records/PublicBests.ts",
+      "analytics-worker/src/records.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

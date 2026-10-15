@@ -1,0 +1,26 @@
+{
+  "finding_id": "034-native-consent-overlay-capture",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "Independent Art Director worker, not Game034 game/collector implementer. Created its static background/materials; no Jev answers read.",
+  "rationale": "Actually opened the initial desktop-playing-canvas and full screenshot: they contain the normal first-run Analytics consent panel over the game. Such a capture cannot serve as a clean gameplay thumbnail or final unobstructed Visual evidence. The collector omitted the ordinary consent choice. The new clean directory's actual images show the same game art without that panel after a normal refusal; no runtime edit is needed for this capture problem. This is a QA evidence preparation issue, not a major unresolved product release risk.",
+  "evidence": [
+    "docs/game034/QA/stage4-43deb-four-widths/desktop-playing-canvas.png",
+    "docs/game034/QA/stage4-43deb-four-widths/desktop-playing.png",
+    "docs/game034/QA/stage4-43deb-four-widths-clean/desktop-playing-canvas.png",
+    "docs/game034/QA/stage4-43deb-four-widths-clean/desktop-playing.png",
+    "assets/portal/thumbnails/reorganization-2026-10-15/game034-withdrawn-consent-capture.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Actually viewed both old obscured captures and new clean gameplay/canvas/motion-b. Rejected the obscured thumbnail adoption, retained its original and withdrawn provenance, then used only the new ordinary-input capture with no panel for the640x360crop/contain thumbnail. No game runtime modifications.",
+    "evidence": [
+      "docs/game034/QA/stage4-43deb-four-widths-clean/desktop-playing-canvas.png",
+      "assets/portal/thumbnails/reorganization-2026-10-15/game034-crop.json"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "TEST_INFRA_BUG"
+}

@@ -1,0 +1,32 @@
+{
+  "finding_id": "final-smoke-native-dialog-return-target",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain; independent read-only source/log/PNG review; Jev answer not read",
+  "rationale": "The initial compiled smoke selected the first CSS-visible .arcade-portal-return. In Game033 pause the native dialog is modal, so the underlying header is inert even though Playwright CSS visibility is true. All four timeout logs explicitly identify the top-layer .arcade-modal-return inside open dialog#menu as intercepting the selected header anchor. public/arcade-navigation.js intentionally provides this top-layer native return link and forwards its click to the existing header save/quit path. Independently viewed initial desktop failure PNG shows the active upper-left return action above the modal backdrop. The collector correction changes only leave-target selection to prefer the open-dialog return action. On identical 57dce249 source the corrected production rerun passes all four widths with 198 checks, zero failures/page errors/POSTs and unchanged source hashes. Dedicated Game033 native runs separately recorded normal portal return at all four widths. This evidence establishes a collector target-selection failure and does not require a production-source change.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/final-release-build/REPORT.json",
+    "docs/catalog-reorganization/QA/final-release-build/COLLECTOR.mjs:34",
+    "docs/catalog-reorganization/QA/final-release-build/prod-033-1440-FAILED.png",
+    "public/arcade-navigation.js:20",
+    "public/arcade-navigation.js:36",
+    "src/games/game033/main.ts:22",
+    "docs/catalog-reorganization/QA/final-release-modal-return-retest/COLLECTOR.mjs:34",
+    "docs/catalog-reorganization/QA/final-release-modal-return-retest/REPORT.json",
+    "docs/game033/QA/43deb-native-01/report.json",
+    "docs/game033/QA/43deb-native-02/report.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently inspected initial Playwright interception logs, first-visible collector selector, native modal source and shared top-layer return implementation; viewed the actual initial failure PNG. Then compared corrected leave selector and read completed four-width production rerun: 1440/390/320/844 PASS, 198 checks, source unchanged, errors/writes empty. Initial 44/48 successes and four failures remain preserved, with the four corrected cases separately documented. Browser not used and production source not edited by this reviewer.",
+    "evidence": [
+      "public/arcade-navigation.js:20",
+      "docs/catalog-reorganization/QA/final-release-build/REPORT.json",
+      "docs/catalog-reorganization/QA/final-release-modal-return-retest/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

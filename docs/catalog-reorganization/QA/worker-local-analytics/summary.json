@@ -1,0 +1,4113 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T14:33:50.394Z",
+  "period": {
+    "from": "2026-10-08T14:33:50.375Z",
+    "to": "2026-10-15T14:33:50.375Z"
+  },
+  "environment": "synthetic",
+  "coverage": {
+    "scope": "consented-observed-events",
+    "raw_retention_days": 90,
+    "aggregate_retention_months": 13,
+    "event_count": 2,
+    "query_truncated": false,
+    "raw_period_complete": true,
+    "duration_unit": "seconds",
+    "raw_window_from": "2026-07-18T00:00:00.000Z",
+    "missing": [
+      "consent_not_granted",
+      "legacy_uninstrumented",
+      "unobserved_page_exit",
+      "censored_runs",
+      "unreported_milestones"
+    ],
+    "cohort_limits": "Return cohorts need their full follow-up inside the requested period. Continuation is within observed browser+visit+game. Missing page_exit never means boredom. Large fall uses lost progress >=10m, not jump-apex descent. Its recovery rate counts observed same-RUN continuation, not regained height; sampled-jump omissions make this a lower bound.",
+    "history_limits": "Daily archives are complete UTC calendar-day totals; partial UTC edge-day totals are not exact requested-period totals. Daily observed browser/visit counts cannot be added to obtain period distinct counts. Archived aggregates cannot reconstruct individual continuation or return cohorts."
+  },
+  "history": {
+    "granularity": "UTC-calendar-day",
+    "partial_edge_days": true,
+    "daily": []
+  },
+  "summary": {
+    "observed_browser_count": 1,
+    "visit_count": 1,
+    "portal_view_count": 0,
+    "game_card_impressions": 0,
+    "game_card_clicks": 0,
+    "ctr": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "game_starts": 0,
+    "run_count": 1,
+    "run1": 1,
+    "run2": 0,
+    "run3": 0,
+    "second_run_rate": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0,
+      "sample_size_small": true
+    },
+    "third_run_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "browser_second_run_rate": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0,
+      "sample_size_small": true
+    },
+    "browser_third_run_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "launch_to_run_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "average_runs_per_visit": 1,
+    "median_runs_per_visit": 1,
+    "median_run_duration": 12,
+    "measured_duration_count": 1,
+    "best_updates": 0,
+    "best_update_rate": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0,
+      "sample_size_small": true
+    },
+    "return_to_portal_count": 0,
+    "return_to_portal_rate": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0,
+      "sample_size_small": true
+    },
+    "cross_game_rate": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0,
+      "sample_size_small": true
+    },
+    "client_error_count": 0,
+    "retry_count": 0,
+    "failure_retry_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "large_fall_count": 0,
+    "large_fall_recovery_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "next_day_return_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "seven_day_return_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "sample_size_small": true
+    },
+    "device_split": {
+      "mobile": 1
+    },
+    "traffic_source_split": {
+      "unknown": 1
+    },
+    "top_failure_reasons": [],
+    "top_exit_phases": [
+      {
+        "label": "unknown",
+        "count": 1
+      }
+    ]
+  },
+  "games": [
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game001",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game002",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game003",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game005",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game006",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game008",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game009",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game011",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game012",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game013",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game014",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "legacy_uninstrumented: shell opens/navigation; native RUN/progress not measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game015",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "50m",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "100m",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "200m",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "500m",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game016",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game017",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game018",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "shoe",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "JUST",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "space",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "spaceship",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "rare_eligible",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "rare_won",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "rare_shown",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "landing",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 1,
+      "visit_count": 1,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 1,
+      "run1": 1,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": 1,
+      "median_runs_per_visit": 1,
+      "median_run_duration": 12,
+      "measured_duration_count": 1,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "rate": 0,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {
+        "mobile": 1
+      },
+      "traffic_source_split": {
+        "unknown": 1
+      },
+      "top_failure_reasons": [],
+      "top_exit_phases": [
+        {
+          "label": "unknown",
+          "count": 1
+        }
+      ],
+      "game_id": "game019",
+      "status": "active",
+      "versions": [
+        {
+          "game_version": "2",
+          "rules_version": "2",
+          "presentation_version": "2",
+          "event_count": 2
+        }
+      ],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1,
+          "sample_size_small": true
+        },
+        {
+          "step": "25m",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        },
+        {
+          "step": "50m",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        },
+        {
+          "step": "75m",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        },
+        {
+          "step": "well_clear",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        },
+        {
+          "step": "sky",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        },
+        {
+          "step": "space",
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "consented observed events; missing endpoints and milestones remain unknown"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game020",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game022",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game023",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game024",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game025",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game026",
+      "status": "hidden",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game027",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game028",
+      "status": "hidden",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game029",
+      "status": "hidden",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game030",
+      "status": "hidden",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "sandbox_summary": {
+        "summary_count": 0,
+        "active_seconds": 0,
+        "blocks_mined": 0,
+        "blocks_placed": 0,
+        "return_to_surface_count": 0,
+        "max_depth": null,
+        "maximum_material_types_found": null,
+        "quality_summary_counts": {},
+        "save_error_summary_counts": {},
+        "coverage": "observed-interval-deltas-only"
+      },
+      "game_id": "game031",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "fishing_summary": {
+        "cast_count": 0,
+        "spot_cast_counts": {},
+        "cast_distance_counts": {},
+        "hook_fail_reason_counts": {
+          "early": 0,
+          "late": 0
+        },
+        "fish_hooked_counts": {},
+        "fish_landed_counts": {},
+        "landed_event_count": 0,
+        "escaped_event_count": 0,
+        "completed_outing_count": 0,
+        "measured_fish_outing_count": 0,
+        "average_fish_per_completed_outing": null,
+        "measured_score_outing_count": 0,
+        "average_score": null,
+        "sample_size_small": true,
+        "coverage": "observed-standard-events-only"
+      },
+      "game_id": "game032",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game033",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game034",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    },
+    {
+      "observed_browser_count": 0,
+      "visit_count": 0,
+      "portal_view_count": 0,
+      "game_card_impressions": 0,
+      "game_card_clicks": 0,
+      "ctr": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "game_starts": 0,
+      "run_count": 0,
+      "run1": 0,
+      "run2": 0,
+      "run3": 0,
+      "second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_second_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "browser_third_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "launch_to_run_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "average_runs_per_visit": null,
+      "median_runs_per_visit": null,
+      "median_run_duration": null,
+      "measured_duration_count": 0,
+      "best_updates": 0,
+      "best_update_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "return_to_portal_count": 0,
+      "return_to_portal_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "cross_game_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "client_error_count": 0,
+      "retry_count": 0,
+      "failure_retry_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "large_fall_count": 0,
+      "large_fall_recovery_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "next_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "seven_day_return_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "sample_size_small": true
+      },
+      "device_split": {},
+      "traffic_source_split": {},
+      "top_failure_reasons": [],
+      "top_exit_phases": [],
+      "game_id": "game035",
+      "status": "active",
+      "versions": [],
+      "funnel": [
+        {
+          "step": "run_start",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        },
+        {
+          "step": "run_end",
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "sample_size_small": true
+        }
+      ],
+      "measurement_coverage": "not_measured"
+    }
+  ]
+}

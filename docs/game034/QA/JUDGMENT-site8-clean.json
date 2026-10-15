@@ -1,0 +1,25 @@
+{
+  "finding_id": "NEW034-SITE8-NO-CLEAN",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent desk_rain worker; not Game034 implementer; no Jev responses read",
+  "rationale": "Independent exhaustive enumeration of every legal one-to-three-part selection under the actual fixed120Hz8s Matter model yields zero clean results at site7. Seven other sites have clean legal results. The last-site best score has containment0.7120/lowering0.8398/protected hut and cannot reach the clean goal. This is a content/goal reachability issue, requiring a bounded site configuration correction and repeated exhaustive verification.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/independent-034/ALL-CUTS.json",
+    "src/games/game034/DemolitionRun.ts:SITES site7",
+    "src/games/game034/DemolitionRun.ts:calculate",
+    "docs/catalog-reorganization/NEW033_034_INDEPENDENT_REVIEW.md",
+    "docs/game034/QA/layout-variants.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Bundled the actual unmodified DemolitionRun and independently executed all legal cut masks at120Hz until the eight-second result. Saved every selection and score, verifying cleanCount zero at the final site.",
+    "evidence": [
+      "docs/catalog-reorganization/QA/independent-034/ALL-CUTS.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE",
+  "human_judgment": null
+}

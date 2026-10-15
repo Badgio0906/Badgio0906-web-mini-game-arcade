@@ -1,0 +1,23 @@
+{
+  "finding_id": "033-native-explanation-scroll-geometry",
+  "problem": "320x568 explanation action extends below the current viewport and the all-actions-visible assertion stops the collector",
+  "expected": "Explanation actions remain reachable with ordinary scrolling and native input at supported narrow widths",
+  "observed": [
+    "Normal click on explanation after narrow title at320x568 reports title action top542.765625 height44 bottom586.765625",
+    "The dialog CSS specifies max-height:calc(100dvh - 94px) and overflow:auto",
+    "Desktop and390x844 native lifecycle and phone100-second result completed before this stop"
+  ],
+  "unknown": [
+    "Whether native scrolling reveals the final explanation action fully",
+    "Whether any action remains clipped after scrolling"
+  ],
+  "viewport": {
+    "width": 320,
+    "height": 568
+  },
+  "evidence": [
+    "docs/game033/QA/43deb-native-01/report.json",
+    "src/games/game033/style.css"
+  ],
+  "provenance": "browser observation with native touch; no model injection"
+}

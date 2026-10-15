@@ -1,0 +1,133 @@
+{
+  "at": "2026-10-15T14:48:02.926Z",
+  "source": "43deb6cd50348dada54acb7469fefd12b54ac93c",
+  "worker_version": "7089fcf1-38cc-4a7d-8414-d32f41c86c48",
+  "productionWrites": "Worker deployment and additive registration only; no test player/event/submission POST",
+  "checks": [
+    {
+      "name": "health",
+      "status": 200
+    },
+    {
+      "name": "old frontend default preserved",
+      "count": 20,
+      "status": 200
+    },
+    {
+      "name": "current requested catalog",
+      "count": 32,
+      "ids": [
+        "game001.score.r1.all",
+        "game002.score.r1.all",
+        "game002.score.r2.all",
+        "game003.floors.r2.all",
+        "game003.floors.r3.all",
+        "game004.level.r1.all",
+        "game005.sorted.r1.all",
+        "game005.score.r2.all",
+        "game006.score.r2.all",
+        "game006.score.r3.all",
+        "game007.score.r2.all",
+        "game008.score.r2.all",
+        "game009.score.r2.all",
+        "game009.score.r3.all",
+        "game011.score.r2.all",
+        "game012.score.r1.normal",
+        "game013.score.r1.normal",
+        "game014.successes.r1.normal",
+        "game015.depth.r03.all",
+        "game015.depth.r04.all",
+        "game016.score.r1.all",
+        "game017.score.r1.all",
+        "game017.score.r2.all",
+        "game018.distance.r1.all-shoes",
+        "game019.height.r2.all",
+        "game024.foods.r1.speed-4",
+        "game024.foods.r2.speed-4",
+        "game029.score.r1.all",
+        "game032.score.r1.standard",
+        "game033.score.r1.standard",
+        "game034.score.r1.all",
+        "game035.score.r1.main"
+      ]
+    },
+    {
+      "name": "game002 current TOP10",
+      "board": "game002.score.r2.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game003 current TOP10",
+      "board": "game003.floors.r3.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game005 current TOP10",
+      "board": "game005.score.r2.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game006 current TOP10",
+      "board": "game006.score.r3.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game009 current TOP10",
+      "board": "game009.score.r3.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game015 current TOP10",
+      "board": "game015.depth.r04.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game017 current TOP10",
+      "board": "game017.score.r2.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game024 current TOP10",
+      "board": "game024.foods.r2.speed-4",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game033 current TOP10",
+      "board": "game033.score.r1.standard",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game034 current TOP10",
+      "board": "game034.score.r1.all",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    },
+    {
+      "name": "game035 current TOP10",
+      "board": "game035.score.r1.main",
+      "status": 200,
+      "entries": 0,
+      "revision": 0
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,16 @@
+{
+  "finding_id": "final-smoke-native-dialog-return-target",
+  "problem": "The shared compiled smoke cannot activate its selected return link while Game033 has an open native modal.",
+  "expected": "Use the normally interactive return control to reach the actual portal from pause.",
+  "observed": [
+    "Final57dce smoke passes44of48cases;all4Game033cases load title/main/pause and fail only at return.",
+    "Playwright reports the first .arcade-portal-return is covered by an .arcade-modal-return link inside open dialog#menu.",
+    "The collector selects the first CSS-visible return link without checking whether it belongs to the open modal.",
+    "No pageerrors or nonGET attempts;source hashes unchanged.",
+    "Game033 dedicated native QA already returns via its active modal link."
+  ],
+  "unknown": [
+    "Whether selecting the active dialog return control confirms ordinary portal return on all4widths."
+  ],
+  "provenance": "actual final compiled browser output, shared collector source and separate game-native QA"
+}

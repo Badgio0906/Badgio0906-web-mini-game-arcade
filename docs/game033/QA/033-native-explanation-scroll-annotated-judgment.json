@@ -1,0 +1,30 @@
+{
+  "finding_id": "033-native-explanation-scroll-geometry",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain; independent source and raw evidence read; Jev answer not read",
+  "rationale": "Initial 320x568 help-modal geometry rejects its last 44px title button at y542.765625, bottom586.765625, because it requires every long-modal button to fit in the viewport simultaneously. Product dialog CSS explicitly limits height to viewport minus94px and enables overflow:auto; 44px controls in a longer native scroll container are not required to be simultaneously visible. The prepared collector correctly scopes actionable controls to the open modal, scrolls each control into view, and checks both viewport and dialog inner clip bounds while preserving size checks. The initial evidence does not establish an unreachable control. A new native320/844 scroll-reachability run is still pending and must detect any actual clipped/unreachable action; this judgment does not claim that pending run passed. Subsequent author-run fixed-source native320/844 reachability evidence is now complete: both cases pass after actual browser scrolling; no product source changed. Independent source judgment above remains distinguished from this subsequent execution.",
+  "evidence": [
+    "docs/game033/QA/43deb-native-01/report.json",
+    "src/games/game033/style.css:1",
+    "src/games/game033/main.ts:30",
+    "tests/game033/native.mjs:35",
+    "tests/game033/native.mjs:48",
+    "docs/game033/QA/43deb-native-02/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Following independent desk source judgment without Jev responses, runner executed fixed43deb production native touch320x568 and844x390. Each active modal button was scrolled normally and measured inside both viewport and dialog inner bounds. Narrow final title button scrollTop14to85, y457.765625,h44,innerbottom520; landscape scrollTop0to16,y314.34375,h44,innerbottom358. Both full short lifecycles pass, source unchanged, pageerror/write0. Original failed RUN retained.",
+    "evidence": [
+      "docs/game033/QA/033-native-explanation-scroll-judgment.json",
+      "docs/game033/QA/43deb-native-01/report.json",
+      "docs/game033/QA/43deb-native-02/report.json",
+      "docs/game033/QA/43deb-native-02/narrow-scrolled-action-1-2.png",
+      "docs/game033/QA/43deb-native-02/landscape-scrolled-action-1-2.png"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

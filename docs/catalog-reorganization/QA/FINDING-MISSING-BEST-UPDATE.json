@@ -1,0 +1,22 @@
+{
+  "finding_id": "four-games-missing-best-update",
+  "problem": "Four revised standard-result entrypoints have no best_update event call despite recording a newBest flag on score.",
+  "expected": "Chapter60 requires score and best_update; best_update should occur once only when the existing current-rule comparison improves.",
+  "observed": [
+    "Game002 onEnd tracks score with newScoreBest but no best_update.",
+    "Game003,005,006 onEnd track score with newBest but no best_update.",
+    "TelemetryService.trackEvent does not synthesize best_update from score.newBest."
+  ],
+  "unknown": [
+    "Runtime event counts on the integrated final build."
+  ],
+  "evidence": [
+    "src/games/game002/main.ts",
+    "src/games/game003/main.ts",
+    "src/games/game005/main.ts",
+    "src/games/game006/main.ts",
+    "src/core/TelemetryService.ts",
+    "docs/catalog-reorganization/REQUEST.txt chapter60"
+  ],
+  "provenance": "independent-source-requirements-audit"
+}
