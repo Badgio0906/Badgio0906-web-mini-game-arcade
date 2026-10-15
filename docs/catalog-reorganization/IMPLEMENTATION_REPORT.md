@@ -8,3 +8,10 @@
 レビュー担当は実装から分離して委任可能。OpenAI ImageGen toolあり、Art Directorが実利用確認。旧稼働20board、新032と021–032 Analyticsは登録待ち（最新GETで確認後追記）。
 
 検証・独立レビュー・公開証拠はQAとPUBLICATIONを参照。本人の変更後試遊・物理端末・聴感は未実施。
+
+## 実行結果（第1工程）
+固定source f28ce3d（実装）。check成功、全87file/1011test成功（bc193ad）、favorite修正後の対象35tests成功、production config build成功。4viewport＋repository subpath通常操作150check成功・pageerror0・POST0。hidden4は旧URLでゲームUI、retired4は終了案内/一覧帰還を確認。画像はQA/local-mapping-fixed。公開前の失敗QAもlocal-final（同意panel未処理）、local-consent-fixed（object key順比較）として保持し、テスト手順を修正。初回全体の7failureは旧固定件数/旧完成状態/旧退役集合/portalとWorker登録の混同で、旧boardを削除せず期待を更新。
+
+記録サービスGET: /v1/health HTTP200 status ok、/v1/records/public/bests HTTP200・20board（Node inherited proxy経由）。Python urllibによるHTTP403はこの環境の経路差で本番障害とは判定しない。Analytics021–032 pendingを維持。第1工程ではWorker/D1へ書込みなし。
+
+新ゲーム用matter-js採用は次工程のみ。第1工程のpackage/ゲーム本体は不変。

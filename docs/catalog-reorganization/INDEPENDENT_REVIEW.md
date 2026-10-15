@@ -16,3 +16,7 @@ Reviewer: sorting_parking worker（第1工程の実装担当と分離）。2026-
 - id/releaseOrder/route、recordDefinitions/gameVersions/records、完成9作品の本体に差分なし。元BESTとランキングboardに書込み変更なし。
 
 上記finding解消前に独立レビュー合格とはしない。通常ブラウザ入力、配信URL、実機、人間の遊び評価はこのコードレビューの範囲外。
+
+## 限定修正のコード再確認
+
+Root作業treeの`src/portal/main.ts`でhistoricalGameCatalogのimportと`knownIds = new Set(historicalGameCatalog.map(...))`へ変更されたことを2026-10-15 14:10 UTC以降に独立確認した。render/applyDiscovery/orderingFavoritesの対象はactive gameCatalogのままで、hiddenを再掲載せず既存favorite IDを保持する境界となった。コード上のfindingは解消。固定07f70a2の原判定は保持する。Root担当の実ブラウザ保存シナリオと最終固定source確認は別証拠を参照。
