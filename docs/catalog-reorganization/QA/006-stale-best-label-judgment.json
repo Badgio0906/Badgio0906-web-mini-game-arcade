@@ -1,0 +1,24 @@
+{
+  "finding_id": "006-stale-best-label",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent desk_rain worker, not Game006 implementer; Jev answers not read",
+  "rationale": "Actual fixed-candidate desktop and phone images show upper BEST V2 and stage/result V3 for the same run. This is an inconsistent label, not evidence of stored old/new record mixing. Root working HTML now labels both fields V3; physics and storage are untouched. Published-image recheck remains separately pending.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-03/006-320-corrected-paused.png",
+    "game006.html:8",
+    "game006.html:9"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "After independent screenshot observation, inspected root working HTML to verify the old BEST V2 literal is replaced by V3 while stage HUD remains V3. The fixed candidate itself was not edited during the run.",
+    "evidence": [
+      "game006.html:8",
+      "docs/catalog-reorganization/QA/STAGE3_005_006_COMBINED.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE",
+  "human_judgment": null
+}

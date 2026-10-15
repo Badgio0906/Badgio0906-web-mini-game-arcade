@@ -1,0 +1,31 @@
+{
+  "finding_id": "stage2-publication-build-environment",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain; independent read-only publication review; Jev response not read",
+  "rationale": "The d0252d9 fixed source and 25deef9 deployed commit have no diff in src, public, HTML, Vite configuration, package or lockfile, or official workflow. The workflow supplies three whitelisted VITE public build variables and source compiles those values via import.meta.env. The initial 61 mismatches were HTML/chunk hash-reference differences; independently fetched game002/game003/index HTML matched after content-hash normalization and all 41 actual live script references returned HTTP200. Main reproduced only the known public build configuration in memory and rebuilt the fixed tree without source, Worker or deployment changes. The resulting publication report has 155/155 HTTP200 and local/public SHA equality, including two fonts. This reviewer independently recomputed SHA256 of every current fixed-dist file: all 155 equal the corresponding recorded local and public hashes. Thus the initial comparator did not use the production build environment; no unresolved public asset identity mismatch remains in the checked set. Initial and failed retry evidence remains preserved. Configuration values, credentials and quarantined artifact-download raw data were not read or recorded by this reviewer.",
+  "evidence": [
+    ".github/workflows/pages.yml:27",
+    "src/records/PublicBests.ts:5",
+    "src/analytics/config.ts:2",
+    "src/analytics/config.ts:15",
+    "tests/catalog-reorganization/verify-publication.mjs:8",
+    "docs/catalog-reorganization/QA/live-stage2/PUBLICATION_SHA.json",
+    "docs/catalog-reorganization/QA/PUBLICATION_BUILD_ENV_EVIDENCE.json",
+    "docs/catalog-reorganization/QA/live-stage2-reproduced-public-config/PUBLICATION_SHA.json",
+    "docs/catalog-reorganization/QA/live-stage2-browser/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Main rebuilt the unchanged fixed source with three whitelisted known public build variables reproduced in memory. The complete checked public set expanded to 155 files with two fonts and returned HTTP200/SHA equality for every file. This independent reviewer re-read the original and final reports, verified runtime/build-input Git diff empty and fixed source clean, and recomputed SHA256 of all 155 fixed-dist files against both report hashes. The independent verification has zero mismatches. The separate live native report contains 1210 passing checks, no page errors or POSTs, and unchanged source. No browser execution, source changes, public configuration value extraction or private artifact raw inspection by this reviewer.",
+    "evidence": [
+      "docs/catalog-reorganization/QA/PUBLICATION_BUILD_ENV_EVIDENCE.json",
+      "docs/catalog-reorganization/QA/live-stage2-reproduced-public-config/PUBLICATION_SHA.json",
+      "docs/catalog-reorganization/QA/live-stage2-browser/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

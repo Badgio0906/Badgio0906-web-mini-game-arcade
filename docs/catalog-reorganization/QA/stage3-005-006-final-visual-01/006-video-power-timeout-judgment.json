@@ -1,0 +1,22 @@
+{
+  "finding_id": "stage3-final-006-video-power-timeout",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain (Jev回答未読、自collector調査。製品Visual独立判定はArt Directorへ)",
+  "rationale": "録画ありの採取はpower54%の離散表示pollを拾えず中断。製品入力へ介入せず許可済still+readonly進行へ切替え、02で通常Space4.0517度/54.4718%、C距離120.7869、実駐車1台110点を確認。連続動画Gは未評価。",
+  "evidence": [
+    "REPORT.json",
+    "../stage3-005-006-final-visual-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "録画ありの採取はpower54%の離散表示pollを拾えず中断。製品入力へ介入せず許可済still+readonly進行へ切替え、02で通常Space4.0517度/54.4718%、C距離120.7869、実駐車1台110点を確認。連続動画Gは未評価。",
+    "evidence": [
+      "../stage3-005-006-final-visual-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

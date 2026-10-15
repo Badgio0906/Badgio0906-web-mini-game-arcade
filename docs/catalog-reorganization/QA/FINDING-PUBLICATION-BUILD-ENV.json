@@ -1,0 +1,15 @@
+{
+  "finding_id": "stage2-publication-build-environment",
+  "problem": "The official deployed stage-two Pages build passes browser actions but does not match the local compiled file hashes.",
+  "expected": "Verify that distributed HTML and compiled assets correspond to the fixed reviewed source under the official build configuration.",
+  "observed": [
+    "Official workflow38760415500 build and deploy succeeded for25deef9.",
+    "Live5games x4viewports passed1210 checks with0pageerrors/0write attempts.",
+    "Initial153-file SHA comparison has61 failures:HTML/config scripts return200 with different hashes and31 local hashed JS names return404; CSS and art match.",
+    "The official workflow supplies three VITE build variables from repository Actions Variables, including a records endpoint default; the local fixed build command did not explicitly supply them."
+  ],
+  "unknown": [
+    "Whether matching the official public build variables reproduces the deployed artifact."
+  ],
+  "provenance": "actual official workflow, actual public native browser, local/public SHA comparison, workflow source inspection"
+}

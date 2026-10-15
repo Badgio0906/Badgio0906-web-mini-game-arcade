@@ -1,0 +1,18 @@
+{
+  "finding_id": "stage3-final-006-video-power-timeout",
+  "problem": "recordVideoありの追加操作でpower待機がtimeoutした",
+  "expected": "通常Spaceで角度と強さを確定しC後の駐車を採取する",
+  "observed": [
+    "角度は通常Spaceで3.7度へ確定",
+    "recordVideoを有効にしたheadlessで表示power54%±0.5待機が15000ms timeout",
+    "失敗時はpower選択中で83%表示"
+  ],
+  "unknown": [
+    "recordVideoなしで同じ方策が成立するか"
+  ],
+  "evidence": [
+    "006-desktop-motion-FAILED.png",
+    "REPORT.json"
+  ],
+  "provenance": "Actual native Playwright input on fixed a32344b, not synthetic."
+}

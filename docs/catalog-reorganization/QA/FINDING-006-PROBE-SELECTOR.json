@@ -1,0 +1,15 @@
+{
+  "finding_id": "stage3-006-prefix-probe-selector",
+  "problem": "The isolated title label browser probe times out waiting for its header selector.",
+  "expected": "Read the actually rendered current BEST header and pseudo-element after the one-word CSS correction.",
+  "observed": [
+    "The title and play-button loaded; reading .start-ticket .mini-best pseudo-element completed.",
+    "Reading#best-label timed out30000ms.",
+    "Source markup renders the BEST label as .best-stat>span without that ID.",
+    "A separate corrected selector probe reports prefixV3 and headerBEST V3, no errors or writes, and source hash unchanged."
+  ],
+  "unknown": [
+    "Whether the failure reflects a test selector mismatch or a product rendering fault."
+  ],
+  "provenance": "actual isolated browser output, actual HTML and a separate corrected probe"
+}

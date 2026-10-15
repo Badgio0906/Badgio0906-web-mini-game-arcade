@@ -1,0 +1,18 @@
+{
+  "finding_id": "stage3-006-title-best-version-prefix",
+  "problem": "The current-rule best score in the title ticket is visually prefixedV2 while the surrounding current-rule UI saysV3.",
+  "expected": "The current-rule best score uses theV3label consistently, with preserved olderV2best identified separately.",
+  "observed": [
+    "Actual006-1440-title-label.png,006-320-title-label.png and006-844-title-label.png showBEST V3in the scorebar butV2 · BEST SCOREin the center ticket.",
+    "The CSS pseudo-element .start-ticket .mini-best:before has contentV2, while the ticket value comes from the current best."
+  ],
+  "unknown": [
+    "Whether changing this isolated CSS pseudo-element toV3 renders the correct title prefix in the final candidate."
+  ],
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-005-006-final-visual-02/006-1440-title-label.png",
+    "src/games/game006/style.css:52",
+    "src/games/game006/main.ts:95"
+  ],
+  "provenance": "actual screenshot inspection followed by independent CSS/source confirmation"
+}

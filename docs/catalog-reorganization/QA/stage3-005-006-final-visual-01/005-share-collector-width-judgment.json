@@ -1,0 +1,22 @@
+{
+  "finding_id": "stage3-final-005-share-collector-width",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain (Jev回答未読、自collector調査。製品Visual独立判定はArt Directorへ)",
+  "rationale": "共有controls全幅と128x44pxの1行描画を確認。140px仮閾値が仕様と結び付かず、collectorのみ幅100以上かつ高さ48以下へ限定修正し、02で通常練習→fever→3miss結果まで再取得した。",
+  "evidence": [
+    "REPORT.json",
+    "../stage3-005-006-final-visual-02/REPORT.json"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "共有controls全幅と128x44pxの1行描画を確認。140px仮閾値が仕様と結び付かず、collectorのみ幅100以上かつ高さ48以下へ限定修正し、02で通常練習→fever→3miss結果まで再取得した。",
+    "evidence": [
+      "../stage3-005-006-final-visual-02/REPORT.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

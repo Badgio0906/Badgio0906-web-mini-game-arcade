@@ -1,0 +1,20 @@
+{
+  "finding_id": "stage3-005-landscape-score-overlap",
+  "problem": "The sorting board overlaps the score and chain numbers at the top left in844x390 landscape play.",
+  "expected": "The score, chain count, active rule and sorting board can all be read simultaneously.",
+  "observed": [
+    "Actual005-844-fever.png shows score/chain text at approximately y84-98 partly covered by the board beginning aroundx84,y84.",
+    "1440/390/320fever captures keep the score row and board separate."
+  ],
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "unknown": [
+    "Whether separate scorebar layout rows retain the active rule and44px controls on the short viewport."
+  ],
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-03/005-844-fever.png"
+  ],
+  "provenance": "actual browser screenshot reviewed by independent Visual worker"
+}

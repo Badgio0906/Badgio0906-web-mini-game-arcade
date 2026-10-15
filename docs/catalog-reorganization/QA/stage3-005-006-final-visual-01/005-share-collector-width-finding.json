@@ -1,0 +1,18 @@
+{
+  "finding_id": "stage3-final-005-share-collector-width",
+  "problem": "共有ボタンの自動判定が横幅条件で失敗した",
+  "expected": "結果の共有ラベルが1行で読め、result内容幅へcontrolsを配置する",
+  "observed": [
+    "390/844の共有controlsは内容幅302/266pxと一致",
+    "共有buttonは128x44px",
+    "collectorはbuttonWidth>=140条件を満たさずFAILとした",
+    "実画像では共有ラベルは1行で表示される"
+  ],
+  "unknown": [],
+  "evidence": [
+    "005-390-result.png",
+    "005-844-result.png",
+    "REPORT.json"
+  ],
+  "provenance": "Actual native Playwright input on fixed a32344b, not synthetic."
+}

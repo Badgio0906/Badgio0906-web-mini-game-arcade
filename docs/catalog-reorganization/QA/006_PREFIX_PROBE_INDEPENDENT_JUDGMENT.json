@@ -1,0 +1,27 @@
+{
+  "finding_id": "stage3-006-prefix-probe-selector",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "desk_rain; independent source and evidence read; Jev answer not read",
+  "rationale": "The initial probe timed out waiting for #best-label, but game006.html defines the BEST V3 header as .best-stat > span and has no element with that id. This is a selector mismatch in the additional probe. The corrected report at the same fixed source reads scorebar BEST V3 and CSS pseudo-element prefix V3, has matching before/after HTML and style hashes, and no page errors or POSTs. Independently viewed corrected PNG shows both header BEST V3 and title V3 prefix. This probe failure does not indicate missing product labels or broken gameplay.",
+  "evidence": [
+    "game006.html:8",
+    "src/games/game006/style.css:52",
+    "docs/catalog-reorganization/QA/stage3-006-prefix-7f/FAILURE.json",
+    "docs/catalog-reorganization/QA/stage3-006-prefix-7f-corrected/REPORT.json",
+    "docs/catalog-reorganization/QA/stage3-006-prefix-7f-corrected/006-title-prefix-v3.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently compared the requested selector with actual HTML, checked the corrected fixed-source report and identical before/after source hashes, and viewed the actual PNG. Corrected probe uses the existing .best-stat > span; no runtime edit or browser execution by this reviewer.",
+    "evidence": [
+      "game006.html:8",
+      "docs/catalog-reorganization/QA/stage3-006-prefix-7f-corrected/REPORT.json",
+      "docs/catalog-reorganization/QA/stage3-006-prefix-7f-corrected/006-title-prefix-v3.png"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG",
+  "human_judgment": null
+}

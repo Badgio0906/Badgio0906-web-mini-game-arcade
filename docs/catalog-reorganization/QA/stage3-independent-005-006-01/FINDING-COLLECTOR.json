@@ -1,0 +1,22 @@
+{
+  "finding_id": "stage3-006-collector-timing",
+  "problem": "The native parking collector reaches an outside result before its planned pause and then waits on a disabled pause control.",
+  "expected": "The collector should execute a deliberate mid-route correction and pause while driving, then observe the earned parking outcome.",
+  "observed": [
+    "Desktop locked gauges read5.1 degrees and56 percent despite requested4 degrees and54 percent.",
+    "The collector took driving geometry and screenshots before and after correction, then attempted pause.",
+    "Result screenshot shows0 parked, correction used and angle-outside failure; pause button disabled."
+  ],
+  "unknown": [
+    "Outcome with precise native gauge input and diagnostic-read-only distance timing, without driving screenshots."
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-01/REPORT.json",
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-01/006-1440-FAILED.png"
+  ],
+  "provenance": "observed-native-browser"
+}

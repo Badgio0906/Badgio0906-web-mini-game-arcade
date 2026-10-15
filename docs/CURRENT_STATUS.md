@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-16 JST：**第2工程の5作品を公式公開・実配信確認済み。** 公開25deef9／Pages38760415500 build/deploy成功。固定1031tests/92files・check/build、公開4幅20case1210checks/error0/POST0、配信155file SHA一致。bike最高×4、snake実2変化、pool19shot完局、015PC183m/phone84.2mで鳥と移動床、003実physics/回転を確認。独立技術Visual5作合格、本人/物理端末/実音は未評価。第3工程は固定a323で1045tests/95files、009017通常4幅8case644checksと005006475＋限定22を確認、006ラベル一語も新titleで確認し、4作品の独立技術Visualを通過。工程3公式公開へ。[公開記録](catalog-reorganization/PUBLICATION.md)。
+
 2026-10-16 JST：第2工程（002/003/015/024/027）の公開候補を固定。候補 `d0252d9` はcheck・1031tests/92files・build成功。通常入力4画面、bike最高×4、snake実2変化、pool19shot完局と修正後の横画面を確認。後追いの標準イベントは独立差分/VM証拠で分離。015はPC183m/phone84.2mで鳥と移動床を通常操縦確認、5作品の独立技術Visual合格。最終compiled4幅20case（1210checks/error0/POST0）成功、公式公開と実配信確認へ進む。第3/4工程の実装は隔離候補で検証し、未完のまま一覧へ追加しない。[工程2通常QA](catalog-reorganization/STAGE2_BROWSER_QA.md)／[Visual](catalog-reorganization/STAGE2_VISUAL_TECHNICAL_REVIEW.md)／[公開記録](catalog-reorganization/PUBLICATION.md)。
 
 2026-10-15 JST：第1工程の一覧再編を実装・固定buildでQA済み（active24/hidden4/retired4、作者指定complete9、表示001–024）。1011単体・check/build・4viewport＋subpath150通常browser check成功、独立コードレビューでhiddenお気に入り保全を修正。正式公開確認は[公開記録](catalog-reorganization/PUBLICATION.md)。第2〜4工程は作業中で、第1工程候補に未完改修を含めない。[実装報告](catalog-reorganization/IMPLEMENTATION_REPORT.md)。

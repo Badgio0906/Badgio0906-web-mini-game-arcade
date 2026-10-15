@@ -1,0 +1,17 @@
+{
+  "finding_id": "stage3-005-result-share-column",
+  "problem": "The result share button and preparation status are squeezed into a narrow column and wrap into tall fragments.",
+  "expected": "The result share label and status read naturally without splitting every one or two Japanese characters.",
+  "observed": [
+    "Actual005-390-result.png renders this-record-share button around80pxwide with a five-line label and the preparation message split into short fragments below.",
+    "005-844-result.png shows the same narrow share column beside otherwise wide retry and result content."
+  ],
+  "unknown": [
+    "Whether the inserted record footer lacks a full-width responsive layout override."
+  ],
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-03/005-390-result.png",
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-03/005-844-result.png"
+  ],
+  "provenance": "actual browser screenshot reviewed by independent Visual worker"
+}

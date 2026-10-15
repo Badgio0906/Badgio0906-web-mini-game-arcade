@@ -1,0 +1,22 @@
+{
+  "finding_id": "006-stale-best-label",
+  "problem": "The same current run is labelled BEST V2 and BEST V3 in separate visible HUD locations.",
+  "expected": "Current rules3 records should be labelled consistently while old records remain explicitly separate.",
+  "observed": [
+    "Fixed-candidate desktop and320px screenshots show upper scorebar BEST V2.",
+    "The same screenshot shows the stage HUD BEST V3 and the result panel SCORE V3."
+  ],
+  "unknown": [
+    "The corresponding label after the later HTML correction is published."
+  ],
+  "viewport": {
+    "width": 320,
+    "height": 720
+  },
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-03/006-320-corrected-paused.png",
+    "docs/catalog-reorganization/QA/stage3-independent-005-006-01/006-1440-FAILED.png",
+    "game006.html"
+  ],
+  "provenance": "observed-native-browser-screenshot-c057d2f"
+}

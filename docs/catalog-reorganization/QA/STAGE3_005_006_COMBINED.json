@@ -1,0 +1,69 @@
+{
+  "sourceCommit": "c057d2f06d931911011a6f202c131140634794b7",
+  "sourceBefore": {
+    "src/games/game005/SortBoard.ts": "a544cb355cb5396c371098359683a36db5f6115e4a9f8f08ee10b0fd391f50ec",
+    "src/games/game005/SortRun.ts": "d6c328a74ecccdb88e6f957003b4e6652caa12250e8dd676c0e58b02016468d6",
+    "src/games/game005/contracts.ts": "24e85c7a8fdddc06ed349f072ee498b657aaa1a73320dc114f597a57b55fcdc0",
+    "src/games/game005/game.manifest.json": "586f2802e9f006515797945f03854d60ba39b1967e14a195204ee3787c869080",
+    "src/games/game005/localization.ts": "760dad3c9ccd8140c7b2423fd749f5b09103016c3bbd730a3c9e749a48b39835",
+    "src/games/game005/main.ts": "f1f2de93b0291dfd6a85e87fdaf04fea68a558a310e47ff70ec0701da574f50c",
+    "src/games/game005/style.css": "fbbd8c0706fecbe8b40e534c721ab6cb51f8d9314b04c0a3cbf8d5843f0e7b46",
+    "src/games/game006/ParkingRun.ts": "85cc719a542641250756d7af6b508138696de9141568bb77fd97c3b5181ec66f",
+    "src/games/game006/ParkingScene.ts": "bacc425d6dae436de77a14d9e3eb8f42f0ea8fd3ed6ed0a681517be5331cd93d",
+    "src/games/game006/contracts.ts": "b88028c11208f4e17701cbb87c03feb8f257ce2c88b74af22a12c959a7dc30f3",
+    "src/games/game006/game.manifest.json": "660ed499bebe11d263864714395c7562102fee21127fd42a5a8d30284881b404",
+    "src/games/game006/main.ts": "a4f333e02bee9ae2a62de21ea47df8e2039752e13e4329b3ac98443f143090e8",
+    "src/games/game006/resultFlavor.ts": "fddcd0d37ad91d544d0f97aff68424fd299e57d27acb091bd081b00b82333414",
+    "src/games/game006/style.css": "b0120699e150c57bc6c8a433ed41b2df51b9c81223b05803de8ed5a69697de54"
+  },
+  "sourceAfter": {
+    "src/games/game005/SortBoard.ts": "a544cb355cb5396c371098359683a36db5f6115e4a9f8f08ee10b0fd391f50ec",
+    "src/games/game005/SortRun.ts": "d6c328a74ecccdb88e6f957003b4e6652caa12250e8dd676c0e58b02016468d6",
+    "src/games/game005/contracts.ts": "24e85c7a8fdddc06ed349f072ee498b657aaa1a73320dc114f597a57b55fcdc0",
+    "src/games/game005/game.manifest.json": "586f2802e9f006515797945f03854d60ba39b1967e14a195204ee3787c869080",
+    "src/games/game005/localization.ts": "760dad3c9ccd8140c7b2423fd749f5b09103016c3bbd730a3c9e749a48b39835",
+    "src/games/game005/main.ts": "f1f2de93b0291dfd6a85e87fdaf04fea68a558a310e47ff70ec0701da574f50c",
+    "src/games/game005/style.css": "fbbd8c0706fecbe8b40e534c721ab6cb51f8d9314b04c0a3cbf8d5843f0e7b46",
+    "src/games/game006/ParkingRun.ts": "85cc719a542641250756d7af6b508138696de9141568bb77fd97c3b5181ec66f",
+    "src/games/game006/ParkingScene.ts": "bacc425d6dae436de77a14d9e3eb8f42f0ea8fd3ed6ed0a681517be5331cd93d",
+    "src/games/game006/contracts.ts": "b88028c11208f4e17701cbb87c03feb8f257ce2c88b74af22a12c959a7dc30f3",
+    "src/games/game006/game.manifest.json": "660ed499bebe11d263864714395c7562102fee21127fd42a5a8d30284881b404",
+    "src/games/game006/main.ts": "a4f333e02bee9ae2a62de21ea47df8e2039752e13e4329b3ac98443f143090e8",
+    "src/games/game006/resultFlavor.ts": "fddcd0d37ad91d544d0f97aff68424fd299e57d27acb091bd081b00b82333414",
+    "src/games/game006/style.css": "b0120699e150c57bc6c8a433ed41b2df51b9c81223b05803de8ed5a69697de54"
+  },
+  "sourceUnchanged": true,
+  "sourceGitDiff": "",
+  "finishedAt": "2026-10-15T14:55:11.503689+00:00",
+  "reports": [
+    "stage3-independent-005-006-03/REPORT.json",
+    "stage3-independent-006-desktop-retest/REPORT.json"
+  ],
+  "assertionsPassed": 475,
+  "pageerrors": [],
+  "writes": [],
+  "finalCases": [
+    "005-1440",
+    "005-390",
+    "005-320",
+    "005-844",
+    "006-1440-retest",
+    "006-390",
+    "006-320",
+    "006-844"
+  ],
+  "resolvedCollectorFailure": [
+    {
+      "game": "006",
+      "width": 1440,
+      "message": "page.waitForFunction: Timeout 20000ms exceeded."
+    }
+  ],
+  "limitations": [
+    "Original failed timing captures preserved separately; desktop narrow gauge polling retested with visible3.7-to5degree window",
+    "Native inputs; DEV readonly distance inspection selects correction moment; no model state mutation",
+    "Human Feel, physical device and actual sound evaluation not performed",
+    "Static BEST V2 label observed in fixed candidate; root V3 HTML correction pending later production image recheck"
+  ],
+  "pass": true
+}

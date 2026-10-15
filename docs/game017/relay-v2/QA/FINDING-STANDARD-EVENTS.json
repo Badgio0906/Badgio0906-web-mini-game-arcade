@@ -1,0 +1,18 @@
+{
+  "finding_id": "game017-standard-events",
+  "problem": "Common lifecycle and record events required by chapter60 are absent from the current game entrypoint.",
+  "expected": "Completed standard runs emit score and best_update on improvement; retry and quit are explicit; production pause/resume remain separate from practice.",
+  "observed": [
+    "Source main.ts emits run_start/run_end and specific events but has no standard score, best_update, retry or quit event.",
+    "pause/resume are not emitted at all."
+  ],
+  "unknown": [
+    "Native-browser lifecycle event counts after the change."
+  ],
+  "operation": "Independent source requirements review",
+  "evidence": [
+    "src/games/game017/main.ts",
+    "docs/catalog-reorganization/REQUEST.txt chapter60"
+  ],
+  "provenance": "observed-source-inspection"
+}

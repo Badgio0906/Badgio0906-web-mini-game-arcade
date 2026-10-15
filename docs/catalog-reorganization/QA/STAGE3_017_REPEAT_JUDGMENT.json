@@ -1,0 +1,12 @@
+{
+ "finding_id":"stage3-rain-held-repeat-after-pause",
+ "PRIMARY_CAUSE":"PRODUCT_BUG",
+ "CODEX_ACTION_REQUIRED":true,
+ "NEXT_EVIDENCE":"LIVE_INTERACTION",
+ "RELEASE_RISK_IF_UNRESOLVED":true,
+ "reviewer":"runner_fall independent reviewer (009/017 implementation not involved; Jev decisions not read)",
+ "rationale":"The original direction key handler added every keydown, including OS repeat. show() clears held directions on pause, so a repeat after resume could reinsert the stale held direction and move before release/fresh press. The root patch now returns on repeated handled keys before held.add. Source inspection supports the limited correction; native keyboard pause/resume remains necessary for final acceptance.",
+ "evidence":["src/games/game017/main.ts: clearInput, show, keydown and keyup","independent target unit run: game009/game017/game017-relay 38/38 PASS"],
+ "actual_next_action":{"method":"CODE_INSPECTION","description":"Read pause clearing, input registration and repeat guards independently before and after root patch; reran model suites without reading Jev responses.","evidence":["docs/catalog-reorganization/STAGE3_009_017_INDEPENDENT_REVIEW.md"]},
+ "final_root_cause":"PRODUCT_BUG"
+}

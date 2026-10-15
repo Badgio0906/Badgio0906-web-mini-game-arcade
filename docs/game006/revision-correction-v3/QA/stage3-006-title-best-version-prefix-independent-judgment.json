@@ -1,0 +1,24 @@
+{
+  "finding_id": "stage3-006-title-best-version-prefix",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "Independent Art Director worker, not Game006 implementer; no Jev answers read",
+  "rationale": "The actually viewed final title images have two conflicting current-best version labels. Source confirms an obsoleteV2CSS prefix applied to the title's current best, not a separately labeled legacyBestV2value. This needs a one-word content correction and a new rendered image. The mismatch could confuse old/new score comparison, but controls and scoring remain available; in isolation it is not a major release risk.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage3-005-006-final-visual-02/006-1440-title-label.png",
+    "src/games/game006/style.css:52",
+    "src/games/game006/main.ts:95"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "After viewing the conflicting title labels atdesktop/320/844, independently located theCSS pseudo-element and traced current-best markup; reported the one-word correction to Main. New fixed rendered recheck is pending.",
+    "evidence": [
+      "src/games/game006/style.css:52",
+      "src/games/game006/main.ts:95"
+    ]
+  },
+  "human_judgment": null,
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}
