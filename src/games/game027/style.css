@@ -26,3 +26,4 @@ dialog#menu{inset:calc((100dvh + 52px - 64px)/2) auto auto 50%;max-height:calc(1
 
 /* A definite grid-item width prevents canvas intrinsic resize from shrinking its parent. */
 .table-wrap{width:100%;min-width:0}
+@media(max-height:520px) and (min-width:600px){main{grid-template-rows:26px 50px auto auto}.table-wrap{grid-row:3 / span 2}.hud{grid-row:3;margin:0}.shot-controls{grid-row:4;align-self:start;margin-top:8px}}
