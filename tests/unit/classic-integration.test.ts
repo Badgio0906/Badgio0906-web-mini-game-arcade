@@ -23,7 +23,7 @@ describe('ordered classic registrations', () => {
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
     expect(gameVersions.game019).toEqual({ rules_version: '2', presentation_version: '2' });
     expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: '1' });
-    expect(retiredGameCatalog.map(game => game.id)).toEqual(['game010']);
+    expect(retiredGameCatalog.map(game => game.id)).toEqual(['game004','game007','game010','game021']);
   });
   it('retains documented classic primitives and existing numeric completion compatibility, never private IDs or hidden cards', () => {
     const data = { event: 'hint', difficulty: 'normal', first: true, assisted: true, hints: 1, undos: 2, draw: 3, deal_mode: 'daily', daily_id: '2026-10-07', moves: 12, foundation_count: 4, assists: 1, record_added: false, completed: true, word_id: 'w_food_001', category: 'food', wrong_count: 2, hint_used: true, foods: 3, length: 6, opened: 18, flags: 2, flag_operations: 4, guaranteed: true };

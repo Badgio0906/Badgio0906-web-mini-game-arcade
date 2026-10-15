@@ -1,9 +1,9 @@
 import {describe,it,expect} from 'vitest';
-import {gameCatalog} from '../../src/data/gameCatalog';
+import {historicalGameCatalog} from '../../src/data/gameCatalog';
 import {recordDefinitions,recordBoards,getRecordDefinition} from '../../src/data/recordDefinitions';
 describe('explicit record comparison definitions',()=>{
-  it('covers exactly active catalog IDs and never retired IDs',()=>{
-    expect(recordDefinitions.map(d=>d.gameId).sort()).toEqual(gameCatalog.map(d=>d.id).sort());
+  it('retains existing definitions for hidden and newly retired IDs without deleting historical boards',()=>{
+    expect(recordDefinitions.map(d=>d.gameId).sort()).toEqual(historicalGameCatalog.filter(d=>d.id!=='game010').map(d=>d.id).sort());
     expect(getRecordDefinition('game010')).toBeUndefined();
     expect(getRecordDefinition('game999')).toBeUndefined();
   });

@@ -112,7 +112,7 @@ describe('Codex aggregate-only access',()=>{
  it('preserves production defaults, retired exclusions and explicit game010 detail',async()=>{
   const e=env();await worker.fetch(post([event({occurred_at:iso(-1000)})]),e);
   const summary=await worker.fetch(codex(),e),body=await summary.json() as {environment:string;games:{game_id:string}[]};
-  expect(body.environment).toBe('production');expect(body.games).toHaveLength(gameCatalog.length);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
+  expect(body.environment).toBe('production');expect(body.games).toHaveLength(historicalGameCatalog.length-1);expect(body.games.some(g=>g.game_id==='game010')).toBe(false);
   const retired=await worker.fetch(codex('/v1/codex/summary?include_retired=1'),e);expect((await retired.json() as {games:unknown[]}).games).toHaveLength(historicalGameCatalog.length);
   const detail=await worker.fetch(codex('/v1/codex/game/game010'),e);expect((await detail.json() as {game:{status:string}}).game.status).toBe('retired');
  });

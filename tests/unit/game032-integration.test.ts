@@ -22,9 +22,9 @@ const envelope:AnalyticsEnvelope = {schema_version:2,event_id:'00000000-0000-400
 afterEach(()=>vi.unstubAllGlobals());
 
 describe('Game032 new registration preserves existing discovery and records',()=>{
-  it('adds only032 as trial and leaves010 retired and old boards available',()=>{
-    expect(gameCatalog).toHaveLength(31);expect(historicalGameCatalog).toHaveLength(32);expect(NEXT_GAME_NUMBER).toBe(33);
-    expect(gameCatalog.at(-1)).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'trial',difficulty:'standard'});
+  it('keeps032 author-complete and leaves010 retired and old boards available',()=>{
+    expect(gameCatalog).toHaveLength(24);expect(historicalGameCatalog).toHaveLength(32);expect(NEXT_GAME_NUMBER).toBe(33);
+    expect(gameCatalog.at(-1)).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'complete',difficulty:'standard'});
     expect(historicalGameCatalog.find(g=>g.id==='game010')?.status).toBe('retired');
     expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-3'});
     expect(recordBoards).toHaveLength(21);expect(getRecordDefinition('game032')).toMatchObject({boardId:'game032.score.r1.standard',modeId:'standard',rulesetId:'1',assistancePolicy:'none',maxValue:MAX_FISHING_SCORE,publicEnabled:true});
@@ -56,7 +56,7 @@ describe('Game032 new registration preserves existing discovery and records',()=
   });
   it('matches manifest/profile/export and keeps generated catalog current',()=>{
     const manifest=JSON.parse(readFileSync('src/games/game032/game.manifest.json','utf8')),profile=JSON.parse(readFileSync('jev_export/game_profiles/game032.json','utf8')),catalog=JSON.parse(readFileSync('jev_export/game_profiles/catalog.json','utf8'));
-    expect(profile.currentManifest).toEqual(manifest);expect(manifest.recordBoard).toBe('game032.score.r1.standard');expect(manifest.timeLimit).toBe(300);expect(manifest.creditMode).toBe('free');expect(catalog.gameCatalog).toEqual(gameCatalog);expect(catalog.gameCount).toBe(31);
+    expect(profile.currentManifest).toEqual(manifest);expect(manifest.recordBoard).toBe('game032.score.r1.standard');expect(manifest.timeLimit).toBe(300);expect(manifest.creditMode).toBe('free');expect(catalog.gameCatalog).toEqual(gameCatalog);expect(catalog.gameCount).toBe(gameCatalog.length);
   });
 });
 

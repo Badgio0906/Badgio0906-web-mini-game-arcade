@@ -16,7 +16,7 @@ const fixture: AnalyticsEnvelope = {
 
 describe('Game031 sandbox registration boundaries', () => {
   it('registers only the implemented new ID and retains retired010 and existing versions', () => {
-    expect(gameCatalog).toHaveLength(31);
+    expect(gameCatalog).toHaveLength(24);
     expect(historicalGameCatalog).toHaveLength(32);
     expect(NEXT_GAME_NUMBER).toBe(33);
     expect(gameCatalog.find(game => game.id === 'game031')).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31 });
@@ -60,6 +60,6 @@ describe('Game031 sandbox registration boundaries', () => {
     expect(manifest.timeLimit).toBeNull();
     expect(profile.currentManifest).toEqual(manifest);
     expect(catalog.gameCatalog).toEqual(gameCatalog);
-    expect(catalog.gameCount).toBe(31);
+    expect(catalog.gameCount).toBe(gameCatalog.length);
   });
 });
