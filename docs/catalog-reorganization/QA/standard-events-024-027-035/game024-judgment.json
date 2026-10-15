@@ -1,0 +1,24 @@
+{
+  "finding_id": "game024-standard-finalization-events",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent desk_rain worker; no024/027/035 event implementation; no Jev responses read",
+  "rationale": "The new quit/restart branch and terminal score branch sit inside existing training/active/reported rejection. They run after active=false/reported=true, so a second recordEnd cannot emit them. They do not change model, score calculation, BEST, persistence or run_end. Runtime event-count probe remains separately pending.",
+  "evidence": [
+    "src/games/game024/main.ts",
+    "docs/catalog-reorganization/QA/standard-events-024-027-035/MAIN_DIFF.patch",
+    "docs/catalog-reorganization/QA/standard-events-024-027-035/INDEPENDENT_SOURCE_READ.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read authoritative finalize/abandon guards, training exclusion and completed-result clearing; independently reconstructed the pre-change file by removing only event additions and compared recorded SHA256.",
+    "evidence": [
+      "src/games/game024/main.ts",
+      "docs/catalog-reorganization/QA/standard-events-024-027-035/INDEPENDENT_SOURCE_READ.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

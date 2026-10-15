@@ -1,0 +1,13 @@
+{
+  "finding_id": "game035-standard-finalization-events",
+  "problem": "Required standard finalization events are absent from the existing end/abandon instrumentation.",
+  "expected": "User chapter60 standard events accompany the applicable production phase without duplicate run_end or practice records.",
+  "observed": [
+    "abandon emits run_end outcome quit for an unreported production snapshot but no standard quit event.",
+    "Training is excluded through both abandon guard and Telemetry ignoreEvent."
+  ],
+  "unknown": [
+    "Whether the added standard events preserve terminal idempotence and practice exclusion."
+  ],
+  "provenance": "independent requirements audit followed by source inspection; before limited event-only change"
+}

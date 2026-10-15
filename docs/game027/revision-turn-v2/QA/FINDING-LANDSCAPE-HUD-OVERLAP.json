@@ -1,0 +1,21 @@
+{
+  "finding_id": "stage2-027-landscape-hud-controls-overlap",
+  "problem": "In the844x390 pool main screen, the aim-target HUD line shares space with the rotation controls and part of the text is covered.",
+  "expected": "The current aim-target text, player groups and rotation controls are simultaneously readable and do not overlap.",
+  "observed": [
+    "Actual a526027-844-playing.png shows the aim-target text near y182 continuing behind rotation buttons starting around x658 andy170.",
+    "Both HUD and shot-controls occupy the same landscape grid row; fixed44px controls remain visible but obscure text."
+  ],
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "unknown": [
+    "Whether separate HUD and control grid rows preserve the actual board and full controls without text overlap."
+  ],
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage2-unique/a526-027-844/027-844-playing.png",
+    "src/games/game027/style.css"
+  ],
+  "provenance": "actual browser screenshot inspected by independent Visual reviewer; not an implementation fixture"
+}

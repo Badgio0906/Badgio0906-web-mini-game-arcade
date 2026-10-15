@@ -1,0 +1,24 @@
+{
+  "finding_id": "game035-standard-finalization-events",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "independent desk_rain worker; no024/027/035 event implementation; no Jev responses read",
+  "rationale": "quit is added within the existing !training/snapshot/!reported branch, after reported=true. A second abandon has no eligible snapshot; practice is also excluded by Telemetry ignoreEvent. Model/save/Audio behavior and run_end remain unchanged. Runtime event-count probe remains separately pending.",
+  "evidence": [
+    "src/games/game035/main.ts",
+    "docs/catalog-reorganization/QA/standard-events-024-027-035/MAIN_DIFF.patch",
+    "docs/catalog-reorganization/QA/standard-events-024-027-035/INDEPENDENT_SOURCE_READ.json"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Read authoritative finalize/abandon guards, training exclusion and completed-result clearing; independently reconstructed the pre-change file by removing only event additions and compared recorded SHA256.",
+    "evidence": [
+      "src/games/game035/main.ts",
+      "docs/catalog-reorganization/QA/standard-events-024-027-035/INDEPENDENT_SOURCE_READ.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

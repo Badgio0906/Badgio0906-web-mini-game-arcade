@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-16 JST：第2工程（002/003/015/024/027）の公開候補を固定。候補 `d0252d9` はcheck・1031tests/92files・build成功。通常入力4画面、bike最高×4、snake実2変化、pool19shot完局と修正後の横画面を確認。後追いの標準イベントは独立差分/VM証拠で分離。015はPC183m/phone84.2mで鳥と移動床を通常操縦確認、5作品の独立技術Visual合格。最終compiled4幅20case（1210checks/error0/POST0）成功、公式公開と実配信確認へ進む。第3/4工程の実装は隔離候補で検証し、未完のまま一覧へ追加しない。[工程2通常QA](catalog-reorganization/STAGE2_BROWSER_QA.md)／[Visual](catalog-reorganization/STAGE2_VISUAL_TECHNICAL_REVIEW.md)／[公開記録](catalog-reorganization/PUBLICATION.md)。
+
 2026-10-15 JST：第1工程の一覧再編を実装・固定buildでQA済み（active24/hidden4/retired4、作者指定complete9、表示001–024）。1011単体・check/build・4viewport＋subpath150通常browser check成功、独立コードレビューでhiddenお気に入り保全を修正。正式公開確認は[公開記録](catalog-reorganization/PUBLICATION.md)。第2〜4工程は作業中で、第1工程候補に未完改修を含めない。[実装報告](catalog-reorganization/IMPLEMENTATION_REPORT.md)。
 
 2026-10-10 JST：**Game032 revision02の記録/全画面を公式公開・公開操作確認済み。** 7魚種最大サイズ/日時・直近100匹を即時端末保存、練習除外、記録/今回の全画面水槽と釣り場全画面/休憩。check・1019/86・build・offline25、固定4画面390＋期限fixture27、独立Visual86/F13/H13。runtime5eb81b9／公式Pages38043219921 build/deploy成功、公開193file SHA一致、独立公開390（通常379＋非対応fixture9＋全体2）/Portal28・POST/pageerror0。旧BEST/モデル/原素材不変、24tree/018未commit保全、032外部Analytics/オンラインOFF。本人のrevision01は「そこそこイイ感じ」、新revision02/物理実機/聴感は未確認。次033未着手。[報告](game032/revision02/IMPLEMENTATION_REPORT.md)／[公開証拠](game032/revision02/QA/PUBLICATION.json)。

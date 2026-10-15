@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-10-15T15:12:38.577Z",
+  "source": "a52677d22911f423769cb2b206704b08f2a87b68",
+  "base": "http://127.0.0.1:4172/",
+  "mode": "pool-terminal",
+  "checks": [
+    {
+      "pass": false,
+      "name": "all pageerrors0"
+    }
+  ],
+  "failures": [
+    {
+      "kind": "pool-terminal",
+      "message": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4172/game027.html\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4172/game027.html\", waiting until \"load\"\u001b[22m\n"
+    }
+  ],
+  "errors": [
+    "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+  ],
+  "writes": [],
+  "captures": [
+    "/workspace/Badgio0906-web-mini-game-arcade/docs/catalog-reorganization/QA/stage2-unique/a526-pool-terminal-retest/027-terminal-FAILED.png"
+  ],
+  "records": [],
+  "provenance": "Native click/tap/keyboard/pointer inputs. Read-only DEV diagnostics or local save coordinates may choose answers. No run/score/position/outcome injection. Headless viewport QA is not human Feel or physical device evidence.",
+  "collectorHash": "24766a9fdf8eacb79ec8d4902610c2e72eb0e818b16c32845ba255d7321a2561",
+  "sourceBefore": {
+    "/workspace/arcade-stage2/src/games/game027/camera.ts": "5644dfdd654f79e5cd77a225f9392fda041095a72176582d1e21a06f0c63a394",
+    "/workspace/arcade-stage2/src/games/game027/cpu.ts": "eb67108273c70e90fe1b410780d04636adb9eea5641063546dffc3ad45a12542",
+    "/workspace/arcade-stage2/src/games/game027/game.manifest.json": "d222b00ec4c763f65cd8c97d28abf9b9c2300d2fb306cb3d315c99bcd2d7c33f",
+    "/workspace/arcade-stage2/src/games/game027/input.ts": "8f587f06d29c2bdf5e66e9c88824d641bff00c2546182d522185858aa2e84e36",
+    "/workspace/arcade-stage2/src/games/game027/main.ts": "8313bec6f0b07e075f4c24b4cda74468d80bf748bfd5577883bd82cd4ce84378",
+    "/workspace/arcade-stage2/src/games/game027/physics.ts": "e193d73231e609ca7c6556025f2893240493a3e2289eaf98496fc28c8b7b391b",
+    "/workspace/arcade-stage2/src/games/game027/rules.ts": "39288eb6594eb46ef244b376e9eec6365543dd4267d0db0e8e07f1ae70984df6",
+    "/workspace/arcade-stage2/src/games/game027/save.ts": "84fdc12a142c33252af48f15e1479a7d57f291be5772a623b84504dd6119b2ae",
+    "/workspace/arcade-stage2/src/games/game027/style.css": "288bd51bba80100c58d51d10c6d858fd2ee0e11ce9931e42d7363174c2fd70f8",
+    "/workspace/arcade-stage2/src/games/game027/turn.ts": "253e7f36639247929e1b06859197098dd8c06311fc4d8a78df42cbe64f26b23f"
+  },
+  "updatedAt": "2026-10-15T15:12:39.303Z",
+  "sourceAfter": {
+    "/workspace/arcade-stage2/src/games/game027/camera.ts": "5644dfdd654f79e5cd77a225f9392fda041095a72176582d1e21a06f0c63a394",
+    "/workspace/arcade-stage2/src/games/game027/cpu.ts": "eb67108273c70e90fe1b410780d04636adb9eea5641063546dffc3ad45a12542",
+    "/workspace/arcade-stage2/src/games/game027/game.manifest.json": "d222b00ec4c763f65cd8c97d28abf9b9c2300d2fb306cb3d315c99bcd2d7c33f",
+    "/workspace/arcade-stage2/src/games/game027/input.ts": "8f587f06d29c2bdf5e66e9c88824d641bff00c2546182d522185858aa2e84e36",
+    "/workspace/arcade-stage2/src/games/game027/main.ts": "8313bec6f0b07e075f4c24b4cda74468d80bf748bfd5577883bd82cd4ce84378",
+    "/workspace/arcade-stage2/src/games/game027/physics.ts": "e193d73231e609ca7c6556025f2893240493a3e2289eaf98496fc28c8b7b391b",
+    "/workspace/arcade-stage2/src/games/game027/rules.ts": "39288eb6594eb46ef244b376e9eec6365543dd4267d0db0e8e07f1ae70984df6",
+    "/workspace/arcade-stage2/src/games/game027/save.ts": "84fdc12a142c33252af48f15e1479a7d57f291be5772a623b84504dd6119b2ae",
+    "/workspace/arcade-stage2/src/games/game027/style.css": "288bd51bba80100c58d51d10c6d858fd2ee0e11ce9931e42d7363174c2fd70f8",
+    "/workspace/arcade-stage2/src/games/game027/turn.ts": "253e7f36639247929e1b06859197098dd8c06311fc4d8a78df42cbe64f26b23f"
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-15T15:12:39.303Z",
+  "pass": false
+}

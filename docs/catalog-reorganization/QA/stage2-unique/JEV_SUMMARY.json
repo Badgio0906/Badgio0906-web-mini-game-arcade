@@ -5,35 +5,35 @@
     "risk_comparison_only": 0.5
   },
   "totals": {
-    "entries": 5,
-    "jev_invocations": 5,
-    "api_attempts_known": 5,
+    "entries": 6,
+    "jev_invocations": 6,
+    "api_attempts_known": 6,
     "dry_runs": 0,
-    "available": 5,
+    "available": 6,
     "jev_unavailable": 0,
-    "total_input_tokens": 7430,
-    "total_output_tokens": 1079,
-    "total_cost_usd": 0.00031206,
+    "total_input_tokens": 8991,
+    "total_output_tokens": 1294,
+    "total_cost_usd": 0.000377622,
     "usage_missing": {
       "input_tokens": 0,
       "output_tokens": 0,
       "cost_usd": 0
     },
-    "average_latency_seconds": 0.6814167140000336,
+    "average_latency_seconds": 0.6362504391666945,
     "agreement": {
       "PRIMARY_CAUSE": {
         "matched": 3,
-        "compared": 4,
-        "rate": 0.75
+        "compared": 6,
+        "rate": 0.5
       },
       "NEXT_EVIDENCE": {
-        "matched": 4,
-        "compared": 4,
+        "matched": 6,
+        "compared": 6,
         "rate": 1.0
       }
     },
     "codex_action_confusion": {
-      "TP": 4,
+      "TP": 6,
       "TN": 0,
       "FP": 0,
       "FN": 0
@@ -43,13 +43,13 @@
     "below_045_with_actual_problem": 0,
     "codex_false_pass": 0,
     "release_risk_miss": 0,
-    "release_risk_compared": 4,
+    "release_risk_compared": 6,
     "human_routed": 0,
-    "human_routing_observed": 5,
+    "human_routing_observed": 6,
     "actual_human_actions": 0,
-    "actual_actions_recorded": 4,
+    "actual_actions_recorded": 6,
     "human_judgment_recorded": 0,
-    "unreviewed_available": 1
+    "unreviewed_available": 0
   },
   "groups": [
     {
@@ -174,17 +174,17 @@
       "agreement": {
         "PRIMARY_CAUSE": {
           "matched": 0,
-          "compared": 0,
-          "rate": null
+          "compared": 1,
+          "rate": 0.0
         },
         "NEXT_EVIDENCE": {
-          "matched": 0,
-          "compared": 0,
-          "rate": null
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
         }
       },
       "codex_action_confusion": {
-        "TP": 0,
+        "TP": 1,
         "TN": 0,
         "FP": 0,
         "FN": 0
@@ -194,13 +194,13 @@
       "below_045_with_actual_problem": 0,
       "codex_false_pass": 0,
       "release_risk_miss": 0,
-      "release_risk_compared": 0,
+      "release_risk_compared": 1,
       "human_routed": 0,
       "human_routing_observed": 1,
-      "actual_human_actions": null,
-      "actual_actions_recorded": 0,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
       "human_judgment_recorded": 0,
-      "unreviewed_available": 1
+      "unreviewed_available": 0
     },
     {
       "game_id": "game015",
@@ -221,6 +221,56 @@
         "cost_usd": 0
       },
       "average_latency_seconds": 0.8590311000000384,
+      "agreement": {
+        "PRIMARY_CAUSE": {
+          "matched": 0,
+          "compared": 1,
+          "rate": 0.0
+        },
+        "NEXT_EVIDENCE": {
+          "matched": 1,
+          "compared": 1,
+          "rate": 1.0
+        }
+      },
+      "codex_action_confusion": {
+        "TP": 1,
+        "TN": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "codex_action_below_045": 0,
+      "below_045_independently_reviewed": 0,
+      "below_045_with_actual_problem": 0,
+      "codex_false_pass": 0,
+      "release_risk_miss": 0,
+      "release_risk_compared": 1,
+      "human_routed": 0,
+      "human_routing_observed": 1,
+      "actual_human_actions": 0,
+      "actual_actions_recorded": 1,
+      "human_judgment_recorded": 0,
+      "unreviewed_available": 0
+    },
+    {
+      "game_id": "game027",
+      "log_schema_version": 2,
+      "provenance": "Actual fixeda52677d native full match, no game/save/outcome injection.",
+      "entries": 1,
+      "jev_invocations": 1,
+      "api_attempts_known": 1,
+      "dry_runs": 0,
+      "available": 1,
+      "jev_unavailable": 0,
+      "total_input_tokens": 1561,
+      "total_output_tokens": 215,
+      "total_cost_usd": 6.5562e-05,
+      "usage_missing": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0
+      },
+      "average_latency_seconds": 0.41041906499999925,
       "agreement": {
         "PRIMARY_CAUSE": {
           "matched": 0,

@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "a52677d22911f423769cb2b206704b08f2a87b68",
+  "reviewer": "Art Director worker independent from gameplay code; also creator of static city/facade assets, self-adoption not independent material approval",
+  "method": "Actually opened integrated1440/390/320/844 screenshots with view_image, and844 physics-motion-a/b",
+  "findings": [
+    {
+      "id": "stage2-003-city-background-seam",
+      "status": "RESOLVED",
+      "observation": "Cream sky and city now cover the entire canvas; no cyan/cream horizontal seam in any of four viewed widths."
+    },
+    {
+      "id": "stage2-003-overlapped-center-hints",
+      "status": "RESOLVED",
+      "observation": "Duplicate canvas instruction text removed; remaining foundation centre label does not compete with a second line."
+    },
+    {
+      "id": "003-v3-landscape-canvas-scale",
+      "status": "RESOLVED",
+      "observation": "844 landscape uses a roughly420x504canvas at left with score/actions at right; portrait full-page scrolling preserves the field rather than shrinking to150x180. Rotation and subsequent downward translation are actually visible in motion-a/b."
+    }
+  ],
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-1440-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-390-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-320-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-844-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-844-physics-motion-a.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-002-003-four-widths/003-844-physics-motion-b.png"
+  ],
+  "limits": "Paired actual frames demonstrate position/rotation change. Continuous motion smoothness, physical device readability, sound and human fun were not reviewed."
+}

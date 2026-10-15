@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-15T15:22:15.923842+00:00",
+  "gameplayCandidate": "a52677d22911f423769cb2b206704b08f2a87b68",
+  "landscapeCandidate": "4ab395b",
+  "releaseCandidate": "d0252d9dc0b0fdc9ff5bf75bab0895fb2a53b341",
+  "runtimeChangedFiles": [
+    {
+      "path": "src/games/game002/main.ts",
+      "kind": "sparse terminal telemetry only",
+      "addedLines": [
+        "    if (newScoreBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 2, score: result.score, best: bestScore });"
+      ],
+      "previousSha256": "512f5195cf0716e0177f8abfd17e8020472977f669710c1af9122eee5aafac41",
+      "finalSha256": "46b7284535d260bb43a7b1950637c43d3d0f88c454e7a82b445792a546a1b313"
+    },
+    {
+      "path": "src/games/game003/main.ts",
+      "kind": "sparse terminal telemetry only",
+      "addedLines": [
+        "    if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 3, score: result.floors, best });"
+      ],
+      "previousSha256": "9408440341d2bc4971f8ebbd618a9cd44a1516cfde0fa61e68c87dfeda7a6412",
+      "finalSha256": "cef6865d607d142afc7fad0eed82d103a88968e3f407b1769b85e7022e17ad0a"
+    },
+    {
+      "path": "src/games/game024/main.ts",
+      "kind": "sparse terminal telemetry only",
+      "addedLines": [
+        "  if(reason==='quit'||reason==='restart')telemetry.trackEvent('quit',{reason,source:phase,score:snake.foods,unit:'foods',speed});",
+        "  else telemetry.trackEvent('score',{score:snake.foods,foods:snake.foods,length:snake.body.length,speed,unit:'foods',outcome:reason});"
+      ],
+      "previousSha256": "5f251dcb61abbf7c8aac64b0e052f5eeaa71e18213becb33f190221371226c5a",
+      "finalSha256": "6c512148e8675d43151af0be8e53740657c97b6558675869ee0707a18333d065"
+    },
+    {
+      "path": "src/games/game027/main.ts",
+      "kind": "sparse terminal telemetry only",
+      "addedLines": [
+        "    track('quit', { reason, source: phase, shots: match.shots.reduce((a, b) => a + b, 0) });"
+      ],
+      "previousSha256": "8313bec6f0b07e075f4c24b4cda74468d80bf748bfd5577883bd82cd4ce84378",
+      "finalSha256": "fe29c15d1c33c071c154cbf3b8c99ccd6b5c0b10ea9c6d97b8eba9b21e659acf"
+    },
+    {
+      "path": "src/games/game027/style.css",
+      "kind": "landscape layout cell separation",
+      "addedLines": [
+        "@media(max-height:520px) and (min-width:600px){main{grid-template-rows:26px 50px auto auto}.table-wrap{grid-row:3 / span 2}.hud{grid-row:3;margin:0}.shot-controls{grid-row:4;align-self:start;margin-top:8px}}"
+      ],
+      "previousSha256": "288bd51bba80100c58d51d10c6d858fd2ee0e11ce9931e42d7363174c2fd70f8",
+      "finalSha256": "6a5a581e082b018dd50372a3de1f8f5f7400c3f41b16717c8bd96a27c49f63e6"
+    }
+  ],
+  "otherTargetSourceAndHTMLIdentical": true,
+  "eventEvidence": [
+    "BEST_UPDATE_LIMITED_DIFF.json",
+    "standard-events-024-027-035/SUMMARY.json"
+  ],
+  "layoutEvidence": "stage2-unique/4ab-027-844-production/REPORT.json",
+  "limitation": "Large native gameplay runs use the fixed gameplay candidate; later terminal event-only additions and landscape cell CSS are verified separately. Public compiled smoke and distribution hashes verify the complete release build."
+}

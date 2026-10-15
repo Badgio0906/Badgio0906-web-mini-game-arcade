@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-15T15:12:11.693140+00:00",
+  "scope": "standard event only; actual functions executed in isolated VM, no browser/network transport",
+  "source_after_unchanged": true,
+  "existing_target_unit": {
+    "files": 8,
+    "tests": 92,
+    "status": "PASS",
+    "evidence": "UNIT.txt"
+  },
+  "event_function_unit": {
+    "files": 1,
+    "tests": 12,
+    "status": "PASS",
+    "evidence": "EVENTS_UNIT.txt"
+  },
+  "typescript": "PASS: CHECK_FINAL.txt",
+  "independent_read": "desk_rain; JEV logs unread; removing added event statements exactly reproduces before hashes",
+  "jev": {
+    "calls": 3,
+    "http200": 3,
+    "annotated": 3,
+    "codex_false_pass": 0,
+    "release_risk_miss": 0
+  },
+  "live_post_verification": "not executed; existing remote collection/consent/registration guards unchanged",
+  "full_gameplay_same_source_claimed": false
+}

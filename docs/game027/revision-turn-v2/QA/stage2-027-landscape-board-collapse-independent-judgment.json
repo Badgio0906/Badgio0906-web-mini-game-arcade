@@ -1,0 +1,24 @@
+{
+  "finding_id": "stage2-027-landscape-board-collapse",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "Art Director worker independent from Game027 implementation; no Jev responses read",
+  "rationale": "Actual844x390 main capture shows only an approximately8px-wide vertical brown strip where the pool table belongs, with no playable felt, balls or pockets visible. The source grid child table-wrap had a max-width but no definite width. The a526 correction explicitly supplies width:100%; the new actual image shows a326.875x179.781px table with balls and pockets, consistent with measured canvas180px height and58 sampled colors. The original missing board is resolved at a526; a separate right-HUD overlap remains a distinct finding.",
+  "evidence": [
+    "docs/catalog-reorganization/QA/stage2-unique/final-four-widths/027-844-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-027-844/027-844-playing.png",
+    "docs/catalog-reorganization/QA/stage2-unique/a526-027-844/REPORT.json",
+    "reviewed source commit 5bd5f03039d1cf3bd6124342f4084cd801dcd78d"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Actually viewed the collapsed original844 main and1440/390/320 reference images; reported board disappearance. Independently actually viewed a526 new844 image and confirmed felt, balls and all six pockets restored. Did not change code or rely solely on44px checks.",
+    "evidence": [
+      "docs/catalog-reorganization/QA/stage2-unique/a526-027-844/027-844-playing.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

@@ -13,3 +13,9 @@
 Jev：実観測finding 1件、1 API/HTTP200、4回答有効。回答を見ずに実装担当がcode/test判定、注釈比較は一致、false pass/risk miss 0。これは独立workerのレビューではない。最初のannotateはfinal_root_causeのenum形式違反で拒否され、正しいschemaで注釈成功。失敗を追加API送信へ置換していない。QA配下に原本とsummaryを保存。
 
 未実施：固定buildブラウザの通常入力、独立Gameplay/Visualレビュー、実機スマホ、聴感、本人試遊、本番公開。見た目/面白さの合格点をこの文書から付与しない。rootによる固定source/build検証を次の再開点とする。
+
+## 標準イベントの限定追補
+
+既存recordEndのtraining/active/reported guardの内側へ、通常wall/self/clear時scoreを1回、quit/restart時quitを1回追加。run_endは既存1回を維持し、結果再読込/練習へイベントを増やさない。
+
+根拠は`docs/catalog-reorganization/QA/standard-events-024-027-035/`。3mainの変更前後hashと差分を保存。既存対象8file/92testと、実mainの終了関数を抽出・transpileして隔離VMで実行する12testが成功、TypeScript check成功。VMは描画・通常入力・本番通信の試験ではない。desk_rainがJev回答未読で独立readし、追加event文だけを除くと3mainがbefore hashと完全一致すること、練習除外とrun_end重複なしを確認。Jevは各game1件、実3HTTP200/12回答、独立注釈3件成功。既存大型gameplay QAはevent追補前のsourceで継続し、この限定検証を全sourceの同一版QA合格と扱わない。外部POSTは試行せず、remote/同意/登録gateは不変。

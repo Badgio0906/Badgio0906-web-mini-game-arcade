@@ -1,0 +1,40 @@
+{
+  "before": {
+    "src/games/game002/main.ts": "512f5195cf0716e0177f8abfd17e8020472977f669710c1af9122eee5aafac41",
+    "src/games/game003/main.ts": "9408440341d2bc4971f8ebbd618a9cd44a1516cfde0fa61e68c87dfeda7a6412",
+    "src/games/game005/main.ts": "f1f2de93b0291dfd6a85e87fdaf04fea68a558a310e47ff70ec0701da574f50c",
+    "src/games/game006/main.ts": "a4f333e02bee9ae2a62de21ea47df8e2039752e13e4329b3ac98443f143090e8"
+  },
+  "after": {
+    "src/games/game002/main.ts": "46b7284535d260bb43a7b1950637c43d3d0f88c454e7a82b445792a546a1b313",
+    "src/games/game003/main.ts": "cef6865d607d142afc7fad0eed82d103a88968e3f407b1769b85e7022e17ad0a",
+    "src/games/game005/main.ts": "c76bbeaa4c5820133fa1dd56392c75938eff23699207c093a6fd73ff32a163f3",
+    "src/games/game006/main.ts": "4b1ba03c178fca4423846ac1b12d03c8de8ef0b764990b0e36f92d1858237664"
+  },
+  "onlyExpectedFourAddedLines": true,
+  "changes": [
+    {
+      "path": "src/games/game002/main.ts",
+      "line": 149,
+      "added": "if (newScoreBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 2, score: result.score, best: bestScore });"
+    },
+    {
+      "path": "src/games/game003/main.ts",
+      "line": 141,
+      "added": "if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 3, score: result.floors, best });"
+    },
+    {
+      "path": "src/games/game005/main.ts",
+      "line": 121,
+      "added": "if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 2, score: result.score, best });"
+    },
+    {
+      "path": "src/games/game006/main.ts",
+      "line": 148,
+      "added": "if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 3, score: result.score, best });"
+    }
+  ],
+  "check": "PASS",
+  "targetTests": "35 PASS /7 files",
+  "fixedTreesEdited": false
+}
