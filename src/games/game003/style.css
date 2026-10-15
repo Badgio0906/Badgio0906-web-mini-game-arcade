@@ -84,3 +84,7 @@
 @media(max-height:500px){#arcade-training canvas{width:min(100%,280px)}#arcade-training p{line-height:1.4}}
 
 @media(min-width:361px) and (max-width:700px) and (min-height:501px){#app[data-state="title"] .start-card .game-title{font-size:20px}}
+/* Physical construction: separate position, quarter-turn and release controls. */
+#stage,#game-canvas,canvas{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#game-canvas{height:100%;width:100%}.building-controls{display:flex;gap:4px}.building-controls button{min-width:44px;min-height:44px;border:1px solid #344b6077;background:#f4edda;font-size:22px}.game-footer{flex-wrap:wrap;height:auto!important;min-height:100px;gap:6px;padding:6px 0}.game-footer>div:first-child{flex:1 0 100%}.game-footer #drop-button{flex:1;min-height:44px;min-width:80px}.game-footer .building-controls{flex:0 0 auto}.arcade{width:min(100%,calc((100dvh - 260px)*5/6))!important;min-width:250px}.overlay{overflow:auto}.playfield{position:relative}
+@media(max-height:500px){.arcade{width:100%!important}.playfield{height:calc(100dvh - 210px)!important;min-height:140px}.game-footer{min-height:90px}.game-footer>div:first-child{flex:1 0 100%}.building-controls button{min-width:48px}#app[data-state="title"] .start-card{max-height:100%;overflow:auto}}
+@media(max-width:360px) and (min-height:501px){#app{padding:0 7px}.arcade{min-width:250px}.game-footer{min-height:96px}.start-card,.result-card{max-height:100%;overflow:auto}}

@@ -47,7 +47,12 @@ export interface WorkdaySnapshot {
   pending: WorkdayMilestone | null;
   mode: WorkdayMode;
   travel: 'walk' | 'bike';
-  speedMultiplier: 1 | 2;
+  speedMultiplier: number;
+  roadTime: number;
+  hazardMultiplier: number;
+  bikeStartDistance: number | null;
+  bikeStage: number;
+  scoreMultiplier: number;
   lane: Lane;
   targetLane: Lane;
   moving: boolean;
@@ -59,14 +64,15 @@ export interface WorkdaySnapshot {
   difficulty: 'TUTORIAL' | 'EASY' | 'NORMAL' | 'HARD';
 }
 export interface WorkdayResult { distance: number; time: number; worldTime: number; mode: WorkdayMode; travel: 'walk' | 'bike'; outcome: WorkdayOutcome; cleared: boolean; dodges: number; bonusPercent: number; score: number; reason: string }
-export type WorkdayEvent = { type: 'move' | 'dodge' | 'collision' | 'clear' | 'safe_exit' | 'district' }
+export type WorkdayEvent = { type: 'acceleration'; stage: number; speedMultiplier: number; scoreMultiplier: number }
+  | { type: 'move' | 'dodge' | 'collision' | 'clear' | 'safe_exit' | 'district' }
   | { type: 'milestone'; milestone: WorkdayMilestone }
   | { type: 'choice'; milestone: WorkdayMilestone; choice: WorkdayChoice };
 const ease = (t: number): number => t * t * (3 - 2 * t);
 const clamp01 = (t: number): number => Math.max(0, Math.min(1, t));
 
 /** Verify a visible route with time for a reaction and TWO adjacent lane moves between waves. */
-export function validateWaves(waves: readonly Pick<Wave, 'encounterTime' | 'blockedLanes'>[], speedMultiplier: 1 | 2 = 1): boolean {
+export function validateWaves(waves: readonly Pick<Wave, 'encounterTime' | 'blockedLanes'>[], speedMultiplier: number = 1): boolean {
   for (let i = 0; i < waves.length; i++) {
     const wave = waves[i];
     if (!Number.isFinite(wave.encounterTime) || wave.blockedLanes.length < 1 || wave.blockedLanes.length > 2
@@ -81,6 +87,9 @@ export function validateWaves(waves: readonly Pick<Wave, 'encounterTime' | 'bloc
 export class WorkdayRun {
   time = 0;
   worldTime = 0;
+  roadTime = 0;
+  bikeStartDistance: number | null = null;
+  private accelerationStage = 0;
   distance = 0;
   pending: WorkdayMilestone | null = null;
   mode: WorkdayMode = 'commute';
@@ -111,7 +120,8 @@ export class WorkdayRun {
 
   start(): void { this.reset(); this.alive = true; this.generateAhead(true); }
   reset(): void {
-    this.time = this.worldTime = this.distance = 0;
+    this.time = this.worldTime = this.roadTime = this.distance = 0;
+    this.bikeStartDistance = null; this.accelerationStage = 0;
     this.pending = null; this.mode = 'commute'; this.companyOffered = this.bikeOffered = false;
     this.playerX = this.moveFrom = laneX(1);
     this.lane = this.targetLane = 1;
@@ -143,7 +153,10 @@ export class WorkdayRun {
     return true;
   }
 
-  get speedMultiplier(): 1 | 2 { return this.mode === 'bike' ? 2 : 1; }
+  get bikeStage(): number { return bikeStageAt(this.distance, this.bikeStartDistance); }
+  get speedMultiplier(): number { return this.mode === 'bike' ? bikeSpeedAt(this.bikeStage) : 1; }
+  // Hazards grow more slowly than scenery/distance. At the cap a full preview is still 1.5s.
+  get hazardMultiplier(): number { return this.mode === 'bike' ? Math.min(2.6, 2 + this.bikeStage * .1) : 1; }
   choose(choice: WorkdayChoice): boolean {
     const milestone = this.pending;
     if (!this.alive || !milestone || (milestone === 'company' ? choice !== 'office' && choice !== 'journey' : choice !== 'safe_exit' && choice !== 'walk' && choice !== 'bike')) return false;
@@ -153,6 +166,7 @@ export class WorkdayRun {
     else if (choice === 'safe_exit') this.finish('safe_exit');
     else {
       this.mode = choice === 'bike' ? 'bike' : 'journey';
+      if (choice === 'bike') this.bikeStartDistance = this.distance;
       this.depart();
     }
     return true;
@@ -166,7 +180,7 @@ export class WorkdayRun {
   private depart(): void {
     this.enemies.length = this.waves.length = 0;
     this.niceCandidates.clear(); this.pendingNiceWaves.clear(); this.awardedNiceWaves.clear();
-    this.nextEncounter = this.worldTime + PREVIEW_SECONDS;
+    this.nextEncounter = this.roadTime + PREVIEW_SECONDS;
     this.generateAhead();
   }
 
@@ -181,9 +195,9 @@ export class WorkdayRun {
     // Arm only a real threatening enemy, within .65s of the unchanged collision-zone entry.
     // Late-window B/C enemies have finished their lateral change, so idle avoidance cannot qualify.
     for (const enemy of this.enemies) {
-      const lead = enemy.encounterTime - this.worldTime - 32 * PREVIEW_SECONDS / (PLAYER_Y + 40);
+      const lead = enemy.encounterTime - this.roadTime - 32 * PREVIEW_SECONDS / (PLAYER_Y + 40);
       if (!enemy.passed && !this.awardedNiceWaves.has(enemy.waveId) && Math.abs(this.playerX - enemy.x) <= 27
-        && lead > 0 && lead <= NICE_DODGE_WINDOW_SECONDS && this.worldTime >= enemy.changeEnd) {
+        && lead > 0 && lead <= NICE_DODGE_WINDOW_SECONDS && this.roadTime >= enemy.changeEnd) {
         this.niceCandidates.set(enemy.id, { waveId: enemy.waveId, escaped: false });
       }
     }
@@ -203,9 +217,10 @@ export class WorkdayRun {
       this.time += dt;
       const worldDt = dt * this.speedMultiplier;
       this.worldTime += worldDt;
+      const roadDt = dt * this.hazardMultiplier; this.roadTime += roadDt;
       const nextMilestone = !this.companyOffered ? 1000 : !this.bikeOffered ? 2000 : Infinity;
       this.distance = Math.min(nextMilestone, this.distance + speedAt(this.distance) * worldDt);
-      this.moveTime = Math.min(MOVE_SECONDS, this.moveTime + worldDt);
+      this.moveTime = Math.min(MOVE_SECONDS, this.moveTime + roadDt);
       this.playerX = this.moveFrom + (laneX(this.targetLane) - this.moveFrom) * ease(this.moveTime / MOVE_SECONDS);
       if (this.moveTime === MOVE_SECONDS) {
         this.lane = this.targetLane;
@@ -238,6 +253,10 @@ export class WorkdayRun {
         }
       }
       if (!this.alive) break;
+      if (this.mode === 'bike' && this.bikeStage > this.accelerationStage) {
+        this.accelerationStage = this.bikeStage;
+        this.emit({ type: 'acceleration', stage: this.bikeStage, speedMultiplier: this.speedMultiplier, scoreMultiplier: bikeScoreMultiplierAt(this.bikeStage) });
+      }
       // Wait for the entire wave to pass; a collision can never earn a same-frame bonus.
       for (const waveId of this.pendingNiceWaves) {
         if (this.enemies.some(enemy => enemy.waveId === waveId && !enemy.passed)) continue;
@@ -253,13 +272,13 @@ export class WorkdayRun {
       this.generateAhead();
     }
     while (this.enemies[0] && this.enemies[0].y > 665) { const enemy = this.enemies.shift()!; this.niceCandidates.delete(enemy.id); }
-    while (this.waves[0] && this.waves[0].encounterTime < this.worldTime - 1.5) { const wave = this.waves.shift()!; this.awardedNiceWaves.delete(wave.id); this.pendingNiceWaves.delete(wave.id); }
+    while (this.waves[0] && this.waves[0].encounterTime < this.roadTime - 1.5) { const wave = this.waves.shift()!; this.awardedNiceWaves.delete(wave.id); this.pendingNiceWaves.delete(wave.id); }
   }
 
   snapshot(): WorkdaySnapshot {
     return {
       distance: Math.floor(this.distance), time: this.time, worldTime: this.worldTime, pending: this.pending, mode: this.mode,
-      travel: this.mode === 'bike' ? 'bike' : 'walk', speedMultiplier: this.speedMultiplier, lane: this.lane, targetLane: this.targetLane,
+      travel: this.mode === 'bike' ? 'bike' : 'walk', speedMultiplier: this.speedMultiplier, roadTime: this.roadTime, hazardMultiplier: this.hazardMultiplier, bikeStartDistance: this.bikeStartDistance, bikeStage: this.bikeStage, scoreMultiplier: bikeScoreMultiplierAt(this.bikeStage), lane: this.lane, targetLane: this.targetLane,
       moving: this.moveTime < MOVE_SECONDS, queuedDirection: this.queuedDirection, dodges: this.dodges, alive: this.alive,
       outcome: this.ending?.outcome ?? null,
       district: districtAt(this.distance), difficulty: this.distance < 150 ? 'TUTORIAL' : this.distance < 400 ? 'EASY' : this.distance < 700 ? 'NORMAL' : 'HARD',
@@ -272,18 +291,18 @@ export class WorkdayRun {
   }
 
   private positionEnemy(enemy: Enemy): void {
-    enemy.y = PLAYER_Y + (this.worldTime - enemy.encounterTime) * (PLAYER_Y + 40) / PREVIEW_SECONDS;
+    enemy.y = PLAYER_Y + (this.roadTime - enemy.encounterTime) * (PLAYER_Y + 40) / PREVIEW_SECONDS;
     if (enemy.type === 'B') {
-      const t = ease(clamp01((this.worldTime - enemy.changeStart) / (enemy.changeEnd - enemy.changeStart)));
+      const t = ease(clamp01((this.roadTime - enemy.changeStart) / (enemy.changeEnd - enemy.changeStart)));
       enemy.x = laneX(enemy.fromLane) + (laneX(enemy.finalLane) - laneX(enemy.fromLane)) * t;
     } else if (enemy.type === 'C') {
-      const t = clamp01((this.worldTime - enemy.changeStart) / (enemy.changeEnd - enemy.changeStart));
+      const t = clamp01((this.roadTime - enemy.changeStart) / (enemy.changeEnd - enemy.changeStart));
       enemy.x = laneX(enemy.fromLane) + Math.sin(t * Math.PI) * 25 * enemy.feintDirection;
     } else enemy.x = laneX(enemy.finalLane);
   }
 
   private generateAhead(first = false): void {
-    while (this.nextEncounter <= this.worldTime + (first ? 9.01 : 5.8)) {
+    while (this.nextEncounter <= this.roadTime + (first ? 9.01 : 5.8)) {
       const id = this.nextWaveId++;
       const roll = this.random();
       let type: EnemyType = 'A';
@@ -300,7 +319,7 @@ export class WorkdayRun {
       const safeLane = safeLanes.reduce((best, lane) => Math.abs(lane - this.previousSafeLane) < Math.abs(best - this.previousSafeLane) ? lane : best, safeLanes[0]);
       const wave: Wave = { id, type, encounterTime: this.nextEncounter, blockedLanes, safeLane };
       const previous = this.waves[this.waves.length - 1];
-      if (!validateWaves(previous ? [previous, wave] : [wave], this.speedMultiplier)) throw new Error('Unsafe commute wave rejected');
+      if (!validateWaves(previous ? [previous, wave] : [wave], this.mode === 'bike' ? 2.6 : 1)) throw new Error('Unsafe commute wave rejected');
       this.waves.push(wave);
       for (const finalLane of blockedLanes) {
         const adjacent = finalLane === 1 ? (this.random() < 0.5 ? 0 : 2) : 1;
@@ -308,16 +327,16 @@ export class WorkdayRun {
         const enemy: Enemy = {
           id: this.nextEnemyId++, waveId: id, type, fromLane, finalLane,
           x: laneX(fromLane), y: -40, encounterTime: this.nextEncounter,
-          warningStart: this.nextEncounter - (type === 'B' ? 2.7 : 2.5),
-          changeStart: this.nextEncounter - (type === 'B' ? 1.5 : 1.9),
-          changeEnd: this.nextEncounter - (type === 'B' ? 1.26 : 1.2),
+          warningStart: this.nextEncounter - (this.mode === 'bike' ? 3.3 : type === 'B' ? 2.7 : 2.5),
+          changeStart: this.nextEncounter - (this.mode === 'bike' ? 2.45 : type === 'B' ? 1.5 : 1.9),
+          changeEnd: this.nextEncounter - (this.mode === 'bike' ? 1.8 : type === 'B' ? 1.26 : 1.2),
           feintDirection: finalLane === 2 ? -1 : 1, passed: false,
         };
         this.positionEnemy(enemy);
         this.enemies.push(enemy);
       }
       this.previousSafeLane = safeLane;
-      this.nextEncounter += this.distance < 150 ? 3.1 : this.distance < 400 ? 2.85 : this.distance < 700 ? 2.55 : 2.25;
+      this.nextEncounter += this.mode === 'bike' ? 2.7 : this.distance < 150 ? 3.1 : this.distance < 400 ? 2.85 : this.distance < 700 ? 2.55 : 2.25;
     }
   }
 
@@ -325,10 +344,10 @@ export class WorkdayRun {
     if (!this.alive) return;
     this.alive = false;
     this.queuedDirection = null; this.pending = null;
-    this.ending = { ...calculateWorkdayScore(Math.floor(this.distance), this.dodges), time: this.time, worldTime: this.worldTime,
+    this.ending = { ...calculateWorkdayScore(Math.floor(this.distance), this.dodges, this.bikeStartDistance), time: this.time, worldTime: this.worldTime,
       mode: this.mode, travel: this.mode === 'bike' ? 'bike' : 'walk', outcome, cleared: outcome === 'clear',
       reason: outcome === 'clear' ? '出社成功！' : outcome === 'safe_exit' ? '旅はここまで。月曜日は、まだ長い。' : this.mode === 'bike' ? '45歳、旅の途中でぶつかりました。' : 'ぶつかって、出勤失敗……' };
     this.emit({ type: outcome });
   }
 }
-import { calculateWorkdayScore } from './scoring';
+import { bikeScoreMultiplierAt, bikeSpeedAt, bikeStageAt, calculateWorkdayScore } from './scoring';

@@ -1,0 +1,26 @@
+{
+  "finding_id": "stage2-g003-phantom-demo",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "independent desk_rain worker; not Game003 implementer; no Jev responses read",
+  "rationale": "Initial source rendered two demo buildings whenever stack was empty while reset/start created only foundation and hanging cargo. Thus the first real body would pass through visible demo objects. The explicit titleMode revision confines demo rendering to title, with start false and title true. Source-level cause and limited correction confirmed; fixed-browser first DROP evidence still required separately.",
+  "evidence": [
+    "docs/catalog-reorganization/STAGE2_INDEPENDENT_REVIEW.md",
+    "src/games/game003/TowerScene.ts:18",
+    "src/games/game003/TowerScene.ts:26",
+    "src/games/game003/TowerScene.ts:35",
+    "src/games/game003/TowerRun.ts:reset/start"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Independently traced reset/start body creation against render selection, reported before edits, then confirmed titleMode is false on start and true on title and governs demo choice. No browser visual claim.",
+    "evidence": [
+      "src/games/game003/TowerScene.ts:18,26,35",
+      "src/games/game003/TowerRun.ts:reset/start"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG",
+  "human_judgment": null
+}

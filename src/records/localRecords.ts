@@ -12,23 +12,25 @@ export interface LocalRecord {
 }
 export const CURRENT_RECORDS_KEY = 'game100:records:current:v1';
 const prefix = (id: string) => `web-mini-arcade:v1:${id}:`;
+const previousScalarKeys: Readonly<Record<string, readonly string[]>> = { game002:['bestScore','best'], game003:['rules2:best','best'], game015:['best'] };
 const scalarKeys: Readonly<Record<string,string>> = {
-  game001:'orbit-shift:v1:best', game002:prefix('game002')+'bestScore',
-  game003:prefix('game003')+'rules2:best', game004:prefix('game004')+'best',
+  game001:'orbit-shift:v1:best', game002:prefix('game002')+'bestScoreV2',
+  game003:prefix('game003')+'rules3:best', game004:prefix('game004')+'best',
   game005:prefix('game005')+'best', game006:prefix('game006')+'best-rules-v2',
   game007:prefix('game007')+'best:transport:v2', game008:prefix('game008')+'best-delivery-v2',
   game009:prefix('game009')+'bestRules2', game011:prefix('game011')+'best:v2',
-  game015:prefix('game015')+'best', game016:prefix('game016')+'best',
+  game015:prefix('game015')+'bestR04', game016:prefix('game016')+'best',
   game017:prefix('game017')+'best', game018:prefix('game018')+'bestDistanceDecimeters',
   game019:prefix('game019')+'bestHeightDm', game020:prefix('game020')+'clearedBoards',
 };
 const jsonKeys: Readonly<Record<string,string>> = {
-  game021:'state',game022:'session',game023:'question',game024:'state',game025:'snapshot',
+  game021:'state',game022:'session',game023:'question',game024:'state-shifting-v2',game025:'snapshot',
   game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',
 };
 export const localRecordStorageKeys: readonly string[] = Object.freeze([
   ...Object.values(scalarKeys), ...Object.entries(jsonKeys).map(([id,key])=>prefix(id)+key),
   ...['game003','game006','game007','game008','game009','game011','game019'].map(id=>prefix(id)+'best'),
+  ...Object.entries(previousScalarKeys).flatMap(([id,keys])=>keys.map(key=>prefix(id)+key)),
   CURRENT_RECORDS_KEY,
 ]);
 const natural = (v: unknown, max = Number.MAX_SAFE_INTEGER): v is number =>
@@ -44,7 +46,7 @@ function scalar(raw: string | null, max: number): number | null {
 
 /** Reused keys need a current-rule marker. Never expose world/save data. */
 export function localRecordSourceStamp(gameId: string): string | null {
-  if(!['game015','game019'].includes(gameId))return null;
+  if(!['game019'].includes(gameId))return null;
   try {const raw=localStorage.getItem(scalarKeys[gameId]);return scalar(raw,getRecordDefinition(gameId)!.maxValue)===null?null:raw;}
   catch{return null;}
 }
@@ -53,11 +55,12 @@ async function readScalar(gameId: string, backend: Storage): Promise<LocalRecord
   const def=getRecordDefinition(gameId)!;
   const raw=backend.getItem(scalarKeys[gameId]);
   if(raw===null){
+    if(previousScalarKeys[gameId]?.some(key=>backend.getItem(prefix(gameId)+key)!==null))return old('旧BESTを保持しています。新版は別記録です');
     if(['game003','game006','game007','game008','game009','game011','game019'].includes(gameId)&&backend.getItem(prefix(gameId)+'best')!==null)return old();
     return missing();
   }
   const value=scalar(raw,def.maxValue);if(value===null)return bad('保存された記録の形式が不正です');
-  if(['game015','game019'].includes(gameId)){
+  if(gameId==='game019'){
     let entry=await readCurrentRule(gameId);
     if(!entry){const mapRaw=backend.getItem(CURRENT_RECORDS_KEY);if(!mapRaw)return old('旧ルールと現行ルールを判別できない記録です');if(mapRaw.length>100000)return bad();let map:unknown;try{map=JSON.parse(mapRaw);}catch{return bad();}entry=object(map)?map[gameId]:null;}
     if(!object(entry)||entry.boardId!==def.boardId||entry.rulesetId!==def.rulesetId||entry.modeId!==def.modeId||entry.sourceStamp!==backend.getItem(scalarKeys[gameId])||!natural(entry.value,def.maxValue))return old();
@@ -67,7 +70,7 @@ async function readScalar(gameId: string, backend: Storage): Promise<LocalRecord
 }
 
 function readJSON(gameId: string, backend: Storage): LocalRecord {
-  const raw=backend.getItem(prefix(gameId)+jsonKeys[gameId]);if(raw===null)return missing();
+  const raw=backend.getItem(prefix(gameId)+jsonKeys[gameId]);if(raw===null)return gameId==='game024'&&backend.getItem(prefix(gameId)+'state')!==null?old('旧盤面のBESTを保持しています'):missing();
   if(raw.length>20000000)return bad('保存された記録が大きすぎます');
   let data:unknown;try{data=JSON.parse(raw);}catch{return bad('保存された記録の形式が不正です');}
   if(!object(data))return bad();

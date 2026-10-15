@@ -8,8 +8,8 @@ function seeded(seed: number) {
 }
 /** Only public step / one-lane inputs. Reads the same visible final lane and approach clock as DEV inspection. */
 function safeStep(run: WorkdayRun) {
-  const wave = run.waves.find(candidate => candidate.encounterTime + .3 >= run.worldTime);
-  if (wave && wave.encounterTime - run.worldTime < 1.15 && run.targetLane !== wave.safeLane) {
+  const wave = run.waves.find(candidate => candidate.encounterTime + .3 >= run.roadTime);
+  if (wave && wave.encounterTime - run.roadTime < 1.15 && run.targetLane !== wave.safeLane) {
     run.move(run.targetLane < wave.safeLane ? 1 : -1);
   }
   run.step(1 / 60);
@@ -79,7 +79,7 @@ describe('Workday milestone and endless journey', () => {
       expect(after.distance).toBe(2000); expect(after.dodges).toBe(before.dodges);
       expect(run.enemies.every(enemy => !oldIds.has(enemy.id))).toBe(true);
       const earliest = Math.min(...run.enemies.map(enemy => enemy.encounterTime));
-      const entryLead = (earliest - run.worldTime - 32 * PREVIEW_SECONDS / (PLAYER_Y + 40)) / after.speedMultiplier;
+      const entryLead = (earliest - run.roadTime - 32 * PREVIEW_SECONDS / (PLAYER_Y + 40)) / after.speedMultiplier;
       expect(entryLead).toBeGreaterThan(1.8);
       expect(validateWaves(run.waves, after.speedMultiplier)).toBe(true);
     }
@@ -89,7 +89,8 @@ describe('Workday milestone and endless journey', () => {
     const walk = bikeOffer(12345); const bike = bikeOffer(12345);
     walk.choose('walk'); bike.choose('bike');
     const walkStart = walk.snapshot(); const bikeStart = bike.snapshot();
-    expect(walk.enemies).toEqual(bike.enemies);
+    expect(walk.enemies.map(e => [e.type, e.fromLane, e.finalLane, e.y])).toEqual(bike.enemies.map(e => [e.type, e.fromLane, e.finalLane, e.y]));
+    expect(bike.enemies.every(e => e.encounterTime - e.changeEnd >= 1.8 - 1e-8)).toBe(true);
     const direction = walk.targetLane === 2 ? -1 : 1;
     expect(walk.move(direction)).toBe(true); expect(bike.move(direction)).toBe(true);
     for (let n = 0; n < 4; n++) { walk.step(1 / 60); bike.step(1 / 60); }
@@ -108,7 +109,7 @@ describe('Workday milestone and endless journey', () => {
       while (run.alive && run.distance < 5200 && frames++ < 400 * 60) {
         safeStep(run);
         expect(run.enemies.length).toBeLessThanOrEqual(12); expect(run.waves.length).toBeLessThanOrEqual(6);
-        expect(validateWaves(run.waves, run.speedMultiplier)).toBe(true);
+        expect(validateWaves(run.waves, run.hazardMultiplier)).toBe(true);
         expect(run.pending).toBeNull();
       }
       expect(run.snapshot(), `${choice} seed ${seed}`).toMatchObject({ alive: true, outcome: null, pending: null });

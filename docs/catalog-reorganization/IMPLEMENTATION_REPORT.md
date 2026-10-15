@@ -15,3 +15,8 @@
 記録サービスGET: /v1/health HTTP200 status ok、/v1/records/public/bests HTTP200・20board（Node inherited proxy経由）。Python urllibによるHTTP403はこの環境の経路差で本番障害とは判定しない。Analytics021–032 pendingを維持。第1工程ではWorker/D1へ書込みなし。
 
 新ゲーム用matter-js採用は次工程のみ。第1工程のpackage/ゲーム本体は不変。
+
+## 第2工程候補
+002バイク1000m別加速/区間積分スコア、003十形状の実compound物理/左右回転/接触重心芸術点、015十二経路/巡回鳥/移動床、024毎回3–7再抽選の実障害物盤面/安全生成/保存、027正本phaseから独立turn表示/CPU予兆。各固有報告を参照。003の初回本番に架空demoを描く独立findingをtitleModeで限定修正し、Jev Shadowと独立再確認を保存。保存は002 bestScoreV2/bestDistanceV2、003 rules3:best/bonus、015bestR04、024state-shifting-v2。新boardは旧boardを保存して別登録、未登録中は準備中。旧queueもboard別検証で保持し、新ルールへ付け替えない。
+
+Matter.js（新003、今後034の実物理）を採用。10種compoundを同じ描画clipと接触形状に使用し、120simulation単体で確認。Phaser新規参照を増やさずCanvas描画。ImageGen背景/専用facadeを実統合、原本・prompt・hashはassetsの台帳。

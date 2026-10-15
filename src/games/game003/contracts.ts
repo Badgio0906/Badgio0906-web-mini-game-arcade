@@ -3,6 +3,9 @@ export type TowerOutcome = 'fall' | 'collapse';
 export type TowerChoice = 'normal' | 'challenge';
 export type TowerMode = 'normal' | 'challenge';
 export interface CargoPose {
+  shapeId?: string;
+  angularVelocity?: number;
+  sleeping?: boolean;
   id: number;
   x: number;
   y: number;
@@ -26,7 +29,7 @@ export interface AcceptedLanding {
 export interface SupportInterface { index: number; left: number; right: number; loadCenter: number; margin: number; instability: number }
 export interface ArtPair { firstId: number; secondId: number; firstX: number; secondX: number; firstRatio: number; secondRatio: number; recoveryPixels: number; points: number }
 export interface TowerSnapshot {
-  rulesVersion: 2;
+  rulesVersion: 3;
   artPairs: number;
   artScore: number;
   artStreak: number;
@@ -51,7 +54,7 @@ export interface TowerSnapshot {
   outcome: TowerOutcome | null;
 }
 export interface TowerResult {
-  rulesVersion: 2;
+  rulesVersion: 3;
   artPairs: number;
   artScore: number;
   bonusScore: number;
@@ -102,6 +105,8 @@ export interface TowerController {
   start: () => void;
   title: () => void;
   drop: () => boolean;
+  move: (x: number) => boolean;
+  rotate: () => boolean;
   choose: (choice: TowerChoice) => boolean;
   pause: (value: boolean) => void;
   snapshot: () => TowerSnapshot;

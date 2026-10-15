@@ -40,7 +40,7 @@ describe('Game024 atomic save boundary',()=>{
   const active=()=>({...blankSave(),snapshot:fresh(),run:{id:'00000000-0000-4000-8000-000000000024',active:true,reported:false,freshFoods:0}});
   it('round-trips valid state without changing reported statistics',()=>{expect(validateSave(active())).toEqual(active());});
   it('rejects corrupt identity, body, food, queue, speed, clock, stats, flag',()=>{
-    const cases=[(s:any)=>s.game_id='game020',(s:any)=>s.rules_version='2',(s:any)=>s.snapshot.body[1]=s.snapshot.body[0],(s:any)=>s.snapshot.body[1]={x:0,y:0},(s:any)=>s.snapshot.food=s.snapshot.body[0],(s:any)=>s.snapshot.direction='up',(s:any)=>s.run.id='not-an-analytics-id',(s:any)=>s.snapshot.queue=['left'],(s:any)=>s.snapshot.queue=['up','left','down'],(s:any)=>s.speed=5,(s:any)=>s.clock.remainder=250,(s:any)=>s.clock.elapsed=-1,(s:any)=>s.stats.best[4]=400,(s:any)=>s.run.reported=true];
+    const cases=[(s:any)=>s.game_id='game020',(s:any)=>s.rules_version='1',(s:any)=>s.snapshot.body[1]=s.snapshot.body[0],(s:any)=>s.snapshot.body[1]={x:0,y:0},(s:any)=>s.snapshot.food=s.snapshot.body[0],(s:any)=>s.snapshot.direction='up',(s:any)=>s.run.id='not-an-analytics-id',(s:any)=>s.snapshot.queue=['left'],(s:any)=>s.snapshot.queue=['up','left','down'],(s:any)=>s.speed=5,(s:any)=>s.clock.remainder=250,(s:any)=>s.clock.elapsed=-1,(s:any)=>s.stats.best[4]=400,(s:any)=>s.run.reported=true];
     for(const mutate of cases){const s=active();mutate(s);expect(validateSave(s)).toBeNull();}
   });
   it('denied writes stay playable and use latest memory, not stale backend',()=>{const store=new SnakeSaveStore({getItem:()=>JSON.stringify(blankSave()),setItem:()=>{throw new Error('denied');}});store.write(active());expect(store.read()).toEqual(active());});

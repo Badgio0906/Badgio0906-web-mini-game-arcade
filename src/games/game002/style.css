@@ -69,3 +69,7 @@ body{background:radial-gradient(circle at 1px 1px,#24384a0b 1px,transparent 0) 0
 
 /* Paused and completed runs budget the native menu without changing live play. */
 @media(max-width:360px) and (orientation:portrait){#app:is([data-state="paused"],[data-state="result"]) .site-footer{display:none}#app:is([data-state="paused"],[data-state="result"]) .layout{padding-top:5px;padding-bottom:3px}}@media(max-height:350px){#app[data-state="paused"] .ticket-actions{grid-template-columns:minmax(44px,2fr) minmax(44px,1fr)}}
+
+/* The two bike multipliers wrap within the existing HUD height. */
+.bonus-hud em{max-width:124px;line-height:1;white-space:normal}
+@media(max-width:360px){.bonus-hud em{max-width:92px}}

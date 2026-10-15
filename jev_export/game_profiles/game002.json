@@ -96,13 +96,16 @@
       "bike_choice_meters": 2000,
       "journey_distance_limit": null
     },
-    "escalation_mechanic": "At 1000m enter the company or pass it for a journey; at 2000m end safely, continue walking, or ride at 200% speed indefinitely.",
+    "escalation_mechanic": "At 1000m enter company or journey; at 2000m ride, walk or return. Riding accelerates each 1000m from boarding, speed capped at 4.0.",
     "risk_reward": "Office clear and the 2000m safe exit preserve CREDIT; continuing risks collision for uncapped distance and NICE DODGE score.",
     "visual_identity": "warm ink comic commuters and illustrated four-district Japanese streets",
-    "primary_score": "floor(distance_meters * stepped_nice_dodge_bonus_percent / 100)",
+    "primary_score": "floor(integrated_bike_distance + plain_distance * nice_bonus_fraction)",
     "secondary_score": [
       "distance_meters",
       "nice_dodge_count"
-    ]
+    ],
+    "rules_version": "2",
+    "presentation_version": "2",
+    "best_score_storage_key": "bestScoreV2"
   }
 }

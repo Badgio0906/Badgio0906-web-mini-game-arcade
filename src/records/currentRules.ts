@@ -20,13 +20,13 @@ export async function readCurrentRule(gameId:string):Promise<unknown>{
 }
 /** One atomic read/maximum/write per game; never writes the original game's BEST. */
 export async function storeCurrentRule(gameId:string,value:number):Promise<void>{
-  if(!['game015','game019'].includes(gameId))return;
+  if(gameId!=='game019')return;
   const def=getRecordDefinition(gameId);if(!def||!Number.isSafeInteger(value)||value<0||value>def.maxValue)return;
   const db=await open();if(!db)return;
   await new Promise<void>(resolve=>{try{
     const tx=db.transaction(STORE,'readwrite'),store=tx.objectStore(STORE),request=store.get(gameId);
     request.onsuccess=()=>{try{
-      const sourceStamp=localStorage.getItem(`web-mini-arcade:v1:${gameId}:${gameId==='game015'?'best':'bestHeightDm'}`);
+      const sourceStamp=localStorage.getItem(`web-mini-arcade:v1:${gameId}:bestHeightDm`);
       if(sourceStamp===null||!/^\d+$/.test(sourceStamp))return;
       const source=Number(sourceStamp);if(!Number.isSafeInteger(source)||source<0||source>def.maxValue)return;
       const old=request.result as Partial<CurrentRuleMarker>|undefined;

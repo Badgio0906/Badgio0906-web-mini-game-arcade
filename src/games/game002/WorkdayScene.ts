@@ -97,7 +97,7 @@ export function createWorkdayGame(parent: HTMLElement, hooks: Hooks): WorkdayCon
     }
     effect(event: WorkdayEvent): void {
       if (event.type === 'move' && !reduced) this.movePulse = 1;
-      if (event.type === 'dodge') { this.niceAge = 0; this.nice.setVisible(true).setAlpha(1); }
+      if (event.type === 'dodge' || event.type === 'acceleration') { this.niceAge = 0; this.nice.setText(event.type === 'acceleration' ? `SPEED UP! ×${event.speedMultiplier.toFixed(2)}` : 'NICE DODGE!').setVisible(true).setAlpha(1); }
       if (event.type === 'collision') {
         this.endAge = 0;
         if (!reduced) this.cameras.main.shake(150, 0.004);
@@ -168,7 +168,7 @@ export function createWorkdayGame(parent: HTMLElement, hooks: Hooks): WorkdayCon
     }
 
     private warning(enemy: Enemy): void {
-      if (run.worldTime < enemy.warningStart || run.worldTime > enemy.changeEnd) return;
+      if (run.roadTime < enemy.warningStart || run.roadTime > enemy.changeEnd) return;
       const g = this.g; const x = enemy.x; const y = enemy.y - 62;
       g.fillStyle(0xffda6b); g.fillRoundedRect(x - 23, y - 12, 46, 24, 9);
       g.lineStyle(2, 0x8e6940); g.strokeRoundedRect(x - 23, y - 12, 46, 24, 9);
@@ -226,7 +226,7 @@ export function createWorkdayGame(parent: HTMLElement, hooks: Hooks): WorkdayCon
       for (let i = 0; i < 7; i++) { g.fillStyle(0xe5e0ce, 0.7); g.fillRect(133 + i * 50, crossY, 33, 13); }
       this.g.fillStyle(0x24384a); this.g.fillRoundedRect(212, 9, 176, 36, 5);
       this.g.lineStyle(2, 0xedb849); this.g.strokeRoundedRect(212, 9, 176, 36, 5);
-      this.sign.setText(run.mode === 'bike' ? '旅は続く · BIKE 200%' : run.mode === 'journey' ? '旅は続く · WALK' : `弊社まで  ${Math.max(0, 1000 - Math.floor(run.distance))} m`);
+      this.sign.setText(run.mode === 'bike' ? `BIKE ×${run.speedMultiplier.toFixed(2)}` : run.mode === 'journey' ? '旅は続く · WALK' : `弊社まで  ${Math.max(0, 1000 - Math.floor(run.distance))} m`);
       const companyY = PLAYER_Y - (1000 - run.distance) * 2;
       const companyVisible = active && run.distance > 750 && run.distance < 1110;
       this.company.setVisible(companyVisible && this.textures.exists(assetKey('company')));

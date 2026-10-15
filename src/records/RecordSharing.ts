@@ -1,5 +1,5 @@
 import './share.css';
-import { isPublicRecordRegistered } from './remoteRegistration';
+import { isPublicRecordRegistered, isPublicBoardRegistered } from './remoteRegistration';
 import { getRecordDefinition } from '../data/recordDefinitions';
 import { gameVersions } from '../data/gameVersions';
 import { canonicalValue, shareEnvironment, type RecordSubmission } from './protocol';
@@ -52,7 +52,7 @@ class Sharing {
   }
   private validQueued(input:unknown):input is Queued {
     if(!input||typeof input!=='object')return false;const q=input as Queued,p=q.payload;
-    if(!p||typeof p!=='object'||!isPublicRecordRegistered(p.game_id)||!Number.isFinite(q.createdAt)||Date.now()-q.createdAt>DAY||q.createdAt>Date.now()+60000||!Number.isInteger(q.attempts)||q.attempts<0||q.attempts>=5||typeof q.automatic!=='boolean'||!Number.isFinite(q.nextAt))return false;
+    if(!p||typeof p!=='object'||!isPublicBoardRegistered(p.board_id)||!Number.isFinite(q.createdAt)||Date.now()-q.createdAt>DAY||q.createdAt>Date.now()+60000||!Number.isInteger(q.attempts)||q.attempts<0||q.attempts>=5||typeof q.automatic!=='boolean'||!Number.isFinite(q.nextAt))return false;
     return typeof q.credentialHash==='string'&&/^[a-f0-9]{64}$/.test(q.credentialHash)&&q.permissionEpoch===storedEpoch()&&safeSubmission(p)!==null;
   }
   enabled():boolean { return this.deniedStorage ? this.memoryAutomatic : autoEnabled(); }
@@ -65,7 +65,7 @@ class Sharing {
   remember(candidate:Candidate){this.candidates.set(candidate.payload.submission_key,candidate);while(this.candidates.size>100)this.candidates.delete(this.candidates.keys().next().value!);}
   getReceipts():readonly Receipt[]{this.reloadReceipts();return this.receipts;}
   async submit(candidate:Candidate,automatic:boolean){
-    if(!recordsEndpoint||!isProduction()||!isPublicRecordRegistered(candidate.payload.game_id)||(automatic&&!this.enabled()))return;
+    if(!recordsEndpoint||!isProduction()||!isPublicBoardRegistered(candidate.payload.board_id)||(automatic&&!this.enabled()))return;
     if(candidate.sealed&&candidate.status!=='failed')return;
     this.reloadReceipts();if(this.queue.length>=50||entries(QUEUE_PREFIX,50).length>=50||this.receipts.length>=200){candidate.status='failed';notices();return;}
     const permissionEpoch=storedEpoch(),epoch=this.epoch;

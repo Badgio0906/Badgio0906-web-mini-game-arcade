@@ -17,6 +17,10 @@ function paint(canvas: HTMLCanvasElement, s: FallSnapshot, best: number, seconds
     else if (h.kind === 'wall_needle') drawWallNeedle(c, { x: h.x, y, width: h.width, height: h.height, side: h.side < 0 ? 'left' : 'right', state: h.state === 'active' ? 'active' : h.state === 'warning' ? 'warning' : 'idle', reach: h.width, frame: Math.floor(s.time * 6) });
     else {
       drawBird(c, { x: h.x, y, width: h.width, height: h.height, frame: Math.floor(s.time * 8), facing: !h.amplitude || Math.cos(s.time * Math.PI * 2 / Math.max(.01, h.period) + h.phase) >= 0 ? 1 : -1 });
+      const direction = Math.cos(s.time * Math.PI * 2 / h.period + h.phase) >= 0 ? 1 : -1;
+      c.fillStyle = PALETTE['7'];
+      const arrowX = Math.round(h.x + h.width / 2 + direction * 16), arrowY = y + 4;
+      c.fillRect(arrowX - 3, arrowY, 7, 1); c.fillRect(arrowX + direction * 3, arrowY - 1, 1, 3);
       if (h.state === 'warning') { drawBitmapText(c, '!', Math.round(h.x + h.width / 2), y - 10, { color: PALETTE['7'], align: 'center' }); }
     }
   }

@@ -1,0 +1,20 @@
+{
+  "finding_id": "003-v3-part-count",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "implementation agent, independent of Jev decisions",
+  "rationale": "Matter Body.create(parts) retains a parent hull even for one rectangle. Mass and centre were correct. Test expected the wrong array size; changed expected count to solid parts plus parent.",
+  "evidence": [
+    "tests/unit/game003.test.ts",
+    "docs/game003/revision03/QA/unit-final.log"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Inspected compound body construction / physical contact geometry, corrected the test fixture and reran all 13 model tests including 120 simulations.",
+    "evidence": [
+      "docs/game003/revision03/QA/unit-final.log"
+    ]
+  }
+}

@@ -1,12 +1,12 @@
 /** Compact analytics versions; update from manifests when rules/presentation change. */
 export const gameVersions: Readonly<Record<string, { rules_version: string; presentation_version: string }>> = {
   "game002": {
-    "rules_version": "1",
-    "presentation_version": "1"
+    "rules_version": "2",
+    "presentation_version": "2"
   },
   "game003": {
-    "rules_version": "2",
-    "presentation_version": "1"
+    "rules_version": "3",
+    "presentation_version": "3"
   },
   "game004": {
     "rules_version": "1",
@@ -37,8 +37,8 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
     "presentation_version": "1"
   },
   "game015": {
-    "rules_version": "03",
-    "presentation_version": "03"
+    "rules_version": "04",
+    "presentation_version": "04"
   },
   "game016": {
     "rules_version": "1",
@@ -63,10 +63,10 @@ export const gameVersions: Readonly<Record<string, { rules_version: string; pres
   "game021": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game022": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game023": { "rules_version": "1", "presentation_version": "prototype-1" },
-  "game024": { "rules_version": "1", "presentation_version": "prototype-1" },
+  "game024": { "rules_version": "2", "presentation_version": "shifting-2" },
   "game025": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game026": { "rules_version": "1", "presentation_version": "prototype-1" },
-  "game027": { "rules_version": "1", "presentation_version": "prototype-1" },
+  "game027": { "rules_version": "1", "presentation_version": "turn-banner-2" },
   "game028": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game029": { "rules_version": "1", "presentation_version": "prototype-1" },
   "game030": { "rules_version": "1", "presentation_version": "prototype-1" },

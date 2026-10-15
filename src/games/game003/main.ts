@@ -21,14 +21,13 @@ const onboarding = createTowerTraining(storage, telemetry);
 const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
 const listeners = new AbortController();
 let state: Screen = 'title'; let runId = ''; let lastResult: TowerResult | null = null;
-const legacyBest = storage.readNumber('best', 0); const legacyBonus = storage.readNumber('bestBonus', 0);
-let best = storage.readNumber('rules2:best', 0); let newBest = false; let ended = true;
-let bestBonus = storage.readNumber('rules2:bestBonus', 0);
+const legacyBest = Math.max(storage.readNumber('best', 0), storage.readNumber('rules2:best', 0)); const legacyBonus = Math.max(storage.readNumber('bestBonus', 0), storage.readNumber('rules2:bestBonus', 0));
+let best = storage.readNumber('rules3:best', 0); let newBest = false; let ended = true;
+let bestBonus = storage.readNumber('rules3:bestBonus', 0);
 let milestoneShown = false; let choiceEpoch = 0; let choiceLocked = false;
 let choicePointer: { pointerId: number; button: string; epoch: number } | null = null;
 let choiceKeyboard: { button: string; epoch: number } | null = null;
 let choiceKeyboardStarted = false;
-let lastChoicePointer: { x: number; y: number; at: number } | null = null;
 const choiceButtons = new Set(['normal-button', 'challenge-button']);
 let resultAvailableAt = 0; let rewardOfferVisible = false; let disposed = false;
 let resultTimer: ReturnType<typeof window.setTimeout> | undefined;
@@ -66,7 +65,8 @@ function update(snapshot: TowerSnapshot): void {
   $('stage').dataset.danger = String(snapshot.instability > 0.72);
   const ready = state === 'playing' && snapshot.phase === 'hanging' && snapshot.alive;
   $<HTMLButtonElement>('drop-button').disabled = !ready;
-  $('drop-status').textContent = state === 'milestone' ? '進行停止中 · モードを選択' : `${snapshot.cMode ? 'C国 MODE · 速度200% / ' : ''}${ready ? 'DROP READY · 落とせます' : state === 'paused' ? 'PAUSED · 塔は止まっています' : snapshot.phase === 'falling' ? '落下中…' : snapshot.phase === 'settling' ? '着地を待とう…' : 'タイミングを見て、DROP'}`;
+  for(const id of ['move-left-button','move-right-button','rotate-button']) $<HTMLButtonElement>(id).disabled=!ready;
+  $('drop-status').textContent = state === 'milestone' ? '進行停止中 · モードを選択' : `${snapshot.cMode ? 'C国 MODE · 速度200% / ' : ''}${ready ? 'DROP READY · 落とせます' : state === 'paused' ? 'PAUSED · 塔は止まっています' : snapshot.phase === 'falling' ? '落下中…' : snapshot.phase === 'settling' ? '着地を待とう…' : '位置と向きを決めて、DROP'}`;
 }
 function setScreen(next: Screen, delay = false): void {
   if (resultTimer !== undefined) { window.clearTimeout(resultTimer); resultTimer = undefined; }
@@ -77,14 +77,14 @@ function setScreen(next: Screen, delay = false): void {
     app.dataset.mode = 'normal';
     $('score-value').textContent = '0'; $('height-value').textContent = '0.0';
     $('precision-label').textContent = 'PERFECT 0 · BONUS 0'; $('balance-fill').style.width = '0%'; $('balance-label').textContent = '安定'; stage.dataset.danger = 'false';
-    $('drop-status').textContent = 'タイミングを見て、DROP';
-    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY TO BUILD?</span><h2 class="game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></h2><p>中央を狙うか、左右へ張り出すか。<br />反対へ戻して、釣り合いを取ろう。</p><div class="mini-best">新ルール BEST <b>${best}</b> FLOORS<small>旧ルール ${legacyBest}階 / BONUS ${legacyBonus} を保持</small></div>${credits.canPlay ? primary('play-button', 'PLAY · 建築開始') : primary('reward-button', '+3 CREDIT')}<small class="input-note">Space / Enter / Click / Tap</small>${credits.canPlay ? '' : stub}</article>`;
+    $('drop-status').textContent = '位置と向きを決めて、DROP';
+    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY TO BUILD?</span><h2 class="game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></h2><p>いびつなビルを、回して、積もう。<br />左右で位置、↻で回転、DROPで落下。</p><div class="mini-best">新ルール BEST <b>${best}</b> FLOORS<small>旧ルール ${legacyBest}階 / BONUS ${legacyBonus} を保持</small></div>${credits.canPlay ? primary('play-button', 'PLAY · 建築開始') : primary('reward-button', '+3 CREDIT')}<small class="input-note">← → 移動 · R / ↑ 回転 · Space 落下</small>${credits.canPlay ? '' : stub}</article>`;
   } else if (next === 'paused') {
     $('drop-status').textContent = 'PAUSED · 塔は止まっています';
     overlay.innerHTML = `<article class="start-card"><span class="eyebrow">HOLD THE CRANE</span><h2>ひと休み。</h2><p>塔も時間も止まっています。<br />準備ができたら、続きから。</p><div class="inspection-actions">${primary('resume-button', 'RESUME · 再開')}${titleButton}</div></article>`;
   } else if (next === 'result' && lastResult) {
     const result = lastResult;
-    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></span><h2>${result.outcome === 'fall' ? 'あと、もう少し。' : '塔が、崩れた。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.floors}</b><span>階数・スコア</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best} floors</dd></div><div><dt>HEIGHT</dt><dd>${result.height.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} <small>+${result.precisionScore}</small></dd></div><div><dt>芸術ペア</dt><dd>${result.artPairs}組 <small>+${result.artScore}</small></dd></div><div><dt>合計 BONUS</dt><dd>${result.bonusScore}<small id="result-bonus-best"> 新BEST ${bestBonus}</small></dd></div></dl><div class="result-flavor"><small>${result.cMode ? 'C国 MODE · 速度200% / PERFECT / 芸術点300% · 今回の称号' : '今回の称号'}</small><b id="building-title">${result.artPairs >= 5 ? '釣り合いの魔術師' : result.artPairs >= 2 ? '左右に事情のある建築士' : result.artPairs ? 'ちょっと攻めた大工' : buildingTitle(result.floors, result.cMode)}</b></div><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">新ルール v2 · 旧${legacyBest}階 / ${legacyBonus}点保持<br />${resultNote()}</small></article>`;
+    overlay.innerHTML = `<article class="result-card"><div class="result-heading"><span class="result-game-title">我が国の建築は世界一ぃ！<small>DROP TOWER</small></span><h2>${result.outcome === 'fall' ? 'あと、もう少し。' : '塔が、崩れた。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.floors}</b><span>階数・スコア</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST</dt><dd id="result-best">${best} floors</dd></div><div><dt>HEIGHT</dt><dd>${result.height.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} <small>+${result.precisionScore}</small></dd></div><div><dt>芸術ペア</dt><dd>${result.artPairs}組 <small>+${result.artScore}</small></dd></div><div><dt>合計 BONUS</dt><dd>${result.bonusScore}<small id="result-bonus-best"> 新BEST ${bestBonus}</small></dd></div></dl><div class="result-flavor"><small>${result.cMode ? 'C国 MODE · 速度200% / PERFECT / 芸術点300% · 今回の称号' : '今回の称号'}</small><b id="building-title">${result.artPairs >= 5 ? '釣り合いの魔術師' : result.artPairs >= 2 ? '左右に事情のある建築士' : result.artPairs ? 'ちょっと攻めた大工' : buildingTitle(result.floors, result.cMode)}</b></div><div class="result-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small class="result-note">実形状物理 v3 · 旧${legacyBest}階 / ${legacyBonus}点保持<br />${resultNote()}</small></article>`;
     recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delay) {
       overlay.hidden = true;
@@ -118,7 +118,7 @@ function sound(event: TowerEvent): void {
   if (['overhang', 'art', 'support_failure'].includes(event.type) && !ended) {
     const snap = controller.snapshot();
     const data: Record<string, string | number | boolean> = event.type === 'art' ? { event: 'art_pair', first_id: event.pair.firstId, second_id: event.pair.secondId, points: event.pair.points, first_ratio: event.pair.firstRatio, second_ratio: event.pair.secondRatio, recovery_pixels: event.pair.recoveryPixels } : event.type === 'overhang' ? { event: 'overhang', cargo_id: event.cargoId, offset_ratio: event.offsetRatio, support_margin: event.margin, weak_joint_index: event.weakJointIndex } : event.type === 'support_failure' ? { event: 'support_failure', joint_index: event.jointIndex, support_margin: event.margin, contact: event.contact } : {};
-    telemetry.trackEvent('specific_game_events', { runId, rulesVersion: 2, floors: snap.floors, ...data });
+    telemetry.trackEvent('specific_game_events', { runId, rulesVersion: 3, floors: snap.floors, ...data });
   }
   if (event.type === 'art') { audio.tone(540, 720, .13, 'triangle', 0, .03); audio.tone(810, 1080, .13, 'sine', .08, .025); }
   if (event.type === 'release') audio.tone(320, 200, 0.07, 'sine', 0, 0.025);
@@ -133,11 +133,11 @@ const controller = createTowerGame($('game-canvas'), {
   onEnd(result) {
     if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
     ended = true; lastResult = result; newBest = result.floors > best;
-    best = Math.max(best, result.floors); storage.writeNumber('rules2:best', best);
-    bestBonus = Math.max(bestBonus, result.bonusScore); storage.writeNumber('rules2:bestBonus', bestBonus); recordSession.complete(result.floors, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
+    best = Math.max(best, result.floors); storage.writeNumber('rules3:best', best);
+    bestBonus = Math.max(bestBonus, result.bonusScore); storage.writeNumber('rules3:bestBonus', bestBonus); recordSession.complete(result.floors, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     credits.consume(runId);
-    telemetry.trackEvent('run_end', { runId, rulesVersion: 2, outcome: 'over', score: result.floors, time: result.time, artPairs: result.artPairs, artScore: result.artScore, bonusScore: result.bonusScore });
-    telemetry.trackEvent('score', { runId, rulesVersion: 2, score: result.floors, best, newBest });
+    telemetry.trackEvent('run_end', { runId, rulesVersion: 3, outcome: 'over', score: result.floors, time: result.time, artPairs: result.artPairs, artScore: result.artScore, bonusScore: result.bonusScore });
+    telemetry.trackEvent('score', { runId, rulesVersion: 3, score: result.floors, best, newBest });
     telemetry.trackEvent('run_duration', { runId, seconds: result.time, reason: 'over' });
     telemetry.trackEvent('tower_height', { runId, height: result.height, floors: result.floors });
     telemetry.trackEvent('perfect_count', { runId, count: result.perfectCount, maxCombo: result.maxCombo, precisionScore: result.precisionScore, cMode: result.cMode, perfectMultiplier: result.perfectMultiplier });
@@ -151,7 +151,7 @@ function start(retry = false): void {
   void audio.unlock(); runId = `game003-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   ended = false; lastResult = null; newBest = false; milestoneShown = false; choiceEpoch += 1; choiceLocked = false; choicePointer = null; choiceKeyboard = null;
   if (retry) telemetry.trackEvent('retry', { runId });
-  recordSession.startRun(); telemetry.trackEvent('run_start', { runId, rulesVersion: 2, credits: credits.credits });
+  recordSession.startRun(); telemetry.trackEvent('run_start', { runId, rulesVersion: 3, credits: credits.credits });
   setScreen('playing'); controller.start();
 }
 function drop(): void { if (state === 'playing' && !ended && controller.snapshot().phase === 'hanging') { void audio.unlock(); controller.drop(); } }
@@ -163,7 +163,7 @@ function recordQuit(): void {
   if ((state !== 'playing' && state !== 'paused' && state !== 'milestone') || ended) return;
   ended = true; const snapshot = controller.snapshot();
   telemetry.trackEvent('quit', { runId, score: snapshot.floors, time: snapshot.time });
-  telemetry.trackEvent('run_end', { runId, rulesVersion: 2, outcome: 'quit', score: snapshot.floors, time: snapshot.time });
+  telemetry.trackEvent('run_end', { runId, rulesVersion: 3, outcome: 'quit', score: snapshot.floors, time: snapshot.time });
   telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
 }
 function title(): void { if (credits.rewardPending || (state === 'result' && performance.now() < resultAvailableAt)) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }
@@ -186,13 +186,15 @@ app.addEventListener('click', event => {
     const pointer = event as PointerEvent;
     if ((event.detail > 0 || pointer.pointerType) && (!choicePointer || choicePointer.pointerId !== pointer.pointerId || choicePointer.button !== button.id || choicePointer.epoch !== choiceEpoch)) return;
     if (!event.detail && !pointer.pointerType && choiceKeyboardStarted && (choiceKeyboard?.button !== button.id || choiceKeyboard.epoch !== choiceEpoch)) return;
-    if (event.detail > 0 || pointer.pointerType) lastChoicePointer = { x: event.clientX, y: event.clientY, at: performance.now() };
     chooseMode(button.id); return;
   }
   switch (button.id) {
     case 'play-button': start(); break;
     case 'retry-button': start(true); break;
     case 'drop-button': drop(); break;
+    case 'move-left-button': if(state==='playing') controller.move((controller.inspection().cargo?.x??300)-20); break;
+    case 'move-right-button': if(state==='playing') controller.move((controller.inspection().cargo?.x??300)+20); break;
+    case 'rotate-button': if(state==='playing') controller.rotate(); break;
     case 'title-button': case 'brand-button': title(); break;
     case 'reward-button': void reward(); break;
     case 'mute-button': audio.toggle(); sync(); if (state === 'playing') update(controller.snapshot()); break;
@@ -210,15 +212,24 @@ app.addEventListener('keydown', event => {
   if (event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) { event.preventDefault(); return; }
   choiceKeyboardStarted = true; choiceKeyboard = { button: button.id, epoch: choiceEpoch };
 }, { signal: listeners.signal });
+let dragPointer: number | null = null; let dragStartX = 0; let dragCargoX = 300; let dragged = false;
 stage.addEventListener('pointerdown', event => {
-  if (!event.isPrimary || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || state !== 'playing') return;
-  if (lastChoicePointer && performance.now() - lastChoicePointer.at < 350 && Math.hypot(event.clientX - lastChoicePointer.x, event.clientY - lastChoicePointer.y) < 72) return;
-  event.preventDefault(); drop();
+  if (!event.isPrimary || event.button !== 0 || state !== 'playing' || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  event.preventDefault(); dragPointer = event.pointerId; dragStartX = event.clientX; dragCargoX = controller.inspection().cargo?.x ?? 300; dragged = false; stage.setPointerCapture(event.pointerId);
 }, { signal: listeners.signal });
+stage.addEventListener('pointermove', event => {
+  if (event.pointerId !== dragPointer || state !== 'playing') return;
+  const delta = (event.clientX - dragStartX) * 600 / stage.getBoundingClientRect().width;
+  if(Math.abs(delta)>6) dragged=true;
+  if(dragged) controller.move(dragCargoX+delta);
+}, { signal: listeners.signal });
+stage.addEventListener('pointerup', event => { if(event.pointerId !== dragPointer) return; dragPointer=null; if(!dragged && state==='playing') { const box=stage.getBoundingClientRect(); controller.move((event.clientX-box.left)/box.width*600); } }, { signal: listeners.signal });
+stage.addEventListener('pointercancel',()=>{dragPointer=null;}, {signal:listeners.signal});
 document.addEventListener('keydown', event => {
   const key = event.key.toLowerCase(); const action = key === 'enter' || key === ' ';
   if (event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) { if (action) event.preventDefault(); return; }
   if (key === 'escape') { if (state === 'playing' || state === 'paused') { event.preventDefault(); pause(); } return; }
+  if(state==='playing' && ['arrowleft','arrowright','arrowup','r'].includes(key)){event.preventDefault();if(key==='arrowleft'||key==='arrowright')controller.move((controller.inspection().cargo?.x??300)+(key==='arrowleft'?-15:15));else controller.rotate();return;}
   if (!action || (event.target as HTMLElement).closest('button,a')) return;
   event.preventDefault();
   if (state === 'playing') drop();

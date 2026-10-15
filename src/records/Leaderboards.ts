@@ -1,4 +1,4 @@
-import { isPublicRecordRegistered } from './remoteRegistration';
+import { isPublicBoardRegistered } from './remoteRegistration';
 import { recordBoards, type RecordDefinition } from '../data/recordDefinitions';
 import { recordsEndpoint } from './PublicBests';
 
@@ -40,7 +40,7 @@ export class Leaderboards {
   async load(boardId: string, expectedRevision = 0): Promise<LeaderboardState> {
     const definition = recordBoards.find(d => d.boardId === boardId);
     if (!definition) throw Error('unknown_board');
-    if (!this.base || !isPublicRecordRegistered(definition.gameId)) return {status:'preparing'};
+    if (!this.base || !isPublicBoardRegistered(definition.boardId)) return {status:'preparing'};
     const cached = this.cache.get(boardId);
     if (cached && cached.board.revision >= expectedRevision && this.now() - cached.fetchedAt < 60000) return {status:'ready',board:cached.board};
     let pending = this.pending.get(boardId);

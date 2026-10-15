@@ -12,7 +12,7 @@ describe('ordered classic registrations', () => {
     expect(manifest.id).toBe(game.id);
     expect(manifest.storagePrefix).toContain(`${game.id}:`);
     expect(manifest.creditMode).toBe('free');
-    expect(gameVersions[game.id]).toEqual({ rules_version: '1', presentation_version: 'prototype-1' });
+    expect(gameVersions[game.id]).toEqual(game.id==='game024'?{rules_version:'2',presentation_version:'shifting-2'}:game.id==='game027'?{rules_version:'1',presentation_version:'turn-banner-2'}:{rules_version:'1',presentation_version:'prototype-1'});
     expect(profile.id).toBe(game.id);
     expect(profile.route).toBe(game.route);
     expect(profile.currentManifest).toEqual(manifest);

@@ -1,0 +1,21 @@
+{
+  "finding_id": "game024-transition-exit-001",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "AUTOMATED_TEST",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "implementation agent independent source/test determination without reading Jev answers; not independent worker review",
+  "rationale": "A pending corner turn was discarded by regeneration, so a snake eating at the right boundary advanced outside despite a clear upward exit. Transition completion now chooses a safe default adjacent exit when forward is blocked, storing it separately from discarded human input rather than changing the already-rendered body orientation.",
+  "evidence": [
+    "tests/unit/game024-shifting.test.ts: clears stale turns and supplies a legal fresh corner exit after animation",
+    "src/games/game024/model.ts: advanceTransition"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Added a right-edge queued-turn regression; verified step after transition remains playing, plus animation save/restore regression.",
+    "evidence": [
+      "tests/unit/game024-shifting.test.ts"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

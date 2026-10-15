@@ -21,8 +21,8 @@ const onboarding = createOnboarding({ gameId: 'game002', storage, telemetry });
 const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
 const events = new AbortController();
 let state: Screen = 'title'; let runId = ''; let lastResult: WorkdayResult | null = null;
-let best = storage.readNumber('best', 0);
-let bestScore = storage.readNumber('bestScore', 0);
+let best = storage.readNumber('bestDistanceV2', 0);
+let bestScore = storage.readNumber('bestScoreV2', 0);
 let cleared = storage.readBoolean('cleared', false);
 let clearTimeMs = storage.readNumber('clearTimeMs', 0);
 let newBest = false; let resultAvailableAt = 0; let quitLogged = false;
@@ -64,12 +64,12 @@ function setScreen(next: Screen, delayResult = false): void {
   if (state === 'playing') { stage.focus({ preventScroll: true }); return; }
   if (state === 'title') {
     $('score-value').textContent = '0'; $('nice-value').textContent = '0'; $('score-total-value').textContent = '0'; $('bonus-value').textContent = '100%'; $('district-label').textContent = '住宅街'; $('progress-fill').style.width = '0%'; $('progress').setAttribute('aria-valuenow', '0'); $('journey-target').textContent = '弊社 1000 m'; $('travel-mode').textContent = '通勤 · 徒歩'; $('progress').setAttribute('aria-valuemax', '1000');
-    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY FOR WORK?</span><div class="little-case" aria-hidden="true">▰</div><h2 class="game-title">ゆううつな月曜日<small>WORKDAY DODGE</small></h2><p>左右へひょいっ。<br />オフィスまで、あと 1000 m。</p><div class="mini-best">BEST <b>${best} m</b> · SCORE <b>${bestScore}</b>${record()}</div>${credits.canPlay ? primary('play-button', 'PLAY · 出勤する') : primary('reward-button', '+3 CREDIT')}<small>← → / A D ・ 左右をタップ</small>${credits.canPlay ? '' : '<small>開発版：Rewarded Ad Stub</small>'}</article>`;
+    overlay.innerHTML = `<article class="start-card"><span class="eyebrow">READY FOR WORK?</span><div class="little-case" aria-hidden="true">▰</div><h2 class="game-title">ゆううつな月曜日<small>WORKDAY DODGE</small></h2><p>左右へひょいっ。<br />オフィスまで、あと 1000 m。</p><div class="mini-best">BEST <b>${best} m</b> · SCORE v2 <b>${bestScore}</b><small>旧版BEST ${storage.readNumber('best', 0)} m / SCORE ${storage.readNumber('bestScore', 0)} · 比較別</small>${record()}</div>${credits.canPlay ? primary('play-button', 'PLAY · 出勤する') : primary('reward-button', '+3 CREDIT')}<small>← → / A D ・ 左右をタップ</small>${credits.canPlay ? '' : '<small>開発版：Rewarded Ad Stub</small>'}</article>`;
   } else if (state === 'paused') {
     overlay.innerHTML = `<article class="start-card"><span class="eyebrow">TAKE A BREATHER</span><h2>ひと休み。</h2><p>道は止まっています。<br />準備ができたら、続きから。</p><div class="ticket-actions">${primary('resume-button', 'RESUME · 再開')}${titleButton}</div></article>`;
   } else if (state === 'result' && lastResult) {
     const result = lastResult;
-    overlay.innerHTML = `<article class="result-card"><span class="result-game-title">ゆううつな月曜日<small>WORKDAY DODGE</small></span><h2>${result.outcome === 'clear' ? '出社成功！' : result.outcome === 'safe_exit' ? '今日は、ここまで。' : result.mode === 'commute' ? '出勤失敗……' : '旅は、ここでおしまい。'}</h2><p class="result-line">${result.outcome === 'clear' ? '無事到着。今日もおつかれさま！' : result.outcome === 'safe_exit' ? '旅のスコアを確定しました。自由にもう一度遊べます。' : 'ぶつかりおじさんに、ぶつかっちゃった。'}</p>${newBest ? '<span class="new-best">NEW BEST!</span>' : ''}<div class="result-distance"><b id="result-score">${result.score}</b><span>SCORE</span></div><dl class="dodge-details"><div><dt>到達距離</dt><dd id="result-distance">${result.distance} m</dd></div><div><dt>NICE DODGE</dt><dd>${result.dodges} 回</dd></div><div><dt>ボーナス</dt><dd>${result.bonusPercent}%</dd></div></dl><dl class="result-details"><div><dt>BEST SCORE</dt><dd id="result-score-best">${bestScore}</dd></div><div><dt>BEST m</dt><dd id="result-best">${best} m</dd></div><div><dt>TIME</dt><dd>${seconds(result.time)}</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl>${record()}<div class="result-actions">${credits.canPlay ? primary('retry-button', result.cleared ? 'もう一度、出勤する' : 'RETRY · もう一度') : primary('reward-button', '+3 CREDIT')}${resultTitleButton}</div><small>${credits.canPlay ? result.outcome === 'safe_exit' ? '安全に帰還。次は、どこまで行こう？' : result.mode === 'bike' ? 'バイクの旅は、あっという間。' : '次こそ、すいすい出社。' : 'NO CREDIT · 開発版：Rewarded Ad Stub'}</small></article>`;
+    overlay.innerHTML = `<article class="result-card"><span class="result-game-title">ゆううつな月曜日<small>WORKDAY DODGE</small></span><h2>${result.outcome === 'clear' ? '出社成功！' : result.outcome === 'safe_exit' ? '今日は、ここまで。' : result.mode === 'commute' ? '出勤失敗……' : '旅は、ここでおしまい。'}</h2><p class="result-line">${result.outcome === 'clear' ? '無事到着。今日もおつかれさま！' : result.outcome === 'safe_exit' ? '旅のスコアを確定しました。自由にもう一度遊べます。' : 'ぶつかりおじさんに、ぶつかっちゃった。'}</p>${newBest ? '<span class="new-best">NEW BEST!</span>' : ''}<div class="result-distance"><b id="result-score">${result.score}</b><span>SCORE</span></div><dl class="dodge-details"><div><dt>到達距離</dt><dd id="result-distance">${result.distance} m</dd></div><div><dt>NICE DODGE</dt><dd>${result.dodges} 回</dd></div><div><dt>ボーナス</dt><dd>${result.bonusPercent}%</dd></div></dl><dl class="result-details"><div><dt>BEST SCORE v2</dt><dd id="result-score-best">${bestScore}</dd></div><div><dt>BEST m</dt><dd id="result-best">${best} m</dd></div><div><dt>TIME</dt><dd>${seconds(result.time)}</dd></div><div><dt>CREDIT</dt><dd>${credits.credits} / 3</dd></div></dl>${record()}<div class="result-actions">${credits.canPlay ? primary('retry-button', result.cleared ? 'もう一度、出勤する' : 'RETRY · もう一度') : primary('reward-button', '+3 CREDIT')}${resultTitleButton}</div><small>${credits.canPlay ? result.outcome === 'safe_exit' ? '安全に帰還。次は、どこまで行こう？' : result.mode === 'bike' ? 'バイクの旅は、あっという間。' : '次こそ、すいすい出社。' : 'NO CREDIT · 開発版：Rewarded Ad Stub'}</small></article>`;
     recordSession.mount(overlay.firstElementChild as HTMLElement);
     if (delayResult) {
       overlay.hidden = true;
@@ -91,7 +91,7 @@ function showMilestone(milestone: 'company' | 'bike'): void {
   }
   overlay.innerHTML = milestone === 'company'
     ? `<article class="start-card milestone-card"><span class="eyebrow">弊社 / 1000 m</span><h2>会社に到着しました。<br />出勤しますか？</h2><p>※出勤するとここでゲームは終わりです</p><div class="milestone-actions">${primary('company-button', '出勤する')}${primary('journey-button', '旅に出る')}</div>${resultTitleButton}<small>道も時計も停止中。ゆっくり選べます。</small></article>`
-    : `<article class="start-card milestone-card bike-choice"><span class="eyebrow">旅の途中 / 2000 m</span><h2>45歳ですが、盗んだバイクで走りだしますか？</h2><p>バイクは速度200%。距離も危険も、ぐっと増えます。</p><div class="milestone-actions">${primary('safe-exit-button', 'ここで旅を終える')}${primary('walk-button', '歩きを続ける')}${primary('bike-button', 'バイクで行く')}</div>${resultTitleButton}<small>終了する選択は自由にもう一度遊べます。</small></article>`;
+    : `<article class="start-card milestone-card bike-choice"><span class="eyebrow">旅の途中 / 2000 m</span><h2>45歳ですが、盗んだバイクで走りだしますか？</h2><p>バイク走行1000mごとに加速。区間の得点倍率も上がります。</p><div class="milestone-actions">${primary('safe-exit-button', 'ここで旅を終える')}${primary('walk-button', '歩きを続ける')}${primary('bike-button', 'バイクで行く')}</div>${resultTitleButton}<small>終了する選択は自由にもう一度遊べます。</small></article>`;
   $('hint').textContent = '進行停止中 · 選択してから再開';
 }
 function chooseMilestone(buttonId: string): void {
@@ -110,6 +110,7 @@ function sound(event: WorkdayEvent): void {
   if (event.type === 'dodge') { audio.tone(600, 900, 0.12, 'triangle'); audio.tone(900, 1200, 0.1, 'sine', 0.05); }
   if (event.type === 'collision') { audio.tone(170, 80, 0.23, 'triangle'); audio.tone(90, 45, 0.25, 'sine', 0.03); }
   if (event.type === 'clear') for (let i = 0; i < 4; i++) audio.tone(440 * [1, 1.25, 1.5, 2][i], 440 * [1, 1.25, 1.5, 2][i], 0.22, 'triangle', i * 0.1);
+  if (event.type === 'acceleration') { audio.tone(480, 960, .18, 'triangle', 0, .03); }
   if (event.type === 'district') audio.tone(420, 650, 0.12, 'sine', 0, 0.025);
 }
 const controller = createWorkdayGame($('game-canvas'), {
@@ -117,12 +118,12 @@ const controller = createWorkdayGame($('game-canvas'), {
     if (state !== 'playing' && state !== 'paused' && state !== 'milestone') return;
     if (snapshot.pending && state === 'playing') showMilestone(snapshot.pending);
     $('score-value').textContent = String(snapshot.distance);
-    const scoring = calculateWorkdayScore(snapshot.distance, snapshot.dodges); $('nice-value').textContent = String(snapshot.dodges); $('score-total-value').textContent = String(scoring.score); $('bonus-value').textContent = `${scoring.bonusPercent}%`;
+    const scoring = calculateWorkdayScore(snapshot.distance, snapshot.dodges, snapshot.bikeStartDistance); $('nice-value').textContent = String(snapshot.dodges); $('score-total-value').textContent = String(scoring.score); $('bonus-value').textContent = `${scoring.bonusPercent}%`;
     $('district-label').textContent = snapshot.district;
     const target = snapshot.mode === 'commute' ? 1000 : snapshot.pending === 'bike' || snapshot.distance < 2000 ? 2000 : Math.ceil((snapshot.distance + 1) / 1000) * 1000;
     $('progress-fill').style.width = `${Math.min(100, snapshot.distance / target * 100)}%`; $('progress').setAttribute('aria-valuemax', String(target));
     $('journey-target').textContent = snapshot.mode === 'commute' ? '弊社 1000 m' : snapshot.distance < 2000 ? '旅へ · 2000 m' : 'まだ、先がある';
-    $('travel-mode').textContent = snapshot.travel === 'bike' ? 'バイク · 速度200%' : snapshot.mode === 'journey' ? '旅 · 徒歩' : '通勤 · 徒歩';
+    $('travel-mode').textContent = snapshot.travel === 'bike' ? `SPEED ×${snapshot.speedMultiplier.toFixed(2)} · BONUS ×${snapshot.scoreMultiplier.toFixed(1)}` : snapshot.mode === 'journey' ? '旅 · 徒歩' : '通勤 · 徒歩';
     app.dataset.distanceDigits = String(Math.min(7, Math.max(String(snapshot.distance).length, String(best).length)));
     $('progress').setAttribute('aria-valuenow', String(snapshot.distance));
     $('hint').textContent = state === 'milestone' ? '進行停止中 · 選択してから再開' : snapshot.mode !== 'commute' ? '旅は続く · 黄色い矢印は相手の次の動き' : snapshot.distance < 150 ? '← → / A D ・ 左右をタップで移動' : snapshot.difficulty === 'HARD' ? 'もうすぐ到着！ 前をよく見よう' : '黄色い矢印は、相手の次の動き';
@@ -133,9 +134,9 @@ const controller = createWorkdayGame($('game-canvas'), {
     lastResult = result;
     const milliseconds = Math.round(result.time * 1000);
     newBest = result.distance > best || (result.cleared && (!cleared || !clearTimeMs || milliseconds < clearTimeMs));
-    const newScoreBest = result.score > bestScore; bestScore = Math.max(bestScore, result.score); storage.writeNumber('bestScore', bestScore);
+    const newScoreBest = result.score > bestScore; bestScore = Math.max(bestScore, result.score); storage.writeNumber('bestScoreV2', bestScore);
     newBest = newBest || newScoreBest;
-    best = Math.max(best, result.distance); storage.writeNumber('best', best); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
+    best = Math.max(best, result.distance); storage.writeNumber('bestDistanceV2', best); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
     if (result.outcome === 'clear') {
       cleared = true; storage.writeBoolean('cleared', true);
       if (!clearTimeMs || milliseconds < clearTimeMs) { clearTimeMs = milliseconds; storage.writeNumber('clearTimeMs', clearTimeMs); }
@@ -168,7 +169,7 @@ function recordQuit(): void {
   if ((state !== 'playing' && state !== 'paused' && state !== 'milestone') || quitLogged) return;
   quitLogged = true; const snapshot = controller.snapshot();
   telemetry.trackEvent('quit', { runId, distance: snapshot.distance, time: snapshot.time });
-  telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: calculateWorkdayScore(snapshot.distance, snapshot.dodges).score, distance: snapshot.distance, dodges: snapshot.dodges, bonusPercent: calculateWorkdayScore(snapshot.distance, snapshot.dodges).bonusPercent, time: snapshot.time });
+  telemetry.trackEvent('run_end', { runId, outcome: 'quit', score: calculateWorkdayScore(snapshot.distance, snapshot.dodges, snapshot.bikeStartDistance).score, distance: snapshot.distance, dodges: snapshot.dodges, bonusPercent: calculateWorkdayScore(snapshot.distance, snapshot.dodges, snapshot.bikeStartDistance).bonusPercent, time: snapshot.time });
   telemetry.trackEvent('run_duration', { runId, seconds: snapshot.time, reason: 'quit' });
 }
 function title(): void { if (credits.rewardPending) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }

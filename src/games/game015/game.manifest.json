@@ -56,7 +56,7 @@
     "moving"
   ],
   "milestone_meters": 1000,
-  "generation": "six patterns with 2.1–5.8m safe gaps, 10.6–10.8m diagonal soft-catch shortcuts, central spikes and forced final stone choice",
+  "generation": "twelve route patterns; center bays, same-side steps, short steps, moving bridges, timed bird bypasses and deep soft catches",
   "expected_run_seconds": {
     "beginner": 60,
     "experienced": 180
@@ -76,17 +76,21 @@
   "hazards": [
     "spiked-floor-including-center",
     "telegraphed-proximity-wall-needle",
-    "pursuing-screen-ceiling"
+    "pursuing-screen-ceiling",
+    "telegraphed-patrolling-bird"
   ],
   "scroll_pixels_per_second": {
     "start": 18,
     "maximum": 36,
     "acceleration": 0.22
   },
-  "revision": "03",
+  "revision": "04",
   "hold_drop": {
     "normal_and_moving": "bypass without resetting fall distance",
     "soft_and_crumble": "brief catch, honest impact, automatic resumption",
     "hazards": "remain active"
-  }
+  },
+  "rules_version": "04",
+  "presentation_version": "04",
+  "best_storage_key": "bestR04"
 }

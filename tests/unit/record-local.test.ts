@@ -14,8 +14,8 @@ describe('read-only local record adapters',()=>{
     vi.stubGlobal('window',{get localStorage(){throw new Error('denied');}});expect((await readLocalRecord('game001')).status).toBe('unavailable');
   });
   it('reads score instead of distance, floors instead of bonus and canonical shoe decimeters',async()=>{
-    saved.set(p('game002')+'best','1000');saved.set(p('game002')+'bestScore','1280');
-    saved.set(p('game003')+'rules2:best','9');saved.set(p('game003')+'rules2:bestBonus','5000');
+    saved.set(p('game002')+'best','1000');saved.set(p('game002')+'bestScoreV2','1280');
+    saved.set(p('game003')+'rules3:best','9');saved.set(p('game003')+'rules3:bestBonus','5000');
     saved.set(p('game018')+'bestDistanceDecimeters','124801');
     expect((await readLocalRecord('game002')).value).toBe(1280);expect((await readLocalRecord('game003')).value).toBe(9);expect((await readLocalRecord('game018')).value).toBe(124801);
   });
@@ -25,19 +25,16 @@ describe('read-only local record adapters',()=>{
     saved.delete(p('game006')+'best-rules-v2');expect((await readLocalRecord('game006')).status).toBe('legacy');
     saved.clear();expect((await readLocalRecord('game006')).status).toBe('none');
   });
-  it('does not promote reused 015 best to the current rules without a bound marker',async()=>{
-    const def=getRecordDefinition('game015')!;saved.set(p('game015')+'best','900');
-    expect((await readLocalRecord('game015')).status).toBe('legacy');expect(localRecordSourceStamp('game015')).toBe('900');
-    const entry={boardId:def.boardId,rulesetId:def.rulesetId,modeId:def.modeId,sourceStamp:'900',value:72};
-    saved.set(CURRENT_RECORDS_KEY,JSON.stringify({game015:entry}));expect((await readLocalRecord('game015')).value).toBe(72);
-    saved.set(p('game015')+'best','0');expect((await readLocalRecord('game015')).status).toBe('legacy');
-    saved.delete(p('game015')+'best');expect((await readLocalRecord('game015')).status).toBe('none');
+  it('retains old015 BEST and reads only separate revision04 BEST',async()=>{
+    saved.set(p('game015')+'best','900');expect((await readLocalRecord('game015')).status).toBe('legacy');
+    saved.set(p('game015')+'bestR04','72');expect((await readLocalRecord('game015')).value).toBe(72);
+    expect(saved.get(p('game015')+'best')).toBe('900');saved.delete(p('game015')+'bestR04');expect((await readLocalRecord('game015')).status).toBe('legacy');
   });
   it('selects only snake speed4 BEST, refuses unknown rules and impossible food count',async()=>{
-    set('game024','state',{game_id:'game024',rules_version:'1',stats:{best:{4:0,6:20,8:100}}});
+    set('game024','state-shifting-v2',{game_id:'game024',rules_version:'2',stats:{best:{4:0,6:20,8:100}}});
     expect((await readLocalRecord('game024')).value).toBe(0);
-    set('game024','state',{game_id:'game024',rules_version:'2',stats:{best:{4:2,6:20,8:100}}});expect((await readLocalRecord('game024')).status).toBe('legacy');
-    set('game024','state',{game_id:'game024',rules_version:'1',stats:{best:{4:398,6:20,8:100}}});expect((await readLocalRecord('game024')).status).toBe('unavailable');
+    set('game024','state-shifting-v2',{game_id:'game024',rules_version:'3',stats:{best:{4:2,6:20,8:100}}});expect((await readLocalRecord('game024')).status).toBe('legacy');
+    set('game024','state-shifting-v2',{game_id:'game024',rules_version:'2',stats:{best:{4:398,6:20,8:100}}});expect((await readLocalRecord('game024')).status).toBe('unavailable');
   });
   it('keeps old random-level frog best separate from authored charge-jump rules',async()=>{
     const def=getRecordDefinition('game019')!;saved.set(p('game019')+'bestHeightDm','1800');

@@ -9,8 +9,11 @@ import { chooseShot, cpuPlacement, type Difficulty } from './cpu';
 import { PoolStore, recordOutcome, type Snapshot } from './save';
 import { InputEpoch } from './input';
 import { unitToWorld } from './camera';
+import { turnView } from './turn';
 const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const canvas = el<HTMLCanvasElement>('table'), menu = el<HTMLDialogElement>('menu'), app = el('app');
+const turnBanner=document.createElement('section');turnBanner.id='turn-banner';turnBanner.setAttribute('role','status');turnBanner.setAttribute('aria-live','polite');turnBanner.setAttribute('aria-atomic','true');turnBanner.innerHTML='<strong id="turn-title"></strong><span id="turn-detail"></span>';document.querySelector('.table-wrap')!.before(turnBanner);
+let cpuReady=false;
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game027:'), audio = new AudioService(storage);
 let training = false;
 const telemetry = new TelemetryService(storage, 'game027', undefined, { remoteCollectionEnabled: false, ignoreEvent: () => analyticsConfig.environment === 'production' && training });
@@ -35,7 +38,7 @@ else if (name.startsWith('practice_') && analyticsConfig.environment !== 'produc
     telemetry.trackEvent(name, { ...data, mode: 'practice' }); }
 function invalidate(): void { generation++; if (cpuTimer !== null)
     clearTimeout(cpuTimer); cpuTimer = null; drag = null; input.change(); lastTime = null; remainder = 0; }
-function setPhase(next: Phase): void { phase = next; invalidate(); app.dataset.state = next; app.dataset.training = String(training); if (active() && menu.open) {
+function setPhase(next: Phase): void { const previous=phase;phase = next;cpuReady=false;if(previous!==next && (next==='aim'||next==='placing') && human())audio.tone(470,590,.06,'sine',0,.01); invalidate(); app.dataset.state = next; app.dataset.training = String(training); if (active() && menu.open) {
     menu.close();
     canvas.focus({ preventScroll: true });
 } el<HTMLButtonElement>('pause-button').disabled = !active(); render(); }
@@ -183,13 +186,21 @@ function result(): void {
     el('title-button').onclick = title;
 }
 function scheduleCPU(): void { if (human() || !active() || world.moving)
-    return; const token = generation; cpuTimer = setTimeout(() => { cpuTimer = null; if (token !== generation || !active() || human() || world.moving)
-    return; if (match.ballInHand) {
-    const p = cpuPlacement(world);
-    if (!placeCue(world, p.x, p.y))
-        return;
-    match.ballInHand = false;
-} const choice = chooseShot(world, match, difficulty); angle = choice.angle; power = choice.power; const shot = beginShot(match, world.balls.filter(b => !b.pocketed).map(b => b.id)); shoot(world, angle, power, shot); track('specific_game_events', { event: 'shot', power, player: 2, break: match.break }); setPhase('moving'); persist(); }, difficulty === 'easy' ? 1000 : 750); }
+    return; const token = generation;
+    cpuTimer = setTimeout(() => { cpuTimer = null;
+      if (token !== generation || !active() || human() || world.moving) return;
+      if (match.ballInHand) {
+        const p=cpuPlacement(world);if(!placeCue(world,p.x,p.y))return;match.ballInHand=false;
+      }
+      const choice=chooseShot(world,match,difficulty);angle=choice.angle;power=choice.power;
+      cpuReady=true;render();
+      cpuTimer=setTimeout(()=>{cpuTimer=null;
+        if(token!==generation||!active()||human()||world.moving)return;
+        const shot=beginShot(match,world.balls.filter(b=>!b.pocketed).map(b=>b.id));
+        shoot(world,angle,power,shot);track('specific_game_events',{event:'shot',power,player:2,break:match.break});setPhase('moving');persist();
+      },350);
+    },difficulty==='easy'?1000:750);
+}
 function confirmPlacement(): void { if (phase !== 'placing' || !human())
     return; if (!placeCue(world, placement.x, placement.y)) {
     message = 'ほかの球・ポケット・枠に重なる場所には置けません。';
@@ -345,7 +356,9 @@ function draw(): void {
 }
 function render(): void {
     draw();
-    el('status').textContent = phase === 'moving' ? '球が止まるまでお待ちください。' : phase === 'cpu' ? 'CPUが照準を考えています。' : message || `${player(match.turn)}の番 · ${match.break ? 'ブレイク' : match.ballInHand ? '白球を置いてください' : 'ねらって、一球ずつ。'}`;
+    const turn=turnView({phase,mode,turn:match.turn,winner:match.winner,training,ballInHand:match.ballInHand,cpuReady});
+    const turnKey=`${phase}:${match.turn}:${cpuReady}`;if(turnBanner.dataset.key!==turnKey){turnBanner.dataset.key=turnKey;turnBanner.dataset.tone=turn.tone;el('turn-title').textContent=turn.title;el('turn-detail').textContent=turn.detail;}
+    el('status').textContent = phase === 'moving' ? '球が止まるまでお待ちください。' : phase === 'cpu' ? cpuReady?'CPUがショットします…':'CPUが照準を考えています。' : message || `${player(match.turn)}の番 · ${match.break ? 'ブレイク' : match.ballInHand ? '白球を置いてください' : 'ねらって、一球ずつ。'}`;
     const remaining = (g: string) => world.balls.filter(b => !b.pocketed && groupOf(b.id) === g).map(b => b.id).sort((a, b) => a - b);
     const cue = world.balls.find(b => b.id === 0)!;
     const target = phase === 'aim' && !cue.pocketed ? aimEndpoint(world, angle).target : null;

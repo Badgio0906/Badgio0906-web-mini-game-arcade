@@ -13,6 +13,12 @@ export const AUTHORED_PATTERNS = Object.freeze([
   { id: 'stairs', lanes: [178, 142, 80, 80], gaps: [3.2, 2.1, 5.4, 4.8] },
   { id: 'zigzag', lanes: [80, 138, 176, 176], gaps: [2.2, 5.6, 2.9, 5.2] },
   { id: 'soft-route', lanes: [172, 116, 80, 80], gaps: [4.7, 3.5, 2.6, 5.7] },
+  { id: 'center-bay', lanes: [128, 124, 132, 176], gaps: [4.3, 2.4, 4, 5.3] },
+  { id: 'same-side-left', lanes: [84, 78, 88, 148], gaps: [4.4, 3.2, 3.1, 4.8] },
+  { id: 'same-side-right', lanes: [172, 180, 168, 108], gaps: [4.4, 3.2, 3.1, 4.8] },
+  { id: 'short-steps', lanes: [118, 140, 126, 82], gaps: [2, 3, 5.7, 3.1] },
+  { id: 'moving-bridge', lanes: [128, 112, 140, 176], gaps: [4.2, 3.3, 3.2, 5.2] },
+  { id: 'bird-bypass', lanes: [92, 108, 148, 172], gaps: [5.3, 2.8, 2.6, 5.4] },
 ].map(p => Object.freeze({ ...p, lanes: Object.freeze(p.lanes), gaps: Object.freeze(p.gaps) })));
 export function scrollSpeedAt(seconds: number): number {
   return Math.min(SCROLL_MAX_SPEED, SCROLL_START_SPEED + Math.max(0, seconds) * SCROLL_ACCELERATION);
@@ -75,16 +81,24 @@ export function generateChunk(cursor: GenerationCursor, random: () => number): G
     y += gap;
     const widths = depth < 30 ? [104, 96, 112, 88] : [88, 104, 80, 96];
     const width = i === 3 ? 72 : i === 2 ? 100 : widths[(i + Math.floor(unit() * widths.length)) % widths.length];
-    const moving = depth >= 100 && i === 1 && pattern.id === 'stairs';
-    const amplitude = moving ? 6 : 0;
+    const moving = i === 1 && (pattern.id === 'moving-bridge' || depth >= 12 && (pattern.id === 'stairs' || pattern.id === 'center-bay' || pattern.id === 'same-side-left' || pattern.id === 'same-side-right'));
+    const amplitude = moving ? depth < 40 ? 8 : pattern.id === 'moving-bridge' ? 16 : 12 : 0;
+    const previousAmplitude = platforms[platforms.length - 1]?.amplitude ?? 0;
     const proposed = pattern.lanes[i] + (unit() - .5) * 8;
-    const maxShift = Math.min(62, horizontalReach(flightTime(gap)) + width / 2 - PLAYER_WIDTH / 2 - 24 - amplitude);
+    const maxShift = Math.min(62, horizontalReach(flightTime(gap)) + width / 2 - PLAYER_WIDTH / 2 - 24 - amplitude - previousAmplitude);
     center = Math.max(width / 2 + amplitude + 24, Math.min(WORLD_WIDTH - width / 2 - amplitude - 24,
       Math.max(center - maxShift, Math.min(center + maxShift, proposed))));
     const type = i === 2 ? 'soft' : moving ? 'moving'
       : depth >= 30 && i === 1 && pattern.id === 'zigzag' ? 'crumble' : 'normal';
     platforms.push(platformFromSeed({ x: center - width / 2, y, width, type, route: true,
-      pattern: pattern.id, amplitude, period: 8, phase: nextId * .7 }, nextId++));
+      pattern: pattern.id, amplitude, period: moving ? pattern.id === 'same-side-right' ? 5.2 : pattern.id === 'moving-bridge' ? 7 : 9 : 8, phase: nextId * .7 }, nextId++));
+  }
+  // A first-gap patrol leaves both supporting perches body-clear. Its continuous sine
+  // motion has no teleports; the short period always offers another timing window.
+  const first = platforms[0];
+  if (depth >= 12 && first.y - cursor.y >= 58 && (cursor.chunks % 2 === 1 || pattern.id === 'bird-bypass')) {
+    hazards.push(hazardFromSeed({ kind: 'bird', x: 119, y: cursor.y + 8, width: 18, height: 10,
+      amplitude: depth < 80 ? 56 : 76, period: 2.2 + unit() * .6, phase: unit() * Math.PI * 2 }, `bird-${first.id}`));
   }
   const soft = platforms[2];
   for (let i = 0; i < 4; i++) {

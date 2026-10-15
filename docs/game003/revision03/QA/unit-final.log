@@ -1,0 +1,22 @@
+
+ RUN  v3.2.7 /workspace/Badgio0906-web-mini-game-arcade
+
+ ✓ tests/unit/tower-escalation.test.ts > Tower v3 construction controls > lets the player inspect shape and freely position before release; waiting adds no hidden movement or score 12ms
+ ✓ tests/unit/tower-escalation.test.ts > Tower v3 construction controls > returns exactly to the original orientation after four quarter turns, and starts a fresh run independently 5ms
+ ✓ tests/unit/game003-art.test.ts > Game003 physical art scoring > does not grant art for centered stacking, tiny alternation, idle time or repeated release 34ms
+ ✓ tests/unit/game003-art.test.ts > Game003 physical art scoring > awards a disjoint artistic counterweight only after real L-shape contact and recovered COM 20ms
+ ✓ tests/unit/game003-art.test.ts > Game003 physical art scoring > scores recovery with bounded streak and a single multiplier 1ms
+ ✓ tests/unit/game003-art.test.ts > Game003 physical art scoring > emits score only at actual stable contact acceptance and does not count a flying shape 15ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > provides ten genuinely different unions; the visible-volume density determines COM, mass and rotational inertia 19ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > L-shaped empty corner remains empty to collision queries while its solid foot collides 7ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > quarter turns rotate actual collider, and touch movement clamps without letting repeat DROP queue 44ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > retains dynamic bodies after stacking, counts actual accepted height, and isolates snapshots and reset 36ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > a failed placement falls naturally, emits one end event, and leaves an older accepted count 11ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > 120 fixed-step simulations have finite bounded bodies with no penetration/explosion; centered builds settle 301ms
+ ✓ tests/unit/game003.test.ts > Game003 compound architectural physics v3 > stacking on a ledge creates real torque and eventual collapse rather than locking the lower body 3ms
+
+ Test Files  3 passed (3)
+      Tests  13 passed (13)
+   Start at  14:10:58
+   Duration  912ms (transform 251ms, setup 0ms, collect 547ms, tests 510ms, environment 1ms, prepare 322ms)
+

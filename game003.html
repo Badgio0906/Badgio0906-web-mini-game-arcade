@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" />
     <meta name="theme-color" content="#e9e3d5" />
-    <meta name="description" content="中央PERFECTと左右の張り出し。全ての支持面で釣り合いを取り、芸術点を狙う建築ゲーム DROP TOWER。PC・スマートフォン対応。" />
+    <meta name="description" content="不規則な形の10種類のビルを回転させ、重心と接触を考えて積む実形状物理の建築ゲーム DROP TOWER。PC・スマートフォン対応。" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%232a3942'/%3E%3Cpath d='M10 12h44M42 12v12' fill='none' stroke='%23e4b751' stroke-width='5'/%3E%3Cpath d='M34 26h16v12H34zM18 42h28v12H18z' fill='%23e4b751'/%3E%3C/svg%3E" />
     <title>我が国の建築は世界一ぃ！ ～DROP TOWER～</title>
   <link rel="stylesheet" href="./arcade-navigation.css"/><script src="./arcade-navigation.js"></script></head>
@@ -26,8 +26,8 @@
         </aside>
         <section class="arcade" aria-label="我が国の建築は世界一ぃ！ ゲーム">
           <div class="scorebar"><div class="floor-stat"><span>FLOORS</span><strong id="score-value">0</strong></div><div><span>HEIGHT</span><strong><b id="height-value">0.0</b><small> m</small></strong></div><div class="best-stat"><span>BEST</span><strong id="best-value">0</strong></div><button id="pause-button" type="button" aria-label="一時停止" disabled>Ⅱ</button></div>
-          <div class="playfield"><div id="stage" tabindex="0" aria-label="揺れる荷物をタップ、クリック、Space、Enterで落とす"><div id="game-canvas"></div><div id="center-label" class="center-label">基礎重心 · 中央</div><div class="stability" aria-label="塔の傾き"><span>BALANCE</span><i><b id="balance-fill"></b></i><span id="balance-label">安定</span></div></div><div id="overlay" class="overlay"></div></div>
-          <div class="game-footer"><div><span id="drop-status">タイミングを見て、DROP</span><small id="precision-label">PERFECT 0 · BONUS 0</small></div><button id="drop-button" type="button" aria-label="荷物を落とす" disabled>DROP <span aria-hidden="true">↓</span></button></div>
+          <div class="playfield"><div id="stage" tabindex="0" aria-label="ドラッグや左右キーで移動、Rで回転、DROPやSpaceで落とす"><div id="game-canvas"></div><div id="center-label" class="center-label">基礎重心 · 中央</div><div class="stability" aria-label="塔の傾き"><span>BALANCE</span><i><b id="balance-fill"></b></i><span id="balance-label">安定</span></div></div><div id="overlay" class="overlay"></div></div>
+          <div class="game-footer"><div><span id="drop-status">タイミングを見て、DROP</span><small id="precision-label">PERFECT 0 · BONUS 0</small></div><div class="building-controls"><button id="move-left-button" type="button" aria-label="左へ移動" disabled>←</button><button id="rotate-button" type="button" aria-label="90度回転" disabled>↻</button><button id="move-right-button" type="button" aria-label="右へ移動" disabled>→</button></div><button id="drop-button" type="button" aria-label="荷物を落とす" disabled>DROP <span aria-hidden="true">↓</span></button></div>
         </section>
       </main>
       <footer class="site-footer"><span>DROP TOWER / CONSTRUCTION SITE 003</span><span>もう1個、もう少し高く。</span></footer>

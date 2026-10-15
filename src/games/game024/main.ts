@@ -4,7 +4,7 @@ import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
 import { TelemetryService, type EventName } from '../../core/TelemetryService';
 import { analyticsConfig } from '../../analytics/config';
-import { createSnake,enqueue,step,type Direction,type Speed } from './model';
+import { createSnake,enqueue,step,advanceTransition,type Direction,type Speed } from './model';
 import { SnakeClock } from './clock';
 import { SnakeSaveStore, captureSave } from './save';
 const recordSession = createGameRecordSession('game024');
@@ -12,19 +12,19 @@ const el = <T extends HTMLElement>(id:string) => document.getElementById(id) as 
 const app=el('app'),canvas=el<HTMLCanvasElement>('board'),menu=el<HTMLDialogElement>('menu');
 const storage=new StorageService(undefined,'web-mini-arcade:v1:game024:');
 const audio=new AudioService(storage), telemetry=new TelemetryService(storage,'game024',undefined,{remoteCollectionEnabled:false});
-const store=new SnakeSaveStore(); let saved=store.read();
+const store=new SnakeSaveStore(); let saved=store.read();const legacyBest=store.legacyBest();
 let snake=saved.snapshot ?? createSnake(seed()),speed=saved.speed,clock=new SnakeClock(speed);
 clock.remainder=saved.clock.remainder;clock.elapsed=saved.clock.elapsed;
 type Phase='title'|'explanation'|'playing'|'practice'|'paused'|'result'|'confirm';
 let phase:Phase='title',training=false;
-const held=new Set<string>();
+const held=new Set<string>();let animationPrevious:number|null=null;
 const labels:Record<Speed,string>={4:'ゆっくり',6:'ふつう',8:'はやい'};
 function seed():number { const v=new Uint32Array(1); try {crypto.getRandomValues(v);return v[0];}catch{return Date.now()>>>0;} }
 const active = () => phase==='playing' || phase==='practice';
 function trainingEvent(name:EventName,data:Record<string,string|number|boolean>={}):void { if(analyticsConfig.environment!=='production')telemetry.trackEvent(name,{...data,mode:'practice'}); }
 function persist():void { if(training)return; saved=captureSave(saved,snake,speed,{remainder:clock.remainder,elapsed:clock.elapsed});store.write(saved); }
 function clearInput():void {held.clear();snake={...snake,queue:[]};}
-function setPhase(next:Phase):void {phase=next;app.dataset.state=next;el<HTMLButtonElement>('pause-button').disabled=!active();el<HTMLButtonElement>('restart-button').disabled=!active();el<HTMLButtonElement>('help-button').disabled=!active();for(const b of document.querySelectorAll<HTMLButtonElement>('[data-dir]')) b.disabled=!active(); if(active()){if(menu.open)menu.close();clock.resume();}else{clock.pause();clearInput();} render();}
+function setPhase(next:Phase):void {phase=next;app.dataset.state=next;el<HTMLButtonElement>('pause-button').disabled=!active();el<HTMLButtonElement>('restart-button').disabled=!active();el<HTMLButtonElement>('help-button').disabled=!active();for(const b of document.querySelectorAll<HTMLButtonElement>('[data-dir]')) b.disabled=!active(); animationPrevious=null;if(active()){if(menu.open)menu.close();if(snake.transitionMs>0)clock.pause();else clock.resume();}else{clock.pause();clearInput();} render();}
 function show(html:string,next:Phase):void {setPhase(next);menu.innerHTML=html+'<p class="menu-return"><a id="menu-portal" href="./index.html" class="arcade-portal-return">← ゲーム一覧へ</a></p>';if(!menu.open)menu.show();el('menu-portal').onclick=portal; menu.querySelector<HTMLButtonElement>('button')?.focus({preventScroll:true});}
 function draw():void {
   const size=Math.max(1,Math.floor(canvas.getBoundingClientRect().width*(devicePixelRatio||1)));
@@ -33,12 +33,14 @@ function draw():void {
   ctx.fillStyle='#eaf0dd';ctx.fillRect(0,0,size,size);
   ctx.strokeStyle='#c4d2b5';ctx.lineWidth=Math.max(1,size/600);
   ctx.beginPath();for(let i=0;i<=snake.size;i++){ctx.moveTo(i*c,0);ctx.lineTo(i*c,size);ctx.moveTo(0,i*c);ctx.lineTo(size,i*c);}ctx.stroke();
+  for(const w of snake.walls){ctx.fillStyle=snake.transitionMs>0?'#a48e56':'#667264';ctx.fillRect((w.x+.06)*c,(w.y+.06)*c,.88*c,.88*c);ctx.fillStyle='#bbc5a2';ctx.fillRect((w.x+.12)*c,(w.y+.12)*c,.76*c,.14*c);}
+  if(snake.transitionMs>0){ctx.strokeStyle='#d3993d';ctx.lineWidth=Math.max(2,c*.1);ctx.strokeRect(2,2,size-4,size-4);}
   if(snake.food){const f=snake.food;ctx.fillStyle='#bd883c';ctx.beginPath();ctx.roundRect((f.x+.19)*c,(f.y+.19)*c,.62*c,.62*c,.13*c);ctx.fill();ctx.fillStyle='#e7b975';ctx.fillRect((f.x+.27)*c,(f.y+.25)*c,.22*c,.12*c);}
   snake.body.forEach((p,i)=>{ctx.fillStyle=i===0?'#42794d':'#719660';ctx.beginPath();ctx.roundRect((p.x+.055)*c,(p.y+.055)*c,.89*c,.89*c,.22*c);ctx.fill();});
   const h=snake.body[0];const vertical=['up','down'].includes(snake.direction), sign=['up','left'].includes(snake.direction)?-.19:.19;
   ctx.fillStyle='#173e31';for(const eye of [-.19,.19]){ctx.beginPath();ctx.arc((h.x+.5+(vertical?eye:sign))*c,(h.y+.5+(vertical?sign:eye))*c,.065*c,0,Math.PI*2);ctx.fill();}
 }
-function render():void {draw();el('foods-value').textContent=String(snake.foods);el('length-value').textContent=String(snake.body.length);el('best-value').textContent=training?'—':String(saved.stats.best[speed]);el('speed-label').textContent=`${labels[speed]} · 毎秒${speed}マス`;el('board-caption').textContent=training?'練習 · 餌を1つ食べよう · 記録には入りません':'20 × 20 · 端は通り抜けません';el('live-status').textContent=training?'↑ に曲がって、琥珀色の餌へ。':active()?'真逆へは曲がれません。しっぽに、ご用心。':phase==='paused'?'一時停止中 · 再開はボタンから。':'好きな速さで、のびのびと。';}
+function render():void {draw();el('foods-value').textContent=String(snake.foods);el('length-value').textContent=String(snake.body.length);el('best-value').textContent=training?'—':String(saved.stats.best[speed]);el('speed-label').textContent=`${labels[speed]} · 毎秒${speed}マス`;el('board-caption').textContent=training?'練習 · 餌を1つ食べよう · 記録には入りません':`20 × 20 · あと${snake.untilChange}個で組み替え · ${snake.changes}回変化`;el('live-status').textContent=training?'↑ に曲がって、琥珀色の餌へ。':active()?(snake.transitionMs>0?'盤面を組み替え中 · 蛇は止まっています。':'真逆へは曲がれません。しっぽに、ご用心。'):phase==='paused'?'一時停止中 · 再開はボタンから。':'好きな速さで、のびのびと。';}
 function recordEnd(reason:'wall'|'self'|'clear'|'quit'|'restart'):void {
   if(training || !saved.run.active || saved.run.reported)return;
   saved.run.active=false;saved.run.reported=true;saved.stats.runs++;
@@ -49,7 +51,7 @@ function recordEnd(reason:'wall'|'self'|'clear'|'quit'|'restart'):void {
 }
 function title():void {
   recordEnd('quit');if(training)speed=saved.speed;training=false;saved.snapshot=null;saved.run={id:null,active:false,reported:true,freshFoods:0};saved.clock={remainder:0,elapsed:0};store.write(saved);snake=createSnake(seed());clock=new SnakeClock(speed);
-  show(`<p class="eyebrow">SNAKE</p><h2 id="menu-title">ひとマススネーク</h2><p>食べて、のびて。<br>自分のしっぽに、ご用心。</p><label class="speed-choice">進む速さ<select id="speed-choice">${([4,6,8] as Speed[]).map(s=>`<option value="${s}" ${speed===s?'selected':''}>${labels[s]} · 毎秒${s}マス</option>`).join('')}</select></label><div class="menu-actions"><button id="play-button" class="primary" type="button">すぐ遊ぶ</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p>速度ごとにBESTを保存。途中は一時停止で保存します。</p>`,'title');
+  show(`<p class="eyebrow">SNAKE</p><h2 id="menu-title">ひとマススネーク</h2><p>食べて、のびて。<br>自分のしっぽに、ご用心。</p><label class="speed-choice">進む速さ<select id="speed-choice">${([4,6,8] as Speed[]).map(s=>`<option value="${s}" ${speed===s?'selected':''}>${labels[s]} · 毎秒${s}マス</option>`).join('')}</select></label><div class="menu-actions"><button id="play-button" class="primary" type="button">すぐ遊ぶ</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p>3〜7個食べるごとに壁が組み替わります。<br>新ルールBESTを速度ごとに保存。${legacyBest?`旧ルールBEST：${labels[speed]} ${legacyBest[speed]}個（別記録）` : ''}</p>`,'title');
   el<HTMLSelectElement>('speed-choice').onchange=e=>{speed=Number((e.target as HTMLSelectElement).value) as Speed;saved.speed=speed;store.write(saved);render();};
   el('play-button').onclick=()=>{telemetry.trackEvent('tutorial_skip',{source:'title'});start();};el('explain-button').onclick=()=>explain(false);el('practice-button').onclick=practice;
 }
@@ -57,7 +59,7 @@ function start():void {recordEnd('restart');training=false;snake=createSnake(see
 function practice():void {recordEnd('quit');training=true;speed=4;snake=createSnake(24,8);snake.food={x:4,y:2};clock=new SnakeClock(4);clearInput();trainingEvent('practice_start');setPhase('practice');void audio.unlock();}
 function explain(inRun:boolean):void {
   if(!training)telemetry.trackEvent('tutorial_view',{source:phase});
-  show('<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">餌を食べて、1マスずつ。</h2><ol><li>蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。</li><li>琥珀色の四角が餌。食べると身体が1マス伸びます。</li><li>壁や自分の身体にぶつかると終了。真逆へは曲がれません。</li><li>20×20マスを埋めるとクリア。途中で速さは変わりません。</li></ol><p>餌の数が記録です。時間制限はありません。<br>離れると休憩。戻ったら、ボタンで再開。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">'+(inRun?'再開する':'すぐ遊ぶ')+'</button>'+(inRun?'':'<button id="practice-button" type="button">練習する</button><button id="title-button" type="button">タイトルへ</button>')+'</div>','explanation');
+  show('<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">餌を食べて、1マスずつ。</h2><ol><li>蛇は選んだ速さで進みます。矢印キー、WASD、方向ボタンで曲がります。</li><li>琥珀色の四角が餌。食べると身体が1マス伸びます。</li><li>壁や自分の身体にぶつかると終了。真逆へは曲がれません。</li><li>3〜7個食べるごとに壁が組み替わります。変化中は止まり、入力は持ち越しません。</li><li>長くなると壁が減り、20×20マスを埋めるとクリア。途中で速さは変わりません。</li></ol><p>餌の数が記録です。時間制限はありません。<br>離れると休憩。戻ったら、ボタンで再開。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">'+(inRun?'再開する':'すぐ遊ぶ')+'</button>'+(inRun?'':'<button id="practice-button" type="button">練習する</button><button id="title-button" type="button">タイトルへ</button>')+'</div>','explanation');
   persist();el('continue-button').onclick=inRun?resume:start;if(!inRun){el('practice-button').onclick=practice;el('title-button').onclick=title;}
 }
 function resume():void {clearInput();if(!training)telemetry.trackEvent('resume');setPhase(training?'practice':'playing');persist();void audio.unlock();}
@@ -75,7 +77,8 @@ function result():void {
 function tick():boolean {
   if(!active())return false;const previous=snake.foods;snake=step(snake);
   if(snake.foods>previous){audio.tone(470,570,.07,'sine',0,.018);if(!training){saved.run.freshFoods++;telemetry.trackEvent('specific_game_events',{event:'food',foods:snake.foods,length:snake.body.length,speed});if(snake.foods>saved.stats.best[speed]){saved.stats.best[speed]=snake.foods;telemetry.trackEvent('best_update',{score:snake.foods,best:snake.foods,unit:'foods',speed});}}}
-  render();persist();if(snake.outcome!=='playing'||training&&snake.foods>=1){result();return false;}return true;
+  if(snake.transitionMs>0){held.clear();clock.remainder=0;clock.pause();animationPrevious=null;audio.tone(330,660,.12,'sine',0,.018);}
+  render();persist();if(snake.outcome!=='playing'||training&&snake.foods>=1){result();return false;}return snake.transitionMs===0;
 }
 function direction(d:Direction):void {if(active())snake=enqueue(snake,d);}
 for(const b of document.querySelectorAll<HTMLButtonElement>('[data-dir]'))b.onclick=()=>direction(b.dataset.dir as Direction);
@@ -88,7 +91,13 @@ function portal():void {recordEnd('quit');telemetry.trackEvent('return_to_portal
 el('portal-link').onclick=portal;
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});window.addEventListener('blur',()=>pause());window.addEventListener('resize',draw);
 window.addEventListener('pagehide',()=>{clock.pause();clearInput();persist();audio.destroy();},{once:true});
-function frame(now:number):void {if(clock.frame(now,tick)==='gap')pause();requestAnimationFrame(frame);}
+function frame(now:number):void {
+  if(active()&&snake.transitionMs>0){
+    if(animationPrevious!==null){const dt=now-animationPrevious;if(dt>500||dt<0){pause();}else{snake=advanceTransition(snake,dt);render();if(snake.transitionMs===0){held.clear();clock.remainder=0;clock.resume();persist();}}}
+    animationPrevious=now;
+  }else{animationPrevious=null;if(clock.frame(now,tick)==='gap')pause();}
+  requestAnimationFrame(frame);
+}
 telemetry.trackEvent('game_open');
 if(saved.snapshot){if(saved.run.active&&saved.run.id){telemetry.restoreRun(saved.run.id);recordSession.resumeRun(saved.run.id);}if(snake.outcome==='playing')pause(true);else result();}else title();
 requestAnimationFrame(frame);
