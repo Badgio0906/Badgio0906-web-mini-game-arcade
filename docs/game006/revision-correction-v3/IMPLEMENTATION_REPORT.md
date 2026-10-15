@@ -19,3 +19,8 @@ Jev：本担当の新モデル対象単体は初回PASSで、新規findingなし
 ## 後続の独立ブラウザ証拠
 
 別担当desk_rainが固定`c057d2f06d931911011a6f202c131140634794b7`で通常入力の独立ブラウザQAを実行した。[初回最終4幅原本](../../catalog-reorganization/QA/stage3-independent-005-006-03/REPORT.json)の006phone390/320/844は切り返し・ブレーキ・駐車・結果・保存を確認。desktop1440の待機timeoutは元pass=falseのまま保持した。同じsourceの[desktop限定再検証](../../catalog-reorganization/QA/stage3-independent-006-desktop-retest/REPORT.json)は53checks PASS、pageerror/POST0。読み取りゲージで通常キー/ボタンの時機を選ぶ技術証拠で、人間の駐車判断・面白さの合格とは区別する。公開確認とVisual最終判定はroot工程報告を参照。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

@@ -31,3 +31,5 @@ main commit `6e371613edfff6123f997259630acbbd98f0c4da`、branch `work`から通�
 canonical runtime `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。check・1078tests/101files・公開設定を再現したbuild成功。通常の固有QAは033全4幅/phone自然100秒65560、034全4幅×8現場10034、035独立全4幅3end/投球中保存再開を確認。3作の独立技術Visual合格、全12実画面thumbnailを採用。
 
 最終compiled12作品×4幅は [44受理case](QA/final-release-build/REPORT.json) と [033のactive modal帰還4case/198checks](QA/final-release-modal-return-retest/REPORT.json) で全48組を確認。初回4failureはcollectorが背面header linkを選んだためで、active dialog link選択へcollectorだけ限定修正。source前後一致/error0/POST0。Portalは [root4幅＋subpath150checks](QA/final-catalog-root-subpath/REPORT.json) でactive27/complete9/hidden4/retired4を確認。[統合source chain](QA/FINAL_SOURCE_CHAIN.json)。後追いの実終了関数12testも最終CIへ含める。
+
+最終集約候補 `aa9716c357a6a185ca917b1a4e9ab06cca682b2c` でcheck・**1090tests/102files**・公開設定build成功。実終了関数12件を全体へ含めて確認済み。[実行記録](QA/FINAL_CHECK_TEST_BUILD.txt)。runtimeは57dce249と同一。

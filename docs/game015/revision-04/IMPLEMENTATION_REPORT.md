@@ -47,3 +47,8 @@ GAME015_BASE=http://127.0.0.1:4935/ GAME015_SOURCE_ROOT=/workspace/arcade-stage2
 その2回目は、任意延長180mを目指す途中98.26mで鳥との正規接触により自然終了した。そこまでに鳥2通過・1退場・移動床・pause復帰は成功しており、その証拠を無効にしない。自然死亡を未実装／製品不具合と呼ばず、延長目標未達としてFAIL原本を保持する。QA予測へsnapshotからnative tapまでの短い遅延幅を含め、rootの指示どおり80m限定再検証を1回だけ行った。通常の人間反応・無期限生存を証明するものではない。
 
 以上の2 findingをJevへ各1回実HTTP200で記録し、回答を読まずに上記調査・判断をannotateした。[ログ](QA/JEV_SHADOW.jsonl)／[集計](QA/JEV_SUMMARY.json)。source変更なし。実機スマホ／聴感／本人の面白さは引き続き未実施。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

@@ -20,3 +20,8 @@ tests/unit/game009.test.ts（7件）: 全12開始offset×12問題の解存在・
 
 固定a323／DEV4176、1440×900・390×844・320×720・844×390の4caseを独立runner_fall担当が通常入力で完了。009/017合計8case644check PASS、source hash一致、pageerror0/POST0。説明／実練習／本番／通常結果／retry／旧新BEST／pause／mute／quit／帰還を確認。本番は各幅4問、12問全体は単体と区別。
 [独立報告](../../catalog-reorganization/STAGE3_009_017_INDEPENDENT_REVIEW.md)／[実report](../../catalog-reorganization/QA/stage3-009-017-a323-native-01/REPORT.json)。本人の面白さ／物理実機／聴感は未実施。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

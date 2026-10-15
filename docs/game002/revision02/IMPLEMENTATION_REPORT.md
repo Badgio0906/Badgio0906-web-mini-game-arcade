@@ -21,3 +21,8 @@
 既存継続テストは加速後にworldTimeを障害物操縦へ使い3265mで衝突。Jev 1 finding実HTTP200（判断を伏せた独立調査）後、roadTimeへ更新し全5seedの5200m継続PASS。過去の初期bike敵データ完全一致は今回予兆が異なるため形状／初期位置一致へ更新。[Shadowログ](QA/JEV_SHADOW.jsonl)。Jevは公開判断をしない。
 
 全体TypeScript確認では対象ファイルエラーなし、同時編集中のGame003の未完了エラーが出た。最終check/buildは統合担当が固定sourceで再実行する。実ブラウザ／高速度での人間の反応／実機の音・面白さは未検証。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

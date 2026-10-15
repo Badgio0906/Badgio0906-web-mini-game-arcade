@@ -78,6 +78,18 @@ OpenAI ImageGenをArt Directorが実際に**8回使用し、8生成すべて成�
 
 Workerの更新は既存DBの復旧点・対象を確認したrootが担当し、既存migration再適用やDB初期化、新account作成、管理Secret上書きなし。本番への書込みはWorker deployと加算登録に限定。ゲーム公開とオンライン登録・個人BESTの成否は独立して報告する。
 
+### 開発用APIの実測使用量
+
+[TASK_USAGE.json](QA/TASK_USAGE.json)は、作業開始時のbaseline以後に記録したschema-v2 findingをgame/finding/checkpointで重複除外した集計。Jevの確定実測と、取得できないCodex/ImageGen使用量を分ける。
+
+| 対象 | 実利用 | token・料金 | モデル・測定範囲 |
+|---|---|---|---|
+| Jev Shadow | 48 finding、48 API試行、48 AVAILABLE、全48注釈済み | 入力 **71,699**／出力 **10,330** tokens、実測合計 **0.003011358 USD** | resolved model **`typesafe/jev-1.13-20260917`**。API latency合計 **32.72067296500299019秒**。 |
+| Codex | 実装・独立レビュー・QAを担当 | tokens **`null`**、料金 **`null`**（取得不可） | Jevの料金や呼出し数から推定しない。 |
+| OpenAI ImageGen | 8回、8生成成功 | tokens **`null`**、料金 **`null`**（取得不可） | GPT Image系統。具体的backendモデル版はtool非公開。 |
+
+Jevのlatencyは各API呼出しの実測時間の合計で、タスク全体の経過時間やCodexの作業時間ではない。全体wall timeは`null`。取得不可を0円・0tokenと扱わず、Jev費用を開発全体の費用へ置き換えない。最終CI予定の1090tests/102filesは、この使用量追記の時点でも未実行の予定値のままとする。
+
 ## E. 公開・実行証拠
 
 | 工程 | branch / commit・workflow | 配信確認 |

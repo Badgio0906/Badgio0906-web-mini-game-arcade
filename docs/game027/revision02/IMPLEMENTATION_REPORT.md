@@ -13,3 +13,8 @@ CPUの予兆は既存generation/timerキャンセルへ統合し、休憩、離�
 既存abandon(current)へ標準quitを1回追加。trackのtraining除外とcurrent=nullによる冪等性を維持。対局/ファウル/勝敗/CPU/保存やCSSは変更しない。
 
 根拠は`docs/catalog-reorganization/QA/standard-events-024-027-035/`。3mainの変更前後hashと差分を保存。既存対象8file/92testと、実mainの終了関数を抽出・transpileして隔離VMで実行する12testが成功、TypeScript check成功。VMは描画・通常入力・本番通信の試験ではない。desk_rainがJev回答未読で独立readし、追加event文だけを除くと3mainがbefore hashと完全一致すること、練習除外とrun_end重複なしを確認。Jevは各game1件、実3HTTP200/12回答、独立注釈3件成功。既存大型gameplay QAはevent追補前のsourceで継続し、この限定検証を全sourceの同一版QA合格と扱わない。外部POSTは試行せず、remote/同意/登録gateは不変。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

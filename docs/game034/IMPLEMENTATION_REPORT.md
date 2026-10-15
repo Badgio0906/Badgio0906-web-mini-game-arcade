@@ -26,3 +26,8 @@ Independent review found the final headquarters had no clean solution among all 
 最初の実行は初回Analytics consent選択をcollectorが省き、desktop全8現場を完了したが実画像にpanelが重なった。画像/ログ/INTERRUPTEDを旧`QA/stage4-43deb-four-widths/`へ保全し、thumbnail採用を撤回。Jev C実記録後、独立Art判断TEST_INFRA_BUGを注釈。collectorだけへ通常「許可しない」clickを追加して別dirで4画面を再実行した。runtime/consent仕様に変更なし。
 
 実画像は各profile `playing-canvas.png` / `playing.png` / `complete.png`、desktopには250ms追加の実崩壊motion-bも保存。Art担当へclean原本を渡した。root後段のfont/records/event-only統合・公式公開は別candidate証拠へ分離する。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。

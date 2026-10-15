@@ -35,3 +35,8 @@
 ## 独立コードレビュー後の限定修正
 
 独立desk_rain担当から、native dialogをpauseボタンで開いてresumeすると元のpauseへfocusが戻り、次のSpaceが花火ではなくpauseを再度押す可能性を指摘された。Jevへ新findingを1回実HTTP200で送り、start／resumeのmenu.close・launch有効化後にlaunchへ明示focusを戻した。desk担当の独立判断JSONを元観測と対応してannotate済み。本人／browser再現とは区別し、通常pause→resume→Space長押し／releaseをcollectorへ追加した。[独立判断](QA/033-resume-space-focus-judgment.json)。
+
+
+## 一括改修の最終統合・公開状態（2026-10-16 JST追補）
+
+今回のcanonical runtimeは `57dce24977e4d3c7dfd42e99315c67fa07bb0243`。12作品×4画面のcompiled48組とPortal27作品のroot/subpath150項目を確認した。固有の通常RUNと後追い限定差分は [source chain](../catalog-reorganization/QA/FINAL_SOURCE_CHAIN.json) に分離し、過去の失敗原本を保持する。最新の公式workflow・公開commit・配信SHA・実公開操作は [公開記録](../catalog-reorganization/PUBLICATION.md)、ゲーム別結果と本人/実機/聴感の未実施範囲は [最終報告](../catalog-reorganization/FINAL_REPORT.md) を正本とする。以前の「準備中」は各記録時点の履歴。
