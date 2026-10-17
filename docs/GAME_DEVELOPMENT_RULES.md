@@ -87,6 +87,10 @@ DEVのreadonly診断で答えを選ぶ自動入力は、操作とタイマーの
 
 finding発生時は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)の正本に従い、1問題ずつ同時点の観測で4質問を実行する。Jevは原因と次の証拠へのroutingだけで、通常の独立Codex／Visual／Feel／Human／Release Gateを代行しない。0.45未満でもCodex確認を継続し、CODEX FALSE PASSとRELEASE RISK MISSを別に保存する。key不足やAPI失敗はUNAVAILABLEとして通常QAへ続ける。単純PASS/FAIL、HTTP、build確認はスクリプトで行い、全PASSの回数消化をしない。
 
+## 複数エージェントでの制作・中断時の継続
+
+Claude Code等へのゲーム単位の委任は[AGENT_COLLABORATION](AGENT_COLLABORATION.md)に従う。割当の許可pathだけを専用branchで編集し、未完成でも実sourceと対象の[HANDOFF書式](templates/AGENT_TASK_HANDOFF.md)を節目ごとにcommit/pushする。Codexが最新mainから単独でテスト・追加実装・Catalog/Vite/Records/Analytics登録・公開できること。Claudeの会話履歴／自動メモリ／ローカルSkill／一時ファイルの存在を継承条件にしない。
+
 ## 会話に依存しない納品と作業記録
 
 新native gameは`docs/gameNNN/`に少なくとも次を残す。既存ゲームを改修する場合は既存pathを保ち、revisionの最新報告から過去資料へリンクする。
