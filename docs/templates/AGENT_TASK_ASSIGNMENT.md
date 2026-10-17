@@ -1,6 +1,6 @@
 # TASK ASSIGNMENT（テンプレート・実割当ではない）
 
-> このファイルは書式のみ。Codexが `docs/agent-tasks/<task-id>/ASSIGNMENT.md` へ必要事項を複製し、commitで割当を確定する。Claude自身が番号や担当scopeを推測して作業を開始しない。
+> このファイルは書式のみ。Codexが `docs/agent-tasks/<task-id>/ASSIGNMENT.md` と初期 `HANDOFF.md` を作成・commitして割当を確定する。Claude自身が番号や担当scopeを推測して作業を開始しない。
 
 ## 識別
 - task_id: （一意のID）
@@ -26,19 +26,22 @@
 - `gameNNN.html`
 - `tests/gameNNN/**`、`tests/unit/gameNNN*.test.ts`
 - `docs/gameNNN/**`
-- `assets/gameNNN/**`、`public/assets/gameNNN/**`
-- `docs/agent-tasks/<task-id>/HANDOFF.md` とそのレビュー証拠
+- `assets/gameNNN/**`（画像/音声の原本、プロンプト、来歴）、`public/assets/gameNNN/**`（実配信用の画像/音声）
+- `docs/agent-tasks/<task-id>/HANDOFF.md` とそのレビュー証拠（ASSIGNMENT.mdはCodexのみ変更）
 
 ## 禁止する編集範囲
 - `main`、他game、`src/data/**`、`src/records/**`、`src/analytics/**`、`src/portal/**`、`src/arcade/**`
-- `analytics-worker/**`、`vite.config.ts`、`.github/**`、`docs/CURRENT_STATUS.md`、共通の正式サムネイル台帳
+- `analytics-worker/**`、`vite.config.ts`、`.github/**`、`.claude/**`、`AGENTS.md`、`CLAUDE.md`、`docs/CURRENT_STATUS.md`、`GAME_COMMON_SPEC.md`、`package.json`、`package-lock.json`、`assets/portal/**`、`public/assets/portal/**`、共通の正式サムネイル台帳
 - 実Secretと本番DB/Worker/広告の操作
 
 ## 独立実行と受け渡し
 - node_version: （推奨24、実行環境の実測）
 - install: `npm ci`
 - unit_test: （対象の実コマンド）
-- isolated_preview: （共有Viteを触らず起動できる構成・ポート・制約）
+- isolated_preview: （原則 `tests/gameNNN/` の限定Vite設定。共有Viteを触らず起動できる構成・ポート・制約）
+- publish_policy: Claude側からmainへpushしない。Codexが統合登録・正式サムネイル・公開を行う
+- scope_check: `git diff --name-only <base_sha>...<branch_head_sha>` をCodexがallowed pathsに照合
+- milestone_push: 仕様確定／最初の起動／素材採用／QA前後のcommit+pushを義務付ける
 - static_assets: （素材保存場所、来歴、出典、hash）
 - handoff: `docs/agent-tasks/<task-id>/HANDOFF.md`
 - merge_gate: Codexが範囲監査、必要な共通登録、QA、本番公開を実施
