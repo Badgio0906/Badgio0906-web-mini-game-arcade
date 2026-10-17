@@ -17,6 +17,7 @@
 | 文書 | 所有する情報 | 読むタイミング |
 |---|---|---|
 | [AGENTS](../AGENTS.md) | 毎回必要な最小の指示 | タスク開始 |
+| [AGENT_COLLABORATION](AGENT_COLLABORATION.md) | Codex単独でも復帰できる共同作業の範囲・割当・Git引継ぎ | 他の開発エージェントへ委任／引継ぐとき |
 | この文書 | 目的・構造・参照地図 | タスク開始 |
 | [CURRENT_STATUS](CURRENT_STATUS.md) | 現行カタログ・例外・検証済み版・残課題 | タスク開始／終了時更新 |
 | [GAME_DEVELOPMENT_RULES](GAME_DEVELOPMENT_RULES.md) | 実装・分担・素材・QA・継承手順 | 実装／改修 |
@@ -59,3 +60,5 @@ Jev integration：OpenRouter Decisions、`typesafe/jev-1.13`、Shadow Mode。1 f
 5. 新タスクではdev server、Chromium、認証情報、一時ログ、`dist/`が存在すると仮定しない。必要なものだけ再準備する。
 
 公開先はCURRENT_STATUSで確認する。ゲーム追加は番号のフォルダ作成だけで完了しない。カタログ・物理HTML・Vite入力・練習・素材・検証・継承記録までを [開発手順](GAME_DEVELOPMENT_RULES.md) に沿って揃える。
+
+Claude Code等を併用する場合も統合・公開はCodexの責務とし、割当と途中成果はGitHubのbranch/PR・[担当Handoff書式](templates/AGENT_TASK_HANDOFF.md)に残す。Claudeの会話・ローカル自動メモリ・未push差分なしでCodexが再開できることを受入条件とする。
