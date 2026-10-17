@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
 <meta name="robots" content="noindex">
 <title>ぴったりストップ ～TIMING PILOT～ | 試験用（非公開）</title>
+<link rel="stylesheet" href="./arcade-navigation.css">
+<script src="./arcade-navigation.js"></script>
 </head>
 <body>
 <div id="app" data-screen="title">
-  <header>
-    <a id="portal-link" href="./index.html">← ゲーム一覧へ</a>
+  <header class="arcade-game-header">
+    <a id="portal-link" class="arcade-portal-return" href="./index.html">← ゲーム一覧へ</a>
     <button id="pause" type="button">休憩</button>
   </header>
   <main>
@@ -19,7 +21,7 @@
       <span id="round">ROUND 1 / 3</span>
       <strong id="score">0</strong>
     </div>
-    <div id="stage" tabindex="0" role="button" aria-label="タップ、クリック、またはSpaceでマーカーを止める">
+    <div id="stage" data-game-interaction tabindex="0" role="button" aria-label="タップ、クリック、またはSpaceでマーカーを止める">
       <div class="track">
         <i id="target" aria-hidden="true"></i>
         <i id="marker" aria-hidden="true"></i>
