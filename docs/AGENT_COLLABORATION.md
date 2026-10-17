@@ -20,12 +20,24 @@
 
 「＋α」は**同じgameNNNに閉じる**テスト、画像・音の作成と最適化、仕様文書・レビューに限定。複数ゲーム横断の共通リファクタや管理API変更はCodexで扱う。必要ならClaudeは変更提案のみ残す。担当は番号を基本単位とし、ジャンル／操作／美術制作量は割り当て判断の情報に用いる。
 
+## 終了報告の責任分界
+
+- 共通の `AGENTS.md` の「作業終了時に記録する」は両者に適用する。ただし **Codexだけが `docs/CURRENT_STATUS.md` と共通登録・公式公開報告を更新**する。
+- Claude Codeは担当 `docs/gameNNN/` と `docs/agent-tasks/<task-id>/HANDOFF.md` に変更・実行した検証・残課題を記し、節目ごとにリモートbranchへpushする。`CURRENT_STATUS.md` の更新事項は `integration_requests` でCodexへ引き渡す。
+- CLAUDE.mdの `@AGENTS.md` 取り込み、`.claude/settings.json` の実際のdeny適用を `/context` と `/permissions`、小さい安全な編集試験で確認する。未確認なら設定だけで保護されたと報告しない。
+
+## 素材とサムネイルの所有
+
+- Claude Code担当ゲームの元画像・元音声・生成の根拠/プロンプトは `assets/gameNNN/**`、ゲーム内の実配信画像・音声は `public/assets/gameNNN/**`。固有HTMLは `gameNNN.html`、ゲームコードは `src/games/gameNNN/**`、固有テストは `tests/gameNNN/**` と `tests/unit/gameNNN*.test.ts`。実際の割当で許可したpathのみ編集する。
+- ポータルの `assets/portal/**`、`public/assets/portal/**` と正式サムネイル採用台帳はCodexの所有。Claude Codeは実画面スクリーンショットをゲーム固有のQA/素材フォルダにcommitし、`integration_requests` へ採用候補を記載する。Codexが正式登録する。
+- `public/games/**` は旧Godotの配信exportを保護する別用途であり、native新作の `public/assets/gameNNN/**` と混同しない。素材をローカルのみに置いたまま完了としない。
+
 ## 新ゲームの割当（Codex側）
 
 1. 最新`CURRENT_STATUS.md`とCatalog/HTMLを調べ、未使用の安定`gameNNN`を確定。既存IDは詰め直さない。別タスクとIDが衝突しないか確認。
-2. `docs/agent-tasks/<task-id>/ASSIGNMENT.md`を[テンプレート](templates/AGENT_TASK_ASSIGNMENT.md)で作成し、`owner`、`game_id`、`base_sha`、allowed/forbidden paths、記録と保存のルール、仕様正本、プレビュー/テスト方式、採否条件を確定してcommitする。暫定の担当は作品のリリースを意味しない。
+2. `docs/agent-tasks/<task-id>/ASSIGNMENT.md` と初期 `HANDOFF.md` をそれぞれ[割当](templates/AGENT_TASK_ASSIGNMENT.md)・[引継ぎ](templates/AGENT_TASK_HANDOFF.md)テンプレートからCodexが作成し、`owner`、`game_id`、`base_sha`、allowed/forbidden paths、記録と保存のルール、仕様正本、プレビュー/テスト方式、採否条件を確定してcommitする。暫定の担当は作品のリリースを意味しない。
 3. Claudeはそのcommitから固有ブランチ（例 `claude/game036-physics`）または隔離worktreeを作成する。**mainは編集・直接pushしない。**
-4. Claudeは共有ファイルを変更せず、ゲームを独立ビルドする場合は`tests/gameNNN/`の限定Vite設定などを使う。統合に必要な変更は[HANDOFF](templates/AGENT_TASK_HANDOFF.md)の`integration_requests`へ書く。`gameNNN.html`の正式ルートや一覧は統合前のローカル検証として区別。
+4. Claudeは共有ファイルを変更せず、ゲームを独立ビルドする場合は`tests/gameNNN/`の限定Vite設定などを使う。まず **番号と割当を予約するだけ**とし、未完成ゲームをmainのCatalog/Vite/ポータルへ仮掲載しない。統合プレビューが不可欠ならCodexが専用の**未公開branch**で仮登録を行う。統合に必要な変更は[HANDOFF](templates/AGENT_TASK_HANDOFF.md)の`integration_requests`へ書く。`gameNNN.html`の正式ルートや一覧は統合前のローカル検証として区別。
 5. Claudeのbranch/PRとHANDOFFをCodexがレビューし、必要な共通登録を**Codex自身が**行い、テスト/実ブラウザ/公式Pagesの公開証拠まで管理する。本人試遊は別。
 
 ## 途中停止に強いチェックポイント
@@ -33,14 +45,14 @@
 - `ASSIGNMENT.md`はCodexが作成・変更する正本、`HANDOFF.md`は担当実装者が更新する作業状態。どちらもGit管理下へ置く。
 - 作業開始時に`HANDOFF.md`を作り、`assigned → in_progress → ready_for_integration / blocked / abandoned → integrated → published`を明記。`integrated/published`への変更・`CURRENT_STATUS.md`更新はCodexが行う。
 - **仕様固め、最初に動くゲーム、素材採用、QA前、最終QA後、作業中断前**に、固有ファイルとHANDOFFをcommitしてbranchへpushする。長い開発が突然止まった場合、最後にpushされた状態まで復元できる。**未push作業は保証不能**であり成功と記録しない。
-- HANDOFFにはGit remote/branch/base SHA/最新commit、実装済み・未実装・既知の問題、再現コマンド、検証レベル、必要な画像/ライセンス/採用台帳、結果/保存互換・旧比較版、次の3手、統合依頼、再開不能要因を入れる。
+- HANDOFFにはGit remote/branch/base SHA/最後に検証したソースcommit（既知の場合）、実装済み・未実装・既知の問題、再現コマンド、検証レベル、必要な画像/ライセンス/採用台帳、結果/保存互換・旧比較版、次の3手、統合依頼、再開不能要因を入れる。
 - `/workspace`や`C:\...`など絶対パス、実行中server、Claudeのローカル自動メモリ、独自MCP、未共有の画像生成結果を必須前提にしない。必要な素材はGit管理、非公開が必要ならCodexから再取得可能な**秘密値を含まない**外部参照と承認を引き継ぐ。
 - 画像が必要なのに生成ツールや許諾に不足があれば`blocked_art`等として止め、CSS図形で代替して画像生成済みとはしない。画像生成のモデル版・採用/不採用・ハッシュ・生成元を記録する。
 
 ## Codex単独への復帰手順（Claudeが辞めた/使えないとき）
 
 1. Codexが最新mainと未統合の `docs/agent-tasks/` 割当、PR/branchを列挙し、対象game IDと状態を照合。
-2. `HANDOFF.md`の`last_pushed_commit`を実Git refと照合。未公開の成果は**mainにあると仮定しない**。
+2. `ASSIGNMENT.md` のbranch名を使い、`git fetch origin` の後、`git rev-parse origin/<task-branch>` または `git ls-remote --heads origin <task-branch>` で**現時点のremote先端SHAを取得**し、当該commitのHANDOFFを読む。HANDOFF自身を含む先端commit SHAを同じHANDOFFへ埋め込もうとしない。`last_verified_source_commit` は既に存在するテスト対象commitだけを示す。未統合の成果は**mainにあると仮定しない**。
 3. Codexの新しいworktreeに対象branchをcheckout。秘密・`node_modules`・`dist`・`/tmp`は引き継がず、Nodeバージョンと`npm ci`等で再構築する。
 4. 差分をallowed pathsに照合。共有ファイル・他ゲームの変更、エクスポートに秘密があれば隔離し、採用しない。旧保存、ruleset/record board、Portalリンク、CREDIT/Ads/GA4、退役/hiddenを点検。
 5. 記録されたテスト・モデル・実操作を再現。不足は**Codex自身が**実装し、必要なら独立レビューを別のCodex役割へ委任する（独立実施を偽らない）。
@@ -49,9 +61,10 @@
 
 ## 共有ファイルの保護
 
-- `src/data/*`、`src/portal/*`、`src/records/*`、`src/analytics/*`、`src/arcade/*`、`analytics-worker/*`、`vite.config.ts`、`index.html`、`.github/*`、`AGENTS.md`、`CLAUDE.md`、`docs/CURRENT_STATUS.md`はCodex統合担当が所有する。
-- Claude側`.claude/settings.json`の編集拒否ルールは**一部のファイル操作の誤編集を防ぐ補助策**。Bash/外部MCP経由での書き込みやGitHubのmerge制限まで保証しない。
+- `AGENTS.md`、`CLAUDE.md`、`.claude/**`、`package.json`、`package-lock.json`、`GAME_COMMON_SPEC.md`、`src/main.ts`、`src/game/**`、`assets/portal/**`、`public/assets/portal/**`、`scripts/**`、`tools/**`、`docs/AGENT_COLLABORATION.md`、`docs/templates/**`、`docs/agent-tasks/README.md`、`src/data/*`、`src/portal/*`、`src/records/*`、`src/analytics/*`、`src/arcade/*`、`analytics-worker/*`、`vite.config.ts`、`index.html`、`.github/*`、`AGENTS.md`、`CLAUDE.md`、`docs/CURRENT_STATUS.md`はCodex統合担当が所有する。
+- Claude側 `.claude/settings.json` の `Edit(/path)` はプロジェクトルート基準（Claude Codeの対応版で要検証）。組込みEdit/Writeと認識可能なBashファイル操作の一部を止める補助策であり、Python/Nodeの任意書込、外部MCP、GitHubのmerge制限まで保証しない。`claude --version` と `/permissions` で実際に拒否されるか安全なサンドボックスで試験する。
 - 実運用では隔離worktree、Claudeの専用PR、Codexによる`git diff --name-only <base>...<head>`と許可path検査、PRレビューを必須とする。GitHubのmain保護・必須レビュー等を設定できる場合は併用する。設定済みとは断言しない。
+- PRにチェックが無ければレビュー待ちのままにし、Codex側で `npm ci` / `npm run check` / `npm test` / `npm run build` を検証する（可能ならPR専用CIで、公開deployはしない）。実行できない場合は未検証と明記してマージを保留する。
 - PRのCI成功は本番完成と別。ブランチで検証可能な固有コードのみ先に作り、共通登録は統合時にする。複数人が`CURRENT_STATUS.md`を同時編集しない。
 
 ## 作業記録・モデル比較
