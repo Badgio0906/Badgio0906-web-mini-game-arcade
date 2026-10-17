@@ -1,0 +1,21 @@
+/* Minimal pilot styling only. Visual design is intentionally NOT done (see HANDOFF). */
+:root { color-scheme: light; font-family: system-ui, sans-serif; }
+body { margin: 0; background: #f4f6f8; color: #1d2a33; }
+#app { max-width: 520px; margin: 0 auto; padding: 12px 16px calc(24px + env(safe-area-inset-bottom)); }
+header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+header a { color: #2b5f84; }
+button { min-height: 44px; min-width: 44px; padding: 0 16px; font: inherit; border: 1px solid #8aa0ae; border-radius: 8px; background: #fff; }
+button.primary { background: #2b5f84; color: #fff; border-color: #2b5f84; }
+button[hidden] { display: none; }
+.badge { margin: 16px 0 0; font-size: 12px; color: #8a4b00; }
+h1 { margin: 4px 0 12px; font-size: 24px; }
+.hud { display: flex; justify-content: space-between; align-items: baseline; }
+#stage { margin: 12px 0; padding: 40px 12px; border: 2px dashed #8aa0ae; border-radius: 12px; background: #fff; touch-action: manipulation; user-select: none; outline-offset: 2px; }
+.track { position: relative; height: 16px; border-radius: 8px; background: #d7e0e6; }
+.track i { position: absolute; top: -8px; width: 4px; height: 32px; margin-left: -2px; border-radius: 2px; }
+#target { background: #c0392b; }
+#marker { width: 10px; margin-left: -5px; background: #1d2a33; }
+#status { min-height: 3em; }
+#results { padding-left: 1.4em; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+footer { margin-top: 24px; font-size: 12px; color: #667985; }

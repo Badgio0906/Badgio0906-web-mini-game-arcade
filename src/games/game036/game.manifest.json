@@ -1,0 +1,19 @@
+{
+  "id": "game036",
+  "status": "pilot-unregistered",
+  "title": "ぴったりストップ ～TIMING PILOT～",
+  "titleEn": "TIMING PILOT",
+  "note": "Handoff pilot only. Not in the catalog, Vite input or portal. Title is a trial name, not a proposed release.",
+  "coreMechanic": "Marker bounces 0..100 at 35 units/s; one stop per round; 3 rounds with targets 70, 30, 55",
+  "scoring": "max(0, round(1000 - |position - target| * 30)) per round; total 0..3000",
+  "inputs": {
+    "stop": "click / tap / Space (key repeat ignored)",
+    "pause": "button / Escape; blur or hidden auto-pauses"
+  },
+  "practice": "same model, free stops, no recorded score",
+  "save": "none yet",
+  "telemetry": "none; no external sending",
+  "creditMode": "free",
+  "revision": 0,
+  "humanReview": "not run"
+}
