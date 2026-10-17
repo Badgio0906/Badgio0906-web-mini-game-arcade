@@ -85,9 +85,11 @@ DEVのreadonly診断で答えを選ぶ自動入力は、操作とタイマーの
 
 ## FindingとJev Shadow
 
-finding発生時は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)の正本に従い、1問題ずつ同時点の観測で4質問を実行する。Jevは原因と次の証拠へのroutingだけで、通常の独立Codex／Visual／Feel／Human／Release Gateを代行しない。0.45未満でもCodex確認を継続し、CODEX FALSE PASSとRELEASE RISK MISSを別に保存する。key不足やAPI失敗はUNAVAILABLEとして通常QAへ続ける。単純PASS/FAIL、HTTP、build確認はスクリプトで行い、全PASSの回数消化をしない。
+finding発生時は[JEV_REVIEW_RULES](JEV_REVIEW_RULES.md)の正本に従い、1問題ずつ同時点の観測で4質問を実行する。Jevは原因と次の証拠へのroutingだけで、通常の独立レビュー担当者／Visual／Feel／Human／Release Gateを代行しない。0.45未満でもCodex確認を継続し、CODEX FALSE PASSとRELEASE RISK MISSを別に保存する。key不足やAPI失敗はUNAVAILABLEとして通常QAへ続ける。単純PASS/FAIL、HTTP、build確認はスクリプトで行い、全PASSの回数消化をしない。
 
 ## 複数エージェントでの制作・中断時の継続
+
+過去の監査指標 `CODEX FALSE PASS` およびJev APIの `CODEX_ACTION_REQUIRED` は履歴・契約名として保持する。新しいレビューの実担当は作業ログの `agent_tool` と `actor_role` で区別し、独立実施していないレビューを「独立」と呼ばない。
 
 Claude Code等へのゲーム単位の委任は[AGENT_COLLABORATION](AGENT_COLLABORATION.md)に従う。割当の許可pathだけを専用branchで編集し、未完成でも実sourceと対象の[HANDOFF書式](templates/AGENT_TASK_HANDOFF.md)を節目ごとにcommit/pushする。Codexが最新mainから単独でテスト・追加実装・Catalog/Vite/Records/Analytics登録・公開できること。Claudeの会話履歴／自動メモリ／ローカルSkill／一時ファイルの存在を継承条件にしない。
 
@@ -107,5 +109,5 @@ Claude Code等へのゲーム単位の委任は[AGENT_COLLABORATION](AGENT_COLLA
 
 経過時間は明示した作業開始から対象scopeの完了までの壁時計。休止／外部接続待ちは別記録。並列worker時間を足して開発時間にしない。修正は実行ごとに記録し、事前修正を一つの公開commitへまとめても失わない。[過去baseline](development-baseline/BASELINE_2026-10-05.json)は確認分の下限で、完全な使用量データではない。
 
-CURRENT_STATUSへ最新報告と残課題をリンクし、根拠のない「全ゲーム合格」「人間合格」「Jev評価済み」を書かない。runtime変更・保存・公開先・本番機能を変えたときだけ該当正本を更新し、全履歴を複製しない。
+Codex統合担当は `docs/CURRENT_STATUS.md` へ採用済みの最新報告と残課題をリンクする。Claude Code担当は許可されたゲーム別報告とタスク `HANDOFF.md` に同情報を記し、Codexへ統合依頼する。根拠のない「全ゲーム合格」「人間合格」「Jev評価済み」を書かない。runtime変更・保存・公開先・本番機能を変えたときだけ該当正本を更新し、全履歴を複製しない。
 新native HTMLのviewportは `viewport-fit=contain` を基本とし、切り欠きの内側のviewportで既存100dvhのプレイ領域・下部操作を計算する。`cover`を採用する場合はheaderだけでなく全viewport高さ予算にもsafe-areaを反映し、物理端末で確認する。
