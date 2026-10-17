@@ -7,3 +7,5 @@
 - [引継ぎテンプレート](../templates/AGENT_TASK_HANDOFF.md)
 
 Claude Codeの使用中止時は未統合branch/PRとHANDOFFをCodexが照合し、確認済みの最後のpushから作業を再開します。ローカルにしかない未commit作業は復元を保証できません。
+
+- [Claude→Codex途中引継ぎパイロットの手順](PILOT_PROTOCOL.md)（未着手のゲーム番号や完了実績を捏造しない）
