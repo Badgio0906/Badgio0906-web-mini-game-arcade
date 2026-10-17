@@ -12,7 +12,7 @@
 - base_sha: `9e96d557779c5de099fe54c51731ceb131e591a1`
 - assigned_at: `2026-10-17T23:19:07.151Z`
 - task_branch: `claude/pilot-game036-handoff-20261018`
-- upstream_pr: （本branchのDraft PRを作成後、そのPRを正本として参照）
+- upstream_pr: https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/8
 - current_product_scope: **試験専用・本番掲載なし**
 
 ## 固定された小さなゲーム仕様
