@@ -3,12 +3,12 @@
 ## 状態と参照
 - task_id: `pilot-game036-handoff-20261018`
 - game_id: `game036`（仮番号・非公開の試験）
-- current_status: `in_progress`（パイロットの指示により**意図的に途中で停止**。`ready_for_integration` ではない）
-- current_owner: `claude-code`
+- current_status: `in_progress`（Claudeが意図的中断 → Codexが限定継続。正式統合・公開なし）
+- current_owner: `codex-cloud`（Claudeの元成果物をGitHub連携で回収し継続）
 - upstream_base_sha: `9e96d557779c5de099fe54c51731ceb131e591a1`
 - branch: `claude/pilot-game036-handoff-20261018`
 - remote_head: **引継ぎ時に** `git fetch origin && git rev-parse origin/claude/pilot-game036-handoff-20261018` で取得。HANDOFF自身のcommit SHAを記載しない。remote先端にソースcommit（下記）が無ければ、その範囲は未push＝未回収。
-- last_verified_source_commit: `498edcc2c3bed1740f22336b0fad06e2cbf6485d`（このcommitの内容でテストとビルドを実行。HANDOFF.mdはそのsource commitに含まれない）
+- last_verified_source_commit: `d0e6b51e508b792ad76be40b5aa0c667cf4edee2`（Codex追加コードと独立Viteビルドテストを含み、PR専用GitHub Actionsでcheck/test/buildが成功。元Claude検証済みソースcommitは `498edcc2c3bed1740f22336b0fad06e2cbf6485d`）
 - pr_url: https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/8
 - handoff_updated_at: `2026-10-18T08:28:24+09:00`
 
@@ -87,3 +87,22 @@
 - [ ] 共有ファイル・他ゲームへの許可外変更なし
 - [ ] CodexがClaudeの会話・未pushデータ無しで限定テストを再現可能
 - [ ] Codexが未完成作業を引き継ぎ可能
+
+
+## Codex単独継続結果（2026-10-18、元Claude記録は上に保持）
+
+**本節は元のClaude作業より後の検証。元のClaude実行結果を上書きしない。**
+
+- 引き継ぎ起点：`claude/pilot-game036-handoff-20261018`、Claude最終先端 `5fed3606686d7f64b0df91ca5e1efd32d8e41d92`。Claudeの会話／auto memory／localファイルは参照せず、GitHubのASSIGNMENT/HANDOFFとソースを読んで続行した。
+- 変更：`game036.html` に100ガレ共通帰還ナビのclass/CSS/JSを追加。`tests/unit/game036-build.test.ts` で個別Viteビルドを独立検証、`tests/game036/browser.mjs` に再現可能なChromium通常操作のQAを追加。モデル・得点・記録・他ゲーム・共通Catalog/Pages/D1は一切変更していない。
+- GitHub PR専用CI [39080605158](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39080605158) は `d0e6b51e508b792ad76be40b5aa0c667cf4edee2` でPASS：Node24 `npm ci`、`tsc --noEmit`、`npm test` 104ファイル1101件（内Game036モデル10・個別Viteビルド1）、Jevオフライン、`npm run build`。元HANDOFFにあるClaudeの直接3コマンドPASSとは区別する。
+- このチャットのコンテナからはGitHubへの `git fetch` がDNSで拒否され、実remote worktreeを構成できなかった。GitHubアプリでブランチ参照とblob SHAを取得し、主要5ソースをSHA一致で隔離復元。Playwright Chromium 144はHTTP/FILE URLの通常navigationが `ERR_BLOCKED_BY_ADMINISTRATOR` なので、同一ソースをTypeScript変換し、ブラウザへ注入した通常クリック/Space/タップで4画面合計**124/124項目PASS**。模擬blur・repeatキー・リトライ/練習・非GETなし、pageerrorなし。**本番式Vite HTTP配信のE2Eとは異なる。**
+- 証拠：`docs/game036/HANDOFF_RECOVERY_REPORT.md`、`docs/game036/QA/RECOVERY_BROWSER_SUMMARY.json`。再実行用テストは `tests/game036/browser.mjs`。`game036.html` の共通ナビscriptの実配信・全画面QAを直接実行するには、ブラウザHTTP許可のあるCodex Cloudでの再検証が必要。
+- `open_decisions` (4点) は**試験専用の暫定挙動として維持**し、作者による正式ゲーム仕様確定とは扱わない。モデルの再初期化、最大0.5秒dt、無限練習3目標循環、リトライ時の新インスタンス/repeat排除は確認。ゲームの正式採用・美術・BEST/音・公開可否はユーザー判断待ち。
+- 追加検証・実装の制約：本コンテナではNode v22/tsc5.8を使用した限定型チェックのみ。Playwright実機ではない。Codex Cloudでの実worktree/npx指定の3コマンドとローカルVite画面QAは未実施として残す。費用/tokenは直接測れずnull。
+
+### 今後のnext_3_actions（Codex）
+
+1. gitアクセス可能なCodex Cloud環境で、本branchを新規worktreeへcheckoutし、Node24の `npm ci` と元の3CLIを厳密再実行する（GitHub CI代替の範囲と区別）。
+2. `GAME036_BUILD_DIR=<private_out> npx vite build --config tests/game036/vite.config.mjs` の後、`GAME036_BUILD_DIR=<private_out> GAME036_QA_OUT=<fresh_out> node tests/game036/browser.mjs` をブラウザが使える環境で実行し、HTTP、共通帰還ナビ、実キー／touch／blurを確認する。結果に差があれば原因と修正を記録する。
+3. このタスクはパイロットのため正式公開しない。独立試遊/美術/記録・Analytics/正式Catalog統合はユーザーの別承認を要する。Draft PR #8をマージせず保ち、確認済み成果と未確認条件を明確にする。
