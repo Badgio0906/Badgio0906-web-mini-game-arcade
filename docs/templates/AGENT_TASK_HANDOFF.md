@@ -9,9 +9,10 @@
 - current_owner:
 - upstream_base_sha: （40文字）
 - branch:
-- last_pushed_commit: （実remoteで照合した40文字）
+- remote_head: （Codexが `git fetch` 後に実remote参照から取得する。HANDOFF内で自分自身を含むSHAを固定しない）
+- last_verified_source_commit: （**既に存在し検証済みのソースcommit SHA**。未実施ならnull）
 - pr_url: （URL、未作成ならnull）
-- handoff_updated_at: （offset付き日時）
+- handoff_updated_at: （offset付き日時。自動採番であってcommit SHAに依存しない）
 - base_to_head_changed_files: （git diffの一覧、想定外変更を区別）
 
 ## 仕様と完成条件
@@ -49,7 +50,7 @@
 
 ## Codex引き継ぎ確認
 - [ ] 作業コミットがリモートbranchにある
-- [ ] HANDOFF自体がそのcommitに含まれている
+- [ ] リモートの最新commitにHANDOFFが含まれ、内容を取得できる（先端SHAはGitから照合）
 - [ ] 共有ファイル・他ゲームに許可外の変更がない
 - [ ] Claude固有の実行環境・未commitファイル無しで再現できる
 - [ ] 過去の失敗をPASSに書き換えていない
