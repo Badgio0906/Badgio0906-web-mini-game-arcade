@@ -9,7 +9,7 @@
 - branch: `claude/pilot-game036-handoff-20261018`
 - remote_head: **引継ぎ時に** `git fetch origin && git rev-parse origin/claude/pilot-game036-handoff-20261018` で取得。HANDOFF自身のcommit SHAを記載しない。
 - last_verified_source_commit: null
-- pr_url: Draft PR（作成後にPR側リンクから参照）
+- pr_url: https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/8
 - handoff_updated_at: `2026-10-17T23:19:07.151Z`
 
 ## 仕様と完成条件
