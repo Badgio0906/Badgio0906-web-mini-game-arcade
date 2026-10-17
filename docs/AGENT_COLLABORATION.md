@@ -25,7 +25,7 @@
 1. 最新`CURRENT_STATUS.md`とCatalog/HTMLを調べ、未使用の安定`gameNNN`を確定。既存IDは詰め直さない。別タスクとIDが衝突しないか確認。
 2. `docs/agent-tasks/<task-id>/ASSIGNMENT.md`を[テンプレート](templates/AGENT_TASK_ASSIGNMENT.md)で作成し、`owner`、`game_id`、`base_sha`、allowed/forbidden paths、記録と保存のルール、仕様正本、プレビュー/テスト方式、採否条件を確定してcommitする。暫定の担当は作品のリリースを意味しない。
 3. Claudeはそのcommitから固有ブランチ（例 `claude/game036-physics`）または隔離worktreeを作成する。**mainは編集・直接pushしない。**
-4. Claud​​eは共有ファイルを変更せず、ゲームを独立ビルドする場合は`tests/gameNNN/`の限定Vite設定などを使う。統合に必要な変更は[HANDOFF](templates/AGENT_TASK_HANDOFF.md)の`integration_requests`へ書く。`gameNNN.html`の正式ルートや一覧は統合前のローカル検証として区別。
+4. Claudeは共有ファイルを変更せず、ゲームを独立ビルドする場合は`tests/gameNNN/`の限定Vite設定などを使う。統合に必要な変更は[HANDOFF](templates/AGENT_TASK_HANDOFF.md)の`integration_requests`へ書く。`gameNNN.html`の正式ルートや一覧は統合前のローカル検証として区別。
 5. Claudeのbranch/PRとHANDOFFをCodexがレビューし、必要な共通登録を**Codex自身が**行い、テスト/実ブラウザ/公式Pagesの公開証拠まで管理する。本人試遊は別。
 
 ## 途中停止に強いチェックポイント
