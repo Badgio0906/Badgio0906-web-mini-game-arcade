@@ -14,6 +14,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 describe('Game036 pilot: standalone handoff build', () => {
   it('builds game036 with isolated Vite input and no shared config changes', () => {
+    const syntax = spawnSync(process.execPath, ['--check', join(root, 'tests/game036/browser.mjs')], {cwd:root, encoding:'utf8', timeout:15000});
+    expect(syntax.status, syntax.stderr).toBe(0);
     const temporary = mkdtempSync(join(tmpdir(), 'game036-pilot-vite-'));
     const output = join(temporary, 'dist');
     try {
