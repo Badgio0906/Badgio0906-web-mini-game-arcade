@@ -8,6 +8,9 @@
   "turn_id": null,
   "stage": null,
   "actor_role": null,
+  "agent_tool": null,
+  "execution_environment": null,
+  "handoff_commit": null,
   "worker_event": null,
   "started_at": null,
   "ended_at": null,
@@ -31,5 +34,5 @@
   "usage_source": null,
   "latency_ms": null,
   "evidence_paths": [],
-  "limitations": "未取得はnull。templateを実行記録として集計しない。stage／worker_event／分類はGAME_DEVELOPMENT_RULESとJEV_REVIEW_RULESに沿って実イベントだけを記録。認証情報は記録しない。"
+  "limitations": "未取得はnull。templateを実行記録として集計しない。stage／worker_event／分類はGAME_DEVELOPMENT_RULESとJEV_REVIEW_RULESに沿って実イベントだけを記録。認証情報は記録しない。 handoff_commitはログを書く時点で既に存在するcommitを指す。作成中のHANDOFF自身を含む未確定SHAは記入しない。codex_creditsはClaude側で取得できなければnull。agent_toolは実際に使用した実行系（codex-cloud/claude-code等）、actor_roleは実装/QA等の役割。既存schema1の過去行にこれらが無くてもnull相当として扱う。"
 }

@@ -1,0 +1,35 @@
+name: Pull request validation (no deploy)
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Validate agent JSON contracts
+        run: |
+          node -e "const fs=require('node:fs'); const s=JSON.parse(fs.readFileSync('.claude/settings.json','utf8')); const t=JSON.parse(fs.readFileSync('docs/templates/WORK_LOG_ENTRY.json','utf8')); if(!Array.isArray(s.permissions?.deny)||!s.permissions.deny.every(x=>/^Edit\\(\\/[^)]+\\)$/.test(x))) process.exit(1); if(t.schema_version!==1||t.record_type!=='template-not-executed'||!Object.hasOwn(t,'agent_tool')) process.exit(1);"
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - name: Offline Jev helper tests (no network)
+        run: python3 -m unittest discover -s tests/jev -p 'test_*.py' -v
+      - run: npm run build
+        env:
+          VITE_GA4_MEASUREMENT_ID: ''
+          VITE_TELEMETRY_ENDPOINT: ''
+          VITE_RECORDS_ENDPOINT: https://analytics.game100garage.com
