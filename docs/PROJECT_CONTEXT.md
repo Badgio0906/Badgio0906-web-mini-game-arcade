@@ -19,7 +19,7 @@
 | [AGENTS](../AGENTS.md) | 毎回必要な最小の指示 | タスク開始 |
 | [AGENT_COLLABORATION](AGENT_COLLABORATION.md) | Codex単独でも復帰できる共同作業の範囲・割当・Git引継ぎ | 他の開発エージェントへ委任／引継ぐとき |
 | この文書 | 目的・構造・参照地図 | タスク開始 |
-| [CURRENT_STATUS](CURRENT_STATUS.md) | 現行カタログ・例外・検証済み版・残課題 | タスク開始／終了時更新 |
+| [CURRENT_STATUS](CURRENT_STATUS.md) | 現行カタログ・例外・検証済み版・残課題（Codex統合担当のみ更新） | タスク開始／統合・公開時 |
 | [GAME_DEVELOPMENT_RULES](GAME_DEVELOPMENT_RULES.md) | 実装・分担・素材・QA・継承手順 | 実装／改修 |
 | [GAME_COMMON_SPEC](../GAME_COMMON_SPEC.md) | 保存・CREDIT・入力・計測・配信の共通境界 | 共通部分を扱う時 |
 | [JEV_REVIEW_RULES](JEV_REVIEW_RULES.md) | Shadow評価・API実測・判定の用途と限界 | findingが発生した時 |
