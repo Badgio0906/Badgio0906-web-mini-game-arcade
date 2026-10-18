@@ -35,7 +35,9 @@ export function shelterAt(lane: Lane, x: number, people: readonly Pedestrian[]):
 }
 export class RainJourney {
   elapsed = 0; wet = 0; lane: Lane = 1; score = 0; paused = false;
-  outcome: 'playing' | 'won' | 'lost' = 'playing'; entries = 0; lastEntry = '';
+  outcome: 'playing' | 'won' | 'lost' = 'playing'; entries = 0; lastEntry = ''; transfers = 0;
+  reason: 'wet' | 'lesson' | null = null;
+  private lastShelteredLane: Lane = 1;
   private visited = new Set<string>();
   constructor(readonly duration = RUN_SECONDS, readonly practice = false) {
     if (!Number.isFinite(duration) || duration <= 0) throw new Error('Positive duration required');
@@ -60,12 +62,14 @@ export class RainJourney {
       if (!owner) this.wet = Math.min(WET_LIMIT, this.wet + dt);
       else if (!this.visited.has(owner.id)) {
         this.visited.add(owner.id); this.entries++;
+        if (owner.lane !== this.lastShelteredLane) this.transfers++;
+        this.lastShelteredLane = owner.lane;
         const kind = KINDS[owner.kind]; if (!this.practice) this.score += kind.points;
         this.lastEntry = `${kind.name} ${kind.points >= 0 ? '+' : ''}${kind.points}`;
       }
       this.elapsed += dt; remaining -= dt;
-      if (this.wet >= WET_LIMIT - 1e-9) { this.wet = WET_LIMIT; this.outcome = 'lost'; }
-      else if (this.elapsed >= this.duration - 1e-9) { this.elapsed = this.duration; this.outcome = 'won'; }
+      if (this.wet >= WET_LIMIT - 1e-9) { this.wet = WET_LIMIT; this.outcome = 'lost'; this.reason = 'wet'; }
+      else if (this.elapsed >= this.duration - 1e-9) { this.elapsed = this.duration; this.outcome = this.practice && this.transfers === 0 ? 'lost' : 'won'; if (this.outcome === 'lost') this.reason = 'lesson'; }
     }
   }
 }

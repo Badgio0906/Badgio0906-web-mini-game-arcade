@@ -10,10 +10,11 @@ export function paint(canvas: HTMLCanvasElement, journey: RainJourney | null, ti
   const w = canvas.clientWidth, h = canvas.clientHeight, dpr = Math.min(2, devicePixelRatio || 1);
   if (canvas.width !== Math.round(w*dpr) || canvas.height !== Math.round(h*dpr)) { canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr); }
   const ctx=canvas.getContext('2d')!;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-  const bg=images.get('background');if(bg){const ratio=Math.max(w/bg.width,h/bg.height);const bw=bg.width*ratio;ctx.drawImage(bg,-(bw-w)*(.5+.15*Math.sin((journey?.elapsed??0)/55)),0,bw,bg.height*ratio);}
+  const bg=images.get('background');if(bg){const bw=Math.max(w,bg.width*h/bg.height);ctx.drawImage(bg,-(bw-w)*(.5+.15*Math.sin((journey?.elapsed??0)/55)),0,bw,h);}
   const gradient=ctx.createLinearGradient(0,h*.54,0,h);gradient.addColorStop(0,'#142b4300');gradient.addColorStop(1,'#07162980');ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);
   const y=(lane:number)=>h*(.71+lane*.105), scale=(lane:number)=>.82+lane*.09;
-  ctx.setLineDash([3,12]);ctx.lineWidth=1;for(let lane=0;lane<3;lane++){ctx.strokeStyle='#c9e6ed20';ctx.beginPath();ctx.moveTo(0,y(lane)+4);ctx.lineTo(w,y(lane)+4);ctx.stroke();}ctx.setLineDash([]);
+  ctx.setLineDash([3,12]);ctx.lineWidth=1.25;for(let lane=0;lane<3;lane++){ctx.strokeStyle='#c9e6ed54';ctx.beginPath();ctx.moveTo(0,y(lane)+4);ctx.lineTo(w,y(lane)+4);ctx.stroke();}ctx.setLineDash([]);
+  for(let lane=0;lane<3;lane++){ctx.fillStyle='#0b2038c9';ctx.fillRect(5,y(lane)-9,25,21);ctx.fillStyle='#e3e5d2';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText(['上','中','下'][lane],17.5,y(lane)+6);}
   const distance=journey?.distance??0, people=journey?.people??[{id:'demo0',lane:0,x:4.4,kind:0,radius:.62,direction:1,guide:true},{id:'demo1',lane:2,x:8,kind:6,radius:.62,direction:-1,guide:false}] as Pedestrian[];
   const owner=journey?.shelter;const playerX=w*.30, units=w/13;
   function sprite(name:string,x:number,foot:number,height:number,flip=false,alpha=1){const im=images.get(name);if(!im)return;const width=im.width/im.height*height;ctx.save();ctx.translate(x,foot);if(flip)ctx.scale(-1,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-width/2,-height,width,height);ctx.restore();}
