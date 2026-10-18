@@ -21,3 +21,11 @@
 初回local全体unitは5件失敗（生成catalog未更新と037未接続record定義）。続く検査は1件失敗（新規テストが既存default-open登録helperをfalseと誤認）。原logはQA/local-adoptionへ保持。外部送信はrecordのpublicEnabled=falseと037カードのイベント未発火で閉じ、既存登録helperやAnalyticsファイルを変更しない。
 
 今回の全体型検査・1110tests/105files成功。その後に独立reviewで見つかった037BESTの32byte制限整合をRED→GREEN（対象7件）で修正し、型検査を含むbuild成功。browser・一覧実導線は次の固定commitで検査して追補する。
+
+## 固定候補cab8befのブラウザ結果
+
+`GAME037_REPORT=docs/game037/QA/local-adoption/browser node tests/game037/browser.mjs`は575/575成功（mouse/touch/keyboard、4幅、保存拒否）。統合版の`node tests/game037/adoption-browser.mjs`は4幅36checks成功（28card、003完成ラベル、037BEST5558、TOP10無し、実thumb、PLAYで037到着、一覧帰還、横overflow無し、pageerror/POST0、source不変）。既存indexのAdSensescript読取試行8件はブラウザrouteで外部通信前に遮断した。既存タグそのものは変更していない。新しい037ゲーム/カードの外部送信を有効化していない。
+
+初回一覧probeはlazy画像のdecode待ち不足で1assert失敗。次は既存広告scriptまで0外部と期待して末尾assert失敗（導線checksは成功）。元結果はportal/とportal-image-wait/へ保持、collectorだけを修正しportal-baseline-ad/で既存baselineタグに限定して成功。製品コードをこれらの失敗で変更していない。共通fontで「詰」はsubset外でsystem fallbackを使用（文字列/実画面を確認）、既存font/OFLは変更なし。
+
+[今回の独立source監査](ADOPTION_INDEPENDENT_REVIEW.md)はPASS。人間の楽しさ、物理端末、実音、Safari、実FPSは未実施。GitHub CIは今回は起動せず、過去PRのCI結果とローカル結果を区別する。main統合とPages公開は未実施。mainへ反映すると既存Pagesworkflowが公開を起動するため、将来の反映は公開可否も含めて別判断が必要。
