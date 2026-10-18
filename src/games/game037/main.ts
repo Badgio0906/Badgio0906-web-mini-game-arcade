@@ -430,6 +430,19 @@ function openDialog(title: string, body: string, buttons: DialogButton[], onDism
 
 // A held Escape must not close the pause menu it just opened.
 dialog.addEventListener('keydown', e => { if (e.key === 'Escape' && e.repeat) e.preventDefault(); });
+// The native dialog 'close' event is queued asynchronously. An immediate
+// keyboard gesture after Escape could otherwise arrive before resumeFn,
+// making the first selection/rotation silently fail. Resume synchronously
+// on the cancel event, and clear the callback before close to avoid running
+// it twice when the later 'close' event is delivered.
+dialog.addEventListener('cancel', e => {
+  e.preventDefault();
+  const fn = dialogClose;
+  dialogClose = null;
+  dialog.close();
+  fn?.();
+  syncClock();
+});
 dialog.addEventListener('close', () => {
   const fn = dialogClose;
   dialogClose = null;
