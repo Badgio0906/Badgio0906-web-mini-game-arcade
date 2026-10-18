@@ -7,8 +7,8 @@ import { isPublicRecordRegistered } from '../../src/records/remoteRegistration';
 import { readFileSync } from 'node:fs';
 afterEach(()=>vi.unstubAllGlobals());
 describe('final three independent releases',()=>{
- it('appends 033–035 as trial without changing the author completion list or old routes',()=>{
-  expect([gameCatalog.length,hiddenGameCatalog.length,retiredGameCatalog.length,historicalGameCatalog.length]).toEqual([27,4,4,35]);
+ it('appends 033–035 as trial without changing their trial status or old routes',()=>{
+  expect([gameCatalog.length,hiddenGameCatalog.length,retiredGameCatalog.length,historicalGameCatalog.length]).toEqual([28,4,4,36]);
   for(const [i,id]of ['game033','game034','game035'].entries()){
    expect(gameCatalog.find(g=>g.id===id)).toMatchObject({developmentStatus:'trial',releaseOrder:33+i,route:`./${id}.html`});
    expect(gameDisplayNumbers.get(id)).toBe(String(25+i).padStart(3,'0'));

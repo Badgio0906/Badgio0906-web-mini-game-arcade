@@ -74,6 +74,8 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
     const target = event.target as Element;
     if (target.closest('button')) return;
     if (!target.closest('a')) { playLink.click(); return; }
+    // Newly adopted037 has no external collection registration.
+    if (game.id === 'game037') return;
     telemetry.trackEvent('game_card_click', { selected_game: game.id }); telemetry.trackEvent('game_launch', { selected_game: game.id }); });
   const meta = document.createElement('div'); meta.className = 'game-card-meta';
   const status = document.createElement('span'); status.className = `game-development-status game-development-status--${game.developmentStatus}`;
@@ -120,7 +122,7 @@ saveRecords?.addEventListener('click', () => {
 
 if (analytics) {
   let disposeImpressions: (()=>void) | undefined;
-  const install = () => { disposeImpressions?.(); disposeImpressions = observeCardImpressions(gallery.querySelectorAll<HTMLElement>('.game-card:not([hidden])'),id=>analytics.seenImpression(id),id=>analytics.markImpression(id),(id,position)=>telemetry.trackEvent('game_card_impression',{selected_game:id,card_position:position,visible_duration_threshold:1000,catalog_version:`active${gameCatalog.length}-2026-10-08`,thumbnail_revision:'2026-10-06'}),()=>analytics.consent.getState()==='granted'); };
+  const install = () => { disposeImpressions?.(); disposeImpressions = observeCardImpressions(gallery.querySelectorAll<HTMLElement>('.game-card:not([hidden]):not([data-game-id="game037"])'),id=>analytics.seenImpression(id),id=>analytics.markImpression(id),(id,position)=>telemetry.trackEvent('game_card_impression',{selected_game:id,card_position:position,visible_duration_threshold:1000,catalog_version:`active${gameCatalog.length}-2026-10-08`,thumbnail_revision:'2026-10-06'}),()=>analytics.consent.getState()==='granted'); };
   refreshImpressions = install;
   install();
   window.addEventListener('pagehide',()=>{disposeImpressions?.();disposeImpressions=undefined;});

@@ -39,7 +39,7 @@ describe('normal tag filtering preserves legacy AND and excludes retirement', ()
 });
 
 describe('development state is distinct from tags and retirement', () => {
-  it('only the nine author-declared games are complete', () => expect(historicalGameCatalog.filter(game => game.developmentStatus === 'complete').map(game => game.id)).toEqual(['game001','game016','game018','game019','game020','game022','game023','game025','game032']));
+  it('only the ten author-declared games are complete', () => expect(historicalGameCatalog.filter(game => game.developmentStatus === 'complete').map(game => game.id)).toEqual(['game001','game003','game016','game018','game019','game020','game022','game023','game025','game032']));
   it('no selected state includes trial and complete', () => expect(ids(filterGames(fixture))).toEqual(['alpha', 'beta', 'gamma']));
   it('trial only', () => expect(ids(filterGames(fixture, [], 'or', ['trial']))).toEqual(['alpha', 'gamma']));
   it('complete only', () => expect(ids(filterGames(fixture, [], 'or', ['complete']))).toEqual(['beta']));

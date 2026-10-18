@@ -79,15 +79,17 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game033: ['timing','score-attack','chill','precision'],
   game034: ['physics','puzzle','architecture','decision'],
   game035: ['physics','precision','short','score-attack'],
+  game037: ['puzzle','precision','brain-training'],
 };
 
 const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
 // Add an override only after the author explicitly declares completion following
 // their own playtest. Publication, CI/QA success and positive feedback do not qualify.
-// Author's explicit playtest completion declaration: catalog-reorganization/IMPLEMENTATION_REPORT.md.
+// Earlier declarations: catalog-reorganization/IMPLEMENTATION_REPORT.md.
+// Game003: explicit author completion instruction 2026-10-18; docs/game003/COMPLETION_ADOPTION.md.
 const developmentStatusByGame: Readonly<Partial<Record<string, GameDevelopmentStatus>>> = Object.freeze({
-  game001: 'complete', game016: 'complete', game018: 'complete',
+  game001: 'complete', game003: 'complete', game016: 'complete', game018: 'complete',
   game019: 'complete', game020: 'complete', game022: 'complete',
   game023: 'complete', game025: 'complete', game032: 'complete',
 });
@@ -118,7 +120,8 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   { id: 'game033', titleJa: '夜空に、ひと発。', titleEn: 'FIREWORK MAKER', tagline: '押して、離して。夜空に重ねる、100秒の花火大会。', thumbnail: './assets/portal/game033.webp', route: './game033.html', releaseOrder: 33 },
   { id: 'game034', titleJa: 'ちいさな解体屋', titleEn: 'DEMOLITION DAY', tagline: '支えを選んで、ころんと解体。8つの玩具をきれいに崩そう。', thumbnail: './assets/portal/game034.webp', route: './game034.html', releaseOrder: 34 },
   { id: 'game035', titleJa: '1ミリカーリング', titleEn: 'MINI CURLING', tagline: '寄せる。弾く。次の一投を、守る。', thumbnail: './assets/portal/game035.webp', route: './game035.html', releaseOrder: 35 },
-].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+  { id: 'game037', titleJa: 'お弁当つめつめ！ ～BENTO BOX～', titleEn: 'BENTO BOX', tagline: 'おかずを回して、ぴったり詰める。全6弁当。', thumbnail: './assets/portal/game037.webp', route: './game037.html', releaseOrder: 37 },
+].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: game.id === 'game037' ? 'standard' as const : difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'active'));

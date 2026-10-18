@@ -23,7 +23,7 @@ afterEach(()=>vi.unstubAllGlobals());
 
 describe('Game032 new registration preserves existing discovery and records',()=>{
   it('keeps032 author-complete and leaves010 retired and old boards available',()=>{
-    expect(gameCatalog).toHaveLength(27);expect(historicalGameCatalog).toHaveLength(35);expect(NEXT_GAME_NUMBER).toBe(36);
+    expect(gameCatalog).toHaveLength(28);expect(historicalGameCatalog).toHaveLength(36);expect(NEXT_GAME_NUMBER).toBe(38);
     expect(gameCatalog.find(g=>g.id==='game032')).toMatchObject({id:'game032',titleJa:'川辺で、ひとやすみ。',titleEn:'RIVER SIDE FISHING',route:'./game032.html',releaseOrder:32,developmentStatus:'complete',difficulty:'standard'});
     expect(historicalGameCatalog.find(g=>g.id==='game010')?.status).toBe('retired');
     expect(gameVersions.game032).toEqual({rules_version:'1',presentation_version:'prototype-3'});

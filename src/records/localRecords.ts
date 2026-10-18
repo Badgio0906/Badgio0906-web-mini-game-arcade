@@ -25,7 +25,7 @@ const scalarKeys: Readonly<Record<string,string>> = {
   game019:prefix('game019')+'bestHeightDm', game020:prefix('game020')+'clearedBoards',
 };
 const jsonKeys: Readonly<Record<string,string>> = {
-  game021:'state',game022:'session',game023:'question',game024:'state-shifting-v2',game025:'snapshot',
+  game037:'best:rules1',game021:'state',game022:'session',game023:'question',game024:'state-shifting-v2',game025:'snapshot',
   game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',game035:'state',
 };
 export const localRecordStorageKeys: readonly string[] = Object.freeze([
@@ -72,6 +72,7 @@ async function readScalar(gameId: string, backend: Storage): Promise<LocalRecord
 
 function readJSON(gameId: string, backend: Storage): LocalRecord {
   const raw=backend.getItem(prefix(gameId)+jsonKeys[gameId]);if(raw===null)return gameId==='game024'&&backend.getItem(prefix(gameId)+'state')!==null?old('旧盤面のBESTを保持しています'):missing();
+  if(gameId==='game037'&&raw.length>32)return bad('保存された記録の形式が不正です');
   if(raw.length>20000000)return bad('保存された記録が大きすぎます');
   let data:unknown;try{data=JSON.parse(raw);}catch{return bad('保存された記録の形式が不正です');}
   if(!object(data))return bad();
@@ -112,6 +113,7 @@ function readJSON(gameId: string, backend: Storage): LocalRecord {
     case 'game027':value=object(stats)?stats.games:undefined;break;
     case 'game028':value=object(stats)?stats.bestRally:undefined;break;
     case 'game029':value=data.best;break;
+    case 'game037':value=data.best;break;
     case 'game035':{
       if(data.game_id!=='game035'||data.rules_version!=='1')return old();
       value=data.best;break;
