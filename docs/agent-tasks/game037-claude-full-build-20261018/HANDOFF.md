@@ -78,3 +78,14 @@
 - [x] Claudeの会話や未push資産なしで復元可能
 - [ ] Codexが独立した実ブラウザQAで検証可能（コマンドは用意済み。Codexの実行待ち）
 - [x] 本番操作・公開をしていない
+
+## Step 3 — Claudeからの独立受入結果（2026-10-18 / ChatGPT＋GitHub Actions）
+
+- Claudeとは別の実行主体ChatGPTがGitHubだけを参照して独立コード監査・実スクリーンショット確認・テスト追加・実ブラウザ検証を実施した。独立した**Codex Cloud worker**や人間がレビューしたと誤記しない。
+- 独立成果物：`docs/game037/INDEPENDENT_REVIEW.md`、`docs/game037/QA/INDEPENDENT_VALIDATION.json`。
+- 初回の独立Chrome QAでは第2面のEsc再開直後の回転が非収束（54件通過）。疑われるnative dialog `close`の非同期再開競合を、`4c86a7ff2b30a500159bb3b85e599d9257d11947`で`cancel`イベント同期処理へ修正し、直後のキーボード入力チェックを追加。後続QA誤設定（touchでPCキー入力）も分離し修正。詳しくはレビュー記録参照。
+- 最終独立CI [39096571478](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39096571478) は検証対象`4057766503f9051a9b5a0ba6c2a99d9ee648e48c`でSUCCESS、104既存+1独立テストファイル／1110件PASS、Chrome native Vite HTTP **575/575 PASS**（4幅＋保存拒否）、page errors/POST 0。独立テストは終了後`4ad5858aa3ae9f5fb43c0866b2e9a68e8bde2b8d`で削除し負荷増を残さない。
+- Visualレビューは実画像ベースで独立**81/100、F12/15、H13/15**と評価し技術ゲートPASS。320幅結果表・PC下部余白等は改良余地。人間の楽しさ/操作感・実機音/FPS/Safariは未試験。
+- status は`ready_for_integration`のまま、ただし**正式採用／Catalog統合・Pages公開は未承認・未実施**。PR #9 Draft／未マージ維持、main/共有設定・他ゲーム/本番を変更していない。
+- 新しい`last_verified_source_commit` は`4057766503f9051a9b5a0ba6c2a99d9ee648e48c`。その後のcommitは一時CIファイル削除／担当HANDOFF・独立レビュー記録に限定し、HANDOFF自身のcommit SHAは書かない。
+- token/費用/壁時計: null（直接計測できないため）。
