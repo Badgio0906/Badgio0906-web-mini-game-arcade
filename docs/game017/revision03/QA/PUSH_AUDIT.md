@@ -9,3 +9,5 @@
 Webhook・外部integration・billing/storageの条件は引き続きUNKNOWN（前回hooks API403）。全連動処理が無料だとは断言しない。前回この不明点を報告した後のユーザーの明示指示「プッシュしてください」で許可された、同じ既存雨候補branchに対する訂正更新として扱う。新たなbranch/PR/main/公開/Actions操作へ許可を拡張しない。費用不明点を解消したという主張ではない。
 
 実行後のremote head、main不変、Actions観測はworkspaceの別push receiptへ記録する。API/CLIからActionsを起動しない。
+
+追加のローカル確認：現在mainの2 workflowと対象treeの内容はbytes一致。実行されるpre-push hookは存在しない。core.hooksPath/push.pushOption/push.recurseSubmodules/remote.origin.mirrorの追加設定なし。追跡対象の.gitattributes/.gitmodules/.lfsconfigはなく、今回の画像は通常Git blobとして移設される。

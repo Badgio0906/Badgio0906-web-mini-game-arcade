@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "agent_tool": "codex-subagent",
+  "actor_role": "independent_migration_reviewer",
+  "at": "2026-10-18T16:29:28.025035+00:00",
+  "verdict": "PASS_LOCAL_REVISION_IDENTITY_STORAGE_AND_MIGRATION",
+  "candidate_commit": "3b8adf81ef40ac2201445aa47ea6d8aeb10796a2",
+  "migration_commit": "1e55d97f3239e0645f8647b128f4fd7d6060122e",
+  "baseline": "2a6e36af3058559d69058d24728f4a9fb50cec0c",
+  "identity": {
+    "target_display_number": "014",
+    "target_internal_id": "game017",
+    "canonical_route": "./game017.html",
+    "candidate_route": "./game017-revision03.html",
+    "protected_finger_heart_internal_id": "game014",
+    "protected_finger_heart_display_number": "011",
+    "new_game038_reservation": "withdrawn",
+    "catalog_active_count": 28,
+    "catalog_or_record_registration_changed": false
+  },
+  "independently_verified": {
+    "actual_catalog_module_read": true,
+    "protected_file_blob_and_sha_recomputations": 42,
+    "protected_mismatches": [],
+    "moved_byte_comparisons": 16,
+    "moved_mismatches": [],
+    "moved_comparison_scope": "model.ts, style.css,14 public WebP assets",
+    "additional_asset_generation": false,
+    "runtime_hashes_match_native_report": true,
+    "runtime_hashes": {
+      "game017-revision03.html": "f47cadc23639518498c1c9cbc3fe6a157af35bae2155783caa70f3f735a5b1e2",
+      "src/games/game017/revision03/game.manifest.json": "b8c3f7ec6797d1fbd8fc67f6483cf157641949863bc6074d34a782078dd6f3af",
+      "src/games/game017/revision03/main.ts": "d748dd21472ceea119aef6a88a085ef62e33472b7fd17d5b61ba3725ea5e276b",
+      "src/games/game017/revision03/model.ts": "1da75908f2adf6cb6ede51e83255251894912b2957ce49ea91729529b94883ae",
+      "src/games/game017/revision03/render.ts": "4c1229e3da9887d5e2f3d5c6be590e40fd9479cc2dc7158807c73a9fd93dd11f",
+      "src/games/game017/revision03/save.ts": "bc8d9c257d51acbf65c18fca685a2b7386a3a519ae8133d10f7703ed971ac409",
+      "src/games/game017/revision03/style.css": "3bed4e0ea2a4a15cd7bc192e5cd492d47ccc2584483a39390fffd5ea95ec9ed5",
+      "tests/game017/revision03/vite.config.mjs": "225256508027970f90d6ed154dd4860ac9f6f0f3acaca2197f7bf887b516b83f"
+    },
+    "obsolete_game038_product_tracked_files": []
+  },
+  "independent_storage_probe": {
+    "fixture_legacy_original": 313,
+    "fixture_legacy_relay": 4242,
+    "fixture_mistaken038": 777,
+    "new_best_initially": null,
+    "practice_and_loss_write_count": 0,
+    "writes": [
+      "web-mini-arcade:v1:game017:umbrella-r3:best",
+      "web-mini-arcade:v1:game017:umbrella-r3:learned",
+      "web-mini-arcade:v1:game017:umbrella-r3:mute"
+    ],
+    "new_best_after_completed_win": 1910,
+    "older_fixture_values_after": [
+      313,
+      4242,
+      777
+    ],
+    "mistaken038_key_read": false,
+    "legacy_original_and_relay_read_only": true,
+    "portal_record_board_unchanged": "game017.score.r2.all"
+  },
+  "coordinator_evidence_independently_read": {
+    "unit": "107 files /1127 tests PASS",
+    "typecheck": "PASS",
+    "isolated_build": "PASS; current-label build used for compiled smoke",
+    "native": {
+      "path": "docs/game017/revision03/QA/browser-label-fix/RESULTS.json",
+      "sha256": "20670411b82236ac8a7f4a1d746d15da66bdd4cbbb39c74268e79c3f18cb17b7",
+      "status": "PASS",
+      "checks": 89,
+      "failed_checks": [],
+      "source_unchanged": true,
+      "errors": 0,
+      "external": 0,
+      "posts": 0,
+      "runs": [
+        {
+          "viewport": {
+            "name": "desktop",
+            "width": 1280,
+            "height": 800,
+            "touch": false,
+            "full": true
+          },
+          "result": {
+            "phase": "result",
+            "elapsed": 90,
+            "wet": 0.008900000002235176,
+            "score": 1910,
+            "outcome": "won",
+            "transfers": 27
+          },
+          "practice": {
+            "elapsed": 9,
+            "wet": 0,
+            "score": 0,
+            "outcome": "won",
+            "transfers": 3
+          }
+        },
+        {
+          "viewport": {
+            "name": "phone",
+            "width": 390,
+            "height": 844,
+            "touch": true,
+            "full": true
+          },
+          "result": {
+            "phase": "result",
+            "elapsed": 90,
+            "wet": 0,
+            "score": 1910,
+            "outcome": "won",
+            "transfers": 27
+          },
+          "practice": {
+            "elapsed": 9,
+            "wet": 0,
+            "score": 0,
+            "outcome": "won",
+            "transfers": 3
+          }
+        },
+        {
+          "viewport": {
+            "name": "narrow",
+            "width": 320,
+            "height": 568,
+            "touch": true,
+            "full": false
+          },
+          "result": {
+            "phase": "paused",
+            "elapsed": 6.708000000000124,
+            "wet": 0,
+            "score": 270,
+            "outcome": "playing",
+            "transfers": 2
+          },
+          "practice": {
+            "elapsed": 9,
+            "wet": 0,
+            "score": 0,
+            "outcome": "won",
+            "transfers": 3
+          }
+        },
+        {
+          "viewport": {
+            "name": "landscape",
+            "width": 844,
+            "height": 390,
+            "touch": true,
+            "full": false
+          },
+          "result": {
+            "phase": "paused",
+            "elapsed": 6.727299999999009,
+            "wet": 0,
+            "score": 270,
+            "outcome": "playing",
+            "transfers": 2
+          },
+          "practice": {
+            "elapsed": 9,
+            "wet": 0,
+            "score": 0,
+            "outcome": "won",
+            "transfers": 3
+          }
+        }
+      ]
+    },
+    "compiled": {
+      "path": "docs/game017/revision03/QA/compiled/RESULTS.json",
+      "sha256": "bafc5f2cb72ce624f870e5fa89675d5ea1e80c4e1e430a1861c9e95f9be9e4a2",
+      "status": "PASS",
+      "checks": 24,
+      "errors": [],
+      "responses": [],
+      "external": [],
+      "posts": [],
+      "scope": "four-width identity/noDEVhook/nooverflow/3-second loss/retry; not full90-second compiled wins"
+    }
+  },
+  "findings": [
+    {
+      "id": "migration-label-narrow-controls-clip",
+      "status": "resolved",
+      "initial_source": "1e55d97",
+      "failure": "Narrow320×568 lane buttons bottom574 clipped6px after eyebrow wrapped.",
+      "preserved_evidence": "QA/browser-fixed/RESULTS.json",
+      "preserved_result": "FAIL at49checks; PC/390 wins accepted only within that failure report",
+      "fix": "HTML eyebrow shortened to014 · RAINSHIFT 改良候補; model/style unchanged",
+      "fixed_source": "3b8adf81ef40ac2201445aa47ea6d8aeb10796a2",
+      "after": "Native89PASS; all narrow lane buttons96×46,bottom562; actually viewed fixed narrow-title/play PNGs"
+    },
+    {
+      "id": "asset-prompt-pointer-links",
+      "status": "resolved",
+      "resolution": "Current IMAGEGEN_PROMPTS pointer exists; relative ASSET_INDEX path uses3 parent traversals; historical generation prompt text retained."
+    }
+  ],
+  "images_viewed": [
+    "QA/browser-fixed/narrow-title.png",
+    "QA/browser-label-fix/narrow-title.png",
+    "QA/browser-label-fix/narrow-play.png"
+  ],
+  "historical_evidence": "Original docs/game038 raw77/20 results retained with correction notices and not counted as newidentity runs.",
+  "not_run_by_reviewer": [
+    "browser interaction",
+    "push",
+    "PR/Actions operations",
+    "paidAPI/Jev/ImageGen",
+    "merge/deploy/configuration operations"
+  ],
+  "limitations": [
+    "Native90-second wins cover1280×800 and390×844 only;320/844 stop around6.7s in main.",
+    "Native collector uses read-only DEV snapshots for automated normal-input lane choices; not human gameplay.",
+    "Official return href only; actual arrival not tested.",
+    "Legacy BEST values313/4242/777 are QA fixtures, not production player records.",
+    "No human feel, physical-device, Safari/audio/FPS, main replacement, final adoption or publication judgment."
+  ],
+  "usage_cost": null
+}
