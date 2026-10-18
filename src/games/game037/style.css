@@ -26,6 +26,8 @@ body {
 #app { min-height: 100dvh; display: flex; flex-direction: column; max-width: 1180px; margin: 0 auto; }
 #app.dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
 button { font: inherit; color: inherit; }
+/* No grey/blue flash over the box or dishes on touch; state is shown by our own styles. */
+button, .grid, .slot, .tray { -webkit-tap-highlight-color: transparent; }
 kbd { font: 600 11px/1 ui-monospace, monospace; border: 1px solid #0003; border-bottom-width: 2px; border-radius: 4px; padding: 2px 4px; margin-left: 6px; background: #fff8; }
 
 /* header */
@@ -90,7 +92,7 @@ h1 small { display: block; font-size: 13px; letter-spacing: .3em; color: var(--i
 .box.cleared .seal { opacity: .96; transform: translate(-50%, -50%) rotate(-12deg) scale(1); transition: transform .35s cubic-bezier(.2, 1.8, .4, 1), opacity .2s; }
 .box.cleared .placed { animation: cheer .5s ease-out both; }
 .box.cleared .placed:nth-of-type(2n) { animation-delay: .08s; }
-@keyframes cheer { 0% { transform: none; } 40% { transform: translateY(-6%) scale(1.03); filter: brightness(1.15); } 100% { transform: none; } }
+@keyframes cheer { 0% { transform: none; } 40% { transform: translateY(-6%) scale(1.03); } 100% { transform: none; } }
 .sparkles { position: absolute; inset: 0; pointer-events: none; z-index: 7; }
 .sparkles img { position: absolute; width: 12%; opacity: 0; }
 .sparkles img:nth-child(1) { left: 6%; top: 8%; } .sparkles img:nth-child(2) { right: 6%; top: 14%; } .sparkles img:nth-child(3) { left: 12%; bottom: 8%; }

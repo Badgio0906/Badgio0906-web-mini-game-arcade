@@ -122,6 +122,7 @@ async function play(vp) {
     } else if (method === 'tap' || method === 'click') {
       const [fx, fy] = model.shapeCells(p.shape, p.rotation)[0];
       await ensureSelected(method, p.id);
+      if (method === 'tap') check(await page.locator('.cell.ok, .cell.ng').count() === 0, 'touch tap selection is not treated as keyboard (no cursor preview)');
       rotations = await rotateWith(method, p.id, p.rotation);
       const c = await cellCenter(p.x + fx, p.y + fy);
       if (method === 'tap') await page.touchscreen.tap(c.x, c.y); else await page.mouse.click(c.x, c.y);
@@ -164,6 +165,7 @@ async function play(vp) {
     check((await page.locator('#hud-stage').innerText()).includes('練習'), 'practice labelled');
     for (const p of practiceSolution) await place(vp.touch ? 'tap' : 'click', p, 99);
     check(!(await page.locator('#clear-panel').isHidden()), 'practice completion message');
+    check(await page.locator('.cell.ok, .cell.ng').count() === 0, 'no placement preview left on the finished box');
     check((await page.locator('#clear-title').innerText()).includes('練習達成'), 'practice says achieved');
     await shot('practice-clear');
     check(await page.evaluate(k => localStorage.getItem(k), BEST_KEY) === null, 'practice wrote no BEST');

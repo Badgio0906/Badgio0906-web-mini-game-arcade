@@ -527,8 +527,17 @@ function hoverPreview(e: PointerEvent): void {
   showPreview({id: p.id, x: at.x, y: at.y});
 }
 
+/**
+ * Pointer gestures are handled by pointerdown/up. Browsers then synthesize a
+ * click (touch taps may even report detail 0), so clicks right after a pointer
+ * gesture are ignored; only keyboard activation reaches the click handlers.
+ */
+let pointerClickGuardUntil = 0;
+const isKeyboardClick = (e: MouseEvent): boolean => e.detail === 0 && now() > pointerClickGuardUntil;
+
 function onPointerUp(e: PointerEvent): void {
   if (!drag || e.pointerId !== drag.pointerId) return;
+  pointerClickGuardUntil = now() + 700;
   const d = drag;
   drag = null;
   endDragVisuals();
@@ -579,6 +588,7 @@ function cancelDrag(): void {
 
 function onPointerCancel(e: PointerEvent): void {
   if (!drag || e.pointerId !== drag.pointerId) return;
+  pointerClickGuardUntil = now() + 700;
   cancelDrag();
   if (run) { setStatus('操作が中断されました。もう一度どうぞ。'); render(); }
 }
@@ -608,18 +618,18 @@ for (const el of [tray, grid]) {
 // Pointer capture keeps moves on the source element; hover preview needs the grid too.
 grid.addEventListener('pointerleave', () => { if (!drag && !keyboardPreview) showPreview(null); });
 
-// Keyboard-activated clicks only (detail 0). Pointer taps are handled above, so a
-// drag's pointerup can never be followed by a second placement from click.
+// Keyboard-activated clicks only. Pointer taps are handled above, so a drag's
+// pointerup can never be followed by a second selection/placement from click.
 tray.addEventListener('click', e => {
   const slot = (e.target as Element).closest<HTMLButtonElement>('button.slot');
-  if (!slot || e.detail !== 0) return;
+  if (!slot || !isKeyboardClick(e)) return;
   keyboardPreview = true;
   if (dispatch({type: 'select', id: slot.dataset.id!}).ok) grid.focus({preventScroll: true});
   render();
 });
 grid.addEventListener('click', e => {
   const placed = (e.target as Element).closest<HTMLButtonElement>('button.placed');
-  if (!placed || e.detail !== 0) return;
+  if (!placed || !isKeyboardClick(e)) return;
   keyboardPreview = true;
   dispatch({type: 'remove', id: placed.dataset.id!});
   grid.focus({preventScroll: true});
