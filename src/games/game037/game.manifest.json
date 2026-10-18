@@ -2,28 +2,43 @@
   "id": "game037",
   "title": "お弁当つめつめ！ ～BENTO BOX～",
   "titleEn": "BENTO BOX",
-  "tagline": "おかずを回して、ぴったり詰める。全6弁当。",
+  "tagline": "おかずを回して、ぴったり詰める。箱は4×4から8×8へ。",
   "genre": "finite-space packing puzzle",
-  "coreMechanic": "Rotate (no mirror) four tetromino-shaped side dishes and pack them into a 4x4 lacquer bento box with no gaps; 6 fixed stages with an explicit next-stage confirm",
-  "skillAxes": ["spatial reasoning", "rotation planning", "operation economy", "speed"],
-  "runSecondsDesignTarget": "90-180 (design hypothesis, not measured)",
+  "coreMechanic": "Rotate (no mirror) polyomino side dishes and pack them into a lacquer bento box with no gaps. The box grows 4x4 → 5x5 → 6x6 → 7x7 → 8x8, six bentos each (30); explicit next-bento confirm; box checkpoints",
+  "skillAxes": [
+    "spatial reasoning",
+    "rotation planning",
+    "operation economy",
+    "speed"
+  ],
+  "runSecondsDesignTarget": "10-25 min for all 30 bentos (design hypothesis, not measured); one box is a natural session",
   "timeLimit": null,
-  "stages": ["IIOO", "OOLL", "IOLL", "ILTT", "ILJZ", "JTTS"],
+  "stages": {
+    "4x4": [
+      "IIOO",
+      "OOLL",
+      "IOLL",
+      "ILTT",
+      "ILJZ",
+      "JTTS"
+    ],
+    "5x5-8x8": "6 each, generated once from fixed seeds (size*1000 + j*37 + 11) by a tiling generator; dishes 4-6 (5x5), 4-7 (6x6), 5-8 (7x7), 6-8 (8x8) cells, within a 4x4 bounding box, at most 10 per bento; every stage solver-verified"
+  },
   "inputs": {
     "drag": "mouse/touch drag a tray dish, snaps to grid, green legal / red illegal preview, release to place; pointercancel never places",
     "tap": "tap a tray dish to select, tap a box cell: the dish covers that cell (first food cell preferred)",
-    "keyboard": "1-4 or Tab+Enter select; arrows move; R rotates; Enter/Space place; Esc deselect/pause; key repeat ignored",
+    "keyboard": "1-9 and 0 (10th) or Tab+Enter select; arrows move; R rotates; Enter/Space place; Esc deselect/pause; key repeat ignored",
     "rotate": "on-screen 44px button or R, selected unplaced dish only",
     "remove": "tap/drag/Enter on a placed dish returns it to the tray (counts as undo)",
     "pause": "button/Escape; blur/visibility hidden auto-pause; active drags released"
   },
-  "practice": "Isolated IIOO board, repeatable, all inputs, completion message; never touches score/BEST/storage",
-  "scoring": "per stage max(0,1000-3*floor(activeSeconds)-20*acceptedRotations-50*removals); invalid drops cost nothing; run total 0..6000; BEST only after all 6 stages",
-  "save": "web-mini-arcade:v1:game037:best:rules1 {best} and web-mini-arcade:v1:game037:mute only; memory fallback when storage is refused",
+  "practice": "Isolated 4x4 IIOO board, repeatable, all inputs; never touches score/BEST/checkpoint",
+  "scoring": "per bento max(0, 1000 - round(48*floor(sec)/cells + 80*rotations/dishes + 200*removals/dishes)); identical to rules v1 on 4x4 (3/s, 20/rotation, 50/removal); invalid drops free; run total 0..30000",
+  "save": "rules2: web-mini-arcade:v1:game037:best:rules2 {best, cleared} updated after every production bento; web-mini-arcade:v1:game037:checkpoint:rules2 {sizeIndex, results} after each finished box, cleared on full completion; web-mini-arcade:v1:game037:mute. The rules1 BEST key is never read or written. Memory fallback when storage is refused",
   "creditMode": "free",
   "ads": "none",
   "telemetry": "none (no analytics/telemetry/network calls in this prototype)",
-  "rules_version": "1",
-  "art": "hand-authored original SVG (bento box, 7 dishes, noren, washi/wood tiles, seal, sparkle); no image generation; see docs/game037/ASSET_INDEX.md",
+  "rules_version": "2",
+  "art": "hand-authored original SVG: bento box, 10 per-cell food motifs (foods.svg) composed at runtime onto rounded dish bases for any polyomino, noren, washi/wood tiles, seal, sparkle; no image generation; see docs/game037/ASSET_INDEX.md",
   "humanReview": "not run"
 }
