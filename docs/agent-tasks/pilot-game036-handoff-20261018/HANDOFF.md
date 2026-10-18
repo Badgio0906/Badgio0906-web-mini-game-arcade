@@ -118,3 +118,9 @@
 - `open_decisions` 4項目はパイロット限定の暫定仕様のまま。正式採用、独立レビュー、物理スマホ、人間試遊、公開は未実施。
 - 課金額／token／総作業時間: `null`（直接取得不能）。HANDOFFの本節自身のcommit SHAは記載しない。
 - 次の未完了ゲート: gitアクセス可能なCodex Cloudで**実**worktreeを作り、ユーザー指定の `npm ci` / Vitest / tsc / Vite CLIを同じcheckoutから直接実行する。今回のnative HTTP browser QAはCIによって合格したので、同じ操作テストを機械的に繰り返す優先度は低い。PR #8は引き続きDraft、マージ禁止。
+
+## Step 1 cross-platform修正の最終確認（2026-10-18）
+
+- 追加ソースcommit: `946f32188ba57bbdbf8657d9cb4fc78ad650cb05`。変更は `tests/unit/game036-build.test.ts` のみ。通常のWindows/macOS開発環境でシステムChromeのLinux絶対パスを要求して `npm test` が失敗しないよう、ネイティブHTTPブラウザQAは `GITHUB_ACTIONS=true` の場合のみ必須ゲートとした。その他では明示的な `NOT_RUN` をログに残し、必要時は既存の `tests/game036/browser.mjs` を個別に実行する。
+- 最終該当CI: [run 39086663694](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086663694) は **SUCCESS**。`npm ci`、`npm run check`、`npm test`（104 files/1101 tests）、`npm run build` PASS。GitHub ActionsでのシステムChromium+isolated Vite HTTP QAは再度 **84/84 PASS、errors=[]**（ログ確認済）。ローカルWindows/macOSの `npm test` はCI仕様上ブラウザQAを実行せず、実環境でのWindows実行自体は未実施。
+- この記録自身のcommit SHAは記載しない。gitアクセス可能なCodex Cloudでの実worktree再構築と指定コマンドの単独再実行は引き続き未実施。PR #8はDraftのままマージしない。本人試遊・物理実機・正式統合・公開は別判断。
