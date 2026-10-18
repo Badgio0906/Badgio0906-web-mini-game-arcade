@@ -172,7 +172,12 @@ async function play(vp) {
   async function playStage(s, method, {freezeCheck = false} = {}) {
     await waitActive(`stage ${s + 1} start`);
     check(await page.locator('#hud-stage').innerText() === label(s), `stage ${s + 1} HUD shows ${label(s)}`);
-    for (const p of STAGES[s].solution) await place(method, p, s);
+    const boxAtStart = await gridBox();
+    for (const p of STAGES[s].solution) {
+      await place(method, p, s);
+      const g = await gridBox();
+      check(Math.abs(g.y - boxAtStart.y) < 0.5 && Math.abs(g.x - boxAtStart.x) < 0.5, `stage ${s + 1} box does not move while playing`, {start: boxAtStart, now: g});
+    }
     check(!(await page.locator('#clear-panel').isHidden()), `stage ${s + 1} cleared`);
     const detail = await page.locator('#clear-detail').innerText();
     const m = detail.match(/時間 (\d+)秒 ・ 回転 (\d+) ・ 取外し (\d+) → (\d+)点/);
@@ -468,9 +473,11 @@ async function deniedStorage() {
   }
 }
 
+// GAME037_ONLY=phone,narrow limits the run (debugging); the default runs everything.
+const only = process.env.GAME037_ONLY ? process.env.GAME037_ONLY.split(',') : null;
 try {
-  for (const vp of VIEWPORTS) await play(vp);
-  await deniedStorage();
+  for (const vp of VIEWPORTS) if (!only || only.includes(vp.name)) await play(vp);
+  if (!only || only.includes('denied-storage')) await deniedStorage();
   report.status = 'PASS';
 } catch (e) {
   report.status = 'FAIL';
