@@ -273,6 +273,7 @@ async function play(vp) {
       }
       for (const p of sol) await place(method, p, s);
       check(!(await page.locator('#clear-panel').isHidden()), `stage ${s + 1} cleared`);
+      check(await page.locator('#menu-items li.done').count() === s + 1, `menu board marks ${s + 1} finished`);
       const frozen = await hudNum('hud-time');
       await page.waitForTimeout(1100);
       check(await page.locator('#hud-stage').innerText() === `弁当 ${s + 1} / 6`, `stage ${s + 1} does not auto-advance`);

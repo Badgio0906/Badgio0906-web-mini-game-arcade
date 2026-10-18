@@ -3,7 +3,7 @@ import {
   act, checkPlacement, clockElapsed, createRun, isActive, lastStageResult, occupancy, placementCovering, resume, shapeCells, solveStage,
   stageOf, stageScore, suspend, totalScore, BOARD_SIZE, FOODS, STAGES, type Action, type Outcome, type RunState,
 } from './model';
-import {createPieceArt, foodLabel, layoutPieceArt, rotatedBounds} from './pieceView';
+import {ART, assetUrl, createPieceArt, foodLabel, layoutPieceArt, rotatedBounds} from './pieceView';
 import {BentoStore} from './save';
 import {BentoAudio, type Sfx} from './audio';
 
@@ -159,7 +159,48 @@ function buildStage(): void {
     boardPieces.set(p.id, placed);
   });
   setStatus(run.mode === 'run' ? 'おかずを選んで、弁当箱へ詰めましょう。' : '練習です。ドラッグ、タップ、キーボードどれでも詰められます。');
+  updateMenuBoard();
   render();
+}
+
+// ------------------------------------------------------------------ menu board (run progress)
+
+const KANJI = ['一', '二', '三', '四', '五', '六'];
+
+function buildMenuBoard(): void {
+  const list = $('menu-items');
+  STAGES.forEach((stage, i) => {
+    const li = document.createElement('li');
+    const no = document.createElement('span');
+    no.className = 'mb-no';
+    no.textContent = KANJI[i];
+    const foods = document.createElement('span');
+    foods.className = 'mb-foods';
+    for (const ch of stage) {
+      const img = document.createElement('img');
+      img.src = assetUrl(ART[ch as keyof typeof ART]);
+      img.alt = '';
+      img.draggable = false;
+      foods.append(img);
+    }
+    const score = document.createElement('span');
+    score.className = 'mb-score';
+    li.append(no, foods, score);
+    list.append(li);
+  });
+}
+
+/** Mark finished stages with their score and highlight the current one. */
+function updateMenuBoard(): void {
+  const board = $('menu-board');
+  board.hidden = !run || run.mode !== 'run';
+  if (!run || run.mode !== 'run') return;
+  [...$('menu-items').children].forEach((li, i) => {
+    const r = run!.results[i];
+    li.className = r ? 'done' : i === run!.stageIndex ? 'current' : '';
+    (li.querySelector('.mb-score') as HTMLElement).textContent = r ? String(r.score) : i === run!.stageIndex ? 'いま' : '';
+    li.setAttribute('aria-label', `弁当${i + 1}：${r ? `${r.score}点` : i === run!.stageIndex ? 'つくっている' : 'これから'}`);
+  });
 }
 
 function render(): void {
@@ -270,6 +311,7 @@ function onCleared(): void {
   const final = run.mode === 'run' && run.stageIndex === STAGES.length - 1;
   sfx(final ? 'complete' : 'clear');
   box.classList.add('cleared');
+  updateMenuBoard();
   seal.querySelector('span')!.textContent = run.mode === 'run' ? `${r.score}点` : 'できた！';
   actions.hidden = true;
   tray.hidden = true;
@@ -748,6 +790,7 @@ function buildHero(): void {
 }
 
 buildCells();
+buildMenuBoard();
 buildHero();
 syncMute();
 updateTitleBest();
