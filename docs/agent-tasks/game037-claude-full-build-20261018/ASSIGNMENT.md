@@ -12,7 +12,7 @@
 - base_sha: `9e96d557779c5de099fe54c51731ceb131e591a1`
 - task_branch: `claude/game037-bento-full-build-20261018`
 - assigned_at: `2026-10-18T02:23:04Z`
-- upstream_pr: 同branchのDraft PR（作成後にHANDOFFへURL記録）
+- upstream_pr: https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/9（Draft・未マージ）
 - source_of_truth: このASSIGNMENT、GitHub commit済みのソースとHANDOFF。Claude会話、auto memory、未pushローカルファイル、外部Skillは不要な状態で納品する。
 - prerequisite: `AGENTS.md`、`CLAUDE.md`、`docs/PROJECT_CONTEXT.md`、`docs/CURRENT_STATUS.md`、`docs/AGENT_COLLABORATION.md`、`docs/GAME_DEVELOPMENT_RULES.md`、`GAME_COMMON_SPEC.md`を読んで矛盾を確認。実際の編集はこの割当が優先する。
 

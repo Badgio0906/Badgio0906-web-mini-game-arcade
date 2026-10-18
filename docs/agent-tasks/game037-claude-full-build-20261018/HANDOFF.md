@@ -9,7 +9,7 @@
 - branch: `claude/game037-bento-full-build-20261018`
 - remote_head: 後任が `git fetch origin && git rev-parse origin/claude/game037-bento-full-build-20261018` で実測。**HANDOFF自身を含むcommit SHAをここへ自己埋込しない。**
 - last_verified_source_commit: null（まだゲームソース・テスト無し）
-- pr_url: null（Draft PRは準備中。PR作成時に更新）
+- pr_url: https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/9（Draft・未マージ）
 - handoff_updated_at: `2026-10-18T02:23:04Z`
 - base_to_head_changed_files: 初期はASSIGNMENT.mdとHANDOFF.mdのみ。以後、毎回commitと `git diff --name-only <base>...HEAD` で確認。
 
