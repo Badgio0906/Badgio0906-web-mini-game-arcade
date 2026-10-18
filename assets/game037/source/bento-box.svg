@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
   <!-- Game037 board: red-lacquer bento box (jubako style) with black lacquer well.
-       The well is exactly x/y 20..420 so the 4x4 gameplay grid (100 units/cell) matches the art. Original hand-authored SVG. -->
+       The well is exactly x/y 20..420; the n×n gameplay grid and its guide lines are laid over it by CSS. Original hand-authored SVG. -->
   <defs>
     <linearGradient id="lacquer" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#c2452f"/>
@@ -31,10 +31,6 @@
   <rect x="17" y="17" width="406" height="406" rx="8" fill="#4a0f0a"/>
   <rect x="20" y="20" width="400" height="400" rx="6" fill="url(#well)"/>
   <rect x="23" y="23" width="394" height="394" rx="5" fill="none" stroke="#000" stroke-width="6" opacity=".35"/>
-  <g stroke="#4b342a" stroke-width="1.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".9">
-    <path d="M120 26 L120 414"/><path d="M220 26 L220 414"/><path d="M320 26 L320 414"/>
-    <path d="M26 120 L414 120"/><path d="M26 220 L414 220"/><path d="M26 320 L414 320"/>
-  </g>
   <path d="M40 34 C150 28 260 30 380 40" fill="none" stroke="#7a5a4c" stroke-width="5" opacity=".25" stroke-linecap="round"/>
   <use href="#ume" x="-2" y="-2" width="24" height="24"/>
   <use href="#ume" x="418" y="-2" width="24" height="24"/>

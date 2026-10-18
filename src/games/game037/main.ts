@@ -1,9 +1,10 @@
 import './style.css';
 import {
-  act, checkPlacement, clockElapsed, createRun, isActive, lastStageResult, occupancy, placementCovering, resume, shapeCells, solveStage,
-  stageOf, stageScore, suspend, totalScore, BOARD_SIZE, FOODS, STAGES, type Action, type Outcome, type RunState,
+  act, boardSize, checkPlacement, clockElapsed, createPieces, createRun, isActive, lastStageResult, liveStageScore, occupancy, pieceShape,
+  placementCovering, resume, sizeIndexOf, stageInSize, suspend, totalScore, BOARD_SIZES, STAGES, STAGES_PER_SIZE,
+  type Action, type Outcome, type RunState, type StageResult,
 } from './model';
-import {ART, assetUrl, createPieceArt, foodLabel, layoutPieceArt, rotatedBounds} from './pieceView';
+import {createDish, foodLabel, loadSprite, renderDish, rotatedBounds} from './pieceView';
 import {BentoStore} from './save';
 import {BentoAudio, type Sfx} from './audio';
 
@@ -57,14 +58,19 @@ const REJECT_TEXT: Record<Extract<Outcome, {ok: false}>['reason'], string> = {
   notCleared: '',
 };
 
-function duplicated(shape: string): boolean {
-  return !!run && [...stageOf(run)].filter(c => c === shape).length > 1;
+/** Food name; a food that appears twice in the stage gets its tray number. */
+function labelOf(id: string): string {
+  if (!run) return '';
+  const i = run.pieces.findIndex(q => q.id === id);
+  if (i < 0) return '';
+  const p = run.pieces[i];
+  const twice = run.pieces.filter(q => q.food === p.food).length > 1;
+  return foodLabel(p.food, twice ? i + 1 : null);
 }
 
-function labelOf(id: string): string {
-  const p = run?.pieces.find(q => q.id === id);
-  return p ? foodLabel(p, duplicated(p.shape)) : '';
-}
+/** Keyboard number for the n-th dish: 1–9, then 0 for the tenth. */
+const keyOf = (i: number): string => i === 9 ? '0' : String(i + 1);
+const sizeLabel = (n: number): string => `${n}×${n}`;
 
 function showScreen(next: Screen): void {
   screen = next;
@@ -99,23 +105,33 @@ function updateHud(): void {
   if (!run) return;
   const ms = clockElapsed(run.clock, now());
   $('hud-time').textContent = String(Math.floor(ms / 1000));
-  $('hud-stage-score').textContent = String(stageScore(ms, run.rotates, run.undos));
+  $('hud-stage-score').textContent = String(liveStageScore(run, ms));
   $('hud-total').textContent = String(totalScore(run));
-  $('hud-stage').textContent = run.mode === 'run' ? `弁当 ${run.stageIndex + 1} / ${STAGES.length}` : '練習（記録なし）';
+  $('hud-stage').textContent = run.mode === 'run' ? `${sizeLabel(boardSize(run))} ${stageInSize(run.stageIndex) + 1}/${STAGES_PER_SIZE}` : '練習（記録なし）';
   $('hud-total-wrap').hidden = run.mode !== 'run';
 }
 
 // ------------------------------------------------------------------ stage DOM
 
-function buildCells(): void {
-  for (let y = 0; y < BOARD_SIZE; y++) for (let x = 0; x < BOARD_SIZE; x++) {
+/** Cells for an n×n box. Only rebuilt when the box size changes. */
+function buildCells(n: number): void {
+  if (cells.length === n * n) return;
+  cells.forEach(c => c.remove());
+  cells.length = 0;
+  previewMarked = [];
+  grid.style.setProperty('--n', String(n));
+  box.dataset.size = String(n);
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
     const c = document.createElement('div');
     c.className = 'cell';
     c.dataset.x = String(x);
     c.dataset.y = String(y);
-    grid.append(c);
+    c.style.left = `${(x * 100) / n}%`;
+    c.style.top = `${(y * 100) / n}%`;
+    grid.prepend(c);
     cells.push(c);
   }
+  cells.sort((a, b) => Number(a.dataset.y) - Number(b.dataset.y) || Number(a.dataset.x) - Number(b.dataset.x));
 }
 
 function buildStage(): void {
@@ -132,18 +148,21 @@ function buildStage(): void {
   tray.hidden = false;
   keyboardPreview = false;
   cursor = {x: 0, y: 0};
+  buildCells(boardSize(run));
+  tray.dataset.count = String(run.pieces.length);
+  app.toggleAttribute('data-many', run.pieces.length > 4);
   run.pieces.forEach((p, i) => {
     const slot = document.createElement('button');
     slot.type = 'button';
     slot.className = 'slot';
     slot.dataset.id = p.id;
-    slot.dataset.shape = p.shape;
+    slot.dataset.food = p.food;
     const inner = document.createElement('span');
     inner.className = 'slot-inner';
-    inner.append(createPieceArt(p.shape));
+    inner.append(createDish());
     const name = document.createElement('span');
     name.className = 'slot-name';
-    name.textContent = `${i + 1} ${labelOf(p.id)}`;
+    name.textContent = `${keyOf(i)} ${labelOf(p.id)}`;
     slot.append(inner, name);
     tray.append(slot);
     traySlots.set(p.id, slot);
@@ -152,8 +171,8 @@ function buildStage(): void {
     placed.type = 'button';
     placed.className = 'placed';
     placed.dataset.id = p.id;
-    placed.dataset.shape = p.shape;
-    placed.append(createPieceArt(p.shape));
+    placed.dataset.food = p.food;
+    placed.append(createDish());
     placed.hidden = true;
     grid.append(placed);
     boardPieces.set(p.id, placed);
@@ -167,50 +186,54 @@ function buildStage(): void {
 
 const KANJI = ['一', '二', '三', '四', '五', '六'];
 
+/** Ladder of boxes (4×4 … 8×8) plus six tags for the bentos of the current box. */
 function buildMenuBoard(): void {
+  const ladder = $('menu-ladder');
+  BOARD_SIZES.forEach(n => {
+    const li = document.createElement('li');
+    li.textContent = sizeLabel(n);
+    ladder.append(li);
+  });
   const list = $('menu-items');
-  STAGES.forEach((stage, i) => {
+  KANJI.forEach(k => {
     const li = document.createElement('li');
     const no = document.createElement('span');
     no.className = 'mb-no';
-    no.textContent = KANJI[i];
-    const foods = document.createElement('span');
-    foods.className = 'mb-foods';
-    for (const ch of stage) {
-      const img = document.createElement('img');
-      img.src = assetUrl(ART[ch as keyof typeof ART]);
-      img.alt = '';
-      img.draggable = false;
-      foods.append(img);
-    }
+    no.textContent = k;
     const score = document.createElement('span');
     score.className = 'mb-score';
-    li.append(no, foods, score);
+    li.append(no, score);
     list.append(li);
   });
 }
 
-/** Mark finished stages with their score and highlight the current one. */
 function updateMenuBoard(): void {
   const board = $('menu-board');
   board.hidden = !run || run.mode !== 'run';
   if (!run || run.mode !== 'run') return;
-  [...$('menu-items').children].forEach((li, i) => {
-    const r = run!.results[i];
-    li.className = r ? 'done' : i === run!.stageIndex ? 'current' : '';
-    (li.querySelector('.mb-score') as HTMLElement).textContent = r ? String(r.score) : i === run!.stageIndex ? 'いま' : '';
-    li.setAttribute('aria-label', `弁当${i + 1}：${r ? `${r.score}点` : i === run!.stageIndex ? 'つくっている' : 'これから'}`);
+  const si = sizeIndexOf(run.stageIndex);
+  [...$('menu-ladder').children].forEach((li, i) => {
+    li.className = i < si || (i === si && run!.results.length === (si + 1) * STAGES_PER_SIZE) ? 'done' : i === si ? 'current' : '';
   });
+  [...$('menu-items').children].forEach((li, j) => {
+    const idx = si * STAGES_PER_SIZE + j;
+    const r = run!.results[idx];
+    li.className = r ? 'done' : idx === run!.stageIndex ? 'current' : '';
+    (li.querySelector('.mb-score') as HTMLElement).textContent = r ? String(r.score) : idx === run!.stageIndex ? 'いま' : '';
+    li.setAttribute('aria-label', `${sizeLabel(BOARD_SIZES[si])}の箱 弁当${j + 1}：${r ? `${r.score}点` : idx === run!.stageIndex ? 'つくっている' : 'これから'}`);
+  });
+  $('menu-title').textContent = `本日のお品書き ${sizeLabel(BOARD_SIZES[si])}の箱`;
 }
 
 function render(): void {
   // The stage DOM is built after the screen switch; nothing to draw until then.
   if (!run || run.pieces.some(p => !traySlots.has(p.id))) return;
   const active = isActive(run);
+  const n = boardSize(run);
   for (const p of run.pieces) {
     const slot = traySlots.get(p.id)!;
     const art = slot.querySelector<HTMLElement>('.food')!;
-    const {w, h} = layoutPieceArt(art, p);
+    const {w, h} = renderDish(art, p);
     const span = Math.max(3, w, h);
     art.style.width = `${(w / span) * 100}%`;
     slot.dataset.rotation = String(p.rotation);
@@ -223,14 +246,14 @@ function render(): void {
     const placed = boardPieces.get(p.id)!;
     placed.hidden = !p.at;
     if (p.at) {
-      const pw = layoutPieceArt(placed.firstElementChild as HTMLElement, p);
+      const pw = renderDish(placed.firstElementChild as HTMLElement, p);
       placed.dataset.x = String(p.at.x);
       placed.dataset.y = String(p.at.y);
       placed.dataset.rotation = String(p.rotation);
-      placed.style.left = `${p.at.x * 25}%`;
-      placed.style.top = `${p.at.y * 25}%`;
-      placed.style.width = `${pw.w * 25}%`;
-      placed.style.height = `${pw.h * 25}%`;
+      placed.style.left = `${(p.at.x * 100) / n}%`;
+      placed.style.top = `${(p.at.y * 100) / n}%`;
+      placed.style.width = `${(pw.w * 100) / n}%`;
+      placed.style.height = `${(pw.h * 100) / n}%`;
       placed.disabled = !active;
       placed.setAttribute('aria-label', `${labelOf(p.id)}（取り外す）`);
     }
@@ -248,17 +271,19 @@ function clampCursor(): void {
   const sel = run?.pieces.find(p => p.id === run!.selectedId);
   if (!sel) return;
   const {w, h} = rotatedBounds(sel);
-  cursor = {x: Math.min(Math.max(cursor.x, 0), BOARD_SIZE - w), y: Math.min(Math.max(cursor.y, 0), BOARD_SIZE - h)};
+  const n = boardSize(run!);
+  cursor = {x: Math.min(Math.max(cursor.x, 0), n - w), y: Math.min(Math.max(cursor.y, 0), n - h)};
 }
 
 function showPreview(target: {id: string; x: number; y: number} | null): boolean {
   for (const i of previewMarked) cells[i].classList.remove('ok', 'ng');
   previewMarked = [];
   if (!target || !run) return false;
-  const check = checkPlacement(run.pieces, target.id, target.x, target.y);
+  const n = boardSize(run);
+  const check = checkPlacement(run.pieces, n, target.id, target.x, target.y);
   for (const [x, y] of check.cells) {
-    if (x < 0 || y < 0 || x >= BOARD_SIZE || y >= BOARD_SIZE) continue;
-    const i = y * BOARD_SIZE + x;
+    if (x < 0 || y < 0 || x >= n || y >= n) continue;
+    const i = y * n + x;
     cells[i].classList.add(check.ok ? 'ok' : 'ng');
     previewMarked.push(i);
   }
@@ -283,7 +308,7 @@ function dispatch(a: Action): Outcome {
     case 'deselected': setStatus('選択をやめました。'); break;
     case 'rotated': sfx('rotate'); break;
     case 'placed': sfx('drop'); setStatus('ぴったり！'); bump(a); break;
-    case 'removed': sfx('undo'); setStatus(`${labelOf(run.selectedId!)}を取り外しました（-50）。`); break;
+    case 'removed': sfx('undo'); setStatus(`${labelOf(run.selectedId!)}を取り外しました（減点あり）。`); break;
     case 'cleared': render(); onCleared(); return o;
     case 'nextStage': buildStage(); syncClock(); return o;
     case 'complete': finishRun(); return o;
@@ -308,17 +333,33 @@ function onCleared(): void {
   syncClock();
   cancelDrag();
   const r = lastStageResult(run)!;
-  const final = run.mode === 'run' && run.stageIndex === STAGES.length - 1;
-  sfx(final ? 'complete' : 'clear');
+  const isRun = run.mode === 'run';
+  const final = isRun && run.stageIndex === STAGES.length - 1;
+  const boxDone = isRun && stageInSize(run.stageIndex) === STAGES_PER_SIZE - 1;
+  const n = boardSize(run);
+  let improved = false;
+  if (isRun) {
+    improved = store.offerBest(totalScore(run), run.results.length);
+    // Finishing a box saves where to continue: the first bento of the next box.
+    if (boxDone && !final) store.saveCheckpoint({sizeIndex: sizeIndexOf(run.stageIndex) + 1, results: [...run.results]});
+  }
+  sfx(final || boxDone ? 'complete' : 'clear');
   box.classList.add('cleared');
   updateMenuBoard();
-  seal.querySelector('span')!.textContent = run.mode === 'run' ? `${r.score}点` : 'できた！';
+  updateTitleBest();
+  seal.querySelector('span')!.textContent = isRun ? `${r.score}点` : 'できた！';
   actions.hidden = true;
   tray.hidden = true;
   clearPanel.hidden = false;
-  $('clear-title').textContent = run.mode === 'run' ? `弁当 ${run.stageIndex + 1} できあがり！` : '練習達成！ 全マス埋まりました';
-  $('clear-detail').textContent = `時間 ${Math.floor(r.activeMs / 1000)}秒 ・ 回転 ${r.rotates} ・ 取外し ${r.undos}` + (run.mode === 'run' ? ` → ${r.score}点` : '（本番の記録には入りません）');
-  setStatus(run.mode === 'run' ? `弁当 ${run.stageIndex + 1} 完成！` : '練習クリア！', 'good');
+  const nextSize = boxDone && !final ? BOARD_SIZES[sizeIndexOf(run.stageIndex) + 1] : 0;
+  $('clear-title').textContent = !isRun ? '練習達成！ 全マス埋まりました'
+    : final ? '全30弁当、できあがり！'
+    : boxDone ? `${sizeLabel(n)}の箱 6弁当クリア！`
+    : `${sizeLabel(n)}の箱 弁当${stageInSize(run.stageIndex) + 1} できあがり！`;
+  $('clear-detail').textContent = `時間 ${Math.floor(r.activeMs / 1000)}秒 ・ 回転 ${r.rotates} ・ 取外し ${r.undos}`
+    + (isRun ? ` → ${r.score}点${improved ? '（BEST更新）' : ''}` : '（本番の記録には入りません）')
+    + (nextSize ? `。次は ${sizeLabel(nextSize)} の大きな箱です（ここから続きを遊べます）` : '');
+  setStatus(isRun ? `${sizeLabel(n)}の箱 弁当${stageInSize(run.stageIndex) + 1} 完成！` : '練習クリア！', 'good');
   const buttons = $('clear-buttons');
   buttons.replaceChildren();
   const add = (id: string, text: string, fn: () => void, primary = false) => {
@@ -332,36 +373,45 @@ function onCleared(): void {
     return b;
   };
   let first: HTMLButtonElement;
-  if (run.mode === 'run') {
-    first = add('next', final ? '結果を見る' : '次の弁当へ', () => dispatch({type: 'next'}), true);
+  if (isRun) {
+    first = add('next', final ? '結果を見る' : nextSize ? `${sizeLabel(nextSize)}の箱へ` : '次の弁当へ', () => dispatch({type: 'next'}), true);
   } else {
     first = add('practice-again', 'もう一回練習', () => dispatch({type: 'next'}), true);
-    add('practice-to-run', '本番を始める', startRun);
+    add('practice-to-run', '本番を始める', () => startRun(0));
     add('practice-title', 'タイトルへ', goTitle);
   }
   first.focus({preventScroll: true});
 }
 
-function finishRun(): void {
-  if (!run || run.mode !== 'run' || run.phase !== 'complete') return;
-  const total = totalScore(run);
-  const improved = store.offerBest(total);
+function showResult(results: readonly StageResult[], complete: boolean): void {
+  const total = results.reduce((t, r) => t + r.score, 0);
+  const best = store.best();
+  $('result-heading').textContent = complete ? '全30弁当、完売！' : 'ここまでの成績';
   $('result-total').textContent = String(total);
-  $('result-best').textContent = improved ? `NEW BEST！ ${total}` : `BEST ${store.best()}`;
-  $('result-best').classList.toggle('new', improved);
+  $('result-best').textContent = best.best === total && total > 0 ? `BEST ${best.best}（${best.cleared}弁当）` : `BEST ${best.best}`;
+  $('result-best').classList.toggle('new', best.best === total && total > 0);
   const rows = $('result-rows');
   rows.replaceChildren();
-  run.results.forEach((r, i) => {
+  BOARD_SIZES.forEach((n, si) => {
+    const part = results.filter(r => r.size === n);
+    if (!part.length) return;
     const tr = document.createElement('tr');
-    const foods = [...r.stage].map(c => FOODS[c as keyof typeof FOODS].ja).join('・');
-    for (const v of [`${i + 1}. ${foods}`, `${Math.floor(r.activeMs / 1000)}秒`, String(r.rotates), String(r.undos), String(r.score)]) {
+    const sec = part.reduce((t, r) => t + Math.floor(r.activeMs / 1000), 0);
+    for (const v of [`${sizeLabel(n)}の箱 ${part.length}/${STAGES_PER_SIZE}`, `${sec}秒`, String(part.reduce((t, r) => t + r.rotates, 0)), String(part.reduce((t, r) => t + r.undos, 0)), String(part.reduce((t, r) => t + r.score, 0))]) {
       const td = document.createElement('td');
       td.textContent = v;
       tr.append(td);
     }
+    tr.dataset.size = String(si);
     rows.append(tr);
   });
-  if (improved) sfx('complete');
+}
+
+function finishRun(): void {
+  if (!run || run.mode !== 'run' || run.phase !== 'complete') return;
+  store.saveCheckpoint(null);
+  showResult(run.results, true);
+  sfx('complete');
   updateTitleBest();
   showScreen('result');
   $('retry').focus({preventScroll: true});
@@ -369,8 +419,11 @@ function finishRun(): void {
 
 // ------------------------------------------------------------------ flow
 
-function startRun(): void {
-  run = createRun('run', `run-${Date.now().toString(36)}-${++runSerial}`);
+/** New production run from the 4×4 box (sizeIndex 0) or from a saved box checkpoint. */
+function startRun(fromSize = 0): void {
+  const cp = fromSize > 0 ? store.checkpoint() : null;
+  const from = cp && cp.sizeIndex === fromSize ? cp : null;
+  run = createRun('run', `run-${Date.now().toString(36)}-${++runSerial}`, from ? from.sizeIndex : 0, from ? from.results : []);
   paused = false;
   showScreen('play');
   buildStage();
@@ -398,8 +451,14 @@ function goTitle(): void {
 }
 
 function updateTitleBest(): void {
-  $('title-best').textContent = String(store.best());
+  const b = store.best();
+  $('title-best').textContent = String(b.best);
+  $('title-best-detail').textContent = b.cleared ? `（${b.cleared}弁当）` : '';
   $('storage-note').hidden = store.persistent;
+  const cp = store.checkpoint();
+  const cont = $<HTMLButtonElement>('continue');
+  cont.hidden = !cp;
+  if (cp) cont.textContent = `つづきから（${sizeLabel(BOARD_SIZES[cp.sizeIndex])}の箱）`;
 }
 
 // ------------------------------------------------------------------ dialogs
@@ -457,21 +516,23 @@ function pauseGame(reason: 'button' | 'auto'): void {
   render();
   const resumeFn = () => { paused = false; syncClock(); render(); grid.focus({preventScroll: true}); };
   const buttons: DialogButton[] = [{id: 'resume', text: '再開する', primary: true, fn: resumeFn}];
-  if (run.mode === 'run') buttons.push({id: 'restart', text: '最初から', fn: startRun});
+  if (run.mode === 'run') buttons.push({id: 'restart', text: '4×4から', fn: () => startRun(0)});
   buttons.push({id: 'pause-title', text: 'タイトルへ', fn: goTitle});
   openDialog('休憩中', `<p>${reason === 'auto' ? '画面から離れたので時間を止めました。' : '時間は止まっています。'}</p><p class="small">再開すると、選択中のおかずは選び直しになります。</p>`, buttons, resumeFn);
 }
 
 const HELP_HTML = `
 <ul class="help">
-<li><b>4×4の弁当箱</b>に、形のちがう4つのおかずを<b>隙間なく</b>詰めます。全マス埋まれば完成。</li>
+<li>弁当箱に、形のちがうおかずを<b>隙間なく</b>詰めます。全マス埋まれば完成。</li>
+<li>箱は <b>4×4 → 5×5 → 6×6 → 7×7 → 8×8</b> と大きくなります。各6弁当、全30弁当。大きい箱ほどおかずも大きく（4〜8マス）、数も増えます。</li>
+<li>ひとつの箱の6弁当を作り終えると、次の箱から<b>つづき</b>を遊べます。</li>
 <li><b>ドラッグ</b>：おかずを持ち上げて弁当箱へ。マスに吸い付き、緑なら置けます／赤は置けません。</li>
 <li><b>タップ</b>：おかずをタップ→弁当箱のマスをタップ。そのマスにおかずの左上の具が入ります。</li>
 <li><b>回す</b>：選んだおかずを⟳ボタンまたは<kbd>R</kbd>で90°回転（裏返しはできません）。</li>
 <li><b>取り外す</b>：詰めたおかずをタップ／ドラッグすると箱から出せます。</li>
-<li><b>キーボード</b>：<kbd>1</kbd>〜<kbd>4</kbd>かTabで選んで<kbd>Enter</kbd>、矢印で位置、<kbd>R</kbd>で回転、<kbd>Enter</kbd>で詰める、<kbd>Esc</kbd>で選択解除／休憩。</li>
-<li><b>得点</b>：各弁当 1000点から、操作できる時間1秒ごと−3、回転1回−20、取り外し1回−50（0点未満なし）。置けない場所に置こうとしても減点はありません。</li>
-<li>本番は全6弁当・最大6000点。6つ全部つくると BEST を記録します。練習は記録に入りません。</li>
+<li><b>キーボード</b>：<kbd>1</kbd>〜<kbd>9</kbd>・<kbd>0</kbd>（10番目）かTabで選んで<kbd>Enter</kbd>、矢印で位置、<kbd>R</kbd>で回転、<kbd>Enter</kbd>で詰める、<kbd>Esc</kbd>で選択解除／休憩。</li>
+<li><b>得点</b>：各弁当 1000点から、操作できる時間・回転・取り外しで減点（0点未満なし）。4×4では1秒−3、回転−20、取り外し−50。大きい箱は、マス数とおかずの数に合わせて減点がゆるくなります。置けない場所に置こうとしても減点はありません。</li>
+<li>本番は全30弁当・最大30000点。弁当を1つ完成させるたびに、合計点が BEST を超えれば記録します。練習は記録に入りません。</li>
 </ul>`;
 
 function openHelp(): void {
@@ -497,9 +558,10 @@ let drag: DragState | null = null;
 let rafId = 0;
 
 function cellAt(clientX: number, clientY: number, rect: DOMRect): {x: number; y: number} | null {
-  const size = rect.width / BOARD_SIZE;
+  const n = run ? boardSize(run) : 4;
+  const size = rect.width / n;
   const x = Math.floor((clientX - rect.left) / size), y = Math.floor((clientY - rect.top) / size);
-  return x >= 0 && y >= 0 && x < BOARD_SIZE && y < BOARD_SIZE ? {x, y} : null;
+  return x >= 0 && y >= 0 && x < n && y < n ? {x, y} : null;
 }
 
 function beginPointer(e: PointerEvent, origin: DragState['origin'], id: string | null, artEl: Element | null, captureEl: Element): void {
@@ -526,7 +588,7 @@ function startDrag(): void {
   drag.started = true;
   keyboardPreview = false;
   const p = run.pieces.find(q => q.id === drag!.id)!;
-  ghost.replaceChildren(createPieceArt(p.shape));
+  ghost.replaceChildren(createDish());
   ghost.hidden = false;
   app.classList.add('dragging');
   traySlots.get(p.id)?.classList.add('lifted');
@@ -535,7 +597,7 @@ function startDrag(): void {
 
 /** Where the lifted food would land: nearest cell origin, or null when it is off the box. */
 function dragAnchor(d: DragState, w: number, h: number): {left: number; top: number; cell: number; anchor: {x: number; y: number} | null} {
-  const rect = d.gridRect, cell = rect.width / BOARD_SIZE;
+  const rect = d.gridRect, cell = rect.width / (run ? boardSize(run) : 4);
   const left = d.lastX - d.fx * w * cell, top = d.lastY - d.fy * h * cell;
   const near = left < rect.right - cell * 0.5 && left + w * cell > rect.left + cell * 0.5 && top < rect.bottom - cell * 0.5 && top + h * cell > rect.top + cell * 0.5;
   return {left, top, cell, anchor: near ? {x: Math.round((left - rect.left) / cell), y: Math.round((top - rect.top) / cell)} : null};
@@ -546,7 +608,7 @@ function updateDrag(): void {
   if (!drag || !drag.started || !run || drag.id === null) return;
   const p = run.pieces.find(q => q.id === drag!.id);
   if (!p) return;
-  const {w, h} = layoutPieceArt(ghost.firstElementChild as HTMLElement, p);
+  const {w, h} = renderDish(ghost.firstElementChild as HTMLElement, p);
   const {left, top, cell, anchor} = dragAnchor(drag, w, h);
   drag.anchor = anchor;
   const ok = showPreview(anchor ? {id: p.id, ...anchor} : null);
@@ -577,8 +639,8 @@ function hoverPreview(e: PointerEvent): void {
   if (!c) { showPreview(null); return; }
   const p = run.pieces.find(q => q.id === run!.selectedId)!;
   // Same rule as a tap: the model's covering origin, else the first-cell origin (shown red).
-  const [fx, fy] = shapeCells(p.shape, p.rotation)[0];
-  const at = placementCovering(run.pieces, p.id, c.x, c.y) ?? {x: c.x - fx, y: c.y - fy};
+  const [fx, fy] = pieceShape(p)[0];
+  const at = placementCovering(run.pieces, boardSize(run), p.id, c.x, c.y) ?? {x: c.x - fx, y: c.y - fy};
   showPreview({id: p.id, x: at.x, y: at.y});
 }
 
@@ -658,7 +720,7 @@ grid.addEventListener('pointerdown', e => {
   // Hit-test by the model's cell occupancy, not by the dish's bounding box:
   // the empty corners of an L/T/S box belong to the board.
   const c = cellAt(e.clientX, e.clientY, grid.getBoundingClientRect());
-  const owner = c ? occupancy(run.pieces)[c.y * BOARD_SIZE + c.x] : null;
+  const owner = c ? occupancy(run.pieces, boardSize(run))[c.y * boardSize(run) + c.x] : null;
   const placed = owner ? boardPieces.get(owner) : undefined;
   // A lifted placed food is hidden mid-gesture, so the grid (not the food) holds capture.
   if (placed) { if (!placed.disabled) beginPointer(e, 'board', owner!, placed, grid); return; }
@@ -703,7 +765,7 @@ document.addEventListener('keydown', e => {
   if (e.ctrlKey || e.metaKey || e.altKey) return;
   if (dialog.open || screen !== 'play' || !run) return;
   const k = e.key;
-  const handled = ['r', 'R', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Escape', '1', '2', '3', '4', 'Enter', ' '];
+  const handled = ['r', 'R', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Escape', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Enter', ' '];
   if (!handled.includes(k)) return;
   if (k === 'Enter' || k === ' ') {
     // Buttons keep their native activation; Enter/Space on the board places.
@@ -719,15 +781,15 @@ document.addEventListener('keydown', e => {
   }
   if (!isActive(run)) return;
   if (k === 'r' || k === 'R') { dispatch({type: 'rotate'}); if (drag?.started) updateDrag(); return; }
-  if (/^[1-4]$/.test(k)) {
-    const p = run.pieces[Number(k) - 1];
+  if (/^[0-9]$/.test(k)) {
+    const p = run.pieces[k === '0' ? 9 : Number(k) - 1];
     if (!p) return;
     keyboardPreview = true;
     if (dispatch({type: 'select', id: p.id}).ok) grid.focus({preventScroll: true});
     render();
     return;
   }
-  if (!run.selectedId) { if (k.startsWith('Arrow') || k === 'Enter' || k === ' ') setStatus('先におかずを選んでください（1〜4キー）。'); return; }
+  if (!run.selectedId) { if (k.startsWith('Arrow') || k === 'Enter' || k === ' ') setStatus('先におかずを選んでください（数字キー）。'); return; }
   if (k.startsWith('Arrow')) {
     keyboardPreview = true;
     cursor = {x: cursor.x + (k === 'ArrowLeft' ? -1 : k === 'ArrowRight' ? 1 : 0), y: cursor.y + (k === 'ArrowUp' ? -1 : k === 'ArrowDown' ? 1 : 0)};
@@ -770,41 +832,45 @@ function syncMute(): void {
   muteBtn.setAttribute('aria-pressed', String(audio.muted));
 }
 pauseBtn.addEventListener('click', () => pauseGame('button'));
-$('start').addEventListener('click', startRun);
+$('start').addEventListener('click', () => startRun(0));
+$('continue').addEventListener('click', () => { const cp = store.checkpoint(); startRun(cp ? cp.sizeIndex : 0); });
 $('practice-start').addEventListener('click', startPractice);
 $('help-open').addEventListener('click', openHelp);
-$('retry').addEventListener('click', startRun);
+$('retry').addEventListener('click', () => startRun(0));
 $('result-title').addEventListener('click', goTitle);
 
-// ------------------------------------------------------------------ title hero (a solved bento, from the solver)
+// ------------------------------------------------------------------ title hero (a solved 6×6 bento)
 
 function buildHero(): void {
   const hero = $('hero');
-  const stage = 'ILJZ';
-  const [solution] = solveStage(stage);
+  const stage = STAGES[2 * STAGES_PER_SIZE];
+  const n = stage.size;
+  const pieces = createPieces(stage);
   const boxEl = document.createElement('div');
   boxEl.className = 'box mini';
   const g = document.createElement('div');
   g.className = 'grid';
-  for (const s of solution) {
+  g.style.setProperty('--n', String(n));
+  for (const s of stage.solution) {
+    const p = {...pieces.find(q => q.id === s.id)!, rotation: s.rotation};
     const el = document.createElement('span');
     el.className = 'placed';
-    const art = createPieceArt(s.shape);
-    const {w, h} = layoutPieceArt(art, s);
-    el.style.left = `${s.x * 25}%`;
-    el.style.top = `${s.y * 25}%`;
-    el.style.width = `${w * 25}%`;
-    el.style.height = `${h * 25}%`;
+    const art = createDish();
     el.append(art);
+    const {w, h} = renderDish(art, p);
+    el.style.left = `${(s.x * 100) / n}%`;
+    el.style.top = `${(s.y * 100) / n}%`;
+    el.style.width = `${(w * 100) / n}%`;
+    el.style.height = `${(h * 100) / n}%`;
     g.append(el);
   }
   boxEl.append(g);
   hero.append(boxEl);
 }
 
-buildCells();
-buildMenuBoard();
 buildHero();
 syncMute();
 updateTitleBest();
 showScreen('title');
+buildMenuBoard();
+void loadSprite();
