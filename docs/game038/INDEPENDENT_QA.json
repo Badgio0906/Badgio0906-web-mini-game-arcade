@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "agent_tool": "codex-subagent",
+  "actor_role": "independent_gameplay_qa",
+  "at": "2026-10-18T15:01:29.898284+00:00",
+  "candidate_commit": "7d0287bdfaf5d037362619620ed8c136870e6980",
+  "initial_runtime_commit": "c8c47d6",
+  "verdict": "PASS_MODEL_AND_SOURCE_TECHNICAL_QA",
+  "hashes": {
+    "game038.html": "0a2412a73610b2e7482bbc8c00ee2e7de48bce2501dca5b844566f3b1badfe19",
+    "src/games/game038/model.ts": "1da75908f2adf6cb6ede51e83255251894912b2957ce49ea91729529b94883ae",
+    "src/games/game038/main.ts": "665f0de6c73e4ef135b997dbb54d6c6585bce8bbfc7c5eef917ccb5af8b65970",
+    "src/games/game038/save.ts": "1f1264746bd7494fdc6f50cf88c2a6c9475d56e361020cec6213ec052988d99f",
+    "src/games/game038/render.ts": "c57c50a58098dc53ccdb87f8a7ffdb34d71e4781bfd3437b8071f53cc19fa4d4",
+    "src/games/game038/style.css": "b9060d3db1fc3070f08b051d6c652df7e1ff2cb5918fdbe2364694d7854b1a81",
+    "src/games/game038/game.manifest.json": "68db7dc8f79d234a276f1956dbbca00891894defa2f83a24b702a1c9a896cb63",
+    "tests/unit/game038.test.ts": "b3067d1033f2988b17e74c7440d662590d29b11fbe4c1337cb6d083b6ab64822",
+    "tests/game038/vite.config.mjs": "de8773929755f8ec08f2eaaed547c90548bf4d61b6e0dd39cdda0bbfd21bbe21",
+    "docs/game038/IMPLEMENTATION_SPEC.md": "ffb1ef4b3fc994a270a3c94f59f23187bf676dc7324f5addea63463d0a086164"
+  },
+  "independent_executions": {
+    "targeted_unit": {
+      "command": "npx vitest run tests/unit/game038.test.ts --reporter=dot",
+      "result": "15 PASS / 1 file",
+      "candidate": "7d0287bdfaf5d037362619620ed8c136870e6980"
+    },
+    "pure_model_probes": {
+      "idle_practice_before": {
+        "outcome": "won",
+        "wet": 1.2416666666666647,
+        "entries": 3,
+        "score": 0
+      },
+      "idle_practice_after": {
+        "outcome": "lost",
+        "reason": "lesson",
+        "transfers": 0,
+        "wet": 1.2416666666666647
+      },
+      "active_practice_after": {
+        "outcome": "won",
+        "transfers": 3,
+        "wet": 0,
+        "score": 0
+      },
+      "ninety_second_follower": {
+        "outcome": "won",
+        "elapsed": 90,
+        "wet": 0,
+        "score": 1910,
+        "entries": 31,
+        "lane_changes": 27,
+        "cpu_ms_observed": 9.662177000000014,
+        "cpu_scope": "one Node model simulation, not FPS or user time"
+      },
+      "coverage_sample": {
+        "step_seconds": 0.001,
+        "interval_seconds": [
+          0,
+          90
+        ],
+        "uncovered_guide_samples": 0,
+        "max_people": 12
+      },
+      "stationary_production": {
+        "lane0_loss_elapsed": 7.6000000000001675,
+        "lane1_loss_elapsed": 16.30833333333305,
+        "lane2_loss_elapsed": 2.999999999999992
+      },
+      "entry_spam": {
+        "score_before": 150,
+        "score_after": 150,
+        "entries": 1
+      },
+      "pause": {
+        "state_unchanged": true,
+        "movement_rejected": true
+      },
+      "simultaneous_goal_wet": {
+        "outcome": "lost",
+        "elapsed": 2.999999999999992,
+        "wet": 3,
+        "reason": "wet"
+      },
+      "equidistant_owner_id": "a"
+    },
+    "main_handler_harness": {
+      "kind": "actual main.ts transpiled with TypeScript and evaluated in Node VM with synthetic DOM/audio/render substitutes; no browser",
+      "held_key_repeat_ignored": true,
+      "fresh_arrow_moves": true,
+      "paused_five_seconds_excluded": true,
+      "repeat_after_resume_ignored": true,
+      "pointer_started_before_pause_release_ignored": true,
+      "pointercancel_release_ignored": true,
+      "elapsed_after_point5_plus_paused5_plus_point1": 0.5999999999999996
+    }
+  },
+  "findings": [
+    {
+      "id": "game038-idle-practice-passes",
+      "initial_runtime": "c8c47d6",
+      "problem": "Waiting in the middle lane completed9s practice and marked the lesson learned without any lane transfer.",
+      "status": "resolved",
+      "fix_commit": "7d0287bdfaf5d037362619620ed8c136870e6980",
+      "fix": "Practice now requires a sheltered transfer to another lane before reaching its goal; idle completion produces reason=lesson and retry guidance.",
+      "evidence": [
+        "QA/IDLE_PRACTICE_RED.txt",
+        "tests/unit/game038.test.ts",
+        "src/games/game038/model.ts",
+        "src/games/game038/main.ts"
+      ]
+    }
+  ],
+  "storage": {
+    "keys": [
+      "web-mini-arcade:v1:game038:best-r1",
+      "web-mini-arcade:v1:game038:learned",
+      "web-mini-arcade:v1:game038:mute"
+    ],
+    "best_completed_production_only": true,
+    "negative_completed_best_supported": true,
+    "refused_storage_memory_fallback": true
+  },
+  "scope": {
+    "production_catalog_vite_registration": false,
+    "shared_analytics_credit_ads_or_ci_modified": false,
+    "borrowed_game017_background_bytes_unchanged": true,
+    "automatic_external_calls_in_product_source": false,
+    "return_navigation": "https://game100garage.com/ on explicit native link activation"
+  },
+  "limits": [
+    "Browser and image/Visual scoring not run by this reviewer; coordinator owns frozen browser slot.",
+    "Node VM event handling is a synthetic handler test, not actual browser keyboard/touch validation.",
+    "Frame integration uses at most1/120-second midpoint steps; CPU measure does not establish physical-device FPS.",
+    "Real audio, physical phone, Safari, human fun/difficulty and publication are not evaluated.",
+    "No paid API/Jev/ImageGen/push/PR/Actions/configuration/merge/deploy operations performed."
+  ],
+  "remaining": [
+    "Coordinator fixed-source four-width browser input/layout/pause/storage/return/practice/end validation",
+    "Human gameplay and physical-device evaluation"
+  ],
+  "usage_cost": null
+}

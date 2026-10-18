@@ -48,4 +48,14 @@ The equal-grid x768 cut would remove the home's right railing. Use a dedicated h
 
 ## Review state
 
-Background and both generated source sheets have now been visually inspected. Source art is suitable to proceed to technical cropping and integration with the boundary precautions above. No delivered sprite crops or browser screenshots have yet been inspected, and no final visual acceptance score has been assigned. Sprite integration, final phone-scale readability, human appeal, physical-device legibility, motion clarity, and actual wetness-rule comprehension remain unverified.
+At this source-stage checkpoint, the background and both generated source sheets had been visually inspected. Source art was suitable to proceed to technical cropping and integration with the boundary precautions above. Delivered sprite crops and browser screenshots had not yet been inspected. Later integration findings follow below; no final visual acceptance score has yet been assigned.
+
+## First integration inspection
+
+Actually viewed: `QA/first-desktop-play.png`, `QA/first-phone-title.png`, `QA/first-phone-play.png`. These are intermediate images supplied by the main agent, not a final frozen-source acceptance run. The reviewer did not run a browser or manipulate the game.
+
+The integrated cast suits the painted background convincingly. The source crops appear visually intact in these views. The ochre player remains recognizable at the phone's approximately 75px character height. The phone title, status figures, shelter message, and three buttons read clearly. Sheltering naturally overlaps the player and an NPC; the warm player ring and draw-last order are important because feet nearly coincide in the sheltered phone image.
+
+Observed visual concern `game038-first-lane-contrast`: three rendered dashed lane baselines are effectively invisible over the reflected wet street in these screenshots. The upper/middle/lower buttons therefore lack an immediate spatial cue on the street. A modest increase to the existing overlay contrast, or compact lane markers at the left, would improve mapping without changing the original background file. Classification: visual/readability; next evidence: revised desktop/phone screenshots. This is an independent screenshot observation, not a human comprehension result. No paid Jev/API call was made because this review assignment explicitly prohibits paid API calls; no Jev routing or confidence values are claimed.
+
+The desktop's controls below the screenshot's fold were already acknowledged by the main agent as under correction; final viewport-budget screenshots are required. No other definite blocker is established by these first views. Final acceptance score remains unassigned until revised final images are actually inspected. Human appeal, physical-device legibility, motion clarity, and actual wetness-rule comprehension remain unverified.
