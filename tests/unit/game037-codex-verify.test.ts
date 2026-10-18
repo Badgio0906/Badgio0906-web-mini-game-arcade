@@ -59,6 +59,12 @@ describe.skipIf(!ci)('Independent Codex Game037 handoff QA',()=>{
       const env={...process.env,GAME037_CHROME:available,GAME037_BUILD_DIR:build,GAME037_PUBLIC_DIR:publicDir,GAME037_REPORT:report};
       const run=spawnSync(process.execPath,[join(root,'tests/game037/browser.mjs')],{cwd:root,env,encoding:'utf8',timeout:240000,maxBuffer:4*1024*1024});
       console.log('[Game037 independent HTTP Playwright QA] exit',run.status,(run.stdout??'').slice(-2400),(run.stderr??'').slice(-1200));
+
+      if(existsSync(join(report,'RESULTS.json'))){
+        const diag=JSON.parse(readFileSync(join(report,'RESULTS.json'),'utf8'));
+        console.log('[Game037 independent QA diagnostic]',JSON.stringify({status:diag.status,error:diag.error,passed:diag.passed,failed:diag.failed,viewports:diag.viewports,last:diag.checks.slice(-15)}).slice(0,12000));
+      }
+
       expect(run.error?.message??'','runtime error').toBe('');
       expect(run.status,(run.stdout??'')+'\\n'+(run.stderr??'')).toBe(0);
       const data=JSON.parse(readFileSync(join(report,'RESULTS.json'),'utf8'));
