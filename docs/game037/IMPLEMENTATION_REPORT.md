@@ -18,7 +18,7 @@
 |型|`npx tsc --noEmit`（`src`全体）|exit 0|[QA/BUILD.txt](QA/BUILD.txt)|
 |個別build|`GAME037_BUILD_DIR=/tmp/game037-dist npx vite build --config tests/game037/vite.config.mjs`|成功（html 5.36kB, css 14.35kB, js 27.88kB＋SVG13点＋navbar2点）|[QA/BUILD.txt](QA/BUILD.txt)、[QA/BUILD_HASHES.txt](QA/BUILD_HASHES.txt)|
 |実ブラウザQA|`node tests/game037/browser.mjs`|**PASS 574 checks / 0 fail**（desktop・phone・narrow・landscape＋保存拒否）|[QA/browser-final/RESULTS.json](QA/browser-final/RESULTS.json)＋35 PNG|
-|全体vitest（参考）|`npx vitest run`|1105 pass / **3 fail**：`tests/unit/participant-identity.test.ts`（共有記録系、game037無関係）。base以降このbranchでは該当ファイルとその依存を変更していない。Node 22.22環境（CIはNode 24）での既存失敗と推定、未切り分け|このファイル|
+|全体vitest（参考）|`npx vitest run`|1105 pass / **3 fail**：`tests/unit/participant-identity.test.ts`（共有記録系、game037無関係）。base以降このbranchでは該当ファイルとその依存を変更していない。Node 22.22環境のみの失敗。PR #9 CI `validate`（Node 24、`npm test`全件＋`npm run build`）はhead `a803e4b`でsuccess|このファイル|
 
 ビルド時の警告 `arcade-navigation.js can't be bundled without type="module"`／`arcade-navigation.css doesn't exist at build time` は既存ゲームと同じ共有navbarの静的読み込みに由来し、配信物にはコピー済み（BUILD_HASHES参照）。
 

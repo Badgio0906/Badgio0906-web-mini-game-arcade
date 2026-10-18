@@ -40,7 +40,7 @@
   - 本物のタブ切替による`document.hidden`（QAはvisibilitychangeの擬似のみ）。
 - known_failures:
   - game037の検証：なし。
-  - 参考：全体`npx vitest run`で `tests/unit/participant-identity.test.ts` の3件がNode 22.22環境で失敗（共有記録系・本branch未変更）。CI(Node 24)では未確認。
+  - 参考：全体`npx vitest run`で `tests/unit/participant-identity.test.ts` の3件がClaude環境のNode 22.22でのみ失敗（共有記録系・本branch未変更）。PR #9のCI `validate`（Node 24：`npm ci`→`npm run check`→`npm test`→jev unittest→`npm run build`）はhead `a803e4b`で**success**（2026-10-18T03:50:03Z）のため、Node版差の環境要因と判断。
 - open_decisions: 正式採用、ゲーム番号の最終確定、Catalog/記録/公開、作者の完成判断（Codex/ユーザー）。Visual gateの独立判定。
 - next_3_actions:
   1. Codexが新しいcheckoutで `npm ci` → `npx vitest run tests/unit/game037*.test.ts` → `npx tsc --noEmit` → `GAME037_REPORT=<新しいdir> node tests/game037/browser.mjs` を独立実行し、許可path監査を行う。
