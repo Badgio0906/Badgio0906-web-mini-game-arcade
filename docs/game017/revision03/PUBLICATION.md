@@ -23,7 +23,7 @@ PUBLIC＋標準ランナーの実行時間はユーザー提示の無料条件�
 
 型検査PASS、1,107tests/104files PASS、通常production build PASS。検査logは[QA/web-preview](QA/web-preview)。ソース採用元のnative89/compiled24は[過去の固定候補記録](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/tree/b8fc0675ce6645a2c132d6a5d7c91b5ab822a60f/docs/game017/revision03)であり、今回のmain基準の新実行と区別する。
 
-通常buildの新compiled検査と独立公開差分レビューは追記する。人間/Windows実機/Safari/実音/連続FPS、GitHub CI、Pages deploy、配信URLの200/bytes確認は未実施。予定URLを公開済みURLとして案内しない。
+通常buildの配信先distを指定して[新compiled検査](QA/web-preview/compiled/RESULTS.json)を実行し、4幅24checks PASS。識別表示・DEV hook不在・3秒失敗/再挑戦・overflowなし・HTTP/pageerror/外部request/POSTなしを確認。offline Jev契約unittestも25件PASS（外部API呼出しなし）。[採用元一致/配信fileのSHA](QA/web-preview/PROVENANCE.json)を保存。初回docs/Vite commitでruntime移入のstageが未完了だった点は次commit8d93c79で明示stageし、検査対象bytesが変わっていないことも同JSONへ記録した。[独立公開差分レビュー](INDEPENDENT_PUBLICATION_REVIEW.md) PASS。main差分、採用元30file一致、build393fileのSHA、新QAを確認した。ローカル準備の判定であり、費用の無料認定や公開成功ではない。人間/Windows実機/Safari/実音/連続FPS、GitHub CI、Pages deploy、配信URLの200/bytes確認は未実施。予定URLを公開済みURLとして案内しない。
 
 ## 再開
 

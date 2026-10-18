@@ -7,3 +7,5 @@ branch `release/rain014-web-preview`、作業tree `/workspace/arcade-rain-web`�
 ローカルは`npm run dev -- --host 127.0.0.1 --port 4938`で起動し、`http://127.0.0.1:4938/game017-revision03.html`。sourceは既存改良候補とbytes一致。旧検証は[固定済み移設記録](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/tree/b8fc0675ce6645a2c132d6a5d7c91b5ab822a60f/docs/game017/revision03)を参照し、新しいmain基準での検査と区別する。
 
 Webhookとbillingのreadが403である限り、全処理無料とは断言しない。ユーザーの費用条件が解消/判断されるまでmain push/公開開始は保留。PR/手動CI/無条件再実行/設定変更/既存job取消は行わない。
+
+新main基準QA：型/1107tests（104files）/通常build、compiled4幅24checks、offline Jev25testsが成功。証拠と未実施は[PUBLICATION](PUBLICATION.md)を参照。

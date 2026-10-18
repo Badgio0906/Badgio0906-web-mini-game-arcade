@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "agent_tool": "codex-subagent",
+  "actor_role": "independent_publication_diff_reviewer",
+  "at": "2026-10-18T16:49:54.001325+00:00",
+  "verdict": "PASS_LOCAL_PUBLICATION_PREPARATION_SCOPE",
+  "candidate_commit": "8d93c79aad12d20b9a4cbf600f3a02b9501a866a",
+  "baseline_main": "9e96d557779c5de099fe54c51731ceb131e591a1",
+  "adopted_rain_source": "b8fc0675ce6645a2c132d6a5d7c91b5ab822a60f",
+  "expected_preview_url": "https://game100garage.com/game017-revision03.html",
+  "publication": "NOT_RUN",
+  "scope": {
+    "changed_files_at_candidate": 51,
+    "outside_allowed_paths": [],
+    "modified_existing_files": [
+      "docs/CURRENT_STATUS.md",
+      "vite.config.ts"
+    ],
+    "shared_runtime_modification": "vite.config.ts adds game017-revision03 physical HTML input only",
+    "canonical_old_rain_route": "./game017.html",
+    "catalog_active_count": 27,
+    "game003_or_game037_adoption_changes_included": false,
+    "old_game017_rules2_or_internal014_changed": false,
+    "shared_analytics_records_workflow_or_billing_configuration_changed": false,
+    "node_modules_tracked": false
+  },
+  "independent_recomputations": {
+    "source_files_checked": 30,
+    "source_file_mismatches": [],
+    "root_dist_hashes_checked": 393,
+    "root_dist_hash_mismatches": [],
+    "runtime_hashes": {
+      "game017-revision03.html": "f47cadc23639518498c1c9cbc3fe6a157af35bae2155783caa70f3f735a5b1e2",
+      "src/games/game017/revision03/save.ts": "bc8d9c257d51acbf65c18fca685a2b7386a3a519ae8133d10f7703ed971ac409",
+      "src/games/game017/revision03/main.ts": "d748dd21472ceea119aef6a88a085ef62e33472b7fd17d5b61ba3725ea5e276b",
+      "src/games/game017/revision03/model.ts": "1da75908f2adf6cb6ede51e83255251894912b2957ce49ea91729529b94883ae",
+      "src/games/game017/revision03/style.css": "3bed4e0ea2a4a15cd7bc192e5cd492d47ccc2584483a39390fffd5ea95ec9ed5",
+      "src/games/game017/revision03/game.manifest.json": "b8c3f7ec6797d1fbd8fc67f6483cf157641949863bc6074d34a782078dd6f3af",
+      "src/games/game017/revision03/render.ts": "4c1229e3da9887d5e2f3d5c6be590e40fd9479cc2dc7158807c73a9fd93dd11f",
+      "public/assets/game017/revision03/student.webp": "f1b65dbbd4402de86f85200756465cd53f6fef15b33a9015d7661d9746e629bb",
+      "public/assets/game017/revision03/home.webp": "774df6dc109e046a85174dde6f0cff05450f7b0ebedd12ac1c5a72e2d9e65399",
+      "public/assets/game017/revision03/elderly.webp": "910d656aa1dc2b1cb7f64c127b0bafab0df1e5ae5bc827d75b22b19d24f3dd9b",
+      "public/assets/game017/revision03/player.webp": "e2628d8b14774c8eaba130a69d28b3ce9cf6ad28243538b32f1057ec5e05373a",
+      "public/assets/game017/revision03/umbrella-red.webp": "fc063915834b46715ef71968d9a3a5508ef4207fad51bf46cb0981762bf82633",
+      "public/assets/game017/revision03/umbrella-teal.webp": "588dc9befd951bb36a9f758759e3d8519eb77f0cc9ff70db78585e783e621293",
+      "public/assets/game017/revision03/folded-umbrella.webp": "01f29857575843da427ba1fdc7cba3d4a20208236ade3420850001837765e57e",
+      "public/assets/game017/revision03/rare.webp": "a142f6dd319ff2cf4974ac269a64447183ecbadefcecb0a5637f12ecf40b9c54",
+      "public/assets/game017/revision03/rain-icon.webp": "52d999de5c504264e09f6df302d76e117a10b0486f1d26651fc8e62552b169ad",
+      "public/assets/game017/revision03/family.webp": "d384274f64b102a3ff3111329d545fb8e56c1ce0e210edbd1249bc31a822742b",
+      "public/assets/game017/revision03/office-man.webp": "cb962723978df49c2e571fd447740f39eb6243b1c2d634d08bafe08ff052892b",
+      "public/assets/game017/revision03/elegant.webp": "aead138f8f6dfee778d5423aaf7918ace30abf73fb0657fc6f83431eccda656a",
+      "public/assets/game017/revision03/tough.webp": "4e4db8396734970c68ba98d43799b905a0318daa6444c5bc66514faa42e8f74d",
+      "public/assets/game017/revision03/office-woman.webp": "dfbb651c5875d574337af8a847a82eec06f4abd05ee68db71e54c1ef5539b098",
+      "assets/game017/revision03/ASSET_INDEX.json": "140fad1f3c63e3e519700b2174796fd09f23cb2774ec1c99000e0b6211ccd9d0",
+      "assets/game017/revision03/build-assets.py": "2fbb7c73790494e38c5bc3cf1a2f05be9802ba72a95c8f947b8d5e46553b0876",
+      "assets/game017/revision03/source/objects-v1.png": "19e27488a454cfe672cca8274fd0c548ea0b8bccf3b5aa7f5ed9a40beb410c2c",
+      "assets/game017/revision03/source/cast-v1.png": "93e9592a7a075bedbd44dc1fa6a1cd0feb7ba9032c75df472fe865ebcd610895",
+      "tests/game017/revision03/vite.config.mjs": "225256508027970f90d6ed154dd4860ac9f6f0f3acaca2197f7bf887b516b83f",
+      "tests/game017/revision03/browser.mjs": "37312e8d2fc57de9ba3926311ff3d410b2f914bef3f9128f6096c5f613530f8a",
+      "tests/game017/revision03/compiled.mjs": "d34719b06359e1c9c180a5eb7dee03d352ab7bf297894c9c2c1e9a7b59f4d888",
+      "tests/unit/game017-umbrella.test.ts": "1a8d7811f822db19e77003541f724d7f7ca91df0205279880ea9c2a21852ec2c",
+      "tests/unit/game017-umbrella-identity.test.ts": "b6aaf9053fcdbdcc1d9574e379920b972e99bf775cf75a8f63b025ec73b00e3d"
+    },
+    "vite_sha256": "275daf21f0a86b11275debb44576b2fb87b09b673aec8536d8f296176727839e"
+  },
+  "provided_coordinator_evidence_read": {
+    "check": "PASS",
+    "unit": "1107 tests /104 files PASS",
+    "root_production_build": "PASS",
+    "offline_jev_helper": "25 tests PASS, no API",
+    "compiled": {
+      "path": "docs/game017/revision03/QA/web-preview/compiled/RESULTS.json",
+      "sha256": "bafc5f2cb72ce624f870e5fa89675d5ea1e80c4e1e430a1861c9e95f9be9e4a2",
+      "status": "PASS",
+      "checks": 24,
+      "failed": [],
+      "errors": [],
+      "external": [],
+      "posts": [],
+      "responses": [],
+      "scope": "new root dist served through RAIN017_R3_BUILD override;4width identity/noDEVhook/nooverflow/3-second loss/retry"
+    }
+  },
+  "provenance_note": "First local commit2b4e5d4 contained docs/Vite only because imported new files remained untracked;8d93c79 explicitly includes all reviewed files. Staging did not change tested bytes.",
+  "historical_qa_separation": "The native89/compiled24 runs at b8fc067 remain linked historical rain-revision evidence; this main-based publication candidate has its own compiled24 and1107-unit run. No new90-second browser win claimed.",
+  "cost_and_release_boundary": {
+    "coordinator_reports": "PUBLIC standard ubuntu-latest; billing and Webhook access403; cache/artifact sizes observed but account residual allowance/external linked costs UNKNOWN",
+    "reviewer_independently_queried_remote_services": false,
+    "free_deployment_claim": false,
+    "remote_main_push_or_ci_or_deployment_authorized_by_this_review": false
+  },
+  "limits": [
+    "No browser launched by this reviewer.",
+    "No GitHub API/CI/push/PR/deploy/configuration operations or paid API calls performed by this reviewer.",
+    "No public URL200/live asset hashes/post-deployment browser checks; URL is planned only.",
+    "No human playtest/physical device/Safari/audio/FPS or final-completion judgment."
+  ],
+  "usage_cost": null
+}
