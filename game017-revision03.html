@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=contain"/><meta name="robots" content="noindex,nofollow"/><link rel="icon" href="data:,"/><title>表示014・雨ゲーム改良候補 — 100ガレ</title><link rel="stylesheet" href="./arcade-navigation.css"/></head>
 <body><header class="arcade-game-header"><a class="arcade-portal-return" href="https://game100garage.com/">← ゲーム一覧へ</a></header>
-<main id="rain-app"><header class="game-heading"><div><p class="eyebrow">014 · RAINSHIFT / UMBRELLA REVISION</p><h1>雨を避けて帰ろう</h1></div><div class="tools"><button id="mute" type="button">音 OFF</button><button id="pause" type="button" disabled>休憩</button></div></header>
+<main id="rain-app"><header class="game-heading"><div><p class="eyebrow">014 · RAINSHIFT 改良候補</p><h1>雨を避けて帰ろう</h1></div><div class="tools"><button id="mute" type="button">音 OFF</button><button id="pause" type="button" disabled>休憩</button></div></header>
 <section class="hud" aria-label="帰り道の状況"><div><span>濡れた時間</span><strong id="wet">0.00 / 3.00秒</strong><meter id="wet-meter" min="0" max="3" value="0">0秒</meter></div><div><span>家まで</span><strong id="distance">180m</strong></div><div><span>スコア</span><strong id="score">0</strong></div></section>
 <div class="street"><canvas id="scene" aria-label="雨の街。上・中・下の3ラインを選んで傘に入ります"></canvas><section class="panel" id="panel" aria-live="polite"></section></div>
 <p id="shelter" class="shelter" aria-live="polite">通行人の傘を借りて、家まで。</p><nav class="lanes" aria-label="歩くライン"><button data-lane="0" type="button">↑ 上ライン</button><button data-lane="1" type="button">● 中ライン</button><button data-lane="2" type="button">↓ 下ライン</button></nav>

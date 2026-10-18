@@ -1,0 +1,1236 @@
+{
+  "head": "1e55d97f3239e0645f8647b128f4fd7d6060122e",
+  "sourceBefore": {
+    "game017-revision03.html": "9f9d2a2118f2ddf398e6d68651e9c15520c1d179db1b353ffd7686d2132e5dff",
+    "src/games/game017/revision03/game.manifest.json": "b8c3f7ec6797d1fbd8fc67f6483cf157641949863bc6074d34a782078dd6f3af",
+    "src/games/game017/revision03/main.ts": "d748dd21472ceea119aef6a88a085ef62e33472b7fd17d5b61ba3725ea5e276b",
+    "src/games/game017/revision03/model.ts": "1da75908f2adf6cb6ede51e83255251894912b2957ce49ea91729529b94883ae",
+    "src/games/game017/revision03/render.ts": "4c1229e3da9887d5e2f3d5c6be590e40fd9479cc2dc7158807c73a9fd93dd11f",
+    "src/games/game017/revision03/save.ts": "bc8d9c257d51acbf65c18fca685a2b7386a3a519ae8133d10f7703ed971ac409",
+    "src/games/game017/revision03/style.css": "3bed4e0ea2a4a15cd7bc192e5cd492d47ccc2584483a39390fffd5ea95ec9ed5",
+    "tests/game017/revision03/vite.config.mjs": "225256508027970f90d6ed154dd4860ac9f6f0f3acaca2197f7bf887b516b83f"
+  },
+  "startedAt": "2026-10-18T16:18:35.714Z",
+  "checks": [
+    {
+      "ok": true,
+      "name": "desktop:title"
+    },
+    {
+      "ok": true,
+      "name": "desktop:canonical rain identity"
+    },
+    {
+      "ok": true,
+      "name": "desktop:separate legacy relay BEST"
+    },
+    {
+      "ok": true,
+      "name": "desktop:official return href (arrival not tested)"
+    },
+    {
+      "ok": true,
+      "name": "desktop:practice"
+    },
+    {
+      "ok": true,
+      "name": "desktop:controls44 in viewport",
+      "detail": [
+        {
+          "width": 370.65625,
+          "height": 46,
+          "bottom": 776
+        },
+        {
+          "width": 370.671875,
+          "height": 46,
+          "bottom": 776
+        },
+        {
+          "width": 370.65625,
+          "height": 46,
+          "bottom": 776
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "desktop:nohorizontaloverflow"
+    },
+    {
+      "ok": true,
+      "name": "desktop:repeatignored"
+    },
+    {
+      "ok": true,
+      "name": "desktop:pause"
+    },
+    {
+      "ok": true,
+      "name": "desktop:pause clock"
+    },
+    {
+      "ok": true,
+      "name": "desktop:escape resumes synchronously"
+    },
+    {
+      "ok": true,
+      "name": "desktop:3secondloss",
+      "detail": 3
+    },
+    {
+      "ok": true,
+      "name": "desktop:retryreset"
+    },
+    {
+      "ok": true,
+      "name": "desktop:practiceactualtransfer",
+      "detail": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 9,
+        "wet": 0,
+        "lane": 2,
+        "score": 0,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-2",
+            "lane": 1,
+            "x": 18,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-3",
+            "lane": 2,
+            "x": 18,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-0",
+            "lane": 0,
+            "x": 13.850000000000001,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-3",
+            "lane": 0,
+            "x": 19.6145,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-4",
+            "lane": 1,
+            "x": 11.16,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-5",
+            "lane": 2,
+            "x": 12.8425,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-6",
+            "lane": 0,
+            "x": 21.671,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-7",
+            "lane": 1,
+            "x": 16.819499999999998,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-8",
+            "lane": 2,
+            "x": 20.17,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-9",
+            "lane": 0,
+            "x": 24.339499999999997,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-10",
+            "lane": 1,
+            "x": 24.555,
+            "kind": 4,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": true,
+        "transfers": 3,
+        "reason": null,
+        "persistent": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "desktop:practiceisolatesBEST"
+    },
+    {
+      "ok": true,
+      "name": "desktop:separate production start"
+    },
+    {
+      "ok": true,
+      "name": "desktop:real90s home",
+      "detail": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 90,
+        "wet": 0.007899999998509884,
+        "lane": 0,
+        "score": 1910,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-29",
+            "lane": 2,
+            "x": 180,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-30",
+            "lane": 0,
+            "x": 180,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-93",
+            "lane": 0,
+            "x": 174.5315,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-96",
+            "lane": 0,
+            "x": 176.66,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-99",
+            "lane": 0,
+            "x": 182.2085,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-100",
+            "lane": 1,
+            "x": 174.75,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-101",
+            "lane": 2,
+            "x": 176.50449999999998,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-102",
+            "lane": 0,
+            "x": 184.337,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-103",
+            "lane": 1,
+            "x": 180.6255,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-104",
+            "lane": 2,
+            "x": 183.76,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-105",
+            "lane": 0,
+            "x": 187.0775,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": false,
+        "transfers": 27,
+        "reason": null,
+        "persistent": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "desktop:completedBEST"
+    },
+    {
+      "ok": true,
+      "name": "desktop:legacy and mistaken038 saves unchanged"
+    },
+    {
+      "ok": true,
+      "name": "desktop:learned survives reload"
+    },
+    {
+      "ok": true,
+      "name": "desktop:mute survives reload"
+    },
+    {
+      "ok": true,
+      "name": "phone:title"
+    },
+    {
+      "ok": true,
+      "name": "phone:canonical rain identity"
+    },
+    {
+      "ok": true,
+      "name": "phone:separate legacy relay BEST"
+    },
+    {
+      "ok": true,
+      "name": "phone:official return href (arrival not tested)"
+    },
+    {
+      "ok": true,
+      "name": "phone:practice"
+    },
+    {
+      "ok": true,
+      "name": "phone:controls44 in viewport",
+      "detail": [
+        {
+          "width": 119.328125,
+          "height": 46,
+          "bottom": 632
+        },
+        {
+          "width": 119.328125,
+          "height": 46,
+          "bottom": 632
+        },
+        {
+          "width": 119.34375,
+          "height": 46,
+          "bottom": 632
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "phone:nohorizontaloverflow"
+    },
+    {
+      "ok": true,
+      "name": "phone:touch lane"
+    },
+    {
+      "ok": true,
+      "name": "phone:native swipe"
+    },
+    {
+      "ok": true,
+      "name": "phone:pause"
+    },
+    {
+      "ok": true,
+      "name": "phone:pause clock"
+    },
+    {
+      "ok": true,
+      "name": "phone:escape resumes synchronously"
+    },
+    {
+      "ok": true,
+      "name": "phone:3secondloss",
+      "detail": 3
+    },
+    {
+      "ok": true,
+      "name": "phone:retryreset"
+    },
+    {
+      "ok": true,
+      "name": "phone:practiceactualtransfer",
+      "detail": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 9,
+        "wet": 0,
+        "lane": 2,
+        "score": 0,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-2",
+            "lane": 1,
+            "x": 18,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-3",
+            "lane": 2,
+            "x": 18,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-0",
+            "lane": 0,
+            "x": 13.850000000000001,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-3",
+            "lane": 0,
+            "x": 19.6145,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-4",
+            "lane": 1,
+            "x": 11.16,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-5",
+            "lane": 2,
+            "x": 12.8425,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-6",
+            "lane": 0,
+            "x": 21.671,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-7",
+            "lane": 1,
+            "x": 16.819499999999998,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-8",
+            "lane": 2,
+            "x": 20.17,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-9",
+            "lane": 0,
+            "x": 24.339499999999997,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-10",
+            "lane": 1,
+            "x": 24.555,
+            "kind": 4,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": true,
+        "transfers": 3,
+        "reason": null,
+        "persistent": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "phone:practiceisolatesBEST"
+    },
+    {
+      "ok": true,
+      "name": "phone:separate production start"
+    },
+    {
+      "ok": true,
+      "name": "phone:real90s home",
+      "detail": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 90,
+        "wet": 0,
+        "lane": 0,
+        "score": 1910,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-29",
+            "lane": 2,
+            "x": 180,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-30",
+            "lane": 0,
+            "x": 180,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-93",
+            "lane": 0,
+            "x": 174.5315,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-96",
+            "lane": 0,
+            "x": 176.66,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-99",
+            "lane": 0,
+            "x": 182.2085,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-100",
+            "lane": 1,
+            "x": 174.75,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-101",
+            "lane": 2,
+            "x": 176.50449999999998,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-102",
+            "lane": 0,
+            "x": 184.337,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-103",
+            "lane": 1,
+            "x": 180.6255,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-104",
+            "lane": 2,
+            "x": 183.76,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-105",
+            "lane": 0,
+            "x": 187.0775,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": false,
+        "transfers": 27,
+        "reason": null,
+        "persistent": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "phone:completedBEST"
+    },
+    {
+      "ok": true,
+      "name": "phone:legacy and mistaken038 saves unchanged"
+    },
+    {
+      "ok": true,
+      "name": "phone:learned survives reload"
+    },
+    {
+      "ok": true,
+      "name": "phone:mute survives reload"
+    },
+    {
+      "ok": true,
+      "name": "narrow:title"
+    },
+    {
+      "ok": true,
+      "name": "narrow:canonical rain identity"
+    },
+    {
+      "ok": true,
+      "name": "narrow:separate legacy relay BEST"
+    },
+    {
+      "ok": true,
+      "name": "narrow:official return href (arrival not tested)"
+    },
+    {
+      "ok": true,
+      "name": "narrow:practice"
+    },
+    {
+      "ok": false,
+      "name": "narrow:controls44 in viewport",
+      "detail": [
+        {
+          "width": 96,
+          "height": 46,
+          "bottom": 574
+        },
+        {
+          "width": 96,
+          "height": 46,
+          "bottom": 574
+        },
+        {
+          "width": 96,
+          "height": 46,
+          "bottom": 574
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1280,
+        "height": 800,
+        "touch": false,
+        "full": true
+      },
+      "result": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 90,
+        "wet": 0.007899999998509884,
+        "lane": 0,
+        "score": 1910,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-29",
+            "lane": 2,
+            "x": 180,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-30",
+            "lane": 0,
+            "x": 180,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-93",
+            "lane": 0,
+            "x": 174.5315,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-96",
+            "lane": 0,
+            "x": 176.66,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-99",
+            "lane": 0,
+            "x": 182.2085,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-100",
+            "lane": 1,
+            "x": 174.75,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-101",
+            "lane": 2,
+            "x": 176.50449999999998,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-102",
+            "lane": 0,
+            "x": 184.337,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-103",
+            "lane": 1,
+            "x": 180.6255,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-104",
+            "lane": 2,
+            "x": 183.76,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-105",
+            "lane": 0,
+            "x": 187.0775,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": false,
+        "transfers": 27,
+        "reason": null,
+        "persistent": true
+      },
+      "practice": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 9,
+        "wet": 0,
+        "lane": 2,
+        "score": 0,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-2",
+            "lane": 1,
+            "x": 18,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-3",
+            "lane": 2,
+            "x": 18,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-0",
+            "lane": 0,
+            "x": 13.850000000000001,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-3",
+            "lane": 0,
+            "x": 19.6145,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-4",
+            "lane": 1,
+            "x": 11.16,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-5",
+            "lane": 2,
+            "x": 12.8425,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-6",
+            "lane": 0,
+            "x": 21.671,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-7",
+            "lane": 1,
+            "x": 16.819499999999998,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-8",
+            "lane": 2,
+            "x": 20.17,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-9",
+            "lane": 0,
+            "x": 24.339499999999997,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-10",
+            "lane": 1,
+            "x": 24.555,
+            "kind": 4,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": true,
+        "transfers": 3,
+        "reason": null,
+        "persistent": true
+      }
+    },
+    {
+      "viewport": {
+        "name": "phone",
+        "width": 390,
+        "height": 844,
+        "touch": true,
+        "full": true
+      },
+      "result": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 90,
+        "wet": 0,
+        "lane": 0,
+        "score": 1910,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-29",
+            "lane": 2,
+            "x": 180,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-30",
+            "lane": 0,
+            "x": 180,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-93",
+            "lane": 0,
+            "x": 174.5315,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-96",
+            "lane": 0,
+            "x": 176.66,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-99",
+            "lane": 0,
+            "x": 182.2085,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-100",
+            "lane": 1,
+            "x": 174.75,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-101",
+            "lane": 2,
+            "x": 176.50449999999998,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-102",
+            "lane": 0,
+            "x": 184.337,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-103",
+            "lane": 1,
+            "x": 180.6255,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-104",
+            "lane": 2,
+            "x": 183.76,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-105",
+            "lane": 0,
+            "x": 187.0775,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": false,
+        "transfers": 27,
+        "reason": null,
+        "persistent": true
+      },
+      "practice": {
+        "gameId": "game017",
+        "displayNumber": "014",
+        "rulesVersion": 3,
+        "phase": "result",
+        "elapsed": 9,
+        "wet": 0,
+        "lane": 2,
+        "score": 0,
+        "outcome": "won",
+        "paused": false,
+        "people": [
+          {
+            "id": "route-2",
+            "lane": 1,
+            "x": 18,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "route-3",
+            "lane": 2,
+            "x": 18,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": true
+          },
+          {
+            "id": "crowd-0",
+            "lane": 0,
+            "x": 13.850000000000001,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-3",
+            "lane": 0,
+            "x": 19.6145,
+            "kind": 1,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-4",
+            "lane": 1,
+            "x": 11.16,
+            "kind": 6,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-5",
+            "lane": 2,
+            "x": 12.8425,
+            "kind": 3,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-6",
+            "lane": 0,
+            "x": 21.671,
+            "kind": 0,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-7",
+            "lane": 1,
+            "x": 16.819499999999998,
+            "kind": 5,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-8",
+            "lane": 2,
+            "x": 20.17,
+            "kind": 2,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          },
+          {
+            "id": "crowd-9",
+            "lane": 0,
+            "x": 24.339499999999997,
+            "kind": 7,
+            "radius": 0.62,
+            "direction": 1,
+            "guide": false
+          },
+          {
+            "id": "crowd-10",
+            "lane": 1,
+            "x": 24.555,
+            "kind": 4,
+            "radius": 0.62,
+            "direction": -1,
+            "guide": false
+          }
+        ],
+        "remaining": 0,
+        "practice": true,
+        "transfers": 3,
+        "reason": null,
+        "persistent": true
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "posts": [],
+  "method": "Linux headless Chromium; native keyboard/touch; read-only DEV snapshot-guided automatic lane choices. No clock acceleration. Human and physical devices not tested.",
+  "status": "FAIL",
+  "error": "Error: narrow:controls44 in viewport",
+  "endedAt": "2026-10-18T16:22:06.260Z"
+}

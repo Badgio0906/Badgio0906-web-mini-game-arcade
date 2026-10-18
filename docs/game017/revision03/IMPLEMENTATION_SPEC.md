@@ -23,4 +23,4 @@
 
 ## 記録
 
-[番号対応と訂正](CORRECTION.md)、[HANDOFF](HANDOFF.md)、[素材index](../../../../assets/game017/revision03/ASSET_INDEX.json)。完全promptと元仕様・旧QAは[移設前履歴](../../game038/IMAGEGEN_PROMPTS.md)に保持し、当時の038表記を改ざんしない。過去の77/20成功を移設後の実行と偽らず、新しい対象で検査する。
+[番号対応と訂正](CORRECTION.md)、[HANDOFF](HANDOFF.md)、[素材index](../../../assets/game017/revision03/ASSET_INDEX.json)。完全promptと元仕様・旧QAは[移設前履歴](../../game038/IMAGEGEN_PROMPTS.md)に保持し、当時の038表記を改ざんしない。過去の77/20成功を移設後の実行と偽らず、新しい対象で検査する。
