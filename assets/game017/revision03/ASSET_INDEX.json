@@ -1,0 +1,379 @@
+{
+  "imageGenerationTool": "OpenAI ImageGen",
+  "actualSuccessfulCalls": 2,
+  "modelVersion": "UNKNOWN (not exposed)",
+  "reference": "assets/game017/reorganization/originals/rain-city.png",
+  "referenceSha256": "197b12031b005c40caacc23197285d95b98904a613e155894f10305afcbbc14d",
+  "promptFile": "docs/game017/revision03/IMAGEGEN_PROMPTS.md",
+  "originals": [
+    {
+      "path": "assets/game017/revision03/source/cast-v1.png",
+      "dimensions": [
+        1227,
+        1282
+      ],
+      "sha256": "93e9592a7a075bedbd44dc1fa6a1cd0feb7ba9032c75df472fe865ebcd610895",
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/game017/revision03/source/objects-v1.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "19e27488a454cfe672cca8274fd0c548ea0b8bccf3b5aa7f5ed9a40beb410c2c",
+      "alphaRange": [
+        0,
+        254
+      ]
+    }
+  ],
+  "adoption": "adopted for initial playable; independent final technical Visual81/F12/H12, not human approval",
+  "processing": "Pillow crop/alpha bbox trim/LANCZOS resize/WebP90; no redraw or masking",
+  "assets": [
+    {
+      "id": "player",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        0,
+        0,
+        409,
+        420
+      ],
+      "trim": [
+        134,
+        16,
+        344,
+        412
+      ],
+      "size": [
+        210,
+        396
+      ],
+      "path": "public/assets/game017/revision03/player.webp",
+      "bytes": 34258,
+      "sha256": "e2628d8b14774c8eaba130a69d28b3ce9cf6ad28243538b32f1057ec5e05373a",
+      "hasAlpha": true
+    },
+    {
+      "id": "elegant",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        409,
+        0,
+        818,
+        420
+      ],
+      "trim": [
+        85,
+        11,
+        322,
+        413
+      ],
+      "size": [
+        236,
+        400
+      ],
+      "path": "public/assets/game017/revision03/elegant.webp",
+      "bytes": 37686,
+      "sha256": "aead138f8f6dfee778d5423aaf7918ace30abf73fb0657fc6f83431eccda656a",
+      "hasAlpha": true
+    },
+    {
+      "id": "tough",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        818,
+        0,
+        1227,
+        420
+      ],
+      "trim": [
+        97,
+        5,
+        336,
+        417
+      ],
+      "size": [
+        232,
+        400
+      ],
+      "path": "public/assets/game017/revision03/tough.webp",
+      "bytes": 34876,
+      "sha256": "4e4db8396734970c68ba98d43799b905a0318daa6444c5bc66514faa42e8f74d",
+      "hasAlpha": true
+    },
+    {
+      "id": "office-man",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        0,
+        420,
+        409,
+        834
+      ],
+      "trim": [
+        116,
+        2,
+        371,
+        410
+      ],
+      "size": [
+        250,
+        400
+      ],
+      "path": "public/assets/game017/revision03/office-man.webp",
+      "bytes": 32504,
+      "sha256": "cb962723978df49c2e571fd447740f39eb6243b1c2d634d08bafe08ff052892b",
+      "hasAlpha": true
+    },
+    {
+      "id": "office-woman",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        409,
+        420,
+        818,
+        834
+      ],
+      "trim": [
+        98,
+        5,
+        347,
+        411
+      ],
+      "size": [
+        245,
+        400
+      ],
+      "path": "public/assets/game017/revision03/office-woman.webp",
+      "bytes": 30562,
+      "sha256": "dfbb651c5875d574337af8a847a82eec06f4abd05ee68db71e54c1ef5539b098",
+      "hasAlpha": true
+    },
+    {
+      "id": "student",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        818,
+        420,
+        1227,
+        834
+      ],
+      "trim": [
+        106,
+        10,
+        350,
+        409
+      ],
+      "size": [
+        244,
+        399
+      ],
+      "path": "public/assets/game017/revision03/student.webp",
+      "bytes": 34132,
+      "sha256": "f1b65dbbd4402de86f85200756465cd53f6fef15b33a9015d7661d9746e629bb",
+      "hasAlpha": true
+    },
+    {
+      "id": "elderly",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        0,
+        834,
+        409,
+        1282
+      ],
+      "trim": [
+        88,
+        4,
+        345,
+        424
+      ],
+      "size": [
+        245,
+        400
+      ],
+      "path": "public/assets/game017/revision03/elderly.webp",
+      "bytes": 34288,
+      "sha256": "910d656aa1dc2b1cb7f64c127b0bafab0df1e5ae5bc827d75b22b19d24f3dd9b",
+      "hasAlpha": true
+    },
+    {
+      "id": "family",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        409,
+        834,
+        818,
+        1282
+      ],
+      "trim": [
+        78,
+        14,
+        357,
+        415
+      ],
+      "size": [
+        278,
+        400
+      ],
+      "path": "public/assets/game017/revision03/family.webp",
+      "bytes": 46280,
+      "sha256": "d384274f64b102a3ff3111329d545fb8e56c1ce0e210edbd1249bc31a822742b",
+      "hasAlpha": true
+    },
+    {
+      "id": "rare",
+      "source": "assets/game017/revision03/source/cast-v1.png",
+      "crop": [
+        818,
+        834,
+        1227,
+        1282
+      ],
+      "trim": [
+        103,
+        2,
+        349,
+        427
+      ],
+      "size": [
+        232,
+        400
+      ],
+      "path": "public/assets/game017/revision03/rare.webp",
+      "bytes": 40114,
+      "sha256": "a142f6dd319ff2cf4974ac269a64447183ecbadefcecb0a5637f12ecf40b9c54",
+      "hasAlpha": true
+    },
+    {
+      "id": "home",
+      "source": "assets/game017/revision03/source/objects-v1.png",
+      "crop": [
+        30,
+        0,
+        810,
+        523
+      ],
+      "trim": [
+        30,
+        10,
+        750,
+        510
+      ],
+      "size": [
+        360,
+        250
+      ],
+      "path": "public/assets/game017/revision03/home.webp",
+      "bytes": 51936,
+      "sha256": "774df6dc109e046a85174dde6f0cff05450f7b0ebedd12ac1c5a72e2d9e65399",
+      "hasAlpha": true
+    },
+    {
+      "id": "umbrella-teal",
+      "source": "assets/game017/revision03/source/objects-v1.png",
+      "crop": [
+        830,
+        20,
+        1500,
+        525
+      ],
+      "trim": [
+        43,
+        33,
+        617,
+        492
+      ],
+      "size": [
+        360,
+        288
+      ],
+      "path": "public/assets/game017/revision03/umbrella-teal.webp",
+      "bytes": 43444,
+      "sha256": "588dc9befd951bb36a9f758759e3d8519eb77f0cc9ff70db78585e783e621293",
+      "hasAlpha": true
+    },
+    {
+      "id": "umbrella-red",
+      "source": "assets/game017/revision03/source/objects-v1.png",
+      "crop": [
+        100,
+        525,
+        760,
+        1024
+      ],
+      "trim": [
+        28,
+        10,
+        626,
+        474
+      ],
+      "size": [
+        360,
+        279
+      ],
+      "path": "public/assets/game017/revision03/umbrella-red.webp",
+      "bytes": 35444,
+      "sha256": "fc063915834b46715ef71968d9a3a5508ef4207fad51bf46cb0981762bf82633",
+      "hasAlpha": true
+    },
+    {
+      "id": "rain-icon",
+      "source": "assets/game017/revision03/source/objects-v1.png",
+      "crop": [
+        910,
+        625,
+        1120,
+        930
+      ],
+      "trim": [
+        26,
+        23,
+        188,
+        280
+      ],
+      "size": [
+        162,
+        257
+      ],
+      "path": "public/assets/game017/revision03/rain-icon.webp",
+      "bytes": 18090,
+      "sha256": "52d999de5c504264e09f6df302d76e117a10b0486f1d26651fc8e62552b169ad",
+      "hasAlpha": true
+    },
+    {
+      "id": "folded-umbrella",
+      "source": "assets/game017/revision03/source/objects-v1.png",
+      "crop": [
+        1150,
+        530,
+        1450,
+        1024
+      ],
+      "trim": [
+        33,
+        20,
+        250,
+        471
+      ],
+      "size": [
+        192,
+        400
+      ],
+      "path": "public/assets/game017/revision03/folded-umbrella.webp",
+      "bytes": 27478,
+      "sha256": "01f29857575843da427ba1fdc7cba3d4a20208236ade3420850001837765e57e",
+      "hasAlpha": true
+    }
+  ],
+  "generatedToolOutputs": [
+    "exec-b3423fe8-d875-4674-9564-76fe61d1d42e.png",
+    "exec-87b283be-546d-42f5-9540-60e611198ce8.png"
+  ],
+  "transparentBackgroundRequested": true
+}
