@@ -1,0 +1,34 @@
+# Game037 — Visual review（**自己評価**・独立レビューではない）
+
+**実装者（Claude Code）本人による自己評価：82/100、F可読性13/15、H完成感13/15。** 同じエージェントが実装・素材・採点を行っており、独立Visual reviewではない。Codex（別実行者）の独立判定が必要。Visual gateの合否はCodexの独立判定で確定する。
+
+- 対象ソース：`fd3eca9ce3f05653f3bfed0d3fa95d0b184ddd15`（branch `claude/game037-bento-full-build-20261018`）
+- 根拠画像：[QA/browser-final](QA/browser-final/)の実PNG（isolated Vite buildをvite previewのローカルHTTPで表示、Playwright＋Chromium `/opt/pw-browsers/chromium`、実mouse/touch/keyboard操作の途中で撮影）。1280×720 desktop、390×844 phone、320×568 narrow（reduced-motion）、844×390 landscape。
+- 実際に画像を開いて確認したもの：desktop title / drag-preview / stage6-clear / help / result、phone title / play-rejected / practice-clear / stage1-clear / stage6-clear、narrow title / help / result / stage1-clear / stage6-clear、landscape title / pause / result / stage1-clear、denied-storage-title。
+- 動き：CSSアニメーション（着地のバウンド、完成時の朱印・光・おかずの跳ね、選択中のおかずの揺れ）は静止画の途中フレームでしか確認していない。実機FPSは未計測。
+
+|項目|最大|自己点|実画面の根拠|
+|---|---:|---:|---|
+|A Identity|15|13|藍ののれん・赤漆の重箱・金の梅・生成り和紙・木目トレイで「昭和レトロの小さなお弁当屋さん」が一目で伝わる。他作品の配色と被らない。|
+|B Objects|15|13|7種のおかずが形状の外周（下地の紙・葉・バラン）と中身の絵の両方で区別でき、色だけに依存しない。卵焼きの巻き、おにぎりの米粒と海苔、タコさんウインナーの顔は細部がある。海老フライは衣の粒はあるが立体感がやや平板、ブロッコリー/からあげは小さい表示で潰れ気味。|
+|C Background|10|7|和紙の繊維タイルは控えめで盤を邪魔しない。反面、PC右下・スマホ下部は単調な生成り面が残る。|
+|D UI integration|10|9|ボタンの墨線＋影、朱色のprimary、木目トレイ、お品書き札、HUDのchipが同じ語彙で統一。kbdヒント表示。|
+|E Composition|10|8|PC：盤左・操作右で視線が自然。スマホ縦：盤→トレイ→操作→お品書きの縦流れで余白が埋まった。320×568は遊び方dialogが内部スクロール（見出しが画面外の状態で撮影）、844×390はお品書きを非表示にして盤を優先。|
+|F Readability|15|13|ドラッグ中はマス吸着＋緑（可）／赤×（不可）で合法性が即読める。盤のマス点線・黒漆と明るいおかずのコントラストが高い。主要操作44px以上を実測。スマホのトレイ縮小表示ではI（卵焼き）の具が小さい。|
+|G Motion/effects|10|6|着地バウンド、完成時の朱印スタンプ＋光＋跳ね、選択中の揺れ、ghostの影。蓋を閉める等の締めの演出や粒子は無く控えめ。|
+|H Production value|15|13|全画面（title/説明/練習/本番/休憩/完成/結果/保存不可表示）で同じ美術が一貫し、仮置き矩形・絵文字無し。お品書き札で進行と得点が残る。音は簡素なoscillator。|
+|合計|100|82|自己評価上は80以上・F/H各12以上。**独立判定未実施**。|
+
+## 修正の経緯（実画面を見て直したもの）
+1. 320×568で3px縦スクロール → HUDのchipを縮小（`9461704`以前の作業中）。
+2. 844×390で盤が小さい → HUDを右列へ移し盤を高さ一杯に。
+3. landscape結果で「もう一度」が画面外 → 2列レイアウトとボタンを表の前へ。
+4. 盤タップ直後に盤全体が青緑に見える → Chromeモバイルのタップハイライトが原因と特定し無効化（`5bddf87`）。最初の仮説（完成アニメのbrightness filter）は外れ、filterは不要なので外したまま。
+5. 320幅の結果表で「2秒」が縦折返し → 数値列を折返し禁止（`b3ce2ec`）。
+6. 初回自己採点79（C/E/Gが弱い）→ 本番の進行札「本日のお品書き」、選択中の揺れ、朱印の下地調整を追加して再撮影（`fd3eca9`）。
+
+## 残る弱点（Codex/Art Directorへの提案）
+- 完成時に「蓋を閉める」「包む」等の締めの演出があると完成感がさらに上がる。
+- 海老フライの陰影、ブロッコリーの縮小時の潰れ。
+- 遊び方dialogは320幅で内部スクロールが必要。
+- 実機（iPhone Safari/Android Chrome）の表示・タップハイライト・音量は未確認。
