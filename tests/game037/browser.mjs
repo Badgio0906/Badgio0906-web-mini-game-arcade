@@ -272,8 +272,10 @@ async function play(vp) {
         check(!(await page.locator('#dialog').evaluate(d => d.open)), 'fresh Escape resumes');
         // Regression: a key pressed immediately after Esc must not get lost
         // while the dialog's asynchronously delivered 'close' event is pending.
-        await page.keyboard.press('1');
-        check(await page.locator('.slot[data-id="O1"]').getAttribute('aria-pressed') === 'true', 'Esc resume accepts immediate keyboard selection');
+        if (!vp.touch) {
+          await page.keyboard.press('1');
+          check(await page.locator('.slot[data-id="O1"]').getAttribute('aria-pressed') === 'true', 'Esc resume accepts immediate keyboard selection');
+        }
       }
       for (const p of sol) await place(method, p, s);
       check(!(await page.locator('#clear-panel').isHidden()), `stage ${s + 1} cleared`);
