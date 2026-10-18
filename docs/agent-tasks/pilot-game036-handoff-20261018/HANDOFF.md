@@ -124,3 +124,15 @@
 - 追加ソースcommit: `946f32188ba57bbdbf8657d9cb4fc78ad650cb05`。変更は `tests/unit/game036-build.test.ts` のみ。通常のWindows/macOS開発環境でシステムChromeのLinux絶対パスを要求して `npm test` が失敗しないよう、ネイティブHTTPブラウザQAは `GITHUB_ACTIONS=true` の場合のみ必須ゲートとした。その他では明示的な `NOT_RUN` をログに残し、必要時は既存の `tests/game036/browser.mjs` を個別に実行する。
 - 最終該当CI: [run 39086663694](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086663694) は **SUCCESS**。`npm ci`、`npm run check`、`npm test`（104 files/1101 tests）、`npm run build` PASS。GitHub ActionsでのシステムChromium+isolated Vite HTTP QAは再度 **84/84 PASS、errors=[]**（ログ確認済）。ローカルWindows/macOSの `npm test` はCI仕様上ブラウザQAを実行せず、実環境でのWindows実行自体は未実施。
 - この記録自身のcommit SHAは記載しない。gitアクセス可能なCodex Cloudでの実worktree再構築と指定コマンドの単独再実行は引き続き未実施。PR #8はDraftのままマージしない。本人試遊・物理実機・正式統合・公開は別判断。
+
+## Step 1実worktree・指定CLI最終再現（2026-10-18）
+
+- 証拠: [GitHub Actions run 39088280080](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088280080) SUCCESS。対象remote SHA = 2b771514b1dfc07233651137ddc93f18593e20df。Claudeの会話・memory・ローカルファイルなし。
+- GitHub-hosted runnerの新規checkoutから実際に git fetch origin（exit 0）、git rev-parse origin/claude/pilot-game036-handoff-20261018（exit 0、同SHA）、baseの追加fetch（exit 0）、git worktree add --detach（exit 0）を実行。new worktreeにはnode_modulesもdistも存在しなかった。
+- git diff --name-only 9e96d557779c5de099fe54c51731ceb131e591a1 <remote SHA>：exit 0。一時検証テストを含む14ファイルすべて許可path。一時テスト削除後は従来の13ファイルに戻る。
+- 同一worktreeで npm ci（exit 0）、npx vitest run tests/unit/game036*.test.ts（exit 0、11 PASS＋自己再帰防止の一時worktree試験1 skipped）、npx tsc --noEmit（exit 0）、GAME036_BUILD_DIR=<isolated> npx vite build --config tests/game036/vite.config.mjs（exit 0）を直接再現。
+- 同一worktreeで GAME036_BUILD_DIR=<isolated> GAME036_QA_OUT=<isolated> node tests/game036/browser.mjs：exit 0、Chrome/ChromiumによるVite HTTP実ページで84/84 PASS、errors=[]。システムChromeをCHROMIUM_EXECUTABLE_PATHに明示。実スマホ・人間の試遊ではない。
+- git worktree remove --force：exit 0。
+- [初回run 39088050505](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088050505) はPlaywright付属browser executable不足でブラウザ直接実行だけ失敗。これは npm ci がブラウザ本体を入れないことから事前予測可能な環境設定漏れ。runner既存のChromeを指定して再実行で解消し、製品コードへの修正は不要だった。
+- この検証用に追加した tests/unit/game036-worktree.test.ts は成功後コミット d51b6c189faaab81d599701482baad3f7e83e2ef にて削除。恒久CIに重い別worktree検証の負担は残さない。
+- 判定：**途中引き継ぎパイロットの技術的Step 1 PASS**。ただしGitHub Actions上での実行であり、ChatGPTコンテナのgit fetch（DNSで失敗）と区別。パイロットのopen_decisions4項目は暫定維持、独立レビュー・物理実機・本人試遊・正式統合・公開は未実施。PR #8 Draft/未マージを維持。所要総時間・token・費用の直接記録はなくnull。

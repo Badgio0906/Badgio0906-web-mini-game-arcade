@@ -115,5 +115,33 @@
       "native_browser_test_seconds": 17.22,
       "exact_remote_worktree": "NOT_RUN_DNS_RESTRICTED"
     }
+  },
+  "real_remote_worktree_validation": {
+    "status": "PASS",
+    "run_url": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088280080",
+    "tested_commit": "2b771514b1dfc07233651137ddc93f18593e20df",
+    "environment": "GitHub Actions Ubuntu/Node24, new detached real worktree",
+    "fetch": "PASS exit 0",
+    "rev_parse": "PASS exit 0",
+    "worktree_add": "PASS exit 0",
+    "fresh_no_node_modules_or_dist": true,
+    "allowed_path_diff": "PASS 14 allowed files including one-time test",
+    "npm_ci": "PASS exit 0",
+    "exact_vitest": "PASS exit 0; 11 passed and 1 skipped recursion guard",
+    "exact_tsc": "PASS exit 0",
+    "exact_vite": "PASS exit 0",
+    "direct_vite_http_browser": "PASS exit 0; 84/84, errors=[]",
+    "worktree_cleanup": "PASS exit 0",
+    "initial_failure_run": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088050505",
+    "initial_failure_cause": "Playwright package installed without browser binary, no system executable path supplied",
+    "correction": "Explicit runner system Chrome via CHROMIUM_EXECUTABLE_PATH",
+    "one_time_test_removed_in": "d51b6c189faaab81d599701482baad3f7e83e2ef",
+    "physical_device": "NOT_RUN",
+    "human_playtest": "NOT_RUN",
+    "independent_review": "NOT_RUN",
+    "published": "NO",
+    "total_duration_seconds": null,
+    "tokens": null,
+    "cost": null
   }
 }

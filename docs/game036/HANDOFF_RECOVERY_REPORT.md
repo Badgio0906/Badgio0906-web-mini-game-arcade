@@ -72,3 +72,13 @@
 - `946f32188ba57bbdbf8657d9cb4fc78ad650cb05` で、ブラウザQAの必須実行をGitHub Actions内のみに限定。通常のWindows/macOSローカル `npm test` がLinuxの `/usr/bin/google-chrome` 不在だけを理由に失敗しない設計とした。ローカルではブラウザ実行は `NOT_RUN` と明示し、専用スクリプトは別途利用可能。Windows実機での `npm test` 実行は未検証。
 - [最終CI run 39086663694](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086663694) SUCCESS。ログに `Game036 native HTTP browser QA {"passed":84,"total":84,"errors":[]}`。Node24新規checkout・`npm ci`、型チェック、全104ファイル1101テスト、通常ビルドもPASS。ブラウザテスト部分の経過約17.220秒をCIログから直接確認。
 - **なおgit fetch／新規worktree／元指示の3CLIを同一worktree上で直接実行した項目はNOT_RUN**。この環境のDNS制限は解消していない。公開や統合、人間試遊も実施していない。
+
+## 8. 実Git worktree再現最終結果（2026-10-18）
+
+**PASS**：GitHub Actions [run 39088280080](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088280080)、tested SHA 2b771514b1dfc07233651137ddc93f18593e20df。Claude Codeの会話・memory・作業ファイルは参照せず、GitHub remote branchとHANDOFF/ASSIGNMENTのみで再開した。
+
+GitHub-hosted Ubuntu runnerで git fetch origin、git rev-parse origin/claude/pilot-game036-handoff-20261018、git worktree add --detach、baseとの差分照合すべてexit 0。diffは一時worktree試験を含む14ファイルで許可path内。別worktreeにはnode_modules/distなし。そこでnpm ci、npx vitest run tests/unit/game036*.test.ts、npx tsc --noEmit、GAME036_BUILD_DIR=<isolated> npx vite build --config tests/game036/vite.config.mjs を直接実行しすべてexit 0。Vitestは11 passedと1 skipped（自己再帰を防ぐ検証用試験）。続けてシステムChromiumを明示した専用Vite HTTP Playwright QAもexit 0、**84/84 PASS、errors=[]**。worktree cleanupも成功。
+
+初回 [run 39088050505](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39088050505) はPlaywrightの内蔵browser executableがnpm ciでは入らず、ブラウザQAの直接実行だけ失敗した。既知の依存制約なので設計段階で既存runner Chromeを指定しておくべきだった。修正コミット2b771514b1dfc07233651137ddc93f18593e20dfでは既存Chrome実行ファイルをCHROMIUM_EXECUTABLE_PATHに指定し追加ダウンロードなしでPASS。ゲームの製品コードへの変更なし。
+
+一時worktree試験ファイルは検証後コミットd51b6c189faaab81d599701482baad3f7e83e2efで削除。GitHub Actions runnerで実際に再現したことと、DNS制限のあるChatGPTコンテナで直接fetchできなかったことは分離。正式作品の採用・独立レビュー・人間試遊・物理実機・統合・公開は未実施。総所要時間、token、費用はnull。main/shared config/Analytics/Ads/Cloudflare/D1/CREDITには触れていない。PR #8はDraft未マージ。
