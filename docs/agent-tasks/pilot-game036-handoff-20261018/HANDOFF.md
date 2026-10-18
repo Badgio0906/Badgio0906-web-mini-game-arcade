@@ -106,3 +106,15 @@
 1. gitアクセス可能なCodex Cloud環境で、本branchを新規worktreeへcheckoutし、Node24の `npm ci` と元の3CLIを厳密再実行する（GitHub CI代替の範囲と区別）。
 2. `GAME036_BUILD_DIR=<private_out> npx vite build --config tests/game036/vite.config.mjs` の後、`GAME036_BUILD_DIR=<private_out> GAME036_QA_OUT=<fresh_out> node tests/game036/browser.mjs` をブラウザが使える環境で実行し、HTTP、共通帰還ナビ、実キー／touch／blurを確認する。結果に差があれば原因と修正を記録する。
 3. このタスクはパイロットのため正式公開しない。独立試遊/美術/記録・Analytics/正式Catalog統合はユーザーの別承認を要する。Draft PR #8をマージせず保ち、確認済み成果と未確認条件を明確にする。
+
+## Step 1 追加検証（2026-10-18 / GitHub Actions native HTTP）
+
+- 対象branch: `claude/pilot-game036-handoff-20261018`、Draft PR #8。Claude Codeの会話、memory、ローカルファイルを参照しない。
+- Codex継続追加ソースコミット: `004b15f800b429aa4c67924c6b979bb2f4773dbb`。変更は許可済み `tests/unit/game036-build.test.ts` のみで、既存の専用Viteビルドの直後に `tests/game036/browser.mjs` をシステムChrome/Chromiumで実行する自動検証を追加。Browserが見つからない場合はFAIL（PASS扱いでスキップしない）。
+- GitHub Actions PR validation run [39086309242](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086309242)、commit `004b15f8...` は **SUCCESS**。Node 24新規checkout、`npm ci`、`npm run check`、`npm test`（104 files / 1101 tests、内game036 model 10・isolated build/native browser 1）、`npm run build` 成功。
+- `tests/unit/game036-build.test.ts` は実際の専用Vite CLIをspawnし、出力された `game036.html` を `tests/game036/browser.mjs` 内の127.0.0.1 HTTP serverで提供。実Chrome/Chromium＋Playwrightから `page.goto` し、desktop 1280×720、phone 390×844、narrow 320×568、landscape 844×390の各21 assertionで **84/84 PASS**。クリック/Space/tap、pause/resume、3ラウンド、retry、模擬blur、練習、JS pageerrorなし・POSTなしを検証。CIログ: `[Game036 native HTTP browser QA] {"passed":84,"total":84,"errors":[]}`。ブラウザ試験実行時間はCIログ上約17.064秒。
+- 今回のChatGPTコンテナから `git fetch origin` を直接実行して exit 128 (`Could not resolve host: github.com`)。`git rev-parse origin/claude/pilot-game036-handoff-20261018` もexit 128（remote refが取得不能）。**ここでの実remote worktree／指定3CLIの単独直接実行はNOT_RUN**。CIのfresh checkoutと `npm run check` / `npm test` / テスト内Vite CLI実行は実行済みだが、指定コマンドを同一worktreeから直接走らせたこととは区別する。
+- base `9e96d557779c5de099fe54c51731ceb131e591a1` とのGitHub compare API差分はASSIGNMENT/HANDOFF、docs/game036、game036.html、src/games/game036、tests/game036、tests/unit/game036*.test.ts内のみ。共有Catalog、Portal、Analytics、Worker、D1、広告、CREDIT、main、CI設定は変更していない。
+- `open_decisions` 4項目はパイロット限定の暫定仕様のまま。正式採用、独立レビュー、物理スマホ、人間試遊、公開は未実施。
+- 課金額／token／総作業時間: `null`（直接取得不能）。HANDOFFの本節自身のcommit SHAは記載しない。
+- 次の未完了ゲート: gitアクセス可能なCodex Cloudで**実**worktreeを作り、ユーザー指定の `npm ci` / Vitest / tsc / Vite CLIを同じcheckoutから直接実行する。今回のnative HTTP browser QAはCIによって合格したので、同じ操作テストを機械的に繰り返す優先度は低い。PR #8は引き続きDraft、マージ禁止。
