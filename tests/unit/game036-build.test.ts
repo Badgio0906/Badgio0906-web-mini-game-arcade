@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 describe('Game036 pilot: standalone handoff build', () => {
-  it('builds game036 with isolated Vite input and no shared config changes', () => {
+  it('builds game036 and validates native Chromium input via the isolated HTTP server', () => {
     const syntax = spawnSync(process.execPath, ['--check', join(root, 'tests/game036/browser.mjs')], {cwd:root, encoding:'utf8', timeout:15000});
     expect(syntax.status, syntax.stderr).toBe(0);
     const temporary = mkdtempSync(join(tmpdir(), 'game036-pilot-vite-'));
@@ -35,8 +35,36 @@ describe('Game036 pilot: standalone handoff build', () => {
       const emitted = readdirSync(join(output, 'assets'));
       expect(emitted.some(name => name.endsWith('.js'))).toBe(true);
       expect(emitted.some(name => name.endsWith('.css'))).toBe(true);
+      // Github-hosted Ubuntu runners have a system Chrome/Chromium. Use that
+      // instead of downloading a browser or changing shared CI workflows.
+      const browserPath = [
+        process.env.CHROMIUM_EXECUTABLE_PATH,
+        '/usr/bin/google-chrome',
+        '/usr/bin/google-chrome-stable',
+        '/usr/bin/chromium',
+      ].find(path => path && existsSync(path));
+      expect(browserPath, 'Native Chrome/Chromium required: do not mark browser QA as PASS if absent').toBeTruthy();
+      const qaDir = join(temporary, 'browser-qa');
+      const browserRun = spawnSync(
+        process.execPath, [join(root, 'tests/game036/browser.mjs')],
+        {
+          cwd: root,
+          env: {...process.env, CHROMIUM_EXECUTABLE_PATH: browserPath, GAME036_BUILD_DIR: output, GAME036_QA_OUT: qaDir},
+          encoding: 'utf8',
+          timeout: 120000,
+        },
+      );
+      console.log('[Game036 native HTTP browser QA]', browserRun.stdout.trim());
+      expect(browserRun.error?.message ?? '', browserRun.stderr).toBe('');
+      expect(browserRun.status, [browserRun.stdout, browserRun.stderr].join('\\n')).toBe(0);
+      const qa = JSON.parse(readFileSync(join(qaDir, 'REPORT.json'), 'utf8'));
+      expect(qa.source).toBe('isolated Vite build, native Playwright input');
+      expect(qa.errors).toEqual([]);
+      expect(qa.total).toBe(84); // 21 real browser assertions x 4 viewports
+      expect(qa.passed).toBe(qa.total);
+      expect(qa.checks.every((item: {okay: boolean}) => item.okay)).toBe(true);
     } finally {
       rmSync(temporary, {recursive: true, force: true});
     }
-  }, 70000);
+  }, 160000);
 });
