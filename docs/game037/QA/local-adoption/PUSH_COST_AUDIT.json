@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-18T15:12:32.674901+00:00",
+  "repository": "Badgio0906/Badgio0906-web-mini-game-arcade",
+  "visibility": "PUBLIC",
+  "isPrivate": false,
+  "remoteMain": "9e96d557779c5de099fe54c51731ceb131e591a1",
+  "remotePR9Head": "6123b39ba724e0603c91429a29e1569e8961c4a1",
+  "branches": [
+    "integrate/game037-game003-20261018",
+    "feature/game038-rain-umbrella"
+  ],
+  "knownPushTrigger": "pages.yml:main only",
+  "knownPRTrigger": "pr-validation.yml:pull_request(main); no deploy",
+  "runners": {
+    "pages.build": "ubuntu-latest",
+    "pages.deploy": "ubuntu-latest",
+    "pr-validation.validate": "ubuntu-latest"
+  },
+  "runnerMatrix": null,
+  "reusableWorkflows": [],
+  "workflowRunOrDispatchChain": false,
+  "workflowDispatchPresent": true,
+  "workflowDispatchInvoked": false,
+  "npmCache": true,
+  "storageArtifacts": "Pages upload artifact on main; account allowances/retention/billed storage not verified",
+  "packagesPublish": false,
+  "lfs": "No tracked .gitattributes/LFS manifest found; no push transfer made",
+  "webhookReadHTTP": 403,
+  "webhookExternalApps": "UNKNOWN",
+  "externalPaidAPIsBuildDeploy": "UNKNOWN outside visible repository scripts; no Jev/OpenRouter or external deployment invoked",
+  "accountContractsAndStorage": "UNKNOWN",
+  "visibleScriptChain": [
+    "npm ci",
+    "npm run check",
+    "npm test",
+    "offline python Jev unittest",
+    "npm run build",
+    "main only:configure/upload/deploy Pages"
+  ],
+  "mainPushPublishes": true,
+  "publicationAuthorized": false,
+  "pushes": 0,
+  "newPRs": 0,
+  "actionsStarts": 0,
+  "actionsReruns": 0,
+  "existingJobCancellations": 0,
+  "deployments": 0,
+  "result": "PUSH_WITHHELD",
+  "costClearance": false,
+  "inspectionComplete": false,
+  "requiredInformation": [
+    "Webhook/GitHub Apps push integrations and external build/deploy settings",
+    "Relevant storage/transfer usage limits and paid external service contract terms"
+  ],
+  "workflowHashes": {
+    ".github/workflows/pages.yml": "093e90f76101967b5b19ccd531e1cf40538776504e86faa4212d2f3f1b0b2577",
+    ".github/workflows/pr-validation.yml": "4770e6ae65de86b7e3ecbf04d9f1fbcfc8ab5c62d7cfe816145721f7d99b5ed4"
+  }
+}
