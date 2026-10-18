@@ -4,7 +4,7 @@
  * It does not alter game code, shared CI, or production settings.
  */
 import {describe,it,expect} from 'vitest';
-import {spawnSync} from 'node:child_process';
+import {spawn} from 'node:child_process';
 import {existsSync,mkdtempSync,readFileSync,rmSync,readdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname,join,resolve} from 'node:path';
@@ -42,7 +42,7 @@ describe.skipIf(!ci)('Independent Codex Game037 handoff QA',()=>{
     expect(createRun('practice','fresh').results).toEqual([]);
     expect(createRun('run','fresh').stageIndex).toBe(0);
   });
-  it('rebuilds and operates the actual independent Vite HTTP page in headless Chromium on 4 viewports',()=>{
+  it('rebuilds and operates the actual independent Vite HTTP page in headless Chromium on 4 viewports',async()=>{
     const available=[
       process.env.GAME037_CHROME,
       '/usr/bin/google-chrome',
@@ -57,7 +57,16 @@ describe.skipIf(!ci)('Independent Codex Game037 handoff QA',()=>{
     const report=join(scratch,'qa');
     try{
       const env={...process.env,GAME037_CHROME:available,GAME037_BUILD_DIR:build,GAME037_PUBLIC_DIR:publicDir,GAME037_REPORT:report};
-      const run=spawnSync(process.execPath,[join(root,'tests/game037/browser.mjs')],{cwd:root,env,encoding:'utf8',timeout:240000,maxBuffer:4*1024*1024});
+      // Keep Vitest's event loop free for worker RPC heartbeats during ~80s E2E.
+      const run=await new Promise<{status:number|null;stdout:string;stderr:string;error?:Error}>(done=>{
+        const child=spawn(process.execPath,[join(root,'tests/game037/browser.mjs')],{cwd:root,env,stdio:['ignore','pipe','pipe']});
+        let stdout='',stderr='',error:Error|undefined;
+        const timeout=setTimeout(()=>child.kill('SIGKILL'),240000);
+        child.stdout.on('data',chunk=>{stdout+=String(chunk);});
+        child.stderr.on('data',chunk=>{stderr+=String(chunk);});
+        child.on('error',e=>{error=e;});
+        child.on('close',status=>{clearTimeout(timeout);done({status,stdout,stderr,error});});
+      });
       console.log('[Game037 independent HTTP Playwright QA] exit',run.status,(run.stdout??'').slice(-2400),(run.stderr??'').slice(-1200));
 
       if(existsSync(join(report,'RESULTS.json'))){
