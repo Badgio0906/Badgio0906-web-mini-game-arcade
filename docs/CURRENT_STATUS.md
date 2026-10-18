@@ -1,6 +1,6 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
-2026-10-18 JST：**ローカル採用準備・未push/未main反映/未公開。** ユーザー指定でGame037正式採用（完成指定とは分けtrial）、Game003完成版へ整理。PR9先端6123b39を採用基準に037の正式Catalog/HTML build入力/実画面thumb/端末BEST読取を接続。候補active28/complete10/hidden4/retired4/historical36、036は未採用。PUBLICだがWebhook403/外部連動費用UNKNOWNでpush保留。[採用記録](game037/ADOPTION.md)／[003整理](game003/COMPLETION_ADOPTION.md)。以下の公開数は過去の配信記録。
+2026-10-18 JST：**ローカル採用準備・未push/未main反映/未公開。** ユーザー指定でGame037正式採用（完成指定とは分けtrial）、Game003完成版へ整理。PR9先端6123b39を採用基準に037の正式Catalog/HTML build入力/実画面thumb/端末BEST読取を接続。候補active28/complete10/hidden4/retired4/historical36、036は未採用。固定候補cab8befで575browser/統合一覧4幅36checks成功、公開未実施。[引継ぎ](game037/ADOPTION_HANDOFF.md)。PUBLICだがWebhook403/外部連動費用UNKNOWNでpush保留。[採用記録](game037/ADOPTION.md)／[003整理](game003/COMPLETION_ADOPTION.md)。以下の公開数は過去の配信記録。
 
 2026-10-16 JST：**第1～第4工程を公式公開済み。active27 / complete9 / hidden4 / retired4 / historical35、表示001～027。** 第4工程release `9f655a98df410a7dcc3660321afa6ea195e10115`／Pages38767797394 build/deploy成功。canonical runtime57dce249、最終check・1090tests/102files・公開設定build成功、配信177file SHA一致。公開12作品×4幅48case/2714checksと公開一覧4幅122checks・error0/POST0/source不変を確認。旧BEST/旧save/旧board/候補を保持し、完成9本と008を含む対象外ゲーム本体・Godot出力は空差分。新作[033](https://game100garage.com/game033.html)／[034](https://game100garage.com/game034.html)／[035](https://game100garage.com/game035.html)。今回改修/新作の本人・物理端末・実機聴感・連続FPSは未評価、完成版認定は追加しない。[最終報告](catalog-reorganization/FINAL_REPORT.md)／[公開記録](catalog-reorganization/PUBLICATION.md)／[引継ぎ](catalog-reorganization/HANDOFF.md)。
 
