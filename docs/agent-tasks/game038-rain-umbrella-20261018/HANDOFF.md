@@ -1,3 +1,5 @@
+> 2026-10-19：Game038予約・新作扱いを撤回。この割当は履歴。[表示014／内部017の改良](../../game017/revision03/HANDOFF.md)へ移管。
+
 # 担当引継ぎ
 
 担当Codex。新規feature branchでローカル開発。[ゲームHANDOFF](../../game038/HANDOFF.md)と[IMPLEMENTATION_REPORT](../../game038/IMPLEMENTATION_REPORT.md)を正本とする。

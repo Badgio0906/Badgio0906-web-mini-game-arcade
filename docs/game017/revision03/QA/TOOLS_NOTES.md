@@ -1,0 +1,5 @@
+# 検証補助処理の記録
+
+番号照合の最初の補助コマンドは存在しない`src/portal/catalog.ts`を指定して失敗した。実体`src/data/gameCatalog.ts`に訂正して実exportを読み、IDENTITY.jsonを得た。後者の終了時にViteの非同期dependency scanが閉じたserverへアクセスする診断ログが出たが、番号の読み込みは完了した。アプリ実行や型/単体/buildの成功とは混同しない。
+
+最初のgit addは既にrenameで削除済みの旧test pathを明示しpathspecエラーとなった。git index/workingtreeを確認してstageをやり直した。製品コードの失敗を隠すためのtest再実行はしていない。

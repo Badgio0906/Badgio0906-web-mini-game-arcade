@@ -2,7 +2,7 @@ import { KINDS, RainJourney, type Pedestrian } from './model';
 const images = new Map<string, HTMLImageElement>();
 const names = ['player','elegant','tough','office-man','office-woman','student','elderly','family','rare','home','umbrella-teal','rain-icon'];
 export async function loadArt(): Promise<void> {
-  await Promise.all([...names.map(name => [name, `./assets/game038/${name}.webp`]), ['background','./assets/game017/reorganization/rain-city.webp']].map(([name,url]) => new Promise<void>((resolve,reject) => {
+  await Promise.all([...names.map(name => [name, `./assets/game017/revision03/${name}.webp`]), ['background','./assets/game017/reorganization/rain-city.webp']].map(([name,url]) => new Promise<void>((resolve,reject) => {
     const image = new Image(); image.onload = () => { images.set(name,image); resolve(); }; image.onerror = () => reject(Error(`素材を読み込めません: ${name}`)); image.src = url;
   })));
 }

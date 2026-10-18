@@ -1,3 +1,5 @@
+> **2026-10-19 訂正：新作038という扱いは撤回済み。** 対象は一覧表示014／内部game017の改良。[現行の改良候補](../game017/revision03/HANDOFF.md)を参照。以下は移設前の履歴で、旧pathや未push状態を現状と混同しない。
+
 # Game038 独立Gameplay・ソースQA
 
 2026-10-18 UTC、担当Codex独立reviewer subagent。製品は読取専用で監査し、本QAのMD/JSONだけを記録した。最終対象は`7d0287bdfaf5d037362619620ed8c136870e6980`。初期対象はruntime`c8c47d6`。個別SHA-256・測定値・未実施範囲は[JSON](INDEPENDENT_QA.json)。

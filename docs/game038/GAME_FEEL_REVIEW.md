@@ -1,3 +1,5 @@
+> **2026-10-19 訂正：新作038という扱いは撤回済み。** 対象は一覧表示014／内部game017の改良。[現行の改良候補](../game017/revision03/HANDOFF.md)を参照。以下は移設前の履歴で、旧pathや未push状態を現状と混同しない。
+
 # Game038 技術的Game Feelレビュー（提供証拠の独立確認）
 
 2026-10-18 UTC。独立reviewer subagentが[生RESULTS](QA/browser-fixed/RESULTS.json)、[実行collector](../../tests/game038/browser.mjs)、実PNGを確認した。本担当自身のlive browser操作・人間Feel評価ではない。対象`963956abf095492e17dd58bfee148388c3e29f56`は[独立モデルQA](INDEPENDENT_QA.md)の7d0287bから、製品差分がstreetの幅指定CSSだけ。モデル・入力・保存・描画sourceは同一で、RUN前後hashと現ファイルも全一致。

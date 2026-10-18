@@ -1,3 +1,5 @@
+> **2026-10-19 訂正：新作038という扱いは撤回済み。** 対象は一覧表示014／内部game017の改良。[現行の改良候補](../game017/revision03/HANDOFF.md)を参照。以下は移設前の履歴で、旧pathや未push状態を現状と混同しない。
+
 # Game038 — Independent art review
 
 Reviewer role: Art Director / visual review sub-agent. Review branch: `feature/game038-rain-umbrella`; initial baseline: `cab8bef0e6d72146079dd597a6d1eeb4329005e6`. No product, specification, or prompt edits made by this reviewer.

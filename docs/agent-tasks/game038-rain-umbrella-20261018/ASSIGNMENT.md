@@ -1,3 +1,5 @@
+> 2026-10-19：Game038予約・新作扱いを撤回。この割当は履歴。[表示014／内部017の改良](../../game017/revision03/HANDOFF.md)へ移管。
+
 # ASSIGNMENT — 雨を避けて帰ろう
 
 - task_id: game038-rain-umbrella-20261018

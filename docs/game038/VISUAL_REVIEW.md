@@ -1,3 +1,5 @@
+> **2026-10-19 訂正：新作038という扱いは撤回済み。** 対象は一覧表示014／内部game017の改良。[現行の改良候補](../game017/revision03/HANDOFF.md)を参照。以下は移設前の履歴で、旧pathや未push状態を現状と混同しない。
+
 # Game038 — Independent technical visual review
 
 Reviewer: Art Director / visual-review sub-agent, independent from product implementation and ImageGen execution. Reviewed source supplied by main: runtime `963956a`; this revision changes the wide-screen CSS fill after runtime `7d0287b`. The reviewer viewed supplied captures directly with `view_image`; no reviewer browser interaction is claimed.

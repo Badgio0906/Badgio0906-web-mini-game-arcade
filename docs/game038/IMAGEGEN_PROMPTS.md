@@ -1,3 +1,5 @@
+> **2026-10-19 訂正：新作038という扱いは撤回済み。** 対象は一覧表示014／内部game017の改良。[現行の改良候補](../game017/revision03/HANDOFF.md)を参照。以下は移設前の履歴で、旧pathや未push状態を現状と混同しない。
+
 # ImageGen実行指示（2026-10-18）
 
 Image Aは`assets/game017/reorganization/originals/rain-city.png`。最重要reference。背景は生成/改変しない。全身が切れない透明背景のsprite atlas。3ラインの浅い斜め視点、元背景より少し整理された筆触、群青の環境光と琥珀の反射、少し切ない雨の街。実行時に渡す完全promptは下記。

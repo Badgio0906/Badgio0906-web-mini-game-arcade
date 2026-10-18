@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { KINDS, RainJourney, pedestriansAt, shelterAt } from '../../src/games/game038/model';
-import { RainStore } from '../../src/games/game038/save';
+import { KINDS, RainJourney, pedestriansAt, shelterAt } from '../../src/games/game017/revision03/model';
+import { RainStore } from '../../src/games/game017/revision03/save';
 function follow(j:RainJourney,until=j.duration){while(j.elapsed<until-1e-8&&j.outcome==='playing'){const guide=j.people.filter(p=>p.guide).at(-1)!;j.move(guide.lane);j.advance(Math.min(.02,until-j.elapsed));}return j;}
 describe('three-lane rainy journey',()=>{
  it('starts safe; exactly cumulative3 seconds exposed loses',()=>{const j=new RainJourney();expect(j.shelter).not.toBeNull();j.move(2);j.advance(2.99);expect(j.outcome).toBe('playing');j.advance(.01);expect(j.outcome).toBe('lost');expect(j.wet).toBe(3);});
@@ -16,8 +16,8 @@ describe('three-lane rainy journey',()=>{
  it('keeps crowd population bounded for the whole run',()=>{for(let t=0;t<95;t+=.05){const people=pedestriansAt(t);expect(people.length).toBeLessThan(40);expect(new Set(people.map(p=>p.id)).size).toBe(people.length);expect(people.every(p=>p.lane>=0&&p.lane<=2&&KINDS[p.kind])).toBe(true);}});
  it('near-limit wetness remains efficient and unchanged under cover',()=>{const j=new RainJourney();j.wet=2.999999;j.advance(1);expect(j.wet).toBe(2.999999);expect(j.outcome).toBe('playing');});
 });
-describe('isolated local rain records',()=>{
- it('writes only completed nonpractice BEST and preserves negative outcomes correctly',()=>{const map=new Map<string,string>();const s=new RainStore({getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v)});expect(s.offer(100,true,true)).toBe(false);expect(s.offer(200,false,false)).toBe(false);expect(map.size).toBe(0);expect(s.offer(-120,true,false)).toBe(true);expect(s.best()).toBe(-120);expect(s.offer(150,true,false)).toBe(true);expect(s.offer(120,true,false)).toBe(false);expect([...map.keys()]).toEqual(['web-mini-arcade:v1:game038:best-r1']);});
+describe('isolated Game017 rules3 revision records',()=>{
+ it('writes only completed nonpractice BEST and preserves negative outcomes correctly',()=>{const map=new Map<string,string>();const s=new RainStore({getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v)});expect(s.offer(100,true,true)).toBe(false);expect(s.offer(200,false,false)).toBe(false);expect(map.size).toBe(0);expect(s.offer(-120,true,false)).toBe(true);expect(s.best()).toBe(-120);expect(s.offer(150,true,false)).toBe(true);expect(s.offer(120,true,false)).toBe(false);expect([...map.keys()]).toEqual(['web-mini-arcade:v1:game017:umbrella-r3:best']);});
  it('falls back to memory when persistence is denied',()=>{const s=new RainStore({getItem:()=>{throw Error('denied');},setItem:()=>{throw Error('denied');}});expect(s.best()).toBeNull();expect(s.persistent).toBe(false);s.offer(90,true,false);expect(s.best()).toBe(90);s.mute(true);expect(s.muted()).toBe(true);expect(new RainStore(null).best()).toBeNull();});
  it('does not accept corrupt or excessive best values',()=>{for(const raw of ['NaN','1.5','100001','-100001','{"best":100}'])expect(new RainStore({getItem:()=>raw,setItem:()=>{}}).best()).toBeNull();});
 });
