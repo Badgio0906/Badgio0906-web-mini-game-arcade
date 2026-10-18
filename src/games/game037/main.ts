@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  act, checkPlacement, clockElapsed, createRun, isActive, lastStageResult, placementCovering, resume, shapeCells, solveStage,
+  act, checkPlacement, clockElapsed, createRun, isActive, lastStageResult, occupancy, placementCovering, resume, shapeCells, solveStage,
   stageOf, stageScore, suspend, totalScore, BOARD_SIZE, FOODS, STAGES, type Action, type Outcome, type RunState,
 } from './model';
 import {createPieceArt, foodLabel, layoutPieceArt, rotatedBounds} from './pieceView';
@@ -84,12 +84,15 @@ function shouldRun(): boolean {
 
 function syncClock(): void {
   if (!run) return;
+  const wasActive = isActive(run);
   if (shouldRun()) run = resume(run, now());
   else if (run.clock.since !== null) { run = suspend(run, now()); cancelDrag(); }
   const active = isActive(run);
   if (active && hudTimer === null) hudTimer = window.setInterval(updateHud, 250);
   if (!active && hudTimer !== null) { clearInterval(hudTimer); hudTimer = null; }
-  updateHud();
+  // Enabled/disabled controls follow the clock, so redraw whenever it flips.
+  if (active !== wasActive && screen === 'play') render();
+  else updateHud();
 }
 
 function updateHud(): void {
@@ -160,7 +163,8 @@ function buildStage(): void {
 }
 
 function render(): void {
-  if (!run) return;
+  // The stage DOM is built after the screen switch; nothing to draw until then.
+  if (!run || run.pieces.some(p => !traySlots.has(p.id))) return;
   const active = isActive(run);
   for (const p of run.pieces) {
     const slot = traySlots.get(p.id)!;
@@ -168,6 +172,7 @@ function render(): void {
     const {w, h} = layoutPieceArt(art, p);
     const span = Math.max(3, w, h);
     art.style.width = `${(w / span) * 100}%`;
+    slot.dataset.rotation = String(p.rotation);
     slot.classList.toggle('used', !!p.at);
     slot.classList.toggle('selected', run.selectedId === p.id);
     slot.disabled = !!p.at || !active;
@@ -178,6 +183,9 @@ function render(): void {
     placed.hidden = !p.at;
     if (p.at) {
       const pw = layoutPieceArt(placed.firstElementChild as HTMLElement, p);
+      placed.dataset.x = String(p.at.x);
+      placed.dataset.y = String(p.at.y);
+      placed.dataset.rotation = String(p.rotation);
       placed.style.left = `${p.at.x * 25}%`;
       placed.style.top = `${p.at.y * 25}%`;
       placed.style.width = `${pw.w * 25}%`;
@@ -581,9 +589,14 @@ tray.addEventListener('pointerdown', e => {
   beginPointer(e, 'tray', slot.dataset.id!, slot.querySelector('.food'), slot);
 });
 grid.addEventListener('pointerdown', e => {
-  const placed = (e.target as Element).closest<HTMLButtonElement>('button.placed');
+  if (!run) return;
+  // Hit-test by the model's cell occupancy, not by the dish's bounding box:
+  // the empty corners of an L/T/S box belong to the board.
+  const c = cellAt(e.clientX, e.clientY, grid.getBoundingClientRect());
+  const owner = c ? occupancy(run.pieces)[c.y * BOARD_SIZE + c.x] : null;
+  const placed = owner ? boardPieces.get(owner) : undefined;
   // A lifted placed food is hidden mid-gesture, so the grid (not the food) holds capture.
-  if (placed) { if (!placed.disabled) beginPointer(e, 'board', placed.dataset.id!, placed, grid); return; }
+  if (placed) { if (!placed.disabled) beginPointer(e, 'board', owner!, placed, grid); return; }
   beginPointer(e, 'grid', null, grid, grid);
 });
 for (const el of [tray, grid]) {

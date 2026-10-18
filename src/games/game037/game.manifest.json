@@ -1,0 +1,29 @@
+{
+  "id": "game037",
+  "title": "お弁当つめつめ！ ～BENTO BOX～",
+  "titleEn": "BENTO BOX",
+  "tagline": "おかずを回して、ぴったり詰める。全6弁当。",
+  "genre": "finite-space packing puzzle",
+  "coreMechanic": "Rotate (no mirror) four tetromino-shaped side dishes and pack them into a 4x4 lacquer bento box with no gaps; 6 fixed stages with an explicit next-stage confirm",
+  "skillAxes": ["spatial reasoning", "rotation planning", "operation economy", "speed"],
+  "runSecondsDesignTarget": "90-180 (design hypothesis, not measured)",
+  "timeLimit": null,
+  "stages": ["IIOO", "OOLL", "IOLL", "ILTT", "ILJZ", "JTTS"],
+  "inputs": {
+    "drag": "mouse/touch drag a tray dish, snaps to grid, green legal / red illegal preview, release to place; pointercancel never places",
+    "tap": "tap a tray dish to select, tap a box cell: the dish covers that cell (first food cell preferred)",
+    "keyboard": "1-4 or Tab+Enter select; arrows move; R rotates; Enter/Space place; Esc deselect/pause; key repeat ignored",
+    "rotate": "on-screen 44px button or R, selected unplaced dish only",
+    "remove": "tap/drag/Enter on a placed dish returns it to the tray (counts as undo)",
+    "pause": "button/Escape; blur/visibility hidden auto-pause; active drags released"
+  },
+  "practice": "Isolated IIOO board, repeatable, all inputs, completion message; never touches score/BEST/storage",
+  "scoring": "per stage max(0,1000-3*floor(activeSeconds)-20*acceptedRotations-50*removals); invalid drops cost nothing; run total 0..6000; BEST only after all 6 stages",
+  "save": "web-mini-arcade:v1:game037:best:rules1 {best} and web-mini-arcade:v1:game037:mute only; memory fallback when storage is refused",
+  "creditMode": "free",
+  "ads": "none",
+  "telemetry": "none (no analytics/telemetry/network calls in this prototype)",
+  "rules_version": "1",
+  "art": "hand-authored original SVG (bento box, 7 dishes, noren, washi/wood tiles, seal, sparkle); no image generation; see docs/game037/ASSET_INDEX.md",
+  "humanReview": "not run"
+}

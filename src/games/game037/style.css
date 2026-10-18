@@ -62,7 +62,7 @@ h1 small { display: block; font-size: 13px; letter-spacing: .3em; color: var(--i
 
 /* box & grid: the SVG well is 20..420 of 440, so the grid inset is 20/440 */
 .box { position: relative; width: 100%; aspect-ratio: 1; background: url('/assets/game037/bento-box.svg') center / 100% 100% no-repeat; filter: drop-shadow(0 8px 10px #2a170c55); }
-.grid { position: absolute; inset: 4.5455%; touch-action: none; outline: none; }
+.grid { position: absolute; inset: 4.5455%; touch-action: none; outline: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
 .grid:focus-visible { outline: 3px solid #2f6fd6; outline-offset: 6px; border-radius: 4px; }
 .cell { position: absolute; width: 25%; height: 25%; pointer-events: none; }
 .cell:nth-child(4n+1) { left: 0; } .cell:nth-child(4n+2) { left: 25%; } .cell:nth-child(4n+3) { left: 50%; } .cell:nth-child(4n+4) { left: 75%; }
@@ -72,7 +72,9 @@ h1 small { display: block; font-size: 13px; letter-spacing: .3em; color: var(--i
 .cell.ok::after { background: #63c25a55; border: 3px solid #8fe07a; box-shadow: inset 0 0 0 2px #1d5a1c88; }
 .cell.ng::after { background: #e0412a55; border: 3px dashed #ff8a70; }
 .cell.ng::before { content: '×'; position: absolute; inset: 0; display: grid; place-items: center; color: #ffd6cc; font: 800 clamp(16px, 5vw, 30px)/1 system-ui, sans-serif; z-index: 1; }
-.placed { position: absolute; padding: 0; margin: 0; border: 0; background: none; box-shadow: none; cursor: grab; z-index: 2; touch-action: none; border-radius: 10px; }
+/* Pointer hits are resolved per cell in main.ts; the button stays for keyboard focus. */
+.placed { position: absolute; padding: 0; margin: 0; border: 0; background: none; box-shadow: none; z-index: 2; pointer-events: none; border-radius: 10px; }
+#grid { cursor: pointer; }
 .placed:disabled { opacity: 1; cursor: default; }
 .placed:focus-visible { outline-offset: -2px; }
 .placed.landed { animation: land .26s cubic-bezier(.3, 1.6, .5, 1); }
@@ -112,7 +114,7 @@ h1 small { display: block; font-size: 13px; letter-spacing: .3em; color: var(--i
 .status[data-tone='good'] { color: var(--ok); }
 .tray { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 6px; border-radius: 12px; background: #d9b07a url('/assets/game037/wood-tile.svg') repeat; background-size: 240px; border: 2px solid #7a5028; box-shadow: inset 0 2px 6px #5a381455; touch-action: none; }
 .tray[hidden] { display: none; }
-.slot { position: relative; aspect-ratio: 1; min-height: 44px; padding: 4px 4px 16px; border-radius: 10px; border: 2px solid #7a502888; background: #fff6e2cc; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: grab; touch-action: none; }
+.slot { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; position: relative; aspect-ratio: 1; min-height: 44px; padding: 4px 4px 16px; border-radius: 10px; border: 2px solid #7a502888; background: #fff6e2cc; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: grab; touch-action: none; }
 .slot-inner { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
 .slot .food { flex: none; max-height: 100%; }
 .slot-name { position: absolute; left: 2px; right: 2px; bottom: 1px; font-size: 10px; line-height: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
@@ -184,6 +186,15 @@ dialog h2 { margin: 0 0 6px; color: var(--lacquer-dark); }
   .noren { width: min(100%, 300px); }
   .hero { width: min(40vw, 150px); }
   footer { display: none; }
+}
+@media (max-aspect-ratio: 5/4) and (min-height: 740px) {
+  .slot { aspect-ratio: 4 / 5; }
+}
+@media (min-aspect-ratio: 5/4) and (max-height: 480px) {
+  #result-screen { display: grid; grid-template-columns: auto auto; grid-template-areas: 'h h' 'total table' 'best table' 'menu table'; justify-content: center; align-content: start; column-gap: 24px; row-gap: 4px; }
+  #result-screen h2 { grid-area: h; } .result-total { grid-area: total; justify-content: center; } .result-best { grid-area: best; justify-self: center; }
+  #result-screen .menu { grid-area: menu; } .result-table { grid-area: table; font-size: 12px; }
+  .result-table th, .result-table td { padding: 2px 6px; }
 }
 @media (max-width: 360px) {
   .hud { gap: 3px; }
