@@ -56,3 +56,13 @@
 ## 判定
 
 **GitHub上の成果物だけからソースを回収し、限定のモデル・UI機能を継続する能力は確認できた（部分PASS）。** ただし、ユーザー指定の `git fetch` と完全なworktree再現、およびVite配信の実ブラウザ通常操作は環境制限により未検証のまま。全項目PASSではない。費用/tokensは直接観測できず `null`。
+
+## 6. Step 1追加実行: 実Vite HTTP＋システムChromium（2026-10-18）
+
+- 追加テストコミット `004b15f800b429aa4c67924c6b979bb2f4773dbb`（`tests/unit/game036-build.test.ts` のみ）。
+- 新規checkoutのGitHub Actions [39086309242](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086309242) はSUCCESS。Node24の `npm ci`、`npm run check`、`npm test` （104 files / 1101 tests）、`npm run build` PASS。
+- Game036独立ビルドを `node node_modules/vite/bin/vite.js build --config tests/game036/vite.config.mjs` としてテスト内で起動し、成果物を127.0.0.1のHTTPサーバで実配信。システムChrome/ChromiumのPlaywright `page.goto` を利用する `tests/game036/browser.mjs` を同じテスト内で実行し、4 viewport × 21 asserts = **84/84 PASS**、browser errorsなし。CIログにも `{"passed":84,"total":84,"errors":[]}` と残っている。以前の `page.set_content` 代替QA(124/124)とは独立した、ネイティブHTTP試験の結果。
+- テスト対象: 通常クリック／Space／タップ、pause/resume、round/final score、retry reset、合成blur pause、practice、JS pageerrorなし、POSTなし。実キーや物理スマホ、人間試遊は実施していない。
+- コンテナからの `git fetch origin` はDNS制限でexit 128、`git rev-parse origin/claude/pilot-game036-handoff-20261018` もexit 128。完全なgit remote worktreeは作れず、元指示の3CLIを同一worktreeから個別に実行した証拠はない。CI clean checkoutでの間接再現と区別し、**この項目はNOT_RUN**とする。
+- 追加差分はASSIGNMENT allowed pathsのみ。main、共通Vite設定、Catalog、Portal、Pages、Analytics/Ads/CREDIT/Worker/D1/Secretに変更なし。Draft PR #8は未マージ。
+- `open_decisions` は正式承認せず暫定維持。正式統合、独立レビュー、物理実機・人間試遊、公開は今後の別判断。総所要時間・token・料金は直接観測できないため `null`。ブラウザテスト単体時間のみCI上約17.064秒と観測。
