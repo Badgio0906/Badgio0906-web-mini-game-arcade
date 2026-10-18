@@ -64,8 +64,19 @@ describe('Game036 one-time new worktree reproduction',()=>{
         cmd('npx tsc --noEmit','npx',['tsc','--noEmit'],checkout,{},180000);
         cmd('GAME036_BUILD_DIR=<isolated> npx vite build --config tests/game036/vite.config.mjs',
           'npx',['vite','build','--config','tests/game036/vite.config.mjs'],checkout,{GAME036_BUILD_DIR:build},180000);
+        // npm ci installs the Playwright Node package, not its own browser binary.
+        // The runner's actual Chrome executable was already verified by the
+        // game036-build test, so pass the same executable explicitly here.
+        const chromiumPath = [
+          process.env.CHROMIUM_EXECUTABLE_PATH,
+          '/usr/bin/google-chrome',
+          '/usr/bin/google-chrome-stable',
+          '/usr/bin/chromium',
+        ].find(path=>path && existsSync(path));
+        expect(chromiumPath,'System Chromium executable absent').toBeTruthy();
         cmd('GAME036_BUILD_DIR=<isolated> GAME036_QA_OUT=<isolated> node tests/game036/browser.mjs',
-          'node',['tests/game036/browser.mjs'],checkout,{GAME036_BUILD_DIR:build,GAME036_QA_OUT:qa},180000);
+          'node',['tests/game036/browser.mjs'],checkout,
+          {GAME036_BUILD_DIR:build,GAME036_QA_OUT:qa,CHROMIUM_EXECUTABLE_PATH:chromiumPath!},180000);
         console.log('[Game036 real worktree] ALL_REQUIRED_WORKTREE_STEPS_PASS');
       } finally {
         if(worktreeAdded){
