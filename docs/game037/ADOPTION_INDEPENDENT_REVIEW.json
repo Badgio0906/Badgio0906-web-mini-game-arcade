@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "stage": "independent_adoption_source_review",
+  "agent_tool": "codex-subagent",
+  "actor_role": "independent_reviewer",
+  "at": "2026-10-18T14:41:22.571455+00:00",
+  "verdict": "PASS_SOURCE_SCOPE_AND_THUMBNAIL",
+  "candidate_commit": "cab8bef0e6d72146079dd597a6d1eeb4329005e6",
+  "base_commit": "9e96d557779c5de099fe54c51731ceb131e591a1",
+  "adopted_pr_head": "6123b39ba724e0603c91429a29e1569e8961c4a1",
+  "inherited_verified_source": "4057766503f9051a9b5a0ba6c2a99d9ee648e48c",
+  "hashes": {
+    "src/data/gameCatalog.ts": "c4db00aed488dc80404475eafbcd0c836ce903c2338bc089bf07e6d3fc8f208d",
+    "src/data/recordDefinitions.ts": "541b3001f5bd6d63457e8bb926e0ee4b9a40a80b15245dadd4618d31df4b7948",
+    "src/records/localRecords.ts": "30f50062a1ac886550b67afa8fc2504f838314b8d32e4a7695531401fb024738",
+    "src/portal/main.ts": "8d3e7ef7ff0e78e2f5c8632989086cfbc7d934eb196e08357eec1050fcf5671a",
+    "vite.config.ts": "826a9f683b05125f110164c71522a5e5a9a839fde9f9433a10eedb4b15824f3c",
+    "index.html": "8c180dec2fbed8904719e687dc91cca8a0e0982908f91b581fb3c987cd749018",
+    "assets/portal/thumbnails/asset-index.json": "0dbe21c6ed4db6224293a24f2ced4318efe91647c052b33834370084c1c82219",
+    "public/assets/portal/game037.webp": "dcf0faa0f3ebf0d624ed9dc8e1630207c21f7b8b5100d3f66f6108a278f3e09f",
+    "tests/unit/game037-integration.test.ts": "3fd7de195d813f64869d9712f44f32db194e17cfd5268a52c5fa49430c90be23"
+  },
+  "checks": {
+    "pr_changed_paths": 92,
+    "pr_disallowed_paths": [],
+    "temporary_heavy_unit_test_absent": true,
+    "workflow_package_vitest_config_changes": false,
+    "game037_product_changed_from_adopted_pr": false,
+    "game003_product_changed_from_base": false,
+    "portal_game037_development_status": "trial",
+    "game003_author_completion_status": "complete",
+    "counts": {
+      "active": 28,
+      "complete": 10,
+      "hidden": 4,
+      "retired": 4,
+      "historical": 36,
+      "next_game_number": 38
+    },
+    "game036_adopted": false,
+    "game037_local_best": {
+      "key": "web-mini-arcade:v1:game037:best:rules1",
+      "max_raw_characters": 32,
+      "integer_range": [
+        0,
+        6000
+      ],
+      "read_only": true,
+      "public_enabled": false,
+      "included_in_public_record_boards": false
+    },
+    "existing_thumbnail_entries_unchanged": true,
+    "thumbnail_source_output_hashes_verified": true,
+    "thumbnail_viewed": true,
+    "portal_font_missing_codepoints": [
+      "U+8A70 詰"
+    ],
+    "portal_font_fallback_css_present": true
+  },
+  "resolved_findings": [
+    {
+      "id": "game037-local-best-raw-length",
+      "problem": "Portal initially accepted a raw JSON string longer than32 characters that game037 parseBest rejects.",
+      "resolution": "Game037-specific32-character bound added; RED and GREEN evidence retained.",
+      "evidence": [
+        "QA/local-adoption/READER_LENGTH_RED.txt",
+        "QA/local-adoption/READER_GREEN.txt"
+      ]
+    }
+  ],
+  "inherited_coordinator_verification": {
+    "full_unit": "105 files /1110 tests PASS before length-only bound change",
+    "after_length_change": "targeted7 tests PASS; check/build PASS",
+    "evidence": [
+      "QA/local-adoption/UNIT_1110.txt",
+      "QA/local-adoption/READER_GREEN.txt",
+      "QA/local-adoption/CHECK.txt",
+      "QA/local-adoption/BUILD.txt"
+    ]
+  },
+  "not_run_by_this_reviewer": [
+    "browser interaction",
+    "human feel",
+    "physical device",
+    "audio listening",
+    "FPS",
+    "external API calls",
+    "Actions",
+    "push",
+    "PR operations",
+    "deployment"
+  ],
+  "remaining_validation": [
+    "Coordinator integrated portal four-width browser checks, including font fallback for詰",
+    "Coordinator Game037 retained575-check browser run"
+  ],
+  "publication": "NOT_RUN",
+  "cost_usage": null
+}
