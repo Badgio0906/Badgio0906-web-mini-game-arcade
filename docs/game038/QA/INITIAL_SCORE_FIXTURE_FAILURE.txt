@@ -1,0 +1,42 @@
+
+ RUN  v3.2.7 /workspace/arcade-rain
+
+ ❯ tests/unit/game038.test.ts (14 tests | 1 failed) 124ms
+   ✓ three-lane rainy journey > starts safe; exactly cumulative3 seconds exposed loses 3ms
+   ✓ three-lane rainy journey > shelter pauses wetness but never dries the accumulated gauge 1ms
+   ✓ three-lane rainy journey > matches visible same-lane protection radius including exact boundary 0ms
+   × three-lane rainy journey > awards each umbrella once despite entry/exit spam; negative NPCs remain negative 10ms
+     → expected 180 to be 30 // Object.is equality
+   ✓ three-lane rainy journey > provides an actually completable90-second chain across all3 lanes 33ms
+   ✓ three-lane rainy journey > practice completes without scoring and a new run resets all state 3ms
+   ✓ three-lane rainy journey > pause freezes all state and rejects movement 0ms
+   ✓ three-lane rainy journey > does not discard foreground delays; loses before a simultaneous short goal 0ms
+   ✓ three-lane rainy journey > rejects invalid movement/times and does not advance finalized runs 1ms
+   ✓ three-lane rainy journey > keeps crowd population bounded for the whole run 68ms
+   ✓ three-lane rainy journey > near-limit wetness remains efficient and unchanged under cover 0ms
+   ✓ isolated local rain records > writes only completed nonpractice BEST and preserves negative outcomes correctly 1ms
+   ✓ isolated local rain records > falls back to memory when persistence is denied 0ms
+   ✓ isolated local rain records > does not accept corrupt or excessive best values 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game038.test.ts > three-lane rainy journey > awards each umbrella once despite entry/exit spam; negative NPCs remain negative
+AssertionError: expected 180 to be 30 // Object.is equality
+
+- Expected
++ Received
+
+- 30
++ 180
+
+ ❯ tests/unit/game038.test.ts:9:347
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  14:52:40
+   Duration  496ms (transform 96ms, setup 0ms, collect 92ms, tests 124ms, environment 0ms, prepare 81ms)
+
