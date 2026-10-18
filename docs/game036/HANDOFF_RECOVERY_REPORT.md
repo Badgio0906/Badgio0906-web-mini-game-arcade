@@ -66,3 +66,9 @@
 - コンテナからの `git fetch origin` はDNS制限でexit 128、`git rev-parse origin/claude/pilot-game036-handoff-20261018` もexit 128。完全なgit remote worktreeは作れず、元指示の3CLIを同一worktreeから個別に実行した証拠はない。CI clean checkoutでの間接再現と区別し、**この項目はNOT_RUN**とする。
 - 追加差分はASSIGNMENT allowed pathsのみ。main、共通Vite設定、Catalog、Portal、Pages、Analytics/Ads/CREDIT/Worker/D1/Secretに変更なし。Draft PR #8は未マージ。
 - `open_decisions` は正式承認せず暫定維持。正式統合、独立レビュー、物理実機・人間試遊、公開は今後の別判断。総所要時間・token・料金は直接観測できないため `null`。ブラウザテスト単体時間のみCI上約17.064秒と観測。
+
+## 7. クロスプラットフォーム回帰防止と最終CI
+
+- `946f32188ba57bbdbf8657d9cb4fc78ad650cb05` で、ブラウザQAの必須実行をGitHub Actions内のみに限定。通常のWindows/macOSローカル `npm test` がLinuxの `/usr/bin/google-chrome` 不在だけを理由に失敗しない設計とした。ローカルではブラウザ実行は `NOT_RUN` と明示し、専用スクリプトは別途利用可能。Windows実機での `npm test` 実行は未検証。
+- [最終CI run 39086663694](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39086663694) SUCCESS。ログに `Game036 native HTTP browser QA {"passed":84,"total":84,"errors":[]}`。Node24新規checkout・`npm ci`、型チェック、全104ファイル1101テスト、通常ビルドもPASS。ブラウザテスト部分の経過約17.220秒をCIログから直接確認。
+- **なおgit fetch／新規worktree／元指示の3CLIを同一worktree上で直接実行した項目はNOT_RUN**。この環境のDNS制限は解消していない。公開や統合、人間試遊も実施していない。
