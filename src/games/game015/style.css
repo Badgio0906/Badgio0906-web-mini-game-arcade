@@ -21,7 +21,7 @@
 .pause-help small{display:block}
 
 /* Normal document scrolling remains available for menus and the portal.
-   During mobile play the existing settings footer keeps its natural height;
+   During portrait play the existing settings footer keeps its natural height;
    flex/grid allocate the remaining viewport instead of assuming a 100vh canvas. */
 @media (max-width:700px) and (orientation:portrait), (max-height:600px) and (orientation:landscape){
   body{padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
@@ -49,12 +49,16 @@
   .brand{font-size:15px}.brand small{display:none}
   .top-actions{gap:5px}.top-actions button{padding:6px 8px}
   #app:is([data-state='playing'],[data-state='ending']) .brand{display:none}
+  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host{position:fixed;right:calc(env(safe-area-inset-right,0px) + 12px);bottom:env(safe-area-inset-bottom,0px);width:clamp(120px,18vw,140px)}
+  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host::part(settings){flex-direction:column;gap:4px;padding:4px}
+  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host::part(privacy-link){min-height:44px;justify-content:center}
+  #app:is([data-state='playing'],[data-state='ending']) .live-status{max-width:calc(100% - clamp(120px,18vw,140px) - clamp(120px,18vw,140px) - 16px);align-self:center}
   #app:is([data-state='playing'],[data-state='ending']) .fall-board{grid-template-columns:minmax(96px,1fr) minmax(0,1.5fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:10px 16px;padding:2px 4px}
   #app:is([data-state='playing'],[data-state='ending']) .fall-surface{grid-column:2;grid-row:1/3}
   #app:is([data-state='playing'],[data-state='ending']) .fall-controls{display:contents}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-controls button{width:100%;height:100%;min-height:52px;font-size:18px;padding:8px}
-  #left-button{grid-column:1;grid-row:1}#right-button{grid-column:1;grid-row:2}#drop-button{grid-column:3;grid-row:1/3}
-  #app .fall-controls #drop-button{font-size:24px}
+  #app:is([data-state='playing'],[data-state='ending']) .fall-controls button{width:min(112px,100%);height:64px;min-height:52px;font-size:18px;padding:8px;justify-self:start}
+  #left-button{grid-column:1;grid-row:1;align-self:end}#right-button{grid-column:1;grid-row:2;align-self:start}#drop-button{grid-column:3;grid-row:1/3}
+  #app:is([data-state='playing'],[data-state='ending']) .fall-controls #drop-button{font-size:22px;width:min(128px,100%);height:88px;justify-self:end;align-self:end;margin-bottom:104px}
   #app .fall-controls #drop-button small{font-size:11px;line-height:1.5;margin-top:8px}
   #app:is([data-state='playing'],[data-state='ending']) .fall-window canvas{height:calc(100dvh - 160px)}
   #app:is([data-state='playing'],[data-state='ending']) .playing-guide{display:block;grid-column:1;grid-row:1;place-self:center;width:auto;max-width:calc(100% - 270px);min-width:0;pointer-events:none}

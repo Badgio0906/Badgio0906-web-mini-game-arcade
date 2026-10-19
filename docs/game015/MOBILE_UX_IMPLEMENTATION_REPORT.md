@@ -1,5 +1,7 @@
 # Game015 スマホ縦横UI改修 — 実装・ローカル検証報告
 
+**現行の改訂版は [PR #11 改訂2](mobile-ux/revision2/IMPLEMENTATION_REPORT.md) を参照。** 作者の視覚レビューを反映し、Canvas高を844で314px・667で299pxへ回復。以下は初版85d6fa9時点の記録で、初版の技術成功を作者の承認とは扱わない。初版はその後GitHub保存・Draft PR #11作成済み。
+
 対象は `game015.html` / 落下キング ～FALL KING～。Game012・013のGodotや、表示番号による別作品ではない。
 基準main: `47c6cfe1ea93f71325fc47ff7031980ef9be9f74`（Phase 1 PR #10統合後）。
 作業枝: `codex/game015-mobile-landscape-ux`。既存作業を維持した独立worktree `/workspace/arcade-game015-mobile`。
