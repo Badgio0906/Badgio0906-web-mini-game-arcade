@@ -1,0 +1,20 @@
+@import '../portal/style.css';
+
+.about-shell{max-width:1080px}
+.about-header{flex-wrap:wrap;padding-block:18px}
+.about-brand{font-size:27px;font-weight:800;line-height:1.4}
+.about-brand small{display:block;font:700 10px 'Courier New',monospace;letter-spacing:1.8px}
+.about-return{display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.about-content{max-width:720px;margin:48px auto 64px;line-height:1.95;overflow-wrap:anywhere}
+.about-eyebrow{font:700 11px/1.6 'Courier New',monospace;letter-spacing:1.4px;color:#705330}
+.about-content h1{font-size:clamp(27px,5vw,38px);line-height:1.5;margin:12px 0 24px}
+.about-lead{font-size:clamp(19px,3vw,24px);line-height:1.8}
+.about-content section{margin-top:40px}
+.about-content h2{font-size:21px;line-height:1.6;margin:0 0 16px;border-left:5px solid var(--coral);padding-left:13px}
+.about-content p{margin:14px 0}
+.about-statuses{background:var(--cream);border:1px solid var(--ink);padding:18px 22px}
+.about-statuses dt{font-weight:800;margin-bottom:4px}
+.about-statuses dd{margin:0 0 18px}.about-statuses dd:last-child{margin-bottom:0}
+.about-contact-note{padding:16px 18px;background:var(--cream);border-left:4px solid var(--yellow);font-size:14px}
+.about-issue-link{display:inline-flex;align-items:center;min-height:48px;padding:10px 16px;border:2px solid var(--ink);background:var(--yellow);font-size:15px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:540px){.about-header{gap:10px}.about-content{margin:30px auto 40px;font-size:15px}.about-content h2{font-size:19px}.about-content section{margin-top:30px}.about-statuses{padding:15px}.about-contact-note{padding:12px}.about-issue-link{padding:10px;font-size:14px}}

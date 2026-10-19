@@ -10,3 +10,8 @@ it('emits every registered physical game route, including the third decade',()=>
     expect(entries,game.id+' registered route must be a production build entry').toContain(resolve(process.cwd(),game.route.slice(2)));
   }
 });
+it('emits the public site information page under the relative Pages base',()=>{
+  expect(config.base).toBe('./');
+  const entries=Object.values(config.build?.rollupOptions?.input as Record<string,string>);
+  expect(entries).toContain(resolve(process.cwd(),'about.html'));
+});
