@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-19 UTC：**Game015スマホ縦横UIのローカル候補・本番未公開。** 最新main `47c6cfe`（AdSense Phase 1 PR #10統合済み）から専用枝`codex/game015-mobile-landscape-ux`へ隔離。横向きは左/右操作・縦長Canvas・DROP、既存HTML HUDを短いヘッダーへ再配置。7サイズでplaying/ending縦横はみ出し0、全体1122tests/106files・check/build・offlineJev25・通常ブラウザ161checks成功。二本指/画面外/回転相当resize/BEST保存復元、safe-areaエミュレーションと縦ポータル3幅も確認。閉じた練習dialogへ既存横CSSのGridが残る問題は015内だけで非表示指定。PC説明/内部256×448/物理/得点/保存/広告/計測/他ゲーム不変。実iPhone・人間の持ちやすさ/FPSは未確認。main/Pages未変更、Webhook費用情報403のため外部連動UNKNOWN、push前で保留。[実装・比較画像・検証・実機手順](game015/MOBILE_UX_IMPLEMENTATION_REPORT.md)。下記Phase 1「未公開」は統合前の履歴。
+
 2026-10-19 JST：**AdSense低価値対策Phase 1のローカル候補（未公開）。** main `9d8828f`から独立した`codex/adsense-content-improvement-phase1`で、025/032の状態表記、012〜014の固有metaと静的入口、about・Issues導線／テンプレートを整備。active27/complete9/trial18・カタログ・広告・解析・保存・native出力は維持。check・1111tests/105files・build、3幅＋subpath24ケースとnative短時間6ケースを確認。既存012本体のスマホ画面欠け、013の横向き条件、新IssueテンプレートのGitHub適用確認は分離して記録。hidden4は現状維持で作者判断待ち。**main統合・push・PR・Pages公開・AdSense再申請なし**。[実装・検証・公開前残課題](adsense/PHASE1_IMPLEMENTATION_20261019.md)。過去の公開履歴は当時の記録として保持する。
 
 2026-10-19 JST：表示014＝内部Game017の改良候補をWeb試遊URLへ追加する準備。main9e96d55から雨のruntime/素材だけを移入し、Viteへgame017-revision03.htmlを追加（003/037採用準備は含めない）。型/1107tests/104files/通常build成功。**未main push・未Web公開**。PUBLIC/ubuntu-latestは確認したが、billing/Webhook readが403で保存容量と外部連動の追加費用はUNKNOWN。ユーザー指定の費用条件に従い公開前で保留。[公開準備](game017/revision03/PUBLICATION.md)／[引継ぎ](game017/revision03/HANDOFF.md)。
