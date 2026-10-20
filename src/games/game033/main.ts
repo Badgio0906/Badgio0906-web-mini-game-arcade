@@ -19,7 +19,12 @@ function syncAudio(): void { $('mute').textContent = audio.muted ? '音 OFF' : '
 function cancelInput(): void { pointer = null; key = null; run.cancelCharge(); launch.dataset.holding = 'false'; }
 function showDialog(next: typeof state, html: string): void {
   cancelInput(); state = next; $('app').dataset.state = next; launch.disabled = true; $<HTMLButtonElement>('pause').disabled = next !== 'paused';
-  menu.innerHTML = html; if (!menu.open) menu.showModal(); menu.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true });
+  // The title must leave the independent Analytics settings actionable.
+  // Close first: an already-open modeless dialog cannot become modal in place.
+  if (menu.open) menu.close();
+  menu.innerHTML = html; menu.dataset.presentation = next === 'title' ? 'title' : 'modal';
+  if (next === 'title') menu.show(); else menu.showModal();
+  menu.querySelector<HTMLButtonElement>('button')?.focus({ preventScroll: true });
 }
 function showTitle(): void {
   quit(); run.reset();
