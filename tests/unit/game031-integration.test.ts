@@ -16,10 +16,11 @@ const fixture: AnalyticsEnvelope = {
 
 describe('Game031 sandbox registration boundaries', () => {
   it('registers only the implemented new ID and retains retired010 and existing versions', () => {
-    expect(gameCatalog).toHaveLength(27);
+    expect(gameCatalog).toHaveLength(26);
     expect(historicalGameCatalog).toHaveLength(35);
     expect(NEXT_GAME_NUMBER).toBe(36);
-    expect(gameCatalog.find(game => game.id === 'game031')).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31 });
+    expect(gameCatalog.some(game => game.id === 'game031')).toBe(false);
+    expect(historicalGameCatalog.find(game => game.id === 'game031')).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31, publicationState: 'on-hold' });
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');
     expect(gameVersions.game031).toEqual({ rules_version: '1', presentation_version: 'textures-a-v1' });
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });

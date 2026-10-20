@@ -4,7 +4,7 @@ import { filterCatalog, gameCatalog, historicalGameCatalog, retiredGameCatalog, 
 
 describe('retired IDs remain historical, never active or reused', () => {
   it('exposes the active cards with original IDs and releaseOrder', () => {
-    expect(gameCatalog).toHaveLength(historicalGameCatalog.length - 8);
+    expect(gameCatalog).toHaveLength(historicalGameCatalog.length - 9);
     expect(gameCatalog.some(game => game.id === 'game010')).toBe(false);
     expect(filterCatalog(['meeting'])).toEqual([]);
     expect(gameCatalog.find(game => game.id === 'game011')?.releaseOrder).toBe(11);
