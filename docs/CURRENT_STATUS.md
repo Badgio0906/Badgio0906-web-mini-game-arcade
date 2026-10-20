@@ -1,5 +1,11 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-20 JST：**公開作品整理・品質監査のレビュー候補（本番未反映）。** 最新main `47c6cfe`から独立した`codex/adsense-catalog-quality-cleanup`で、026/028/029/030の専用実装を削除、031はsource/素材/saveを保持して配信保留。候補掲載26／完成9／試遊17、historical35／retired4／次番号36、旧ID/記録/Worker互換性を保持。check・976tests/101files・Offline Jev25・2設定build成功、静的HTTP30×200＋5×404、26作品×4幅104条件＋DOM補完12、独立13作品の深掘り、Portal73・共有mock24を確認。暫定A19/B4/C1/D2、012縦の重要場面欠けは追加保留検討を提案するだけで公開状態は変更しない。015はmain旧版を評価、PR #11/dbdf915は未変更・未統合。**この候補はmain未統合・本番未公開。** [品質監査](adsense/PUBLIC_GAME_QUALITY_AUDIT_20261020.md)／[実装・031再公開手順](adsense/CATALOG_QUALITY_CLEANUP_IMPLEMENTATION_20261020.md)。作業ブランチのGitHub保存結果は同階層のGit引継ぎ文書へ追記する。
+
+現行main47c6cfeにはPR #10のAdSense Phase1（about・012〜014説明・025/032表記）が含まれる。以下の「Phase1未公開」などは当時の履歴であり、現在のmain公開状態の正本として扱わない。
+
+## 過去の工程記録
+
 2026-10-19 JST：**AdSense低価値対策Phase 1のローカル候補（未公開）。** main `9d8828f`から独立した`codex/adsense-content-improvement-phase1`で、025/032の状態表記、012〜014の固有metaと静的入口、about・Issues導線／テンプレートを整備。active27/complete9/trial18・カタログ・広告・解析・保存・native出力は維持。check・1111tests/105files・build、3幅＋subpath24ケースとnative短時間6ケースを確認。既存012本体のスマホ画面欠け、013の横向き条件、新IssueテンプレートのGitHub適用確認は分離して記録。hidden4は現状維持で作者判断待ち。**main統合・push・PR・Pages公開・AdSense再申請なし**。[実装・検証・公開前残課題](adsense/PHASE1_IMPLEMENTATION_20261019.md)。過去の公開履歴は当時の記録として保持する。
 
 2026-10-19 JST：表示014＝内部Game017の改良候補をWeb試遊URLへ追加する準備。main9e96d55から雨のruntime/素材だけを移入し、Viteへgame017-revision03.htmlを追加（003/037採用準備は含めない）。型/1107tests/104files/通常build成功。**未main push・未Web公開**。PUBLIC/ubuntu-latestは確認したが、billing/Webhook readが403で保存容量と外部連動の追加費用はUNKNOWN。ユーザー指定の費用条件に従い公開前で保留。[公開準備](game017/revision03/PUBLICATION.md)／[引継ぎ](game017/revision03/HANDOFF.md)。

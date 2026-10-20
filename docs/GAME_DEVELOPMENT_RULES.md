@@ -47,7 +47,7 @@ Visualはゲームごとのidentityと瞬時の判読性を優先する。既存
 
 - native gameは`gameNNN.html`、`src/games/gameNNN/`、固有manifest、対象テストを用意する。001の既存構造は移動しない。
 - [カタログschema](../src/data/gameCatalog.ts)の`id/titleJa/titleEn/tagline/thumbnail/route/releaseOrder`に従う。Genre／Core Mechanic／Skillは固有manifestで記録する。
-- [Vite入力](../vite.config.ts)は現在番号を列挙するregex。新HTMLだけ作ってビルドに入ると仮定しない。
+- [Vite入力](../vite.config.ts)はカタログの`publicationState`から配信対象を導出する。removed/on-holdはHTMLがあっても配信しない。既存retired案内・017候補・管理/案内ページの明示入口は保持する。新HTMLだけ作ってビルドに入ると仮定しない。廃止ID026/028/029/030を再利用せず、031の復帰は[再公開手順](adsense/CATALOG_QUALITY_CLEANUP_IMPLEMENTATION_20261020.md)と作者承認に従う。
 - ポータルmeta／fallback件数、採用サムネイル台帳、route検証の番号・期待カタログ数も変更の影響に応じて更新する。
 - 初回は説明→独立実練習→成功→本番、再訪は即開始と再練習。特殊展開を最初から全て説明せず、ゲーム固有の操作を同じ位置・意味で学べるようにする。
 - 練習は本番score／BEST／CREDIT／run_start／run_endを変更しない。読了・練習完了・phase切替に使ったgestureを本番回答へ持ち越さない。
