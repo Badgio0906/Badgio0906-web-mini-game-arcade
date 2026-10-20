@@ -22,7 +22,7 @@ PR workflowにはartifact uploadなし、setup-nodeの既存npm cacheあり。�
 
 **Webhook一覧はHTTP403（Resource not accessible by integration）で取得できず、外部ビルド/デプロイ等の連動・追加費用は不明。** Actions permissions APIも403。リポジトリ公開状態の変更、設定変更、予算変更、workflow無効化/削除、既存jobのcancelで回避していない。
 
-ユーザーの以前の「必要な費用条件が不明ならpush前で停止」という条件が継続しており、他タスクの一回限定了承を今回へ転用しない。ローカル実装・監査・commitを先に完了したうえで、この不明点への今回の判断を待つ。GitHub保存とCIはこの段階では未実施。ローカルcommitはGitHubバックアップではない。
+ユーザーの以前の「必要な費用条件が不明ならpush前で停止」という条件が継続しており、他タスクの一回限定了承を今回へ転用しない。ローカル実装・監査をcommit `31ef2ac7abd9d2c737fcfc64fb06c55bc83432e2`へ保存した後、ユーザーから「今回の不明点を了承し、pushとDraft PR作成を許可する」という明示承認を受けた。この今回限定承認に基づき通常branch pushと新Draft PRへ進む。Webhookの不明点そのものが解消した、無料と確認できた、とは記録しない。main統合・本番公開は引き続き禁止。最終push/PR/CIの実結果はタスク最終回答とPRへ記録する。ローカルcommitはpush成功前にはGitHubバックアップではない。
 
 ## 再開
 
