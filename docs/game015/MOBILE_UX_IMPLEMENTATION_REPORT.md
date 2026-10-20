@@ -1,5 +1,7 @@
 # Game015 スマホ縦横UI改修 — 実装・ローカル検証報告
 
+**2026-10-20の最新追加修正は [表示012 iPhone入力対策](mobile-ux/iphone-input/IMPLEMENTATION_REPORT.md) を参照。** PR #11の中央配置を保持し、長押し選択と欠落終端の解除経路を強化。Safari実機の真因/快適性は未確認。
+
 **現行の改訂版は [PR #11 改訂2](mobile-ux/revision2/IMPLEMENTATION_REPORT.md) を参照。** 作者の視覚レビューを反映し、Canvas高を844で314px・667で299pxへ回復。以下は初版85d6fa9時点の記録で、初版の技術成功を作者の承認とは扱わない。初版はその後GitHub保存・Draft PR #11作成済み。
 
 対象は `game015.html` / 落下キング ～FALL KING～。Game012・013のGodotや、表示番号による別作品ではない。

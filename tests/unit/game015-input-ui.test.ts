@@ -21,7 +21,7 @@ describe('Game015 held UI input lifecycle',()=>{
   const send=(host:EventTarget,type:string,target:Control,props:Record<string,unknown>={})=>{
     const e=new Event(type,{cancelable:true});
     Object.defineProperties(e,Object.fromEntries(Object.entries({target,isPrimary:true,pointerId:1,pointerType:'touch',button:0,clientX:150,clientY:150,detail:1,...props}).map(([k,v])=>[k,{value:v}])));
-    host.dispatchEvent(e);
+    host.dispatchEvent(e);return e;
   };
   const down=(id='drop-button',pointerId=1)=>send(parent,'pointerdown',controls[id],{pointerId});
   beforeEach(()=>{
@@ -57,6 +57,41 @@ describe('Game015 held UI input lifecycle',()=>{
   it('clears pause/title/retry and reflects actual held input on the buttons',()=>{
     down();expect(controls['drop-button'].dataset.held).toBe('true');game.pause(true);expect(game.snapshot().heldDrop).toBe(false);expect(controls['drop-button'].dataset.held).toBe('false');
     game.pause(false);expect(game.snapshot().heldDrop).toBe(false);down();game.title();expect(game.snapshot().heldDrop).toBe(false);game.start();expect(game.snapshot().heldDrop).toBe(false);
+  });
+  it('handles a terminal event at document capture before another UI can stop bubbling',()=>{
+    down('left-button');send(doc,'pointerup',controls['left-button']);expect(game.snapshot().horizontal).toBe(0);
+  });
+  it('clears adapter input when document becomes hidden, without relying on the page wrapper',()=>{
+    down('left-button');down('drop-button',2);Object.assign(doc,{hidden:true});doc.dispatchEvent(new Event('visibilitychange'));expect(game.snapshot()).toMatchObject({horizontal:0,heldDrop:false});
+  });
+  it('explicitly releases capture on pause and repeated terminal cleanup is safe',()=>{
+    down('left-button');down('drop-button',2);controls['left-button'].releasePointerCapture=id=>{controls['left-button'].captures.delete(id);send(parent,'lostpointercapture',controls['left-button'],{pointerId:id});};game.pause(true);expect(controls['left-button'].captures.size).toBe(0);expect(controls['drop-button'].captures.size).toBe(0);
+    send(doc,'pointercancel',controls['left-button']);send(parent,'lostpointercapture',controls['left-button']);game.pause(false);expect(game.snapshot()).toMatchObject({horizontal:0,heldDrop:false});
+  });
+  for(const type of ['touchend','touchcancel'])it(`uses ${type} with no active touches when pointerup is missing, preserving keyboard`,()=>{
+    send(doc,'keydown',controls['fall-canvas'],{key:'ArrowRight'});down('left-button');down('drop-button',2);
+    send(doc,type,controls['left-button'],{touches:[]});expect(game.snapshot()).toMatchObject({horizontal:1,heldDrop:false});send(doc,'keyup',controls['fall-canvas'],{key:'ArrowRight'});expect(game.snapshot().horizontal).toBe(0);
+  });
+  it('does not clear a remaining contact or mouse while another touch ends',()=>{
+    down('left-button');down('drop-button',2);send(doc,'touchend',controls['left-button'],{touches:[{identifier:999}]});expect(game.snapshot()).toMatchObject({horizontal:-1,heldDrop:true});
+    send(doc,'pointerup',controls['left-button']);expect(game.snapshot()).toMatchObject({horizontal:0,heldDrop:true});
+    send(parent,'pointerdown',controls['right-button'],{pointerId:3,pointerType:'mouse'});send(doc,'touchend',controls['drop-button'],{touches:[]});expect(game.snapshot()).toMatchObject({horizontal:1,heldDrop:false});
+  });
+  for(const type of ['contextmenu','selectstart'])it(`prevents ${type} only on play controls and releases the affected contact`,()=>{
+    down('left-button');down('drop-button',2);const e=send(parent,type,controls['left-button']);expect(e.defaultPrevented).toBe(true);expect(game.snapshot()).toMatchObject({horizontal:0,heldDrop:true});
+    expect(send(parent,type,parent).defaultPrevented).toBe(false);
+  });
+  it('preserves another finger on the same button when a callout identifies one pointer',()=>{
+    down('left-button');down('left-button',2);send(parent,'contextmenu',controls['left-button'],{pointerId:1});expect(game.snapshot().horizontal).toBe(-1);expect(controls['left-button'].captures.has(2)).toBe(true);send(doc,'pointerup',controls['left-button'],{pointerId:2});expect(game.snapshot().horizontal).toBe(0);
+  });
+  it('also stops selection originating on a control text node',()=>{
+    down('left-button');const text=Object.assign(new Control('text'),{nodeType:3,parentElement:controls['left-button']});expect(send(parent,'selectstart',text).defaultPrevented).toBe(true);expect(game.snapshot().horizontal).toBe(0);
+  });
+  for(const duration of [3000,10000])it(`keeps a valid hold for ${duration}ms then clears the final touch, without a forced timeout`,()=>{
+    vi.useFakeTimers();try{down('left-button');vi.advanceTimersByTime(duration);expect(game.snapshot().horizontal).toBe(-1);send(doc,'touchend',controls['left-button'],{touches:[]});expect(game.snapshot().horizontal).toBe(0);}finally{vi.useRealTimers();}
+  });
+  it('reconciles a captured pointer move with no pressed buttons',()=>{
+    down('left-button');send(win,'pointermove',controls['left-button'],{buttons:0});expect(game.snapshot().horizontal).toBe(0);
   });
   it('retains keyboard direction and DROP release semantics',()=>{
     send(doc,'keydown',controls['fall-canvas'],{key:'ArrowRight'});send(doc,'keydown',controls['fall-canvas'],{key:' '});expect(game.snapshot()).toMatchObject({horizontal:1,heldDrop:true});

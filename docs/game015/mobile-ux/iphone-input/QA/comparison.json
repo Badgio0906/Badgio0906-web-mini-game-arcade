@@ -1,0 +1,1862 @@
+[
+  {
+    "phase": "main_47c6cfe",
+    "width": 390,
+    "height": 844,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "visualWidth": 390,
+        "visualHeight": 844
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 41
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 821.296875,
+          "right": 390,
+          "bottom": 821.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 98,
+          "right": 378,
+          "bottom": 98,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 723.296875,
+          "right": 378,
+          "bottom": 821.296875,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#stage": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 723.296875,
+          "right": 378,
+          "bottom": 821.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 701.296875,
+          "right": 378,
+          "bottom": 799.296875,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 634.5,
+          "right": 378,
+          "bottom": 732.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 16,
+          "y": 102,
+          "width": 358,
+          "height": 626.5,
+          "right": 374,
+          "bottom": 728.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 20,
+          "y": 740.5,
+          "width": 102.765625,
+          "height": 58.796875,
+          "right": 122.765625,
+          "bottom": 799.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 267.21875,
+          "y": 740.5,
+          "width": 102.78125,
+          "height": 58.796875,
+          "right": 370,
+          "bottom": 799.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 130.765625,
+          "y": 740.5,
+          "width": 128.453125,
+          "height": 58.796875,
+          "right": 259.21875,
+          "bottom": 799.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "KEEP FALLING上を目指すな。うまく落ちろ。← → / A D で移動↓ / S / Space で DROP押し続けると連続降下天井に追いつかれると終了！逆方向でブレーキ。離して刻むか、深く欲張るか。やわらかい床は深い落下を受け止めます。DEPTH0 mBEST0 mNICE DROP0FALL 6 mまで安全石の床は9 m以上で失敗やわらかい床は9 mまで安全 / 12 m以上で失敗"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 805.296875,
+          "width": 366,
+          "height": 16,
+          "right": 378,
+          "bottom": 821.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": "短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#score-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 821.296875,
+          "width": 390,
+          "height": 64,
+          "right": 390,
+          "bottom": 885.296875,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      },
+      "snapshot": {
+        "alive": true,
+        "time": 0.12480000000149015,
+        "depth": 0,
+        "score": 0,
+        "fallDistance": 0,
+        "niceDrops": 0,
+        "heldDrop": false,
+        "passedPlatforms": 0,
+        "cameraY": 2.2481132544268636,
+        "scrollSpeed": 18.027456000000328,
+        "topRemaining": 49.75188674557313,
+        "horizontal": 0,
+        "phase": "grounded",
+        "player": {
+          "x": 128,
+          "y": 112,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "platformId": 1,
+          "stunRemaining": 0
+        },
+        "lastLanding": null,
+        "danger": "safe"
+      }
+    }
+  },
+  {
+    "phase": "main_47c6cfe",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 83
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 409.25,
+          "right": 844,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nKEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 820,
+          "height": 56,
+          "right": 832,
+          "bottom": 56,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 12,
+          "y": 56,
+          "width": 820,
+          "height": 353.25,
+          "right": 832,
+          "bottom": 409.25,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nKEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下を受け止めます。\n\nDEPTH\n0 m\nBES"
+        },
+        "#stage": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 257.703125,
+          "height": 334,
+          "right": 380.84375,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        ".fall-board": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 257.703125,
+          "height": 312,
+          "right": 380.84375,
+          "bottom": 368,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 181.703125,
+          "height": 312,
+          "right": 304.84375,
+          "bottom": 368,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 127.140625,
+          "y": 60,
+          "width": 173.703125,
+          "height": 304,
+          "right": 300.84375,
+          "bottom": 364,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 314.84375,
+          "y": 133.40625,
+          "width": 66,
+          "height": 44,
+          "right": 380.84375,
+          "bottom": 177.40625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 314.84375,
+          "y": 246.59375,
+          "width": 66,
+          "height": 44,
+          "right": 380.84375,
+          "bottom": 290.59375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 314.84375,
+          "y": 183.40625,
+          "width": 66,
+          "height": 57.1875,
+          "right": 380.84375,
+          "bottom": 240.59375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 400.84375,
+          "y": 56,
+          "width": 320,
+          "height": 353.25,
+          "right": 720.84375,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "KEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下を受け止めます。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0\nFALL 6 mまで安全\n石の床は9 m以上で失敗\nやわらかい床"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 123.140625,
+          "y": 374,
+          "width": 257.703125,
+          "height": 16,
+          "right": 380.84375,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#score-value": {
+          "x": 524.296875,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 535.640625,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 690.296875,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 701.640625,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 409.25,
+          "width": 844,
+          "height": 64,
+          "right": 844,
+          "bottom": 473.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      },
+      "snapshot": {
+        "alive": true,
+        "time": 0.12430000000074502,
+        "depth": 0,
+        "score": 0,
+        "fallDistance": 0,
+        "niceDrops": 0,
+        "heldDrop": false,
+        "passedPlatforms": 0,
+        "cameraY": 2.239099553913431,
+        "scrollSpeed": 18.027346000000165,
+        "topRemaining": 49.760900446086566,
+        "horizontal": 0,
+        "phase": "grounded",
+        "player": {
+          "x": 128,
+          "y": 112,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "platformId": 1,
+          "stunRemaining": 0
+        },
+        "lastLanding": null,
+        "danger": "safe"
+      }
+    }
+  },
+  {
+    "phase": "main_47c6cfe",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 98
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 409.25,
+          "right": 667,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nKEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 643,
+          "height": 56,
+          "right": 655,
+          "bottom": 56,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 12,
+          "y": 56,
+          "width": 643,
+          "height": 353.25,
+          "right": 655,
+          "bottom": 409.25,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nKEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下を受け止めます。\n\nDEPTH\n0 m\nBES"
+        },
+        "#stage": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 249.140625,
+          "height": 319,
+          "right": 288.0625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        ".fall-board": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 249.140625,
+          "height": 297,
+          "right": 288.0625,
+          "bottom": 353,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 173.140625,
+          "height": 297,
+          "right": 212.0625,
+          "bottom": 353,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 42.921875,
+          "y": 60,
+          "width": 165.140625,
+          "height": 289,
+          "right": 208.0625,
+          "bottom": 349,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 222.0625,
+          "y": 125.90625,
+          "width": 66,
+          "height": 44,
+          "right": 288.0625,
+          "bottom": 169.90625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 222.0625,
+          "y": 239.09375,
+          "width": 66,
+          "height": 44,
+          "right": 288.0625,
+          "bottom": 283.09375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 222.0625,
+          "y": 175.90625,
+          "width": 66,
+          "height": 57.1875,
+          "right": 288.0625,
+          "bottom": 233.09375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 308.0625,
+          "y": 56,
+          "width": 320,
+          "height": 353.25,
+          "right": 628.0625,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "KEEP FALLING\n上を目指すな。\nうまく落ちろ。\n\n← → / A D で移動\n↓ / S / Space で DROP\n押し続けると連続降下\n\n天井に追いつかれると終了！\n逆方向でブレーキ。\n離して刻むか、深く欲張るか。\nやわらかい床は深い落下を受け止めます。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0\nFALL 6 mまで安全\n石の床は9 m以上で失敗\nやわらかい床"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 38.921875,
+          "y": 359,
+          "width": 249.140625,
+          "height": 16,
+          "right": 288.0625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#score-value": {
+          "x": 431.515625,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 442.859375,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 597.515625,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 608.859375,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 409.25,
+          "width": 667,
+          "height": 64,
+          "right": 667,
+          "bottom": 473.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      },
+      "snapshot": {
+        "alive": true,
+        "time": 0.12350000000298017,
+        "depth": 0,
+        "score": 0,
+        "fallDistance": 0,
+        "niceDrops": 0,
+        "heldDrop": false,
+        "passedPlatforms": 0,
+        "cameraY": 2.2246777475537245,
+        "scrollSpeed": 18.027170000000655,
+        "topRemaining": 49.77532225244627,
+        "horizontal": 0,
+        "phase": "grounded",
+        "player": {
+          "x": 128,
+          "y": 112,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "platformId": 1,
+          "stunRemaining": 0
+        },
+        "lastLanding": null,
+        "danger": "safe"
+      }
+    }
+  },
+  {
+    "phase": "PR_e88245a",
+    "width": 390,
+    "height": 844,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "visualWidth": 390,
+        "visualHeight": 844
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 780,
+          "right": 390,
+          "bottom": 780,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 98,
+          "right": 378,
+          "bottom": 98,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#stage": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 682,
+          "right": 378,
+          "bottom": 780,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 666,
+          "right": 378,
+          "bottom": 764,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 23.234375,
+          "y": 100,
+          "width": 343.53125,
+          "height": 595.203125,
+          "right": 366.765625,
+          "bottom": 695.203125,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 27.234375,
+          "y": 104,
+          "width": 335.53125,
+          "height": 587.203125,
+          "right": 362.765625,
+          "bottom": 691.203125,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 705.203125,
+          "width": 107.6875,
+          "height": 58.796875,
+          "right": 119.6875,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 270.296875,
+          "y": 705.203125,
+          "width": 107.703125,
+          "height": 58.796875,
+          "right": 378,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 127.6875,
+          "y": 705.203125,
+          "width": 134.609375,
+          "height": 58.796875,
+          "right": 262.296875,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "KEEP FALLING上を目指すな。うまく落ちろ。← → / A D で移動↓ / S / Space で DROP押し続けると連続降下天井に追いつかれると終了！逆方向でブレーキ。離して刻むか、深く欲張るか。やわらかい床は深い落下を受け止めます。DEPTH0 mBEST0 mNICE DROP0FALL 6 mまで安全石の床は9 m以上で失敗やわらかい床は9 mまで安全 / 12 m以上で失敗"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 764,
+          "width": 366,
+          "height": 16,
+          "right": 378,
+          "bottom": 780,
+          "display": "block",
+          "visibility": "visible",
+          "text": "短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#score-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 780,
+          "width": 390,
+          "height": 64,
+          "right": 390,
+          "bottom": 844,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "PR_e88245a",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 828,
+          "height": 44,
+          "right": 836,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 346,
+          "right": 836,
+          "bottom": 390,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 330,
+          "right": 836,
+          "bottom": 374,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 328.28125,
+          "y": 48,
+          "width": 187.421875,
+          "height": 322,
+          "right": 515.703125,
+          "bottom": 370,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 332.28125,
+          "y": 52,
+          "width": 179.421875,
+          "height": 314,
+          "right": 511.703125,
+          "bottom": 366,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 140,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 204,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 214,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 278,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 704,
+          "y": 180,
+          "width": 128,
+          "height": 88,
+          "right": 832,
+          "bottom": 268,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 361.203125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 482.78125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 289.078125,
+          "y": 374,
+          "width": 265.84375,
+          "height": 16,
+          "right": 554.921875,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#score-value": {
+          "x": 361.203125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 368.71875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 401.734375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 409.25,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 692,
+          "y": 290,
+          "width": 140,
+          "height": 100,
+          "right": 832,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "PR_e88245a",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 375,
+          "right": 667,
+          "bottom": 375,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 651,
+          "height": 44,
+          "right": 659,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 331,
+          "right": 659,
+          "bottom": 375,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 315,
+          "right": 659,
+          "bottom": 359,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 244.0625,
+          "y": 48,
+          "width": 178.84375,
+          "height": 307,
+          "right": 422.90625,
+          "bottom": 355,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 248.0625,
+          "y": 52,
+          "width": 170.84375,
+          "height": 299,
+          "right": 418.90625,
+          "bottom": 351,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 132.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 196.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 206.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 270.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 527,
+          "y": 165,
+          "width": 128,
+          "height": 88,
+          "right": 655,
+          "bottom": 253,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 272.703125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 394.28125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 224.09375,
+          "y": 359,
+          "width": 218.796875,
+          "height": 16,
+          "right": 442.890625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#score-value": {
+          "x": 272.703125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 280.21875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 313.234375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 320.75,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 534.953125,
+          "y": 275,
+          "width": 120.046875,
+          "height": 100,
+          "right": 655,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "fixed",
+    "width": 390,
+    "height": 844,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "visualWidth": 390,
+        "visualHeight": 844
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 780,
+          "right": 390,
+          "bottom": 780,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 98,
+          "right": 378,
+          "bottom": 98,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n落下キング FALL KING\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#stage": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 682,
+          "right": 378,
+          "bottom": 780,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 98,
+          "width": 366,
+          "height": 666,
+          "right": 378,
+          "bottom": 764,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 23.234375,
+          "y": 100,
+          "width": 343.53125,
+          "height": 595.203125,
+          "right": 366.765625,
+          "bottom": 695.203125,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 27.234375,
+          "y": 104,
+          "width": 335.53125,
+          "height": 587.203125,
+          "right": 362.765625,
+          "bottom": 691.203125,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 705.203125,
+          "width": 107.6875,
+          "height": 58.796875,
+          "right": 119.6875,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 270.296875,
+          "y": 705.203125,
+          "width": 107.703125,
+          "height": 58.796875,
+          "right": 378,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 127.6875,
+          "y": 705.203125,
+          "width": 134.609375,
+          "height": 58.796875,
+          "right": 262.296875,
+          "bottom": 764,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "KEEP FALLING上を目指すな。うまく落ちろ。← → / A D で移動↓ / S / Space で DROP押し続けると連続降下天井に追いつかれると終了！逆方向でブレーキ。離して刻むか、深く欲張るか。やわらかい床は深い落下を受け止めます。DEPTH0 mBEST0 mNICE DROP0FALL 6 mまで安全石の床は9 m以上で失敗やわらかい床は9 mまで安全 / 12 m以上で失敗"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 764,
+          "width": 366,
+          "height": 16,
+          "right": 378,
+          "bottom": 780,
+          "display": "block",
+          "visibility": "visible",
+          "text": "鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#score-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 780,
+          "width": 390,
+          "height": 64,
+          "right": 390,
+          "bottom": 844,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "fixed",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 828,
+          "height": 44,
+          "right": 836,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 346,
+          "right": 836,
+          "bottom": 390,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n鳥の動きを待って、タイミングよく DROP。"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 330,
+          "right": 836,
+          "bottom": 374,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 328.28125,
+          "y": 48,
+          "width": 187.421875,
+          "height": 322,
+          "right": 515.703125,
+          "bottom": 370,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 332.28125,
+          "y": 52,
+          "width": 179.421875,
+          "height": 314,
+          "right": 511.703125,
+          "bottom": 366,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 140,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 204,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 214,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 278,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 704,
+          "y": 180,
+          "width": 128,
+          "height": 88,
+          "right": 832,
+          "bottom": 268,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 361.203125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 482.78125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 312.59375,
+          "y": 374,
+          "width": 218.796875,
+          "height": 16,
+          "right": 531.390625,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "鳥の動きを待って、タイミングよく DROP。"
+        },
+        "#score-value": {
+          "x": 361.203125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 368.71875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 401.734375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 409.25,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 692,
+          "y": 290,
+          "width": 140,
+          "height": 100,
+          "right": 832,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "fixed",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 375,
+          "right": 667,
+          "bottom": 375,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ\n← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 651,
+          "height": 44,
+          "right": 659,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← ゲーム一覧へ\n音 OFF\nⅡ"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 331,
+          "right": 659,
+          "bottom": 375,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →\n\n短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 315,
+          "right": 659,
+          "bottom": 359,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "← 左\nDROP ↓\n押し続けて連続降下\n右 →"
+        },
+        ".fall-window": {
+          "x": 244.0625,
+          "y": 48,
+          "width": 178.84375,
+          "height": 307,
+          "right": 422.90625,
+          "bottom": 355,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 248.0625,
+          "y": 52,
+          "width": 170.84375,
+          "height": 299,
+          "right": 418.90625,
+          "bottom": 351,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 132.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 196.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "← 左"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 206.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 270.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "右 →"
+        },
+        "#drop-button": {
+          "x": 527,
+          "y": 165,
+          "width": 128,
+          "height": 88,
+          "right": 655,
+          "bottom": 253,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP ↓\n押し続けて連続降下"
+        },
+        ".playing-guide": {
+          "x": 272.703125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 394.28125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE落下キング～FALL KING～上を目指すな。うまく落ちろ。離して刻むか、押し続けて欲張るか。深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。すぐ遊ぶBEST r04 0 m · 旧版 0 m（比較別）"
+        },
+        "#live-status": {
+          "x": 200.578125,
+          "y": 359,
+          "width": 265.84375,
+          "height": 16,
+          "right": 466.421875,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "短く刻む？ 深く欲張る？ DROPをホールドで連続降下"
+        },
+        "#score-value": {
+          "x": 272.703125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 280.21875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 313.234375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 320.75,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 534.953125,
+          "y": 275,
+          "width": 120.046875,
+          "height": 100,
+          "right": 655,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  }
+]
