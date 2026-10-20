@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-20 JST：**表示012＝内部Game015はスマホ縦画面専用候補へ変更・本番未公開。** PR #11 HEAD62ac472から継続し、touch主体＋hoverなし＋1000×600以下の横向きで案内・inert・入力解除・自動pause。縦戻りはpausedを維持し「続きから」だけで再開。練習session/DOMとending残時間も保持。横操作Gridと解析footer固定を削除、縦Canvas高615/438/339px（各+28）。FallBoardバイト一致、物理/保存/広告/解析送信/他ゲーム本体不変。check・1137tests/107files・build、DEV9条件224項目とcompiled7条件80項目成功。WebKit/実iPhone未実施、Draftのまま作者試遊・公開承認待ち。main/Pages公開なし。[最新仕様・画面・検証・実機手順](game015/mobile-ux/portrait-only/IMPLEMENTATION_REPORT.md)。
+
 2026-10-20 JST：**表示012＝内部Game015のiPhone長押し対策をPR #11へ追加・本番未公開。** latest main47c6cfe/PR基準e88245a、表示013＝game016は不変。document capture終端、所有pointerの明示capture解除、最後のtouch終了fallback、hidden/zero-buttons解除、操作/子Text起点の選択抑止を追加。キー/他pointerを維持し、同一ボタン2指も既知IDだけ解除。入力24/root1135・check/build・新native171と既存機能161成功。main/PRの固定viewport140サンプルと今回の操作系列でCanvas差0、Safariの選択/幅揺れの真因はUNKNOWN。既存中央レイアウト314/299px、物理/保存/広告/解析/他ゲームを維持。WebKitエンジン未導入・実iPhone未確認、Draftのまま作者試遊待ち、main/Pages公開なし。[原因の確度・3版比較・検証・実機手順](game015/mobile-ux/iphone-input/IMPLEMENTATION_REPORT.md)。
 
 2026-10-19 UTC：**Game015 PR #11の横向きUIを作者レビューに基づき改訂・本番未公開。** 既存枝`codex/game015-mobile-landscape-ux`の初版85d6fa9を保持し、Canvas高を844で304→250→314px、667で289→235→299pxへ改善。左右112×64、DROP128×88、解析設定/プライバシーを右下2段の44px以上の導線として保持。共通consentUIは表示用part2属性のみ追加、処理/既定表示/意味不変。他ゲーム/縦向き/PC不変。1122tests・check/build・機能161checks・同意/撤回/回転/他ゲーム回帰成功。初版の安全な入力解除処理・物理・保存・広告・解析処理を保持。既存Draft PR #11で作者レビュー待ち、main/Pages公開なし。[3段階の比較画像・設計・検証](game015/mobile-ux/revision2/IMPLEMENTATION_REPORT.md)。以下の旧記録は当時の履歴。

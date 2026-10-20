@@ -7,6 +7,7 @@ import { createOnboarding } from '../../arcade/onboarding';
 import { createFallGame, paintFallPractice } from './FallBoard';
 import { FallAudio } from './audio';
 import type { FallEvent, FallResult, FallSnapshot } from './types';
+import { watchPhoneLandscape } from './portrait';
 const recordSession = createGameRecordSession('game015');
 
 type Screen = 'title' | 'playing' | 'paused' | 'ending' | 'result';
@@ -21,6 +22,12 @@ let screenEpoch = 0;
 let state: Screen = 'title', best = storage.readNumber('bestR04', 0), runId = '', ended = true, disposed = false, newBest = false;
 let milestoneUntil = 0, milestoneMessage = '', hazardNoticeUntil = 0, hazardMessage = '';
 let result: FallResult | null = null, timer: ReturnType<typeof window.setTimeout> | undefined;
+let portraitBlocked = false, resultDue = 0, resultRemaining = 400;
+let orientationFocus: HTMLElement | null = null;
+const portraitNotice = document.createElement('section'); portraitNotice.id = 'portrait-notice'; portraitNotice.hidden = true;
+portraitNotice.setAttribute('aria-labelledby', 'portrait-heading'); portraitNotice.tabIndex = -1;
+portraitNotice.innerHTML = `<div class="portrait-card"><span class="portrait-icon" aria-hidden="true">↻</span><h1 id="portrait-heading">落下キングは縦画面専用です</h1><p>スマートフォンを縦向きにすると遊べます</p><a class="arcade-portal-return" href="${import.meta.env.BASE_URL}index.html">ゲーム一覧へ戻る</a></div>`;
+app.before(portraitNotice);
 const text = (id: string, value: string): void => { const e = $(id); if (e && e.textContent !== value) e.textContent = value; };
 const button = (id: string, label: string, primary = false): string => `<button id="${id}" type="button" class="${primary ? 'primary' : 'secondary'}">${label}</button>`;
 
@@ -39,7 +46,7 @@ function scheduleGestureCleanup(): void {
   gestureCleanup = window.setTimeout(() => { gestureCleanup = undefined; pruneGestures(); if ([...gestures.values()].some(origin => origin.releasedAt !== null)) scheduleGestureCleanup(); }, 5100);
 }
 document.addEventListener('pointerdown', e => {
-  if (!(e.target instanceof Node) || !app.contains(e.target)) return;
+  if (!(e.target instanceof Node) || !app.contains(e.target) && !document.getElementById('arcade-training')?.contains(e.target)) return;
   pruneGestures();
   // Native touch has few simultaneous contacts; keep a bounded record without discarding its origin on release.
   if (!gestures.has(e.pointerId) && gestures.size >= 32) {
@@ -54,7 +61,8 @@ const releaseGesture = (e: PointerEvent): void => {
 };
 document.addEventListener('pointerup', releaseGesture, { capture: true, signal: abort.signal });
 document.addEventListener('pointercancel', releaseGesture, { capture: true, signal: abort.signal });
-app.addEventListener('click', e => {
+document.addEventListener('click', e => {
+  if (!(e.target instanceof Node) || !app.contains(e.target) && !document.getElementById('arcade-training')?.contains(e.target)) return;
   pruneGestures();
   const pointer = e as MouseEvent & { pointerId?: number; pointerType?: string };
   const id = typeof pointer.pointerId === 'number' && pointer.pointerId >= 0 ? pointer.pointerId : undefined;
@@ -111,15 +119,22 @@ const controller = createFallGame($('game-canvas'), { onUpdate: update, onEvent:
   audio.setPlaying(false); audio.tone(240, 42, .26, .04);
   telemetry.trackEvent('run_end', { runId, outcome: 'over', score: value.score, time: value.time, reason: value.outcome });
   telemetry.trackEvent('score', { runId, score: value.score, best, newBest, nice_drops: value.niceDrops }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over', failure_reason: value.outcome }); telemetry.trackEvent('depth_reached', { runId, depth: value.depth });
-  screen('ending'); timer = window.setTimeout(() => { timer = undefined; if (!disposed && state === 'ending') screen('result'); }, 400);
+  screen('ending'); scheduleResult(400);
 } }, () => best);
+function scheduleResult(delay: number): void {
+  resultRemaining = delay;
+  if (portraitBlocked) return;
+  resultDue = performance.now() + delay;
+  timer = window.setTimeout(() => { timer = undefined; if (!disposed && !portraitBlocked && state === 'ending') screen('result'); }, delay);
+}
 function start(retry = false): void {
-  if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
+  if (disposed || portraitBlocked || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
   void audio.unlock(); runId = `game015-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = false; milestoneUntil = hazardNoticeUntil = 0; milestoneMessage = hazardMessage = '';
   if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start(); audio.setPlaying(true);
 }
 function pause(): void {
+  if (portraitBlocked) return;
   if (state === 'playing') { controller.pause(true); audio.setPlaying(false); telemetry.trackEvent('pause', { runId }); screen('paused'); }
   else if (state === 'paused') { void audio.unlock(); controller.pause(false); audio.setPlaying(true); telemetry.trackEvent('resume', { runId }); screen('playing'); }
 }
@@ -129,14 +144,39 @@ function quit(): void {
 }
 function title(): void { if (state === 'ending') return; quit(); controller.title(); result = null; text('score-value', '0'); text('nice-value', '0'); screen('title'); }
 app.addEventListener('click', e => {
+  if (portraitBlocked) return;
   if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return; const target = (e.target as Element).closest<HTMLButtonElement | HTMLAnchorElement>('button,a'); if (!target || target instanceof HTMLButtonElement && target.disabled) return;
   if (target.classList.contains('arcade-portal-back')) { quit(); audio.setPlaying(false); return; }
   switch (target.id) { case 'play-button': start(); break; case 'retry-button': start(true); break; case 'resume-button': case 'pause-button': pause(); break; case 'title-button': case 'brand-button': title(); break; case 'mute-button': audio.toggle(); sync(); break; }
 }, { signal: abort.signal });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !e.repeat && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey && !document.querySelector('dialog[open]') && (state === 'playing' || state === 'paused')) { e.preventDefault(); pause(); } }, { signal: abort.signal });
+document.addEventListener('keydown', e => { if (!portraitBlocked && e.key === 'Escape' && !e.repeat && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey && !document.querySelector('dialog[open]') && (state === 'playing' || state === 'paused')) { e.preventDefault(); pause(); } }, { signal: abort.signal });
 window.addEventListener('blur', () => { if (state === 'playing') pause(); }, { signal: abort.signal });
 document.addEventListener('visibilitychange', () => { if (document.hidden && state === 'playing') pause(); }, { signal: abort.signal });
 window.addEventListener('pagehide', e => { if (e.persisted) { if (state === 'playing') pause(); } else { quit(); audio.setPlaying(false); } }, { signal: abort.signal });
 telemetry.trackEvent('game_open'); screen('title');
+const stopOrientation = watchPhoneLandscape(blocked => {
+  if (portraitBlocked === blocked) return;
+  // Neither a held game button nor a held tutorial/menu gesture may cross rotation.
+  screenEpoch++;
+  if (blocked) {
+    orientationFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (state === 'playing') pause();
+    else controller.pause(true);
+    if (state === 'ending' && timer !== undefined) { clearTimeout(timer); timer = undefined; resultRemaining = Math.max(0, resultDue - performance.now()); }
+  }
+  portraitBlocked = blocked;
+  onboarding.setSuspended(blocked);
+  document.body.toggleAttribute('data-fall-portrait-blocked', blocked);
+  app.inert = blocked; portraitNotice.hidden = !blocked;
+  if (blocked) portraitNotice.focus({ preventScroll: true });
+  else {
+    if (state === 'ending') { controller.pause(false); scheduleResult(resultRemaining); }
+    if (!document.querySelector('dialog[open]')) {
+      const focus = state === 'paused' ? $('resume-button') : orientationFocus;
+      if (focus?.isConnected && !focus.closest('[inert]')) focus.focus({ preventScroll: true });
+    }
+  }
+});
+portraitNotice.querySelector('a')?.addEventListener('click', () => { quit(); audio.setPlaying(false); }, { signal: abort.signal });
 if (import.meta.env.DEV) (window as unknown as { __arcadeDebug: unknown }).__arcadeDebug = Object.freeze({ gameId: 'game015', snapshot: () => controller.snapshot(), inspection: () => controller.inspection(), state: () => state, telemetry: () => telemetry.getEvents() });
-if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; if (timer !== undefined) clearTimeout(timer); abort.abort(); if (gestureCleanup !== undefined) clearTimeout(gestureCleanup); gestures.clear(); lastReleased = undefined; controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });
+if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; stopOrientation(); portraitNotice.remove(); app.inert = false; document.body.removeAttribute('data-fall-portrait-blocked'); if (timer !== undefined) clearTimeout(timer); abort.abort(); if (gestureCleanup !== undefined) clearTimeout(gestureCleanup); gestures.clear(); lastReleased = undefined; controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });

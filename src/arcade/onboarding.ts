@@ -22,7 +22,7 @@ const asset = (path: string): string => `${import.meta.env.BASE_URL}assets/${pat
 const imageCache = new Map<string, HTMLImageElement>();
 function image(path: string): HTMLImageElement { let i = imageCache.get(path); if (!i) { i = new Image(); i.src = asset(path); imageCache.set(path, i); } return i; }
 
-export function createOnboarding({ gameId, storage, telemetry, practicePaint }: Options): { intercept: (start: () => void) => boolean; practiceAgain: () => void; destroy: () => void } {
+export function createOnboarding({ gameId, storage, telemetry, practicePaint }: Options): { intercept: (start: () => void) => boolean; practiceAgain: () => void; setSuspended: (value: boolean) => void; destroy: () => void } {
   const listeners = new AbortController(); const options = { signal: listeners.signal };
   const dialog = document.createElement('dialog'); dialog.id = 'arcade-training'; dialog.dataset.game = gameId;
   dialog.setAttribute('aria-labelledby', 'tutorial-heading'); document.body.append(dialog);
@@ -30,19 +30,24 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
   document.body.dataset.arcadeGame = gameId;
   let callback: (() => void) | undefined; let session: PracticeSession | undefined;
   let frame = 0, previous = 0, reportedStep = 0, active = false;
+  // Opt-in owner suspension. Existing callers never change these flags.
+  let suspended = false, practicePaused = false;
   let returnFocus: HTMLElement | null = null;
   const fallPointers = new Map<number, -1 | 1>(); const fallKeys = new Map<string, -1 | 1>();
+  const fallCaptures = new Map<number, HTMLElement>();
+  const releaseCapture = (id: number, owner: HTMLElement): void => { try { if (owner.hasPointerCapture(id)) owner.releasePointerCapture(id); } catch { /* Detached or cancelled. */ } };
+  const captureFallPointer = (e: PointerEvent, owner: HTMLElement): void => { fallCaptures.set(e.pointerId, owner); try { owner.setPointerCapture(e.pointerId); } catch { /* Global terminal fallback. */ } };
   const fallInput = (): void => { const directions = [...fallPointers.values(), ...fallKeys.values()]; session?.setInput(directions.includes(-1) === directions.includes(1) ? 0 : directions.includes(1) ? 1 : -1); };
-  const clearFallInput = (): void => { fallPointers.clear(); fallKeys.clear(); session?.setInput(0); dropPointers.clear(); dropKeys.clear(); session?.setDropHeld(false); };
+  const clearFallInput = (): void => { const owners = [...fallCaptures]; fallCaptures.clear(); fallPointers.clear(); fallKeys.clear(); session?.setInput(0); dropPointers.clear(); dropKeys.clear(); session?.setDropHeld(false); for (const [id, owner] of owners) releaseCapture(id, owner); };
   let fallStep = -1;
   const dropPointers = new Set<number>(), dropKeys = new Set<string>();
   const dropInput = (): void => { session?.setDropHeld(dropPointers.size > 0 || dropKeys.size > 0); };
   const english = (): boolean => gameId === 'game005' && document.documentElement.lang === 'en';
   const labels = (ja: string, en: string): string => english() ? en : ja;
-  const close = (): void => { active = false; cancelAnimationFrame(frame); session?.setInput(0); clearFallInput(); dialog.close(); callback = undefined; returnFocus?.focus({ preventScroll: true }); };
+  const close = (): void => { active = false; practicePaused = false; cancelAnimationFrame(frame); session?.setInput(0); clearFallInput(); dialog.close(); callback = undefined; returnFocus?.focus({ preventScroll: true }); };
   const head = (): string => `<div class="training-head"><span>${labels('操作練習', 'PRACTICE')} / ${gameId.slice(4)}</span><button type="button" class="training-close" id="tutorial-close-button" aria-label="${labels('タイトルへ戻る', 'Return to title')}">×</button></div>`;
   function explanation(start?: () => void): void {
-    if (active) return;
+    if (active || suspended) return;
     active = true; callback = start; session = undefined; returnFocus = document.activeElement as HTMLElement;
     dialog.dataset.phase = 'explanation';
     const [title, text] = lessons[gameId];
@@ -67,6 +72,8 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     }
   }
   function practice(): void {
+    if (suspended) return;
+    practicePaused = false;
     if (!active) { active = true; callback = undefined; returnFocus = document.activeElement as HTMLElement; }
     telemetry.trackEvent('practice_start');
     clearFallInput(); fallStep = -1; session = new PracticeSession(gameId); reportedStep = 0; previous = performance.now();
@@ -84,7 +91,7 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     draw(); frame = requestAnimationFrame(tick);
   }
   function tick(now: number): void {
-    if (!active || !session || dialog.dataset.phase !== 'practice') return;
+    if (!active || suspended || practicePaused || !session || dialog.dataset.phase !== 'practice') return;
     if (!document.hidden && document.hasFocus()) session.update((now - previous) / 1000);
     previous = now; draw(); frame = requestAnimationFrame(tick);
   }
@@ -119,10 +126,13 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     dialog.innerHTML = `${head()}<div class="training-success"><strong id="tutorial-heading">${labels('できました！', 'Ready!')}</strong><p>${message}</p><small>${labels('練習のスコアは自己ベストに含まれません。', 'Practice does not affect your BEST.')}</small></div><button class="training-primary" id="tutorial-start-button" type="button">${callback ? labels('本番へ', 'Start real run') : labels('タイトルへ戻る', 'Back to title')}</button>`;
     dialog.querySelector<HTMLButtonElement>('#tutorial-start-button')!.focus({ preventScroll: true });
   }
-  function action(value: PracticeAction): void { session?.action(value); draw(); }
+  function action(value: PracticeAction): void { if (!suspended && !practicePaused) { session?.action(value); draw(); } }
   dialog.addEventListener('click', e => {
+    if (suspended) return;
     const b = (e.target as Element).closest<HTMLButtonElement>('button'); if (!b || b.disabled) return;
     if (b.id === 'tutorial-close-button') { telemetry.trackEvent('tutorial_skip', { completedBefore: storage.readBoolean('tutorialCompleted', false) }); close(); }
+    else if (b.id === 'tutorial-resume-button') { practicePaused = false; b.parentElement?.remove(); previous = performance.now(); frame = requestAnimationFrame(tick); }
+    else if (practicePaused) return;
     else if (b.id === 'tutorial-practice-button') practice();
     else if (b.id === 'tutorial-start-button' && session?.snapshot().complete) {
       storage.writeBoolean('tutorialCompleted', true); telemetry.trackEvent('tutorial_complete');
@@ -134,18 +144,19 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     }
   }, options);
   dialog.addEventListener('pointerdown', e => {
+    if (suspended || practicePaused) return;
     if ((!e.isPrimary && !(gameId === 'game015' && e.pointerType === 'touch')) || e.button !== 0 || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || dialog.dataset.phase !== 'practice') return;
     const surface = (e.target as Element).closest<HTMLCanvasElement>('canvas');
     if (surface && gameId !== 'game011') {
       e.preventDefault(); const bounds = surface.getBoundingClientRect();
       const side = e.clientX < bounds.left + bounds.width / 2 ? 'left' : 'right';
-      if (gameId === 'game008' || gameId === 'game015') { if (gameId === 'game015') { fallPointers.set(e.pointerId, side === 'right' ? 1 : -1); fallInput(); } else session?.setInput(side === 'right' ? 1 : -1); try { surface.setPointerCapture(e.pointerId); } catch { /* global release */ } }
+      if (gameId === 'game008' || gameId === 'game015') { if (gameId === 'game015') { fallPointers.set(e.pointerId, side === 'right' ? 1 : -1); fallInput(); captureFallPointer(e, surface); } else { session?.setInput(side === 'right' ? 1 : -1); try { surface.setPointerCapture(e.pointerId); } catch { /* global release */ } } }
       else action(['game002', 'game005'].includes(gameId) ? side : 'action');
       return;
     }
     if (gameId === 'game015') {
       const b = (e.target as Element).closest<HTMLButtonElement>('[data-practice-action]');
-      if (b && !b.disabled) { e.preventDefault(); if (b.dataset.practiceAction === 'action') { dropPointers.add(e.pointerId); dropInput(); try { b.setPointerCapture(e.pointerId); } catch { /* global release */ } } else { fallPointers.set(e.pointerId, b.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); try { b.setPointerCapture(e.pointerId); } catch { /* release globally */ } } }
+      if (b && !b.disabled) { e.preventDefault(); if (b.dataset.practiceAction === 'action') { dropPointers.add(e.pointerId); dropInput(); } else { fallPointers.set(e.pointerId, b.dataset.practiceAction === 'right' ? 1 : -1); fallInput(); } captureFallPointer(e, b); }
       return;
     }
     if (gameId !== 'game008') return;
@@ -153,13 +164,14 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
     if (b) { e.preventDefault(); session?.setInput(b.dataset.practiceAction === 'right' ? 1 : -1); try { b.setPointerCapture(e.pointerId); } catch { /* global release */ } }
   }, options);
   const release = (): void => { session?.setInput(0); };
-  const releasePointer = (e: PointerEvent): void => { if (gameId === 'game015') { fallPointers.delete(e.pointerId); dropPointers.delete(e.pointerId); dropInput(); fallInput(); } else release(); };
+  const releasePointer = (e: PointerEvent): void => { if (gameId === 'game015') { const owner = fallCaptures.get(e.pointerId); fallCaptures.delete(e.pointerId); fallPointers.delete(e.pointerId); dropPointers.delete(e.pointerId); dropInput(); fallInput(); if (owner) releaseCapture(e.pointerId, owner); } else release(); };
   window.addEventListener('pointerup', releasePointer, options); window.addEventListener('pointercancel', releasePointer, options); dialog.addEventListener('lostpointercapture', releasePointer, options); window.addEventListener('blur', () => { release(); clearFallInput(); }, options);
-  document.addEventListener('keyup', e => { if (active) { e.stopImmediatePropagation(); if (gameId === 'game015' && [' ', 'Enter', 'ArrowDown', 's', 'S'].includes(e.key)) e.preventDefault(); if (gameId === 'game015') { fallKeys.delete(e.key.toLowerCase()); dropKeys.delete(e.key.toLowerCase()); dropInput(); fallInput(); } else release(); } }, { capture: true, ...options });
+  document.addEventListener('keyup', e => { if (active && !suspended) { e.stopImmediatePropagation(); if (!practicePaused && gameId === 'game015' && [' ', 'Enter', 'ArrowDown', 's', 'S'].includes(e.key)) e.preventDefault(); if (gameId === 'game015') { fallKeys.delete(e.key.toLowerCase()); dropKeys.delete(e.key.toLowerCase()); dropInput(); fallInput(); } else release(); } }, { capture: true, ...options });
   document.addEventListener('keydown', e => {
-    if (!active) return;
+    if (!active || suspended) return;
     e.stopImmediatePropagation();
     if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (practicePaused) return;
     // A held practice key must not activate the success button after focus moves.
     if (e.repeat || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) { if (e.key === ' ' || e.key === 'Enter') e.preventDefault(); return; }
     if (!session || dialog.dataset.phase !== 'practice') return;
@@ -220,8 +232,24 @@ export function createOnboarding({ gameId, storage, telemetry, practicePaint }: 
   const observer = new MutationObserver(updateChrome);
   observer.observe(app, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-state'] });
   updateChrome();
-  if (import.meta.env.DEV) (window as unknown as { __tutorialDebug: unknown }).__tutorialDebug = Object.freeze({ snapshot: () => Object.freeze({ active, phase: dialog.dataset.phase, completed: storage.readBoolean('tutorialCompleted', false), practice: session?.snapshot() }) });
-  return { intercept(_start) { if (active) return true; if (app.dataset.state === 'title') telemetry.trackEvent('tutorial_skip', { completedBefore: storage.readBoolean('tutorialCompleted', false), startMethod: 'immediate' }); return false; }, practiceAgain() { practice(); }, destroy() { active = false; cancelAnimationFrame(frame); listeners.abort(); observer.disconnect(); dialog.remove(); choices.remove(); const nav = app.querySelector<HTMLElement>('.arcade-portal-back'); if (nav?.id === 'portal-link') delete nav.dataset.arcadeNavInstalled; else nav?.remove(); } };
+  function setSuspended(value: boolean): void {
+    if (suspended === value) return;
+    suspended = value; clearFallInput(); cancelAnimationFrame(frame);
+    if (value) { if (dialog.open) dialog.close(); return; }
+    if (!active) return;
+    if (dialog.dataset.phase === 'practice') {
+      practicePaused = true;
+      if (!dialog.querySelector('#tutorial-resume-button')) {
+        const notice = document.createElement('div'); notice.className = 'training-suspension';
+        notice.innerHTML = '<p>練習を一時停止しています。</p><button type="button" id="tutorial-resume-button" class="training-primary">続きから</button>';
+        dialog.querySelector('.training-head')?.after(notice);
+      }
+    }
+    dialog.showModal();
+    dialog.querySelector<HTMLButtonElement>(practicePaused ? '#tutorial-resume-button' : '#tutorial-close-button')?.focus({ preventScroll: true });
+  }
+  if (import.meta.env.DEV) (window as unknown as { __tutorialDebug: unknown }).__tutorialDebug = Object.freeze({ snapshot: () => Object.freeze({ active, suspended, practicePaused, phase: dialog.dataset.phase, completed: storage.readBoolean('tutorialCompleted', false), practice: session?.snapshot() }) });
+  return { intercept(_start) { if (active || suspended) return true; if (app.dataset.state === 'title') telemetry.trackEvent('tutorial_skip', { completedBefore: storage.readBoolean('tutorialCompleted', false), startMethod: 'immediate' }); return false; }, practiceAgain() { practice(); }, setSuspended, destroy() { active = false; cancelAnimationFrame(frame); clearFallInput(); listeners.abort(); observer.disconnect(); dialog.remove(); choices.remove(); const nav = app.querySelector<HTMLElement>('.arcade-portal-back'); if (nav?.id === 'portal-link') delete nav.dataset.arcadeNavInstalled; else nav?.remove(); } };
 }
 
 function paintPractice(canvas: HTMLCanvasElement | null, s: PracticeSnapshot, phaseTime: number): void {

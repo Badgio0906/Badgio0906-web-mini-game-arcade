@@ -2,15 +2,12 @@
 *{box-sizing:border-box}body{margin:0;background:#111525;color:#fff1c2;font-family:'Arcade Rounded','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer;min-height:44px;min-width:44px;border:2px solid #647580;background:#1b253e;padding:8px 12px;touch-action:manipulation}button:disabled{opacity:.5;cursor:default}button:hover:enabled{border-color:#f5cf64}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #66c6b4;outline-offset:3px}#app{padding:0 20px}header{height:68px;max-width:1440px;margin:auto;display:flex;align-items:center;gap:16px}.arcade-portal-back{border-radius:0!important;font-size:12px!important;opacity:1!important}.brand{border:0;background:none;font-size:20px;font-weight:800;padding:0;text-align:left}.brand small{font-family:monospace;font-size:11px;color:#adbaae;margin-left:5px}.top-actions{display:flex;margin-left:auto;gap:8px}.top-actions button{font-size:12px}.game-layout{display:grid;grid-template-columns:auto 300px;justify-content:center;align-items:center;gap:34px;max-width:1440px;margin:auto}#stage{min-width:0}.fall-board{display:flex;flex-direction:column;align-items:center;gap:8px}.fall-window{border:4px solid #34445b;box-shadow:0 0 0 2px #adbaae;background:#111525;line-height:0}.fall-window canvas{display:block;height:calc(100dvh - 153px);width:auto;max-width:100%;aspect-ratio:4/7;image-rendering:pixelated;touch-action:none}.fall-controls{width:100%;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:8px;touch-action:none}.fall-controls button{min-height:44px;touch-action:none;font-size:14px;white-space:nowrap;padding:8px}.fall-controls #drop-button{color:#111525;background:#f5cf64;border-color:#ac7639;font-family:monospace;font-weight:900;font-size:18px}.live-status{font-size:12px;text-align:center;line-height:1.3;min-height:16px;margin:8px 0 0}.menu{border:3px solid #647580;background:#1b253e;padding:22px;box-shadow:6px 6px 0 #0a0e1b}.menu h1{font-size:34px;margin:10px 0;line-height:1.25}.menu h1 small{display:block;font-family:monospace;font-size:20px;margin-top:6px}.menu h2{font-size:24px;line-height:1.3;margin:8px 0}.menu p{font-size:14px;line-height:1.7;margin:12px 0}.menu small{font-size:12px;line-height:1.5}.eyebrow{font-family:monospace;font-size:11px;letter-spacing:1px;color:#f5cf64}.tagline{font-weight:800}.primary{background:#f5cf64;color:#111525;border-color:#ac7639;font-weight:800}.paired-actions,.title-actions{display:grid;grid-template-columns:1.2fr 1fr;gap:8px;margin-top:16px}.title-actions>*{width:100%;margin:0!important}.title-actions #play-button{grid-column:1}.title-actions #tutorial-again-button{grid-column:2;min-height:44px;border-radius:0;padding:8px 4px;font-size:12px}.title-menu>small{display:block;margin-top:12px}.playing-guide{width:300px}.playing-guide>span{font-family:monospace;color:#f5cf64;font-size:12px}.playing-guide h1{font-size:28px;line-height:1.45;margin:14px 0}.playing-guide p{font-size:14px;line-height:1.8;color:#adbaae}.playing-guide dl{border-block:1px solid #647580;margin:20px 0;padding:12px 0}.playing-guide dl>div,.result-details>div{display:flex;align-items:center;justify-content:space-between;gap:8px}.playing-guide dt{font-family:monospace;font-size:12px}.playing-guide dd{margin:4px 0;font-size:24px;font-variant-numeric:tabular-nums}.playing-guide small{font-size:12px;line-height:1.7;color:#adbaae}#app:not([data-state='playing']):not([data-state='ending']) .playing-guide{display:none}.result-depth{position:relative;margin:12px 0;border-block:1px solid #647580;padding:9px 0}.result-depth>span{font-family:monospace;font-size:12px}.result-depth strong{display:block;font-family:monospace;font-size:48px;line-height:1.15;white-space:nowrap}.result-depth strong small{font-size:22px;margin-left:5px}.result-depth mark{display:inline-block;background:#f5cf64;color:#111525;font:700 11px monospace;padding:3px 5px;margin-top:4px}.result-details{margin:10px 0}.result-details dt{font-size:12px;color:#adbaae}.result-details dd{font:700 15px monospace;margin:3px 0}.result-comment{color:#f5cf64}.death-reason{font-size:13px!important}#app[data-state='paused'] .fall-controls,#app[data-state='result'] .fall-controls,#app[data-state='title'] .fall-controls{display:none}#app[data-state='paused'] .live-status,#app[data-state='result'] .live-status,#app[data-state='title'] .live-status{visibility:hidden}
 @media(max-width:700px) and (orientation:portrait){#app{padding:0 12px}#app>header{display:grid!important;grid-template-columns:1fr auto!important;height:94px!important;min-height:94px!important;gap:2px 8px!important;padding:4px 0!important}header>.arcade-portal-back{grid-column:1/-1;justify-self:start}.brand{font-size:16px}.brand small{font-size:10px}.top-actions{gap:5px}.top-actions button{padding:7px 9px}.game-layout{grid-template-columns:minmax(0,1fr);gap:12px}#stage{justify-self:center;width:100%}.fall-window canvas{height:min(calc(100dvh - 181px),calc((100vw - 32px)*1.75));max-width:calc(100vw - 32px)}.fall-controls{max-width:350px}.live-status{font-size:11px;margin-top:6px}.playing-guide{display:none}.menu{max-width:390px;width:100%;margin:auto;padding:16px}.menu h1{font-size:28px;margin:6px 0}.menu h1 small{font-size:17px}.menu h2{font-size:22px}.menu p{font-size:13px;line-height:1.5;margin:8px 0}.paired-actions,.title-actions{margin-top:10px}.result-depth{margin:8px 0;padding:6px 0}.result-depth strong{font-size:40px}.result-details{display:grid;grid-template-columns:1fr 1fr;gap:1px 10px}.result-details dt{font-size:11px}.result-details dd{font-size:14px}.result-comment{margin:6px 0!important}#app:is([data-state='title'],[data-state='paused'],[data-state='result']) .fall-window canvas{height:min(30dvh,220px)}#app:is([data-state='title'],[data-state='paused'],[data-state='result']) .live-status{display:none}#app[data-state='result'] .fall-window canvas{height:min(24dvh,175px)}}
 @media(max-width:700px) and (max-height:650px) and (orientation:portrait){.game-layout{gap:8px}.menu{padding:11px}.menu h1{font-size:24px}.menu h1 small{font-size:15px;margin-top:3px}.menu p{font-size:12px;line-height:1.45;margin:6px 0}.menu h2{font-size:20px;margin:4px 0}.eyebrow{font-size:9px}.title-menu>small{margin-top:7px;font-size:11px}#app:is([data-state='title'],[data-state='paused']) .fall-window canvas{height:26dvh}#app[data-state='result'] .fall-window canvas{height:18dvh}.result-depth{padding:4px 0;margin:5px 0}.result-depth strong{font-size:36px}.result-depth mark{position:absolute;right:0;top:8px}.result-details{margin:5px 0}.paired-actions,.title-actions{margin-top:8px}.menu button{font-size:12px;padding:7px}.death-reason{font-size:12px!important}}
-@media(max-height:500px) and (orientation:landscape){#app{padding:0 12px}header{height:56px;gap:8px;flex-wrap:nowrap!important}.brand{font-size:15px}.brand small{display:none}.top-actions{gap:5px}.top-actions button{padding:6px 8px}.game-layout{grid-template-columns:auto minmax(225px,320px);gap:20px;align-items:center}.fall-board{display:grid;grid-template-columns:auto 66px;gap:10px;align-items:center}.fall-window canvas{height:calc(100dvh - 86px)}.fall-controls{grid-template-columns:1fr;gap:6px}.fall-controls button{font-size:12px;padding:6px 3px}.fall-controls #drop-button{font-size:14px}.live-status{font-size:10px;margin-top:6px}.playing-guide{width:auto}.playing-guide h1{font-size:21px;margin:6px 0}.playing-guide p{font-size:12px;line-height:1.4;margin:6px 0}.playing-guide dl{margin:8px 0;padding:5px 0;display:grid;grid-template-columns:1fr 1fr;gap:3px 12px}.playing-guide dd{font-size:18px}.playing-guide small{font-size:11px}.menu{padding:10px 12px}.menu h1{font-size:25px;margin:5px 0}.menu h1 small{font-size:16px;margin-top:3px}.menu h2{font-size:20px;margin:4px 0}.menu p{font-size:12px;line-height:1.4;margin:6px 0}.menu small{font-size:11px}.eyebrow{font-size:9px}.paired-actions,.title-actions{margin-top:8px}.menu button{padding:6px;font-size:12px}.title-menu>small{margin-top:7px}.result-depth{padding:3px 0;margin:5px 0}.result-depth strong{font-size:34px}.result-depth mark{position:absolute;right:0;top:6px}.result-details{margin:5px 0;display:grid;grid-template-columns:1fr 1fr;gap:1px 10px}.result-details dt{font-size:10px}.result-details dd{font-size:13px;margin:2px 0}.result-comment{font-size:11px!important;margin:5px 0!important}.death-reason{font-size:11px!important}#app:is([data-state='title'],[data-state='paused'],[data-state='result']) .fall-board{display:block}#app:is([data-state='title'],[data-state='paused'],[data-state='result']) .live-status{display:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 
 #title-king{float:right;width:48px;height:72px;image-rendering:pixelated;margin:10px 0 4px 8px}.title-menu h1{font-size:30px}.title-menu .tagline{clear:both}
 
 .fall-controls #drop-button small{display:block;font-family:inherit;font-size:9px;line-height:1.2;margin-top:2px;white-space:normal}
-@media(max-height:500px) and (orientation:landscape){.fall-controls #drop-button small{font-size:8px}}
 
-@media(max-height:500px) and (orientation:landscape){#app:is([data-state="playing"],[data-state="ending"]) .game-layout{align-items:start}.playing-guide p{font-size:11px;line-height:1.25;margin:4px 0}.playing-guide small{font-size:10px;line-height:1.35}.playing-guide h1{font-size:20px;margin:4px 0}.playing-guide dl{margin:6px 0;padding:4px 0}}
 
 /* Game015 only: event-driven held feedback, including a second touch. */
 .fall-controls button[data-held='true']{background:#42656a;border-color:#8fe1c4;box-shadow:inset 0 0 0 2px #111525}
@@ -23,7 +20,7 @@
 /* Normal document scrolling remains available for menus and the portal.
    During portrait play the existing settings footer keeps its natural height;
    flex/grid allocate the remaining viewport instead of assuming a 100vh canvas. */
-@media (max-width:700px) and (orientation:portrait), (max-height:600px) and (orientation:landscape){
+@media (max-width:700px) and (orientation:portrait){
   body{padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
   #app>header{margin-top:0!important;padding-left:0!important;padding-right:0!important}
   body:has(#app:is([data-state='playing'],[data-state='ending'])){height:100vh;height:100svh;height:100dvh;min-height:0;display:flex;flex-direction:column;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
@@ -43,46 +40,15 @@
     #app:is([data-state='playing'],[data-state='ending']) .fall-window canvas{height:min(calc(100cqh - 12px),calc((100cqw - 12px)*1.75))}
   }
 }
-@media (max-height:600px) and (orientation:landscape){
-  #app{padding:0 8px}
-  #app>header{height:44px;min-height:44px;gap:8px;flex-wrap:nowrap!important}
-  .brand{font-size:15px}.brand small{display:none}
-  .top-actions{gap:5px}.top-actions button{padding:6px 8px}
-  #app:is([data-state='playing'],[data-state='ending']) .brand{display:none}
-  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host{position:fixed;right:calc(env(safe-area-inset-right,0px) + 12px);bottom:env(safe-area-inset-bottom,0px);width:clamp(120px,18vw,140px)}
-  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host::part(settings){flex-direction:column;gap:4px;padding:4px}
-  body:has(#app:is([data-state='playing'],[data-state='ending'])) #analytics-settings-host::part(privacy-link){min-height:44px;justify-content:center}
-  #app:is([data-state='playing'],[data-state='ending']) .live-status{max-width:calc(100% - clamp(120px,18vw,140px) - clamp(120px,18vw,140px) - 16px);align-self:center}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-board{grid-template-columns:minmax(96px,1fr) minmax(0,1.5fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:10px 16px;padding:2px 4px}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-surface{grid-column:2;grid-row:1/3}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-controls{display:contents}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-controls button{width:min(112px,100%);height:64px;min-height:52px;font-size:18px;padding:8px;justify-self:start}
-  #left-button{grid-column:1;grid-row:1;align-self:end}#right-button{grid-column:1;grid-row:2;align-self:start}#drop-button{grid-column:3;grid-row:1/3}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-controls #drop-button{font-size:22px;width:min(128px,100%);height:88px;justify-self:end;align-self:end;margin-bottom:104px}
-  #app .fall-controls #drop-button small{font-size:11px;line-height:1.5;margin-top:8px}
-  #app:is([data-state='playing'],[data-state='ending']) .fall-window canvas{height:calc(100dvh - 160px)}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide{display:block;grid-column:1;grid-row:1;place-self:center;width:auto;max-width:calc(100% - 270px);min-width:0;pointer-events:none}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide>:not(dl){display:none}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide dl{display:flex;gap:18px;margin:0;padding:0;border:0}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide dl>div{display:block}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide dt{font-size:9px;line-height:1.2}
-  #app:is([data-state='playing'],[data-state='ending']) .playing-guide dd{font:700 15px/1.2 monospace;margin:1px 0 0}
-  #app:is([data-state='title'],[data-state='paused'],[data-state='result']) #stage{display:none}
-  #app:is([data-state='title'],[data-state='paused'],[data-state='result']) .game-layout{display:block;margin:0 auto;max-width:640px}
-  #overlay{max-width:640px;margin:0 auto;padding:6px 0}
-  .menu{padding:12px 16px}
-  @supports(height:1cqh){
-    #app:is([data-state='playing'],[data-state='ending']) .fall-window canvas{height:min(calc(100cqh - 12px),calc((100cqw - 12px)*1.75))}
-  }
-}
 
 /* Desktop keeps the full right-hand guide and controls below the canvas.
    Only its height budget now includes the unchanged settings footer. */
-@media (min-width:701px) and (orientation:portrait), (min-height:601px) and (orientation:landscape){
+@media (min-width:701px), (orientation:landscape){
   body:has(#app:is([data-state='playing'],[data-state='ending'])){height:100vh;height:100svh;height:100dvh;display:flex;flex-direction:column}
   #app:is([data-state='playing'],[data-state='ending']){flex:1;min-height:0;display:flex;flex-direction:column}
   #app:is([data-state='playing'],[data-state='ending'])>header{flex-shrink:0;width:100%}
-  #app:is([data-state='playing'],[data-state='ending']) .game-layout{flex:1;min-height:0;width:100%;grid-template-columns:minmax(0,440px) 300px}
+  #app:is([data-state='playing'],[data-state='ending']) .game-layout{flex:1;min-height:0;width:100%;grid-template-columns:minmax(0,440px) 300px;grid-template-rows:minmax(0,1fr)}
+  #app:is([data-state='playing'],[data-state='ending']) .playing-guide{min-height:0;max-height:100%;overflow:auto}
   #app:is([data-state='playing'],[data-state='ending']) #stage{height:100%;min-height:0;display:flex;flex-direction:column}
   #app:is([data-state='playing'],[data-state='ending']) #game-canvas{flex:1;min-height:0}
   #app:is([data-state='playing'],[data-state='ending']) .fall-board{height:100%;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;justify-items:center}
@@ -94,3 +60,24 @@
 
 /* Shared short-screen practice uses display:grid; a closed dialog must stay closed. */
 body[data-arcade-game='game015'] #arcade-training:not([open]) { display:none; }
+
+/* Game015 portrait policy. The JS gate controls application state, not just visibility. */
+body{padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+body[data-fall-portrait-blocked] #app{display:none}
+#portrait-notice:not([hidden]){min-height:calc(100svh - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:calc(100dvh - 64px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:grid;place-items:center;padding:20px 16px;text-align:center}
+#portrait-notice .portrait-card{max-width:560px}
+#portrait-notice .portrait-icon{display:block;font:48px/1 monospace;color:#f5cf64}
+#portrait-notice h1{font-size:clamp(20px,3.2vw,28px);line-height:1.5;margin:10px 0}
+#portrait-notice p{font-size:14px;line-height:1.6;margin:10px 0 18px}
+#portrait-notice a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;background:#f5cf64;color:#111525;border:2px solid #ac7639;text-decoration:none}
+@media (max-width:700px) and (orientation:portrait){
+  #app:is([data-state='playing'],[data-state='ending'])>header{display:flex!important;flex-wrap:nowrap!important;height:52px!important;min-height:52px!important;padding:4px 0!important;gap:8px!important}
+  #app:is([data-state='playing'],[data-state='ending']) .brand{display:none}
+  #app:is([data-state='playing'],[data-state='ending']) .arcade-portal-back{font-size:11px!important}
+  #app:is([data-state='playing'],[data-state='ending']) .playing-guide{display:none}
+  #app:is([data-state='playing'],[data-state='ending']) .live-status{height:32px;min-height:32px;overflow:hidden;display:grid;align-items:center}
+  #app:is([data-state='playing'],[data-state='ending']) .fall-controls{padding-bottom:2px}
+  body:has(#app:is([data-state='playing'],[data-state='ending'])){overflow:hidden}
+}
+#arcade-training[data-game='game015'] .training-suspension{padding:10px;border:2px solid #f5cf64;margin:8px 0}
+#arcade-training[data-game='game015']:has(#tutorial-resume-button) .practice-controls{pointer-events:none;opacity:.6}
