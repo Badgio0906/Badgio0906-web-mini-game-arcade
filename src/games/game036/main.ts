@@ -127,6 +127,8 @@ canvas.addEventListener('pointerup',e=>{if(!drag||e.pointerId!==drag.id)return;c
  if(dy>cell*1.4&&dt<260&&Math.abs(dy)>Math.abs(dx)*1.5)hardDrop(game);else if(!moved&&Math.hypot(dx,dy)<12&&dt<400)rotate(game,1);});
 canvas.addEventListener('pointercancel',()=>clearInput());canvas.addEventListener('lostpointercapture',()=>{if(drag){drag=null;setSoft(game,false);}});
 document.addEventListener('keydown',e=>{const target=e.target as HTMLElement;if(phase==='result'&&(e.key==='r'||e.key==='R')&&!training){e.preventDefault();telemetry.trackEvent('retry');start(false);return;}
+ // Space/Enter on a focused pad activate that button, not the board shortcut.
+ if(target.closest('.pad button')&&[' ','Enter'].includes(e.key))return;
  if(target.closest('input,select,a,dialog')||target.closest('button')&&!target.closest('.pad')||!active())return;
  if(e.key==='Escape'){pause();return;}const k=e.key.length===1?e.key.toLowerCase():e.key;
  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' ','x','z','Enter'].includes(k)){e.preventDefault();void audio.unlock();

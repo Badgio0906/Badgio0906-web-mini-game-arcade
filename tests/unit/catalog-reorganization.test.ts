@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { gameCatalog, historicalGameCatalog, hiddenGameCatalog, retiredGameCatalog, gameDisplayNumbers, filterGames, displayNumbersFor } from '../../src/data/gameCatalog';
 import { prioritizeFavorites, readFavorites, saveFavorites } from '../../src/portal/discovery';
-const expected = [1,2,3,5,6,8,9,11,12,13,14,15,16,17,18,19,20,22,23,24,25,27,32,33,34,35].map(n=>`game${String(n).padStart(3,'0')}`);
+const expected = [1,2,3,5,6,8,9,11,12,13,14,15,16,17,18,19,20,22,23,24,25,27,32,33,34,35,36].map(n=>`game${String(n).padStart(3,'0')}`);
 describe('author catalog reorganization',()=>{
  it('preserves stable identities and contiguous display identity despite sorting/filtering',()=>{
   expect(gameCatalog.map(g=>g.id)).toEqual(expected);
-  expect(expected.map(id=>gameDisplayNumbers.get(id))).toEqual(Array.from({length:26},(_,i)=>String(i+1).padStart(3,'0')));
+  expect(expected.map(id=>gameDisplayNumbers.get(id))).toEqual(Array.from({length:27},(_,i)=>String(i+1).padStart(3,'0')));
   for(const game of prioritizeFavorites(gameCatalog,new Set(['game032','game019']))) expect(gameDisplayNumbers.get(game.id)).toBe(displayNumbersFor(historicalGameCatalog).get(game.id));
   for(const game of filterGames(gameCatalog,['physics'],'or')) expect(gameDisplayNumbers.get(game.id)).toBe(displayNumbersFor(historicalGameCatalog).get(game.id));
   for(const game of historicalGameCatalog) expect(game.releaseOrder).toBe(Number(game.id.slice(4)));

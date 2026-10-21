@@ -3,8 +3,8 @@
 ## 状態と参照
 - task_id: game036-mochi-drop
 - game_id: game036（**暫定**。main `ac5304fa` の CURRENT_STATUS「次番号36」に基づく。Codexによる予約・ASSIGNMENT.md は未作成）
-- current_status: ready_for_integration
-- current_owner: claude-code（作者がClaude Codeへ直接依頼。Codex割当なし）
+- current_status: blocked（Codex統合候補・ローカル検証済み。費用不明点の今回判断待ち）
+- current_owner: codex-cloud（作者の公開依頼を受領、元Claude成果を保護して継承）
 - upstream_base_sha: ac5304fa81361f592942c472c7fa04f668d3b4bc
 - branch: claude/game036-mochi-drop
 - remote_head: `git fetch origin && git rev-parse origin/claude/game036-mochi-drop` で取得
@@ -70,3 +70,9 @@
 - [ ] 過去の失敗をPASSに書き換えていない
 - [ ] 本番環境へ未許可の送信・操作をしていない
 - [ ] Codexが単独で続きを実装・統合・公開できる
+
+## 2026-10-21 Codex統合追補
+
+公開準備・修正・全QA・実画像・残課題は `docs/game036/PUBLICATION_PREPARATION_20261021.md`。基準main ac5304f、受領PR16 HEAD9560283、独立worktree/branchへ継承。元ゲームの3不具合を限定修正、モデル本体不変。27掲載候補・表示027・個人BEST・実画面thumbnail・frontend transport gateを統合し、check/994 tests103files/通常＋Pages同Records設定build/compiled12/Portal73を確認。実機と人間の面白さは未確認。
+
+費用: PUBLIC/標準ubuntu-latestは確認、Webhook/billing usageは403で追加保存容量・外部連動がUNKNOWN。以前の停止指示に従い未push・未PR更新・未main merge・未deploy。今回の費用不明点の了承が得られたら、最新main/PR16を再照合し、通常pushで既存PR16更新→自動CI→Ready/通常merge→Pages/本番確認。旧PR11/13と他ゲーム、Worker/D1/広告/同意仕様は触らない。独立レビューはgame036内の専用文書、テスト対象hashはQA/codex-final/SOURCE_AND_SCOPE.json。commit SHAはGitから取得し、自己参照で推測しない。

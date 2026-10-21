@@ -4,6 +4,7 @@ import { tagCatalog } from '../src/data/tagCatalog.ts';
 import { eventNames, TELEMETRY_SCHEMA_VERSION } from '../src/data/telemetrySchema.ts';
 
 const design = {
+  game036: ['落ちもの・連鎖パズル', '左右キー/スライドで移動、回転、Space/すとんで落とす', '4味のおもちを4つつなげ、連鎖予告とこんぺいとうで崩す', '中央上の出現位置がふさがる', '顔のある4色のおもち、着地影、連結・消去・連鎖バナー'],
   game001: ['スコアアタック', 'Space / クリック / タップで軌道を切り替える', '障害物を一回の入力で避け、連続回避を狙う', '軌道の切り替えと障害物への接触', '軌道と障害物を明快に描いた宇宙アーケード'],
   game002: ['回避ランナー', '左右キー / 左右タップで車線移動', '3車線を読み、出社か続行かを選ぶ', '障害物への接触', '漫画風の通勤者と4地区の街'],
   game003: ["タイミング・釣り合い建築", "Space / タップで建物を落とす", "全支持面の釣り合いを読み、中央PERFECTと回復する左右の芸術ペアを積む", "接触なし、上部合成重心が支持区間外へ出る", "張り出しを保持した建築と最危険の支持面・釣り合いの印"],
@@ -28,12 +29,13 @@ const design = {
 };
 const difficultyLabels = { standard: '標準', rising: 'じわじわ難化', hard: '高難度' };
 await Promise.all(['game_profiles','retired_game_profiles','design_notes','telemetry_samples','analytics_summary'].map(folder => mkdir(`jev_export/${folder}`, { recursive: true })));
+const selectedIds=new Set(process.argv.slice(2));
 // Preserve historical profiles byte-for-byte; remove retired IDs from active exports.
 for (const game of retiredGameCatalog) {
+  if(selectedIds.size&&!selectedIds.has(game.id))continue;
   try { await rename(`jev_export/game_profiles/${game.id}.json`, `jev_export/retired_game_profiles/${game.id}.json`); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
 }
-const selectedIds=new Set(process.argv.slice(2));
 for (const game of gameCatalog) {
   if(selectedIds.size&&!selectedIds.has(game.id))continue;
   let manifest = null;

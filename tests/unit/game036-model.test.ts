@@ -22,5 +22,18 @@ describe('Game036 mochi drop rules',()=>{
 describe('Game036 save',()=>{
  it('round-trips a mid-chain board and continues identically',()=>{const s=createMochi(false,9);s.board[index(0,12)]=1;s.board[index(1,12)]=1;s.piece={x:2,y:1,rot:1,a:1,b:1};hardDrop(s);stepMochi(s,100);s.events=[];const saved={...blankSave(),snapshot:s,reported:false,runId:'r'};const copy=validateSave(JSON.parse(JSON.stringify(saved)))!;expect(copy).toEqual(saved);settle(s);settle(copy.snapshot!);s.events=[];copy.snapshot!.events=[];expect(copy.snapshot).toEqual(s);});
  it('rejects practice, finished, malformed or inconsistent snapshots',()=>{const s=createMochi(false,10);for(const patch of [{practice:true},{phase:'over'},{board:[1]},{level:0},{queue:[[0,9],[0,0]]},{piece:null}])expect(validateSave({...blankSave(),snapshot:{...s,...patch},reported:false})).toBeNull();expect(validateSave({...blankSave(),snapshot:s,reported:true})).toBeNull();expect(validateSave({...blankSave(),best:-1})).toBeNull();});
+ it('rejects a falling pair whose satellite is outside the board or overlaps a settled mochi',()=>{
+  const edge=createMochi(false,12);edge.piece={x:COLS-1,y:ROWS-1,rot:1,a:0,b:1};
+  expect(validateSave({...blankSave(),snapshot:edge,reported:false})).toBeNull();
+  const collision=createMochi(false,13);collision.board[index(2,0)]=1;
+  expect(validateSave({...blankSave(),snapshot:collision,reported:false})).toBeNull();
+ });
+ it('recovers valid records when only the unfinished snapshot is corrupt, without restoring a run',()=>{
+  const broken={...blankSave(),best:4321,bestChain:5,runs:7,reported:false,runId:'unfinished',snapshot:{...createMochi(false,11),piece:null}};
+  const store=new MochiStore({getItem:()=>JSON.stringify(broken),setItem:()=>{}});
+  expect(store.read()).toEqual({...blankSave(),best:4321,bestChain:5,runs:7});
+  const foreign=new MochiStore({getItem:()=>JSON.stringify({...broken,game_id:'game035'}),setItem:()=>{}});
+  expect(foreign.read()).toEqual(blankSave());
+ });
  it('keeps records in memory when storage writes are denied',()=>{const store=new MochiStore({getItem:()=>null,setItem:()=>{throw Error('denied');}});const saved={...blankSave(),best:4321,bestChain:5};store.write(saved);expect(store.read()).toEqual(saved);});
 });

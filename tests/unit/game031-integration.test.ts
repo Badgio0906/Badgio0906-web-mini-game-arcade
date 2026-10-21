@@ -16,9 +16,9 @@ const fixture: AnalyticsEnvelope = {
 
 describe('Game031 sandbox registration boundaries', () => {
   it('registers only the implemented new ID and retains retired010 and existing versions', () => {
-    expect(gameCatalog).toHaveLength(26);
-    expect(historicalGameCatalog).toHaveLength(35);
-    expect(NEXT_GAME_NUMBER).toBe(36);
+    expect(gameCatalog).toHaveLength(27);
+    expect(historicalGameCatalog).toHaveLength(36);
+    expect(NEXT_GAME_NUMBER).toBe(37);
     expect(gameCatalog.some(game => game.id === 'game031')).toBe(false);
     expect(historicalGameCatalog.find(game => game.id === 'game031')).toMatchObject({ id: 'game031', titleJa: '掘って、置くだけ。', titleEn: 'DIG & PLACE', route: './game031.html', releaseOrder: 31, publicationState: 'on-hold' });
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');

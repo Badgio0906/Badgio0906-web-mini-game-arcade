@@ -29,7 +29,7 @@ for(const [width,height] of [[1440,900],[390,844],[320,568],[844,390]]){
  const click=async selector=>page.locator(selector)[mobile?'tap':'click']();
  const visible=()=>page.locator('.game-card:visible').evaluateAll(es=>es.map(e=>e.dataset.gameId));
  await page.goto(base,{waitUntil:'networkidle'});
- check(await page.locator('.game-card').count()===26,'26 cards '+width);
+ check(await page.locator('.game-card').count()===27,'27 cards '+width);
  const ids=await visible();check(kept.every(id=>!ids.includes(id)),'removed/hold absent '+width);
  check(await page.locator('.game-development-status--complete').count()===9,'9 complete '+width);
  await click('#discovery-panel > summary');await click('#tag-picker > summary');
@@ -38,11 +38,11 @@ for(const [width,height] of [[1440,900],[390,844],[320,568],[844,390]]){
  const wantOr=gameCatalog.filter(g=>g.tags.some(t=>['reflex','short'].includes(t.id))).map(g=>g.id);
  const wantAnd=gameCatalog.filter(g=>['reflex','short'].every(id=>g.tags.some(t=>t.id===id))).map(g=>g.id);
  check(JSON.stringify(or)===JSON.stringify(wantOr)&&JSON.stringify(and)===JSON.stringify(wantAnd),'exact OR/AND '+width);
- await click('#clear-filters');check((await visible()).length===26,'clear filters '+width);
+ await click('#clear-filters');check((await visible()).length===27,'clear filters '+width);
  await click('[data-development-status="complete"]');check((await visible()).length===9,'complete filter '+width);await click('#clear-filters');
- await click('[data-development-status="trial"]');check((await visible()).length===17,'trial filter '+width);await click('#clear-filters');
+ await click('[data-development-status="trial"]');check((await visible()).length===18,'trial filter '+width);await click('#clear-filters');
  await click('[data-game-id="game035"] .favorite-button');await page.reload({waitUntil:'networkidle'});
- check((await visible())[0]==='game035'&&(await visible()).length===26,'favorite priority leaves all cards '+width);
+ check((await visible())[0]==='game035'&&(await visible()).length===27,'favorite priority leaves all cards '+width);
  const favorites=await page.evaluate(()=>JSON.parse(localStorage.getItem('game100garage:favorites:v1')));check(kept.every(id=>favorites.includes(id)),'old favorite IDs retained '+width);
  const localBest=await page.locator('[data-game-id="game001"] .card-records dd').first().innerText();check(localBest==='42 点','personal BEST '+width);
  await page.waitForFunction(()=>document.querySelector('[data-game-id="game001"] dl>div:nth-child(2) dd')?.textContent==='100 点');

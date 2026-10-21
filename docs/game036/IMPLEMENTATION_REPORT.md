@@ -1,5 +1,7 @@
 # Game036 もちっと連鎖 — 実装報告（Claude Code、2026-10-21）
 
+> Codex統合追補（2026-10-21）：一覧・個人BEST・正式thumbnailと公開検証の現状は [公開準備報告](PUBLICATION_PREPARATION_20261021.md) を参照。以下はClaude受領時の実装記録。統合候補は未push・未公開で、今回の費用不明点判断待ち。
+
 状態：**ゲーム固有実装は完了・未統合**。Catalog / Vite / Portal / 記録 / サムネイル / CURRENT_STATUS は未変更（Codex統合担当の所有）。本番未公開。人間試遊は未実施。
 
 - branch：`claude/game036-mochi-drop`（base main `ac5304fa81361f592942c472c7fa04f668d3b4bc`）
