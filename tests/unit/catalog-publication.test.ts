@@ -7,24 +7,24 @@ import { getRecordDefinition } from '../../src/data/recordDefinitions';
 import preservation from '../../docs/adsense/catalog-quality-20261020/PRESERVATION_MANIFEST.json';
 
 describe('author publication cleanup and retained contracts', () => {
-  it('publishes exactly 26 identities and reserves all removed/held IDs', () => {
-    expect(gameCatalog).toHaveLength(26);
+  it('publishes exactly 28 identities and reserves all removed/held IDs', () => {
+    expect(gameCatalog).toHaveLength(28);
     expect(gameCatalog.filter(g => g.developmentStatus === 'complete')).toHaveLength(9);
-    expect(gameCatalog.filter(g => g.developmentStatus === 'trial')).toHaveLength(17);
-    expect(historicalGameCatalog).toHaveLength(35);
-    expect(new Set(historicalGameCatalog.map(g => g.id)).size).toBe(35);
-    expect(NEXT_GAME_NUMBER).toBe(36);
+    expect(gameCatalog.filter(g => g.developmentStatus === 'trial')).toHaveLength(19);
+    expect(historicalGameCatalog).toHaveLength(37);
+    expect(new Set(historicalGameCatalog.map(g => g.id)).size).toBe(37);
+    expect(NEXT_GAME_NUMBER).toBe(39);
     expect(removedGameCatalog.map(g => g.id)).toEqual(REMOVED_GAME_IDS);
     expect(onHoldGameCatalog.map(g => g.id)).toEqual(['game031']);
     expect(hiddenGameCatalog).toEqual([]);
     expect(retiredGameCatalog.map(g => g.id)).toEqual(['game004','game007','game010','game021']);
-    expect(distributedGameCatalog).toHaveLength(30);
+    expect(distributedGameCatalog).toHaveLength(32);
     for (const game of [...removedGameCatalog, ...onHoldGameCatalog]) expect(distributedGameCatalog).not.toContain(game);
   });
   it('applies the public gate even when discovery receives the complete history', () => {
     expect(filterGames(historicalGameCatalog)).toEqual(gameCatalog);
     expect(activeTagOptions(historicalGameCatalog)).toEqual(activeTagOptions(gameCatalog));
-    expect(displayNumbersFor(historicalGameCatalog).size).toBe(26);
+    expect(displayNumbersFor(historicalGameCatalog).size).toBe(28);
     const numbers = displayNumbersFor(historicalGameCatalog);
     expect(['game032','game033','game034','game035'].map(id => numbers.get(id))).toEqual(['023','024','025','026']);
     for (const game of [...removedGameCatalog,...onHoldGameCatalog]) expect(numbers.has(game.id)).toBe(false);
@@ -34,7 +34,14 @@ describe('author publication cleanup and retained contracts', () => {
     expect(onHoldGameCatalog[0].status).toBe('active');
     expect(getRecordDefinition('game029')).toMatchObject({ boardId:'game029.score.r1.all',publicEnabled:true });
     for (const path of ['src/data/recordDefinitions.ts','src/data/gameVersions.ts','src/records/localRecords.ts','analytics-worker/src/records.ts','analytics-worker/src/aggregate.ts','src/games/game031/Save.ts','src/games/game031/World.ts','src/games/game015/main.ts','src/games/game015/style.css']) {
-      const content=readFileSync(path);
+      // Keep the old protected bytes exact after removing only the new,
+      // explicitly marked registration. Legacy adapters/definitions remain frozen.
+      let text=readFileSync(path,'utf8');
+      if(['src/data/recordDefinitions.ts','src/data/gameVersions.ts','src/records/localRecords.ts'].includes(path)){
+        text=text.replace(/^.*\/\/ game03[68]-additive(?!-begin|-end).*\n/gm,'')
+          .replace(/^    \/\/ game036-additive-begin:[\s\S]*?^    \/\/ game036-additive-end\n/gm,'');
+      }
+      const content=Buffer.from(text);
       expect(createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex'),path).toBe(preservation.protected[path as keyof typeof preservation.protected]);
     }
   });

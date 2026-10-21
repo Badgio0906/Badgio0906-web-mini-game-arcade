@@ -1,0 +1,18 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain"><meta name="theme-color" content="#1d1b3a"><meta name="description" content="6万分の1。世界に約6万人いるVTuberのひとりとして、名前と目指すジャンルを決めてデビュー。所属や同期は選べない、自動で月日が進むVTuber活動シミュレーション。"><title>6万分の1 ～ONE IN 60,000～ | 100ガレ ～GAME100 GARAGE～</title><link rel="stylesheet" href="./arcade-navigation.css"><script src="./arcade-navigation.js"></script></head><body><div id="app" data-state="title"><header class="arcade-game-header"><a id="portal-link" class="arcade-portal-return" href="./index.html">← ゲーム一覧へ</a><nav><button id="mute" type="button">音 OFF</button><button id="pause" type="button">休憩</button></nav></header><main>
+<section id="setup" class="setup" hidden><p class="eyebrow">ONE IN 60,000</p><h1>6万分の1</h1><p class="lead">世界に約6万人いるVTuberの、ひとりになる。</p>
+<label class="field"><span>どんな名前のVTuberを目指す？</span><input id="name" maxlength="16" autocomplete="off" enterkeyhint="go" placeholder="例：星宮ひかり"></label>
+<fieldset class="field"><legend>目指すジャンル</legend><div id="genres" class="genres"></div></fieldset>
+<p class="note">ジャンルは方向性に影響しますが、その通りになるとは限りません。所属・本業・同期はランダムに決まります。</p>
+<div class="setup-actions"><button id="debut" type="button" class="primary">デビューする</button><button id="back" type="button">タイトルへ</button></div></section>
+<section id="stage" class="play" hidden>
+<div class="topbar"><strong id="when">デビュー前</strong><div class="speeds" role="group" aria-label="進む速さ"><button id="speed-pause" type="button" aria-label="停止">⏸</button><button id="speed-1" type="button">1×</button><button id="speed-2" type="button">2×</button><button id="speed-4" type="button">4×</button><button id="speed-next" type="button">次の決断まで</button></div><label class="auto"><input id="auto" type="checkbox">おまかせ</label></div>
+<div class="grid">
+<section id="profile" class="card profile"><div class="who"><div id="avatar" class="avatar"></div><div><h2 id="vt-name"></h2><p id="vt-tags"></p></div></div>
+<p class="subs"><span>登録者</span><strong id="subs">0</strong><span>人</span></p><p id="rank" class="rank"></p><p class="money"><span id="ccv"></span><span id="income"></span><span id="savings"></span></p>
+<div class="direction"><p><span>目指す</span><b id="aim"></b><span>いまの方向性</span><b id="dir"></b></p><div id="affinity" class="affinity" aria-hidden="true"></div></div></section>
+<section class="card"><h3>状態</h3><div id="stats" class="stats"></div><h3>今月の重点</h3><div id="focus" class="focus" role="group" aria-label="今月の重点"></div></section>
+<section class="card"><h3>活動地図 <small>1マス＝1ヶ月・12年</small></h3><div id="map" class="map" aria-hidden="true"></div><h3>同期の3人</h3><ul id="peers" class="peers"></ul></section>
+<section class="card logcard"><h3>活動の記録</h3><ol id="log" class="log" aria-live="polite"></ol></section>
+</div></section>
+<section id="card" class="final" hidden><div id="card-body"></div><div id="card-actions" class="card-actions"></div></section>
+</main><dialog id="menu" aria-labelledby="menu-title"></dialog><footer>100ガレ ～GAME100 GARAGE～ · ONE IN 60,000（フィクション）</footer></div><script type="module" src="/src/games/game038/main.ts"></script></body></html>

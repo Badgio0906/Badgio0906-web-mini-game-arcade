@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 afterEach(()=>vi.unstubAllGlobals());
 describe('final three independent releases',()=>{
  it('appends 033–035 as trial without changing the author completion list or old routes',()=>{
-  expect([gameCatalog.length,hiddenGameCatalog.length,retiredGameCatalog.length,historicalGameCatalog.length]).toEqual([26,0,4,35]);
+  expect([gameCatalog.length,hiddenGameCatalog.length,retiredGameCatalog.length,historicalGameCatalog.length]).toEqual([28,0,4,37]);
   for(const [i,id]of ['game033','game034','game035'].entries()){
    expect(gameCatalog.find(g=>g.id===id)).toMatchObject({developmentStatus:'trial',releaseOrder:33+i,route:`./${id}.html`});
    expect(gameDisplayNumbers.get(id)).toBe(String(24+i).padStart(3,'0'));

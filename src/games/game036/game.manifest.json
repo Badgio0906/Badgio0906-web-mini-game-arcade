@@ -1,0 +1,33 @@
+{
+  "id": "game036",
+  "title": "もちっと連鎖 ～MOCHI DROP～",
+  "titleEn": "MOCHI DROP",
+  "tagline": "落として、つないで、ぽぽぽぽん。",
+  "genre": "falling-pair chain puzzle (endless)",
+  "coreMechanic": "6x12 well (+1 hidden row); falling pairs of 4 mochi flavours; 4+ orthogonally connected same flavour pop; gravity cascades form chains; landing preview shows the chain count a placement will start; every 32 popped mochi put a konpeito star in the next pair that clears its landing flavour board-wide",
+  "skillAxes": [
+    "placement",
+    "chain setup",
+    "stack height management"
+  ],
+  "runSecondsDesignTarget": 240,
+  "timeLimit": null,
+  "inputs": {
+    "keyboard": "Left/Right move (OS repeat); Up or X rotate clockwise; Z rotate counter-clockwise; Down hold soft drop; Space/Enter hard drop; Escape pause; R retry on result",
+    "touch": "horizontal slide on the board moves the pair column by column; tap rotates clockwise; downward flick hard drops; downward hold-drag soft drops",
+    "pad": "on-screen left/right (hold repeat 210ms then 70ms), rotate left/right, hard drop; all >=44 CSS px",
+    "pause": "button/Escape; blur/hidden auto-pause; explicit resume"
+  },
+  "practice": "Fixed staircase board and a pink pair; any placement whose preview shows 2連鎖 completes it; a non-chain placement resets the board; no score, BEST, run events or save",
+  "rules": "Spawn at column 3 row 1; game over when the spawn cell is covered after resolution; hidden row never pops except by star; gravity max(160, 900*0.88^(level-1)) ms, level = 1 + floor(popped/40) up to 15; grounded lock grace max(420ms, gravity); soft drop 34ms per row and locks immediately when grounded; first two pairs use three flavours",
+  "scoring": "Each resolution step adds popped*10*chain*(chain+1)/2 (x1, x3, x6, x10, x15...); star steps score the same way and do not refill the gauge; all clear +2000; cap 99,999,999",
+  "save": "web-mini-arcade:v1:game036:state; best, bestChain, runs and the full in-progress production state including RNG seed and mid-chain timers; practice never saved; denied writes stay memory-only",
+  "creditMode": "free",
+  "ads": "none in game logic",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "mochi-canvas-1",
+  "telemetry": "game_open/run_start/run_end/retry/pause/resume/quit/score/best_update/return_to_portal plus specific_game_events big_chain (peak chain >=4, once per resolution); remote disabled pending root registration; training excluded",
+  "art": "Procedural Canvas 2D mochi, konpeito star, particles and backdrop authored in code; no generated or external image assets",
+  "humanReview": "author/physical-device/audio-feel review pending"
+}

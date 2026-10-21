@@ -25,6 +25,7 @@ const scalarKeys: Readonly<Record<string,string>> = {
   game019:prefix('game019')+'bestHeightDm', game020:prefix('game020')+'clearedBoards',
 };
 const jsonKeys: Readonly<Record<string,string>> = {
+  game036:'state', // game036-additive
   game021:'state',game022:'session',game023:'question',game024:'state-shifting-v2',game025:'snapshot',
   game026:'snapshot',game027:'state',game028:'state',game029:'save',game030:'snapshot',game032:'best:standard:r1',game035:'state',
 };
@@ -112,6 +113,14 @@ function readJSON(gameId: string, backend: Storage): LocalRecord {
     case 'game027':value=object(stats)?stats.games:undefined;break;
     case 'game028':value=object(stats)?stats.bestRally:undefined;break;
     case 'game029':value=data.best;break;
+    // game036-additive-begin: read finalized metadata only; never load the puzzle.
+    case 'game036':{
+      if(data.game_id!=='game036'||data.rules_version!=='1')return old();
+      if(!natural(data.runs,1000000000))return bad();
+      if(data.runs===0)return missing();
+      value=data.best;break;
+    }
+    // game036-additive-end
     case 'game035':{
       if(data.game_id!=='game035'||data.rules_version!=='1')return old();
       value=data.best;break;
