@@ -1,0 +1,35 @@
+
+ RUN  v3.2.7 /workspace/arcade-game015-mobile
+
+ ❯ tests/unit/catalog-publication.test.ts (5 tests | 1 failed) 18ms
+   ✓ author publication cleanup and retained contracts > publishes exactly 28 identities and reserves all removed/held IDs 5ms
+   ✓ author publication cleanup and retained contracts > applies the public gate even when discovery receives the complete history 2ms
+   × author publication cleanup and retained contracts > keeps legacy API status, IDs, boards, saves and versions intact 8ms
+     → src/games/game015/main.ts: expected '2e47c8d8f300ead78348abc11750537f4c9ec…' to be 'b5c78f463a036a1ca981e19526de435ddac18…' // Object.is equality
+   ✓ author publication cleanup and retained contracts > retains former favorites without showing or deleting their history 0ms
+   ✓ author publication cleanup and retained contracts > removes dedicated HTML/source while keeping the Game031 development entry 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/catalog-publication.test.ts > author publication cleanup and retained contracts > keeps legacy API status, IDs, boards, saves and versions intact
+AssertionError: src/games/game015/main.ts: expected '2e47c8d8f300ead78348abc11750537f4c9ec…' to be 'b5c78f463a036a1ca981e19526de435ddac18…' // Object.is equality
+
+Expected: "b5c78f463a036a1ca981e19526de435ddac18ea9"
+Received: "2e47c8d8f300ead78348abc11750537f4c9ecbdf"
+
+ ❯ tests/unit/catalog-publication.test.ts:45:104
+     43|       }
+     44|       const content=Buffer.from(text);
+     45|       expect(createHash('sha1').update(`blob ${content.length}\0`).upd…
+       |                                                                                                        ^
+     46|     }
+     47|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  22:56:51
+   Duration  314ms (transform 107ms, setup 0ms, collect 133ms, tests 18ms, environment 0ms, prepare 53ms)
+

@@ -12,7 +12,7 @@
   #arcade-training p { font-size:13px; line-height:1.5; margin:6px 0; }
   #arcade-training .training-success { padding:10px 8px; }
   #arcade-training .training-success strong { font-size:28px; }
-  #arcade-training[data-phase='practice'] {
+  #arcade-training[open][data-phase='practice'] {
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(210px,.9fr);
     column-gap:14px;

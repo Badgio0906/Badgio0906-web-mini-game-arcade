@@ -1,0 +1,283 @@
+
+ RUN  v3.2.7 /workspace/arcade-game036-release
+
+ ❯ tests/unit/game036-model.test.ts (14 tests | 2 failed) 74ms
+   ✓ Game036 mochi drop rules > spawns at the top centre with a two-piece preview and is reproducible from the seed 3ms
+   ✓ Game036 mochi drop rules > moves inside walls, rotates with wall kicks and quick-turns in a one-column well 1ms
+   ✓ Game036 mochi drop rules > gravity drops one row per interval, waits a short lock grace and soft drop locks at once when grounded 1ms
+   ✓ Game036 mochi drop rules > splits a horizontal pair on uneven ground and pops orthogonal groups of four only below the hidden row 1ms
+   ✓ Game036 mochi drop rules > practice staircase becomes a two-chain from the shown pink pair and the preview says so first 1ms
+   ✓ Game036 mochi drop rules > scores pops by triangular chain power and grants an all-clear bonus 0ms
+   ✓ Game036 mochi drop rules > fills the konpeito gauge, puts a star in the next pair and the star clears its whole flavour 1ms
+   ✓ Game036 mochi drop rules > resolves cascades synchronously the same way as the timed steps 0ms
+   ✓ Game036 mochi drop rules > ends only when the spawn cell is covered and stays bounded over long random play 50ms
+   ✓ Game036 save > round-trips a mid-chain board and continues identically 1ms
+   ✓ Game036 save > rejects practice, finished, malformed or inconsistent snapshots 0ms
+   × Game036 save > rejects a falling pair whose satellite is outside the board or overlaps a settled mochi 8ms
+     → expected { game_id: 'game036', …(7) } to be null
+   × Game036 save > recovers valid records when only the unfinished snapshot is corrupt, without restoring a run 3ms
+     → expected { game_id: 'game036', …(7) } to deeply equal { game_id: 'game036', …(7) }
+   ✓ Game036 save > keeps records in memory when storage writes are denied 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game036-model.test.ts > Game036 save > rejects a falling pair whose satellite is outside the board or overlaps a settled mochi
+AssertionError: expected { game_id: 'game036', …(7) } to be null
+
+- Expected: 
+null
+
++ Received: 
+{
+  "best": 0,
+  "bestChain": 0,
+  "game_id": "game036",
+  "reported": false,
+  "rules_version": "1",
+  "runId": null,
+  "runs": 0,
+  "snapshot": {
+    "allClears": 0,
+    "board": [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+    ],
+    "chain": 0,
+    "drops": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ],
+    "events": [],
+    "gauge": 0,
+    "gravity": 0,
+    "level": 1,
+    "maxChain": 0,
+    "phase": "drop",
+    "piece": {
+      "a": 0,
+      "b": 1,
+      "rot": 1,
+      "x": 5,
+      "y": 12,
+    },
+    "pieces": 0,
+    "popped": 0,
+    "popping": [],
+    "practice": false,
+    "queue": [
+      [
+        1,
+        2,
+      ],
+      [
+        0,
+        0,
+      ],
+    ],
+    "rules_version": "1",
+    "score": 0,
+    "seconds": 0,
+    "seed": 2399460298,
+    "soft": false,
+    "stars": 0,
+    "timer": 0,
+  },
+}
+
+ ❯ tests/unit/game036-model.test.ts:27:71
+     25|  it('rejects a falling pair whose satellite is outside the board or ov…
+     26|   const edge=createMochi(false,12);edge.piece={x:COLS-1,y:ROWS-1,rot:1…
+     27|   expect(validateSave({...blankSave(),snapshot:edge,reported:false})).…
+       |                                                                       ^
+     28|   const collision=createMochi(false,13);collision.board[index(2,0)]=1;
+     29|   expect(validateSave({...blankSave(),snapshot:collision,reported:fals…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/game036-model.test.ts > Game036 save > recovers valid records when only the unfinished snapshot is corrupt, without restoring a run
+AssertionError: expected { game_id: 'game036', …(7) } to deeply equal { game_id: 'game036', …(7) }
+
+- Expected
++ Received
+
+  {
+-   "best": 4321,
+-   "bestChain": 5,
++   "best": 0,
++   "bestChain": 0,
+    "game_id": "game036",
+    "reported": true,
+    "rules_version": "1",
+    "runId": null,
+-   "runs": 7,
++   "runs": 0,
+    "snapshot": null,
+  }
+
+ ❯ tests/unit/game036-model.test.ts:34:24
+     32|   const broken={...blankSave(),best:4321,bestChain:5,runs:7,reported:f…
+     33|   const store=new MochiStore({getItem:()=>JSON.stringify(broken),setIt…
+     34|   expect(store.read()).toEqual({...blankSave(),best:4321,bestChain:5,r…
+       |                        ^
+     35|   const foreign=new MochiStore({getItem:()=>JSON.stringify({...broken,…
+     36|   expect(foreign.read()).toEqual(blankSave());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 12 passed (14)
+   Start at  14:07:36
+   Duration  384ms (transform 79ms, setup 0ms, collect 90ms, tests 74ms, environment 0ms, prepare 70ms)

@@ -4,14 +4,14 @@ import { filterCatalog, gameCatalog, historicalGameCatalog, retiredGameCatalog, 
 
 describe('retired IDs remain historical, never active or reused', () => {
   it('exposes the active cards with original IDs and releaseOrder', () => {
-    expect(gameCatalog).toHaveLength(historicalGameCatalog.length - 8);
+    expect(gameCatalog).toHaveLength(historicalGameCatalog.length - 9);
     expect(gameCatalog.some(game => game.id === 'game010')).toBe(false);
     expect(filterCatalog(['meeting'])).toEqual([]);
     expect(gameCatalog.find(game => game.id === 'game011')?.releaseOrder).toBe(11);
     expect(gameCatalog.find(game => game.id === 'game020')?.id).toBe('game020');
     expect(gameCatalog.find(game => game.id === 'game020')?.releaseOrder).toBe(20);
-    expect(NEXT_GAME_NUMBER).toBe(historicalGameCatalog.length + 1);
-    expect(historicalGameCatalog.map(game => game.releaseOrder)).toEqual(Array.from({length: NEXT_GAME_NUMBER - 1}, (_, i) => i + 1));
+    expect(NEXT_GAME_NUMBER).toBe(Math.max(...historicalGameCatalog.map(game => game.releaseOrder)) + 1);
+    expect(historicalGameCatalog.map(game => game.releaseOrder)).toEqual([...Array.from({length:36}, (_,i)=>i+1),38]);
     expect(retiredGameCatalog.map(game => [game.id, game.status, game.releaseOrder])).toEqual([['game004', 'retired', 4], ['game007', 'retired', 7], ['game010', 'retired', 10], ['game021', 'retired', 21]]);
   });
   it('keeps the bookmark route lightweight and never starts the retired engine', () => {

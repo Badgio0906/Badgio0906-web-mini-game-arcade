@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "game038",
+  "title": "6万分の1 ～ONE IN 60,000～",
+  "titleJa": "6万分の1",
+  "titleEn": "ONE IN 60,000",
+  "tagline": "世界に約6万人いるVTuberの、ひとりになる。",
+  "tags": [
+    {
+      "id": "decision",
+      "label": "判断"
+    },
+    {
+      "id": "chill",
+      "label": "チル"
+    },
+    {
+      "id": "office",
+      "label": "お仕事"
+    }
+  ],
+  "genre": "VTuber career life simulation (auto-advancing months with decisions)",
+  "controls": {
+    "summary": "名前とジャンルを選び、速度・重点・決断をクリック/タップで選ぶ",
+    "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
+  },
+  "expectedRunSeconds": 300,
+  "expectedRunSecondsBasis": "design-hypothesis; not human measured",
+  "difficulty": {
+    "label": "標準",
+    "basis": "design assessment; human difficulty feedback pending"
+  },
+  "mainMechanics": "ランダムな出発条件で月日を進め、活動の方向性と終わり方を見届ける",
+  "description": "ランダムな出発条件で月日を進め、活動の方向性と終わり方を見届ける",
+  "failureModes": "卒業・引退・転生など、または12年経過",
+  "route": "./game038.html",
+  "thumbnail": "./assets/portal/game038.webp",
+  "design": {
+    "thumbnailDescription": "6万分の1 ～ONE IN 60,000～の実プレイ画面。夜色の活動ダッシュボード、状態バー、月ごとの活動地図、活動の記録カード",
+    "majorVisuals": "夜色の活動ダッシュボード、状態バー、月ごとの活動地図、活動の記録カード",
+    "directionNotes": "Keep each game identity; code and assets determine collision and input. Thumbnail is captured from gameplay, not a fictional composition.",
+    "referenceImageUse": "No new user reference for this game in this task.",
+    "uiPolicy": "Responsive native input; portal shows four primary tag badges; explanation/practice remain optional."
+  },
+  "telemetryCoverage": "native event schema; fields and coverage vary by game; unreported values stay unknown",
+  "sourceEvidence": {
+    "catalog": "src/data/gameCatalog.ts",
+    "manifest": "src/games/game038/game.manifest.json",
+    "details": "src/games/game038/"
+  },
+  "humanEvaluation": "pending; do not infer fun or real-device comfort from synthetic QA",
+  "currentManifest": {
+    "id": "game038",
+    "title": "6万分の1 ～ONE IN 60,000～",
+    "titleEn": "ONE IN 60,000",
+    "tagline": "世界に約6万人いるVTuberの、ひとりになる。",
+    "genre": "VTuber career life simulation (auto-advancing months with decisions)",
+    "inspiration": "Follows the basic structure of the browser life simulation 『80億分の1』 (random birth, auto-advancing time with speed control, four status values, focus, decisions, milestone questions, auto mode, final record card, people born at the same time, one-cell-per-period map). Independent fan-made adaptation; no code, text or assets from the original are used.",
+    "coreMechanic": "Free-typed VTuber name + chosen aim genre; agency/job/language region/budget/streaming experience/three debut peers are random; one month per tick up to 144 months; hidden per-genre aptitude and audience reception move the visible direction away from the aim in roughly a quarter of auto-played careers; decisions, milestone one-line questions, retirement prompts and life-change/health/contract endings",
+    "skillAxes": [
+      "pacing (focus vs. health)",
+      "decision trade-offs",
+      "following or resisting the audience's direction"
+    ],
+    "runSecondsDesignTarget": 300,
+    "timeLimit": null,
+    "inputs": {
+      "setup": "text input (16 chars, control/angle brackets stripped) and radio genre cards; Enter debuts",
+      "play": "speed buttons pause/1x/2x/4x/next decision (1400/700/350/70 ms per month); おまかせ checkbox; six focus buttons; Space toggles pause, Escape opens the pause dialog",
+      "decisions": "dialog buttons; question/farewell text inputs (60 chars, may be empty, Enter submits)",
+      "pause": "button/Escape; blur/hidden auto-pause; explicit resume"
+    },
+    "practice": "Fixed seed, indie student 練習さん aiming 雑談; six months with normal events and decisions; no questions, no hazard endings, no save/history/run events",
+    "model": "Monthly growth = (subs+20)*rate*luck + agency inflow*luck - subs*2.6% churn, rate from skill/bond/focus/genre fit/job/joy with log saturation; viral spikes; monetization at 1,000 subscribers; ranking among 60,000 from an assumed share curve (≥100: 58%, ≥1,000: 24%, ≥10,000: 6.5%, ≥100,000: 1.2%, ≥1,000,000: 0.09%) that is a game premise, not measured data",
+    "save": "web-mini-arcade:v1:game038:state; in-progress career (including pending decision), last 10 record summaries, best rank, runs, last name/aim; practice never saved; denied writes stay memory-only",
+    "creditMode": "free",
+    "ads": "none in game logic",
+    "revision": 1,
+    "rules_version": "1",
+    "presentation_version": "night-stream-dom-1",
+    "telemetry": "game_open/run_start/run_end/retry-less restart via setup/pause/resume/quit/score/best_update(rank)/return_to_portal; run_end carries aim, direction, drifted, months, peak_subs, rank, outcome; remote disabled pending root registration; training excluded",
+    "art": "DOM/CSS only: gradient avatar coloured from the name hash with the first character, emoji genre markers; no generated or external images; no real VTuber, agency or platform names",
+    "humanReview": "author/physical-device/feel review pending"
+  }
+}

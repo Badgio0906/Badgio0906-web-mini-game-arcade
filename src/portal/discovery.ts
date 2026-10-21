@@ -1,4 +1,4 @@
-import type { GameCatalogEntry } from '../data/gameCatalog';
+import { isPublishedGame, type GameCatalogEntry } from '../data/gameCatalog';
 import { tagCatalog } from '../data/tagCatalog';
 
 export const FAVORITES_KEY = 'game100garage:favorites:v1';
@@ -29,5 +29,5 @@ export function prioritizeFavorites(games: readonly GameCatalogEntry[], favorite
 }
 
 export function activeTagOptions(games: readonly GameCatalogEntry[]) {
-  return tagCatalog.map(tag => ({ ...tag, count: games.filter(game => game.status === 'active' && game.tags.some(t => t.id === tag.id)).length })).filter(tag => tag.count > 0);
+  return tagCatalog.map(tag => ({ ...tag, count: games.filter(game => isPublishedGame(game) && game.tags.some(t => t.id === tag.id)).length })).filter(tag => tag.count > 0);
 }

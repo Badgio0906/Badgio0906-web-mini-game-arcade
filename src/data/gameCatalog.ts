@@ -1,10 +1,13 @@
 import { tagsFor, type GameTag, type TagId } from './tagCatalog.ts';
 export type GameDevelopmentStatus = 'trial' | 'complete';
+export type GamePublicationState = 'published' | 'unlisted' | 'retired' | 'removed' | 'on-hold';
 export type TagMatchMode = 'or' | 'and';
 export const developmentStatusLabels: Readonly<Record<GameDevelopmentStatus, string>> = Object.freeze({ trial: '試遊版', complete: '完成版' });
 export interface GameCatalogEntry {
   readonly id: string;
+  /** Legacy Analytics/API metadata. Public visibility is publicationState. */
   readonly status: 'active' | 'hidden' | 'retired';
+  readonly publicationState: GamePublicationState;
   readonly developmentStatus: GameDevelopmentStatus;
   readonly titleJa: string;
   readonly titleEn: string;
@@ -79,9 +82,11 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game033: ['timing','score-attack','chill','precision'],
   game034: ['physics','puzzle','architecture','decision'],
   game035: ['physics','precision','short','score-attack'],
+  game036: ['puzzle','fall','chill','score-attack'],
+  game038: ['decision','chill','office'],
 };
 
-const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
 // Add an override only after the author explicitly declares completion following
 // their own playtest. Publication, CI/QA success and positive feedback do not qualify.
@@ -95,6 +100,16 @@ const publicationStatusByGame: Readonly<Record<string, 'hidden' | 'retired'>> = 
   game004: 'retired', game007: 'retired', game010: 'retired', game021: 'retired',
   game026: 'hidden', game028: 'hidden', game029: 'hidden', game030: 'hidden',
 });
+/** Permanently removed identities remain reserved in the historical catalog. */
+export const REMOVED_GAME_IDS = Object.freeze(['game026', 'game028', 'game029', 'game030'] as const);
+const publicationOverrides: Readonly<Partial<Record<string, GamePublicationState>>> = Object.freeze({
+  game026: 'removed', game028: 'removed', game029: 'removed', game030: 'removed',
+  game031: 'on-hold',
+});
+function publicationFor(id: string): GamePublicationState {
+  return publicationOverrides[id] ?? (publicationStatusByGame[id] === 'retired' ? 'retired' : publicationStatusByGame[id] === 'hidden' ? 'unlisted' : 'published');
+}
+export function isPublishedGame(game: GameCatalogEntry): boolean { return game.status === 'active' && game.publicationState === 'published'; }
 
 export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze([...originalGames, ...legacyGames,
   { id: 'game015', titleJa: '落下キング', titleEn: 'FALL KING', tagline: '上を目指すな。うまく落ちろ。', thumbnail: './assets/portal/game015.webp', route: './game015.html', releaseOrder: 15 },
@@ -118,17 +133,24 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   { id: 'game033', titleJa: '夜空に、ひと発。', titleEn: 'FIREWORK MAKER', tagline: '押して、離して。夜空に重ねる、100秒の花火大会。', thumbnail: './assets/portal/game033.webp', route: './game033.html', releaseOrder: 33 },
   { id: 'game034', titleJa: 'ちいさな解体屋', titleEn: 'DEMOLITION DAY', tagline: '支えを選んで、ころんと解体。8つの玩具をきれいに崩そう。', thumbnail: './assets/portal/game034.webp', route: './game034.html', releaseOrder: 34 },
   { id: 'game035', titleJa: '1ミリカーリング', titleEn: 'MINI CURLING', tagline: '寄せる。弾く。次の一投を、守る。', thumbnail: './assets/portal/game035.webp', route: './game035.html', releaseOrder: 35 },
-].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+  { id: 'game036', titleJa: 'もちっと連鎖 ～MOCHI DROP～', titleEn: 'MOCHI DROP', tagline: '落として、つないで、ぽぽぽぽん。', thumbnail: './assets/portal/game036.webp', route: './game036.html', releaseOrder: 36 },
+  { id: 'game038', titleJa: '6万分の1 ～ONE IN 60,000～', titleEn: 'ONE IN 60,000', tagline: '世界に約6万人いるVTuberの、ひとりになる。', thumbnail: './assets/portal/game038.webp', route: './game038.html', releaseOrder: 38 },
+].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, publicationState: publicationFor(game.id), developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
-export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'active'));
-export const hiddenGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'hidden'));
-export const retiredGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.status === 'retired'));
+export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(isPublishedGame));
+export const publishedGameCatalog = gameCatalog;
+export const hiddenGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.publicationState === 'unlisted'));
+export const retiredGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.publicationState === 'retired'));
+export const removedGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.publicationState === 'removed'));
+export const onHoldGameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(game => game.publicationState === 'on-hold'));
+/** Retired notices and future unlisted pages keep their existing direct URLs. */
+export const distributedGameCatalog = Object.freeze(historicalGameCatalog.filter(game => !['removed', 'on-hold'].includes(game.publicationState)));
 export const NEXT_GAME_NUMBER = Math.max(...historicalGameCatalog.map(game => Number(game.id.slice(4)))) + 1;
 
 /** State selection is independent of normal-tag OR/AND; retirement always wins. */
 export function filterGames(catalog: readonly GameCatalogEntry[], tagIds: readonly TagId[] = [], mode: TagMatchMode = 'and', statuses: readonly GameDevelopmentStatus[] = []): readonly GameCatalogEntry[] {
-  return catalog.filter(game => game.status === 'active'
+  return catalog.filter(game => isPublishedGame(game)
     && (!statuses.length || statuses.includes(game.developmentStatus))
     && (!tagIds.length || (mode === 'or'
       ? tagIds.some(id => game.tags.some(tag => tag.id === id))
@@ -142,7 +164,7 @@ export function filterCatalog(tagIds: readonly TagId[] = [], mode: TagMatchMode 
 
 /** Display identity is derived once from the full active release order, never filtered/sorted cards. */
 export function displayNumbersFor(catalog: readonly GameCatalogEntry[]): ReadonlyMap<string, string> {
-  return new Map(catalog.filter(game => game.status === 'active')
+  return new Map(catalog.filter(isPublishedGame)
     .slice().sort((a, b) => a.releaseOrder - b.releaseOrder)
     .map((game, index) => [game.id, String(index + 1).padStart(3, '0')]));
 }

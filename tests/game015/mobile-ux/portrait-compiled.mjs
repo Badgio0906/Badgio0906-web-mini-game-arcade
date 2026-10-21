@@ -51,7 +51,7 @@ try{for(const [width,height] of [[390,844],[375,667],[320,568],[844,390],[932,43
       await p.locator('#tutorial-again-button').tap();await p.locator('#tutorial-close-button').tap();
       await p.setViewportSize({width:844,height:390});
       await p.locator('#portrait-notice a').tap();await p.waitForURL('**/index.html');
-      check(await p.locator('.game-card').count()===27,'notice back link reaches portal');
+      check(await p.locator('.game-card').count()===28,'notice back link reaches portal');
       for(const id of ['game005','game016']){
         await p.goto(base+id+'.html',{waitUntil:'networkidle'});
         check(await p.locator('#portrait-notice').count()===0,'no portrait gate in '+id);

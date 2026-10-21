@@ -7,7 +7,7 @@ import { createOnboarding } from '../../arcade/onboarding';
 import { createFallGame, paintFallPractice } from './FallBoard';
 import { FallAudio } from './audio';
 import type { FallEvent, FallResult, FallSnapshot } from './types';
-import { watchPhoneLandscape } from './portrait';
+import { guardRotationActivation, watchPhoneLandscape } from './portrait';
 const recordSession = createGameRecordSession('game015');
 
 type Screen = 'title' | 'playing' | 'paused' | 'ending' | 'result';
@@ -23,6 +23,7 @@ let state: Screen = 'title', best = storage.readNumber('bestR04', 0), runId = ''
 let milestoneUntil = 0, milestoneMessage = '', hazardNoticeUntil = 0, hazardMessage = '';
 let result: FallResult | null = null, timer: ReturnType<typeof window.setTimeout> | undefined;
 let portraitBlocked = false, resultDue = 0, resultRemaining = 400;
+const invalidateRotationKeys = guardRotationActivation(abort.signal);
 let orientationFocus: HTMLElement | null = null;
 const portraitNotice = document.createElement('section'); portraitNotice.id = 'portrait-notice'; portraitNotice.hidden = true;
 portraitNotice.setAttribute('aria-labelledby', 'portrait-heading'); portraitNotice.tabIndex = -1;
@@ -156,6 +157,7 @@ window.addEventListener('pagehide', e => { if (e.persisted) { if (state === 'pla
 telemetry.trackEvent('game_open'); screen('title');
 const stopOrientation = watchPhoneLandscape(blocked => {
   if (portraitBlocked === blocked) return;
+  invalidateRotationKeys();
   // Neither a held game button nor a held tutorial/menu gesture may cross rotation.
   screenEpoch++;
   if (blocked) {

@@ -1,0 +1,14 @@
+import {chromium} from '@playwright/test';
+import {mkdir,writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const base=process.env.QA_BASE||'http://127.0.0.1:4965/',out=process.env.QA_OUT;if(!out)throw Error('QA_OUT required');await mkdir(out,{recursive:true});
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),r={};
+try{const c=await b.newContext({viewport:{width:1440,height:900}});await c.route('**/*',x=>x.request().url().startsWith(base)?x.continue():x.abort());const p=await c.newPage();await p.goto(base+'game033.html',{waitUntil:'networkidle'});
+const h=p.locator('#analytics-settings-host');await h.locator('#grant').focus();await p.keyboard.press('Tab');
+assert.equal(await h.evaluate(e=>e.shadowRoot.activeElement?.id),'deny');await p.keyboard.press('Enter');assert.equal(await p.evaluate(()=>localStorage.getItem('game100garage:analytics-consent:v1')),'denied');
+assert.equal(await p.locator('#app').getAttribute('data-state'),'title');assert.equal(await p.locator('#launch').isDisabled(),true);r.tabEnterConsent=true;
+await h.locator('#settings').focus();await p.keyboard.press('Enter');await h.locator('#grant').focus();await p.keyboard.press('Escape');assert.equal(await p.locator('#app').getAttribute('data-state'),'title');await h.locator('#later').click();
+await p.locator('[data-action="how"]').click();await p.keyboard.press('Escape');assert.equal(await p.locator('#menu').evaluate(e=>e.open&&e.matches(':modal')),true);await p.locator('[data-action="title"]').click();
+await p.locator('[data-action="practice"]').click();await p.locator('#pause').click();assert.equal(await p.locator('#app').getAttribute('data-state'),'paused');await p.keyboard.press('Escape');assert.equal(await p.locator('#app').getAttribute('data-state'),'playing');assert.equal(await p.locator('#menu').isVisible(),false);r.escapeModalSemantics=true;
+await p.locator('#help').click();await p.keyboard.press('Escape');assert.equal(await p.locator('#app').getAttribute('data-state'),'playing');r.helpEscapeResume=true;r.pass=true;await c.close();
+}catch(e){r.pass=false;r.failure=e.message;}finally{await b.close();await writeFile(out+'/REPORT.json',JSON.stringify(r,null,2)+'\n');}console.log(JSON.stringify(r));if(!r.pass)process.exitCode=1;

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { PHONE_LANDSCAPE, watchPhoneLandscape } from '../../src/games/game015/portrait';
+import { guardRotationActivation, PHONE_LANDSCAPE, watchPhoneLandscape } from '../../src/games/game015/portrait';
 
 describe('Game015 portrait gate media lifecycle', () => {
   afterEach(() => vi.unstubAllGlobals());
@@ -20,5 +20,25 @@ describe('Game015 portrait gate media lifecycle', () => {
     vi.stubGlobal('window', { matchMedia: () => Object.assign(new EventTarget(), { matches: false }) });
     const change = vi.fn(), stop = watchPhoneLandscape(change);
     expect(change).toHaveBeenCalledExactlyOnceWith(false); stop();
+  });
+});
+
+describe('Game015 keyboard gestures spanning rotation', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  it.each(['Enter', ' '])('requires release before a new %j activation, then cleans up', key => {
+    const target = new EventTarget(), abort = new AbortController();
+    vi.stubGlobal('window', target);
+    const rotate = guardRotationActivation(abort.signal);
+    const send = (type: string, repeat = false): Event => {
+      const e = Object.assign(new Event(type, { cancelable: true }), { key, repeat }); target.dispatchEvent(e); return e;
+    };
+    expect(send('keydown').defaultPrevented).toBe(false);
+    rotate(); rotate();
+    expect(send('keydown', true).defaultPrevented).toBe(true);
+    expect(send('keyup').defaultPrevented).toBe(true);
+    expect(send('keydown').defaultPrevented).toBe(false);
+    expect(send('keyup').defaultPrevented).toBe(false);
+    expect(send('keydown').defaultPrevented).toBe(false); rotate();
+    abort.abort(); expect(send('keyup').defaultPrevented).toBe(false);
   });
 });
