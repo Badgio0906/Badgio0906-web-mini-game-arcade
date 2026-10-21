@@ -1,3 +1,7 @@
+# 最新のCodex統合工程
+
+2026-10-22 JST：game038/releaseOrder38を正式採用。作者の明示承認によりgame036と同時公開。統合担当Codex、最新状態と再開方法は [PUBLICATION_20261022](../../game038/PUBLICATION_20261022.md) およびPR17へ記録。以下は原作者45f7f1a受領時の未統合履歴。
+
 # TASK HANDOFF — game038-one-in-60000
 
 ## 状態と参照

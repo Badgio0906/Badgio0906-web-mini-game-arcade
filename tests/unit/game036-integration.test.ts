@@ -9,7 +9,7 @@ afterEach(()=>vi.unstubAllGlobals());
 describe('Game036 publication and local-only records',()=>{
  it('publishes the next stable ID as a trial without renumbering existing games',()=>{
   expect(gameCatalog.find(g=>g.id==='game036')).toMatchObject({route:'./game036.html',publicationState:'published',developmentStatus:'trial',releaseOrder:36,difficulty:'standard'});
-  expect(gameDisplayNumbers.get('game035')).toBe('026');expect(gameDisplayNumbers.get('game036')).toBe('027');expect(NEXT_GAME_NUMBER).toBe(37);
+  expect(gameDisplayNumbers.get('game035')).toBe('026');expect(gameDisplayNumbers.get('game036')).toBe('027');expect(NEXT_GAME_NUMBER).toBe(39);
  });
  it('registers versions and personal BEST while leaving production transport closed',()=>{
   expect(gameVersions.game036).toEqual({rules_version:'1',presentation_version:'mochi-canvas-1'});

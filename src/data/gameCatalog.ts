@@ -83,9 +83,10 @@ const gameTagIds: Readonly<Record<string, readonly TagId[]>> = {
   game034: ['physics','puzzle','architecture','decision'],
   game035: ['physics','precision','short','score-attack'],
   game036: ['puzzle','fall','chill','score-attack'],
+  game038: ['decision','chill','office'],
 };
 
-const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
+const difficultyBands = ['standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','rising','standard','standard','rising','hard','rising','rising','standard','hard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard','standard'] as const;
 
 // Add an override only after the author explicitly declares completion following
 // their own playtest. Publication, CI/QA success and positive feedback do not qualify.
@@ -133,6 +134,7 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   { id: 'game034', titleJa: 'ちいさな解体屋', titleEn: 'DEMOLITION DAY', tagline: '支えを選んで、ころんと解体。8つの玩具をきれいに崩そう。', thumbnail: './assets/portal/game034.webp', route: './game034.html', releaseOrder: 34 },
   { id: 'game035', titleJa: '1ミリカーリング', titleEn: 'MINI CURLING', tagline: '寄せる。弾く。次の一投を、守る。', thumbnail: './assets/portal/game035.webp', route: './game035.html', releaseOrder: 35 },
   { id: 'game036', titleJa: 'もちっと連鎖 ～MOCHI DROP～', titleEn: 'MOCHI DROP', tagline: '落として、つないで、ぽぽぽぽん。', thumbnail: './assets/portal/game036.webp', route: './game036.html', releaseOrder: 36 },
+  { id: 'game038', titleJa: '6万分の1 ～ONE IN 60,000～', titleEn: 'ONE IN 60,000', tagline: '世界に約6万人いるVTuberの、ひとりになる。', thumbnail: './assets/portal/game038.webp', route: './game038.html', releaseOrder: 38 },
 ].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, publicationState: publicationFor(game.id), developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */

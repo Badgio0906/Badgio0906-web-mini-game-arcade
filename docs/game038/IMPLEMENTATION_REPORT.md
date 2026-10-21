@@ -1,6 +1,8 @@
 # Game038 6万分の1 — 実装報告（Claude Code、2026-10-21）
 
-状態：**ゲーム固有実装は完了・未統合**。Catalog / Vite / Portal / 記録 / サムネイル / CURRENT_STATUS は未変更（Codex統合担当の所有）。本番未公開。人間試遊は未実施。
+最新の統合・公開工程は [PUBLICATION_20261022.md](PUBLICATION_20261022.md) を参照。以下は原作者の2026-10-21時点の報告。
+
+当時の状態：**ゲーム固有実装は完了・未統合**。Catalog / Vite / Portal / 記録 / サムネイル / CURRENT_STATUS は未変更（Codex統合担当の所有）。本番未公開。人間試遊は未実施。
 
 - branch：`claude/game038-one-in-60000`（base main `ac5304fa81361f592942c472c7fa04f668d3b4bc`）
 - 仕様：[IMPLEMENTATION_SPEC](IMPLEMENTATION_SPEC.md)　引き継ぎ：[HANDOFF](../agent-tasks/game038-one-in-60000/HANDOFF.md)

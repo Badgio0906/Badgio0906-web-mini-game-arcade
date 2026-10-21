@@ -76,3 +76,6 @@
 公開準備・修正・全QA・実画像・残課題は `docs/game036/PUBLICATION_PREPARATION_20261021.md`。基準main ac5304f、受領PR16 HEAD9560283、独立worktree/branchへ継承。元ゲームの3不具合を限定修正、モデル本体不変。27掲載候補・表示027・個人BEST・実画面thumbnail・frontend transport gateを統合し、check/994 tests103files/通常＋Pages同Records設定build/compiled12/Portal73を確認。実機と人間の面白さは未確認。
 
 費用: PUBLIC/標準ubuntu-latestは確認、Webhook/billing usageは403で追加保存容量・外部連動がUNKNOWN。以前の停止指示に従い未push・未PR更新・未main merge・未deploy。今回の費用不明点の了承が得られたら、最新main/PR16を再照合し、通常pushで既存PR16更新→自動CI→Ready/通常merge→Pages/本番確認。旧PR11/13と他ゲーム、Worker/D1/広告/同意仕様は触らない。独立レビューはgame036内の専用文書、テスト対象hashはQA/codex-final/SOURCE_AND_SCOPE.json。commit SHAはGitから取得し、自己参照で推測しない。
+
+## 2026-10-22 JST 同時公開への再開
+ユーザーがGame038とともにPages公開を明示承認。6f43491を保持し、`release/game036-game038-pages-20261022`でPR17/45f7f1aと通常merge。最新の統合・検証・承認・公開結果は [同時公開報告](../../game038/PUBLICATION_20261022.md) とPR17が正本。上記の費用保留は過去の状態。
