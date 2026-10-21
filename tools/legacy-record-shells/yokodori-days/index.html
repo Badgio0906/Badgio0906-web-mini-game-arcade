@@ -27,6 +27,19 @@
 (() => {
   const game = document.body.dataset.game, title = document.title.split(' — ')[0];
   const frame = document.getElementById('legacy-game-frame'), shell = document.getElementById('legacy-start'), back = document.getElementById('legacy-menu-return');
+  const playArea = frame.parentElement;
+  // Phone-sized screen plus primary touch input; narrow desktop/tablet windows
+  // alone must not be restricted. This observes orientation, never locks it.
+  const touchInput = matchMedia('(pointer: coarse) and (hover: none)');
+  function phonePortrait() {
+    const shortSide = Math.min(screen.width || innerWidth, screen.height || innerHeight);
+    if (!touchInput.matches || shortSide >= 600) return false;
+    const type = screen.orientation?.type;
+    if (type) return type.startsWith('portrait');
+    if (typeof window.orientation === 'number') return Math.abs(window.orientation) % 180 === 0;
+    return matchMedia('(orientation: portrait)').matches;
+  }
+  let restricted = phonePortrait(), interrupted = false;
   const titleMarkup = shell.innerHTML;
   const details = {
     game012: ['同僚がよそ見したら成果を横取り！', 'PCはEnter、スマホは画面をタップ。同僚が作業中に押すと失敗。よそ見を待って押そう。バナナは高得点です。'],
@@ -35,17 +48,28 @@
   };
   function track(name,data={}) { window.dispatchEvent(new CustomEvent('arcade-legacy-event',{detail:{name,data}})); }
   let phase = 'title', epoch = 0, frameId = 0, tickTime = 0, step = 0, startTime = 0, held = new Set(), gestureEpoch = new Map();
-  const button = (id,text,primary=false) => '<button type="button" id="'+id+'" class="'+(primary?'primary':'')+'">'+text+'</button>';
+  const button = (id,text,primary=false) => '<button type="button" id="'+id+'" class="'+(primary?'primary':'')+'"'+(restricted&&['play-button','tutorial-again-button'].includes(id)?' disabled':'')+'>'+text+'</button>';
   const actions = () => '<div class="legacy-actions">'+button('play-button','すぐ遊ぶ',true)+button('tutorial-explain-button','説明を見る')+button('tutorial-again-button','練習する')+'</div>';
   function stop() { cancelAnimationFrame(frameId); frameId=0; }
   function menu(next) {
     stop(); epoch++; phase=next; if(next==='explanation')track('tutorial_view'); shell.hidden=false; frame.hidden=true; back.hidden=true;
     // Return to an unloaded engine; isolated shell practice never writes native BEST.
     if(frame.hasAttribute('src')) frame.removeAttribute('src');
-    shell.innerHTML=next==='title'?titleMarkup:'<article class="legacy-card"><h1>'+title+'</h1><h2>遊び方</h2><p>'+details[game][1]+'</p><div class="legacy-actions">'+button('tutorial-again-button','練習する',true)+button('play-button','すぐ遊ぶ')+button('title-button','タイトルへ')+'</div></article>';
+    const notice = interrupted?'<p id="game012-interrupted" role="status">縦向きになったため、今回のプレイを中断しました。保存済みのBESTはそのままです。横向きで「もう一度遊ぶ」を押すと、最初から遊べます。</p>':'';
+    if(next==='title'&&restricted){
+      shell.innerHTML='<article class="legacy-card game012-rotation-guide"><span class="game012-rotate-icon" aria-hidden="true">↻</span><h1 tabindex="-1">横向きで遊んでください</h1><p>このゲームはスマートフォン横向き専用です。端末を横にすると、ゲーム画面をすべて表示できます。</p>'+notice+'<div class="legacy-actions"><a id="game012-guide-return" href="../../index.html" target="_top">ゲーム一覧へ戻る</a>'+button('tutorial-explain-button','遊び方を見る')+'</div></article>';
+    }else{
+      shell.innerHTML=next==='title'?(interrupted?'<article class="legacy-card"><h1>'+title+'</h1>'+notice+actions()+'</article>':titleMarkup):'<article class="legacy-card"><h1>'+title+'</h1><h2>遊び方</h2><p>'+details[game][1]+'</p>'+notice+'<div class="legacy-actions">'+button('tutorial-again-button','練習する',true)+button('play-button',interrupted?'もう一度遊ぶ':'すぐ遊ぶ')+button('title-button','タイトルへ')+'</div></article>';
+      const playButton=shell.querySelector('#play-button');if(playButton&&interrupted)playButton.textContent='もう一度遊ぶ';
+    }
   }
-  function play() { track('tutorial_skip',{startMethod:'immediate'});track('game_launch');stop(); epoch++; phase='playing'; shell.hidden=true; back.hidden=false; frame.hidden=false; frame.src='./game.html?start=immediate&records_session='+crypto.randomUUID(); }
+  function play() {
+    restricted=phonePortrait();if(restricted){menu('title');return;}
+    track('tutorial_skip',{startMethod:'immediate'});track('game_launch');stop(); epoch++;held.clear();phase='playing';interrupted=false;shell.hidden=true;back.hidden=false;
+    frame.src='./game.html?start=immediate&records_session='+crypto.randomUUID();frame.hidden=false;if(!frame.isConnected)playArea.append(frame);
+  }
   function practice() {
+    if(phonePortrait()){restricted=true;menu('title');return;}
     track('practice_start');stop(); epoch++; phase='practice'; step=0; startTime=performance.now();
     const copy=game==='game013'?'黄色く光ったタスクを、光っている間に押そう。1→2→3→4を試します。':game==='game012'?'「よそ見中」になったらEnterかボタン。2回成功してみよう。':'指ハート 🫰 のときだけSpaceかボタン。2回成功してみよう。';
     shell.innerHTML='<article class="legacy-card"><h2>操作を練習する</h2><p>'+copy+'</p><div class="legacy-sample" id="practice-sample"></div>'+(game==='game013'?'<div class="legacy-pads">'+[1,2,3,4].map(n=>'<button type="button" data-pad="'+n+'">'+n+'</button>').join('')+'</div>':button('practice-action','今だ！',true))+'<p id="practice-feedback" class="legacy-feedback" role="status">失敗しても何度でも試せます。</p><small>この操作練習は元ゲームと独立しています。得点・BESTは保存しません。<br/>本番の絵や音は「すぐ遊ぶ」で楽しめます。</small><div class="legacy-actions">'+button('title-button','タイトルへ')+'</div></article>';
@@ -66,11 +90,14 @@
     step++; startTime=performance.now(); tickTime=0; feedback.textContent='成功！ 次も見てから押そう。';
     if(step===(game==='game013'?4:2)){track('practice_complete');stop();epoch++;phase='success';shell.innerHTML='<article class="legacy-card"><h2>できました！</h2><p>本番も、対象を見てタイミングよく押そう。</p><small>練習の得点は記録されていません。</small>'+actions()+'</article>';}
   }
+  // Keep old gesture epochs across rotation. Clearing them would make a
+  // delayed click look untracked and allow an unintended engine launch.
   shell.addEventListener('pointerdown',e=>gestureEpoch.set(e.pointerId,epoch),true);
   shell.addEventListener('click',e=>{
     if(e.button!==0||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
     const origin=gestureEpoch.get(e.pointerId);gestureEpoch.delete(e.pointerId);if(origin!==undefined&&origin!==epoch){e.preventDefault();return;}
-    const b=e.target.closest('button');if(!b)return;
+    if(e.target.closest('#game012-guide-return')){track('return_to_portal');return;}
+    const b=e.target.closest('button');if(!b||b.disabled)return;
     if(b.id==='play-button')play();else if(b.id==='tutorial-explain-button')menu('explanation');else if(b.id==='tutorial-again-button')practice();else if(b.id==='title-button')menu('title');else if(b.id==='practice-action'||b.dataset.pad)answer(Number(b.dataset.pad));
   });
   document.addEventListener('keydown',e=>{
@@ -80,6 +107,23 @@
     if(game==='game013'&&/^[1-4]$/.test(e.key)){e.preventDefault();answer(Number(e.key));}else if(game==='game012'&&e.code==='Enter'||game==='game014'&&e.code==='Space'){e.preventDefault();answer(0);}
   });
   document.addEventListener('keyup',e=>held.delete(e.code));window.addEventListener('blur',()=>held.clear());
+  function syncOrientation() {
+    const next=phonePortrait();if(next===restricted)return;restricted=next;
+    epoch++;held.clear();
+    if(next&&phase==='playing'){
+      // Close the record gate, then destroy the child context synchronously.
+      // Retain the SAME element captured by Analytics/records listeners.
+      frame.hidden=true;frame.remove();frame.removeAttribute('src');interrupted=true;menu('title');
+    }else if(phase==='explanation'){
+      shell.querySelectorAll('#play-button,#tutorial-again-button').forEach(b=>b.disabled=restricted);
+    }else if(phase!=='playing'){
+      menu('title');
+    }
+    if(next&&phase==='title')shell.querySelector('h1')?.focus({preventScroll:true});
+  }
+  if(touchInput.addEventListener)touchInput.addEventListener('change',syncOrientation);else touchInput.addListener(syncOrientation);
+  screen.orientation?.addEventListener?.('change',syncOrientation);
+  window.addEventListener('orientationchange',syncOrientation);window.addEventListener('resize',syncOrientation);
   back.addEventListener('click',()=>menu('title'));document.getElementById('legacy-portal-return').addEventListener('click',()=>track('return_to_portal'));window.addEventListener('pagehide',()=>track('page_exit',{phase}));track('game_open');menu('title');
 })();
 </script>

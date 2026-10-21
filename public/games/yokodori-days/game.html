@@ -133,6 +133,8 @@ const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
+	// game012-managed-entry
+	if (window.top === window) { window.location.replace('./index.html'); return; }
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');

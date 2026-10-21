@@ -92,7 +92,7 @@ async function authorizedSourceRebuild(entry,game,source,delivered,record){
     const packageBytes=(await readFile(join(dist?'dist/games':'public/games',entry.id,'index.pck'))).length;
     let expectedHtml=source.toString().replaceAll(oldTitle,newTitle).replaceAll('畑島さんと指ハートにチャレンジ！','指ハートにチャレンジ！').replace(/"index\.pck":\d+/,`"index.pck":${packageBytes}`).replace('<head>','<head>\n<script src="../native-record-bridge.js"></script>');
     if(entry.id==='yokodori-days'){
-      record.allowedHtmlChanges.push('Game012 fixed 960x540 canvas with HTML/CSS contain adapter');
+      record.allowedHtmlChanges.push('Game012 fixed 960x540 canvas contain and canonical top-level entry adapter');
       expectedHtml=execFileSync('python3',['-c',"import runpy,sys; sys.stdout.write(runpy.run_path('tools/game012_canvas_fit.py')['fit_game012_html'](sys.stdin.read()))"],{input:expectedHtml,encoding:'utf8',timeout:10000});
     }
     return delivered.toString()===expectedHtml;

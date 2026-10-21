@@ -23,10 +23,19 @@ def fit_game012_html(html: str) -> str:
     if 'id="game012-canvas-fit"' in html:
         if '<canvas id="canvas" width="960" height="540">' not in html or not re.search(r'"canvasResizePolicy"\s*:\s*0\b', html):
             raise ValueError('Incomplete Game012 fit; inspect the HTML')
-        return html
-    if html.count('<canvas id="canvas">') != 1 or html.count('</head>') != 1:
-        raise ValueError('Unexpected Game012 export template')
-    html, count = re.subn(r'("canvasResizePolicy"\s*:\s*)2\b', r'\g<1>0', html)
-    if count != 1:
-        raise ValueError('Unexpected Game012 resize policy')
-    return html.replace('<canvas id="canvas">', '<canvas id="canvas" width="960" height="540">', 1).replace('</head>', FIT_STYLE + '\n</head>', 1)
+    else:
+        if html.count('<canvas id="canvas">') != 1 or html.count('</head>') != 1:
+            raise ValueError('Unexpected Game012 export template')
+        html, count = re.subn(r'("canvasResizePolicy"\s*:\s*)2\b', r'\g<1>0', html)
+        if count != 1:
+            raise ValueError('Unexpected Game012 resize policy')
+        html = html.replace('<canvas id="canvas">', '<canvas id="canvas" width="960" height="540">', 1).replace('</head>', FIT_STYLE + '\n</head>', 1)
+    # A top-level runtime visit must use the orientation/lifecycle shell.
+    guard = "\t// game012-managed-entry\n\tif (window.top === window) { window.location.replace('./index.html'); return; }\n"
+    if '// game012-managed-entry' not in html:
+        if html.count('(function () {\n') != 1:
+            raise ValueError('Unexpected Game012 bootstrap')
+        html = html.replace('(function () {\n', '(function () {\n' + guard, 1)
+    elif guard not in html:
+        raise ValueError('Incomplete Game012 managed entry')
+    return html
