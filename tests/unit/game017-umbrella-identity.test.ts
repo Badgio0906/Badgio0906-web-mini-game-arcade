@@ -5,11 +5,11 @@ import {getRecordDefinition} from '../../src/data/recordDefinitions';
 import {readLocalRecord} from '../../src/records/localRecords';
 import {RainStore} from '../../src/games/game017/revision03/save';
 afterEach(()=>vi.unstubAllGlobals());
-it('binds visible014 to existing017 without changing the finger-heart ID or adding038',()=>{
+it('binds visible014 to existing017 without changing the finger-heart ID while keeping the unrelated career game038 distinct',()=>{
  expect(gameDisplayNumbers.get('game017')).toBe('014');
  expect(gameCatalog.find(g=>g.id==='game017')?.route).toBe('./game017.html');
  expect(gameCatalog.find(g=>g.id==='game014')?.route).toBe('./games/finger-heart-challenge/index.html');
- expect(gameCatalog.some(g=>g.id==='game038')).toBe(false);
+ expect(gameCatalog.find(g=>g.id==='game038')).toMatchObject({titleEn:'ONE IN 60,000',route:'./game038.html'});
  const manifest=JSON.parse(readFileSync('src/games/game017/revision03/game.manifest.json','utf8'));
  expect(manifest).toMatchObject({id:'game017',displayNumber:'014',rulesVersion:3,canonicalRoute:'./game017.html',candidateRoute:'./game017-revision03.html'});
  expect(getRecordDefinition('game017')).toMatchObject({rulesetId:'2',boardId:'game017.score.r2.all'});
