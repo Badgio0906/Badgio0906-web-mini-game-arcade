@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
+<meta name="robots" content="noindex">
+<title>ぴったりストップ ～TIMING PILOT～ | 試験用（非公開）</title>
+<link rel="stylesheet" href="./arcade-navigation.css">
+<script src="./arcade-navigation.js"></script>
+</head>
+<body>
+<div id="app" data-screen="title">
+  <header class="arcade-game-header">
+    <a id="portal-link" class="arcade-portal-return" href="./index.html">← ゲーム一覧へ</a>
+    <button id="pause" type="button">休憩</button>
+  </header>
+  <main>
+    <p class="badge">PILOT · 試験用・非公開</p>
+    <h1>ぴったりストップ</h1>
+    <div class="hud">
+      <span id="round">ROUND 1 / 3</span>
+      <strong id="score">0</strong>
+    </div>
+    <div id="stage" data-game-interaction tabindex="0" role="button" aria-label="タップ、クリック、またはSpaceでマーカーを止める">
+      <div class="track">
+        <i id="target" aria-hidden="true"></i>
+        <i id="marker" aria-hidden="true"></i>
+      </div>
+    </div>
+    <p id="status" role="status" aria-live="polite"></p>
+    <ol id="results"></ol>
+    <div class="actions">
+      <button id="play" type="button" class="primary">本番を遊ぶ</button>
+      <button id="practice" type="button">練習する</button>
+      <button id="resume" type="button" class="primary">再開する</button>
+      <button id="next" type="button" class="primary">次へ</button>
+      <button id="retry" type="button">もう一度</button>
+      <button id="title" type="button">タイトルへ</button>
+    </div>
+  </main>
+  <footer>100ガレ ～GAME100 GARAGE～ · TIMING PILOT（試験用・未登録）</footer>
+</div>
+<script type="module" src="/src/games/game036/main.ts"></script>
+</body>
+</html>
