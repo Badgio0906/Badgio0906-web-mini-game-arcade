@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-20 UTC：**PR #12の本番公開完了。** main `619adc35a4339dc5d6f1ddc4e357d5f7eccde991`、Pages39434884258 build/deploy成功。掲載26／完成9・試遊17、削除026/028/029/030＋保留031の5 URLは404、Portal73チェックと全画像26・番号023〜026を本番確認。公開はPR12のみ、PR11は未統合。第2段階は同mainから独立した012 contain／002・003・035説明／033タイトル同意UIの候補を分離し、main統合・公開せずレビューを待つ。015は既存PR11/dbdf915をread-only確認、013は実iPhone確認票のみ。012縦の文字の小ささ、iPhone操作・音は人間確認待ち。[公開記録](adsense/PR12_PUBLICATION_20261020.md)／[残課題・保存場所・再審査前確認](adsense/INTEGRATION_FOLLOWUP_20261020.md)／[説明修正](adsense/CONTENT_ACCURACY_FIXES_20261020.md)。以下の「本番未反映」は当時の候補履歴として保持する。
+
 2026-10-20 JST：**公開作品整理・品質監査のレビュー候補（本番未反映）。** 最新main `47c6cfe`から独立した`codex/adsense-catalog-quality-cleanup`で、026/028/029/030の専用実装を削除、031はsource/素材/saveを保持して配信保留。候補掲載26／完成9／試遊17、historical35／retired4／次番号36、旧ID/記録/Worker互換性を保持。check・976tests/101files・Offline Jev25・2設定build成功、静的HTTP30×200＋5×404、26作品×4幅104条件＋DOM補完12、独立13作品の深掘り、Portal73・共有mock24を確認。暫定A19/B4/C1/D2、012縦の重要場面欠けは追加保留検討を提案するだけで公開状態は変更しない。015はmain旧版を評価、PR #11/dbdf915は未変更・未統合。**この候補はmain未統合・本番未公開。** [品質監査](adsense/PUBLIC_GAME_QUALITY_AUDIT_20261020.md)／[実装・031再公開手順](adsense/CATALOG_QUALITY_CLEANUP_IMPLEMENTATION_20261020.md)。作業ブランチのGitHub保存結果は同階層のGit引継ぎ文書へ追記する。
 
 現行main47c6cfeにはPR #10のAdSense Phase1（about・012〜014説明・025/032表記）が含まれる。以下の「Phase1未公開」などは当時の履歴であり、現在のmain公開状態の正本として扱わない。
