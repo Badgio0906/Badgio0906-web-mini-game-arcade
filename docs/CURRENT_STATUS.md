@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-22 JST：**作者承認済みGame012横専用の公開準備、未push・本番未反映。** PR13/dfae110の製品をそのまま採用し、main537c6c3との文書競合はローカル3173fafで双方履歴を保全して解消済み。今回check・1013tests/106files・production build・offline25、Game012 matrix13/gesture4/lifecycleが成功。013/014 native回帰を実施し、28/完成9/試遊19、036/038・削除4・031保留・037未公開、PR11・保存・広告/解析/Worker/D1を保持。Webhook/billing403の費用UNKNOWNは以前の停止条件に従い今回分判断待ち。共有練習001/005の残留P1は未解決、実iPhone Safari未確認、AdSense再申請なし。[公開準備・検証・費用停止](game012/PUBLICATION_20261022.md)。
+
 2026-10-22 JST：**PR #11/#13の実機試遊準備。本番未公開。** PR #13のGame012横専用候補を最新mainへ取り込み。 文書競合はmainとPRの開発履歴を両方保持して解消。現在本番はmain537c6c3・掲載28/完成9/試遊19、031保留・削除4・retired4を維持する（依頼中のac5304f/26本は旧時点）。両PRはDraftのまま、main統合・Pages公開・AdSense再申請は行わない。実iPhone Safari、証明書/信頼/ファイアウォールの端末変更は未実施で、必要なら作者承認後に行う。
 
 2026-10-22 JST：**作者承認済みGame036・038同時公開の統合版。** 掲載28/完成9/試遊19、036「もちっと連鎖」=表示027、038「6万分の1」=表示028。037はPR9候補のまま保留、次の新ID39。PR16/9560283とPR17/45f7f1aの履歴を保持し、036統合検証済み6f43491へ038を通常merge。既存PR17を公開統合PRとして更新し、main更新1回で既存Pagesを利用する。公開成否・main SHA・Actions結果は[PR17](https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/pull/17)の公開結果記録を照合。両作品の外部解析pending、038はゲーム内の端末内履歴のみ、036個人BEST・旧記録互換性を保持。Worker/D1・広告/同意・既存26作品・PR11/13/9/8は変更しない。保存の終了直前復帰と不正履歴検査を修正し、固定ソースのcompiled操作と独立レビューを分離。check・1013tests/106files・本番設定build・compiled03612/0384・portal73・smoke8成功。実機/音/人間面白さは未実施。[統合・検証・費用承認・公開手順](game038/PUBLICATION_20261022.md)。以下の未公開/費用停止は当時の履歴。
