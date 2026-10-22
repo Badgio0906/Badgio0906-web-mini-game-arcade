@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-22 UTC：**共有練習001/005残留P1の修正候補、未push・本番未反映。** 最新main9f01aa1（Game012/PR13は公開済み）から独立。短い横画面のpractice gridセレクターへ`[open]`を追加する1行修正で閉dialogの残留を防止。RED8失敗と005開始遮断を保存、修正後check・1013tests/106files・build・offline25、compiled16＋成功後4＋共有/追加幅14を確認。公開28/完成9/試遊19・031保留・削除4・Game036/038・PR11・保存/広告/解析/Worker/D1は不変。Webhook/billing403の今回費用UNKNOWNにつき、以前の停止条件に従いローカルcommitまででGitHub保存判断待ち。**本番P1は未解決、PR11は未merge、実iPhone未実施、AdSense再申請なし。** [修正・RED/GREEN・保存/残課題](adsense/SHARED_PRACTICE_DIALOG_FIX_20261022.md)。以下は当時の履歴。
+
 2026-10-22 JST：**作者承認済みGame012横専用の公開準備、未push・本番未反映。** PR13/dfae110の製品をそのまま採用し、main537c6c3との文書競合はローカル3173fafで双方履歴を保全して解消済み。今回check・1013tests/106files・production build・offline25、Game012 matrix13/gesture4/lifecycleが成功。013/014 native回帰を実施し、28/完成9/試遊19、036/038・削除4・031保留・037未公開、PR11・保存・広告/解析/Worker/D1を保持。Webhook/billing403の費用UNKNOWNは以前の停止条件に従い今回分判断待ち。共有練習001/005の残留P1は未解決、実iPhone Safari未確認、AdSense再申請なし。[公開準備・検証・費用停止](game012/PUBLICATION_20261022.md)。
 
 2026-10-22 JST：**PR #11/#13の実機試遊準備。本番未公開。** PR #13のGame012横専用候補を最新mainへ取り込み。 文書競合はmainとPRの開発履歴を両方保持して解消。現在本番はmain537c6c3・掲載28/完成9/試遊19、031保留・削除4・retired4を維持する（依頼中のac5304f/26本は旧時点）。両PRはDraftのまま、main統合・Pages公開・AdSense再申請は行わない。実iPhone Safari、証明書/信頼/ファイアウォールの端末変更は未実施で、必要なら作者承認後に行う。

@@ -1,0 +1,63 @@
+{
+  "checked_at": "2026-10-22T03:37:02.964616+00:00",
+  "base_main": "9f01aa1ffb99a85cbc30106ee1ed251b457aab7d",
+  "summaries": {
+    "red": {
+      "pass": 8,
+      "fail": 8,
+      "pageerrors": 0
+    },
+    "red-start": {
+      "pass": 0,
+      "fail": 2,
+      "pageerrors": 0
+    },
+    "green": {
+      "pass": 16,
+      "fail": 0,
+      "pageerrors": 0
+    },
+    "green-compiled": {
+      "pass": 16,
+      "fail": 0,
+      "pageerrors": 0
+    },
+    "green-landscape-success": {
+      "pass": 4,
+      "fail": 0,
+      "pageerrors": 0
+    },
+    "shared-compiled": {
+      "pass": 14,
+      "fail": 0,
+      "pageerrors": 0
+    }
+  },
+  "source_sha256": {
+    "src/arcade/onboarding.css": "d816f147fd5b178bb9d67320c011462a36e27ea827c6800930615c427aace974",
+    "tests/onboarding/dialog-visibility.mjs": "e2c08300baee1f3d23651dac0d1900b25db9aef2d2be351400ab0084565a80ed",
+    "tests/onboarding/dialog-shared-regression.mjs": "565a245c71ddeeea280317b19a5a780388f0797a4682a1ea106d1903b8fb4347"
+  },
+  "workflow_files": [
+    ".github/workflows/pages.yml",
+    ".github/workflows/pr-validation.yml"
+  ],
+  "fee_check": {
+    "public": true,
+    "pr_runner": "ubuntu-latest",
+    "pages_trigger": "push main only or manual",
+    "cache_bytes": 97333639,
+    "cache_count": 2,
+    "hooks": "UNKNOWN HTTP403",
+    "billing": "UNKNOWN HTTP403",
+    "push_performed": false,
+    "draft_pr_created": false
+  },
+  "independent_review": {
+    "agent": "/root/game015_ui_review",
+    "mode": "read-only",
+    "code_blocker": false,
+    "local_pr11_css_identical": true
+  },
+  "jev_paid_api": "NOT_CALLED_USER_PROHIBITION"
+}
