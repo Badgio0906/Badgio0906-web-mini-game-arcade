@@ -7,11 +7,14 @@ import { createOnboarding } from '../../arcade/onboarding';
 import { createFallGame, paintFallPractice } from './FallBoard';
 import { FallAudio } from './audio';
 import type { FallEvent, FallResult, FallSnapshot } from './types';
+import { guardRotationActivation, watchPhoneLandscape } from './portrait';
 const recordSession = createGameRecordSession('game015');
 
 type Screen = 'title' | 'playing' | 'paused' | 'ending' | 'result';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
 const app = $('app'), overlay = $('overlay'), abort = new AbortController();
+// Reuse the existing guide verbatim; no duplicated HUD IDs or tutorial changes.
+const pauseHelp = [...document.querySelectorAll('.playing-guide p, .playing-guide small')].map(e => e.outerHTML).join('');
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game015:');
 const telemetry = new TelemetryService(storage, 'game015'), audio = new FallAudio(storage);
 const onboarding = createOnboarding({ gameId: 'game015', storage, telemetry, practicePaint: paintFallPractice });
@@ -19,6 +22,13 @@ let screenEpoch = 0;
 let state: Screen = 'title', best = storage.readNumber('bestR04', 0), runId = '', ended = true, disposed = false, newBest = false;
 let milestoneUntil = 0, milestoneMessage = '', hazardNoticeUntil = 0, hazardMessage = '';
 let result: FallResult | null = null, timer: ReturnType<typeof window.setTimeout> | undefined;
+let portraitBlocked = false, resultDue = 0, resultRemaining = 400;
+const invalidateRotationKeys = guardRotationActivation(abort.signal);
+let orientationFocus: HTMLElement | null = null;
+const portraitNotice = document.createElement('section'); portraitNotice.id = 'portrait-notice'; portraitNotice.hidden = true;
+portraitNotice.setAttribute('aria-labelledby', 'portrait-heading'); portraitNotice.tabIndex = -1;
+portraitNotice.innerHTML = `<div class="portrait-card"><span class="portrait-icon" aria-hidden="true">↻</span><h1 id="portrait-heading">落下キングは縦画面専用です</h1><p>スマートフォンを縦向きにすると遊べます</p><a class="arcade-portal-return" href="${import.meta.env.BASE_URL}index.html">ゲーム一覧へ戻る</a></div>`;
+app.before(portraitNotice);
 const text = (id: string, value: string): void => { const e = $(id); if (e && e.textContent !== value) e.textContent = value; };
 const button = (id: string, label: string, primary = false): string => `<button id="${id}" type="button" class="${primary ? 'primary' : 'secondary'}">${label}</button>`;
 
@@ -37,7 +47,7 @@ function scheduleGestureCleanup(): void {
   gestureCleanup = window.setTimeout(() => { gestureCleanup = undefined; pruneGestures(); if ([...gestures.values()].some(origin => origin.releasedAt !== null)) scheduleGestureCleanup(); }, 5100);
 }
 document.addEventListener('pointerdown', e => {
-  if (!(e.target instanceof Node) || !app.contains(e.target)) return;
+  if (!(e.target instanceof Node) || !app.contains(e.target) && !document.getElementById('arcade-training')?.contains(e.target)) return;
   pruneGestures();
   // Native touch has few simultaneous contacts; keep a bounded record without discarding its origin on release.
   if (!gestures.has(e.pointerId) && gestures.size >= 32) {
@@ -52,7 +62,8 @@ const releaseGesture = (e: PointerEvent): void => {
 };
 document.addEventListener('pointerup', releaseGesture, { capture: true, signal: abort.signal });
 document.addEventListener('pointercancel', releaseGesture, { capture: true, signal: abort.signal });
-app.addEventListener('click', e => {
+document.addEventListener('click', e => {
+  if (!(e.target instanceof Node) || !app.contains(e.target) && !document.getElementById('arcade-training')?.contains(e.target)) return;
   pruneGestures();
   const pointer = e as MouseEvent & { pointerId?: number; pointerType?: string };
   const id = typeof pointer.pointerId === 'number' && pointer.pointerId >= 0 ? pointer.pointerId : undefined;
@@ -78,7 +89,7 @@ function screen(next: Screen): void {
   if (overlay.hidden && document.activeElement instanceof HTMLElement && overlay.contains(document.activeElement)) document.activeElement.blur();
   if (next === 'title') overlay.innerHTML = `<article class="menu title-menu"><span class="eyebrow">A VERY DOWNWARD ADVENTURE</span><canvas id="title-king" width="48" height="72" aria-label="王冠と白ひげ、紫の衣装に赤マントのキング"></canvas><h1>落下キング<small>～FALL KING～</small></h1><p class="tagline">上を目指すな。うまく落ちろ。</p><p>離して刻むか、押し続けて欲張るか。<br />深い落下はやわらかい床へ。怪鳥の向き・移動床の行き先を読もう。</p><div class="title-actions">${button('play-button', storage.readBoolean('tutorialCompleted', false) ? 'すぐ遊ぶ' : '遊んでみる', true)}</div><small>BEST r04 ${best} m · 旧版 ${storage.readNumber('best', 0)} m（比較別）</small></article>`;
   if (next === 'title') { const c = overlay.querySelector<HTMLCanvasElement>('#title-king')!.getContext('2d')!; c.scale(2, 2); drawKing(c, 0, 0, { state: 'falling' }); }
-  if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div></article>`;
+  if (next === 'paused') overlay.innerHTML = `<article class="menu pause-menu"><span class="eyebrow">PAUSE</span><h2>ひと息つこう。</h2><p>落下・足場・時計を止めています。<br />再開後は、もう一度押して移動。</p><div class="paired-actions">${button('resume-button', '続きから', true)}${button('title-button', 'タイトル')}</div><details class="pause-help"><summary>遊び方</summary>${pauseHelp}</details></article>`;
   if (next === 'result' && result) {
     overlay.innerHTML = `<article class="menu result-menu"><span class="eyebrow">${result.outcome === 'scroll' ? 'TOO SLOW!' : result.outcome === 'impact' ? 'SPLAT!' : result.outcome === 'spike' ? 'SPIKES!' : result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'}</span><h2>${result.outcome === 'scroll' ? '天井に追いつかれました。' : result.outcome === 'impact' ? '落ちすぎました。' : result.outcome === 'spike' ? '針に当たりました。' : result.outcome === 'needle' ? '壁の針に当たりました。' : '鳥に当たりました。'}</h2><p class="death-reason">${result.reason}</p><div class="result-depth"><span>DEPTH</span><strong id="result-score">${result.score}<small>m</small></strong>${newBest ? '<mark>NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST r04</dt><dd>${best} m</dd></div><div><dt>NICE DROP</dt><dd>${result.niceDrops}</dd></div><div><dt>落下距離</dt><dd>${result.fallDistance.toFixed(1)} m</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} 秒</dd></div></dl><p class="result-comment">${comment(result.depth)}</p><div class="paired-actions">${button('retry-button', 'もう一回', true)}${button('title-button', 'タイトル')}</div></article>`;
     recordSession.mount(overlay.firstElementChild as HTMLElement);
@@ -109,15 +120,22 @@ const controller = createFallGame($('game-canvas'), { onUpdate: update, onEvent:
   audio.setPlaying(false); audio.tone(240, 42, .26, .04);
   telemetry.trackEvent('run_end', { runId, outcome: 'over', score: value.score, time: value.time, reason: value.outcome });
   telemetry.trackEvent('score', { runId, score: value.score, best, newBest, nice_drops: value.niceDrops }); telemetry.trackEvent('run_duration', { runId, seconds: value.time, reason: 'over', failure_reason: value.outcome }); telemetry.trackEvent('depth_reached', { runId, depth: value.depth });
-  screen('ending'); timer = window.setTimeout(() => { timer = undefined; if (!disposed && state === 'ending') screen('result'); }, 400);
+  screen('ending'); scheduleResult(400);
 } }, () => best);
+function scheduleResult(delay: number): void {
+  resultRemaining = delay;
+  if (portraitBlocked) return;
+  resultDue = performance.now() + delay;
+  timer = window.setTimeout(() => { timer = undefined; if (!disposed && !portraitBlocked && state === 'ending') screen('result'); }, delay);
+}
 function start(retry = false): void {
-  if (disposed || state === 'playing' || state === 'paused' || state === 'ending') return;
+  if (disposed || portraitBlocked || state === 'playing' || state === 'paused' || state === 'ending') return;
   if (onboarding.intercept(() => start(retry))) return;
   void audio.unlock(); runId = `game015-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; result = null; newBest = false; milestoneUntil = hazardNoticeUntil = 0; milestoneMessage = hazardMessage = '';
   if (retry) telemetry.trackEvent('retry', { runId }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId }); screen('playing'); controller.start(); audio.setPlaying(true);
 }
 function pause(): void {
+  if (portraitBlocked) return;
   if (state === 'playing') { controller.pause(true); audio.setPlaying(false); telemetry.trackEvent('pause', { runId }); screen('paused'); }
   else if (state === 'paused') { void audio.unlock(); controller.pause(false); audio.setPlaying(true); telemetry.trackEvent('resume', { runId }); screen('playing'); }
 }
@@ -127,14 +145,40 @@ function quit(): void {
 }
 function title(): void { if (state === 'ending') return; quit(); controller.title(); result = null; text('score-value', '0'); text('nice-value', '0'); screen('title'); }
 app.addEventListener('click', e => {
+  if (portraitBlocked) return;
   if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return; const target = (e.target as Element).closest<HTMLButtonElement | HTMLAnchorElement>('button,a'); if (!target || target instanceof HTMLButtonElement && target.disabled) return;
   if (target.classList.contains('arcade-portal-back')) { quit(); audio.setPlaying(false); return; }
   switch (target.id) { case 'play-button': start(); break; case 'retry-button': start(true); break; case 'resume-button': case 'pause-button': pause(); break; case 'title-button': case 'brand-button': title(); break; case 'mute-button': audio.toggle(); sync(); break; }
 }, { signal: abort.signal });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !e.repeat && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey && !document.querySelector('dialog[open]') && (state === 'playing' || state === 'paused')) { e.preventDefault(); pause(); } }, { signal: abort.signal });
+document.addEventListener('keydown', e => { if (!portraitBlocked && e.key === 'Escape' && !e.repeat && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey && !document.querySelector('dialog[open]') && (state === 'playing' || state === 'paused')) { e.preventDefault(); pause(); } }, { signal: abort.signal });
 window.addEventListener('blur', () => { if (state === 'playing') pause(); }, { signal: abort.signal });
 document.addEventListener('visibilitychange', () => { if (document.hidden && state === 'playing') pause(); }, { signal: abort.signal });
 window.addEventListener('pagehide', e => { if (e.persisted) { if (state === 'playing') pause(); } else { quit(); audio.setPlaying(false); } }, { signal: abort.signal });
 telemetry.trackEvent('game_open'); screen('title');
+const stopOrientation = watchPhoneLandscape(blocked => {
+  if (portraitBlocked === blocked) return;
+  invalidateRotationKeys();
+  // Neither a held game button nor a held tutorial/menu gesture may cross rotation.
+  screenEpoch++;
+  if (blocked) {
+    orientationFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (state === 'playing') pause();
+    else controller.pause(true);
+    if (state === 'ending' && timer !== undefined) { clearTimeout(timer); timer = undefined; resultRemaining = Math.max(0, resultDue - performance.now()); }
+  }
+  portraitBlocked = blocked;
+  onboarding.setSuspended(blocked);
+  document.body.toggleAttribute('data-fall-portrait-blocked', blocked);
+  app.inert = blocked; portraitNotice.hidden = !blocked;
+  if (blocked) portraitNotice.focus({ preventScroll: true });
+  else {
+    if (state === 'ending') { controller.pause(false); scheduleResult(resultRemaining); }
+    if (!document.querySelector('dialog[open]')) {
+      const focus = state === 'paused' ? $('resume-button') : orientationFocus;
+      if (focus?.isConnected && !focus.closest('[inert]')) focus.focus({ preventScroll: true });
+    }
+  }
+});
+portraitNotice.querySelector('a')?.addEventListener('click', () => { quit(); audio.setPlaying(false); }, { signal: abort.signal });
 if (import.meta.env.DEV) (window as unknown as { __arcadeDebug: unknown }).__arcadeDebug = Object.freeze({ gameId: 'game015', snapshot: () => controller.snapshot(), inspection: () => controller.inspection(), state: () => state, telemetry: () => telemetry.getEvents() });
-if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; if (timer !== undefined) clearTimeout(timer); abort.abort(); if (gestureCleanup !== undefined) clearTimeout(gestureCleanup); gestures.clear(); lastReleased = undefined; controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });
+if (import.meta.hot) import.meta.hot.dispose(() => { disposed = true; stopOrientation(); portraitNotice.remove(); app.inert = false; document.body.removeAttribute('data-fall-portrait-blocked'); if (timer !== undefined) clearTimeout(timer); abort.abort(); if (gestureCleanup !== undefined) clearTimeout(gestureCleanup); gestures.clear(); lastReleased = undefined; controller.destroy(); onboarding.destroy(); audio.destroy(); delete (window as unknown as { __arcadeDebug?: unknown }).__arcadeDebug; });

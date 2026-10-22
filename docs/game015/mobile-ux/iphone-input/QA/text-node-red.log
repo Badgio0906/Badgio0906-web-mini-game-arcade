@@ -1,0 +1,50 @@
+
+ RUN  v3.2.7 /workspace/arcade-game015-mobile
+
+ ❯ tests/unit/game015-input-ui.test.ts (23 tests | 1 failed) 29ms
+   ✓ Game015 held UI input lifecycle > maps both directions, simultaneous DROP and independent pointer releases 4ms
+   ✓ Game015 held UI input lifecycle > releases DROP on pointerup 1ms
+   ✓ Game015 held UI input lifecycle > releases DROP on pointercancel 1ms
+   ✓ Game015 held UI input lifecycle > releases DROP on lostpointercapture 1ms
+   ✓ Game015 held UI input lifecycle > clears all held input on blur without restarting the run 1ms
+   ✓ Game015 held UI input lifecycle > clears all held input on resize without restarting the run 0ms
+   ✓ Game015 held UI input lifecycle > clears all held input on orientationchange without restarting the run 0ms
+   ✓ Game015 held UI input lifecycle > releases a pointer outside the viewport and requires a fresh press 1ms
+   ✓ Game015 held UI input lifecycle > does not steer when the new layout gutter is pressed 1ms
+   ✓ Game015 held UI input lifecycle > clears pause/title/retry and reflects actual held input on the buttons 1ms
+   ✓ Game015 held UI input lifecycle > handles a terminal event at document capture before another UI can stop bubbling 0ms
+   ✓ Game015 held UI input lifecycle > clears adapter input when document becomes hidden, without relying on the page wrapper 1ms
+   ✓ Game015 held UI input lifecycle > explicitly releases capture on pause and repeated terminal cleanup is safe 4ms
+   ✓ Game015 held UI input lifecycle > uses touchend with no active touches when pointerup is missing, preserving keyboard 1ms
+   ✓ Game015 held UI input lifecycle > uses touchcancel with no active touches when pointerup is missing, preserving keyboard 1ms
+   ✓ Game015 held UI input lifecycle > does not clear a remaining contact or mouse while another touch ends 1ms
+   ✓ Game015 held UI input lifecycle > prevents contextmenu only on play controls and releases the affected contact 1ms
+   ✓ Game015 held UI input lifecycle > prevents selectstart only on play controls and releases the affected contact 0ms
+   × Game015 held UI input lifecycle > also stops selection originating on a control text node 6ms
+     → expected false to be true // Object.is equality
+   ✓ Game015 held UI input lifecycle > keeps a valid hold for 3000ms then clears the final touch, without a forced timeout 2ms
+   ✓ Game015 held UI input lifecycle > keeps a valid hold for 10000ms then clears the final touch, without a forced timeout 1ms
+   ✓ Game015 held UI input lifecycle > reconciles a captured pointer move with no pressed buttons 0ms
+   ✓ Game015 held UI input lifecycle > retains keyboard direction and DROP release semantics 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > also stops selection originating on a control text node
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game015-input-ui.test.ts:85:179
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 22 passed (23)
+   Start at  03:30:09
+   Duration  346ms (transform 112ms, setup 0ms, collect 133ms, tests 29ms, environment 0ms, prepare 52ms)

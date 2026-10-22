@@ -5,6 +5,7 @@ import { gameCatalog, historicalGameCatalog, hiddenGameCatalog, removedGameCatal
 import { activeTagOptions, readFavorites, saveFavorites } from '../../src/portal/discovery';
 import { getRecordDefinition } from '../../src/data/recordDefinitions';
 import preservation from '../../docs/adsense/catalog-quality-20261020/PRESERVATION_MANIFEST.json';
+import presentation from '../../docs/game015/mobile-ux/pr11-pr13-review-20261022/QA/AUTHORIZED_PRESENTATION_HASHES.json';
 
 describe('author publication cleanup and retained contracts', () => {
   it('publishes exactly 28 identities and reserves all removed/held IDs', () => {
@@ -42,7 +43,7 @@ describe('author publication cleanup and retained contracts', () => {
           .replace(/^    \/\/ game036-additive-begin:[\s\S]*?^    \/\/ game036-additive-end\n/gm,'');
       }
       const content=Buffer.from(text);
-      expect(createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex'),path).toBe(preservation.protected[path as keyof typeof preservation.protected]);
+      expect(createHash('sha1').update(`blob ${content.length}\0`).update(content).digest('hex'),path).toBe(presentation.protected[path as keyof typeof presentation.protected] ?? preservation.protected[path as keyof typeof preservation.protected]);
     }
   });
   it('retains former favorites without showing or deleting their history', () => {

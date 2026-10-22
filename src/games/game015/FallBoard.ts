@@ -62,10 +62,12 @@ export function paintFallPractice(canvas: HTMLCanvasElement, snapshot: PracticeS
   if (s.phase === 'splat') drawBitmapText(c, s.cause === 'scroll' ? 'TOO SLOW!' : s.cause === 'impact' ? 'TOO FAR!' : 'SPIKES!', 128, 320, { color: PALETTE.b, align: 'center' });
 }
 export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest = (): number => 0): FallController {
-  parent.innerHTML = `<div class="fall-board"><div class="fall-window"><canvas id="fall-canvas" width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" tabindex="0" aria-label="落下キングのゲーム画面。左右で移動、DROPを押し続けて連続降下。"></canvas></div><div class="fall-controls"><button id="left-button" type="button" aria-label="左へ移動、押している間">← 左</button><button id="drop-button" type="button">DROP ↓<small>押し続けて連続降下</small></button><button id="right-button" type="button" aria-label="右へ移動、押している間">右 →</button></div></div>`;
+  parent.innerHTML = `<div class="fall-board"><div class="fall-surface"><div class="fall-window"><canvas id="fall-canvas" width="${WORLD_WIDTH}" height="${WORLD_HEIGHT}" tabindex="0" aria-label="落下キングのゲーム画面。左右で移動、DROPを押し続けて連続降下。"></canvas></div></div><div class="fall-controls"><button id="left-button" type="button" aria-label="左へ移動、押している間">← 左</button><button id="drop-button" type="button">DROP ↓<small>押し続けて連続降下</small></button><button id="right-button" type="button" aria-label="右へ移動、押している間">右 →</button></div></div>`;
   const canvas = parent.querySelector<HTMLCanvasElement>('canvas')!;
   const abort = new AbortController(), options = { signal: abort.signal }; let active = false, paused = false, frame = 0, previous = performance.now(), clock = 0, ended = false;
   let feedback = '', feedbackUntil = 0, dropUntil = 0, preview = true; const keys = new Map<string, HorizontalInput>(); const pointers = new Map<number, HorizontalInput>(); const dropKeys = new Set<string>(), dropPointers = new Set<number>();
+  const captureOwners = new Map<number, HTMLElement>();
+  const touchPointers = new Set<number>();
   const run = new FallRun((event: FallEvent) => {
     if (event.type === 'end') { feedback = event.result.outcome === 'scroll' ? 'TOO SLOW!' : event.result.outcome === 'impact' ? 'SPLAT!' : event.result.outcome === 'spike' ? 'SPIKES!' : event.result.outcome === 'needle' ? 'WALL NEEDLE!' : 'BIRD!'; feedbackUntil = clock + .65; }
     if (event.type === 'drop') dropUntil = clock + .15;
@@ -74,22 +76,68 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
     hooks.onEvent(event);
     if (event.type === 'end' && !ended) { ended = true; active = false; release(); hooks.onEnd(event.result); }
   });
-  function release(): void { keys.clear(); pointers.clear(); dropKeys.clear(); dropPointers.clear(); run.setHorizontal(0); run.setDropHeld(false); }
-  function input(): void { if (!active || paused) return; run.setDropHeld(dropKeys.size > 0 || dropPointers.size > 0); const directions = [...keys.values(), ...pointers.values()]; const left = directions.includes(-1), right = directions.includes(1); run.setHorizontal(left === right ? 0 : right ? 1 : -1); }
+  const buttons = Object.fromEntries(['left-button', 'right-button', 'drop-button'].map(id => [id, parent.querySelector<HTMLButtonElement>('#' + id)!]));
+  function indicators(left: boolean, right: boolean, drop: boolean): void {
+    for (const [id, held] of [['left-button', left], ['right-button', right], ['drop-button', drop]] as const) buttons[id].setAttribute('data-held', String(held));
+  }
+  function releaseCapture(owner: HTMLElement, id: number): void {
+    try { if (owner.hasPointerCapture(id)) owner.releasePointerCapture(id); } catch { /* Detached or already cancelled. */ }
+  }
+  function release(): void {
+    const owners = [...captureOwners]; captureOwners.clear(); touchPointers.clear();
+    keys.clear(); pointers.clear(); dropKeys.clear(); dropPointers.clear();
+    run.setHorizontal(0); run.setDropHeld(false); indicators(false, false, false);
+    // Clear ownership before releasePointerCapture can synchronously fire lostcapture.
+    for (const [id, owner] of owners) releaseCapture(owner, id);
+  }
+  function capturePointer(e: PointerEvent, owner: HTMLElement): void {
+    captureOwners.set(e.pointerId, owner);
+    if (e.pointerType === 'touch') touchPointers.add(e.pointerId);
+    try { owner.setPointerCapture(e.pointerId); } catch { /* Document/window terminal fallback. */ }
+  }
+  function releasePointer(id: number): void {
+    const direction = pointers.delete(id), drop = dropPointers.delete(id), owner = captureOwners.get(id);
+    captureOwners.delete(id); touchPointers.delete(id);
+    if (direction || drop) input();
+    if (owner) releaseCapture(owner, id);
+  }
+  function input(): void { if (!active || paused) return; run.setDropHeld(dropKeys.size > 0 || dropPointers.size > 0); const directions = [...keys.values(), ...pointers.values()]; const left = directions.includes(-1), right = directions.includes(1); run.setHorizontal(left === right ? 0 : right ? 1 : -1); indicators(left, right, dropKeys.size > 0 || dropPointers.size > 0); }
   function drop(): boolean { if (!active || paused || document.querySelector('dialog[open]')) return false; return run.drop(); }
   function tick(now: number): void { const dt = Math.min(.05, (now - previous) / 1000); previous = now; if (active && !paused && !document.hidden) { clock += dt; run.step(dt); } else if (ended && !paused && clock < feedbackUntil) clock += dt; const s = run.snapshot(); const display = preview ? { ...s, alive: true, phase: 'grounded' as const } : s; paint(canvas, display, readBest(), clock, feedback, feedbackUntil, dropUntil); hooks.onUpdate(s); frame = requestAnimationFrame(tick); }
   const blocked = (e: KeyboardEvent | PointerEvent | MouseEvent): boolean => e.altKey || e.ctrlKey || e.metaKey || e.shiftKey;
   parent.addEventListener('pointerdown', e => {
     if (!active || paused || (!e.isPrimary && e.pointerType !== 'touch') || e.button !== 0 || blocked(e) || document.querySelector('dialog[open]')) return;
     const target = (e.target as Element).closest<HTMLButtonElement>('button');
-    if (target?.id === 'drop-button') { e.preventDefault(); dropPointers.add(e.pointerId); input(); try { target.setPointerCapture(e.pointerId); } catch { /* global release */ } return; }
-    if (target && target.id !== 'left-button' && target.id !== 'right-button') return;
+    if (target?.id === 'drop-button') { e.preventDefault(); dropPointers.add(e.pointerId); input(); capturePointer(e, target); return; }
+    if (target ? target.id !== 'left-button' && target.id !== 'right-button' : e.target !== canvas) return;
     const bounds = canvas.getBoundingClientRect(); const direction = target ? target.id === 'right-button' ? 1 : -1 : e.clientX > bounds.left + bounds.width / 2 ? 1 : -1;
-    e.preventDefault(); pointers.set(e.pointerId, direction); input(); try { (target ?? canvas).setPointerCapture(e.pointerId); } catch { /* global release */ }
+    e.preventDefault(); pointers.set(e.pointerId, direction); input(); capturePointer(e, target ?? canvas);
   }, options);
   parent.addEventListener('click', e => { if (e.detail === 0 && !blocked(e) && (e.target as Element).closest('button')?.id === 'drop-button') drop(); }, options);
-  const pointerEnd = (e: PointerEvent): void => { const removed = pointers.delete(e.pointerId); if (dropPointers.delete(e.pointerId) || removed) input(); };
+  const pointerEnd = (e: PointerEvent): void => { releasePointer(e.pointerId); };
   window.addEventListener('pointerup', pointerEnd, options); window.addEventListener('pointercancel', pointerEnd, options); parent.addEventListener('lostpointercapture', pointerEnd, options);
+  // Observe terminal events before other UI (including shadow roots) stops bubbling.
+  document.addEventListener('pointerup', pointerEnd, { ...options, capture: true });
+  document.addEventListener('pointercancel', pointerEnd, { ...options, capture: true });
+  const touchEnd = (e: TouchEvent): void => {
+    // Touch.identifier is not pointerId. Reconcile only the unambiguous final lift.
+    if (e.touches.length === 0) for (const id of [...touchPointers]) releasePointer(id);
+  };
+  document.addEventListener('touchend', touchEnd, { ...options, capture: true, passive: true });
+  document.addEventListener('touchcancel', touchEnd, { ...options, capture: true, passive: true });
+  const stopSelection = (e: Event): void => {
+    if (!active || paused) return;
+    const node = e.target as Node | null;
+    const target = (node?.nodeType === 3 ? node.parentElement : node) as Element | null;
+    if (target !== canvas && !target?.closest?.('.fall-controls')) return;
+    e.preventDefault();
+    const id = (e as PointerEvent).pointerId;
+    if (captureOwners.has(id)) { releasePointer(id); return; }
+    // A selection/callout interruption cancels only the affected control's contacts.
+    for (const [id, owner] of [...captureOwners]) if (owner === target || owner.contains?.(target)) releasePointer(id);
+  };
+  parent.addEventListener('contextmenu', stopSelection, options);
+  parent.addEventListener('selectstart', stopSelection, options);
   document.addEventListener('keydown', e => {
     if (!active || paused || blocked(e) || document.querySelector('dialog[open]')) return;
     const key = e.key.toLowerCase(), button = (e.target as Element).closest<HTMLButtonElement>('button,a');
@@ -100,8 +148,15 @@ export function createFallGame(parent: HTMLElement, hooks: FallHooks, readBest =
     if (button && !['left-button', 'right-button', 'drop-button'].includes(button.id)) return;
     if (key === ' ' || key === 'enter') { e.preventDefault(); if (e.repeat) return; if ((key === ' ' || key === 'enter') && button?.id === 'left-button') { keys.set(key, -1); input(); } else if ((key === ' ' || key === 'enter') && button?.id === 'right-button') { keys.set(key, 1); input(); } else if (key !== 'enter' || button?.id === 'drop-button') { dropKeys.add(key); input(); } }
   }, options);
-  document.addEventListener('keyup', e => { const key = e.key.toLowerCase(); keys.delete(key); dropKeys.delete(key); if (key === ' ' || key === 'enter') { if (active && (e.target as Element).closest('.fall-controls')) e.preventDefault(); } input(); }, options);
+  document.addEventListener('keyup', e => { const key = e.key.toLowerCase(); keys.delete(key); dropKeys.delete(key); if (key === ' ' || key === 'enter') { if (active && (e.target as Element).closest('.fall-controls')) e.preventDefault(); } input(); }, { ...options, capture: true });
+  window.addEventListener('pointermove', e => {
+    // Captured pointers can travel beyond the viewport without pointerleave.
+    if (e.buttons === 0 || e.clientX < 0 || e.clientY < 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) pointerEnd(e);
+  }, options);
+  window.addEventListener('resize', release, options);
+  window.addEventListener('orientationchange', release, options);
   window.addEventListener('blur', release, options);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) release(); }, options);
   frame = requestAnimationFrame(tick);
   return { start() { release(); preview = false; run.start(); active = true; paused = ended = false; clock = 0; feedback = ''; feedbackUntil = dropUntil = 0; previous = performance.now(); }, title() { preview = true; active = false; paused = false; ended = true; release(); run.reset(); feedback = ''; feedbackUntil = dropUntil = 0; }, pause(value) { release(); paused = value; previous = performance.now(); }, setHorizontal(direction) { if (active && !paused) run.setHorizontal(direction); }, setDropHeld(held) { if (active && !paused) run.setDropHeld(held); }, drop, snapshot: () => run.snapshot(), inspection: () => run.inspection(), destroy() { active = false; abort.abort(); cancelAnimationFrame(frame); release(); parent.replaceChildren(); } };
 }

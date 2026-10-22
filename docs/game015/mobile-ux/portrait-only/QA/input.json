@@ -1,0 +1,1128 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "checks": [
+      {
+        "name": "native input starts",
+        "pass": true
+      },
+      {
+        "name": "final native touchend clears input when pointerup and lostcapture are intercepted",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #left-button 3000ms",
+        "pass": true
+      },
+      {
+        "name": "final release 3000ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #right-button 3000ms",
+        "pass": true
+      },
+      {
+        "name": "final release 3000ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #left-button 10000ms",
+        "pass": true
+      },
+      {
+        "name": "final release 10000ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "opposite directions neutral",
+        "pass": true
+      },
+      {
+        "name": "remaining direction survives first lift",
+        "pass": true
+      },
+      {
+        "name": "two-thumb direction plus DROP",
+        "pass": true
+      },
+      {
+        "name": "independent release retains DROP",
+        "pass": true
+      },
+      {
+        "name": "native cancel clears DROP",
+        "pass": true
+      },
+      {
+        "name": "known callout pointer preserves same-button second finger",
+        "pass": true
+      },
+      {
+        "name": "second finger remains after first physical lift",
+        "pass": true
+      },
+      {
+        "name": "same-button final release neutral",
+        "pass": true
+      },
+      {
+        "name": "slide does not invent a second button press",
+        "pass": true
+      },
+      {
+        "name": "outside viewport releases",
+        "pass": true
+      },
+      {
+        "name": "explicit native capture loss releases",
+        "pass": true
+      },
+      {
+        "name": "localized synthetic contextmenu interruption releases",
+        "pass": true
+      },
+      {
+        "name": "child selectstart prevented and released",
+        "pass": true
+      },
+      {
+        "name": "rotation releases without reusing a contact",
+        "pass": true
+      },
+      {
+        "name": "blur pauses and clears",
+        "pass": true
+      },
+      {
+        "name": "ordinary help selection remains enabled",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard direction retained",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard release retained",
+        "pass": true
+      },
+      {
+        "name": "child selection CSS explicitly applied",
+        "pass": true
+      },
+      {
+        "name": "no JavaScript exceptions",
+        "pass": true
+      }
+    ],
+    "holds": [
+      {
+        "selector": "#left-button",
+        "duration": 3000,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "#right-button",
+        "duration": 3000,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "#left-button",
+        "duration": 10000,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "errors": [],
+    "blockedWrites": [],
+    "lostTerminal": {
+      "label": "terminal pointer events deliberately intercepted",
+      "state": "playing",
+      "time": 0.11670000000000003,
+      "horizontal": 0,
+      "drop": false,
+      "alive": true,
+      "selection": "",
+      "viewport": [
+        390,
+        844,
+        390,
+        844,
+        1
+      ],
+      "rects": {
+        "#fall-canvas": {
+          "x": 19.234375,
+          "y": 58,
+          "width": 351.53125,
+          "height": 615.203125,
+          "top": 58,
+          "right": 370.765625,
+          "bottom": 673.203125,
+          "left": 19.234375
+        },
+        ".fall-window": {
+          "x": 15.234375,
+          "y": 54,
+          "width": 359.53125,
+          "height": 623.203125,
+          "top": 54,
+          "right": 374.765625,
+          "bottom": 677.203125,
+          "left": 15.234375
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 52,
+          "width": 366,
+          "height": 696,
+          "top": 52,
+          "right": 378,
+          "bottom": 748,
+          "left": 12
+        },
+        "#game-canvas": {
+          "x": 12,
+          "y": 52,
+          "width": 366,
+          "height": 696,
+          "top": 52,
+          "right": 378,
+          "bottom": 748,
+          "left": 12
+        },
+        "#stage": {
+          "x": 12,
+          "y": 52,
+          "width": 366,
+          "height": 728,
+          "top": 52,
+          "right": 378,
+          "bottom": 780,
+          "left": 12
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 366,
+          "height": 52,
+          "top": 0,
+          "right": 378,
+          "bottom": 52,
+          "left": 12
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 687.203125,
+          "width": 107.6875,
+          "height": 58.796875,
+          "top": 687.203125,
+          "right": 119.6875,
+          "bottom": 746,
+          "left": 12
+        },
+        "#right-button": {
+          "x": 270.296875,
+          "y": 687.203125,
+          "width": 107.703125,
+          "height": 58.796875,
+          "top": 687.203125,
+          "right": 378,
+          "bottom": 746,
+          "left": 270.296875
+        },
+        "#drop-button": {
+          "x": 127.6875,
+          "y": 687.203125,
+          "width": 134.609375,
+          "height": 58.796875,
+          "top": 687.203125,
+          "right": 262.296875,
+          "bottom": 746,
+          "left": 127.6875
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 780,
+          "width": 390,
+          "height": 64,
+          "top": 780,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 748,
+          "width": 366,
+          "height": 32,
+          "top": 748,
+          "right": 378,
+          "bottom": 780,
+          "left": 12
+        }
+      }
+    },
+    "childCSS": {
+      "select": "none",
+      "callout": "",
+      "touch": "none"
+    },
+    "pass": true
+  },
+  {
+    "width": 375,
+    "height": 667,
+    "checks": [
+      {
+        "name": "native input starts",
+        "pass": true
+      },
+      {
+        "name": "final native touchend clears input when pointerup and lostcapture are intercepted",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #left-button 3000ms",
+        "pass": true
+      },
+      {
+        "name": "final release 3000ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #right-button 3000ms",
+        "pass": true
+      },
+      {
+        "name": "final release 3000ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "opposite directions neutral",
+        "pass": true
+      },
+      {
+        "name": "remaining direction survives first lift",
+        "pass": true
+      },
+      {
+        "name": "two-thumb direction plus DROP",
+        "pass": true
+      },
+      {
+        "name": "independent release retains DROP",
+        "pass": true
+      },
+      {
+        "name": "native cancel clears DROP",
+        "pass": true
+      },
+      {
+        "name": "known callout pointer preserves same-button second finger",
+        "pass": true
+      },
+      {
+        "name": "second finger remains after first physical lift",
+        "pass": true
+      },
+      {
+        "name": "same-button final release neutral",
+        "pass": true
+      },
+      {
+        "name": "slide does not invent a second button press",
+        "pass": true
+      },
+      {
+        "name": "outside viewport releases",
+        "pass": true
+      },
+      {
+        "name": "explicit native capture loss releases",
+        "pass": true
+      },
+      {
+        "name": "localized synthetic contextmenu interruption releases",
+        "pass": true
+      },
+      {
+        "name": "child selectstart prevented and released",
+        "pass": true
+      },
+      {
+        "name": "rotation releases without reusing a contact",
+        "pass": true
+      },
+      {
+        "name": "blur pauses and clears",
+        "pass": true
+      },
+      {
+        "name": "ordinary help selection remains enabled",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard direction retained",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard release retained",
+        "pass": true
+      },
+      {
+        "name": "child selection CSS explicitly applied",
+        "pass": true
+      },
+      {
+        "name": "no JavaScript exceptions",
+        "pass": true
+      }
+    ],
+    "holds": [
+      {
+        "selector": "#left-button",
+        "duration": 3000,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "#right-button",
+        "duration": 3000,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "errors": [],
+    "blockedWrites": [],
+    "lostTerminal": {
+      "label": "terminal pointer events deliberately intercepted",
+      "state": "playing",
+      "time": 0.08610000000298018,
+      "horizontal": 0,
+      "drop": false,
+      "alive": true,
+      "selection": "",
+      "viewport": [
+        375,
+        667,
+        375,
+        667,
+        1
+      ],
+      "rects": {
+        "#fall-canvas": {
+          "x": 62.296875,
+          "y": 58,
+          "width": 250.390625,
+          "height": 438.203125,
+          "top": 58,
+          "right": 312.6875,
+          "bottom": 496.203125,
+          "left": 62.296875
+        },
+        ".fall-window": {
+          "x": 58.296875,
+          "y": 54,
+          "width": 258.390625,
+          "height": 446.203125,
+          "top": 54,
+          "right": 316.6875,
+          "bottom": 500.203125,
+          "left": 58.296875
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 52,
+          "width": 351,
+          "height": 519,
+          "top": 52,
+          "right": 363,
+          "bottom": 571,
+          "left": 12
+        },
+        "#game-canvas": {
+          "x": 12,
+          "y": 52,
+          "width": 351,
+          "height": 519,
+          "top": 52,
+          "right": 363,
+          "bottom": 571,
+          "left": 12
+        },
+        "#stage": {
+          "x": 12,
+          "y": 52,
+          "width": 351,
+          "height": 551,
+          "top": 52,
+          "right": 363,
+          "bottom": 603,
+          "left": 12
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 351,
+          "height": 52,
+          "top": 0,
+          "right": 363,
+          "bottom": 52,
+          "left": 12
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 510.203125,
+          "width": 103.0625,
+          "height": 58.796875,
+          "top": 510.203125,
+          "right": 115.0625,
+          "bottom": 569,
+          "left": 12
+        },
+        "#right-button": {
+          "x": 259.921875,
+          "y": 510.203125,
+          "width": 103.0625,
+          "height": 58.796875,
+          "top": 510.203125,
+          "right": 362.984375,
+          "bottom": 569,
+          "left": 259.921875
+        },
+        "#drop-button": {
+          "x": 123.0625,
+          "y": 510.203125,
+          "width": 128.859375,
+          "height": 58.796875,
+          "top": 510.203125,
+          "right": 251.921875,
+          "bottom": 569,
+          "left": 123.0625
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 603,
+          "width": 375,
+          "height": 64,
+          "top": 603,
+          "right": 375,
+          "bottom": 667,
+          "left": 0
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 571,
+          "width": 351,
+          "height": 32,
+          "top": 571,
+          "right": 363,
+          "bottom": 603,
+          "left": 12
+        }
+      }
+    },
+    "childCSS": {
+      "select": "none",
+      "callout": "",
+      "touch": "none"
+    },
+    "pass": true
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "checks": [
+      {
+        "name": "native input starts",
+        "pass": true
+      },
+      {
+        "name": "final native touchend clears input when pointerup and lostcapture are intercepted",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #left-button 250ms",
+        "pass": true
+      },
+      {
+        "name": "final release 250ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #right-button 250ms",
+        "pass": true
+      },
+      {
+        "name": "final release 250ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "opposite directions neutral",
+        "pass": true
+      },
+      {
+        "name": "remaining direction survives first lift",
+        "pass": true
+      },
+      {
+        "name": "two-thumb direction plus DROP",
+        "pass": true
+      },
+      {
+        "name": "independent release retains DROP",
+        "pass": true
+      },
+      {
+        "name": "native cancel clears DROP",
+        "pass": true
+      },
+      {
+        "name": "known callout pointer preserves same-button second finger",
+        "pass": true
+      },
+      {
+        "name": "second finger remains after first physical lift",
+        "pass": true
+      },
+      {
+        "name": "same-button final release neutral",
+        "pass": true
+      },
+      {
+        "name": "slide does not invent a second button press",
+        "pass": true
+      },
+      {
+        "name": "outside viewport releases",
+        "pass": true
+      },
+      {
+        "name": "explicit native capture loss releases",
+        "pass": true
+      },
+      {
+        "name": "localized synthetic contextmenu interruption releases",
+        "pass": true
+      },
+      {
+        "name": "child selectstart prevented and released",
+        "pass": true
+      },
+      {
+        "name": "rotation releases without reusing a contact",
+        "pass": true
+      },
+      {
+        "name": "blur pauses and clears",
+        "pass": true
+      },
+      {
+        "name": "ordinary help selection remains enabled",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard direction retained",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard release retained",
+        "pass": true
+      },
+      {
+        "name": "child selection CSS explicitly applied",
+        "pass": true
+      },
+      {
+        "name": "no JavaScript exceptions",
+        "pass": true
+      }
+    ],
+    "holds": [
+      {
+        "selector": "#left-button",
+        "duration": 250,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "#right-button",
+        "duration": 250,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "errors": [],
+    "blockedWrites": [],
+    "lostTerminal": {
+      "label": "terminal pointer events deliberately intercepted",
+      "state": "playing",
+      "time": 0.08629999999403959,
+      "horizontal": 0,
+      "drop": false,
+      "alive": true,
+      "selection": "",
+      "viewport": [
+        320,
+        568,
+        320,
+        568,
+        1
+      ],
+      "rects": {
+        "#fall-canvas": {
+          "x": 63.078125,
+          "y": 58,
+          "width": 193.828125,
+          "height": 339.203125,
+          "top": 58,
+          "right": 256.90625,
+          "bottom": 397.203125,
+          "left": 63.078125
+        },
+        ".fall-window": {
+          "x": 59.078125,
+          "y": 54,
+          "width": 201.828125,
+          "height": 347.203125,
+          "top": 54,
+          "right": 260.90625,
+          "bottom": 401.203125,
+          "left": 59.078125
+        },
+        ".fall-board": {
+          "x": 12,
+          "y": 52,
+          "width": 296,
+          "height": 420,
+          "top": 52,
+          "right": 308,
+          "bottom": 472,
+          "left": 12
+        },
+        "#game-canvas": {
+          "x": 12,
+          "y": 52,
+          "width": 296,
+          "height": 420,
+          "top": 52,
+          "right": 308,
+          "bottom": 472,
+          "left": 12
+        },
+        "#stage": {
+          "x": 12,
+          "y": 52,
+          "width": 296,
+          "height": 452,
+          "top": 52,
+          "right": 308,
+          "bottom": 504,
+          "left": 12
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 296,
+          "height": 52,
+          "top": 0,
+          "right": 308,
+          "bottom": 52,
+          "left": 12
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 411.203125,
+          "width": 86.140625,
+          "height": 58.796875,
+          "top": 411.203125,
+          "right": 98.140625,
+          "bottom": 470,
+          "left": 12
+        },
+        "#right-button": {
+          "x": 221.84375,
+          "y": 411.203125,
+          "width": 86.15625,
+          "height": 58.796875,
+          "top": 411.203125,
+          "right": 308,
+          "bottom": 470,
+          "left": 221.84375
+        },
+        "#drop-button": {
+          "x": 106.140625,
+          "y": 411.203125,
+          "width": 107.703125,
+          "height": 58.796875,
+          "top": 411.203125,
+          "right": 213.84375,
+          "bottom": 470,
+          "left": 106.140625
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 504,
+          "width": 320,
+          "height": 64,
+          "top": 504,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "#live-status": {
+          "x": 12,
+          "y": 472,
+          "width": 296,
+          "height": 32,
+          "top": 472,
+          "right": 308,
+          "bottom": 504,
+          "left": 12
+        }
+      }
+    },
+    "childCSS": {
+      "select": "none",
+      "callout": "",
+      "touch": "none"
+    },
+    "pass": true
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "checks": [
+      {
+        "name": "native input starts",
+        "pass": true
+      },
+      {
+        "name": "final native touchend clears input when pointerup and lostcapture are intercepted",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #left-button 250ms",
+        "pass": true
+      },
+      {
+        "name": "final release 250ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "stable Canvas during #right-button 250ms",
+        "pass": true
+      },
+      {
+        "name": "final release 250ms",
+        "pass": true
+      },
+      {
+        "name": "no selected text during native hold",
+        "pass": true
+      },
+      {
+        "name": "opposite directions neutral",
+        "pass": true
+      },
+      {
+        "name": "remaining direction survives first lift",
+        "pass": true
+      },
+      {
+        "name": "two-thumb direction plus DROP",
+        "pass": true
+      },
+      {
+        "name": "independent release retains DROP",
+        "pass": true
+      },
+      {
+        "name": "native cancel clears DROP",
+        "pass": true
+      },
+      {
+        "name": "known callout pointer preserves same-button second finger",
+        "pass": true
+      },
+      {
+        "name": "second finger remains after first physical lift",
+        "pass": true
+      },
+      {
+        "name": "same-button final release neutral",
+        "pass": true
+      },
+      {
+        "name": "slide does not invent a second button press",
+        "pass": true
+      },
+      {
+        "name": "outside viewport releases",
+        "pass": true
+      },
+      {
+        "name": "explicit native capture loss releases",
+        "pass": true
+      },
+      {
+        "name": "localized synthetic contextmenu interruption releases",
+        "pass": true
+      },
+      {
+        "name": "child selectstart prevented and released",
+        "pass": true
+      },
+      {
+        "name": "rotation releases without reusing a contact",
+        "pass": true
+      },
+      {
+        "name": "blur pauses and clears",
+        "pass": true
+      },
+      {
+        "name": "ordinary help selection remains enabled",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard direction retained",
+        "pass": true
+      },
+      {
+        "name": "PC keyboard release retained",
+        "pass": true
+      },
+      {
+        "name": "child selection CSS explicitly applied",
+        "pass": true
+      },
+      {
+        "name": "no JavaScript exceptions",
+        "pass": true
+      }
+    ],
+    "holds": [
+      {
+        "selector": "#left-button",
+        "duration": 250,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "#right-button",
+        "duration": 250,
+        "range": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    ],
+    "errors": [],
+    "blockedWrites": [],
+    "lostTerminal": {
+      "label": "terminal pointer events deliberately intercepted",
+      "state": "playing",
+      "time": 0.08439999999105928,
+      "horizontal": 0,
+      "drop": false,
+      "alive": true,
+      "selection": "",
+      "viewport": [
+        1440,
+        900,
+        1440,
+        900,
+        1
+      ],
+      "rects": {
+        "#fall-canvas": {
+          "x": 362.9375,
+          "y": 74,
+          "width": 380.109375,
+          "height": 665.203125,
+          "top": 74,
+          "right": 743.046875,
+          "bottom": 739.203125,
+          "left": 362.9375
+        },
+        ".fall-window": {
+          "x": 358.9375,
+          "y": 70,
+          "width": 388.109375,
+          "height": 673.203125,
+          "top": 70,
+          "right": 747.046875,
+          "bottom": 743.203125,
+          "left": 358.9375
+        },
+        ".fall-board": {
+          "x": 333,
+          "y": 68,
+          "width": 440,
+          "height": 744,
+          "top": 68,
+          "right": 773,
+          "bottom": 812,
+          "left": 333
+        },
+        "#game-canvas": {
+          "x": 333,
+          "y": 68,
+          "width": 440,
+          "height": 744,
+          "top": 68,
+          "right": 773,
+          "bottom": 812,
+          "left": 333
+        },
+        "#stage": {
+          "x": 333,
+          "y": 68,
+          "width": 440,
+          "height": 768,
+          "top": 68,
+          "right": 773,
+          "bottom": 836,
+          "left": 333
+        },
+        "#app>header": {
+          "x": 20,
+          "y": 0,
+          "width": 1400,
+          "height": 68,
+          "top": 0,
+          "right": 1420,
+          "bottom": 68,
+          "left": 20
+        },
+        "#left-button": {
+          "x": 333,
+          "y": 753.203125,
+          "width": 130.453125,
+          "height": 58.796875,
+          "top": 753.203125,
+          "right": 463.453125,
+          "bottom": 812,
+          "left": 333
+        },
+        "#right-button": {
+          "x": 642.53125,
+          "y": 753.203125,
+          "width": 130.453125,
+          "height": 58.796875,
+          "top": 753.203125,
+          "right": 772.984375,
+          "bottom": 812,
+          "left": 642.53125
+        },
+        "#drop-button": {
+          "x": 471.453125,
+          "y": 753.203125,
+          "width": 163.078125,
+          "height": 58.796875,
+          "top": 753.203125,
+          "right": 634.53125,
+          "bottom": 812,
+          "left": 471.453125
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 836,
+          "width": 1440,
+          "height": 64,
+          "top": 836,
+          "right": 1440,
+          "bottom": 900,
+          "left": 0
+        },
+        "#live-status": {
+          "x": 333,
+          "y": 820,
+          "width": 440,
+          "height": 16,
+          "top": 820,
+          "right": 773,
+          "bottom": 836,
+          "left": 333
+        }
+      }
+    },
+    "childCSS": {
+      "select": "none",
+      "callout": "",
+      "touch": "none"
+    },
+    "pass": true
+  }
+]

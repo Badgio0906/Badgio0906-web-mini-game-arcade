@@ -1,0 +1,11 @@
+file:///workspace/arcade-pr11-integration-20261022/tools/start-game015-preview.mjs:15
+const revision=git('rev-parse','HEAD');if(revision!==options['--expected'])throw Error('Wrong checkout: '+revision+' (expected '+options['--expected']+')');
+                                                                                 ^
+
+Error: Wrong checkout: 8d62d7a73406022bd6faf059c7eccb7020b264d3 (expected b419041a3702f1afceed11f912b73543c8904652)
+    at file:///workspace/arcade-pr11-integration-20261022/tools/start-game015-preview.mjs:15:82
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

@@ -1,0 +1,263 @@
+[
+  {
+    "case": "native simultaneous left + DROP, independent releases",
+    "pass": true
+  },
+  {
+    "case": "native captured move outside viewport clears DROP, no reentry activation",
+    "pass": true
+  },
+  {
+    "case": "dynamic viewport",
+    "pass": true,
+    "width": 844,
+    "height": 300,
+    "vv": 300,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px",
+    "canvas": {
+      "x": 357.984375,
+      "y": 52,
+      "width": 128,
+      "height": 224,
+      "top": 52,
+      "right": 485.984375,
+      "bottom": 276,
+      "left": 357.984375
+    }
+  },
+  {
+    "case": "dynamic viewport",
+    "pass": true,
+    "width": 844,
+    "height": 390,
+    "vv": 390,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px",
+    "canvas": {
+      "x": 332.28125,
+      "y": 52,
+      "width": 179.421875,
+      "height": 314,
+      "top": 52,
+      "right": 511.703125,
+      "bottom": 366,
+      "left": 332.28125
+    }
+  },
+  {
+    "case": "dynamic viewport",
+    "pass": true,
+    "width": 390,
+    "height": 620,
+    "vv": 620,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px",
+    "canvas": {
+      "x": 91.234375,
+      "y": 104,
+      "width": 207.53125,
+      "height": 363.203125,
+      "top": 104,
+      "right": 298.765625,
+      "bottom": 467.203125,
+      "left": 91.234375
+    }
+  },
+  {
+    "case": "dynamic viewport",
+    "pass": true,
+    "width": 390,
+    "height": 760,
+    "vv": 760,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px",
+    "canvas": {
+      "x": 51.234375,
+      "y": 104,
+      "width": 287.53125,
+      "height": 503.203125,
+      "top": 104,
+      "right": 338.765625,
+      "bottom": 607.203125,
+      "left": 51.234375
+    }
+  },
+  {
+    "case": "dynamic viewport",
+    "pass": true,
+    "width": 390,
+    "height": 844,
+    "vv": 844,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px",
+    "canvas": {
+      "x": 27.234375,
+      "y": 104,
+      "width": 335.53125,
+      "height": 587.203125,
+      "top": 104,
+      "right": 362.765625,
+      "bottom": 691.203125,
+      "left": 27.234375
+    }
+  },
+  {
+    "case": "CDP safe area emulation",
+    "pass": true,
+    "width": 844,
+    "height": 390,
+    "vv": 390,
+    "overflowX": 0,
+    "overflowY": 0,
+    "padding": "0px 47px 21px",
+    "canvas": {
+      "x": 338.28125,
+      "y": 52,
+      "width": 167.421875,
+      "height": 293,
+      "top": 52,
+      "right": 505.703125,
+      "bottom": 345,
+      "left": 338.28125
+    }
+  },
+  {
+    "case": "safe area paused help/resume",
+    "pass": true
+  },
+  {
+    "case": "portal normal scrolling/filter/favorite/footer",
+    "width": 390,
+    "height": 620,
+    "pass": true,
+    "rects": {
+      ".card-records": {
+        "x": 17,
+        "y": 494.765625,
+        "width": 352,
+        "height": 125
+      },
+      ".play-records summary": {
+        "x": 17,
+        "y": 331.296875,
+        "width": 110,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./about.html\"]": {
+        "x": 17,
+        "y": 468.296875,
+        "width": 102.578125,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./privacy.html\"]": {
+        "x": 139.578125,
+        "y": 468.296875,
+        "width": 130.015625,
+        "height": 44
+      },
+      ".arcade-footer": {
+        "x": 17,
+        "y": 401.296875,
+        "width": 356,
+        "height": 155
+      }
+    },
+    "errors": [],
+    "vv": 620,
+    "overflowX": 0,
+    "overflowY": 19584,
+    "padding": "0px"
+  },
+  {
+    "case": "portal normal scrolling/filter/favorite/footer",
+    "width": 375,
+    "height": 520,
+    "pass": true,
+    "rects": {
+      ".card-records": {
+        "x": 17,
+        "y": 395.328125,
+        "width": 337,
+        "height": 125
+      },
+      ".play-records summary": {
+        "x": 17,
+        "y": 237.65625,
+        "width": 110,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./about.html\"]": {
+        "x": 17,
+        "y": 374.65625,
+        "width": 102.578125,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./privacy.html\"]": {
+        "x": 139.578125,
+        "y": 374.65625,
+        "width": 130.015625,
+        "height": 44
+      },
+      ".arcade-footer": {
+        "x": 17,
+        "y": 307.65625,
+        "width": 341,
+        "height": 155
+      }
+    },
+    "errors": [],
+    "vv": 520,
+    "overflowX": 0,
+    "overflowY": 19596,
+    "padding": "0px"
+  },
+  {
+    "case": "portal normal scrolling/filter/favorite/footer",
+    "width": 320,
+    "height": 440,
+    "pass": true,
+    "rects": {
+      ".card-records": {
+        "x": 13,
+        "y": 315.296875,
+        "width": 290,
+        "height": 125
+      },
+      ".play-records summary": {
+        "x": 13,
+        "y": 198.359375,
+        "width": 110,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./about.html\"]": {
+        "x": 13,
+        "y": 335.359375,
+        "width": 102.578125,
+        "height": 44
+      },
+      ".arcade-footer a[href=\"./privacy.html\"]": {
+        "x": 135.578125,
+        "y": 335.359375,
+        "width": 130.015625,
+        "height": 44
+      },
+      ".arcade-footer": {
+        "x": 13,
+        "y": 268.359375,
+        "width": 294,
+        "height": 155
+      }
+    },
+    "errors": [],
+    "vv": 440,
+    "overflowX": 0,
+    "overflowY": 19192,
+    "padding": "0px"
+  }
+]

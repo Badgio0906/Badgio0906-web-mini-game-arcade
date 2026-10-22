@@ -1,0 +1,149 @@
+[
+  {
+    "width": 844,
+    "height": 390,
+    "checks": [
+      {
+        "name": "native input starts",
+        "pass": true
+      },
+      {
+        "name": "final native touchend clears input when pointerup and lostcapture are intercepted",
+        "pass": false
+      }
+    ],
+    "holds": [],
+    "errors": [],
+    "blockedWrites": [],
+    "lostTerminal": {
+      "label": "terminal pointer events deliberately intercepted",
+      "state": "playing",
+      "time": 0.06669999999999993,
+      "horizontal": -1,
+      "drop": false,
+      "alive": true,
+      "selection": "",
+      "viewport": [
+        844,
+        390,
+        844,
+        390,
+        1
+      ],
+      "rects": {
+        "#fall-canvas": {
+          "x": 332.28125,
+          "y": 52,
+          "width": 179.421875,
+          "height": 314,
+          "top": 52,
+          "right": 511.703125,
+          "bottom": 366,
+          "left": 332.28125
+        },
+        ".fall-window": {
+          "x": 328.28125,
+          "y": 48,
+          "width": 187.421875,
+          "height": 322,
+          "top": 48,
+          "right": 515.703125,
+          "bottom": 370,
+          "left": 328.28125
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 330,
+          "top": 44,
+          "right": 836,
+          "bottom": 374,
+          "left": 8
+        },
+        "#game-canvas": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 330,
+          "top": 44,
+          "right": 836,
+          "bottom": 374,
+          "left": 8
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 346,
+          "top": 44,
+          "right": 836,
+          "bottom": 390,
+          "left": 8
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 828,
+          "height": 44,
+          "top": 0,
+          "right": 836,
+          "bottom": 44,
+          "left": 8
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 140,
+          "width": 112,
+          "height": 64,
+          "top": 140,
+          "right": 124,
+          "bottom": 204,
+          "left": 12
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 214,
+          "width": 112,
+          "height": 64,
+          "top": 214,
+          "right": 124,
+          "bottom": 278,
+          "left": 12
+        },
+        "#drop-button": {
+          "x": 704,
+          "y": 180,
+          "width": 128,
+          "height": 88,
+          "top": 180,
+          "right": 832,
+          "bottom": 268,
+          "left": 704
+        },
+        "#analytics-settings-host": {
+          "x": 692,
+          "y": 290,
+          "width": 140,
+          "height": 100,
+          "top": 290,
+          "right": 832,
+          "bottom": 390,
+          "left": 692
+        },
+        "#live-status": {
+          "x": 312.59375,
+          "y": 374,
+          "width": 218.796875,
+          "height": 16,
+          "top": 374,
+          "right": 531.390625,
+          "bottom": 390,
+          "left": 312.59375
+        }
+      }
+    },
+    "pass": false,
+    "failure": "final native touchend clears input when pointerup and lostcapture are intercepted"
+  }
+]

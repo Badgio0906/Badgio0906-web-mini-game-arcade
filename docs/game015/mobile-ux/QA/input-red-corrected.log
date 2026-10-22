@@ -1,0 +1,115 @@
+
+ RUN  v3.2.7 /workspace/arcade-game015-mobile
+
+ ❯ tests/unit/game015-input-ui.test.ts (11 tests | 5 failed) 23ms
+   ✓ Game015 held UI input lifecycle > maps both directions, simultaneous DROP and independent pointer releases 5ms
+   ✓ Game015 held UI input lifecycle > releases DROP on pointerup 1ms
+   ✓ Game015 held UI input lifecycle > releases DROP on pointercancel 1ms
+   ✓ Game015 held UI input lifecycle > releases DROP on lostpointercapture 0ms
+   ✓ Game015 held UI input lifecycle > clears all held input on blur without restarting the run 1ms
+   × Game015 held UI input lifecycle > clears all held input on resize without restarting the run 9ms
+     → expected { alive: true, time: +0, …(16) } to match object { heldDrop: false, …(4) }
+(20 matching properties omitted from actual)
+   × Game015 held UI input lifecycle > clears all held input on orientationchange without restarting the run 1ms
+     → expected { alive: true, time: +0, …(16) } to match object { heldDrop: false, …(4) }
+(20 matching properties omitted from actual)
+   × Game015 held UI input lifecycle > releases a pointer outside the viewport and requires a fresh press 1ms
+     → expected true to be false // Object.is equality
+   × Game015 held UI input lifecycle > does not steer when the new layout gutter is pressed 1ms
+     → expected -1 to be +0 // Object.is equality
+   × Game015 held UI input lifecycle > clears pause/title/retry and reflects actual held input on the buttons 1ms
+     → expected undefined to be 'true' // Object.is equality
+   ✓ Game015 held UI input lifecycle > retains keyboard direction and DROP release semantics 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > clears all held input on resize without restarting the run
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > clears all held input on orientationchange without restarting the run
+AssertionError: expected { alive: true, time: +0, …(16) } to match object { heldDrop: false, …(4) }
+(20 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "alive": true,
+    "depth": 0,
+-   "heldDrop": false,
+-   "horizontal": 0,
++   "heldDrop": true,
++   "horizontal": -1,
+    "time": 0,
+  }
+
+ ❯ tests/unit/game015-input-ui.test.ts:47:29
+     45|   for(const event of ['blur','resize','orientationchange'])it(`clears …
+     46|     down('left-button');down('drop-button',2);const prior=game.snapsho…
+     47|     expect(game.snapshot()).toMatchObject({heldDrop:false,horizontal:0…
+       |                             ^
+     48|   });
+     49|   it('releases a pointer outside the viewport and requires a fresh pre…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > releases a pointer outside the viewport and requires a fresh press
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/game015-input-ui.test.ts:50:106
+     48|   });
+     49|   it('releases a pointer outside the viewport and requires a fresh pre…
+     50|     down();send(win,'pointermove',controls['drop-button'],{clientX:-1}…
+       |                                                                                                          ^
+     51|     send(win,'pointermove',controls['drop-button']);expect(game.snapsh…
+     52|     down();expect(game.snapshot().heldDrop).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > does not steer when the new layout gutter is pressed
+AssertionError: expected -1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ -1
+
+ ❯ tests/unit/game015-input-ui.test.ts:55:74
+     53|   });
+     54|   it('does not steer when the new layout gutter is pressed',()=>{
+     55|     send(parent,'pointerdown',parent);expect(game.snapshot().horizonta…
+       |                                                                          ^
+     56|   });
+     57|   it('clears pause/title/retry and reflects actual held input on the b…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/unit/game015-input-ui.test.ts > Game015 held UI input lifecycle > clears pause/title/retry and reflects actual held input on the buttons
+AssertionError: expected undefined to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+undefined
+
+ ❯ tests/unit/game015-input-ui.test.ts:58:57
+     56|   });
+     57|   it('clears pause/title/retry and reflects actual held input on the b…
+     58|     down();expect(controls['drop-button'].dataset.held).toBe('true');g…
+       |                                                         ^
+     59|     game.pause(false);expect(game.snapshot().heldDrop).toBe(false);dow…
+     60|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 6 passed (11)
+   Start at  12:23:43
+   Duration  361ms (transform 117ms, setup 0ms, collect 141ms, tests 23ms, environment 0ms, prepare 59ms)

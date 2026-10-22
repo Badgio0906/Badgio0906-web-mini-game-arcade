@@ -1,0 +1,1242 @@
+[
+  {
+    "phase": "before",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 83
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 409.25,
+          "right": 844,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u843d\u4e0b\u30ad\u30f3\u30b0\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nKEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 820,
+          "height": 56,
+          "right": 832,
+          "bottom": 56,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u843d\u4e0b\u30ad\u30f3\u30b0\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 12,
+          "y": 56,
+          "width": 820,
+          "height": 353.25,
+          "right": 832,
+          "bottom": 409.25,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nKEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b\u3092\u53d7\u3051\u6b62\u3081\u307e\u3059\u3002\n\nDEPTH\n0 m\nBES"
+        },
+        "#stage": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 257.703125,
+          "height": 334,
+          "right": 380.84375,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        ".fall-board": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 257.703125,
+          "height": 312,
+          "right": 380.84375,
+          "bottom": 368,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 123.140625,
+          "y": 56,
+          "width": 181.703125,
+          "height": 312,
+          "right": 304.84375,
+          "bottom": 368,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 127.140625,
+          "y": 60,
+          "width": 173.703125,
+          "height": 304,
+          "right": 300.84375,
+          "bottom": 364,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 314.84375,
+          "y": 133.40625,
+          "width": 66,
+          "height": 44,
+          "right": 380.84375,
+          "bottom": 177.40625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 314.84375,
+          "y": 246.59375,
+          "width": 66,
+          "height": 44,
+          "right": 380.84375,
+          "bottom": 290.59375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 314.84375,
+          "y": 183.40625,
+          "width": 66,
+          "height": 57.1875,
+          "right": 380.84375,
+          "bottom": 240.59375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 400.84375,
+          "y": 56,
+          "width": 320,
+          "height": 353.25,
+          "right": 720.84375,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "KEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b\u3092\u53d7\u3051\u6b62\u3081\u307e\u3059\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0\nFALL 6 m\u307e\u3067\u5b89\u5168\n\u77f3\u306e\u5e8a\u306f9 m\u4ee5\u4e0a\u3067\u5931\u6557\n\u3084\u308f\u3089\u304b\u3044\u5e8a"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 123.140625,
+          "y": 374,
+          "width": 257.703125,
+          "height": 16,
+          "right": 380.84375,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        "#score-value": {
+          "x": 524.296875,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 535.640625,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 690.296875,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 701.640625,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 409.25,
+          "width": 844,
+          "height": 64,
+          "right": 844,
+          "bottom": 473.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      },
+      "snapshot": {
+        "alive": true,
+        "time": 0.12430000000074502,
+        "depth": 0,
+        "score": 0,
+        "fallDistance": 0,
+        "niceDrops": 0,
+        "heldDrop": false,
+        "passedPlatforms": 0,
+        "cameraY": 2.239099553913431,
+        "scrollSpeed": 18.027346000000165,
+        "topRemaining": 49.760900446086566,
+        "horizontal": 0,
+        "phase": "grounded",
+        "player": {
+          "x": 128,
+          "y": 112,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "platformId": 1,
+          "stunRemaining": 0
+        },
+        "lastLanding": null,
+        "danger": "safe"
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 98
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 409.25,
+          "right": 667,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u843d\u4e0b\u30ad\u30f3\u30b0\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nKEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b"
+        },
+        "#app>header": {
+          "x": 12,
+          "y": 0,
+          "width": 643,
+          "height": 56,
+          "right": 655,
+          "bottom": 56,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u843d\u4e0b\u30ad\u30f3\u30b0\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 12,
+          "y": 56,
+          "width": 643,
+          "height": 353.25,
+          "right": 655,
+          "bottom": 409.25,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nKEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b\u3092\u53d7\u3051\u6b62\u3081\u307e\u3059\u3002\n\nDEPTH\n0 m\nBES"
+        },
+        "#stage": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 249.140625,
+          "height": 319,
+          "right": 288.0625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        ".fall-board": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 249.140625,
+          "height": 297,
+          "right": 288.0625,
+          "bottom": 353,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 38.921875,
+          "y": 56,
+          "width": 173.140625,
+          "height": 297,
+          "right": 212.0625,
+          "bottom": 353,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 42.921875,
+          "y": 60,
+          "width": 165.140625,
+          "height": 289,
+          "right": 208.0625,
+          "bottom": 349,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 222.0625,
+          "y": 125.90625,
+          "width": 66,
+          "height": 44,
+          "right": 288.0625,
+          "bottom": 169.90625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 222.0625,
+          "y": 239.09375,
+          "width": 66,
+          "height": 44,
+          "right": 288.0625,
+          "bottom": 283.09375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 222.0625,
+          "y": 175.90625,
+          "width": 66,
+          "height": 57.1875,
+          "right": 288.0625,
+          "bottom": 233.09375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 308.0625,
+          "y": 56,
+          "width": 320,
+          "height": 353.25,
+          "right": 628.0625,
+          "bottom": 409.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": "KEEP FALLING\n\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\n\u3046\u307e\u304f\u843d\u3061\u308d\u3002\n\n\u2190 \u2192 / A D \u3067\u79fb\u52d5\n\u2193 / S / Space \u3067 DROP\n\u62bc\u3057\u7d9a\u3051\u308b\u3068\u9023\u7d9a\u964d\u4e0b\n\n\u5929\u4e95\u306b\u8ffd\u3044\u3064\u304b\u308c\u308b\u3068\u7d42\u4e86\uff01\n\u9006\u65b9\u5411\u3067\u30d6\u30ec\u30fc\u30ad\u3002\n\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u6df1\u304f\u6b32\u5f35\u308b\u304b\u3002\n\u3084\u308f\u3089\u304b\u3044\u5e8a\u306f\u6df1\u3044\u843d\u4e0b\u3092\u53d7\u3051\u6b62\u3081\u307e\u3059\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0\nFALL 6 m\u307e\u3067\u5b89\u5168\n\u77f3\u306e\u5e8a\u306f9 m\u4ee5\u4e0a\u3067\u5931\u6557\n\u3084\u308f\u3089\u304b\u3044\u5e8a"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 38.921875,
+          "y": 359,
+          "width": 249.140625,
+          "height": 16,
+          "right": 288.0625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        "#score-value": {
+          "x": 431.515625,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 442.859375,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 597.515625,
+          "y": 261.25,
+          "width": 11.34375,
+          "height": 25,
+          "right": 608.859375,
+          "bottom": 286.25,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 409.25,
+          "width": 667,
+          "height": 64,
+          "right": 667,
+          "bottom": 473.25,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      },
+      "snapshot": {
+        "alive": true,
+        "time": 0.12350000000298017,
+        "depth": 0,
+        "score": 0,
+        "fallDistance": 0,
+        "niceDrops": 0,
+        "heldDrop": false,
+        "passedPlatforms": 0,
+        "cameraY": 2.2246777475537245,
+        "scrollSpeed": 18.027170000000655,
+        "topRemaining": 49.77532225244627,
+        "horizontal": 0,
+        "phase": "grounded",
+        "player": {
+          "x": 128,
+          "y": 112,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "platformId": 1,
+          "stunRemaining": 0
+        },
+        "lastLanding": null,
+        "danger": "safe"
+      }
+    }
+  },
+  {
+    "phase": "pr_initial_85d6fa9",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 326,
+          "right": 844,
+          "bottom": 326,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 828,
+          "height": 44,
+          "right": 836,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 282,
+          "right": 836,
+          "bottom": 326,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 266,
+          "right": 836,
+          "bottom": 310,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 346.5625,
+          "y": 48,
+          "width": 150.84375,
+          "height": 258,
+          "right": 497.40625,
+          "bottom": 306,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 350.5625,
+          "y": 52,
+          "width": 142.84375,
+          "height": 250,
+          "right": 493.40625,
+          "bottom": 302,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 46,
+          "width": 225.140625,
+          "height": 126,
+          "right": 237.140625,
+          "bottom": 172,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 182,
+          "width": 225.140625,
+          "height": 126,
+          "right": 237.140625,
+          "bottom": 308,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 606.84375,
+          "y": 46,
+          "width": 225.15625,
+          "height": 262,
+          "right": 832,
+          "bottom": 308,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 361.203125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 482.78125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 8,
+          "y": 310,
+          "width": 828,
+          "height": 16,
+          "right": 836,
+          "bottom": 326,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        "#score-value": {
+          "x": 361.203125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 368.71875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 401.734375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 409.25,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 326,
+          "width": 844,
+          "height": 64,
+          "right": 844,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "pr_initial_85d6fa9",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 311,
+          "right": 667,
+          "bottom": 311,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 651,
+          "height": 44,
+          "right": 659,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 267,
+          "right": 659,
+          "bottom": 311,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 251,
+          "right": 659,
+          "bottom": 295,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 262.34375,
+          "y": 48,
+          "width": 142.28125,
+          "height": 243,
+          "right": 404.625,
+          "bottom": 291,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 266.34375,
+          "y": 52,
+          "width": 134.28125,
+          "height": 235,
+          "right": 400.625,
+          "bottom": 287,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 46,
+          "width": 174.5625,
+          "height": 118.5,
+          "right": 186.5625,
+          "bottom": 164.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 174.5,
+          "width": 174.5625,
+          "height": 118.5,
+          "right": 186.5625,
+          "bottom": 293,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 480.421875,
+          "y": 46,
+          "width": 174.578125,
+          "height": 247,
+          "right": 655,
+          "bottom": 293,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 272.703125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 394.28125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 8,
+          "y": 295,
+          "width": 651,
+          "height": 16,
+          "right": 659,
+          "bottom": 311,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        "#score-value": {
+          "x": 272.703125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 280.21875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 313.234375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 320.75,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 0,
+          "y": 311,
+          "width": 667,
+          "height": 64,
+          "right": 667,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "revision2",
+    "width": 844,
+    "height": 390,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "visualWidth": 844,
+        "visualHeight": 390
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "right": 844,
+          "bottom": 390,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u77ed\u304f\u523b\u3080\uff1f \u6df1\u304f\u6b32\u5f35\u308b\uff1f DROP\u3092\u30db\u30fc\u30eb\u30c9\u3067\u9023\u7d9a\u964d\u4e0b\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 828,
+          "height": 44,
+          "right": 836,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u77ed\u304f\u523b\u3080\uff1f \u6df1\u304f\u6b32\u5f35\u308b\uff1f DROP\u3092\u30db\u30fc\u30eb\u30c9\u3067\u9023\u7d9a\u964d\u4e0b\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 346,
+          "right": 836,
+          "bottom": 390,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u77ed\u304f\u523b\u3080\uff1f \u6df1\u304f\u6b32\u5f35\u308b\uff1f DROP\u3092\u30db\u30fc\u30eb\u30c9\u3067\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 828,
+          "height": 330,
+          "right": 836,
+          "bottom": 374,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 328.28125,
+          "y": 48,
+          "width": 187.421875,
+          "height": 322,
+          "right": 515.703125,
+          "bottom": 370,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 332.28125,
+          "y": 52,
+          "width": 179.421875,
+          "height": 314,
+          "right": 511.703125,
+          "bottom": 366,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 140,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 204,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 214,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 278,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 704,
+          "y": 180,
+          "width": 128,
+          "height": 88,
+          "right": 832,
+          "bottom": 268,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 361.203125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 482.78125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 289.078125,
+          "y": 374,
+          "width": 265.84375,
+          "height": 16,
+          "right": 554.921875,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u77ed\u304f\u523b\u3080\uff1f \u6df1\u304f\u6b32\u5f35\u308b\uff1f DROP\u3092\u30db\u30fc\u30eb\u30c9\u3067\u9023\u7d9a\u964d\u4e0b"
+        },
+        "#score-value": {
+          "x": 361.203125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 368.71875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 401.734375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 409.25,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 692,
+          "y": 290,
+          "width": 140,
+          "height": 100,
+          "right": 832,
+          "bottom": 390,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  },
+  {
+    "phase": "revision2",
+    "width": 667,
+    "height": 375,
+    "playing": {
+      "state": "playing",
+      "viewport": {
+        "width": 667,
+        "height": 375,
+        "visualWidth": 667,
+        "visualHeight": 375
+      },
+      "scroll": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "elements": {
+        "#app": {
+          "x": 0,
+          "y": 0,
+          "width": 667,
+          "height": 375,
+          "right": 667,
+          "bottom": 375,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161\n\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#app>header": {
+          "x": 8,
+          "y": 0,
+          "width": 651,
+          "height": 44,
+          "right": 659,
+          "bottom": 44,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u30b2\u30fc\u30e0\u4e00\u89a7\u3078\n\u97f3 OFF\n\u2161"
+        },
+        ".game-layout": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "contents",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002\n\nDEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#stage": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 331,
+          "right": 659,
+          "bottom": 375,
+          "display": "flex",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192\n\n\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        ".fall-board": {
+          "x": 8,
+          "y": 44,
+          "width": 651,
+          "height": 315,
+          "right": 659,
+          "bottom": 359,
+          "display": "grid",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6\nDROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b\n\u53f3 \u2192"
+        },
+        ".fall-window": {
+          "x": 244.0625,
+          "y": 48,
+          "width": 178.84375,
+          "height": 307,
+          "right": 422.90625,
+          "bottom": 355,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        },
+        "#fall-canvas": {
+          "x": 248.0625,
+          "y": 52,
+          "width": 170.84375,
+          "height": 299,
+          "right": 418.90625,
+          "bottom": 351,
+          "display": "block",
+          "visibility": "visible",
+          "text": null
+        },
+        "#left-button": {
+          "x": 12,
+          "y": 132.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 196.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u2190 \u5de6"
+        },
+        "#right-button": {
+          "x": 12,
+          "y": 206.5,
+          "width": 112,
+          "height": 64,
+          "right": 124,
+          "bottom": 270.5,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u53f3 \u2192"
+        },
+        "#drop-button": {
+          "x": 527,
+          "y": 165,
+          "width": 128,
+          "height": 88,
+          "right": 655,
+          "bottom": 253,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DROP \u2193\n\u62bc\u3057\u7d9a\u3051\u3066\u9023\u7d9a\u964d\u4e0b"
+        },
+        ".playing-guide": {
+          "x": 272.703125,
+          "y": 7.09375,
+          "width": 121.578125,
+          "height": 29.796875,
+          "right": 394.28125,
+          "bottom": 36.890625,
+          "display": "block",
+          "visibility": "visible",
+          "text": "DEPTH\n0 m\nBEST\n0 m\nNICE DROP\n0"
+        },
+        "#overlay": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none",
+          "visibility": "visible",
+          "text": "A VERY DOWNWARD ADVENTURE\u843d\u4e0b\u30ad\u30f3\u30b0\uff5eFALL KING\uff5e\u4e0a\u3092\u76ee\u6307\u3059\u306a\u3002\u3046\u307e\u304f\u843d\u3061\u308d\u3002\u96e2\u3057\u3066\u523b\u3080\u304b\u3001\u62bc\u3057\u7d9a\u3051\u3066\u6b32\u5f35\u308b\u304b\u3002\u6df1\u3044\u843d\u4e0b\u306f\u3084\u308f\u3089\u304b\u3044\u5e8a\u3078\u3002\u602a\u9ce5\u306e\u5411\u304d\u30fb\u79fb\u52d5\u5e8a\u306e\u884c\u304d\u5148\u3092\u8aad\u3082\u3046\u3002\u3059\u3050\u904a\u3076BEST r04 0 m \u00b7 \u65e7\u7248 0 m\uff08\u6bd4\u8f03\u5225\uff09"
+        },
+        "#live-status": {
+          "x": 224.09375,
+          "y": 359,
+          "width": 218.796875,
+          "height": 16,
+          "right": 442.890625,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": "\u9ce5\u306e\u52d5\u304d\u3092\u5f85\u3063\u3066\u3001\u30bf\u30a4\u30df\u30f3\u30b0\u3088\u304f DROP\u3002"
+        },
+        "#score-value": {
+          "x": 272.703125,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 280.21875,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#best-value": {
+          "x": 313.234375,
+          "y": 16.890625,
+          "width": 7.515625,
+          "height": 21,
+          "right": 320.75,
+          "bottom": 37.890625,
+          "display": "inline",
+          "visibility": "visible",
+          "text": "0"
+        },
+        "#analytics-settings-host": {
+          "x": 534.953125,
+          "y": 275,
+          "width": 120.046875,
+          "height": 100,
+          "right": 655,
+          "bottom": 375,
+          "display": "block",
+          "visibility": "visible",
+          "text": ""
+        }
+      }
+    }
+  }
+]

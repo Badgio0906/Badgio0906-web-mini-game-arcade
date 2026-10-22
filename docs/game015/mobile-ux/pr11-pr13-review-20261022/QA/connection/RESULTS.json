@@ -1,0 +1,28 @@
+[
+  {
+    "hostname": "iphone-lan.test",
+    "errors": [],
+    "pass": false,
+    "error": "locator.innerText: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#result')\u001b[22m\n"
+  },
+  {
+    "hostname": "127.0.0.1",
+    "errors": [],
+    "apis": {
+      "origin": "http://127.0.0.1:4986",
+      "isSecureContext": true,
+      "randomUUID": true,
+      "WebAssembly": true,
+      "fetch": true,
+      "ReadableStream": true,
+      "WebGL2": true,
+      "IndexedDB_API": true,
+      "crossOriginIsolated": true,
+      "SharedArrayBuffer_API": true,
+      "AudioContext_API": true,
+      "Game012_startup_prerequisites": true
+    },
+    "pass": false,
+    "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#play-button')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"primary\" id=\"play-button\">すぐ遊ぶ</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div id=\"analytics-settings-host\"></div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+  }
+]
