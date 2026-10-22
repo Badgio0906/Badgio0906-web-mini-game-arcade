@@ -1,0 +1,250 @@
+/* Game037 BENTO BOX — Showa-era little bento shop: kinari paper, red lacquer, wood, yamabuki. */
+:root {
+  --kinari: #f3ead6;
+  --paper: #fbf5e6;
+  --ink: #2b1d14;
+  --ink-soft: #5d4634;
+  --lacquer: #9c2a1f;
+  --lacquer-dark: #6e1712;
+  --yamabuki: #e0a52a;
+  --indigo: #24385a;
+  --ok: #3f9a3a;
+  --ng: #c8331f;
+  --hud-h: 40px;
+  --header-h: 56px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--kinari) url('/assets/game037/washi-tile.svg') repeat;
+  background-size: 160px;
+  color: var(--ink);
+  font: 500 15px/1.5 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'IPAPGothic', system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+#app { min-height: 100dvh; display: flex; flex-direction: column; max-width: 1180px; margin: 0 auto; }
+#app.dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+button { font: inherit; color: inherit; }
+/* No grey/blue flash over the box or dishes on touch; state is shown by our own styles. */
+button, .grid, .slot, .tray { -webkit-tap-highlight-color: transparent; }
+kbd { font: 600 11px/1 ui-monospace, monospace; border: 1px solid #0003; border-bottom-width: 2px; border-radius: 4px; padding: 2px 4px; margin-left: 6px; background: #fff8; }
+
+/* header */
+.arcade-game-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: var(--header-h); padding-top: 6px; padding-bottom: 6px; }
+.tools { display: flex; gap: 6px; }
+.tools button, .menu button, .actions button, .clear-buttons button, .dialog-buttons button {
+  min-height: 44px; min-width: 44px; padding: 8px 14px; border-radius: 10px; border: 2px solid var(--ink);
+  background: var(--paper); box-shadow: 0 3px 0 var(--ink); cursor: pointer; font-weight: 700; touch-action: manipulation;
+}
+.tools button { padding: 6px 10px; font-size: 14px; }
+button:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+button:disabled { opacity: .45; cursor: default; box-shadow: none; }
+button.primary { background: var(--lacquer); color: #fff7e8; border-color: var(--lacquer-dark); box-shadow: 0 3px 0 var(--lacquer-dark); }
+:focus-visible { outline: 3px solid #2f6fd6; outline-offset: 3px; }
+main { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 0 12px 8px; }
+.screen[hidden] { display: none !important; }
+footer { text-align: center; font-size: 11px; color: var(--ink-soft); padding: 4px 0 calc(6px + env(safe-area-inset-bottom)); }
+
+/* title */
+#title-screen { align-items: center; text-align: center; display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
+.noren { position: relative; width: min(100%, 460px); }
+.noren img { display: block; width: 100%; height: auto; }
+.noren-text { position: absolute; inset: 14% 4% 32% 4%; display: grid; grid-template-columns: repeat(3, 1fr); place-items: center; pointer-events: none; }
+.noren-text b { color: var(--kinari); font-size: clamp(22px, 7vw, 40px); font-weight: 800; letter-spacing: .05em; text-shadow: 0 2px 0 #0f1a2c; transform: translateY(-18%); }
+h1 { margin: 2px 0 0; font-size: clamp(26px, 7vw, 40px); line-height: 1.15; color: var(--lacquer-dark); text-shadow: 0 2px 0 #fff8; }
+h1 small { display: block; font-size: 13px; letter-spacing: .3em; color: var(--ink-soft); margin-top: 4px; }
+.tagline { margin: 0; font-weight: 700; }
+.hero { width: min(52vw, 210px); }
+.menu { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 4px; }
+.menu button { min-width: 120px; font-size: 16px; }
+.best-line { margin: 2px 0 0; font-weight: 700; }
+.best-line strong { font-size: 20px; color: var(--lacquer); }
+.note { font-size: 12px; color: var(--ng); margin: 0; }
+
+/* box & grid: the SVG well is 20..420 of 440, so the grid inset is 20/440 */
+.box { position: relative; width: 100%; aspect-ratio: 1; background: url('/assets/game037/bento-box.svg') center / 100% 100% no-repeat; filter: drop-shadow(0 8px 10px #2a170c55); }
+.grid { position: absolute; inset: 4.5455%; touch-action: none; outline: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+.grid:focus-visible { outline: 3px solid #2f6fd6; outline-offset: 6px; border-radius: 4px; }
+.cell { position: absolute; width: calc(100% / var(--n, 4)); height: calc(100% / var(--n, 4)); pointer-events: none; }
+/* Faint guide lines for any box size; the lacquer well itself is in bento-box.svg. */
+.grid::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .75;
+  background-image: linear-gradient(to right, #5a4034 1.5px, transparent 1.5px), linear-gradient(to bottom, #5a4034 1.5px, transparent 1.5px);
+  background-size: calc(100% / var(--n, 4)) calc(100% / var(--n, 4)); background-position: -0.75px -0.75px; }
+.cell.ok, .cell.ng { z-index: 3; }
+.cell.ok::after, .cell.ng::after { content: ''; position: absolute; inset: 5%; border-radius: 12%; }
+.cell.ok::after { background: #63c25a55; border: 3px solid #8fe07a; box-shadow: inset 0 0 0 2px #1d5a1c88; }
+.cell.ng::after { background: #e0412a55; border: 3px dashed #ff8a70; }
+.cell.ng::before { content: '×'; position: absolute; inset: 0; display: grid; place-items: center; color: #ffd6cc; font: 800 clamp(16px, 5vw, 30px)/1 system-ui, sans-serif; z-index: 1; }
+/* Pointer hits are resolved per cell in main.ts; the button stays for keyboard focus. */
+.placed { position: absolute; padding: 0; margin: 0; border: 0; background: none; box-shadow: none; z-index: 2; pointer-events: none; border-radius: 10px; }
+#grid { cursor: pointer; }
+.placed:disabled { opacity: 1; cursor: default; }
+.placed:focus-visible { outline-offset: -2px; }
+.placed.landed { animation: land .26s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes land { 0% { transform: scale(1.08) translateY(-4%); } 100% { transform: none; } }
+.food { position: relative; display: block; width: 100%; pointer-events: none; }
+.placed .food { height: 100%; }
+.food svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* clear effect */
+.seal { position: absolute; left: 50%; top: 50%; width: 46%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-12deg) scale(.4); opacity: 0; pointer-events: none; z-index: 6; display: grid; place-items: center; }
+.seal img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.seal span { position: relative; color: #c4301f; font-weight: 900; font-size: clamp(18px, 5.4vw, 34px); text-align: center; line-height: 1.1; text-shadow: 0 0 6px #fff, 0 0 2px #fff; }
+.box.cleared .seal { opacity: .96; transform: translate(-50%, -50%) rotate(-12deg) scale(1); transition: transform .35s cubic-bezier(.2, 1.8, .4, 1), opacity .2s; }
+.box.cleared .placed { animation: cheer .5s ease-out both; }
+.box.cleared .placed:nth-of-type(2n) { animation-delay: .08s; }
+@keyframes cheer { 0% { transform: none; } 40% { transform: translateY(-6%) scale(1.03); } 100% { transform: none; } }
+.sparkles { position: absolute; inset: 0; pointer-events: none; z-index: 7; }
+.sparkles img { position: absolute; width: 12%; opacity: 0; }
+.sparkles img:nth-child(1) { left: 6%; top: 8%; } .sparkles img:nth-child(2) { right: 6%; top: 14%; } .sparkles img:nth-child(3) { left: 12%; bottom: 8%; }
+.sparkles img:nth-child(4) { right: 10%; bottom: 6%; } .sparkles img:nth-child(5) { left: 44%; top: -2%; }
+.box.cleared .sparkles img { animation: twinkle 1.2s ease-out both; }
+.box.cleared .sparkles img:nth-child(2n) { animation-delay: .15s; } .box.cleared .sparkles img:nth-child(3n) { animation-delay: .3s; }
+@keyframes twinkle { 0% { opacity: 0; transform: scale(.2) rotate(0); } 40% { opacity: 1; transform: scale(1.1) rotate(25deg); } 100% { opacity: .9; transform: scale(.9) rotate(45deg); } }
+.box.mini { pointer-events: none; }
+
+/* play layout: portrait default */
+#play-screen { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+/* Fixed 2×2 HUD: growing numbers must never re-wrap it and shift the box mid-drag. */
+.hud { display: grid; grid-template-columns: repeat(2, max-content); gap: 4px 6px; justify-content: center; align-items: center; min-height: var(--hud-h); }
+.hud .chip { text-align: center; }
+.chip strong { display: inline-block; text-align: right; }
+#hud-time { min-width: 3ch; } #hud-stage-score { min-width: 4ch; } #hud-total { min-width: 5ch; }
+.chip { background: var(--paper); border: 1.5px solid #2b1d1455; border-radius: 999px; padding: 3px 10px; font-size: 13px; white-space: nowrap; }
+.chip strong { font-size: 16px; color: var(--lacquer); font-variant-numeric: tabular-nums; }
+.chip[hidden] { display: none; }
+.stage-area { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.box-wrap { --reserve: 330px; width: min(calc(100vw - 24px), calc(100dvh - var(--reserve)), 520px); min-width: 200px; }
+/* Two tray rows (5+ dishes) need more height below the box. */
+#app[data-many] .box-wrap { --reserve: 400px; }
+.side { width: min(100%, 520px); display: flex; flex-direction: column; gap: 6px; }
+.status { margin: 0; min-height: 1.5em; font-size: 13px; text-align: center; font-weight: 700; }
+.status[data-tone='bad'] { color: var(--ng); }
+.status[data-tone='good'] { color: var(--ok); }
+.tray { --cols: 4; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 6px; padding: 6px; border-radius: 12px; background: #d9b07a url('/assets/game037/wood-tile.svg') repeat; background-size: 240px; border: 2px solid #7a5028; box-shadow: inset 0 2px 6px #5a381455; touch-action: none; }
+.tray[hidden] { display: none; }
+.tray[data-count="5"] { --cols: 5; } .tray[data-count="6"] { --cols: 6; }
+.tray[data-count="7"], .tray[data-count="8"], .tray[data-count="9"], .tray[data-count="10"] { --cols: 5; }
+.slot { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; position: relative; aspect-ratio: 1; min-height: 44px; padding: 4px 4px 16px; border-radius: 10px; border: 2px solid #7a502888; background: #fff6e2cc; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: grab; touch-action: none; }
+.slot-inner { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.slot .food { flex: none; max-height: 100%; }
+.slot-name { position: absolute; left: 2px; right: 2px; bottom: 1px; font-size: 10px; line-height: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+.slot.selected { border-color: var(--yamabuki); box-shadow: 0 0 0 3px var(--yamabuki), 0 6px 10px #5a381466; background: #fffbe8; transform: translateY(-3px); }
+.slot.selected .food { animation: bob 1.2s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-4%); } }
+.slot.lifted .food { opacity: .25; }
+.slot.used { background: #0000; border-style: dashed; }
+.slot.used .food { opacity: .18; filter: grayscale(.7); }
+.slot.used:disabled { opacity: 1; }
+.slot:disabled:not(.used) { opacity: .6; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.actions[hidden] { display: none; }
+.clear-panel { background: var(--paper); border: 2px solid var(--lacquer); border-radius: 12px; padding: 8px 10px; text-align: center; }
+.clear-panel[hidden] { display: none; }
+.clear-title { margin: 0; font-size: 18px; font-weight: 900; color: var(--lacquer); }
+.clear-detail { margin: 2px 0 8px; font-size: 13px; }
+.clear-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+/* run progress: a wooden menu board with paper tags (お品書き) */
+.menu-board { background: #d9b07a url('/assets/game037/wood-tile.svg') repeat; background-size: 240px; border: 2px solid #7a5028; border-radius: 10px; padding: 4px 6px 6px; }
+.menu-board[hidden] { display: none; }
+.menu-board h2 { margin: 0 0 3px; font-size: 12px; letter-spacing: .2em; text-align: center; color: #4a2c12; }
+.menu-board ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.menu-board ol.menu-ladder { grid-template-columns: repeat(5, 1fr); margin-bottom: 4px; }
+.menu-ladder li { font: 800 11px/1.6 ui-monospace, monospace; text-align: center; border-radius: 999px; background: #fff6e2aa; color: var(--ink-soft); border: 1.5px solid #7a502855; }
+.menu-ladder li.current { background: var(--lacquer); color: #fff6e8; border-color: var(--lacquer-dark); }
+.menu-ladder li.done { background: #f3e2c8; color: #7a5028; text-decoration: line-through; }
+#menu-items li { position: relative; background: var(--paper); border: 1.5px solid #7a502866; border-radius: 4px; padding: 2px 2px 3px; display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 0; }
+.mb-no { font-weight: 900; font-size: 12px; line-height: 1.1; color: var(--ink-soft); }
+.mb-score { font-size: 10px; font-weight: 800; line-height: 1.2; min-height: 1.2em; color: var(--lacquer); font-variant-numeric: tabular-nums; }
+#menu-items li.current { border-color: var(--yamabuki); box-shadow: 0 0 0 2px var(--yamabuki); background: #fffbe8; }
+#menu-items li.done::after { content: '済'; position: absolute; right: -3px; top: -4px; width: 16px; height: 16px; border-radius: 50%; background: #c4301f; color: #fff6e8; font-size: 10px; font-weight: 900; line-height: 16px; text-align: center; transform: rotate(-12deg); }
+
+/* drag ghost */
+.ghost { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 50; filter: drop-shadow(0 10px 8px #2a170c66); opacity: .92; will-change: transform; }
+.ghost[hidden] { display: none; }
+.ghost .food { width: 100%; height: 100%; }
+.ghost.snap { opacity: .8; filter: drop-shadow(0 3px 3px #2a170c55); }
+
+/* result */
+#result-screen { align-items: center; display: flex; flex-direction: column; gap: 8px; text-align: center; padding-top: 8px; }
+#result-screen h2 { margin: 4px 0 0; color: var(--lacquer-dark); font-size: clamp(20px, 6vw, 30px); }
+.result-total { margin: 0; display: flex; align-items: baseline; gap: 8px; }
+.result-total strong { font-size: 48px; color: var(--lacquer); font-variant-numeric: tabular-nums; }
+.result-best { margin: 0; font-weight: 800; }
+.result-best.new { color: #fff; background: var(--lacquer); padding: 2px 12px; border-radius: 999px; }
+.result-table { border-collapse: collapse; background: var(--paper); border: 2px solid var(--ink); font-size: 13px; max-width: 100%; }
+.result-table th, .result-table td { border-bottom: 1px solid #2b1d1433; padding: 4px 8px; }
+.result-table td:first-child { text-align: left; }
+.result-table th, .result-table td:not(:first-child) { white-space: nowrap; }
+.result-table td:last-child { font-weight: 800; color: var(--lacquer); }
+
+/* dialog */
+dialog { max-width: min(92vw, 520px); border: 3px solid var(--ink); border-radius: 14px; background: var(--paper); color: var(--ink); padding: 14px 16px; box-shadow: 0 10px 0 #2b1d1433; }
+dialog::backdrop { background: #2b1d1499; }
+dialog h2 { margin: 0 0 6px; color: var(--lacquer-dark); }
+.dialog-body { max-height: calc(100dvh - 120px); overflow: auto; }
+.dialog-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.help { padding-left: 18px; margin: 0; font-size: 14px; }
+.help li { margin: 4px 0; }
+.small { font-size: 12px; color: var(--ink-soft); }
+
+/* landscape / desktop: box left, tray right */
+@media (min-aspect-ratio: 5/4) and (min-width: 600px) {
+  #title-screen { display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'noren hero' 'h1 hero' 'tag hero' 'menu hero' 'best hero' 'note hero'; justify-items: center; align-content: start; column-gap: 24px; }
+  .noren { grid-area: noren; width: min(100%, 420px); } h1 { grid-area: h1; } .tagline { grid-area: tag; } .menu { grid-area: menu; } .best-line { grid-area: best; } .note { grid-area: note; }
+  .hero { grid-area: hero; width: min(36vw, calc(100dvh - 120px), 400px); align-self: center; }
+  /* HUD moves into the side column so the box gets the full height. */
+  #play-screen { display: grid; grid-template-columns: auto minmax(0, 400px); grid-template-areas: 'box hud' 'box side'; grid-template-rows: auto 1fr; justify-content: center; column-gap: 16px; row-gap: 6px; }
+  .stage-area { display: contents; }
+  .hud { grid-area: hud; justify-content: start; }
+  .box-wrap { grid-area: box; width: min(calc(100dvh - var(--header-h) - 30px), 56vw, 600px); }
+  .side { grid-area: side; width: min(38vw, 400px); }
+  .tray { --cols: 2; }
+  .tray[data-count="5"], .tray[data-count="6"] { --cols: 3; }
+  .tray[data-count="7"], .tray[data-count="8"], .tray[data-count="9"], .tray[data-count="10"] { --cols: 4; }
+}
+@media (min-aspect-ratio: 5/4) and (max-height: 480px) {
+  .menu-board { display: none; }
+  .noren { width: min(100%, 300px); }
+  .hero { width: min(34vw, calc(100dvh - 90px)); }
+  h1 { font-size: 24px; }
+  .tray, .tray[data-count] { --cols: 5; }
+  .tray[data-count="4"] { --cols: 4; }
+  .slot { padding-bottom: 4px; } .slot-name { display: none; }
+  footer { display: none; }
+}
+@media (max-height: 600px) and (max-aspect-ratio: 5/4) {
+  .menu-board { display: none; }
+  .box-wrap { --reserve: 300px; }
+  #app[data-many] .box-wrap { --reserve: 336px; }
+  .hud { min-height: 0; }
+  .status { font-size: 12px; min-height: 1.3em; }
+  .noren { width: min(100%, 300px); }
+  .hero { width: min(40vw, 150px); }
+  footer { display: none; }
+}
+/* Portrait: the box size is already in the board title, so the ladder row is dropped. */
+@media (max-aspect-ratio: 5/4) { .menu-board ol.menu-ladder { display: none; } }
+@media (max-aspect-ratio: 5/4) and (min-height: 740px) {
+  #app:not([data-many]) .slot { aspect-ratio: 4 / 5; }
+}
+@media (min-aspect-ratio: 5/4) and (max-height: 480px) {
+  #result-screen { display: grid; grid-template-columns: auto auto; grid-template-areas: 'h h' 'total table' 'best table' 'menu table'; justify-content: center; align-content: start; column-gap: 24px; row-gap: 4px; }
+  #result-screen h2 { grid-area: h; } .result-total { grid-area: total; justify-content: center; } .result-best { grid-area: best; justify-self: center; }
+  #result-screen .menu { grid-area: menu; } .result-table { grid-area: table; font-size: 12px; }
+  .result-table th, .result-table td { padding: 2px 6px; }
+}
+@media (max-width: 360px) {
+  .result-table { font-size: 12px; }
+  .result-table th, .result-table td { padding: 3px 4px; }
+  .hud { gap: 3px; }
+  .chip { padding: 2px 7px; font-size: 12px; }
+  .chip strong { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .box.cleared .seal { transform: translate(-50%, -50%) rotate(-12deg); }
+  .box.cleared .sparkles img { opacity: .9; }
+}

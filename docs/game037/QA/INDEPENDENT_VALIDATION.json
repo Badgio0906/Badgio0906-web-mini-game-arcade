@@ -1,0 +1,59 @@
+{
+  "task_id": "game037-claude-full-build-20261018",
+  "stage": "independent_qa",
+  "reviewer": "ChatGPT via GitHub connector + GitHub Actions; not a separately invoked Codex Cloud worker",
+  "assessed_claude_head": "a050da6655a99cb2a308c9d1f122c811623e36a1",
+  "base_sha": "9e96d557779c5de099fe54c51731ceb131e591a1",
+  "changed_files_initial": 90,
+  "disallowed_initial": 0,
+  "verified_source_commit": "4057766503f9051a9b5a0ba6c2a99d9ee648e48c",
+  "final_ci": {
+    "url": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39096571478",
+    "conclusion": "success",
+    "node": "24",
+    "test_files": 105,
+    "test_cases": 1110,
+    "game037_browser_checks_passed": 575,
+    "game037_browser_checks_failed": 0,
+    "browser_viewports": [
+      "desktop 1280x720",
+      "phone 390x844",
+      "narrow 320x568",
+      "landscape 844x390",
+      "denied-storage"
+    ],
+    "real_vite_http": true
+  },
+  "reproducibility": {
+    "initial_browser_failure": "rotation did not converge immediately after Esc resume; timing race suspected, not proven",
+    "initial_failure_run": 39095772818,
+    "review_runner_timeout_run": 39095930096,
+    "independent_574_success_run": 39096159351,
+    "temporary_test_fault_run": 39096406073,
+    "final_success_run": 39096571478,
+    "product_fix_commit": "4c86a7ff2b30a500159bb3b85e599d9257d11947",
+    "qa_test_fix_commit": "4057766503f9051a9b5a0ba6c2a99d9ee648e48c",
+    "temporary_test_removed_commit": "4ad5858aa3ae9f5fb43c0866b2e9a68e8bde2b8d"
+  },
+  "visual": {
+    "total": 81,
+    "readability_15": 12,
+    "production_15": 13,
+    "verdict": "PASS",
+    "evidence": "Actual screenshot PNGs in docs/game037/QA/browser-final; viewed independently"
+  },
+  "human_playtest": "NOT_RUN",
+  "physical_device": "NOT_RUN",
+  "audio_listening": "NOT_RUN",
+  "real_fps": "NOT_RUN",
+  "integration": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "pr_draft": true,
+  "usage": {
+    "wall_time_seconds": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cached_tokens": null,
+    "cost": null
+  }
+}
