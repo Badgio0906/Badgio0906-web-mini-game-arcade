@@ -75,6 +75,8 @@ node tests/onboarding/dialog-shared-regression.mjs
 - CIと同じoffline helper `python3 -m unittest discover -s tests/jev -p 'test_*.py' -v`：25成功、API呼出なし。
 - Jev有料API：**NOT_CALLED**。ユーザーの有料API禁止を優先する。実行した独立レビューと取り違えない。
 
+保存ログは末尾空白・余分な末尾空行だけを正規化し、成功・失敗の内容は保持した。
+
 ## PR11との整合・独立レビュー
 
 実施者 `/root/game015_ui_review` が固定CSS・RED/GREEN・collector・PR11をread-onlyレビュー。コード上blockerなし。最初のcollectorの001 debug名/005入力assert不足を指摘され、追加4条件でHUDと本番phaseの明示assertを実施した。
