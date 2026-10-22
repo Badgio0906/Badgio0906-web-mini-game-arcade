@@ -1,0 +1,42 @@
+{
+  "pr": 13,
+  "head": "dfae1107b7c8ed8440fe8e44e239ca5840638532",
+  "branch": "codex/game012-mobile-visibility-fix",
+  "draft": true,
+  "mergeable": false,
+  "mergeable_state": "dirty",
+  "checks": [
+    {
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Badgio0906/Badgio0906-web-mini-game-arcade/actions/runs/39524128355/job/118974692022"
+    }
+  ],
+  "repo": "Badgio0906/Badgio0906-web-mini-game-arcade",
+  "visibility": "public",
+  "pr_workflow": {
+    "runs_on": "ubuntu-latest",
+    "cache": "setup-node npm",
+    "paid_API_called": false,
+    "deploy": false
+  },
+  "pages_workflow": {
+    "runs_on": [
+      "ubuntu-latest",
+      "ubuntu-latest"
+    ],
+    "cache": "setup-node npm",
+    "artifact": "upload-pages-artifact",
+    "paid_API_called": false,
+    "deploy": "existing GitHub Pages"
+  },
+  "fee_conditions": {
+    "webhook_list": "HTTP403 UNKNOWN",
+    "billing_usage": "HTTP403 UNKNOWN",
+    "additional_fee_free_confirmed": false
+  },
+  "push": "NOT_RUN",
+  "new_head_CI": "NOT_RUN",
+  "main_merge": "NOT_RUN"
+}

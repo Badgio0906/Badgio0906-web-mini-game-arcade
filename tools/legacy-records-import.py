@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import runpy
+
+fit_game012_html=runpy.run_path(str(Path(__file__).with_name('game012_canvas_fit.py')))['fit_game012_html']
 
 ROOT=Path(__file__).resolve().parents[1]
 PINS={
@@ -55,7 +58,9 @@ def main():
   for row in metadata['runtime_files']:
    name=row['name'];target=dest/('game.html' if name=='index.html' else name);target.parent.mkdir(parents=True,exist_ok=True)
    if name=='index.html':
-    html=(folder/name).read_text();html=html.replace('<head>','<head>\n<script src="../native-record-bridge.js"></script>',1);target.write_text(html)
+    html=(folder/name).read_text();html=html.replace('<head>','<head>\n<script src="../native-record-bridge.js"></script>',1)
+    if game=='game012':html=fit_game012_html(html)
+    target.write_text(html)
    else:shutil.copy2(folder/name,target)
    records.append({'source':name,'path':str(target.relative_to(ROOT)),'bytes':target.stat().st_size,'sourceSha256':row['sha256'],'sha256':sha(target),'byteIdentical':sha(target)==row['sha256']})
   for name in ('index.html','portal-return.css'):shutil.copy2(shell/name,dest/name)

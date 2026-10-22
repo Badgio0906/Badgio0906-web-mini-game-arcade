@@ -1,0 +1,43 @@
+[
+  {
+    "method": "pointer",
+    "requests": 1,
+    "errors": [
+      "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+    ],
+    "staleRequests": 1,
+    "src": "./game.html?start=immediate&records_session=f446db3d-4ced-4f50-8b11-6ea559be709f",
+    "pass": false,
+    "failure": "A gesture begun before rotation must not start the engine\n+ actual - expected\n\n+ './game.html?start=immediate&records_session=f446db3d-4ced-4f50-8b11-6ea559be709f'\n- null\n"
+  },
+  {
+    "method": "touch",
+    "requests": 1,
+    "errors": [
+      "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+    ],
+    "staleRequests": 1,
+    "src": "./game.html?start=immediate&records_session=4a24645e-ffd3-4bcf-8b49-b943fd3b050a",
+    "pass": false,
+    "failure": "A gesture begun before rotation must not start the engine\n+ actual - expected\n\n+ './game.html?start=immediate&records_session=4a24645e-ffd3-4bcf-8b49-b943fd3b050a'\n- null\n"
+  },
+  {
+    "method": "Space",
+    "requests": 1,
+    "errors": [
+      "Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+    ],
+    "staleRequests": 0,
+    "src": null,
+    "freshActivation": true,
+    "pass": false,
+    "failure": "Expected values to be strictly equal:\n\n1 !== 0\n"
+  },
+  {
+    "method": "Enter",
+    "requests": 0,
+    "errors": [],
+    "pass": false,
+    "failure": "locator.evaluate: Error: strict mode violation: locator('h2') resolved to 2 elements:\n    1) <h2>遊び方</h2> aka getByRole('heading', { name: '遊び方' })\n    2) <h2>ゲーム改善のため、プレイデータを利用してもよいですか？</h2> aka getByText('ゲーム改善のため、プレイデータを利用してもよいですか？')\n\nCall log:\n\u001b[2m  - waiting for locator('h2')\u001b[22m\n"
+  }
+]
