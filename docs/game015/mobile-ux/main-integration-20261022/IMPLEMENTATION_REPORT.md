@@ -47,6 +47,7 @@ mainで公開済みの共有CSSはそのまま：
 | Game033同意UI | **19/19成功**。PC/mobile/横/320幅、許可・拒否・後で・privacy・撤回・storage拒否、開始/練習/帰還 |
 | サイト | 28カード・完成9/試遊19。削除4/031保留/037未公開は404。Game012の縦案内・横960×540全景・回転中断 |
 | LAN HTTP-origin | `isSecureContext=false` / UUID=false / subtle=falseのfixtureで、Game015開始・DROP/解除・回転pause/明示resume・自然結果・BEST777以上の保存/reloadが成功。JS例外0 |
+| 試遊launcher | Linux loopbackでSHA照合→build→配信→縦タイトル/横案内が成功。誤SHAはbuild/配信前に拒否。Windows実行ではない |
 | 実Windows / 実iPhone Safari | **未実施**。実機の長押し・バー・音・永続保存・操作感は作者確認待ち |
 
 各ブラウザは対象の固定ローカル配信のみを許可し、外部広告/解析/記録通信とwriteを遮断。read-only debug以外のモデル・score・時計の注入なし。一部のcapture/blur等のイベント故障条件はcollector内で明示している。機械的な成功を作者の操作感合格とはしていない。
@@ -62,6 +63,8 @@ mainで公開済みの共有CSSはそのまま：
 [Windows手順](WINDOWS_IPHONE_PREVIEW.md) / [作者確認票](IPHONE_CHECKLIST.md)。
 
 第一候補は**Game015入力・回転・端末内BESTに限定したLAN HTTP**。本体はsecure-context必須ではなく、非secure originでも上記実測が成功した。任意の記録共有は `crypto.randomUUID` / `crypto.subtle` 等を使うのでHTTPをHTTPS同等とはしない。記録共有を有効化/試験投稿しない。既存preview serverのCSPが外部サブリソース接続を制限するが、リンクを辿った外部ページ移動までは禁止しない。本番へ移動しないこと。
+
+[launcher smoke/誤SHA拒否](QA/launcher/launcher-smoke.json) と [独立レビュー](QA/launcher/INDEPENDENT_REVIEW.md) を保存した。Safariで保存が拒否されるとlandingのAPI診断欄が空になる場合があるが、静的SHAと試遊リンクは残る。診断欄だけで本体の保存可否を判定しない。
 
 launcherは受け渡しの厳密なSHA・tracked差分なしを確認し、ローカルbuild後に `__pr11-preview.html` と `__pr11-version.json` を作る。本番の旧版を取り違えないよう、ページに候補SHAと「本番版ではない」を表示する。PCの全非loopback IPv4についてURLを出力する。
 

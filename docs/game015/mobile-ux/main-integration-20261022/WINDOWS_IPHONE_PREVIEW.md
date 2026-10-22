@@ -49,6 +49,8 @@ http://<実Windows-LAN-IPv4>:8443/__pr11-preview.html
 
 直接URLは `http://<実IP>:8443/game015.html?pr11=<候補SHA>`。query自体が候補を切り替えるわけではなく、**正しいbundle checkoutとlauncherのSHA検査が正本**。`game100garage.com/game015.html` は本番旧版なので今回の試遊先にしない。
 
+Safariが保存アクセスを拒否するとlandingのAPI診断欄が空になる場合がある。候補SHAと静的リンクは残る。本体側の保存fallbackとは別なので、確認票の保存/reload結果を記録する。
+
 LAN HTTPでは `isSecureContext:false`、`randomUUID:false`、`subtle`なしになり得る。Game015本体の入力・回転・端末内BEST限定の試遊で、これを起動失敗の条件にしない。旧 `/__device-check` にある `Game012_startup_prerequisites` は今回のGame015判定に使わない。記録共有を有効化・投稿しない。
 
 preview serverはno-store・外部接続を制限するCSP・GET/HEADのみを使用する。広告クリックや本番サイトへのリンク移動は行わない。同意とBESTはorigin/IP/portごとで、本番の個人記録は自動移行されない。同じURLで保存/reloadを確認する。
