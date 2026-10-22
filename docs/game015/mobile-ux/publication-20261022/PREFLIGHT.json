@@ -1,0 +1,58 @@
+{
+  "candidate": "d9514c3d4b58049b151dd76077fbad0c717246cd",
+  "base_main": "b419041a3702f1afceed11f912b73543c8904652",
+  "remote_pr11": "dbdf915a696b326f1247dd41c9f6cbf8765e9c56",
+  "main_ancestor": true,
+  "remote_pr11_ancestor_fast_forward": true,
+  "excluded_commit": "7fe1d9dca7cc0ec62ad92e149d3dbbbd9f0fcfd0",
+  "protected_unchanged": [
+    "src/core",
+    "src/records",
+    "src/data",
+    "src/games/game033",
+    "src/games/game036",
+    "src/games/game038",
+    "src/games/game015/FallRun.ts",
+    "src/games/game015/types.ts",
+    "src/arcade/FallPractice.ts",
+    "src/arcade/onboarding.css",
+    "public",
+    ".github",
+    "analytics-worker",
+    "index.html",
+    "privacy.html",
+    "about.html",
+    "package.json",
+    "package-lock.json",
+    "vite.config.ts"
+  ],
+  "authorized_product_files": [
+    "game015.html",
+    "src/analytics/consentUI.ts",
+    "src/arcade/onboarding.ts",
+    "src/games/game015/FallBoard.ts",
+    "src/games/game015/main.ts",
+    "src/games/game015/portrait.ts",
+    "src/games/game015/style.css"
+  ],
+  "product_sha256": {
+    "game015.html": "ebd0f0e6fa519845347350a693d2cc5a689f115e9667655116540e3e87d10db5",
+    "src/analytics/consentUI.ts": "7eb6be05b6af6922de236d9b985a3545422b52528e1f420f332fdac4ad7fd138",
+    "src/arcade/onboarding.ts": "fcc6b2cc82c756c3fc8160d13b66e26e66797e62114174ca18dc0e035c4d0478",
+    "src/games/game015/FallBoard.ts": "e939d2122d817f1fe682dfbf87886d459fe55f8b43509a17dbc9e8f8a64db584",
+    "src/games/game015/main.ts": "63c5d94eb8de8926916877454f0f1fa7f70df814af0365cb19b1120a741f71a7",
+    "src/games/game015/portrait.ts": "edc6ddea43c15810886d0c2b32fb707ab9c7df835a67d8929532194219a337ee",
+    "src/games/game015/style.css": "2a6b280d001eef2f8616a21b5580eb2a81704430f2acd8fc2342cdc28a8007d1"
+  },
+  "shared_css_sha256": "d816f147fd5b178bb9d67320c011462a36e27ea827c6800930615c427aace974",
+  "public_games": 28,
+  "complete": 9,
+  "trial": 19,
+  "repository": "PUBLIC",
+  "runners": [
+    "ubuntu-latest"
+  ],
+  "push_target": "HEAD:refs/heads/codex/game015-mobile-landscape-ux",
+  "workflow_plan": "push -> PR validation; ready_for_review can trigger PR validation; main merge -> Pages once",
+  "cost_unknowns": "Webhook403/artifact/cache acknowledged by author for this publication; no new runner/API/service/config"
+}
