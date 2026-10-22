@@ -1,0 +1,14 @@
+node:internal/fs/promises:916
+  return await PromisePrototypeThen(
+         ^
+
+Error: ENOSPC: no space left on device, mkdir '/workspace/audits/adsense-integration-20261020/q01-browser-build'
+    at async mkdir (node:internal/fs/promises:916:10)
+    at async file:///workspace/arcade-game012-visibility/tests/game012/mobile-visibility.mjs:4:120 {
+  errno: -28,
+  code: 'ENOSPC',
+  syscall: 'mkdir',
+  path: '/workspace/audits/adsense-integration-20261020/q01-browser-build'
+}
+
+Node.js v24.19.0
