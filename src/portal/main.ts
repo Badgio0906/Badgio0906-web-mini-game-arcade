@@ -73,6 +73,8 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   card.addEventListener('click', event => {
     const target = event.target as Element;
     if (target.closest('button')) return;
+    // Reading a guide is navigation, not a game launch.
+    if (target.closest('.game-guide-link')) return;
     if (!target.closest('a')) { playLink.click(); return; }
     telemetry.trackEvent('game_card_click', { selected_game: game.id }); telemetry.trackEvent('game_launch', { selected_game: game.id }); });
   const meta = document.createElement('div'); meta.className = 'game-card-meta';
@@ -100,7 +102,12 @@ for (const game of [...gameCatalog].sort((a, b) => a.releaseOrder - b.releaseOrd
   const tagline = document.createElement('p'); tagline.textContent = game.tagline;
   const tags = document.createElement('ul'); tags.className = 'game-tags'; tags.setAttribute('aria-label', 'ゲームのタグ');
   for (const tag of game.tags.slice(0, 4)) { const badge = document.createElement('li'); badge.className = 'game-tag'; badge.dataset.tagId = tag.id; badge.textContent = tag.label; tags.append(badge); }
-  content.append(title, english, tagline, tags); imageLink.append(imageFrame); copyLink.append(content); card.append(meta, imageLink, playLink, copyLink); gallery.append(card); cards.set(game.id, card);
+  const guideLink = document.createElement('a');
+  guideLink.className = 'game-guide-link';
+  guideLink.href = `./guides/${game.id}.html`;
+  guideLink.textContent = '遊び方・コツ →';
+  guideLink.setAttribute('aria-label', `${game.titleJa}の遊び方・コツ`);
+  content.append(title, english, tagline, tags); imageLink.append(imageFrame); copyLink.append(content); card.append(meta, imageLink, playLink, copyLink, guideLink); gallery.append(card); cards.set(game.id, card);
 }
 installPortalRecords(gallery);
 mountRecordSharingSettings(document.getElementById('record-settings')!);

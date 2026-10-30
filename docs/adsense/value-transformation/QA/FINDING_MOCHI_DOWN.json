@@ -1,0 +1,17 @@
+{
+  "finding_id": "mochi-down-wording",
+  "problem": "ソフトドロップ操作の説明と落下間隔の数値に差がある",
+  "expected": "落下を変える入力の説明から、プレイヤーが方向を理解できる",
+  "observed": [
+    "ゲーム内の操作説明に「↓ ゆっくり」がある",
+    "モデルでは通常の初期落下間隔900ms、ソフトドロップ間隔34msが設定されている"
+  ],
+  "unknown": [
+    "説明中の「ゆっくり」が通常落下との比較か、瞬間落下との比較か"
+  ],
+  "evidence": [
+    "src/games/game036/main.ts",
+    "src/games/game036/MochiModel.ts"
+  ],
+  "provenance": "source-reading; no human feel verdict"
+}

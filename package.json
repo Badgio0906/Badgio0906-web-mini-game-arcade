@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "guides:build": "node scripts/build-game-guides.mjs",
+    "guides:check": "node scripts/build-game-guides.mjs --check",
+    "prebuild": "npm run guides:check",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",

@@ -1,0 +1,27 @@
+{
+  "finding_id": "guide-phone-overflow",
+  "problem": "新しい作品ガイドで390px幅の画面より本文が横へ出る",
+  "expected": "390px幅で本文と画像を横スクロールなしで読める",
+  "observed": [
+    "game001ガイドでinnerWidth390に対しdocument.scrollWidth580",
+    "hero内の本文divと画像は560px幅、右端580px",
+    "画像の読み込みは完了している"
+  ],
+  "unknown": [
+    "他のガイドと320px幅での影響範囲"
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "measurements": {
+    "innerWidth": 390,
+    "scrollWidth": 580,
+    "heroChildWidth": 560
+  },
+  "evidence": [
+    "QA/browser/BROWSER.json",
+    "src/content/style.css"
+  ],
+  "provenance": "compiled Chromium, JS disabled, normal page load"
+}

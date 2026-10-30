@@ -3,7 +3,7 @@ import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { distributedGameCatalog } from './src/data/gameCatalog';
 
-const htmlEntries = new Set(['index', 'about', 'privacy', 'analytics-admin',
+const htmlEntries = new Set(['index', 'about', 'privacy', 'guide', 'analytics-admin',
   // Existing public preview of Game017; no publication change in this task.
   'game017-revision03', ...distributedGameCatalog.map(game => game.id)]);
 
@@ -26,6 +26,9 @@ export default defineConfig({
         ...Object.fromEntries(readdirSync(process.cwd())
           .filter(file => file.endsWith('.html') && htmlEntries.has(file.slice(0, -5)))
           .map(file => [file.replace('.html', ''), resolve(process.cwd(), file)])),
+        ...Object.fromEntries(distributedGameCatalog
+          .filter(game => game.publicationState === 'published')
+          .map(game => [`guide-${game.id}`, resolve(process.cwd(), `guides/${game.id}.html`)])),
         'legacy-records': resolve(process.cwd(), 'src/records/legacyEntry.ts'),
         'analytics-legacy': resolve(process.cwd(), 'src/analytics/legacy.ts'),
       },
