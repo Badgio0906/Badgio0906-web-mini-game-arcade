@@ -1,0 +1,23 @@
+{
+  "finding_id": "relay-goal",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root-final-editorial",
+  "rationale": "公開版モデルと説明を照合し、意味を明確にする最小限の文言修正。判定・入力・得点等の動作変更なし。",
+  "evidence": [
+    "src/games/game017/RelayRun.ts",
+    "src/content/gameGuides.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "公開モデルの判定と原稿の文言を確認。生成と差分24条件を検証。",
+    "evidence": [
+      "src/games/game017/RelayRun.ts",
+      "src/content/gameGuides.ts",
+      "docs/adsense/value-transformation/QA/final-editorial/TECHNICAL.json"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}

@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-10-31 JST：**PR #19公開前最終編集レビュー完了、公開可能候補として推奨・作者承認待ち。** 最新main `6211019f` と起点HEAD `1b7a52e0` を照合し、全28ガイドの操作/終了/保存/画像/関連先と038着想元表現を再確認。008残量条件・017ゴール位置・033比較文の3件のみ明確化、機能/ゲーム本体不変。生成29/check/build、差分24表示条件106check成功、既存1041testsと493+13checkを再利用。PR19通常commit/pushと既存CIのみ、マージ/公開/再審査なし。[最終レビュー・文言差分・証拠](adsense/value-transformation/FINAL_EDITORIAL_REVIEW.md)。以下は当時の履歴。
+
 2026-10-31 JST：**AdSenseコンテンツ価値改善のレビュー候補、未公開。** 最新origin/main `6211019f` から `codex/adsense-content-value-transformation` へ分離。公開28/完成9・試遊19と031保留・037未公開・削除4を保持し、公式要件調査、全28作品の根拠監査（既存深掘りを再利用）、比較/初回ガイドと各作品の遊び方・コツ、一覧からの通常導線を実装。check・1041tests/108files・build、JSなし29ページ×4幅116条件/493check、root/subpath導線、001/015/033限定通常入力、保護389filesのbyte一致と独立レビューを確認。ゲーム本体・保存/記録/計測/同意・Worker/D1・広告/CMP/開示は不変。main統合・本番公開・AdSense再申請は未実施。実機013の音/入力と人間の初見理解・面白さは未評価。[成果・検証・限界](adsense/value-transformation/IMPLEMENTATION_REPORT.md)／[全作品監査](adsense/value-transformation/GAME_VALUE_AUDIT.md)。以下は当時の履歴。
 
 2026-10-22 JST：**PR11/Game015正式公開を作者承認、実機8項目合格。現在公開前。** 候補d9514c3はmain b419041とremote dbdf915を保持。iPhone SE3/iOS27.0.1（作者申告）で入力・回転/明示再開・練習・Safariバー・結果/BEST/帰還を確認。製品不変の実機文書を追加し、PR11通常push→既存CI→通常merge→既存Pages1回へ進む。PR18[open]/28作品/9完成19試遊/031保留/削除4/012横専用/036038を保持。費用不明点は今回分を了承済み。有料API等・AdSense再申請なし。結果は[公開記録](game015/mobile-ux/publication-20261022/PUBLICATION_REPORT.md)。下記は当時の履歴。
