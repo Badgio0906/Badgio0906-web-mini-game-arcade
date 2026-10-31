@@ -1,0 +1,24 @@
+{
+  "finding_id": "mochi-down-wording",
+  "PRIMARY_CAUSE": "CONTENT_OR_SPEC_ISSUE",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "root-source-review",
+  "rationale": "main.ts helpのゆっくりは瞬間落下との比較なら成立するが通常落下との比較では逆。model.tsのSOFT_MSとgravityMsを確認し、新ガイドは落下を速めると記載する。既存helpと物理は今回変更しない。元stateのMochiModel.tsは参照名の誤りで、実在はmodel.ts。",
+  "evidence": [
+    "src/games/game036/main.ts:35",
+    "src/games/game036/model.ts:3",
+    "src/games/game036/model.ts:94",
+    "src/content/gameGuides.ts"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "helpと通常/soft落下の間隔を別々に確認し、新しいガイドでは比較対象を明確化",
+    "evidence": [
+      "src/games/game036/model.ts",
+      "src/content/gameGuides.ts"
+    ]
+  },
+  "final_root_cause": "CONTENT_OR_SPEC_ISSUE"
+}
