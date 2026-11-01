@@ -1,0 +1,74 @@
+
+ RUN  v3.2.7 /workspace/arcade-dopa-nine
+
+ ❯ tests/unit/game045-author-revision.test.ts (4 tests | 4 failed) 12ms
+   × six real four-reflection switch rooms require unlocking before the core 7ms
+     → expected +0 to be 6 // Object.is equality
+   × time for thought is unlimited, switch persists without duplicate reward 1ms
+     → expected 'timeout' to be 'run' // Object.is equality
+   × all twelve actual ray solutions clear in eighteen shots 2ms
+     → expected 12 to be 18 // Object.is equality
+   × three reflections do not charge a four-reflection switch 1ms
+     → expected undefined to be false // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game045-author-revision.test.ts > six real four-reflection switch rooms require unlocking before the core
+AssertionError: expected +0 to be 6 // Object.is equality
+
+- Expected
++ Received
+
+- 6
++ 0
+
+ ❯ tests/unit/game045-author-revision.test.ts:3:124
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/unit/game045-author-revision.test.ts > time for thought is unlimited, switch persists without duplicate reward
+AssertionError: expected 'timeout' to be 'run' // Object.is equality
+
+Expected: "run"
+Received: "timeout"
+
+ ❯ tests/unit/game045-author-revision.test.ts:4:139
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/game045-author-revision.test.ts > all twelve actual ray solutions clear in eighteen shots
+AssertionError: expected 12 to be 18 // Object.is equality
+
+- Expected
++ Received
+
+- 18
++ 12
+
+ ❯ tests/unit/game045-author-revision.test.ts:5:439
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/unit/game045-author-revision.test.ts > three reflections do not charge a four-reflection switch
+AssertionError: expected undefined to be false // Object.is equality
+
+- Expected: 
+false
+
++ Received: 
+undefined
+
+ ❯ tests/unit/game045-author-revision.test.ts:6:273
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  02:37:14
+   Duration  292ms (transform 58ms, setup 0ms, collect 72ms, tests 12ms, environment 0ms, prepare 57ms)
+

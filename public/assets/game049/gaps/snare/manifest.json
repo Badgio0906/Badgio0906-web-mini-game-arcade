@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_snare_v2_3cc9b4e514.wav",
+  "asset_id": "3cc9b4e5149d30b38ca059dc2640a8a32d2a0671d0b86414430c6701a7b4d767",
+  "sha256": "8b32915a336d57783dfd688a8f10d304f706447ea5d4b27a6e247fb223ee2a3d",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 8684,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "3cc9b4e5149d30b38ca059dc2640a8a32d2a0671d0b86414430c6701a7b4d767",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103411,
+    "sample_rate": 48000,
+    "name": "snare",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.09,
+        "gain_db": -8,
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.02,
+          "sustain": 0.3,
+          "release": 0.054
+        },
+        "effects": {
+          "lowpass_hz": 6500
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 210,
+        "end_frequency": 150,
+        "duration": 0.07,
+        "gain_db": -17,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.038500000000000006
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.09,
+      "frames": 4320,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.2232666015625,
+      "sample_peak_dbfs": -13.023524763106773,
+      "true_peak_estimate": 0.22431824241487328,
+      "true_peak_estimate_dbfs": -12.982708129949197,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -28.10711161882427,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 9.329760516131366e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0007083333333333334,
+      "trailing_silence": 0.004520833333333333
+    }
+  }
+}

@@ -1,0 +1,2 @@
+import {defineConfig} from 'vite';import {resolve} from 'node:path';import {cpSync,mkdirSync} from 'node:fs';
+const out=process.env.GAME045_OUT||'/tmp/dopa-nine/game045';export default defineConfig({base:'./',publicDir:false,plugins:[{name:'own-assets',closeBundle(){mkdirSync(resolve(out,'assets'),{recursive:true});cpSync('public/assets/game045',resolve(out,'assets'),{recursive:true});}}],build:{outDir:out,emptyOutDir:false,rollupOptions:{input:resolve('game045.html')}}});

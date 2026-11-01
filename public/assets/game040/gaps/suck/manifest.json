@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_suck_v1_1f4cb0b538.wav",
+  "asset_id": "1f4cb0b538bfe379733879c7f4cd57f38b07b8c17c5ed8eadcbb9bd990aebe25",
+  "sha256": "cf5964152c52981dd2c72bb3cac886094a8622e3e9e3805467975f22f89a1404",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 11564,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "1f4cb0b538bfe379733879c7f4cd57f38b07b8c17c5ed8eadcbb9bd990aebe25",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103450,
+    "sample_rate": 48000,
+    "name": "suck",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.09,
+        "gain_db": -12,
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.02,
+          "sustain": 0.3,
+          "release": 0.054
+        },
+        "effects": {
+          "lowpass_hz": 2800
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 260.0,
+        "end_frequency": 650.0,
+        "duration": 0.12,
+        "gain_db": -18,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.066
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.12,
+      "frames": 5760,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.12738037109375,
+      "sample_peak_dbfs": -17.897949804605656,
+      "true_peak_estimate": 0.12746685572487937,
+      "true_peak_estimate_dbfs": -17.89205453943371,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -30.23151574573761,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 7.01957278781467e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0006875,
+      "trailing_silence": 0.0049375
+    }
+  }
+}

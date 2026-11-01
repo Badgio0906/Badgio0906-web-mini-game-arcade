@@ -1,0 +1,1 @@
+export const manifest={id:'game045',titleJa:'反射で全滅！レーザーディスコ',titleEn:'MIRROR DISCO',genre:'reflection action puzzle',coreMechanic:'鏡2〜3枚を回して光路を作り一斉撃破',skill:'反射の先読み',rulesVersion:1,publication:'local-only'} as const;

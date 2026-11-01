@@ -1,0 +1,58 @@
+
+ RUN  v3.2.7 /workspace/arcade-dopa-nine
+
+ ❯ tests/unit/game044-author-revision.test.ts (5 tests | 5 failed) 7ms
+   × direction and held time choose a real landing area 5ms
+     → (0 , beginThrow) is not a function
+   × release flies, collects only at landing and only once 0ms
+     → (0 , beginThrow) is not a function
+   × cancel does not throw or consume a life 0ms
+     → (0 , beginThrow) is not a function
+   × wave change cancels old gesture and in-flight ring 0ms
+     → (0 , beginThrow) is not a function
+   × landing uses moving centers and includes circumference 0ms
+     → (0 , beginThrow) is not a function
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game044-author-revision.test.ts > direction and held time choose a real landing area
+TypeError: (0 , beginThrow) is not a function
+ ❯ tests/unit/game044-author-revision.test.ts:2:83
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/unit/game044-author-revision.test.ts > release flies, collects only at landing and only once
+TypeError: (0 , beginThrow) is not a function
+ ❯ tests/unit/game044-author-revision.test.ts:3:156
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/unit/game044-author-revision.test.ts > cancel does not throw or consume a life
+TypeError: (0 , beginThrow) is not a function
+ ❯ tests/unit/game044-author-revision.test.ts:4:72
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/unit/game044-author-revision.test.ts > wave change cancels old gesture and in-flight ring
+TypeError: (0 , beginThrow) is not a function
+ ❯ tests/unit/game044-author-revision.test.ts:5:91
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/unit/game044-author-revision.test.ts > landing uses moving centers and includes circumference
+TypeError: (0 , beginThrow) is not a function
+ ❯ tests/unit/game044-author-revision.test.ts:6:100
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  02:41:45
+   Duration  302ms (transform 52ms, setup 0ms, collect 54ms, tests 7ms, environment 0ms, prepare 77ms)
+

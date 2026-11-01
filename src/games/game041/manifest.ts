@@ -1,0 +1,1 @@
+export const manifest={id:'game041',titleJa:'金脈、ぶち抜け。',titleEn:'VEIN RUSH',genre:'mining action',coreMechanic:'一列採掘と接続金脈の一括破壊',skill:'先読みと列選択',rulesVersion:1,publication:'local-only',officialStatus:'unregistered'} as const;

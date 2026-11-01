@@ -1,0 +1,54 @@
+{
+  "batchId": "dopa3-20261031",
+  "proposalId": "C22",
+  "slug": "shift_burst",
+  "packageId": "org.game100garage.ct3.shift-burst",
+  "requestedOf": "Codex integration owner",
+  "note": "Requests only. Claude did not edit any of these shared files.",
+  "requests": [
+    {
+      "kind": "id",
+      "action": "Assign the official gameNNN id (exclusive reservation) and record it in the ID ledger"
+    },
+    {
+      "kind": "move",
+      "action": "Move experiments/claude-dopa-trio/dopa3-20261031/shift_burst/ to the native layout (see INTEGRATION.md path map); keep packageId and storage namespace"
+    },
+    {
+      "kind": "vite",
+      "action": "Add the gameNNN.html entry to the root build (htmlEntries / distributedGameCatalog)"
+    },
+    {
+      "kind": "catalog",
+      "action": "Add a Catalog entry (title, tagline, route, tags candidate, thumbnail) after author acceptance"
+    },
+    {
+      "kind": "portal",
+      "action": "Portal card + return-to-portal header using the current common navigation"
+    },
+    {
+      "kind": "guide",
+      "action": "Publish the guide from docs/GUIDE_DRAFT.md after verifying it against the integrated build"
+    },
+    {
+      "kind": "thumbnail",
+      "action": "Pick a thumbnail from real play screenshots (candidates listed in INTEGRATION.md); register in the thumbnail ledger"
+    },
+    {
+      "kind": "records/analytics",
+      "action": "Decide whether to connect StorageService/TelemetryService via an adapter; keep remote disabled until registered"
+    },
+    {
+      "kind": "status",
+      "action": "Update docs/CURRENT_STATUS.md (Claude must not edit it)"
+    },
+    {
+      "kind": "art",
+      "action": "Obtain approved ImageGen art (BLOCKED_ART) and re-run Visual review before publication"
+    },
+    {
+      "kind": "qa",
+      "action": "Independent acceptance, Windows launcher import/E2E, author playtest, then separate publication approval"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><title>GAPS Web Audio sample</title>
+<style>body{background:#10151e;color:#e0f7f0;font:18px system-ui;padding:4rem}button{padding:1rem;margin:1rem}</style>
+<h1>GAPS / Web Audio</h1><p>このフォルダをローカルHTTPサーバーで配信してください。</p>
+<button id="play">再生</button><button id="stress">100回 同時発音</button><pre id="status"></pre>
+<script type="module">
+import {GapsAudio} from './audio.js';
+const manifest=await(await fetch('manifest.json')).json();let pool,buffer;
+async function ready(){pool??=new GapsAudio();await pool.context.resume();buffer??=await pool.load(manifest.file);}
+document.querySelector('#play').onclick=async()=>{await ready();pool.play(buffer,manifest);};
+document.querySelector('#stress').onclick=async()=>{await ready();for(let i=0;i<100;i++)pool.play(buffer,manifest);document.querySelector('#status').textContent=`active: ${pool.voices.length} / ${manifest.polyphony}`;};
+</script></html>

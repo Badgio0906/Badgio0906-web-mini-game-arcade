@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_kick_v1_345ffaa6ef.wav",
+  "asset_id": "345ffaa6ef9f6d1ed464bd18782f642ce2d612e8c6bede81b9002db79c17f38e",
+  "sha256": "2958afc16bcbc3229b9974c3201a79759c506a858e83757f28d002d2642e44d2",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 10124,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "345ffaa6ef9f6d1ed464bd18782f642ce2d612e8c6bede81b9002db79c17f38e",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103330,
+    "sample_rate": 48000,
+    "name": "kick",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "sine",
+        "frequency": 150,
+        "end_frequency": 45,
+        "duration": 0.105,
+        "gain_db": -10,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.05775
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.025,
+        "gain_db": -19,
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.02,
+          "sustain": 0.3,
+          "release": 0.015
+        },
+        "effects": {
+          "lowpass_hz": 1500
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.105,
+      "frames": 5040,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.238525390625,
+      "sample_peak_dbfs": -12.449307684980024,
+      "true_peak_estimate": 0.23867722756153864,
+      "true_peak_estimate_dbfs": -12.443780309948956,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -22.25210673004313,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 0.00017760140555245536,
+      "clipped_samples": 0,
+      "leading_silence": 0.000625,
+      "trailing_silence": 0.00575
+    }
+  }
+}

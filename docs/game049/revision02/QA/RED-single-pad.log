@@ -1,0 +1,32 @@
+
+ RUN  v3.2.7 /workspace/arcade-dopa-nine
+
+ ❯ tests/unit/game049-author-revision.test.ts (1 test | 1 failed) 6ms
+   × author revision never requires simultaneous-pad notes 6ms
+     → expected false to be true // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  02:20:18
+   Duration  228ms (transform 38ms, setup 0ms, collect 34ms, tests 6ms, environment 0ms, prepare 58ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game049-author-revision.test.ts > author revision never requires simultaneous-pad notes
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game049-author-revision.test.ts:2:118
+      1| import {it,expect} from 'vitest';import {chart} from '../../src/games/…
+      2| it('author revision never requires simultaneous-pad notes',()=>{expect…
+       |                                                                                                                      ^
+      3| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
