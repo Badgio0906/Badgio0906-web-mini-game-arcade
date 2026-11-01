@@ -1,7 +1,7 @@
 {
   "task": "prototype-publication-20261101",
   "base": "6211019f64a6946d632a9b3620de24a03505410d",
-  "state": "PUBLISHING_APPROVED_AWAITING_REMOTE_CI",
+  "state": "COMPLETE_PUBLISHED_VERIFIED",
   "scope": "040-059 and C21-C23;040 explicitly requested",
   "restored_native": [
     "game041",
@@ -18,8 +18,8 @@
   "recovered_050_059": "verified compiled runtime and original artwork; TS and source maps absent",
   "old_GAPS": "040 r3 source recovered;041-049 revision02 native and supplied r2 WAVs available, r3 glue still to reconstruct",
   "game048": "existing dirty source/doc/test copied; original worktree untouched and patch saved",
-  "published": false,
-  "push": false,
+  "published": true,
+  "push": true,
   "catalog_registration": "22local candidates+048onhold;new50 total,not yet public",
   "required_changes": [
     "040 suction15%,effects,larger field",
@@ -35,9 +35,9 @@
     "C21 and C22 pixel art;C23 integration"
   ],
   "next": [
-    "Review preserved source/evidence and local runtime package",
-    "Obtain only the current batch cost-unknown approval before remote writes",
-    "After approval fetch main safely and publish22;keep048onhold"
+    "Task complete;do not deploy again for documentation",
+    "Author tests held048 in separate preview",
+    "Future quality changes require their own scope"
   ],
   "041_reference": "User supplied three-lane army10 absorption/+20/×3 specification",
   "working_changes": {
@@ -57,10 +57,9 @@
     "062": "nativePC60rescuedS;touch59rescuedA;originalproceduralart,notImageGen"
   },
   "remaining": [
-    "fresh approval for unresolved Webhook403/account billing403 before remote writes",
-    "branch push,PR,CI,merge,Pages1,live verification after approval",
-    "048 author playtest and input tolerance design;no further blind retry",
-    "real devices/listening/human enjoyment verification"
+    "048 author playtest/input tolerance;do not pretend model solution is native PASS",
+    "060 small-text readability P2",
+    "real-device/listening/human-feel quality checks"
   ],
   "public_new_count": 22,
   "held": [
@@ -84,5 +83,11 @@
   "ImageGen": "0468,0484,0606,0617 actual originals→pinned Pixelizer;0508 source artwork converted",
   "verified_game_source_commit": "9252ffadcb6238e406aa508e6004d0345c79f6d6",
   "cost_unknowns_approved_for_this_batch": true,
-  "approved_head": "fb82f14943bb2b14369ad643a7586ccfeb8e17e2"
+  "approved_head": "fb82f14943bb2b14369ad643a7586ccfeb8e17e2",
+  "main_sha": "7209da2f92a61c1137466192f0a5ecd9238005e8",
+  "pages_sha": "7209da2f92a61c1137466192f0a5ecd9238005e8",
+  "pr": 20,
+  "ci_run": 41311100401,
+  "pages_run": 41311374285,
+  "live_verification": "PASS"
 }

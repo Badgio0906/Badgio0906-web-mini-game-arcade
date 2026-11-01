@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-11-01 JST：**新作22作品のGAPS統合改修版を正式試遊公開・本番確認済み。** PR20を通常merge、main/Pages `7209da2f92a61c1137466192f0a5ecd9238005e8`、Pages41311374285のbuild/deploy成功（1回）。旧28＋新22＝50、完成9/試遊41。新22の本番起動/帰還、portal4幅/AND/favorite、旧28URL、139配信file（64WAV含む）のbyte一致を確認。048は通常入力の完走未確認で公開保留、031保留・削除4・037/039未公開を保持。型/1288unit/25offlineJev/buildとローカル完走/Visual/性能は別証拠。実機・聴感・人間面白さは未認定。今回費用不明点は作者了承済み、追加契約/課金/Webhook/広告/CMP/解析/Worker/D1/既存保存/Actions設定変更・AdSense再申請なし。最新[公開記録](agent-tasks/prototype-publication-20261101/PUBLICATION_REPORT.md)。**この結果文書は専用branch保存とし、今回mainへ再push・Pages再実行はしない。** 以下は公開前を含む履歴。
+
 2026-11-01 JST：**新作22作品の改修・GAPS統合版を正式公開する作者承認を受領。現在は公開処理中。** 承認対象fb82f149（ゲームソース9252ffad）を基に、通常branch push→PR/自動CI→通常merge→既存Pages1回を実施する。今回のWebhook403/account billing403の不明点は作者が明示了承済み。有料Runner/API/新規契約/課金設定/Webhook変更は禁止を維持。統合後のカタログは旧28＋新22＝50、完成9/試遊41。040〜047・049〜062を試遊版として追加し、048は通常入力の完走未確認で公開保留（ソース・素材・失敗証拠は保存）。031保留・削除4・037/039未公開を維持。型/1288tests/25offlineJev/build、22本のproduction起動・帰還/タグ/お気に入り・旧28URLをローカル検証済み。公開成功は[公開記録](agent-tasks/prototype-publication-20261101/PUBLICATION_REPORT.md)のmain SHA/Pages/本番結果で確認する。AdSense再申請・Worker/D1・広告/CMP/解析設定・既存保存の変更なし。以下は以前の履歴。
 
 2026-10-22 JST：**PR11/Game015正式公開を作者承認、実機8項目合格。現在公開前。** 候補d9514c3はmain b419041とremote dbdf915を保持。iPhone SE3/iOS27.0.1（作者申告）で入力・回転/明示再開・練習・Safariバー・結果/BEST/帰還を確認。製品不変の実機文書を追加し、PR11通常push→既存CI→通常merge→既存Pages1回へ進む。PR18[open]/28作品/9完成19試遊/031保留/削除4/012横専用/036038を保持。費用不明点は今回分を了承済み。有料API等・AdSense再申請なし。結果は[公開記録](game015/mobile-ux/publication-20261022/PUBLICATION_REPORT.md)。下記は当時の履歴。
