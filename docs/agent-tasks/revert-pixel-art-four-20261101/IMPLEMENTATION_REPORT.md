@@ -41,6 +41,10 @@
 
 [qaブラウザ](QA/browser/report.json) / [本番構成ブラウザ](QA/production/report.json) / [build log](QA/build.log)
 
+## 試遊用ZIP
+
+`/workspace/100gare-restored-art-four-20261101.zip`（1,587,312 bytes）。ソースcommit `4e577055`。新規フォルダーへ展開し `START_PREVIEW.cmd`、`http://127.0.0.1:8480/` を開く。4作品の起動・一覧帰還とmanifest全file SHA一致を確認。[配布検証](QA/delivery.json)。既存ZIPを上書きしない。
+
 ## GitHub・本番
 
 この復元はローカル候補。main/本番は変更していない。前回の「通常公開1回」の費用不明点了承はPR20で完了済みのため流用しない。
