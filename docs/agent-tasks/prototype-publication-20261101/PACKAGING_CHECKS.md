@@ -1,0 +1,11 @@
+# 配布物の整合性
+
+ゲームソースは9252ffad、TESTED_SOURCE_HASHES.jsonの全source/assetを照合してから配布候補を組み立てる。docs/launcherの追加commitと、検証済みゲームソースを区別する。
+
+実行: node scripts/package-publication-preview.mjs; python scripts/archive-publication-previews.py。後者はZipFile.testzipとBUILD_MANIFESTの全ファイルSHAを展開byteで照合する。マニフェスト自身は自己参照を避けhash対象外。初回検出した自己参照不一致を修正し、成功検証後のみ配布する。
+
+起動はSTART_PREVIEW.cmdで作業フォルダーへ移動しnode preview.mjs。Node組み込みのみ、追加install/API/証明書/Firewall変更なし。Windowsの区切り文字を文字列の/で比較せずpath.relative/isAbsoluteで検証し、Windows/POSIX2unitを追加。最終npm test152files/1288PASS。実Windows実行の認定ではない。
+
+ローカルHTTPで一覧、金脈/お掃除、helperの200応答とsource9252ffad/22entriesを確認。port8489の試験serverは停止済み。試験コマンドの一度の作業dir取り違えはパッケージ内の欠損ではなく、正しいdirで起動・HTTP確認した。
+
+Git bundleはorigin/main6211019fを前提とした追加commitの保存。git bundle verifyで検証する。GitHub保存済みとは扱わない。展開上書きやforce checkoutは禁止、新しいフォルダーで作者が試す。

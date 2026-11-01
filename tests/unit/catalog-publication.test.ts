@@ -8,24 +8,24 @@ import preservation from '../../docs/adsense/catalog-quality-20261020/PRESERVATI
 import presentation from '../../docs/game015/mobile-ux/pr11-pr13-review-20261022/QA/AUTHORIZED_PRESENTATION_HASHES.json';
 
 describe('author publication cleanup and retained contracts', () => {
-  it('publishes exactly 28 identities and reserves all removed/held IDs', () => {
-    expect(gameCatalog).toHaveLength(28);
+  it('preserves the original28 and publishes22 trial identities and reserves all removed/held IDs', () => {
+    expect(gameCatalog).toHaveLength(50);
     expect(gameCatalog.filter(g => g.developmentStatus === 'complete')).toHaveLength(9);
-    expect(gameCatalog.filter(g => g.developmentStatus === 'trial')).toHaveLength(19);
-    expect(historicalGameCatalog).toHaveLength(37);
-    expect(new Set(historicalGameCatalog.map(g => g.id)).size).toBe(37);
-    expect(NEXT_GAME_NUMBER).toBe(39);
+    expect(gameCatalog.filter(g => g.developmentStatus === 'trial')).toHaveLength(41);
+    expect(historicalGameCatalog).toHaveLength(60);
+    expect(new Set(historicalGameCatalog.map(g => g.id)).size).toBe(60);
+    expect(NEXT_GAME_NUMBER).toBe(63);
     expect(removedGameCatalog.map(g => g.id)).toEqual(REMOVED_GAME_IDS);
-    expect(onHoldGameCatalog.map(g => g.id)).toEqual(['game031']);
+    expect(onHoldGameCatalog.map(g => g.id)).toEqual(['game031','game048']);
     expect(hiddenGameCatalog).toEqual([]);
     expect(retiredGameCatalog.map(g => g.id)).toEqual(['game004','game007','game010','game021']);
-    expect(distributedGameCatalog).toHaveLength(32);
+    expect(distributedGameCatalog).toHaveLength(54);
     for (const game of [...removedGameCatalog, ...onHoldGameCatalog]) expect(distributedGameCatalog).not.toContain(game);
   });
   it('applies the public gate even when discovery receives the complete history', () => {
     expect(filterGames(historicalGameCatalog)).toEqual(gameCatalog);
     expect(activeTagOptions(historicalGameCatalog)).toEqual(activeTagOptions(gameCatalog));
-    expect(displayNumbersFor(historicalGameCatalog).size).toBe(28);
+    expect(displayNumbersFor(historicalGameCatalog).size).toBe(50);
     const numbers = displayNumbersFor(historicalGameCatalog);
     expect(['game032','game033','game034','game035'].map(id => numbers.get(id))).toEqual(['023','024','025','026']);
     for (const game of [...removedGameCatalog,...onHoldGameCatalog]) expect(numbers.has(game.id)).toBe(false);

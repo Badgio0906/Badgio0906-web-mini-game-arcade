@@ -1,0 +1,205 @@
+{
+  "schema": "100gare.ct3.batch-state.v1",
+  "batchId": "dopa3-20261031",
+  "updated": "2026-10-31",
+  "baseCommit": "6211019f64a6946d632a9b3620de24a03505410d",
+  "repository": "Badgio0906/Badgio0906-web-mini-game-arcade",
+  "pushed": false,
+  "pushNote": "No push/PR/Actions: not authorised by the brief. Delivered as git bundles.",
+  "launcherContract": {
+    "status": "LAUNCHER_CONTRACT_UNVERIFIED",
+    "repositoryOrPath": null,
+    "version": null,
+    "schemaFile": null,
+    "evidence": [
+      "docs/agent-tasks/dopa3-20261031/LAUNCHER_CONTRACT.md",
+      "tests/batches/dopa3-20261031/fixture (static HTTP only)"
+    ]
+  },
+  "environment": {
+    "node": "v22.23.4",
+    "npm": "10.9.9",
+    "python": "3.13.18",
+    "browser": "Playwright 1.63.0 Chromium (headless, Linux container)",
+    "windows": "not available",
+    "imageGen": "no approved ImageGen; Canva generate-image connector present but NOT used (paid/third-party path not authorised)",
+    "audio": "WebAudio synthesis (runtime)"
+  },
+  "games": [
+    {
+      "proposalId": "C21",
+      "slug": "thunder_booking",
+      "title": "雷、予約しました。",
+      "packageId": "org.game100garage.ct3.thunder-booking",
+      "gameId": null,
+      "branch": "handoff/claude/dopa3-20261031/thunder_booking",
+      "baseCommit": "6211019f64a6946d632a9b3620de24a03505410d",
+      "sourceCommit": "1d56b8f91f34cf5afb8d4a5bff6c11b4d4f17587",
+      "headCommit": "eceded82202d32e98bf3fca1bd3fbd6985829126",
+      "commitOrder": [
+        "9fa35806f1714b1029e09674c654d1a46b544198",
+        "1d56b8f91f34cf5afb8d4a5bff6c11b4d4f17587",
+        "eceded82202d32e98bf3fca1bd3fbd6985829126"
+      ],
+      "stagingPath": "experiments/claude-dopa-trio/dopa3-20261031/thunder_booking/",
+      "playtestZip": "thunder_booking_0.1.0_1d56b8f_playtest.zip",
+      "playtestZipSha256": "e1ff7e4f0a27e340344f23db33a0233fd07251a212d9a8dd750a0246ec757360",
+      "bundle": "SOURCE_HANDOFF/bundles/thunder_booking.bundle",
+      "phase": "STATIC_READY_LAUNCHER_UNVERIFIED",
+      "gates": {
+        "core": "PASS",
+        "types": "PASS",
+        "build": "PASS",
+        "static_package": "PASS",
+        "browser_e2e_static": "PASS 26/26",
+        "launcher_import": "NOT_RUN",
+        "launcher_windows_e2e": "NOT_RUN",
+        "source_handoff": "PASS",
+        "visual": "SELF_CHECK_ONLY_BLOCKED_ART",
+        "audio_functional": "PARTIAL_NOT_LISTENED",
+        "performance": "NOT_RUN",
+        "fun_design": "MODEL_EVIDENCE_ONLY",
+        "human_acceptance": "NOT_RUN",
+        "publication": "NOT_RUN"
+      },
+      "evidence": {
+        "unit": "vitest 17/17",
+        "e2e": "SOURCE_HANDOFF/thunder_booking/qa/e2e/e2e-report.json",
+        "smoke": "SOURCE_HANDOFF/thunder_booking/qa/smoke/thunder_booking-package-smoke.json",
+        "zipcheck": "SOURCE_HANDOFF/thunder_booking/qa/thunder_booking-zipcheck.json",
+        "restore": "fresh base clone + bundle + npm ci → byte-identical ZIP sha256",
+        "strategy": "qa/strategy-comparison.json"
+      },
+      "blockers": [
+        "BLOCKED_ART: no approved ImageGen; procedural placeholder art",
+        "LAUNCHER_CONTRACT_UNVERIFIED: launcher not found; Windows not available",
+        "human playtest / listening not done"
+      ],
+      "nextAction": "Author: import the playtest ZIP into the launcher and play. Codex: independent acceptance from the bundle, then ID + integration per INTEGRATION.md.",
+      "usage": {
+        "seconds": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cost": null
+      }
+    },
+    {
+      "proposalId": "C22",
+      "slug": "shift_burst",
+      "title": "ずらして、全段ぶち抜け。",
+      "packageId": "org.game100garage.ct3.shift-burst",
+      "gameId": null,
+      "branch": "handoff/claude/dopa3-20261031/shift_burst",
+      "baseCommit": "6211019f64a6946d632a9b3620de24a03505410d",
+      "sourceCommit": "0d2c68ae0d09108767074f660718ff1dafde899d",
+      "headCommit": "07f04297e7407aea78d5c466895bbd5e14e17d94",
+      "commitOrder": [
+        "c07f5721a10582869199d23393f99801ca2c772b",
+        "0216a324aef52ea1b89c6527249e6454c2431a7c",
+        "0d2c68ae0d09108767074f660718ff1dafde899d",
+        "07f04297e7407aea78d5c466895bbd5e14e17d94"
+      ],
+      "stagingPath": "experiments/claude-dopa-trio/dopa3-20261031/shift_burst/",
+      "playtestZip": "shift_burst_0.1.0_0d2c68a_playtest.zip",
+      "playtestZipSha256": "7fb83f0ff1418f5bd2c56ba1dbfe16dce625d1b1a5b3d52756c3a96944554944",
+      "bundle": "SOURCE_HANDOFF/bundles/shift_burst.bundle",
+      "phase": "STATIC_READY_LAUNCHER_UNVERIFIED",
+      "gates": {
+        "core": "PASS",
+        "types": "PASS",
+        "build": "PASS",
+        "static_package": "PASS",
+        "browser_e2e_static": "PASS 24/24",
+        "launcher_import": "NOT_RUN",
+        "launcher_windows_e2e": "NOT_RUN",
+        "source_handoff": "PASS",
+        "visual": "SELF_CHECK_ONLY_BLOCKED_ART",
+        "audio_functional": "PARTIAL_NOT_LISTENED",
+        "performance": "NOT_RUN",
+        "fun_design": "MODEL_EVIDENCE_ONLY",
+        "human_acceptance": "NOT_RUN",
+        "publication": "NOT_RUN"
+      },
+      "evidence": {
+        "unit": "vitest 15/15",
+        "e2e": "SOURCE_HANDOFF/shift_burst/qa/e2e/e2e-report.json",
+        "smoke": "SOURCE_HANDOFF/shift_burst/qa/smoke/shift_burst-package-smoke.json",
+        "zipcheck": "SOURCE_HANDOFF/shift_burst/qa/shift_burst-zipcheck.json",
+        "restore": "fresh base clone + bundle + npm ci → byte-identical ZIP sha256",
+        "strategy": "qa/strategy-comparison.json"
+      },
+      "blockers": [
+        "BLOCKED_ART: no approved ImageGen; procedural placeholder art",
+        "LAUNCHER_CONTRACT_UNVERIFIED: launcher not found; Windows not available",
+        "human playtest / listening not done"
+      ],
+      "nextAction": "Author: import the playtest ZIP into the launcher and play. Codex: independent acceptance from the bundle, then ID + integration per INTEGRATION.md.",
+      "usage": {
+        "seconds": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cost": null
+      }
+    },
+    {
+      "proposalId": "C23",
+      "slug": "warp_rescue",
+      "title": "ワープ救助隊、全員まとめて！",
+      "packageId": "org.game100garage.ct3.warp-rescue",
+      "gameId": null,
+      "branch": "handoff/claude/dopa3-20261031/warp_rescue",
+      "baseCommit": "6211019f64a6946d632a9b3620de24a03505410d",
+      "sourceCommit": "d3d031e82671775e92e4cbd9ca5a0b67754930e4",
+      "headCommit": "5282fcbd71eed872c1af3dc3fa0032c96bbbcb0d",
+      "commitOrder": [
+        "00108b90a691ac6794310d2c32731a86ee87d140",
+        "d3d031e82671775e92e4cbd9ca5a0b67754930e4",
+        "5282fcbd71eed872c1af3dc3fa0032c96bbbcb0d"
+      ],
+      "stagingPath": "experiments/claude-dopa-trio/dopa3-20261031/warp_rescue/",
+      "playtestZip": "warp_rescue_0.1.0_d3d031e_playtest.zip",
+      "playtestZipSha256": "9ac92d73fc389cc559b5618e3084f61bfd7a6be284e1af0ca563c925803393a6",
+      "bundle": "SOURCE_HANDOFF/bundles/warp_rescue.bundle",
+      "phase": "STATIC_READY_LAUNCHER_UNVERIFIED",
+      "gates": {
+        "core": "PASS",
+        "types": "PASS",
+        "build": "PASS",
+        "static_package": "PASS",
+        "browser_e2e_static": "PASS 28/28",
+        "launcher_import": "NOT_RUN",
+        "launcher_windows_e2e": "NOT_RUN",
+        "source_handoff": "PASS",
+        "visual": "SELF_CHECK_ONLY_BLOCKED_ART",
+        "audio_functional": "PARTIAL_NOT_LISTENED",
+        "performance": "NOT_RUN",
+        "fun_design": "MODEL_EVIDENCE_ONLY",
+        "human_acceptance": "NOT_RUN",
+        "publication": "NOT_RUN"
+      },
+      "evidence": {
+        "unit": "vitest 12/12",
+        "e2e": "SOURCE_HANDOFF/warp_rescue/qa/e2e/e2e-report.json",
+        "smoke": "SOURCE_HANDOFF/warp_rescue/qa/smoke/warp_rescue-package-smoke.json",
+        "zipcheck": "SOURCE_HANDOFF/warp_rescue/qa/warp_rescue-zipcheck.json",
+        "restore": "fresh base clone + bundle + npm ci → byte-identical ZIP sha256",
+        "strategy": "qa/strategy-comparison.json"
+      },
+      "blockers": [
+        "BLOCKED_ART: no approved ImageGen; procedural placeholder art",
+        "LAUNCHER_CONTRACT_UNVERIFIED: launcher not found; Windows not available",
+        "human playtest / listening not done"
+      ],
+      "nextAction": "Author: import the playtest ZIP into the launcher and play. Codex: independent acceptance from the bundle, then ID + integration per INTEGRATION.md.",
+      "usage": {
+        "seconds": null,
+        "inputTokens": null,
+        "outputTokens": null,
+        "cost": null
+      }
+    }
+  ],
+  "batchBranch": "handoff/claude/dopa3-20261031/batch",
+  "complete3of3": false,
+  "completionNote": "Implementation + static package + source handoff done for all 3; NOT counted as complete: art BLOCKED, launcher/Windows NOT_RUN, human playtest NOT_RUN."
+}

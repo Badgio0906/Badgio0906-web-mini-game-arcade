@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ずらして、全段ぶち抜け。 ～SHIFT BURST～</title>
+</head>
+<body>
+  <div id="app">
+    <header id="bar">
+      <span id="mode-label" class="tag">本番</span>
+      <button id="btn-pause" type="button" aria-label="一時停止">Ⅱ 一時停止</button>
+    </header>
+    <main id="play">
+      <div id="stage-wrap"><canvas id="stage" aria-label="装甲シャッター。行を左右にドラッグしてコアを縦に揃える"></canvas></div>
+      <div id="controls">
+        <div class="cols" role="group" aria-label="主砲の列">
+          <button type="button" data-col="0">列1</button><button type="button" data-col="1">列2</button><button type="button" data-col="2">列3</button><button type="button" data-col="3">列4</button><button type="button" data-col="4">列5</button>
+        </div>
+        <button id="btn-fire" class="fire" type="button">FIRE</button>
+      </div>
+    </main>
+
+    <section id="title" class="overlay">
+      <p class="kicker">SHIFT BURST</p>
+      <h1>ずらして、全段ぶち抜け。</h1>
+      <p class="lead">装甲の行を左右にずらし、4つのコアを縦一列に。<br>一発で全段ぶち抜けば大量得点。</p>
+      <p id="title-best" class="best">BEST —</p>
+      <div class="buttons">
+        <button id="btn-play" class="primary" type="button">すぐ遊ぶ</button>
+        <button id="btn-practice" type="button">練習する</button>
+        <button id="btn-howto" type="button">遊び方</button>
+      </div>
+      <div class="buttons small">
+        <button id="btn-mute" type="button" aria-pressed="false">音：ON</button>
+        <button id="btn-motion" type="button" aria-pressed="false">演出軽減：OFF</button>
+        <button id="btn-exit" class="preview-only" type="button">試遊を終了</button>
+      </div>
+      <p id="storage-note" class="note" hidden>この環境では保存できないため、BESTはこの画面を閉じるまでの記録です。</p>
+      <p class="note preview-only">試遊版（ランチャー用の静的パッケージ）</p>
+    </section>
+
+    <section id="howto" class="overlay" hidden>
+      <h2>遊び方</h2>
+      <ul class="howto">
+        <li>行（横一列）を<b>左右にドラッグ</b>すると、離した位置で1〜2段ずれます。端から出たマスは反対側に回ります。</li>
+        <li>主砲の列を<b>列1〜5</b>で選び、<b>FIRE</b>。弾は下から上へ進み、光るコアを壊して貫通、硬い装甲で止まります。</li>
+        <li>1発で壊した段数nに対して100×n×n点。<b>4段まとめて1600点</b>、1段ずつだと合計400点。</li>
+        <li>歯車でつながった2行は、片方を動かすともう片方が<b>逆向き</b>に動きます（操作は1回分）。</li>
+        <li>移動1段ごとに-20点。弾12発・50秒で全6室を目指します。</li>
+        <li>キーボード：1〜4で行を選択、←→でずらす、Q/Eで主砲の列、Spaceで発射、Esc／Pで一時停止。</li>
+      </ul>
+      <div class="buttons"><button id="btn-howto-back" class="primary" type="button">もどる</button></div>
+    </section>
+
+    <section id="ready" class="overlay passthrough" hidden>
+      <div class="ready-card">
+        <p>コアの位置を確認して…</p>
+        <p class="big">盤面をタップ／Spaceで開始</p>
+        <p class="note">開始の操作は移動・発射になりません</p>
+      </div>
+    </section>
+
+    <section id="paused" class="overlay" hidden>
+      <h2>一時停止中</h2>
+      <p class="lead">時計と盤面は止まっています。ドラッグ中の移動は取り消しました。</p>
+      <div class="buttons">
+        <button id="btn-resume" class="primary" type="button">再開</button>
+        <button id="btn-quit" type="button">タイトルへ（記録しない）</button>
+      </div>
+    </section>
+
+    <section id="result" class="overlay" hidden>
+      <p class="kicker">RESULT</p>
+      <h2 id="result-title">結果</h2>
+      <p class="rank">RANK <span id="result-rank">-</span></p>
+      <dl id="result-body"></dl>
+      <p id="result-best-note" class="note" hidden>保存できない環境のため、BESTは一時的な記録です。</p>
+      <div class="buttons">
+        <button id="btn-retry" class="primary" type="button">もう一度</button>
+        <button id="btn-to-title" type="button">タイトルへ</button>
+        <button id="btn-exit-2" class="preview-only" type="button">試遊を終了</button>
+      </div>
+    </section>
+
+    <section id="exited" class="overlay" hidden>
+      <h2>試遊を終了しました</h2>
+      <p class="lead">音と時計を停止しました。<br>このタブ（ウィンドウ）を閉じて、ランチャーへ戻ってください。</p>
+    </section>
+  </div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

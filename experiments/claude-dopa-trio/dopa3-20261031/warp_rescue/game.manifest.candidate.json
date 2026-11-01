@@ -1,0 +1,29 @@
+{
+  "id": null,
+  "stagingSlug": "warp_rescue",
+  "packageId": "org.game100garage.ct3.warp-rescue",
+  "title": "ワープ救助隊、全員まとめて！ ～WARP RESCUE～",
+  "titleEn": "WARP RESCUE",
+  "tagline": "入口で拾って、開いた出口へ一斉送還。",
+  "genre": "two-point traffic control timing",
+  "coreMechanic": "60 capsules in 12 waves on a fixed integer-ms timetable fall at 100px/s to 3 inlet sensors. Inlet selection (Q/W/E) captures; the outlet (A/S/D) selected at the crossing is fixed and the capsule arrives 450ms later. Dock i is OPEN when (t−1000−1800i) mod 5400 < 2700.",
+  "inputs": {
+    "select": "6 DOM buttons: round 入口 (mint) and square 出口 (coral), pointerdown; each selector has its own 80ms cooldown",
+    "keyboard": "Q/W/E inlet, A/S/D outlet (no repeat)",
+    "pause": "button / Esc / P; blur and hidden auto-pause"
+  },
+  "practice": "Waves 1–2 (10 capsules), separate score, no BEST",
+  "scoring": "Rescue: 100×min(3, 1+floor(streak/10)); reroute or inlet miss resets streak. Wave of 5 all rescued: +300, all same dock: +500 instead. Clear (≥42) +1000; all 60 +1000. Reading plan: 21,200.",
+  "rank": "S: 60 rescued; A: ≥54; B: ≥42 (clear); C: <42",
+  "save": "web-mini-arcade:v1:ct3:warp_rescue:best:rules1 (JSON best record), web-mini-arcade:v1:ct3:warp_rescue:settings (mute / reduced motion); denied/corrupt storage → in-memory with on-screen note; never enumerates other keys",
+  "creditMode": "free",
+  "ads": "none",
+  "telemetry": "none in staging (no analytics/records calls); Codex to connect existing services in native adapter",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "procedural-1",
+  "art": "Procedural code-drawn sprites only (BLOCKED_ART: ImageGen not available/approved in the production session). Not final art.",
+  "audio": "WebAudio synthesized SE (no samples), voice cap 10, compressor/limiter, mute; not listened to by a human",
+  "humanReview": "author / physical device / audio-feel / Windows launcher review pending",
+  "note": "Candidate only. Shape follows src/games/game035/game.manifest.json; Codex assigns id and adapts to the current manifest schema."
+}

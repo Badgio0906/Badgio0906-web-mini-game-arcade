@@ -1,0 +1,29 @@
+{
+  "id": null,
+  "stagingSlug": "thunder_booking",
+  "packageId": "org.game100garage.ct3.thunder-booking",
+  "title": "雷、予約しました。 ～THUNDER BOOKING～",
+  "titleEn": "THUNDER BOOKING",
+  "tagline": "0.9秒後の場所へ、雷を予約。",
+  "genre": "predictive-strike score attack",
+  "coreMechanic": "Tap/click reserves a lightning strike at that point 900ms later (radius 68). 3 slots: READY→PENDING 900ms→COOLDOWN 1200ms; 120ms global gap. 8 fixed six-drone formations × 5.5s, then boss HP3 with 800ms post-hit shield until 54s.",
+  "inputs": {
+    "reserve": "pointerdown on the battlefield (clamped, no snap); 1 tap = 1 slot",
+    "keyboard": "arrows move cursor 300px/s, Space (non-repeat) reserves; Space also starts the clock from the READY screen",
+    "pause": "button / Esc / P; blur, visibilitychange hidden and pointercancel auto-pause; explicit 再開"
+  },
+  "practice": "Formation 1 three times (16.5s), separate score, no shield loss, no BEST",
+  "scoring": "Per strike n kills: 100n+50n(n-1) (6 → 2100). Boss kill 2000; clear bonus shield×300 + floor(remaining s)×100. Each once. Formation <3 kills → shield −1 once. Validation max observed by plan: 20400.",
+  "rank": "S: clear + ≥3 six-kills + 0 formation fails; A: clear + ≥1 six-kill; B: other clear; C: fail",
+  "save": "web-mini-arcade:v1:ct3:thunder_booking:best:rules1 (JSON best record), web-mini-arcade:v1:ct3:thunder_booking:settings (mute / reduced motion); denied/corrupt storage → in-memory with on-screen note; never enumerates other keys",
+  "creditMode": "free",
+  "ads": "none",
+  "telemetry": "none in staging (no analytics/records calls); Codex to connect existing services in native adapter",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "procedural-1",
+  "art": "Procedural code-drawn sprites only (BLOCKED_ART: ImageGen not available/approved in the production session). Not final art.",
+  "audio": "WebAudio synthesized SE (no samples), voice cap 10, compressor/limiter, mute; not listened to by a human",
+  "humanReview": "author / physical device / audio-feel / Windows launcher review pending",
+  "note": "Candidate only. Shape follows src/games/game035/game.manifest.json; Codex assigns id and adapts to the current manifest schema."
+}

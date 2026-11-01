@@ -32,7 +32,7 @@ describe('normal tag filtering preserves legacy AND and excludes retirement', ()
   it('candidates come from tagCatalog and include full game tags beyond the card four', () => {
     const options = activeTagOptions(historicalGameCatalog);
     expect(options.some(tag => tag.id === 'meeting')).toBe(false);
-    expect(options.some(tag => tag.id === 'stealth')).toBe(false);
+    expect(options.find(tag => tag.id === 'stealth')).toMatchObject({id:'stealth',count:1}); // new059 uses this existing tag
     expect(options.find(tag => tag.id === 'wind')).toEqual({ id: 'wind', label: '風', count: 1 });
     expect(activeTagOptions(fixture).find(tag => tag.id === 'puzzle')?.count).toBe(2);
   });

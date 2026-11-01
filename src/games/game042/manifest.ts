@@ -1,0 +1,1 @@
+export const manifest={id:'game042',titleJa:'一閃、まとめて。',titleEn:'DASH CHAIN',genre:'path action',coreMechanic:'相対一筆経路とreleaseダッシュ',skill:'経路最適化と盾の方向判断',rulesVersion:1,publication:'local-only',officialStatus:'unregistered'} as const;

@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_cheer_v2_1810656d15.wav",
+  "asset_id": "1810656d1523c53111699ba97169ec7be90b23749e97506589b9490b8e253539",
+  "sha256": "e6ea4812983a13022c6b0c2256e4884f4f8347373346a751dba376dd798b428f",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 29804,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "1810656d1523c53111699ba97169ec7be90b23749e97506589b9490b8e253539",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103201,
+    "sample_rate": 48000,
+    "name": "cheer",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "sine",
+        "frequency": 341.54999999999995,
+        "end_frequency": 341.54999999999995,
+        "duration": 0.22,
+        "gain_db": -15,
+        "delay": 0.0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.12100000000000001
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 455.4,
+        "end_frequency": 455.4,
+        "duration": 0.22,
+        "gain_db": -15,
+        "delay": 0.045,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.12100000000000001
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 683.0999999999999,
+        "end_frequency": 683.0999999999999,
+        "duration": 0.22,
+        "gain_db": -15,
+        "delay": 0.09,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.12100000000000001
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.31,
+      "frames": 14880,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.21337890625,
+      "sample_peak_dbfs": -13.416970306667427,
+      "true_peak_estimate": 0.2135147358124716,
+      "true_peak_estimate_dbfs": -13.411442931636357,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -25.094822338522267,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 2.0886492985551076e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0006458333333333333,
+      "trailing_silence": 0.0050625
+    }
+  }
+}

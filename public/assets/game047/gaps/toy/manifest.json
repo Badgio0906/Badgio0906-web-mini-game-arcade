@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_toy_v2_d42459855e.wav",
+  "asset_id": "d42459855e0b977061bb57fe84682987debaca900c78f14a8eec58212fd2eb5c",
+  "sha256": "6ffbd203d1a44323016eabc34f4ed65739cbe49317bef419bc779bed8ff30d24",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 48180,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "derived",
+    "source": "GAPS recipe v1",
+    "parents": [
+      "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3"
+    ]
+  },
+  "lineage": [
+    {
+      "id": "d42459855e0b977061bb57fe84682987debaca900c78f14a8eec58212fd2eb5c",
+      "source": "GAPS recipe v1",
+      "license_id": "derived",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": [
+        "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3"
+      ]
+    },
+    {
+      "id": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license_id": "CC0-1.0",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103481,
+    "sample_rate": 48000,
+    "name": "toy",
+    "category": "impact",
+    "layers": [
+      {
+        "asset": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+        "duration": 0.2656009070294785,
+        "gain_db": -7,
+        "effects": {
+          "fade_in": 0.002,
+          "fade_out": 0.08,
+          "pitch_semitones": 1
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 186.29999999999998,
+        "end_frequency": 75,
+        "duration": 0.11,
+        "gain_db": -15,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.060500000000000005
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.06,
+        "gain_db": -16,
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.02,
+          "sustain": 0.3,
+          "release": 0.036
+        },
+        "effects": {
+          "lowpass_hz": 2200
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.2507083333333333,
+      "frames": 12034,
+      "sample_rate": 48000,
+      "channels": 2,
+      "sample_peak": 0.308624267578125,
+      "sample_peak_dbfs": -10.211398554381672,
+      "true_peak_estimate": 0.30882072701251795,
+      "true_peak_estimate_dbfs": -10.2058711793506,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -28.87161269864759,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 9.784948911028129e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0004583333333333333,
+      "trailing_silence": 0.0037916666666666667
+    }
+  }
+}

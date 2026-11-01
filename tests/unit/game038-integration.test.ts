@@ -11,7 +11,7 @@ describe('Game038 published as a non-competitive trial',()=>{
   expect(gameDisplayNumbers.get('game035')).toBe('026');
   expect(gameDisplayNumbers.get('game036')).toBe('027');
   expect(gameDisplayNumbers.get('game038')).toBe('028');
-  expect(NEXT_GAME_NUMBER).toBe(39);
+  expect(NEXT_GAME_NUMBER).toBe(63);
  });
  it('adds presentation metadata without opening remote collection or comparison boards',()=>{
   expect(gameVersions.game038).toEqual({rules_version:'1',presentation_version:'night-stream-dom-1'});

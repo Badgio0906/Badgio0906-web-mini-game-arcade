@@ -1,0 +1,274 @@
+(function() {
+  const i = document.createElement("link").relList;
+  if (i && i.supports && i.supports("modulepreload")) return;
+  for (const a of document.querySelectorAll('link[rel="modulepreload"]')) o(a);
+  new MutationObserver((a) => {
+    for (const s of a) if (s.type === "childList") for (const l of s.addedNodes) l.tagName === "LINK" && l.rel === "modulepreload" && o(l);
+  }).observe(document, { childList: true, subtree: true });
+  function t(a) {
+    const s = {};
+    return a.integrity && (s.integrity = a.integrity), a.referrerPolicy && (s.referrerPolicy = a.referrerPolicy), a.crossOrigin === "use-credentials" ? s.credentials = "include" : a.crossOrigin === "anonymous" ? s.credentials = "omit" : s.credentials = "same-origin", s;
+  }
+  function o(a) {
+    if (a.ep) return;
+    a.ep = true;
+    const s = t(a);
+    fetch(a.href, s);
+  }
+})();
+import {FIXED_DT as x,HIT_RADIUS as H,segmentHit as z,createWave as F,createReturn as B,throwRing as W,sweep as C,tickReturn as U}from './model.js';
+function Y(e, i, t, o, a, s) {
+  let l = null, f = 0, d = 0, n = null;
+  const c = /* @__PURE__ */ new Set(), h = () => {
+    const r = l, p = n;
+    if (l = null, n = null, d = 0, c.clear(), i.removeAttribute("data-down"), r !== null && p?.hasPointerCapture(r)) try {
+      p.releasePointerCapture(r);
+    } catch {
+    }
+  };
+  for (const r of [e, i]) {
+    r.addEventListener("pointerdown", (p) => {
+      !t() || l !== null || !p.isPrimary || p.button !== 0 || (p.preventDefault(), l = p.pointerId, n = r, f = p.clientX, d = 0, r.setPointerCapture(l), i.setAttribute("data-down", ""), s());
+    }), r.addEventListener("pointermove", (p) => {
+      p.pointerId === l && (p.preventDefault(), d = Math.max(-1, Math.min(1, (p.clientX - f) / 64)));
+    }), r.addEventListener("pointerup", (p) => {
+      p.pointerId === l && (h(), t() && o());
+    });
+    for (const p of ["pointercancel", "lostpointercapture"]) r.addEventListener(p, (L) => {
+      L.pointerId === l && h();
+    });
+    r.addEventListener("contextmenu", (p) => p.preventDefault());
+  }
+  return window.addEventListener("keydown", (r) => {
+    if (!(r.target instanceof HTMLInputElement || r.ctrlKey || r.metaKey || r.altKey)) {
+      if (r.key === "Escape") {
+        r.preventDefault(), a();
+        return;
+      }
+      if (t() && ["ArrowLeft", "ArrowRight", "KeyA", "KeyD", "Space"].includes(r.code)) {
+        if (r.preventDefault(), r.repeat) return;
+        s(), c.add(r.code), r.code === "Space" && l === null && o();
+      }
+    }
+  }), window.addEventListener("keyup", (r) => c.delete(r.code)), window.addEventListener("blur", () => {
+    h(), a();
+  }), document.addEventListener("visibilitychange", () => {
+    document.hidden && (h(), a());
+  }), window.addEventListener("pagehide", h), matchMedia("(orientation:portrait)").addEventListener("change", () => {
+    h(), a();
+  }), { abort: h, axis: () => l !== null ? d : Number(c.has("ArrowRight") || c.has("KeyD")) - Number(c.has("ArrowLeft") || c.has("KeyA")) };
+}
+const J = ["hunter-normal", "hunter-throw", "hunter-win", "sun-ring", "paper-mask", "armor-mask", "fragment", "ruins"];
+async function X() {
+  const e = {};
+  return await Promise.all(J.map(async (i) => {
+    const t = new Image();
+    t.src = `./assets/${i}.webp`, await t.decode(), e[i] = t;
+  })), e;
+}
+let M = [], $ = /* @__PURE__ */ new Set(), P = 0;
+function j(e, i, t, o) {
+  const a = e.canvas, s = a.parentElement, l = Math.max(1, Math.min(s.clientWidth - 2, s.clientHeight - 2));
+  a.style.width = l + "px", a.style.height = l + "px";
+  const f = 240;
+  a.style.imageRendering = "pixelated";
+  e.imageSmoothingEnabled = false;
+  a.width !== f && (a.width = f, a.height = f), e.setTransform(f / 480, 0, 0, f / 480, 0, 0), i.time < P && (M = [], $.clear()), P = i.time, e.fillStyle = "#3f392b", e.fillRect(0, 0, 480, 480), t.ruins && (e.drawImage(t.ruins, 0, 0, 480, 480), e.fillStyle = "#201f1a55", e.fillRect(0, 0, 480, 480)), e.strokeStyle = "#eec66c", e.lineWidth = 2, e.setLineDash([8, 8]), e.beginPath(), e.moveTo(0, 420), e.lineTo(480, 420), e.stroke(), e.setLineDash([]);
+  for (const n of i.enemies) {
+    if (n.hp <= 0) {
+      if (n.defeated && !$.has(n.id)) {
+        $.add(n.id);
+        for (let r = 0; r < (o ? 4 : 12); r++) M.push({ x: n.x, y: n.y, at: i.time, angle: r * 2.4, speed: 65 + r * 9 });
+      }
+      continue;
+    }
+    const c = i.time >= n.born;
+    e.globalAlpha = c ? 1 : 0.35;
+    const h = t[n.kind === "armor" ? "armor-mask" : "paper-mask"];
+    h ? e.drawImage(h, n.x - 23, n.y - 23, 46, 46) : (e.fillStyle = n.kind === "armor" ? "#e8b568" : "#f9ecc0", e.beginPath(), e.arc(n.x, n.y, 18, 0, 7), e.fill()), e.globalAlpha = 1, n.kind === "armor" && (e.strokeStyle = "#7affed", e.lineWidth = 2, e.beginPath(), e.arc(n.x, n.y, 24, 0, 7), e.stroke()), c || (e.strokeStyle = "#a1ffe9", e.strokeRect(n.x - 25, n.y - 25, 50, 50));
+  }
+  M = M.filter((n) => i.time - n.at < 0.45).slice(-180);
+  for (const n of M) {
+    const c = i.time - n.at, h = n.x + Math.cos(n.angle) * n.speed * c, r = n.y + Math.sin(n.angle) * n.speed * c;
+    e.globalAlpha = 1 - c / 0.45, t.fragment ? e.drawImage(t.fragment, h - 4, r - 4, 8, 8) : (e.fillStyle = "#ffe18b", e.fillRect(h - 3, r - 3, 6, 6));
+  }
+  if (e.globalAlpha = 1, i.ring) {
+    const n = i.ring;
+    e.setLineDash([5, 7]), e.strokeStyle = n.leg === "back" ? "#7ffff488" : "#ffde7988", e.lineWidth = 2, e.beginPath(), e.moveTo(n.x, n.y), e.lineTo(n.leg === "back" ? i.x : n.x, n.leg === "back" ? 420 : 60), e.stroke(), e.setLineDash([]), o || (e.strokeStyle = n.leg === "back" ? "#7fffe8" : "#ffd866", e.lineWidth = 6, e.beginPath(), e.arc(n.x, n.y, 20 + n.kills, 0, Math.PI * 1.5), e.stroke()), e.save(), e.translate(n.x, n.y), e.rotate(i.time * 16), t["sun-ring"] ? e.drawImage(t["sun-ring"], -20, -20, 40, 40) : (e.strokeStyle = "#ffe881", e.lineWidth = 5, e.beginPath(), e.arc(0, 0, 14, 0, 7), e.stroke()), e.restore();
+  }
+  const d = t[i.ring?.leg === "out" ? "hunter-throw" : "hunter-normal"];
+  if (d ? e.drawImage(d, i.x - 24, 365, 48, 78) : (e.fillStyle = "#7be8da", e.fillRect(i.x - 14, 390, 28, 45)), e.fillStyle = "#122a2be8", e.fillRect(8, 8, 275, 28), e.fillStyle = "#fff3bd", e.font = "bold 15px system-ui", e.fillText(i.ring ? `${i.ring.leg === "out" ? "往路" : "復路"}  ${i.ring.kills}連  / 復路は現在位置へ` : "輪は手元 · 離して投げる / Space", 14, 28), !i.practice && i.time < 55.5 && i.time % 7 >= 6.5 && i.enemies.some((n) => n.hp > 0) && (e.fillStyle = "#442a16ee", e.fillRect(70, 350, 340, 30), e.fillStyle = "#ffe39a", e.font = "bold 16px system-ui", e.textAlign = "center", e.fillText("撤退まで0.5秒 · 次の仮面が来る！", 240, 371), e.textAlign = "left"), i.lastCatch && i.time - i.lastCatch.at < 0.65) {
+    const n = i.lastCatch.kills;
+    e.fillStyle = n >= 6 ? "#ffe18b" : "#b6fff1", e.font = "bold 24px system-ui", e.textAlign = "center", e.fillText(n >= 6 ? "往復六連、キャッチ！" : `${n}体キャッチ`, 240, 465), e.textAlign = "left";
+  }
+}
+class Q {
+  context = null;
+  master = null;
+  voices = /* @__PURE__ */ new Set();
+  loop = null;
+  loopGain = null;
+  peak = 0;
+  volume = 0.35;
+  muted = false;
+  buffer = null;
+  async unlock() {
+    try {
+      if (this.context ??= new AudioContext(), !this.master) {
+        const i = this.context;
+        this.master = i.createGain();
+        const t = i.createDynamicsCompressor();
+        t.threshold.value = -18, t.ratio.value = 10, this.master.connect(t).connect(i.destination), this.buffer = i.createBuffer(1, i.sampleRate, i.sampleRate);
+        let o = 5001;
+        const a = this.buffer.getChannelData(0);
+        for (let s = 0; s < a.length; s++) o = Math.imul(o, 1664525) + 1013904223 >>> 0, a[s] = o / 2147483648 - 1;
+      }
+      this.master.gain.value = this.muted ? 0 : this.volume * 0.55, await this.context.resume();
+    } catch {
+    }
+  }
+  register(i, t) {
+    this.voices.add(i), this.peak = Math.max(this.peak, this.voices.size + (this.loop ? 1 : 0)), i.onended = () => {
+      this.voices.delete(i), i.disconnect(), t.disconnect();
+    };
+  }
+  tone(i, t, o, a, s, l = "triangle") {
+    const f = this.context, d = this.master;
+    if (!f || !d || this.muted || f.state !== "running" || this.voices.size + (this.loop ? 1 : 0) >= 24) return;
+    const n = f.createOscillator(), c = f.createGain(), h = f.currentTime + a;
+    n.type = l, n.frequency.setValueAtTime(i, h), n.frequency.exponentialRampToValueAtTime(Math.max(20, t), h + o), c.gain.setValueAtTime(1e-4, h), c.gain.linearRampToValueAtTime(s, h + 4e-3), c.gain.exponentialRampToValueAtTime(1e-4, h + o), n.connect(c).connect(d), this.register(n, c), n.start(h), n.stop(h + o + 0.01);
+  }
+  noise(i, t, o) {
+    const a = this.context, s = this.master;
+    if (!a || !s || !this.buffer || a.state !== "running" || this.muted || this.voices.size + (this.loop ? 1 : 0) >= 24) return;
+    const l = a.createBufferSource(), f = a.createBiquadFilter(), d = a.createGain(), n = a.currentTime;
+    l.buffer = this.buffer, f.type = "bandpass", f.frequency.value = t, d.gain.setValueAtTime(o, n), d.gain.exponentialRampToValueAtTime(1e-4, n + i), l.connect(f).connect(d).connect(s), this.register(l, d), l.onended = () => {
+      this.voices.delete(l), l.disconnect(), f.disconnect(), d.disconnect();
+    }, l.start(), l.stop(n + i);
+  }
+  wind(i) {
+    if (!i || this.muted || !this.context || this.context.state !== "running") {
+      if (this.loop) try {
+        this.loop.stop();
+      } catch {
+      }
+      this.loop = null, this.loopGain?.disconnect(), this.loopGain = null;
+      return;
+    }
+    if (this.loop || !this.buffer || !this.master || this.voices.size >= 24) return;
+    const t = this.context.createBufferSource(), o = this.context.createGain(), a = this.context.createBiquadFilter();
+    t.buffer = this.buffer, t.loop = true, a.type = "bandpass", a.frequency.value = 800, o.gain.value = 0.035, t.connect(a).connect(o).connect(this.master), t.onended = () => {
+      t.disconnect(), a.disconnect();
+    }, t.start(), this.loop = t, this.loopGain = o, this.peak = Math.max(this.peak, this.voices.size + 1);
+  }
+  play(i, t = 1) {
+    if (i === "throw") this.noise(0.16, 2100, 0.08), this.tone(240, 95, 0.14, 0, 0.06);
+    else if (i === "hit") this.noise(0.075, 1500, 0.06), this.tone(330 + t * 160, 150, 0.09, 0, 0.045);
+    else if (i === "kill") {
+      const o = Math.min(6, t);
+      if (this.tone(330 * 2 ** (o / 8), 500 * 2 ** (o / 8), 0.14, 0, 0.07, "sine"), o >= 3 && this.tone(95, 38, 0.2, 0, 0.06), o >= 6) for (let a = 0; a < 3; a++) this.tone([523, 659, 784][a], [523, 659, 784][a], 0.23, a * 0.035, 0.045, "sine");
+    } else if (i === "catch") {
+      this.tone(120, 45, 0.15, 0, 0.07);
+      for (let o = 0; o < Math.min(t, 6); o++) this.tone(600 + o * 130, 800 + o * 130, 0.1, o * 0.025, 0.04, "sine");
+    } else if (i === "damage") this.noise(0.18, 450, 0.1), this.tone(110, 35, 0.2, 0, 0.1, "sawtooth");
+    else if (i === "clear") for (let o = 0; o < 5; o++) this.tone([262, 330, 392, 523, 659][o], [262, 330, 392, 523, 659][o], 0.25, o * 0.06, 0.06, "sine");
+    else this.tone(420, 620, 0.06, 0, 0.04, "sine");
+  }
+  stop() {
+    this.wind(false);
+    for (const i of this.voices) try {
+      i.stop();
+    } catch {
+    }
+    this.voices.clear();
+  }
+  set(i, t) {
+    this.volume = i, this.muted = t, t && this.stop(), this.master && (this.master.gain.value = t ? 0 : i * 0.55);
+  }
+}
+const D = "100gare:game050:rules1";
+class Z {
+  data = { rulesVersion: 1, best: 0, volume: 0.35, muted: false, light: false };
+  persistent = true;
+  constructor() {
+    try {
+      const i = localStorage.getItem(D);
+      if (i !== null) {
+        const t = JSON.parse(i);
+        if (!t || t.rulesVersion !== 1 || !Number.isInteger(t.best) || t.best < 0 || !Number.isFinite(t.volume) || t.volume < 0 || t.volume > 1 || typeof t.muted != "boolean" || typeof t.light != "boolean") throw new Error("Invalid game050 save schema");
+        this.data = { rulesVersion: 1, best: t.best, volume: t.volume, muted: t.muted, light: t.light };
+      }
+    } catch {
+      this.persistent = false;
+    }
+  }
+  write() {
+    if (this.persistent) try {
+      localStorage.setItem(D, JSON.stringify(this.data));
+    } catch {
+      this.persistent = false;
+    }
+  }
+  result(i, t) {
+    !t && Number.isFinite(i) && i >= 0 && (this.data.best = Math.max(this.data.best, i), this.write());
+  }
+}
+const m = (e) => document.getElementById(e), T = document.querySelector("canvas"), _ = T.getContext("2d"), v = m("layer"), y = new Z(), b = new Q(), ee = await X();
+let u = B(), g = "title", K = performance.now(), w = 0, R = false, S = () => {
+};
+const E = [], V = [];
+b.set(y.data.volume, y.data.muted);
+function N() {
+  return `<div class="settings"><label><input id="mute" type="checkbox" ${y.data.muted ? "checked" : ""}>消音</label><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value="${y.data.volume}"></label><label><input id="light" type="checkbox" ${y.data.light ? "checked" : ""}>軽量演出</label></div>`;
+}
+function q() {
+  for (const e of ["mute", "volume", "light"]) m(e).oninput = () => {
+    y.data.muted = m("mute").checked, y.data.volume = +m("volume").value, y.data.light = m("light").checked, y.write(), b.set(y.data.volume, y.data.muted);
+  };
+}
+function A(e = false) {
+  S(), b.stop(), u = B(e), g = "run", w = 0, K = performance.now(), R = false, V.length = 0, v.hidden = true, T.focus({ preventScroll: true }), document.body.classList.add("playing"), b.unlock().then(() => {
+    g === "run" && b.play("ui");
+  });
+}
+function k() {
+  v.hidden = false, document.body.classList.remove("playing");
+  const e = `<img class="portrait" src="./assets/${g === "result" ? "hunter-win" : "hunter-normal"}.webp" alt="大輪の遺跡ハンター">`;
+  g === "title" ? (v.innerHTML = `<article class="card">${e}<span class="badge">RETURN RUSH / 試遊版</span><h1>帰り道も、<br>必殺技。</h1><p>投げた後に動けば、帰り道が必殺技。<br>往路と復路で、六体まとめて。</p><div class="actions"><button id="play">すぐ遊ぶ</button><button id="practice">往復を練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${N()}<p class="small">BEST ${y.data.best} / 保存${y.persistent ? "端末内" : "不可・ページ内のみ"}</p></article>`, m("play").onclick = () => A(), m("practice").onclick = () => A(true), m("help").onclick = () => {
+    g = "help", k();
+  }, q()) : g === "help" ? (v.innerHTML = '<article class="card"><h2>帰りは、今いる場所へ。</h2><p>PCは左右/A・Dで移動、Spaceで輪を投げます。スマホは下のパッドを押して左右へ滑らせて移動、離して投げます。指を置いた位置への瞬間移動や、溜め攻撃はありません。</p><p>飛んでいる間は移動だけ。輪が上へ届く前に反対側へ移り、復路を変えましょう。往路1ダメージ、復路2ダメージ。青枠の鎧仮面は耐久2。帰りにまとめるほど高得点、1投6体でキャッチ時に+500。</p><p>本番56秒で24体以上、LIFEを残して成功。危険線へ届いた仮面はLIFEを減らします。練習は往路1体＋復路1体を倒してキャッチすると成功、記録しません。</p><div class="actions"><button id="practice">練習する</button><button id="title">タイトルへ</button></div></article>', m("practice").onclick = () => A(true), m("title").onclick = () => {
+    g = "title", k();
+  }) : g === "pause" ? (v.innerHTML = `<article class="card"><h2>休憩中</h2><p>輪・敵・時計は止まっています。古い移動入力は解除しました。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${N()}</article>`, m("resume").onclick = () => {
+    S(), g = "run", w = 0, K = performance.now(), v.hidden = true, T.focus({ preventScroll: true }), document.body.classList.add("playing"), b.unlock();
+  }, m("title").onclick = () => {
+    S(), b.stop(), g = "title", k();
+  }, q()) : g === "result" && (v.innerHTML = `<article class="card">${e}<span class="badge">${u.practice ? "PRACTICE / 記録なし" : u.status === "clear" ? "帰り道も、大成功！" : u.hp <= 0 ? "仮面が危険線へ到達" : "24体に届かず"}</span><h2>RANK ${u.status !== "clear" ? "C" : u.sixes >= 2 && u.hits === 0 ? "S" : u.maxKills >= 4 ? "A" : "B"}</h2><div class="result-score">${u.score.toLocaleString()} pt</div><p>撃破 ${u.kills}/48 / 最大1投 ${u.maxKills}体<br>往路 ${u.outKills} / 復路 ${u.backKills}<br>六連 ${u.sixes}回 / LIFE ${u.hp}<br>BEST ${y.data.best}</p><div class="actions">${u.practice ? '<button id="play">本番へ</button>' : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, u.practice && (m("play").onclick = () => A()), m("retry").onclick = () => A(u.practice), m("title").onclick = () => {
+    g = "title", k();
+  });
+}
+function I() {
+  g === "run" && (S(), b.stop(), g = "pause", k());
+}
+const O = Y(T, m("pad"), () => g === "run", () => {
+  W(u) && V.push({ t: u.time, kind: "throw", x: u.x });
+}, I, () => {
+  b.unlock();
+});
+S = O.abort;
+m("pause").onclick = I;
+window.addEventListener("pagehide", () => b.stop());
+k();
+function G(e) {
+  const i = performance.now(), t = (e - K) / 1e3;
+  if (K = e, g === "run") if (t > 0.8) I(), w = 0;
+  else {
+    for (w += t; w >= 1 / 120; ) U(u, O.axis()), w -= 1 / 120;
+    b.wind(u.ring?.leg === "back");
+    for (const o of u.events.splice(0)) b.play(o.kind, o.n);
+    u.status !== "run" && (S(), b.wind(false), R || (R = true, y.result(u.score, u.practice), b.play(u.status === "clear" ? "clear" : "damage")), g = "result", k());
+  }
+  j(_, u, ee, y.data.light || matchMedia("(prefers-reduced-motion:reduce)").matches), m("score").textContent = String(u.score), m("time").textContent = Math.max(0, 56 - u.time).toFixed(1), m("life").textContent = String(u.hp), m("count").textContent = u.kills + "/24", m("notice").textContent = u.notice, E.push(performance.now() - i), E.length > 7200 && E.shift(), requestAnimationFrame(G);
+}
+requestAnimationFrame(G);
+
+if(import.meta.env.MODE==='qa')Object.defineProperty(window,'__GAME__',{get:()=>JSON.parse(JSON.stringify({id:'game050',phase:g,state:u}))});

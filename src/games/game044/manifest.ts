@@ -1,0 +1,1 @@
+export const manifest={id:'game044',titleJa:'囲って、お宝どっさり。',titleEn:'LOOP LOOT',genre:'area drawing action',coreMechanic:'時間内に閉じる単純多角形で移動財宝を回収',skill:'面積選択と爆弾の除外',rulesVersion:1,publication:'local-only'} as const;

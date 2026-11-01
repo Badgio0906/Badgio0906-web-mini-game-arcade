@@ -1,16 +1,17 @@
 import { defineConfig } from 'vite';
+import {buildPrototypeGames} from './scripts/build-prototype-games';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { distributedGameCatalog } from './src/data/gameCatalog';
 
 const htmlEntries = new Set(['index', 'about', 'privacy', 'analytics-admin',
   // Existing public preview of Game017; no publication change in this task.
-  'game017-revision03', ...distributedGameCatalog.map(game => game.id)]);
+  'game017-revision03', ...distributedGameCatalog.filter(game=>Number(game.id.slice(4))<40).map(game => game.id)]);
 
 // Physical HTML entries also work on refresh under a GitHub Pages repository path.
 export default defineConfig({
   base: './',
-  plugins: [{
+  plugins: [{name:'isolated-trial-builds',async closeBundle(){await buildPrototypeGames(resolve(process.cwd(),'dist'));}},{
     name: 'legacy-analytics-dev-entry',
     configureServer(server) {
       server.middlewares.use((request, _response, next) => {

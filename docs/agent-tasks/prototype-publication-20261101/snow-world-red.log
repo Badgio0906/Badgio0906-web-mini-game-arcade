@@ -1,0 +1,38 @@
+
+ RUN  v3.2.7 /tmp/arcade-publication-20261101
+
+ ❯ tests/unit/game047-world.test.ts (2 tests | 2 failed) 11ms
+   × uses the full3840 square and unique objects in all16 regions 9ms
+     → expected false to be true // Object.is equality
+   × zooms out as the snowman grows, while the camera remains within the expanded map 2ms
+     → actual value must be number or bigint, received "undefined"
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game047-world.test.ts > uses the full3840 square and unique objects in all16 regions
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game047-world.test.ts:2:176
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/game047-world.test.ts > zooms out as the snowman grows, while the camera remains within the expanded map
+TypeError: actual value must be number or bigint, received "undefined"
+ ❯ tests/unit/game047-world.test.ts:3:198
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  11:08:07
+   Duration  285ms (transform 56ms, setup 0ms, collect 65ms, tests 11ms, environment 0ms, prepare 57ms)
+

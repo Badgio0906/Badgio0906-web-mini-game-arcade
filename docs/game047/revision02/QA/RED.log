@@ -1,0 +1,31 @@
+
+ RUN  v3.2.7 /workspace/arcade-dopa-nine
+
+ ❯ tests/unit/game047-author-revision.test.ts (2 tests | 2 failed) 5ms
+   × score visibly grows the snowman independently of mass 3ms
+     → (0 , visualSize) is not a function
+   × authored formations have distinct routes rather than rectangular piles 1ms
+     → expected 2 to be greater than 3
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game047-author-revision.test.ts > score visibly grows the snowman independently of mass
+TypeError: (0 , visualSize) is not a function
+ ❯ tests/unit/game047-author-revision.test.ts:2:72
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/game047-author-revision.test.ts > authored formations have distinct routes rather than rectangular piles
+AssertionError: expected 2 to be greater than 3
+ ❯ tests/unit/game047-author-revision.test.ts:3:162
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  02:30:05
+   Duration  319ms (transform 72ms, setup 0ms, collect 50ms, tests 5ms, environment 0ms, prepare 92ms)
+

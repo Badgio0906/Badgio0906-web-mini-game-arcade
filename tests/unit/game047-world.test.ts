@@ -1,0 +1,3 @@
+import{it,expect}from'vitest';import{createSnow,map,snowTick}from'../../src/games/game047/model';import{camera}from'../../src/games/game047/renderer';
+it('uses the full3840 square and unique objects in all16 regions',()=>{const a=map();expect(new Set(a.map(o=>o.id)).size).toBe(a.length);expect(a.some(o=>o.x>3000&&o.y>3000)).toBe(true);const s=createSnow();s.objects=[];s.x=3800;s.y=3800;snowTick(s,1,1,1);expect(s.x).toBeGreaterThan(3700);expect(s.y).toBeGreaterThan(3700);});
+it('zooms out as the snowman grows, while the camera remains within the expanded map',()=>{const s=createSnow(),near=camera(s);s.score=100000;s.x=2000;s.y=2100;const far=camera(s);expect(far.zoom).toBeLessThan(near.zoom);expect(far.x).toBeGreaterThan(1000);});

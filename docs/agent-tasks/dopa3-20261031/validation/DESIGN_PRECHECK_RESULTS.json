@@ -1,0 +1,1336 @@
+{
+  "scope": "Design arithmetic, finite-board reachability and timing table only. NOT game/launcher QA.",
+  "passed": 55,
+  "total": 55,
+  "checks": [
+    {
+      "name": "C21_initial_six_in_blast",
+      "passed": true,
+      "detail": [
+        [
+          180,
+          160
+        ],
+        [
+          204,
+          160
+        ],
+        [
+          228,
+          160
+        ],
+        [
+          252,
+          160
+        ],
+        [
+          276,
+          160
+        ],
+        [
+          300,
+          160
+        ]
+      ]
+    },
+    {
+      "name": "C21_initial_positions_on_field",
+      "passed": true,
+      "detail": [
+        [
+          122.4,
+          160
+        ],
+        [
+          146.4,
+          160
+        ],
+        [
+          170.4,
+          160
+        ],
+        [
+          194.4,
+          160
+        ],
+        [
+          218.4,
+          160
+        ],
+        [
+          242.4,
+          160
+        ]
+      ]
+    },
+    {
+      "name": "C21_six_score_2100",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C21_six_beats_separate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C21_normal_supply_48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C21_boss_has_ten_seconds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C21_slot_not_ready_before_2100ms",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C21_boss_three_hits_time_budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room1_solvable",
+      "passed": true,
+      "detail": {
+        "target": 2,
+        "moves": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            -1
+          ]
+        ],
+        "visited": 81
+      }
+    },
+    {
+      "name": "C22_room1_replay_aligned",
+      "passed": true,
+      "detail": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "C22_room1_state_bound",
+      "passed": true,
+      "detail": 81
+    },
+    {
+      "name": "C22_room1_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room2_solvable",
+      "passed": true,
+      "detail": {
+        "target": 1,
+        "moves": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "visited": 391
+      }
+    },
+    {
+      "name": "C22_room2_replay_aligned",
+      "passed": true,
+      "detail": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "C22_room2_state_bound",
+      "passed": true,
+      "detail": 391
+    },
+    {
+      "name": "C22_room2_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room3_solvable",
+      "passed": true,
+      "detail": {
+        "target": 4,
+        "moves": [
+          [
+            2,
+            -1
+          ],
+          [
+            2,
+            -1
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "visited": 90
+      }
+    },
+    {
+      "name": "C22_room3_replay_aligned",
+      "passed": true,
+      "detail": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "name": "C22_room3_state_bound",
+      "passed": true,
+      "detail": 90
+    },
+    {
+      "name": "C22_room3_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room4_solvable",
+      "passed": true,
+      "detail": {
+        "target": 2,
+        "moves": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "visited": 115
+      }
+    },
+    {
+      "name": "C22_room4_replay_aligned",
+      "passed": true,
+      "detail": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "name": "C22_room4_state_bound",
+      "passed": true,
+      "detail": 115
+    },
+    {
+      "name": "C22_room4_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room5_solvable",
+      "passed": true,
+      "detail": {
+        "target": 1,
+        "moves": [
+          [
+            0,
+            -1
+          ],
+          [
+            2,
+            -1
+          ],
+          [
+            2,
+            -1
+          ]
+        ],
+        "visited": 23
+      }
+    },
+    {
+      "name": "C22_room5_replay_aligned",
+      "passed": true,
+      "detail": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "C22_room5_state_bound",
+      "passed": true,
+      "detail": 23
+    },
+    {
+      "name": "C22_room5_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room6_solvable",
+      "passed": true,
+      "detail": {
+        "target": 0,
+        "moves": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "visited": 25
+      }
+    },
+    {
+      "name": "C22_room6_replay_aligned",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "C22_room6_state_bound",
+      "passed": true,
+      "detail": 25
+    },
+    {
+      "name": "C22_room6_pair_sums_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_room1_two_steps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_ammo_sufficient",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_full_pierce_beats_singles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C22_all_solutions_small",
+      "passed": true,
+      "detail": 19
+    },
+    {
+      "name": "C23_sixty_unique_pods",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_all_have_open_destination",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_last_arrival_47250",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_all_before_end",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_input_spacing_450ms",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_first_wave_single_dock0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_open_start_inclusive",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_open_end_exclusive",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_wrapped_open",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_each_cycle_has_open_dock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_no_input_not_clear",
+      "passed": true,
+      "detail": 12
+    },
+    {
+      "name": "C23_input_only_fixed_exit_not_best",
+      "passed": true,
+      "detail": [
+        32,
+        31,
+        28
+      ]
+    },
+    {
+      "name": "C23_reference_control_changes_ordered",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_reference_control_gap_over80",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_has_same_boat_and_split_boat_waves",
+      "passed": true,
+      "detail": [
+        {
+          "wave": 0,
+          "single_dock_candidates": [
+            0
+          ]
+        },
+        {
+          "wave": 1,
+          "single_dock_candidates": [
+            2
+          ]
+        },
+        {
+          "wave": 2,
+          "single_dock_candidates": []
+        },
+        {
+          "wave": 3,
+          "single_dock_candidates": []
+        },
+        {
+          "wave": 4,
+          "single_dock_candidates": [
+            0
+          ]
+        },
+        {
+          "wave": 5,
+          "single_dock_candidates": [
+            2
+          ]
+        },
+        {
+          "wave": 6,
+          "single_dock_candidates": []
+        },
+        {
+          "wave": 7,
+          "single_dock_candidates": []
+        },
+        {
+          "wave": 8,
+          "single_dock_candidates": [
+            0
+          ]
+        },
+        {
+          "wave": 9,
+          "single_dock_candidates": [
+            2
+          ]
+        },
+        {
+          "wave": 10,
+          "single_dock_candidates": [
+            1
+          ]
+        },
+        {
+          "wave": 11,
+          "single_dock_candidates": []
+        }
+      ]
+    },
+    {
+      "name": "C23_group_single_dock_bonus500",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_group_multiple_dock_bonus300",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_group_failure_bonus0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "C23_group_partial_not_resolved",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "shift_solutions": [
+    {
+      "room": 1,
+      "initial": [
+        1,
+        2,
+        3,
+        2
+      ],
+      "pairs": [],
+      "target": 2,
+      "min_steps": 2,
+      "moves": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          -1
+        ]
+      ]
+    },
+    {
+      "room": 2,
+      "initial": [
+        0,
+        1,
+        4,
+        2
+      ],
+      "pairs": [],
+      "target": 1,
+      "min_steps": 4,
+      "moves": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          -1
+        ]
+      ]
+    },
+    {
+      "room": 3,
+      "initial": [
+        4,
+        4,
+        1,
+        3
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "target": 4,
+      "min_steps": 3,
+      "moves": [
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          -1
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "room": 4,
+      "initial": [
+        1,
+        3,
+        0,
+        4
+      ],
+      "pairs": [
+        [
+          2,
+          3
+        ]
+      ],
+      "target": 2,
+      "min_steps": 4,
+      "moves": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "room": 5,
+      "initial": [
+        2,
+        0,
+        3,
+        4
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "target": 1,
+      "min_steps": 3,
+      "moves": [
+        [
+          0,
+          -1
+        ],
+        [
+          2,
+          -1
+        ],
+        [
+          2,
+          -1
+        ]
+      ]
+    },
+    {
+      "room": 6,
+      "initial": [
+        4,
+        1,
+        3,
+        2
+      ],
+      "pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "target": 0,
+      "min_steps": 3,
+      "moves": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    }
+  ],
+  "warp_control_schedule": [
+    {
+      "at_ms": 800,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 1250,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 1350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 1700,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 1800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 2150,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 2250,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 2600,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 2700,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 4800,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 4900,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 5250,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 5350,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 5700,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 5800,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 6150,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 6250,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 6600,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 6700,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 8800,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 8900,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 9250,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 9350,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 9700,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 9800,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 10150,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 10250,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 10600,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 10700,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 12800,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 12900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 13250,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 13350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 13700,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 13800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 14150,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 14250,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 14600,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 14700,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 16800,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 16900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 17250,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 17350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 17700,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 17800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 18150,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 18250,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 18600,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 18700,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 20800,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 20900,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 21250,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 21350,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 21700,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 21800,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 22150,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 22250,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 22600,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 22700,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 24800,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 24900,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 25250,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 25350,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 25700,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 25800,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 26150,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 26250,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 26600,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 26700,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 28800,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 28900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 29250,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 29350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 29700,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 29800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 30150,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 30250,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 30600,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 30700,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 32800,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 32900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 33250,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 33350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 33700,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 33800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 34150,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 34250,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 34600,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 34700,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 36800,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 36900,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 37250,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 37350,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 37700,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 37800,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 38150,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 38250,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 38600,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 38700,
+      "selector": "out",
+      "value": 2
+    },
+    {
+      "at_ms": 40800,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 40900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 41250,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 41350,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 41700,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 41800,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 42150,
+      "selector": "in",
+      "value": 0
+    },
+    {
+      "at_ms": 42250,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 42600,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 42700,
+      "selector": "out",
+      "value": 1
+    },
+    {
+      "at_ms": 44800,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 44900,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 45250,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 45350,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 45700,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 45800,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 46150,
+      "selector": "in",
+      "value": 2
+    },
+    {
+      "at_ms": 46250,
+      "selector": "out",
+      "value": 0
+    },
+    {
+      "at_ms": 46600,
+      "selector": "in",
+      "value": 1
+    },
+    {
+      "at_ms": 46700,
+      "selector": "out",
+      "value": 1
+    }
+  ],
+  "not_tested": [
+    "game source",
+    "browser input",
+    "Windows launcher",
+    "ImageGen assets",
+    "audio listening",
+    "performance",
+    "human fun"
+  ]
+}

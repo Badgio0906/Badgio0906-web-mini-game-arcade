@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "target": "web",
+  "file": "playtest_boss_v1_b89dea887d.wav",
+  "asset_id": "b89dea887d9e08d5c02d7c38227f19c2afb66a161cdf73c444705c30886415be",
+  "sha256": "e989fe4c55e1cd4d5fff30346b9eacb92f031156ce1ef162ad48d804945c4943",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 48044,
+  "priority": 50,
+  "polyphony": 12,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "b89dea887d9e08d5c02d7c38227f19c2afb66a161cdf73c444705c30886415be",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 2026103140,
+    "sample_rate": 48000,
+    "name": "boss",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "sine",
+        "frequency": 95,
+        "end_frequency": 32,
+        "duration": 0.5,
+        "gain_db": -9,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.18
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.4,
+        "gain_db": -9,
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.02,
+          "sustain": 0.3,
+          "release": 0.24
+        },
+        "effects": {
+          "lowpass_hz": 1800
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 220,
+        "end_frequency": 70,
+        "duration": 0.18,
+        "gain_db": -18,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.099
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 52,
+        "end_frequency": 29,
+        "duration": 0.4,
+        "gain_db": -16,
+        "delay": 0.035,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.025,
+          "sustain": 0.4,
+          "release": 0.18
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.01
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.5,
+      "frames": 24000,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.35693359375,
+      "sample_peak_dbfs": -8.948251506918654,
+      "true_peak_estimate": 0.35716080521491245,
+      "true_peak_estimate_dbfs": -8.942724131887585,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -21.819671176238934,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 4.343541463216146e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.000625,
+      "trailing_silence": 0.0032916666666666667
+    }
+  }
+}

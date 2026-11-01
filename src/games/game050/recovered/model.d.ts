@@ -1,0 +1,9 @@
+export interface Enemy{id:number;x:number;y:number;hp:number;kind:'paper'|'armor';vy:number;born:number;out:number;back:number;defeated?:boolean}
+export interface ReturnState{ticks:number;time:number;x:number;hp:number;score:number;kills:number;maxKills:number;sixes:number;hits:number;outKills:number;backKills:number;wave:number;enemies:Enemy[];ring:null|{id:number;x:number;y:number;leg:'out'|'back';life:number;kills:number;outKills:number;backKills:number};nextShot:number;cooldown:number;invuln:number;practice:boolean;status:'run'|'clear'|'over';notice:string;events:{kind:string;n:number;x:number;y:number}[];lastCatch:null|{at:number;kills:number;out:number;back:number}}
+export const FIXED_DT:number,HIT_RADIUS:number;
+export function segmentHit(a:{x:number;y:number},b:{x:number;y:number},target:{x:number;y:number},radius?:number):number|null;
+export function createWave(wave:number,practice?:boolean):Enemy[];
+export function createReturn(practice?:boolean):ReturnState;
+export function throwRing(s:ReturnState):boolean;
+export function sweep(s:ReturnState,a:{x:number;y:number},b:{x:number;y:number},leg:'out'|'back'):void;
+export function tickReturn(s:ReturnState,axis?:number):void;

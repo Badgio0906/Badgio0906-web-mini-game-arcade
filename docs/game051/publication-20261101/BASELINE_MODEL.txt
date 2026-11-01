@@ -1,0 +1,96 @@
+const Z = 120, O = [120, 300, 480], I = 36, ut = 18;
+function at(e = false) {
+  return { tick: 0, score: 0, round: -1, take: -1, records: [[], [], []], strikes: [[], [], []], settled: [false, false, false], success: 0, pairs: 0, trios: 0, miss: 0, status: "run", practice: e, events: [], replay: [], notice: "1回目を記録。次は別の列で協力！", settlements: [] };
+}
+function st(e) {
+  const i = Math.floor(e.tick / 1800), s = Math.floor(e.tick / 600) % 3;
+  i !== e.round && (e.round = i, e.records = [[], [], []], e.take = -1), s !== e.take && (e.take = s, e.strikes = [[], [], []], e.settled = [false, false, false]);
+}
+function dt(e, i) {
+  if (e.status !== "run" || i < 0 || i > 2 || !Number.isInteger(i)) return false;
+  st(e);
+  const s = e.tick % 600, a = O.findIndex((l) => Math.abs(s - l) <= I);
+  if (a < 0 || e.strikes[a].some((l) => l.actor === 0) || e.settled[a]) return e.events.push({ kind: "empty", n: 0, lane: i, at: e.tick }), e.notice = a < 0 ? "光る納品窓で一押し。空振りは0点" : "この窓は入力済み。別列への訂正はできません", false;
+  const n = { roundId: e.round, takeId: e.take, deliveryId: a, lane: i, tick: s, actor: 0 };
+  return e.records[e.take].push(n), e.strikes[a].push(n), e.events.push({ kind: "stamp", n: 1, lane: i, at: e.tick, deliveryId: a }), true;
+}
+function ft(e) {
+  if (e.status !== "run") return;
+  st(e);
+  const i = e.tick % 600;
+  for (let s = 1; s <= e.take; s++) for (const a of e.records[s - 1] ?? []) if (a.tick === i) {
+    const n = { ...a, actor: s };
+    e.strikes[n.deliveryId].push(n), e.replay.push({ ...n, takeId: e.take }), e.events.push({ kind: "ghost", n: s, lane: a.lane, at: e.tick, deliveryId: a.deliveryId });
+  }
+  for (let s = 0; s < 3; s++) if (!e.settled[s] && i >= O[s] + I) {
+    e.settled[s] = true;
+    const a = e.strikes[s], n = a.find((r) => r.actor === 0);
+    if (!n) {
+      e.miss++, e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: 0, points: 0, lane: null }), e.events.push({ kind: "miss", n: 0, at: e.tick, deliveryId: s });
+      continue;
+    }
+    let l = 1;
+    for (let r = 1; r < 1 << a.length; r++) {
+      const t = a.filter((f, m) => r >> m & 1);
+      if (!t.includes(n)) continue;
+      const o = t.map((f) => f.tick);
+      new Set(t.map((f) => f.lane)).size === t.length && Math.max(...o) - Math.min(...o) <= ut && (l = Math.max(l, t.length));
+    }
+    const u = 100 + (l === 3 ? 900 : l === 2 ? 300 : 0);
+    e.success++, e.score += u, l === 2 && e.pairs++, l === 3 && e.trios++, e.notice = l === 3 ? "3人連携、出荷！ 確定 +1000" : l === 2 ? "別の列で、2人連携！ 確定 +400" : "本人の納品、確定 +100", e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: l, points: u, lane: n.lane }), e.events.push({ kind: "delivery", n: l, lane: n.lane, at: e.tick, deliveryId: s }), e.practice && l >= 2 && (e.status = "clear");
+  }
+  e.tick++, e.tick >= (e.practice ? 1200 : 5400) && e.status === "run" && (e.status = e.success >= 18 && e.pairs + e.trios >= 3 ? "clear" : "over");
+}
+function H(e) {
+  const i = e.practice ? 1200 : 5400, s = Math.min(e.tick, i - 1);
+  return { round: Math.floor(s / 1800), take: Math.floor(s / 600) % 3, local: e.tick >= i ? 600 : s % 600, total: i };
+}
+function lt(e) {
+  const i = H(e);
+  return i.round !== e.round || e.status !== "run" ? [] : e.records.slice(0, i.take).flatMap((s, a) => s.filter((n) => n.tick >= i.local && n.tick - i.local <= 72).map((n) => ({ ...n, actor: a + 1, inTicks: n.tick - i.local })));
+}
+function pt(e) {
+  return e.status !== "clear" ? "C" : e.practice ? "練習成功" : e.success >= 24 && e.trios >= 6 ? "S" : e.success >= 21 && e.trios >= 3 ? "A" : "B";
+}
+const tt = { KeyA: 0, KeyS: 1, KeyD: 2, Digit1: 0, Digit2: 1, Digit3: 2, Numpad1: 0, Numpad2: 1, Numpad3: 2 }, mt = { a: "KeyA", s: "KeyS", d: "KeyD", 1: "Digit1", 2: "Digit2", 3: "Digit3", Escape: "Escape" };
+function ht(e, i) {
+  let s = null;
+  const a = /* @__PURE__ */ new Set(), n = (r) => r.code || mt[r.key.length === 1 ? r.key.toLowerCase() : r.key] || r.key, l = () => {
+    const r = s;
+    s = null, a.clear();
+    for (const t of e) t.removeAttribute("data-down");
+    if (r && r.element.hasPointerCapture(r.id)) try {
+      r.element.releasePointerCapture(r.id);
+    } catch {
+    }
+  };
+  for (const [r, t] of e.entries()) {
+    t.addEventListener("keydown", (o) => {
+      const f = n(o);
+      !i.active() || !["Enter", "Space"].includes(f) || (o.preventDefault(), !(o.repeat || a.has(f)) && (a.add(f), i.unlock(), i.stamp(r)));
+    }), t.addEventListener("pointerdown", (o) => {
+      !i.active() || s || !o.isPrimary || o.button !== 0 || (o.preventDefault(), s = { id: o.pointerId, element: t }, t.setPointerCapture(o.pointerId), t.setAttribute("data-down", ""), i.unlock(), i.stamp(r));
+    }), t.addEventListener("pointerup", (o) => {
+      s?.id === o.pointerId && s.element === t && l();
+    });
+    for (const o of ["pointercancel", "lostpointercapture"]) t.addEventListener(o, (f) => {
+      s?.id === f.pointerId && s.element === t && l();
+    });
+    t.addEventListener("contextmenu", (o) => o.preventDefault());
+  }
+  window.addEventListener("keydown", (r) => {
+    if (r.target instanceof HTMLInputElement || r.ctrlKey || r.metaKey || r.altKey) return;
+    const t = n(r);
+    if (t === "Escape") {
+      r.repeat || i.pause();
+      return;
+    }
+    !i.active() || !(t in tt) || (r.preventDefault(), !(r.repeat || a.has(t)) && (a.add(t), i.unlock(), i.stamp(tt[t])));
+  }), window.addEventListener("keyup", (r) => a.delete(n(r)));
+  const u = () => {
+    l(), i.pause();
+  };
+  return window.addEventListener("blur", u), window.addEventListener("resize", u), window.addEventListener("pagehide", u), document.addEventListener("visibilitychange", () => {
+    document.hidden && u();
+  }), matchMedia("(orientation:portrait)").addEventListener("change", u), { abort: l };
+}

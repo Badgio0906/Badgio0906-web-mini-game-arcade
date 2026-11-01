@@ -1,0 +1,31 @@
+{
+  "id": null,
+  "stagingSlug": "shift_burst",
+  "packageId": "org.game100garage.ct3.shift-burst",
+  "title": "ずらして、全段ぶち抜け。 ～SHIFT BURST～",
+  "titleEn": "SHIFT BURST",
+  "tagline": "ずらして揃えて、4段まとめて撃ち抜く。",
+  "genre": "sliding-board action puzzle",
+  "coreMechanic": "4×5 armour shutter, one core per row. Drag a row ±1..2 (wrap); gear-linked rows move opposite (cost counted once). Cannon column 1–5, FIRE: beam bottom→top breaks aligned cores, stops at hard armour. 6 fixed rooms, 12 shells, 50s.",
+  "inputs": {
+    "shift": "pointer drag on a row; on release round(dx/cell) clamped to −2..2; one owner pointer; pointercancel discards",
+    "cannon": "column buttons 列1–5 or tap below the board (pointerdown)",
+    "fire": "FIRE button (pointerdown; click only for keyboard activation)",
+    "keyboard": "1–4 row, ←→ shift 1 step, Q/E cannon, Space fire (no repeat)",
+    "pause": "button / Esc / P; blur and hidden auto-pause"
+  },
+  "practice": "Room 1 only with 3 shells, separate score, no BEST",
+  "scoring": "Shot breaking n rows: 100n². Room cleared by its first shot with 4 rows: +400, other room clear +100. All rooms: 1000 + shells×50 + floor(remaining s)×50. Score = max(0, destroy + bonuses − 20×moveSteps) computed from totals. Optimal plan: 14,920.",
+  "rank": "S: all 6 rooms with one shot each and moves ≤ min total (19) + 6; A: clear + ≥4 one-shot rooms; B: other clear; C: fail",
+  "save": "web-mini-arcade:v1:ct3:shift_burst:best:rules1 (JSON best record), web-mini-arcade:v1:ct3:shift_burst:settings (mute / reduced motion); denied/corrupt storage → in-memory with on-screen note; never enumerates other keys",
+  "creditMode": "free",
+  "ads": "none",
+  "telemetry": "none in staging (no analytics/records calls); Codex to connect existing services in native adapter",
+  "revision": 1,
+  "rules_version": "1",
+  "presentation_version": "procedural-1",
+  "art": "Procedural code-drawn sprites only (BLOCKED_ART: ImageGen not available/approved in the production session). Not final art.",
+  "audio": "WebAudio synthesized SE (no samples), voice cap 10, compressor/limiter, mute; not listened to by a human",
+  "humanReview": "author / physical device / audio-feel / Windows launcher review pending",
+  "note": "Candidate only. Shape follows src/games/game035/game.manifest.json; Codex assigns id and adapts to the current manifest schema."
+}

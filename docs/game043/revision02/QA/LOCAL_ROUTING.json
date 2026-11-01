@@ -1,0 +1,22 @@
+{
+  "finding_id": "G043_MOBILE_S_ROUTE_REV02",
+  "PRIMARY_CAUSE": "UNKNOWN",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "Codex local self-review; no external independent agent",
+  "rationale": "Model and PC demonstrate a route; touch yields different outcomes. Two bounded controller changes did not establish a stable S outcome. Product cause and physical quality remain unconfirmed. Paid Jev calls prohibited; dry run only.",
+  "evidence": [
+    "browser-1793414862333/report.json",
+    "browser-1793415030647/report.json",
+    "browser-1793415168367/report.json"
+  ],
+  "actual_next_action": {
+    "method": "AUTOMATED_TEST",
+    "description": "Preserved all three full-run logs; stopped full-run controller retries after two bounded changes. Separately checked4-width UI/practice and production.",
+    "evidence": [
+      "browser-1793415613175/report.json",
+      "production-1793415630223/report.json"
+    ]
+  }
+}

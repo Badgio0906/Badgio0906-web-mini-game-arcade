@@ -1,0 +1,322 @@
+(function() {
+  const e = document.createElement("link").relList;
+  if (e && e.supports && e.supports("modulepreload")) return;
+  for (const n of document.querySelectorAll('link[rel="modulepreload"]')) i(n);
+  new MutationObserver((n) => {
+    for (const r of n) if (r.type === "childList") for (const c of r.addedNodes) c.tagName === "LINK" && c.rel === "modulepreload" && i(c);
+  }).observe(document, { childList: true, subtree: true });
+  function a(n) {
+    const r = {};
+    return n.integrity && (r.integrity = n.integrity), n.referrerPolicy && (r.referrerPolicy = n.referrerPolicy), n.crossOrigin === "use-credentials" ? r.credentials = "include" : n.crossOrigin === "anonymous" ? r.credentials = "omit" : r.credentials = "same-origin", r;
+  }
+  function i(n) {
+    if (n.ep) return;
+    n.ep = true;
+    const r = a(n);
+    fetch(n.href, r);
+  }
+})();
+const C = 120, E = 1200, _ = 108, ot = 8, q = 11300, T = { S: 42, M: 64, L: 86 }, rt = [[[212, 212], [240, 212], [268, 212], [226, 252], [254, 252], [120, 300], [350, 340], [305, 240]], [[152, 188], [180, 188], [208, 188], [166, 228], [194, 228], [330, 150], [340, 330], [235, 210]], [[120, 156], [228, 312], [228, 360], [144, 336], [348, 348], [348, 300], [312, 240], [324, 324]], [[180, 132], [360, 276], [204, 324], [168, 240], [216, 144], [336, 324], [144, 264], [252, 240]], [[180, 180], [208, 180], [236, 180], [276, 300], [304, 300], [240, 210], [330, 315], [216, 258]]];
+function J(t) {
+  return rt[t].map(([e, a], i) => ({ id: t * 8 + i, x: e, y: a, kind: i < 5 ? "light" : i < 7 ? "medium" : "gold", weight: i < 5 ? 1 : i < 7 ? 2 : 6, points: i < 5 ? 100 : i < 7 ? 180 : 600, variation: i % 2, taken: false }));
+}
+function X(t = false) {
+  return { tick: 0, time: 0, table: 0, started: 0, x: 240, y: 240, size: "S", attempts: 0, collected: 0, score: 0, overloads: 0, maxGrab: 0, tableCollected: 0, tableOverloads: 0, practice: t, status: "run", phase: "aim", toys: J(0), lift: null, actions: [], tables: [], notice: "Sなら軽い5個。広げた時の重さも見よう", events: [] };
+}
+function O(t) {
+  const e = t.toys.filter((r) => !r.taken && (r.x - t.x) ** 2 + (r.y - t.y) ** 2 <= T[t.size] ** 2 + 1e-8), a = e.length, i = e.reduce((r, c) => r + c.weight, 0), n = a === 0 ? "empty" : i > ot ? "overload" : "success";
+  return { ids: e.map((r) => r.id), count: a, weight: i, kind: n, points: n === "success" ? e.reduce((r, c) => r + c.points, 0) + 50 * a * (a - 1) / 2 : 0 };
+}
+function j(t, e, a) {
+  return t.status !== "run" || t.phase !== "aim" || !Number.isFinite(e) || !Number.isFinite(a) ? false : (t.x = Math.max(0, Math.min(480, e)), t.y = Math.max(0, Math.min(480, a)), true);
+}
+function lt(t, e) {
+  return t.status !== "run" || t.phase !== "aim" || !(e in T) ? false : (t.size = e, true);
+}
+function st(t) {
+  if (t.status !== "run" || t.phase !== "aim" || t.attempts >= 2 || t.tick - t.started >= E) return false;
+  const e = O(t), a = t.toys.filter((n) => e.ids.includes(n.id)), i = { ...e, ids: [...e.ids], table: t.table, x: t.x, y: t.y, radius: T[t.size], started: t.tick, origins: a.map((n) => ({ ...n })) };
+  if (t.attempts++, t.phase = "lift", t.lift = i, t.actions.push(i), t.events.push({ kind: "grab", n: e.count }), e.kind === "success") {
+    for (const n of a) n.taken = true;
+    t.score += e.points, t.collected += e.count, t.tableCollected += e.count, t.maxGrab = Math.max(t.maxGrab, e.count), t.notice = `${e.count}個、重さ${e.weight}/8。確定 +${e.points}`, t.events.push({ kind: "lift", n: e.count });
+  } else e.kind === "overload" ? (t.overloads++, t.tableOverloads++, t.notice = `重さ${e.weight}/8、過積載！ 玩具は元の位置へ`, t.events.push({ kind: "overload", n: e.weight })) : (t.notice = "候補なし。中心の目印を円の中へ", t.events.push({ kind: "empty", n: 0 }));
+  return true;
+}
+function B(t) {
+  if (t.tables.push({ table: t.table, attempts: t.attempts, collected: t.tableCollected, overloads: t.tableOverloads, ended: t.tick }), t.practice || t.table === 4) {
+    t.status = t.practice ? t.maxGrab >= 5 ? "clear" : "over" : t.collected >= 20 && t.overloads <= 2 ? "clear" : "over", t.phase = "aim", t.lift = null;
+    return;
+  }
+  t.table++, t.started = t.tick, t.attempts = 0, t.tableCollected = 0, t.tableOverloads = 0, t.toys = J(t.table), t.lift = null, t.phase = "aim", t.x = 240, t.y = 240, t.notice = `台${t.table + 1}。重さを見て、二回の組合せを選ぼう`, t.events.push({ kind: "table", n: t.table + 1 });
+}
+function ct(t, e = 0, a = 0) {
+  if (t.status !== "run") return;
+  if (t.phase === "aim") {
+    const n = Number.isFinite(e) ? Math.max(-1, Math.min(1, e)) : 0, r = Number.isFinite(a) ? Math.max(-1, Math.min(1, a)) : 0, c = Math.max(1, Math.hypot(n, r));
+    j(t, t.x + n / c * 300 / C, t.y + r / c * 300 / C);
+  }
+  t.tick++, t.time = t.tick / C;
+  const i = t.tick - t.started;
+  if (i === E - 240 && t.attempts < 2 && t.events.push({ kind: "warning", n: 2 }), i >= E) {
+    B(t);
+    return;
+  }
+  t.phase === "lift" && t.lift && t.tick - t.lift.started >= _ && (t.phase = "aim", t.lift = null, (t.practice && t.maxGrab >= 5 || t.attempts >= 2) && B(t));
+}
+function Q(t) {
+  return Math.max(0, (E - (t.tick - t.started)) / C);
+}
+function ut(t) {
+  return t.status !== "clear" ? "C" : t.practice ? "練習成功" : t.collected >= 30 && t.overloads === 0 && t.maxGrab >= 5 ? "S" : t.collected >= 25 && t.overloads <= 1 ? "A" : "B";
+}
+function dt(t, e, a) {
+  let i = null;
+  const n = /* @__PURE__ */ new Set(), r = (o) => o.code || { ArrowLeft: "ArrowLeft", ArrowRight: "ArrowRight", ArrowUp: "ArrowUp", ArrowDown: "ArrowDown", " ": "Space", 1: "Digit1", 2: "Digit2", 3: "Digit3", Escape: "Escape" }[o.key] || o.key, c = () => {
+    const o = i;
+    if (i = null, n.clear(), t.removeAttribute("data-drag"), o !== null && t.hasPointerCapture(o)) try {
+      t.releasePointerCapture(o);
+    } catch {
+    }
+  }, f = (o) => {
+    const s = t.getBoundingClientRect();
+    a.aim((o.clientX - s.left) / Math.max(1, s.width) * 480, (o.clientY - s.top) / Math.max(1, s.height) * 480);
+  };
+  t.addEventListener("pointerdown", (o) => {
+    !a.active() || i !== null || !o.isPrimary || o.button !== 0 || (o.preventDefault(), i = o.pointerId, n.clear(), t.setPointerCapture(i), t.setAttribute("data-drag", ""), a.unlock(), f(o));
+  }), t.addEventListener("pointermove", (o) => {
+    o.pointerId === i && a.active() && (o.preventDefault(), f(o));
+  }), t.addEventListener("pointerup", (o) => {
+    if (o.pointerId !== i) return;
+    const s = a.active();
+    s && f(o), c(), s && a.grab();
+  });
+  for (const o of ["pointercancel", "lostpointercapture"]) t.addEventListener(o, (s) => {
+    s.pointerId === i && c();
+  });
+  t.addEventListener("contextmenu", (o) => o.preventDefault());
+  for (const [o, s] of e.entries()) s.addEventListener("click", () => {
+    a.active() && i === null && (a.unlock(), a.size(["S", "M", "L"][o]));
+  });
+  window.addEventListener("keydown", (o) => {
+    if (o.target instanceof HTMLInputElement || o.ctrlKey || o.metaKey || o.altKey) return;
+    const s = r(o);
+    if (s === "Escape") {
+      o.repeat || a.pause();
+      return;
+    }
+    !a.active() || !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Space", "Digit1", "Digit2", "Digit3", "Numpad1", "Numpad2", "Numpad3"].includes(s) || (o.preventDefault(), !(o.repeat || n.has(s)) && (n.add(s), a.unlock(), s === "Space" && i === null && a.grab(), /^(Digit|Numpad)[123]$/.test(s) && a.size(["S", "M", "L"][Number(s.at(-1)) - 1])));
+  }), window.addEventListener("keyup", (o) => n.delete(r(o)));
+  const h = () => {
+    c(), a.pause();
+  };
+  return window.addEventListener("blur", h), window.addEventListener("resize", h), window.addEventListener("pagehide", h), document.addEventListener("visibilitychange", () => {
+    document.hidden && h();
+  }), matchMedia("(orientation:portrait)").addEventListener("change", h), { abort: c, axes: () => i === null ? { x: Number(n.has("ArrowRight")) - Number(n.has("ArrowLeft")), y: Number(n.has("ArrowDown")) - Number(n.has("ArrowUp")) } : { x: 0, y: 0 } };
+}
+class ft {
+  context = null;
+  voices = /* @__PURE__ */ new Set();
+  peak = 0;
+  master = null;
+  buffer = null;
+  volume = 0.35;
+  muted = false;
+  rewardUntil = 0;
+  async unlock() {
+    try {
+      if (this.context ??= new AudioContext(), !this.master) {
+        const e = this.context;
+        this.master = e.createGain();
+        const a = e.createDynamicsCompressor();
+        a.threshold.value = -20, a.ratio.value = 10, this.master.connect(a).connect(e.destination), this.buffer = e.createBuffer(1, e.sampleRate, e.sampleRate);
+        const i = this.buffer.getChannelData(0);
+        let n = 5415;
+        for (let r = 0; r < i.length; r++) n = Math.imul(n, 1664525) + 1013904223 >>> 0, i[r] = n / 2147483648 - 1;
+      }
+      this.master.gain.value = this.muted ? 0 : this.volume * 0.45, await this.context.resume();
+    } catch {
+    }
+  }
+  tone(e, a, i, n, r = 0, c = "triangle") {
+    const f = this.context, h = this.master;
+    if (!f || !h || this.muted || f.state !== "running" || this.voices.size >= 24) return;
+    const o = f.createOscillator(), s = f.createGain(), u = f.currentTime + r;
+    o.type = c, o.frequency.setValueAtTime(e, u), o.frequency.exponentialRampToValueAtTime(a, u + i), s.gain.setValueAtTime(1e-4, u), s.gain.linearRampToValueAtTime(n, u + 6e-3), s.gain.exponentialRampToValueAtTime(1e-4, u + i), o.connect(s).connect(h), this.voices.add(o), this.peak = Math.max(this.peak, this.voices.size), o.onended = () => {
+      this.voices.delete(o), o.disconnect(), s.disconnect();
+    }, o.start(u), o.stop(u + i + 0.01);
+  }
+  rattle(e, a, i, n = 0) {
+    const r = this.context, c = this.master;
+    if (!r || !c || !this.buffer || this.muted || r.state !== "running" || this.voices.size >= 24) return;
+    const f = r.createBufferSource(), h = r.createBiquadFilter(), o = r.createGain(), s = r.currentTime + n;
+    f.buffer = this.buffer, h.type = "bandpass", h.frequency.value = i, o.gain.setValueAtTime(e, s), o.gain.exponentialRampToValueAtTime(1e-4, s + a), f.connect(h).connect(o).connect(c), this.voices.add(f), this.peak = Math.max(this.peak, this.voices.size), f.onended = () => {
+      this.voices.delete(f), f.disconnect(), h.disconnect(), o.disconnect();
+    }, f.start(s), f.stop(s + a);
+  }
+  play(e, a = 1) {
+    const i = this.context;
+    if (!(!i || this.muted)) if (e === "grab") this.rattle(i.currentTime < this.rewardUntil ? 0.025 : 0.055, 0.09, 2100), this.tone(260, 180, 0.09, 0.04);
+    else if (e === "lift") {
+      this.rewardUntil = i.currentTime + 0.55, this.tone(95, 210, 0.42, 0.065, 0, "sawtooth");
+      for (let n = 0; n < Math.min(a, 8); n++) this.rattle(0.04, 0.08, 900 + n * 170, 0.2 + n * 0.04), this.tone(470 + n * 90, 660 + n * 90, 0.12, 0.035, 0.22 + n * 0.04, "sine");
+    } else if (e === "overload") this.rewardUntil = i.currentTime + 0.45, this.tone(120, 85, 0.24, 0.08, 0, "sawtooth"), this.tone(120, 75, 0.24, 0.07, 0.2, "sawtooth"), this.rattle(0.08, 0.32, 650, 0.15);
+    else if (e === "empty") this.tone(240, 170, 0.1, 0.03);
+    else if (e === "warning") this.tone(360, 320, 0.09, 0.035), this.tone(360, 320, 0.09, 0.035, 0.15);
+    else if (e === "clear") for (let n = 0; n < 5; n++) this.tone([330, 440, 554, 660, 880][n], [330, 440, 554, 660, 880][n], 0.24, 0.055, n * 0.06, "sine");
+    else e === "over" ? (this.tone(220, 110, 0.28, 0.055), this.rattle(0.04, 0.18, 500)) : this.tone(440, 620, 0.07, 0.03, 0, "sine");
+  }
+  set(e, a) {
+    this.volume = Math.max(0, Math.min(1, e)), this.muted = a, a && this.stop(), this.master && (this.master.gain.value = a ? 0 : this.volume * 0.45);
+  }
+  stop() {
+    for (const e of this.voices) try {
+      e.stop();
+    } catch {
+    }
+    this.voices.clear();
+  }
+}
+const H = "100gare:game054:rules1";
+class ht {
+  data = { rulesVersion: 1, best: 0, volume: 0.35, muted: false, light: false };
+  persistent = true;
+  storage = null;
+  constructor(e) {
+    try {
+      this.storage = e ?? window.localStorage;
+      const a = this.storage.getItem(H);
+      if (a === null) return;
+      const i = JSON.parse(a);
+      if (!i || i.rulesVersion !== 1 || typeof i.best != "number" || !Number.isInteger(i.best) || i.best < 0 || i.best > q || typeof i.volume != "number" || !Number.isFinite(i.volume) || i.volume < 0 || i.volume > 1 || typeof i.muted != "boolean" || typeof i.light != "boolean") {
+        this.persistent = false;
+        return;
+      }
+      this.data = { rulesVersion: 1, best: i.best, volume: i.volume, muted: i.muted, light: i.light };
+    } catch {
+      this.persistent = false;
+    }
+  }
+  write() {
+    if (this.persistent && this.storage) try {
+      this.storage.setItem(H, JSON.stringify(this.data));
+    } catch {
+      this.persistent = false;
+    }
+  }
+  result(e, a) {
+    !a && Number.isInteger(e) && e >= 0 && e <= q && (this.data.best = Math.max(this.data.best, e), this.write());
+  }
+}
+const pt = ["workshop", "robot-normal", "robot-win", "light-1", "light-2", "medium-1", "medium-2", "gold", "arm"];
+async function mt(t) {
+  const e = {};
+  return await Promise.all(pt.map(async (a) => {
+    const i = new Image();
+    i.src = `./assets/${a}.webp`, await i.decode(), e[a] = i;
+  })), e;
+}
+function D(t, e, a, i, n, r) {
+  const c = Math.min(n / e.naturalWidth, r / e.naturalHeight), f = e.naturalWidth * c, h = e.naturalHeight * c;
+  t.drawImage(e, a + (n - f) / 2, i + (r - h) / 2, f, h);
+}
+function K(t, e, a, i = e.x, n = e.y) {
+  const r = e.kind === "gold" ? "gold" : `${e.kind}-${e.variation + 1}`, c = a[r];
+  c ? D(t, c, i - 24, n - 24, 48, 48) : (t.fillStyle = e.kind === "gold" ? "#e3b947" : e.kind === "medium" ? "#7199ae" : "#e6aa90", t.beginPath(), t.roundRect(i - 18, n - 18, 36, 36, e.kind === "gold" ? 4 : 12), t.fill());
+}
+function bt(t, e, a, i, n) {
+  const r = t.canvas, c = r.parentElement, f = Math.max(1, Math.min(c.clientWidth - 2, c.clientHeight - 2));
+  r.style.width = `${f}px`, r.style.height = `${f}px`;
+  const h = Math.max(1, Math.floor(f * Math.min(devicePixelRatio || 1, 2)));
+  if ((r.width !== h || r.height !== h) && (r.width = h, r.height = h), t.setTransform(h / 480, 0, 0, h / 480, 0, 0), t.fillStyle = "#f8edcf", t.fillRect(0, 0, 480, 480), a.workshop && (t.drawImage(a.workshop, 0, 0, 480, 480), t.fillStyle = "#fff6dfb0", t.fillRect(0, 0, 480, 480)), !a["robot-normal"]) {
+    t.fillStyle = "#31584d", t.font = "19px system-ui", t.textAlign = "center", t.fillText("美術素材を準備しています", 240, 260), t.textAlign = "left";
+    return;
+  }
+  t.strokeStyle = "#c6ab7b", t.lineWidth = 3, t.strokeRect(24, 91, 432, 312);
+  const o = e.lift ?? O(e), s = o.kind === "overload";
+  t.fillStyle = "#294f48", t.font = "bold 21px system-ui", t.fillText(`台 ${e.table + 1}/${e.practice ? 1 : 5}`, 16, 29), t.font = "16px system-ui", t.fillText(`残り ${Q(e).toFixed(1)}秒 · 挑戦 ${e.attempts}/2`, 226, 29), t.fillStyle = s ? "#aa3644" : "#236c58", t.font = "bold 23px system-ui", t.textAlign = "center", t.fillText(`${e.phase === "lift" ? "確定" : "候補"} ${o.count}個　重さ ${o.weight}/8`, 240, 65), t.font = "13px system-ui", t.fillStyle = "#635944", t.fillText("小円の中心が、つかみ幅の円の中なら候補", 240, 84);
+  const u = e.lift, L = u ? Math.min(1, (e.tick - u.started) / _) : 0;
+  for (const p of e.toys) p.taken || u?.kind === "overload" && u.ids.includes(p.id) || (K(t, p, a), o.ids.includes(p.id) && (t.strokeStyle = s ? "#c0484b" : "#1b8e76", t.lineWidth = 3, t.beginPath(), t.arc(p.x, p.y, 27, 0, Math.PI * 2), t.stroke()), t.fillStyle = "#fff9e9", t.beginPath(), t.arc(p.x, p.y, 5, 0, 7), t.fill(), t.strokeStyle = "#3e5046", t.lineWidth = 1.5, t.stroke(), t.fillStyle = p.kind === "gold" ? "#765715" : "#234f47", t.fillRect(p.x + 10, p.y - 28, 20, 18), t.fillStyle = "#fff8db", t.font = "bold 13px system-ui", t.fillText(String(p.weight), p.x + 20, p.y - 15));
+  if (u) for (const [p, k] of u.origins.entries()) {
+    const V = Math.max(0, (L - 0.2) / 0.8), W = u.kind === "success", at = W ? k.x + (u.x + (p - (u.count - 1) / 2) * 7 - k.x) * V : k.x + (i ? 0 : Math.sin(p * 2.3) * Math.sin(L * Math.PI) * 18), nt = W ? k.y + (u.y - 110 - p % 3 * 7 - k.y) * V : k.y - (i ? 0 : Math.sin(L * Math.PI) * 55);
+    K(t, k, a, at, nt);
+  }
+  const it = u?.radius ?? T[e.size], g = u?.x ?? e.x, P = u?.y ?? e.y;
+  t.fillStyle = s ? "#e25c5c15" : "#3aa88a16", t.beginPath(), t.arc(g, P, it, 0, Math.PI * 2), t.fill(), t.strokeStyle = s ? "#b93f49" : "#147d69", t.lineWidth = 2.5, t.setLineDash(e.phase === "lift" ? [] : [6, 4]), t.stroke(), t.setLineDash([]);
+  const v = P - (u ? Math.max(0, L - 0.2) * 100 : 0);
+  if (t.strokeStyle = "#5b7265", t.lineWidth = 3, t.beginPath(), t.moveTo(g, 92), t.lineTo(g, v - 24), t.stroke(), a.arm) for (const p of [-1, 1]) t.save(), t.translate(g, v), t.scale(p, 1), t.rotate(u ? -0.15 : 0.25), D(t, a.arm, 2, -29, 28, 54), t.restore();
+  else t.strokeStyle = "#32594e", t.lineWidth = 6, t.beginPath(), t.moveTo(g - 22, v - 18), t.lineTo(g - 27, v + 12), t.lineTo(g - 13, v + 25), t.moveTo(g + 22, v - 18), t.lineTo(g + 27, v + 12), t.lineTo(g + 13, v + 25), t.stroke();
+  t.fillStyle = "#315d50", t.beginPath(), t.arc(g, P, 3, 0, 7), t.fill(), u && (t.fillStyle = "#fff6dce8", t.fillRect(64, 410, 352, 30), t.font = "bold 18px system-ui", t.fillStyle = s ? "#b13a48" : "#236b53", t.fillText(u.kind === "success" ? `${u.count}個、まとめて持ち上げ！ +${u.points}` : s ? "過積載 · 全部、元の位置へ" : "空振り · 中心を狙おう", 240, 431));
+  const G = a[e.status === "clear" ? "robot-win" : "robot-normal"];
+  G ? D(t, G, 12, 410, 64, 64) : (t.fillStyle = "#75b6a4", t.fillRect(24, 431, 35, 35)), t.font = "14px system-ui", t.fillStyle = "#36574b", t.fillText("軽1 · 中2 · 金6　最大積載8", 276, 465), t.textAlign = "left";
+}
+const d = (t) => document.getElementById(t), N = document.querySelector("canvas"), yt = N.getContext("2d"), w = d("layer"), gt = false, m = new ht(), y = new ft();
+let Z = {}, S = "";
+try {
+  Z = await mt(gt);
+} catch {
+  S = "美術素材を準備中です。通常版は素材を配置してから遊べます。";
+}
+let l = X(), b = "title", I = performance.now(), M = 0, z = false, x = () => {
+};
+y.set(m.data.volume, m.data.muted);
+function U() {
+  return `<div class="settings"><label><input id="mute" type="checkbox" ${m.data.muted ? "checked" : ""}>消音</label><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value="${m.data.volume}"></label><label><input id="light" type="checkbox" ${m.data.light ? "checked" : ""}>軽量演出</label></div>`;
+}
+function Y() {
+  for (const t of ["mute", "volume", "light"]) d(t).oninput = () => {
+    m.data.muted = d("mute").checked, m.data.volume = +d("volume").value, m.data.light = d("light").checked, m.write(), y.set(m.data.volume, m.data.muted);
+  };
+}
+function $(t = false) {
+  S || (x(), y.stop(), l = X(t), b = "run", z = false, M = 0, I = performance.now(), w.hidden = true, document.body.classList.add("playing"), N.focus({ preventScroll: true }), y.unlock().then(() => {
+    b === "run" && y.play("ui");
+  }));
+}
+function R() {
+  x(), y.stop(), b = "title", A();
+}
+function A() {
+  w.hidden = false, document.body.classList.remove("playing"), b === "title" ? (w.innerHTML = `<article class="card"><span class="badge">CLAW LIMIT / 試遊版</span><h1>クレーン、<br>一個じゃ帰れない。</h1><p>狭く確実に、広くごっそり。中心と重さを読んで、一度にいくつ持ち上げる？</p>${S ? `<p class="warning">${S}</p>` : ""}<div class="actions"><button id="play" ${S ? "disabled" : ""}>すぐ遊ぶ</button><button id="practice" ${S ? "disabled" : ""}>最初の5個を練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${U()}<p class="small">BEST ${m.data.best} / 保存${m.persistent ? "端末内" : "不可・ページ内のみ"}</p></article>`, d("play").onclick = () => $(), d("practice").onclick = () => $(true), d("help").onclick = () => {
+    b = "help", A();
+  }, Y()) : b === "help" ? (w.innerHTML = `<article class="card"><h2>中心を囲んで、重さ8まで。</h2><p>盤をドラッグしてクレーンを動かし、離すとつかみます。PCは矢印で移動、Spaceで確定。S/M/Lまたは1/2/3でつかみ幅を選びます。</p><p>玩具の小円の中心が範囲に入れば候補。軽い玩具1、中型2、黄金ロボ6。重さの合計8以下なら全部取得、9以上なら全部こぼれます。プレビューの候補と重さが、そのまま確定結果です。確率で変わりません。</p><p>各台10秒、二回まで。5台で最大50秒。持ち上げ中も時計は進み、位置/幅/結果は固定です。二回終われば早く次の台へ。時間ボーナスはありません。</p><p>20個以上、過積載二回以下で成功。練習は初台Sで5個まとめて持ち上げ、記録しません。現金・実景品・課金・抽選はありません。</p><div class="actions"><button id="practice" ${S ? "disabled" : ""}>練習する</button><button id="title">タイトルへ</button></div></article>`, d("practice").onclick = () => $(true), d("title").onclick = R) : b === "pause" ? (w.innerHTML = `<article class="card"><h2>ひと休み</h2><p>時計と持ち上げを止めています。続きから、新しくドラッグ/キーで操作してください。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${U()}</article>`, d("resume").onclick = () => {
+    x(), b = "run", M = 0, I = performance.now(), w.hidden = true, document.body.classList.add("playing"), N.focus({ preventScroll: true }), y.unlock();
+  }, d("title").onclick = R, Y()) : b === "result" && (w.innerHTML = `<article class="card"><span class="badge">${l.practice ? "練習 / 記録なし" : l.status === "clear" ? "まとめて出荷、完了！" : "次は幅と重さを変えてみよう"}</span><h2>${l.practice ? l.status === "clear" ? "5個、いっしょに！" : "Sの円に軽い5個を入れよう" : `RANK ${ut(l)}`}</h2><div class="result-score">${l.score.toLocaleString()} pt</div><p>取得 ${l.collected}個 · 最大一回 ${l.maxGrab}個<br>過積載 ${l.overloads}回 · 経過 ${l.time.toFixed(1)}秒<br>BEST ${m.data.best}</p><div class="actions">${l.practice ? '<button id="play">本番へ</button>' : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, l.practice && (d("play").onclick = () => $()), d("retry").onclick = () => $(l.practice), d("title").onclick = R), w.querySelector("button:not(:disabled)")?.focus({ preventScroll: true });
+}
+function F() {
+  b === "run" && (x(), y.stop(), b = "pause", A());
+}
+const tt = dt(N, ["S", "M", "L"].map((t) => d(`size-${t}`)), { active: () => b === "run" && l.phase === "aim", aim: (t, e) => {
+  j(l, t, e);
+}, size: (t) => {
+  lt(l, t);
+}, grab: () => {
+  st(l) && x();
+}, pause: F, unlock: () => {
+  y.unlock();
+} });
+x = tt.abort;
+d("pause").onclick = F;
+window.addEventListener("pagehide", () => y.stop());
+A();
+function et(t) {
+  performance.now();
+  const e = (t - I) / 1e3;
+  if (I = t, b === "run") if (e > 0.8) F(), M = 0;
+  else {
+    for (M += e; M >= 1 / 120; ) {
+      const i = l.table, n = tt.axes();
+      ct(l, n.x, n.y), M -= 1 / 120, l.table !== i && x();
+    }
+    for (const i of l.events.splice(0)) y.play(i.kind, i.n);
+    l.status !== "run" && (x(), z || (z = true, m.result(l.score, l.practice), y.play(l.status === "clear" ? "clear" : "over")), b = "result", A());
+  }
+  bt(yt, l, Z, m.data.light || matchMedia("(prefers-reduced-motion:reduce)").matches), d("time").textContent = Q(l).toFixed(1), d("table").textContent = `${l.table + 1}/${l.practice ? 1 : 5}`, d("count").textContent = String(l.collected), d("score").textContent = String(l.score), d("overload").textContent = String(l.overloads), d("notice").textContent = l.notice;
+  const a = l.lift ?? O(l);
+  d("preview").textContent = `${l.phase === "lift" ? "確定" : "候補"}${a.count}個 · 重さ${a.weight}/8${a.weight > 8 ? " 過積載！" : ""}`, d("preview").classList.toggle("warning", a.weight > 8);
+  for (const i of Object.keys(T)) {
+    const n = d(`size-${i}`);
+    n.setAttribute("aria-pressed", String(l.size === i)), n.disabled = b === "run" && l.phase === "lift";
+  }
+  requestAnimationFrame(et);
+}
+requestAnimationFrame(et);

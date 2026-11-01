@@ -1,0 +1,336 @@
+(function() {
+  const t = document.createElement("link").relList;
+  if (t && t.supports && t.supports("modulepreload")) return;
+  for (const n of document.querySelectorAll('link[rel="modulepreload"]')) i(n);
+  new MutationObserver((n) => {
+    for (const s of n) if (s.type === "childList") for (const r of s.addedNodes) r.tagName === "LINK" && r.rel === "modulepreload" && i(r);
+  }).observe(document, { childList: true, subtree: true });
+  function a(n) {
+    const s = {};
+    return n.integrity && (s.integrity = n.integrity), n.referrerPolicy && (s.referrerPolicy = n.referrerPolicy), n.crossOrigin === "use-credentials" ? s.credentials = "include" : n.crossOrigin === "anonymous" ? s.credentials = "omit" : s.credentials = "same-origin", s;
+  }
+  function i(n) {
+    if (n.ep) return;
+    n.ep = true;
+    const s = a(n);
+    fetch(n.href, s);
+  }
+})();
+const x = 120, j = 65, O = 960, V = 108, L = 264, ee = 30, te = 22, H = 7800, ie = [{ front: [230, 250, 270], tail: [450, 430, 440], first: ["salmon", "salmon", "salmon"], second: ["tamago", "tamago", "tamago"] }, { front: [270, 230, 250], tail: [430, 450, 440], first: ["shrimp", "shrimp", "shrimp"], second: ["salmon", "salmon", "salmon"] }, { front: [250, 270, 230], tail: [440, 450, 430], first: ["tamago", "tamago", "tamago"], second: ["shrimp", "shrimp", "shrimp"] }, { front: [330, 210, 350], tail: [450, 410, 440], first: ["salmon", "shrimp", "salmon"], second: ["shrimp", "salmon", "shrimp"] }, { front: [210, 350, 330], tail: [410, 440, 450], first: ["shrimp", "salmon", "salmon"], second: ["salmon", "shrimp", "shrimp"] }, { front: [260, 240, 280], tail: [435, 465, 445], first: ["shrimp", "shrimp", "shrimp"], second: ["tamago", "tamago", "tamago"] }];
+function G(e, t = false) {
+  const a = ie[e];
+  return Array.from({ length: 3 }, (i, n) => Array.from({ length: t ? 1 : 2 }, (s, r) => ({ id: e * 6 + n * 2 + r, lane: n, slot: r, kind: (r ? a.second : a.first)[n], gold: e === 4 && n === 0 && r === 1 || e === 5 && n === 2 && r === 0, startX: (r ? a.tail : a.front)[n], x: (r ? a.tail : a.front)[n], motion: 0, served: false, retired: false }))).flat();
+}
+function X(e = false) {
+  return { tick: 0, time: 0, wave: 0, started: 0, plates: G(0, e), held: null, heldTicks: 0, used: [0, 0, 0], blockedUntil: [0, 0, 0], nextServe: 0, beltTicks: [0, 0, 0], score: 0, served: 0, sets: 0, streak: 0, maxStreak: 0, missed: 0, practice: e, status: "run", notice: "一列だけ止めて、同じネタ三皿を提供！", servings: [], events: [] };
+}
+const J = (e) => !e.served && !e.retired && e.x >= 70 - 1e-8 && e.x <= 90 + 1e-8;
+function R(e, t = e.tick) {
+  if (e.held === null) return;
+  const a = e.held;
+  e.held = null, e.heldTicks = 0, e.blockedUntil[a] = t + ee, e.events.push({ kind: "release", n: 0, lane: a });
+}
+function ne(e, t) {
+  return e.status !== "run" || !Number.isInteger(t) || t < 0 || t > 2 ? false : e.held === t ? (R(e), e.notice = `列${t + 1}を再開`, true) : e.tick < e.blockedUntil[t] || e.used[t] >= L ? (e.notice = `列${t + 1}は${e.used[t] >= L ? "この波の停止予算なし" : "冷却中"}。ほかの列を選ぼう`, false) : (R(e), e.held = t, e.heldTicks = 0, e.notice = `列${t + 1}だけ停止。ほかの列は進みます`, e.events.push({ kind: "stop", n: 1, lane: t }), true);
+}
+function ae(e) {
+  if (e.status !== "run" || e.tick < e.nextServe) return false;
+  e.nextServe = e.tick + te;
+  const t = e.plates.filter(J);
+  if (!t.length) return e.notice = "提供ゾーンに皿なし · 空振り0点", e.events.push({ kind: "empty", n: 0 }), true;
+  const a = t.length === 3 && new Set(t.map((r) => r.lane)).size === 3 && new Set(t.map((r) => r.kind)).size === 1, i = t.length > 1 && !a, n = t.reduce((r, u) => r + (u.gold ? 200 : 100), 0) + (a ? 400 : 0), s = t.map((r) => ({ ...r }));
+  for (const r of t) r.served = true;
+  return e.score += n, e.served += t.length, a ? (e.sets++, e.streak++, e.maxStreak = Math.max(e.maxStreak, e.streak)) : e.streak = 0, e.servings.push({ tick: e.tick, wave: e.wave, plates: s, points: n, trio: a, mixed: i }), e.notice = a ? `三列そろって、一丁！ +${n}` : i ? `ばら盛り${t.length}皿 · 基本点 +${n}` : `一皿、へいお待ち！ +${n}`, e.events.push({ kind: a ? "trio" : i ? "mixed" : "single", n: t.length }), e.practice && a && (e.status = "clear", R(e)), true;
+}
+function se(e) {
+  if (e.status !== "run") return;
+  const t = e.held;
+  t !== null && (e.used[t]++, e.heldTicks++);
+  for (let i = 0; i < 3; i++) i !== t && e.beltTicks[i]++;
+  for (const i of e.plates) !i.served && !i.retired && i.lane !== t && (i.motion++, i.x = i.startX - j * i.motion / x);
+  e.tick++, e.time = e.tick / x, t !== null && (e.heldTicks >= V || e.used[t] >= L) && R(e);
+  for (const i of e.plates) !i.served && !i.retired && i.x < 30 && (i.retired = true, e.missed++, e.events.push({ kind: "drop", n: 1, lane: i.lane }));
+  const a = e.tick - e.started;
+  if (a === O - 60 && e.events.push({ kind: "warning", n: 1 }), a >= O) {
+    for (const i of e.plates) !i.served && !i.retired && (i.retired = true, e.missed++);
+    if (R(e), e.practice || e.wave === 5) {
+      e.status = e.served >= 24 && e.sets >= 4 ? "clear" : "over";
+      return;
+    }
+    e.wave++, e.started = e.tick, e.plates = G(e.wave), e.used = [0, 0, 0], e.heldTicks = 0, e.notice = `第${e.wave + 1}波。ネタと先頭の順を見よう`, e.events.push({ kind: "wave", n: e.wave + 1 });
+  }
+}
+function re(e) {
+  return e.status !== "clear" ? "C" : e.practice ? "練習成功" : e.served >= 30 && e.sets >= 8 ? "S" : e.served >= 27 && e.sets >= 6 ? "A" : "B";
+}
+const U = { KeyA: 0, KeyS: 1, KeyD: 2, Digit1: 0, Digit2: 1, Digit3: 2, Numpad1: 0, Numpad2: 1, Numpad3: 2 };
+function le(e, t, a) {
+  let i = null;
+  const n = /* @__PURE__ */ new Set(), s = [...e, t], r = (l) => l.code || { a: "KeyA", s: "KeyS", d: "KeyD", 1: "Digit1", 2: "Digit2", 3: "Digit3", " ": "Space", Escape: "Escape", Enter: "Enter" }[l.key.length === 1 ? l.key.toLowerCase() : l.key] || l.key, u = () => {
+    const l = i;
+    i = null, n.clear();
+    for (const c of s) c.removeAttribute("data-down");
+    if (l && l.element.hasPointerCapture(l.id)) try {
+      l.element.releasePointerCapture(l.id);
+    } catch {
+    }
+  }, f = (l) => {
+    a.unlock(), l === 3 ? a.serve() : a.stop(l);
+  };
+  for (const [l, c] of s.entries()) {
+    c.addEventListener("pointerdown", (h) => {
+      !a.active() || i || !h.isPrimary || h.button !== 0 || (h.preventDefault(), i = { id: h.pointerId, element: c }, c.setPointerCapture(h.pointerId), c.setAttribute("data-down", ""), f(l));
+    }), c.addEventListener("pointerup", (h) => {
+      i?.id === h.pointerId && i.element === c && u();
+    });
+    for (const h of ["pointercancel", "lostpointercapture"]) c.addEventListener(h, (C) => {
+      i?.id === C.pointerId && i.element === c && u();
+    });
+    c.addEventListener("keydown", (h) => {
+      r(h) !== "Enter" || !a.active() || i || (h.preventDefault(), !(h.repeat || n.has("Enter")) && (n.add("Enter"), f(l)));
+    }), c.addEventListener("click", (h) => {
+      h.detail === 0 && a.active() && !i && f(l);
+    }), c.addEventListener("contextmenu", (h) => h.preventDefault());
+  }
+  window.addEventListener("keydown", (l) => {
+    if (l.target instanceof HTMLInputElement || l.ctrlKey || l.metaKey || l.altKey) return;
+    const c = r(l);
+    if (c === "Escape") {
+      l.repeat || a.pause();
+      return;
+    }
+    !a.active() || i || !(c in U) && c !== "Space" || (l.preventDefault(), !(l.repeat || n.has(c)) && (n.add(c), f(c === "Space" ? 3 : U[c])));
+  }), window.addEventListener("keyup", (l) => n.delete(r(l)));
+  const p = () => {
+    u(), a.pause();
+  };
+  return window.addEventListener("blur", p), window.addEventListener("resize", p), window.addEventListener("pagehide", p), document.addEventListener("visibilitychange", () => {
+    document.hidden && p();
+  }), matchMedia("(orientation:portrait)").addEventListener("change", p), { abort: u };
+}
+class oe {
+  context = null;
+  voices = /* @__PURE__ */ new Set();
+  peak = 0;
+  bus = null;
+  noise = null;
+  volume = 0.35;
+  muted = false;
+  rewardUntil = 0;
+  async unlock() {
+    try {
+      if (this.context ??= new AudioContext(), !this.bus) {
+        const t = this.context;
+        this.bus = t.createGain();
+        const a = t.createDynamicsCompressor();
+        a.threshold.value = -18, a.ratio.value = 10, this.bus.connect(a).connect(t.destination), this.noise = t.createBuffer(1, t.sampleRate, t.sampleRate);
+        const i = this.noise.getChannelData(0);
+        let n = 5213;
+        for (let s = 0; s < i.length; s++) n = Math.imul(n, 1664525) + 1013904223 >>> 0, i[s] = n / 2147483648 - 1;
+      }
+      this.bus.gain.value = this.muted ? 0 : this.volume * 0.45, await this.context.resume();
+    } catch {
+    }
+  }
+  bell(t, a, i, n, s = 0, r = "sine") {
+    const u = this.context, f = this.bus;
+    if (!u || !f || this.muted || u.state !== "running" || this.voices.size >= 24) return;
+    const p = u.createOscillator(), l = u.createGain(), c = u.currentTime + s;
+    p.type = r, p.frequency.setValueAtTime(t, c), p.frequency.exponentialRampToValueAtTime(a, c + i), l.gain.setValueAtTime(1e-4, c), l.gain.linearRampToValueAtTime(n, c + 4e-3), l.gain.exponentialRampToValueAtTime(1e-4, c + i), p.connect(l).connect(f), this.voices.add(p), this.peak = Math.max(this.peak, this.voices.size), p.onended = () => {
+      this.voices.delete(p), p.disconnect(), l.disconnect();
+    }, p.start(c), p.stop(c + i + 0.01);
+  }
+  tap(t, a, i = 0) {
+    const n = this.context, s = this.bus;
+    if (!n || !s || !this.noise || this.muted || n.state !== "running" || this.voices.size >= 24) return;
+    const r = n.createBufferSource(), u = n.createBiquadFilter(), f = n.createGain(), p = n.currentTime + i;
+    r.buffer = this.noise, u.type = "bandpass", u.frequency.value = t, u.Q.value = 4, f.gain.setValueAtTime(a, p), f.gain.exponentialRampToValueAtTime(1e-4, p + 0.08), r.connect(u).connect(f).connect(s), this.voices.add(r), this.peak = Math.max(this.peak, this.voices.size), r.onended = () => {
+      this.voices.delete(r), r.disconnect(), u.disconnect(), f.disconnect();
+    }, r.start(p), r.stop(p + 0.09);
+  }
+  play(t, a = 1) {
+    const i = this.context;
+    if (!i || this.muted) return;
+    const n = i.currentTime < this.rewardUntil ? 0.5 : 1;
+    if (t === "stop") this.tap(1050, 0.065 * n), this.bell(160, 120, 0.08, 0.04 * n, 0, "triangle");
+    else if (t === "release") this.bell(300, 390, 0.06, 0.025 * n);
+    else if (t === "trio") {
+      this.rewardUntil = i.currentTime + 0.45;
+      for (let s = 0; s < 3; s++) this.tap(1500 + s * 400, 0.07, s * 0.045), this.bell([523, 659, 784][s], [523, 659, 784][s], 0.2, 0.06, s * 0.045);
+      this.bell(110, 65, 0.23, 0.075, 0.1, "triangle");
+    } else if (t === "single" || t === "mixed") {
+      this.rewardUntil = i.currentTime + 0.2;
+      for (let s = 0; s < a; s++) this.tap(1600 + s * 250, 0.04, s * 0.025), this.bell(450 + s * 120, 600 + s * 120, 0.11, 0.035, s * 0.025);
+    } else if (t === "empty") this.bell(250, 210, 0.07, 0.025, 0, "triangle");
+    else if (t === "drop") this.bell(190, 90, 0.15, 0.025, 0, "triangle");
+    else if (t === "warning") this.tap(900, 0.025), this.tap(900, 0.025, 0.12);
+    else if (t === "clear") for (let s = 0; s < 5; s++) this.bell([392, 523, 659, 784, 1047][s], [392, 523, 659, 784, 1047][s], 0.25, 0.055, s * 0.055);
+    else t === "over" ? (this.bell(260, 130, 0.24, 0.05, 0, "triangle"), this.tap(700, 0.035)) : this.bell(440, 620, 0.07, 0.03);
+  }
+  set(t, a) {
+    this.volume = Math.max(0, Math.min(1, t)), this.muted = a, a && this.stop(), this.bus && (this.bus.gain.value = a ? 0 : this.volume * 0.45);
+  }
+  stop() {
+    for (const t of this.voices) try {
+      t.stop();
+    } catch {
+    }
+    this.voices.clear();
+  }
+}
+const W = "100gare:game052:rules1";
+class ce {
+  data = { rulesVersion: 1, best: 0, volume: 0.35, muted: false, light: false };
+  persistent = true;
+  storage = null;
+  constructor(t) {
+    try {
+      this.storage = t ?? window.localStorage;
+      const a = this.storage.getItem(W);
+      if (a === null) return;
+      const i = JSON.parse(a);
+      if (!i || i.rulesVersion !== 1 || typeof i.best != "number" || !Number.isInteger(i.best) || i.best < 0 || i.best > H || i.best % 100 !== 0 || typeof i.volume != "number" || !Number.isFinite(i.volume) || i.volume < 0 || i.volume > 1 || typeof i.muted != "boolean" || typeof i.light != "boolean") {
+        this.persistent = false;
+        return;
+      }
+      this.data = { rulesVersion: 1, best: i.best, volume: i.volume, muted: i.muted, light: i.light };
+    } catch {
+      this.persistent = false;
+    }
+  }
+  write() {
+    if (this.persistent && this.storage) try {
+      this.storage.setItem(W, JSON.stringify(this.data));
+    } catch {
+      this.persistent = false;
+    }
+  }
+  result(t, a) {
+    !a && Number.isInteger(t) && t >= 0 && t <= H && t % 100 === 0 && (this.data.best = Math.max(this.data.best, t), this.write());
+  }
+}
+const de = ["stall", "chef-normal", "chef-serve", "salmon", "tamago", "shrimp", "plate", "plate-gold", "counter"];
+async function ue(e) {
+  const t = {};
+  return await Promise.all(de.map(async (a) => {
+    const i = new Image();
+    i.src = `./assets/${a}.webp`, await i.decode(), t[a] = i;
+  })), t;
+}
+function I(e, t, a, i, n, s) {
+  const r = Math.min(n / t.naturalWidth, s / t.naturalHeight), u = t.naturalWidth * r, f = t.naturalHeight * r;
+  e.drawImage(t, a + (n - u) / 2, i + (s - f) / 2, u, f);
+}
+function q(e, t, a, i, n) {
+  const s = a[t.gold ? "plate-gold" : "plate"];
+  s ? I(e, s, i - 25, n - 18, 50, 36) : (e.fillStyle = t.gold ? "#e5ba43" : "#fff8dc", e.strokeStyle = "#6b5141", e.lineWidth = 1.5, e.beginPath(), e.ellipse(i, n, 23, 14, 0, 0, Math.PI * 2), e.fill(), e.stroke());
+  const r = a[t.kind];
+  r ? I(e, r, i - 18, n - 17, 36, 27) : (e.fillStyle = t.kind === "salmon" ? "#e9876e" : t.kind === "tamago" ? "#edcc5e" : "#d8a6a0", e.fillRect(i - 15, n - 13, 30, 18)), e.strokeStyle = "#493d35", e.lineWidth = 1.8, e.beginPath(), t.kind === "salmon" ? (e.moveTo(i - 7, n - 9), e.lineTo(i + 5, n + 2), e.moveTo(i, n - 10), e.lineTo(i + 11, n)) : t.kind === "tamago" ? e.rect(i - 9, n - 9, 18, 10) : e.arc(i, n - 4, 9, 0.1, Math.PI * 1.6), e.stroke(), e.fillStyle = "#fff", e.beginPath(), e.arc(i, n, 2, 0, 7), e.fill();
+}
+function fe(e, t, a, i, n) {
+  const s = e.canvas, r = s.parentElement, u = Math.max(1, Math.min(r.clientWidth - 2, r.clientHeight - 2));
+  s.style.width = `${u}px`, s.style.height = `${u}px`;
+  const f = Math.max(1, Math.floor(u * Math.min(devicePixelRatio || 1, 2)));
+  if ((s.width !== f || s.height !== f) && (s.width = f, s.height = f), e.setTransform(f / 480, 0, 0, f / 480, 0, 0), e.fillStyle = "#fff1d3", e.fillRect(0, 0, 480, 480), a.stall && (e.drawImage(a.stall, 0, 0, 480, 480), e.fillStyle = "#fff3d9b0", e.fillRect(0, 0, 480, 480)), !a["chef-normal"]) {
+    e.fillStyle = "#4f4938", e.font = "19px system-ui", e.textAlign = "center", e.fillText("美術素材を準備しています", 240, 260), e.textAlign = "left";
+    return;
+  }
+  e.fillStyle = "#654833", e.font = "bold 21px system-ui", e.fillText(`第 ${t.wave + 1}/${t.practice ? 1 : 6} 波`, 18, 29), e.font = "15px system-ui", e.fillText("同じネタを三列から、いっしょに提供", 18, 55), t.tick - t.started >= O - 60 && (e.fillStyle = "#a34239", e.font = "bold 17px system-ui", e.fillText("片付けまで0.5秒 · 残り皿は次波へ持ち越しません", 18, 81));
+  for (let v = 0; v < 3; v++) {
+    const b = 150 + 110 * v, S = t.held === v;
+    if (e.fillStyle = S ? "#d9d5b7" : "#e1bf8a", e.fillRect(30, b - 36, 430, 72), e.strokeStyle = "#af8a58", e.lineWidth = 2, e.strokeRect(30, b - 36, 430, 72), !i) {
+      const y = t.beltTicks[v] * 65 / x % 44;
+      for (let E = 35 - y; E < 460; E += 44) e.strokeStyle = "#bda06f", e.beginPath(), e.moveTo(E, b - 35), e.lineTo(E - 15, b + 35), e.stroke();
+    }
+    e.fillStyle = "#2e967b32", e.fillRect(70, b - 36, 20, 72), e.strokeStyle = "#1f816c", e.lineWidth = 2, e.strokeRect(70, b - 36, 20, 72), e.fillStyle = S ? "#a33a32" : "#466854", e.font = "bold 15px system-ui", e.fillText(S ? `列${v + 1} STOP ${((V - t.heldTicks) / x).toFixed(1)}秒` : `列${v + 1} ← 提供へ`, 112, b - 44), e.fillStyle = "#dfd7b7", e.fillRect(320, b - 57, 130, 10), e.fillStyle = S ? "#b94b40" : "#39876d", e.fillRect(320, b - 57, 130 * Math.max(0, 1 - t.used[v] / L), 10);
+    for (const y of t.plates) y.lane === v && !y.served && !y.retired && (q(e, y, a, y.x, b), J(y) && (e.strokeStyle = "#158268", e.lineWidth = 3, e.beginPath(), e.ellipse(y.x, b, 27, 20, 0, 0, Math.PI * 2), e.stroke()));
+  }
+  const l = t.servings.at(-1), c = l && l.wave === t.wave && t.tick - l.tick < 48;
+  if (c) {
+    const v = t.tick - l.tick;
+    if (e.fillStyle = l.trio ? "#176c57" : "#8c5540", e.font = "bold 23px system-ui", e.textAlign = "center", e.fillText(l.trio ? `三皿一丁！ +${l.points}` : l.mixed ? `ばら盛り +${l.points}` : `一皿 +${l.points}`, 240, 100), !i) {
+      for (const [b, S] of l.plates.entries()) {
+        const y = Math.min(1, v / 42), E = S.x + (420 + b * 5 - S.x) * y, Z = 150 + S.lane * 110 + (425 - (150 + S.lane * 110)) * y;
+        e.globalAlpha = 1 - y, q(e, S, a, E, Z);
+      }
+      e.globalAlpha = 1;
+    }
+  }
+  a.counter ? I(e, a.counter, 282, 416, 175, 60) : (e.fillStyle = t.streak >= 3 ? "#cba044" : "#d0a16c", e.fillRect(285, 437, 166, 30));
+  const h = Math.min(3, Math.floor(t.streak / 3));
+  if (h > 0) {
+    e.strokeStyle = "#c69c35", e.lineWidth = 1 + h, e.strokeRect(283, 417, 174, 59);
+    for (let v = 0; v < h; v++) e.fillStyle = v === 2 ? "#f4d57a" : "#dcb45b", e.fillRect(306 + v * 42, 421, 26, 6);
+  }
+  const C = a[c && l.trio ? "chef-serve" : "chef-normal"];
+  C ? I(e, C, 18, 414, 70, 64) : (e.fillStyle = "#987452", e.beginPath(), e.arc(50, 446, 24, 0, 7), e.fill()), e.fillStyle = "#3c6c58", e.font = "bold 15px system-ui", e.textAlign = "center", e.fillText(`三皿セット ${t.sets} · 連続 ${t.streak}`, 250, 468), e.textAlign = "left";
+}
+const d = (e) => document.getElementById(e), F = document.querySelector("canvas"), pe = F.getContext("2d"), w = d("layer"), he = false, m = new ce(), k = new oe();
+let Y = {}, T = "";
+try {
+  Y = await ue(he);
+} catch {
+  T = "美術素材を準備中です。通常版は素材を配置してから遊べます。";
+}
+let o = X(), g = "title", D = performance.now(), A = 0, K = false, $ = () => {
+};
+k.set(m.data.volume, m.data.muted);
+function z() {
+  return `<div class="settings"><label><input id="mute" type="checkbox" ${m.data.muted ? "checked" : ""}>消音</label><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value="${m.data.volume}"></label><label><input id="light" type="checkbox" ${m.data.light ? "checked" : ""}>軽量演出</label></div>`;
+}
+function _() {
+  for (const e of ["mute", "volume", "light"]) d(e).oninput = () => {
+    m.data.muted = d("mute").checked, m.data.volume = +d("volume").value, m.data.light = d("light").checked, m.write(), k.set(m.data.volume, m.data.muted);
+  };
+}
+function M(e = false) {
+  T || ($(), k.stop(), o = X(e), g = "run", K = false, A = 0, D = performance.now(), w.hidden = true, document.body.classList.add("playing"), F.focus({ preventScroll: true }), k.unlock().then(() => {
+    g === "run" && k.play("ui");
+  }));
+}
+function N() {
+  $(), k.stop(), g = "title", P();
+}
+function P() {
+  w.hidden = false, document.body.classList.remove("playing"), g === "title" ? (w.innerHTML = `<article class="card"><span class="badge">SUSHI SYNC / 試遊版</span><h1>寿司、そろえて<br>一丁！</h1><p>一列だけ止める。ほかが追いつく。同じネタ三皿を、いっしょに「へいお待ち！」</p>${T ? `<p class="warning">${T}</p>` : ""}<div class="actions"><button id="play" ${T ? "disabled" : ""}>すぐ遊ぶ</button><button id="practice" ${T ? "disabled" : ""}>最初の三皿を練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${z()}<p class="small">BEST ${m.data.best} / 保存<span id="save-state">${m.persistent ? "端末内" : "不可・ページ内のみ"}</span></p></article>`, d("play").onclick = () => M(), d("practice").onclick = () => M(true), d("help").onclick = () => {
+    g = "help", P();
+  }, _()) : g === "help" ? (w.innerHTML = `<article class="card"><h2>先に着く列を、少し待たせよう。</h2><p>A/S/D・1/2/3またはSTOPボタンで止める列を選びます。他の列は必ず進み、同じSTOPをもう一度で解除。押しっぱなしでも切り替わり続けません。</p><p>一度の停止は0.9秒まで、一波の予算は各列2.2秒。解除後0.25秒はその列を再停止できません。残り予算はメーターで見られます。</p><p>皿の中心が左の緑帯に入ったら、Spaceまたは提供。一皿100点、金皿200点。同じネタを三列から一度に出せば+400。違うネタでも基本点は入る「ばら盛り」です。架空の注文の正解/不正解はありません。</p><p>6波×8秒。残り皿は次波で片付きます。48秒で24皿以上＋三皿セット4回以上が目標。練習は先頭三皿だけ。練習と途中退出はBESTへ書きません。</p><div class="actions"><button id="practice" ${T ? "disabled" : ""}>練習する</button><button id="title">タイトルへ</button></div></article>`, d("practice").onclick = () => M(true), d("title").onclick = N) : g === "pause" ? (w.innerHTML = `<article class="card"><h2>ひと休み</h2><p>ベルト・停止予算・提供待ち時間を止めています。選んだSTOPも同じ残り時間から再開します。キーと指の所有は解除したので、新しく操作してください。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${z()}</article>`, d("resume").onclick = () => {
+    $(), g = "run", A = 0, D = performance.now(), w.hidden = true, document.body.classList.add("playing"), F.focus({ preventScroll: true }), k.unlock();
+  }, d("title").onclick = N, _()) : g === "result" && (w.innerHTML = `<article class="card"><span class="badge">${o.practice ? "練習 / 記録なし" : o.status === "clear" ? "そろって、一丁！" : "次は先に着く列を止めてみよう"}</span><h2>${o.practice ? o.status === "clear" ? "三皿、へいお待ち！" : "緑帯へ三皿をそろえよう" : `RANK ${re(o)}`}</h2><div class="result-score">${o.score.toLocaleString()} pt</div><p>提供 ${o.served}/${o.practice ? 3 : 36}皿 · 三皿セット ${o.sets}回<br>最大連続セット ${o.maxStreak}<br>BEST ${m.data.best}</p><div class="actions">${o.practice ? '<button id="play">本番へ</button>' : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, o.practice && (d("play").onclick = () => M()), d("retry").onclick = () => M(o.practice), d("title").onclick = N), w.querySelector("button:not(:disabled)")?.focus({ preventScroll: true });
+}
+function B() {
+  g === "run" && ($(), k.stop(), g = "pause", P());
+}
+const me = le([0, 1, 2].map((e) => d(`stop-${e}`)), d("serve"), { active: () => g === "run", stop: (e) => {
+  ne(o, e);
+}, serve: () => {
+  ae(o);
+}, pause: B, unlock: () => {
+  k.unlock();
+} });
+$ = me.abort;
+d("pause").onclick = B;
+window.addEventListener("pagehide", () => k.stop());
+P();
+function Q(e) {
+  performance.now();
+  const t = (e - D) / 1e3;
+  if (D = e, g === "run") if (t > 0.8) B(), A = 0;
+  else {
+    for (A += t; A >= 1 / x; ) {
+      const i = o.wave;
+      se(o), A -= 1 / x, o.wave !== i && $();
+    }
+    for (const i of o.events.splice(0)) k.play(i.kind, i.n);
+    o.status !== "run" && ($(), K || (K = true, m.result(o.score, o.practice), k.play(o.status === "clear" ? "clear" : "over")), g = "result", P());
+  }
+  fe(pe, o, Y, m.data.light || matchMedia("(prefers-reduced-motion:reduce)").matches);
+  for (let i = 0; i < 3; i++) {
+    const n = d(`stop-${i}`), s = o.held === i, r = Math.max(0, (o.blockedUntil[i] - o.tick) / x), u = Math.max(0, (L - o.used[i]) / x);
+    n.setAttribute("aria-pressed", String(s)), n.disabled = g === "run" && !s && (r > 0 || u <= 0), d(`budget-${i}`).textContent = s ? `停止 ${((V - o.heldTicks) / x).toFixed(1)}秒` : r > 0 ? `冷却 ${r.toFixed(2)}秒` : `予算 ${u.toFixed(1)}秒`, d(`meter-${i}`).value = u;
+  }
+  d("serve").classList.toggle("ready", g === "run" && o.tick >= o.nextServe), d("serve").textContent = o.tick >= o.nextServe ? "提供する · Space" : `次の提供まで ${((o.nextServe - o.tick) / x).toFixed(2)}秒`, d("time").textContent = Math.max(0, ((o.practice ? 960 : 5760) - o.tick) / x).toFixed(1), d("wave").textContent = `${o.wave + 1}/${o.practice ? 1 : 6}`, d("score").textContent = String(o.score), d("count").textContent = String(o.served), d("count-goal").textContent = o.practice ? "3" : "24", d("sets-goal").textContent = o.practice ? "1" : "4", d("sets").textContent = String(o.sets), d("notice").textContent = o.notice;
+  const a = document.getElementById("save-state");
+  a && (a.textContent = m.persistent ? "端末内" : "不可・ページ内のみ"), requestAnimationFrame(Q);
+}
+requestAnimationFrame(Q);

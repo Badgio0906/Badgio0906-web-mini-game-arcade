@@ -1,0 +1,133 @@
+{
+  "scope": "ordinary native single-pointer/Space events guided by model route;not human approval",
+  "fullRequested": true,
+  "sourceFiles": {
+    "game048.html": "96bb9d79ea75bbe8b6bff213d63a22f6304d0da6ba3dac6b0f8c9fd8bc6dd2be",
+    "src/games/game048/audio.ts": "33b9a3db207fc51bca82da3aa872e4008a451e9dc9abd18d4192a4da5fadf601",
+    "src/games/game048/courseModel.ts": "2a37760e8cf5c58f255960147e5690098d2068427ab5d8bd96d54a85d4d2b516",
+    "src/games/game048/game.ts": "521ee26f05e74e965d44754caa75fe18521e0aebfb697bf50db12708f308bd10",
+    "src/games/game048/input.ts": "7d882b25b0e7aa14ad41246554c22c781c33a5df42a165eb0da717faca345c56",
+    "src/games/game048/main.ts": "1ad18ddaf6e92c9abc4aa29c5ed05c82e2c1fbb8d898cd9b5cf8ebb4fbd34743",
+    "src/games/game048/model.ts": "26f68ea8c7d0552f55f48ee2e88acb66b70c0f296b5b08f2c009cc3e90304256",
+    "src/games/game048/renderer.ts": "bd89712a6193c99c3a49537abf2b10fecd158bc59c4128c6d8c4abbcdaa715e7",
+    "src/games/game048/storage.ts": "cb3f4fd9ef26a90be7282a62619b73728e2b551b173a07cfdc9ca42fdb3e5588",
+    "src/games/game048/style.css": "b865473e147a6fb3b8072d835702ccb66625fefaf58e2eb269066608ba078e5a"
+  },
+  "cases": [
+    {
+      "w": 1280,
+      "h": 720,
+      "practice": true,
+      "pauseKeepsAnchor": true,
+      "oldReleaseDoesNotFly": true,
+      "fiveRetry": true
+    },
+    {
+      "w": 1280,
+      "h": 720,
+      "fullState": {
+        "rope": {
+          "x": 48.955901944739765,
+          "y": -101.12673795000994,
+          "vx": 1.1865134803575839,
+          "vy": -849.9991718735736,
+          "anchor": null,
+          "next": 2,
+          "length": 210.07786787034158,
+          "spin": -1,
+          "cooldown": 0,
+          "t": 6.341666666666627
+        },
+        "tick": 1522,
+        "maxY": 839.595862564657,
+        "score": 659,
+        "grabs": 2,
+        "misses": 1,
+        "practice": false,
+        "status": "over",
+        "reason": "荷物が出発地点の下へ。もう一度挑戦しよう。",
+        "notice": "緑の輪の中で押そう。近すぎる内円でも掴めません。",
+        "events": []
+      },
+      "notice": "native latency recorded; model route is not assumed to pass"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "actualInputs": [
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 13
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 157
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 397
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 397
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 0
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 30
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 30
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 32
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 2
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 158
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 398
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 798
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 1098
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 1522
+    }
+  ],
+  "lifecycle": "synthetic blur distinct from real OS visibility",
+  "returnNavigation": "NOT_TESTED_STANDALONE_OUTPUT",
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'over' !== 'clear'\n\n    at file:///tmp/arcade-publication-20261101/tests/game048/native-probe.mjs:14:526"
+}

@@ -1,0 +1,11 @@
+# Rootの未実行通常入力追試
+
+QA/NATIVE_ROUTE.jsonは240Hzのmodel列。pressはSpace downまたは1指touchStart、releaseはSpace up/touchEnd。tickは次のphysics stepへ進む前の入力。下部#hold中央またはcanvasの同一点で保持すればよく、世界位置への指移動やteleportはない。開始clickをこの入力へ混ぜない。最初のpressは接続済み①を構えるだけ。
+
+原本：release156/grab396、release792/grab1092、release1800/grab1872、release2328/grab2412、release2436/grab2556、release2928/grab2976、release3000/grab3060、release3384/grab3444、release3444。最後同tickは新列を優先する理由として残す。
+
+新candidateは最初7取得まで原本同一。最後のreleaseを3948、grabを3996、releaseを4032（保持36tick=.15秒）へ変更。game開始から4222tick/17.591666秒でgoal。最後保持24/48tickのcoreサンプルもgoal到達、60/72は未到達。実ブラウザのIPC遅延/人間の反応余裕は未検証。元コース用の解ではない。
+
+tests/game048/native-probe.mjsは未実行。qa buildの読取getterからtickを観測し、通常key/touchイベントだけを発生させる。4幅の練習/開始gesture非持越し/blur pause/古いrelease非発射/5retryと、GAME048_FULL=1なら新candidate全経路を試す。失敗原本を残し、モデル入力を時刻/状態setterで強制しない。synthetic blurと実OS visibilityを別分類。最終回の150ms保持でも不安定なら公開保留としてroot判断へ戻す。
+
+映像/実画面/人間試遊/実機/聴感は未実施。モデルスイープは有界2M以下の入力感度検査であり、runtimeにsolverを入れていない。

@@ -1,0 +1,86 @@
+
+ RUN  v3.2.7 /tmp/arcade-publication-20261101
+
+ ✓ tests/unit/game040-input.test.ts (17 tests) 15ms
+ ✓ tests/unit/game040-audio.test.ts (7 tests) 9ms
+ ✓ tests/unit/game040-storage.test.ts (8 tests) 8ms
+ ✓ tests/unit/game040-author-revision.test.ts (6 tests) 11ms
+ ❯ tests/unit/game040-model.test.ts (35 tests | 2 failed) 269ms
+   ✓ Game040 charge and owned release > charge 0 emits exact tier/consumption 1ms
+   ✓ Game040 charge and owned release > charge 23 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > charge 24 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > charge 59 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > charge 60 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > charge 99 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > charge 100 emits exact tier/consumption 0ms
+   ✓ Game040 charge and owned release > release without an active hold, repeats and fire lock cannot produce duplicates 1ms
+   ✓ Game040 charge and owned release > cancel and pause retain charge but never fire; resume needs new hold 0ms
+   ✓ Game040 charge and owned release > physical intake adds12 once, caps100, grants40 and does not instantly acquire far dust 1ms
+   ✓ Game040 charge and owned release > can/bag/boss never suction; can does not block dust 1ms
+   ✓ Game040 charge and owned release > cone half-angle24 and distance440 restrict intake, aim clamp is60 0ms
+   ✓ Game040 charge and owned release > full charge remains fireable indefinitely without jam or life cost 0ms
+   ✓ Game040 charge and owned release > pickup reaching100 does not start an attack lock 1ms
+   ✓ Game040 charge and owned release > pause freezes accumulated full timer and no unpause instant release 1ms
+   ✓ Game040 primary collisions and chains > segment sweep detects a target crossed completely between frame endpoints 0ms
+   ✓ Game040 primary collisions and chains > real moving first layout produces six unique chain kills including the bag 3ms
+   ✓ Game040 primary collisions and chains > secondary stagger propagates after about0.06sec and cannot duplicate dead can explosions 1ms
+   ✓ Game040 primary collisions and chains > boss takes primary once and no secondary damage from cans 1ms
+   ✓ Game040 primary collisions and chains > overlapping primary/secondary blasts credit each unique kill to the lethal shot only 2ms
+   ✓ Game040 primary collisions and chains > chain scoring caps at3.0 and explosion events cannot score dead enemies again 5ms
+   ✓ Game040 primary collisions and chains > offscreen miss never scores and expires by0.8sec 0ms
+   ✓ Game040 primary collisions and chains > primary full hitstop consumes35ms wall time and freezes simulation together 1ms
+   ✓ Game040 terminal ordering and deterministic waves > simultaneous danger removes all cans but damage uses0.7sec immunity inclusive boundary 1ms
+   ✓ Game040 terminal ordering and deterministic waves > 45s boss spawns without clearing preexisting bullets, enemies or score 0ms
+   ✓ Game040 terminal ordering and deterministic waves > 60s deadline resolves to time, never runs beyond deadline 0ms
+   ✓ Game040 terminal ordering and deterministic waves > same tick boss kill and life0 prioritizes life0 without clear bonus 0ms
+   ✓ Game040 terminal ordering and deterministic waves > boss death on deadline beats timeout and terminal awards happen once 0ms
+   ✓ Game040 terminal ordering and deterministic waves > practice produces no score/recordable result and retry creates a fresh run 2ms
+   ✓ Game040 terminal ordering and deterministic waves > 30/60/120Hz wall partitions produce identical swept hits, chain scores and hitstop 1ms
+   ✓ Game040 terminal ordering and deterministic waves > a full real input trace replays identically under30/60/120Hz renderer partitions 104ms
+   ✓ Game040 terminal ordering and deterministic waves > same seed and input sequence reproduce; changed seed affects authored dust variation only 4ms
+   × Game040 terminal ordering and deterministic waves > supplies exactly50 boss-phase dust; real smart aiming policy clears under object cap80 41ms
+     → expected 'time' to be 'clear' // Object.is equality
+   × Game040 terminal ordering and deterministic waves > aiming and boss supply selection outperform rapid central small shots 84ms
+     → expected false to be true // Object.is equality
+   ✓ Game040 terminal ordering and deterministic waves > no input cannot clear and zero-ammo rapid release never creates firepower 6ms
+ ✓ tests/unit/game049-model.test.ts (5 tests) 19ms
+ ✓ tests/unit/game040-gaps-import.test.ts (2 tests) 7ms
+ ✓ tests/unit/game049-author-revision.test.ts (3 tests) 8ms
+ ✓ tests/unit/game040-waves.test.ts (1 test) 3ms
+ ✓ tests/unit/game049-storage.test.ts (1 test) 3ms
+ ✓ tests/unit/game040-publication.test.ts (1 test) 3ms
+ ✓ tests/unit/game049-publication.test.ts (2 tests) 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/game040-model.test.ts > Game040 terminal ordering and deterministic waves > supplies exactly50 boss-phase dust; real smart aiming policy clears under object cap80
+AssertionError: expected 'time' to be 'clear' // Object.is equality
+
+Expected: "clear"
+Received: "time"
+
+ ❯ tests/unit/game040-model.test.ts:48:245
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/unit/game040-model.test.ts > Game040 terminal ordering and deterministic waves > aiming and boss supply selection outperform rapid central small shots
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/game040-model.test.ts:54:96
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 11 passed (12)
+      Tests  2 failed | 86 passed (88)
+   Start at  10:50:22
+   Duration  1.20s (transform 373ms, setup 0ms, collect 558ms, tests 358ms, environment 2ms, prepare 719ms)
+
