@@ -1,0 +1,6 @@
+import{MAX_SCORE}from'./game';export const KEY='100gare:game048:adjusted-hooks:rules1';export interface Saved{rulesVersion:1;best:number;volume:number;muted:boolean;light:boolean}export interface Store{getItem(key:string):string|null;setItem(key:string,value:string):void}
+export class CourierStorage{data:Saved={rulesVersion:1,best:0,volume:.35,muted:false,light:false};persistent=true;private store:Store|null=null;
+ constructor(store?:Store){try{this.store=store??window.localStorage;const raw=this.store.getItem(KEY);if(raw===null)return;const d=JSON.parse(raw)as Partial<Saved>|null;if(!d||Array.isArray(d)||d.rulesVersion!==1||!Number.isSafeInteger(d.best)||typeof d.best!=='number'||d.best<0||d.best>MAX_SCORE||typeof d.volume!=='number'||!Number.isFinite(d.volume)||d.volume<0||d.volume>1||typeof d.muted!=='boolean'||typeof d.light!=='boolean'){this.persistent=false;return;}this.data={rulesVersion:1,best:d.best,volume:d.volume,muted:d.muted,light:d.light};}catch{this.persistent=false;}}
+ save():void{if(!this.persistent||!this.store)return;try{this.store.setItem(KEY,JSON.stringify(this.data));}catch{this.persistent=false;}}
+ result(score:number,practice:boolean):void{if(!practice&&Number.isSafeInteger(score)&&score>=0&&score<=MAX_SCORE){this.data.best=Math.max(this.data.best,score);this.save();}}
+}

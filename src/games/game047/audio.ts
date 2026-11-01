@@ -4,11 +4,11 @@ export class SnowAudio {
   voices=new Set<AudioScheduledSourceNode>();muted=false;volume=.35;private noise:AudioBuffer|null=null;
   async unlock(){try{this.context??=new AudioContext();if(!this.master){this.master=this.context.createGain();this.master.connect(this.context.destination);}this.master.gain.value=this.muted?0:this.volume;await this.context.resume();}catch{/* Sound refusal leaves the game playable. */}}
   private tone(hz:number,to:number,d:number,delay:number,gain:number,type:OscillatorType='triangle'){
-    const c=this.context,m=this.master;if(!c||!m||this.muted||this.voices.size>=16)return;
+    const c=this.context,m=this.master;if(!c||!m||this.muted||this.voices.size+((window as Window&{__gapsAudio?:{active:number}}).__gapsAudio?.active??0)>=16)return;
     const o=c.createOscillator(),g=c.createGain(),t=c.currentTime+delay;o.type=type;o.frequency.setValueAtTime(hz,t);o.frequency.exponentialRampToValueAtTime(Math.max(20,to),t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(gain,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(m);this.voices.add(o);o.onended=()=>{o.disconnect();g.disconnect();this.voices.delete(o);};o.start(t);o.stop(t+d+.01);
   }
   private crunch(d:number,hz:number,gain:number,high=false){
-    const c=this.context,m=this.master;if(!c||!m||this.muted||this.voices.size>=16)return;
+    const c=this.context,m=this.master;if(!c||!m||this.muted||this.voices.size+((window as Window&{__gapsAudio?:{active:number}}).__gapsAudio?.active??0)>=16)return;
     if(!this.noise){this.noise=c.createBuffer(1,c.sampleRate,c.sampleRate);const values=this.noise.getChannelData(0);let seed=4701;for(let i=0;i<values.length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;values[i]=seed/2147483648-1;}}
     const n=c.createBufferSource(),filter=c.createBiquadFilter(),g=c.createGain(),t=c.currentTime;n.buffer=this.noise;filter.type=high?'highpass':'lowpass';filter.frequency.value=hz;g.gain.setValueAtTime(gain,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);n.connect(filter).connect(g).connect(m);this.voices.add(n);n.onended=()=>{n.disconnect();filter.disconnect();g.disconnect();this.voices.delete(n);};n.start(t);n.stop(t+d+.01);
   }

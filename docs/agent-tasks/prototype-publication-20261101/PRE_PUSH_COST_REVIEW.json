@@ -1,0 +1,64 @@
+{
+  "scope": "read-only API;no workflow trigger/no billing changes",
+  "at_utc": "2026-11-01T12:38:37.019645+00:00",
+  "checks": {
+    "repository": {
+      "success": true,
+      "value": {
+        "archived": false,
+        "default_branch": "main",
+        "disabled": false,
+        "private": false,
+        "size": 1411572,
+        "visibility": "public"
+      },
+      "error": null
+    },
+    "webhooks": {
+      "success": false,
+      "value": null,
+      "error": "gh: Resource not accessible by integration (HTTP 403)"
+    },
+    "cache_usage": {
+      "success": true,
+      "value": {
+        "active_caches_count": 1,
+        "active_caches_size_in_bytes": 49449992
+      },
+      "error": null
+    },
+    "artifacts": {
+      "success": true,
+      "value": {
+        "bytes": null,
+        "total_count": 0
+      },
+      "error": null
+    },
+    "pages": {
+      "success": true,
+      "value": {
+        "build_type": "workflow",
+        "cname": "game100garage.com",
+        "https_enforced": true,
+        "status": null
+      },
+      "error": null
+    },
+    "billing_usage": {
+      "success": false,
+      "value": null,
+      "error": "gh: Resource not accessible by integration (HTTP 403)"
+    },
+    "main": {
+      "success": true,
+      "value": {
+        "sha": "6211019f64a6946d632a9b3620de24a03505410d"
+      },
+      "error": null
+    }
+  },
+  "new_paid_services": "NOT_USED",
+  "runners": "existing workflows:ubuntu-latest",
+  "unknown_costs_waived_for_this_batch": false
+}

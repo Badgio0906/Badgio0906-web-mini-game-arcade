@@ -1,0 +1,134 @@
+{
+  "scope": "ordinary native single-pointer/Space events guided by model route;not human approval",
+  "fullRequested": true,
+  "sourceFiles": {
+    "game048.html": "96bb9d79ea75bbe8b6bff213d63a22f6304d0da6ba3dac6b0f8c9fd8bc6dd2be",
+    "src/games/game048/audio.ts": "33b9a3db207fc51bca82da3aa872e4008a451e9dc9abd18d4192a4da5fadf601",
+    "src/games/game048/clock.ts": "3732feee2325fb2f1ab6cd7874b4d54bb84a3869f7e999cc86c25c8d003e34f9",
+    "src/games/game048/courseModel.ts": "2a37760e8cf5c58f255960147e5690098d2068427ab5d8bd96d54a85d4d2b516",
+    "src/games/game048/game.ts": "521ee26f05e74e965d44754caa75fe18521e0aebfb697bf50db12708f308bd10",
+    "src/games/game048/input.ts": "7d882b25b0e7aa14ad41246554c22c781c33a5df42a165eb0da717faca345c56",
+    "src/games/game048/main.ts": "18f52190f355e4c861ad905051186a27ddc86821e0ff981e078b35e84527443b",
+    "src/games/game048/model.ts": "26f68ea8c7d0552f55f48ee2e88acb66b70c0f296b5b08f2c009cc3e90304256",
+    "src/games/game048/renderer.ts": "bd89712a6193c99c3a49537abf2b10fecd158bc59c4128c6d8c4abbcdaa715e7",
+    "src/games/game048/storage.ts": "cb3f4fd9ef26a90be7282a62619b73728e2b551b173a07cfdc9ca42fdb3e5588",
+    "src/games/game048/style.css": "b865473e147a6fb3b8072d835702ccb66625fefaf58e2eb269066608ba078e5a"
+  },
+  "cases": [
+    {
+      "w": 1280,
+      "h": 720,
+      "practice": true,
+      "pauseKeepsAnchor": true,
+      "oldReleaseDoesNotFly": true,
+      "fiveRetry": true
+    },
+    {
+      "w": 1280,
+      "h": 720,
+      "fullState": {
+        "rope": {
+          "x": 74.90287677954227,
+          "y": -102.11468313309368,
+          "vx": 7.73530661474925,
+          "vy": -849.9648022309958,
+          "anchor": null,
+          "next": 2,
+          "length": 206.42689641571036,
+          "spin": -1,
+          "cooldown": 0,
+          "t": 6.34999999999996
+        },
+        "tick": 1524,
+        "maxY": 840.3008872790642,
+        "score": 660,
+        "grabs": 2,
+        "misses": 1,
+        "practice": false,
+        "status": "over",
+        "reason": "荷物が出発地点の下へ。もう一度挑戦しよう。",
+        "notice": "緑の輪の中で押そう。近すぎる内円でも掴めません。",
+        "events": []
+      },
+      "notice": "native latency recorded; model route is not assumed to pass"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "actualInputs": [
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 15
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 160
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 400
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 400
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 0
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 30
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 30
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 33
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 3
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 162
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 402
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 801
+    },
+    {
+      "w": 1280,
+      "held": true,
+      "tick": 1100
+    },
+    {
+      "w": 1280,
+      "held": false,
+      "tick": 1524
+    }
+  ],
+  "lifecycle": "synthetic blur distinct from real OS visibility",
+  "returnNavigation": "NOT_TESTED_STANDALONE_OUTPUT",
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'over' !== 'clear'\n\n    at file:///tmp/arcade-publication-20261101/tests/game048/native-probe.mjs:14:526"
+}

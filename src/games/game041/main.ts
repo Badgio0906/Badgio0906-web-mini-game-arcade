@@ -1,4 +1,6 @@
+import{installGaps}from'./gaps-audio.js';
 import './style.css';import './armyStyle.css';import{createArmy,armyAdvance,moveArmy,armyGrade}from'./army';import{drawArmy}from'./armyRenderer';import{loadArt}from'./renderer';import{MineAudio}from'./audio';import{ArmyStorage}from'./armyStorage';import{attachMineInput}from'./input';
+installGaps(MineAudio,new URL('./assets/gaps/bank.json',document.baseURI),{nativeLayers:true});
 const $=(id:string)=>document.getElementById(id)!,canvas=document.querySelector('canvas')!,layer=$('layer'),audio=new MineAudio(),save=new ArmyStorage();let s=createArmy(),screen='title',ready=false,last=performance.now(),eventAt=0;const art=await loadArt();ready=true;audio.set(save.data.volume,save.data.muted);const abort=attachMineInput($('left'),$('right'),canvas,d=>{if(screen==='run'&&moveArmy(s,d))audio.play('move');},pause);
 function settings(){return`<details><summary>音と演出</summary><label><input id="mute" type="checkbox" ${save.data.muted?'checked':''}>消音</label><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value="${save.data.volume}"></label><label><input id="light" type="checkbox" ${save.data.light?'checked':''}>弱い演出</label></details>`;}
 function start(practice=false){if(!ready)return;abort();audio.stop();void audio.unlock();s=createArmy({practice});eventAt=0;last=performance.now();screen='run';menu();}

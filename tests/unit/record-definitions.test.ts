@@ -3,10 +3,11 @@ import {historicalGameCatalog} from '../../src/data/gameCatalog';
 import {recordDefinitions,recordBoards,getRecordDefinition} from '../../src/data/recordDefinitions';
 describe('explicit record comparison definitions',()=>{
   it('retains existing definitions for hidden and newly retired IDs without deleting historical boards',()=>{
-    expect(recordDefinitions.map(d=>d.gameId).sort()).toEqual(historicalGameCatalog.filter(d=>!['game010','game038'].includes(d.id)).map(d=>d.id).sort());
+    expect(recordDefinitions.map(d=>d.gameId).sort()).toEqual(historicalGameCatalog.filter(d=>Number(d.id.slice(4))<40&&!['game010','game038'].includes(d.id)).map(d=>d.id).sort());
     expect(getRecordDefinition('game010')).toBeUndefined();
     expect(getRecordDefinition('game038')).toBeUndefined(); // career history stays inside the game, no invented ranking board
     expect(getRecordDefinition('game999')).toBeUndefined();
+    for(let n=40;n<=62;n++)expect(getRecordDefinition('game'+String(n).padStart(3,'0'))).toBeUndefined(); // independent trial records; no invented public boards
   });
   it('has unique stable boards and safe integer bounds',()=>{
     expect(new Set(recordBoards.map(d=>d.boardId)).size).toBe(recordBoards.length);

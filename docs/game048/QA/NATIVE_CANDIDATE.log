@@ -1,0 +1,19 @@
+
+ RUN  v3.2.7 /tmp/arcade-publication-20261101
+
+stdout | tests/unit/game048-game.test.ts > wrapper from start reproduces the recovered complete route with one clear bonus
+GAME048_GAME {"rope":{"x":252.73441204705603,"y":2344.6622589371623,"vx":-195.3159129676976,"vy":470.2888741982059,"anchor":null,"next":9,"length":145.80645151137486,"spin":1,"cooldown":0,"t":15.004166666666135},"tick":3601,"maxY":2344.6622589371623,"score":3164,"grabs":9,"misses":0,"practice":false,"status":"clear","reason":"全9フックをつないで配達完了！","notice":"飛行中。次のフックの緑の輪に入ったら押そう。","events":[{"kind":"hold","n":0},{"kind":"release","n":1},{"kind":"hook","n":2},{"kind":"release","n":2},{"kind":"hook","n":3},{"kind":"release","n":3},{"kind":"hook","n":4},{"kind":"release","n":4},{"kind":"hook","n":5},{"kind":"release","n":5},{"kind":"hook","n":6},{"kind":"release","n":6},{"kind":"hook","n":7},{"kind":"release","n":7},{"kind":"hook","n":8},{"kind":"release","n":8},{"kind":"hook","n":9},{"kind":"release","n":9},{"kind":"clear","n":1000}]}
+
+stdout | tests/unit/game048-game.test.ts > quantifies final grab/release dwell without silently modifying physics
+GAME048_DWELL [{"ticks":0,"status":"clear","time":15.004166666666135,"score":3164,"x":252.73441204705603,"y":2344.6622589371623},{"ticks":1,"status":"clear","time":15.008333333332802,"score":3163,"x":242.58836497980587,"y":2343.9108026560148},{"ticks":4,"status":"clear","time":15.054166666666132,"score":3175,"x":204.1180671243186,"y":2355.062108430419},{"ticks":12,"status":"run","time":17.004166666666023,"score":2298,"x":155.90095582734855,"y":2162.8898129557765},{"ticks":24,"status":"run","time":17.004166666666023,"score":2175,"x":239.56662870442833,"y":1930.1288540898538}]
+
+stdout | tests/unit/game048-game.test.ts > replays the bounded alternative from the real start with150ms final hold
+GAME048_NATIVE_CANDIDATE {"rope":{"x":297.190195251545,"y":2399.386428397954,"vx":-186.84601451829997,"vy":375.1556938254247,"anchor":null,"next":9,"length":212.8195289763563,"spin":1,"cooldown":0,"t":17.59166666666599},"tick":4222,"maxY":2399.386428397954,"score":3219,"grabs":9,"misses":0,"practice":false,"status":"clear","reason":"全9フックをつないで配達完了！","notice":"飛行中。次のフックの緑の輪に入ったら押そう。","events":[{"kind":"hold","n":0},{"kind":"release","n":1},{"kind":"hook","n":2},{"kind":"release","n":2},{"kind":"hook","n":3},{"kind":"release","n":3},{"kind":"hook","n":4},{"kind":"release","n":4},{"kind":"hook","n":5},{"kind":"release","n":5},{"kind":"hook","n":6},{"kind":"release","n":6},{"kind":"hook","n":7},{"kind":"release","n":7},{"kind":"hook","n":8},{"kind":"release","n":8},{"kind":"hook","n":9},{"kind":"release","n":9},{"kind":"clear","n":1000}]}
+
+ ✓ tests/unit/game048-game.test.ts (10 tests) 18ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  12:30:19
+   Duration  307ms (transform 68ms, setup 0ms, collect 79ms, tests 18ms, environment 0ms, prepare 57ms)
+

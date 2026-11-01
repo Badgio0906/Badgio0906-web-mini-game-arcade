@@ -1,3 +1,4 @@
+import {prototypeCandidates} from './prototypeCandidates';
 import { tagsFor, type GameTag, type TagId } from './tagCatalog.ts';
 export type GameDevelopmentStatus = 'trial' | 'complete';
 export type GamePublicationState = 'published' | 'unlisted' | 'retired' | 'removed' | 'on-hold';
@@ -105,6 +106,7 @@ export const REMOVED_GAME_IDS = Object.freeze(['game026', 'game028', 'game029', 
 const publicationOverrides: Readonly<Partial<Record<string, GamePublicationState>>> = Object.freeze({
   game026: 'removed', game028: 'removed', game029: 'removed', game030: 'removed',
   game031: 'on-hold',
+  game048: 'on-hold', // native full-run not yet verified; keep the reserved ID/source.
 });
 function publicationFor(id: string): GamePublicationState {
   return publicationOverrides[id] ?? (publicationStatusByGame[id] === 'retired' ? 'retired' : publicationStatusByGame[id] === 'hidden' ? 'unlisted' : 'published');
@@ -135,7 +137,8 @@ export const historicalGameCatalog: readonly GameCatalogEntry[] = Object.freeze(
   { id: 'game035', titleJa: '1ミリカーリング', titleEn: 'MINI CURLING', tagline: '寄せる。弾く。次の一投を、守る。', thumbnail: './assets/portal/game035.webp', route: './game035.html', releaseOrder: 35 },
   { id: 'game036', titleJa: 'もちっと連鎖 ～MOCHI DROP～', titleEn: 'MOCHI DROP', tagline: '落として、つないで、ぽぽぽぽん。', thumbnail: './assets/portal/game036.webp', route: './game036.html', releaseOrder: 36 },
   { id: 'game038', titleJa: '6万分の1 ～ONE IN 60,000～', titleEn: 'ONE IN 60,000', tagline: '世界に約6万人いるVTuberの、ひとりになる。', thumbnail: './assets/portal/game038.webp', route: './game038.html', releaseOrder: 38 },
-].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, publicationState: publicationFor(game.id), developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id]), difficulty: difficultyBands[game.releaseOrder - 1] })));
+  ...prototypeCandidates,
+].map(game => Object.freeze({ ...game, status: publicationStatusByGame[game.id] ?? 'active' as const, publicationState: publicationFor(game.id), developmentStatus: developmentStatusByGame[game.id] ?? 'trial', tags: tagsFor(gameTagIds[game.id] ?? ('tagIds' in game ? game.tagIds as TagId[] : [])), difficulty: difficultyBands[game.releaseOrder - 1] ?? 'standard' })));
 
 /** Stable IDs and releaseOrder survive retirement; new releases never fill retired IDs. */
 export const gameCatalog: readonly GameCatalogEntry[] = Object.freeze(historicalGameCatalog.filter(isPublishedGame));

@@ -1,0 +1,315 @@
+(function() {
+  const s = document.createElement("link").relList;
+  if (s && s.supports && s.supports("modulepreload")) return;
+  for (const e of document.querySelectorAll('link[rel="modulepreload"]')) i(e);
+  new MutationObserver((e) => {
+    for (const l of e) if (l.type === "childList") for (const c of l.addedNodes) c.tagName === "LINK" && c.rel === "modulepreload" && i(c);
+  }).observe(document, { childList: true, subtree: true });
+  function a(e) {
+    const l = {};
+    return e.integrity && (l.integrity = e.integrity), e.referrerPolicy && (l.referrerPolicy = e.referrerPolicy), e.crossOrigin === "use-credentials" ? l.credentials = "include" : e.crossOrigin === "anonymous" ? l.credentials = "omit" : l.credentials = "same-origin", l;
+  }
+  function i(e) {
+    if (e.ep) return;
+    e.ep = true;
+    const l = a(e);
+    fetch(e.href, l);
+  }
+})();
+const C = 6400, se = 40, ae = 180, Y = 220, D = 120, le = 336, u = { x: 240, y: 270 }, H = [[110, 110], [200, 60], [65, 180], [140, 90], [90, 140], [180, 70], [75, 160], [160, 80], [100, 125]];
+function pe(t, s, a) {
+  const i = Math.max(se, C / (s - 8)), e = Math.min(ae, t - 8);
+  return { id: a, width: t, height: s, contactTick: (a + 1) * le, low: i, high: e, snackLow: i + (e - i) * 0.2, snackHigh: i + (e - i) * 0.8 };
+}
+function me(t = false) {
+  return (t ? [H[2], H[1]] : [...H, ...[...H].reverse()]).map(([a, i], e) => pe(a, i, e));
+}
+function re(t) {
+  return [{ id: t.id * 4, x: -t.snackLow / 2, y: 0 }, { id: t.id * 4 + 1, x: t.snackLow / 2, y: 0 }, { id: t.id * 4 + 2, x: 0, y: -C / (2 * t.snackHigh) }, { id: t.id * 4 + 3, x: 0, y: C / (2 * t.snackHigh) }];
+}
+const K = 1e-7;
+function ne(t = false) {
+  return { tick: 0, time: 0, width: 80, target: 80, hp: 3, score: 0, passed: 0, full: 0, streak: 0, crowns: 0, index: 0, practice: t, status: "run", gates: me(t), outcomes: [], events: [], notice: t ? "まず縦長、その次は横長。スライダーで形を変えよう" : "型を通って、おやつを四つまとめ取り！" };
+}
+const oe = (t) => C / t.width;
+function ce(t, s) {
+  t.status === "run" && Number.isFinite(s) && (t.target = Math.max(se, Math.min(ae, s)));
+}
+function ge(t) {
+  t.target = t.width;
+}
+function Q(t, s) {
+  const a = C / s, i = s + 8 > t.width + K ? "横幅オーバー" : a + 8 > t.height + K ? "縦幅オーバー" : "", e = i ? [] : re(t).filter((l) => Math.abs(l.x) <= s / 2 + K && Math.abs(l.y) <= a / 2 + K).map((l) => l.id);
+  return { id: t.id, width: s, height: a, passed: i === "", collected: e, reason: i };
+}
+function ye(t, s = 0) {
+  if (t.status !== "run") return;
+  const a = Number.isFinite(s) ? Math.max(-1, Math.min(1, s)) : 0;
+  a && ce(t, t.width + a * Y / D);
+  const i = t.target - t.width;
+  t.width += Math.sign(i) * Math.min(Math.abs(i), Y / D), t.tick++, t.time = t.tick / D;
+  const e = t.gates[t.index];
+  if (e && t.tick === e.contactTick - 60 && !Q(e, t.width).passed && t.events.push({ kind: "warning", n: 1 }), !e || t.tick < e.contactTick) return;
+  const l = Q(e, t.width);
+  let c = 0, p = 0;
+  l.passed ? (t.passed++, c = 100 + l.collected.length * 50, t.events.push({ kind: "pass", n: t.passed }), l.collected.length && t.events.push({ kind: "snack", n: l.collected.length }), l.collected.length === 4 ? (t.full++, t.streak++, t.streak === 3 && (p = 500, t.crowns++, t.streak = 0, t.events.push({ kind: "feast", n: t.crowns })), t.notice = p ? "三型連続で完食！ 金の冠 +500" : "すぽん！ おやつ四つ、完食！") : (t.streak = 0, t.notice = `通過！ おやつ${l.collected.length}個。次は四つを狙おう`)) : (t.hp--, t.streak = 0, t.notice = `${l.reason}。次の型へ、形を変えよう`, t.events.push({ kind: "damage", n: 1 })), t.score += c + p, t.outcomes.push({ ...l, at: t.time, points: c, bonus: p }), t.index++, t.hp <= 0 ? t.status = "over" : t.index === t.gates.length && (t.status = t.practice && t.passed !== 2 ? "over" : "clear");
+}
+function Z(t) {
+  return t.status !== "clear" ? "C" : t.practice ? "練習成功" : t.hp === 3 && t.full >= 15 ? "S" : t.passed >= 17 && t.full >= 10 ? "A" : "B";
+}
+function be(t, s) {
+  let a = null;
+  const i = /* @__PURE__ */ new Set(), e = (r) => r.code || { a: "KeyA", d: "KeyD", ArrowLeft: "ArrowLeft", ArrowRight: "ArrowRight", Escape: "Escape" }[r.key.length === 1 ? r.key.toLowerCase() : r.key] || r.key, l = () => {
+    const r = a;
+    if (a = null, i.clear(), s.halt(), t.removeAttribute("data-down"), r !== null && t.hasPointerCapture(r)) try {
+      t.releasePointerCapture(r);
+    } catch {
+    }
+  }, c = (r) => {
+    const o = t.getBoundingClientRect(), M = Math.max(1, o.width - 36);
+    s.target(40 + Math.max(0, Math.min(1, (r.clientX - o.left - 18) / M)) * 140);
+  };
+  t.addEventListener("pointerdown", (r) => {
+    !s.active() || a !== null || !r.isPrimary || r.button !== 0 || (r.preventDefault(), a = r.pointerId, i.clear(), t.setPointerCapture(a), t.setAttribute("data-down", ""), s.unlock(), c(r));
+  }), t.addEventListener("pointermove", (r) => {
+    r.pointerId === a && (r.preventDefault(), c(r));
+  }), t.addEventListener("pointerup", (r) => {
+    if (r.pointerId !== a) return;
+    c(r);
+    const o = a;
+    a = null, t.removeAttribute("data-down"), t.hasPointerCapture(o) && t.releasePointerCapture(o);
+  });
+  for (const r of ["pointercancel", "lostpointercapture"]) t.addEventListener(r, (o) => {
+    o.pointerId === a && l();
+  });
+  t.addEventListener("contextmenu", (r) => r.preventDefault()), window.addEventListener("keydown", (r) => {
+    if (r.target instanceof HTMLInputElement || r.ctrlKey || r.metaKey || r.altKey) return;
+    const o = e(r);
+    if (o === "Escape") {
+      r.repeat || s.pause();
+      return;
+    }
+    !["ArrowLeft", "ArrowRight", "KeyA", "KeyD"].includes(o) || !s.active() || (r.preventDefault(), !(r.repeat && !i.has(o)) && a === null && (i.add(o), s.unlock()));
+  }), window.addEventListener("keyup", (r) => i.delete(e(r)));
+  const p = () => {
+    l(), s.pause();
+  };
+  return window.addEventListener("blur", p), document.addEventListener("visibilitychange", () => {
+    document.hidden && p();
+  }), window.addEventListener("pagehide", p), window.addEventListener("resize", p), matchMedia("(orientation:portrait)").addEventListener("change", p), { abort: l, axis: () => a === null ? Number(i.has("ArrowRight") || i.has("KeyD")) - Number(i.has("ArrowLeft") || i.has("KeyA")) : 0 };
+}
+class we {
+  context = null;
+  master = null;
+  noiseBuffer = null;
+  voices = /* @__PURE__ */ new Set();
+  peak = 0;
+  volume = 0.35;
+  muted = false;
+  lastMorph = -1;
+  rewardUntil = 0;
+  async unlock() {
+    try {
+      if (this.context ??= new AudioContext(), !this.master) {
+        this.master = this.context.createGain();
+        const s = this.context.createDynamicsCompressor();
+        s.threshold.value = -20, s.ratio.value = 8, this.master.connect(s).connect(this.context.destination), this.noiseBuffer = this.context.createBuffer(1, this.context.sampleRate, this.context.sampleRate);
+        let a = 5819;
+        const i = this.noiseBuffer.getChannelData(0);
+        for (let e = 0; e < i.length; e++) a = Math.imul(a, 1664525) + 1013904223 >>> 0, i[e] = a / 2147483648 - 1;
+      }
+      this.master.gain.value = this.muted ? 0 : this.volume * 0.45, await this.context.resume();
+    } catch {
+    }
+  }
+  note(s, a, i, e, l = 0, c = "sine") {
+    const p = this.context, r = this.master;
+    if (!p || !r || p.state !== "running" || this.muted || this.voices.size >= 20) return;
+    const o = p.createOscillator(), M = p.createGain(), k = p.currentTime + l;
+    o.type = c, o.frequency.setValueAtTime(s, k), o.frequency.exponentialRampToValueAtTime(a, k + i), M.gain.setValueAtTime(1e-4, k), M.gain.linearRampToValueAtTime(e, k + 8e-3), M.gain.exponentialRampToValueAtTime(1e-4, k + i), o.connect(M).connect(r), this.voices.add(o), this.peak = Math.max(this.peak, this.voices.size), o.onended = () => {
+      this.voices.delete(o), o.disconnect(), M.disconnect();
+    }, o.start(k), o.stop(k + i + 0.01);
+  }
+  puff() {
+    const s = this.context, a = this.master;
+    if (!s || !a || !this.noiseBuffer || s.state !== "running" || this.muted || this.voices.size >= 20) return;
+    const i = s.createBufferSource(), e = s.createBiquadFilter(), l = s.createGain();
+    i.buffer = this.noiseBuffer, e.type = "lowpass", e.frequency.value = 1600, l.gain.setValueAtTime(0.08, s.currentTime), l.gain.exponentialRampToValueAtTime(1e-4, s.currentTime + 0.16), i.connect(e).connect(l).connect(a), this.voices.add(i), this.peak = Math.max(this.peak, this.voices.size), i.onended = () => {
+      this.voices.delete(i), i.disconnect(), e.disconnect(), l.disconnect();
+    }, i.start(), i.stop(s.currentTime + 0.17);
+  }
+  morph(s) {
+    const a = this.context;
+    !a || a.currentTime < this.rewardUntil || a.currentTime - this.lastMorph < 0.1 || (this.lastMorph = a.currentTime, this.note(130 + s, 95 + s * 0.7, 0.08, 0.025, 0, "triangle"));
+  }
+  play(s, a = 1) {
+    if (this.context && s !== "ui" && (this.rewardUntil = this.context.currentTime + 0.3), s === "pass") this.puff(), this.note(150, 380, 0.15, 0.07);
+    else if (s === "snack") for (let i = 0; i < a; i++) this.note(420 + i * 120, 660 + i * 100, 0.11, 0.055, i * 0.045);
+    else if (s === "feast") {
+      this.note(170, 85, 0.25, 0.08, 0, "triangle");
+      for (let i = 0; i < 4; i++) this.note([523, 659, 784, 1047][i], [523, 659, 784, 1047][i], 0.25, 0.06, i * 0.065);
+    } else if (s === "warning") this.note(240, 210, 0.09, 0.035, 0, "triangle"), this.note(240, 210, 0.09, 0.035, 0.14, "triangle");
+    else if (s === "damage") this.puff(), this.note(180, 60, 0.24, 0.07, 0, "triangle");
+    else if (s === "clear") for (let i = 0; i < 5; i++) this.note(330 * 2 ** (i / 5), 440 * 2 ** (i / 5), 0.22, 0.06, i * 0.06);
+    else this.note(360, 520, 0.07, 0.035);
+  }
+  set(s, a) {
+    this.volume = Math.max(0, Math.min(1, s)), this.muted = a, a && this.stop(), this.master && (this.master.gain.value = a ? 0 : this.volume * 0.45);
+  }
+  stop() {
+    for (const s of this.voices) try {
+      s.stop();
+    } catch {
+    }
+    this.voices.clear();
+  }
+}
+const ee = "100gare:game058:rules1";
+class ve {
+  data = { rulesVersion: 1, best: 0, volume: 0.35, muted: false, light: false };
+  persistent = true;
+  storage = null;
+  constructor(s) {
+    try {
+      this.storage = s ?? window.localStorage;
+      const a = this.storage.getItem(ee);
+      if (!a) return;
+      const i = JSON.parse(a);
+      if (!i || typeof i != "object" || !("rulesVersion" in i) || i.rulesVersion !== 1) {
+        this.persistent = false;
+        return;
+      }
+      const e = i;
+      if (typeof e.best != "number" || !Number.isInteger(e.best) || e.best < 0 || e.best > 8400 || typeof e.volume != "number" || !Number.isFinite(e.volume) || e.volume < 0 || e.volume > 1 || typeof e.muted != "boolean" || typeof e.light != "boolean") {
+        this.persistent = false;
+        return;
+      }
+      this.data = { rulesVersion: 1, best: e.best, volume: e.volume, muted: e.muted, light: e.light };
+    } catch {
+      this.persistent = false;
+    }
+  }
+  write() {
+    if (!(!this.persistent || !this.storage)) try {
+      this.storage.setItem(ee, JSON.stringify(this.data));
+    } catch {
+      this.persistent = false;
+    }
+  }
+  result(s, a) {
+    !a && Number.isFinite(s) && s >= 0 && (this.data.best = Math.max(this.data.best, Math.min(8400, Math.floor(s))), this.write());
+  }
+}
+const ke = ["factory", "body", "face-normal", "face-happy", "ear", "paw", "cookie-frame", "snack"];
+async function Me(t) {
+  const s = {};
+  return await Promise.all(ke.map(async (a) => {
+    const i = new Image();
+    i.src = `./assets/${a}.webp`, await i.decode(), s[a] = i;
+  })), s;
+}
+function Te() {
+  let t = -1, s = 0, a = [];
+  return function(e, l, c, p, r) {
+    const o = e.canvas, M = o.parentElement, k = Math.max(1, Math.min(M.clientWidth - 2, M.clientHeight - 2));
+    o.style.width = `${k}px`, o.style.height = `${k}px`;
+    const I = Math.max(1, Math.floor(k * Math.min(devicePixelRatio || 1, 2)));
+    if ((o.width !== I || o.height !== I) && (o.width = I, o.height = I), e.setTransform(I / 480, 0, 0, I / 480, 0, 0), e.fillStyle = "#eaf5ef", e.fillRect(0, 0, 480, 480), c.factory && (e.drawImage(c.factory, 0, 0, 480, 480), e.fillStyle = "#effaf2aa", e.fillRect(0, 0, 480, 480)), !r && !c.body) {
+      e.fillStyle = "#244a45", e.font = "20px system-ui", e.textAlign = "center", e.fillText("美術素材を準備しています", 240, 270), e.textAlign = "left";
+      return;
+    }
+    l.time < t && (s = 0, a = []), t = l.time;
+    for (const h of l.outcomes.slice(s)) for (let v = 0; v < (p ? 6 : 20); v++) a.push({ x: u.x, y: u.y, born: h.at, direction: v * 2.39996, speed: 55 + v * 5, failure: !h.passed });
+    s = l.outcomes.length;
+    const f = l.gates[Math.min(l.index, l.gates.length - 1)], S = l.gates[l.index + 1], O = l.outcomes.at(-1), T = O && l.time - O.at < 0.55 ? O : null, J = Math.max(0, (f.contactTick - l.tick) / D);
+    e.fillStyle = "#20473f", e.font = "bold 20px system-ui", e.fillText(`型 ${Math.min(l.index + 1, l.gates.length)}/${l.gates.length}`, 18, 31), e.font = "15px system-ui", e.fillText(`接触まで ${J.toFixed(1)} 秒`, 18, 57), e.fillText(`今の型 ${f.width} × ${f.height}`, 18, 81), e.fillText(S ? `次 ${S.width} × ${S.height}` : "今が最後の型です", 290, 31), S && (e.strokeStyle = "#bc7950", e.lineWidth = 7, e.strokeRect(370 - S.width * 0.21, 76 - S.height * 0.21, S.width * 0.42, S.height * 0.42)), e.fillStyle = "#c9945d";
+    const X = Math.max(0, Math.min(1, 1 - J * D / le));
+    if (!p && l.status === "run") {
+      const h = 0.65 + 0.35 * X;
+      e.globalAlpha = 0.12 + X * 0.12, e.lineWidth = 16, e.strokeStyle = "#a76635", e.strokeRect(u.x - f.width * h / 2, u.y - f.height * h / 2, f.width * h, f.height * h), e.globalAlpha = 1;
+    }
+    c["cookie-frame"] && e.drawImage(c["cookie-frame"], u.x - f.width / 2 - 15, u.y - f.height / 2 - 15, f.width + 30, f.height + 30), e.strokeStyle = "#aa6536", e.lineWidth = 11, e.strokeRect(u.x - f.width / 2 - 5.5, u.y - f.height / 2 - 5.5, f.width + 11, f.height + 11), e.strokeStyle = "#257f76", e.lineWidth = 1.5, e.setLineDash([5, 5]), e.strokeRect(u.x - (f.width - 8) / 2, u.y - (f.height - 8) / 2, f.width - 8, f.height - 8), e.setLineDash([]);
+    const b = l.width, w = oe(l), $ = u.x - b / 2, A = u.y - w / 2;
+    e.save(), e.beginPath(), e.roundRect($, A, b, w, Math.min(14, b / 5, w / 5)), e.clip(), c.body ? e.drawImage(c.body, $, A, b, w) : (e.fillStyle = "#fff5df", e.fillRect($, A, b, w), e.fillStyle = "#ef9f57", e.beginPath(), e.ellipse($ + b * 0.72, A + w * 0.2, b * 0.25, w * 0.25, 0, 0, Math.PI * 2), e.fill()), e.restore();
+    const V = c.ear, W = c.paw;
+    V && (e.drawImage(V, $ + 3, A - 12, 18, 22), e.save(), e.translate($ + b - 3, A - 12), e.scale(-1, 1), e.drawImage(V, 0, 0, 18, 22), e.restore()), W && (e.drawImage(W, $ + 5, A + w - 6, 17, 12), e.drawImage(W, $ + b - 22, A + w - 6, 17, 12));
+    const x = c[T?.passed ? "face-happy" : "face-normal"];
+    if (x) e.drawImage(x, u.x - 18, u.y - 14, 36, 28);
+    else {
+      e.fillStyle = "#43392e";
+      for (const h of [-8, 8]) e.beginPath(), e.arc(u.x + h, u.y - 4, 2, 0, 7), e.fill();
+      e.beginPath(), e.arc(u.x, u.y + 3, 5, 0, Math.PI), e.strokeStyle = "#43392e", e.lineWidth = 2, e.stroke();
+    }
+    e.strokeStyle = T && !T.passed ? "#b1375c" : "#14675e", e.lineWidth = 2.5, e.strokeRect($, A, b, w);
+    for (const h of re(f)) {
+      const v = u.x + h.x, z = u.y + h.y;
+      c.snack ? e.drawImage(c.snack, v - 8, z - 8, 16, 16) : (e.fillStyle = "#e88d43", e.beginPath(), e.arc(v, z, 6, 0, Math.PI * 2), e.fill()), e.fillStyle = "#974d2e", e.beginPath(), e.arc(v, z, 1.5, 0, Math.PI * 2), e.fill();
+    }
+    a = a.filter((h) => l.time - h.born < 0.45).slice(-120);
+    for (const h of a) {
+      const v = l.time - h.born;
+      e.globalAlpha = 1 - v / 0.45, e.fillStyle = h.failure ? "#ba8b66" : "#e5a533", e.fillRect(h.x + Math.cos(h.direction) * v * h.speed - 2, h.y + Math.sin(h.direction) * v * h.speed - 2, 4, 4);
+    }
+    if (e.globalAlpha = 1, e.fillStyle = "#20473f", e.font = "16px system-ui", e.textAlign = "center", e.fillText(`幅 ${b.toFixed(0)} / 高さ ${w.toFixed(0)} · 面積 6400`, 240, 403), e.font = "13px system-ui", e.fillText("実線＝もちねこの判定　点線＝4pxの余裕", 240, 427), T && (e.font = "bold 20px system-ui", e.fillStyle = T.passed ? "#1a7462" : "#a03951", e.fillText(T.passed ? `通過 ＋${T.points + T.bonus}` : T.reason, 240, 464)), T?.bonus && (e.fillStyle = "#e6a52f", e.beginPath(), e.moveTo(216, 126), e.lineTo(214, 105), e.lineTo(227, 115), e.lineTo(240, 99), e.lineTo(253, 115), e.lineTo(266, 105), e.lineTo(264, 126), e.closePath(), e.fill()), e.textAlign = "left", r && (e.font = "11px system-ui", e.fillStyle = "#75513c", e.fillText("技術試作・仮図形 / 美術未完", 18, 116)), Math.abs(b * w - C) > 1e-5) throw new Error("Mochi area invariant");
+  };
+}
+const d = (t) => document.getElementById(t), $e = document.querySelector("canvas"), Ae = $e.getContext("2d"), L = d("layer"), R = d("slider"), he = false, m = new ve(), y = new we(), Se = Te();
+let de = {}, E = "";
+try {
+  de = await Me(he);
+} catch {
+  E = "美術素材を準備中です。通常版は素材の配置後に遊べます。";
+}
+let n = ne(), g = "title", q = performance.now(), P = 0, U = false, _ = n.width, F = () => {
+};
+y.set(m.data.volume, m.data.muted);
+function te() {
+  return `<div class="settings"><label><input id="mute" type="checkbox" ${m.data.muted ? "checked" : ""}>消音</label><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value="${m.data.volume}"></label><label><input id="light" type="checkbox" ${m.data.light ? "checked" : ""}>軽量演出</label></div>`;
+}
+function ie() {
+  for (const t of ["mute", "volume", "light"]) d(t).oninput = () => {
+    m.data.muted = d("mute").checked, m.data.volume = +d("volume").value, m.data.light = d("light").checked, m.write(), y.set(m.data.volume, m.data.muted);
+  };
+}
+function N(t = false) {
+  E || (F(), y.stop(), n = ne(t), g = "run", U = false, _ = n.width, P = 0, q = performance.now(), L.hidden = true, document.body.classList.add("playing"), R.focus({ preventScroll: true }), y.unlock().then(() => {
+    g === "run" && y.play("ui");
+  }));
+}
+function G() {
+  F(), y.stop(), g = "title", B();
+}
+function B() {
+  L.hidden = false, document.body.classList.remove("playing"), g === "title" ? (L.innerHTML = `<article class="card"><img class="portrait" src="./assets/cat-reference.webp" alt="白と橙のもちねこ"><span class="badge">MOCHI MORPH / 試遊版</span><h1>もちねこ、<br>伸縮自在。</h1><p>伸び縮みで型抜き。細くなれば高く、ぺちゃんこなら横のおやつへ。型を通って、四つまとめていただきます。</p>${E ? `<p class="warning">${E}</p>` : ""}<div class="actions"><button id="play" ${E ? "disabled" : ""}>すぐ遊ぶ</button><button id="practice" ${E ? "disabled" : ""}>縦と横を練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${te()}<p class="small">BEST ${m.data.best} / 保存${m.persistent ? "端末内" : "不可・ページ内のみ"}</p></article>`, d("play").onclick = () => N(), d("practice").onclick = () => N(true), d("help").onclick = () => {
+    g = "help", B();
+  }, ie()) : g === "help" ? (L.innerHTML = `<article class="card"><h2>太さを変えて、型を通ろう。</h2><p>左右/A・D、または下のスライダーで幅を変えます。細くすると背が伸び、太くすると低くなります。面積はいつも同じ。指は下のスライダーだけに置けば大丈夫です。</p><p>実線の矩形がもちねこの判定です。型の点線の中に収めれば通過100点。接触は2.8秒ごとで、奥の拡大演出にはまだ判定がありません。</p><p>おやつの中心を体で包めば一つ50点。四つ完食を三型続けると+500。失敗三回で終了、18型を終えてLIFEが残れば成功です。練習は縦→横の二型、記録しません。</p><div class="actions"><button id="practice" ${E ? "disabled" : ""}>練習する</button><button id="title">タイトルへ</button></div></article>`, d("practice").onclick = () => N(true), d("title").onclick = G) : g === "pause" ? (L.innerHTML = `<article class="card"><h2>ひと休み</h2><p>型・もちねこ・時計を止めています。再開後は新しくキーを押すか、スライダーに触れてください。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${te()}</article>`, d("resume").onclick = () => {
+    F(), g = "run", P = 0, q = performance.now(), L.hidden = true, document.body.classList.add("playing"), R.focus({ preventScroll: true }), y.unlock();
+  }, d("title").onclick = G, ie()) : g === "result" && (L.innerHTML = `<article class="card"><span class="badge">${n.practice ? "練習 / 記録なし" : n.status === "clear" ? "18型、おいしく通過！" : "形を変えて、もう一度"}</span><h2>${n.practice ? Z(n) === "練習成功" ? "縦も横も、すぽん！" : "次は型の点線を見てみよう" : `RANK ${Z(n)}`}</h2><div class="result-score">${n.score.toLocaleString()} pt</div><div class="snack-plate"><img src="./assets/snack.webp" alt="おやつのお皿"></div><p>通過 ${n.passed}/${n.gates.length} · 完食 ${n.full}型<br>金の冠 ${n.crowns}回 · LIFE ${n.hp}<br>BEST ${m.data.best}</p><div class="actions">${n.practice ? `<button id="play" ${E ? "disabled" : ""}>本番へ</button>` : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, n.practice && (d("play").onclick = () => N()), d("retry").onclick = () => N(n.practice), d("title").onclick = G), L.querySelector("button:not(:disabled)")?.focus({ preventScroll: true });
+}
+function j() {
+  g === "run" && (F(), y.stop(), g = "pause", B());
+}
+const fe = be(R, { active: () => g === "run", target: (t) => {
+  ce(n, t);
+}, halt: () => ge(n), pause: j, unlock: () => {
+  y.unlock();
+} });
+F = fe.abort;
+d("pause").onclick = j;
+window.addEventListener("pagehide", () => y.stop());
+B();
+function ue(t) {
+  performance.now();
+  const s = (t - q) / 1e3;
+  if (q = t, g === "run") if (s > 0.8) j(), P = 0;
+  else {
+    for (P += s; P >= 1 / 120; ) ye(n, fe.axis()), P -= 1 / 120;
+    Math.abs(n.width - _) >= 4 && (y.morph(n.width), _ = n.width);
+    for (const i of n.events.splice(0)) y.play(i.kind, i.n);
+    n.status !== "run" && (F(), U || (U = true, m.result(n.score, n.practice), y.play(n.status === "clear" ? "clear" : "damage")), g = "result", B());
+  }
+  Se(Ae, n, de, m.data.light || matchMedia("(prefers-reduced-motion:reduce)").matches, he), d("score").textContent = String(n.score), d("time").textContent = Math.max(0, n.gates.length * 2.8 - n.time).toFixed(1), d("life").textContent = String(n.hp), d("count").textContent = `${n.passed}/${n.gates.length}`, d("notice").textContent = n.notice;
+  const a = (n.width - 40) / 140 * 100;
+  R.style.setProperty("--thumb-left", `calc(${a}% + ${2 - 0.36 * a}px)`), R.setAttribute("aria-valuenow", n.width.toFixed(1)), R.setAttribute("aria-valuetext", `幅${n.width.toFixed(0)}、高さ${oe(n).toFixed(0)}`), requestAnimationFrame(ue);
+}
+requestAnimationFrame(ue);

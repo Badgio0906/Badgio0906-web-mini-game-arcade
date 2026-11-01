@@ -1,0 +1,10 @@
+{
+  "checks": [],
+  "errors": [],
+  "blockedExternal": [
+    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2598150338179299"
+  ],
+  "scope": "actual production-mode local HTTP build;no live telemetry/ads;not production deployment",
+  "status": "FAIL",
+  "error": "locator.click: Error: strict mode violation: locator('[data-tag-id=\"stealth\"]') resolved to 2 elements:\n    1) <button type=\"button\" aria-pressed=\"false\" data-tag-id=\"stealth\">ステルス 1</button> aka getByRole('button', { name: 'ステルス' })\n    2) <li class=\"game-tag\" data-tag-id=\"stealth\">ステルス</li> aka locator('a').filter({ hasText: '怪盗、あと一個だけ。ONE MORE HEIST' })\n\nCall log:\n\u001b[2m  - waiting for locator('[data-tag-id=\"stealth\"]')\u001b[22m\n\n    at /tmp/arcade-publication-20261101/tests/batches/prototype-publication-20261101/production-site.mjs:2:719"
+}

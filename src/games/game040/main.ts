@@ -7,8 +7,8 @@ installGaps(CleaningAudio,new URL('./assets/game040/gaps/bank.json',document.bas
 import {loadSave,persistSave,recordResult} from './storage';
 import {CleaningArt,CleaningRenderer} from './renderer';
 const $=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
-const returnHref=location.pathname.endsWith('/game040.html')?'./index.html':'../../';
-const app=$('app');app.innerHTML=`<header class="topbar"><a href="${returnHref}" id="return-link">← 試遊メニューへ</a><span class="local">GAME040 · LOCAL CANDIDATE</span><nav><button id="settings" aria-label="音と演出の設定">設定</button><button id="help" aria-label="遊び方">？</button><button id="pause" aria-label="休憩" disabled>休憩</button></nav></header>
+const returnHref='../../';
+const app=$('app');app.innerHTML=`<header class="topbar"><a href="${returnHref}" id="return-link">← ゲーム一覧へ</a><span class="local">試遊版</span><nav><button id="settings" aria-label="音と演出の設定">設定</button><button id="help" aria-label="遊び方">？</button><button id="pause" aria-label="休憩" disabled>休憩</button></nav></header>
 <section class="workspace"><section class="board-shell"><div class="board-title"><b>AFTER HOURS</b><span id="wave-name">閉店後のゲームセンター</span></div><canvas id="battle" width="480" height="480" aria-label="敵が上から迫る清掃エリア。危険ラインの手前で缶を倒そう。"></canvas><p id="event-text" aria-live="polite">吸ったゴミで、ゴミを吹き飛ばせ。</p></section>
 <aside class="rail"><section class="run-hud"><div class="hud-portrait"><img id="hud-hero" src="./assets/game040/hero-normal.webp" alt="清掃スタッフ"></div><div class="time"><small>TIME</small><b id="time">60.0</b></div><div class="score"><small>SCORE</small><b id="score">000000</b><span>BEST <strong id="best">0</strong></span></div><div class="lives"><small>LIFE</small><b id="lives">♥♥♥</b></div></section>
 <section class="hero-scene" aria-label="清掃スタッフと大型掃除機"><p class="staff-line" id="staff-line">了解。火力、上げます。</p><img id="hero" src="./assets/game040/hero-normal.webp" alt="自信満々な成人の清掃スタッフ"><img class="big-vacuum" src="./assets/game040/vacuum-body.webp" alt="巨大な業務用掃除機"><span class="staff-tag">CLEANING CREW / 01</span></section>

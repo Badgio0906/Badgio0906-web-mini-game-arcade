@@ -1,0 +1,79 @@
+{
+  "scope": "TARGETED_LIGHT_UNITS_TYPES_SYNTAX_ONLY",
+  "base": "52c5fc72fb24c77be48d1db1eae2eb0332727e99",
+  "checks": [
+    {
+      "name": "unit",
+      "command": [
+        "./node_modules/.bin/vitest",
+        "run",
+        "tests/unit/game048-audio.test.ts",
+        "tests/unit/game048-core.test.ts",
+        "tests/unit/game048-game.test.ts",
+        "tests/unit/game048-input.test.ts",
+        "tests/unit/game048-storage.test.ts",
+        "--no-cache"
+      ],
+      "started": "2026-11-01T12:35:11.739742+00:00",
+      "ended": "2026-11-01T12:35:12.820669+00:00",
+      "exitCode": 0,
+      "log": "docs/game048/QA/UI_UNIT.log"
+    },
+    {
+      "name": "strict-types",
+      "command": [
+        "./node_modules/.bin/tsc",
+        "--noEmit",
+        "--strict",
+        "--noUnusedLocals",
+        "--noUnusedParameters",
+        "--skipLibCheck",
+        "--target",
+        "ES2022",
+        "--module",
+        "ESNext",
+        "--moduleResolution",
+        "Bundler",
+        "--lib",
+        "ES2022,DOM,DOM.Iterable",
+        "--types",
+        "vite/client",
+        "src/games/game048/audio.ts",
+        "src/games/game048/courseModel.ts",
+        "src/games/game048/game.ts",
+        "src/games/game048/input.ts",
+        "src/games/game048/main.ts",
+        "src/games/game048/model.ts",
+        "src/games/game048/renderer.ts",
+        "src/games/game048/storage.ts"
+      ],
+      "started": "2026-11-01T12:35:12.820711+00:00",
+      "ended": "2026-11-01T12:35:13.473476+00:00",
+      "exitCode": 0,
+      "log": "docs/game048/QA/TYPES.log"
+    },
+    {
+      "name": "probe-syntax",
+      "command": [
+        "node",
+        "--check",
+        "tests/game048/native-probe.mjs"
+      ],
+      "started": "2026-11-01T12:35:13.473504+00:00",
+      "ended": "2026-11-01T12:35:13.535338+00:00",
+      "exitCode": 0,
+      "log": "docs/game048/QA/PROBE_SYNTAX.log"
+    }
+  ],
+  "originalPhysics": "BYTE_PRESERVED_IN_SEPARATE_COURSE",
+  "boundedSensitivityTicks": 1987765,
+  "sensitivityBudget": 2000000,
+  "build": "NOT_RUN",
+  "native": "NOT_RUN",
+  "imagegen": "ROOT_OWNED",
+  "performance": "NOT_RUN",
+  "human": "NOT_RUN",
+  "listening": "NOT_RUN",
+  "cost": null,
+  "tokens": null
+}
