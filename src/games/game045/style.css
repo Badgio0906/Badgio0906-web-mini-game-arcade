@@ -7,3 +7,5 @@ button:disabled{opacity:.5;cursor:default}header strong{font-size:clamp(11px,2.8
 header a,header button{flex:0 0 auto;white-space:nowrap}header button{padding:8px 10px}header strong{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 .controls{grid-template-columns:repeat(4,minmax(0,1fr))}.controls #fire{grid-column:1/-1}.controls #fire img{max-height:28px}.controls button{min-width:44px;min-height:44px}@media(min-aspect-ratio:13/10){.controls{grid-template-rows:48px 52px auto;align-content:end}.controls button{min-height:44px}.controls #fire{min-height:48px}}
+
+.controls{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:44px 44px 48px auto}.controls button{min-height:44px;font-size:15px}.controls #fire{grid-row:3}.controls #fire img{height:25px}@media(min-aspect-ratio:13/10){.controls{grid-template-rows:44px 44px 48px auto}}

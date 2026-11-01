@@ -1,7 +1,9 @@
-# 作業中 — 公開未完了
+# 作業中・未公開
 
-branch codex/prototype-publication-20261101、main6211019f基準。元/workspaceの未commitは非破壊。040-049ネイティブsource、GAPS52WAV、050-059検証済み配布runtime、添付3bundle元sourceを回収。新10の元TS/source-mapはなし、compiled配布を原本として保全。040/049の新規3RED→GREEN、全88unit/型/個別build/4幅normalbrowserPASS。041army新作替えはmodel+UI、042/044/046/047は改修中、状態台帳が正本。完成・公開済みとは扱わない。
+base main6211019f、branch codex/prototype-publication-20261101。/workspace旧未commit/他branch保護。旧GAPS52 WAVと040r3原本保全。新10は提供配布JSと画像を全hash照合、元TS/mapsは復元できず、050/051のみ配布JSから読める形式へ復元して許可改修。
 
-先の/tmp消失を再発させないため、節目でローカルbundle/ZIPをダウンロード用に保存する。localcommitはGitHub backupではない。main/push/PR/Actions/Pages未操作。今回のユーザーは最終公開を承認しているが、過去の費用不明時停止条件を流用解除しない。製品/QAを完成させてから無料条件を確認し、必要なら最後に具体的push対象について問い合わせ。
+041は3レーン40列のPC安全/戦闘・390touchクリア、045は12面22発PC/touchクリア。040/049は4幅起動・入力。046は8素材を実ImageGen生成→Pixelizer d740fb0で変換、240×320描画。050は提供画像8点をPixelizerで変換（新規ImageGen生成ではない）。047はmodel routeクリア、実browser継続中。各QAはdocs/agent-tasks/prototype-publication-20261101/QA/を参照。人間の面白さ/実iPhone/聴感は未認定。
 
-次の3手: 041ブラウザとreview→046ImageGen+pixelizer→残りのモデル/画面改修と23作品のcatalog登録。023作品は040-059(040明示依頼を含む)とC21-C23。C21=060/C22=061/C23=062は予約候補で最終既存ID照合後に登録。既存公開28と保留031/削除4は維持。common広告/解析/Worker/D1/既存保存は変更しない。
+再開時: STATE.jsonとgit statusを確認。実行中のbrowser sessionは57368、ログ/tmp/full-snow-return-echo.log。独立ビルドはtests/gameNNN/vite.config.mjs（040のみ.ts）、GAME0NN_OUT=/tmp/publication-NNN、--mode qa。050/051は既定でそのout。
+
+次の3手: 047/050/051 native QA→旧8GAPS橋渡しと046視覚→trio060-062予約確認と素材/native統合、全23のcatalog/tags/routes。最新main再fetch、費用条件監査後のみremote操作を判断。main/remote/Pages/広告設定未変更。GitHub保存の代わりになるとlocalcommitを説明しない。
