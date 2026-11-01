@@ -5,7 +5,7 @@ import {
   dronePosAt, reserve, result, runEndMs, type GameEvent, type Mode, type State,
 } from './model';
 import { Sfx } from './audio';
-import { buildSprites, prepareSprites, type Sprites } from './art';
+import { buildSprites, type Sprites } from './art';
 import { isPersistent, loadBest, loadSettings, saveBestIfHigher, saveSettings } from './storage';
 
 declare const __BUILD_MODE__: 'preview' | 'native';
@@ -18,7 +18,6 @@ const sfx = new Sfx();
 const settings = loadSettings();
 sfx.muted = settings.muted;
 
-await prepareSprites();
 let sprites: Sprites;
 let dpr = 1;
 let phase: Phase = 'title';
@@ -37,12 +36,12 @@ const MAX_PARTICLES = 240;
 function resize() {
   const wrap = $('stage-wrap');
   const size = Math.max(200, Math.floor(Math.min(wrap.clientWidth, wrap.clientHeight)));
-  dpr = 240 / size;
+  dpr = Math.min(2, window.devicePixelRatio || 1);
   canvas.style.width = `${size}px`;
   canvas.style.height = `${size}px`;
   canvas.width = Math.round(size * dpr);
   canvas.height = Math.round(size * dpr);
-  sprites = buildSprites(1);g.imageSmoothingEnabled=false;
+  sprites = buildSprites(Math.max(1, (size * dpr) / LOGICAL));
 }
 window.addEventListener('resize', resize);
 
@@ -356,7 +355,7 @@ function drawFx(t: number) {
       const x = -200 + slide * 200;
       g.fillStyle = 'rgba(20,30,90,0.92)'; g.fillRect(x, 300, 300, 96);
       g.fillStyle = '#ffc531'; g.fillRect(x, 300, 300, 4); g.fillRect(x, 392, 300, 4);
-      g.drawImage(sprites.heroSmug, x + 4, 300, 64, 96);
+      g.drawImage(sprites.heroSmug, x + 4, 300, 96, 96);
       g.fillStyle = '#fff'; g.font = 'bold 20px system-ui, sans-serif'; g.textAlign = 'left';
       g.fillText('着弾、定刻です。', x + 106, 342);
       g.fillStyle = '#7fe9ff'; g.font = 'bold 14px system-ui, sans-serif';
@@ -377,7 +376,7 @@ function drawHud(t: number) {
   g.fillStyle = '#7fe9ff';
   g.fillText(mode === 'run' ? `SHIELD ${'◆'.repeat(Math.max(0, state.shield))}${'◇'.repeat(Math.max(0, 3 - state.shield))}` : '練習', 470, 31);
   // hero + slots in the bottom strip (outside the battlefield)
-  g.drawImage(sprites.heroNormal, 4, FIELD_BOTTOM - 10, 56, 84);
+  g.drawImage(sprites.heroNormal, 4, FIELD_BOTTOM - 10, 84, 84);
   g.textAlign = 'left'; g.font = 'bold 12px system-ui, sans-serif'; g.fillStyle = '#cfe0ff';
   g.fillText('予約枠', 98, FIELD_BOTTOM + 18);
   state.slots.forEach((sl, i) => {

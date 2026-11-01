@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-11-01 UTC：**4作品のドット絵化撤回をローカル実装・検証、未push・本番未反映。** 046/050は保存済み元WebP、060/061は元試作のコード描画とDPR表示へ復帰。SE/花火/易化/保存と公開50/完成9/試遊41を維持。型・対象60tests・全体build・qa16/production16画面成功、独立静的/8画像レビュー済み。PR20公開はmain7209da2f・Pages41311374285で完了している（以下の「公開処理中」は当時の履歴）。今回のWebhook/billing403については前回公開1回の了承を流用せず、作者判断前はremote/本番に反映しない。[今回報告](agent-tasks/revert-pixel-art-four-20261101/IMPLEMENTATION_REPORT.md)。
+
 2026-11-01 JST：**新作22作品の改修・GAPS統合版を正式公開する作者承認を受領。現在は公開処理中。** 承認対象fb82f149（ゲームソース9252ffad）を基に、通常branch push→PR/自動CI→通常merge→既存Pages1回を実施する。今回のWebhook403/account billing403の不明点は作者が明示了承済み。有料Runner/API/新規契約/課金設定/Webhook変更は禁止を維持。統合後のカタログは旧28＋新22＝50、完成9/試遊41。040〜047・049〜062を試遊版として追加し、048は通常入力の完走未確認で公開保留（ソース・素材・失敗証拠は保存）。031保留・削除4・037/039未公開を維持。型/1288tests/25offlineJev/build、22本のproduction起動・帰還/タグ/お気に入り・旧28URLをローカル検証済み。公開成功は[公開記録](agent-tasks/prototype-publication-20261101/PUBLICATION_REPORT.md)のmain SHA/Pages/本番結果で確認する。AdSense再申請・Worker/D1・広告/CMP/解析設定・既存保存の変更なし。以下は以前の履歴。
 
 2026-10-22 JST：**PR11/Game015正式公開を作者承認、実機8項目合格。現在公開前。** 候補d9514c3はmain b419041とremote dbdf915を保持。iPhone SE3/iOS27.0.1（作者申告）で入力・回転/明示再開・練習・Safariバー・結果/BEST/帰還を確認。製品不変の実機文書を追加し、PR11通常push→既存CI→通常merge→既存Pages1回へ進む。PR18[open]/28作品/9完成19試遊/031保留/削除4/012横専用/036038を保持。費用不明点は今回分を了承済み。有料API等・AdSense再申請なし。結果は[公開記録](game015/mobile-ux/publication-20261022/PUBLICATION_REPORT.md)。下記は当時の履歴。

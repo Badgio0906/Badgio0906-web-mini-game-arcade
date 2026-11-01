@@ -70,9 +70,7 @@ let M = [], $ = /* @__PURE__ */ new Set(), P = 0;
 function j(e, i, t, o) {
   const a = e.canvas, s = a.parentElement, l = Math.max(1, Math.min(s.clientWidth - 2, s.clientHeight - 2));
   a.style.width = l + "px", a.style.height = l + "px";
-  const f = 240;
-  a.style.imageRendering = "pixelated";
-  e.imageSmoothingEnabled = false;
+  const f = Math.max(1, Math.floor(l * Math.min(devicePixelRatio || 1, 2)));
   a.width !== f && (a.width = f, a.height = f), e.setTransform(f / 480, 0, 0, f / 480, 0, 0), i.time < P && (M = [], $.clear()), P = i.time, e.fillStyle = "#3f392b", e.fillRect(0, 0, 480, 480), t.ruins && (e.drawImage(t.ruins, 0, 0, 480, 480), e.fillStyle = "#201f1a55", e.fillRect(0, 0, 480, 480)), e.strokeStyle = "#eec66c", e.lineWidth = 2, e.setLineDash([8, 8]), e.beginPath(), e.moveTo(0, 420), e.lineTo(480, 420), e.stroke(), e.setLineDash([]);
   for (const n of i.enemies) {
     if (n.hp <= 0) {

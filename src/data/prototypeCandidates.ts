@@ -102,8 +102,7 @@ export const prototypeCandidates=[
     "tagIds": [
       "physics",
       "reflex",
-      "score-attack",
-      "pixel-art"
+      "score-attack"
     ],
     "route": "./games/pinball-1000/index.html",
     "releaseOrder": 46,
@@ -166,8 +165,7 @@ export const prototypeCandidates=[
     "tagIds": [
       "decision",
       "precision",
-      "score-attack",
-      "pixel-art"
+      "score-attack"
     ],
     "route": "./games/return_rush/index.html",
     "releaseOrder": 50,
@@ -326,8 +324,7 @@ export const prototypeCandidates=[
     "tagIds": [
       "decision",
       "precision",
-      "score-attack",
-      "pixel-art"
+      "score-attack"
     ],
     "route": "./games/thunder_booking/index.html",
     "releaseOrder": 60,
@@ -342,8 +339,7 @@ export const prototypeCandidates=[
     "tagIds": [
       "puzzle",
       "decision",
-      "score-attack",
-      "pixel-art"
+      "score-attack"
     ],
     "route": "./games/shift_burst/index.html",
     "releaseOrder": 61,

@@ -4,7 +4,7 @@ import {
   room, roomsFor, score, selectCannon, shift, type GameEvent, type Mode, type State,
 } from './model';
 import { Sfx } from './audio';
-import { BRASS, CREAM, TURQ, buildSprites, prepareSprites, type Sprites } from './art';
+import { BRASS, CREAM, TURQ, buildSprites, type Sprites } from './art';
 import { isPersistent, loadBest, loadSettings, saveBestIfHigher, saveSettings } from './storage';
 
 declare const __BUILD_MODE__: 'preview' | 'native';
@@ -24,7 +24,6 @@ const sfx = new Sfx();
 const settings = loadSettings();
 sfx.muted = settings.muted;
 
-await prepareSprites();
 let sprites: Sprites;
 let phase: Phase = 'title';
 let mode: Mode = 'run';
@@ -44,11 +43,11 @@ const MAX_PARTICLES = 240;
 function resize() {
   const wrap = $('stage-wrap');
   const size = Math.max(180, Math.floor(Math.min(wrap.clientWidth, wrap.clientHeight)));
-  const dpr = 240 / size;
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
   canvas.style.width = `${size}px`; canvas.style.height = `${size}px`;
   canvas.width = Math.round(size * dpr); canvas.height = Math.round(size * dpr);
   $('controls').style.width = `${Math.max(size, Math.min(wrap.clientWidth, 480))}px`;
-  sprites = buildSprites(1);g.imageSmoothingEnabled=false;
+  sprites = buildSprites(Math.max(1, (size * dpr) / L));
 }
 window.addEventListener('resize', resize);
 const toLogical = (cx: number, cy: number) => { const r = canvas.getBoundingClientRect(); return { x: ((cx - r.left) / r.width) * L, y: ((cy - r.top) / r.height) * L }; };
@@ -315,7 +314,7 @@ function drawFx(t: number) {
       const x = L - slide * 290;
       g.fillStyle = 'rgba(58,26,16,0.94)'; g.fillRect(x, 150, 300, 90);
       g.fillStyle = TURQ; g.fillRect(x, 150, 300, 4); g.fillRect(x, 236, 300, 4);
-      g.drawImage(sprites.gunnerWin, x + 4, 146, 61, 92);
+      g.drawImage(sprites.gunnerWin, x + 4, 146, 92, 92);
       g.fillStyle = '#ffe066'; g.font = '900 24px system-ui, sans-serif'; g.textAlign = 'left'; g.fillText('全段、開通！', x + 102, 192);
       g.fillStyle = CREAM; g.font = 'bold 13px system-ui, sans-serif'; g.fillText('一発で4段ぶち抜き', x + 104, 218);
       g.globalAlpha = 1;
@@ -331,7 +330,7 @@ function drawHud(t: number) {
   g.fillText(mode === 'run' ? `${(Math.max(0, RUN_MS - t) / 1000).toFixed(1)}s` : '練習', 228, 30);
   g.fillText(`室 ${Math.min(state.roomsCleared + 1, roomsFor(mode))}/${roomsFor(mode)}`, 312, 30);
   g.textAlign = 'right'; g.fillStyle = TURQ; g.fillText(`弾 ${state.ammo}`, 470, 30);
-  g.drawImage(sprites.gunner, 2, STRIP_Y - 8, 53, 80);
+  g.drawImage(sprites.gunner, 2, STRIP_Y - 8, 80, 80);
   g.textAlign = 'left'; g.fillStyle = CREAM; g.font = 'bold 13px system-ui, sans-serif';
   g.fillText(`移動 ${state.moveSteps}段（コスト -${state.moveSteps * 20}）`, 88, STRIP_Y + 24);
   const locked = isLocked(state, Math.round(t));
