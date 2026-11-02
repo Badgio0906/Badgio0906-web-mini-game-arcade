@@ -1,0 +1,22 @@
+E
+======================================================================
+ERROR: test_shadow (unittest.loader._FailedTest.test_shadow)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_shadow
+Traceback (most recent call last):
+  File "C:\Users\romcr\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\romcr\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "D:\�~�j�Q�[���J��\arcade-game060-gaps-20261102\tests\jev\test_shadow.py", line 18, in <module>
+    spec.loader.exec_module(jev)
+  File "D:\�~�j�Q�[���J��\arcade-game060-gaps-20261102\tools\jev-shadow.py", line 4, in <module>
+    import fcntl
+ModuleNotFoundError: No module named 'fcntl'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

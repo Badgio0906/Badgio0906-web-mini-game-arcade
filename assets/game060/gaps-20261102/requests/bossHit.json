@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "name": "game060_bossHit",
+  "tags": [
+    "game060",
+    "bossHit"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026080,
+    "sample_rate": 48000,
+    "name": "bossHit",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.055,
+        "gain_db": -9,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1100,
+          "lowpass_hz": 6200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0066,
+          "sustain": 0.18,
+          "release": 0.044000000000000004
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 190,
+        "end_frequency": 68,
+        "duration": 0.29,
+        "gain_db": -10,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.052199999999999996,
+          "sustain": 0.22,
+          "release": 0.1885
+        }
+      },
+      {
+        "wave": "triangle",
+        "frequency": 1175,
+        "end_frequency": 587,
+        "duration": 0.16,
+        "gain_db": -20,
+        "delay": 0.018,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0288,
+          "sustain": 0.22,
+          "release": 0.10400000000000001
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 1760,
+        "end_frequency": 880,
+        "duration": 0.2,
+        "gain_db": -24,
+        "delay": 0.03,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.036,
+          "sustain": 0.22,
+          "release": 0.13
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

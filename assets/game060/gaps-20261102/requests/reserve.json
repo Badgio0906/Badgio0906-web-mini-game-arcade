@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "name": "game060_reserve",
+  "tags": [
+    "game060",
+    "reserve"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026000,
+    "sample_rate": 48000,
+    "name": "reserve",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "triangle",
+        "frequency": 880,
+        "end_frequency": 1320,
+        "duration": 0.085,
+        "gain_db": -17,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.015300000000000001,
+          "sustain": 0.22,
+          "release": 0.05525000000000001
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 1760,
+        "end_frequency": 1760,
+        "duration": 0.1,
+        "gain_db": -23,
+        "delay": 0.035,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.018,
+          "sustain": 0.22,
+          "release": 0.065
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.022,
+        "gain_db": -19,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1800,
+          "lowpass_hz": 6500
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0026399999999999996,
+          "sustain": 0.18,
+          "release": 0.0176
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

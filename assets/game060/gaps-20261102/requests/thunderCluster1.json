@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "name": "game060_thunderCluster1",
+  "tags": [
+    "game060",
+    "thunderCluster"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026040,
+    "sample_rate": 48000,
+    "name": "thunderCluster1",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.075,
+        "gain_db": -5,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1400,
+          "lowpass_hz": 8500
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.009,
+          "sustain": 0.18,
+          "release": 0.06
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 125.0,
+        "end_frequency": 38,
+        "duration": 0.46799999999999997,
+        "gain_db": -7,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.08424,
+          "sustain": 0.22,
+          "release": 0.30419999999999997
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.72,
+        "gain_db": -5,
+        "delay": 0.012,
+        "effects": {
+          "highpass_hz": 45,
+          "lowpass_hz": 1150
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.08639999999999999,
+          "sustain": 0.18,
+          "release": 0.576
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.035,
+        "gain_db": -15,
+        "delay": 0.026,
+        "effects": {
+          "highpass_hz": 900,
+          "lowpass_hz": 6200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.004200000000000001,
+          "sustain": 0.18,
+          "release": 0.028000000000000004
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.025,
+        "gain_db": -18,
+        "delay": 0.069,
+        "effects": {
+          "highpass_hz": 1900,
+          "lowpass_hz": 7200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.003,
+          "sustain": 0.18,
+          "release": 0.020000000000000004
+        }
+      },
+      {
+        "wave": "triangle",
+        "frequency": 784.0,
+        "end_frequency": 807.52,
+        "duration": 0.15,
+        "gain_db": -22,
+        "delay": 0.055,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.027,
+          "sustain": 0.22,
+          "release": 0.0975
+        }
+      },
+      {
+        "wave": "triangle",
+        "frequency": 988.0,
+        "end_frequency": 1017.64,
+        "duration": 0.15,
+        "gain_db": -22,
+        "delay": 0.10300000000000001,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.027,
+          "sustain": 0.22,
+          "release": 0.0975
+        }
+      },
+      {
+        "wave": "triangle",
+        "frequency": 1175.0,
+        "end_frequency": 1210.25,
+        "duration": 0.15,
+        "gain_db": -22,
+        "delay": 0.151,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.027,
+          "sustain": 0.22,
+          "release": 0.0975
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

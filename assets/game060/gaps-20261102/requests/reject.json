@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "name": "game060_reject",
+  "tags": [
+    "game060",
+    "reject"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026010,
+    "sample_rate": 48000,
+    "name": "reject",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "triangle",
+        "frequency": 220,
+        "end_frequency": 150,
+        "duration": 0.12,
+        "gain_db": -17,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.021599999999999998,
+          "sustain": 0.22,
+          "release": 0.078
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 165,
+        "end_frequency": 120,
+        "duration": 0.1,
+        "gain_db": -23,
+        "delay": 0.015,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.018,
+          "sustain": 0.22,
+          "release": 0.065
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}
