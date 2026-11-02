@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-11-02 JST：Game060左下HUD人物を作者添付に基づく透過PNGへ差し替えたローカル候補。PR22のGAPSと他描画/ルール/保存を保持。型・17tests・個別build・4幅browser成功。未push/本番未反映。[報告](game060/user-portrait-20261102/REPORT.md)。
+
 2026-11-02 JST：**Game060「雷、予約しました。」のGAPS SE改善を実装・検証。** GitHub main7921686eから独立し、DドライブのGAPSで13種のWAVと再現レシピを制作。通常/まとめ撃破/6機一撃の区別、予約・空振り・ボス・成功失敗音、最大10声とmute/pause/retry cleanupを追加。型・全体build・1294単体・4幅/subpathのproduction操作・通常入力20,400点/Sランク・全cue/破損音源fallbackを確認し、独立レビューの非同期pause/resume findingを修正済み。ルール/保存/描画/50掲載は維持、人間聴感/実機は未確認。[実装・検証](game060/gaps-se-20261102/IMPLEMENTATION_REPORT.md)。GitHubと本番の最終反映状態は同階層の公開記録を確認する。
 
 2026-11-01 UTC：**4作品のドット絵化撤回をローカル実装・検証、未push・本番未反映。** 046/050は保存済み元WebP、060/061は元試作のコード描画とDPR表示へ復帰。SE/花火/易化/保存と公開50/完成9/試遊41を維持。型・対象60tests・全体build・qa16/production16画面成功、独立静的/8画像レビュー済み。PR20公開はmain7209da2f・Pages41311374285で完了している（以下の「公開処理中」は当時の履歴）。今回のWebhook/billing403については前回公開1回の了承を流用せず、作者判断前はremote/本番に反映しない。[今回報告](agent-tasks/revert-pixel-art-four-20261101/IMPLEMENTATION_REPORT.md)。

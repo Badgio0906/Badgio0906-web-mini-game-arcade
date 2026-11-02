@@ -1,5 +1,19 @@
 // Procedural (code-drawn) sprites. These are NOT ImageGen assets: ImageGen was unavailable in the
 // production session, so art status is BLOCKED_ART and these are labelled placeholder-grade art.
+// User-supplied HUD character, isolated from the background using ImageGen on 2026-11-02.
+let hudPortrait: HTMLImageElement;
+export async function loadHudPortrait() {
+  hudPortrait = new Image();
+  hudPortrait.src = './assets/hud-user-portrait.png';
+  await hudPortrait.decode();
+}
+function hud(scale: number) {
+  const [c, g] = canvas(96, 96, scale);
+  const k = Math.min(96 / hudPortrait.naturalWidth, 96 / hudPortrait.naturalHeight);
+  const w = hudPortrait.naturalWidth * k, h = hudPortrait.naturalHeight * k;
+  g.drawImage(hudPortrait, (96 - w) / 2, 96 - h, w, h);
+  return c;
+}
 const NAVY = '#1f2f6b';
 const CYAN = '#38e0ff';
 const GOLD = '#ffc531';
@@ -117,6 +131,6 @@ function hero(scale: number, smug: boolean) {
 export function buildSprites(scale: number): Sprites {
   return {
     bg: background(scale), drone: drone(scale), boss: boss(scale, false), bossDamaged: boss(scale, true),
-    heroNormal: hero(scale, false), heroSmug: hero(scale, true),
+    heroNormal: hud(scale), heroSmug: hero(scale, true),
   };
 }
