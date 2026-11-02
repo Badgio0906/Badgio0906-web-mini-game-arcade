@@ -32,4 +32,4 @@ WebAudioの既存master/compressorを使い、読み込みやデコードが間�
 
 公開リポジトリと既存2 workflowsを確認。PRは標準ubuntu-latestで検証のみ、mainへの通常mergeで既存Pagesが公開する。Webhook一覧は取得成功・0件。新規workflow、Runner、サービス、キー、課金設定は追加しない。公開リポジトリでの標準Runnerの実行は[GitHub公式の無料利用範囲](https://docs.github.com/en/actions/concepts/billing-and-usage)に該当する。個人billing APIの参照はscope不足だったため、口座全体の費用確認済みとは扱わない。
 
-最終のPR・merge・既存Pages実行・配信WAV照合は、公開後のPUBLICATION_REPORT.mdへ記録する。
+PR22を通常mergeし、main `e0dfed9b`と既存Pages41386645437のbuild/deploy成功、本番15ファイル照合とPC/スマホ幅の再生を確認した。事後の詳細は[公開記録](PUBLICATION_REPORT.md)。製品はmain反映済みで、この事後記録は `docs/game060-gaps-publication-20261102` branchに保存する。

@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-11-02 JST：**Game060 GAPS SE改善を正式公開・本番確認済み。** PR22を通常mergeし、main `e0dfed9b`・Pages41386645437のbuild/deploy成功。公開JS/CSS＋13WAVのハッシュ一致、PCクリック/スマホ幅touchscreen tapによる予約→6機落雷、13音デコードとpause停止を確認。事前の1294単体・offline25・通常フルRUN/Sランク/4幅検証を維持。人間聴感/実機は未確認。[公開記録](game060/gaps-se-20261102/PUBLICATION_REPORT.md)。この事後記録は `docs/game060-gaps-publication-20261102` branchに保存し、製品はPR22でmain反映済み。
+
 2026-11-02 JST：**Game060「雷、予約しました。」のGAPS SE改善を実装・検証。** GitHub main7921686eから独立し、DドライブのGAPSで13種のWAVと再現レシピを制作。通常/まとめ撃破/6機一撃の区別、予約・空振り・ボス・成功失敗音、最大10声とmute/pause/retry cleanupを追加。型・全体build・1294単体・4幅/subpathのproduction操作・通常入力20,400点/Sランク・全cue/破損音源fallbackを確認し、独立レビューの非同期pause/resume findingを修正済み。ルール/保存/描画/50掲載は維持、人間聴感/実機は未確認。[実装・検証](game060/gaps-se-20261102/IMPLEMENTATION_REPORT.md)。GitHubと本番の最終反映状態は同階層の公開記録を確認する。
 
 2026-11-01 UTC：**4作品のドット絵化撤回をローカル実装・検証、未push・本番未反映。** 046/050は保存済み元WebP、060/061は元試作のコード描画とDPR表示へ復帰。SE/花火/易化/保存と公開50/完成9/試遊41を維持。型・対象60tests・全体build・qa16/production16画面成功、独立静的/8画像レビュー済み。PR20公開はmain7209da2f・Pages41311374285で完了している（以下の「公開処理中」は当時の履歴）。今回のWebhook/billing403については前回公開1回の了承を流用せず、作者判断前はremote/本番に反映しない。[今回報告](agent-tasks/revert-pixel-art-four-20261101/IMPLEMENTATION_REPORT.md)。
