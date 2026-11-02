@@ -328,7 +328,7 @@ export const prototypeCandidates=[
     ],
     "route": "./games/thunder_booking/index.html",
     "releaseOrder": 60,
-    "thumbnail": "./assets/portal/game060.jpg"
+    "thumbnail": "./assets/portal/game060-portrait-20261102.jpg"
   },
   {
     "id": "game061",
