@@ -22,7 +22,7 @@ The initial unit mock's synchronous state updates concealed this ordering. A reg
 
 ## Final fix review
 
-Final reviewed SHA-256: `audio.ts` `389213e02ab7f0815d844482cae67b3927c867371d6304b55da518c152d89c2c`; `main.ts` unchanged from the initial review; focused test `ca0f99a672f25db729b89c021913649d6cf31f88e57dfc8d98a8e13bc42c37b1`.
+Final reviewed SHA-256: `audio.ts` `389213e02ab7f0815d844482cae67b3927c867371d6304b55da518c152d89c2c`; `main.ts` unchanged from the initial review; focused test `ca0f99a672f25db729b89c021913649d6cf31f88e57dfc8d98a8e13bc42c37b1`; generation tool after the final equality assertion `6c3a4d80f4586808963405197f04963a83137c8b7e50029870fd7d2a78b1c5d5`.
 
 The coordinator added `wantsRunning`, a pending suspension promise, and a current-context identity guard. `unlock()` now requests resume synchronously from the user gesture and rechecks desired state after a pending suspension completes. `suspend()` and `close()` revoke that desired state. The completion callback checks both desired state and context identity, so a later pause or a closed/reopened device does not revive the old context.
 
@@ -38,7 +38,7 @@ The unconditional blur listener suspends audio even during the ready phase, whil
 - The built-route URL resolves to `games/thunder_booking/assets/gaps-20261102/…`. `scripts/build-prototype-games.ts` builds with the Game060 config, whose closeBundle copies `public/assets/game060/` into the game's `assets/`; the static path therefore agrees with the copy contract. The dev URL instead uses the root public `assets/game060/` path.
 - Both samples and synthesis fallback use the tracked source map and shared master compressor. Mute, stop, suspend, and close remove tracked sources; natural onended callbacks disconnect their nodes; high-priority samples can replace lower-priority voices while notifications cannot displace a clear cue. No score/model/storage edits are present in the reviewed game diff.
 - Fetch/decode failure falls back at the event time rather than queueing a delayed sound. Context identity prevents a late decode from populating a reopened context. Main wiring stops old voices on restart/title/pagehide/blur/visibility loss.
-- The reproduction tool intentionally requires a fresh export workspace because GAPS exports reject overwriting packages. Its recorded repeatability IDs pass; the tool currently records those equalities without an explicit equality assertion, so the coordinator should treat the independent check above as the executed equality evidence.
+- The reproduction tool intentionally requires a fresh export workspace because GAPS exports reject overwriting packages. Its recorded repeatability IDs pass the independent check above. A final source review confirmed the tool now explicitly asserts every reproduced `asset_id` equals its expected ID after saving the evidence, and separately asserts each distributed WAV hash. This small assertion change does not alter the recipes or audio assets; no additional generation/browser execution was claimed by this reviewer.
 
 ## Scope and limits
 
