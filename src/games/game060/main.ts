@@ -5,7 +5,7 @@ import {
   dronePosAt, reserve, result, runEndMs, type GameEvent, type Mode, type State,
 } from './model';
 import { Sfx } from './audio';
-import { buildSprites, type Sprites } from './art';
+import { loadHudPortrait, buildSprites, type Sprites } from './art';
 import { isPersistent, loadBest, loadSettings, saveBestIfHigher, saveSettings } from './storage';
 
 declare const __BUILD_MODE__: 'preview' | 'native';
@@ -18,6 +18,7 @@ const sfx = new Sfx();
 const settings = loadSettings();
 sfx.muted = settings.muted;
 
+await loadHudPortrait();
 let sprites: Sprites;
 let dpr = 1;
 let phase: Phase = 'title';
