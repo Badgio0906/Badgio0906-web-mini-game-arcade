@@ -67,3 +67,14 @@
 @media(max-width:540px){.prototype-extra{display:none}}
 
 .footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;font-size:13px}.footer-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+
+/* Dated, manually curated publication news. Keep discovery and game cards unchanged. */
+.portal-news{margin:0 0 18px;border:2px solid var(--ink);background:var(--cream);box-shadow:3px 4px 0 var(--ink)}
+.portal-news h2{margin:0;padding:9px 16px;border-bottom:1px solid #26394944;background:#efbe4f25;font-size:15px;line-height:1.6}
+.portal-news-list{list-style:none;margin:0;padding:0 16px;max-height:168px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.portal-news-list:focus-visible{outline:3px solid #426eba;outline-offset:3px}
+.portal-news-list li{display:grid;grid-template-columns:94px 44px minmax(0,1fr);align-items:baseline;gap:6px 12px;padding:8px 0;border-bottom:1px dashed #26394944;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.portal-news-list li:last-child{border-bottom:0}.portal-news time{font-variant-numeric:tabular-nums;white-space:nowrap}.portal-news p{margin:0;min-width:0}
+.news-kind{display:inline-block;text-align:center;border:1px solid var(--ink);border-radius:3px;padding:0 5px;font-size:11px;font-weight:700;white-space:nowrap}.news-kind--new{background:var(--yellow)}.news-kind--update{background:#dcecf2}.news-kind--removed{background:#f8d3c2}
+.portal-news a{text-decoration:underline;text-underline-offset:3px}.portal-news a:hover{background:#efbe4f33}
+@media(max-width:540px){.portal-news h2{padding:8px 12px}.portal-news-list{padding:0 12px;max-height:184px}.portal-news-list li{grid-template-columns:94px minmax(0,1fr);column-gap:8px;row-gap:3px;padding:9px 0}.portal-news p{grid-column:1/-1}.portal-news .news-kind{justify-self:start;width:44px}}

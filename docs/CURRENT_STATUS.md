@@ -1,5 +1,7 @@
 # CURRENT_STATUS — 現行状態と再開地点
 
+2026-11-02 JST：トップ紹介文と絞り込みの間へ日付付き新着欄をローカル実装。公開履歴3件（PR20/21/22/23）を掲載し、追加/更新/公開終了の運用手順を用意。型・全体build・4幅browser（リンク/9完成50全件/お気に入り/JS無効）成功。カタログ50/ゲーム/保存/広告/解析は不変。未push/未公開。[報告](portal-news-20261102/IMPLEMENTATION_REPORT.md)。
+
 2026-11-02 JST：Game060左下HUD人物を作者添付に基づく透過PNGへ差し替えたローカル候補。PR22のGAPSと他描画/ルール/保存を保持。型・17tests・個別build・4幅browser成功。未push/本番未反映。[報告](game060/user-portrait-20261102/REPORT.md)。
 
 2026-11-02 JST：**Game060「雷、予約しました。」のGAPS SE改善を実装・検証。** GitHub main7921686eから独立し、DドライブのGAPSで13種のWAVと再現レシピを制作。通常/まとめ撃破/6機一撃の区別、予約・空振り・ボス・成功失敗音、最大10声とmute/pause/retry cleanupを追加。型・全体build・1294単体・4幅/subpathのproduction操作・通常入力20,400点/Sランク・全cue/破損音源fallbackを確認し、独立レビューの非同期pause/resume findingを修正済み。ルール/保存/描画/50掲載は維持、人間聴感/実機は未確認。[実装・検証](game060/gaps-se-20261102/IMPLEMENTATION_REPORT.md)。GitHubと本番の最終反映状態は同階層の公開記録を確認する。
