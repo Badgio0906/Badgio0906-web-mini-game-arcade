@@ -1,0 +1,8 @@
+{
+  "cases": [],
+  "errors": [],
+  "external": [],
+  "scope": "actual production build; mouse/touch/keyboard; audio instrumentation only in test",
+  "status": "FAIL",
+  "error": "locator.click: Error: strict mode violation: locator('.portal-return') resolved to 5 elements:\n    1) <a href=\"../../\" class=\"portal-return\">← ゲーム一覧へ</a> aka locator('#bar').getByRole('link', { name: '← ゲーム一覧へ' })\n    2) <a href=\"../../\" class=\"portal-return\">← ゲーム一覧へ</a> aka locator('#title').getByRole('link', { name: '← ゲーム一覧へ' })\n    3) <a href=\"../../\" class=\"portal-return\">← ゲーム一覧へ</a> aka locator('#howto').getByText('← ゲーム一覧へ')\n    4) <a href=\"../../\" class=\"portal-return\">← ゲーム一覧へ</a> aka locator('#paused').getByText('← ゲーム一覧へ')\n    5) <a href=\"../../\" class=\"portal-return\">← ゲーム一覧へ</a> aka locator('#result').getByText('← ゲーム一覧へ')\n\nCall log:\n\u001b[2m  - waiting for locator('.portal-return')\u001b[22m\n\n    at D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\tests\\game060\\audio-browser.mjs:125:63"
+}

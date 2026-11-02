@@ -1,0 +1,114 @@
+{
+  "directory": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\reserve",
+  "manifest": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\reserve\\manifest.json",
+  "version": 1,
+  "target": "web",
+  "file": "game060_reserve_88b5c2fb0b.wav",
+  "asset_id": "88b5c2fb0b763222c08fab24fff4a638446bd597e9648326f7043e16f349db33",
+  "sha256": "560d0f6801fb87078154dc6953b777dd798977ad3af470f10cbe03bacca0f860",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 13004,
+  "priority": 70,
+  "polyphony": 10,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "88b5c2fb0b763222c08fab24fff4a638446bd597e9648326f7043e16f349db33",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026000,
+    "sample_rate": 48000,
+    "name": "reserve",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "triangle",
+        "frequency": 880,
+        "end_frequency": 1320,
+        "duration": 0.085,
+        "gain_db": -17,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.015300000000000001,
+          "sustain": 0.22,
+          "release": 0.05525000000000001
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 1760,
+        "end_frequency": 1760,
+        "duration": 0.1,
+        "gain_db": -23,
+        "delay": 0.035,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.018,
+          "sustain": 0.22,
+          "release": 0.065
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.022,
+        "gain_db": -19,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1800,
+          "lowpass_hz": 6500
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0026399999999999996,
+          "sustain": 0.18,
+          "release": 0.0176
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.135,
+      "frames": 6480,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.114837646484375,
+      "sample_peak_dbfs": -18.798314332797073,
+      "true_peak_estimate": 0.11598736347941209,
+      "true_peak_estimate_dbfs": -18.711786468927322,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -34.0648745482912,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 2.122572910638503e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.00075,
+      "trailing_silence": 0.0089375
+    }
+  }
+}

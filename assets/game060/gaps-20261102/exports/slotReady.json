@@ -1,0 +1,98 @@
+{
+  "directory": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\slotReady",
+  "manifest": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\slotReady\\manifest.json",
+  "version": 1,
+  "target": "web",
+  "file": "game060_slotready_231ad32fd8.wav",
+  "asset_id": "231ad32fd82d690bf1966d84dbf4025d7a27c21c3e88712b0c8092135ff568e6",
+  "sha256": "49756598ea271452ae3ad773cf1e75f2302f27a849d25f473b207413094fa612",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 9644,
+  "priority": 70,
+  "polyphony": 10,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "231ad32fd82d690bf1966d84dbf4025d7a27c21c3e88712b0c8092135ff568e6",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026020,
+    "sample_rate": 48000,
+    "name": "slotReady",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "sine",
+        "frequency": 1320,
+        "end_frequency": 1320,
+        "duration": 0.09,
+        "gain_db": -22,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0162,
+          "sustain": 0.22,
+          "release": 0.058499999999999996
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 1980,
+        "end_frequency": 1980,
+        "duration": 0.075,
+        "gain_db": -29,
+        "delay": 0.025,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0135,
+          "sustain": 0.22,
+          "release": 0.04875
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.1,
+      "frames": 4800,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.062255859375,
+      "sample_peak_dbfs": -24.116395350676385,
+      "true_peak_estimate": 0.06252393372650791,
+      "true_peak_estimate_dbfs": -24.079074118504145,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -36.690274685869014,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 1.8030802408854166e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0008541666666666667,
+      "trailing_silence": 0.010979166666666667
+    }
+  }
+}

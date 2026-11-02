@@ -1,0 +1,148 @@
+{
+  "directory": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\thunder2",
+  "manifest": "D:\\ミニゲーム開発\\arcade-game060-gaps-20261102\\artifacts\\game060-gaps\\exports\\thunder2\\manifest.json",
+  "version": 1,
+  "target": "web",
+  "file": "game060_thunder2_361415b757.wav",
+  "asset_id": "361415b757b37bf11512d7138b65cff60ead31dc1616e097585776acb4d20442",
+  "sha256": "4d8d086f80b654ed322ea94c41c565cdcd91e61e744062c55f379b19cf0ece0a",
+  "sample_rate": 48000,
+  "format": "WAV PCM16",
+  "bytes": 56876,
+  "priority": 70,
+  "polyphony": 10,
+  "buses": {
+    "SE": 0.8,
+    "BGM": 0.5
+  },
+  "rights": {
+    "license_id": "GAPS-procedural",
+    "source": "GAPS recipe v1",
+    "parents": []
+  },
+  "lineage": [
+    {
+      "id": "361415b757b37bf11512d7138b65cff60ead31dc1616e097585776acb4d20442",
+      "source": "GAPS recipe v1",
+      "license_id": "GAPS-procedural",
+      "verified": true,
+      "allow_redistribution": true,
+      "allow_training": true,
+      "parents": []
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026031,
+    "sample_rate": 48000,
+    "name": "thunder2",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.075,
+        "gain_db": -5,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1400,
+          "lowpass_hz": 8500
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.009,
+          "sustain": 0.18,
+          "release": 0.06
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 128.125,
+        "end_frequency": 38,
+        "duration": 0.377,
+        "gain_db": -7,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.06786,
+          "sustain": 0.22,
+          "release": 0.24505000000000002
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.58,
+        "gain_db": -5,
+        "delay": 0.012,
+        "effects": {
+          "highpass_hz": 45,
+          "lowpass_hz": 1150
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0696,
+          "sustain": 0.18,
+          "release": 0.46399999999999997
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.035,
+        "gain_db": -15,
+        "delay": 0.026,
+        "effects": {
+          "highpass_hz": 900,
+          "lowpass_hz": 6200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.004200000000000001,
+          "sustain": 0.18,
+          "release": 0.028000000000000004
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.025,
+        "gain_db": -18,
+        "delay": 0.069,
+        "effects": {
+          "highpass_hz": 1900,
+          "lowpass_hz": 7200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.003,
+          "sustain": 0.18,
+          "release": 0.020000000000000004
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  },
+  "qa": {
+    "passed": true,
+    "issues": [],
+    "category": "impact",
+    "metrics": {
+      "duration": 0.592,
+      "frames": 28416,
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_peak": 0.427886962890625,
+      "sample_peak_dbfs": -7.373418913037697,
+      "true_peak_estimate": 0.43143707140568205,
+      "true_peak_estimate_dbfs": -7.301650814006111,
+      "true_peak_method": "4x polyphase estimate; not BS.1770 certified",
+      "rms_dbfs": -24.06497896094509,
+      "minimum_rms_dbfs": -50,
+      "dc_offset": 4.818954983273068e-05,
+      "clipped_samples": 0,
+      "leading_silence": 0.0006666666666666666,
+      "trailing_silence": 0.028395833333333332
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "name": "game060_thunder2",
+  "tags": [
+    "game060",
+    "thunder"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026031,
+    "sample_rate": 48000,
+    "name": "thunder2",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "noise",
+        "duration": 0.075,
+        "gain_db": -5,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 1400,
+          "lowpass_hz": 8500
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.009,
+          "sustain": 0.18,
+          "release": 0.06
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 128.125,
+        "end_frequency": 38,
+        "duration": 0.377,
+        "gain_db": -7,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.06786,
+          "sustain": 0.22,
+          "release": 0.24505000000000002
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.58,
+        "gain_db": -5,
+        "delay": 0.012,
+        "effects": {
+          "highpass_hz": 45,
+          "lowpass_hz": 1150
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0696,
+          "sustain": 0.18,
+          "release": 0.46399999999999997
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.035,
+        "gain_db": -15,
+        "delay": 0.026,
+        "effects": {
+          "highpass_hz": 900,
+          "lowpass_hz": 6200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.004200000000000001,
+          "sustain": 0.18,
+          "release": 0.028000000000000004
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.025,
+        "gain_db": -18,
+        "delay": 0.069,
+        "effects": {
+          "highpass_hz": 1900,
+          "lowpass_hz": 7200
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.003,
+          "sustain": 0.18,
+          "release": 0.020000000000000004
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

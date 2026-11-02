@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "name": "game060_slotReady",
+  "tags": [
+    "game060",
+    "slotReady"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026020,
+    "sample_rate": 48000,
+    "name": "slotReady",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "sine",
+        "frequency": 1320,
+        "end_frequency": 1320,
+        "duration": 0.09,
+        "gain_db": -22,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0162,
+          "sustain": 0.22,
+          "release": 0.058499999999999996
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 1980,
+        "end_frequency": 1980,
+        "duration": 0.075,
+        "gain_db": -29,
+        "delay": 0.025,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0135,
+          "sustain": 0.22,
+          "release": 0.04875
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

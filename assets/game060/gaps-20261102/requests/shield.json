@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "name": "game060_shield",
+  "tags": [
+    "game060",
+    "shield"
+  ],
+  "recipe": {
+    "version": 1,
+    "seed": 202611026070,
+    "sample_rate": 48000,
+    "name": "shield",
+    "category": "impact",
+    "layers": [
+      {
+        "wave": "triangle",
+        "frequency": 320,
+        "end_frequency": 100,
+        "duration": 0.28,
+        "gain_db": -15,
+        "delay": 0,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0504,
+          "sustain": 0.22,
+          "release": 0.18200000000000002
+        }
+      },
+      {
+        "wave": "noise",
+        "duration": 0.12,
+        "gain_db": -16,
+        "delay": 0,
+        "effects": {
+          "highpass_hz": 180,
+          "lowpass_hz": 2100
+        },
+        "envelope": {
+          "attack": 0.002,
+          "decay": 0.0144,
+          "sustain": 0.18,
+          "release": 0.096
+        }
+      },
+      {
+        "wave": "sine",
+        "frequency": 160,
+        "end_frequency": 85,
+        "duration": 0.28,
+        "gain_db": -20,
+        "delay": 0.045,
+        "envelope": {
+          "attack": 0.003,
+          "decay": 0.0504,
+          "sustain": 0.22,
+          "release": 0.18200000000000002
+        }
+      }
+    ],
+    "effects": {
+      "gain_db": -2,
+      "fade_in": 0.002,
+      "fade_out": 0.015
+    }
+  }
+}

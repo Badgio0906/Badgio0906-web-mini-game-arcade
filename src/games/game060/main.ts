@@ -99,6 +99,7 @@ function show(id: string | null) {
 }
 
 function startRun(m: Mode) {
+  sfx.stop();
   sfx.unlock();
   mode = m;
   state = createState(m);
@@ -113,6 +114,7 @@ function startRun(m: Mode) {
 
 /** The gesture that starts the clock is consumed here and is never a reservation. */
 function beginClock() {
+  sfx.unlock();
   phase = 'running';
   lastFrame = performance.now();
   show(null);
@@ -410,9 +412,12 @@ bind('btn-howto', () => show('howto'));
 bind('btn-howto-back', () => show('title'));
 bind('btn-pause', () => pause());
 bind('btn-resume', () => resume());
-bind('btn-quit', () => { phase = 'title'; show('title'); refreshBest(); });
+bind('btn-quit', () => { sfx.suspend(); phase = 'title'; show('title'); refreshBest(); });
 bind('btn-retry', () => startRun(mode));
-bind('btn-to-title', () => { phase = 'title'; show('title'); refreshBest(); });
+bind('btn-to-title', () => { sfx.suspend(); phase = 'title'; show('title'); refreshBest(); });
+window.addEventListener('pagehide', () => sfx.suspend());
+window.addEventListener('blur', () => sfx.suspend());
+document.addEventListener('visibilitychange', () => { if (document.hidden) sfx.suspend(); });
 for (const id of ['btn-exit', 'btn-exit-2']) bind(id, () => exitPreview());
 const muteBtn = $<HTMLButtonElement>('btn-mute');
 const motionBtn = $<HTMLButtonElement>('btn-motion');
