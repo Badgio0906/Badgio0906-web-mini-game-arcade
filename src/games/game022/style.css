@@ -8,3 +8,18 @@
 dialog#menu{inset:calc((100dvh + 87px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 87px - 64px - 16px)}
 @media(max-width:650px){dialog#menu{inset:calc((100dvh + 112px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 112px - 64px - 16px)}}
 @media(max-height:480px) and (min-width:651px){dialog#menu{inset:calc((100dvh + 63px - 64px)/2) auto auto 50%;max-height:calc(100dvh - 63px - 64px - 16px)}}
+
+/* Seven columns share the actual viewport; vertical scrolling preserves exposed strips. */
+@media(max-width:650px){
+ :root{--gap:2px;--card-w:calc((100vw - 40px)/7);--card-h:72px}
+ #board-scroll{padding:22px 2px 12px;overflow-x:hidden;touch-action:pan-y}
+ #card-board{min-width:0;width:100%}
+ .top-row,.tableau{grid-template-columns:repeat(7,minmax(0,1fr))}
+ .card,.empty-pile{max-width:100%;border-radius:5px}
+ .card .corner{font-size:17px;left:2px}.card .corner .suit{font-size:14px;margin-left:0}
+ .card .center-suit{font-size:25px}.card .bottom{font-size:10px;right:2px}
+ #card-board .card,#card-board .empty-pile{touch-action:pan-y}
+ #card-board.drag-enabled .card{touch-action:none}
+ .pile-label{font-size:8px;letter-spacing:0}.hud{gap:4px}
+}
+@media(max-width:355px){:root{--card-h:65px}.card .corner{font-size:15px}.card .corner .suit{font-size:12px}.card .center-suit{font-size:21px}}

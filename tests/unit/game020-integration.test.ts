@@ -33,7 +33,7 @@ describe('Game020 isolated common registration', () => {
     expect(historicalGameCatalog.find(game => game.id === 'game010')?.status).toBe('retired');
     expect(NEXT_GAME_NUMBER).toBe(Math.max(...historicalGameCatalog.map(game => game.releaseOrder)) + 1);
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
-    expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: '1' });
+    expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: 'mobile-20261104' });
   });
 
   it('accepts new020 events and page through the existing strict envelope and primitive fields', () => {

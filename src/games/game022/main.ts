@@ -25,6 +25,8 @@ let drawMode: Draw = storage.readNumber('draw',1,1,3) === 3 ? 3 : 1;
 let dealMode: DealMode = storage.readBoolean('daily',false) ? 'daily' : 'random';
 let startedAt = 0, dragEnabled = false, suppressClickUntil = 0;
 let practiceStep = 0;
+let challenge = false, challengePeak = 0;
+const challengeBest = () => storage.readNumber('challenge-best-v1',0,0,52);
 let message = '札を選び、移動先をタップ。';
 let drag: { source: Source; pointerId: number; x: number; y: number; element: HTMLElement; moving: boolean; ghost: HTMLElement | null } | null = null;
 const active = () => state === 'playing' || state === 'practice';
@@ -35,7 +37,7 @@ function actionEvent(event: string, data: Record<string,string|number|boolean> =
  if (state === 'playing') telemetry.trackEvent('specific_game_events', { event, draw: game.draw, deal_mode: game.mode, daily_id: game.dailyId, moves: game.position.moves, foundation_count: game.foundationCount, ...data });
 }
 function accumulate(): void { if (startedAt) { game.elapsedMs += Math.max(0,performance.now() - startedAt); startedAt = 0; } }
-function save(): void { if (normalRunLoaded && !training() && state !== 'title') store.save(game.snapshot(),stats); }
+function save(): void { if (normalRunLoaded && !challenge && !training() && state !== 'title') store.save(game.snapshot(),stats); }
 function clearDrag(): void {
  const pending = drag; drag = null; pending?.ghost?.remove();
  if (pending?.element.hasPointerCapture(pending.pointerId)) { try { pending.element.releasePointerCapture(pending.pointerId); } catch { /* stale capture */ } }
@@ -97,15 +99,16 @@ function sync(): void {
  else if (focusDestination && active()) board.querySelector<HTMLElement>(`.empty-pile[data-destination="${focusDestination.pile}"][data-column="${focusDestination.column}"]`)?.focus({preventScroll:true});
  el('foundation-count').textContent = `${game.foundationCount} / ${training() ? '練習' : '52'}`;
  el('move-count').textContent = String(p.moves); el('clear-count').textContent = String(stats.clears);
- el('deal-caption').textContent = training() ? `練習 ${practiceStep + 1} / 3 · 6枚だけの専用盤面 · 記録には入りません` : `${game.mode === 'daily' ? `今日の配札 ${game.dailyId}` : 'ランダム配札'} · ${game.draw}枚めくり · 再循環は無制限`;
+ el('deal-caption').textContent = challenge && !training() ? `3分チャレンジ · 組札 ${challengePeak}枚 · 自己ベスト ${challengeBest()}枚` : training() ? `練習 ${practiceStep + 1} / 3 · 6枚だけの専用盤面 · 記録には入りません` : `${game.mode === 'daily' ? `今日の配札 ${game.dailyId}` : 'ランダム配札'} · ${game.draw}枚めくり · 再循環は無制限`;
  el('live-status').textContent = message;
  for (const id of ['hint-button','assist-button','drag-button','help-button','restart-button','title-button','pause-button']) el<HTMLButtonElement>(id).disabled = !active();
- el<HTMLButtonElement>('undo-button').disabled = !active() || !game.history.length || game.reported;
- el<HTMLButtonElement>('finish-button').disabled = !active() || training() || !game.finishPlan();
+ el<HTMLButtonElement>('assist-button').disabled = !active() || challenge;
+ el<HTMLButtonElement>('undo-button').disabled = !active() || challenge || !game.history.length || game.reported;
+ el<HTMLButtonElement>('finish-button').disabled = !active() || challenge || training() || !game.finishPlan();
  el('drag-button').textContent = `指ドラッグ ${dragEnabled ? 'ON' : 'OFF'}`; el('drag-button').setAttribute('aria-pressed',String(dragEnabled));
  updateClock();
 }
-function updateClock(): void { const seconds = Math.floor((game.elapsedMs + (startedAt ? performance.now() - startedAt : 0))/1000); el('elapsed').textContent = `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`; }
+function updateClock(): void { const elapsed = game.elapsedMs + (startedAt ? performance.now() - startedAt : 0); const seconds = challenge ? Math.max(0,Math.ceil((180000-elapsed)/1000)) : Math.floor(elapsed/1000); el('elapsed').textContent = `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`; }
 function focusBoard(): void { el('stock-button').focus({preventScroll:true}); }
 function abandoned(): void {
  const previous = store.read().snapshot;
@@ -113,10 +116,11 @@ function abandoned(): void {
  if (previous.analytics_run_id) bridge.restoreRun?.(previous.analytics_run_id);
  telemetry.trackEvent('run_end',{outcome:'restart',draw:previous.draw,deal_mode:previous.mode,daily_id:previous.daily_id,moves:previous.position.moves,foundation_count:previous.position.foundations.flat().length,seconds:previous.elapsed_ms/1000});
 }
-function newDeal(source = 'direct', repeat = false): void {
+function newDeal(source = 'direct', repeat = false, challengeMode = false): void {
  if (state === 'playing') { accumulate(); save(); }
  const previous = store.read().snapshot;
- abandoned();
+ if (!challengeMode) abandoned();
+ challenge = challengeMode; challengePeak = 0;
  const date = jstDate();
  const seed = repeat && previous ? previous.seed : dealMode === 'daily' ? dailySeed(date,drawMode) : `random-${crypto.randomUUID()}`;
  const selectedMode = repeat && previous ? previous.mode : dealMode;
@@ -135,7 +139,7 @@ function restore(): void {
  const saved = store.read().snapshot;
  const resumed = Klondike.restore(saved);
  if (!resumed) return;
- game = resumed; normalRunLoaded = true; drawMode = game.draw; dealMode = game.mode; returnState = 'playing';
+ challenge = false; game = resumed; normalRunLoaded = true; drawMode = game.draw; dealMode = game.mode; returnState = 'playing';
  if (game.analyticsRunId) bridge.restoreRun?.(game.analyticsRunId);
  telemetry.trackEvent('specific_game_events',{event:'state_restored',draw:game.draw,deal_mode:game.mode,daily_id:game.dailyId,moves:game.position.moves,foundation_count:game.foundationCount});
  message = '続きから再開しました。';
@@ -145,21 +149,21 @@ function title(): void {
  if (state === 'playing') { accumulate(); save(); }
  returnState = 'playing';
  const saved = store.read().snapshot;
- show(`<p class="eyebrow">ONE CARD. ONE BREATH.</p><h1 id="menu-title">ひと息ソリティア</h1><p>一枚ずつ、すっきり。<br>いつものカードで、ひと息。</p><div class="deal-settings"><label>配札<select id="deal-mode"><option value="random"${dealMode==='random'?' selected':''}>ランダム</option><option value="daily"${dealMode==='daily'?' selected':''}>今日の配札</option></select></label><label>めくり方式<select id="draw-mode"><option value="1"${drawMode===1?' selected':''}>1枚めくり</option><option value="3"${drawMode===3?' selected':''}>3枚めくり</option></select></label></div><div class="menu-actions">${saved?`<button id="resume-saved-button" class="primary" type="button">${saved.position.foundations.flat().length===52?'前のクリアを見る':'続きから'}</button>`:''}<button id="play-button" class="${saved?'':'primary'}" type="button">${saved?'新しく始める':'すぐ遊ぶ'}</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p class="save-note">途中の札・戻す履歴をこの端末に保存。クリア ${stats.clears}回。<br>今日の配札は日本時間の日付で同じ札。解ける保証はありません。めくり方式の変更は新しい配札になります。</p>`,'title');
+ show(`<p class="eyebrow">ONE CARD. ONE BREATH.</p><h1 id="menu-title">ひと息ソリティア</h1><p>一枚ずつ、すっきり。<br>いつものカードで、ひと息。</p><div class="deal-settings"><label>配札<select id="deal-mode"><option value="random"${dealMode==='random'?' selected':''}>ランダム</option><option value="daily"${dealMode==='daily'?' selected':''}>今日の配札</option></select></label><label>めくり方式<select id="draw-mode"><option value="1"${drawMode===1?' selected':''}>1枚めくり</option><option value="3"${drawMode===3?' selected':''}>3枚めくり</option></select></label></div><div class="menu-actions">${saved?`<button id="resume-saved-button" class="primary" type="button">${saved.position.foundations.flat().length===52?'前のクリアを見る':'続きから'}</button>`:''}<button id="play-button" class="${saved?'':'primary'}" type="button">${saved?'新しく始める':'すぐ遊ぶ'}</button><button id="challenge-button" type="button">3分スコアチャレンジ · BEST ${challengeBest()}枚</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p class="save-note">途中の札・戻す履歴をこの端末に保存。クリア ${stats.clears}回。<br>今日の配札は日本時間の日付で同じ札。解ける保証はありません。めくり方式の変更は新しい配札になります。</p>`,'title');
  el<HTMLSelectElement>('deal-mode').onchange=e=>{dealMode=(e.target as HTMLSelectElement).value as DealMode;storage.writeBoolean('daily',dealMode==='daily');};
  el<HTMLSelectElement>('draw-mode').onchange=e=>{drawMode=Number((e.target as HTMLSelectElement).value) as Draw;storage.writeNumber('draw',drawMode);};
- el('play-button').onclick=()=>newDeal('title');el('explain-button').onclick=()=>explain(false);el('practice-button').onclick=startPractice;
+ el('play-button').onclick=()=>newDeal('title');el('challenge-button').onclick=()=>newDeal('challenge',false,true);el('explain-button').onclick=()=>explain(false);el('practice-button').onclick=startPractice;
  if(saved)el('resume-saved-button').onclick=restore;
 }
 function explain(inRun: boolean): void {
  if(inRun){returnState=state==='practice'?'practice':'playing'; if(state==='playing'){accumulate();save();}}
  if(!training())telemetry.trackEvent('tutorial_view',{source:inRun?'playing':'title'});
- show(`<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">赤と黒を、ひとつずつ。</h2><ol><li>場札は<b>赤黒交互、数字が1つ小さくなる順</b>。続いた表札は途中からまとめて動かせます。空いた列へはKだけ。</li><li>組札は<b>同じスートでA → K</b>。組札の上の1枚を場札へ戻すこともできます。</li><li>山札を押して1枚／3枚めくる。捨て札は一番上だけ使えます。山札が空なら同じ順で戻せます。</li><li><b>札を選び → 移動先をタップ</b>。選び直しは別の札、解除は同じ札。PCはドラッグ、TabとEnter／Space。矢印キーでも盤面のボタンを移れます。</li><li>指ドラッグONで札を12px以上動かすとドラッグ。OFFでは盤面をスクロール。ONでも札の間からスクロールできます。</li><li>ヒントは見えている札だけの合法手で、クリア保証ではありません。「組札へ1枚」は押すたび1枚だけ。全札が表向きで、組札だけで終われる証明ができた時に「残りを整理」を使えます。</li></ol><p>時間制限・時間減点なし。戻すは直近1000手まで。日替わりの同じ日・めくり方式のクリア数は1回だけ。52枚すべてを組札へ移すとクリアです。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">${inRun?'盤面へ戻る':'すぐ遊ぶ'}</button><button id="help-practice-button" type="button">練習する</button>${inRun?'':'<button id="help-title-button" type="button">タイトルへ</button>'}</div>`,'explanation');
+ show(`<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">赤と黒を、ひとつずつ。</h2><ol><li>場札は<b>赤黒交互、数字が1つ小さくなる順</b>。続いた表札は途中からまとめて動かせます。空いた列へはKだけ。</li><li>組札は<b>同じスートでA → K</b>。組札の上の1枚を場札へ戻すこともできます。</li><li>山札を押して1枚／3枚めくる。捨て札は一番上だけ使えます。山札が空なら同じ順で戻せます。</li><li><b>札を選び → 移動先をタップ</b>。選び直しは別の札、解除は同じ札。PCはドラッグ、TabとEnter／Space。矢印キーでも盤面のボタンを移れます。</li><li>指ドラッグONで札を12px以上動かすとドラッグ。OFFでは盤面をスクロール。ONでも札の間からスクロールできます。</li><li>ヒントは見えている札だけの合法手で、クリア保証ではありません。「組札へ1枚」は押すたび1枚だけ。全札が表向きで、組札だけで終われる証明ができた時に「残りを整理」を使えます。</li></ol><p>通常は時間制限なし。3分チャレンジは組札の最大枚数を競います（戻す・組札補助・一括整理なし）。戻すは直近1000手まで。日替わりの同じ日・めくり方式のクリア数は1回だけ。52枚すべてを組札へ移すとクリアです。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">${inRun?'盤面へ戻る':'すぐ遊ぶ'}</button><button id="help-practice-button" type="button">練習する</button>${inRun?'':'<button id="help-title-button" type="button">タイトルへ</button>'}</div>`,'explanation');
  el('continue-button').onclick=()=>{if(inRun){mode(returnState);focusBoard();}else newDeal('explanation');};el('help-practice-button').onclick=startPractice;if(!inRun)el('help-title-button').onclick=title;
 }
 function startPractice(): void {
  if(state==='playing'){accumulate();save();}
- game=practiceGame();normalRunLoaded=false;returnState='practice';practiceStep=0;message='練習1：赤の5を選び、黒の6がある1列へ移動。';trainingEvent('practice_start');mode('practice');focusBoard();void audio.unlock();
+ challenge=false;game=practiceGame();normalRunLoaded=false;returnState='practice';practiceStep=0;message='練習1：赤の5を選び、黒の6がある1列へ移動。';trainingEvent('practice_start');mode('practice');focusBoard();void audio.unlock();
 }
 function advancePractice(move: Move): void {
  const expected = practiceStep===0 ? move.source.pile==='tableau'&&move.source.column===1&&move.destination.pile==='tableau'&&move.destination.column===0 : practiceStep===1 ? move.source.pile==='tableau'&&move.source.column===2&&move.destination.pile==='tableau'&&move.destination.column===3 : move.destination.pile==='foundation';
@@ -171,18 +175,27 @@ function advancePractice(move: Move): void {
 }
 function result(): void {
  accumulate();
+ if (challenge) {
+  challengePeak=Math.max(challengePeak,game.foundationCount);
+  const best=Math.max(challengeBest(),challengePeak); storage.writeNumber('challenge-best-v1',best);
+  telemetry.trackEvent('run_end',{outcome:game.cleared?'clear':'time_up',mode:'challenge-3min-v1',foundation_count:challengePeak,seconds:Math.min(180,game.elapsedMs/1000)});
+  show(`<p class="eyebrow">3 MINUTE CHALLENGE</p><h2 id="menu-title">${challengePeak}枚、組札へ。</h2><p>スコア ${challengePeak} / 52枚<br>自己ベスト ${best}枚<br>3分で到達した最大枚数。通常のクリア記録とは別に保存します。</p><div class="menu-actions"><button id="challenge-retry" class="primary">もう一度3分</button><button id="challenge-title">タイトルへ</button></div>`,'result');
+  el('challenge-retry').onclick=()=>newDeal('challenge-retry',false,true);el('challenge-title').onclick=title;return;
+ }
+
  if(!game.reported){const report=store.reportClear(game.snapshot(),stats);game.reported=report.snapshot.reported;stats=report.stats;telemetry.trackEvent('run_end',{outcome:'clear',draw:game.draw,deal_mode:game.mode,daily_id:game.dailyId,moves:game.position.moves,foundation_count:52,seconds:Math.floor(game.elapsedMs)/1000,hints:game.hints,undos:game.undos,assists:game.assists,record_added:report.added});}
  show(`<p class="eyebrow">ALL FOUR SUITS</p><h2 id="menu-title">すっきり、ひと息。</h2><p>52枚が組札にそろいました。<br>${game.position.moves}手 · ${Math.floor(game.elapsedMs/60000)}分${Math.floor(game.elapsedMs/1000)%60}秒<br>ヒント ${game.hints}回 · 戻す ${game.undos}回 · 組札補助 ${game.assists}回</p><p>クリア ${stats.clears}回${game.mode==='daily'?'<br>この日・めくり方式の記録は1回だけ。':''}</p><div class="menu-actions"><button id="next-deal-button" class="primary" type="button">${game.mode==='daily'?'今日の配札をもう一度':'もう一度遊ぶ'}</button><button id="result-title-button" type="button">タイトルへ</button></div>`,'result');
  el('next-deal-button').onclick=()=>{telemetry.trackEvent('retry',{draw:game.draw,deal_mode:game.mode});dealMode=game.mode;drawMode=game.draw;newDeal('retry',game.mode==='daily');};el('result-title-button').onclick=title;
 }
 function perform(source: Source, destination: Destination): boolean {
  if(!active())return false;
+ if(challenge && game.elapsedMs+(startedAt?performance.now()-startedAt:0)>=180000){result();return false;}
  if(training()) {
   const expected = practiceStep===0 ? source.pile==='tableau'&&source.column===1&&destination.pile==='tableau'&&destination.column===0 : practiceStep===1 ? source.pile==='tableau'&&source.column===2&&destination.pile==='tableau'&&destination.column===3 : destination.pile==='foundation';
   if(!expected){message='案内の札と移動先を使ってみましょう。';sync();return false;}
  }
  if(!game.move(source,destination)){message='そこへは置けません。赤黒と数字の順を確認。';sync();return false;}
- selected=null;hinted=null;message='移動しました。';audio.tone(360,420,.06,'sine',0,.012);actionEvent('card_move',{source_pile:source.pile,destination_pile:destination.pile});
+ challengePeak=Math.max(challengePeak,game.foundationCount);selected=null;hinted=null;message='移動しました。';audio.tone(360,420,.06,'sine',0,.012);actionEvent('card_move',{source_pile:source.pile,destination_pile:destination.pile});
  if(state==='practice')advancePractice({source,destination});else{save();if(game.cleared){result();return true;}}
  sync();return true;
 }
@@ -229,18 +242,18 @@ board.addEventListener('keydown',event=>{
  event.preventDefault();const buttons=[...board.querySelectorAll<HTMLButtonElement>('button:not([aria-disabled="true"])')];const index=buttons.indexOf(document.activeElement as HTMLButtonElement);const delta=['ArrowLeft','ArrowUp'].includes(event.key)?-1:1;buttons[(index+delta+buttons.length)%buttons.length]?.focus();
 });
 function pause(): void { if(!active())return;returnState=state==='practice'?'practice':'playing';if(state==='playing'){accumulate();save();}show('<p class="eyebrow">TAKE A BREATH</p><h2 id="menu-title">ひと休み。</h2><p>時計も休憩中。ゆっくりどうぞ。</p><div class="menu-actions"><button id="resume-button" class="primary" type="button">続ける</button><button id="pause-title-button" type="button">タイトルへ</button></div>','paused');if(training())trainingEvent('pause');else telemetry.trackEvent('pause');el('resume-button').onclick=()=>{if(training())trainingEvent('resume');else telemetry.trackEvent('resume');mode(returnState);focusBoard();};el('pause-title-button').onclick=title; }
-function confirmDeal(): void {returnState=state==='practice'?'practice':'playing';if(state==='playing'){accumulate();save();}show('<p class="eyebrow">NEW DEAL</p><h2 id="menu-title">配り直しますか？</h2><p>現在の札と戻す履歴は、新しい配札に置き換わります。</p><div class="menu-actions"><button id="confirm-deal-button" type="button">配り直す</button><button id="cancel-deal-button" class="primary" type="button">今の札を続ける</button></div>','confirm');el('confirm-deal-button').onclick=()=>{if(returnState==='practice')startPractice();else{telemetry.trackEvent('retry',{draw:game.draw,deal_mode:game.mode});newDeal('restart',game.mode==='daily');}};el('cancel-deal-button').onclick=()=>{mode(returnState);focusBoard();};}
+function confirmDeal(): void {returnState=state==='practice'?'practice':'playing';if(state==='playing'){accumulate();save();}show('<p class="eyebrow">NEW DEAL</p><h2 id="menu-title">配り直しますか？</h2><p>現在の札と戻す履歴は、新しい配札に置き換わります。</p><div class="menu-actions"><button id="confirm-deal-button" type="button">配り直す</button><button id="cancel-deal-button" class="primary" type="button">今の札を続ける</button></div>','confirm');el('confirm-deal-button').onclick=()=>{if(returnState==='practice')startPractice();else{telemetry.trackEvent('retry',{draw:game.draw,deal_mode:game.mode});newDeal('restart',game.mode==='daily',challenge);}};el('cancel-deal-button').onclick=()=>{mode(returnState);focusBoard();};}
 function returnToPortal(): void { if(state==='playing')accumulate();if(!training()&&state!=='title')save();telemetry.trackEvent('return_to_portal',{source:state});clearDrag(); }
 el('mute-button').onclick=()=>{el('mute-button').textContent=audio.toggle()?'音 OFF':'音 ON';};el('mute-button').textContent=audio.muted?'音 OFF':'音 ON';
 el('pause-button').onclick=pause;el('title-button').onclick=title;el('help-button').onclick=()=>explain(true);el('restart-button').onclick=confirmDeal;el('portal-link').onclick=returnToPortal;
 el('drag-button').onclick=()=>{clearDrag();dragEnabled=!dragEnabled;selected=null;message=dragEnabled?'札を12px以上動かしてドラッグ。札の間からはスクロールできます。':'札を選んで移動先をタップ。盤面はスクロールできます。';sync();};
 el('hint-button').onclick=()=>{if(!active())return;hinted=game.hint();selected=null;message=hinted?'点線の札を、点線の置き場へ。見える札だけの合法手です。':'見える札の有効な移動が見つかりません。山札・戻す・配り直すも使えます。';actionEvent('hint');save();sync();};
-el('undo-button').onclick=()=>{if(!active())return;if(game.undo()){hinted=null;selected=null;message='1手戻しました。札の表裏と山札も戻ります。';if(training()){practiceStep=0;game=practiceGame();message='練習1：赤の5を選び、黒の6がある1列へ移動。';}actionEvent('undo');save();sync();}};
-el('assist-button').onclick=()=>{if(!active())return;if(training()){message='練習では札を選んで移動先をタップしてみましょう。';sync();return;}if(game.assistFoundation()){selected=null;hinted=null;message='組札へ1枚だけ移しました。';actionEvent('foundation_assist');save();if(game.cleared)result();else sync();}else{message='いま組札へ移せる札はありません。';sync();}};
-el('finish-button').onclick=()=>{if(state!=='playing'||!game.finishPlan())return;if(game.finishVisible()){actionEvent('visible_finish');save();result();}};
+el('undo-button').onclick=()=>{if(!active())return;if(challenge)return;if(game.undo()){hinted=null;selected=null;message='1手戻しました。札の表裏と山札も戻ります。';if(training()){practiceStep=0;game=practiceGame();message='練習1：赤の5を選び、黒の6がある1列へ移動。';}actionEvent('undo');save();sync();}};
+el('assist-button').onclick=()=>{if(!active()||challenge)return;if(training()){message='練習では札を選んで移動先をタップしてみましょう。';sync();return;}if(game.assistFoundation()){selected=null;hinted=null;message='組札へ1枚だけ移しました。';actionEvent('foundation_assist');save();if(game.cleared)result();else sync();}else{message='いま組札へ移せる札はありません。';sync();}};
+el('finish-button').onclick=()=>{if(state!=='playing'||challenge||!game.finishPlan())return;if(game.finishVisible()){actionEvent('visible_finish');save();result();}};
 window.addEventListener('blur',pause);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 window.addEventListener('pagehide',()=>{if(state==='playing')accumulate();if(!training()&&state!=='title')save();clearDrag();audio.destroy();},{once:true});
 window.addEventListener('keydown',event=>{if(event.key==='Escape'&&event.target!==board&&!(event.target instanceof HTMLElement&&board.contains(event.target))){if(active())pause();else if(state==='paused')el('resume-button').click();}});
-setInterval(()=>{if(state==='playing'){updateClock();accumulate();startedAt=performance.now();save();}},1000);
+setInterval(()=>{if(state==='playing'){if(challenge&&game.elapsedMs+(startedAt?performance.now()-startedAt:0)>=180000){result();return;}updateClock();accumulate();startedAt=performance.now();save();}},1000);
 telemetry.trackEvent('game_open');title();
-if(import.meta.env.DEV)Object.defineProperty(window,'__game022',{get:()=>({state,snapshot:game.snapshot(),selected:selected?{...selected}:null,hint:hinted?structuredClone(hinted):null,stats:structuredClone(stats),practiceStep,drag:drag?{moving:drag.moving}:null,storePersistent:store.persistent,telemetry:telemetry.getEvents(),visibleMoves:game.visibleMoves()})});
+if(import.meta.env.DEV)Object.defineProperty(window,'__game022',{get:()=>({state,challenge,challengePeak,snapshot:game.snapshot(),selected:selected?{...selected}:null,hint:hinted?structuredClone(hinted):null,stats:structuredClone(stats),practiceStep,drag:drag?{moving:drag.moving}:null,storePersistent:store.persistent,telemetry:telemetry.getEvents(),visibleMoves:game.visibleMoves()})});

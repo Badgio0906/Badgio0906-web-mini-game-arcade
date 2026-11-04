@@ -20,8 +20,8 @@ describe('explicit record comparison definitions',()=>{
   });
   it('registers only comparable native legacy metrics with assistance excluded',()=>{
     expect(getRecordDefinition('game012')).toMatchObject({metricId:'score',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:Number.MAX_SAFE_INTEGER,pendingAbove:1000000});
-    expect(getRecordDefinition('game013')).toMatchObject({metricId:'score',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:11400,pendingAbove:11400});
-    expect(getRecordDefinition('game014')).toMatchObject({metricId:'successes',rulesetId:'1',modeId:'normal',publicEnabled:true,storageScale:1,assistancePolicy:'none',maxValue:25,pendingAbove:25});
+    expect(getRecordDefinition('game013')).toMatchObject({metricId:'score',rulesetId:'2',modeId:'single-stage',publicEnabled:false,storageScale:1,assistancePolicy:'none',maxValue:5400,pendingAbove:5400});
+    expect(getRecordDefinition('game014')).toMatchObject({metricId:'score',rulesetId:'2',modeId:'timing',publicEnabled:false,storageScale:1,assistancePolicy:'none',maxValue:2500,pendingAbove:2500});
     expect(recordBoards.filter(b=>['game012','game013','game014'].includes(b.gameId)).map(b=>b.boardId)).toEqual(['game012.score.r1.normal','game013.score.r1.normal','game014.successes.r1.normal']);
   });
   it('does not invent competitive records for unranked games or a score for retired game',()=>{

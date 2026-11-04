@@ -12,13 +12,14 @@ export interface LocalRecord {
 }
 export const CURRENT_RECORDS_KEY = 'game100:records:current:v1';
 const prefix = (id: string) => `web-mini-arcade:v1:${id}:`;
-const previousScalarKeys: Readonly<Record<string, readonly string[]>> = { game005:['best'], game006:['best-rules-v2','best'], game009:['bestRules2','best'], game017:['best'], game002:['bestScore','best'], game003:['rules2:best','best'], game015:['best'] };
+const previousScalarKeys: Readonly<Record<string, readonly string[]>> = { game005:['best'], game006:['best-rules-v3','best-rules-v2','best'], game009:['bestRules3','bestRules2','best'], game017:['best'], game002:['bestScore','best'], game003:['rules2:best','best'], game015:['best'] };
 const scalarKeys: Readonly<Record<string,string>> = {
   game001:'orbit-shift:v1:best', game002:prefix('game002')+'bestScoreV2',
   game003:prefix('game003')+'rules3:best', game004:prefix('game004')+'best',
-  game005:prefix('game005')+'best-rules-v2', game006:prefix('game006')+'best-rules-v3',
+  game005:prefix('game005')+'best-rules-v2', game006:prefix('game006')+'best-rules-v4',
   game007:prefix('game007')+'best:transport:v2', game008:prefix('game008')+'best-delivery-v2',
-  game009:prefix('game009')+'bestRules3', game011:prefix('game011')+'best:v2',
+  game009:prefix('game009')+'bestRules4', game011:prefix('game011')+'best:v2',
+  game013:'game013.mobile.v2.best', game014:'game014.mobile.v2.best',
   game015:prefix('game015')+'bestR04', game016:prefix('game016')+'best',
   game017:prefix('game017')+'bestRelayV2', game018:prefix('game018')+'bestDistanceDecimeters',
   game033:prefix('game033')+'best', game034:prefix('game034')+'best-rules-v1',
@@ -170,7 +171,7 @@ async function readWorldMetadata(): Promise<LocalRecord> {
 /** Stateless, read-only adapters: deletion/reset takes effect on the next read. */
 export async function readLocalRecord(gameId: string): Promise<LocalRecord> {
   const def=getRecordDefinition(gameId);if(!def)return bad('記録定義がありません');
-  if(['game012','game013','game014'].includes(gameId)){const result=await readLegacyMirror(gameId as 'game012'|'game013'|'game014');return {...result,label:def.localLabel};}
+  if(gameId==='game012'){const result=await readLegacyMirror(gameId as 'game012'|'game013'|'game014');return {...result,label:def.localLabel};}
   let result:LocalRecord;
   if(gameId==='game031')result=await readWorldMetadata();
   else try{const backend=window.localStorage;result=scalarKeys[gameId]?await readScalar(gameId,backend):readJSON(gameId,backend);}catch{result=bad();}

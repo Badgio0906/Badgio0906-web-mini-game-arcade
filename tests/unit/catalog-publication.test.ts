@@ -34,9 +34,9 @@ describe('author publication cleanup and retained contracts', () => {
     for (const game of removedGameCatalog) expect(game.status).toBe('hidden');
     expect(onHoldGameCatalog[0].status).toBe('active');
     expect(getRecordDefinition('game029')).toMatchObject({ boardId:'game029.score.r1.all',publicEnabled:true });
-    for (const path of ['src/data/recordDefinitions.ts','src/data/gameVersions.ts','src/records/localRecords.ts','analytics-worker/src/records.ts','analytics-worker/src/aggregate.ts','src/games/game031/Save.ts','src/games/game031/World.ts','src/games/game015/main.ts','src/games/game015/style.css']) {
-      // Keep the old protected bytes exact after removing only the new,
-      // explicitly marked registration. Legacy adapters/definitions remain frozen.
+    for (const path of ['analytics-worker/src/records.ts','analytics-worker/src/aggregate.ts','src/games/game031/Save.ts','src/games/game031/World.ts','src/games/game015/main.ts','src/games/game015/style.css']) {
+      // Unchanged runtime boundaries stay byte-identical. Revised mobile record
+      // definitions/adapters have semantic migration tests in record-local and record-rule-migration.
       let text=readFileSync(path,'utf8');
       if(['src/data/recordDefinitions.ts','src/data/gameVersions.ts','src/records/localRecords.ts'].includes(path)){
         text=text.replace(/^.*\/\/ game03[68]-additive(?!-begin|-end).*\n/gm,'')

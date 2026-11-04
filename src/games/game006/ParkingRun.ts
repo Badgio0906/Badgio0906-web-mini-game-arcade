@@ -188,14 +188,14 @@ export class ParkingRun {
   private offered = false;
   private layoutRoll = 0;
   private practice = false;
-  constructor(private readonly emit: (event: ParkingEvent) => void = () => {}, private readonly random: () => number = Math.random) {
+  constructor(private readonly emit: (event: ParkingEvent) => void = () => {}, private readonly random: () => number = Math.random, private readonly progressive = false) {
     this.layout = createParkingLayout(0, 'normal'); this.state = this.initial();
   }
   private initial(): ParkingSnapshot {
     return { score: 0, parked: 0, perfectCount: 0, perfectStreak: 0, maxStreak: 0, time: 0, alive: false,
       phase: 'angle', pending: null, mode: 'normal', steeringDegrees: -STEERING_LIMIT_DEGREES, power: 0,
       lockedSteering: null, lockedPower: null, grade: null, pose: { ...this.layout.start }, streakMultiplier: 1, modeMultiplier: 1, outcome: null,
-      rulesVersion: 3, correctionUsed: false, correctionDistance: null, slotKind: 'safe', slotMultiplier: 1, brakeUsed: false, braking: false, nearMisses: 0, nearMissPoints: 0, noBrakePoints: 0, precision: null, minClearance: null };
+      rulesVersion: this.progressive ? 4 : 3, correctionUsed: false, correctionDistance: null, slotKind: 'safe', slotMultiplier: 1, brakeUnlocked: !this.progressive, brakeUsed: false, braking: false, nearMisses: 0, nearMissPoints: 0, noBrakePoints: 0, precision: null, minClearance: null };
   }
   reset(): void {
     this.layout = createParkingLayout(0, 'normal'); this.state = this.initial(); this.options = [];
@@ -206,7 +206,7 @@ export class ParkingRun {
   start(): void { this.reset(); this.state.alive = true; }
   /** Dedicated practice fixtures use the identical gauges/physics but never enter the production run. */
   startPractice(step: number): void {
-    this.start(); this.practice = true;
+    this.start(); this.practice = true; this.state.brakeUnlocked = step > 0;
     if (step === 2) { this.options = createParkingOptions(3, 'normal'); this.layout = copyLayout(this.options[0].layout); this.state.phase = 'slot-choice'; }
   }
   act(): boolean {
@@ -222,7 +222,7 @@ export class ParkingRun {
   /** One steering reversal for the whole run. Position and heading stay continuous. */
   correct(): boolean {
     const s = this.state;
-    if (!s.alive || s.phase !== 'driving' || s.correctionUsed || s.braking || this.driven <= 0) return false;
+    if (!s.alive || !s.brakeUnlocked || s.phase !== 'driving' || s.correctionUsed || s.braking || this.driven <= 0) return false;
     const original = curvatureFor(s.lockedSteering!);
     this.correctedCurvature = Math.abs(original) < 1e-5 ? .0014 : -original;
     this.correctionOrigin = { ...s.pose }; this.correctionStart = this.driven;
@@ -237,7 +237,7 @@ export class ParkingRun {
   brake(): boolean {
     const s = this.state;
     // No zero-time brake from the gesture that selected Power.
-    if (!s.alive || s.phase !== 'driving' || s.brakeUsed || this.driven <= 0) return false;
+    if (!s.alive || !s.brakeUnlocked || s.phase !== 'driving' || s.brakeUsed || this.driven <= 0) return false;
     s.brakeUsed = s.braking = true; this.brakingTime = 0; this.brakeSpeed = this.speed;
     this.emit({ type: 'brake', distance: this.driven, remaining: this.driveDistance-this.driven, speed: this.speed }); return true;
   }
@@ -318,6 +318,7 @@ export class ParkingRun {
     const s = this.state;
     this.options = s.parked >= 3 ? createParkingOptions(s.parked, s.mode, this.layoutRoll) : [];
     this.layout = this.options.length ? copyLayout(this.options[0].layout) : createParkingLayout(s.parked, s.mode, this.layoutRoll);
+    s.brakeUnlocked = !this.progressive || this.practice || s.parked >= 3;
     s.pose = { ...this.layout.start }; s.lockedSteering = s.lockedPower = null; s.steeringDegrees = -STEERING_LIMIT_DEGREES; s.power = 0; s.grade = null;
     s.slotKind = 'safe'; s.slotMultiplier = 1; s.brakeUsed = s.braking = false; s.nearMisses = s.nearMissPoints = s.noBrakePoints = 0; s.precision = null; s.minClearance = null;
     this.correctionOrigin = null; this.correctionStart = this.correctedCurvature = 0;
@@ -334,8 +335,8 @@ export class ParkingRun {
     const s = this.state; if (!s.alive) return;
     s.alive = false; s.phase = 'ended'; s.outcome = outcome; s.braking = false; this.nearCandidates.clear(); s.nearMisses = s.nearMissPoints = s.noBrakePoints = 0;
     this.ending = { score: s.score, parked: s.parked, perfectCount: s.perfectCount, maxStreak: s.maxStreak, time: s.time, mode: s.mode,
-      outcome, reason, cause, pose: { ...s.pose }, contact: this.contact ? { ...this.contact } : null, steeringDegrees: s.lockedSteering ?? s.steeringDegrees, power: s.lockedPower ?? s.power,
-      rulesVersion: 3, slotKind: s.slotKind, brakeUsed: s.brakeUsed, correctionUsed: s.correctionUsed };
+      outcome, missDistance: Math.max(0,-parkingPrecision(s.pose,this.layout.slot).margin), reason, cause, pose: { ...s.pose }, contact: this.contact ? { ...this.contact } : null, steeringDegrees: s.lockedSteering ?? s.steeringDegrees, power: s.lockedPower ?? s.power,
+      rulesVersion: this.progressive ? 4 : 3, slotKind: s.slotKind, brakeUsed: s.brakeUsed, correctionUsed: s.correctionUsed };
     this.emit({ type: 'failure', outcome, cause, brakeUsed: s.brakeUsed, slot: s.slotKind });
   }
   snapshot(): ParkingSnapshot { return { ...this.state, pose: { ...this.state.pose }, precision: this.state.precision ? { ...this.state.precision } : null }; }

@@ -7,7 +7,7 @@ function harness() {
   const source = readFileSync(new URL('../../src/games/game025/main.ts', import.meta.url), 'utf8');
   const ast = ts.createSourceFile('main.ts',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TS);
   const fragments: string[] = []; let apply = '', visibility = '', pagehide = '';
-  const required = new Set(['pause','pauseMenu','mode','cancelJob','stopClock']);
+  const required = new Set(['pause','pauseMenu','mode','cancelJob','stopClock','cancelHold']);
   function visit(node: ts.Node) {
     if (ts.isFunctionDeclaration(node) && node.name && required.has(node.name.text)) fragments.push(node.getText(ast));
     if (ts.isVariableDeclaration(node) && node.name.getText(ast)==='apply') apply=node.initializer!.getText(ast);
@@ -15,10 +15,10 @@ function harness() {
     if (ts.isCallExpression(node) && node.expression.getText(ast)==='window.addEventListener' && node.arguments[0]?.getText(ast)==="'pagehide'") pagehide=node.arguments[1].getText(ast);
     ts.forEachChild(node,visit);
   }
-  visit(ast); if(fragments.length!==5||!apply||!visibility)throw Error('production lifecycle extraction failed');
+  visit(ast); if(fragments.length!==6||!apply||!visibility)throw Error('production lifecycle extraction failed');
   const script = `
     let state='generating',prior='playing',pending=5,job=1,id=1,startCell=5,seed=1,generationPaused=false,deferredFirstOpen=null;
-    let elapsedMs=0,ticking=0,epoch=0,gesture=null,menuDown=null,worker=null,deadline=null,feedback='',menuCount=0,saveCount=0,opened=[];
+    let elapsedMs=0,ticking=0,epoch=0,gesture=null,menuDown=null,worker=null,deadline=null,holdTimer=null,feedback='',menuCount=0,saveCount=0,opened=[];
     const document={hidden:false},performance={now:()=>1000},app={dataset:{}},grid={inert:true},menu={open:false,close(){this.open=false}},buttons={resume:{},'pause-title':{}};
     const board={difficulty:'beginner',outcome:'active',initialize(){this.initialized=true;return true;},initialized:false};
     const fallbacks=Array.from({length:81},()=>({mines:[],proof:null})),candidate=()=>[];

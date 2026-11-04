@@ -1,12 +1,12 @@
 export const RULES = '1';
 export const GENERATOR = 'public-subset-v1';
-export type Difficulty = 'beginner' | 'intermediate';
+export type Difficulty = 'mini' | 'beginner' | 'intermediate';
 export type Outcome = 'active' | 'won' | 'lost';
 export type Action = { type: 'open' | 'flag' | 'chord'; cell: number };
 export type Deduction = { cell: number; kind: 'safe' | 'mine'; reason: string };
 export type Visible = { width: number; height: number; total: number; cells: (number | null)[] };
 export type Proof = { generator: string; start: number; steps: Deduction[]; verified: boolean };
-export const config = (d: Difficulty) => d === 'beginner' ? { width: 9, height: 9, total: 10 } : { width: 16, height: 16, total: 40 };
+export const config = (d: Difficulty) => d === 'mini' ? { width: 6, height: 6, total: 5 } : d === 'beginner' ? { width: 9, height: 9, total: 10 } : { width: 16, height: 16, total: 40 };
 export function neighbors(cell: number, width: number, height: number): number[] {
   const x = cell % width, y = Math.floor(cell / width), result: number[] = [];
   for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {

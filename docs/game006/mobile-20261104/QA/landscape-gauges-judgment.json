@@ -1,0 +1,22 @@
+{
+  "finding_id": "006-landscape-gauges",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "CODE_INSPECTION",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "Codex stamp_parking self QA independent of hidden Jev routing; mobile_review separate source and screenshot review",
+  "rationale": "The narrow console split212px across two gauges and action. Moved console beside road with separate half-panel gauge columns and48px full-width action. Independent reviewer confirmed separated values in final screenshot.",
+  "evidence": [
+    "src/games/game006/style.css",
+    "src/games/game006/ParkingScene.ts",
+    "docs/game006/mobile-20261104/QA/844-play.png"
+  ],
+  "actual_next_action": {
+    "method": "CODE_INSPECTION",
+    "description": "Inspected landscape grid and Phaser scale management, revised scoped layout and parent-size observation, recaptured screen and obtained independent Visual confirmation.",
+    "evidence": [
+      "docs/game006/mobile-20261104/QA/844-play.png"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

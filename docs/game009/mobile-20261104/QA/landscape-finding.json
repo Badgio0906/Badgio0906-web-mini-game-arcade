@@ -1,0 +1,20 @@
+{
+  "finding_id": "009-mobile-landscape-controls",
+  "problem": "Game009 control row is below the short landscape viewport",
+  "expected": "Game interaction and hint controls fit inside an 844×390 viewport",
+  "observed": [
+    "At 844×390 after Play, .desk-controls top=436 and bottom=482",
+    "The screen image shows the six-object row clipped at the lower viewport edge"
+  ],
+  "unknown": [],
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "measurements": {
+    "controls_top": 436,
+    "controls_bottom": 482,
+    "viewport_height": 390
+  },
+  "provenance": "browser measurements and screenshot from local DEV ordinary Play input"
+}
