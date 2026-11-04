@@ -3,3 +3,7 @@
 #take-guide{grid-column:1/-1;padding:6px 9px;margin:3px 0;background:#fff4d9;color:#533825;border-left:4px solid #df6b31;font:600 12px/1.4 system-ui}.card ol{padding-left:1.5em}.card li{margin:9px 0;line-height:1.5}
 
 .ghost-lane{outline:3px solid #8bb9ef;outline-offset:-5px}.ghost-lane small{font-weight:800;color:#123b70}
+
+/* A square board owns its actual space instead of floating in a tall empty stage. */
+@media(max-aspect-ratio:13/10){main{grid-template-rows:auto auto auto;align-content:start;gap:5px;padding:5px 6px}.stage{width:100%;height:min(calc(100dvh - 216px),calc(100vw - 12px));min-height:210px;align-items:stretch}.stage canvas{margin:auto}.controls{gap:2px}#take-guide{font-size:12px;line-height:1.35;padding:5px 8px;margin:0}#notice{min-height:30px;font-weight:700}.pads button{min-height:64px}.hud{min-height:26px}}
+.guide-visual{padding:24px 10px;background:#e0ebfa;border:2px dashed #5473a5;border-radius:12px;text-align:center;color:#244b84;font-weight:800;font-size:clamp(16px,4vw,22px)}.guide-card{max-width:420px}.guide-card p{font-size:16px;line-height:1.8}.guide-card .actions button{min-height:48px}

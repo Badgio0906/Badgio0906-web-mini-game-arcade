@@ -1,0 +1,22 @@
+{
+  "finding_id": "027-mobile-landscape-controls",
+  "PRIMARY_CAUSE": "PRODUCT_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "SCREENSHOT_REVIEW",
+  "RELEASE_RISK_IF_UNRESOLVED": true,
+  "reviewer": "codex-echo-pool-implementation-separate-qa-pass",
+  "rationale": "The enlarged power control caused the existing short-landscape controls to wrap into extra rows. A height-bounded main grid and two-row control grid now fit the controls above the consent footer. Browser geometry and actual drag/click checks pass at844x390.",
+  "evidence": [
+    "QA/browser.json",
+    "QA/play-844.png"
+  ],
+  "actual_next_action": {
+    "method": "SCREENSHOT_REVIEW",
+    "description": "Inspected the landscape screenshot, bounded the rows, and reran geometry and normal pointer checks.",
+    "evidence": [
+      "QA/play-844.png",
+      "QA/browser.json"
+    ]
+  },
+  "final_root_cause": "PRODUCT_BUG"
+}

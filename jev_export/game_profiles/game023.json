@@ -39,7 +39,7 @@
     "titleEn": "KANA GUESS",
     "tagline": "一文字わかると、ことばが見える。",
     "genre": "calm kana word guessing",
-    "coreMechanic": "Select a kana: reveal every occurrence if present; only incorrect new guesses spend one of eight chances; reveal all letters to finish",
+    "coreMechanic": "Select a kana: reveal every occurrence if present; only incorrect new guesses spend one of eight chances; reveal all letters to finish; five questions form one visible round, solved words award accuracy plus consecutive-correct bonuses, hinted score is halved",
     "skillAxes": [
       "vocabulary",
       "deduction",
@@ -53,21 +53,22 @@
       "pause": "button/Escape/visibility/blur"
     },
     "questions": {
-      "count": 180,
+      "count": 330,
       "categories": 6,
       "reading": "NFC hiragana, 3–8 kana, voiced/small/long distinct",
-      "selection": "seeded non-repeating cycle; all questions share the same complete keyboard"
+      "selection": "seeded non-repeating cycle; all questions share the same complete keyboard",
+      "roundLength": 5
     },
     "practice": "Optional two-word lesson using real kana selection, including voiced and small kana; no production RUNs or question history",
     "storagePrefix": "web-mini-arcade:v1:game023:",
-    "storage": "One defensive JSON snapshot for current question, seed, history, state, run UUID and reported ledger. Reload restores the same RUN; completed results never report again. No BEST or visible statistics.",
+    "storage": "Existing question/seed/history/state/run UUID/reported ledger JSON remains rules1 compatible; optional validated round metadata resumes five-question progress; separate fiveWordsV1Best stores round score; practice excluded.",
     "creditMode": "free",
     "ads": "none in game logic",
     "jev": "development Shadow Review on actual findings only; no runtime calls or automatic gate",
     "humanReview": "Author and physical-device playtests pending; trial publication explicitly authorized",
-    "revision": 1,
+    "revision": 2,
     "rules_version": "1",
-    "presentation_version": "prototype-1",
+    "presentation_version": "mobile-20261104",
     "telemetry": "Common lifecycle; word_id/category tokens and numeric guess/wrong counts, hint/outcome only; never answer text or kana history"
   },
   "humanEvaluation": "pending; prototype publication authorized",

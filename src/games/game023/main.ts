@@ -1,4 +1,5 @@
 import './style.css';
+import { freshRound, settleRound } from './round';
 import { StorageService } from '../../core/StorageService';
 import { AudioService } from '../../core/AudioService';
 import { TelemetryService, type EventName } from '../../core/TelemetryService';
@@ -19,6 +20,8 @@ const store = new QuestionStore(backend);
 const initialSeed = crypto.getRandomValues(new Uint32Array(1))[0];
 let save: SaveData = store.read() ?? emptySave(initialSeed);
 let question: QuestionState = save.current?.question ?? createQuestion('w_food_001', save.seed);
+let round = save.round ?? freshRound();
+let roundBest = storage.readNumber('fiveWordsV1Best', 0, 0, 10000);
 let state: State = 'title', returnState: 'playing' | 'practice' = 'playing', group = 0, practiceStep = 0;
 let message = 'カテゴリを手がかりに、かなを選ぼう。', epoch = 0, blockUntil = 0;
 const pointerEpoch = new WeakMap<Element, number>();
@@ -41,6 +44,7 @@ function persist(): void {
     save.current.question = question;
     save.state = question.outcome !== 'playing' ? 'result' : state === 'playing' ? 'playing' : 'paused';
   } else save.state = 'title';
+  save.round = { ...round };
   store.write(save);
 }
 function mode(next: State): void {
@@ -70,10 +74,10 @@ function sync(): void {
   el('remaining').textContent = `${question.remaining}回`;
   el('dots').innerHTML = Array.from({ length: 8 }, (_, i) => `<i class="dot ${i >= question.remaining ? 'used' : ''}"></i>`).join('');
   el('feedback').textContent = message;
-  el('question-caption').textContent = practice() ? `練習 ${practiceStep + 1} / 2 · 記録には入りません` : '時間制限なし · かなをひとつ選ぼう';
+  el('question-caption').textContent = practice() ? `練習 ${practiceStep + 1} / 2 · 記録には入りません` : `第${round.index}問 / 5 · ${round.score}点 · ${round.streak}連続正解`;
   tabs.innerHTML = kanaGroups.map((item, i) => `<button type="button" role="tab" id="tab-${item.id}" data-game-control data-group="${i}" aria-selected="${group === i}" aria-controls="keyboard" tabindex="${group === i ? 0 : -1}">${item.label}</button>`).join('');
   keyboard.setAttribute('aria-labelledby', `tab-${kanaGroups[group].id}`);
-  const slots: readonly string[] = group === 0 ? [...'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや　ゆ　よらりるれろわ　　　をん'] : kanaGroups[group].keys;
+  const slots: readonly string[] = kanaGroups[group].keys;
   keyboard.innerHTML = slots.map(kana => {
     if (kana === '　') return '<span class="kana-gap" aria-hidden="true"></span>';
     const used = question.guessed.includes(kana), hit = used && word.reading.includes(kana), status = used ? hit ? '正解・選択済み' : 'はずれ・選択済み' : '未選択';
@@ -94,7 +98,9 @@ function finishRun(outcome: 'correct' | 'ended' | 'quit'): void {
   store.write(save);
   telemetry.trackEvent('run_end', { ...data(), outcome, completed: outcome === 'correct' });
 }
-function start(source = 'direct'): void {
+function start(source = 'direct', continueRound = false): void {
+  if (!continueRound) round = freshRound();
+  else round = { ...round, index: round.index + 1, settled: false };
   if (save.current && !save.current.reported) finishRun('quit');
   const cycle = nextQuestion(save.seed, save.history);
   question = cycle.question; save.history = cycle.history; save.seed = cycle.seed; returnState = 'playing'; group = 0;
@@ -108,14 +114,14 @@ function start(source = 'direct'): void {
 function title(): void {
   if (save.current && !save.current.reported) finishRun('quit');
   save.current = null; returnState = 'playing'; message = 'カテゴリを手がかりに、かなを選ぼう。';
-  show('<p class="eyebrow">KANA GUESS</p><h2 id="menu-title">伏字ことば</h2><p>一文字わかると、ことばが見える。<br>カテゴリを手がかりに、かなを選ぼう。</p><div class="menu-actions"><button id="play-button" class="primary" type="button" data-game-control>すぐ遊ぶ</button><button id="explain-button" type="button" data-game-control>説明を見る</button><button id="practice-button" type="button" data-game-control>練習する</button></div><p class="save-note">制限時間なし。間違いは8回まで。<br>途中の問題はこの端末に保存します。</p>', 'title');
+  show(`<p class="eyebrow">KANA GUESS</p><h2 id="menu-title">伏字ことば</h2><p>一文字わかると、ことばが見える。<br>カテゴリを手がかりに、かなを選ぼう。</p><div class="menu-actions"><button id="play-button" class="primary" type="button" data-game-control>すぐ遊ぶ</button><button id="explain-button" type="button" data-game-control>説明を見る</button><button id="practice-button" type="button" data-game-control>練習する</button></div><p class="save-note">5問で1ラウンド。各問のミスは8回まで。<br>連続正解で得点アップ。ヒント使用時は得点が半分。<br>ラウンドBEST ${roundBest}点。途中から再開できます。</p>`, 'title');
   el('play-button').onclick = () => { telemetry.trackEvent('tutorial_skip', { source: 'title' }); start(); };
   el('explain-button').onclick = () => explain(false); el('practice-button').onclick = startPractice;
 }
 function explain(inQuestion: boolean): void {
   if (inQuestion) returnState = state === 'practice' ? 'practice' : 'playing';
   if (!practice()) telemetry.trackEvent('tutorial_view', { source: inQuestion ? 'playing' : 'title' });
-  show(`<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">かなを、ひとつずつ。</h2><ol><li>カテゴリと文字数を見て、かなを選びます。</li><li>含まれていたら、同じ文字の場所が全部開きます。</li><li>含まれない時だけ残り回数が減ります。同じ文字を選び直しても減りません。</li><li>全部開くと正解。8回間違えたら答えを見て、次のことばへ。</li><li>「が」と「か」、「っ」と「つ」は別の文字。区分を切り替えて探せます。</li></ol><p>1文字ヒントは1問に1回。残り回数は減りません。時間制限・広告・CREDITはありません。</p><div class="menu-actions"><button id="continue-button" class="primary" data-game-control>${inQuestion ? '問題へ戻る' : 'すぐ遊ぶ'}</button><button id="practice-button" data-game-control>練習する</button>${inQuestion ? '' : '<button id="title-button" data-game-control>タイトルへ</button>'}</div>`, 'explanation');
+  show(`<p class="eyebrow">HOW TO PLAY</p><h2 id="menu-title">かなを、ひとつずつ。</h2><ol><li>カテゴリと文字数を見て、かなを選びます。</li><li>含まれていたら、同じ文字の場所が全部開きます。</li><li>含まれない時だけ残り回数が減ります。同じ文字を選び直しても減りません。</li><li>5問で1ラウンド。全部開くと正解。8回間違えたら次のことばへ進めます。連続正解で加点。</li><li>「が」と「か」、「っ」と「つ」は別の文字。区分を切り替えて探せます。</li></ol><p>1文字ヒントは1問に1回。残り回数は減りませんが、その問題の得点は半分です。時間制限・広告・CREDITはありません。</p><div class="menu-actions"><button id="continue-button" class="primary" data-game-control>${inQuestion ? '問題へ戻る' : 'すぐ遊ぶ'}</button><button id="practice-button" data-game-control>練習する</button>${inQuestion ? '' : '<button id="title-button" data-game-control>タイトルへ</button>'}</div>`, 'explanation');
   el('continue-button').onclick = () => { if (inQuestion) { mode(returnState); focusKey(); } else start('explanation'); };
   el('practice-button').onclick = startPractice; if (!inQuestion) el('title-button').onclick = title;
 }
@@ -134,12 +140,16 @@ function result(): void {
   const training = practice(), word = wordById.get(question.word_id)!, correct = question.outcome === 'correct';
   if (training && correct) trainingEvent('tutorial_step_complete', { step: practiceStep + 1 });
   if (training && correct && practiceStep === 1) { trainingEvent('practice_complete', { count: 2 }); storage.writeBoolean('practiceCompleted', true); }
-  if (!training) finishRun(correct ? 'correct' : 'ended');
-  const nextLabel = training ? correct ? practiceStep === 0 ? '次の練習' : '本番を遊ぶ' : 'この練習をもう一度' : '次のことば';
-  show(`<p class="eyebrow">${training ? 'PRACTICE' : 'KANA GUESS'}</p><h2 id="menu-title">${correct ? training && practiceStep === 1 ? '練習できました。' : 'ことばが、見えました。' : '答えを見て、ひと息。'}</h2><p class="answer-word">${word.reading}</p><p class="result-detail">${categories[word.category]} · ${[...word.reading].length}文字<br>間違い ${wrongCount(question)}回 / 8回 · ヒント ${question.hintUsed ? '使用' : 'なし'}<br>${word.clue}</p><div class="menu-actions"><button id="next-button" class="primary" data-game-control>${nextLabel}</button><button id="result-title-button" data-game-control>タイトルへ</button></div>`, 'result');
+  if (!training) {
+    round = settleRound(round, question); save.round = { ...round };
+    if (round.index === 5 && round.score > roundBest) { roundBest = round.score; storage.writeNumber('fiveWordsV1Best', roundBest); }
+    finishRun(correct ? 'correct' : 'ended');
+  }
+  const nextLabel = training ? correct ? practiceStep === 0 ? '次の練習' : '本番を遊ぶ' : 'この練習をもう一度' : round.index < 5 ? `第${round.index + 1}問へ` : 'もう一度5問';
+  show(`<p class="eyebrow">${training ? 'PRACTICE' : 'KANA GUESS'}</p><h2 id="menu-title">${correct ? training && practiceStep === 1 ? '練習できました。' : 'ことばが、見えました。' : '答えを見て、ひと息。'}</h2>${training ? '' : `<p class="round-score">${round.index === 5 ? `ラウンド終了 · ${round.solved}/5問正解` : `第${round.index}問 / 5`}<br><strong>${round.score}点</strong> · ${round.streak}連続正解<br>BEST ${roundBest}点</p>`}<p class="answer-word">${word.reading}</p><p class="result-detail">${categories[word.category]} · ${[...word.reading].length}文字<br>間違い ${wrongCount(question)}回 / 8回 · ヒント ${question.hintUsed ? '使用' : 'なし'}<br>${word.clue}</p><div class="menu-actions"><button id="next-button" class="primary" data-game-control>${nextLabel}</button><button id="result-title-button" data-game-control>タイトルへ</button></div>`, 'result');
   el('next-button').onclick = () => {
     if (training) { if (correct && practiceStep === 1) start('practice'); else { if (correct) practiceStep++; practiceQuestion(); } }
-    else { telemetry.trackEvent('retry', { source: 'next' }); start('next'); }
+    else { telemetry.trackEvent('retry', { source: 'next' }); start('next', round.index < 5); }
   };
   el('result-title-button').onclick = title;
 }
@@ -159,7 +169,7 @@ tabs.addEventListener('keydown', event => { if (!['ArrowLeft', 'ArrowRight', 'Ho
 keyboard.addEventListener('keydown', event => {
   if (!playing() || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
   event.preventDefault(); const keys = [...keyboard.children] as HTMLElement[], current = Math.max(0, keys.indexOf(document.activeElement as HTMLElement));
-  const columns = innerWidth <= 620 ? 5 : 10, delta = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : event.key === 'ArrowUp' ? -columns : columns;
+  const columns = innerWidth <= 620 ? 6 : 10, delta = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : event.key === 'ArrowUp' ? -columns : columns;
   let target = event.key === 'Home' ? 0 : event.key === 'End' ? keys.length - 1 : (current + delta + keys.length) % keys.length;
   for (let attempt = 0; attempt < keys.length && !keys[target]?.dataset.kana; attempt++) target = (target + (delta < 0 ? -1 : 1) + keys.length) % keys.length;
   keys[target]?.focus();
@@ -207,4 +217,4 @@ if (save.current) {
   actionEvent('question_restored');
   if (question.outcome !== 'playing') result(); else pause(true);
 } else title();
-if (import.meta.env.DEV) Object.defineProperty(window, '__game023', { get: () => ({ state, group, question: structuredClone(question), save: structuredClone(save), practiceStep, telemetry: telemetry.getEvents() }) });
+if (import.meta.env.DEV) Object.defineProperty(window, '__game023', { get: () => ({ state, group, question: structuredClone(question), save: structuredClone(save), practiceStep, round: { ...round }, roundBest, telemetry: telemetry.getEvents() }) });

@@ -21,9 +21,18 @@ describe('read-only local record adapters',()=>{
   });
   it('does not substitute legacy keys and rereads after source deletion',async()=>{
     saved.set(p('game006')+'best','800');expect((await readLocalRecord('game006')).status).toBe('legacy');
-    saved.set(p('game006')+'best-rules-v3','100');expect((await readLocalRecord('game006')).value).toBe(100);
-    saved.delete(p('game006')+'best-rules-v3');expect((await readLocalRecord('game006')).status).toBe('legacy');
+    saved.set(p('game006')+'best-rules-v4','100');expect((await readLocalRecord('game006')).value).toBe(100);
+    saved.delete(p('game006')+'best-rules-v4');expect((await readLocalRecord('game006')).status).toBe('legacy');
     saved.clear();expect((await readLocalRecord('game006')).status).toBe('none');
+  });
+  it('keeps revised mobile scores independent of previous parking, stamp and native metrics',async()=>{
+    saved.set(p('game006')+'best-rules-v3','900');saved.set(p('game009')+'bestRules3','800');
+    expect((await readLocalRecord('game006')).status).toBe('legacy');expect((await readLocalRecord('game009')).status).toBe('legacy');
+    saved.set(p('game006')+'best-rules-v4','123');saved.set(p('game009')+'bestRules4','456');
+    saved.set('game013.mobile.v2.best','5400');saved.set('game014.mobile.v2.best','2500');
+    for(const [id,value]of [['game006',123],['game009',456],['game013',5400],['game014',2500]]as const)expect(await readLocalRecord(id)).toMatchObject({status:'record',value});
+    expect(saved.get(p('game006')+'best-rules-v3')).toBe('900');expect(saved.get(p('game009')+'bestRules3')).toBe('800');
+    saved.set('game014.mobile.v2.best','2501');expect((await readLocalRecord('game014')).status).toBe('unavailable');
   });
   it('retains old015 BEST and reads only separate revision04 BEST',async()=>{
     saved.set(p('game015')+'best','900');expect((await readLocalRecord('game015')).status).toBe('legacy');
@@ -62,7 +71,7 @@ describe('read-only local record adapters',()=>{
     set('game023','question',{game_id:'game023',rules_version:'1',history:['invented']});expect((await readLocalRecord('game023')).status).toBe('unavailable');
   });
   it('never fills legacy Godot or retired games with fictitious zero',async()=>{
-    for(const id of ['game012','game013','game014','game010'])expect((await readLocalRecord(id)).status).toBe('unavailable');
+    for(const id of ['game012','game010'])expect((await readLocalRecord(id)).status).toBe('unavailable');
   });
 });
 

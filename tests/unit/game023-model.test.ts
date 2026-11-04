@@ -5,10 +5,10 @@ import { questionTelemetry } from '../../src/games/game023/telemetry';
 
 const byReading = (reading: string) => words.find(word => word.reading === reading)!.word_id;
 describe('Game023 vocabulary and full fixed kana keyboard', () => {
-  it('has 180 unique original 3–8-character reads and valid IDs, clues and categories', () => {
-    expect(words).toHaveLength(180); expect(validateWords()).toEqual([]);
-    expect(new Set(words.map(word => word.reading)).size).toBe(180);
-    for (const category of Object.keys(categories)) expect(words.filter(word => word.category === category)).toHaveLength(30);
+  it('has 330 unique original 3–8-character reads and valid IDs, clues and categories', () => {
+    expect(words).toHaveLength(330); expect(validateWords()).toEqual([]);
+    expect(new Set(words.map(word => word.reading)).size).toBe(330);
+    for (const category of Object.keys(categories)) expect(words.filter(word => word.category === category)).toHaveLength(category === 'transport' ? 30 : 60);
   });
   it('offers independent complete清音, voiced/semi voiced, small and long kana sets', () => {
     expect(kanaGroups[0].keys.join('')).toBe('あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん');
@@ -99,10 +99,10 @@ describe('Game023 deterministic cycle and privacy', () => {
     for (let i = 0; i < 400; i++) { a = nextQuestion(a.seed, a.history); b = nextQuestion(b.seed, b.history); expect(a).toEqual(b); }
     expect(nextSeed(0)).not.toBe(0);
   });
-  it('asks all 180 words once before safely cycling without an immediate repeat', () => {
+  it('asks all words once before safely cycling without an immediate repeat', () => {
     let cycle = nextQuestion(123), last = cycle.question.word_id; const seen = new Set([last]);
-    for (let i = 1; i < 180; i++) { cycle = nextQuestion(cycle.seed, cycle.history); expect(cycle.question.word_id).not.toBe(last); expect(seen.has(cycle.question.word_id)).toBe(false); seen.add(cycle.question.word_id); last = cycle.question.word_id; }
-    expect(seen.size).toBe(180); cycle = nextQuestion(cycle.seed, cycle.history); expect(cycle.question.word_id).not.toBe(last); expect(cycle.history).toHaveLength(2);
+    for (let i = 1; i < words.length; i++) { cycle = nextQuestion(cycle.seed, cycle.history); expect(cycle.question.word_id).not.toBe(last); expect(seen.has(cycle.question.word_id)).toBe(false); seen.add(cycle.question.word_id); last = cycle.question.word_id; }
+    expect(seen.size).toBe(330); cycle = nextQuestion(cycle.seed, cycle.history); expect(cycle.question.word_id).not.toBe(last); expect(cycle.history).toHaveLength(2);
   });
   it('filters unknown history IDs and still suppresses the current word', () => {
     expect(nextQuestion(123, ['unknown', words[0].word_id, words[0].word_id]).history.filter(id => id === words[0].word_id)).toHaveLength(1);

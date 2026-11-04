@@ -25,7 +25,7 @@ describe('standard finalization events use existing production idempotence guard
  it('024 excludes practice and already finalized restores',()=>{for(const mode of ['practice','reported','inactive']){const fixture=snakeFixture(mode==='practice');if(mode==='reported')fixture.saved.run.reported=true;if(mode==='inactive')fixture.saved.run.active=false;runInNewContext(snakeFunctions+";recordEnd('wall');recordEnd('quit');",fixture);expect(fixture.telemetry.trackEvent).not.toHaveBeenCalled();}});
  const poolFunctions=functions('game027',['track','abandon']);
  for(const training of [false,true])it(`027 abandon is idempotent and training=${training} is respected`,()=>{
-  const fixture={training,current:{},phase:'paused',mode:'two',difficulty:'normal',match:{shots:[2,3],fouls:[0,1]},saved:{snapshot:{}},store:{write:vi.fn()},invalidate:vi.fn(),analyticsConfig:{environment:'production'},telemetry:{trackEvent:vi.fn()}};
+  const fixture={training,challenge:null,current:{},phase:'paused',mode:'two',difficulty:'normal',match:{shots:[2,3],fouls:[0,1]},saved:{snapshot:{}},store:{write:vi.fn()},invalidate:vi.fn(),analyticsConfig:{environment:'production'},telemetry:{trackEvent:vi.fn()}};
   runInNewContext(poolFunctions+";abandon('restart');abandon('quit');",fixture);expect(events(fixture.telemetry.trackEvent)).toEqual(training?[]:['quit','run_end']);if(!training)expect(fixture.telemetry.trackEvent.mock.calls[0][1]).toMatchObject({reason:'restart',shots:5,source:'paused',mode:'two'});
  });
  const curlingFunctions=functions('game035',['abandon']);

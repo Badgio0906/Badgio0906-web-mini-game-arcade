@@ -7,7 +7,7 @@ export interface Tile {
   face: number;
   removed: boolean;
 }
-export type Difficulty = 'small' | 'regular';
+export type Difficulty = 'mini' | 'small' | 'regular';
 export type Pair = [number, number];
 export type SelectionResult = 'selected' | 'deselected' | 'mismatch' | 'blocked' | 'removed';
 export interface PairSnapshot { tiles: Tile[] }
@@ -34,7 +34,7 @@ function shuffled<T>(items: T[], random: () => number): T[] {
 
 export function createLayout(difficulty: Difficulty): Tile[] {
   const tiles: Tile[] = [];
-  const layers = difficulty === 'small'
+  const layers = difficulty === 'mini' ? [{ rows: 3, start: 0 }] : difficulty === 'small'
     ? [{ rows: 4, start: 0 }, { rows: 2, start: 1 }]
     : [{ rows: 6, start: 0 }, { rows: 4, start: 1 }, { rows: 2, start: 2 }];
   layers.forEach((layer, z) => {

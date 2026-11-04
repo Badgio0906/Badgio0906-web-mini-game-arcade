@@ -98,13 +98,13 @@
       "shellFiles": [
         {
           "path": "public/games/yokodori-days/index.html",
-          "bytes": 14022,
-          "sha256": "d4691facb36f1d689981233506a60dd27c3e18e209b5094b5c85de72583a8e8e"
+          "bytes": 15404,
+          "sha256": "d8021dff01fc59f2e479c670775228138d243b0da62770cc07ee7a1690dde588"
         },
         {
           "path": "public/games/yokodori-days/portal-return.css",
-          "bytes": 2242,
-          "sha256": "08e25d6083054227aa8fbe6bce99903e6cd6d69f40f89b64d0f9b65187c48c53"
+          "bytes": 3186,
+          "sha256": "0817c713abea199110c95703d25ce1fb7b0ab7762f71c7e8935edcd4cfc893fb"
         }
       ],
       "runtimeBytes": 39530878,
@@ -397,8 +397,8 @@
       "shellFiles": [
         {
           "path": "public/games/tachibana-task-heaven/index.html",
-          "bytes": 10551,
-          "sha256": "7024b5160f474f892f8ecb104db54c9e58dda84ee9560d861c094b2c923a2e48"
+          "bytes": 2053,
+          "sha256": "2b1e62bc11a6fac43aa310aee9f0fcbd53cf8627ad1d27b5237c1da98cf90237"
         },
         {
           "path": "public/games/tachibana-task-heaven/portal-return.css",
@@ -583,8 +583,8 @@
       "shellFiles": [
         {
           "path": "public/games/finger-heart-challenge/index.html",
-          "bytes": 10525,
-          "sha256": "b592a75a381df3e82cf31caa19d0131a487bf7f1ac6f896e1ad47d372438288c"
+          "bytes": 1742,
+          "sha256": "cac42ce15101d3c7df5e1ddac2342fde3b809a6db2fd3d2b6a9158b217cb0c8c"
         },
         {
           "path": "public/games/finger-heart-challenge/portal-return.css",
@@ -671,5 +671,14 @@
     "path": "public/games/native-record-bridge.js",
     "sha256": "abc097e373fc619aa6b9235c0ab865f5737f5d50919fb2a916d5306f9b859ce1",
     "schemaVersion": 1
+  },
+  "mobileRevision": {
+    "date": "2026-11-04",
+    "report": "docs/mobile-eleven-20261104/IMPLEMENTATION_REPORT.md",
+    "games": {
+      "game012": "Managed viewport shell only; native runtime unchanged.",
+      "game013": "Responsive native single-stage renderer; original packed art and stage data retained; old Godot runtime remains archived.",
+      "game014": "Responsive native timing renderer; original packed art retained; old Godot runtime remains archived."
+    }
   }
 }

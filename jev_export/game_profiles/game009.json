@@ -33,8 +33,8 @@
     "evidence": "current game source / manifest / native UI; exact key bindings remain in game instructions"
   },
   "expectedRunSeconds": {
-    "beginner": 75,
-    "experienced": 75
+    "initial_timer": 45,
+    "maximum_active_seconds": 90
   },
   "expectedRunSecondsBasis": "design-hypothesis; not human measured",
   "difficulty": {
@@ -65,7 +65,7 @@
     "title": "印鑑どこですか ～STAMP HUNT～",
     "titleJa": "印鑑どこですか",
     "titleEn": "STAMP HUNT",
-    "subtitle": "手掛かりを読んで、机の小さな謎を解こう。",
+    "subtitle": "アイコンの物を次々発見。連続で時間とスコアUP！",
     "genre": [
       "puzzle",
       "observation",
@@ -74,7 +74,9 @@
     "core_mechanic": [
       "12 distinct clue-based desk puzzles",
       "two to three actual actions per discovery",
-      "paper, drawer, box, memo, phone, calendar, book, clasp, envelope, cup, tray and number-box interactions"
+      "paper, drawer, box, memo, phone, calendar, book, clasp, envelope, cup, tray and number-box interactions",
+      "one-line icon request",
+      "continuous timed discoveries with capped streak time bonus"
     ],
     "primary_input": [
       "click",
@@ -82,14 +84,17 @@
       "Tab and Enter"
     ],
     "skill_axes": [
-      "clue-reading",
       "observation",
+      "visual-search",
       "sequence-reasoning"
     ],
-    "expected_run_seconds": 90,
-    "duration_note": "90 active seconds; practice does not expire; human timing evaluation pending",
-    "rulesVersion": 3,
-    "primary_score": "200 discovery + 50 per prerequisite action + speed 0–50; hint reduces this discovery by30; wrong item costs2 seconds",
+    "expected_run_seconds": {
+      "initial_timer": 45,
+      "maximum_active_seconds": 90
+    },
+    "duration_note": "45seconds initial clock; consecutive discoveries add2seconds from second onward; entire run capped90 active seconds; practice does not expire",
+    "rulesVersion": 4,
+    "primary_score": "(200 discovery +50per action +speed0..50 -hint30) ×streak1..2; wrong item costs2seconds and resets streak",
     "practice": {
       "production_score_and_best_isolated": true,
       "required_actions": [
@@ -99,14 +104,15 @@
     },
     "score_persistence": {
       "storage_prefix": "web-mini-arcade:v1:game009:",
-      "current_best_key": "bestRules3",
+      "current_best_key": "bestRules4",
       "legacy_best_keys": [
         "best",
-        "bestRules2"
+        "bestRules2",
+        "bestRules3"
       ],
       "legacy_best_preserved": true,
       "mute_preserved": true,
-      "rulesVersion": 3
+      "rulesVersion": 4
     },
     "visual_identity": "warm desk, project-authored SVG office tools and animated container illustrations",
     "human_playtest_status": "pending",

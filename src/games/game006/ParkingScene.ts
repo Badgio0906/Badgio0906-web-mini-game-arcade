@@ -11,7 +11,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
   let scene: ParkingScene | null = null;
   let paused = false; let pendingStart = false; let pendingPractice: number | null = null; let destroyed = false;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const run = new ParkingRun(event => { scene?.effect(event); hooks.onEvent(event); });
+  const run = new ParkingRun(event => { scene?.effect(event); hooks.onEvent(event); }, Math.random, true);
 
   class ParkingScene extends Phaser.Scene {
     private ground!: Phaser.GameObjects.Graphics;
@@ -42,13 +42,13 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
       this.ground = this.add.graphics().setDepth(0);
       this.hud = this.add.text(300, 30, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '20px', fontStyle: 'bold', color: '#31464e', backgroundColor: '#f4ebd5', padding: { x: 12, y: 7 }, align: 'center' }).setOrigin(0.5, 0).setDepth(5);
       for (let i = 0; i < 2; i++) this.bayLabels.push(this.add.text(0,0,'',{fontFamily:'Arcade Rounded,system-ui,sans-serif',fontSize:'20px',fontStyle:'bold',color:'#31464e',backgroundColor:'#f4ebd5',padding:{x:4,y:3}}).setOrigin(0.5).setDepth(4).setVisible(false));
-      this.feedback = this.add.text(300, 544, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '18px', fontStyle: 'bold', color: '#31464e', backgroundColor: '#f4ebd5', padding: { x: 9, y: 5 }, align: 'center' }).setOrigin(0.5).setDepth(5);
+      this.feedback = this.add.text(300, 544, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '24px', fontStyle: 'bold', color: '#31464e', backgroundColor: '#f4ebd5', padding: { x: 9, y: 5 }, align: 'center' }).setOrigin(0.5).setDepth(5);
       for (let i = 0; i < 3; i++) this.cars.push(this.add.image(0, 0, '__WHITE').setDepth(2).setVisible(false));
       this.g = this.add.graphics().setDepth(3);
-      this.caption = this.add.text(44, 90, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '19px', fontStyle: 'bold', color: '#31464e' }).setDepth(4);
-      this.modeMark = this.add.text(552, 90, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '13px', fontStyle: 'bold', color: '#ac533d' }).setOrigin(1, 0).setDepth(4);
+      this.caption = this.add.text(44, 90, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '24px', fontStyle: 'bold', color: '#31464e' }).setDepth(4);
+      this.modeMark = this.add.text(552, 90, '', { fontFamily: 'Arcade Rounded,system-ui,sans-serif', fontSize: '20px', fontStyle: 'bold', color: '#ac533d' }).setOrigin(1, 0).setDepth(4);
       this.slotMark = this.add.text(0, 0, 'P', { fontFamily: 'monospace', fontSize: '24px', fontStyle: 'bold', color: '#73a99a' }).setOrigin(0.5).setDepth(1);
-      this.popup = this.add.text(300, 170, '', { fontFamily: 'Arial Narrow,system-ui,sans-serif', fontSize: '27px', fontStyle: 'bold', color: '#31464e', stroke: '#f4ebd5', strokeThickness: 5, align: 'center' }).setOrigin(0.5).setDepth(4).setVisible(false);
+      this.popup = this.add.text(300, 170, '', { fontFamily: 'Arial Narrow,system-ui,sans-serif', fontSize: '35px', fontStyle: 'bold', color: '#31464e', stroke: '#f4ebd5', strokeThickness: 5, align: 'center' }).setOrigin(0.5).setDepth(4).setVisible(false);
       void document.fonts.load('700 19px "Arcade Rounded"', 'まっすぐ駐車斜めの区画縦列駐車禁断駐車').then(() => {
         if (destroyed || scene !== this) return;
         this.caption.updateText(); this.modeMark.updateText(); this.draw();
@@ -81,7 +81,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
     }
     effect(event: ParkingEvent): void {
       if (event.type === 'park') {
-        this.popupAge = 0; this.popup.setText(`${event.grade}  +${event.points}\n余裕 ${event.margin.toFixed(1)}px${event.nearMissPoints ? ' · ギリギリ！' : ''}`).setVisible(true).setAlpha(1);
+        this.popupAge = 0; this.popup.setText(`${event.grade}  +${event.points}\nあと ${event.margin.toFixed(1)}px${event.nearMissPoints ? ' · ギリギリ！' : ''}`).setVisible(true).setAlpha(1);
       }
       if (event.type === 'failure') {
         this.failureAge = 0;
@@ -130,8 +130,8 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
       const ground = this.ground; const g = this.g; ground.clear(); g.clear();
       for (const car of this.cars) car.setVisible(false);
       ground.fillStyle(0xf4ebd5); ground.fillRect(0, 0, 600, 600);
-      ground.fillStyle(0xdbded6); ground.fillRoundedRect(22, 22, 556, 556, 9);
-      ground.lineStyle(5, 0xb9bcb2); ground.strokeRoundedRect(20, 20, 560, 560, 9);
+      ground.fillStyle(0xb9dbd2); ground.fillRoundedRect(22, 22, 556, 556, 9);
+      ground.lineStyle(5, 0x4b9b89); ground.strokeRoundedRect(20, 20, 560, 560, 9);
       // Curb inner edge is exactly the model's 22..578 boundary.
       ground.lineStyle(1, INK, 0.24); ground.strokeRect(22, 22, 556, 556);
       for (let i = 0; i < 8; i++) { ground.lineStyle(1, INK, 0.045); ground.lineBetween(44 + i * 78, 74, 29 + i * 80, 548); }
@@ -153,7 +153,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
       for (let i = 0; i < 2; i++) { const option = view.options[i]; this.bayLabels[i].setVisible(!!option && s.phase !== 'parked'); if (option) this.bayLabels[i].setText(option.kind === 'safe' ? '安全 ×1' : '挑戦 ×1.4').setPosition(option.layout.slot.x, option.layout.slot.y-82).setAlpha(s.phase === 'slot-choice' || s.slotKind === option.kind ? 1 : .45); }
       this.hud.setVisible(false);
       this.hud.setText(`SCORE ${s.score}    ${s.parked}台    ${s.mode === 'forbidden' ? '禁断 ×2' : 'V2'}${s.slotKind === 'challenge' ? ' ×1.4' : ''}`);
-      this.feedback.setText(s.phase === 'slot-choice' ? '枠を指定してから、角度を決めよう' : s.phase === 'driving' ? s.brakeUsed ? '制動中 · 再加速できません' : s.correctionUsed ? '切り返し使用済み · 必要ならブレーキ' : 'Cで切り返し / SPACEでブレーキ' : s.phase === 'parked' ? `余裕 ${s.precision?.margin.toFixed(1)}px · ${s.noBrakePoints ? 'NO BRAKE +' + s.noBrakePoints : 'BRAKE'}${s.nearMissPoints ? ' · ギリギリ！ +' + s.nearMissPoints : ''}` : view.options.length ? `指定：${s.slotKind === 'safe' ? '安全枠' : '挑戦枠'} · 薄い枠は対象外` : '角度 → 強さ → 任意ブレーキ');
+      this.feedback.setText(s.phase === 'slot-choice' ? '枠を指定してから、角度を決めよう' : s.phase === 'driving' ? !s.brakeUnlocked ? '角度と強さだけで駐車！' : s.brakeUsed ? '制動中 · 再加速できません' : s.correctionUsed ? '切り返し使用済み · 必要ならブレーキ' : 'Cで切り返し / SPACEでブレーキ' : s.phase === 'parked' ? `あと ${s.precision?.margin.toFixed(1)}px · ${s.noBrakePoints ? 'NO BRAKE +' + s.noBrakePoints : 'BRAKE'}${s.nearMissPoints ? ' · ギリギリ！ +' + s.nearMissPoints : ''}` : view.options.length ? `指定：${s.slotKind === 'safe' ? '安全枠' : '挑戦枠'} · 薄い枠は対象外` : s.brakeUnlocked ? 'ブレーキ解禁！必要なときだけ' : '角度 → 強さ の2回で駐車');
       if (s.alive && (s.phase === 'angle' || s.phase === 'power')) {
         this.path(view.projection, s.phase === 'angle' ? 0.22 : 0.42);
         if (s.phase === 'power') {
@@ -185,6 +185,9 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
   const game = new Phaser.Game({ type: Phaser.AUTO, parent, width: 600, height: 600, backgroundColor: '#f4ebd5', scene: ParkingScene,
     antialias: true, scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, width: 600, height: 600 },
     input: { keyboard: false, mouse: false, touch: false, gamepad: false }, fps: { target: 60, smoothStep: true }, render: { powerPreference: 'low-power' } });
+  let resizeFrame = 0;
+  const resizeObserver = new ResizeObserver(() => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(() => { if (!destroyed) game.scale.setParentSize(parent.clientWidth, parent.clientHeight); }); });
+  resizeObserver.observe(parent);
   return {
     start: () => { if (destroyed) return; paused = false; pendingPractice = null; if (scene) scene.begin(); else pendingStart = true; },
     startPractice: step => { if (destroyed) return; paused = false; pendingStart = false; if (scene) scene.begin(step); else pendingPractice = step; },
@@ -194,7 +197,7 @@ export function createParkingGame(parent: HTMLElement, hooks: ParkingHooks): Par
     choose: choice => !destroyed && !paused && !!scene && scene.choose(choice),
     chooseSlot: choice => !destroyed && !paused && !!scene && scene.chooseSlot(choice),
     pause: value => { paused = value; }, snapshot: () => run.snapshot(), inspection: () => run.inspection(),
-    destroy: () => { if (destroyed) return; destroyed = true; game.destroy(true); scene = null; },
+    destroy: () => { if (destroyed) return; destroyed = true; resizeObserver.disconnect(); cancelAnimationFrame(resizeFrame); game.destroy(true); scene = null; },
   };
 }
 const PARK_POPUP_SECONDS = 0.95;

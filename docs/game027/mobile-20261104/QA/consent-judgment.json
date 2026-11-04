@@ -1,0 +1,21 @@
+{
+  "finding_id": "027-mobile-consent-pointer",
+  "PRIMARY_CAUSE": "TEST_INFRA_BUG",
+  "CODEX_ACTION_REQUIRED": true,
+  "NEXT_EVIDENCE": "LIVE_INTERACTION",
+  "RELEASE_RISK_IF_UNRESOLVED": false,
+  "reviewer": "codex-echo-pool-implementation-separate-qa-pass",
+  "rationale": "The initial opt-in consent panel intentionally overlays the header. The probe omitted the normal Deny action. Clicking Deny through the visible UI allows Pause; four-width pause/reload/resume checks pass.",
+  "evidence": [
+    "QA/browser.json",
+    "tests/game027-mobile-20261104.mjs"
+  ],
+  "actual_next_action": {
+    "method": "LIVE_INTERACTION",
+    "description": "Dismissed the initial panel by its visible Deny button and reran actual pointer operations.",
+    "evidence": [
+      "QA/browser.json"
+    ]
+  },
+  "final_root_cause": "TEST_INFRA_BUG"
+}

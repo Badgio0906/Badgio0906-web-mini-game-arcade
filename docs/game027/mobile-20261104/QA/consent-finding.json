@@ -1,0 +1,20 @@
+{
+  "finding_id": "027-mobile-consent-pointer",
+  "problem": "The mobile browser probe cannot click Pause after opening a new game.",
+  "expected": "The probe reaches Pause and tests resume.",
+  "observed": [
+    "At 390x844, Playwright reports analytics-settings-host intercepts pointer events over pause-button.",
+    "The screenshot shows the initial analytics consent panel over the top of the game."
+  ],
+  "unknown": [
+    "Whether the probe dismissed the initial consent panel before testing game controls."
+  ],
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "evidence": [
+    "QA/play-390.png"
+  ],
+  "provenance": "observed browser run"
+}

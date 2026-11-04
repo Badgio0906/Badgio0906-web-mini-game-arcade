@@ -1,8 +1,10 @@
 import { type World, WIDTH, HEIGHT } from './physics';
 import { type Match } from './rules';
 import type { Difficulty } from './cpu';
+import { validChallenge, type Challenge } from './challenge';
 export const SAVE_KEY = 'web-mini-arcade:v1:game027:state';
 export interface Snapshot {
+    challenge?: Challenge;
     world: World;
     match: Match;
     mode: 'cpu' | 'two';
@@ -39,6 +41,7 @@ export function validateSave(raw: unknown): Saved | null {
             return structuredClone(s);
         if (!['cpu', 'two'].includes(p.mode) || !['easy', 'normal', 'strong'].includes(p.difficulty) || !number(p.angle, -1e6, 1e6) || !number(p.power, 0, 1) || typeof p.localResultId !== 'string' || !/^[a-z0-9-]{1,80}$/.test(p.localResultId) || !(p.observerRun === null || typeof p.observerRun === 'string' && /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(p.observerRun)))
             return null;
+        if (p.challenge !== undefined && !validChallenge(p.challenge)) return null;
         const w = p.world, m = p.match;
         if (!w || typeof w.moving !== 'boolean' || !number(w.shotTime, 0, 20.1) || !Array.isArray(w.balls) || w.balls.length !== 16 || new Set(w.balls.map(b => b.id)).size !== 16 || !w.balls.every(b => integer(b.id, 0, 15) && number(b.x, -24, WIDTH + 24) && number(b.y, -24, HEIGHT + 24) && number(b.vx, -1600, 1600) && number(b.vy, -1600, 1600) && typeof b.pocketed === 'boolean'))
             return null;

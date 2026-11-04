@@ -11,7 +11,7 @@ describe('separate new rules preserve historical records',()=>{
   for(const id of prior){const d=recordBoards.find(b=>b.boardId===id)!;expect(d).toBeDefined();expect(isPublicBoardRegistered(id)).toBe(true);expect(isPublicRecordRegistered(d.gameId)).toBe(true);
    const p={schema_version:1,submission_key:'00000000-0000-4000-8000-000000000001',run_result_id:'00000000-0000-4000-8000-000000000002',game_id:d.gameId,board_id:d.boardId,ruleset_id:d.rulesetId,game_build:'prior-version',environment:'production',value:1,withdrawal_receipt:'a'.repeat(64),allowed_result_metadata:{finalized:true,mode_id:d.modeId,assistance:d.assistancePolicy,duration_ms:1000,outcome:'complete'}};
    expect(safeSubmission(p)?.board_id).toBe(id);expect(safeSubmission({...p,ruleset_id:getRecordDefinition(d.gameId)!.rulesetId})).toBeNull();
-   expect(isPublicBoardRegistered(getRecordDefinition(d.gameId)!.boardId)).toBe(true);
+   expect(isPublicBoardRegistered(getRecordDefinition(d.gameId)!.boardId)).toBe(getRecordDefinition(d.gameId)!.publicEnabled);
   }
  });
  it('accepts all previously served boards while verified new boards are independently available',()=>{

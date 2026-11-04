@@ -12,7 +12,7 @@ describe('ordered classic registrations', () => {
     expect(manifest.id).toBe(game.id);
     expect(manifest.storagePrefix).toContain(`${game.id}:`);
     expect(manifest.creditMode).toBe('free');
-    expect(gameVersions[game.id]).toEqual(game.id==='game024'?{rules_version:'2',presentation_version:'shifting-2'}:game.id==='game027'?{rules_version:'1',presentation_version:'turn-banner-2'}:{rules_version:'1',presentation_version:'prototype-1'});
+    expect(gameVersions[game.id]).toEqual(game.id==='game024'?{rules_version:'2',presentation_version:'shifting-2'}:['game022','game023','game025','game027'].includes(game.id)?{rules_version:'1',presentation_version:'mobile-20261104'}:{rules_version:'1',presentation_version:'prototype-1'});
     expect(profile.id).toBe(game.id);
     expect(profile.route).toBe(game.route);
     expect(profile.currentManifest).toEqual(manifest);
@@ -22,7 +22,7 @@ describe('ordered classic registrations', () => {
   it('keeps old versions and retired identity separate from the added games', () => {
     expect(gameVersions.game018).toEqual({ rules_version: '1', presentation_version: '2' });
     expect(gameVersions.game019).toEqual({ rules_version: '2', presentation_version: '2' });
-    expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: '1' });
+    expect(gameVersions.game020).toEqual({ rules_version: '1', presentation_version: 'mobile-20261104' });
     expect(retiredGameCatalog.map(game => game.id)).toEqual(['game004','game007','game010','game021']);
   });
   it('retains documented classic primitives and existing numeric completion compatibility, never private IDs or hidden cards', () => {

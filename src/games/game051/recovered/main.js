@@ -18,7 +18,7 @@
 })();
 const Z = 120, O = [120, 300, 480], I = 36, ut = 18;
 function at(e = false) {
-  return { tick: 0, score: 0, round: -1, take: -1, records: [[], [], []], strikes: [[], [], []], settled: [false, false, false], success: 0, pairs: 0, trios: 0, miss: 0, status: "run", practice: e, events: [], replay: [], notice: "1回目を記録。次は別の列で協力！", settlements: [] };
+  return { tick: 0, score: 0, round: -1, take: -1, records: [[], [], []], strikes: [[], [], []], settled: [false, false, false], success: 0, pairs: 0, trios: 0, miss: 0, combo: 0, maxCombo: 0, multiplier: 1, status: "run", practice: e, events: [], replay: [], notice: "1回目を記録。次は別の列で協力！", settlements: [] };
 }
 function st(e) {
   const i = Math.floor(e.tick / 1800), s = Math.floor(e.tick / 600) % 3;
@@ -44,7 +44,7 @@ function ft(e) {
     e.settled[s] = true;
     const a = e.strikes[s], n = a.find((r) => r.actor === 0);
     if (!n) {
-      e.miss++, e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: 0, points: 0, lane: null }), e.events.push({ kind: "miss", n: 0, at: e.tick, deliveryId: s });
+      e.combo = 0, e.multiplier = 1, e.miss++, e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: 0, points: 0, lane: null }), e.events.push({ kind: "miss", n: 0, at: e.tick, deliveryId: s });
       continue;
     }
     let l = 1;
@@ -54,8 +54,11 @@ function ft(e) {
       const o = t.map((f) => f.tick);
       new Set(t.map((f) => f.lane)).size === t.length && Math.max(...o) - Math.min(...o) <= ut && (l = Math.max(l, t.length));
     }
-    const u = 100 + (l === 3 ? 900 : l === 2 ? 300 : 0);
-    e.success++, e.score += u, l === 2 && e.pairs++, l === 3 && e.trios++, e.notice = l === 3 ? "3人連携、出荷！ 確定 +1000" : l === 2 ? "別の列で、2人連携！ 確定 +400" : "本人の納品、確定 +100", e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: l, points: u, lane: n.lane }), e.events.push({ kind: "delivery", n: l, lane: n.lane, at: e.tick, deliveryId: s }), e.practice && l >= 2 && (e.status = "clear");
+    e.combo = l >= 2 ? e.combo + 1 : 0;
+    e.maxCombo = Math.max(e.maxCombo, e.combo);
+    e.multiplier = 1 + Math.min(3, Math.floor(e.combo / 2));
+    const u = (100 + (l === 3 ? 900 : l === 2 ? 300 : 0)) * e.multiplier;
+    e.success++, e.score += u, l === 2 && e.pairs++, l === 3 && e.trios++, e.notice = `${l}人納品 +${u} · ${e.combo ? `${e.combo}連携コンボ ×${e.multiplier}` : "次は別の列で連携！"}`, e.settlements.push({ roundId: e.round, takeId: e.take, deliveryId: s, at: e.tick, people: l, points: u, lane: n.lane }), e.events.push({ kind: "delivery", n: l, points: u, multiplier: e.multiplier, lane: n.lane, at: e.tick, deliveryId: s }), e.practice && l >= 2 && (e.status = "clear");
   }
   e.tick++, e.tick >= (e.practice ? 1200 : 5400) && e.status === "run" && (e.status = e.success >= 18 && e.pairs + e.trios >= 3 ? "clear" : "over");
 }
@@ -182,22 +185,26 @@ class yt {
     this.voices.clear();
   }
 }
-const et = "100gare:game051:rules1";
+const et = "100gare:game051:rules2";
 class kt {
-  data = { rulesVersion: 1, best: 0, volume: 0.35, muted: false, light: false };
+  data = { rulesVersion: 2, best: 0, volume: 0.35, muted: false, light: false };
   persistent = true;
   storage = null;
   constructor(i) {
     try {
       this.storage = i ?? window.localStorage;
       const s = this.storage.getItem(et);
-      if (s === null) return;
+      if (s === null) {
+        // Carry audio preferences forward without mixing scores from the old rules.
+        try { const old = JSON.parse(this.storage.getItem("100gare:game051:rules1") || "null"); if (old) { if (Number.isFinite(old.volume) && old.volume >= 0 && old.volume <= 1) this.data.volume = old.volume; if (typeof old.muted === "boolean") this.data.muted = old.muted; if (typeof old.light === "boolean") this.data.light = old.light; } } catch {}
+        return;
+      }
       const a = JSON.parse(s);
-      if (!a || a.rulesVersion !== 1 || typeof a.best != "number" || !Number.isFinite(a.best) || a.best < 0 || a.best > 13500 || !Number.isInteger(a.best) || typeof a.volume != "number" || !Number.isFinite(a.volume) || a.volume < 0 || a.volume > 1 || typeof a.muted != "boolean" || typeof a.light != "boolean") {
+      if (!a || a.rulesVersion !== 2 || typeof a.best != "number" || !Number.isFinite(a.best) || a.best < 0 || a.best > 54000 || !Number.isInteger(a.best) || typeof a.volume != "number" || !Number.isFinite(a.volume) || a.volume < 0 || a.volume > 1 || typeof a.muted != "boolean" || typeof a.light != "boolean") {
         this.persistent = false;
         return;
       }
-      this.data = { rulesVersion: 1, best: a.best, volume: a.volume, muted: a.muted, light: a.light };
+      this.data = { rulesVersion: 2, best: a.best, volume: a.volume, muted: a.muted, light: a.light };
     } catch {
       this.persistent = false;
     }
@@ -210,7 +217,7 @@ class kt {
     }
   }
   result(i, s) {
-    !s && Number.isInteger(i) && i >= 0 && i <= 13500 && (this.data.best = Math.max(this.data.best, i), this.write());
+    !s && Number.isInteger(i) && i >= 0 && i <= 54000 && (this.data.best = Math.max(this.data.best, i), this.write());
   }
 }
 const vt = ["factory", "clerk-normal", "clerk-stamp", "clerk-win", "stamp", "parcel-small", "parcel-big"];
@@ -239,7 +246,7 @@ function gt() {
         if (g - i[S] < 24) continue;
         i[S] = g;
       }
-      m.kind === "stamp" && (s[0] = S), m.kind === "ghost" && (s[m.n] = S), e.push({ kind: m.kind, at: g, lane: S, n: m.n });
+      m.kind === "stamp" && (s[0] = S), m.kind === "ghost" && (s[m.n] = S), e.push({ kind: m.kind, at: g, lane: S, n: m.n, points: m.points, multiplier: m.multiplier });
     }
     e = e.slice(-72);
   }
@@ -253,15 +260,22 @@ function gt() {
     }
     const x = H(o);
     (o.tick < a || n !== -1 && x.round !== n) && l(), a = o.tick, n = x.round, e = e.filter((c) => o.tick - c.at < (c.kind === "delivery" ? 52 : c.kind === "empty" ? 24 : 30));
-    const _ = lt(o), F = x.local, V = O.findIndex((c) => Math.abs(F - c) <= I), X = o.round === x.round && o.take === x.take && V >= 0 && o.strikes[V].some((c) => c.actor === 0);
+    const _ = lt(o), recorded = x.take === 0 ? o.records[0] : [], F = x.local, V = O.findIndex((c) => Math.abs(F - c) <= I), X = o.round === x.round && o.take === x.take && V >= 0 && o.strikes[V].some((c) => c.actor === 0);
     t.fillStyle = "#47382f", t.font = "bold 19px system-ui", t.fillText(`ラウンド ${x.round + 1}/3`, 16, 28), t.font = "16px system-ui", t.fillText(`テイク ${x.take + 1}/${o.practice ? 2 : 3} · ${x.take + 1}人`, 280, 28), t.fillStyle = "#d9c79f", t.fillRect(22, 55, 436, 24);
     for (const c of O) t.fillStyle = Math.abs(F - c) <= I ? "#cc493d" : "#e9af6c", t.fillRect(22 + (c - I) / 600 * 436, 55, I * 2 / 600 * 436, 24), t.fillStyle = "#4e3829", t.font = "11px system-ui", t.fillText(`${c / Z}s`, 22 + c / 600 * 436 - 11, 95);
+    for (const record of recorded) {
+      t.fillStyle = "#345b9c"; t.beginPath(); t.arc(22 + record.tick / 600 * 436, 67, 5, 0, Math.PI * 2); t.fill();
+    }
     t.fillStyle = "#244c91", t.fillRect(21 + F / 600 * 436, 50, 3, 35), t.font = "bold 15px system-ui", t.fillStyle = V >= 0 && !X ? "#a7312b" : "#4d5462", t.textAlign = "center", t.fillText(V >= 0 ? X ? "入力済み · 窓の終了で点が確定" : "納品受付中 · 空いている列を一押し" : "次の光る窓へ · 分身の予告を見よう", 240, 122);
     for (let c = 0; c < 3; c++) {
       const y = 80 + c * 160;
       t.fillStyle = "#fff9e78c", t.fillRect(y - 72, 145, 144, 278), t.strokeStyle = "#bba98c", t.lineWidth = 1, t.strokeRect(y - 72, 145, 144, 278), t.fillStyle = "#78513d", t.font = "bold 15px system-ui", t.fillText(["左 A / 1", "中央 S / 2", "右 D / 3"][c], y, 300);
       const T = _.filter((w) => w.lane === c);
       for (const [w, N] of T.entries()) t.fillStyle = w ? "#345b9c" : "#476ab1", t.font = "bold 17px system-ui", t.fillText(`分身${N.actor} ${(N.inTicks / Z).toFixed(2)}秒`, y, 166 + w * 22);
+      if (!x.take && recorded.some(record => record.lane === c)) {
+        t.globalAlpha = .35; const ghost = f["clerk-normal"]; if (ghost) q(t, ghost, y - 33, 307, 66, 111); t.globalAlpha = 1;
+        t.fillStyle = "#345b9c"; t.font = "bold 12px system-ui"; t.fillText("次周の分身を録画済み", y, 184);
+      }
       T.length || (t.fillStyle = "#8b8172", t.font = "12px system-ui", t.fillText(x.take ? "この列に予告なし" : "自分の一押しを記録", y, 167)), f["parcel-small"] ? q(t, f["parcel-small"], y - 40, 220, 80, 76) : (t.fillStyle = "#d6a16c", t.fillRect(y - 30, 246, 60, 42));
       const h = e.filter((w) => w.lane === c && ["stamp", "ghost", "empty"].includes(w.kind)).at(-1), D = h && h.kind !== "empty" && o.tick - h.at < 18;
       f.stamp ? q(t, f.stamp, y - 29, D ? 216 : 192, 58, 61) : (t.fillStyle = "#b44539", t.fillRect(y - 25, D ? 245 : 221, 50, 10), t.fillRect(y - 7, D ? 223 : 199, 14, 26)), h && h.kind === "empty" && (t.fillStyle = "#765e5d", t.font = "13px system-ui", t.fillText("空振り · 0点", y, 211)), h && h.kind !== "empty" && (t.strokeStyle = h.kind === "ghost" ? "#527dce" : "#c54d3d", t.lineWidth = 3, t.beginPath(), t.arc(y, 270, 22 + Math.min(18, (o.tick - h.at) * 0.8), 0, Math.PI * 2), t.stroke());
@@ -275,7 +289,7 @@ function gt() {
     const z = e.filter((c) => c.kind === "delivery").at(-1);
     if (z) {
       const c = z.n, y = o.tick - z.at;
-      if (t.fillStyle = c === 3 ? "#ad7a13" : "#b64637", t.font = `bold ${c === 3 ? 27 : 22}px system-ui`, t.fillText(c === 3 ? "三人連携 · 確定 +1000" : c === 2 ? "二人連携 · 確定 +400" : "納品 · 確定 +100", 240, 197), c === 3 && (f["parcel-big"] && q(t, f["parcel-big"], 189, 211, 102, 80), t.strokeStyle = "#c18c18", t.lineWidth = 3, t.strokeRect(130, 172, 220, 34)), !m) {
+      if (t.fillStyle = c === 3 ? "#ad7a13" : "#b64637", t.font = `bold ${c === 3 ? 27 : 22}px system-ui`, t.fillText(`${c}人連携 +${z.points ?? 100} · ×${z.multiplier ?? 1}`, 240, 197), c === 3 && (f["parcel-big"] && q(t, f["parcel-big"], 189, 211, 102, 80), t.strokeStyle = "#c18c18", t.lineWidth = 3, t.strokeRect(130, 172, 220, 34)), !m) {
         t.globalAlpha = Math.max(0, 1 - y / 52), t.fillStyle = c === 3 ? "#c69a2e" : "#cd6752";
         for (let T = 0; T < (c === 3 ? 20 : 8); T++) {
           const C = T * 2.4, h = y * 1.7;
@@ -295,6 +309,8 @@ try {
 } catch {
   M = "美術素材を準備中です。通常版は素材を配置してから遊べます。";
 }
+let guideStep = 0;
+let tutorialSeen = false; try { tutorialSeen = k.storage?.getItem("100gare:game051:onboarding2") === "done"; } catch {}
 let d = at(), v = "title", R = () => {
 }, W = performance.now(), L = 0, J = false;
 b.set(k.data.volume, k.data.muted);
@@ -315,11 +331,25 @@ function G() {
   R(), b.stop(), v = "title", K();
 }
 function K() {
-  $.hidden = false, document.body.classList.remove("playing"), v === "title" ? ($.innerHTML = `<article class="card"><img class="portrait" src="./assets/clerk-normal.webp" alt="巨大スタンプの事務員"><span class="badge">ECHO OFFICE / 試遊版</span><h1>残業は、<br>分身に任せた。</h1><p>1周目の操作を、2周目から分身が再生。あなたは空いている別の列を担当！</p>${M ? `<p class="warning">${M}</p>` : ""}<div class="actions"><button id="play" ${M ? "disabled" : ""}>すぐ遊ぶ</button><button id="practice" ${M ? "disabled" : ""}>分身と練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${it()}<p class="small">BEST ${k.data.best} / 保存${k.persistent ? "端末内" : "不可・ページ内のみ"}</p></article>`, p("play").onclick = () => P(), p("practice").onclick = () => P(true), p("help").onclick = () => {
-    v = "help", K();
-  }, nt()) : v === "help" ? ($.innerHTML = `<article class="card"><h2>5秒の仕事を、3人で分担。</h2><ol><li><b>1周目：記録</b> — 光った時に左（Aキー）を1回。あなたの操作を分身が覚えます。</li><li><b>2周目：二人で連携</b> — 前の自分が同じ時刻に左（Aキー）を押すので、あなたは中央（Sキー）を押します。</li><li><b>3周目：三人で連携</b> — 二人の分身が左・中央を担当。あなたが右（Dキー）を押せば三人連携です。</li></ol><p>光る納品窓は毎周1・2.5・4秒。毎回1ボタンだけ押します。同じ列が重なると連携になりません。キーはA/S/Dまたは1/2/3、スマホは下の3ボタン。</p><p>3周で1ラウンド、全3ラウンド45秒。新ラウンドでは録画が消えます。練習で「記録→分身と別の列」を試せます。</p><div class="actions"><button id="practice" ${M ? "disabled" : ""}>練習する</button><button id="title">タイトルへ</button></div></article>`, p("practice").onclick = () => P(true), p("title").onclick = G) : v === "pause" ? ($.innerHTML = `<article class="card"><h2>休憩中</h2><p>本人の窓・分身の再生・時計を一緒に止めています。続きから、新しくキーを押すかパッドをタップしてください。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${it()}</article>`, p("resume").onclick = () => {
+  $.hidden = false, document.body.classList.remove("playing"), v === "title" ? ($.innerHTML = `<article class="card"><img class="portrait" src="./assets/clerk-normal.webp" alt="巨大スタンプの事務員"><span class="badge">ECHO OFFICE / 試遊版</span><h1>残業は、<br>分身に任せた。</h1><p>1周目の操作を、2周目から分身が再生。あなたは空いている別の列を担当！</p>${M ? `<p class="warning">${M}</p>` : ""}<div class="actions"><button id="play" ${M ? "disabled" : ""}>すぐ遊ぶ</button><button id="practice" ${M ? "disabled" : ""}>分身と練習</button><button id="help">遊び方を見る</button><a href="../../">ゲーム一覧へ</a></div>${it()}<p class="small">BEST ${k.data.best} / 保存${k.persistent ? "端末内" : "不可・ページ内のみ"}</p></article>`, p("play").onclick = () => { if (tutorialSeen) P(); else { guideStep = 0; v = "help"; K(); } }, p("practice").onclick = () => P(true), p("help").onclick = () => {
+    guideStep = 0, v = "help", K();
+  }, nt()) : v === "help" ? (renderGuide()) : v === "pause" ? ($.innerHTML = `<article class="card"><h2>休憩中</h2><p>本人の窓・分身の再生・時計を一緒に止めています。続きから、新しくキーを押すかパッドをタップしてください。</p><div class="actions"><button id="resume">続きから</button><button id="title">タイトルへ（記録なし）</button></div>${it()}</article>`, p("resume").onclick = () => {
     R(), v = "run", L = 0, W = performance.now(), $.hidden = true, document.body.classList.add("playing"), Y.focus({ preventScroll: true }), b.unlock();
-  }, p("title").onclick = G, nt()) : v === "result" && ($.innerHTML = `<article class="card"><span class="badge">${d.practice ? "練習 / 記録なし" : d.status === "clear" ? "分身と出荷、完了！" : "次は分身の空いている列へ"}</span><h2>${d.practice ? d.status === "clear" ? "二人で、バン！" : "次は前の自分を見てみよう" : `RANK ${pt(d)}`}</h2><img class="portrait" src="./assets/clerk-win.webp" alt="出荷を終えた事務員"><div class="result-score">${d.score.toLocaleString()} pt</div><p>本人納品 ${d.success}/${d.practice ? 6 : 27}<br>二人連携 ${d.pairs}回 · 三人連携 ${d.trios}回<br>BEST ${k.data.best}</p><div class="actions">${d.practice ? '<button id="play">本番へ</button>' : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, d.practice && (p("play").onclick = () => P()), p("retry").onclick = () => P(d.practice), p("title").onclick = G), $.querySelector("button:not(:disabled)")?.focus({ preventScroll: true });
+  }, p("title").onclick = G, nt()) : v === "result" && ($.innerHTML = `<article class="card"><span class="badge">${d.practice ? "練習 / 記録なし" : d.status === "clear" ? "分身と出荷、完了！" : "次は分身の空いている列へ"}</span><h2>${d.practice ? d.status === "clear" ? "二人で、バン！" : "次は前の自分を見てみよう" : `RANK ${pt(d)}`}</h2><img class="portrait" src="./assets/clerk-win.webp" alt="出荷を終えた事務員"><div class="result-score">${d.score.toLocaleString()} pt</div><p>本人納品 ${d.success}/${d.practice ? 6 : 27}<br>二人連携 ${d.pairs}回 · 三人連携 ${d.trios}回<br>最大 ${d.maxCombo}連携コンボ · 最高×${1 + Math.min(3, Math.floor(d.maxCombo / 2))}<br>BEST ${k.data.best}</p><div class="actions">${d.practice ? '<button id="play">本番へ</button>' : ""}<button id="retry">もう一度</button><button id="title">タイトルへ</button><a href="../../">ゲーム一覧へ</a></div></article>`, d.practice && (p("play").onclick = () => P()), p("retry").onclick = () => P(d.practice), p("title").onclick = G), $.querySelector("button:not(:disabled)")?.focus({ preventScroll: true });
+}
+function renderGuide() {
+  const steps = [
+    ["1 / 3　まず自分を録画", "光った窓で、左のボタンを1回。青い印と影が、次の周で動く分身の予告です。", "左を記録"],
+    ["2 / 3　分身と別の列へ", "次の周は分身が左を担当。あなたは同じタイミングで中央を押して、二人連携！", "左の影 ＋ 中央のあなた"],
+    ["3 / 3　三人でコンボ", "三周目は右へ。別の列で連携を続けると2回ごとに倍率UP、最大4倍。全45秒でスコア勝負！", "左の影 ＋ 中央の影 ＋ 右のあなた"]
+  ];
+  const [heading, text, action] = steps[guideStep];
+  $.innerHTML = `<article class="card guide-card"><span class="badge">はじめてガイド</span><h2>${heading}</h2><div class="guide-visual">${action}</div><p>${text}</p><div class="actions">${guideStep ? '<button id="guide-back">戻る</button>' : '<button id="guide-title">タイトルへ</button>'}<button id="guide-next">${guideStep === 2 ? "分身と練習する" : "次へ"}</button>${guideStep === 2 ? '<button id="guide-play">本番へ</button>' : ''}</div></article>`;
+  p("guide-back") && (p("guide-back").onclick = () => { guideStep--; K(); });
+  p("guide-title") && (p("guide-title").onclick = G);
+  const complete = () => { tutorialSeen = true; try { k.storage?.setItem("100gare:game051:onboarding2", "done"); } catch {} };
+  p("guide-next").onclick = () => { if (guideStep < 2) { guideStep++; K(); } else { complete(); P(true); } };
+  p("guide-play") && (p("guide-play").onclick = () => { complete(); P(); });
 }
 function j() {
   v === "run" && (R(), b.stop(), v = "pause", K());
@@ -349,11 +379,11 @@ function ct(e) {
   for (let l = 0; l < 3; l++) {
     p(`lane-${l}`).classList.toggle("open", v === "run" && a);
     const u = n.filter((r) => r.lane === l);
-    const activeWindow=O.findIndex(t=>Math.abs(s.local-t)<=I),played=activeWindow>=0?d.strikes[activeWindow].some(t=>t.actor>0&&t.lane===l):false;p(`lane-${l}`).classList.toggle('ghost-lane',v==='run'&&(u.length>0||played));
-    p(`forecast-${l}`).textContent = v !== "run" ? "—" : u.length ? u.map((r) => `影${r.actor} ${(r.inTicks / 120).toFixed(1)}秒`).join(" / ") : s.take === 0 ? "本人を記録" : "予告なし";
+    const recordedLane=s.take===0&&d.records[0].some(record=>record.lane===l);const activeWindow=O.findIndex(t=>Math.abs(s.local-t)<=I),played=activeWindow>=0?d.strikes[activeWindow].some(t=>t.actor>0&&t.lane===l):false;p(`lane-${l}`).classList.toggle('ghost-lane',v==='run'&&(u.length>0||played||recordedLane));
+    p(`forecast-${l}`).textContent = v !== "run" ? "—" : u.length ? u.map((r) => `影${r.actor} ${(r.inTicks / 120).toFixed(1)}秒`).join(" / ") : s.take === 0 ? recordedLane ? "次周の影を録画済み" : "本人を記録" : "予告なし";
   }
-  let guide=document.getElementById('take-guide');if(!guide){guide=document.createElement('p');guide.id='take-guide';guide.setAttribute('aria-live','polite');p('notice').insertAdjacentElement('beforebegin',guide);}guide.textContent=v!=='run'?'1周目に記録 → 2周目から分身が再生 → あなたは別の列':s.take===0?'① 録画中：光ったら1列を押す。次の周に、この操作を分身が再生します。':s.take===1?'② 二人で連携：分身が前の列を担当。あなたは別の列を押そう！':'③ 三人で連携：二人の分身が担当しない、残りの列を押そう！';
-  p("time").textContent = Math.max(0, (s.total - d.tick) / 120).toFixed(1), p("score").textContent = String(d.score), p("count").textContent = `${d.success}/${d.practice ? 6 : 27}`, p("coop").textContent = String(d.pairs + d.trios), p("notice").textContent = d.notice, requestAnimationFrame(ct);
+  let guide=document.getElementById('take-guide');if(!guide){guide=document.createElement('p');guide.id='take-guide';guide.setAttribute('aria-live','polite');p('notice').insertAdjacentElement('beforebegin',guide);}guide.textContent=v!=='run'?'1周目に記録 → 2周目から分身が再生 → あなたは別の列':s.take===0?'録画中：光ったら左。青い影が次周の予告。':s.take===1?'二人で連携：左の影に合わせて、あなたは中央！':'三人で連携：空いた右でコンボをつなごう！';
+  p("time").textContent = Math.max(0, (s.total - d.tick) / 120).toFixed(1), p("score").textContent = String(d.score), p("count").textContent = `${d.success}/${d.practice ? 6 : 27}`, p("coop").textContent = `${d.pairs + d.trios} · ×${d.multiplier}`, p("notice").textContent = d.notice, requestAnimationFrame(ct);
 }
 requestAnimationFrame(ct);
 

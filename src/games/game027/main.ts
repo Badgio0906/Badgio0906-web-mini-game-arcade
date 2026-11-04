@@ -10,6 +10,8 @@ import { PoolStore, recordOutcome, type Snapshot } from './save';
 import { InputEpoch } from './input';
 import { unitToWorld } from './camera';
 import { turnView } from './turn';
+import { newChallenge, scoreChallenge, CHALLENGE_SHOTS, type Challenge } from './challenge';
+import { CreditService } from '../../core/CreditService';
 const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const canvas = el<HTMLCanvasElement>('table'), menu = el<HTMLDialogElement>('menu'), app = el('app');
 const turnBanner=document.createElement('section');turnBanner.id='turn-banner';turnBanner.setAttribute('role','status');turnBanner.setAttribute('aria-live','polite');turnBanner.setAttribute('aria-atomic','true');turnBanner.innerHTML='<strong id="turn-title"></strong><span id="turn-detail"></span>';document.querySelector('.table-wrap')!.before(turnBanner);
@@ -18,6 +20,9 @@ const storage = new StorageService(undefined, 'web-mini-arcade:v1:game027:'), au
 let training = false;
 const telemetry = new TelemetryService(storage, 'game027', undefined, { remoteCollectionEnabled: false, ignoreEvent: () => analyticsConfig.environment === 'production' && training });
 const store = new PoolStore(), input = new InputEpoch();
+const credits = new CreditService(storage, telemetry);
+let challenge: Challenge | null = null, chosenMode: 'challenge' | 'cpu' | 'two' = 'challenge';
+let challengeBest = storage.readNumber('challenge10:r1:best', 0, 0, 100000);
 let saved = store.read();
 type Phase = 'title' | 'explanation' | 'aim' | 'moving' | 'placing' | 'cpu' | 'paused' | 'result' | 'confirm';
 let phase: Phase = 'title', world: World = rack(), match: Match = newMatch(), mode: 'cpu' | 'two' = 'cpu', difficulty: Difficulty = 'normal';
@@ -31,9 +36,9 @@ const keyEpochs = new Map<string, number>();
 const labelGroup = (g: string | null) => g === 'solid' ? 'ソリッド 1–7' : g === 'stripe' ? 'ストライプ 9–15' : '未決定';
 const player = (n: number) => mode === 'cpu' ? (n === 0 ? 'あなた' : 'CPU') : `プレイヤー${n + 1}`;
 const active = () => ['aim', 'moving', 'placing', 'cpu'].includes(phase);
-const human = () => training || mode === 'two' || match.turn === 0;
+const human = () => training || challenge !== null || mode === 'two' || match.turn === 0;
 function track(name: EventName, data: Record<string, string | number | boolean> = {}): void { if (!training)
-    telemetry.trackEvent(name, { ...data, mode, difficulty });
+    telemetry.trackEvent(name, { ...data, mode: challenge ? 'challenge10' : mode, difficulty });
 else if (name.startsWith('practice_') && analyticsConfig.environment !== 'production')
     telemetry.trackEvent(name, { ...data, mode: 'practice' }); }
 function invalidate(): void { generation++; if (cpuTimer !== null)
@@ -43,7 +48,7 @@ function setPhase(next: Phase): void { const previous=phase;phase = next;cpuRead
     canvas.focus({ preventScroll: true });
 } el<HTMLButtonElement>('pause-button').disabled = !active(); render(); }
 function snapshot(): Snapshot | null { if (training || !current)
-    return null; return { ...current, world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power }; }
+    return null; return { ...current, world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power, ...(challenge ? { challenge: { ...challenge } } : {}) }; }
 function persist(): void { if (training || !current)
     return; saved.snapshot = snapshot(); store.write(saved); }
 function abandon(reason: 'quit' | 'restart'): void { if (current) {
@@ -55,24 +60,29 @@ function show(html: string, next: Phase): void { setPhase(next); menu.innerHTML 
 function title(): void {
     abandon('quit');
     training = false;
+    challenge = null;
     world = rack();
     match = newMatch();
     message = '';
-    show(`<h2 id="menu-title">ひと息ビリヤード</h2><p>ねらって、一球ずつ。<br>時間制限なしの100ガレ版8ボール。</p><div class="settings"><label>遊び方<select id="mode-choice"><option value="cpu" ${mode === 'cpu' ? 'selected' : ''}>CPU戦</option><option value="two" ${mode === 'two' ? 'selected' : ''}>同じ端末2人戦</option></select></label><label>CPUの難しさ<select id="difficulty-choice"><option value="easy" ${difficulty === 'easy' ? 'selected' : ''}>やさしい</option><option value="normal" ${difficulty === 'normal' ? 'selected' : ''}>ふつう</option><option value="strong" ${difficulty === 'strong' ? 'selected' : ''}>つよい</option></select></label></div><div class="menu-actions"><button id="play-button" class="primary" type="button">すぐ遊ぶ</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p>対局 ${saved.stats.games} · 先手の勝利 ${saved.stats.wins}</p>`, 'title');
-    el<HTMLSelectElement>('mode-choice').onchange = e => { mode = (e.target as HTMLSelectElement).value as typeof mode; };
+    show(`<h2 id="menu-title">ひと息ビリヤード</h2><p>ねらって、一球ずつ。<br>10ショットで何点取れる？台をドラッグして照準。</p><div class="settings"><label>遊び方<select id="mode-choice"><option value="challenge" ${chosenMode === 'challenge' ? 'selected' : ''}>10球チャレンジ</option><option value="cpu" ${chosenMode === 'cpu' ? 'selected' : ''}>CPU戦</option><option value="two" ${chosenMode === 'two' ? 'selected' : ''}>同じ端末2人戦</option></select></label><label>CPUの難しさ<select id="difficulty-choice"><option value="easy" ${difficulty === 'easy' ? 'selected' : ''}>やさしい</option><option value="normal" ${difficulty === 'normal' ? 'selected' : ''}>ふつう</option><option value="strong" ${difficulty === 'strong' ? 'selected' : ''}>つよい</option></select></label></div><div class="menu-actions"><button id="play-button" class="primary" type="button">すぐ遊ぶ</button><button id="explain-button" type="button">説明を見る</button><button id="practice-button" type="button">練習する</button></div><p>10球 BEST ${challengeBest} pt · 連続入球で最大3倍<br>対局 ${saved.stats.games} · 先手の勝利 ${saved.stats.wins}</p>`, 'title');
+    el<HTMLSelectElement>('mode-choice').onchange = e => { chosenMode = (e.target as HTMLSelectElement).value as typeof chosenMode; if (chosenMode !== 'challenge') mode = chosenMode; };
     el<HTMLSelectElement>('difficulty-choice').onchange = e => { difficulty = (e.target as HTMLSelectElement).value as Difficulty; };
     el('play-button').onclick = () => { track('tutorial_skip'); start(false); };
     el('explain-button').onclick = () => explain(false);
     el('practice-button').onclick = () => start(true);
 }
 function start(practice: boolean): void {
+    const cost = chosenMode === 'challenge' ? 1 : 2;
+    if (!practice && credits.enabled && credits.credits < cost) { title(); el('menu-title').insertAdjacentHTML('afterend', `<p role="status">このモードは${cost}クレジット必要です（残り${credits.credits}）。</p>`); return; }
     abandon('restart');
     training = practice;
+    challenge = !practice && chosenMode === 'challenge' ? newChallenge() : null;
+    if (!practice && credits.enabled) for (let i = 0; i < cost; i++) credits.consume(`${localId()}-${i}`);
     world = rack();
     match = newMatch();
     angle = practice ? -Math.PI / 2 : 0;
     power = practice ? .4 : .75;
-    message = practice ? '練習：照準を合わせて、1番の先のポケットへ入れよう。' : 'あなたのブレイクです。';
+    message = practice ? '練習：照準を合わせて、1番の先のポケットへ入れよう。' : challenge ? '10ショットで得点勝負！台をドラッグして照準。' : 'あなたのブレイクです。';
     if (practice) {
         world.balls.forEach(b => { if (b.id !== 0 && b.id !== 1)
             b.pocketed = true; });
@@ -82,7 +92,7 @@ function start(practice: boolean): void {
     }
     else {
         track('run_start', { source: 'title' });
-        current = { world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power, observerRun: telemetry.getActiveRunId(), localResultId: localId() };
+        current = { world: structuredClone(world), match: structuredClone(match), mode, difficulty, angle, power, observerRun: telemetry.getActiveRunId(), localResultId: localId(), ...(challenge ? { challenge: { ...challenge } } : {}) };
     }
     setPhase('aim');
     persist();
@@ -98,6 +108,7 @@ function explain(inRun: boolean): void {
     track('tutorial_view');
     if (inRun)
         pausedFrom = phase;
+    if (chosenMode === 'challenge' && !training) { show('<h2 id="menu-title">10球チャレンジ</h2><p>台をドラッグしてねらい、パワーを決めてショット。10ショットで合計点を競います。</p><p>色球1個100点。連続で入れると最大3倍。白球を落とすと150点減り、好きな位置へ置き直せます。全球を入れると並べ直します。</p><div class="menu-actions"><button id="continue-button" class="primary">' + (inRun ? '再開する' : '10球に挑戦') + '</button><button id="title-button">タイトルへ</button></div>', 'explanation'); el('continue-button').onclick = inRun ? resume : () => start(false); el('title-button').onclick = title; return; }
     show('<h2 id="menu-title">100ガレ版8ボール</h2><ol><li>台をドラッグして照準。パワーを決めて「ショット」。← → は角度、↑ ↓ は強さを微調整します。</li><li>ブレイク後はグループ未決定。合法入球でソリッド／ストライプを決め、自分の球を全部入れてから8番へ。</li><li>最初に合法球へ当てます。接触後に入球かクッションが必要。ファウル後は相手が白球を好きな有効位置へ置けます。</li><li>8番の合法性はショット開始時に判定。最後の自分の球と8番が同じショットで入ると負け。8番後の白球スクラッチも負け。</li><li>ブレイクの8番は戻します。ブレイクではグループを決めません。未決定の通常ショットで両柄が入れば、最小番号の柄を選びます。</li></ol><p>この100ガレ版では最後の8番はどのポケットでもOK。完全な公式競技ルールではありません。全球が止まってからまとめて判定します。入球後も他の球が動いていればお待ちください。</p><p>練習は対局・勝利・本番RUNに含めません。</p><div class="menu-actions"><button id="continue-button" class="primary" type="button">' + (inRun ? '再開する' : 'すぐ遊ぶ') + '</button>' + (inRun ? '' : '<button id="practice-button" type="button">練習する</button><button id="title-button" type="button">タイトルへ</button>') + '</div>', 'explanation');
     persist();
     el('continue-button').onclick = inRun ? resume : () => start(false);
@@ -120,6 +131,7 @@ function settled(): void {
     if (!shot)
         return;
     world.shot = null;
+    if (challenge && !training) { settleChallenge(shot.pocketed); return; }
     const decision = adjudicate(match, shot);
     match = decision.match;
     message = decision.reason;
@@ -170,6 +182,30 @@ function settled(): void {
         setPhase('aim');
     persist();
     render();
+}
+function settleChallenge(pocketed: number[]): void {
+    if (!challenge) return;
+    challenge = scoreChallenge(challenge, pocketed);
+    match.shots[0]++;
+    match.break = false;
+    const sunk = pocketed.filter(id => id !== 0).length;
+    message = `${sunk ? `${sunk}球入った！` : '次の一球へ。'}${pocketed.includes(0) ? ' 白球スクラッチ −150' : challenge.combo > 1 ? ` ${challenge.combo}連続！` : ''}`;
+    if (challenge.shots >= CHALLENGE_SHOTS) { challengeResult(); return; }
+    if (world.balls.every(ball => ball.id === 0 || ball.pocketed)) world = rack();
+    if (world.balls.find(ball => ball.id === 0)!.pocketed) {
+        match.ballInHand = true; placement = cpuPlacement(world); setPhase('placing');
+    } else setPhase('aim');
+    persist(); render();
+}
+function challengeResult(): void {
+    if (!challenge || !current) return;
+    const score = challenge.score;
+    challengeBest = Math.max(challengeBest, score);
+    storage.writeNumber('challenge10:r1:best', challengeBest);
+    track('run_end', { mode: 'challenge10', score, shots: challenge.shots, pocketed: challenge.pocketed, completed: true });
+    current = null; saved.snapshot = null; store.write(saved);
+    show(`<h2 id="menu-title">10球チャレンジ 完了</h2><p class="challenge-score">${score.toLocaleString()} pt</p><p>入球 ${challenge.pocketed}球 · ショット ${challenge.shots}/10<br>この端末のBEST ${challengeBest.toLocaleString()} pt</p><div class="menu-actions"><button id="retry-button" class="primary">もう一度10球</button><button id="title-button">タイトルへ</button></div>`, 'result');
+    el('retry-button').onclick = () => { track('retry'); start(false); }; el('title-button').onclick = title;
 }
 function result(): void {
     if (!current)
@@ -358,14 +394,15 @@ function draw(): void {
 function render(): void {
     draw();
     const turn=turnView({phase,mode,turn:match.turn,winner:match.winner,training,ballInHand:match.ballInHand,cpuReady});
-    const turnKey=`${phase}:${match.turn}:${cpuReady}`;if(turnBanner.dataset.key!==turnKey){turnBanner.dataset.key=turnKey;turnBanner.dataset.tone=turn.tone;el('turn-title').textContent=turn.title;el('turn-detail').textContent=turn.detail;}
+    if (challenge && !training) { turn.title = phase === 'result' ? '10球チャレンジ 完了' : `残り ${CHALLENGE_SHOTS - challenge.shots} ショット · ${challenge.score.toLocaleString()} pt`; turn.detail = `入球 ${challenge.pocketed}球 · 連続 ${challenge.combo} · BEST ${challengeBest} pt`; turn.tone = 'human'; }
+    const turnKey=`${phase}:${match.turn}:${cpuReady}:${challenge?.shots}:${challenge?.score}`;if(turnBanner.dataset.key!==turnKey){turnBanner.dataset.key=turnKey;turnBanner.dataset.tone=turn.tone;el('turn-title').textContent=turn.title;el('turn-detail').textContent=turn.detail;}
     el('status').textContent = phase === 'moving' ? '球が止まるまでお待ちください。' : phase === 'cpu' ? cpuReady?'CPUがショットします…':'CPUが照準を考えています。' : message || `${player(match.turn)}の番 · ${match.break ? 'ブレイク' : match.ballInHand ? '白球を置いてください' : 'ねらって、一球ずつ。'}`;
     const remaining = (g: string) => world.balls.filter(b => !b.pocketed && groupOf(b.id) === g).map(b => b.id).sort((a, b) => a - b);
     const cue = world.balls.find(b => b.id === 0)!;
     const target = phase === 'aim' && !cue.pocketed ? aimEndpoint(world, angle).target : null;
     const legal = legalTargets(match, world.balls.filter(b => !b.pocketed).map(b => b.id));
-    el('aim-target').textContent = phase === 'placing' ? '白球の位置を選び、配置を確定。' : target === null ? 'ねらい：クッション／空いた方向' : `ねらい：${target}番 · ${target === 8 ? '黒' : groupOf(target) === 'solid' ? 'ソリッド' : 'ストライプ'}${legal.includes(target) ? '' : '（先に自分の球へ）'}`;
-    el('groups').textContent = training ? '練習 · 本番記録なし' : `${player(0)}：${labelGroup(match.groups[0])} ${match.groups[0] ? `残 ${remaining(match.groups[0]).join(', ') || 'なし'}` : ''} ｜ ${player(1)}：${labelGroup(match.groups[1])} ${match.groups[1] ? `残 ${remaining(match.groups[1]).join(', ') || 'なし'}` : ''}`;
+    el('aim-target').textContent = phase === 'placing' ? '白球の位置を選び、配置を確定。' : target === null ? 'ねらい：クッション／空いた方向' : `ねらい：${target}番 · ${target === 8 ? '黒' : groupOf(target) === 'solid' ? 'ソリッド' : 'ストライプ'}${challenge || legal.includes(target) ? '' : '（先に自分の球へ）'}`;
+    el('groups').textContent = challenge && !training ? '10球チャレンジ · 全ての色球が得点／白球スクラッチ −150pt' : training ? '練習 · 本番記録なし' : `${player(0)}：${labelGroup(match.groups[0])} ${match.groups[0] ? `残 ${remaining(match.groups[0]).join(', ') || 'なし'}` : ''} ｜ ${player(1)}：${labelGroup(match.groups[1])} ${match.groups[1] ? `残 ${remaining(match.groups[1]).join(', ') || 'なし'}` : ''}`;
     const aim = phase === 'aim' && human();
     el<HTMLButtonElement>('shoot-button').disabled = !aim;
     el<HTMLButtonElement>('aim-left').disabled = !aim;
@@ -494,9 +531,11 @@ telemetry.trackEvent('game_open');
 if (saved.snapshot) {
     current = structuredClone(saved.snapshot);
     ({ world, match, mode, difficulty, angle, power } = structuredClone(current));
+    challenge = current.challenge ? { ...current.challenge } : null; chosenMode = challenge ? 'challenge' : mode;
     if (current.observerRun)
         telemetry.restoreRun(current.observerRun);
-    if (match.winner !== null)
+    if (challenge && challenge.shots >= CHALLENGE_SHOTS) challengeResult();
+    else if (match.winner !== null)
         result();
     else {
         pausedFrom = world.moving ? 'moving' : match.ballInHand ? 'placing' : !human() ? 'cpu' : 'aim';
@@ -507,4 +546,4 @@ else
     title();
 requestAnimationFrame(frame);
 if (import.meta.env.DEV)
-    Object.defineProperty(window, '__game027', { get: () => ({ phase, training, world: structuredClone(world), match: structuredClone(match), saved: structuredClone(saved), angle, power, placement: { ...placement }, telemetry: telemetry.getEvents() }) });
+    Object.defineProperty(window, '__game027', { get: () => ({ phase, training, challenge, challengeBest, world: structuredClone(world), match: structuredClone(match), saved: structuredClone(saved), angle, power, placement: { ...placement }, telemetry: telemetry.getEvents() }) });

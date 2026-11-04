@@ -1,6 +1,6 @@
 import { Mines, RULES, counts, type Difficulty, type Proof, type Action } from './Mines';
 export type Stats = { won: number; lost: number; reported: string[] };
-export type Snapshot = { save_version: 2; firstOpenPending: number | null; resultId: string | null; game_id: 'game025'; rules_version: string; board: { difficulty: Difficulty; mines: boolean[]; numbers: number[]; opened: boolean[]; flags: boolean[]; outcome: string; start: number | null; proof: Proof | null; history: Action[] }; elapsedMs: number; hints: number; runId: string | null; reported: boolean; stats: Stats };
+export type Snapshot = { save_version: 2; boardMode?: 'random' | 'daily'; dailyId?: string; firstOpenPending: number | null; resultId: string | null; game_id: 'game025'; rules_version: string; board: { difficulty: Difficulty; mines: boolean[]; numbers: number[]; opened: boolean[]; flags: boolean[]; outcome: string; start: number | null; proof: Proof | null; history: Action[] }; elapsedMs: number; hints: number; runId: string | null; reported: boolean; stats: Stats };
 export function snapshot(board: Mines, elapsedMs: number, hints: number, runId: string | null, reported: boolean, stats: Stats, resultId: string | null = runId, firstOpenPending: number | null = null): Snapshot {
   return { save_version: 2, firstOpenPending, resultId, game_id: 'game025', rules_version: RULES, board: { difficulty: board.difficulty, mines: [...board.mines], numbers: [...board.numbers], opened: [...board.opened], flags: [...board.flags], outcome: board.outcome, start: board.start, proof: board.proof, history: board.history.map(a => ({ ...a })) }, elapsedMs, hints, runId, reported, stats: { ...stats, reported: [...stats.reported] } };
 }
@@ -9,7 +9,8 @@ const id = (v: unknown) => typeof v === 'string' && /^[a-f0-9]{8}-[a-f0-9]{4}-4[
 export function restore(value: unknown): { board: Mines; saved: Snapshot } | null {
   try {
     const s = value as Snapshot, b = s.board;
-    if (s.save_version !== 2 || s.resultId !== null && !id(s.resultId) || s.game_id !== 'game025' || s.rules_version !== RULES || !b || !['beginner','intermediate'].includes(b.difficulty) || !integer(s.hints, 1000000) || typeof s.elapsedMs !== 'number' || !Number.isFinite(s.elapsedMs) || s.elapsedMs < 0 || s.elapsedMs > 31536000000 || s.runId !== null && !id(s.runId) || typeof s.reported !== 'boolean') return null;
+    if(s.boardMode!==undefined&&!['random','daily'].includes(s.boardMode)||s.dailyId!==undefined&&s.dailyId!==''&&!/^\d{4}-\d{2}-\d{2}$/.test(s.dailyId))return null;
+    if (s.save_version !== 2 || s.resultId !== null && !id(s.resultId) || s.game_id !== 'game025' || s.rules_version !== RULES || !b || !['mini','beginner','intermediate'].includes(b.difficulty) || !integer(s.hints, 1000000) || typeof s.elapsedMs !== 'number' || !Number.isFinite(s.elapsedMs) || s.elapsedMs < 0 || s.elapsedMs > 31536000000 || s.runId !== null && !id(s.runId) || typeof s.reported !== 'boolean') return null;
     if (!s.stats || !integer(s.stats.won, 1000000) || !integer(s.stats.lost, 1000000) || !Array.isArray(s.stats.reported) || s.stats.reported.length > 100 || !s.stats.reported.every(id) || new Set(s.stats.reported).size !== s.stats.reported.length || s.stats.reported.length > s.stats.won + s.stats.lost) return null;
     if (s.reported && (!s.resultId || !s.stats.reported.includes(s.resultId) || !['won','lost'].includes(b.outcome))) return null;
     if (!s.reported && s.resultId && s.stats.reported.includes(s.resultId)) return null;
@@ -17,7 +18,7 @@ export function restore(value: unknown): { board: Mines; saved: Snapshot } | nul
     const board = new Mines(b.difficulty);
     if (!Array.isArray(b.mines) || !Array.isArray(b.numbers) || !Array.isArray(b.history) || b.history.length > 20000 || !Array.isArray(b.opened) || !Array.isArray(b.flags)) return null;
     if (b.mines.length) {
-      if (b.start === null || !board.initialize(b.mines, b.start, b.proof) || b.difficulty === 'beginner' && !b.proof || JSON.stringify(b.numbers) !== JSON.stringify(counts(b.mines, board.width, board.height))) return null;
+      if (b.start === null || !board.initialize(b.mines, b.start, b.proof) || b.difficulty !== 'intermediate' && !b.proof || JSON.stringify(b.numbers) !== JSON.stringify(counts(b.mines, board.width, board.height))) return null;
     } else if (b.start !== null || b.proof !== null || b.numbers.length || b.history.some(a => a.type !== 'flag')) return null;
     for (const a of b.history) if (!a || !['open','flag','chord'].includes(a.type) || !board.act(a.type, a.cell)) return null;
     if (s.firstOpenPending !== null && (!s.resultId || !board.initialized || !board.valid(s.firstOpenPending) || s.firstOpenPending !== b.start || board.outcome !== 'active' || board.flags[s.firstOpenPending] || b.history.some(a => a.type === 'open'))) return null;

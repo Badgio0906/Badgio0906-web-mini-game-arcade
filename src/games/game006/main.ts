@@ -1,4 +1,3 @@
-import { createGameRecordSession } from '../../records/RecordSharing';
 import './style.css';
 import { StorageService } from '../../core/StorageService';
 import { CreditService } from '../../core/CreditService';
@@ -8,7 +7,7 @@ import { requestRewardedCredit } from '../../core/RewardService';
 import { createParkingGame } from './ParkingScene';
 import { parkingTitle } from './resultFlavor';
 import type { ParkingChoice, ParkingEvent, ParkingSnapshot, ParkingResult, ParkingSlotKind } from './contracts';
-const recordSession = createGameRecordSession('game006');
+
 
 type Screen = 'explain' | 'practice' | 'practice-success' | 'title' | 'playing' | 'paused' | 'milestone' | 'result' | 'reward';
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
@@ -16,6 +15,7 @@ const app = $('app'); const stage = $('stage'); const overlay = $('overlay');
 const storage = new StorageService(undefined, 'web-mini-arcade:v1:game006:');
 const telemetry = new TelemetryService(storage, 'game006');
 const legacyBest = storage.readNumber('best', 0);
+const legacyBestV3 = storage.readNumber('best-rules-v3', 0);
 const legacyBestV2 = storage.readNumber('best-rules-v2', 0);
 const correctionButton = document.createElement('button'); correctionButton.id = 'correction-button'; correctionButton.type = 'button'; correctionButton.textContent = '↶ 切り返し · C'; correctionButton.hidden = true; $('action-button').insertAdjacentElement('afterend', correctionButton);
 let practiceStep = 0; let practicePaused = false; let heldKey = false; let heldPointer: number | null = null;
@@ -23,7 +23,7 @@ let driveInputArmed = false; let freshGesture = false;
 const credits = new CreditService(storage, telemetry); const audio = new AudioService(storage);
 const listeners = new AbortController();
 let state: Screen = 'title'; let runId = ''; let ended = true; let disposed = false;
-let best = storage.readNumber('best-rules-v3', 0); let newBest = false; let lastResult: ParkingResult | null = null;
+let best = storage.readNumber('best-rules-v4', 0); let newBest = false; let lastResult: ParkingResult | null = null;
 let resultAvailableAt = 0; let resultTimer: ReturnType<typeof window.setTimeout> | undefined;
 let offerVisible = false; let milestoneShown = false; let choiceLocked = false; let choiceEpoch = 0;
 let lastLayoutParked = '';
@@ -50,18 +50,19 @@ function sync(): void {
 }
 function update(snapshot: ParkingSnapshot): void {
   app.dataset.scoreDigits = String(Math.min(7, Math.max(String(best).length, String(snapshot.score).length)));
-  writeText('stage-hud', `${state === 'practice' ? '練習' : 'SCORE'} ${snapshot.score} · ${snapshot.parked}台 · BEST V3 ${best}`);
+  writeText('stage-hud', `${state === 'practice' ? '練習' : 'SCORE'} ${snapshot.score} · ${snapshot.parked}台 · BEST V4 ${best}`);
   writeText('score-value', String(snapshot.score)); writeText('parked-value', String(snapshot.parked));
   if (app.dataset.phase !== snapshot.phase) app.dataset.phase = snapshot.phase;
   if (app.dataset.mode !== snapshot.mode) app.dataset.mode = snapshot.mode;
   writeText('mode-label', snapshot.mode === 'forbidden' ? '禁断駐車 · SCORE ×2' : '通常駐車');
   writeText('multiplier-label', `PERFECT ${snapshot.perfectCount} · 連続倍率 ×${snapshot.streakMultiplier.toFixed(2)}${snapshot.mode === 'forbidden' ? ' · 禁断 ×2' : ''}`);
+  writeText('control-hint', snapshot.brakeUnlocked ? 'SPACE: 決定・ブレーキ / C: 切り返し' : 'SPACE / TAP · 角度 → 強さ');
   const angle = snapshot.lockedSteering ?? snapshot.steeringDegrees; const power = snapshot.lockedPower ?? snapshot.power;
   writeText('angle-value', `${angle >= 0 ? '+' : ''}${angle.toFixed(1)}°`); writeText('power-value', `${Math.round(power * 100)}%`);
   $('angle-needle').style.left = `${Math.max(0, Math.min(100, (angle + 38) / 76 * 100))}%`; $('power-fill').style.width = `${Math.max(0, Math.min(100, power * 100))}%`;
   writeText('angle-lock', snapshot.lockedSteering === null ? 'SPACEで確定' : '角度は確定済み'); writeText('power-lock', snapshot.lockedPower === null ? snapshot.phase === 'angle' ? '角度の次に確定' : 'SPACEで発進' : '強さは確定済み');
-  const ready = (state === 'playing' || state === 'practice') && snapshot.alive && (snapshot.phase === 'angle' || snapshot.phase === 'power' || snapshot.phase === 'driving' && !snapshot.brakeUsed);
-  correctionButton.hidden = !((state === 'playing' || state === 'practice') && snapshot.phase === 'driving');
+  const ready = (state === 'playing' || state === 'practice') && snapshot.alive && (snapshot.phase === 'angle' || snapshot.phase === 'power' || snapshot.phase === 'driving' && snapshot.brakeUnlocked && !snapshot.brakeUsed);
+  correctionButton.hidden = !((state === 'playing' || state === 'practice') && snapshot.phase === 'driving' && snapshot.brakeUnlocked);
   correctionButton.disabled = snapshot.correctionUsed || snapshot.braking || snapshot.phase !== 'driving' || (state !== 'playing' && state !== 'practice');
   correctionButton.textContent = snapshot.correctionUsed ? '切り返し使用済み' : '↶ 切り返し · C';
   $('slot-controls').hidden = !((state === 'playing' || state === 'practice') && snapshot.phase === 'slot-choice');
@@ -69,11 +70,11 @@ function update(snapshot: ParkingSnapshot): void {
   if (snapshot.phase === 'driving' && !heldKey && heldPointer === null) driveInputArmed = true;
   if (snapshot.phase !== 'driving') driveInputArmed = false;
   const actionButton = $<HTMLButtonElement>('action-button'); actionButton.disabled = !ready;
-  const action = snapshot.phase === 'angle' ? '角度を決める' : snapshot.phase === 'power' ? '強さを決める' : snapshot.phase === 'driving' ? snapshot.brakeUsed ? '制動中…' : 'ブレーキ' : snapshot.phase === 'slot-choice' ? '枠を選ぶ' : snapshot.phase === 'parked' ? '駐車完了' : '決める';
+  const action = snapshot.phase === 'angle' ? '角度を決める' : snapshot.phase === 'power' ? '強さを決める' : snapshot.phase === 'driving' ? !snapshot.brakeUnlocked ? '走行中' : snapshot.brakeUsed ? '制動中…' : 'ブレーキ' : snapshot.phase === 'slot-choice' ? '枠を選ぶ' : snapshot.phase === 'parked' ? '駐車完了' : '決める';
   if (actionButton.dataset.label !== action) { actionButton.dataset.label = action; actionButton.innerHTML = `${action}<span aria-hidden="true">SPACE / TAP</span>`; actionButton.setAttribute('aria-label', action); }
-  writeText('step-value', state === 'paused' ? 'ひと休み。' : state === 'milestone' ? '狭い枠、どうする？' : snapshot.phase === 'angle' ? 'STEP 1 · 角度を決める' : snapshot.phase === 'power' ? 'STEP 2 · 強さを決める' : snapshot.phase === 'driving' ? snapshot.brakeUsed ? '制動中 · 1度だけ' : snapshot.correctionUsed ? '切り返し使用済み · SPACEで制動' : 'Cで切り返し / SPACEで制動' : snapshot.phase === 'slot-choice' ? '先に枠を指定する' : snapshot.phase === 'parked' ? snapshot.grade ?? '駐車完了' : '2回で駐車。');
-  writeText('step-hint', state === 'paused' || state === 'milestone' ? '車も時計も停止中' : snapshot.phase === 'angle' ? '枠に向かう角度を狙おう' : snapshot.phase === 'power' ? '点線の到達位置をよく見て' : snapshot.phase === 'parked' ? `余裕 ${snapshot.precision?.margin.toFixed(1)}px` : snapshot.phase === 'slot-choice' ? '安全 ×1 / 挑戦 ×1.4 · 指定外は対象外' : '角度を決める → 強さを決める');
-  if (state === 'practice') { writeText('step-value', `練習 ${practiceStep+1}/4 · ${snapshot.phase === 'driving' ? practiceStep === 3 ? 'Cか切り返しボタン' : 'ブレーキはもう一度' : snapshot.phase === 'slot-choice' ? '安全か挑戦を指定' : snapshot.phase === 'angle' ? '角度を決める' : '強さを決める'}`); writeText('step-hint', practiceStep === 0 ? '角度0° → 54%前後で駐車' : practiceStep === 1 ? '角度0° → 85%前後 → 枠の手前で制動' : practiceStep === 2 ? '枠を指定 → 角度と強さで入れよう' : '角度+4° → 強さ54% → 中間でCか切り返し'); }
+  writeText('step-value', state === 'paused' ? 'ひと休み。' : state === 'milestone' ? '狭い枠、どうする？' : snapshot.phase === 'angle' ? 'STEP 1 · 角度を決める' : snapshot.phase === 'power' ? 'STEP 2 · 強さを決める' : snapshot.phase === 'driving' ? !snapshot.brakeUnlocked ? '2回で決定！走行中' : snapshot.brakeUsed ? '制動中 · 1度だけ' : snapshot.correctionUsed ? '切り返し使用済み · SPACEで制動' : 'Cで切り返し / SPACEで制動' : snapshot.phase === 'slot-choice' ? '先に枠を指定する' : snapshot.phase === 'parked' ? snapshot.grade ?? '駐車完了' : '2回で駐車。');
+  writeText('step-hint', state === 'paused' || state === 'milestone' ? '車も時計も停止中' : snapshot.phase === 'angle' ? '枠に向かう角度を狙おう' : snapshot.phase === 'power' ? '点線の到達位置をよく見て' : snapshot.phase === 'parked' ? `あと ${snapshot.precision?.margin.toFixed(1)}px！` : snapshot.phase === 'slot-choice' ? '安全 ×1 / 挑戦 ×1.4 · 指定外は対象外' : '角度を決める → 強さを決める');
+  if (state === 'practice') { writeText('step-value', `練習 ${practiceStep+1}/4 · ${snapshot.phase === 'driving' ? practiceStep === 0 ? '角度と強さだけで駐車！' : practiceStep === 3 ? 'Cか切り返しボタン' : 'ブレーキはもう一度' : snapshot.phase === 'slot-choice' ? '安全か挑戦を指定' : snapshot.phase === 'angle' ? '角度を決める' : '強さを決める'}`); writeText('step-hint', practiceStep === 0 ? '角度0° → 54%前後で駐車' : practiceStep === 1 ? '角度0° → 85%前後 → 枠の手前で制動' : practiceStep === 2 ? '枠を指定 → 角度と強さで入れよう' : '角度+4° → 強さ54% → 中間でCか切り返し'); }
   writeText('play-step', snapshot.phase === 'angle' ? 'まずは、向きを。' : snapshot.phase === 'power' ? '次に、進む強さを。' : snapshot.phase === 'parked' ? snapshot.grade ?? '駐車完了' : '枠の中へ、まっすぐ。');
   writeText('locked-angle', snapshot.lockedSteering === null ? 'まだ決めていません' : `${snapshot.lockedSteering.toFixed(1)}°`);
   writeText('locked-power', snapshot.lockedPower === null ? 'まだ決めていません' : `${Math.round(snapshot.lockedPower * 100)}%`);
@@ -85,24 +86,24 @@ function setScreen(next: Screen, delayResult = false): void {
   state = next; clearApprovals(); sync(); if (next !== 'playing' && next !== 'practice') correctionButton.hidden = true;
   if (credits.canPlay || next === 'playing') offerVisible = false;
   if (next === 'playing' || next === 'practice') {
-    overlay.innerHTML = '<article class="ticket play-ticket"><span class="eyebrow">ONE BAY / TWO DECISIONS + BRAKE</span><h2 id="play-step">まずは、向きを。</h2><p>1回目で角度を確定。<br />2回目で強さを確定して発進。<br />指定枠に全体が入れば成功。SPACEはブレーキ。Cか専用ボタンでRUN中一度だけ切り返し。</p><dl><dt>確定した角度</dt><dd id="locked-angle">まだ決めていません</dd><dt>確定した強さ</dt><dd id="locked-power">まだ決めていません</dd></dl><small>点線は、今の設定での軌道予測。<br />急がず、2回を別々に決めよう。</small></article>';
+    overlay.innerHTML = '<article class="ticket play-ticket"><span class="eyebrow">ONE BAY / TWO DECISIONS</span><h2 id="play-step">まずは、向きを。</h2><p>1回目で角度を確定。<br />2回目で強さを確定して発進。<br />指定枠に全体が入れば成功。3台成功したら任意ブレーキと切り返しが解禁。</p><dl><dt>確定した角度</dt><dd id="locked-angle">まだ決めていません</dd><dt>確定した強さ</dt><dd id="locked-power">まだ決めていません</dd></dl><small>点線は、今の設定での軌道予測。<br />急がず、2回を別々に決めよう。</small></article>';
     if (next === 'practice') overlay.innerHTML = `<article class="ticket play-ticket"><span class="eyebrow">PRACTICE ${practiceStep+1}/4</span><h2>${['角度 → 強さ','止めどころを読む','枠を指定する','一度だけ切り返す'][practiceStep]}</h2><p>${['角度0°・強さ54%前後で、車全体を枠へ。','角度0°・強さ85%前後。枠の少し手前で、新しい入力からブレーキ。','先に安全／挑戦を指定。指定した枠だけがゴールです。','角度+4°・強さ54%前後。道の半分あたりでCか切り返しボタン。反対の曲線へ曲がります。'][practiceStep]}</p><small>練習のスコアはBESTに保存されません。<br />ヘッダーのタイトルからいつでもスキップ。</small></article>`;
     update(controller.snapshot()); stage.focus({ preventScroll: true }); return;
   }
   if (next === 'title') {
-    writeText('stage-hud', `SCORE 0 · 0台 · BEST V3 ${best}`); writeText('control-hint', 'SPACE: 決定・ブレーキ / C: 切り返し');
+    writeText('stage-hud', `SCORE 0 · 0台 · BEST V4 ${best}`); writeText('control-hint', 'SPACE: 決定・ブレーキ / C: 切り返し');
     writeText('score-value', '0'); writeText('parked-value', '0'); writeText('angle-value', '—'); writeText('power-value', '—'); writeText('step-value', '2回で駐車。'); writeText('step-hint', '角度を決める → 強さを決める'); writeText('mode-label', '通常駐車'); writeText('lot-label', 'PARKING LOT / 001'); writeText('multiplier-label', '精度と連続PERFECTでスコアUP'); writeText('angle-lock', 'SPACEで確定'); writeText('power-lock', '角度の次に確定'); $('action-button').innerHTML = '角度を決める<span aria-hidden="true">SPACE / TAP</span>'; $('action-button').dataset.label = '角度を決める'; $('action-button').setAttribute('aria-label', '角度を決める'); app.dataset.mode = 'normal'; app.dataset.phase = 'ended'; $('angle-needle').style.left = '50%'; $('power-fill').style.width = '0%';
-    overlay.innerHTML = `<article class="ticket start-ticket"><span class="eyebrow">PARKING TICKET / 006</span><h2 class="game-title">ギリギリ駐車<small>PARK IT!</small></h2><p>角度と強さを決め、枠へ。<br />Cで一度だけ切り返し。SPACEはブレーキ。</p><div class="mini-best">BEST SCORE <b>${best}</b></div>${credits.canPlay ? primary('play-button', 'すぐ遊ぶ') : primary('reward-button', '+3 CREDIT')}<div class="local-start-options"><button id="tutorial-explain-button" class="secondary" type="button">説明を見る</button><button id="tutorial-again-button" class="secondary" type="button">練習する</button></div><small>新ルール V3${legacyBestV2 ? ` · V2 BEST ${legacyBestV2}` : ''}${legacyBest ? ` · V1 BEST ${legacyBest}` : ''}</small><small>Space / クリック / タップ · C 切り返し<br />精度と連続PERFECTでスコアUP</small>${credits.canPlay ? '' : stub}</article>`;
+    overlay.innerHTML = `<article class="ticket start-ticket"><span class="eyebrow">PARKING TICKET / 006</span><h2 class="game-title">ギリギリ駐車<small>PARK IT!</small></h2><p>角度と強さを決め、枠へ。<br />最初は2回だけ。3台成功でブレーキ解禁！</p><div class="mini-best">BEST SCORE <b>${best}</b></div>${credits.canPlay ? primary('play-button', 'すぐ遊ぶ') : primary('reward-button', '+3 CREDIT')}<div class="local-start-options"><button id="tutorial-explain-button" class="secondary" type="button">説明を見る</button><button id="tutorial-again-button" class="secondary" type="button">練習する</button></div><small>新ルール V4${legacyBestV3 ? ` · V3 BEST ${legacyBestV3}` : ''}${legacyBestV2 ? ` · V2 BEST ${legacyBestV2}` : ''}${legacyBest ? ` · V1 BEST ${legacyBest}` : ''}</small><small>Space / クリック / タップ · 最初は2回だけ<br />精度と連続PERFECTでスコアUP</small>${credits.canPlay ? '' : stub}</article>`;
   } else if (next === 'explain') {
-    overlay.innerHTML = `<article class="ticket explain-ticket"><span class="eyebrow">PARKING / V3</span><h2>選んで、止める。</h2><p>1. 角度を決める。<br />2. 強さを決めて発進。<br />3. 必要なら、新しい入力で一度だけブレーキ。<br />ブレーキは少し進んで停止。切り返しはCか専用ボタンで、反対の曲線へ。一度だけ、RUN全体で使用できます。</p><p>最初の3台は単一枠。以降は安全 ×1／挑戦 ×1.4を先に指定。薄い枠は対象外です。</p><p>精度が主役。ノーブレーキ成功は+10%、接触なしのギリギリ通過は最大+20。失敗には追加点が入りません。</p>${primary('tutorial-again-button','練習する')}${titleButton}</article>`;
+    overlay.innerHTML = `<article class="ticket explain-ticket"><span class="eyebrow">PARKING / V4</span><h2>選んで、止める。</h2><p>1. 角度を決める。<br />2. 強さを決めて発進。<br />3. 3台成功するとブレーキ解禁。必要なときだけ使えます。<br />ブレーキは少し進んで停止。切り返しはCか専用ボタンで、反対の曲線へ。一度だけ、RUN全体で使用できます。</p><p>最初の3台は単一枠。以降は安全 ×1／挑戦 ×1.4を先に指定。薄い枠は対象外です。</p><p>精度が主役。ノーブレーキ成功は+10%、接触なしのギリギリ通過は最大+20。失敗には追加点が入りません。</p>${primary('tutorial-again-button','練習する')}${titleButton}</article>`;
   } else if (next === 'practice-success') {
     overlay.innerHTML = `<article class="ticket practice-success-ticket"><span class="eyebrow">PRACTICE ${practiceStep+1}/4</span><h2>入りました！</h2><p>${['角度と強さで円弧が決まりました。','同じ曲線で、少し進んでから制動できました。','指定した枠に収まりました。','切り返しで実際の軌道が変わり、駐車できました。'][practiceStep]}<br />練習の得点とBESTは本番から独立。</p>${primary('practice-next-button',practiceStep < 3 ? '次の練習へ' : 'タイトルへ')}${titleButton}</article>`;
   } else if (next === 'paused') {
     update(controller.snapshot()); overlay.innerHTML = `<article class="ticket pause-ticket"><span class="eyebrow">ENGINE OFF / PAUSED</span><h2>ひと休み。</h2><p>車も計器も、時間も停止中。<br />準備ができたら続きから。</p><div class="ticket-actions">${primary('resume-button', 'RESUME · 再開')}${titleButton}</div></article>`;
   } else if (next === 'result' && lastResult) {
     const result = lastResult;
-    overlay.innerHTML = `<article class="ticket result-ticket"><div class="result-heading"><span class="result-game-title">ギリギリ駐車<small>PARK IT!</small></span><h2>${result.outcome === 'collision' ? 'あ、ぶつかった。' : '枠から、はみ出した。'}</h2><p class="result-reason">${result.reason}</p></div><div class="result-score"><b id="result-score">${result.score}</b><span>SCORE V3</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST V3</dt><dd id="result-best">${best}</dd></div><div><dt>駐車成功</dt><dd>${result.parked} 台</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} 回</dd></div><div><dt>切り返し</dt><dd>${result.correctionUsed ? '使用済み' : '未使用'}</dd></div><div><dt>最大連続</dt><dd>${result.maxStreak} 回</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div></dl><div class="driver-title"><small>${result.mode === 'forbidden' ? '禁断駐車 · 今回の称号' : '今回の称号'}</small><b id="driver-title">${parkingTitle(result.parked)}</b></div><div class="ticket-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small>${credits.canPlay ? '次は、もう1台ぴたりと。' : 'NO CREDIT · 開発版 Rewarded Ad Stub'}</small></article>`;
-    recordSession.mount(overlay.firstElementChild as HTMLElement);
+    overlay.innerHTML = `<article class="ticket result-ticket"><div class="result-heading"><span class="result-game-title">ギリギリ駐車<small>PARK IT!</small></span><h2>${result.outcome === 'collision' ? 'あ、ぶつかった。' : '枠から、はみ出した。'}</h2><p class="result-reason">${result.reason}</p>${result.outcome==='outside'?`<strong class="near-distance">あと ${Math.max(.1,result.missDistance).toFixed(1)}px！</strong>`:''}</div><div class="result-score"><b id="result-score">${result.score}</b><span>SCORE V4</span>${newBest ? '<mark class="new-best">NEW BEST</mark>' : ''}</div><dl class="result-details"><div><dt>BEST V4</dt><dd id="result-best">${best}</dd></div><div><dt>駐車成功</dt><dd>${result.parked} 台</dd></div><div><dt>PERFECT</dt><dd>${result.perfectCount} 回</dd></div><div><dt>切り返し</dt><dd>${result.correctionUsed ? '使用済み' : '未使用'}</dd></div><div><dt>最大連続</dt><dd>${result.maxStreak} 回</dd></div><div><dt>TIME</dt><dd>${result.time.toFixed(1)} s</dd></div></dl><div class="driver-title"><small>${result.mode === 'forbidden' ? '禁断駐車 · 今回の称号' : '今回の称号'}</small><b id="driver-title">${parkingTitle(result.parked)}</b></div><div class="ticket-actions">${credits.canPlay ? primary('retry-button', 'RETRY · もう1回') : primary('reward-button', '+3 CREDIT')}${titleButton}</div><small>${credits.canPlay ? '次は、もう1台ぴたりと。' : 'NO CREDIT · 開発版 Rewarded Ad Stub'}</small></article>`;
+
     if (delayResult) {
       overlay.hidden = true; resultTimer = window.setTimeout(() => { resultTimer = undefined; if (!disposed && state === 'result') { overlay.hidden = false; trackOffer(); overlay.querySelector<HTMLButtonElement>('.primary')?.focus({ preventScroll: true }); } }, 300);
     }
@@ -134,18 +135,18 @@ function sound(event: ParkingEvent): void {
 const controller = createParkingGame($('game-canvas'), {
   onUpdate(snapshot) { if (state === 'practice' && snapshot.phase === 'parked') {
       if ((practiceStep === 1 && !snapshot.brakeUsed) || (practiceStep === 3 && !snapshot.correctionUsed)) { controller.pause(true); setScreen('practice-success'); overlay.innerHTML = `<article class="ticket"><h2>${practiceStep === 3 ? '切り返しも試そう。' : '今度はブレーキ。'}</h2><p>${practiceStep === 3 ? '発進後にCか切り返しボタンを一度押して、駐車しよう。' : '発進後に新しい入力で一度だけ制動し、枠へ止めよう。'}</p>${primary('practice-repeat-button','もう一度')}${titleButton}</article>`; return; }
-      controller.pause(true); telemetry.trackEvent('tutorial_step_complete',{step:practiceStep+1,rulesVersion:3}); setScreen('practice-success'); return;
+      controller.pause(true); telemetry.trackEvent('tutorial_step_complete',{step:practiceStep+1,rulesVersion:4}); setScreen('practice-success'); return;
     } if (snapshot.pending && state === 'playing') showMilestone(); if (state === 'playing' || state === 'practice' || state === 'paused' || state === 'milestone') update(snapshot); },
   onEvent(event) { sound(event);
-    if (state === 'playing' && !ended) telemetry.trackEvent('specific_game_events', {runId, rulesVersion:3, ...event, event: event.type});
+    if (state === 'playing' && !ended) telemetry.trackEvent('specific_game_events', {runId, rulesVersion:4, ...event, event: event.type});
   },
   onEnd(result) {
     if (state === 'practice') { controller.pause(true); setScreen('practice-success'); overlay.innerHTML = `<article class="ticket"><h2>もう一度、試そう。</h2><p>${result.reason}</p>${primary('practice-repeat-button','同じ練習を再開')}${titleButton}</article>`; return; }
     if ((state !== 'playing' && state !== 'milestone') || ended || disposed) return;
-    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best-rules-v3', best); credits.consume(runId); recordSession.complete(result.score, { metadata: { duration_seconds: result.time, outcome: result.outcome } });
-    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time, parked: result.parked, perfectCount: result.perfectCount, maxStreak: result.maxStreak, mode: result.mode, rulesVersion:3, failureCause:result.cause, brakeUsed:result.brakeUsed, slot:result.slotKind });
-    telemetry.trackEvent('score', { runId, rulesVersion: 3, score: result.score, best, newBest, parked: result.parked }); telemetry.trackEvent('run_duration', { runId, rulesVersion: 3, seconds: result.time, reason: 'over', failure_reason: result.outcome });
-    if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 3, score: result.score, best });
+    ended = true; lastResult = result; newBest = result.score > best; best = Math.max(best, result.score); storage.writeNumber('best-rules-v4', best); credits.consume(runId);
+    telemetry.trackEvent('run_end', { runId, outcome: 'over', score: result.score, time: result.time, parked: result.parked, perfectCount: result.perfectCount, maxStreak: result.maxStreak, mode: result.mode, rulesVersion:4, failureCause:result.cause, brakeUsed:result.brakeUsed, slot:result.slotKind });
+    telemetry.trackEvent('score', { runId, rulesVersion: 4, score: result.score, best, newBest, parked: result.parked }); telemetry.trackEvent('run_duration', { runId, rulesVersion: 4, seconds: result.time, reason: 'over', failure_reason: result.outcome });
+    if (newBest) telemetry.trackEvent('best_update', { runId, rulesVersion: 4, score: result.score, best });
     update(controller.snapshot()); resultAvailableAt = performance.now() + 300; setScreen('result', true);
   },
 });
@@ -154,7 +155,7 @@ function start(retry = false): void {
   if (disposed || credits.rewardPending || state === 'playing' || state === 'paused' || state === 'milestone' || (state === 'result' && performance.now() < resultAvailableAt)) return;
   if (!credits.canPlay) { setScreen('reward'); return; }
   void audio.unlock(); runId = `game006-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; ended = false; lastResult = null; newBest = false; milestoneShown = false; choiceEpoch += 1; choiceLocked = false; lastLayoutParked = ''; clearApprovals();
-  if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 3 }); recordSession.startRun(); telemetry.trackEvent('run_start', { runId, credits: credits.credits, rulesVersion: 3 }); setScreen('playing'); controller.start();
+  if (retry) telemetry.trackEvent('retry', { runId, rulesVersion: 4 }); telemetry.trackEvent('run_start', { runId, credits: credits.credits, rulesVersion: 4 }); setScreen('playing'); controller.start();
 }
 function act(): void {
   if ((state !== 'playing' && state !== 'practice') || state === 'playing' && ended) return;
@@ -170,7 +171,7 @@ function correct(): void {
 }
 function chooseSlot(choice: ParkingSlotKind): void { if ((state === 'playing' || state === 'practice') && controller.chooseSlot(choice)) { clearApprovals(); update(controller.snapshot()); stage.focus({preventScroll:true}); } }
 function practice(step = 0): void {
-  recordQuit(); practiceStep = step; practicePaused = false; ended = true; clearApprovals(); driveInputArmed = false; telemetry.trackEvent('practice_start',{step:step+1,rulesVersion:3});
+  recordQuit(); practiceStep = step; practicePaused = false; ended = true; clearApprovals(); driveInputArmed = false; telemetry.trackEvent('practice_start',{step:step+1,rulesVersion:4});
   setScreen('practice'); controller.startPractice(step);
 }
 
@@ -180,7 +181,7 @@ function pause(): void {
 }
 function recordQuit(): void {
   if ((state !== 'playing' && state !== 'practice' && state !== 'paused' && state !== 'milestone') || ended) return;
-  ended = true; const snapshot = controller.snapshot(); telemetry.trackEvent('quit', { runId, rulesVersion: 3, score: snapshot.score, time: snapshot.time }); telemetry.trackEvent('run_end', { runId, rulesVersion: 3, outcome: 'quit', score: snapshot.score, time: snapshot.time, parked: snapshot.parked, mode: snapshot.mode }); telemetry.trackEvent('run_duration', { runId, rulesVersion: 3, seconds: snapshot.time, reason: 'quit' });
+  ended = true; const snapshot = controller.snapshot(); telemetry.trackEvent('quit', { runId, rulesVersion: 4, score: snapshot.score, time: snapshot.time }); telemetry.trackEvent('run_end', { runId, rulesVersion: 4, outcome: 'quit', score: snapshot.score, time: snapshot.time, parked: snapshot.parked, mode: snapshot.mode }); telemetry.trackEvent('run_duration', { runId, rulesVersion: 4, seconds: snapshot.time, reason: 'quit' });
 }
 function title(): void { if (credits.rewardPending || (state === 'result' && performance.now() < resultAvailableAt)) return; recordQuit(); controller.title(); lastResult = null; newBest = false; setScreen('title'); }
 async function reward(): Promise<void> {
@@ -208,10 +209,10 @@ app.addEventListener('click', event => {
     return;
   }
   switch (button.id) {
-    case 'tutorial-explain-button': setScreen('explain'); telemetry.trackEvent('tutorial_view',{rulesVersion:3}); break;
+    case 'tutorial-explain-button': setScreen('explain'); telemetry.trackEvent('tutorial_view',{rulesVersion:4}); break;
     case 'tutorial-again-button': practice(); break;
     case 'practice-repeat-button': practice(practiceStep); break;
-    case 'practice-next-button': if (practiceStep < 3) practice(practiceStep+1); else { storage.writeBoolean('tutorialCompleted-rules-v2',true); telemetry.trackEvent('practice_complete',{rulesVersion:3}); title(); } break;
+    case 'practice-next-button': if (practiceStep < 3) practice(practiceStep+1); else { storage.writeBoolean('tutorialCompleted-rules-v2',true); telemetry.trackEvent('practice_complete',{rulesVersion:4}); title(); } break;
     case 'play-button': start(); break; case 'retry-button': start(true); break; case 'title-button': case 'brand-button': title(); break; case 'reward-button': void reward(); break;
     case 'mute-button': audio.toggle(); sync(); if (state === 'playing') update(controller.snapshot()); break; case 'pause-button': case 'resume-button': pause(); break;
   }
