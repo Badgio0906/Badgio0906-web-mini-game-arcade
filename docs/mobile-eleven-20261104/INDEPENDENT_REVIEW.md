@@ -47,12 +47,14 @@
 
 **確認した範囲で公開を妨げる未解決findingなし。独立コード・画像レビューを完了。** 観測した指摘は上表のとおり修正を確認した。公開そのものの承認・CI/配信成否を本書で代行しない。署名：`mobile_review`（実装者と別sub-agent、2026-11-04 JST）。
 
-最終再確認した非同期・記録境界のSHA-256（作業ツリー）：
+最終表示修正も再確認した。013のステージ選択BPM表示を90/100/120から元JSONと一致する90/110/136へ変更しており、譜面・判定・時計は変更していない。014は行末空白1文字の除去のみ。前回確認した内容へこの2点を逆適用したSHA-256が前回記録と一致することを検査し、これ以外の差分がないことを確認した。
+
+最終再確認した非同期・記録境界のSHA-256（製品commit `6690706b`）：
 
 | ソース | SHA-256 |
 | --- | --- |
-| `public/games/finger-heart-challenge/mobile.js` | `c11aad6de4be78e6f32bbeff5aa34a4f7c9ceff893390e65d15b113c9038b003` |
-| `public/games/tachibana-task-heaven/mobile.js` | `151b9df1b889e4af952d8b25f61ca0a3b61f2cccc7f7ee1e6da9ca62d72b6c59` |
+| `public/games/finger-heart-challenge/mobile.js` | `7e8a0d471f3efbdf2d32b7d4769b9bdac930bcbaf5c53c126d8e8dfab84e86d1` |
+| `public/games/tachibana-task-heaven/mobile.js` | `9200e0243794f592858768a04974a11bb73f6c2f2e97a3c7e3b53fd956fc2c9c` |
 | `public/games/yokodori-days/index.html` | `d8021dff01fc59f2e479c670775228138d243b0da62770cc07ee7a1690dde588` |
 | `src/data/recordDefinitions.ts` | `c22c3f4b2eb5791e276a78d4e4c87381c7d6a8e369e7287b090728cc7cb8644b` |
 | `src/records/localRecords.ts` | `790b5095e7632cbf071793d741ce70728e9d5be44e7fc45203c7288eb5649c65` |
