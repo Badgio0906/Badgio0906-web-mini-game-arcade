@@ -1,0 +1,18 @@
+source_commit: f253a5440071b60bab30e2029dd22350f9d9337c
+date_utc: 2026-10-18T05:05:28Z
+$ npx tsc --noEmit
+exit 0
+
+$ GAME037_BUILD_DIR=/tmp/game037-dist npx vite build --config tests/game037/vite.config.mjs
+vite v7.3.6 building client environment for production...
+<script src="./arcade-navigation.js"> in "/game037.html" can't be bundled without type="module" attribute
+
+./arcade-navigation.css doesn't exist at build time, it will remain unchanged to be resolved at runtime
+transforming...
+✓ 8 modules transformed.
+rendering chunks...
+computing gzip size...
+/tmp/game037-dist/game037.html                  5.60 kB │ gzip:  2.04 kB
+/tmp/game037-dist/assets/game037-CFl_vANT.css  15.41 kB │ gzip:  4.42 kB
+/tmp/game037-dist/assets/game037-DirozE0m.js   35.54 kB │ gzip: 13.96 kB
+✓ built in 298ms

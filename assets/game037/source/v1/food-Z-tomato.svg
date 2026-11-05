@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <!-- Game037 Z piece: four cherry tomatoes on a green baran divider. Original hand-authored SVG. -->
+  <defs>
+    <radialGradient id="tom" cx=".36" cy=".32" r=".8">
+      <stop offset="0" stop-color="#ff7a5c"/>
+      <stop offset=".55" stop-color="#e2352a"/>
+      <stop offset="1" stop-color="#a51c16"/>
+    </radialGradient>
+    <symbol id="tomato" viewBox="-46 -46 92 92">
+      <ellipse cx="3" cy="32" rx="28" ry="7" fill="#1e3a10" opacity=".25"/>
+      <circle cx="0" cy="2" r="33" fill="url(#tom)" stroke="#6a120c" stroke-width="3"/>
+      <path d="M-20 -14 C-14 -24 -4 -28 6 -27" fill="none" stroke="#ffd8cc" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+      <circle cx="-22" cy="-4" r="3" fill="#ffe6dc" opacity=".8"/>
+      <path d="M0 -26 L6 -36 L8 -24 L20 -26 L10 -18 L18 -10 L4 -14 L0 -4 L-4 -14 L-18 -10 L-10 -18 L-20 -26 L-8 -24 L-6 -36 Z" fill="#3e7a2a" stroke="#1f4214" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M0 -24 C2 -32 6 -38 12 -40" fill="none" stroke="#2c5a1c" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+  <path d="M20 6 L180 6 Q194 6 194 20 L194 96 Q194 106 204 106 L280 106 Q294 106 294 120 L294 180 Q294 194 280 194 L120 194 Q106 194 106 180 L106 104 Q106 94 96 94 L20 94 Q6 94 6 80 L6 20 Q6 6 20 6 Z" fill="#2a170c" opacity=".26" transform="translate(3 5)"/>
+  <path d="M20 6 L180 6 Q194 6 194 20 L194 96 Q194 106 204 106 L280 106 Q294 106 294 120 L294 180 Q294 194 280 194 L120 194 Q106 194 106 180 L106 104 Q106 94 96 94 L20 94 Q6 94 6 80 L6 20 Q6 6 20 6 Z" fill="#5fa443" stroke="#1f4a16" stroke-width="3.5" stroke-linejoin="round"/>
+  <g fill="#7fc25e" stroke="#2f6a20" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M10 92 L18 70 L26 92 L34 66 L42 92 L50 72 L58 92 L66 66 L74 92 L82 70 L90 92 Z"/>
+    <path d="M110 192 L118 170 L126 192 L134 166 L142 192 L150 172 L158 192 L166 166 L174 192 L182 170 L190 192 L198 166 L206 192 L214 170 L222 192 L230 166 L238 192 L246 172 L254 192 L262 166 L270 192 L278 170 L290 192 Z"/>
+  </g>
+  <path d="M16 16 L186 16" stroke="#9ad87a" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <use href="#tomato" x="4" y="4" width="92" height="92" transform="rotate(-12 50 50)"/>
+  <use href="#tomato" x="104" y="4" width="92" height="92" transform="rotate(16 150 50)"/>
+  <use href="#tomato" x="104" y="104" width="92" height="92" transform="rotate(-20 150 150)"/>
+  <use href="#tomato" x="204" y="104" width="92" height="92" transform="rotate(8 250 150)"/>
+</svg>
